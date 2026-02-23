@@ -1,0 +1,34 @@
+{
+  "name": "chakrata-retreats",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "audit:governance": "npx ts-node --project tsconfig.json scripts/content-governance.ts",
+    "audit:links": "npx ts-node --project tsconfig.json scripts/link-audit.ts",
+    "audit:schema": "npx ts-node --project tsconfig.json scripts/schema-validate.ts",
+    "audit:perf": "npx ts-node --project tsconfig.json scripts/performance-budget.ts",
+    "audit:analytics": "npx ts-node --project tsconfig.json scripts/analytics-report.ts",
+    "audit:all": "npm run audit:governance && npm run audit:links && npm run audit:schema && npm run audit:perf"
+  },
+  "dependencies": {
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-markdown": "^10.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "packageManager": "pnpm@10.17.1+sha512.17c560fca4867ae9473a3899ad84a88334914f379be46d455cbf92e5cf4b39d34985d452d2583baf19967fa76cb5c17bc9e245529d0b98745721aa7200ecaf7a"
+}
