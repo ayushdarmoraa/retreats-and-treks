@@ -49,6 +49,9 @@ export default function HomePage() {
       <h1 style={{ maxWidth: '64rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md) 0', fontSize: '2rem', fontWeight: 600, lineHeight: 1.15 }}>
         Himalayan Retreats and Guided Treks in India
       </h1>
+      <p style={{ maxWidth: '64rem', margin: '0.5rem auto 0', padding: '0 var(--space-md)', color: 'var(--color-text)', lineHeight: 1.6 }}>
+        We design Himalayan retreats in Uttarakhand across thoughtfully chosen locations such as Chakrata, Sankri, and Rishikesh. Our offerings include wellness retreats in India focused on burnout recovery, restorative yoga, and guided reflection, alongside guided Himalayan treks for participants seeking embodied movement and scenic immersion. Chakrata retreats emphasize forested silence and accessible weekend formats; Sankri retreats provide remote bases for multi-day immersion and trek access; Rishikesh retreats connect you to established yoga communities and riverfront practice. Programs prioritize facilitator expertise, environmental fit, and clear travel guidance from nearby hubs like Dehradun so you can plan with confidence.
+      </p>
       <HomeClient locations={locationsWithRetreats} />
 
       {/* ── FEATURED RETREATS & TREKS (server-rendered links for crawl depth) ── */ }
