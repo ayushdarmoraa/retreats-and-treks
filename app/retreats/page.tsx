@@ -85,13 +85,9 @@ export default function RetreatsPage() {
 
   return (
     <main style={{ maxWidth: '72rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+      <h1>Guided Himalayan Retreats, Designed With Intention</h1>
       <p style={{ fontSize: '0.95rem', lineHeight: 1.75, marginBottom: 'var(--space-md)', color: 'var(--color-text)' }}>
-        Before exploring specific locations, you may find it helpful to read our complete guide to{' '}
-        <Link href="/retreats/himalayan-retreats" style={{ color: 'var(--color-primary)' }}>
-          Himalayan Retreats in India
-        </Link>
-        . The guide explains retreat formats, seasonal considerations, and how to choose the right
-        structure based on your intention and experience level.
+        We design Himalayan retreats in India centered in Uttarakhand, offering wellness retreats and retreat programs that prioritize small-group and private retreats across Chakrata, Sankri, and Rishikesh. Our guided formats range from restorative yoga and burnout-recovery programs to multi-day guided Himalayan treks, ensuring facilitator-led structure and clear participant support. Each program is selected for environmental fit and logistical clarity — including travel guidance from nearby hubs such as Dehradun — so you can plan with confidence. Whether you prefer a short restorative weekend, a five-day integration, or a trek-led immersion, our retreats balance depth with accessibility and emphasize experienced facilitators and intentional program design.
       </p>
       <p style={{ fontSize: '0.95rem', lineHeight: 1.75, marginBottom: 'var(--space-lg)', color: 'var(--color-text)' }}>
         To compare all programs side by side by duration, intensity, and format, see the{' '}

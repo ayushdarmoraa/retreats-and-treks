@@ -46,9 +46,9 @@ export default function RetreatsClient({
     <>
       {/* SECTION 1: HERO — BRAND PROMISE */}
       <section style={{ marginBottom: '4rem', textAlign: 'center' }}>
-        <h1 style={{ marginBottom: '0.75rem', fontSize: '2.25rem', lineHeight: 1.2 }}>
+        <h2 style={{ marginBottom: '0.75rem', fontSize: '2.25rem', lineHeight: 1.2 }}>
           Guided Himalayan Retreats, Designed With Intention
-        </h1>
+        </h2>
         <p style={{ fontSize: '1.05rem', color: 'var(--color-muted)', margin: 0, lineHeight: 1.6, marginBottom: '1.5rem' }}>
           Small-group and private retreats across quiet Himalayan locations — created around rest, clarity, and depth.
         </p>
