@@ -420,7 +420,7 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
             href="/retreat-programs"
             style={{ ...btnBase, width: 'auto', padding: '0.5rem 1rem', fontSize: '0.875rem', color: 'var(--color-primary)', textDecoration: 'none' }}
           >
-            View all programs →
+            View full program comparison matrix →
           </Link>
         </div>
       </div>

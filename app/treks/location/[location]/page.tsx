@@ -83,7 +83,7 @@ export default async function TrekHubPage({ params }: PageProps) {
                 fontSize: '0.95rem',
               }}
             >
-              View all treks across locations →
+              Browse treks across locations →
             </Link>
           </>
         ) : (

@@ -193,7 +193,7 @@ export default function RetreatsLocationClient({
                     </div>
                   )}
                   <div style={{ marginTop: '1rem', color: 'var(--color-primary)', fontWeight: 500, fontSize: '0.9rem' }}>
-                    View trek details →
+                    View {trek.title} details →
                   </div>
                 </Link>
               ))}
@@ -431,7 +431,7 @@ export default function RetreatsLocationClient({
                   {loc.landTone.opening}
                 </p>
                 <div style={{ marginTop: '1rem', color: 'var(--color-primary)', fontWeight: 500, fontSize: '0.9rem' }}>
-                  Explore {loc.name} →
+                  Discover {loc.name} →
                 </div>
               </Link>
             ))}

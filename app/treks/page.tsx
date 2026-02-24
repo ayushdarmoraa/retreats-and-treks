@@ -27,12 +27,10 @@ export default function TreksPage() {
   return (
     <main style={{ maxWidth: '72rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
       <h1 style={{ fontSize: '1.75rem', fontWeight: 700, marginBottom: 'var(--space-sm)', lineHeight: 1.3 }}>
-        Himalayan Treks
+        Guided Himalayan Treks in Uttarakhand
       </h1>
       <p style={{ fontSize: '1rem', lineHeight: 1.75, marginBottom: 'var(--space-md)', color: 'var(--color-text-secondary)', maxWidth: '48rem' }}>
-        Guided trekking experiences across carefully selected Himalayan locations. From weekend treks
-        near Dehradun to multi-day high-altitude routes, each trek is designed around terrain,
-        season, and group capability.
+        Explore guided Himalayan treks in Uttarakhand designed for small groups and clearly defined difficulty levels. From beginner-friendly weekend treks near Dehradun to multi-day high-altitude routes in Sankri and beyond, each trek is structured around terrain, season, safety standards, and experienced local mountain guides. Our trekking programs balance accessibility with authentic mountain exposure, offering both short escapes and classic Himalayan summit experiences.
       </p>
 
       <section style={{ marginBottom: 'var(--space-xl)' }}>

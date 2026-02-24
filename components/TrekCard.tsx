@@ -43,7 +43,7 @@ export default function TrekCard({ name, duration, difficulty, description, href
           fontSize: '0.95rem',
         }}
       >
-        View trek →
+        View {name} details →
       </Link>
     </div>
   );

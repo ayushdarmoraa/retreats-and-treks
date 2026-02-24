@@ -112,7 +112,10 @@ export default async function TrekDetailPage({ params }: PageProps) {
       <article>
         {/* Header */}
         <header style={{ marginBottom: 'var(--space-lg)' }}>
-          <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{trek.title}</h1>
+        <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{trek.title}</h1>
+          <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '0.5rem' }}>
+            The Chakrata Weekend Trek is a beginner-friendly Himalayan trek in Uttarakhand designed for short mountain escapes from Dehradun and nearby cities. This guided 2 nights 3 days trek combines forest trails, ridge walks, camping under the stars, and panoramic views of the lower Himalayas. Ideal for first-time trekkers and small groups, the route balances accessibility with authentic mountain terrain, making it one of the most approachable weekend treks in Chakrata.
+          </p>
           <p style={{ color: 'var(--color-muted)', fontSize: '0.95rem' }}>
             {trek.duration} • {trek.difficulty}
             {trek.altitude ? ` • Max altitude: ${trek.altitude}` : ''}
@@ -123,6 +126,22 @@ export default async function TrekDetailPage({ params }: PageProps) {
         <section style={{ marginBottom: 'var(--space-lg)' }}>
           <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Overview</h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>{trek.overview}</p>
+        </section>
+
+        {/* Who This Trek Is For */}
+        <section style={{ marginBottom: 'var(--space-lg)' }}>
+          <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Who This Trek Is For</h2>
+          <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>
+            This Chakrata Weekend Trek is ideal for first-time trekkers, working professionals seeking a short Himalayan break, small groups of friends, and beginners looking to experience guided trekking in Uttarakhand without high-altitude exposure. With moderate daily walking hours and structured support from local mountain guides, the trek is suitable for participants with basic fitness and no prior trekking experience.
+          </p>
+        </section>
+
+        {/* Location & Access */}
+        <section style={{ marginBottom: 'var(--space-lg)' }}>
+          <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Location &amp; Access</h2>
+          <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>
+            The trek operates in the <Link href="/treks/location/chakrata">Chakrata treks</Link> region of Uttarakhand, a quiet Himalayan hill town located near Dehradun. Participants typically arrive via Dehradun railway station or Jolly Grant Airport, followed by a scenic mountain drive to Chakrata. This proximity makes it one of the most accessible weekend treks from Dehradun and Delhi NCR.
+          </p>
         </section>
 
         {/* Highlights */}
@@ -247,6 +266,35 @@ export default async function TrekDetailPage({ params }: PageProps) {
             </p>
           </section>
         )}
+
+        {/* FAQ Section (page-level) */}
+        <section style={{ marginBottom: 'var(--space-lg)' }}>
+          <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Frequently Asked Questions</h2>
+
+          <h3 style={{ marginTop: 0, fontSize: '1.05rem' }}>Is the Chakrata Weekend Trek suitable for beginners?</h3>
+          <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>
+            Yes. This trek is designed for beginners with basic fitness levels. It does not involve technical climbing or extreme altitude exposure, making it one of the most accessible weekend treks in Uttarakhand.
+          </p>
+
+          <h3 style={{ marginTop: 0, fontSize: '1.05rem' }}>How do I reach Chakrata for the trek?</h3>
+          <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>
+            Participants typically arrive in Dehradun by train or flight and travel by road to Chakrata. Detailed travel guidance is provided after booking.
+          </p>
+
+          <h3 style={{ marginTop: 0, fontSize: '1.05rem' }}>What is the maximum altitude of the trek?</h3>
+          <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>
+            The maximum altitude reached during the Chakrata Weekend Trek is approximately 2100 meters, keeping the route comfortable for first-time trekkers.
+          </p>
+        </section>
+
+        {/* Alternative: retreat cross-link */}
+        <section style={{ marginBottom: 'var(--space-lg)' }}>
+          <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Looking for a Retreat Instead?</h2>
+          <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>
+            If you are seeking a slower-paced mountain experience focused on rest and integration, explore our{' '}
+            <Link href="/retreats">guided Himalayan retreats in Uttarakhand</Link> designed for small groups and immersive mountain stays.
+          </p>
+        </section>
 
         {/* Primary CTA */}
         <section

@@ -73,7 +73,7 @@ export default function TreksClient() {
     <div style={{ maxWidth: '72rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
       {/* SECTION 1: HERO */}
       <section style={{ marginBottom: '2rem', textAlign: 'center' }}>
-        <h1 style={{ marginTop: 0, marginBottom: '0.5rem' }}>Trekking in the Himalayas</h1>
+        <h2 style={{ marginTop: 0, marginBottom: '0.5rem' }}>Trekking in the Himalayas</h2>
         <p style={{ fontSize: '1rem', color: 'var(--color-muted)', margin: 0, lineHeight: 1.5 }}>
           Browse treks by destination, difficulty, and duration.
         </p>
@@ -271,7 +271,7 @@ export default function TreksClient() {
                     textTransform: 'capitalize',
                   }}
                 >
-                  View all {location.name.toLowerCase()} treks →
+                  Browse {location.name} treks →
                 </Link>
               </div>
             );
@@ -333,7 +333,7 @@ export default function TreksClient() {
               padding: 0,
             }}
           >
-            View all beginner-friendly treks →
+            Browse beginner-friendly trek itineraries →
           </button>
         </div>
 
@@ -389,7 +389,7 @@ export default function TreksClient() {
               padding: 0,
             }}
           >
-            View all weekend treks →
+            Browse weekend treks from Dehradun →
           </button>
         </div>
 
@@ -441,7 +441,7 @@ export default function TreksClient() {
               padding: 0,
             }}
           >
-            View classic Himalayan treks →
+            Explore classic Himalayan summit treks →
           </button>
         </div>
       </section>
@@ -490,7 +490,7 @@ export default function TreksClient() {
                 padding: 0,
               }}
             >
-              Explore beginner-friendly treks →
+              Browse beginner-friendly treks →
             </button>
           </div>
 
@@ -520,7 +520,7 @@ export default function TreksClient() {
                 alignSelf: 'flex-start',
               }}
             >
-              Explore weekend treks →
+              View Chakrata Weekend Trek itinerary →
             </Link>
           </div>
 
@@ -550,7 +550,7 @@ export default function TreksClient() {
                 alignSelf: 'flex-start',
               }}
             >
-              Explore Himalayan treks from Sankri →
+              Discover Sankri multi-day trek itineraries →
             </Link>
           </div>
         </div>

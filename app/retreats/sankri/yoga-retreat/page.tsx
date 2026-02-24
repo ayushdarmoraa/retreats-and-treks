@@ -76,7 +76,7 @@ export default function SankriYogaRetreatPage() {
 
       <section style={{ marginTop: '2rem', paddingTop: '2rem', borderTop: '1px solid var(--color-border)' }}>
         <Link href="/retreats/sankri" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
-          ← View all Sankri retreats
+          ← Browse Sankri retreats
         </Link>
       </section>
     </main>
