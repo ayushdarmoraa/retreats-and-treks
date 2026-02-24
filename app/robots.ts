@@ -15,11 +15,6 @@ export default function robots(): MetadataRoute.Robots {
         ],
       },
     ],
-    sitemap: [
-      `${SITE_URL}/sitemap.xml`,
-      `${SITE_URL}/sitemaps/blogs`,
-      `${SITE_URL}/sitemaps/compare`,
-      `${SITE_URL}/sitemaps/retreats`,
-    ],
+    sitemap: `${SITE_URL}/sitemap.xml`,
   };
 }
