@@ -46,9 +46,9 @@ export default function HomeClient({ locations }: HomeClientProps) {
     <main style={{ maxWidth: '64rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
       {/* SECTION 1: HERO — THE INVITATION */}
       <section style={{ marginBottom: '6rem', paddingBottom: '3rem', textAlign: 'center', borderBottom: '1px solid var(--color-border)' }}>
-        <h1 style={{ marginBottom: '1.5rem', fontSize: '2.5rem', lineHeight: 1.2, fontWeight: 400 }}>
+        <h2 style={{ marginBottom: '1.5rem', fontSize: '2.5rem', lineHeight: 1.2, fontWeight: 400 }}>
           Journeys into the Himalayas
-        </h1>
+        </h2>
         <p style={{ fontSize: '1.2rem', color: 'var(--color-muted)', margin: 0, lineHeight: 1.7, marginBottom: '0.75rem' }}>
           For rest, clarity, and inner reset.
         </p>

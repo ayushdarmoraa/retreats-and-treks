@@ -46,6 +46,9 @@ export default function HomePage() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
       />
 
+      <h1 style={{ maxWidth: '64rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md) 0', fontSize: '2rem', fontWeight: 600, lineHeight: 1.15 }}>
+        Himalayan Retreats and Guided Treks in India
+      </h1>
       <HomeClient locations={locationsWithRetreats} />
 
       {/* ── FEATURED RETREATS & TREKS (server-rendered links for crawl depth) ── */ }
