@@ -62,7 +62,40 @@ export default async function TrekDetailPage({ params }: PageProps) {
 
   const location = getLocationById(trek.locationId);
   const trekSchema = generateTrekSchema(trek);
-  const faqSchema = trek.faqs.length > 0 ? generateFAQSchema(trek.faqs) : null;
+  // Visible FAQs: prefer trek.faqs, otherwise fallback to page-level defaults
+  const defaultFaqs = [
+    {
+      question: 'Is the Chakrata Weekend Trek suitable for beginners?',
+      answer:
+        'Yes. This trek is designed for beginners with basic fitness levels. It does not involve technical climbing or extreme altitude exposure, making it one of the most accessible weekend treks in Uttarakhand.',
+    },
+    {
+      question: 'How do I reach Chakrata for the trek?',
+      answer:
+        'Participants typically arrive in Dehradun by train or flight and travel by road to Chakrata. Detailed travel guidance is provided after booking.',
+    },
+    {
+      question: 'What is the maximum altitude of the trek?',
+      answer:
+        'The maximum altitude reached during the Chakrata Weekend Trek is approximately 2100 meters, keeping the route comfortable for first-time trekkers.',
+    },
+  ];
+  const visibleFaqs = (trek.faqs && trek.faqs.length > 0) ? trek.faqs : defaultFaqs;
+  const faqSchema = visibleFaqs.length > 0 ? generateFAQSchema(visibleFaqs) : null;
+
+  // Difficulty mapping for human-friendly audience text
+  const difficultyText =
+    trek.difficulty === 'Easy'
+      ? 'beginners and first-time trekkers'
+      : trek.difficulty === 'Moderate'
+      ? 'moderately fit trekkers'
+      : trek.difficulty === 'Challenging'
+      ? 'experienced trekkers'
+      : 'trekkers with basic fitness';
+
+  // Pickup hub logic: use explicit `trek.pickupPoint` only if it's different from location name; default to Dehradun
+  const rawPickup = (trek as any).pickupPoint;
+  const pickupHub = rawPickup && rawPickup !== location?.name ? rawPickup : 'Dehradun';
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
@@ -114,7 +147,28 @@ export default async function TrekDetailPage({ params }: PageProps) {
         <header style={{ marginBottom: 'var(--space-lg)' }}>
         <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>{trek.title}</h1>
           <p style={{ fontSize: '1rem', lineHeight: 1.6, marginBottom: '0.5rem' }}>
-            The Chakrata Weekend Trek is a beginner-friendly Himalayan trek in Uttarakhand designed for short mountain escapes from Dehradun and nearby cities. This guided 2 nights 3 days trek combines forest trails, ridge walks, camping under the stars, and panoramic views of the lower Himalayas. Ideal for first-time trekkers and small groups, the route balances accessibility with authentic mountain terrain, making it one of the most approachable weekend treks in Chakrata.
+            {(() => {
+              const duration = trek.duration ?? '';
+              const locName = location?.name ?? 'Uttarakhand';
+              const difficulty = trek.difficulty ?? '';
+              const highlightText = (() => {
+                if (!trek.highlights || trek.highlights.length === 0) {
+                  return 'forest trails, ridge walks, and camping under the stars';
+                }
+                const items = trek.highlights
+                  .slice(0, 3)
+                  .map((h) => h.toLowerCase().replace(/\s*with\s[^,]*/i, ' views'));
+                if (items.length === 1) return items[0];
+                if (items.length === 2) return `${items[0]} and ${items[1]}`;
+                return `${items.slice(0, -1).join(', ')}, and ${items[items.length - 1]}`;
+              })();
+
+              return (
+                <>
+                  The {trek.title} is a guided Himalayan trek in Uttarakhand located in the {locName} region. Designed for {difficultyText}, this {duration} experience combines {highlightText}. With convenient road access from {pickupHub}, it is ideal for travelers seeking a structured mountain experience without extreme altitude exposure.
+                </>
+              );
+            })()}
           </p>
           <p style={{ color: 'var(--color-muted)', fontSize: '0.95rem' }}>
             {trek.duration} • {trek.difficulty}
@@ -132,7 +186,13 @@ export default async function TrekDetailPage({ params }: PageProps) {
         <section style={{ marginBottom: 'var(--space-lg)' }}>
           <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Who This Trek Is For</h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>
-            This Chakrata Weekend Trek is ideal for first-time trekkers, working professionals seeking a short Himalayan break, small groups of friends, and beginners looking to experience guided trekking in Uttarakhand without high-altitude exposure. With moderate daily walking hours and structured support from local mountain guides, the trek is suitable for participants with basic fitness and no prior trekking experience.
+            {(() => {
+              const difficulty = trek.difficulty ?? '';
+              let audience = 'participants with basic fitness and beginners';
+              if (difficulty.toLowerCase().includes('moderate')) audience = 'intermediate trekkers and those with some prior experience';
+              if (difficulty.toLowerCase().includes('challenging') || difficulty.toLowerCase().includes('hard')) audience = 'experienced trekkers';
+              return `This trek is ideal for ${audience}, working professionals seeking a short Himalayan break, and small groups interested in guided mountain experiences. With moderate daily walking hours and structured support from local mountain guides, the trek is suitable for participants with basic fitness and no technical climbing required.`;
+            })()}
           </p>
         </section>
 
@@ -140,7 +200,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
         <section style={{ marginBottom: 'var(--space-lg)' }}>
           <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Location &amp; Access</h2>
           <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>
-            The trek operates in the <Link href="/treks/location/chakrata">Chakrata treks</Link> region of Uttarakhand, a quiet Himalayan hill town located near Dehradun. Participants typically arrive via Dehradun railway station or Jolly Grant Airport, followed by a scenic mountain drive to Chakrata. This proximity makes it one of the most accessible weekend treks from Dehradun and Delhi NCR.
+            The trek operates in the <Link href={`/treks/location/${location?.id}`}>{location?.name} treks</Link> region of Uttarakhand, a quiet Himalayan hill town located near Dehradun. Participants typically arrive via Dehradun railway station or Jolly Grant Airport, followed by a scenic mountain drive to {location?.name}. This proximity makes it one of the most accessible weekend treks from Dehradun and Delhi NCR.
           </p>
         </section>
 
@@ -199,23 +259,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
           )}
         </section>
 
-        {/* FAQs */}
-        {trek.faqs.length > 0 && (
-          <section style={{ marginBottom: 'var(--space-xl)' }}>
-            <h2 style={{ fontSize: '1.25rem', marginBottom: '0.75rem' }}>Questions About This Trek</h2>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              {trek.faqs.map((faq) => (
-                <details
-                  key={faq.question}
-                  style={{ borderBottom: '1px solid var(--color-border)', paddingBottom: '0.75rem' }}
-                >
-                  <summary style={{ cursor: 'pointer', fontWeight: 500 }}>{faq.question}</summary>
-                  <p style={{ marginTop: '0.5rem', fontSize: '0.95rem', lineHeight: 1.7 }}>{faq.answer}</p>
-                </details>
-              ))}
-            </div>
-          </section>
-        )}
+        
 
         {/* Related reading */}
         <section style={{ marginBottom: 'var(--space-xl)' }}>
@@ -270,21 +314,12 @@ export default async function TrekDetailPage({ params }: PageProps) {
         {/* FAQ Section (page-level) */}
         <section style={{ marginBottom: 'var(--space-lg)' }}>
           <h2 style={{ fontSize: '1.25rem', marginBottom: '0.5rem' }}>Frequently Asked Questions</h2>
-
-          <h3 style={{ marginTop: 0, fontSize: '1.05rem' }}>Is the Chakrata Weekend Trek suitable for beginners?</h3>
-          <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>
-            Yes. This trek is designed for beginners with basic fitness levels. It does not involve technical climbing or extreme altitude exposure, making it one of the most accessible weekend treks in Uttarakhand.
-          </p>
-
-          <h3 style={{ marginTop: 0, fontSize: '1.05rem' }}>How do I reach Chakrata for the trek?</h3>
-          <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>
-            Participants typically arrive in Dehradun by train or flight and travel by road to Chakrata. Detailed travel guidance is provided after booking.
-          </p>
-
-          <h3 style={{ marginTop: 0, fontSize: '1.05rem' }}>What is the maximum altitude of the trek?</h3>
-          <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>
-            The maximum altitude reached during the Chakrata Weekend Trek is approximately 2100 meters, keeping the route comfortable for first-time trekkers.
-          </p>
+          {visibleFaqs.map((faq: { question: string; answer: string }) => (
+            <div key={faq.question} style={{ marginBottom: '0.75rem' }}>
+              <h3 style={{ marginTop: 0, fontSize: '1.05rem' }}>{faq.question}</h3>
+              <p style={{ fontSize: '1rem', lineHeight: 1.75 }}>{faq.answer}</p>
+            </div>
+          ))}
         </section>
 
         {/* Alternative: retreat cross-link */}
