@@ -7,7 +7,7 @@ import TreksClient from './TreksClient';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Trekking in the Himalayas | Retreats And Treks',
+    title: 'Guided Himalayan Treks in Uttarakhand',
     description:
       'Browse treks by destination, difficulty, and duration. Weekend treks and multi-day Himalayan experiences across Chakrata, Sankri, and beyond.',
     alternates: {
