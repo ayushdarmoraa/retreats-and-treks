@@ -139,7 +139,112 @@ export const rishikeshLocation = {
     'trek-vs-retreat',
   ],
 
-  // Placeholder sections (to be populated)
-  placesAndLandscapes: [],
-  softExperiences: [],
+  // Experiences Beyond the Retreat — Rishikesh is not a trekking base
+  beyondRetreatExperiences: [
+    {
+      name: 'Kunjapuri Sunrise Hike',
+      duration: '2–3 hours round trip',
+      description:
+        'A short climb to the Kunjapuri Devi temple at 1,676 metres above Rishikesh. The trail is gentle — stone steps through forest, then open ridge. At dawn, the entire Himalayan range reveals itself: Bandarpunch, Swargarohini, Chaukhamba, the Gangotri group. Below, the Ganges curves through the valley like a silver thread. This is not a trek — it is a pilgrimage to perspective. The temple itself is modest. The view is not.',
+      bestTime: 'Year-round (start pre-dawn for sunrise)',
+    },
+    {
+      name: 'Neer Garh Waterfall Walk',
+      duration: '1–2 hours',
+      description:
+        'A forest path from Rishikesh leads to a series of cascading falls hidden in the Shivalik foothills. The trail passes through deciduous forest and crosses small streams. The waterfall drops in two stages into natural rock pools. After monsoon, the volume is dramatic. In winter, the water is cold and clear, the forest quiet. This is the kind of walk where you go to hear water and forget you were in a town twenty minutes ago.',
+      bestTime: 'October–May (avoid heavy monsoon)',
+    },
+    {
+      name: 'Ganga Riverbank Walking',
+      duration: '1–3 hours (choose your stretch)',
+      description:
+        'Between Ram Jhula and Lakshman Jhula, the eastern bank of the Ganges opens into sandy stretches, boulder fields, and quiet beaches accessible only on foot. The walking is unstructured — you follow the water. In winter, when levels drop, mid-river boulders become sitting places. In morning light, the Ganges is turquoise and fast. The walk has no destination. The river is the destination. Sadhus, local fishermen, and the occasional wild elephant from Rajaji share the bank.',
+      bestTime: 'October–March (lower water levels)',
+    },
+    {
+      name: 'Riverbank Meditation Spots',
+      duration: 'Open-ended',
+      description:
+        'Rishikesh offers something no mountain location can: sitting practice beside moving water with thousands of years of contemplative intention embedded in the geography. Specific spots along the eastern bank — below Parmarth Niketan, near the old ferry crossing, at the confluence beach south of Ram Jhula — offer natural sitting places where the sound of the Ganges creates a continuous ambient field. No instruction needed. No tradition required. The river holds the container. You bring the attention.',
+      bestTime: 'Year-round (early morning or late afternoon)',
+    },
+  ],
+
+  placesAndLandscapes: [
+    {
+      name: 'Triveni Ghat',
+      type: 'cultural',
+      description:
+        'The primary bathing ghat where three rivers are said to converge. Every evening, the Ganga Aarti ceremony fills the air with fire, chanting, and devotion. Thousands gather. The ritual is unchanged across centuries. Sitting at Triveni Ghat at dusk is encountering a practice older than any wellness trend — and understanding why it endures.',
+      season: 'Year-round',
+    },
+    {
+      name: 'Ram Jhula & Lakshman Jhula',
+      type: 'cultural',
+      description:
+        'Iron suspension bridges spanning the Ganges, connecting ashrams on both banks. Walking across, you see the river below — green in winter, swollen and brown in monsoon. The bridges are functional, not scenic — locals, sadhus, and seekers cross daily. Standing mid-bridge, you are literally suspended between two banks of spiritual practice.',
+      season: 'Year-round',
+    },
+    {
+      name: 'The Beatles Ashram (Chaurasi Kutia)',
+      type: 'cultural',
+      description:
+        'The former Maharishi Mahesh Yogi ashram, now a ruin reclaimed by forest. Meditation cells are covered in murals. Trees grow through rooftops. The place holds a strange energy — the residue of 1960s spiritual tourism meeting genuine contemplative tradition. Walking through it is walking through layers of intention, some sincere, some naive.',
+      season: 'Year-round',
+    },
+    {
+      name: 'Neelkanth Mahadev Temple',
+      type: 'cultural',
+      description:
+        'A Shiva temple at 1,330 metres in the hills above Rishikesh, reached by a forest trail or winding road. The temple marks the spot where Shiva is said to have consumed the cosmic poison. The trek to reach it passes through sal forest and offers views of the Ganges valley below. Pilgrimage here is physical — the climb is the offering.',
+      season: 'Year-round (avoid monsoon)',
+    },
+    {
+      name: 'Rajaji National Park',
+      type: 'forest',
+      description:
+        'A 820-square-kilometre sanctuary of Shivalik hills, sal forest, and river systems bordering Rishikesh. Home to Asian elephant, tiger, leopard, and king cobra. The park is the wild counterpoint to the spiritual town — raw nature meeting lived tradition. Early morning safaris encounter wildlife moving through mist in terrain unchanged since the Vedic period.',
+      season: 'November–June',
+    },
+    {
+      name: 'Ganges Confluence at Devprayag',
+      type: 'natural',
+      description:
+        'An hour upstream from Rishikesh, the Alaknanda and Bhagirathi rivers merge to form the Ganges. The two different-coloured waters — one blue-green, one grey — run side by side before blending. This meeting of waters has been sacred for millennia. Watching the confluence teaches something about merging that words cannot express.',
+      season: 'Year-round (clearest October–March)',
+    },
+  ],
+  softExperiences: [
+    {
+      name: 'Evening Aarti Witness',
+      type: 'cultural',
+      description:
+        'Attending the evening Ganga Aarti at Triveni Ghat or Parmarth Niketan — not as a tourist, but as a participant. Holding a small oil lamp. Joining the chanting. Feeling the collective devotion of hundreds of people facing the river. The ceremony lasts 45 minutes. Its effect lasts much longer. This is not spectacle — it is practice.',
+    },
+    {
+      name: 'Pre-Dawn River Walking',
+      type: 'walk',
+      description:
+        'Walking along the sandy Ganges bank before sunrise, when the town is silent and the river is loudest. Sadhus sit in meditation on rocks. The water catches first light before the buildings do. The air is cold and clean. This is Rishikesh before it puts on its public face — and it is a different, more honest place.',
+    },
+    {
+      name: 'Ashram Morning Practice',
+      type: 'cultural',
+      description:
+        'Joining a public morning practice at any of the open ashrams — Sivananda, Parmarth, Ved Niketan. The practice might be chanting, pranayama, or silent meditation. You sit among strangers who share nothing except the intention to be present. The communal container is the teacher. Nobody asks why you are there.',
+    },
+    {
+      name: 'River Sitting Practice',
+      type: 'seasonal',
+      description:
+        'Finding a large boulder mid-river (accessible in winter when water levels drop) and sitting on it for an extended period. The Ganges moves on all sides. Sound wraps around you. The sensation of being surrounded by moving water while sitting still creates a natural form of sensory meditation that requires no instruction.',
+    },
+    {
+      name: 'Temple Trail Walking',
+      type: 'exploration',
+      description:
+        'Walking the network of lanes that connect small temples, shrines, and meditation caves above the main ghats. Many are unmarked. Some are attended by a single devotee. Others are empty. The walking itself becomes a form of darshan — encountering sacred space not as destination but as texture woven through everyday geography.',
+    },
+  ],
 } as const;

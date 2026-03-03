@@ -45,6 +45,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'weekly',
   });
 
+  // ── 2a. Retreat apex aggregator ───────────────────────────────────────
+  entries.push({
+    url: buildCanonicalUrl('/retreats/best-retreat-in-uttarakhand'),
+    lastModified: now,
+    priority: 0.95,
+    changeFrequency: 'monthly',
+  });
+
+  // ── 2b. Commercial modifier pages ─────────────────────────────────────
+  entries.push(
+    {
+      url: buildCanonicalUrl('/retreats/winter-himalayan-retreats'),
+      lastModified: now,
+      priority: 0.9,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/retreats/summer-himalayan-retreats'),
+      lastModified: now,
+      priority: 0.9,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/retreats/weekend-himalayan-retreats'),
+      lastModified: now,
+      priority: 0.9,
+      changeFrequency: 'monthly',
+    },
+  );
+
   // ── 3. Global category hubs ───────────────────────────────────────────────
   entries.push(
     {
@@ -64,6 +94,58 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       priority: 0.9,
       changeFrequency: 'weekly',
+    },
+  );
+
+  // ── 3b. Trek modifier pages ───────────────────────────────────────────────
+  entries.push(
+    {
+      url: buildCanonicalUrl('/treks/best-trek-in-uttarakhand'),
+      lastModified: now,
+      priority: 0.90,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/treks/trek-near-delhi'),
+      lastModified: now,
+      priority: 0.85,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/treks/beginner-treks-uttarakhand'),
+      lastModified: now,
+      priority: 0.85,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/treks/winter-treks-uttarakhand'),
+      lastModified: now,
+      priority: 0.85,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/treks/summer-treks-uttarakhand'),
+      lastModified: now,
+      priority: 0.85,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/treks/kedarkantha-vs-har-ki-dun'),
+      lastModified: now,
+      priority: 0.80,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/treks/3-day-treks-uttarakhand'),
+      lastModified: now,
+      priority: 0.85,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/treks/trek-packages-uttarakhand'),
+      lastModified: now,
+      priority: 0.85,
+      changeFrequency: 'monthly',
     },
   );
 
@@ -103,7 +185,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const allTreks = getAllTreks();
   for (const trek of allTreks) {
     entries.push({
-      url: buildCanonicalUrl(`/treks/${trek.slug}`),
+      url: buildCanonicalUrl(`/treks/location/${trek.locationId}/${trek.slug}`),
       lastModified: now,
       priority: 0.75,
       changeFrequency: 'monthly',
@@ -115,7 +197,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'location-authority': 'Location Authority',
     'retreat-decision': 'Retreat Decision',
     'trek-decision': 'Trek Decision',
-    'lifestyle': 'Lifestyle',
+    // 'lifestyle' has its own static authority page — included separately below
   };
 
   for (const topic of Object.keys(TOPIC_MAP)) {
@@ -131,6 +213,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
       });
     }
   }
+
+  // Always include /topics/lifestyle — it has its own static authority page
+  entries.push({
+    url: buildCanonicalUrl('/topics/lifestyle'),
+    lastModified: now,
+    priority: 0.7,
+    changeFrequency: 'weekly',
+  });
 
   // ── 8. Static authority pages ─────────────────────────────────────────────
   entries.push(

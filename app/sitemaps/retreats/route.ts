@@ -18,6 +18,21 @@ export async function GET() {
     urls.push(urlEntry(buildCanonicalUrl(`/retreats/${loc.id}`)));
   }
 
+  // Apex aggregator
+  urls.push(urlEntry(buildCanonicalUrl('/retreats/best-retreat-in-uttarakhand')));
+
+  // Modifier pages (seasonal, duration, premium, geographic)
+  urls.push(urlEntry(buildCanonicalUrl('/retreats/summer-himalayan-retreats')));
+  urls.push(urlEntry(buildCanonicalUrl('/retreats/winter-himalayan-retreats')));
+  urls.push(urlEntry(buildCanonicalUrl('/retreats/weekend-himalayan-retreats')));
+  urls.push(urlEntry(buildCanonicalUrl('/retreats/luxury-himalayan-retreats')));
+  urls.push(urlEntry(buildCanonicalUrl('/retreats/uttarakhand-retreats')));
+  urls.push(urlEntry(buildCanonicalUrl('/retreats/retreat-near-delhi')));
+  urls.push(urlEntry(buildCanonicalUrl('/retreats/yoga-retreat-uttarakhand')));
+  urls.push(urlEntry(buildCanonicalUrl('/retreats/meditation-retreat-uttarakhand')));
+  urls.push(urlEntry(buildCanonicalUrl('/retreats/yoga-retreat-rishikesh')));
+  urls.push(urlEntry(buildCanonicalUrl('/retreats/meditation-retreat-rishikesh')));
+
   // Journey pages
   for (const s of services) {
     urls.push(urlEntry(buildCanonicalUrl(`/retreats/journeys/${s.slug}`)));

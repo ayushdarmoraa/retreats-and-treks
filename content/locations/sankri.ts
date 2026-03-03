@@ -143,7 +143,80 @@ export const sankriLocation = {
     'trek-vs-retreat',
   ],
 
-  // Placeholder sections (to be populated)
-  placesAndLandscapes: [],
-  softExperiences: [],
+  placesAndLandscapes: [
+    {
+      name: 'Kedarkantha Base Camp Meadow',
+      type: 'meadow',
+      description:
+        'A wide alpine meadow at 3,000 metres where the Kedarkantha trail begins. In spring, wildflowers blanket the grassland. In autumn, the meadow turns gold beneath clear Himalayan sky. This is where trekkers acclimatise and where the mountain first makes its presence felt — not through difficulty, but through scale.',
+      season: 'May–June, September–October',
+    },
+    {
+      name: 'Har Ki Dun Valley',
+      type: 'meadow',
+      description:
+        'A glacial valley at the head of the Tons River, surrounded by peaks exceeding 6,000 metres. Ancient trade routes to Tibet once passed through here. The valley floor is flat, pastoral, and silent — grazing sheep, stone walls, and a river that has carved this landscape for millennia. Reaching it requires days of walking, which is part of the point.',
+      season: 'May–June, September–October',
+    },
+    {
+      name: 'Tons River Gorge',
+      type: 'natural',
+      description:
+        'The Tons is the largest tributary of the Yamuna, cutting deep through the Govind Pashu Vihar sanctuary. Near Sankri, the gorge narrows dramatically — water surges over boulders, creating a constant roar that becomes background silence after a day. The river is glacier-fed, ice-cold, and runs clearest in October.',
+      season: 'Year-round (best October)',
+    },
+    {
+      name: 'Govind Pashu Vihar National Park',
+      type: 'forest',
+      description:
+        'A protected sanctuary spanning 950 square kilometres of temperate and alpine forest. Blue pine, birch, and rhododendron form dense canopy below treeline. Above it, alpine meadows stretch toward permanent snow. The park is home to Himalayan black bear, musk deer, and snow leopard. Walking through it feels like entering land that has never asked for human attention.',
+      season: 'May–October',
+    },
+    {
+      name: 'Osla Village',
+      type: 'village',
+      description:
+        'A remote mountain hamlet on the Har Ki Dun trail, home to the Someshwar temple — one of the oldest in the region. The village preserves wooden Pahadi architecture: carved doors, slate roofs, grain stores raised on stone stilts. People here farm, herd, and live in patterns unchanged for generations. Visiting Osla is encountering continuity.',
+      season: 'May–October',
+    },
+    {
+      name: 'Juda Ka Talab',
+      type: 'natural',
+      description:
+        'A small glacial lake at 2,700 metres on the Kedarkantha approach, ringed by ancient oaks draped in moss. In winter, the lake freezes solid. In other seasons, it reflects the surrounding forest with mirror stillness. Trekkers camp here on the first night — the transition from valley to mountain begins at this water.',
+      season: 'Year-round',
+    },
+  ],
+  softExperiences: [
+    {
+      name: 'Pre-Dawn Altitude Walking',
+      type: 'walk',
+      description:
+        'Walking at 3,000 metres before sunrise, when the air is coldest and thinnest. Stars are overhead. The valley is silent except for water. Your breath becomes visible. This is not exercise — it is a physiological encounter with altitude that no amount of reading can replicate.',
+    },
+    {
+      name: 'River-Side Sitting Practice',
+      type: 'seasonal',
+      description:
+        'Finding a boulder beside the Tons River and sitting for an hour. The sound of glacier-fed water moving over rock becomes a meditation object more powerful than most techniques. The cold seeps through clothing. Attention sharpens. Thoughts thin. This is the simplest practice Sankri offers, and often the most reported.',
+    },
+    {
+      name: 'Forest Canopy Transition',
+      type: 'walk',
+      description:
+        'Walking the trail from Sankri village into the pine and oak forest, noticing the exact point where village sounds disappear and forest acoustics take over. The transition happens within 200 metres. Learning to notice this boundary — between human world and natural world — is a practice in perception.',
+    },
+    {
+      name: 'Night Sky at Altitude',
+      type: 'seasonal',
+      description:
+        'At 3,000 metres with zero light pollution, the Milky Way becomes a physical presence overhead. On clear October nights, the sky is so dense with stars that the darkness between them becomes the exception. Lying on a meadow and looking up teaches scale in a way no photograph can.',
+    },
+    {
+      name: 'Basecamp Community Rhythm',
+      type: 'cultural',
+      description:
+        'Observing the daily rhythm of a working basecamp: porters sorting gear at dawn, guides discussing routes over chai, mules arriving with supplies. This is not performance — it is livelihood. Sitting within this rhythm, rather than consuming it, reveals how mountain communities actually function.',
+    },
+  ],
 } as const;

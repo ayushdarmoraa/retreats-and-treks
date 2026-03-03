@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getBlogBySlug, ALL_BLOG_POSTS } from '@/content/blogs';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
-import { generateBlogPostingSchema, generateBreadcrumbSchema } from '@/components/seo/Schema';
+import { generateBlogPostingSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { getTrekBySlug } from '@/lib/treks';
 import { getRetreatServiceBySlug } from '@/content/retreats/services';
 import DurationRetreatSuggestions from '@/components/DurationRetreatSuggestions';
@@ -85,6 +85,8 @@ export default async function BlogPostPage({ params }: PageProps) {
     { name: blog.title, url: canonicalUrl },
   ]);
 
+  const faqSchema = blog.faqItems?.length ? generateFAQSchema(blog.faqItems) : null;
+
   const relatedTreks =
     blog.relatedTreks
       ?.map((trekSlug) => getTrekBySlug(trekSlug))
@@ -111,6 +113,15 @@ export default async function BlogPostPage({ params }: PageProps) {
           __html: JSON.stringify(breadcrumbSchema),
         }}
       />
+      {/* JSON-LD: FAQPage (when available) */}
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqSchema),
+          }}
+        />
+      )}
 
       <Breadcrumb
         items={[
@@ -183,7 +194,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <ul style={{ paddingLeft: '1.25rem', margin: 0, lineHeight: 1.75 }}>
               {relatedTreks.slice(0, 2).map((trek) => (
                 <li key={trek.slug}>
-                  <Link href={`/treks/${trek.slug}`} style={{ color: 'var(--color-primary)' }}>
+                  <Link href={`/treks/location/${trek.locationId}/${trek.slug}`} style={{ color: 'var(--color-primary)' }}>
                     {trek.title}
                   </Link>
                 </li>

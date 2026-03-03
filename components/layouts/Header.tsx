@@ -27,10 +27,16 @@ export default function Header() {
             <Link href="/retreats">Retreats</Link>
           </li>
           <li>
+            <Link href="/retreats/best-retreat-in-uttarakhand" prefetch={true}>Best Retreats</Link>
+          </li>
+          <li>
             <Link href="/retreat-programs">Programs</Link>
           </li>
           <li>
             <Link href="/treks">Treks</Link>
+          </li>
+          <li>
+            <Link href="/treks/best-trek-in-uttarakhand" prefetch={true}>Best Treks</Link>
           </li>
           <li>
             <Link href="/blog">Blog</Link>

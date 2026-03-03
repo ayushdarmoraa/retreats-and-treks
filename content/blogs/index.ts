@@ -25,6 +25,8 @@ import isMunsiyariGoodForARetreat from './is-munsiyari-good-for-a-retreat';
 import bestTimeForRetreatInRishikesh from './best-time-for-retreat-in-rishikesh';
 import howToReachRishikeshForARetreat from './how-to-reach-rishikesh-for-a-retreat';
 import isRishikeshGoodForARetreat from './is-rishikesh-good-for-a-retreat';
+import whyDigitalDetoxWorksInTheHimalayas from './why-digital-detox-works-in-the-himalayas';
+import sankriVsMunsiyariRetreat from './sankri-vs-munsiyari-retreat';
 
 // Hardcoded blog posts (extracted from static routes)
 const chakrataVsSankri: BlogContent = {
@@ -170,7 +172,7 @@ Both treks are excellent first Himalayan experiences. Kedarkantha wins if your g
 
 Choose based on what draws you: the satisfaction of reaching a peak, or the peace of moving through a beautiful valley. Both will change how you see mountains.
   `,
-  targetMoneyPage: '/treks/kedarkantha-trek',
+  targetMoneyPage: '/treks/location/sankri/kedarkantha-trek',
   relatedTreks: ['kedarkantha-trek', 'har-ki-dun-trek'],
 };
 
@@ -259,6 +261,8 @@ export const ALL_BLOG_POSTS: ReadonlyArray<BlogContent> = [
   bestTimeForRetreatInRishikesh,
   howToReachRishikeshForARetreat,
   isRishikeshGoodForARetreat,
+  whyDigitalDetoxWorksInTheHimalayas,
+  sankriVsMunsiyariRetreat,
 ] as const;
 
 /**

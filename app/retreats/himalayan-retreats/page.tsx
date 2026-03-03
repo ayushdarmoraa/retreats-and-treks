@@ -20,9 +20,9 @@ const PATH = '/retreats/himalayan-retreats';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Himalayan Retreats in India | Retreats And Treks',
+    title: 'Himalayan Retreats in India',
     description:
-      'A complete guide to understanding, choosing, and experiencing retreats in the Indian Himalayas. Yoga, silent, wellness, and creative retreat experiences across Chakrata, Sankri, and beyond.',
+      'A complete guide to understanding, choosing, and experiencing retreats in the Indian Himalayas. Yoga, silent, wellness, and creative retreat experiences across Chakrata, Sankri, Munsiyari, and Rishikesh.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },
@@ -31,7 +31,7 @@ export function generateMetadata(): Metadata {
       follow: true,
     },
     openGraph: {
-      title: 'Himalayan Retreats in India | Retreats And Treks',
+      title: 'Himalayan Retreats in India',
       description:
         'A complete guide to understanding, choosing, and experiencing retreats in the Indian Himalayas.',
       url: buildCanonicalUrl(PATH),
@@ -278,7 +278,9 @@ export default function HimalayanRetreatsPage() {
             A trek is a physical journey through mountain terrain. The emphasis is on movement,
             endurance, and landscape. A retreat is place-based — you arrive and stay, allowing depth
             to emerge through stillness rather than distance. Some journeys combine both formats, but
-            they are structurally distinct.
+            they are structurally distinct. If you are weighing both options, our guide on{' '}
+            <Link href="/blog/trek-vs-retreat" style={{ color: 'var(--color-primary)' }}>retreat vs trek — which is right for you</Link>{' '}
+            may help clarify the decision.
           </p>
 
           <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
@@ -558,6 +560,51 @@ export default function HimalayanRetreatsPage() {
             Because Sankri is more remote, retreats here tend to attract participants seeking
             stronger geographical separation from routine environments.
           </p>
+
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
+            <Link href="/retreats/munsiyari" style={{ color: 'inherit' }}>
+              Munsiyari — Alpine Frontier and Glacier Country
+            </Link>
+          </h3>
+          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
+            Munsiyari sits at the edge of the Kumaon Himalayas, facing the Panchachuli massif and
+            the glacial systems of the Gori Ganga valley. This is high-altitude frontier country —
+            less visited, more elemental. The landscape is vast, the light is sharp, and the silence
+            is not curated but geological.
+          </p>
+          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
+            Retreats in Munsiyari suit people drawn to altitude and edge. The environment is raw
+            and exposed, which means inner work here tends to be more confrontational than gentle.
+            Alpine meadows, glacier approaches, and Bhotiya village culture create a container that
+            is culturally rich and physically demanding in equal measure.
+          </p>
+          <p style={{ lineHeight: 1.8, marginBottom: 'var(--space-md)' }}>
+            For those seeking deep geographical separation and a landscape that does not accommodate
+            comfort-seeking, Munsiyari offers what more accessible locations cannot.
+          </p>
+
+          <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
+            <Link href="/retreats/rishikesh" style={{ color: 'inherit' }}>
+              Rishikesh — Spiritual Tradition on the Ganges
+            </Link>
+          </h3>
+          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
+            Rishikesh is not a mountain retreat in the alpine sense. It is the spiritual anchor of
+            the Indian Himalayan foothills — a place where yoga, meditation, and devotional practice
+            have been lived traditions for millennia. The Ganges is not backdrop here; it is
+            presence.
+          </p>
+          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
+            Retreats in Rishikesh suit people seeking connection to living spiritual lineages.
+            Ashram rhythms, evening aarti ceremonies, philosophical study, and teacher-led practices
+            create a container that is communal rather than isolated. The energy is devotional, not
+            wilderness.
+          </p>
+          <p style={{ lineHeight: 1.8, marginBottom: 'var(--space-md)' }}>
+            For participants drawn to yoga traditions, philosophical depth, or the specific gravity
+            of a sacred river town, Rishikesh offers an experience distinct from any mountain
+            location. It is closer to Delhi, fully accessible, and culturally dense.
+          </p>
         </section>
 
         {/* ── WHO THEY ARE FOR ──────────────────────────────────────── */}
@@ -685,7 +732,8 @@ export default function HimalayanRetreatsPage() {
           <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
             Short retreats of three to four days provide structured pause without requiring
             extended time away from work. Longer formats allow deeper settling and more gradual
-            integration.
+            integration. For a detailed comparison, see{' '}
+            <Link href="/blog/3-day-vs-5-day-himalayan-retreat" style={{ color: 'var(--color-primary)' }}>how to choose the right retreat length</Link>.
           </p>
           <p style={{ lineHeight: 1.8, marginBottom: 'var(--space-md)' }}>
             Intensity varies as well. Some retreats follow full-day programming with early starts
@@ -733,7 +781,10 @@ export default function HimalayanRetreatsPage() {
           <p style={{ lineHeight: 1.8, margin: 0 }}>
             The most effective retreat choice aligns environment, structure, and personal
             intention. Clarity before arrival allows participants to engage fully once the program
-            begins.
+            begins. For a ranked comparison across every category, see our guide to the{' '}
+            <Link href="/retreats/best-retreat-in-uttarakhand" style={{ color: 'var(--color-primary)' }}>
+              best retreats in Uttarakhand
+            </Link>.
           </p>
         </section>
 

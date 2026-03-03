@@ -7,6 +7,7 @@ import { TrekContent } from '@/types/content';
 import { LocationId } from '@/config/locations';
 
 import { CHAKRATA_TREKS } from './chakrata';
+import { MUNSIYARI_TREKS } from './munsiyari';
 import { SANKRI_TREKS } from './sankri';
 
 /**
@@ -15,6 +16,7 @@ import { SANKRI_TREKS } from './sankri';
  */
 export const ALL_TREKS: ReadonlyArray<TrekContent> = [
   ...CHAKRATA_TREKS,
+  ...MUNSIYARI_TREKS,
   ...SANKRI_TREKS,
 ] as const;
 
@@ -32,6 +34,8 @@ export function getTreksByLocation(locationId: LocationId): TrekContent[] {
   switch (locationId) {
     case 'chakrata':
       return [...CHAKRATA_TREKS];
+    case 'munsiyari':
+      return [...MUNSIYARI_TREKS];
     case 'sankri':
       return [...SANKRI_TREKS];
     default:

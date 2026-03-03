@@ -15,10 +15,13 @@
     "audit:all": "npm run audit:governance && npm run audit:links && npm run audit:schema && npm run audit:perf"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.0.2",
     "next": "16.1.6",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-markdown": "^10.1.0"
+    "react-markdown": "^10.1.0",
+    "resend": "^6.9.3",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

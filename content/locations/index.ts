@@ -70,6 +70,13 @@ export type LocationPremiumContent = {
     readonly type: 'walk' | 'cultural' | 'seasonal' | 'exploration';
     readonly description: string;
   }>;
+  /** Beyond the Retreat: experiential activities for non-trekking locations (e.g. Rishikesh) */
+  readonly beyondRetreatExperiences?: ReadonlyArray<{
+    readonly name: string;
+    readonly duration: string;
+    readonly description: string;
+    readonly bestTime?: string;
+  }>;
 };
 
 const LOCATION_CONTENT: Record<LocationId, LocationPremiumContent> = {

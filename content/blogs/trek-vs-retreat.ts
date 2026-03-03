@@ -26,7 +26,7 @@ If you enjoy movement, challenges, and exploration, a trek will suit you better.
 Understanding your energy level and intention will help you choose the weekend experience that truly benefits you.
   `,
 
-  targetMoneyPage: '/treks/weekend-trek',
+  targetMoneyPage: '/treks/location/chakrata/weekend-trek',
   relatedTreks: ['weekend-trek'],
   relatedRetreats: ['weekend-retreat'],
 };

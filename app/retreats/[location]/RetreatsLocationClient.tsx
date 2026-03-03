@@ -130,7 +130,47 @@ export default function RetreatsLocationClient({
         </section>
       )}
 
-      {/* SECTION 5: TREKS & OUTDOOR JOURNEYS */}
+      {/* SECTION 5: TREKS & OUTDOOR JOURNEYS — or Experiences Beyond the Retreat */}
+      {locationPremiumContent.beyondRetreatExperiences && locationPremiumContent.beyondRetreatExperiences.length > 0 ? (
+        <section style={{ marginBottom: '4rem', paddingBottom: '2rem', borderBottom: '1px solid var(--color-border)' }}>
+          <h2 style={{ marginTop: 0, marginBottom: '1rem', fontSize: '1.125rem', fontWeight: 600 }}>
+            🚶 Experiences Beyond the Retreat
+          </h2>
+          <p style={{ marginTop: 0, marginBottom: '1.5rem', fontSize: '0.95rem', color: 'var(--color-muted)' }}>
+            {locationPremiumContent.name} is not a trekking base. These are experiential walks, hikes, and sitting practices that extend the retreat into the landscape:
+          </p>
+          <div style={{ display: 'grid', gap: '1.5rem' }}>
+            {locationPremiumContent.beyondRetreatExperiences.map((exp, idx) => (
+              <div
+                key={idx}
+                style={{
+                  padding: '1.5rem',
+                  border: '1px solid var(--color-border)',
+                  borderRadius: 'var(--radius-sm)',
+                  backgroundColor: '#fafafa',
+                }}
+              >
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.75rem', marginBottom: '0.5rem', flexWrap: 'wrap' }}>
+                  <h3 style={{ marginTop: 0, marginBottom: 0, fontSize: '1rem', fontWeight: 600 }}>
+                    {exp.name}
+                  </h3>
+                  <span style={{ fontSize: '0.8rem', color: 'var(--color-muted)', fontWeight: 400 }}>
+                    {exp.duration}
+                  </span>
+                  {exp.bestTime && (
+                    <span style={{ fontSize: '0.8rem', color: 'var(--color-primary)', fontWeight: 500 }}>
+                      {exp.bestTime}
+                    </span>
+                  )}
+                </div>
+                <p style={{ marginTop: '0.5rem', marginBottom: 0, fontSize: '0.9rem', lineHeight: 1.6, color: 'var(--color-text)' }}>
+                  {exp.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+      ) : (
       <section style={{ marginBottom: '4rem', paddingBottom: '2rem', borderBottom: '1px solid var(--color-border)' }}>
         <h2 style={{ marginTop: 0, marginBottom: '1rem', fontSize: '1.125rem', fontWeight: 600 }}>
           🥾 Treks from {locationPremiumContent.name}
@@ -144,7 +184,7 @@ export default function RetreatsLocationClient({
               {treks.map((trek) => (
                 <Link
                   key={trek.slug}
-                  href={`/treks/${trek.slug}`}
+                  href={`/treks/location/${trek.locationId}/${trek.slug}`}
                   style={{
                     padding: '1.5rem',
                     border: '1px solid var(--color-border)',
@@ -205,6 +245,7 @@ export default function RetreatsLocationClient({
           </p>
         )}
       </section>
+      )}
 
       {/* SECTION 6: PLACES & LANDSCAPES */}
       {locationPremiumContent.placesAndLandscapes.length > 0 && (

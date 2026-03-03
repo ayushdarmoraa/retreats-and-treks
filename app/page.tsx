@@ -5,6 +5,7 @@ import { generateWebsiteSchema, generateOrganizationSchema } from '@/components/
 import { getLocationsWithRetreats } from '@/lib/locations';
 import HomeClient from './HomeClient';
 import RetreatFinder from '@/components/RetreatFinder';
+import PrimaryCTA from '@/components/PrimaryCTA';
 import { getAllRetreatServices } from '@/content/retreats/services';
 import { getAggregateRating } from '@/content/reviews';
 
@@ -54,6 +55,14 @@ export default function HomePage() {
       </p>
       <HomeClient locations={locationsWithRetreats} />
 
+      <PrimaryCTA
+        label="Speak With a Mountain Planner"
+        subtext="Not sure where to start? Tell us what you are looking for and we will guide you."
+        vertical="retreat"
+        category="homepage"
+        sourcePath="/"
+      />
+
       {/* ── FEATURED RETREATS & TREKS (server-rendered links for crawl depth) ── */ }
       <section style={{ maxWidth: '56rem', margin: '1.5rem auto', padding: '0 var(--space-md) var(--space-xl)' }}>
         <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>Featured Retreats &amp; Treks</h2>
@@ -66,7 +75,9 @@ export default function HomePage() {
             <h3 style={{ fontSize: '1rem', marginBottom: '0.25rem' }}>Core Hubs</h3>
             <ul style={{ paddingLeft: '1rem', margin: 0, lineHeight: 1.7 }}>
               <li><Link href="/retreats">Himalayan retreats — all locations &amp; programs</Link></li>
+              <li><Link href="/retreats/best-retreat-in-uttarakhand">Best retreats in Uttarakhand — ranked by purpose &amp; season</Link></li>
               <li><Link href="/treks">Himalayan treks — weekend &amp; multi-day routes</Link></li>
+              <li><Link href="/treks/best-trek-in-uttarakhand">Best treks in Uttarakhand — snow, valley &amp; weekend picks</Link></li>
               <li><Link href="/retreat-programs">Program comparison matrix — filter by duration &amp; intensity</Link></li>
               <li><Link href="/blog">Retreat &amp; trek blog — guides and comparisons</Link></li>
             </ul>

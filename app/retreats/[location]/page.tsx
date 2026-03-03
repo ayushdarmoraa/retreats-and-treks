@@ -77,7 +77,7 @@ export default async function RetreatsLocationPage({ params }: PageProps) {
     })),
     ...treks.map((trek) => ({
       name: trek.title,
-      url: buildCanonicalUrl(`/treks/${trek.slug}`),
+      url: buildCanonicalUrl(`/treks/location/${trek.locationId}/${trek.slug}`),
     })),
   ]);
 

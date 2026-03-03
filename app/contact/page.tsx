@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
+import { Suspense } from 'react';
 import Link from 'next/link';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import ContactClient from './ContactClient';
+import InquiryForm from '@/components/InquiryForm';
 
 export function generateMetadata(): Metadata {
   return {
@@ -48,6 +50,28 @@ export default function ContactPage() {
       </p>
 
       <ContactClient />
+
+      {/* ── INQUIRY FORM ──────────────────────────────────────────── */}
+      <section
+        id="inquiry"
+        style={{
+          marginTop: 'var(--space-xl)',
+          padding: 'var(--space-lg)',
+          border: '1px solid var(--color-border)',
+          borderRadius: 'var(--radius-md)',
+          backgroundColor: 'var(--color-bg)',
+        }}
+      >
+        <h2 style={{ fontSize: '1.35rem', fontWeight: 700, marginBottom: 'var(--space-xs)' }}>
+          Send an Inquiry
+        </h2>
+        <p style={{ fontSize: '0.95rem', color: 'var(--color-text-secondary)', marginBottom: 'var(--space-md)', lineHeight: 1.6 }}>
+          Tell us what you are looking for. A mountain planner will respond within 24 hours.
+        </p>
+        <Suspense fallback={<p style={{ color: 'var(--color-muted)' }}>Loading form…</p>}>
+          <InquiryForm />
+        </Suspense>
+      </section>
     </main>
   );
 }

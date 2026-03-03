@@ -257,7 +257,7 @@ export default function TreksClient() {
                       duration={trek.duration}
                       difficulty={trek.difficulty}
                       description={trek.description}
-                      href={`/treks/${trek.slug}`}
+                      href={`/treks/location/${trek.locationId}/${trek.slug}`}
                     />
                   ))}
                 </div>
@@ -312,16 +312,12 @@ export default function TreksClient() {
                   duration={trek.duration}
                   difficulty={trek.difficulty}
                   description={trek.description}
-                  href={`/treks/${trek.slug}`}
+                  href={`/treks/location/${trek.locationId}/${trek.slug}`}
                 />
               ))}
           </div>
-          <button
-            onClick={() => {
-              setSelectedDifficulty('easy');
-              setSelectedDuration(null);
-              setSelectedDestination(null);
-            }}
+          <Link
+            href="/treks?difficulty=easy"
             style={{
               color: 'var(--color-primary)',
               fontWeight: 500,
@@ -334,7 +330,7 @@ export default function TreksClient() {
             }}
           >
             Browse beginner-friendly trek itineraries →
-          </button>
+          </Link>
         </div>
 
         {/* Weekend Treks */}
@@ -368,16 +364,12 @@ export default function TreksClient() {
                   duration={trek.duration}
                   difficulty={trek.difficulty}
                   description={trek.description}
-                  href={`/treks/${trek.slug}`}
+                  href={`/treks/location/${trek.locationId}/${trek.slug}`}
                 />
               ))}
           </div>
-          <button
-            onClick={() => {
-              setSelectedDuration('weekend');
-              setSelectedDifficulty(null);
-              setSelectedDestination(null);
-            }}
+          <Link
+            href="/treks?duration=weekend"
             style={{
               color: 'var(--color-primary)',
               fontWeight: 500,
@@ -390,7 +382,7 @@ export default function TreksClient() {
             }}
           >
             Browse weekend treks from Dehradun →
-          </button>
+          </Link>
         </div>
 
         {/* Classic Himalayan Treks */}
@@ -420,16 +412,12 @@ export default function TreksClient() {
                   duration={trek.duration}
                   difficulty={trek.difficulty}
                   description={trek.description}
-                  href={`/treks/${trek.slug}`}
+                  href={`/treks/location/${trek.locationId}/${trek.slug}`}
                 />
               ))}
           </div>
-          <button
-            onClick={() => {
-              setSelectedDuration('multiday');
-              setSelectedDifficulty(null);
-              setSelectedDestination(null);
-            }}
+          <Link
+            href="/treks/location/sankri"
             style={{
               color: 'var(--color-primary)',
               fontWeight: 500,
@@ -442,7 +430,7 @@ export default function TreksClient() {
             }}
           >
             Explore classic Himalayan summit treks →
-          </button>
+          </Link>
         </div>
       </section>
 
@@ -473,11 +461,8 @@ export default function TreksClient() {
             <p style={{ margin: 0, color: 'var(--color-muted)', fontSize: '0.95rem', lineHeight: 1.6 }}>
               New to trekking? Start with easy, guided trails that focus on experience, not endurance.
             </p>
-            <button
-              onClick={() => {
-                setSelectedDifficulty('easy');
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-              }}
+            <Link
+              href="/treks?difficulty=easy"
               style={{
                 color: 'var(--color-primary)',
                 fontWeight: 500,
@@ -491,7 +476,7 @@ export default function TreksClient() {
               }}
             >
               Browse beginner-friendly treks →
-            </button>
+            </Link>
           </div>
 
           {/* Weekend Explorers */}

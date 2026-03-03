@@ -133,12 +133,88 @@ export const munsiyariLocation = {
     'yoga-and-movement',
     'private-and-custom',
   ],
-  trekSlugs: [],
+  trekSlugs: [
+    'milam-glacier-trek',
+    'khaliya-top-trek',
+  ],
   relatedBlogSlugs: [
     'trek-vs-retreat',
   ],
 
-  // Placeholder sections (to be populated)
-  placesAndLandscapes: [],
-  softExperiences: [],
+  placesAndLandscapes: [
+    {
+      name: 'Panchachuli Peaks Viewpoint',
+      type: 'viewpoint',
+      description:
+        'Five peaks rising above 6,300 metres, named for the five cooking hearths of the Pandavas. From Munsiyari town, the entire massif fills the northern horizon — snow-covered year-round, catching first light at dawn and last light at dusk. This is the defining visual of Munsiyari. Every morning begins with these peaks.',
+      season: 'Year-round (clearest October–November)',
+    },
+    {
+      name: 'Khaliya Top Meadow',
+      type: 'meadow',
+      description:
+        'A summit meadow at 3,500 metres offering 360-degree views of the Greater Himalayan range. In spring, the meadow is carpeted with rhododendron and wild iris. In autumn, the grass turns copper beneath an enormous sky. This is where Munsiyari reveals its alpine character — vast, exposed, and profoundly quiet.',
+      season: 'May–October',
+    },
+    {
+      name: 'Birthi Falls',
+      type: 'waterfall',
+      description:
+        'A 126-metre waterfall cascading down a rock face into the Gori Ganga valley. During monsoon, the falls are massive and thundering. In autumn, the water thins to silver threads against dark rock. The walk to the base passes through dense temperate forest — the approach is as significant as the destination.',
+      season: 'Year-round (peak monsoon)',
+    },
+    {
+      name: 'Milam Glacier Approach',
+      type: 'natural',
+      description:
+        'The ancient Johar trade route to Tibet follows the Gori Ganga river upstream toward the Milam Glacier at 3,450 metres. The trail passes through abandoned trading villages — Martoli, Burfu, Rilkot — where stone houses stand empty, still holding the shape of lives once lived. This is archaeology through walking.',
+      season: 'June–September',
+    },
+    {
+      name: 'Darkot Village',
+      type: 'village',
+      description:
+        'A Bhotiya village near Munsiyari where traditional woollen weaving is still practiced. Stone and wood houses sit on terraced hillsides above the valley. The village preserves Indo-Tibetan cultural patterns — architecture, cuisine, and ritual — that are disappearing elsewhere in the Kumaon. Visiting Darkot is encountering living heritage.',
+      season: 'Year-round',
+    },
+    {
+      name: 'Gori Ganga Valley',
+      type: 'natural',
+      description:
+        'A deep river valley carved by glacial melt from the Milam and Ralam glaciers. The Gori Ganga moves fast and cold through a narrow gorge, flanked by steep forest and exposed rock. The valley creates its own weather — mist forming and dissolving throughout the day. Walking along it is walking through geological time.',
+      season: 'May–October',
+    },
+  ],
+  softExperiences: [
+    {
+      name: 'Dawn Watch from Munsiyari',
+      type: 'seasonal',
+      description:
+        'Standing on any ridge near town before sunrise and watching first light hit the Panchachuli peaks. The snow turns from grey to pink to gold over fifteen minutes. The valley below remains in shadow. This daily phenomenon is free, requires no effort beyond waking, and is impossible to photograph accurately. You must witness it.',
+    },
+    {
+      name: 'Alpine Meadow Sitting',
+      type: 'walk',
+      description:
+        'Walking to any of the meadows above treeline — Khaliya, Balanti, or unnamed grass plateaus — and sitting for an extended period. At 3,000+ metres, the silence has physical texture. Wind moves differently. Sound carries differently. Your breathing becomes the loudest thing present. The meadow teaches a form of attention that lowland environments cannot.',
+    },
+    {
+      name: 'Bhotiya Kitchen Sharing',
+      type: 'cultural',
+      description:
+        'Accepting an invitation into a Bhotiya kitchen for salted butter tea and simple dal-roti. The cooking happens on wood fire. The conversation is sparse. The hospitality is genuine and unperformative. This is not a cultural experience — it is a human one, and it recalibrates how you think about generosity and simplicity.',
+    },
+    {
+      name: 'Glacier River Immersion',
+      type: 'exploration',
+      description:
+        'Wading into the Gori Ganga where it pools near town — water at 4–6°C from glacial melt. The cold is immediate and complete. Two minutes is enough. The physiological response — vasodilation, endorphin release, sharpened awareness — lasts for hours. This is the oldest form of hydrotherapy, delivered by geography.',
+    },
+    {
+      name: 'Cloud Forest Walking',
+      type: 'walk',
+      description:
+        'During monsoon, the forests between 2,000–3,000 metres fill with cloud. Walking through them means walking through visibility that changes every twenty metres — dense white, then sudden clearance, then dense again. Moss covers everything. The forest drips. You cannot see far, so attention pulls inward. This is natural sensory restriction, and it is profoundly calming.',
+    },
+  ],
 } as const;

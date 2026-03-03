@@ -18,7 +18,7 @@ const TOPIC_MAP: Record<string, BlogCategory> = {
   'location-authority': 'Location Authority',
   'retreat-decision': 'Retreat Decision',
   'trek-decision': 'Trek Decision',
-  'lifestyle': 'Lifestyle',
+  // 'lifestyle' is handled by the static route at app/topics/lifestyle/page.tsx
 };
 
 /** Maps display category name → short intro sentence */
@@ -30,7 +30,7 @@ const TOPIC_DESCRIPTIONS: Record<BlogCategory, string> = {
   'Trek Decision':
     'Guides comparing Himalayan trekking routes, difficulty levels, and what each experience offers.',
   'Lifestyle':
-    'Broader perspectives on rest, recalibration, and intentional living in relation to mountain experiences.',
+    'Perspectives on slow living, mindful travel, and the rhythms of life in the Himalayas.',
 };
 
 export async function generateStaticParams() {

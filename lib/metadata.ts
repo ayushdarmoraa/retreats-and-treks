@@ -37,7 +37,7 @@ export function getLocationMetadata(locationId: LocationId, context?: 'treks' | 
   if (context === 'treks') {
     title = `Treks Around ${location.name} | Beginner-Friendly Mountain Trails`;
     description = `Explore weekend treks and forest trails around ${location.name}. Beginner-friendly mountain experiences in the Himalayas.`;
-    path = `/treks/${locationId}`;
+    path = `/treks/location/${locationId}`;
   } else if (context === 'retreats') {
     title = `Retreats in ${location.name} | Guided Wellness Experiences`;
     description = `Discover weekend, meditation, and yoga retreats in ${location.name}. Small-group, guided experiences in a quiet Himalayan setting.`;

@@ -33,6 +33,7 @@ interface RetreatService {
 interface SuggestedTrek {
   slug: string;
   title: string;
+  locationId: string;
 }
 
 interface RetreatJourneyClientProps {
@@ -199,7 +200,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           </h2>
           <p style={{ fontSize: '0.95rem', lineHeight: 1.7, color: 'var(--color-text)', marginBottom: '0.75rem' }}>
             Explore the{' '}
-            <Link href={`/treks/${suggestedTrek.slug}`} style={{ color: 'var(--color-primary)', fontWeight: 500 }}>
+            <Link href={`/treks/location/${suggestedTrek.locationId}/${suggestedTrek.slug}`} style={{ color: 'var(--color-primary)', fontWeight: 500 }}>
               {suggestedTrek.title}
             </Link>{' '}
             as a guided Himalayan trek.

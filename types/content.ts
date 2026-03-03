@@ -124,4 +124,7 @@ export type BlogContent = {
 	/** Additional internal authority links */
 	relatedTreks?: string[];
 	relatedRetreats?: string[];
+
+	/** Optional FAQ items for FAQPage JSON-LD schema */
+	faqItems?: Array<{ question: string; answer: string }>;
 };
