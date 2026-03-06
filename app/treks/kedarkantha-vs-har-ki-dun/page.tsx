@@ -94,6 +94,19 @@ export default function KedarkanthaVsHarKiDunPage() {
         ]}
       />
 
+      {/* INTENT TRAIL — discovery cluster reinforcement */}
+      <nav aria-label="Discovery trail" style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', marginBottom: '0.75rem', lineHeight: 1.6 }}>
+        <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
+          Best Treks in Uttarakhand
+        </Link>
+        {' → '}
+        <Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
+          Snow Treks
+        </Link>
+        {' → '}
+        <span>Kedarkantha vs Har Ki Dun</span>
+      </nav>
+
       <article>
 
         {/* ── HERO ──────────────────────────────────────────────────── */}
@@ -108,10 +121,21 @@ export default function KedarkanthaVsHarKiDunPage() {
             </Link>
             , the primary trek base in Uttarakhand&apos;s Tons Valley. Both are among the
             most popular Himalayan treks in India. And both are accessible to first-time
-            trekkers. But the experience they deliver is fundamentally different: one is a
-            snow summit, the other is a green valley. One is a four-day sprint to a peak,
+            trekkers. But the experience they deliver is fundamentally different: the{' '}
+            <Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)' }}>
+              Kedarkantha Trek
+            </Link>{' '}
+            is a snow summit, while the{' '}
+            <Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: 'var(--color-primary)' }}>
+              Har Ki Dun Trek
+            </Link>{' '}
+            is a green valley journey. One is a four-day sprint to a peak,
             the other is a six-day walk through a glacial corridor. Choosing between them
-            is not about which is better — it is about which is right for you.
+            is not about which is better — it is about which is right for you. Both are
+            featured in our{' '}
+            <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)' }}>
+              top trekking routes in Uttarakhand
+            </Link>.
           </p>
         </header>
 
@@ -310,11 +334,18 @@ export default function KedarkanthaVsHarKiDunPage() {
         {/* ── COMMERCIAL NAVIGATION ─────────────────────────────────── */}
         <section style={{ marginBottom: 'var(--space-xl)', padding: '1.5rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', backgroundColor: '#fafafa' }}>
           <p style={{ lineHeight: 1.8, margin: 0, fontSize: '0.95rem' }}>
-            Looking for more options? See the full{' '}
+            Looking for more options? See the{' '}
+            <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)' }}>
+              complete guide to Uttarakhand treks
+            </Link>, the{' '}
+            <Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: 'var(--color-primary)' }}>
+              snow treks filter
+            </Link>{' '}
+            for winter routes, or browse the full{' '}
             <Link href="/treks" style={{ color: 'var(--color-primary)' }}>
               Himalayan treks directory
             </Link>{' '}
-            for guided itineraries across all seasons and difficulty levels.
+            for guided itineraries across all seasons.
           </p>
         </section>
 

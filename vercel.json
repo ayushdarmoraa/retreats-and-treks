@@ -4,6 +4,10 @@
     {
       "path": "/api/cron/followups",
       "schedule": "0 8 * * *"
+    },
+    {
+      "path": "/api/cron/sitemap-ping",
+      "schedule": "30 8 * * *"
     }
   ]
 }

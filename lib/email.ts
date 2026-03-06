@@ -34,15 +34,17 @@ export async function sendInquiryEmails(
   const resend = new Resend(RESEND_API_KEY);
 
   try {
-    // 1. Intent-based auto-response to the lead
+    // 1. Intent-based auto-response to the lead (skip if no email, e.g. phone-only form)
     const { subject, html } = buildTieredResponse(inquiry, tier);
-    await resend.emails.send({
-      from: FROM_EMAIL,
-      to: inquiry.email,
-      replyTo: TEAM_EMAIL || FROM_EMAIL,
-      subject,
-      html,
-    });
+    if (inquiry.email) {
+      await resend.emails.send({
+        from: FROM_EMAIL,
+        to: inquiry.email,
+        replyTo: TEAM_EMAIL || FROM_EMAIL,
+        subject,
+        html,
+      });
+    }
 
     // 2. Internal notification — enriched with lead score
     if (TEAM_EMAIL) {
@@ -137,7 +139,7 @@ function buildHotResponse(inquiry: Inquiry): { subject: string; html: string } {
       ` : `
       <p style="margin-top: 1.5rem;">This might be useful while I prepare your options:</p>
       <ul style="padding-left: 1.2rem;">
-        <li><a href="${BASE_URL}/treks/best-trek-in-uttarakhand" style="color: #2563eb;">Best Treks in Uttarakhand</a> — complete comparison</li>
+        <li><a href="${BASE_URL}/treks/best-treks-in-uttarakhand" style="color: #2563eb;">Best Treks in Uttarakhand</a> — complete comparison</li>
         <li><a href="${BASE_URL}/treks/beginner-treks-uttarakhand" style="color: #2563eb;">Beginner-Friendly Treks</a> — if this is your first time</li>
       </ul>
       `}
@@ -191,7 +193,7 @@ function buildWarmResponse(inquiry: Inquiry): { subject: string; html: string } 
       </ul>
       ` : `
       <ul style="padding-left: 1.2rem;">
-        <li><a href="${BASE_URL}/treks/best-trek-in-uttarakhand" style="color: #2563eb;">Best Treks in Uttarakhand</a> — complete ranked comparison</li>
+        <li><a href="${BASE_URL}/treks/best-treks-in-uttarakhand" style="color: #2563eb;">Best Treks in Uttarakhand</a> — complete ranked comparison</li>
         <li><a href="${BASE_URL}/treks/beginner-treks-uttarakhand" style="color: #2563eb;">Beginner-Friendly Treks</a> — great for first-timers</li>
         <li><a href="${BASE_URL}/blog/kedarkantha-vs-har-ki-dun" style="color: #2563eb;">Kedarkantha vs Har Ki Dun</a> — if you're comparing routes</li>
       </ul>
@@ -235,7 +237,7 @@ function buildColdResponse(inquiry: Inquiry): { subject: string; html: string } 
       <p>In the meantime, you may find these resources helpful:</p>
       <ul>
         <li><a href="${BASE_URL}/retreats/best-retreat-in-uttarakhand">Best Retreats in Uttarakhand</a></li>
-        <li><a href="${BASE_URL}/treks/best-trek-in-uttarakhand">Best Treks in Uttarakhand</a></li>
+        <li><a href="${BASE_URL}/treks/best-treks-in-uttarakhand">Best Treks in Uttarakhand</a></li>
         <li><a href="${BASE_URL}/retreat-programs">Program Comparison Matrix</a></li>
       </ul>
       <p style="color: #555; font-size: 0.9rem; margin-top: 2rem;">

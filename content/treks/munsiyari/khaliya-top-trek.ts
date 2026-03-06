@@ -89,6 +89,8 @@ const khaliyaTopTrek: TrekContent = {
         'No. BSNL may work intermittently in Munsiyari town, but once you leave the trailhead there is no mobile coverage until you return. Carry a power bank and inform family of your itinerary before departure.',
     },
   ],
+
+  updatedAt: '2026-03-05',
 };
 
 export default khaliyaTopTrek;

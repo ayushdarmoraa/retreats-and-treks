@@ -10,6 +10,8 @@ import { sankriLocation } from './sankri';
 import { mussoorieLocation } from './mussoorie';
 import { munsiyariLocation } from './munsiyari';
 import { rishikeshLocation } from './rishikesh';
+import { lohajungLocation } from './lohajung';
+import { joshimathLocation } from './joshimath';
 
 export type LocationPremiumContent = {
   readonly id: LocationId;
@@ -85,6 +87,8 @@ const LOCATION_CONTENT: Record<LocationId, LocationPremiumContent> = {
   mussoorie: mussoorieLocation,
   munsiyari: munsiyariLocation,
   rishikesh: rishikeshLocation,
+  lohajung: lohajungLocation,
+  joshimath: joshimathLocation,
 };
 
 /**

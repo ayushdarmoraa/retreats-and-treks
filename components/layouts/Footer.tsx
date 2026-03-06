@@ -1,5 +1,9 @@
 import Link from 'next/link';
 
+const footerLinkStyle = { textDecoration: 'none' } as const;
+const footerHeadingStyle = { fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.5rem' } as const;
+const footerColStyle = { minWidth: '180px', flex: '1 1 180px' } as const;
+
 export default function Footer() {
   return (
     <footer
@@ -12,102 +16,100 @@ export default function Footer() {
         style={{
           maxWidth: '72rem',
           margin: '0 auto',
-          padding: '1.5rem 1rem',
+          padding: '2rem 1rem 1.5rem',
         }}
       >
-        <p style={{ marginBottom: '0.75rem' }}>
-          © {new Date().getFullYear()} Retreats And Treks
-        </p>
-
-        {/* Primary navigation */}
-        <ul
+        {/* ── FOOTER GRID ──────────────────────────────────────────── */}
+        <div
           style={{
             display: 'flex',
-            gap: '1.5rem',
-            listStyle: 'none',
-            padding: 0,
-            margin: '0 0 1rem',
             flexWrap: 'wrap',
+            gap: '2rem 3rem',
+            marginBottom: '1.5rem',
           }}
         >
-          <li>
-            <Link href="/">Home</Link>
-          </li>
-          <li>
-            <Link href="/retreats/himalayan-retreats">Himalayan Retreats</Link>
-          </li>
-          <li>
-            <Link href="/retreat-programs">All Programs</Link>
-          </li>
-          <li>
-            <Link href="/treks">Treks</Link>
-          </li>
-          <li>
-            <Link href="/blog">Blog</Link>
-          </li>
-          <li>
-            <Link href="/about">About</Link>
-          </li>
-          <li>
-            <Link href="/contact">Contact</Link>
-          </li>
-        </ul>
+          {/* Column 1: Popular Treks */}
+          <div style={footerColStyle}>
+            <p style={footerHeadingStyle}>Popular Treks</p>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2, fontSize: '0.85rem' }}>
+              <li><Link href="/treks/location/lohajung/brahmatal-trek" style={footerLinkStyle}>Brahmatal Trek</Link></li>
+              <li><Link href="/treks/location/joshimath/kuari-pass-trek" style={footerLinkStyle}>Kuari Pass Trek</Link></li>
+              <li><Link href="/treks/location/lohajung/roopkund-trek" style={footerLinkStyle}>Roopkund Trek</Link></li>
+              <li><Link href="/treks/location/joshimath/pangarchulla-trek" style={footerLinkStyle}>Pangarchulla Trek</Link></li>
+              <li><Link href="/treks/location/sankri/kedarkantha-trek" style={footerLinkStyle}>Kedarkantha Trek</Link></li>
+              <li><Link href="/treks/location/sankri/har-ki-dun-trek" style={footerLinkStyle}>Har Ki Dun Trek</Link></li>
+            </ul>
+          </div>
 
-        {/* Locations */}
-        <ul
-          style={{
-            display: 'flex',
-            gap: '1.5rem',
-            listStyle: 'none',
-            padding: 0,
-            margin: '0 0 1rem',
-            flexWrap: 'wrap',
-            fontSize: '0.9rem',
-          }}
-        >
-          <li>
-            <Link href="/retreats/chakrata">Chakrata</Link>
-          </li>
-          <li>
-            <Link href="/retreats/sankri">Sankri</Link>
-          </li>
-          <li>
-            <Link href="/retreats/munsiyari">Munsiyari</Link>
-          </li>
-          <li>
-            <Link href="/retreats/rishikesh">Rishikesh</Link>
-          </li>
-        </ul>
+          {/* Column 2: Garhwal Himalaya Treks */}
+          <div style={footerColStyle}>
+            <p style={footerHeadingStyle}>Garhwal Himalaya Treks</p>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2, fontSize: '0.85rem' }}>
+              <li><Link href="/treks/garhwal-himalayas" style={footerLinkStyle}>Garhwal Trek Guide</Link></li>
+              <li><Link href="/treks/location/lohajung/brahmatal-trek" style={footerLinkStyle}>Brahmatal Trek</Link></li>
+              <li><Link href="/treks/location/joshimath/kuari-pass-trek" style={footerLinkStyle}>Kuari Pass Trek</Link></li>
+              <li><Link href="/treks/location/lohajung/roopkund-trek" style={footerLinkStyle}>Roopkund Trek</Link></li>
+              <li><Link href="/treks/location/joshimath/pangarchulla-trek" style={footerLinkStyle}>Pangarchulla Peak Trek</Link></li>
+              <li><Link href="/treks/location/lohajung" style={footerLinkStyle}>Treks in Lohajung</Link></li>
+              <li><Link href="/treks/location/joshimath" style={footerLinkStyle}>Treks in Joshimath</Link></li>
+            </ul>
+          </div>
 
-        {/* Topics + utility */}
-        <ul
+          {/* Column 3: Trekking Guides */}
+          <div style={footerColStyle}>
+            <p style={footerHeadingStyle}>Trekking Guides</p>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2, fontSize: '0.85rem' }}>
+              <li><Link href="/treks/best-treks-in-uttarakhand" style={footerLinkStyle}>Best Treks in Uttarakhand</Link></li>
+              <li><Link href="/treks/best-treks-in-uttarakhand/beginner" style={footerLinkStyle}>Beginner Treks</Link></li>
+              <li><Link href="/treks/best-treks-in-uttarakhand/snow" style={footerLinkStyle}>Snow Treks</Link></li>
+              <li><Link href="/treks/best-treks-in-uttarakhand/high-altitude" style={footerLinkStyle}>High-Altitude Treks</Link></li>
+              <li><Link href="/treks/garhwal-himalayas/fitness-guide" style={footerLinkStyle}>Trek Fitness Guide</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 3: Trek Comparisons */}
+          <div style={footerColStyle}>
+            <p style={footerHeadingStyle}>Trek Comparisons</p>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2, fontSize: '0.85rem' }}>
+              <li><Link href="/treks/brahmatal-vs-kuari-pass" style={footerLinkStyle}>Brahmatal vs Kuari Pass</Link></li>
+              <li><Link href="/treks/roopkund-vs-pangarchulla" style={footerLinkStyle}>Roopkund vs Pangarchulla</Link></li>
+              <li><Link href="/treks/kedarkantha-vs-har-ki-dun" style={footerLinkStyle}>Kedarkantha vs Har Ki Dun</Link></li>
+            </ul>
+          </div>
+
+          {/* Column 4: Retreats & Company */}
+          <div style={footerColStyle}>
+            <p style={footerHeadingStyle}>Retreats</p>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2, fontSize: '0.85rem' }}>
+              <li><Link href="/retreats/himalayan-retreats" style={footerLinkStyle}>Himalayan Retreats</Link></li>
+              <li><Link href="/retreats/chakrata" style={footerLinkStyle}>Chakrata</Link></li>
+              <li><Link href="/retreats/sankri" style={footerLinkStyle}>Sankri</Link></li>
+              <li><Link href="/retreats/rishikesh" style={footerLinkStyle}>Rishikesh</Link></li>
+              <li><Link href="/retreat-programs" style={footerLinkStyle}>All Programs</Link></li>
+            </ul>
+          </div>
+        </div>
+
+        {/* ── BOTTOM BAR ───────────────────────────────────────────── */}
+        <div
           style={{
+            borderTop: '1px solid var(--color-border)',
+            paddingTop: '1rem',
             display: 'flex',
-            gap: '1.5rem',
-            listStyle: 'none',
-            padding: 0,
-            margin: 0,
             flexWrap: 'wrap',
+            gap: '1.5rem',
+            alignItems: 'center',
             fontSize: '0.85rem',
             color: 'var(--color-text-secondary)',
           }}
         >
-          <li>
-            <Link href="/topics/retreat-decision">Retreat Guides</Link>
-          </li>
-          <li>
-            <Link href="/topics/location-authority">Location Guides</Link>
-          </li>
-          <li>
-            <Link href="/topics/trek-decision">Trek Guides</Link>
-          </li>
-          <li>
-            <Link href="/topics/lifestyle">Lifestyle</Link>
-          </li>
-          <li>
-            <Link href="/sitemap.xml">Sitemap</Link>
-          </li>
-        </ul>
+          <span>© {new Date().getFullYear()} Retreats And Treks</span>
+          <Link href="/blog" style={footerLinkStyle}>Blog</Link>
+          <Link href="/about" style={footerLinkStyle}>About</Link>
+          <Link href="/contact" style={footerLinkStyle}>Contact</Link>
+          <Link href="/site-map" style={footerLinkStyle}>Site Map</Link>
+          <Link href="/sitemap.xml" style={footerLinkStyle}>Sitemap</Link>
+        </div>
       </nav>
     </footer>
   );

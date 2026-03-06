@@ -41,6 +41,11 @@ const BEHAVIORAL_EVENTS = [
   'comparison_sort',
   'comparison_filter',
   'finder_complete',
+  'sticky_cta_click',
+  'availability_form_submit',
+  'departure_table_click',
+  'whatsapp_click',
+  'phone_click',
 ] as const;
 
 const ALL_EVENTS = [...NAVIGATION_EVENTS, ...BEHAVIORAL_EVENTS] as const;

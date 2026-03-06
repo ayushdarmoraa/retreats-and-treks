@@ -33,8 +33,15 @@ export const InquirySchema = z.object({
   email: z
     .string()
     .trim()
-    .email('Valid email is required')
-    .max(320, 'Email too long'),
+    .max(320, 'Email too long')
+    .optional()
+    .default(''),
+  phone: z
+    .string()
+    .trim()
+    .max(20, 'Phone too long')
+    .optional()
+    .default(''),
   interestedIn: InterestEnum.optional().default(''),
   location: z.string().trim().max(200).optional().default(''),
   month: z.string().trim().max(50).optional().default(''),
@@ -43,6 +50,7 @@ export const InquirySchema = z.object({
   source: z.string().trim().max(500).optional().default(''),
   vertical: z.string().trim().max(50).optional().default(''),
   category: z.string().trim().max(100).optional().default(''),
+  trek: z.string().trim().max(100).optional().default(''),
 });
 
 export type InquiryInput = z.infer<typeof InquirySchema>;

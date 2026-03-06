@@ -66,6 +66,8 @@ const tigerFallTrek: TrekContent = {
         'Yes, with proper precautions. Guides ensure safety and provide instruction.',
     },
   ],
+
+  updatedAt: '2026-03-05',
 };
 
 export default tigerFallTrek;

@@ -16,7 +16,12 @@ type EventType =
   | 'faq_expand'
   | 'comparison_sort'
   | 'comparison_filter'
-  | 'finder_complete';
+  | 'finder_complete'
+  | 'sticky_cta_click'
+  | 'availability_form_submit'
+  | 'departure_table_click'
+  | 'whatsapp_click'
+  | 'phone_click';
 
 interface TrackPayload {
   event: EventType;

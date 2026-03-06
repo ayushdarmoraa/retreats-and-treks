@@ -66,6 +66,8 @@ const budherCavesTrek: TrekContent = {
         'The caves are ancient and hold cultural significance in the region. Guides share local stories and history.',
     },
   ],
+
+  updatedAt: '2026-03-05',
 };
 
 export default budherCavesTrek;

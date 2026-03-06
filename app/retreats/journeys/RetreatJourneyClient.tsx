@@ -215,7 +215,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         </p>
         <div style={{ marginTop: '2rem' }}>
           <a
-            href={`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(`I'm interested in the ${retreat.title} retreat.`)}`}
+            href={`https://wa.me/919760446101?text=${encodeURIComponent(`I'm interested in the ${retreat.title} retreat.`)}`}
             style={{
               display: 'inline-block',
               padding: '0.85rem 1.5rem',

@@ -58,6 +58,12 @@ const kedarkanthaTrek: TrekContent = {
     },
   ],
 
+  monthlyConditions: [
+    { month: 'December', conditions: 'Early winter. Snow begins above 3,000 m, thickening through the month. Temperatures: -3°C to -10°C at camp. Trail is mostly defined. Shorter days (sunset ~5 PM). Fewer trekkers — quieter camps. Good for those who want snow without extreme cold.' },
+    { month: 'January', conditions: 'Peak winter. Heavy snowfall, often waist-deep on the summit ridge. Temperatures: -8°C to -15°C at camp. The hardest month but the most visually stunning — pristine snow-covered forest, frozen meadows, and the best summit panorama. Requires proper winter gear (-15°C sleeping bag).' },
+    { month: 'February', conditions: 'Late winter. Snow remains deep but days lengthen. Temperatures: -5°C to -12°C at camp. Trail usually well-packed from January traffic. Good balance of winter spectacle and slightly more manageable conditions. Best value month — crowds thin after the January rush.' },
+  ],
+
   faqs: [
     {
       question: 'What is the altitude sickness risk?',
@@ -75,6 +81,8 @@ const kedarkanthaTrek: TrekContent = {
         'Winter weather is unpredictable. We track conditions closely and may adjust or postpone for safety.',
     },
   ],
+
+  updatedAt: '2026-03-05',
 };
 
 export default kedarkanthaTrek;

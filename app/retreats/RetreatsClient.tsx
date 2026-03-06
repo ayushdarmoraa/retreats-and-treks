@@ -296,7 +296,7 @@ export default function RetreatsClient({
         </p>
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
           <a
-            href="https://wa.me/91XXXXXXXXXX?text=I%27d%20like%20to%20design%20a%20retreat."
+            href="https://wa.me/919760446101?text=I%27d%20like%20to%20design%20a%20retreat."
             onClick={() => {
               logWhatsAppOpen('/retreats');
             }}
@@ -321,7 +321,7 @@ export default function RetreatsClient({
             Talk on WhatsApp
           </a>
           <a
-            href="https://wa.me/91XXXXXXXXXX?text=Tell%20me%20about%20your%20retreat%20options."
+            href="https://wa.me/919760446101?text=Tell%20me%20about%20your%20retreat%20options."
             onClick={() => {
               logWhatsAppOpen('/retreats');
             }}

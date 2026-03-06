@@ -1,3 +1,9 @@
+/* Treks dropdown navigation */
+.treks-dropdown:hover .treks-dropdown-menu,
+.treks-dropdown:focus-within .treks-dropdown-menu {
+  display: block !important;
+}
+
 /* Chakrata location cards and CTA */
 .chakra-card {
   cursor: pointer;

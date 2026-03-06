@@ -96,6 +96,16 @@ export type TrekContent = {
 	faqs: FAQ[];
 	/** Content linking */
 	relatedBlogSlugs?: string[];
+
+	/** Depth content (Phase 1 expansion) */
+	safety?: string;
+	permits?: string;
+	monthlyConditions?: { month: string; conditions: string }[];
+	whoShouldAvoid?: string;
+	localLogistics?: string;
+
+	/** Freshness signal for sitemap lastmod */
+	updatedAt?: string;
 };
 
 /* ---------- Blog ---------- */

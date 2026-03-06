@@ -585,7 +585,7 @@ export default function TreksClient() {
       <section style={{ textAlign: 'center', paddingTop: '1rem', borderTop: '1px solid var(--color-border)' }}>
         <p style={{ marginBottom: '1rem', color: 'var(--color-muted)' }}>Not sure which trek fits you best?</p>
         <a
-          href="https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%27d%20like%20to%20know%20which%20trek%20would%20be%20best%20for%20me."
+          href="https://wa.me/919760446101?text=Hi%2C%20I%27d%20like%20to%20know%20which%20trek%20would%20be%20best%20for%20me."
           style={{
             display: 'inline-block',
             padding: '0.75rem 1.25rem',

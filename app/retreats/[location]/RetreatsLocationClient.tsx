@@ -34,7 +34,7 @@ export default function RetreatsLocationClient({
   }, [locationId, treks, locationPremiumContent.name, retreatServices]);
 
   const whatsappMessage = `Hi, I'm interested in learning more about journeys in ${locationPremiumContent.name}.`;
-  const whatsappLink = `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappLink = `https://wa.me/919760446101?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <main style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>

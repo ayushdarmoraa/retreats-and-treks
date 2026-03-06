@@ -66,6 +66,8 @@ const weekendTrek: TrekContent = {
         'Basic fitness. The trek involves 3-4 hours of walking daily on easy terrain.',
     },
   ],
+
+  updatedAt: '2026-03-05',
 };
 
 export default weekendTrek;

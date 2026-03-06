@@ -17,7 +17,7 @@ interface HomeClientProps {
 
 export default function HomeClient({ locations }: HomeClientProps) {
   const whatsappMessage = `Hi, I'm interested in learning more about your Himalayan journeys.`;
-  const whatsappLink = `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappLink = `https://wa.me/919760446101?text=${encodeURIComponent(whatsappMessage)}`;
 
   const intentOptions = [
     {

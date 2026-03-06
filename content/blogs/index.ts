@@ -27,6 +27,9 @@ import howToReachRishikeshForARetreat from './how-to-reach-rishikesh-for-a-retre
 import isRishikeshGoodForARetreat from './is-rishikesh-good-for-a-retreat';
 import whyDigitalDetoxWorksInTheHimalayas from './why-digital-detox-works-in-the-himalayas';
 import sankriVsMunsiyariRetreat from './sankri-vs-munsiyari-retreat';
+import bestSnowTreksGarhwalHimalaya from './best-snow-treks-garhwal-himalaya';
+import highAltitudeTreksGarhwalAbove4000m from './high-altitude-treks-garhwal-above-4000m';
+import beginnerToAdvancedTrekProgressionGarhwal from './beginner-to-advanced-trek-progression-garhwal';
 
 // Hardcoded blog posts (extracted from static routes)
 const chakrataVsSankri: BlogContent = {
@@ -263,6 +266,9 @@ export const ALL_BLOG_POSTS: ReadonlyArray<BlogContent> = [
   isRishikeshGoodForARetreat,
   whyDigitalDetoxWorksInTheHimalayas,
   sankriVsMunsiyariRetreat,
+  bestSnowTreksGarhwalHimalaya,
+  highAltitudeTreksGarhwalAbove4000m,
+  beginnerToAdvancedTrekProgressionGarhwal,
 ] as const;
 
 /**

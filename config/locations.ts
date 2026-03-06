@@ -67,6 +67,30 @@ export const LOCATIONS = [
     address: { region: 'Uttarakhand', country: 'IN' },
     touristType: ['Yoga Practitioners', 'Spiritual Seekers', 'Wellness Travelers'],
   },
+  {
+    id: 'lohajung',
+    name: 'Lohajung',
+    tagline: 'Gateway to Brahmatal and Roopkund — alpine lakes and snow ridges in the Garhwal Himalayas.',
+    supportsRetreats: false,
+    supportsTreks: true,
+    active: true,
+    priority: 6,
+    geo: { latitude: 30.116, longitude: 79.742 },
+    address: { region: 'Uttarakhand', country: 'IN' },
+    touristType: ['Adventure Trekkers', 'High-Altitude Hikers', 'Winter Trekkers'],
+  },
+  {
+    id: 'joshimath',
+    name: 'Joshimath',
+    tagline: 'Historic mountain town and launchpad for Kuari Pass, Pangarchulla, and the Nanda Devi region.',
+    supportsRetreats: false,
+    supportsTreks: true,
+    active: true,
+    priority: 7,
+    geo: { latitude: 30.555, longitude: 79.566 },
+    address: { region: 'Uttarakhand', country: 'IN' },
+    touristType: ['Adventure Trekkers', 'Mountaineers', 'Alpine Hikers'],
+  },
 ] as const;
 
 /**

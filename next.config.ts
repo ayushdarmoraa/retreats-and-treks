@@ -17,6 +17,8 @@ const nextConfig: NextConfig = {
       { source: '/treks/munsiyari', destination: '/treks/location/munsiyari', permanent: true },
       // Legacy /treks/{location}/{slug} → new hierarchical path
       { source: '/treks/:location(chakrata|sankri|munsiyari)/:slug', destination: '/treks/location/:location/:slug', permanent: true },
+      // Consolidate singular → plural best-treks authority page (prevent cannibalization)
+      { source: '/treks/best-trek-in-uttarakhand', destination: '/treks/best-treks-in-uttarakhand', permanent: true },
       {
         source: '/locations/:location',
         destination: '/retreats/:location',

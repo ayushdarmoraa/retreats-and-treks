@@ -53,6 +53,53 @@ export default function RootLayout({
             }),
           }}
         />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Retreats and Treks',
+              url: 'https://www.retreatsandtreks.com',
+              about: {
+                '@type': 'Thing',
+                name: 'Himalayan Trekking',
+              },
+              hasPart: [
+                {
+                  '@type': 'CollectionPage',
+                  url: 'https://www.retreatsandtreks.com/treks/best-treks-in-uttarakhand',
+                  name: 'Best Treks in Uttarakhand',
+                },
+                {
+                  '@type': 'CollectionPage',
+                  url: 'https://www.retreatsandtreks.com/treks/garhwal-himalayas',
+                  name: 'Garhwal Himalaya Treks',
+                },
+                {
+                  '@type': 'CollectionPage',
+                  url: 'https://www.retreatsandtreks.com/treks/beginner-treks-uttarakhand',
+                  name: 'Beginner Treks in Uttarakhand',
+                },
+                {
+                  '@type': 'CollectionPage',
+                  url: 'https://www.retreatsandtreks.com/treks/winter-treks-uttarakhand',
+                  name: 'Winter Treks in Uttarakhand',
+                },
+                {
+                  '@type': 'CollectionPage',
+                  url: 'https://www.retreatsandtreks.com/treks/summer-treks-uttarakhand',
+                  name: 'Summer Treks in Uttarakhand',
+                },
+                {
+                  '@type': 'CollectionPage',
+                  url: 'https://www.retreatsandtreks.com/retreats',
+                  name: 'Himalayan Retreats',
+                },
+              ],
+            }),
+          }}
+        />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}

@@ -56,6 +56,13 @@ const harKiDunTrek: TrekContent = {
     },
   ],
 
+  monthlyConditions: [
+    { month: 'May', conditions: 'Late spring. Snow melted below 3,200 m. Valley is vivid green with wildflowers blooming across meadows. Temperatures: 8°C to 0°C at camp. Longer days, pleasant trekking weather. River crossings manageable. One of the two best months for this trek.' },
+    { month: 'June', conditions: 'Early summer. Lush vegetation, full wildflower bloom in the upper valley. Temperatures: 10°C to 3°C. Some afternoon rain possible as monsoon approaches. Early June is ideal; late June may see the first monsoon showers. River levels begin rising.' },
+    { month: 'September', conditions: 'Post-monsoon. Valley is at peak green after the rains. Trails may be slippery in early September. Temperatures: 6°C to -2°C. By mid-September, skies clear beautifully. Fewer trekkers than May. Waterfalls are at their most dramatic.' },
+    { month: 'October', conditions: 'Autumn. Golden light on the meadows, changing foliage in the forest. Crystal-clear skies — the best visibility of any season. Temperatures: 3°C to -5°C at camp. Dry trails, crisp air, spectacular colours. The most photogenic month for Har Ki Dun.' },
+  ],
+
   faqs: [
     {
       question: 'Is this trek suitable for beginners?',
@@ -73,6 +80,8 @@ const harKiDunTrek: TrekContent = {
         'Very remote. There are no villages or services beyond Sankri. Proper preparation and guides are essential.',
     },
   ],
+
+  updatedAt: '2026-03-05',
 };
 
 export default harKiDunTrek;

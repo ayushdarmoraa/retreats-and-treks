@@ -95,6 +95,8 @@ const milamGlacierTrek: TrekContent = {
         'Not recommended. If this is your first Himalayan trek, start with Chakrata for weekend trails or Sankri for 5-day alpine treks. Build your endurance and altitude comfort before attempting a multi-day glacier expedition.',
     },
   ],
+
+  updatedAt: '2026-03-05',
 };
 
 export default milamGlacierTrek;

@@ -77,7 +77,7 @@ export default function HomePage() {
               <li><Link href="/retreats">Himalayan retreats — all locations &amp; programs</Link></li>
               <li><Link href="/retreats/best-retreat-in-uttarakhand">Best retreats in Uttarakhand — ranked by purpose &amp; season</Link></li>
               <li><Link href="/treks">Himalayan treks — weekend &amp; multi-day routes</Link></li>
-              <li><Link href="/treks/best-trek-in-uttarakhand">Best treks in Uttarakhand — snow, valley &amp; weekend picks</Link></li>
+              <li><Link href="/treks/best-treks-in-uttarakhand">Best treks in Uttarakhand — beginner to high-altitude guide</Link></li>
               <li><Link href="/retreat-programs">Program comparison matrix — filter by duration &amp; intensity</Link></li>
               <li><Link href="/blog">Retreat &amp; trek blog — guides and comparisons</Link></li>
             </ul>

@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import TrekCard from '@/components/TrekCard';
+import Breadcrumb from '@/components/Breadcrumb';
 import { getTreksByLocation } from '@/lib/treks';
 import { getLocationById, getAllLocations } from '@/lib/locations';
 import { getTrekHubMetadata } from '@/lib/metadata';
@@ -256,6 +257,179 @@ const LOCATION_GUIDES: Record<string, GuideSection[]> = {
       ),
     },
   ],
+  lohajung: [
+    {
+      heading: 'Why Lohajung Is Garhwal\u2019s Premier Trek Base',
+      body: (
+        <>
+          <p>Lohajung is a quiet roadhead village at 2,350 metres in Chamoli district, perched on a ridge that overlooks the Wan valley and the white peaks of the Nanda Devi region beyond. It is not a town that exists for tourists — there is no market, no hotel strip, no commercial infrastructure. Lohajung exists because the road ends here, and two of the most celebrated trekking routes in the Indian Himalayas begin from its outskirts.</p>
+          <p>The <Link href="/treks/location/lohajung/brahmatal-trek">Brahmatal winter trek</Link> and the <Link href="/treks/location/lohajung/roopkund-trek">Roopkund mystery lake expedition</Link> both launch from Lohajung, making it the common base camp for Garhwal&apos;s frozen lake and mystery lake routes. The village sits at the sweet spot between accessible (10 hours from Rishikesh by road) and remote (far enough from any tourist corridor that the mountains feel genuinely wild). This combination — real mountain solitude with road access — is what makes Lohajung work as a trekking base.</p>
+          <p>If you are planning a trek in the <Link href="/treks/garhwal-himalayas">Garhwal Himalayas</Link>, Lohajung is where the Brahmatal and Roopkund journeys begin.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'Treks from Lohajung',
+      body: (
+        <>
+          <p>The <Link href="/treks/location/lohajung/brahmatal-trek">Brahmatal Trek</Link> is a 4-day, 22 km route through oak and rhododendron forest to the frozen Brahmatal lake at 3,850 metres. Rated moderate, it is Garhwal&apos;s best winter trek — snow-covered ridges, frozen alpine lakes, and continuous views of Trishul and Nanda Ghunti. The trail is non-technical and well-supported, making it accessible to first-time high-altitude trekkers with reasonable fitness. Best season: December to March.</p>
+          <p>The <Link href="/treks/location/lohajung/roopkund-trek">Roopkund Trek</Link> is a 7-day, 53 km expedition to the glacial Roopkund Lake at 4,800 metres — one of the most iconic high-altitude routes in India. The trek crosses the vast Bedni Bugyal alpine meadow, ascends through exposed high-altitude terrain, and reaches the mystery lake famous for its ancient skeletal remains. Rated challenging, it requires prior high-altitude experience and strong fitness. Best season: May–June and September–October.</p>
+          <p>Both treks share the first section of trail out of Lohajung before diverging — so the village truly functions as a common gateway to two very different mountain experiences.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'Best Time to Trek from Lohajung',
+      body: (
+        <>
+          <p><strong>Winter (December–March):</strong> The Brahmatal window. Snow blankets the trail above 2,800 metres, lakes freeze solid, and mountain visibility is at its sharpest. Night temperatures drop to −10°C at camp. This is Lohajung&apos;s signature season — quieter than the <Link href="/treks/winter-treks-uttarakhand">winter treks near Sankri</Link> and equally rewarding.</p>
+          <p><strong>Pre-monsoon (May–June):</strong> The Roopkund window. Snow line retreats above 4,000 metres, opening the high passes. Temperatures are warm at lower elevations, with afternoon cloud build-up common. The alpine meadows at Bedni Bugyal and Ali Bugyal are carpeted in wildflowers.</p>
+          <p><strong>Monsoon (July–August):</strong> Not recommended. Heavy rainfall, trail erosion, leech activity in forests, and zero visibility above treeline. All guided operations suspend.</p>
+          <p><strong>Post-monsoon (September–October):</strong> The secondary Roopkund window. Sharper visibility than pre-monsoon, cooler temperatures, golden meadow grasses. A less crowded alternative to the May–June season. Snow begins returning to higher ridges by late October.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'How to Reach Lohajung',
+      body: (
+        <>
+          <p><strong>From Rishikesh:</strong> Lohajung is approximately 220 km from Rishikesh — a 10-hour drive via Karnaprayag and Dewal on NH-7 and state roads. The road is paved but narrow in the final section. Shared taxis and state transport buses run daily from Rishikesh.</p>
+          <p><strong>From Delhi:</strong> Take a train or bus to Haridwar or Rishikesh (5–6 hours), then road transport to Lohajung. Total door-to-door from Delhi is approximately 14–16 hours. Most guided groups arrange shared transport from Rishikesh or Kathgodam.</p>
+          <p><strong>Road conditions:</strong> The road is reliable in winter (Brahmatal season) and pre-monsoon (Roopkund season). During monsoon, landslide disruptions are common between Dewal and Lohajung. The last reliable fuel stop is at Tharali — fill up before the final stretch.</p>
+          <p><strong>Accommodation:</strong> Lohajung has basic guesthouses and a few lodges. Most guided treks include one night in Lohajung before the trek start. Do not expect hotel-grade facilities — this is a working village, not a resort town.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'Difficulty &amp; Terrain Overview',
+      body: (
+        <>
+          <p>Treks from Lohajung span moderate to challenging, with terrain that progresses through four distinct zones:</p>
+          <p><strong>Forest trails (2,350–3,000 m):</strong> Dense oak and rhododendron forest with well-defined paths. Sheltered from wind, these sections are comfortable even in cold months. The canopy is particularly beautiful in spring (rhododendron bloom) and winter (snow-laden branches).</p>
+          <p><strong>Alpine meadows / bugyals (3,000–3,500 m):</strong> Open grasslands — Bedni Bugyal and Ali Bugyal on the Roopkund route are among the largest alpine meadows in India. Terrain is exposed with panoramic views. Snow cover is common from November through April.</p>
+          <p><strong>High-altitude zone (3,500–4,800 m):</strong> Above the treeline. Rocky moraine, snow, and exposed ridges. The Roopkund approach above 4,000 metres is genuinely challenging — steep gradients, thin air, and weather that can change in minutes. Only for experienced trekkers.</p>
+          <p><strong>Frozen lakes:</strong> Both Brahmatal and Roopkund are glacial lakes. In winter, Brahmatal freezes solid — trekkers camp near the lake edge. Roopkund is typically frozen or partially frozen depending on season. No swimming, no water collection from the lake.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'Which Lohajung Trek Is Right for You?',
+      body: (
+        <>
+          <p>Both routes from Lohajung are excellent, but they serve very different trekkers:</p>
+          <p><strong>Choose <Link href="/treks/location/lohajung/brahmatal-trek">the Brahmatal winter trek</Link> if:</strong> You want a snow experience at moderate difficulty, this is your first Garhwal trek, you have 4 days on trail, or you prefer the December–March window. Brahmatal is one of the <Link href="/treks/winter-treks-uttarakhand">best winter treks in Uttarakhand</Link> for a reason — it delivers dramatic snow scenery without extreme altitude demands.</p>
+          <p><strong>Choose <Link href="/treks/location/lohajung/roopkund-trek">the Roopkund mystery lake expedition</Link> if:</strong> You have prior high-altitude experience above 4,000 m, you want a 7-day wilderness expedition, you are drawn to the iconic skeleton lake destination, or you prefer the May–June or September–October windows.</p>
+          <p>Not sure? Our <Link href="/treks/brahmatal-vs-kuari-pass">comparison of moderate Garhwal treks</Link> helps if you are deciding between Brahmatal and Joshimath-based routes. For the challenging tier, see <Link href="/treks/roopkund-vs-pangarchulla">Roopkund vs the Pangarchulla summit climb</Link>.</p>
+          <p>Both treks are part of the wider <Link href="/treks/garhwal-himalayas">Garhwal Himalayas trekking circuit</Link> — see our region guide for the full picture.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'Frequently Asked Questions',
+      body: (
+        <>
+          <p><strong>Is Brahmatal safe for beginners?</strong> Yes. Brahmatal is moderate difficulty and suitable for first-time Himalayan trekkers with reasonable fitness. If you can jog 5 km comfortably, you are likely ready. No prior snow trekking experience is required — guides provide gaiters, microspikes, and trekking poles.</p>
+          <p><strong>Is Roopkund safe?</strong> Roopkund is a challenging high-altitude trek that requires experience. With a professional guided team, proper acclimatisation schedule, and appropriate fitness, it is safe. The route avoids technical climbing — the challenge is altitude, distance, and weather exposure.</p>
+          <p><strong>How far in advance should I book?</strong> Winter Brahmatal treks (December–January) should be booked 4–6 weeks ahead. Roopkund groups fill up 2–3 months in advance during the May–June window. Early booking secures your dates and allows time for fitness preparation.</p>
+          <p><strong>What is the mobile network coverage?</strong> BSNL has intermittent coverage in Lohajung village. Beyond the village, there is no mobile signal on either trek route. Guided groups carry satellite communication or emergency beacons.</p>
+          <p><strong>Can I combine Brahmatal and Roopkund?</strong> Not in one trip — they are different-season treks with different difficulty levels. Do Brahmatal first (winter) to get your Garhwal introduction, then return for Roopkund (pre-monsoon) with high-altitude confidence.</p>
+        </>
+      ),
+    },
+  ],
+  joshimath: [
+    {
+      heading: 'Why Joshimath Is the Gateway to the Nanda Devi Region',
+      body: (
+        <>
+          <p>Joshimath sits at 1,875 metres on the ancient pilgrim road to Badrinath — a mountain town with a history that predates modern trekking by centuries. It is one of the four cardinal matts established by Adi Shankaracharya and a cultural waypoint on the Char Dham pilgrimage circuit. For trekkers, Joshimath serves a different purpose: it is the most accessible launchpad for routes into the Nanda Devi Sanctuary zone, including the famed <Link href="/treks/location/joshimath/kuari-pass-trek">Lord Curzon Trail to Kuari Pass</Link> and the demanding <Link href="/treks/location/joshimath/pangarchulla-trek">summit climb to Pangarchulla Peak</Link>.</p>
+          <p>Unlike the remote base villages of <Link href="/treks/location/lohajung">Lohajung</Link> or <Link href="/treks/location/sankri">Sankri</Link>, Joshimath has genuine town infrastructure — hotels, restaurants, shops, ATMs, and a cable car connection to the ski resort of Auli. This makes it a more comfortable staging point, particularly for trekkers combining a trek with visits to Badrinath, the Valley of Flowers, or Hemkund Sahib.</p>
+          <p>Joshimath is a key base in the <Link href="/treks/garhwal-himalayas">Garhwal Himalayas trekking</Link> network — connecting the ridge walks and summit routes of Chamoli to the broader Uttarakhand trail system.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'Treks from Joshimath',
+      body: (
+        <>
+          <p>The <Link href="/treks/location/joshimath/kuari-pass-trek">Kuari Pass Trek</Link> is a 5-day, 30 km ridge walk to the historic Kuari Pass at 3,876 metres. First explored by Lord Curzon in the early 1900s, the route follows a high ridge offering near-continuous views of Nanda Devi (7,816 m), Dronagiri, Chaukhamba, and Kamet. Rated moderate with no technical sections, this is widely considered the finest view-to-effort ratio of any trek in Uttarakhand. An excellent choice for trekkers seeking Himalayan grandeur without extreme altitude. Best season: March–May and October–November.</p>
+          <p>The <Link href="/treks/location/joshimath/pangarchulla-trek">Pangarchulla Peak Trek</Link> extends the Kuari Pass route with a true summit push to 4,590 metres. The final day involves a steep snow-and-scree ascent with a 3 AM alpine start, rewarded by a 360° panorama of the Nanda Devi Sanctuary. Rated challenging, it requires prior high-altitude experience above 4,000 metres and strong fitness. This is one of the few accessible peak summits in the <Link href="/treks/garhwal-himalayas">Garhwal Himalaya trekking region</Link>. Best season: March–May.</p>
+          <p>The two routes share common approach trail out of Dhak village, beyond Joshimath. Kuari Pass turns toward Auli on descent; Pangarchulla diverges for the summit push from Khullara camp.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'Best Time to Trek from Joshimath',
+      body: (
+        <>
+          <p><strong>Spring (March–May):</strong> The prime window for both Kuari Pass and Pangarchulla. Retreating snow creates excellent conditions for the Pangarchulla summit push in March–April when consolidated snow provides grip. Rhododendrons bloom in the forests below 3,500 metres. Clear mornings with afternoon cloud build-up is the typical pattern. This is the recommended season for most trekkers.</p>
+          <p><strong>Autumn (October–November):</strong> Outstanding for Kuari Pass. The sharpest mountain visibility of the year — the Nanda Devi range appears almost three-dimensional in the clear autumn light. Golden forest colours, crisp temperatures, and far fewer trekkers than spring. Pangarchulla is less reliable in autumn as early snow can make the summit approach unstable.</p>
+          <p><strong>Winter (December–February):</strong> Kuari Pass is feasible for experienced winter trekkers with proper snow gear. Deep snow transforms the ridge walk into a more challenging proposition. Pangarchulla is generally not attempted in deep winter. Joshimath itself remains accessible — the Badrinath road is maintained to Joshimath year-round.</p>
+          <p><strong>Monsoon (July–August):</strong> Not recommended for trekking. However, the Valley of Flowers (accessible from Govindghat, 25 km beyond Joshimath) is in its prime during monsoon — making Joshimath a year-round mountain destination even when treks are suspended.</p>
+          <p>For more <Link href="/treks/summer-treks-uttarakhand">summer trek options across Uttarakhand</Link>, see our seasonal guide.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'How to Reach Joshimath',
+      body: (
+        <>
+          <p><strong>From Rishikesh:</strong> Joshimath is approximately 270 km from Rishikesh — a 9–10 hour drive via Devprayag, Rudraprayag, and Chamoli on NH-7. Regular GMOU (Garhwal Motor Owners Union) bus services and shared taxis run daily. The road follows the Alaknanda River valley — one of the most scenic mountain drives in India.</p>
+          <p><strong>From Delhi:</strong> Train to Haridwar (4–5 hours) or bus to Rishikesh (5–6 hours), then road transport to Joshimath. Total door-to-door is approximately 14–16 hours. Some guided groups arrange overnight transport to maximise trekking time.</p>
+          <p><strong>Road conditions:</strong> The Rishikesh–Joshimath highway is well-maintained as it serves the Badrinath pilgrim traffic. During monsoon, landslide delays are possible between Rudraprayag and Pipalkoti, but the road is cleared quickly due to its strategic importance. Winter road conditions are generally good — the road stays open to Joshimath year-round.</p>
+          <p><strong>Accommodation:</strong> Joshimath has hotels ranging from budget to mid-range. Unlike remote bases, you can expect attached bathrooms, hot water, and restaurant meals. Most guided treks include one night in Joshimath before the trek. The town also has ATMs, pharmacies, and basic trekking gear shops.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'Difficulty &amp; Terrain Overview',
+      body: (
+        <>
+          <p>Treks from Joshimath span moderate to challenging, with terrain defined by Garhwal&apos;s characteristic ridge-and-valley structure:</p>
+          <p><strong>Forest trails (1,875–2,800 m):</strong> Dense oak, rhododendron, and birch forest on well-maintained paths. The approach via Dhak and Gulling is sheltered and gradual — a gentle start that lets you settle into mountain rhythm before gaining altitude.</p>
+          <p><strong>Ridge walking (2,800–3,876 m):</strong> The defining character of Joshimath treks. The Kuari Pass route follows a high ridge running parallel to the main Himalayan chain. This means views are continuous rather than episodic — you walk along the crest with Nanda Devi, Dronagiri, and Chaukhamba arrayed before you.</p>
+          <p><strong>Summit zone (3,876–4,590 m):</strong> Pangarchulla only. Above Khullara camp, the terrain shifts to steep snow and scree. The summit push involves approximately 700 metres of elevation gain from camp in a single day, with an alpine start around 3 AM. Crampons, gaiters, and trekking poles are essential. This is genuine mountain climbing — not trail walking.</p>
+          <p><strong>Auli descent:</strong> Both treks can route their descent through Auli — the ski resort connected to Joshimath by cable car. This adds variety to the return journey and avoids retracing the approach trail.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'Joshimath Beyond Trekking',
+      body: (
+        <>
+          <p>Joshimath is more than a trek base — it is a mountain town with connections to some of Uttarakhand&apos;s most significant destinations:</p>
+          <p><strong>Auli:</strong> Connected to Joshimath by cable car (Asia&apos;s longest), Auli is Uttarakhand&apos;s premier skiing destination in winter and a meadow viewpoint in summer. Many trekkers add a day at Auli before or after their trek.</p>
+          <p><strong>Badrinath:</strong> The holy temple town, 45 km beyond Joshimath on NH-7, is one of the Char Dham pilgrimage sites. Open May–November. Trekkers with cultural interests can visit before or after their trek.</p>
+          <p><strong>Valley of Flowers:</strong> Accessible from Govindghat (25 km past Joshimath), this UNESCO World Heritage Site blooms spectacularly in July–August — the opposite season from trekking. A monsoon visit to the Valley can be combined with a post-monsoon Kuari Pass trek for a double Joshimath experience.</p>
+          <p>This multi-use character makes Joshimath the most versatile mountain base in the <Link href="/treks/garhwal-himalayas">Garhwal Himalayas</Link> — useful across all seasons and interests.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'Which Joshimath Trek Is Right for You?',
+      body: (
+        <>
+          <p>Both routes from Joshimath share the same approach via Dhak village, but they diverge into fundamentally different experiences:</p>
+          <p><strong>Choose <Link href="/treks/location/joshimath/kuari-pass-trek">the Kuari Pass panoramic ridge walk</Link> if:</strong> You want the widest Himalayan panorama relative to effort, this is your first high-altitude Himalayan trek, you prefer spring or autumn dates, or you value a historic trail (the Lord Curzon route). Kuari Pass is widely considered <Link href="/treks/summer-treks-uttarakhand">one of the finest summer treks in Uttarakhand</Link>.</p>
+          <p><strong>Choose <Link href="/treks/location/joshimath/pangarchulla-trek">the Pangarchulla summit challenge</Link> if:</strong> You have completed Kuari Pass or an equivalent moderate trek above 3,800 m, you want a true peak summit with crampons and an alpine start, you thrive on concentrated high-intensity climbing days, or you are trekking in March–May.</p>
+          <p>For a detailed breakdown, see our <Link href="/treks/brahmatal-vs-kuari-pass">moderate trek comparison (Brahmatal vs Kuari Pass)</Link> or the <Link href="/treks/roopkund-vs-pangarchulla">challenging trek comparison (Roopkund vs Pangarchulla)</Link>.</p>
+          <p>Both routes feed into the <Link href="/treks/garhwal-himalayas">Garhwal Himalayas trekking progression</Link> — a structured path from moderate to challenging that builds altitude confidence with each trek.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'Frequently Asked Questions',
+      body: (
+        <>
+          <p><strong>Is Kuari Pass suitable for beginners?</strong> Yes. Kuari Pass is moderate difficulty and is one of the best choices for a first serious Himalayan trek. The route stays below 3,900 metres with no technical sections. Basic fitness — ability to walk 8–10 km daily on uneven terrain — is sufficient.</p>
+          <p><strong>Do I need mountaineering gear for Pangarchulla?</strong> Crampons, gaiters, and trekking poles are essential for summit day. Guided operators provide safety equipment. You should bring a 4-season sleeping bag and layered clothing rated to −10°C. Prior high-altitude trekking experience is strongly recommended.</p>
+          <p><strong>Can I do both Kuari Pass and Pangarchulla in one trip?</strong> Yes — Pangarchulla extends the Kuari Pass route. Some itineraries combine both, reaching Kuari Pass on day 3 and pushing to Pangarchulla summit from Khullara camp. This requires an additional 1–2 days and significantly more fitness.</p>
+          <p><strong>Is Joshimath safe after the subsidence events?</strong> The subsidence (land sinking) that affected central Joshimath in 2023 impacted the town&apos;s core residential and commercial areas. The trekking routes to Dhak, Kuari Pass, and Pangarchulla are on different geological formations and were not affected. Guided operators continue to run full seasons from Joshimath. The approach road remains open year-round.</p>
+          <p><strong>What is <Link href="/treks/location/chakrata">Chakrata</Link> like compared to Joshimath?</strong> Chakrata is a weekend destination at 2,250 m — close to Dehradun, easy forest trails, no high-altitude exposure. Joshimath is a serious trekking base giving access to 3,800–4,600 m routes. Choose Chakrata for a quick escape; choose Joshimath when you want genuine Himalayan scale.</p>
+        </>
+      ),
+    },
+  ],
 };
 
 // ── Page component ──────────────────────────────────────────
@@ -273,6 +447,33 @@ export function generateStaticParams(): { location: string }[] {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { location } = await params;
   const locationId = location as unknown as LocationId;
+
+  // CTR-optimized overrides for Garhwal trek hubs
+  const GARHWAL_HUB_META: Record<string, { title: string; description: string }> = {
+    lohajung: {
+      title: 'Treks from Lohajung (2 Routes: 3,850m–4,800m) — Brahmatal & Roopkund | Retreats And Treks',
+      description:
+        'Lohajung is the base for 2 Garhwal Himalaya treks: Brahmatal (3,850m, moderate, winter) and Roopkund (4,800m, challenging, summer). How to reach, best season, difficulty & booking guide.',
+    },
+    joshimath: {
+      title: 'Treks from Joshimath (2 Routes: 3,876m–4,590m) — Kuari Pass & Pangarchulla | Retreats And Treks',
+      description:
+        'Joshimath is the base for 2 Garhwal Himalaya treks: Kuari Pass (3,876m, moderate, spring/autumn) and Pangarchulla Peak (4,590m, challenging, spring). Season, difficulty & planning guide.',
+    },
+  };
+
+  const override = GARHWAL_HUB_META[locationId];
+  if (override) {
+    return {
+      title: override.title,
+      description: override.description,
+      alternates: {
+        canonical: `https://www.retreatsandtreks.com/treks/location/${locationId}`,
+      },
+      robots: { index: true, follow: true },
+    };
+  }
+
   return getTrekHubMetadata(locationId);
 }
 
@@ -299,9 +500,13 @@ export default async function TrekHubPage({ params }: PageProps) {
     <main style={{ maxWidth: '72rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
       {/* BREADCRUMB + H1 */}
       <section style={{ marginBottom: '2rem', textAlign: 'center' }}>
-        <div style={{ marginBottom: '0.5rem', fontSize: '0.95rem', color: 'var(--color-text-secondary)' }}>
-          <a href="/treks" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Treks</a> &nbsp;→&nbsp; {locationData.name}
-        </div>
+        <Breadcrumb
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Treks', href: '/treks' },
+            { name: locationData.name },
+          ]}
+        />
         <h1 style={{ marginBottom: '0.75rem' }}>Treks Around {locationData.name}</h1>
       </section>
 
@@ -361,7 +566,7 @@ export default async function TrekHubPage({ params }: PageProps) {
       <section style={{ textAlign: 'center', paddingTop: '1rem', borderTop: '1px solid var(--color-border)', maxWidth: '56rem', marginLeft: 'auto', marginRight: 'auto' }}>
         <p style={{ marginBottom: '1rem', color: 'var(--color-muted)' }}>Ready to book a trek?</p>
         <a
-          href={`https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%20am%20interested%20in%20a%20trek%20in%20${encodeURIComponent(locationData.name)}.`}
+          href={`https://wa.me/919760446101?text=Hi%2C%20I%20am%20interested%20in%20a%20trek%20in%20${encodeURIComponent(locationData.name)}.`}
           style={{ display: 'inline-block', padding: '0.75rem 1.25rem', backgroundColor: 'var(--color-primary)', color: '#ffffff', borderRadius: 'var(--radius-sm)', textDecoration: 'none', fontWeight: 500, fontSize: '0.95rem' }}
         >
           Chat on WhatsApp

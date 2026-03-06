@@ -39,7 +39,7 @@ export default function ContactClient() {
               Best for quick clarity
             </p>
             <a
-              href="https://wa.me/91XXXXXXXXXX"
+              href="https://wa.me/919760446101"
               style={{
                 display: 'inline-block',
                 padding: '0.75rem 1.5rem',
@@ -154,7 +154,7 @@ export default function ContactClient() {
           Reach out. We'll take it from there. No pressure, no playbook—just a conversation about whether a retreat with us makes sense right now.
         </p>
         <a
-          href="https://wa.me/91XXXXXXXXXX"
+          href="https://wa.me/919760446101"
           style={{
             display: 'inline-block',
             padding: '1rem 2rem',

@@ -263,7 +263,7 @@ function buildDay3Warm(lead: FollowUpCandidate): { subject: string; html: string
         <p>If you've had a chance to think about what format appeals most — a weekend retreat, a 5-day immersion, or something longer — just reply and we'll narrow it down.</p>
         ` : `
         <div style="padding: 1rem; background: #f8fafc; border-radius: 6px; border: 1px solid #e2e8f0; margin: 1rem 0;">
-          <p style="margin: 0 0 0.5rem; font-weight: 600;"><a href="${BASE_URL}/treks/best-trek-in-uttarakhand" style="color: #2563eb;">Best Treks in Uttarakhand — Ranked</a></p>
+          <p style="margin: 0 0 0.5rem; font-weight: 600;"><a href="${BASE_URL}/treks/best-treks-in-uttarakhand" style="color: #2563eb;">Best Treks in Uttarakhand — Ranked</a></p>
           <p style="margin: 0; font-size: 0.9rem; color: #64748b;">Difficulty levels, best seasons, and what makes each route unique.</p>
         </div>
         <p>If any particular trek caught your eye, just reply and we'll build a plan around it.</p>
@@ -358,7 +358,7 @@ function buildDay7Cold(lead: FollowUpCandidate): { subject: string; html: string
         <p>A few places to start:</p>
         <ul style="padding-left: 1.2rem;">
           <li><a href="${BASE_URL}/retreats/best-retreat-in-uttarakhand" style="color: #2563eb;">Best Retreats in Uttarakhand</a></li>
-          <li><a href="${BASE_URL}/treks/best-trek-in-uttarakhand" style="color: #2563eb;">Best Treks in Uttarakhand</a></li>
+          <li><a href="${BASE_URL}/treks/best-treks-in-uttarakhand" style="color: #2563eb;">Best Treks in Uttarakhand</a></li>
         </ul>
 
         <p>Just reply if you'd like to talk through options. No commitment needed.</p>

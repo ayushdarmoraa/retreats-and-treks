@@ -97,14 +97,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   );
 
+  // ── 3a. Trek apex — master index (top-of-funnel traffic distributor) ──────
+  entries.push({
+    url: buildCanonicalUrl('/treks/best-treks-in-uttarakhand'),
+    lastModified: now,
+    priority: 0.95,
+    changeFrequency: 'monthly',
+  });
+
+  // ── 3a-filter. Trek filter child pages (long-tail programmatic) ───────────
+  for (const filter of ['beginner', 'snow', 'high-altitude', 'challenging']) {
+    entries.push({
+      url: buildCanonicalUrl(`/treks/best-treks-in-uttarakhand/${filter}`),
+      lastModified: now,
+      priority: 0.85,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  // ── 3a-departures. Fixed departure / calendar pages (high-conversion) ────
+  for (const slug of ['brahmatal', 'kuari-pass', 'roopkund', 'pangarchulla']) {
+    entries.push({
+      url: buildCanonicalUrl(`/treks/${slug}/departures`),
+      lastModified: now,
+      priority: 0.85,
+      changeFrequency: 'weekly',
+    });
+  }
+
   // ── 3b. Trek modifier pages ───────────────────────────────────────────────
   entries.push(
-    {
-      url: buildCanonicalUrl('/treks/best-trek-in-uttarakhand'),
-      lastModified: now,
-      priority: 0.90,
-      changeFrequency: 'monthly',
-    },
     {
       url: buildCanonicalUrl('/treks/trek-near-delhi'),
       lastModified: now,
@@ -136,6 +158,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
     },
     {
+      url: buildCanonicalUrl('/treks/brahmatal-vs-kuari-pass'),
+      lastModified: now,
+      priority: 0.80,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/treks/roopkund-vs-pangarchulla'),
+      lastModified: now,
+      priority: 0.80,
+      changeFrequency: 'monthly',
+    },
+    {
       url: buildCanonicalUrl('/treks/3-day-treks-uttarakhand'),
       lastModified: now,
       priority: 0.85,
@@ -145,6 +179,46 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: buildCanonicalUrl('/treks/trek-packages-uttarakhand'),
       lastModified: now,
       priority: 0.85,
+      changeFrequency: 'monthly',
+    },
+  );
+
+  // ── 3d. Attribute filter pages ────────────────────────────────────────────
+  const attributeSlugs = [
+    'above-4000m-treks-uttarakhand',
+    'low-altitude-treks-uttarakhand',
+    'spring-treks-uttarakhand',
+    'autumn-treks-uttarakhand',
+    '5-day-treks-uttarakhand',
+    'week-long-treks-uttarakhand',
+  ];
+  for (const slug of attributeSlugs) {
+    entries.push({
+      url: buildCanonicalUrl(`/treks/${slug}`),
+      lastModified: now,
+      priority: 0.75,
+      changeFrequency: 'monthly' as const,
+    });
+  }
+
+  // ── 3c. Garhwal region pillar ─────────────────────────────────────────────
+  entries.push(
+    {
+      url: buildCanonicalUrl('/treks/garhwal-himalayas'),
+      lastModified: now,
+      priority: 0.9,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/treks/garhwal-himalayas/fitness-guide'),
+      lastModified: now,
+      priority: 0.75,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/treks/garhwal-himalayas/packing-checklist'),
+      lastModified: now,
+      priority: 0.75,
       changeFrequency: 'monthly',
     },
   );
@@ -186,10 +260,32 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const trek of allTreks) {
     entries.push({
       url: buildCanonicalUrl(`/treks/location/${trek.locationId}/${trek.slug}`),
-      lastModified: now,
+      lastModified: trek.updatedAt ? new Date(trek.updatedAt) : now,
       priority: 0.75,
-      changeFrequency: 'monthly',
+      changeFrequency: 'weekly',
     });
+  }
+
+  // ── 6a. Trek month pages (long-tail: "brahmatal trek in december") ────────
+  const MONTH_URL_SLUGS: Record<string, string> = {
+    'brahmatal-trek': 'brahmatal',
+    'kuari-pass-trek': 'kuari-pass',
+    'roopkund-trek': 'roopkund',
+    'pangarchulla-trek': 'pangarchulla',
+    'kedarkantha-trek': 'kedarkantha',
+    'har-ki-dun-trek': 'har-ki-dun',
+  };
+  for (const trek of allTreks) {
+    const urlSlug = MONTH_URL_SLUGS[trek.slug];
+    if (!urlSlug || !trek.monthlyConditions) continue;
+    for (const mc of trek.monthlyConditions) {
+      entries.push({
+        url: buildCanonicalUrl(`/treks/${urlSlug}/${mc.month.toLowerCase()}`),
+        lastModified: trek.updatedAt ? new Date(trek.updatedAt) : now,
+        priority: 0.65,
+        changeFrequency: 'monthly',
+      });
+    }
   }
 
   // ── 7. Topic archive pages — only include topics with >= 3 posts ───────────
@@ -235,6 +331,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       priority: 0.6,
       changeFrequency: 'weekly',
+    },
+    {
+      url: buildCanonicalUrl('/site-map'),
+      lastModified: now,
+      priority: 0.5,
+      changeFrequency: 'monthly',
     },
   );
 

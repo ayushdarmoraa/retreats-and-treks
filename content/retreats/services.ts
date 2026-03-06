@@ -57,6 +57,8 @@ export function getRetreatsForLocation(locationId: LocationId): RetreatService[]
     mussoorie: ['creative-retreat', 'rest-and-reset', 'couples-retreat'],
     munsiyari: ['burnout-recovery', 'threshold-work', 'embodied-presence'],
     rishikesh: ['spiritual-grounding', 'yoga-and-movement', 'meditation-and-silence'],
+    lohajung: [],   // Trek-only location — no retreat affinity yet
+    joshimath: [],  // Trek-only location — no retreat affinity yet
   };
 
   const relevantSlugs = affinityMap[locationId] || [];

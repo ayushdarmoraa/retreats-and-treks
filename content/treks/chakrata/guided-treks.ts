@@ -66,6 +66,8 @@ const guidedTreks: TrekContent = {
         'Groups typically consist of 4-8 people for a personalized experience.',
     },
   ],
+
+  updatedAt: '2026-03-05',
 };
 
 export default guidedTreks;

@@ -101,6 +101,15 @@ export function generateWebsiteSchema() {
     description:
       'Curated weekend retreats and guided treks in the Himalayas, starting from Dehradun.',
     inLanguage: 'en-IN',
+    hasPart: [
+      { '@type': 'WebPage', url: buildCanonicalUrl('/treks/best-treks-in-uttarakhand') },
+      { '@type': 'WebPage', url: buildCanonicalUrl('/treks/location/lohajung') },
+      { '@type': 'WebPage', url: buildCanonicalUrl('/treks/location/joshimath') },
+      { '@type': 'WebPage', url: buildCanonicalUrl('/treks/location/sankri') },
+      { '@type': 'WebPage', url: buildCanonicalUrl('/treks/location/chakrata') },
+      { '@type': 'WebPage', url: buildCanonicalUrl('/treks/location/munsiyari') },
+      { '@type': 'WebPage', url: buildCanonicalUrl('/retreats') },
+    ],
   };
 }
 
@@ -113,7 +122,8 @@ export function generateOrganizationSchema() {
     logo: buildCanonicalUrl('/logo.png'),
     description:
       'Retreats And Treks organizes curated Himalayan retreats and trekking experiences designed for rest, reset, and conscious travel.',
-    email: 'info@retreatsandtreks.com',
+    email: 'neerajrawat@retreatsandtreks.com',
+    telephone: '+919760446101',
     areaServed: {
       '@type': 'Country',
       name: 'India',
@@ -127,6 +137,7 @@ export function generateOrganizationSchema() {
     ],
     contactPoint: {
       '@type': 'ContactPoint',
+      telephone: '+919760446101',
       contactType: 'customer support',
       availableLanguage: ['English', 'Hindi'],
     },
@@ -150,7 +161,8 @@ export function generateLocalBusinessSchema() {
       name: 'Uttarakhand',
     },
     url: buildCanonicalUrl('/'),
-    email: 'info@retreatsandtreks.com',
+    email: 'neerajrawat@retreatsandtreks.com',
+    telephone: '+919760446101',
   };
 }
 

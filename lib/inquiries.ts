@@ -16,6 +16,7 @@ const FALLBACK_LOG = path.join(process.cwd(), 'data', 'inquiries.jsonl');
 export interface Inquiry {
   name: string;
   email: string;
+  phone: string;
   interestedIn: 'trek' | 'retreat' | '';
   location: string;
   month: string;
@@ -24,6 +25,7 @@ export interface Inquiry {
   source: string;
   vertical: string;
   category: string;
+  trek: string;
   timestamp: string;
 }
 
@@ -45,9 +47,12 @@ export async function insertInquiry(
 
   const sql = getDb();
 
+  // Store phone in email column when email is empty (mini lead form)
+  const contactField = inquiry.email || inquiry.phone;
+
   const rows = await sql`
     INSERT INTO inquiries (name, email, interested_in, location, month, group_size, budget, source_url, vertical, category, lead_score, lead_tier)
-    VALUES (${inquiry.name}, ${inquiry.email}, ${inquiry.interestedIn}, ${inquiry.location}, ${inquiry.month}, ${inquiry.groupSize}, ${inquiry.budget}, ${inquiry.source}, ${inquiry.vertical}, ${inquiry.category}, ${leadScore}, ${leadTier})
+    VALUES (${inquiry.name}, ${contactField}, ${inquiry.interestedIn}, ${inquiry.location}, ${inquiry.month}, ${inquiry.groupSize}, ${inquiry.budget}, ${inquiry.source}, ${inquiry.vertical}, ${inquiry.category || inquiry.trek}, ${leadScore}, ${leadTier})
     RETURNING id
   `;
 

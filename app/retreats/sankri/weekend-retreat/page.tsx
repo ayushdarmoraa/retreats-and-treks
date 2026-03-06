@@ -58,7 +58,7 @@ export default function SankriWeekendRetreatPage() {
       <section style={{ textAlign: 'center', paddingTop: '1rem', borderTop: '1px solid var(--color-border)' }}>
         <p style={{ marginBottom: '1rem', color: 'var(--color-muted)' }}>Ready to discuss dates and details?</p>
         <a
-          href="https://wa.me/91XXXXXXXXXX?text=Hi%2C%20I%27m%20interested%20in%20a%20weekend%20retreat%20in%20Sankri."
+          href="https://wa.me/919760446101?text=Hi%2C%20I%27m%20interested%20in%20a%20weekend%20retreat%20in%20Sankri."
           style={{
             display: 'inline-block',
             padding: '0.75rem 1.25rem',
