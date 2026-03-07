@@ -32,6 +32,7 @@ const isChakrataGoodForARetreat: BlogContent = {
 <h3>Comparing Chakrata to Other Locations</h3>
 <p>Compared to destinations such as Mussoorie or Rishikesh, Chakrata experiences lower commercial activity and reduced crowd density. This can result in fewer distractions and stronger environmental containment for retreat programs.</p>
 <p>To explore current programs hosted here, visit the <a href="/retreats/chakrata">Chakrata retreat hub</a>. For a broader understanding of retreat formats across regions, refer to our guide to <a href="/retreats/himalayan-retreats">Himalayan Retreats in India</a>.</p>
+<p>For specific Chakrata experiences, see <a href="/burnout-recovery-retreat-chakrata">burnout recovery retreats in Chakrata</a> or browse the <a href="/retreat-calendar">retreat calendar</a> for upcoming dates and pricing. First-timers may also benefit from the <a href="/3-day-meditation-retreat">3-day retreat guide</a>.</p>
   `.trim(),
   targetMoneyPage: '/retreats/chakrata',
   relatedRetreats: ['rest-and-reset', 'weekend-retreat'],

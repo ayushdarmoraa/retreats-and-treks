@@ -4,7 +4,8 @@
    Adding a new location = add one entry. No other edits.
 ========================================================= */
 
-export type LocationId = typeof LOCATIONS[number]['id'];
+export type Location = typeof LOCATIONS[number];
+export type LocationId = Location['id'];
 
 export const LOCATIONS = [
   {
@@ -90,6 +91,23 @@ export const LOCATIONS = [
     geo: { latitude: 30.555, longitude: 79.566 },
     address: { region: 'Uttarakhand', country: 'IN' },
     touristType: ['Adventure Trekkers', 'Mountaineers', 'Alpine Hikers'],
+  },
+  {
+    id: 'zanskar',
+    name: 'Zanskar',
+    tagline: 'A high-altitude river valley in Ladakh — raw remoteness, ancient monasteries, and transformative silence.',
+    supportsRetreats: true,
+    supportsTreks: true,
+    active: true,
+    priority: 8,
+    geo: { latitude: 33.512, longitude: 76.932 },
+    address: { region: 'Ladakh', country: 'IN' },
+    touristType: ['Adventure Trekkers', 'Spiritual Seekers', 'Remote Wilderness Explorers'],
+    altitude: 3500,
+    nearestAirport: 'Kushok Bakula Rimpochee Airport, Leh (IXL)',
+    distanceFromAirport: '230 km (~8–10 hours by road)',
+    accommodationType: 'Guesthouse & camping',
+    maxGroupSize: 12,
   },
 ] as const;
 

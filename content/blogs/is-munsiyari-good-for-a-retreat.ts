@@ -32,6 +32,7 @@ const isMunsiyariGoodForARetreat: BlogContent = {
 <h3>Practical Considerations</h3>
 <p>The travel commitment should be factored honestly into the decision. Adding travel days to the program length is advisable. Connectivity in Munsiyari is limited, which is often experienced as an advantage rather than an inconvenience within the retreat context.</p>
 <p>To explore current programs hosted here, visit the <a href="/retreats/munsiyari">Munsiyari retreat hub</a>. For a broader understanding of how retreat formats and locations compare, refer to our guide to <a href="/retreats/himalayan-retreats">Himalayan Retreats in India</a>.</p>
+<p>For specific experiences, see <a href="/healing-retreat-munsiyari">healing retreats in Munsiyari</a> or <a href="/silent-retreat-munsiyari">silent retreats in Munsiyari</a>. View all scheduled retreat dates on the <a href="/retreat-calendar">retreat calendar</a>.</p>
   `.trim(),
   targetMoneyPage: '/retreats/munsiyari',
   relatedRetreats: ['rest-and-reset', 'meditation-and-silence'],

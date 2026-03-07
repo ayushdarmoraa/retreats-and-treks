@@ -35,7 +35,7 @@ const bestTimeForRetreatInSankri: BlogContent = {
 <h3>Choosing Based on Intention</h3>
 <p>Spring and autumn offer the strongest balance of accessibility, weather, and environmental quality. Summer suits those escaping heat with time flexibility. Winter retreats are possible but require careful logistics planning.</p>
 <p>For a broader understanding of how retreat structures differ across Himalayan regions, see our guide to <a href="/retreats/himalayan-retreats">Himalayan Retreats in India</a>.</p>
-<p>To explore current programs hosted in this region, visit the <a href="/retreats/sankri">Sankri retreat hub</a>.</p>
+<p>To explore current programs hosted in this region, visit the <a href="/retreats/sankri">Sankri retreat hub</a>. For specific experiences, see <a href="/stress-relief-retreat-sankri">stress-relief retreats in Sankri</a> or view upcoming dates on the <a href="/retreat-calendar">retreat calendar</a>.</p>
   `.trim(),
   targetMoneyPage: '/retreats/sankri',
   relatedRetreats: ['burnout-recovery', 'yoga-and-movement'],

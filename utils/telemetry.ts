@@ -21,7 +21,11 @@ type EventType =
   | 'availability_form_submit'
   | 'departure_table_click'
   | 'whatsapp_click'
-  | 'phone_click';
+  | 'phone_click'
+  | 'calendar_filter'
+  | 'micro_save'
+  | 'micro_share'
+  | 'micro_download';
 
 interface TrackPayload {
   event: EventType;

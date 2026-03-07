@@ -83,6 +83,8 @@ If you're considering this, start with what's accessible:
 - **Mid-week option:** A [5-day programme](/blog/3-day-vs-5-day-himalayan-retreat) that includes yoga, walking, and intentional downtime
 - **Adventure option:** A [guided trek from Sankri](/treks/location/sankri) — 4–6 days of physical immersion with zero connectivity
 
+For all scheduled retreat dates with pricing, see the [retreat calendar](/retreat-calendar). If you are experiencing burnout, our <a href="/burnout-recovery-retreats">burnout recovery retreats</a> and <a href="/digital-detox-retreat-chakrata">digital detox retreats in Chakrata</a> are designed specifically for this.
+
 The format matters less than the commitment: go somewhere the infrastructure supports disconnection, stay long enough for the reset to take hold, and let the environment do the heavy lifting.
 
 Your phone will be there when you get back. The Himalayas are offering something it can't.

@@ -49,7 +49,7 @@ const retreatVsTrekWhichIsRightForYou: BlogContent = {
 <h3>Making the Decision</h3>
 <p>If your goal is recalibration, structured reflection, and guided stillness, a <a href="/retreats/himalayan-retreats">Himalayan retreat</a> may be more suitable.</p>
 <p>If your goal is terrain progression, physical challenge, and route-based immersion, explore our available <a href="/treks">Himalayan trekking experiences</a>.</p>
-<p>Both formats offer meaningful engagement with mountain environments — the difference lies in where your attention is directed.</p>
+<p>Both formats offer meaningful engagement with mountain environments — the difference lies in where your attention is directed. Browse specific retreat dates on the <a href="/retreat-calendar">retreat calendar</a>, or try the <a href="/find-your-retreat">retreat finder</a> for a personalised recommendation based on your goals.</p>
   `.trim(),
   targetMoneyPage: '/retreats/himalayan-retreats',
   relatedRetreats: ['rest-and-reset', 'weekend-retreat'],

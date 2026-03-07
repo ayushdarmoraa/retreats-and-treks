@@ -12,6 +12,7 @@ import { munsiyariLocation } from './munsiyari';
 import { rishikeshLocation } from './rishikesh';
 import { lohajungLocation } from './lohajung';
 import { joshimathLocation } from './joshimath';
+import { zanskarLocation } from './zanskar';
 
 export type LocationPremiumContent = {
   readonly id: LocationId;
@@ -79,6 +80,11 @@ export type LocationPremiumContent = {
     readonly description: string;
     readonly bestTime?: string;
   }>;
+  /** Deep topical editorial sections for SEO pillar expansion (optional, Zanskar etc.) */
+  readonly deepTopicalContent?: ReadonlyArray<{
+    readonly heading: string;
+    readonly body: string;
+  }>;
 };
 
 const LOCATION_CONTENT: Record<LocationId, LocationPremiumContent> = {
@@ -89,6 +95,7 @@ const LOCATION_CONTENT: Record<LocationId, LocationPremiumContent> = {
   rishikesh: rishikeshLocation,
   lohajung: lohajungLocation,
   joshimath: joshimathLocation,
+  zanskar: zanskarLocation,
 };
 
 /**

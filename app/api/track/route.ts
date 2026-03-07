@@ -46,6 +46,10 @@ const BEHAVIORAL_EVENTS = [
   'departure_table_click',
   'whatsapp_click',
   'phone_click',
+  'calendar_filter',
+  'micro_save',
+  'micro_share',
+  'micro_download',
 ] as const;
 
 const ALL_EVENTS = [...NAVIGATION_EVENTS, ...BEHAVIORAL_EVENTS] as const;

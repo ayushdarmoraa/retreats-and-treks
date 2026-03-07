@@ -60,7 +60,7 @@ The best time for a retreat in Chakrata depends less on ideal weather and more o
 
 For a broader understanding of how retreat structures differ across Himalayan regions, see our guide to <a href="/retreats/himalayan-retreats">Himalayan Retreats in India</a>.
 
-To explore current programs hosted in this region, visit our <a href="/retreats/chakrata">Chakrata retreat hub</a>.
+To explore current programs hosted in this region, visit our <a href="/retreats/chakrata">Chakrata retreat hub</a>. If you already know Chakrata is right, browse <a href="/meditation-retreat-chakrata">meditation retreats in Chakrata</a> or check specific dates and pricing on the <a href="/retreat-calendar">retreat calendar</a>.
   `.trim(),
   targetMoneyPage: '/retreats/chakrata',
   relatedRetreats: ['rest-and-reset', 'weekend-retreat'],

@@ -46,6 +46,7 @@ const threeDayVsFiveDayHimalayanRetreat: BlogContent = {
 <p>If your primary need is a structured pause and time constraints are significant, a three-day retreat can be highly effective.</p>
 <p>If you are seeking deeper recalibration, extended silence, or a stronger shift in internal rhythm, a five-day format is generally more transformative.</p>
 <p>To explore available programs across durations, visit our guide to <a href="/retreats/himalayan-retreats">Himalayan Retreats in India</a>. Individual retreat pages outline specific schedules and program intensity to help you choose with clarity.</p>
+<p>For specific duration options, see our <a href="/3-day-meditation-retreat">3-day retreat</a> and <a href="/5-day-yoga-retreat">5-day retreat</a> guides. To view scheduled retreats with exact dates and pricing, visit the <a href="/retreat-calendar">retreat calendar</a>. Not sure which format fits? Try the <a href="/find-your-retreat">retreat finder</a>.</p>
   `.trim(),
   targetMoneyPage: '/retreats/himalayan-retreats',
   relatedRetreats: ['rest-and-reset', 'weekend-retreat'],

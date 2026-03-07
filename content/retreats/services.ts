@@ -59,6 +59,7 @@ export function getRetreatsForLocation(locationId: LocationId): RetreatService[]
     rishikesh: ['spiritual-grounding', 'yoga-and-movement', 'meditation-and-silence'],
     lohajung: [],   // Trek-only location — no retreat affinity yet
     joshimath: [],  // Trek-only location — no retreat affinity yet
+    zanskar: ['meditation-and-silence', 'burnout-recovery', 'yoga-and-movement'],
   };
 
   const relevantSlugs = affinityMap[locationId] || [];

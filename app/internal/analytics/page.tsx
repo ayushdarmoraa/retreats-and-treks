@@ -9,6 +9,10 @@ import { notFound } from 'next/navigation';
 import fs from 'fs';
 import path from 'path';
 import type { Metadata } from 'next';
+import { getAllExperiencePageSlugs } from '@/config/experiencePages';
+import { getAllExperienceLocationSlugs } from '@/config/experienceLocationPages';
+import { getAllItinerarySlugs } from '@/config/itineraryPages';
+import { getAllRetreatProgramSlugs } from '@/config/retreatProgramEvents';
 
 export const metadata: Metadata = {
   title: 'Internal Analytics — Retreats And Treks',
@@ -101,6 +105,70 @@ function computeStats(events: TrackEvent[]) {
   // Recent 20
   const recent = events.slice(-20).reverse();
 
+  // ── Booking Proximity Stats ─────────────────────────────────────────────────
+
+  // Page-type funnel: classify every event's `from` page into a funnel stage
+  const authoritySlugs = new Set(getAllExperiencePageSlugs().map((s) => `/${s}`));
+  const elSlugs = new Set(getAllExperienceLocationSlugs().map((s) => `/${s}`));
+  const itSlugs = new Set(getAllItinerarySlugs().map((s) => `/${s}`));
+  const programSlugs = new Set(getAllRetreatProgramSlugs().map((s) => `/${s}`));
+  const locationPattern = /^\/locations\/[a-z-]+$/;
+
+  function classifyPage(pagePath: string): string | null {
+    if (authoritySlugs.has(pagePath)) return 'authority';
+    if (locationPattern.test(pagePath)) return 'location';
+    if (elSlugs.has(pagePath)) return 'experience-location';
+    if (itSlugs.has(pagePath)) return 'itinerary';
+    if (programSlugs.has(pagePath)) return 'program-event';
+    if (pagePath === '/retreat-calendar' || pagePath === '/find-your-retreat') return 'conversion-hub';
+    return null;
+  }
+
+  const pageTypeFunnel = new Map<string, number>();
+  for (const e of events) {
+    const stage = classifyPage(e.from);
+    if (stage) pageTypeFunnel.set(stage, (pageTypeFunnel.get(stage) ?? 0) + 1);
+    // Also count destination pages for navigation events
+    if (e.to) {
+      const toStage = classifyPage(e.to);
+      if (toStage) pageTypeFunnel.set(toStage, (pageTypeFunnel.get(toStage) ?? 0) + 1);
+    }
+  }
+
+  const funnelStages = [
+    'authority', 'location', 'experience-location', 'itinerary', 'program-event', 'conversion-hub',
+  ];
+
+  // Micro-commitment signals per page
+  const microEvents = events.filter((e) => ['micro_save', 'micro_share', 'micro_download'].includes(e.event));
+  const microByPage = new Map<string, { saves: number; shares: number; downloads: number }>();
+  for (const e of microEvents) {
+    if (!microByPage.has(e.from)) microByPage.set(e.from, { saves: 0, shares: 0, downloads: 0 });
+    const entry = microByPage.get(e.from)!;
+    if (e.event === 'micro_save') entry.saves++;
+    else if (e.event === 'micro_share') entry.shares++;
+    else if (e.event === 'micro_download') entry.downloads++;
+  }
+  const microByPageSorted = [...microByPage.entries()]
+    .map(([page, counts]) => ({ page, ...counts, total: counts.saves + counts.shares + counts.downloads }))
+    .sort((a, b) => b.total - a.total)
+    .slice(0, 15);
+
+  // Booking intent signals
+  const calendarFilters = events.filter((e) => e.event === 'calendar_filter');
+  const programPageVisits = events.filter((e) => programSlugs.has(e.from) || (e.to && programSlugs.has(e.to)));
+  const programPageCounts = new Map<string, number>();
+  for (const e of programPageVisits) {
+    const page = programSlugs.has(e.from) ? e.from : e.to!;
+    programPageCounts.set(page, (programPageCounts.get(page) ?? 0) + 1);
+  }
+  const programPageSorted = [...programPageCounts.entries()].sort((a, b) => b[1] - a[1]);
+
+  // Authority → Conversion ratio
+  const authorityVisits = pageTypeFunnel.get('authority') ?? 0;
+  const programVisits = pageTypeFunnel.get('program-event') ?? 0;
+  const conversionRatio = authorityVisits > 0 ? ((programVisits / authorityVisits) * 100).toFixed(1) : '—';
+
   return {
     total: events.length,
     byType,
@@ -113,6 +181,16 @@ function computeStats(events: TrackEvent[]) {
     bySrc,
     sortByKey,
     recent,
+    // Booking proximity
+    pageTypeFunnel,
+    funnelStages,
+    microByPageSorted,
+    microTotal: microEvents.length,
+    calendarFilters: calendarFilters.length,
+    programPageSorted,
+    authorityVisits,
+    programVisits,
+    conversionRatio,
   };
 }
 
@@ -338,6 +416,130 @@ export default function AnalyticsDashboard() {
               </table>
             )}
           </div>
+
+          {/* ── BOOKING PROXIMITY PANELS ──────────────────────────────────── */}
+
+          <div style={{ borderTop: '3px solid #2d6a4f', marginTop: '2.5rem', paddingTop: '2rem', marginBottom: '2rem' }}>
+            <h2 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.25rem' }}>Booking Proximity</h2>
+            <p style={{ fontSize: '0.85rem', color: '#888', marginBottom: '1.5rem' }}>Which pages are closest to generating bookings?</p>
+          </div>
+
+          {/* ── Panel A: Authority → Conversion Ratio ──────────────────────── */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
+            <div style={{ ...card, textAlign: 'center' }}>
+              <p style={{ fontSize: '0.8rem', fontWeight: 600, color: '#888', marginBottom: '0.5rem' }}>Authority Page Events</p>
+              <p style={{ fontSize: '2.5rem', fontWeight: 800, color: '#2d6a4f', margin: 0 }}>{s.authorityVisits}</p>
+            </div>
+            <div style={{ ...card, textAlign: 'center' }}>
+              <p style={{ fontSize: '0.8rem', fontWeight: 600, color: '#888', marginBottom: '0.5rem' }}>Program Event Page Events</p>
+              <p style={{ fontSize: '2.5rem', fontWeight: 800, color: '#b5651d', margin: 0 }}>{s.programVisits}</p>
+            </div>
+            <div style={{ ...card, textAlign: 'center' }}>
+              <p style={{ fontSize: '0.8rem', fontWeight: 600, color: '#888', marginBottom: '0.5rem' }}>Authority → Program Ratio</p>
+              <p style={{ fontSize: '2.5rem', fontWeight: 800, color: typeof s.conversionRatio === 'string' && parseFloat(s.conversionRatio) >= 2 ? '#2d6a4f' : '#c0392b', margin: 0 }}>
+                {s.conversionRatio}%
+              </p>
+              <p style={{ fontSize: '0.75rem', color: '#aaa', marginTop: '0.25rem' }}>Healthy: 2–5%</p>
+            </div>
+          </div>
+
+          {/* ── Panel B: Page-Type Funnel ──────────────────────────────────── */}
+          <div style={card}>
+            <h2 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '1rem' }}>Page-Type Funnel</h2>
+            <p style={{ fontSize: '0.8rem', color: '#888', marginBottom: '1rem' }}>Events by page category — shows where users are in the buying journey.</p>
+            <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+              <thead>
+                <tr>
+                  <th style={{ ...th, width: '25%' }}>Stage</th>
+                  <th style={th}>Activity</th>
+                </tr>
+              </thead>
+              <tbody>
+                {s.funnelStages.map((stage) => {
+                  const count = s.pageTypeFunnel.get(stage) ?? 0;
+                  const maxFunnel = Math.max(...s.funnelStages.map((st) => s.pageTypeFunnel.get(st) ?? 0), 1);
+                  const stageLabels: Record<string, string> = {
+                    'authority': '1. Authority Pages',
+                    'location': '2. Location Hubs',
+                    'experience-location': '3. Experience × Location',
+                    'itinerary': '4. Itinerary Pages',
+                    'program-event': '5. Program Events',
+                    'conversion-hub': '6. Calendar / Finder',
+                  };
+                  return (
+                    <tr key={stage}>
+                      <td style={{ ...td, fontSize: '0.85rem', fontWeight: 600 }}>{stageLabels[stage] ?? stage}</td>
+                      <td style={td}><Bar value={count} max={maxFunnel} color={stage === 'program-event' ? '#b5651d' : '#2d6a4f'} /></td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+
+          {/* ── Panel C: Micro-Commitment Signals ─────────────────────────── */}
+          <div style={card}>
+            <h2 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem' }}>Micro-Commitment Signals</h2>
+            <p style={{ fontSize: '0.8rem', color: '#888', marginBottom: '1rem' }}>
+              {s.microTotal} total micro-commitments — saves, shares, and downloads indicate pre-booking intent.
+            </p>
+            {s.microByPageSorted.length === 0 ? (
+              <p style={{ color: '#aaa', fontSize: '0.875rem' }}>No micro-commitment events recorded yet.</p>
+            ) : (
+              <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                <thead>
+                  <tr>
+                    <th style={{ ...th, width: '45%' }}>Page</th>
+                    <th style={{ ...th, width: '4rem' }}>Saves</th>
+                    <th style={{ ...th, width: '4rem' }}>Downloads</th>
+                    <th style={{ ...th, width: '4rem' }}>Shares</th>
+                    <th style={{ ...th, width: '4rem' }}>Total</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {s.microByPageSorted.map(({ page, saves, downloads, shares, total }) => (
+                    <tr key={page}>
+                      <td style={{ ...td, fontSize: '0.8rem', wordBreak: 'break-all' }}>{page}</td>
+                      <td style={{ ...td, fontWeight: saves > 0 ? 700 : 400, color: saves > 0 ? '#2d6a4f' : '#aaa' }}>{saves}</td>
+                      <td style={{ ...td, fontWeight: downloads > 0 ? 700 : 400, color: downloads > 0 ? '#2d6a4f' : '#aaa' }}>{downloads}</td>
+                      <td style={{ ...td, fontWeight: shares > 0 ? 700 : 400, color: shares > 0 ? '#2d6a4f' : '#aaa' }}>{shares}</td>
+                      <td style={{ ...td, fontWeight: 800 }}>{total}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
+          </div>
+
+          {/* ── Panel D: Booking Intent ────────────────────────────────────── */}
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
+            <div style={card}>
+              <h2 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem' }}>Calendar Filter Events</h2>
+              <p style={{ fontSize: '2rem', fontWeight: 800, color: '#b5651d', marginBottom: '0.5rem' }}>{s.calendarFilters}</p>
+              <p style={{ fontSize: '0.8rem', color: '#888' }}>Users filtering by date or location in the retreat calendar — strong buying signal.</p>
+            </div>
+
+            <div style={card}>
+              <h2 style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.5rem' }}>Program Event Page Activity</h2>
+              {s.programPageSorted.length === 0 ? (
+                <p style={{ color: '#aaa', fontSize: '0.875rem' }}>No event page activity yet.</p>
+              ) : (
+                <table style={{ width: '100%', borderCollapse: 'collapse' }}>
+                  <thead><tr><th style={th}>Event Page</th><th style={{ ...th, width: '4rem' }}>Events</th></tr></thead>
+                  <tbody>
+                    {s.programPageSorted.map(([page, count]) => (
+                      <tr key={page}>
+                        <td style={{ ...td, fontSize: '0.8rem', wordBreak: 'break-all' }}>{page}</td>
+                        <td style={{ ...td, fontWeight: 700 }}>{count}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          </div>
+
+          {/* ── END BOOKING PROXIMITY ─────────────────────────────────────── */}
 
           {/* ── 6. Recent events ─────────────────────────────────── */}
           <div style={card}>

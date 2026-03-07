@@ -4,6 +4,12 @@ import { getAllTreks } from '@/lib/treks';
 import { getAllRetreatServices } from '@/content/retreats/services';
 import { getBlogPostsForSitemap, ALL_BLOG_POSTS } from '@/content/blogs';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { EXPERIENCE_PAGES } from '@/config/experiencePages';
+import { DURATION_PAGES } from '@/config/durationPages';
+import { EXPERIENCE_LOCATION_PAGES } from '@/config/experienceLocationPages';
+import { ITINERARY_PAGES } from '@/config/itineraryPages';
+import { RETREAT_PROGRAM_EVENTS } from '@/config/retreatProgramEvents';
+import { FACILITATOR_PROFILES } from '@/config/facilitators';
 
 const COMPARE_SEPARATOR = '-vs-';
 
@@ -36,6 +42,224 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 1.0,
     changeFrequency: 'monthly',
   });
+
+  // ── 1b. Experience authority pages (Axis 2 — problem-based) ──────────────
+  for (const exp of EXPERIENCE_PAGES) {
+    entries.push({
+      url: buildCanonicalUrl(`/${exp.slug}`),
+      lastModified: now,
+      priority: 0.95,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  // ── 1c. Best-of comparison pages (top-of-funnel) ──────────────────────────
+  for (const slug of ['best-meditation-retreats-in-india', 'best-himalayan-retreats', 'himalayan-silent-retreats']) {
+    entries.push({
+      url: buildCanonicalUrl(`/${slug}`),
+      lastModified: now,
+      priority: 0.9,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  // ── 1d. Retreat guide pages (informational content engine) ────────────────
+  for (const slug of [
+    'how-to-choose-a-meditation-retreat',
+    'what-happens-at-a-silent-retreat',
+    'how-to-prepare-for-a-retreat',
+    'retreat-vs-vacation',
+    'benefits-of-himalayan-retreats',
+  ]) {
+    entries.push({
+      url: buildCanonicalUrl(`/${slug}`),
+      lastModified: now,
+      priority: 0.8,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  // ── 1e. Duration × retreat-type pages (high-conversion) ──────────────────
+  for (const dp of DURATION_PAGES) {
+    entries.push({
+      url: buildCanonicalUrl(`/${dp.slug}`),
+      lastModified: now,
+      priority: 0.85,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  // ── 1f. Micro-topic cluster pages (meditation retreat pillar support) ─────
+  for (const slug of [
+    'benefits-of-meditation-retreat',
+    'is-a-meditation-retreat-worth-it',
+    'what-to-expect-at-a-meditation-retreat',
+    'first-meditation-retreat-tips',
+  ]) {
+    entries.push({
+      url: buildCanonicalUrl(`/${slug}`),
+      lastModified: now,
+      priority: 0.75,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  // ── 1f-2. Retreat story pages (first-person narratives) ──────────────────
+  for (const slug of [
+    'my-7-day-meditation-retreat-in-zanskar',
+    'what-i-learned-from-a-silent-retreat',
+    'a-week-without-my-phone-digital-detox',
+    'why-people-go-to-meditation-retreats',
+    'what-happens-to-your-mind-in-silence',
+  ]) {
+    entries.push({
+      url: buildCanonicalUrl(`/${slug}`),
+      lastModified: now,
+      priority: 0.75,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  // ── 1f-3. Comparison & preparation pages ─────────────────────────────────
+  for (const slug of [
+    'vipassana-vs-meditation-retreat',
+    'retreat-vs-therapy',
+    'silent-retreat-vs-digital-detox',
+    'what-to-pack-for-a-retreat',
+    'how-hard-is-a-silent-retreat',
+    'first-day-of-a-meditation-retreat',
+    'how-long-should-a-meditation-retreat-be',
+    'retreats-for-beginners',
+  ]) {
+    entries.push({
+      url: buildCanonicalUrl(`/${slug}`),
+      lastModified: now,
+      priority: 0.75,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  // ── 1f-4. Zanskar authority cluster ──────────────────────────────────────
+  for (const slug of [
+    'why-zanskar-is-perfect-for-retreats',
+    'best-time-for-a-retreat-in-zanskar',
+    'how-to-reach-zanskar-for-a-retreat',
+  ]) {
+    entries.push({
+      url: buildCanonicalUrl(`/${slug}`),
+      lastModified: now,
+      priority: 0.75,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  // ── 1g. Experience × Location intersection pages (30 programmatic) ────────
+  for (const elp of EXPERIENCE_LOCATION_PAGES) {
+    entries.push({
+      url: buildCanonicalUrl(`/${elp.slug}`),
+      lastModified: now,
+      priority: 0.85,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  // ── 1h. Seasonal retreat pages ────────────────────────────────────────────
+  for (const slug of [
+    'winter-retreat-himalayas',
+    'summer-retreat-himalayas',
+    'spring-retreat-himalayas',
+    'autumn-retreat-himalayas',
+  ]) {
+    entries.push({
+      url: buildCanonicalUrl(`/${slug}`),
+      lastModified: now,
+      priority: 0.8,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  // ── 1i. Transformation retreat pages ──────────────────────────────────────
+  for (const slug of [
+    'self-discovery-retreat',
+    'life-reset-retreat',
+    'spiritual-awakening-retreat',
+    'personal-growth-retreat',
+  ]) {
+    entries.push({
+      url: buildCanonicalUrl(`/${slug}`),
+      lastModified: now,
+      priority: 0.8,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  // ── 1j. Trek + retreat hybrid pages ───────────────────────────────────────
+  for (const slug of [
+    'meditation-retreat-and-trek',
+    'himalayan-retreat-with-trekking',
+    'trek-and-meditate-himalayas',
+  ]) {
+    entries.push({
+      url: buildCanonicalUrl(`/${slug}`),
+      lastModified: now,
+      priority: 0.8,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  // ── 1k. Retreat itinerary pages (30 programmatic) ─────────────────────────
+  for (const itp of ITINERARY_PAGES) {
+    entries.push({
+      url: buildCanonicalUrl(`/${itp.slug}`),
+      lastModified: now,
+      priority: 0.8,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  // ── 1l. Retreat Finder page ───────────────────────────────────────────────
+  entries.push({
+    url: buildCanonicalUrl('/find-your-retreat'),
+    lastModified: now,
+    priority: 0.9,
+    changeFrequency: 'monthly',
+  });
+
+  // ── 1m. Retreat Calendar page ─────────────────────────────────────────────
+  entries.push({
+    url: buildCanonicalUrl('/retreat-calendar'),
+    lastModified: now,
+    priority: 0.9,
+    changeFrequency: 'weekly',
+  });
+
+  // ── 1n. Program event pages (highest conversion — dated retreats) ─────────
+  for (const ev of RETREAT_PROGRAM_EVENTS) {
+    entries.push({
+      url: buildCanonicalUrl(`/${ev.slug}`),
+      lastModified: now,
+      priority: 0.9,
+      changeFrequency: 'weekly',
+    });
+  }
+
+  // ── 2. Retreat pillar (highest revenue authority) ────────────────────
+
+  // ── 1o. Facilitator pages (trust signals) ─────────────────────────────
+  entries.push({
+    url: buildCanonicalUrl('/facilitators'),
+    lastModified: now,
+    priority: 0.8,
+    changeFrequency: 'monthly',
+  });
+  for (const f of FACILITATOR_PROFILES) {
+    entries.push({
+      url: buildCanonicalUrl(`/facilitators/${f.slug}`),
+      lastModified: now,
+      priority: 0.75,
+      changeFrequency: 'monthly',
+    });
+  }
 
   // ── 2. Retreat pillar (highest revenue authority) ────────────────────────
   entries.push({
@@ -225,7 +449,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ── 4. Location hubs ──────────────────────────────────────────────────────
   const locations = getAllLocations();
+
+  // Locations index page
+  entries.push({
+    url: buildCanonicalUrl('/locations'),
+    lastModified: now,
+    priority: 0.9,
+    changeFrequency: 'monthly',
+  });
+
   for (const location of locations) {
+    // Unified location hub page
+    entries.push({
+      url: buildCanonicalUrl(`/locations/${location.id}`),
+      lastModified: now,
+      priority: 0.85,
+      changeFrequency: 'monthly',
+    });
     if (location.supportsRetreats) {
       entries.push({
         url: buildCanonicalUrl(`/retreats/${location.id}`),

@@ -71,6 +71,7 @@ const sankriVsMunsiyariRetreat: BlogContent = {
 <p>Both locations share the same broad seasonal pattern: best from April through November, with October and November being the premium window. Sankri is accessible slightly earlier in spring and slightly later into autumn. Munsiyari's higher exposure means its season margins are tighter.</p>
 <p>Neither location suits a standard Friday-to-Sunday weekend — both require too much travel for a two-night format. Chakrata and Rishikesh serve short-duration stays better. Sankri and Munsiyari are destinations for participants who have committed to extended immersion.</p>
 <p>For a broader view of retreat options across Uttarakhand, including seasonal guidance for all four locations, see our <a href="/retreats/uttarakhand-retreats">Uttarakhand retreats</a> guide.</p>
+<p>Explore specific experiences: <a href="/stress-relief-retreat-sankri">stress-relief retreats in Sankri</a> or <a href="/healing-retreat-munsiyari">healing retreats in Munsiyari</a>. For all upcoming retreat dates, visit the <a href="/retreat-calendar">retreat calendar</a>.</p>
 
 <h2>Frequently Asked Questions</h2>
 <h3>Is Munsiyari colder than Sankri?</h3>

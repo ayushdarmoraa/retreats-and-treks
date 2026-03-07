@@ -32,6 +32,7 @@ const isSankriGoodForARetreat: BlogContent = {
 <h3>Comparing Sankri to Other Locations</h3>
 <p>Compared to Chakrata, Sankri offers higher elevation, greater remoteness, and a more alpine landscape. Compared to Rishikesh, it offers significantly lower commercial activity and crowd density. Each location serves a different participant profile.</p>
 <p>To explore current programs hosted here, visit the <a href="/retreats/sankri">Sankri retreat hub</a>. For a broader understanding of retreat formats across the region, refer to our guide to <a href="/retreats/himalayan-retreats">Himalayan Retreats in India</a>.</p>
+<p>For specific Sankri experiences, see <a href="/meditation-retreat-sankri">meditation retreats in Sankri</a> or <a href="/stress-relief-retreat-sankri">stress-relief retreats in Sankri</a>. View upcoming retreat dates on the <a href="/retreat-calendar">retreat calendar</a>.</p>
   `.trim(),
   targetMoneyPage: '/retreats/sankri',
   relatedRetreats: ['burnout-recovery', 'yoga-and-movement'],

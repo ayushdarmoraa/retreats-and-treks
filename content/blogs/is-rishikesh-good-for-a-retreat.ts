@@ -32,6 +32,7 @@ const isRishikeshGoodForARetreat: BlogContent = {
 <h3>Comparing Rishikesh to Other Locations</h3>
 <p>Compared to Chakrata and Sankri, Rishikesh offers more infrastructure and less geographic isolation. For participants who benefit from quiet forest environments and distance from tourist activity, Chakrata may provide stronger containment. For those who value proximity to an established practitioner community and spiritual tradition, Rishikesh offers something distinct.</p>
 <p>To explore current programs hosted here, visit the <a href="/retreats/rishikesh">Rishikesh retreat hub</a>. For a broader comparison of retreat formats and locations across the region, refer to our guide to <a href="/retreats/himalayan-retreats">Himalayan Retreats in India</a>.</p>
+<p>For yoga-focused options, see <a href="/yoga-retreat-rishikesh">yoga retreats in Rishikesh</a> or <a href="/meditation-retreat-rishikesh">meditation retreats in Rishikesh</a>. Browse scheduled retreat dates on the <a href="/retreat-calendar">retreat calendar</a>.</p>
   `.trim(),
   targetMoneyPage: '/retreats/rishikesh',
   relatedRetreats: ['yoga-and-movement', 'meditation-and-silence'],

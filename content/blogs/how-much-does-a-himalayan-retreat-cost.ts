@@ -48,6 +48,7 @@ const howMuchDoesAHimalayanRetreatCost: BlogContent = {
 <h3>How to Choose Based on Budget</h3>
 <p>If budget is a primary consideration, shorter formats or shared accommodation options may be suitable. If depth and immersion are priorities, extended retreats may offer stronger long-term value.</p>
 <p>To explore currently available programs and view specific inclusions, visit our guide to <a href="/retreats/himalayan-retreats">Himalayan Retreats in India</a>. Individual retreat pages outline duration, structure, and accommodation details to help you decide with clarity.</p>
+<p>For transparent pricing on specific dates, browse the <a href="/retreat-calendar">retreat calendar</a> — every scheduled retreat shows its all-inclusive price and remaining seats. Compare duration options on our <a href="/3-day-meditation-retreat">3-day retreat</a> and <a href="/7-day-meditation-retreat">7-day retreat</a> pages.</p>
   `.trim(),
   targetMoneyPage: '/retreats/himalayan-retreats',
   relatedRetreats: ['rest-and-reset', 'weekend-retreat'],

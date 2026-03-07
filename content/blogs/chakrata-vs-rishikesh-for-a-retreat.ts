@@ -38,6 +38,7 @@ const chakrataVsRishikeshForARetreat: BlogContent = {
 <li>If you prioritize environmental quiet, lower crowd density, and ridge-based mountain immersion, Chakrata may offer stronger containment for retreat work.</li>
 </ul>
 <p>To explore current programs hosted in Chakrata, visit the <a href="/retreats/chakrata">Chakrata retreat hub</a>. For a broader overview of retreat formats across the region, see our guide to <a href="/retreats/himalayan-retreats">Himalayan Retreats in India</a>.</p>
+<p>For specific experiences by location, compare <a href="/meditation-retreat-chakrata">meditation retreats in Chakrata</a> with <a href="/yoga-retreat-rishikesh">yoga retreats in Rishikesh</a>. View scheduled dates and availability on the <a href="/retreat-calendar">retreat calendar</a>.</p>
   `.trim(),
   targetMoneyPage: '/retreats/chakrata',
   relatedRetreats: ['rest-and-reset', 'weekend-retreat'],

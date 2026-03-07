@@ -35,7 +35,7 @@ const bestTimeForRetreatInMunsiyari: BlogContent = {
 <h3>Choosing Based on Intention</h3>
 <p>Spring (May–June) and autumn (September–October) offer the clearest windows for a Munsiyari retreat. Summer is workable. Monsoon and winter carry logistical complexity that requires careful planning.</p>
 <p>For a broader understanding of retreat formats across Himalayan regions, see our guide to <a href="/retreats/himalayan-retreats">Himalayan Retreats in India</a>.</p>
-<p>To explore current programs hosted in this region, visit the <a href="/retreats/munsiyari">Munsiyari retreat hub</a>.</p>
+<p>To explore current programs hosted in this region, visit the <a href="/retreats/munsiyari">Munsiyari retreat hub</a>. For healing-focused stays, see <a href="/healing-retreat-munsiyari">healing retreats in Munsiyari</a> or browse all scheduled retreats on the <a href="/retreat-calendar">retreat calendar</a>.</p>
   `.trim(),
   targetMoneyPage: '/retreats/munsiyari',
   relatedRetreats: ['rest-and-reset', 'meditation-and-silence'],
