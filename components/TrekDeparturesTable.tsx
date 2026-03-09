@@ -24,7 +24,7 @@ const DEPARTURES = [
 function seatColor(seats: number): string {
   if (seats <= 2) return '#d32f2f';
   if (seats <= 5) return '#e65100';
-  return 'inherit';
+  return '#555555';
 }
 
 function getNextDeparture(): { date: string; seats: number; daysAway: number } | null {
@@ -52,69 +52,88 @@ export default function TrekDeparturesTable({
   const [modalOpen, setModalOpen] = useState(false);
   const nextDep = getNextDeparture();
 
-  const thStyle: React.CSSProperties = {
-    padding: '0.5rem',
-    borderBottom: '1px solid #e0e0e0',
-    textAlign: 'left',
-  };
-  const tdStyle: React.CSSProperties = {
-    padding: '0.5rem',
-    borderBottom: '1px solid #f0f0f0',
-  };
-
   function handleCheckAvailability(date: string) {
     track({ event: 'departure_table_click', from: sourcePath, meta: { trek: trekSlug, source: sourcePath, date } });
     setModalOpen(true);
   }
 
   return (
-    <section style={{ marginBottom: '2.5rem' }}>
-      <h2 style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>
+    <section style={{ marginBottom: '2rem' }}>
+
+      {/* Eyebrow */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>
+          Departures
+        </span>
+      </div>
+
+      <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.6rem' }}>
         Upcoming {trekTitle} Departures
       </h2>
-      <p style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', marginBottom: '1rem' }}>
+
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, color: '#888888', marginBottom: '1.5rem', lineHeight: 1.6 }}>
         See upcoming{' '}
-        <Link
-          href={`/treks/${trekSlug}/departures`}
-          style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}
-        >
+        <Link href={`/treks/${trekSlug}/departures`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
           {trekTitle.toLowerCase()} departures
         </Link>{' '}
         for all available dates.
       </p>
-      <div style={{ overflowX: 'auto' }}>
+
+      {/* Table */}
+      <div style={{ overflowX: 'auto', border: '1px solid #e5e7eb', borderRadius: '8px' }}>
         <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: 400 }}>
           <thead>
-            <tr style={{ background: 'var(--color-surface, #f7f7f7)' }}>
-              <th style={thStyle}>Date</th>
-              <th style={thStyle}>Duration</th>
-              <th style={thStyle}>Price</th>
-              <th style={thStyle}>Seats</th>
-              <th style={thStyle}>Action</th>
+            <tr style={{ background: '#f7f9f7', borderBottom: '1px solid #e5e7eb' }}>
+              {['Date', 'Duration', 'Price', 'Seats', 'Action'].map((h) => (
+                <th key={h} style={{
+                  padding: '0.75rem 1rem',
+                  textAlign: 'left',
+                  fontFamily: 'var(--font-geist-sans), sans-serif',
+                  fontSize: '0.55rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase' as const,
+                  color: 'var(--color-primary)',
+                  opacity: 0.75,
+                  whiteSpace: 'nowrap' as const,
+                }}>{h}</th>
+              ))}
             </tr>
           </thead>
           <tbody>
             {DEPARTURES.map((row, i) => (
-              <tr key={i}>
-                <td style={tdStyle}>{row.date}</td>
-                <td style={tdStyle}>{row.duration}</td>
-                <td style={tdStyle}>{row.price}</td>
-                <td style={{ ...tdStyle, color: seatColor(row.seats), fontWeight: row.seats <= 5 ? 600 : 400 }}>
+              <tr key={i} style={{ borderBottom: i < DEPARTURES.length - 1 ? '1px solid #f0f0f0' : 'none', background: '#ffffff' }}>
+                <td style={{ padding: '0.9rem 1rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 400, color: '#111111' }}>
+                  {row.date}
+                </td>
+                <td style={{ padding: '0.9rem 1rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, color: '#555555' }}>
+                  {row.duration}
+                </td>
+                <td style={{ padding: '0.9rem 1rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 500, color: '#111111' }}>
+                  {row.price}
+                </td>
+                <td style={{ padding: '0.9rem 1rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: row.seats <= 5 ? 600 : 300, color: seatColor(row.seats) }}>
                   {row.seats} left
                 </td>
-                <td style={tdStyle}>
+                <td style={{ padding: '0.9rem 1rem' }}>
                   <button
                     type="button"
-                    style={{
-                      padding: '0.4rem 1rem',
-                      background: 'var(--color-primary, #1976d2)',
-                      color: '#fff',
-                      border: 'none',
-                      borderRadius: 4,
-                      cursor: 'pointer',
-                      fontWeight: 500,
-                    }}
                     onClick={() => handleCheckAvailability(row.date)}
+                    style={{
+                      padding: '0.45rem 1rem',
+                      background: 'transparent',
+                      color: 'var(--color-primary)',
+                      border: '1px solid rgba(15,118,110,0.35)',
+                      borderRadius: '4px',
+                      fontFamily: 'var(--font-geist-sans), sans-serif',
+                      fontSize: '0.62rem',
+                      fontWeight: 600,
+                      letterSpacing: '0.12em',
+                      textTransform: 'uppercase' as const,
+                      cursor: 'pointer',
+                      whiteSpace: 'nowrap' as const,
+                    }}
                   >
                     Reserve Your Spot
                   </button>
@@ -124,20 +143,43 @@ export default function TrekDeparturesTable({
           </tbody>
         </table>
       </div>
-      <p style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary)', marginTop: '0.75rem', lineHeight: 1.6 }}>
+
+      {/* Footer note */}
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.8rem', fontWeight: 300, color: '#999999', marginTop: '0.85rem', lineHeight: 1.6 }}>
         Small group size (max 12 trekkers). Seats fill quickly during winter departures.
       </p>
+
+      {/* Next departure urgency bar */}
       {nextDep && (
-        <p style={{
-          fontSize: '0.9rem',
-          fontWeight: 600,
-          color: nextDep.daysAway <= 14 ? '#d32f2f' : 'var(--color-primary, #1976d2)',
-          marginTop: '0.5rem',
+        <div style={{
+          marginTop: '1rem',
+          padding: '0.75rem 1rem',
+          background: nextDep.daysAway <= 14 ? 'rgba(211,47,47,0.05)' : 'rgba(15,118,110,0.05)',
+          border: `1px solid ${nextDep.daysAway <= 14 ? 'rgba(211,47,47,0.2)' : 'rgba(15,118,110,0.2)'}`,
+          borderRadius: '6px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem',
         }}>
-          Next departure: {nextDep.date} · {nextDep.seats} seats remaining
-          {nextDep.daysAway <= 30 && ` · ${nextDep.daysAway} days away`}
-        </p>
+          <span style={{
+            width: '6px', height: '6px', borderRadius: '50%',
+            background: nextDep.daysAway <= 14 ? '#d32f2f' : 'var(--color-primary)',
+            flexShrink: 0,
+            display: 'inline-block',
+          }} />
+          <p style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.82rem',
+            fontWeight: 500,
+            color: nextDep.daysAway <= 14 ? '#d32f2f' : 'var(--color-primary)',
+            margin: 0,
+          }}>
+            Next departure: {nextDep.date} · {nextDep.seats} seats remaining
+            {nextDep.daysAway <= 30 && ` · ${nextDep.daysAway} days away`}
+          </p>
+        </div>
       )}
+
       {modalOpen && (
         <AvailabilityModal
           trekTitle={trekTitle}

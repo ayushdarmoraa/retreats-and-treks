@@ -180,19 +180,40 @@ export default async function RetreatDetailPage({ params }: PageProps) {
       />
 
       {aggregateRating && (
-        <div style={{ marginBottom: 'var(--space-md)' }}>
-          <RatingBadge rating={{ value: aggregateRating.ratingValue, count: aggregateRating.reviewCount }} variant="standard" />
-        </div>
-      )}
+  <div style={{ marginBottom: '1rem', paddingTop: '2rem' }}>
+    <RatingBadge
+      rating={{ value: aggregateRating.ratingValue, count: aggregateRating.reviewCount }}
+      variant="standard"
+    />
+  </div>
+)}
 
-      <p style={{ fontSize: '0.95rem', lineHeight: 1.75, marginBottom: 'var(--space-lg)', color: 'var(--color-text)' }}>
-        For a broader understanding of retreat formats, seasonal considerations, and how mountain
-        programs differ across regions, see our complete guide to{' '}
-        <Link href="/retreats/himalayan-retreats" style={{ color: 'var(--color-primary)' }}>
-          Himalayan Retreats in India
-        </Link>
-        .
-      </p>
+<div style={{
+  borderLeft: '2px solid rgba(15,118,110,0.3)',
+  paddingLeft: '1rem',
+  marginBottom: 'var(--space-lg)',
+}}>
+  <p style={{
+    fontFamily: 'var(--font-geist-sans), sans-serif',
+    fontSize: '0.82rem',
+    fontWeight: 300,
+    lineHeight: 1.8,
+    color: '#777777',
+    margin: 0,
+  }}>
+    For a broader understanding of retreat formats, seasonal considerations, and how mountain
+    programs differ across regions, see our complete guide to{' '}
+    <Link href="/retreats/himalayan-retreats" style={{
+      color: 'var(--color-primary)',
+      textDecoration: 'none',
+      borderBottom: '1px solid rgba(15,118,110,0.25)',
+    }}>
+      Himalayan Retreats in India
+    </Link>
+    .
+  </p>
+</div>
+
 
       <RetreatJourneyClient
         retreat={retreatService}
@@ -203,49 +224,334 @@ export default async function RetreatDetailPage({ params }: PageProps) {
       <RelatedRetreats currentSlug={retreat} />
 
       {/* Compare links — surfaces the comparison engine */}
-      {(() => {
-        const others = getAllRetreatServices().filter((s) => s.slug !== retreat).slice(0, 3);
-        if (others.length === 0) return null;
-        const pairs = others.map((s) => {
-          const [a, b] = retreat < s.slug ? [retreat, s.slug] : [s.slug, retreat];
-          return { href: `/compare/${a}-vs-${b}`, label: `${retreatService.title} vs ${s.title}` };
-        });
-        return (
-          <section style={{ marginTop: 'var(--space-lg)', paddingTop: 'var(--space-md)', borderTop: '1px solid var(--color-border, #e0e0e0)' }}>
-            <h2 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: 'var(--space-sm)' }}>
-              Compare This Retreat
-            </h2>
-            <ul style={{ paddingLeft: '1.25rem', lineHeight: 2, margin: 0 }}>
-              {pairs.map((p) => (
-                <li key={p.href}>
-                  <Link href={p.href} style={{ color: 'var(--color-primary)' }}>{p.label}</Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        );
-      })()}
+{(() => {
+  const others = getAllRetreatServices().filter((s) => s.slug !== retreat).slice(0, 3);
+  if (others.length === 0) return null;
+  const pairs = others.map((s) => {
+    const [a, b] = retreat < s.slug ? [retreat, s.slug] : [s.slug, retreat];
+    return { href: `/compare/${a}-vs-${b}`, label: `${retreatService.title} vs ${s.title}` };
+  });
+  return (
+    <section className="rct-wrap">
+      <style>{`
+        .rct-wrap {
+          width: 100vw;
+          margin-left: calc(-50vw + 50%);
+          background: #ffffff;
+          padding: 5rem 0;
+        }
+
+        .rct-inner {
+          max-width: 52rem;
+          margin: 0 auto;
+          padding: 0 2rem;
+        }
+
+        .rct-eyebrow {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+          margin-bottom: 1rem;
+        }
+        .rct-eyebrow-line {
+          width: 24px; height: 1px;
+          background: var(--color-primary); opacity: 0.5;
+          flex-shrink: 0;
+        }
+
+        .rct-h2 {
+          font-family: var(--font-geist-sans), sans-serif;
+          font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+          font-weight: 200;
+          letter-spacing: -0.03em;
+          color: #111111;
+          line-height: 1.15;
+          margin: 0 0 2rem;
+        }
+        .rct-h2-accent {
+          color: var(--color-primary);
+          font-weight: 200;
+        }
+
+        .rct-list {
+          list-style: none;
+          padding: 0; margin: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 0.6rem;
+        }
+
+        .rct-item {
+          position: relative;
+          overflow: hidden;
+          border: 1px solid #eef0ee;
+          border-radius: 6px;
+          background: #f7f9f7;
+          transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
+        }
+        .rct-item::before {
+          content: '';
+          position: absolute;
+          left: 0; top: 0; bottom: 0;
+          width: 3px;
+          background: var(--color-primary);
+          transform: scaleY(0);
+          transform-origin: bottom;
+          transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+        }
+        .rct-item:hover {
+          border-color: rgba(15,118,110,0.3);
+          box-shadow: 0 8px 24px rgba(0,0,0,0.07);
+          transform: translateY(-2px);
+        }
+        .rct-item:hover::before {
+          transform: scaleY(1);
+        }
+
+        .rct-link {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 1rem 1.25rem 1rem 1.5rem;
+          font-family: var(--font-geist-sans), sans-serif;
+          font-size: 0.85rem;
+          font-weight: 300;
+          color: var(--color-primary);
+          text-decoration: none;
+          line-height: 1.5;
+          transition: opacity 0.2s;
+        }
+        .rct-link:hover { opacity: 0.8; }
+
+        .rct-arrow {
+          font-size: 0.7rem;
+          color: var(--color-primary);
+          opacity: 0.35;
+          flex-shrink: 0;
+          transition: opacity 0.2s, transform 0.2s;
+        }
+        .rct-item:hover .rct-arrow {
+          opacity: 0.9;
+          transform: translateX(3px);
+        }
+      `}</style>
+
+      <div className="rct-inner">
+
+        <div className="rct-eyebrow">
+          <span className="rct-eyebrow-line" />
+        </div>
+
+        <h2 className="rct-h2">
+          Compare This{' '}
+          <span className="rct-h2-accent">Retreat</span>
+        </h2>
+
+        <ul className="rct-list">
+          {pairs.map((p) => (
+            <li key={p.href} className="rct-item">
+              <Link href={p.href} className="rct-link">
+                {p.label}
+                <span className="rct-arrow">→</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+      </div>
+    </section>
+  );
+})()}
 
       {RETREAT_SCORES[retreat] && (
-        <section style={{ marginTop: 'var(--space-xl)', padding: '0 0 var(--space-lg)', borderTop: '1px solid var(--color-border, #e0e0e0)', paddingTop: 'var(--space-lg)' }}>
-          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Program Profile
-          </h2>
-          <p style={{ fontSize: '0.875rem', color: 'var(--color-text-secondary)', marginBottom: 'var(--space-md)', lineHeight: 1.6 }}>
-            Editorial scores across four dimensions. Higher values indicate greater emphasis, not quality.
-          </p>
-          <div style={{ maxWidth: '22rem' }}>
-            <RetreatScorePanel scores={RETREAT_SCORES[retreat]!} />
-          </div>
-        </section>
-      )}
+  <section className="rps-wrap">
+    <style>{`
+      .rps-wrap {
+        width: 100vw;
+        margin-left: calc(-50vw + 50%);
+        background: #f7f9f7;
+        padding: 5rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .rps-wrap::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+          ellipse 50% 80% at 90% 50%,
+          rgba(15,118,110,0.05) 0%,
+          transparent 70%
+        );
+        pointer-events: none;
+      }
 
-      <section style={{ marginTop: 'var(--space-xl)', padding: '0 0 var(--space-xl)' }}>
-        <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: 'var(--space-lg)' }}>
-          Frequently Asked Questions
+      .rps-inner {
+        max-width: 52rem;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: 1fr 1.1fr;
+        gap: 4rem;
+        align-items: center;
+      }
+      @media (max-width: 680px) {
+        .rps-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      }
+
+      /* Left */
+      .rps-left {}
+
+      .rps-eyebrow {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+      .rps-eyebrow-line {
+        width: 24px; height: 1px;
+        background: var(--color-primary); opacity: 0.5;
+        flex-shrink: 0;
+      }
+
+      .rps-h2 {
+        font-family: var(--font-geist-sans), sans-serif;
+        font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+        font-weight: 200;
+        letter-spacing: -0.03em;
+        color: #111111;
+        line-height: 1.15;
+        margin: 0 0 1rem;
+      }
+      .rps-h2-accent {
+        color: var(--color-primary);
+        font-weight: 200;
+      }
+
+      .rps-sub {
+        font-family: var(--font-geist-sans), sans-serif;
+        font-size: 0.82rem;
+        font-weight: 300;
+        line-height: 1.8;
+        color: #888888;
+        margin: 0;
+      }
+
+      .rps-divider {
+        width: 32px; height: 1px;
+        background: var(--color-primary);
+        opacity: 0.2;
+        margin: 1.5rem 0;
+      }
+
+      /* Right */
+      .rps-right {
+        background: #ffffff;
+        border: 1px solid #e8edea;
+        border-radius: 12px;
+        padding: 2rem 2rem;
+        box-shadow:
+          0 2px 8px rgba(0,0,0,0.04),
+          0 8px 28px rgba(15,118,110,0.06);
+        position: relative;
+        overflow: hidden;
+      }
+      .rps-right::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(
+          90deg,
+          var(--color-primary),
+          rgba(15,118,110,0.2)
+        );
+      }
+    `}</style>
+
+    <div className="rps-inner">
+
+      {/* Left — heading + sub */}
+      <div className="rps-left">
+        <div className="rps-eyebrow">
+          <span className="rps-eyebrow-line" />
+        </div>
+        <h2 className="rps-h2">
+          Program{' '}
+          <span className="rps-h2-accent">Profile</span>
         </h2>
-        <TrackedFAQ items={faqItems} page={journeyPath} />
-      </section>
+        <div className="rps-divider" />
+        <p className="rps-sub">
+          Editorial scores across four dimensions. Higher values indicate greater emphasis, not quality.
+        </p>
+      </div>
+
+      {/* Right — score panel */}
+      <div className="rps-right">
+        <RetreatScorePanel scores={RETREAT_SCORES[retreat]!} />
+      </div>
+
+    </div>
+  </section>
+)}
+
+<section className="rfaq-wrap">
+  <style>{`
+    .rfaq-wrap {
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
+      background: #ffffff;
+      padding: 5rem 0;
+    }
+
+    .rfaq-inner {
+      max-width: 52rem;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .rfaq-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .rfaq-eyebrow-line {
+      width: 24px; height: 1px;
+      background: var(--color-primary); opacity: 0.5;
+      flex-shrink: 0;
+    }
+
+    .rfaq-h2 {
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
+      font-weight: 200;
+      letter-spacing: -0.03em;
+      color: #111111;
+      line-height: 1.15;
+      margin: 0 0 2.5rem;
+    }
+    .rfaq-h2-accent {
+      color: var(--color-primary);
+      font-weight: 200;
+    }
+  `}</style>
+
+  <div className="rfaq-inner">
+    <div className="rfaq-eyebrow">
+      <span className="rfaq-eyebrow-line" />
+    </div>
+
+    <h2 className="rfaq-h2">
+      Frequently Asked{' '}
+      <span className="rfaq-h2-accent">Questions</span>
+    </h2>
+
+    <TrackedFAQ items={faqItems} page={journeyPath} />
+  </div>
+</section>
     </TrackedPage>
   );
 }

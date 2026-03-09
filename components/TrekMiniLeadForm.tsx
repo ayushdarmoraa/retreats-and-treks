@@ -23,7 +23,7 @@ export default function TrekMiniLeadForm({
   const [phone, setPhone] = useState('');
   const [month, setMonth] = useState('');
   const [groupSize, setGroupSize] = useState('');
-  const [website, setWebsite] = useState(''); // honeypot
+  const [website, setWebsite] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
@@ -32,33 +32,22 @@ export default function TrekMiniLeadForm({
     e.preventDefault();
     setError('');
     setSubmitting(true);
-
     try {
       const res = await fetch('/api/inquire', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name,
-          phone,
-          trek: trekSlug,
-          interestedIn: 'trek',
-          location: locationId,
-          month,
-          groupSize,
-          source: sourcePath,
-          vertical: 'trek',
-          category: trekSlug,
-          website,
-          _t: loadedAt.current,
+          name, phone, trek: trekSlug, interestedIn: 'trek',
+          location: locationId, month, groupSize,
+          source: sourcePath, vertical: 'trek', category: trekSlug,
+          website, _t: loadedAt.current,
         }),
       });
-
       if (!res.ok) {
         const data = await res.json();
         setError(data.error || 'Something went wrong.');
         return;
       }
-
       track({ event: 'availability_form_submit', from: sourcePath, meta: { trek: trekSlug, source: sourcePath, form: 'mini' } });
       setSubmitted(true);
     } catch {
@@ -70,89 +59,84 @@ export default function TrekMiniLeadForm({
 
   if (submitted) {
     return (
-      <div style={{ padding: '1rem 1.25rem', backgroundColor: '#f0fdf4', borderRadius: 'var(--radius-sm, 6px)', marginBottom: '1.5rem', textAlign: 'center' }}>
-        <p style={{ fontWeight: 600, color: '#166534', marginBottom: '0.2rem' }}>Inquiry received!</p>
-        <p style={{ fontSize: '0.85rem', color: '#166534' }}>Our trek coordinator will contact you within 2 hours.</p>
+      <div style={{
+        padding: '2rem',
+        background: 'rgba(15,118,110,0.04)',
+        border: '1px solid rgba(15,118,110,0.2)',
+        borderLeft: '3px solid var(--color-primary)',
+        borderRadius: '8px',
+        marginBottom: '2rem',
+        textAlign: 'center',
+      }}>
+        <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontWeight: 500, color: 'var(--color-primary)', marginBottom: '0.35rem', fontSize: '0.95rem' }}>
+          Inquiry received!
+        </p>
+        <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, color: '#555555', margin: 0 }}>
+          Our trek coordinator will contact you within 2 hours.
+        </p>
       </div>
     );
   }
 
   const inputStyle: React.CSSProperties = {
     width: '100%',
-    padding: '0.5rem 0.65rem',
-    border: '1px solid var(--color-border, #d1d5db)',
-    borderRadius: 'var(--radius-sm, 4px)',
+    padding: '0.65rem 0.85rem',
+    border: '1px solid #e5e7eb',
+    borderRadius: '6px',
     fontSize: '0.85rem',
+    fontFamily: 'var(--font-geist-sans), sans-serif',
+    fontWeight: 300,
     lineHeight: 1.4,
-    backgroundColor: 'white',
-    color: 'var(--color-text)',
+    backgroundColor: '#ffffff',
+    color: '#333333',
+    outline: 'none',
+    boxSizing: 'border-box' as const,
   };
 
-  // Sort season months to suggest first
   const seasonMonths = bestSeason.length > 0 ? bestSeason : [];
   const allMonths = ['January','February','March','April','May','June','July','August','September','October','November','December'];
   const sortedMonths = [...seasonMonths, ...allMonths.filter(m => !seasonMonths.includes(m))];
 
   return (
-    <aside
-      style={{
-        padding: '1rem 1.25rem',
-        backgroundColor: 'var(--color-surface, #f9f9f9)',
-        borderRadius: 'var(--radius-sm, 6px)',
-        border: '1px solid var(--color-border, #e5e7eb)',
-        marginBottom: '1.5rem',
-      }}
-    >
-      <p style={{ fontSize: '0.95rem', fontWeight: 600, marginBottom: '0.75rem' }}>
+    <aside style={{
+      padding: '2rem',
+      background: '#ffffff',
+      border: '1px solid #e5e7eb',
+      borderTop: '2px solid var(--color-primary)',
+      borderRadius: '8px',
+      marginBottom: '2rem',
+    }}>
+      {/* Eyebrow */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>
+          Check Availability
+        </span>
+      </div>
+
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', fontWeight: 400, color: '#111111', marginBottom: '1.5rem', lineHeight: 1.5 }}>
         Interested in {trekTitle}? Get availability &amp; pricing
       </p>
+
       <form onSubmit={handleSubmit}>
         {/* Honeypot */}
         <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
-          <input
-            type="text"
-            name="website"
-            tabIndex={-1}
-            autoComplete="off"
-            value={website}
-            onChange={(e) => setWebsite(e.target.value)}
-          />
+          <input type="text" name="website" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.5rem' }}>
-          <input
-            type="text"
-            placeholder="Name"
-            required
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            style={inputStyle}
-          />
-          <input
-            type="tel"
-            placeholder="Phone / WhatsApp"
-            required
-            value={phone}
-            onChange={(e) => setPhone(e.target.value)}
-            style={inputStyle}
-          />
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.65rem', marginBottom: '0.65rem' }}>
+          <input type="text" placeholder="Name" required value={name} onChange={(e) => setName(e.target.value)} style={inputStyle} />
+          <input type="tel" placeholder="Phone / WhatsApp" required value={phone} onChange={(e) => setPhone(e.target.value)} style={inputStyle} />
         </div>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.5rem', marginBottom: '0.75rem' }}>
-          <select
-            value={month}
-            onChange={(e) => setMonth(e.target.value)}
-            style={inputStyle}
-          >
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.65rem', marginBottom: '1.25rem' }}>
+          <select value={month} onChange={(e) => setMonth(e.target.value)} style={inputStyle}>
             <option value="">Preferred month</option>
             {sortedMonths.map((m) => (
               <option key={m} value={m}>{m}{seasonMonths.includes(m) ? ' ✓' : ''}</option>
             ))}
           </select>
-          <select
-            value={groupSize}
-            onChange={(e) => setGroupSize(e.target.value)}
-            style={inputStyle}
-          >
+          <select value={groupSize} onChange={(e) => setGroupSize(e.target.value)} style={inputStyle}>
             <option value="">Group size</option>
             <option value="1">Solo</option>
             <option value="2">2 people</option>
@@ -161,21 +145,30 @@ export default function TrekMiniLeadForm({
             <option value="9+">9+</option>
           </select>
         </div>
-        {error && <p style={{ color: '#d32f2f', fontSize: '0.8rem', marginBottom: '0.5rem' }}>{error}</p>}
+
+        {error && (
+          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', color: '#d32f2f', fontSize: '0.8rem', fontWeight: 300, marginBottom: '0.75rem' }}>
+            {error}
+          </p>
+        )}
+
         <button
           type="submit"
           disabled={submitting}
           style={{
             width: '100%',
-            padding: '0.55rem',
-            backgroundColor: 'var(--color-primary, #1976d2)',
-            color: '#fff',
+            padding: '0.75rem',
+            background: submitting ? 'rgba(15,118,110,0.6)' : 'var(--color-primary)',
+            color: '#ffffff',
             border: 'none',
-            borderRadius: 'var(--radius-sm, 4px)',
-            fontSize: '0.9rem',
+            borderRadius: '6px',
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.62rem',
             fontWeight: 600,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase' as const,
             cursor: submitting ? 'wait' : 'pointer',
-            opacity: submitting ? 0.7 : 1,
+            transition: 'opacity 0.2s',
           }}
         >
           {submitting ? 'Sending…' : 'Check Availability'}

@@ -43,54 +43,95 @@ export default function TrackedFAQ({ items, page }: TrackedFAQProps) {
   }
 
   return (
-    <div>
-      {items.map((faq, index) => (
-        <details
-          key={faq.question}
-          style={{ marginBottom: '1rem', borderBottom: '1px solid var(--color-border, #e0e0e0)' }}
-          onToggle={(e) => handleToggle(index, faq.question, (e.target as HTMLDetailsElement).open)}
-        >
-          <summary
-            style={{
-              cursor: 'pointer',
-              padding: '0.85rem 0',
-              fontWeight: 600,
-              fontSize: '1rem',
-              lineHeight: 1.5,
-              listStyle: 'none',
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'flex-start',
-              gap: '1rem',
-            }}
+    <>
+      <style>{`
+  .tfaq-details {
+    border-bottom: 1px solid rgba(15,118,110,0.08);
+  }
+  .tfaq-details[open] .tfaq-question {
+    color: var(--color-primary);
+  }
+  .tfaq-details[open] .tfaq-icon {
+    border-color: var(--color-primary);
+    background: rgba(15,118,110,0.06);
+  }
+  .tfaq-summary::-webkit-details-marker { display: none; }
+  .tfaq-summary { list-style: none; }
+
+  .tfaq-details summary .tfaq-icon::after {
+    content: '+';
+  }
+  .tfaq-details[open] summary .tfaq-icon::after {
+    content: '−';
+  }
+`}</style>
+
+      <div>
+        {items.map((faq, index) => (
+          <details
+            key={faq.question}
+            className="tfaq-details"
+            style={{ marginBottom: '0' }}
+            onToggle={(e) => handleToggle(index, faq.question, (e.target as HTMLDetailsElement).open)}
           >
-            <span>{faq.question}</span>
-            <span
+            <summary
+              className="tfaq-summary"
               style={{
-                flexShrink: 0,
-                fontSize: '1.1rem',
-                color: 'var(--color-primary)',
-                lineHeight: 1.5,
-                userSelect: 'none',
+                cursor: 'pointer',
+                padding: '1.1rem 0',
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontWeight: 400,
+                fontSize: '0.92rem',
+                lineHeight: 1.6,
+                color: '#222222',
+                listStyle: 'none',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'flex-start',
+                gap: '1rem',
+                transition: 'color 0.2s',
               }}
-              aria-hidden="true"
             >
-              +
-            </span>
-          </summary>
-          <p
-            style={{
-              margin: '0 0 1rem',
-              lineHeight: 1.75,
-              color: 'var(--color-text-secondary)',
-              fontSize: '0.95rem',
-              paddingRight: '2rem',
-            }}
-          >
-            {faq.answer}
-          </p>
-        </details>
-      ))}
-    </div>
+              <span className="tfaq-question">{faq.question}</span>
+              <span
+                className="tfaq-icon"
+                style={{
+                  flexShrink: 0,
+                  width: '20px',
+                  height: '20px',
+                  borderRadius: '50%',
+                  border: '1px solid rgba(15,118,110,0.3)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  fontSize: '0.75rem',
+                  color: 'var(--color-primary)',
+                  lineHeight: 1,
+                  userSelect: 'none',
+                  marginTop: '2px',
+                  transition: 'background 0.2s, border-color 0.2s',
+                }}
+                aria-hidden="true"
+              >
+                
+              </span>
+            </summary>
+            <p
+              style={{
+                margin: '0 0 1.25rem',
+                lineHeight: 1.85,
+                color: '#666666',
+                fontSize: '0.88rem',
+                fontWeight: 300,
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                paddingRight: '2rem',
+              }}
+            >
+              {faq.answer}
+            </p>
+          </details>
+        ))}
+      </div>
+    </>
   );
 }
