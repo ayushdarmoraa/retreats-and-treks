@@ -55,7 +55,7 @@ export default function ItineraryMicroCTA({
 
   return (
     <>
-      <p
+      <div
         style={{
           marginTop: '0.75rem',
           padding: '0.75rem 1rem',
@@ -84,7 +84,7 @@ export default function ItineraryMicroCTA({
         >
           {copy.split('?').slice(1).join('?').trim()}
         </button>
-      </p>
+      </div>
 
       {modalOpen && (
         <AvailabilityModal

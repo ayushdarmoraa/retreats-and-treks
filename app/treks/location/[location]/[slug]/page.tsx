@@ -241,350 +241,916 @@ export default async function TrekDetailPage({ params }: PageProps) {
         ]}
       />
 
-      {/* INTENT TRAIL — discovery cluster reinforcement */}
-      <nav aria-label="Discovery trail" style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem', lineHeight: 1.6 }}>
-        <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
-          Best Treks in Uttarakhand
-        </Link>
-        {INTENT_TRAIL[slug] && (
-          <>
-            {' → '}
-            <Link href={INTENT_TRAIL[slug].path} style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
-              {INTENT_TRAIL[slug].label}
-            </Link>
-          </>
-        )}
-        {' → '}
-        <span>{trek.title}</span>
-      </nav>
+      {/* HERO SECTION — full bleed */}
+<section style={{
+  width: '100vw',
+  marginLeft: 'calc(-50vw + 50%)',
+  background: '#f7f9f7',
+  paddingTop: '4rem',
+  paddingBottom: '4rem',
+  borderBottom: '1px solid #e5e7eb',
+  marginBottom: '0',
+}}>
+  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
-      <h1 style={{ marginBottom: '0.25rem' }}>{trek.title}</h1>
-
-      {/* SOCIAL PROOF — rating line */}
-      {TREK_RATINGS[slug] && (
-        <p style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', marginBottom: '0.75rem' }}>
-          <span style={{ color: '#f59e0b' }}>★</span>{' '}
-          <strong>{TREK_RATINGS[slug].value.toFixed(1)}</strong> rating from{' '}
-          {TREK_RATINGS[slug].count}+ trekkers
-        </p>
+    {/* INTENT TRAIL */}
+    <nav aria-label="Discovery trail" style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.5rem',
+      flexWrap: 'wrap',
+      fontSize: '0.56rem',
+      letterSpacing: '0.28em',
+      textTransform: 'uppercase' as const,
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontWeight: 500,
+      marginBottom: '2rem',
+      color: '#999999',
+    }}>
+      <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', opacity: 0.7 }}>
+        Best Treks in Uttarakhand
+      </Link>
+      {INTENT_TRAIL[slug] && (
+        <>
+          <span style={{ color: '#cccccc' }}>→</span>
+          <Link href={INTENT_TRAIL[slug].path} style={{ color: 'var(--color-primary)', textDecoration: 'none', opacity: 0.7 }}>
+            {INTENT_TRAIL[slug].label}
+          </Link>
+        </>
       )}
+      <span style={{ color: '#cccccc' }}>→</span>
+      <span style={{ color: '#111111' }}>{trek.title}</span>
+    </nav>
 
-      {/* META BAR */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', fontSize: '0.9rem', color: 'var(--color-text-secondary)', marginBottom: '1.5rem', paddingBottom: '1rem', borderBottom: '1px solid var(--color-border)' }}>
-        <span><strong>Location:</strong> {location.name}</span>
-        <span><strong>Duration:</strong> {trek.duration}</span>
-        <span><strong>Difficulty:</strong> {trek.difficulty}</span>
-        {trek.altitude && <span><strong>Max Altitude:</strong> {trek.altitude}</span>}
-        {trek.distance && <span><strong>Distance:</strong> {trek.distance}</span>}
+    {/* H1 */}
+    <h1 style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: 'clamp(1.75rem, 3.5vw, 2.4rem)',
+      fontWeight: 200,
+      letterSpacing: '-0.035em',
+      color: '#111111',
+      lineHeight: 1.1,
+      margin: '0 0 1.25rem',
+    }}>
+      {trek.title}
+    </h1>
+
+    {/* RATING */}
+    {TREK_RATINGS[slug] && (
+      <p style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '0.4rem',
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontSize: '0.78rem',
+        fontWeight: 300,
+        color: '#666666',
+        marginBottom: '2rem',
+        marginTop: '0',
+      }}>
+        <span style={{ color: '#f59e0b' }}>★</span>
+        <strong style={{ fontWeight: 500, color: '#111111' }}>
+          {TREK_RATINGS[slug].value.toFixed(1)}
+        </strong>
+        rating from {TREK_RATINGS[slug].count}+ trekkers
+      </p>
+    )}
+
+    {/* META BAR */}
+    <div style={{
+      display: 'flex',
+      flexWrap: 'wrap',
+      gap: '0.5rem',
+    }}>
+      {[
+        { label: 'Location',     value: location.name },
+        { label: 'Duration',     value: trek.duration },
+        { label: 'Difficulty',   value: trek.difficulty },
+        ...(trek.altitude ? [{ label: 'Max Altitude', value: trek.altitude }] : []),
+        ...(trek.distance ? [{ label: 'Distance',     value: trek.distance }] : []),
+      ].map((item) => (
+        <span key={item.label} style={{
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '0.4rem',
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: '0.78rem',
+          fontWeight: 300,
+          color: '#333333',
+          background: '#ffffff',
+          border: '1px solid #e5e7eb',
+          borderRadius: '100px',
+          padding: '5px 14px',
+        }}>
+          <span style={{
+            fontSize: '0.55rem',
+            fontWeight: 600,
+            letterSpacing: '0.18em',
+            textTransform: 'uppercase' as const,
+            color: 'var(--color-primary)',
+            opacity: 0.75,
+          }}>
+            {item.label}
+          </span>
+          {item.value}
+        </span>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+     {/* BEST FOR + INTRO — white */}
+<section style={{
+  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+  background: '#ffffff',
+  paddingTop: '4rem', paddingBottom: '4rem',
+  borderBottom: '1px solid #e5e7eb',
+  marginBottom: '0',
+}}>
+  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+
+    {BEST_FOR[slug] && (
+      <div style={{ marginBottom: '2rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.85rem' }}>
+          <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Best for</span>
+        </div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+          {BEST_FOR[slug].map((item, i) => (
+            <Link key={i} href={item.href} style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.78rem', fontWeight: 400,
+              color: 'var(--color-primary)',
+              background: 'rgba(15,118,110,0.06)',
+              border: '1px solid rgba(15,118,110,0.18)',
+              borderRadius: '100px',
+              padding: '4px 14px',
+              textDecoration: 'none',
+            }}>
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <p style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: '0.95rem', lineHeight: 1.85,
+      color: '#3a3a3a', fontWeight: 300,
+      margin: 0,
+      paddingLeft: '1.5rem',
+      borderLeft: '2px solid rgba(15,118,110,0.25)',
+    }}>
+      {trek.description}{' '}
+      Frequently listed among the{' '}
+      <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+        {DISCOVERY_ANCHORS[slug] || 'Best Treks in Uttarakhand guide'}
+      </Link>.
+    </p>
+
+  </div>
+</section>
+
+{/* OVERVIEW — f7f9f7 */}
+{overviewParagraphs.length > 0 && (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#f7f9f7',
+    paddingTop: '4rem', paddingBottom: '4rem',
+    borderBottom: '1px solid #e5e7eb',
+    marginBottom: '0',
+  }}>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Overview</span>
+      </div>
+      <h2 style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+        fontWeight: 200, letterSpacing: '-0.03em',
+        color: '#111111', lineHeight: 1.15,
+        marginBottom: '1.5rem',
+      }}>
+        Why Choose the {trek.title}
+      </h2>
+      {overviewParagraphs.map((para, i) => (
+        <p key={i} style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: '0.88rem', fontWeight: 300,
+          lineHeight: 1.85, color: '#555555',
+          marginBottom: '1rem',
+        }}>{para}</p>
+      ))}
+    </div>
+  </section>
+)}
+
+{/* HIGHLIGHTS — white */}
+{trek.highlights.length > 0 && (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#ffffff',
+    paddingTop: '4rem', paddingBottom: '4rem',
+    borderBottom: '1px solid #e5e7eb',
+    marginBottom: '0',
+  }}>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Trek Highlights</span>
+      </div>
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        {trek.highlights.map((h, i) => (
+          <li key={i} style={{
+            display: 'flex', alignItems: 'flex-start', gap: '0.85rem',
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.88rem', fontWeight: 300,
+            color: '#333333', lineHeight: 1.7,
+            padding: '0.75rem 0',
+            borderBottom: i < trek.highlights.length - 1 ? '1px solid rgba(0,0,0,0.05)' : 'none',
+          }}>
+            <span style={{
+              width: '18px', height: '18px', borderRadius: '50%',
+              background: 'var(--color-primary)',
+              display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+              flexShrink: 0, marginTop: '0.1rem',
+              fontSize: '0.6rem', color: '#ffffff', fontWeight: 700,
+            }}>✓</span>
+            {h}
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
+
+{/* ITINERARY — f7f9f7 */}
+{trek.itinerary.length > 0 && (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#f7f9f7',
+    paddingTop: '4rem', paddingBottom: '4rem',
+    borderBottom: '1px solid #e5e7eb',
+    marginBottom: '0',
+  }}>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Itinerary</span>
+      </div>
+      <h2 style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+        fontWeight: 200, letterSpacing: '-0.03em',
+        color: '#111111', lineHeight: 1.15,
+        marginBottom: '2rem',
+      }}>Route Overview</h2>
+
+      <div style={{ display: 'flex', flexDirection: 'column' as const }}>
+        {trek.itinerary.map((day, i) => (
+          <div key={i} style={{ display: 'grid', gridTemplateColumns: '2rem 1fr', gap: '0 1.25rem' }}>
+            <div style={{ display: 'flex', flexDirection: 'column' as const, alignItems: 'center' }}>
+              <span style={{
+                width: '10px', height: '10px', borderRadius: '50%',
+                background: '#ffffff', border: '2px solid var(--color-primary)',
+                flexShrink: 0, marginTop: '0.28rem', zIndex: 1,
+              }} />
+              {i < trek.itinerary.length - 1 && (
+                <span style={{
+                  width: '1px', flex: 1,
+                  background: 'linear-gradient(to bottom, rgba(15,118,110,0.3), rgba(15,118,110,0.05))',
+                  marginTop: '4px', minHeight: '1.5rem',
+                }} />
+              )}
+            </div>
+            <div style={{ paddingBottom: i < trek.itinerary.length - 1 ? '1.5rem' : '0' }}>
+              <p style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.88rem', fontWeight: 300,
+                lineHeight: 1.75, color: '#555555', margin: 0,
+              }}>
+                <strong style={{ fontWeight: 600, color: '#111111' }}>
+                  {day.split(':')[0]}:
+                </strong>
+                {day.includes(':') ? day.substring(day.indexOf(':') + 1) : day}
+              </p>
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* BEST FOR — authority flow back to filter/discovery pages */}
-      {BEST_FOR[slug] && (
-        <div style={{ fontSize: '0.9rem', marginBottom: '1.25rem', lineHeight: 1.8 }}>
-          <strong>Best for:</strong>
-          <ul style={{ listStyle: 'disc', paddingLeft: '1.25rem', margin: '0.25rem 0 0' }}>
-            {BEST_FOR[slug].map((item, i) => (
-              <li key={i}>
-                <Link href={item.href} style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+      <div style={{ marginTop: '2rem' }}>
+        <ItineraryMicroCTA
+          trekTitle={trek.title}
+          trekSlug={trek.slug}
+          difficulty={trek.difficulty}
+          bestSeason={trek.bestSeason}
+          locationId={locationId}
+          locationName={location.name}
+          sourcePath={`/treks/location/${locationId}/${slug}`}
+          whatsappNumber={WHATSAPP_NUMBER}
+        />
+      </div>
+    </div>
+  </section>
+)}
 
-      {/* INTRO / DESCRIPTION — contextual discovery link embedded */}
-      <p style={{ fontSize: '1.05rem', lineHeight: 1.7, color: 'var(--color-text)', marginBottom: '1.5rem' }}>
-        {trek.description}{' '}
-        Frequently listed among the{' '}
-        <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
-          {DISCOVERY_ANCHORS[slug] || 'Best Treks in Uttarakhand guide'}
-        </Link>.
+      {/* MINI LEAD FORM + DEPARTURES — #ffffff */}
+<section style={{
+  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+  background: '#ffffff',
+  paddingTop: '4rem', paddingBottom: '4rem',
+  borderBottom: '1px solid #e5e7eb',
+  marginBottom: '0',
+}}>
+  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+    <TrekMiniLeadForm
+      trekTitle={trek.title}
+      trekSlug={trek.slug}
+      locationId={locationId}
+      sourcePath={`/treks/location/${locationId}/${slug}`}
+      bestSeason={trek.bestSeason}
+    />
+    <TrekDeparturesTable
+      trekTitle={trek.title}
+      trekSlug={trek.slug}
+      difficulty={trek.difficulty}
+      bestSeason={trek.bestSeason}
+      locationId={locationId}
+      locationName={location.name}
+      sourcePath={`/treks/location/${locationId}/${slug}`}
+    />
+  </div>
+</section>
+
+{/* DIFFICULTY & PREPARATION — #f7f9f7 */}
+<section style={{
+  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+  background: '#f7f9f7',
+  paddingTop: '4rem', paddingBottom: '4rem',
+  borderBottom: '1px solid #e5e7eb',
+  marginBottom: '0',
+}}>
+  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Preparation</span>
+    </div>
+    <h2 style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+      fontWeight: 200, letterSpacing: '-0.03em',
+      color: '#111111', lineHeight: 1.15,
+      marginBottom: '1.5rem',
+    }}>Difficulty &amp; Preparation</h2>
+    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1rem' }}>
+      This trek is rated <strong style={{ fontWeight: 500, color: '#111111' }}>{trek.difficulty}</strong>.{trek.altitude ? ` Maximum elevation reaches ${trek.altitude}.` : ''}{trek.distance ? ` Total route distance is approximately ${trek.distance}.` : ''} The trek duration is {trek.duration} from {trek.pickupPoint}.
+    </p>
+    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1rem' }}>
+      Best seasons: <strong style={{ fontWeight: 500, color: '#111111' }}>{trek.bestSeason.join(', ')}</strong>. Plan your trip around these months for the safest conditions and best visibility.
+    </p>
+    {trek.difficulty === 'Challenging' && (
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1rem' }}>
+        This is a demanding route. Prior multi-day Himalayan trekking experience is recommended. Ensure you have adequate cardiovascular fitness, are comfortable with sustained daily walking over rough terrain, and have experience at altitudes above 3,000 metres. Consult a physician before committing if you have any altitude-related health concerns.
       </p>
+    )}
+    {trek.difficulty === 'Moderate' && (
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1rem' }}>
+        Reasonable fitness is required. Prior trekking experience is helpful but not mandatory if you prepare with regular cardio exercise in the weeks before departure.
+      </p>
+    )}
+    {trek.difficulty === 'Easy' && (
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1rem' }}>
+        This trek is suitable for beginners and families. Basic fitness is sufficient — the trails are well-defined and the altitude manageable.
+      </p>
+    )}
+  </div>
+</section>
 
-      {/* OVERVIEW — rendered as "Why Choose" section */}
-      {overviewParagraphs.length > 0 && (
-        <section style={{ marginBottom: '2.5rem', lineHeight: 1.7, fontSize: '1rem', color: 'var(--color-text)' }}>
-          <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>Why Choose the {trek.title}</h2>
-          {overviewParagraphs.map((para, i) => (
-            <p key={i} style={{ marginBottom: '1rem' }}>{para}</p>
-          ))}
-        </section>
-      )}
+{/* QUICK FAQ + CONVERSION — #ffffff */}
+<section style={{
+  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+  background: '#ffffff',
+  paddingTop: '4rem', paddingBottom: '4rem',
+  borderBottom: '1px solid #e5e7eb',
+  marginBottom: '0',
+}}>
+  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
-      {/* HIGHLIGHTS */}
-      {trek.highlights.length > 0 && (
-        <section style={{ marginBottom: '2.5rem' }}>
-          <h3 style={{ fontSize: '1.1rem', marginBottom: '0.75rem' }}>Trek Highlights</h3>
-          <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.7, color: 'var(--color-text)' }}>
-            {trek.highlights.map((h, i) => (
-              <li key={i} style={{ marginBottom: '0.4rem' }}>{h}</li>
-            ))}
-          </ul>
-        </section>
-      )}
+    {/* Quick FAQ */}
+    <aside style={{
+      marginBottom: '2.5rem',
+      border: '1px solid #e5e7eb',
+      borderLeft: '3px solid var(--color-primary)',
+      borderRadius: '8px',
+      padding: '1.75rem',
+      background: '#f7f9f7',
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Quick questions</span>
+      </div>
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '0.85rem' }}>
+        <strong style={{ fontWeight: 500, color: '#111111' }}>Can I cancel?</strong> Free cancellation up to 7 days before departure. Full refund, no questions asked.
+      </p>
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
+        <strong style={{ fontWeight: 500, color: '#111111' }}>What if I&apos;m a beginner?</strong> Our trek coordinator assesses your fitness and recommends the right trek. We won&apos;t send you on a route you&apos;re not ready for.
+      </p>
+    </aside>
 
-      {/* ITINERARY — Route Overview */}
-      {trek.itinerary.length > 0 && (
-        <section style={{ marginBottom: '2.5rem', lineHeight: 1.7, fontSize: '1rem', color: 'var(--color-text)' }}>
-          <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>Route Overview</h2>
-          {trek.itinerary.map((day, i) => (
-            <p key={i} style={{ marginBottom: '0.75rem' }}><strong>{day.split(':')[0]}:</strong>{day.includes(':') ? day.substring(day.indexOf(':') + 1) : day}</p>
-          ))}
-          <ItineraryMicroCTA
-            trekTitle={trek.title}
-            trekSlug={trek.slug}
-            difficulty={trek.difficulty}
-            bestSeason={trek.bestSeason}
-            locationId={locationId}
-            locationName={location.name}
-            sourcePath={`/treks/location/${locationId}/${slug}`}
-            whatsappNumber={WHATSAPP_NUMBER}
-          />
-        </section>
-      )}
+    <TrekConversionLayer
+      trekTitle={trek.title}
+      trekSlug={trek.slug}
+      difficulty={trek.difficulty}
+      bestSeason={trek.bestSeason}
+      altitude={trek.altitude}
+      locationId={locationId}
+      locationName={location.name}
+      sourcePath={`/treks/location/${locationId}/${slug}`}
+      whatsappNumber={WHATSAPP_NUMBER}
+      phoneNumber={WHATSAPP_NUMBER}
+    />
+  </div>
+</section>
 
-      {/* MINI LEAD FORM — above departure table */}
-      <TrekMiniLeadForm
-        trekTitle={trek.title}
-        trekSlug={trek.slug}
-        locationId={locationId}
-        sourcePath={`/treks/location/${locationId}/${slug}`}
-        bestSeason={trek.bestSeason}
-      />
+{/* BEST TIME — #f7f9f7 */}
+<section style={{
+  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+  background: '#f7f9f7',
+  paddingTop: '4rem', paddingBottom: '4rem',
+  borderBottom: '1px solid #e5e7eb',
+  marginBottom: '0',
+}}>
+  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Season</span>
+    </div>
+    <h2 style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+      fontWeight: 200, letterSpacing: '-0.03em',
+      color: '#111111', lineHeight: 1.15,
+      marginBottom: '1.5rem',
+    }}>Best Time to Trek</h2>
+    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1rem' }}>
+      The recommended months are <strong style={{ fontWeight: 500, color: '#111111' }}>{trek.bestSeason.join(', ')}</strong>. These windows offer the most stable weather, safest trail conditions, and best mountain visibility.
+    </p>
+    {trek.bestSeason.some(m => ['May', 'June'].includes(m)) && (
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1rem' }}>
+        <strong style={{ fontWeight: 500, color: '#111111' }}>Pre-monsoon (May–June):</strong> Clear skies, warming temperatures, and wildflower meadows at higher elevations. Snow may persist above 3,500 metres in early May, adding alpine character. This is typically the busiest trekking window.
+      </p>
+    )}
+    {trek.bestSeason.some(m => ['September', 'October'].includes(m)) && (
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1rem' }}>
+        <strong style={{ fontWeight: 500, color: '#111111' }}>Post-monsoon (September–October):</strong> After the monsoon rains withdraw, visibility sharpens dramatically. Autumn brings cooler temperatures, golden light, and far fewer trekkers on the trail. An excellent season for photography and solitude.
+      </p>
+    )}
+    {trek.bestSeason.some(m => ['December', 'January', 'February'].includes(m)) && (
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1rem' }}>
+        <strong style={{ fontWeight: 500, color: '#111111' }}>Winter (December–February):</strong> Snow conditions define the experience. Cold temperatures, shorter days, and icy trails require proper gear and winter trekking experience. The reward is dramatic snow-covered landscapes and virtually empty trails.
+      </p>
+    )}
+    {trek.bestSeason.some(m => ['March', 'April'].includes(m)) && (
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '0' }}>
+        <strong style={{ fontWeight: 500, color: '#111111' }}>Spring (March–April):</strong> Retreating snow, blooming rhododendrons, and lengthening days. A transitional season with mild conditions at lower elevations and lingering snow higher up.
+      </p>
+    )}
+  </div>
+</section>
 
-      {/* DEPARTURE DATES TABLE */}
-      <TrekDeparturesTable
-        trekTitle={trek.title}
-        trekSlug={trek.slug}
-        difficulty={trek.difficulty}
-        bestSeason={trek.bestSeason}
-        locationId={locationId}
-        locationName={location.name}
-        sourcePath={`/treks/location/${locationId}/${slug}`}
-      />
-
-      {/* DIFFICULTY & PREPARATION */}
-      <section style={{ marginBottom: '2.5rem', lineHeight: 1.7, fontSize: '1rem', color: 'var(--color-text)' }}>
-        <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>Difficulty &amp; Preparation</h2>
-        <p>This trek is rated <strong>{trek.difficulty}</strong>.{trek.altitude ? ` Maximum elevation reaches ${trek.altitude}.` : ''}{trek.distance ? ` Total route distance is approximately ${trek.distance}.` : ''} The trek duration is {trek.duration} from {trek.pickupPoint}.</p>
-        <p>Best seasons: <strong>{trek.bestSeason.join(', ')}</strong>. Plan your trip around these months for the safest conditions and best visibility.</p>
-        {trek.difficulty === 'Challenging' && (
-          <p>This is a demanding route. Prior multi-day Himalayan trekking experience is recommended. Ensure you have adequate cardiovascular fitness, are comfortable with sustained daily walking over rough terrain, and have experience at altitudes above 3,000 metres. Consult a physician before committing if you have any altitude-related health concerns.</p>
-        )}
-        {trek.difficulty === 'Moderate' && (
-          <p>Reasonable fitness is required. Prior trekking experience is helpful but not mandatory if you prepare with regular cardio exercise in the weeks before departure.</p>
-        )}
-        {trek.difficulty === 'Easy' && (
-          <p>This trek is suitable for beginners and families. Basic fitness is sufficient — the trails are well-defined and the altitude manageable.</p>
-        )}
-      </section>
-
-      {/* QUICK FAQ — conversion confidence near CTA */}
-      <aside style={{ marginBottom: '1.5rem', padding: '1rem 1.25rem', backgroundColor: 'var(--color-surface, #f9f9f9)', borderRadius: 'var(--radius-sm, 6px)', fontSize: '0.9rem', lineHeight: 1.7 }}>
-        <p style={{ fontWeight: 600, marginBottom: '0.5rem' }}>Quick questions</p>
-        <p style={{ marginBottom: '0.4rem' }}><strong>Can I cancel?</strong> Free cancellation up to 7 days before departure. Full refund, no questions asked.</p>
-        <p style={{ marginBottom: 0 }}><strong>What if I&apos;m a beginner?</strong> Our trek coordinator assesses your fitness and recommends the right trek. We won&apos;t send you on a route you&apos;re not ready for.</p>
-      </aside>
-
-      {/* CONVERSION LAYER — all treks */}
-      <TrekConversionLayer
-        trekTitle={trek.title}
-        trekSlug={trek.slug}
-        difficulty={trek.difficulty}
-        bestSeason={trek.bestSeason}
-        altitude={trek.altitude}
-        locationId={locationId}
-        locationName={location.name}
-        sourcePath={`/treks/location/${locationId}/${slug}`}
-        whatsappNumber={WHATSAPP_NUMBER}
-        phoneNumber={WHATSAPP_NUMBER}
-      />
-
-      {/* BEST TIME — dedicated section */}
-      <section style={{ marginBottom: '2.5rem', lineHeight: 1.7, fontSize: '1rem', color: 'var(--color-text)' }}>
-        <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>Best Time to Trek</h2>
-        <p>The recommended months are <strong>{trek.bestSeason.join(', ')}</strong>. These windows offer the most stable weather, safest trail conditions, and best mountain visibility.</p>
-        {trek.bestSeason.some(m => ['May', 'June'].includes(m)) && (
-          <p><strong>Pre-monsoon (May–June):</strong> Clear skies, warming temperatures, and wildflower meadows at higher elevations. Snow may persist above 3,500 metres in early May, adding alpine character. This is typically the busiest trekking window.</p>
-        )}
-        {trek.bestSeason.some(m => ['September', 'October'].includes(m)) && (
-          <p><strong>Post-monsoon (September–October):</strong> After the monsoon rains withdraw, visibility sharpens dramatically. Autumn brings cooler temperatures, golden light, and far fewer trekkers on the trail. An excellent season for photography and solitude.</p>
-        )}
-        {trek.bestSeason.some(m => ['December', 'January', 'February'].includes(m)) && (
-          <p><strong>Winter (December–February):</strong> Snow conditions define the experience. Cold temperatures, shorter days, and icy trails require proper gear and winter trekking experience. The reward is dramatic snow-covered landscapes and virtually empty trails.</p>
-        )}
-        {trek.bestSeason.some(m => ['March', 'April'].includes(m)) && (
-          <p><strong>Spring (March–April):</strong> Retreating snow, blooming rhododendrons, and lengthening days. A transitional season with mild conditions at lower elevations and lingering snow higher up.</p>
-        )}
-      </section>
-
-      {/* MONTHLY CONDITIONS — month-by-month breakdown if available */}
-      {trek.monthlyConditions && trek.monthlyConditions.length > 0 && (
-        <section style={{ marginBottom: '2.5rem', lineHeight: 1.7, fontSize: '1rem', color: 'var(--color-text)' }}>
-          <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>Month-by-Month Conditions</h2>
-          {trek.monthlyConditions.map((mc, i) => (
-            <div key={i} style={{ marginBottom: '1rem' }}>
-              <p><strong>{mc.month}:</strong> {mc.conditions}</p>
+      {/* MONTHLY CONDITIONS — #ffffff */}
+{trek.monthlyConditions && trek.monthlyConditions.length > 0 && (() => {
+  const conditions = trek.monthlyConditions!;
+  return (
+    <section style={{
+      width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+      background: '#ffffff',
+      paddingTop: '4rem', paddingBottom: '4rem',
+      borderBottom: '1px solid #e5e7eb',
+      marginBottom: '0',
+    }}>
+      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+          <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Conditions</span>
+        </div>
+        <h2 style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+          fontWeight: 200, letterSpacing: '-0.03em',
+          color: '#111111', lineHeight: 1.15, marginBottom: '2rem',
+        }}>Month-by-Month Conditions</h2>
+        <div style={{ display: 'flex', flexDirection: 'column' as const }}>
+          {conditions.map((mc, i) => (
+            <div key={i} style={{ display: 'grid', gridTemplateColumns: '2rem 1fr', gap: '0 1.25rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column' as const, alignItems: 'center' }}>
+                <span style={{
+                  width: '10px', height: '10px', borderRadius: '50%',
+                  background: '#ffffff', border: '2px solid var(--color-primary)',
+                  flexShrink: 0, marginTop: '0.28rem',
+                }} />
+                {i < conditions.length - 1 && (
+                  <span style={{
+                    width: '1px', flex: 1,
+                    background: 'linear-gradient(to bottom, rgba(15,118,110,0.3), rgba(15,118,110,0.05))',
+                    marginTop: '4px', minHeight: '1.5rem',
+                  }} />
+                )}
+              </div>
+              <div style={{ paddingBottom: i < conditions.length - 1 ? '1.5rem' : '0' }}>
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
+                  <strong style={{ fontWeight: 500, color: '#111111' }}>{mc.month}:</strong> {mc.conditions}
+                </p>
+              </div>
             </div>
           ))}
-        </section>
-      )}
-
-      {/* SAFETY — if available */}
-      {trek.safety && (
-        <section style={{ marginBottom: '2.5rem', lineHeight: 1.7, fontSize: '1rem', color: 'var(--color-text)' }}>
-          <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>Safety &amp; Precautions</h2>
-          <p>{trek.safety}</p>
-        </section>
-      )}
-
-      {/* PERMITS — if available */}
-      {trek.permits && (
-        <section style={{ marginBottom: '2.5rem', lineHeight: 1.7, fontSize: '1rem', color: 'var(--color-text)' }}>
-          <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>Permits &amp; Documentation</h2>
-          <p>{trek.permits}</p>
-        </section>
-      )}
-
-      {/* WHO SHOULD AVOID — if available */}
-      {trek.whoShouldAvoid && (
-        <section style={{ marginBottom: '2.5rem', lineHeight: 1.7, fontSize: '1rem', color: 'var(--color-text)' }}>
-          <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>Who Should Reconsider</h2>
-          <p>{trek.whoShouldAvoid}</p>
-        </section>
-      )}
-
-      {/* LOCAL LOGISTICS — if available */}
-      {trek.localLogistics && (
-        <section style={{ marginBottom: '2.5rem', lineHeight: 1.7, fontSize: '1rem', color: 'var(--color-text)' }}>
-          <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>Getting There &amp; Local Info</h2>
-          <p>{trek.localLogistics}</p>
-        </section>
-      )}
-
-      {/* INCLUSIONS & EXCLUSIONS */}
-      <section style={{ marginBottom: '2.5rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
-        <div>
-          <h3 style={{ fontSize: '1.1rem', marginBottom: '0.75rem' }}>Included</h3>
-          <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.7, color: 'var(--color-text)', fontSize: '0.95rem' }}>
-            {trek.inclusions.map((item, i) => (
-              <li key={i} style={{ marginBottom: '0.3rem' }}>{item}</li>
-            ))}
-          </ul>
         </div>
-        <div>
-          <h3 style={{ fontSize: '1.1rem', marginBottom: '0.75rem' }}>Not Included</h3>
-          <ul style={{ paddingLeft: '1.25rem', lineHeight: 1.7, color: 'var(--color-text)', fontSize: '0.95rem' }}>
-            {trek.exclusions.map((item, i) => (
-              <li key={i} style={{ marginBottom: '0.3rem' }}>{item}</li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      </div>
+    </section>
+  );
+})()}
+{/* SAFETY — #f7f9f7 */}
+{trek.safety && (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#f7f9f7',
+    paddingTop: '4rem', paddingBottom: '4rem',
+    borderBottom: '1px solid #e5e7eb',
+    marginBottom: '0',
+  }}>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Safety</span>
+      </div>
+      <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.5rem' }}>Safety &amp; Precautions</h2>
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>{trek.safety}</p>
+    </div>
+  </section>
+)}
 
-      {/* FAQs */}
-      {trek.faqs.length > 0 && (
-        <section style={{ marginBottom: '2.5rem', lineHeight: 1.7, fontSize: '1rem', color: 'var(--color-text)' }}>
-          <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>Frequently Asked Questions</h2>
-          {trek.faqs.map((faq, i) => (
-            <div key={i} style={{ marginBottom: '1.25rem' }}>
-              <p style={{ fontWeight: 600, marginBottom: '0.25rem' }}>{faq.question}</p>
-              <p style={{ color: 'var(--color-text-secondary)' }}>{faq.answer}</p>
-            </div>
+{/* PERMITS — #ffffff */}
+{trek.permits && (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#ffffff',
+    paddingTop: '4rem', paddingBottom: '4rem',
+    borderBottom: '1px solid #e5e7eb',
+    marginBottom: '0',
+  }}>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Documentation</span>
+      </div>
+      <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.5rem' }}>Permits &amp; Documentation</h2>
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>{trek.permits}</p>
+    </div>
+  </section>
+)}
+
+{/* WHO SHOULD AVOID — #f7f9f7 */}
+{trek.whoShouldAvoid && (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#f7f9f7',
+    paddingTop: '4rem', paddingBottom: '4rem',
+    borderBottom: '1px solid #e5e7eb',
+    marginBottom: '0',
+  }}>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Suitability</span>
+      </div>
+      <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.5rem' }}>Who Should Reconsider</h2>
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>{trek.whoShouldAvoid}</p>
+    </div>
+  </section>
+)}
+
+{/* LOCAL LOGISTICS — #ffffff */}
+{trek.localLogistics && (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#ffffff',
+    paddingTop: '4rem', paddingBottom: '4rem',
+    borderBottom: '1px solid #e5e7eb',
+    marginBottom: '0',
+  }}>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Logistics</span>
+      </div>
+      <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.5rem' }}>Getting There &amp; Local Info</h2>
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>{trek.localLogistics}</p>
+    </div>
+  </section>
+)}
+
+{/* INCLUSIONS & EXCLUSIONS — #f7f9f7 */}
+<section style={{
+  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+  background: '#f7f9f7',
+  paddingTop: '4rem', paddingBottom: '4rem',
+  borderBottom: '1px solid #e5e7eb',
+  marginBottom: '0',
+}}>
+  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>What&apos;s Included</span>
+    </div>
+    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+      <div style={{ background: '#ffffff', border: '1px solid #e5e7eb', borderTop: '2px solid var(--color-primary)', borderRadius: '8px', padding: '1.5rem' }}>
+        <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', marginBottom: '1.25rem' }}>Included</h3>
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+          {trek.inclusions.map((item, i) => (
+            <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, color: '#333333', lineHeight: 1.7, padding: '0.5rem 0', borderBottom: i < trek.inclusions.length - 1 ? '1px solid rgba(0,0,0,0.05)' : 'none' }}>
+              <span style={{ width: '16px', height: '16px', borderRadius: '50%', background: 'var(--color-primary)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '0.15rem', fontSize: '0.55rem', color: '#ffffff', fontWeight: 700 }}>✓</span>
+              {item}
+            </li>
           ))}
-        </section>
-      )}
+        </ul>
+      </div>
+      <div style={{ background: '#ffffff', border: '1px solid #e5e7eb', borderTop: '2px solid #cccccc', borderRadius: '8px', padding: '1.5rem' }}>
+        <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: '#999999', marginBottom: '1.25rem' }}>Not Included</h3>
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+          {trek.exclusions.map((item, i) => (
+            <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, color: '#888888', lineHeight: 1.7, padding: '0.5rem 0', borderBottom: i < trek.exclusions.length - 1 ? '1px solid rgba(0,0,0,0.05)' : 'none' }}>
+              <span style={{ width: '16px', height: '16px', borderRadius: '50%', background: '#eeeeee', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '0.15rem', fontSize: '0.7rem', color: '#aaaaaa' }}>—</span>
+              {item}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-      {/* CONTEXTUAL LINKS */}
+{/* FAQs — #ffffff */}
+{trek.faqs.length > 0 && (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#ffffff',
+    paddingTop: '4rem', paddingBottom: '4rem',
+    borderBottom: '1px solid #e5e7eb',
+    marginBottom: '0',
+  }}>
+    <style>{`
+      .faq-item summary .faq-icon::before { content: '+'; }
+      .faq-item[open] summary .faq-icon::before { content: '−'; }
+      .faq-item summary::-webkit-details-marker { display: none; }
+    `}</style>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>FAQ</span>
+      </div>
+      <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '2rem' }}>
+        Frequently Asked Questions
+      </h2>
+      <div style={{ display: 'flex', flexDirection: 'column' as const }}>
+        {trek.faqs.map((faq, i) => (
+          <details key={i} className="faq-item" style={{
+            borderBottom: i < trek.faqs.length - 1 ? '1px solid #e5e7eb' : 'none',
+          }}>
+            <summary style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.9rem', fontWeight: 500,
+              color: '#111111', lineHeight: 1.5,
+              padding: '1.25rem 0',
+              cursor: 'pointer',
+              listStyle: 'none',
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              gap: '1rem',
+            }}>
+              {faq.question}
+              <span className="faq-icon" style={{
+                fontSize: '1.1rem',
+                color: 'var(--color-primary)',
+                opacity: 0.6,
+                flexShrink: 0,
+                fontWeight: 300,
+              }} />
+            </summary>
+            <p style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.88rem', fontWeight: 300,
+              color: '#555555', lineHeight: 1.85,
+              margin: '0 0 1.25rem',
+            }}>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
 
-      {/* CROSS-LINK — same difficulty peer */}
-      {PEER_TREKS[slug] && (
-        <p style={{ fontSize: '0.95rem', lineHeight: 1.7, color: 'var(--color-text-secondary)', marginBottom: '1rem' }}>
+      {/* CONTEXTUAL LINKS — #f7f9f7 */}
+<section style={{
+  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+  background: '#f7f9f7',
+  paddingTop: '4rem', paddingBottom: '4rem',
+  borderBottom: '1px solid #e5e7eb',
+  marginBottom: '0',
+}}>
+  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+
+    {/* CROSS-LINK — same difficulty peer */}
+    {PEER_TREKS[slug] && (
+      <div style={{
+        marginBottom: '1.5rem',
+        padding: '1.25rem 1.5rem',
+        background: '#ffffff',
+        border: '1px solid #e5e7eb',
+        borderLeft: '3px solid var(--color-primary)',
+        borderRadius: '8px',
+      }}>
+        <p style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: '0.88rem', fontWeight: 300,
+          lineHeight: 1.75, color: '#555555', margin: 0,
+        }}>
           {PEER_TREKS[slug].prompt}{' '}
           Consider the{' '}
           <Link href={`/treks/location/${PEER_TREKS[slug].location}/${PEER_TREKS[slug].slug}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
             {PEER_TREKS[slug].label}
           </Link>.
         </p>
-      )}
+      </div>
+    )}
 
-      <p style={{ fontSize: '0.95rem', color: 'var(--color-text-secondary)', lineHeight: 1.6 }}>
-        Explore more <Link href={`/treks/location/${locationId}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>treks around {location.name}</Link> or discover <Link href={`/retreats/${locationId}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>wellness retreats in {location.name}</Link>.
-      </p>
+    <p style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: '0.88rem', fontWeight: 300,
+      lineHeight: 1.75, color: '#555555',
+      marginBottom: '0',
+    }}>
+      Explore more{' '}
+      <Link href={`/treks/location/${locationId}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+        treks around {location.name}
+      </Link>{' '}
+      or discover{' '}
+      <Link href={`/retreats/${locationId}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+        wellness retreats in {location.name}
+      </Link>.
+    </p>
 
-      {/* UPWARD CLUSTER LINKS */}
-      <nav style={{ marginTop: '1.5rem', padding: '1.25rem', backgroundColor: 'var(--color-surface, #f9f9f9)', borderRadius: 'var(--radius-sm, 6px)', fontSize: '0.95rem', lineHeight: 1.8 }}>
-        <p style={{ margin: 0, fontWeight: 600, marginBottom: '0.5rem' }}>Explore the region</p>
-        <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-          <li>
-            <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
-              Best Treks in Uttarakhand →
+  </div>
+</section>
+
+{/* EXPLORE THE REGION — #ffffff */}
+<section style={{
+  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+  background: '#ffffff',
+  paddingTop: '4rem', paddingBottom: '4rem',
+  borderBottom: '1px solid #e5e7eb',
+  marginBottom: '0',
+}}>
+  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Explore the region</span>
+    </div>
+    <nav aria-label="Region links">
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: '0' }}>
+        {[
+          { href: '/treks/best-treks-in-uttarakhand', label: 'Best Treks in Uttarakhand' },
+          ...(INTENT_TRAIL[slug] ? [{ href: INTENT_TRAIL[slug].path, label: INTENT_TRAIL[slug].label }] : []),
+          { href: `/treks/location/${locationId}`, label: `All treks from ${location.name}` },
+          ...(GARHWAL_LOCATIONS.has(locationId) ? [{ href: '/treks/garhwal-himalayas', label: 'Garhwal Himalayas trekking guide' }] : []),
+          ...(trek.bestSeason.some((m: string) => ['December', 'January', 'February', 'March'].includes(m)) ? [{ href: '/treks/winter-treks-uttarakhand', label: 'Winter treks in Uttarakhand' }] : []),
+          ...(trek.bestSeason.some((m: string) => ['May', 'June', 'April'].includes(m)) ? [{ href: '/treks/summer-treks-uttarakhand', label: 'Summer treks in Uttarakhand' }] : []),
+        ].map((item, i, arr) => (
+          <li key={item.href} style={{
+            borderBottom: i < arr.length - 1 ? '1px solid #f0f0f0' : 'none',
+          }}>
+            <Link href={item.href} style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.88rem', fontWeight: 300,
+              color: '#333333',
+              textDecoration: 'none',
+              padding: '0.85rem 0',
+              transition: 'color 0.18s',
+            }}>
+              {item.label}
+              <span style={{ color: 'var(--color-primary)', opacity: 0.5, fontSize: '0.8rem' }}>→</span>
             </Link>
           </li>
-          {INTENT_TRAIL[slug] && (
-            <li>
-              <Link href={INTENT_TRAIL[slug].path} style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
-                {INTENT_TRAIL[slug].label} →
-              </Link>
-            </li>
-          )}
-          <li>
-            <Link href={`/treks/location/${locationId}`} style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
-              All treks from {location.name} →
+        ))}
+      </ul>
+    </nav>
+  </div>
+</section>
+
+{/* RELATED TREKS — #f7f9f7 */}
+{relatedTreks.length > 0 && (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#f7f9f7',
+    paddingTop: '4rem', paddingBottom: '4rem',
+    borderBottom: '1px solid #e5e7eb',
+    marginBottom: '0',
+  }}>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Also from {location.name}</span>
+      </div>
+      <h2 style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+        fontWeight: 200, letterSpacing: '-0.03em',
+        color: '#111111', lineHeight: 1.15, marginBottom: '1.5rem',
+      }}>Related Treks in {location.name}</h2>
+      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+        {relatedTreks.map((related, i) => (
+          <li key={related.slug} style={{
+            borderBottom: i < relatedTreks.length - 1 ? '1px solid #e5e7eb' : 'none',
+          }}>
+            <Link href={`/treks/location/${locationId}/${related.slug}`} style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              textDecoration: 'none',
+              padding: '1rem 0',
+              gap: '1rem',
+            }}>
+              <span style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.9rem', fontWeight: 500,
+                color: 'var(--color-primary)',
+              }}>{related.title}</span>
+              <span style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.75rem', fontWeight: 300,
+                color: '#999999', whiteSpace: 'nowrap' as const,
+                flexShrink: 0,
+              }}>{related.duration} · {related.difficulty}</span>
             </Link>
           </li>
-          {GARHWAL_LOCATIONS.has(locationId) && (
-            <li>
-              <Link href="/treks/garhwal-himalayas" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
-                Garhwal Himalayas trekking guide →
-              </Link>
-            </li>
-          )}
-          {trek.bestSeason.some((m: string) => ['December', 'January', 'February', 'March'].includes(m)) && (
-            <li>
-              <Link href="/treks/winter-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
-                Winter treks in Uttarakhand →
-              </Link>
-            </li>
-          )}
-          {trek.bestSeason.some((m: string) => ['May', 'June', 'April'].includes(m)) && (
-            <li>
-              <Link href="/treks/summer-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
-                Summer treks in Uttarakhand →
-              </Link>
-            </li>
-          )}
-        </ul>
-      </nav>
+        ))}
+      </ul>
+    </div>
+  </section>
+)}
 
-      {/* RELATED TREKS */}
-      {relatedTreks.length > 0 && (
-        <section style={{ marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid var(--color-border)' }}>
-          <h2 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>Related Treks in {location.name}</h2>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-            {relatedTreks.map((related) => (
-              <li key={related.slug} style={{ marginBottom: '0.75rem' }}>
-                <Link href={`/treks/location/${locationId}/${related.slug}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>{related.title}</Link>
-                <span style={{ color: 'var(--color-text-secondary)', fontSize: '0.9rem' }}> — {related.duration} · {related.difficulty}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {/* COMPARISON PAGE */}
-      {COMPARISON_BLOGS[slug] && (
-        <section style={{ marginTop: '2rem', padding: '1.25rem', backgroundColor: 'var(--color-surface, #f9f9f9)', borderRadius: 'var(--radius-sm, 6px)' }}>
-          <p style={{ margin: 0, fontSize: '0.95rem', color: 'var(--color-text-secondary)' }}>
-            Not sure which trek to choose?{' '}
-            <Link href={COMPARISON_BLOGS[slug].path} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
-              {COMPARISON_BLOGS[slug].title} →
-            </Link>
-          </p>
-        </section>
-      )}
+{/* COMPARISON — #ffffff */}
+{COMPARISON_BLOGS[slug] && (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#ffffff',
+    paddingTop: '4rem', paddingBottom: '4rem',
+    marginBottom: '0',
+  }}>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <div style={{
+        padding: '1.75rem',
+        background: '#f7f9f7',
+        border: '1px solid #e5e7eb',
+        borderLeft: '3px solid var(--color-primary)',
+        borderRadius: '8px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: '1.5rem',
+        flexWrap: 'wrap' as const,
+      }}>
+        <p style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: '0.88rem', fontWeight: 300,
+          color: '#555555', margin: 0, lineHeight: 1.7,
+        }}>
+          Not sure which trek to choose?
+        </p>
+        <Link href={COMPARISON_BLOGS[slug].path} style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: '0.62rem', fontWeight: 600,
+          letterSpacing: '0.18em', textTransform: 'uppercase' as const,
+          color: 'var(--color-primary)',
+          border: '1px solid rgba(15,118,110,0.35)',
+          padding: '10px 18px', borderRadius: '4px',
+          textDecoration: 'none', whiteSpace: 'nowrap' as const,
+          flexShrink: 0,
+          transition: 'background 0.2s, color 0.2s',
+        }}>
+          {COMPARISON_BLOGS[slug].title} →
+        </Link>
+      </div>
+    </div>
+  </section>
+)}
     </main>
     </>
   );

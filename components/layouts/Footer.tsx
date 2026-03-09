@@ -1,116 +1,194 @@
 import Link from 'next/link';
-
-const footerLinkStyle = { textDecoration: 'none' } as const;
-const footerHeadingStyle = { fontWeight: 600, fontSize: '0.9rem', marginBottom: '0.5rem' } as const;
-const footerColStyle = { minWidth: '180px', flex: '1 1 180px' } as const;
+// import Image from 'next/image';
 
 export default function Footer() {
   return (
-    <footer
-      style={{
-        borderTop: '1px solid var(--color-border)',
-        marginTop: '3rem',
-      }}
-    >
-      <nav
-        style={{
-          maxWidth: '72rem',
-          margin: '0 auto',
-          padding: '2rem 1rem 1.5rem',
-        }}
-      >
-        {/* ── FOOTER GRID ──────────────────────────────────────────── */}
-        <div
-          style={{
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '2rem 3rem',
-            marginBottom: '1.5rem',
-          }}
-        >
-          {/* Column 1: Popular Treks */}
-          <div style={footerColStyle}>
-            <p style={footerHeadingStyle}>Popular Treks</p>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2, fontSize: '0.85rem' }}>
-              <li><Link href="/treks/location/lohajung/brahmatal-trek" style={footerLinkStyle}>Brahmatal Trek</Link></li>
-              <li><Link href="/treks/location/joshimath/kuari-pass-trek" style={footerLinkStyle}>Kuari Pass Trek</Link></li>
-              <li><Link href="/treks/location/lohajung/roopkund-trek" style={footerLinkStyle}>Roopkund Trek</Link></li>
-              <li><Link href="/treks/location/joshimath/pangarchulla-trek" style={footerLinkStyle}>Pangarchulla Trek</Link></li>
-              <li><Link href="/treks/location/sankri/kedarkantha-trek" style={footerLinkStyle}>Kedarkantha Trek</Link></li>
-              <li><Link href="/treks/location/sankri/har-ki-dun-trek" style={footerLinkStyle}>Har Ki Dun Trek</Link></li>
-            </ul>
+    <>
+      <style>{`
+        .ft-root {
+          background: #f7f9f7;
+          border-top: 2px solid var(--color-border);
+          margin-top: 3rem;
+          font-family: var(--font-geist-sans), 'Geist', sans-serif;
+        }
+        .ft-nav {
+          max-width: 72rem;
+          margin: 0 auto;
+          padding: 3rem 1.5rem 2rem;
+        }
+        .ft-logo-row {
+          margin-bottom: 2.5rem;
+          padding-bottom: 2rem;
+          border-bottom: 1px solid var(--color-border);
+        }
+        .ft-logo-placeholder {
+          width: 140px;
+          height: 38px;
+          border: 1.5px dashed var(--color-border);
+          border-radius: 6px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          color: #444444;
+          font-size: 0.65rem;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          font-family: var(--font-geist-sans), 'Geist', sans-serif;
+          text-decoration: none;
+        }
+        .ft-grid {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 2rem 3rem;
+          margin-bottom: 2.5rem;
+        }
+        .ft-col {
+          min-width: 165px;
+          flex: 1 1 165px;
+        }
+        .ft-col-heading {
+          font-family: var(--font-geist-sans), 'Geist', sans-serif;
+          font-weight: 600;
+          font-size: 0.72rem;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--color-primary);
+          margin: 0 0 0.85rem 0;
+        }
+        .ft-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        .ft-link {
+          text-decoration: none;
+          color: #444444;
+          font-size: 0.85rem;
+          font-family: var(--font-geist-sans), 'Geist', sans-serif;
+          font-weight: 400;
+          line-height: 2.1;
+          display: inline-block;
+          transition: color 0.18s ease;
+        }
+        .ft-link:hover {
+          color: var(--color-primary);
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+        .ft-bottom {
+          border-top: 1px solid var(--color-border);
+          padding-top: 1.25rem;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1.5rem;
+          align-items: center;
+          font-size: 0.78rem;
+          color: #666666;
+          font-family: var(--font-geist-sans), 'Geist', sans-serif;
+          font-weight: 400;
+        }
+        .ft-bottom-link {
+          text-decoration: none;
+          color: #666666;
+          font-size: 0.78rem;
+          font-family: var(--font-geist-sans), 'Geist', sans-serif;
+          font-weight: 400;
+          transition: color 0.18s ease;
+        }
+        .ft-bottom-link:hover {
+          color: var(--color-primary);
+          text-decoration: underline;
+          text-underline-offset: 3px;
+        }
+      `}</style>
+
+      <footer className="ft-root">
+        <nav className="ft-nav">
+
+          {/* ── LOGO ── */}
+          <div className="ft-logo-row">
+            <Link href="/" className="ft-logo-placeholder">
+              {/*
+                Logo ready hone pe replace karo:
+                <Image src="/images/logo.png" width={140} height={38} alt="Retreats And Treks" />
+              */}
+              Your Logo
+            </Link>
           </div>
 
-          {/* Column 2: Garhwal Himalaya Treks */}
-          <div style={footerColStyle}>
-            <p style={footerHeadingStyle}>Garhwal Himalaya Treks</p>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2, fontSize: '0.85rem' }}>
-              <li><Link href="/treks/garhwal-himalayas" style={footerLinkStyle}>Garhwal Trek Guide</Link></li>
-              <li><Link href="/treks/location/lohajung/brahmatal-trek" style={footerLinkStyle}>Brahmatal Trek</Link></li>
-              <li><Link href="/treks/location/joshimath/kuari-pass-trek" style={footerLinkStyle}>Kuari Pass Trek</Link></li>
-              <li><Link href="/treks/location/lohajung/roopkund-trek" style={footerLinkStyle}>Roopkund Trek</Link></li>
-              <li><Link href="/treks/location/joshimath/pangarchulla-trek" style={footerLinkStyle}>Pangarchulla Peak Trek</Link></li>
-              <li><Link href="/treks/location/lohajung" style={footerLinkStyle}>Treks in Lohajung</Link></li>
-              <li><Link href="/treks/location/joshimath" style={footerLinkStyle}>Treks in Joshimath</Link></li>
-            </ul>
+          {/* ── COLUMNS ── */}
+          <div className="ft-grid">
+
+            <div className="ft-col">
+              <p className="ft-col-heading">Popular Treks</p>
+              <ul className="ft-list">
+                <li><Link href="/treks/location/lohajung/brahmatal-trek" className="ft-link">Brahmatal Trek</Link></li>
+                <li><Link href="/treks/location/joshimath/kuari-pass-trek" className="ft-link">Kuari Pass Trek</Link></li>
+                <li><Link href="/treks/location/lohajung/roopkund-trek" className="ft-link">Roopkund Trek</Link></li>
+                <li><Link href="/treks/location/joshimath/pangarchulla-trek" className="ft-link">Pangarchulla Trek</Link></li>
+                <li><Link href="/treks/location/sankri/kedarkantha-trek" className="ft-link">Kedarkantha Trek</Link></li>
+                <li><Link href="/treks/location/sankri/har-ki-dun-trek" className="ft-link">Har Ki Dun Trek</Link></li>
+              </ul>
+            </div>
+
+            <div className="ft-col">
+              <p className="ft-col-heading">Garhwal Himalaya</p>
+              <ul className="ft-list">
+                <li><Link href="/treks/garhwal-himalayas" className="ft-link">Garhwal Trek Guide</Link></li>
+                <li><Link href="/treks/location/lohajung/brahmatal-trek" className="ft-link">Brahmatal Trek</Link></li>
+                <li><Link href="/treks/location/joshimath/kuari-pass-trek" className="ft-link">Kuari Pass Trek</Link></li>
+                <li><Link href="/treks/location/lohajung/roopkund-trek" className="ft-link">Roopkund Trek</Link></li>
+                <li><Link href="/treks/location/joshimath/pangarchulla-trek" className="ft-link">Pangarchulla Peak</Link></li>
+                <li><Link href="/treks/location/lohajung" className="ft-link">Treks in Lohajung</Link></li>
+                <li><Link href="/treks/location/joshimath" className="ft-link">Treks in Joshimath</Link></li>
+              </ul>
+            </div>
+
+            <div className="ft-col">
+              <p className="ft-col-heading">Trekking Guides</p>
+              <ul className="ft-list">
+                <li><Link href="/treks/best-treks-in-uttarakhand" className="ft-link">Best Treks in Uttarakhand</Link></li>
+                <li><Link href="/treks/best-treks-in-uttarakhand/beginner" className="ft-link">Beginner Treks</Link></li>
+                <li><Link href="/treks/best-treks-in-uttarakhand/snow" className="ft-link">Snow Treks</Link></li>
+                <li><Link href="/treks/best-treks-in-uttarakhand/high-altitude" className="ft-link">High-Altitude Treks</Link></li>
+                <li><Link href="/treks/garhwal-himalayas/fitness-guide" className="ft-link">Trek Fitness Guide</Link></li>
+              </ul>
+            </div>
+
+            <div className="ft-col">
+              <p className="ft-col-heading">Trek Comparisons</p>
+              <ul className="ft-list">
+                <li><Link href="/treks/brahmatal-vs-kuari-pass" className="ft-link">Brahmatal vs Kuari Pass</Link></li>
+                <li><Link href="/treks/roopkund-vs-pangarchulla" className="ft-link">Roopkund vs Pangarchulla</Link></li>
+                <li><Link href="/treks/kedarkantha-vs-har-ki-dun" className="ft-link">Kedarkantha vs Har Ki Dun</Link></li>
+              </ul>
+            </div>
+
+            <div className="ft-col">
+              <p className="ft-col-heading">Retreats</p>
+              <ul className="ft-list">
+                <li><Link href="/retreats/himalayan-retreats" className="ft-link">Himalayan Retreats</Link></li>
+                <li><Link href="/retreats/chakrata" className="ft-link">Chakrata</Link></li>
+                <li><Link href="/retreats/sankri" className="ft-link">Sankri</Link></li>
+                <li><Link href="/retreats/rishikesh" className="ft-link">Rishikesh</Link></li>
+                <li><Link href="/retreat-programs" className="ft-link">All Programs</Link></li>
+              </ul>
+            </div>
+
           </div>
 
-          {/* Column 3: Trekking Guides */}
-          <div style={footerColStyle}>
-            <p style={footerHeadingStyle}>Trekking Guides</p>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2, fontSize: '0.85rem' }}>
-              <li><Link href="/treks/best-treks-in-uttarakhand" style={footerLinkStyle}>Best Treks in Uttarakhand</Link></li>
-              <li><Link href="/treks/best-treks-in-uttarakhand/beginner" style={footerLinkStyle}>Beginner Treks</Link></li>
-              <li><Link href="/treks/best-treks-in-uttarakhand/snow" style={footerLinkStyle}>Snow Treks</Link></li>
-              <li><Link href="/treks/best-treks-in-uttarakhand/high-altitude" style={footerLinkStyle}>High-Altitude Treks</Link></li>
-              <li><Link href="/treks/garhwal-himalayas/fitness-guide" style={footerLinkStyle}>Trek Fitness Guide</Link></li>
-            </ul>
+          {/* ── BOTTOM BAR ── */}
+          <div className="ft-bottom">
+            <span>© {new Date().getFullYear()} Retreats And Treks</span>
+            <Link href="/blog" className="ft-bottom-link">Blog</Link>
+            <Link href="/about" className="ft-bottom-link">About</Link>
+            <Link href="/contact" className="ft-bottom-link">Contact</Link>
+            <Link href="/site-map" className="ft-bottom-link">Site Map</Link>
+            <Link href="/sitemap.xml" className="ft-bottom-link">Sitemap</Link>
           </div>
 
-          {/* Column 3: Trek Comparisons */}
-          <div style={footerColStyle}>
-            <p style={footerHeadingStyle}>Trek Comparisons</p>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2, fontSize: '0.85rem' }}>
-              <li><Link href="/treks/brahmatal-vs-kuari-pass" style={footerLinkStyle}>Brahmatal vs Kuari Pass</Link></li>
-              <li><Link href="/treks/roopkund-vs-pangarchulla" style={footerLinkStyle}>Roopkund vs Pangarchulla</Link></li>
-              <li><Link href="/treks/kedarkantha-vs-har-ki-dun" style={footerLinkStyle}>Kedarkantha vs Har Ki Dun</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Retreats & Company */}
-          <div style={footerColStyle}>
-            <p style={footerHeadingStyle}>Retreats</p>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2, fontSize: '0.85rem' }}>
-              <li><Link href="/retreats/himalayan-retreats" style={footerLinkStyle}>Himalayan Retreats</Link></li>
-              <li><Link href="/retreats/chakrata" style={footerLinkStyle}>Chakrata</Link></li>
-              <li><Link href="/retreats/sankri" style={footerLinkStyle}>Sankri</Link></li>
-              <li><Link href="/retreats/rishikesh" style={footerLinkStyle}>Rishikesh</Link></li>
-              <li><Link href="/retreat-programs" style={footerLinkStyle}>All Programs</Link></li>
-            </ul>
-          </div>
-        </div>
-
-        {/* ── BOTTOM BAR ───────────────────────────────────────────── */}
-        <div
-          style={{
-            borderTop: '1px solid var(--color-border)',
-            paddingTop: '1rem',
-            display: 'flex',
-            flexWrap: 'wrap',
-            gap: '1.5rem',
-            alignItems: 'center',
-            fontSize: '0.85rem',
-            color: 'var(--color-text-secondary)',
-          }}
-        >
-          <span>© {new Date().getFullYear()} Retreats And Treks</span>
-          <Link href="/blog" style={footerLinkStyle}>Blog</Link>
-          <Link href="/about" style={footerLinkStyle}>About</Link>
-          <Link href="/contact" style={footerLinkStyle}>Contact</Link>
-          <Link href="/site-map" style={footerLinkStyle}>Site Map</Link>
-          <Link href="/sitemap.xml" style={footerLinkStyle}>Sitemap</Link>
-        </div>
-      </nav>
-    </footer>
+        </nav>
+      </footer>
+    </>
   );
 }

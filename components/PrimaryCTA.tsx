@@ -38,21 +38,28 @@ export default function PrimaryCTA({
   return (
     <aside
       style={{
-        background: 'linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%)',
-        border: '1px solid #bbf7d0',
-        borderRadius: 'var(--radius-md)',
-        padding: 'var(--space-lg)',
-        textAlign: 'center',
-        margin: 'var(--space-xl) 0',
-      }}
+  position: 'relative',
+  background: '#f7f9f7',
+  border: '1px solid rgba(15,118,110,0.15)',
+  borderLeft: '3px solid var(--color-primary)',
+  borderRadius: '2px',
+  padding: 'var(--space-lg)',
+  textAlign: 'center',
+  margin: 'var(--space-xl) 0',
+  overflow: 'hidden',
+}}
+
     >
+      <span aria-hidden="true" style={{
+  position: 'absolute', inset: 0,
+  background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(15,118,110,0.04) 0%, transparent 70%)',
+  pointerEvents: 'none',
+}} />
       {subtext && (
         <p
           style={{
-            fontSize: '0.95rem',
-            color: 'var(--color-text)',
-            marginBottom: '0.75rem',
-            lineHeight: 1.6,
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+fontSize: '0.88rem', fontWeight: 300, color: '#666666', lineHeight: 1.7
           }}
         >
           {subtext}

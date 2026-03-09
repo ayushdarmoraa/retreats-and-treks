@@ -73,28 +73,46 @@ export default function RatingBadge({ rating, variant = 'compact' }: RatingBadge
   }
 
   if (variant === 'standard') {
-    return (
-      <div
-        style={{
-          display: 'inline-flex',
-          alignItems: 'center',
-          gap: '6px',
-          fontSize: '0.9rem',
-        }}
-        aria-label={`Rated ${displayValue} out of 5 by ${count} participants`}
-      >
-        <span style={{ fontSize: '1rem', letterSpacing: '1px' }}>
-          {([1, 2, 3, 4, 5] as const).map((pos) => (
-            <StarIcon key={pos} fill={starFill(value, pos)} />
-          ))}
-        </span>
-        <span style={{ fontWeight: 700 }}>{displayValue}</span>
-        <span style={{ color: 'var(--color-text-secondary)', fontSize: '0.85rem' }}>
-          · {count} review{count !== 1 ? 's' : ''}
-        </span>
-      </div>
-    );
-  }
+  return (
+    <div
+      style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '0.6rem',
+        padding: '0.45rem 0.9rem',
+        background: 'rgba(245,158,11,0.06)',
+        border: '1px solid rgba(245,158,11,0.18)',
+        borderRadius: '100px',
+        fontSize: '0.82rem',
+      }}
+      aria-label={`Rated ${displayValue} out of 5 by ${count} participants`}
+    >
+      <span style={{ fontSize: '0.85rem', letterSpacing: '1.5px', lineHeight: 1 }}>
+        {([1, 2, 3, 4, 5] as const).map((pos) => (
+          <StarIcon key={pos} fill={starFill(value, pos)} />
+        ))}
+      </span>
+      <span style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontWeight: 600,
+        fontSize: '0.82rem',
+        color: '#111111',
+        letterSpacing: '-0.01em',
+      }}>
+        {displayValue}
+      </span>
+      <span style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontWeight: 300,
+        fontSize: '0.75rem',
+        color: '#888888',
+        letterSpacing: '0.01em',
+      }}>
+        · {count} review{count !== 1 ? 's' : ''}
+      </span>
+    </div>
+  );
+}
 
   // inline
   return (
