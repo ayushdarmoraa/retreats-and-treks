@@ -22,9 +22,9 @@ export function generateMetadata(): Metadata {
       canonical: buildCanonicalUrl(PATH),
     },
     robots: {
-      index: true,
-      follow: true,
-    },
+  index: false,
+  follow: true,
+},
     openGraph: {
       title: 'Best Summer Treks in Uttarakhand — May–June Guide',
       description:

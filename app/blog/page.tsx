@@ -26,16 +26,21 @@ export default function BlogPage() {
           width: 100vw;
           margin-left: calc(-50vw + 50%);
           background: #f7f9f7;
-          padding: 5rem 2rem 4.5rem;
+          padding: 8rem 2rem 4.5rem;
           border-bottom: 1px solid #e5e7eb;
         }
         .bl-hero-inner {
           max-width: 78rem;
           margin: 0 auto;
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
         }
         .bl-eyebrow {
           display: flex;
           align-items: center;
+          justify-content: center;
           gap: 0.75rem;
           margin-bottom: 1.25rem;
         }
@@ -63,6 +68,7 @@ export default function BlogPage() {
           color: #111111;
           line-height: 1.05;
           margin: 0 0 1.25rem;
+          text-align: center;
         }
         .bl-hero-desc {
           font-family: var(--font-geist-sans), sans-serif;
@@ -72,6 +78,7 @@ export default function BlogPage() {
           color: #555555;
           max-width: 520px;
           margin: 0;
+          text-align: center;
         }
 
         /* ── TOPICS ── */
@@ -85,6 +92,7 @@ export default function BlogPage() {
         .bl-topics-inner {
           max-width: 78rem;
           margin: 0 auto;
+          text-align: center;
         }
         .bl-topics-inner h2 {
           font-family: var(--font-geist-sans), sans-serif;
@@ -94,11 +102,13 @@ export default function BlogPage() {
           color: #111111;
           line-height: 1.15;
           margin: 0 0 2rem;
+          text-align: center;
         }
         .bl-topics-grid {
           display: flex;
           flex-wrap: wrap;
           gap: 0.65rem;
+          justify-content: center;
         }
         .bl-topic-pill {
           display: inline-flex;
@@ -436,7 +446,8 @@ export default function BlogPage() {
               <div className="bl-card-img-wrap">
                 <img
                   className="bl-card-img"
-                  src="https://images.unsplash.com/photo-1548013146-72479768bada?w=1200&q=80&fit=crop"
+                  src="https://images.unsplash.com/photo-1513023654725-b7382eba0003?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                  
                   alt="Kedarkantha winter snow trek"
                 />
                 <div className="bl-card-img-overlay" />
@@ -480,7 +491,7 @@ export default function BlogPage() {
               <div className="bl-card-img-wrap">
                 <img
                   className="bl-card-img"
-                  src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=800&q=80&fit=crop"
+                  src="https://media.istockphoto.com/id/1069744476/photo/hiking-in-the-mountains-alone.webp?a=1&b=1&s=612x612&w=0&k=20&c=RdfTSUhKMC20HykMekoA6An2XWFlqFp_lsUOa7jP79s="
                   alt="Himalayan meditation retreat"
                 />
                 <div className="bl-card-img-overlay" />
@@ -524,7 +535,7 @@ export default function BlogPage() {
               <div className="bl-card-img-wrap">
                 <img
                   className="bl-card-img"
-                  src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&fit=crop"
+                  src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmF0dXJlfGVufDB8fDB8fHww"
                   alt="Mussoorie hill station Himalayan town"
                 />
                 <div className="bl-card-img-overlay" />

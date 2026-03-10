@@ -21,9 +21,9 @@ export function generateMetadata(): Metadata {
       canonical: buildCanonicalUrl(PATH),
     },
     robots: {
-      index: true,
-      follow: true,
-    },
+  index: false,
+  follow: true,
+},
     openGraph: {
       title: 'Best Beginner Treks in Uttarakhand',
       description:

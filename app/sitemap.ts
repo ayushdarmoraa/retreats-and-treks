@@ -358,24 +358,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
     },
     {
-      url: buildCanonicalUrl('/treks/beginner-treks-uttarakhand'),
-      lastModified: now,
-      priority: 0.85,
-      changeFrequency: 'monthly',
-    },
-    {
-      url: buildCanonicalUrl('/treks/winter-treks-uttarakhand'),
-      lastModified: now,
-      priority: 0.85,
-      changeFrequency: 'monthly',
-    },
-    {
-      url: buildCanonicalUrl('/treks/summer-treks-uttarakhand'),
-      lastModified: now,
-      priority: 0.85,
-      changeFrequency: 'monthly',
-    },
-    {
       url: buildCanonicalUrl('/treks/kedarkantha-vs-har-ki-dun'),
       lastModified: now,
       priority: 0.80,
