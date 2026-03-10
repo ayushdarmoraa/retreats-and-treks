@@ -95,241 +95,224 @@ export default function SnowTreksPage() {
   };
 
   return (
-    <TrackedPage page={PATH}>
-      <article style={{ maxWidth: 720, margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
-        <Breadcrumb items={BREADCRUMBS} />
+    <TrackedPage page={PATH} style={{ width: '100%', padding: '0' }}>
+  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+  <style>{`
+    .snow-card { background:#fff; border:1px solid #e5e7eb; border-top:2px solid var(--color-primary); border-radius:8px; overflow:hidden; margin-bottom:1.25rem; }
+    .snow-card:last-of-type { margin-bottom:0; }
+    .snow-card-img { width:100%; height:200px; object-fit:cover; display:block; }
+    .snow-card-body { padding:1.5rem; }
+    .snow-card-body h2 { font-family:var(--font-geist-sans),sans-serif; font-size:0.95rem; font-weight:500; color:#111; margin:0 0 0.85rem; letter-spacing:-0.01em; }
+    .snow-card-body p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0 0 0.75rem; }
+    .snow-card-body p:last-child { margin-bottom:0; }
+    .snow-pills { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1rem; }
+    .snow-pill { font-family:var(--font-geist-sans),sans-serif; font-size:0.68rem; color:#555; background:#f7f9f7; border:1px solid #e5e7eb; border-radius:100px; padding:3px 10px; }
+    .snow-th { font-family:var(--font-geist-sans),sans-serif; font-size:0.55rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-primary); opacity:0.7; padding:0.75rem 1rem; text-align:left; }
+    .snow-td { font-family:var(--font-geist-sans),sans-serif; font-size:0.84rem; font-weight:300; color:#444; padding:0.75rem 1rem; border-bottom:1px solid #f0f0f0; }
+    .snow-table tbody tr:last-child td { border-bottom:none; }
+    .snow-table tbody tr:hover td { background:#f7f9f7; }
+    .snow-nav-link { display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1rem; border-bottom:1px solid #f0f0f0; font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; color:#333; text-decoration:none; }
+    .snow-nav-link:hover { background:#f7f9f7; color:var(--color-primary); }
+    .snow-nav-link::after { content:'→'; color:var(--color-primary); opacity:0.5; }
+    .snow-nav-group { border:1px solid #e5e7eb; border-radius:8px; overflow:hidden; }
+    .snow-nav-group .snow-nav-link:last-child { border-bottom:none; }
+    @media(max-width:640px){
+      .snow-card-img { height:160px; }
+      .snow-card-body { padding:1.1rem; }
+      .snow-td:nth-child(2), .snow-th:nth-child(2) { display:none; }
+    }
+  `}</style>
 
-        <h1 style={{ fontSize: '1.75rem', fontWeight: 700, lineHeight: 1.25, marginBottom: 'var(--space-md)' }}>
-          Best Snow Treks in Uttarakhand
-        </h1>
+  {/* ── HERO ── */}
+  <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
+    <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
+      <Breadcrumb items={BREADCRUMBS} />
+      <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', margin:'1.5rem 0 1rem' }}>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Winter Trekking · Uttarakhand</span>
+      </div>
+      <h1 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.75rem,3.5vw,2.4rem)', fontWeight:200, letterSpacing:'-0.035em', color:'#111', lineHeight:1.1, margin:'0 0 1.5rem' }}>
+        Best Snow Treks in Uttarakhand
+      </h1>
+      <div style={{ display:'flex', flexDirection:'column', gap:'0.75rem', marginBottom:'1.5rem' }}>
+  <div style={{ background:'#fff', border:'1px solid #e5e7eb', borderLeft:'3px solid var(--color-primary)', borderRadius:'8px', padding:'1rem 1.25rem', fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', lineHeight:1.85, color:'#555' }}>
+    <div style={{ fontSize:'0.55rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'var(--color-primary)', opacity:0.7, marginBottom:'0.35rem' }}>First Snow Trek</div>
+    <span style={{ fontWeight:500, color:'#111' }}>Choose <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Brahmatal</Link></span>{' '}
+    <span style={{ fontWeight:300 }}>— frozen lake, snow ridges, moderate difficulty. No crampons needed.</span>
+  </div>
+  <div style={{ background:'#fff', border:'1px solid #e5e7eb', borderLeft:'3px solid #e65100', borderRadius:'8px', padding:'1rem 1.25rem', fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', lineHeight:1.85, color:'#555' }}>
+    <div style={{ fontSize:'0.55rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'#e65100', opacity:0.8, marginBottom:'0.35rem' }}>Want a Summit</div>
+    <span style={{ fontWeight:500, color:'#111' }}>Choose <Link href="/treks/location/sankri/kedarkantha-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Kedarkantha</Link></span>{' '}
+    <span style={{ fontWeight:300 }}>— deep-snow summit views across six Himalayan ranges.</span>
+  </div>
+</div>
+      <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', margin:'0 0 1rem' }}>
+        Winter transforms the Uttarakhand Himalaya — frozen lakes, snow-laden conifer forests, and summit ridges under continuous white. The snow trekking season runs December to March, with January and February delivering peak conditions. Three featured routes offer distinctly different winter experiences, from a gentle frozen-lake walk to a proper summit push through deep snow.
+      </p>
+      <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', margin:0 }}>
+        These routes are drawn from our <Link href={PARENT_PATH} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>complete ranking of the 10 best treks in Uttarakhand</Link>. For non-winter routes, see the <Link href={`${PARENT_PATH}/beginner`} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>beginner treks</Link> and <Link href={`${PARENT_PATH}/high-altitude`} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>high-altitude treks</Link> filter pages.
+      </p>
+    </div>
+  </section>
 
-        <aside style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', padding: '1rem 1.25rem', marginBottom: '1.5rem', lineHeight: 1.7 }}>
-          <strong>First snow trek?</strong>{' '}
-          Choose{' '}
-          <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)' }}>Brahmatal</Link>{' '}
-          — frozen lake, snow ridges, moderate difficulty.{' '}
-          <strong>Want a summit?</strong>{' '}
-          <Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)' }}>Kedarkantha</Link>{' '}
-          delivers deep-snow summit views across six Himalayan ranges.
-        </aside>
+  {/* ── 3 TREK CARDS ── */}
+  <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
+    <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Featured Snow Treks</span>
+      </div>
+      <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'2rem' }}>Three Routes, Three Winter Experiences</h2>
 
-        <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-          Winter transforms the Uttarakhand Himalaya — frozen lakes, snow-laden conifer forests, and summit ridges
-          under continuous white. The snow trekking season runs December to March, with January and February delivering
-          peak conditions. Three featured routes offer distinctly different winter experiences, from a gentle frozen-lake
-          walk to a proper summit push through deep snow.
-        </p>
-        <p style={{ lineHeight: 1.8, marginBottom: '1.5rem' }}>
-          These routes are drawn from our{' '}
-          <Link href={PARENT_PATH} style={{ color: 'var(--color-primary)' }}>
-            complete ranking of the 10 best treks in Uttarakhand
-          </Link>. For non-winter routes, see the{' '}
-          <Link href={`${PARENT_PATH}/beginner`} style={{ color: 'var(--color-primary)' }}>
-            beginner treks
-          </Link>{' '}
-          and{' '}
-          <Link href={`${PARENT_PATH}/high-altitude`} style={{ color: 'var(--color-primary)' }}>
-            high-altitude treks
-          </Link>{' '}
-          filter pages.
-        </p>
-
-        {/* ── BRAHMATAL ────────────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Brahmatal — The Ideal First Snow Trek
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.5rem' }}>
-            <strong>3,850 m</strong> &nbsp;|&nbsp; <strong>Moderate</strong> &nbsp;|&nbsp;
-            <strong>4 days</strong> &nbsp;|&nbsp; <strong>Dec–Mar</strong> &nbsp;|&nbsp;
-            Lohajung, Garhwal
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)' }}>
-              Brahmatal
-            </Link>{' '}
-            is the snow trek most often recommended for first-time winter trekkers — and for good reason. A 4-day route
-            from Lohajung through snow-covered rhododendron forest to a frozen alpine lake at 3,850 m, with continuous
-            Trishul and Nanda Ghunti views from the upper ridges. No technical sections, no exposed scrambles, no
-            crampons needed. The shorter 4-day duration also limits cold-weather exposure, which is the real challenge
-            of winter trekking for beginners.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Snow conditions:</strong> Above 3,000 m, expect 1–3 feet of packed snow from mid-December. The
-            trail through snow-covered forest is visually stunning and the frozen lake itself — with mountain reflections
-            visible through ice — is the signature moment. January and February offer the deepest snow.
-          </p>
-        </section>
-
-        {/* ── KEDARKANTHA ──────────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Kedarkantha — The Quintessential Winter Summit
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.5rem' }}>
-            <strong>3,810 m</strong> &nbsp;|&nbsp; <strong>Moderate–Challenging</strong> &nbsp;|&nbsp;
-            <strong>5 days</strong> &nbsp;|&nbsp; <strong>Dec–Feb</strong> &nbsp;|&nbsp;
-            Sankri
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)' }}>
-              Kedarkantha
-            </Link>{' '}
-            is the most popular winter trek in India — the definitive first summit experience in deep snow. A 5-day
-            route from Sankri with a final summit push that gains 1,500 feet through knee-deep snow to a 3,810 m peak
-            offering 360-degree views across six Himalayan ranges. More physically demanding than Brahmatal, with a
-            proper summit-day challenge that separates it from a standard snow walk.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Snow conditions:</strong> Deep snow above 3,200 m from December. The summit push is the centrepiece —
-            a steep, sustained climb through snow that requires microspikes and genuine effort. Sunrise from the
-            snow-covered peak is the most photographed moment in Indian winter trekking.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Choosing between the two winter routes? Our detailed{' '}
-            <Link href="/blog/kedarkantha-vs-har-ki-dun" style={{ color: 'var(--color-primary)' }}>
-              Kedarkantha vs Har Ki Dun comparison
-            </Link>{' '}
-            covers the decision framework for Sankri-based treks.
-          </p>
-        </section>
-
-        {/* ── KUARI PASS MARCH ─────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Kuari Pass (March) — Snow Meets Spring
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.5rem' }}>
-            <strong>3,876 m</strong> &nbsp;|&nbsp; <strong>Moderate</strong> &nbsp;|&nbsp;
-            <strong>5 days</strong> &nbsp;|&nbsp; <strong>March</strong> &nbsp;|&nbsp;
-            Joshimath, Garhwal
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)' }}>
-              Kuari Pass
-            </Link>{' '}
-            in early March sits at the intersection of winter and spring — significant snow remains on the upper
-            sections while rhododendrons begin blooming on the lower trail. Not a pure deep-snow trek like Kedarkantha,
-            but the combination of lingering snow, spring colour, and the famous Curzon Trail ridge walk creates the
-            most photogenic window of any featured route.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Snow conditions:</strong> Upper sections (above 3,400 m) retain 1–2 feet of snow through mid-March.
-            Lower trail transitions from snow to mud to dry trail as spring advances. The ridge walk with snow
-            underfoot and Nanda Devi views is the highlight.
-          </p>
-        </section>
-
-        {/* ── COMPARISON CALLOUT ───────────────────────────────────── */}
-        <p style={{ lineHeight: 1.8, marginBottom: 'var(--space-xl)', background: 'var(--color-surface)', padding: '1rem 1.25rem', borderRadius: 'var(--radius-sm)', borderLeft: '3px solid var(--color-primary)' }}>
-          <strong>Choosing between Kedarkantha and Har Ki Dun from Sankri?</strong>{' '}
-          Both leave from the same base town but deliver opposite experiences.{' '}
-          <Link href="/treks/kedarkantha-vs-har-ki-dun" style={{ color: 'var(--color-primary)' }}>
-            See the full Kedarkantha vs Har Ki Dun comparison →
-          </Link>
-        </p>
-
-        {/* ── COMPARISON TABLE ─────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Snow Treks at a Glance
-          </h2>
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              <thead>
-                <tr style={{ borderBottom: '2px solid var(--color-border)', textAlign: 'left' }}>
-                  <th style={{ padding: '0.5rem 0.75rem' }}>Trek</th>
-                  <th style={{ padding: '0.5rem 0.75rem' }}>Altitude</th>
-                  <th style={{ padding: '0.5rem 0.75rem' }}>Difficulty</th>
-                  <th style={{ padding: '0.5rem 0.75rem' }}>Days</th>
-                  <th style={{ padding: '0.5rem 0.75rem' }}>Peak Snow</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem' }}><Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)' }}>Brahmatal</Link></td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>3,850 m</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Moderate</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>4</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Jan–Feb</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem' }}><Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)' }}>Kedarkantha</Link></td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>3,810 m</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Moderate–Challenging</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>5</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Dec–Feb</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem' }}><Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)' }}>Kuari Pass</Link></td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>3,876 m</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Moderate</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>5</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Mar (lingering)</td>
-                </tr>
-              </tbody>
-            </table>
+      {/* Brahmatal */}
+      <div className="snow-card">
+        <img className="snow-card-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Brahmatal snow trek — frozen alpine lake in Garhwal Himalaya" loading="lazy" />
+        <div className="snow-card-body">
+          <h2>Brahmatal — The Ideal First Snow Trek</h2>
+          <div className="snow-pills">
+            <span className="snow-pill">3,850 m</span>
+            <span className="snow-pill" style={{ color:'var(--color-primary)', borderColor:'rgba(15,118,110,0.25)', background:'rgba(15,118,110,0.05)' }}>Moderate</span>
+            <span className="snow-pill">4 days</span>
+            <span className="snow-pill">Dec–Mar</span>
+            <span className="snow-pill">Lohajung, Garhwal</span>
           </div>
-        </section>
+          <p><Link href="/treks/location/lohajung/brahmatal-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Brahmatal</Link> is the snow trek most often recommended for first-time winter trekkers — and for good reason. A 4-day route from Lohajung through snow-covered rhododendron forest to a frozen alpine lake at 3,850 m, with continuous Trishul and Nanda Ghunti views from the upper ridges. No technical sections, no exposed scrambles, no crampons needed. The shorter 4-day duration also limits cold-weather exposure, which is the real challenge of winter trekking for beginners.</p>
+          <p><strong style={{ fontWeight:500, color:'#111' }}>Snow conditions:</strong> Above 3,000 m, expect 1–3 feet of packed snow from mid-December. The trail through snow-covered forest is visually stunning and the frozen lake itself — with mountain reflections visible through ice — is the signature moment. January and February offer the deepest snow.</p>
+        </div>
+      </div>
 
-        {/* ── GEAR ESSENTIALS ──────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Winter Gear Essentials
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Snow trekking demands specific gear beyond standard 3-season equipment. The critical additions:
-            waterproof shell layers (jacket + pants), insulated gloves with waterproof outers, gaiters to keep snow
-            out of boots, microspikes for icy sections, and a sleeping bag rated to -15°C minimum.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Our{' '}
-            <Link href="/treks/garhwal-himalayas/packing-checklist" style={{ color: 'var(--color-primary)' }}>
-              print-ready packing checklist
-            </Link>{' '}
-            includes a winter-specific section covering all snow trek gear. For fitness preparation targeting
-            winter conditions, see the{' '}
-            <Link href="/treks/garhwal-himalayas/fitness-guide" style={{ color: 'var(--color-primary)' }}>
-              8-week fitness guide
-            </Link>.
-          </p>
-        </section>
+      {/* Kedarkantha */}
+      <div className="snow-card">
+        <img className="snow-card-img" src="https://images.unsplash.com/photo-1571401835393-8c5f35328320?w=800&q=80" alt="Kedarkantha summit — winter snow trek from Sankri" loading="lazy" />
+        <div className="snow-card-body">
+          <h2>Kedarkantha — The Quintessential Winter Summit</h2>
+          <div className="snow-pills">
+            <span className="snow-pill">3,810 m</span>
+            <span className="snow-pill" style={{ color:'#c45000', borderColor:'rgba(230,81,0,0.25)', background:'rgba(230,81,0,0.05)' }}>Moderate–Challenging</span>
+            <span className="snow-pill">5 days</span>
+            <span className="snow-pill">Dec–Feb</span>
+            <span className="snow-pill">Sankri</span>
+          </div>
+          <p><Link href="/treks/location/sankri/kedarkantha-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Kedarkantha</Link> is the most popular winter trek in India — the definitive first summit experience in deep snow. A 5-day route from Sankri with a final summit push that gains 1,500 feet through knee-deep snow to a 3,810 m peak offering 360-degree views across six Himalayan ranges. More physically demanding than Brahmatal, with a proper summit-day challenge that separates it from a standard snow walk.</p>
+          <p><strong style={{ fontWeight:500, color:'#111' }}>Snow conditions:</strong> Deep snow above 3,200 m from December. The summit push is the centrepiece — a steep, sustained climb through snow that requires microspikes and genuine effort. Sunrise from the snow-covered peak is the most photographed moment in Indian winter trekking.</p>
+          <p>Choosing between the two winter routes? Our detailed <Link href="/blog/kedarkantha-vs-har-ki-dun" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Kedarkantha vs Har Ki Dun comparison</Link> covers the decision framework for Sankri-based treks.</p>
+        </div>
+      </div>
 
-        <PrimaryCTA
-          label="Book a Winter Trek"
-          subtext="Share your preferred dates — we will confirm snow conditions and availability."
-          vertical="trek"
-          category="filter-snow"
-          sourcePath={PATH}
-        />
+      {/* Kuari Pass */}
+      <div className="snow-card">
+        <img className="snow-card-img" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Kuari Pass March — snow and spring on the Curzon Trail" loading="lazy" />
+        <div className="snow-card-body">
+          <h2>Kuari Pass (March) — Snow Meets Spring</h2>
+          <div className="snow-pills">
+            <span className="snow-pill">3,876 m</span>
+            <span className="snow-pill" style={{ color:'var(--color-primary)', borderColor:'rgba(15,118,110,0.25)', background:'rgba(15,118,110,0.05)' }}>Moderate</span>
+            <span className="snow-pill">5 days</span>
+            <span className="snow-pill">March</span>
+            <span className="snow-pill">Joshimath, Garhwal</span>
+          </div>
+          <p><Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Kuari Pass</Link> in early March sits at the intersection of winter and spring — significant snow remains on the upper sections while rhododendrons begin blooming on the lower trail. Not a pure deep-snow trek like Kedarkantha, but the combination of lingering snow, spring colour, and the famous Curzon Trail ridge walk creates the most photogenic window of any featured route.</p>
+          <p><strong style={{ fontWeight:500, color:'#111' }}>Snow conditions:</strong> Upper sections (above 3,400 m) retain 1–2 feet of snow through mid-March. Lower trail transitions from snow to mud to dry trail as spring advances. The ridge walk with snow underfoot and Nanda Devi views is the highlight.</p>
+        </div>
+      </div>
 
-        {/* ── FAQ ───────────────────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-lg)' }}>
-            Frequently Asked Questions
-          </h2>
-          <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
-        </section>
+      {/* Callout */}
+      <div style={{ background:'#f7f9f7', border:'1px solid #e5e7eb', borderLeft:'3px solid var(--color-primary)', borderRadius:'8px', padding:'1rem 1.25rem', marginTop:'0.5rem', fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555' }}>
+        <strong style={{ fontWeight:500, color:'#111' }}>Choosing between Kedarkantha and Har Ki Dun from Sankri?</strong>{' '}
+        Both leave from the same base town but deliver opposite experiences.{' '}
+        <Link href="/treks/kedarkantha-vs-har-ki-dun" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>See the full Kedarkantha vs Har Ki Dun comparison →</Link>
+      </div>
+    </div>
+  </section>
 
-        {/* ── RELATED FILTER PAGES ─────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-md)', paddingTop: '1.5rem', borderTop: '1px solid var(--color-border)' }}>
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>
-            Browse by Category
-          </h2>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2.2 }}>
-            <li><Link href={PARENT_PATH} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>← All 10 Best Treks in Uttarakhand</Link></li>
-            <li><Link href={`${PARENT_PATH}/beginner`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Beginner Treks in Uttarakhand →</Link></li>
-            <li><Link href={`${PARENT_PATH}/high-altitude`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>High-Altitude Treks Above 4,000 m →</Link></li>
-            <li><Link href={`${PARENT_PATH}/challenging`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Challenging Treks in Uttarakhand →</Link></li>
-            <li><Link href="/treks/winter-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Winter Treks in Uttarakhand — Seasonal Guide →</Link></li>
-          </ul>
-        </section>
+  {/* ── COMPARISON TABLE ── */}
+  <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
+    <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Quick Comparison</span>
+      </div>
+      <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>Snow Treks at a Glance</h2>
+      <div style={{ overflowX:'auto', border:'1px solid #e5e7eb', borderRadius:'8px', background:'#fff' }}>
+        <table className="snow-table" style={{ width:'100%', borderCollapse:'collapse' }}>
+          <thead><tr style={{ borderBottom:'2px solid #e5e7eb' }}>
+            <th className="snow-th">Trek</th>
+            <th className="snow-th">Altitude</th>
+            <th className="snow-th">Difficulty</th>
+            <th className="snow-th">Days</th>
+            <th className="snow-th">Peak Snow</th>
+          </tr></thead>
+          <tbody>
+            {[
+              { href:'/treks/location/lohajung/brahmatal-trek', name:'Brahmatal', alt:'3,850 m', diff:'Moderate', days:'4', snow:'Jan–Feb' },
+              { href:'/treks/location/sankri/kedarkantha-trek', name:'Kedarkantha', alt:'3,810 m', diff:'Moderate–Challenging', days:'5', snow:'Dec–Feb' },
+              { href:'/treks/location/joshimath/kuari-pass-trek', name:'Kuari Pass', alt:'3,876 m', diff:'Moderate', days:'5', snow:'Mar (lingering)' },
+            ].map(r => (
+              <tr key={r.href}>
+                <td className="snow-td"><Link href={r.href} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>{r.name}</Link></td>
+                <td className="snow-td">{r.alt}</td>
+                <td className="snow-td">
+                  <span style={{ fontSize:'0.6rem', fontWeight:600, letterSpacing:'0.12em', textTransform:'uppercase' as const, borderRadius:'100px', padding:'2px 10px', display:'inline-block', ...(r.diff.startsWith('Moderate–') ? { color:'#c45000', background:'rgba(230,81,0,0.07)', border:'1px solid rgba(230,81,0,0.2)' } : { color:'var(--color-primary)', background:'rgba(15,118,110,0.07)', border:'1px solid rgba(15,118,110,0.2)' }) }}>{r.diff}</span>
+                </td>
+                <td className="snow-td">{r.days}</td>
+                <td className="snow-td">{r.snow}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      </article>
-    </TrackedPage>
+  {/* ── GEAR ESSENTIALS ── */}
+  <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
+    <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Gear & Preparation</span>
+      </div>
+      <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>Winter Gear Essentials</h2>
+      <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', marginBottom:'1rem' }}>
+        Snow trekking demands specific gear beyond standard 3-season equipment. The critical additions: waterproof shell layers (jacket + pants), insulated gloves with waterproof outers, gaiters to keep snow out of boots, microspikes for icy sections, and a sleeping bag rated to -15°C minimum.
+      </p>
+      <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', margin:0 }}>
+        Our <Link href="/treks/garhwal-himalayas/packing-checklist" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>print-ready packing checklist</Link> includes a winter-specific section covering all snow trek gear. For fitness preparation targeting winter conditions, see the <Link href="/treks/garhwal-himalayas/fitness-guide" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>8-week fitness guide</Link>.
+      </p>
+    </div>
+  </section>
+
+  <PrimaryCTA label="Book a Winter Trek" subtext="Share your preferred dates — we will confirm snow conditions and availability." vertical="trek" category="filter-snow" sourcePath={PATH} />
+
+  {/* ── FAQ ── */}
+  <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
+    <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>FAQ</span>
+      </div>
+      <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>Frequently Asked Questions</h2>
+      <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
+    </div>
+  </section>
+
+  {/* ── BROWSE ── */}
+  <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem' }}>
+    <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Explore More</span>
+      </div>
+      <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>Browse by Category</h2>
+      <div className="snow-nav-group">
+        <Link href={PARENT_PATH} className="snow-nav-link">← All 10 Best Treks in Uttarakhand</Link>
+        <Link href={`${PARENT_PATH}/beginner`} className="snow-nav-link">Beginner Treks in Uttarakhand</Link>
+        <Link href={`${PARENT_PATH}/high-altitude`} className="snow-nav-link">High-Altitude Treks Above 4,000 m</Link>
+        <Link href={`${PARENT_PATH}/challenging`} className="snow-nav-link">Challenging Treks in Uttarakhand</Link>
+        <Link href="/treks/winter-treks-uttarakhand" className="snow-nav-link">Winter Treks in Uttarakhand — Seasonal Guide</Link>
+      </div>
+    </div>
+  </section>
+
+</TrackedPage>
   );
 }

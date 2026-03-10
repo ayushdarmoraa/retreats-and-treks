@@ -95,269 +95,278 @@ export default function KedarkanthaVsHarKiDunPage() {
       />
 
       {/* INTENT TRAIL — discovery cluster reinforcement */}
-      <nav aria-label="Discovery trail" style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)', marginBottom: '0.75rem', lineHeight: 1.6 }}>
-        <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
+      <nav aria-label="Discovery trail" className="kvh-trail">
+        <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
           Best Treks in Uttarakhand
         </Link>
         {' → '}
-        <Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
+        <Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
           Snow Treks
         </Link>
         {' → '}
         <span>Kedarkantha vs Har Ki Dun</span>
       </nav>
 
-      <article>
+      <style>{`
+        /* ── KVH scoped styles — prefix: kvh- ── */
+        .kvh-trail { font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 300; color: #888; line-height: 1.6; margin-bottom: 0.75rem; }
+        .kvh-body { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555555; margin: 0; }
+        .kvh-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+        .kvh-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; display: inline-block; }
+        .kvh-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-primary); font-weight: 500; opacity: 0.7; }
 
-        {/* ── HERO ──────────────────────────────────────────────────── */}
-        <header style={{ marginBottom: 'var(--space-xl)' }}>
-          <h1 style={{ fontSize: '2rem', fontWeight: 400, marginBottom: '0.75rem' }}>
+        .kvh-pick { background: #fff; border: 1px solid #eef0ee; border-left: 3px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; line-height: 1.85; color: #555; transition: box-shadow 0.2s ease; }
+        .kvh-pick:hover { box-shadow: 0 4px 16px rgba(15,118,110,0.08); }
+        .kvh-pick-label { font-size: 0.55rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-primary); opacity: 0.7; margin-bottom: 0.35rem; }
+
+        .kvh-table-wrap { overflow-x: auto; border: 1px solid #e5e7eb; border-radius: 10px; background: #ffffff; }
+        .kvh-table { width: 100%; border-collapse: collapse; }
+        .kvh-table thead tr { border-bottom: 2px solid #e5e7eb; }
+        .kvh-table th { font-family: var(--font-geist-sans), sans-serif; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-primary); opacity: 0.7; padding: 0.75rem 1rem; text-align: left; }
+        .kvh-table td { font-family: var(--font-geist-sans), sans-serif; font-size: 0.84rem; font-weight: 300; color: #444; padding: 0.75rem 1rem; border-bottom: 1px solid #f0f0f0; }
+        .kvh-table td:first-child { font-weight: 500; color: #111; }
+        .kvh-table tbody tr:last-child td { border-bottom: none; }
+        .kvh-table tbody tr { transition: background 0.15s ease; }
+        .kvh-table tbody tr:hover td { background: #f7f9f7; }
+
+        .kvh-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.75rem; }
+        .kvh-split-card { background: #ffffff; border: 1px solid #eef0ee; border-top: 2px solid var(--color-primary); border-radius: 10px; padding: 1.25rem; transition: box-shadow 0.2s ease, transform 0.2s ease; }
+        .kvh-split-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(15,118,110,0.09); }
+        .kvh-split-card h3 { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 500; color: #111; margin: 0 0 0.75rem; letter-spacing: -0.01em; }
+        .kvh-split-card p { font-family: var(--font-geist-sans), sans-serif; font-size: 0.84rem; font-weight: 300; line-height: 1.85; color: #555; margin: 0; }
+
+        .kvh-season { background: #fff; border: 1px solid #eef0ee; border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; transition: box-shadow 0.2s ease; }
+        .kvh-season:hover { box-shadow: 0 4px 16px rgba(15,118,110,0.07); }
+        .kvh-season:last-of-type { margin-bottom: 0; }
+        .kvh-season-label { font-family: var(--font-geist-sans), sans-serif; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-primary); opacity: 0.7; margin-bottom: 0.5rem; }
+        .kvh-season p { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin: 0; }
+
+        .kvh-choose-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.75rem; }
+        .kvh-choose-card { background: #ffffff; border: 1px solid #eef0ee; border-top: 2px solid var(--color-primary); border-radius: 10px; padding: 1.25rem; }
+        .kvh-choose-card h3 { font-family: var(--font-geist-sans), sans-serif; font-size: 0.84rem; font-weight: 600; color: #111; margin: 0 0 0.85rem; letter-spacing: -0.01em; }
+        .kvh-choose-card ul { margin: 0; padding: 0; list-style: none; }
+        .kvh-choose-card ul li { font-family: var(--font-geist-sans), sans-serif; font-size: 0.84rem; font-weight: 300; line-height: 1.85; color: #555; padding: 0.2rem 0 0.2rem 1.1rem; position: relative; border-bottom: 1px solid #f7f9f7; }
+        .kvh-choose-card ul li:last-child { border-bottom: none; }
+        .kvh-choose-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--color-primary); opacity: 0.5; font-size: 0.75rem; }
+
+        .kvh-nav-block { background: #f7f9f7; border: 1px solid #e5e7eb; border-left: 3px solid var(--color-primary); border-radius: 10px; padding: 1.25rem 1.5rem; }
+        .kvh-nav-block p { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin: 0; }
+        .kvh-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.1rem; border-bottom: 1px solid #f0f0f0; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #333; text-decoration: none; transition: background 0.15s ease, color 0.15s ease; }
+        .kvh-nav-link:hover { background: #f7f9f7; color: var(--color-primary); }
+        .kvh-nav-link::after { content: '→'; color: var(--color-primary); opacity: 0.5; }
+        .kvh-nav-group { border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; }
+        .kvh-nav-group .kvh-nav-link:last-child { border-bottom: none; }
+
+        @media (max-width: 700px) {
+          .kvh-split { grid-template-columns: 1fr; }
+          .kvh-choose-grid { grid-template-columns: 1fr; }
+          .kvh-table th:nth-child(3), .kvh-table td:nth-child(3) { display: none; }
+        }
+      `}</style>
+
+      {/* ── HERO ── */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div className="kvh-eyebrow"><span className="kvh-eyebrow-line" /><span className="kvh-eyebrow-text">Trek Comparison · Sankri, Uttarakhand</span></div>
+          <h1 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.75rem, 3.5vw, 2.4rem)', fontWeight: 200, letterSpacing: '-0.035em', color: '#111111', lineHeight: 1.1, margin: '0 0 1.75rem' }}>
             Kedarkantha vs Har Ki Dun: Which Trek Should You Choose?
           </h1>
-          <p style={{ fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '1rem' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem' }}>
+            <div className="kvh-pick">
+              <div className="kvh-pick-label">Snow Summit · 4 days · Dec–Mar</div>
+              <span style={{ fontWeight: 500, color: '#111' }}><Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Kedarkantha Trek</Link></span>{' '}
+              <span style={{ fontWeight: 300 }}>— 3,800 m summit with 360° Himalayan panorama. First-time snow trekkers.</span>
+            </div>
+            <div className="kvh-pick">
+              <div className="kvh-pick-label">Valley Journey · 6 days · Apr–Jun, Sep–Nov</div>
+              <span style={{ fontWeight: 500, color: '#111' }}><Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Har Ki Dun Trek</Link></span>{' '}
+              <span style={{ fontWeight: 300 }}>— Glacial valley, ancient villages, wildflower meadows. Sustained summer walking.</span>
+            </div>
+          </div>
+          <p className="kvh-body">
             Both treks start from the same place —{' '}
-            <Link href="/treks/location/sankri" style={{ color: 'var(--color-primary)' }}>
-              Sankri trek base
-            </Link>
-            , the primary trek base in Uttarakhand&apos;s Tons Valley. Both are among the
-            most popular Himalayan treks in India. And both are accessible to first-time
-            trekkers. But the experience they deliver is fundamentally different: the{' '}
-            <Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)' }}>
-              Kedarkantha Trek
-            </Link>{' '}
+            <Link href="/treks/location/sankri" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Sankri trek base</Link>,
+            the primary trek base in Uttarakhand&apos;s Tons Valley. Both are among the most popular Himalayan treks in India. And both are accessible to first-time trekkers. But the experience they deliver is fundamentally different: the{' '}
+            <Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Kedarkantha Trek</Link>{' '}
             is a snow summit, while the{' '}
-            <Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: 'var(--color-primary)' }}>
-              Har Ki Dun Trek
-            </Link>{' '}
-            is a green valley journey. One is a four-day sprint to a peak,
-            the other is a six-day walk through a glacial corridor. Choosing between them
-            is not about which is better — it is about which is right for you. Both are
-            featured in our{' '}
-            <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)' }}>
-              top trekking routes in Uttarakhand
-            </Link>.
+            <Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Har Ki Dun Trek</Link>{' '}
+            is a green valley journey. One is a four-day sprint to a peak, the other is a six-day walk through a glacial corridor. Choosing between them is not about which is better — it is about which is right for you. Both are featured in our{' '}
+            <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>top trekking routes in Uttarakhand</Link>.
           </p>
-        </header>
+        </div>
+      </section>
 
-        {/* ── QUICK COMPARISON ─────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
+      {/* ── QUICK COMPARISON TABLE ── */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div className="kvh-eyebrow"><span className="kvh-eyebrow-line" /><span className="kvh-eyebrow-text">At a Glance</span></div>
+          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
             Quick Comparison Overview
           </h2>
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.95rem', lineHeight: 1.7 }}>
-              <thead>
-                <tr style={{ borderBottom: '2px solid var(--color-border)' }}>
-                  <th style={{ textAlign: 'left', padding: '0.75rem 1rem', fontWeight: 600 }}>Factor</th>
-                  <th style={{ textAlign: 'left', padding: '0.75rem 1rem', fontWeight: 600 }}>Kedarkantha</th>
-                  <th style={{ textAlign: 'left', padding: '0.75rem 1rem', fontWeight: 600 }}>Har Ki Dun</th>
-                </tr>
-              </thead>
+          <div className="kvh-table-wrap">
+            <table className="kvh-table">
+              <thead><tr><th>Factor</th><th>Kedarkantha</th><th>Har Ki Dun</th></tr></thead>
               <tbody>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.75rem 1rem', fontWeight: 500 }}>Type</td>
-                  <td style={{ padding: '0.75rem 1rem' }}>Summit trek</td>
-                  <td style={{ padding: '0.75rem 1rem' }}>Valley trek</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)', backgroundColor: '#fafafa' }}>
-                  <td style={{ padding: '0.75rem 1rem', fontWeight: 500 }}>Duration</td>
-                  <td style={{ padding: '0.75rem 1rem' }}>4–5 days</td>
-                  <td style={{ padding: '0.75rem 1rem' }}>6–7 days</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.75rem 1rem', fontWeight: 500 }}>Max Altitude</td>
-                  <td style={{ padding: '0.75rem 1rem' }}>~3,800 m</td>
-                  <td style={{ padding: '0.75rem 1rem' }}>~3,600 m</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)', backgroundColor: '#fafafa' }}>
-                  <td style={{ padding: '0.75rem 1rem', fontWeight: 500 }}>Best Season</td>
-                  <td style={{ padding: '0.75rem 1rem' }}>Winter (Dec–Mar)</td>
-                  <td style={{ padding: '0.75rem 1rem' }}>Summer (May–Jun)</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.75rem 1rem', fontWeight: 500 }}>Difficulty</td>
-                  <td style={{ padding: '0.75rem 1rem' }}>Moderate-beginner</td>
-                  <td style={{ padding: '0.75rem 1rem' }}>Moderate</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)', backgroundColor: '#fafafa' }}>
-                  <td style={{ padding: '0.75rem 1rem', fontWeight: 500 }}>Landscape</td>
-                  <td style={{ padding: '0.75rem 1rem' }}>Snow summit + forest</td>
-                  <td style={{ padding: '0.75rem 1rem' }}>River valley + meadows</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.75rem 1rem', fontWeight: 500 }}>Base</td>
-                  <td style={{ padding: '0.75rem 1rem' }}>Sankri</td>
-                  <td style={{ padding: '0.75rem 1rem' }}>Sankri</td>
-                </tr>
+                {[
+                  { f: 'Type',         k: 'Summit trek',          h: 'Valley trek' },
+                  { f: 'Duration',     k: '4–5 days',             h: '6–7 days' },
+                  { f: 'Max Altitude', k: '~3,800 m',             h: '~3,600 m' },
+                  { f: 'Best Season',  k: 'Winter (Dec–Mar)',      h: 'Summer (May–Jun)' },
+                  { f: 'Difficulty',   k: 'Moderate-beginner',    h: 'Moderate' },
+                  { f: 'Landscape',    k: 'Snow summit + forest', h: 'River valley + meadows' },
+                  { f: 'Base',         k: 'Sankri',               h: 'Sankri' },
+                ].map((r, i) => <tr key={i}><td>{r.f}</td><td>{r.k}</td><td>{r.h}</td></tr>)}
               </tbody>
             </table>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── LANDSCAPE & EXPERIENCE ───────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
+      {/* ── LANDSCAPE & EXPERIENCE ── */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div className="kvh-eyebrow"><span className="kvh-eyebrow-line" /><span className="kvh-eyebrow-text">What You Will See</span></div>
+          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
             Landscape &amp; Experience
           </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Kedarkantha</strong> is a concentrated experience that builds to a
-            single defining moment. The{' '}
-            <Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)' }}>
-              Kedarkantha Trek
-            </Link>{' '}
-            rises through dense pine and oak forest — silent and snow-covered in winter —
-            crosses open alpine meadows, and ascends a final ridge to a 3,800-metre summit.
-            The panorama from the top spans Swargarohini, Bandarpoonch, Black Peak, and the
-            Gangotri group. On a clear winter morning, that summit view is the single most
-            spectacular sight available on any beginner trek in India. The trek is four days,
-            but the defining moment is twenty minutes on the peak.
-          </p>
-          <p style={{ lineHeight: 1.8, margin: 0 }}>
-            <strong>Har Ki Dun</strong> is a sustained experience that deepens over five to
-            six days. The{' '}
-            <Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: 'var(--color-primary)' }}>
-              Har Ki Dun Trek
-            </Link>{' '}
-            follows the ancient Tons Valley through traditional Himalayan villages, across
-            wooden bridges over glacial rivers, through dense forest and open meadow, and
-            into the vast Har Ki Dun valley — a natural amphitheatre surrounded by
-            5,000-metre peaks. There is no single peak moment. Instead, the beauty
-            accumulates — each day&apos;s landscape is different from the last, and the valley
-            itself, when you finally reach it, feels earned. If Kedarkantha is a photograph,
-            Har Ki Dun is a film.
-          </p>
-        </section>
+          <div className="kvh-split">
+            <div className="kvh-split-card">
+              <img src="https://images.unsplash.com/photo-1533130061792-64b345e4a833?w=600&q=80&fit=crop" alt="Kedarkantha summit snow trail" loading="lazy" style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
+              <h3><Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Kedarkantha</Link></h3>
+              <p>A concentrated experience that builds to a single defining moment. The{' '}<Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Kedarkantha Trek</Link>{' '}rises through dense pine and oak forest — silent and snow-covered in winter — crosses open alpine meadows, and ascends a final ridge to a 3,800-metre summit. The panorama from the top spans Swargarohini, Bandarpoonch, Black Peak, and the Gangotri group. On a clear winter morning, that summit view is the single most spectacular sight available on any beginner trek in India. The trek is four days, but the defining moment is twenty minutes on the peak.</p>
+            </div>
+            <div className="kvh-split-card">
+              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80&fit=crop" alt="Har Ki Dun green valley trail" loading="lazy" style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
+              <h3><Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Har Ki Dun</Link></h3>
+              <p>A sustained experience that deepens over five to six days. The{' '}<Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Har Ki Dun Trek</Link>{' '}follows the ancient Tons Valley through traditional Himalayan villages, across wooden bridges over glacial rivers, through dense forest and open meadow, and into the vast Har Ki Dun valley — a natural amphitheatre surrounded by 5,000-metre peaks. There is no single peak moment. Instead, the beauty accumulates — each day&apos;s landscape is different from the last, and the valley itself, when you finally reach it, feels earned. If Kedarkantha is a photograph, Har Ki Dun is a film.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-        {/* ── DIFFICULTY & FITNESS ─────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
+      {/* ── DIFFICULTY & FITNESS ── */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div className="kvh-eyebrow"><span className="kvh-eyebrow-line" /><span className="kvh-eyebrow-text">Effort Required</span></div>
+          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
             Difficulty &amp; Fitness Level
           </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Kedarkantha</strong> demands burst effort. Three days of moderate
-            forest walking (5 to 6 km per day) followed by a summit push — a steep
-            800-metre ascent in snow conditions, typically starting before dawn. The summit
-            day is the hardest single day on either trek. But the overall commitment is
-            shorter: four days total. If you are moderately fit and can handle one hard day,
-            Kedarkantha is within reach. Snow adds a factor — microspikes, gaiters, and
-            careful footing — but guided groups manage the technical elements.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Har Ki Dun</strong> demands sustained endurance. Daily distances average
-            7 to 8 km over six days. No single day is as intense as Kedarkantha&apos;s
-            summit push, but the cumulative load is higher. By day four or five, fatigue
-            compresses — your legs know they have been walking. The terrain is gentler —
-            no steep summit ascent, no snow gear in summer — but the duration tests a
-            different kind of fitness: consistency over days, not intensity on one day.
-          </p>
-          <p style={{ lineHeight: 1.8, margin: 0 }}>
+          <div className="kvh-split">
+            <div className="kvh-split-card">
+              <h3>Kedarkantha — Burst Effort</h3>
+              <p><strong style={{ fontWeight: 500, color: '#111' }}>Kedarkantha</strong> demands burst effort. Three days of moderate forest walking (5 to 6 km per day) followed by a summit push — a steep 800-metre ascent in snow conditions, typically starting before dawn. The summit day is the hardest single day on either trek. But the overall commitment is shorter: four days total. If you are moderately fit and can handle one hard day, Kedarkantha is within reach. Snow adds a factor — microspikes, gaiters, and careful footing — but guided groups manage the technical elements.</p>
+            </div>
+            <div className="kvh-split-card">
+              <h3>Har Ki Dun — Sustained Endurance</h3>
+              <p><strong style={{ fontWeight: 500, color: '#111' }}>Har Ki Dun</strong> demands sustained endurance. Daily distances average 7 to 8 km over six days. No single day is as intense as Kedarkantha&apos;s summit push, but the cumulative load is higher. By day four or five, fatigue compresses — your legs know they have been walking. The terrain is gentler — no steep summit ascent, no snow gear in summer — but the duration tests a different kind of fitness: consistency over days, not intensity on one day.</p>
+            </div>
+          </div>
+          <p className="kvh-body">
             Both are accessible to{' '}
-            <Link href="/treks/beginner-treks-uttarakhand" style={{ color: 'var(--color-primary)' }}>
-              beginner treks in Uttarakhand
-            </Link>
-            . The preparation is the same: two to three weeks of daily cardio — walking,
-            jogging, stair climbing. The difference is what kind of challenge you prefer.
-            Short and sharp, or long and steady.
+            <Link href="/treks/beginner-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>beginner treks in Uttarakhand</Link>.
+            The preparation is the same: two to three weeks of daily cardio — walking, jogging, stair climbing. The difference is what kind of challenge you prefer. Short and sharp, or long and steady.
           </p>
-        </section>
+        </div>
+      </section>
 
-        {/* ── BEST SEASON ──────────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
+      {/* ── BEST SEASON ── */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div className="kvh-eyebrow"><span className="kvh-eyebrow-line" /><span className="kvh-eyebrow-text">When to Go</span></div>
+          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>
             Best Season — Winter vs Summer
           </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            This is the deciding factor for many trekkers. The two treks occupy opposite
-            seasonal windows — and each is at its best in that window.
+          <p className="kvh-body" style={{ marginBottom: '1.75rem' }}>
+            This is the deciding factor for many trekkers. The two treks occupy opposite seasonal windows — and each is at its best in that window.
           </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Kedarkantha: December to March.</strong> This is a{' '}
-            <Link href="/treks/winter-treks-uttarakhand" style={{ color: 'var(--color-primary)' }}>
-              winter treks in Uttarakhand
-            </Link>
-            . The trail is snow-covered, the forest is silent and white, and the summit
-            panorama is sharpest in cold, clear winter air. Kedarkantha in summer (May) is
-            possible but loses the snow immersion that defines the experience. If you are
-            choosing Kedarkantha, choose December to February for the definitive version.
-          </p>
-          <p style={{ lineHeight: 1.8, margin: 0 }}>
-            <strong>Har Ki Dun: April to June and September to November.</strong> This is a{' '}
-            <Link href="/treks/summer-treks-uttarakhand" style={{ color: 'var(--color-primary)' }}>
-              summer treks in Uttarakhand
-            </Link>
-            . The valley is green, wildflowers blanket the meadows, the river runs clear,
-            and the trail is dry and comfortable. Har Ki Dun in winter is spectacular but
-            more demanding — snow-covered trails, colder temperatures, limited guided
-            availability. Summer is when Har Ki Dun is most accessible and most beautiful.
-          </p>
-        </section>
+          <div className="kvh-season">
+            <div className="kvh-season-label">Kedarkantha · December to March</div>
+            <p>This is a{' '}<Link href="/treks/winter-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>winter treks in Uttarakhand</Link>. The trail is snow-covered, the forest is silent and white, and the summit panorama is sharpest in cold, clear winter air. Kedarkantha in summer (May) is possible but loses the snow immersion that defines the experience. If you are choosing Kedarkantha, choose December to February for the definitive version.</p>
+          </div>
+          <div className="kvh-season">
+            <div className="kvh-season-label">Har Ki Dun · April–June &amp; September–November</div>
+            <p>This is a{' '}<Link href="/treks/summer-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>summer treks in Uttarakhand</Link>. The valley is green, wildflowers blanket the meadows, the river runs clear, and the trail is dry and comfortable. Har Ki Dun in winter is spectacular but more demanding — snow-covered trails, colder temperatures, limited guided availability. Summer is when Har Ki Dun is most accessible and most beautiful.</p>
+          </div>
+        </div>
+      </section>
 
-        {/* ── WHO SHOULD CHOOSE WHICH ──────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
+      {/* ── WHO SHOULD CHOOSE WHICH ── */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div className="kvh-eyebrow"><span className="kvh-eyebrow-line" /><span className="kvh-eyebrow-text">Decision Guide</span></div>
+          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
             Who Should Choose Which?
           </h2>
-          <p style={{ lineHeight: 1.8, fontWeight: 600, marginBottom: '0.5rem' }}>
-            Choose Kedarkantha if:
-          </p>
-          <ul style={{ paddingLeft: '1.25rem', lineHeight: 2, marginBottom: '1.25rem' }}>
-            <li>You want to stand on a Himalayan summit</li>
-            <li>You want a snow trek experience</li>
-            <li>You have 4 to 5 days available</li>
-            <li>You are a first-time snow trekker seeking a guided format</li>
-            <li>You prefer concentrated intensity over sustained walking</li>
-            <li>You are trekking between December and March</li>
-          </ul>
-          <p style={{ lineHeight: 1.8, fontWeight: 600, marginBottom: '0.5rem' }}>
-            Choose Har Ki Dun if:
-          </p>
-          <ul style={{ paddingLeft: '1.25rem', lineHeight: 2, marginBottom: '1rem' }}>
-            <li>You prefer valleys, rivers, and meadows over summit views</li>
-            <li>You enjoy longer, immersive walks through changing landscape</li>
-            <li>You want summer greenery and wildflowers</li>
-            <li>You dislike extreme cold or snow conditions</li>
-            <li>You have 6 to 7 days available</li>
-            <li>You are trekking between April and June or September and November</li>
-          </ul>
-          <p style={{ lineHeight: 1.8, margin: 0 }}>
+          <div className="kvh-choose-grid">
+            <div className="kvh-choose-card">
+              <h3>Choose Kedarkantha if:</h3>
+              <ul>
+                <li>You want to stand on a Himalayan summit</li>
+                <li>You want a snow trek experience</li>
+                <li>You have 4 to 5 days available</li>
+                <li>You are a first-time snow trekker seeking a guided format</li>
+                <li>You prefer concentrated intensity over sustained walking</li>
+                <li>You are trekking between December and March</li>
+              </ul>
+            </div>
+            <div className="kvh-choose-card">
+              <h3>Choose Har Ki Dun if:</h3>
+              <ul>
+                <li>You prefer valleys, rivers, and meadows over summit views</li>
+                <li>You enjoy longer, immersive walks through changing landscape</li>
+                <li>You want summer greenery and wildflowers</li>
+                <li>You dislike extreme cold or snow conditions</li>
+                <li>You have 6 to 7 days available</li>
+                <li>You are trekking between April and June or September and November</li>
+              </ul>
+            </div>
+          </div>
+          <p className="kvh-body">
             Both treks leave from{' '}
-            <Link href="/treks/location/sankri" style={{ color: 'var(--color-primary)' }}>
-              Sankri trek base
-            </Link>
-            . If you have the time, the strongest recommendation is to do both — Kedarkantha
-            in winter, Har Ki Dun in summer. They are complementary experiences from the
-            same base, and together they give you the full range of what Himalayan trekking
-            offers.
+            <Link href="/treks/location/sankri" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Sankri trek base</Link>.
+            If you have the time, the strongest recommendation is to do both — Kedarkantha in winter, Har Ki Dun in summer. They are complementary experiences from the same base, and together they give you the full range of what Himalayan trekking offers.
           </p>
-        </section>
+        </div>
+      </section>
 
-        {/* ── COMMERCIAL NAVIGATION ─────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)', padding: '1.5rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', backgroundColor: '#fafafa' }}>
-          <p style={{ lineHeight: 1.8, margin: 0, fontSize: '0.95rem' }}>
-            Looking for more options? See the{' '}
-            <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)' }}>
-              complete guide to Uttarakhand treks
-            </Link>, the{' '}
-            <Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: 'var(--color-primary)' }}>
-              snow treks filter
-            </Link>{' '}
-            for winter routes, or browse the full{' '}
-            <Link href="/treks" style={{ color: 'var(--color-primary)' }}>
-              Himalayan treks directory
-            </Link>{' '}
-            for guided itineraries across all seasons.
-          </p>
-        </section>
+      {/* ── COMMERCIAL NAVIGATION ── */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div className="kvh-eyebrow"><span className="kvh-eyebrow-line" /><span className="kvh-eyebrow-text">Explore More</span></div>
+          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.5rem' }}>
+            Browse by Category
+          </h2>
+          <div className="kvh-nav-block" style={{ marginBottom: '1.5rem' }}>
+            <p>
+              Looking for more options? See the{' '}
+              <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>complete guide to Uttarakhand treks</Link>, the{' '}
+              <Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>snow treks filter</Link>{' '}
+              for winter routes, or browse the full{' '}
+              <Link href="/treks" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Himalayan treks directory</Link>{' '}
+              for guided itineraries across all seasons.
+            </p>
+          </div>
+          <div className="kvh-nav-group">
+            <Link href="/treks/location/sankri/kedarkantha-trek" className="kvh-nav-link">Kedarkantha Trek — Full Route Details</Link>
+            <Link href="/treks/location/sankri/har-ki-dun-trek" className="kvh-nav-link">Har Ki Dun Trek — Full Route Details</Link>
+            <Link href="/treks/best-treks-in-uttarakhand/snow" className="kvh-nav-link">Snow Treks in Uttarakhand</Link>
+            <Link href="/treks/best-treks-in-uttarakhand/beginner" className="kvh-nav-link">Beginner Treks in Uttarakhand</Link>
+            <Link href="/treks/best-treks-in-uttarakhand" className="kvh-nav-link">All 10 Best Treks in Uttarakhand</Link>
+          </div>
+        </div>
+      </section>
 
-        {/* ── FAQ ───────────────────────────────────────────────────── */}
-        <section>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-lg)' }}>
+      {/* ── FAQ ── */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div className="kvh-eyebrow"><span className="kvh-eyebrow-line" /><span className="kvh-eyebrow-text">FAQ</span></div>
+          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
             Frequently Asked Questions
           </h2>
           <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
-        </section>
+        </div>
+      </section>
 
-      </article>
     </TrackedPage>
   );
 }

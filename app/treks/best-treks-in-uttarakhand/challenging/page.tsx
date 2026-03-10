@@ -95,254 +95,247 @@ export default function ChallengingTreksPage() {
   };
 
   return (
-    <TrackedPage page={PATH}>
-      <article style={{ maxWidth: 720, margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
-        <Breadcrumb items={BREADCRUMBS} />
+    <TrackedPage page={PATH} style={{ width: '100%', padding: '0' }}>
+  <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
+  <style>{`
+    .chal-card { background:#fff; border:1px solid #e5e7eb; border-top:2px solid #e65100; border-radius:8px; overflow:hidden; margin-bottom:1.25rem; }
+    .chal-card:last-of-type { margin-bottom:0; }
+    .chal-card img { width:100%; height:200px; object-fit:cover; display:block; }
+    .chal-card-body { padding:1.5rem; }
+    .chal-card-body h2 { font-family:var(--font-geist-sans),sans-serif; font-size:0.95rem; font-weight:500; color:#111; margin:0 0 0.85rem; letter-spacing:-0.01em; }
+    .chal-card-body p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0 0 0.75rem; }
+    .chal-card-body p:last-child { margin-bottom:0; }
+    .chal-pills { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1rem; }
+    .chal-pill { font-family:var(--font-geist-sans),sans-serif; font-size:0.68rem; color:#555; background:#f7f9f7; border:1px solid #e5e7eb; border-radius:100px; padding:3px 10px; }
+    .chal-th { font-family:var(--font-geist-sans),sans-serif; font-size:0.55rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-primary); opacity:0.7; padding:0.75rem 1rem; text-align:left; }
+    .chal-td { font-family:var(--font-geist-sans),sans-serif; font-size:0.84rem; font-weight:300; color:#444; padding:0.75rem 1rem; border-bottom:1px solid #f0f0f0; }
+    .chal-table tbody tr:last-child td { border-bottom:none; }
+    .chal-table tbody tr:hover td { background:#f7f9f7; }
+    .chal-nav-link { display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1rem; border-bottom:1px solid #f0f0f0; font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; color:#333; text-decoration:none; }
+    .chal-nav-link:hover { background:#f7f9f7; color:var(--color-primary); }
+    .chal-nav-link::after { content:'→'; color:var(--color-primary); opacity:0.5; }
+    .chal-nav-group { border:1px solid #e5e7eb; border-radius:8px; overflow:hidden; }
+    .chal-nav-group .chal-nav-link:last-child { border-bottom:none; }
+    @media(max-width:640px){
+      .chal-card img { height:160px; }
+      .chal-card-body { padding:1.1rem; }
+      .chal-td:nth-child(4), .chal-th:nth-child(4),
+      .chal-td:nth-child(5), .chal-th:nth-child(5) { display:none; }
+    }
+  `}</style>
 
-        <h1 style={{ fontSize: '1.75rem', fontWeight: 700, lineHeight: 1.25, marginBottom: 'var(--space-md)' }}>
-          Most Challenging Treks in Uttarakhand
-        </h1>
+  {/* HERO */}
+  <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
+    <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
+      <Breadcrumb items={BREADCRUMBS} />
+      <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', margin:'1.5rem 0 1rem' }}>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Challenging Treks · Uttarakhand</span>
+      </div>
+      <h1 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.75rem,3.5vw,2.4rem)', fontWeight:200, letterSpacing:'-0.035em', color:'#111', lineHeight:1.1, margin:'0 0 1.5rem' }}>
+        Most Challenging Treks in Uttarakhand
+      </h1>
 
-        <aside style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', padding: '1rem 1.25rem', marginBottom: '1.5rem', lineHeight: 1.7 }}>
-          <strong>Quick pick:</strong>{' '}
-          <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: 'var(--color-primary)' }}>Roopkund</Link>{' '}
-          for sustained high-altitude endurance (7 days, 4,800 m).{' '}
-          <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: 'var(--color-primary)' }}>Pangarchulla</Link>{' '}
-          for an intense single-day summit push (4,590 m).{' '}
-          <Link href="/treks/location/munsiyari/milam-glacier-trek" style={{ color: 'var(--color-primary)' }}>Milam Glacier</Link>{' '}
-          for remote 8–10 day expedition trekking.
-        </aside>
-
-        <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-          These are not enhanced day hikes. They are serious mountain routes where preparation directly determines
-          safety and enjoyment. All three require prior high-altitude experience (above 3,500 m), 6–8 weeks of
-          structured fitness work, and comfort with steep, exposed, and potentially snow-covered terrain. Each offers
-          a fundamentally different type of challenge — from sustained expedition endurance to a single
-          do-or-die summit push.
-        </p>
-        <p style={{ lineHeight: 1.8, marginBottom: '1.5rem' }}>
-          These routes are drawn from our{' '}
-          <Link href={PARENT_PATH} style={{ color: 'var(--color-primary)' }}>
-            complete ranking of the 10 best treks in Uttarakhand
-          </Link>. Not ready for challenging routes yet? The{' '}
-          <Link href={`${PARENT_PATH}/beginner`} style={{ color: 'var(--color-primary)' }}>
-            beginner treks
-          </Link>{' '}
-          page covers easy and moderate alternatives.
-        </p>
-
-        {/* ── ROOPKUND ─────────────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Roopkund — The Mystery Lake Expedition
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.5rem' }}>
-            <strong>4,800 m</strong> &nbsp;|&nbsp; <strong>Challenging</strong> &nbsp;|&nbsp;
-            <strong>7 days</strong> &nbsp;|&nbsp; <strong>May–Jun, Sep–Oct</strong> &nbsp;|&nbsp;
-            Lohajung, Garhwal
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: 'var(--color-primary)' }}>
-              Roopkund
-            </Link>{' '}
-            is India&apos;s most iconic high-altitude trek — a 53 km expedition from Lohajung to a glacial lake at
-            4,800 metres, known for the centuries-old skeletal remains at its shores. The route crosses the vast Bedni
-            Bugyal alpine meadow, navigates moraine fields, and demands sustained altitude tolerance across multiple days
-            above 4,000 metres. The Bugyal alone — stretching kilometres in every direction with Trishul views — justifies
-            the effort.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Why it is challenging:</strong> Unlike Pangarchulla (where the difficulty concentrates in a single summit
-            day), Roopkund distributes its demands across 7 days with sustained exposure above 4,000 m. Altitude sickness
-            risk is cumulative. The moraine fields above 4,200 m require careful foot placement for hours at a time.
-            Weather deteriorates rapidly above the Bugyal. This is expedition trekking, not a weekend challenge.
-          </p>
-        </section>
-
-        {/* ── PANGARCHULLA ─────────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Pangarchulla Peak — The Summit Climb
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.5rem' }}>
-            <strong>4,590 m</strong> &nbsp;|&nbsp; <strong>Challenging</strong> &nbsp;|&nbsp;
-            <strong>6 days</strong> &nbsp;|&nbsp; <strong>Mar–May</strong> &nbsp;|&nbsp;
-            Joshimath, Garhwal
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: 'var(--color-primary)' }}>
-              Pangarchulla
-            </Link>{' '}
-            is one of the few accessible true summit experiences in Uttarakhand. The route follows the Kuari Pass approach
-            before diverging toward a steep snow-and-scree ascent with an alpine start. At the top: a 360-degree panorama
-            of Nanda Devi, Dronagiri, Chaukhamba, and the entire Nanda Devi Sanctuary. Crampons required. For experienced
-            trekkers who want to stand on a peak, not a pass.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Why it is challenging:</strong> Summit day gains 1,200 m from high camp in a single alpine-start push
-            beginning before dawn. The snow-and-scree terrain above 4,200 m requires crampons and confident movement on
-            steep ground. The rest of the approach (Days 1–4 via the Kuari Pass trail) is moderate — the difficulty is
-            concentrated into one relentless day.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Choosing between the two Garhwal challenges?{' '}
-            <Link href="/treks/roopkund-vs-pangarchulla" style={{ color: 'var(--color-primary)' }}>
-              Compare Roopkund vs Pangarchulla →
-            </Link>
-          </p>
-        </section>
-
-        {/* ── MILAM GLACIER ────────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Milam Glacier — The Remote Expedition
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.5rem' }}>
-            <strong>3,450 m</strong> &nbsp;|&nbsp; <strong>Challenging</strong> &nbsp;|&nbsp;
-            <strong>8–10 days</strong> &nbsp;|&nbsp; <strong>May–Jun, Sep–Oct</strong> &nbsp;|&nbsp;
-            Munsiyari, Kumaon
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <Link href="/treks/location/munsiyari/milam-glacier-trek" style={{ color: 'var(--color-primary)' }}>
-              Milam Glacier
-            </Link>{' '}
-            is Uttarakhand&apos;s great expedition trek — an 8–10 day, 118 km journey along the ancient Johar Valley
-            trade route from Munsiyari to the glacier snout beneath the Panchachuli massif. The route passes through
-            abandoned Bhotiya trading villages (Martoli, Burfu), crosses glacial moraines, and follows the Goriganga
-            River into genuinely wild terrain.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Why it is challenging:</strong> The altitude is lower than Roopkund (3,450 m max), but the sustained
-            8–10 day commitment through remote terrain with limited evacuation options makes it equally demanding. You
-            are walking deep into the mountains — days from the nearest road — with river crossings, moraines, and
-            unpredictable weather. This is for trekkers who want genuine wilderness immersion, not a curated mountain
-            experience.
-          </p>
-        </section>
-        {/* ── COMPARISON CALLOUT ───────────────────────────────────── */}
-        <p style={{ lineHeight: 1.8, marginBottom: 'var(--space-xl)', background: 'var(--color-surface)', padding: '1rem 1.25rem', borderRadius: 'var(--radius-sm)', borderLeft: '3px solid var(--color-primary)' }}>
-          <strong>Still choosing between Roopkund and Pangarchulla?</strong>{' '}
-          Our detailed{' '}
-          <Link href="/treks/roopkund-vs-pangarchulla" style={{ color: 'var(--color-primary)' }}>
-            Roopkund vs Pangarchulla comparison
-          </Link>{' '}
-          breaks down summit difficulty, seasonal windows, and which challenge suits your experience.
-        </p>
-        {/* ── COMPARISON TABLE ─────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Challenging Treks at a Glance
-          </h2>
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              <thead>
-                <tr style={{ borderBottom: '2px solid var(--color-border)', textAlign: 'left' }}>
-                  <th style={{ padding: '0.5rem 0.75rem' }}>Trek</th>
-                  <th style={{ padding: '0.5rem 0.75rem' }}>Max Altitude</th>
-                  <th style={{ padding: '0.5rem 0.75rem' }}>Days</th>
-                  <th style={{ padding: '0.5rem 0.75rem' }}>Challenge Type</th>
-                  <th style={{ padding: '0.5rem 0.75rem' }}>Region</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem' }}><Link href="/treks/location/lohajung/roopkund-trek" style={{ color: 'var(--color-primary)' }}>Roopkund</Link></td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>4,800 m</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>7</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Sustained altitude</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Garhwal</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem' }}><Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: 'var(--color-primary)' }}>Pangarchulla</Link></td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>4,590 m</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>6</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Intense summit push</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Garhwal</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem' }}><Link href="/treks/location/munsiyari/milam-glacier-trek" style={{ color: 'var(--color-primary)' }}>Milam Glacier</Link></td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>3,450 m</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>8–10</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Remote endurance</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Kumaon</td>
-                </tr>
-              </tbody>
-            </table>
+      {/* 3 quick-pick cards */}
+      <div style={{ display:'flex', flexDirection:'column', gap:'0.75rem', marginBottom:'1.5rem' }}>
+        {[
+          { label:'Sustained High Altitude', href:'/treks/location/lohajung/roopkund-trek', name:'Roopkund', desc:'7 days, 4,800 m — multi-day expedition above 4,000 m.' },
+          { label:'Intense Summit Push', href:'/treks/location/joshimath/pangarchulla-trek', name:'Pangarchulla', desc:'6 days, 4,590 m — alpine-start summit climb with crampons.' },
+          { label:'Remote Expedition', href:'/treks/location/munsiyari/milam-glacier-trek', name:'Milam Glacier', desc:'8–10 days along the ancient Johar Valley trade route.' },
+        ].map(c => (
+          <div key={c.href} style={{ background:'#fff', border:'1px solid #e5e7eb', borderLeft:'3px solid #e65100', borderRadius:'8px', padding:'1rem 1.25rem', fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', lineHeight:1.85, color:'#555' }}>
+            <div style={{ fontSize:'0.55rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'#e65100', opacity:0.8, marginBottom:'0.35rem' }}>{c.label}</div>
+            <span style={{ fontWeight:500, color:'#111' }}><Link href={c.href} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>{c.name}</Link></span>{' '}
+            <span style={{ fontWeight:300 }}>— {c.desc}</span>
           </div>
-        </section>
+        ))}
+      </div>
 
-        {/* ── PREPARATION PATH ─────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            The Path to Challenging Treks
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Attempting a challenging trek without proper progression increases both risk and misery. The recommended build-up:
-          </p>
-          <ol style={{ paddingLeft: '1.25rem', lineHeight: 2.2, marginBottom: '1rem' }}>
-            <li>
-              <strong>First multi-day:</strong>{' '}
-              <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)' }}>Brahmatal</Link>{' '}
-              or{' '}
-              <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)' }}>Kuari Pass</Link>{' '}
-              — tests altitude response at 3,850–3,876 m.
-            </li>
-            <li>
-              <strong>Summit experience:</strong>{' '}
-              <Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)' }}>Kedarkantha</Link>{' '}
-              — adds a genuine summit push and snow conditions.
-            </li>
-            <li>
-              <strong>Challenging route:</strong> Pangarchulla, Roopkund, or Milam Glacier — full high-altitude or expedition demands.
-            </li>
-          </ol>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            For the complete progression framework with training plans for each level, see our{' '}
-            <Link href="/blog/beginner-to-advanced-trek-progression-garhwal" style={{ color: 'var(--color-primary)' }}>
-              beginner-to-advanced trek progression guide
-            </Link>{' '}
-            and the{' '}
-            <Link href="/treks/garhwal-himalayas/fitness-guide" style={{ color: 'var(--color-primary)' }}>
-              8-week fitness preparation plan
-            </Link>.
-          </p>
-        </section>
+      <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', margin:'0 0 1rem' }}>
+        These are not enhanced day hikes. They are serious mountain routes where preparation directly determines safety and enjoyment. All three require prior high-altitude experience (above 3,500 m), 6–8 weeks of structured fitness work, and comfort with steep, exposed, and potentially snow-covered terrain. Each offers a fundamentally different type of challenge — from sustained expedition endurance to a single do-or-die summit push.
+      </p>
+      <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', margin:0 }}>
+        These routes are drawn from our <Link href={PARENT_PATH} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>complete ranking of the 10 best treks in Uttarakhand</Link>. Not ready for challenging routes yet? The <Link href={`${PARENT_PATH}/beginner`} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>beginner treks</Link> page covers easy and moderate alternatives.
+      </p>
+    </div>
+  </section>
 
-        <PrimaryCTA
-          label="Plan a Challenging Trek"
-          subtext="Share your trekking history and preferred dates — we will match you with the right route."
-          vertical="trek"
-          category="filter-challenging"
-          sourcePath={PATH}
-        />
+  {/* TREK CARDS */}
+  <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
+    <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Three Routes</span>
+      </div>
+      <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'2rem' }}>Three Different Types of Challenge</h2>
 
-        {/* ── FAQ ───────────────────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-lg)' }}>
-            Frequently Asked Questions
-          </h2>
-          <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
-        </section>
+      {/* Roopkund */}
+      <div className="chal-card">
+        <img src="https://images.unsplash.com/photo-1533130061792-64b345e4a833?w=800&q=80" alt="Roopkund trek — glacial lake at 4800m in Garhwal Himalaya" loading="lazy" />
+        <div className="chal-card-body">
+          <h2>Roopkund — The Mystery Lake Expedition</h2>
+          <div className="chal-pills">
+            <span className="chal-pill">4,800 m</span>
+            <span className="chal-pill" style={{ color:'#e65100', borderColor:'rgba(230,81,0,0.25)', background:'rgba(230,81,0,0.05)' }}>Challenging</span>
+            <span className="chal-pill">7 days</span>
+            <span className="chal-pill">May–Jun, Sep–Oct</span>
+            <span className="chal-pill">Lohajung, Garhwal</span>
+          </div>
+          <p><Link href="/treks/location/lohajung/roopkund-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Roopkund</Link> is India&apos;s most iconic high-altitude trek — a 53 km expedition from Lohajung to a glacial lake at 4,800 metres, known for the centuries-old skeletal remains at its shores. The route crosses the vast Bedni Bugyal alpine meadow, navigates moraine fields, and demands sustained altitude tolerance across multiple days above 4,000 metres. The Bugyal alone — stretching kilometres in every direction with Trishul views — justifies the effort.</p>
+          <p><strong style={{ fontWeight:500, color:'#111' }}>Why it is challenging:</strong> Unlike Pangarchulla (where the difficulty concentrates in a single summit day), Roopkund distributes its demands across 7 days with sustained exposure above 4,000 m. Altitude sickness risk is cumulative. The moraine fields above 4,200 m require careful foot placement for hours at a time. Weather deteriorates rapidly above the Bugyal. This is expedition trekking, not a weekend challenge.</p>
+        </div>
+      </div>
 
-        {/* ── RELATED FILTER PAGES ─────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-md)', paddingTop: '1.5rem', borderTop: '1px solid var(--color-border)' }}>
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>
-            Browse by Category
-          </h2>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2.2 }}>
-            <li><Link href={PARENT_PATH} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>← All 10 Best Treks in Uttarakhand</Link></li>
-            <li><Link href={`${PARENT_PATH}/beginner`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Beginner Treks in Uttarakhand →</Link></li>
-            <li><Link href={`${PARENT_PATH}/snow`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Snow Treks in Uttarakhand →</Link></li>
-            <li><Link href={`${PARENT_PATH}/high-altitude`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>High-Altitude Treks Above 4,000 m →</Link></li>
-            <li><Link href="/treks/roopkund-vs-pangarchulla" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Roopkund vs Pangarchulla — Full Comparison →</Link></li>
-          </ul>
-        </section>
+      {/* Pangarchulla */}
+      <div className="chal-card">
+        <img src="https://images.unsplash.com/photo-1571401835393-8c5f35328320?w=800&q=80" alt="Pangarchulla peak — summit climb at 4590m from Joshimath" loading="lazy" />
+        <div className="chal-card-body">
+          <h2>Pangarchulla Peak — The Summit Climb</h2>
+          <div className="chal-pills">
+            <span className="chal-pill">4,590 m</span>
+            <span className="chal-pill" style={{ color:'#e65100', borderColor:'rgba(230,81,0,0.25)', background:'rgba(230,81,0,0.05)' }}>Challenging</span>
+            <span className="chal-pill">6 days</span>
+            <span className="chal-pill">Mar–May</span>
+            <span className="chal-pill">Joshimath, Garhwal</span>
+          </div>
+          <p><Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Pangarchulla</Link> is one of the few accessible true summit experiences in Uttarakhand. The route follows the Kuari Pass approach before diverging toward a steep snow-and-scree ascent with an alpine start. At the top: a 360-degree panorama of Nanda Devi, Dronagiri, Chaukhamba, and the entire Nanda Devi Sanctuary. Crampons required. For experienced trekkers who want to stand on a peak, not a pass.</p>
+          <p><strong style={{ fontWeight:500, color:'#111' }}>Why it is challenging:</strong> Summit day gains 1,200 m from high camp in a single alpine-start push beginning before dawn. The snow-and-scree terrain above 4,200 m requires crampons and confident movement on steep ground. The rest of the approach (Days 1–4 via the Kuari Pass trail) is moderate — the difficulty is concentrated into one relentless day.</p>
+          <p>Choosing between the two Garhwal challenges? <Link href="/treks/roopkund-vs-pangarchulla" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Compare Roopkund vs Pangarchulla →</Link></p>
+        </div>
+      </div>
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      </article>
-    </TrackedPage>
+      {/* Milam Glacier */}
+      <div className="chal-card">
+        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Milam Glacier trek — remote Johar Valley expedition from Munsiyari" loading="lazy" />
+        <div className="chal-card-body">
+          <h2>Milam Glacier — The Remote Expedition</h2>
+          <div className="chal-pills">
+            <span className="chal-pill">3,450 m</span>
+            <span className="chal-pill" style={{ color:'#e65100', borderColor:'rgba(230,81,0,0.25)', background:'rgba(230,81,0,0.05)' }}>Challenging</span>
+            <span className="chal-pill">8–10 days</span>
+            <span className="chal-pill">May–Jun, Sep–Oct</span>
+            <span className="chal-pill">Munsiyari, Kumaon</span>
+          </div>
+          <p><Link href="/treks/location/munsiyari/milam-glacier-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Milam Glacier</Link> is Uttarakhand&apos;s great expedition trek — an 8–10 day, 118 km journey along the ancient Johar Valley trade route from Munsiyari to the glacier snout beneath the Panchachuli massif. The route passes through abandoned Bhotiya trading villages (Martoli, Burfu), crosses glacial moraines, and follows the Goriganga River into genuinely wild terrain.</p>
+          <p><strong style={{ fontWeight:500, color:'#111' }}>Why it is challenging:</strong> The altitude is lower than Roopkund (3,450 m max), but the sustained 8–10 day commitment through remote terrain with limited evacuation options makes it equally demanding. You are walking deep into the mountains — days from the nearest road — with river crossings, moraines, and unpredictable weather. This is for trekkers who want genuine wilderness immersion, not a curated mountain experience.</p>
+        </div>
+      </div>
+
+      {/* Callout */}
+      <div style={{ display:'flex', flexDirection:'column', gap:'0.75rem', marginTop:'1.5rem' }}>
+        <div style={{ background:'#f7f9f7', border:'1px solid #e5e7eb', borderLeft:'3px solid #e65100', borderRadius:'8px', padding:'1rem 1.25rem', fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', lineHeight:1.85, color:'#555' }}>
+          <div style={{ fontSize:'0.55rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'#e65100', opacity:0.8, marginBottom:'0.35rem' }}>Still Deciding?</div>
+          <span style={{ fontWeight:500, color:'#111' }}>Roopkund vs Pangarchulla</span>{' '}
+          <span style={{ fontWeight:300 }}>— sustained altitude vs intense summit push. </span>
+          <Link href="/treks/roopkund-vs-pangarchulla" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>See full comparison →</Link>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {/* COMPARISON TABLE */}
+  <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
+    <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Quick Comparison</span>
+      </div>
+      <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>Challenging Treks at a Glance</h2>
+      <div style={{ overflowX:'auto', border:'1px solid #e5e7eb', borderRadius:'8px', background:'#fff' }}>
+        <table className="chal-table" style={{ width:'100%', borderCollapse:'collapse' }}>
+          <thead><tr style={{ borderBottom:'2px solid #e5e7eb' }}>
+            <th className="chal-th">Trek</th>
+            <th className="chal-th">Max Altitude</th>
+            <th className="chal-th">Days</th>
+            <th className="chal-th">Challenge Type</th>
+            <th className="chal-th">Region</th>
+          </tr></thead>
+          <tbody>
+            {[
+              { href:'/treks/location/lohajung/roopkund-trek', name:'Roopkund', alt:'4,800 m', days:'7', type:'Sustained altitude', region:'Garhwal' },
+              { href:'/treks/location/joshimath/pangarchulla-trek', name:'Pangarchulla', alt:'4,590 m', days:'6', type:'Intense summit push', region:'Garhwal' },
+              { href:'/treks/location/munsiyari/milam-glacier-trek', name:'Milam Glacier', alt:'3,450 m', days:'8–10', type:'Remote endurance', region:'Kumaon' },
+            ].map(r => (
+              <tr key={r.href}>
+                <td className="chal-td"><Link href={r.href} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>{r.name}</Link></td>
+                <td className="chal-td">{r.alt}</td>
+                <td className="chal-td">{r.days}</td>
+                <td className="chal-td">{r.type}</td>
+                <td className="chal-td">{r.region}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  {/* PREPARATION PATH */}
+  <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
+    <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Progression</span>
+      </div>
+      <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'0.75rem' }}>The Path to Challenging Treks</h2>
+      <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', marginBottom:'1.5rem' }}>
+        Attempting a challenging trek without proper progression increases both risk and misery. The recommended build-up:
+      </p>
+      {[
+        { num:'01', label:'First multi-day', body: <><Link href="/treks/location/lohajung/brahmatal-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Brahmatal</Link> or <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Kuari Pass</Link> — tests altitude response at 3,850–3,876 m.</> },
+        { num:'02', label:'Summit experience', body: <><Link href="/treks/location/sankri/kedarkantha-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Kedarkantha</Link> — adds a genuine summit push and snow conditions.</> },
+        { num:'03', label:'Challenging route', body: <>Pangarchulla, Roopkund, or Milam Glacier — full high-altitude or expedition demands.</> },
+      ].map((step, i, arr) => (
+        <div key={step.num} style={{ display:'flex', gap:'1.5rem', position:'relative' as const }}>
+          {i < arr.length - 1 && <div style={{ position:'absolute' as const, left:'19px', top:'28px', width:'2px', height:'calc(100% - 4px)', background:'linear-gradient(to bottom, rgba(15,118,110,0.2), transparent)' }} />}
+          <div style={{ flexShrink:0, marginTop:'0.35rem' }}>
+            <div style={{ width:'10px', height:'10px', borderRadius:'50%', background:'var(--color-primary)' }} />
+          </div>
+          <div style={{ paddingBottom:'1.5rem' }}>
+            <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.55rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'var(--color-primary)', opacity:0.6, margin:'0 0 0.25rem' }}>{step.num}</p>
+            <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:500, color:'#111', margin:'0 0 0.25rem' }}>{step.label}</p>
+            <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', margin:0 }}>{step.body}</p>
+          </div>
+        </div>
+      ))}
+      <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', marginTop:'0.5rem', marginBottom:0 }}>
+        For the complete progression framework with training plans for each level, see our <Link href="/blog/beginner-to-advanced-trek-progression-garhwal" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>beginner-to-advanced trek progression guide</Link> and the <Link href="/treks/garhwal-himalayas/fitness-guide" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>8-week fitness preparation plan</Link>.
+      </p>
+    </div>
+  </section>
+
+  <PrimaryCTA label="Plan a Challenging Trek" subtext="Share your trekking history and preferred dates — we will match you with the right route." vertical="trek" category="filter-challenging" sourcePath={PATH} />
+
+  {/* FAQ */}
+  <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
+    <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>FAQ</span>
+      </div>
+      <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>Frequently Asked Questions</h2>
+      <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
+    </div>
+  </section>
+
+  {/* BROWSE */}
+  <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem' }}>
+    <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
+      <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Explore More</span>
+      </div>
+      <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>Browse by Category</h2>
+      <div className="chal-nav-group">
+        <Link href={PARENT_PATH} className="chal-nav-link">← All 10 Best Treks in Uttarakhand</Link>
+        <Link href={`${PARENT_PATH}/beginner`} className="chal-nav-link">Beginner Treks in Uttarakhand</Link>
+        <Link href={`${PARENT_PATH}/snow`} className="chal-nav-link">Snow Treks in Uttarakhand</Link>
+        <Link href={`${PARENT_PATH}/high-altitude`} className="chal-nav-link">High-Altitude Treks Above 4,000 m</Link>
+        <Link href="/treks/roopkund-vs-pangarchulla" className="chal-nav-link">Roopkund vs Pangarchulla — Full Comparison</Link>
+      </div>
+    </div>
+  </section>
+
+</TrackedPage>
   );
 }
