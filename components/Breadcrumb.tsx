@@ -1,9 +1,3 @@
-/**
- * Breadcrumb
- * Server component — renders visual breadcrumb navigation.
- * Must mirror BreadcrumbList JSON-LD schema exactly.
- */
-
 import Link from 'next/link';
 
 export interface BreadcrumbItem {
@@ -20,28 +14,66 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
     <nav
       aria-label="Breadcrumb"
       style={{
-        fontSize: '0.85rem',
-        color: 'var(--color-muted)',
-        marginBottom: 'var(--space-md)',
-        lineHeight: 1.5,
+        width: '100vw',
+        marginLeft: 'calc(-50vw + 50%)',
+        background: '#ffffff',
+        borderBottom: '1px solid #e5e7eb',
+        position: 'relative',
+        zIndex: 1,
       }}
     >
-      {items.map((item, index) => (
-        <span key={item.name}>
-          {index > 0 && (
-            <span style={{ margin: '0 0.4rem', opacity: 0.5 }} aria-hidden="true">
-              /
-            </span>
-          )}
-          {item.href ? (
-            <Link href={item.href} style={{ color: 'var(--color-muted)', textDecoration: 'none' }}>
-              {item.name}
-            </Link>
-          ) : (
-            <span style={{ color: 'var(--color-text)' }}>{item.name}</span>
-          )}
-        </span>
-      ))}
+      <style>{`
+        .bc-inner {
+          max-width: 64rem;
+          margin: 0 auto;
+          padding: 0.75rem var(--space-md, 1.5rem);
+          display: flex;
+          align-items: center;
+          gap: 0;
+        }
+        .bc-sep {
+          margin: 0 0.5rem;
+          color: #cccccc;
+          font-size: 0.7rem;
+          user-select: none;
+        }
+        .bc-link {
+          font-family: var(--font-geist-sans), sans-serif;
+          font-size: 0.75rem;
+          font-weight: 300;
+          color: #999999;
+          text-decoration: none;
+          letter-spacing: 0.02em;
+          transition: color 0.2s;
+          white-space: nowrap;
+        }
+        .bc-link:hover { color: var(--color-primary); }
+        .bc-current {
+          font-family: var(--font-geist-sans), sans-serif;
+          font-size: 0.75rem;
+          font-weight: 400;
+          color: #444444;
+          letter-spacing: 0.02em;
+          white-space: nowrap;
+        }
+      `}</style>
+
+      <div className="bc-inner">
+        {items.map((item, index) => (
+          <span key={item.name} style={{ display: 'flex', alignItems: 'center' }}>
+            {index > 0 && (
+              <span className="bc-sep" aria-hidden="true">/</span>
+            )}
+            {item.href ? (
+              <Link href={item.href} className="bc-link">
+                {item.name}
+              </Link>
+            ) : (
+              <span className="bc-current">{item.name}</span>
+            )}
+          </span>
+        ))}
+      </div>
     </nav>
   );
 }

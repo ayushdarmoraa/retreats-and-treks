@@ -13,17 +13,11 @@
 import CTAExpandToggle from './CTAExpandToggle';
 
 interface PrimaryCTAProps {
-  /** Button label — e.g. "Plan My Trek" */
   label: string;
-  /** Supporting line above the button */
   subtext?: string;
-  /** trek | retreat */
   vertical: 'trek' | 'retreat';
-  /** apex, seasonal, luxury, beginner, weekend, near-delhi, packages, homepage */
   category: string;
-  /** Current page path for source tracking — e.g. /treks/best-trek-in-uttarakhand */
   sourcePath: string;
-  /** Auto-prefill location */
   location?: string;
 }
 
@@ -36,42 +30,77 @@ export default function PrimaryCTA({
   location,
 }: PrimaryCTAProps) {
   return (
-    <aside
-      style={{
-  position: 'relative',
-  background: '#f7f9f7',
-  border: '1px solid rgba(15,118,110,0.15)',
-  borderLeft: '3px solid var(--color-primary)',
-  borderRadius: '2px',
-  padding: 'var(--space-lg)',
-  textAlign: 'center',
-  margin: 'var(--space-xl) 0',
-  overflow: 'hidden',
-}}
+    <aside style={{
+      width: '100vw',
+      marginLeft: 'calc(-50vw + 50%)',
+      background: '#ffffff',
+      borderTop: '1px solid #e5e7eb',
+      borderBottom: '1px solid #e5e7eb',
+      padding: '3.5rem 2rem',
+      margin: 'var(--space-xl) calc(-50vw + 50%)',
+      textAlign: 'center',
+      position: 'relative',
+      overflow: 'hidden',
+    }}>
 
-    >
+      {/* Subtle top accent line */}
       <span aria-hidden="true" style={{
-  position: 'absolute', inset: 0,
-  background: 'radial-gradient(ellipse 80% 60% at 50% 100%, rgba(15,118,110,0.04) 0%, transparent 70%)',
-  pointerEvents: 'none',
-}} />
-      {subtext && (
-        <p
-          style={{
-              fontFamily: 'var(--font-geist-sans), sans-serif',
-fontSize: '0.88rem', fontWeight: 300, color: '#666666', lineHeight: 1.7
-          }}
-        >
-          {subtext}
-        </p>
-      )}
-      <CTAExpandToggle
-        label={label}
-        vertical={vertical}
-        category={category}
-        sourcePath={sourcePath}
-        location={location}
-      />
+        position: 'absolute', top: 0, left: '50%',
+        transform: 'translateX(-50%)',
+        width: '80px', height: '2px',
+        background: 'var(--color-primary)',
+        opacity: 0.6,
+      }} />
+
+      <div style={{ maxWidth: '32rem', margin: '0 auto', position: 'relative' }}>
+
+        {/* Eyebrow */}
+        <div style={{
+          display: 'flex', alignItems: 'center',
+          justifyContent: 'center', gap: '0.75rem',
+          marginBottom: '1rem',
+        }}>
+          <span style={{
+            width: '20px', height: '1px',
+            background: 'var(--color-primary)',
+            opacity: 0.4, display: 'inline-block',
+          }} />
+          <span style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.55rem', letterSpacing: '0.28em',
+            textTransform: 'uppercase' as const,
+            color: 'var(--color-primary)', fontWeight: 500, opacity: 0.65,
+          }}>Ready to Trek?</span>
+          <span style={{
+            width: '20px', height: '1px',
+            background: 'var(--color-primary)',
+            opacity: 0.4, display: 'inline-block',
+          }} />
+        </div>
+
+        {subtext && (
+          <p style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            lineHeight: 1.8,
+            marginBottom: '1.75rem',
+            letterSpacing: '0.01em',
+          }}>
+            {subtext}
+          </p>
+        )}
+
+        <CTAExpandToggle
+          label={label}
+          vertical={vertical}
+          category={category}
+          sourcePath={sourcePath}
+          location={location}
+        />
+
+      </div>
     </aside>
   );
 }

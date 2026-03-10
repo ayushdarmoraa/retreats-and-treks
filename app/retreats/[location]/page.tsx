@@ -102,14 +102,7 @@ export default async function RetreatsLocationPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
-      <p style={{ maxWidth: '56rem', margin: '0 auto var(--space-md)', padding: '0 var(--space-md)', fontSize: '0.95rem', lineHeight: 1.75, color: 'var(--color-text)' }}>
-        For a broader understanding of formats, seasonal differences, and how mountain retreats are
-        structured across regions, see our complete guide to{' '}
-        <Link href="/retreats/himalayan-retreats" style={{ color: 'var(--color-primary)' }}>
-          Himalayan Retreats in India
-        </Link>
-        .
-      </p>
+      
       <RetreatsLocationClient
         locationPremiumContent={locationPremiumContent}
         retreats={retreats}
