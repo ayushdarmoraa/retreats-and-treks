@@ -485,11 +485,11 @@ export default async function TrekHubPage({ params }: PageProps) {
 
   if (!locationData) {
     return (
-      <main style={{ maxWidth: '72rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
-        <h1>Location not found</h1>
-        <Link href="/treks" style={{ color: 'var(--color-primary)' }}>
-          ← Back to all treks
-        </Link>
+      <main style={{ width: '100%', padding: '0' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '4rem 2rem' }}>
+          <h1 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontWeight: 200 }}>Location not found</h1>
+          <Link href="/treks" style={{ color: 'var(--color-primary)' }}>← Back to all treks</Link>
+        </div>
       </main>
     );
   }
@@ -497,82 +497,291 @@ export default async function TrekHubPage({ params }: PageProps) {
   const guideSections = LOCATION_GUIDES[locationId] || [];
 
   return (
-    <main style={{ maxWidth: '72rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
-      {/* BREADCRUMB + H1 */}
-      <section style={{ marginBottom: '2rem', textAlign: 'center' }}>
-        <Breadcrumb
-          items={[
-            { name: 'Home', href: '/' },
-            { name: 'Treks', href: '/treks' },
-            { name: locationData.name },
-          ]}
-        />
-        <h1 style={{ marginBottom: '0.75rem' }}>Treks Around {locationData.name}</h1>
-      </section>
+    <main style={{ width: '100%', padding: '0' }}>
 
-      {/* AUTHORITY GUIDE SECTIONS */}
-      {guideSections.length > 0 ? (
-        guideSections.map((section, i) => (
-          <section key={i} style={{ marginBottom: '2.5rem', maxWidth: '56rem', marginLeft: 'auto', marginRight: 'auto', lineHeight: 1.7, fontSize: '1rem', color: 'var(--color-text)' }}>
-            <h2 style={{ fontSize: '1.3rem', marginBottom: '1rem' }}>{section.heading}</h2>
-            {section.body}
-          </section>
-        ))
-      ) : (
-        <section style={{ marginBottom: '2.5rem', maxWidth: '56rem', marginLeft: 'auto', marginRight: 'auto' }}>
-          <p style={{ fontSize: '1rem', color: 'var(--color-text)', lineHeight: 1.6 }}>
-            {locationData.name} is a trekking destination in the Indian Himalayas. Explore the available treks below or discover <Link href={`/retreats/${locationId}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>retreats in {locationData.name}</Link>.
-          </p>
-        </section>
-      )}
-
-      {/* TREK CARDS */}
-      <section style={{ marginBottom: '3rem', maxWidth: '56rem', marginLeft: 'auto', marginRight: 'auto' }}>
-        <h2 style={{ marginTop: 0, marginBottom: '1.25rem' }}>Available Treks</h2>
-        {treks.length > 0 ? (
-          <>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
+      {/* ── HERO ── */}
+      <section style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        background: '#f7f9f7',
+        paddingTop: '4rem', paddingBottom: '4rem',
+        borderBottom: '1px solid #e5e7eb',
+      }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <Breadcrumb
+            items={[
+              { name: 'Home', href: '/' },
+              { name: 'Treks', href: '/treks' },
+              { name: locationData.name },
+            ]}
+          />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', margin: '1.5rem 0 1rem' }}>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+            <span style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.56rem', letterSpacing: '0.28em',
+              textTransform: 'uppercase' as const,
+              color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7,
+            }}>Trekking Base · Garhwal Himalayas</span>
+          </div>
+          <h1 style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: 'clamp(1.75rem, 3.5vw, 2.4rem)',
+            fontWeight: 200, letterSpacing: '-0.035em',
+            color: '#111111', lineHeight: 1.1,
+            margin: '0 0 1.5rem',
+          }}>
+            Treks Around {locationData.name}
+          </h1>
+          {treks.length > 0 && (
+            <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: '0.5rem' }}>
               {treks.map((trek) => (
-                <TrekCard
-                  key={trek.slug}
-                  name={trek.title}
-                  duration={trek.duration}
-                  difficulty={trek.difficulty}
-                  description={trek.description}
-                  href={`/treks/location/${trek.locationId}/${trek.slug}`}
-                />
+                <Link key={trek.slug} href={`/treks/location/${trek.locationId}/${trek.slug}`} style={{ textDecoration: 'none' }}>
+                  <span style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                    fontFamily: 'var(--font-geist-sans), sans-serif',
+                    fontSize: '0.78rem', fontWeight: 300, color: '#333333',
+                    background: '#ffffff', border: '1px solid #e5e7eb',
+                    borderRadius: '100px', padding: '5px 14px',
+                  }}>
+                    <span style={{
+                      fontSize: '0.55rem', fontWeight: 600,
+                      letterSpacing: '0.18em', textTransform: 'uppercase' as const,
+                      color: 'var(--color-primary)', opacity: 0.75,
+                    }}>{trek.difficulty}</span>
+                    {trek.title}
+                  </span>
+                </Link>
               ))}
             </div>
-            <Link href="/treks" style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'none', fontSize: '0.95rem' }}>
-              Browse treks across locations →
+          )}
+        </div>
+      </section>
+
+      {/* ── TREK CARDS ── */}
+{treks.length > 0 && (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#ffffff',
+    paddingTop: '4rem', paddingBottom: '4rem',
+    borderBottom: '1px solid #e5e7eb',
+  }}>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Available Treks</span>
+      </div>
+      <h2 style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+        fontWeight: 200, letterSpacing: '-0.03em',
+        color: '#111111', lineHeight: 1.15, marginBottom: '2rem',
+      }}>Available Treks</h2>
+
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem', marginBottom: '1.5rem' }}>
+        {treks.map((trek) => {
+          const TREK_IMAGES: Record<string, string> = {
+            'brahmatal-trek': 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80&fit=crop',
+            'roopkund-trek': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80&fit=crop',
+            'kuari-pass-trek': 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=80&fit=crop',
+            'pangarchulla-trek': 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80&fit=crop',
+            'kedarkantha-trek': 'https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80&fit=crop',
+            'har-ki-dun-trek': 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop',
+            'weekend-trek': 'https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=800&q=80&fit=crop',
+            'tiger-fall-trek': 'https://images.unsplash.com/photo-1511884642898-4c92249e20b6?w=800&q=80&fit=crop',
+            'budher-caves-trek': 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&fit=crop',
+          };
+          const imgSrc = TREK_IMAGES[trek.slug] ?? 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80&fit=crop';
+          const isModerate = trek.difficulty?.toLowerCase() === 'moderate';
+
+          return (
+            <Link
+              key={trek.slug}
+              href={`/treks/location/${trek.locationId}/${trek.slug}`}
+              style={{ textDecoration: 'none' }}
+            >
+              <div style={{
+                background: '#ffffff',
+                border: '1px solid #e5e7eb',
+                borderRadius: '8px',
+                overflow: 'hidden',
+                display: 'flex', flexDirection: 'column' as const,
+              }}>
+                {/* Image */}
+                <div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden' }}>
+                  <img
+                    src={imgSrc}
+                    alt={trek.title}
+                    style={{
+                      width: '100%', height: '100%',
+                      objectFit: 'cover', objectPosition: 'center',
+                      display: 'block',
+                    }}
+                  />
+                  {/* Difficulty badge over image */}
+                  <span style={{
+                    position: 'absolute', top: '0.75rem', right: '0.75rem',
+                    fontFamily: 'var(--font-geist-sans), sans-serif',
+                    fontSize: '0.58rem', fontWeight: 600,
+                    letterSpacing: '0.15em', textTransform: 'uppercase' as const,
+                    color: isModerate ? 'var(--color-primary)' : '#e65100',
+                    background: isModerate ? 'rgba(247,249,247,0.95)' : 'rgba(255,250,245,0.95)',
+                    border: `1px solid ${isModerate ? 'rgba(15,118,110,0.2)' : 'rgba(230,81,0,0.2)'}`,
+                    borderRadius: '100px', padding: '3px 10px',
+                  }}>{trek.difficulty}</span>
+                </div>
+
+                {/* Content */}
+                <div style={{ padding: '1.25rem', flex: 1, display: 'flex', flexDirection: 'column' as const }}>
+                  <h3 style={{
+                    fontFamily: 'var(--font-geist-sans), sans-serif',
+                    fontSize: '0.92rem', fontWeight: 500,
+                    color: '#111111', margin: '0 0 0.5rem',
+                    lineHeight: 1.3,
+                  }}>{trek.title}</h3>
+                  <p style={{
+                    fontFamily: 'var(--font-geist-sans), sans-serif',
+                    fontSize: '0.82rem', fontWeight: 300,
+                    color: '#666666', lineHeight: 1.7,
+                    margin: '0 0 1rem', flex: 1,
+                  }}>{trek.description}</p>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <span style={{
+                      fontFamily: 'var(--font-geist-sans), sans-serif',
+                      fontSize: '0.75rem', fontWeight: 300, color: '#999999',
+                    }}>{trek.duration}</span>
+                    <span style={{
+                      fontFamily: 'var(--font-geist-sans), sans-serif',
+                      fontSize: '0.75rem', fontWeight: 500,
+                      color: 'var(--color-primary)',
+                    }}>View trek →</span>
+                  </div>
+                </div>
+              </div>
             </Link>
-          </>
-        ) : (
-          <p style={{ color: 'var(--color-muted)' }}>No treks available at this location yet.</p>
-        )}
+          );
+        })}
+      </div>
+
+      <Link href="/treks" style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        color: 'var(--color-primary)', fontWeight: 500,
+        textDecoration: 'none', fontSize: '0.85rem',
+      }}>
+        Browse treks across locations →
+      </Link>
+    </div>
+  </section>
+)}
+
+      {/* ── AUTHORITY GUIDE SECTIONS — alternating bg ── */}
+{guideSections.length > 0 ? (
+  guideSections.map((section, i) => {
+    const isFAQ = section.heading.toLowerCase().includes('frequently asked');
+    return (
+      <section key={i} style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        background: i % 2 === 0 ? '#f7f9f7' : '#ffffff',
+        paddingTop: '4rem', paddingBottom: '4rem',
+        borderBottom: '1px solid #e5e7eb',
+      }}>
+        <style>{`
+          .faq-body > p {
+            background: #ffffff;
+            border: 1px solid #e5e7eb;
+            border-left: 3px solid var(--color-primary);
+            border-radius: 8px;
+            padding: 1.1rem 1.25rem;
+            margin: 0 0 0.75rem !important;
+          }
+          .faq-body > p:last-child { margin-bottom: 0 !important; }
+          .faq-body > p > strong:first-child {
+            display: block;
+            font-family: var(--font-geist-sans), sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: #111111;
+            margin-bottom: 0.5rem;
+          }
+        `}</style>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>
+              {isFAQ ? 'FAQ' : String(i + 1).padStart(2, '0')}
+            </span>
+          </div>
+          <h2 style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+            fontWeight: 200, letterSpacing: '-0.03em',
+            color: '#111111', lineHeight: 1.2,
+            marginBottom: '1.75rem',
+          }}>{section.heading}</h2>
+          <div
+            className={isFAQ ? 'faq-body' : undefined}
+            style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.88rem', fontWeight: 300,
+              lineHeight: 1.85, color: '#555555',
+            }}
+          >
+            {section.body}
+          </div>
+        </div>
+      </section>
+    );
+  })
+) : (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#f7f9f7',
+    paddingTop: '4rem', paddingBottom: '4rem',
+    borderBottom: '1px solid #e5e7eb',
+  }}>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, color: '#555555', lineHeight: 1.85 }}>
+        {locationData.name} is a trekking destination in the Indian Himalayas. Explore the available treks below or discover{' '}
+        <Link href={`/retreats/${locationId}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>retreats in {locationData.name}</Link>.
+      </p>
+    </div>
+  </section>
+)}
+
+      {/* ── RELATED EXPERIENCES + CTA ── */}
+      <section style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        background: guideSections.length % 2 === 0 ? '#ffffff' : '#f7f9f7',
+        paddingTop: '4rem', paddingBottom: '4rem',
+      }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', textAlign: 'center' as const }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
+            <span style={{ width: '20px', height: '1px', background: 'var(--color-primary)', opacity: 0.4, display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Plan Your Visit</span>
+            <span style={{ width: '20px', height: '1px', background: 'var(--color-primary)', opacity: 0.4, display: 'inline-block' }} />
+          </div>
+          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, color: '#555555', lineHeight: 1.85, marginBottom: '1.75rem' }}>
+            {locationData.name} also offers{' '}
+            <Link href={`/retreats/${locationId}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+              wellness retreats and meditation experiences
+            </Link>.
+          </p>
+          <a
+             href={`https://wa.me/919760446101?text=Hi%2C%20I%20am%20interested%20in%20a%20trek%20in%20${encodeURIComponent(locationData.name)}.`}
+            style={{
+              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              padding: '13px 28px',
+              background: 'var(--color-primary)', color: '#ffffff',
+              fontSize: '0.62rem', fontWeight: 600,
+              letterSpacing: '0.2em', textTransform: 'uppercase' as const,
+              borderRadius: '4px', textDecoration: 'none',
+            }}
+          >
+            Chat on WhatsApp
+          </a>
+        </div>
       </section>
 
-      {/* RELATED EXPERIENCES */}
-      <section style={{ marginBottom: '2rem', maxWidth: '56rem', marginLeft: 'auto', marginRight: 'auto' }}>
-        <p style={{ color: 'var(--color-muted)', fontSize: '0.95rem' }}>
-          {locationData.name} also offers{' '}
-          <Link href={`/retreats/${locationId}`} style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'none' }}>
-            wellness retreats and meditation experiences
-          </Link>.
-        </p>
-      </section>
-
-      {/* SOFT CTA */}
-      <section style={{ textAlign: 'center', paddingTop: '1rem', borderTop: '1px solid var(--color-border)', maxWidth: '56rem', marginLeft: 'auto', marginRight: 'auto' }}>
-        <p style={{ marginBottom: '1rem', color: 'var(--color-muted)' }}>Ready to book a trek?</p>
-        <a
-          href={`https://wa.me/919760446101?text=Hi%2C%20I%20am%20interested%20in%20a%20trek%20in%20${encodeURIComponent(locationData.name)}.`}
-          style={{ display: 'inline-block', padding: '0.75rem 1.25rem', backgroundColor: 'var(--color-primary)', color: '#ffffff', borderRadius: 'var(--radius-sm)', textDecoration: 'none', fontWeight: 500, fontSize: '0.95rem' }}
-        >
-          Chat on WhatsApp
-        </a>
-      </section>
     </main>
   );
 }
-

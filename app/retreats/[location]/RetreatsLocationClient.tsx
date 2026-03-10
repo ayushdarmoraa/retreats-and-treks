@@ -38,7 +38,46 @@ export default function RetreatsLocationClient({
 
   return (
     <main style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
-      {/* SECTION 1: OPENING — THE LAND ITSELF */}
+     <div style={{
+  width: '100vw',
+  marginLeft: 'calc(-50vw + 50%)',
+  background: '#f0f7f0',
+  borderBottom: '1px solid #d4e8d4',
+}}>
+  <div style={{
+    maxWidth: '64rem',
+    margin: '0 auto',
+    padding: '0.85rem var(--space-md, 1.5rem)',
+    display: 'flex',
+    alignItems: 'center',
+    gap: '0.85rem',
+  }}>
+    <span style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: '0.52rem', fontWeight: 600,
+      letterSpacing: '0.22em', textTransform: 'uppercase',
+      color: 'var(--color-primary)', opacity: 0.7,
+      whiteSpace: 'nowrap', flexShrink: 0,
+    }}>Guide</span>
+    <div style={{ width: '1px', height: '14px', background: 'rgba(15,118,110,0.2)', flexShrink: 0 }} />
+    <p style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: '0.82rem', fontWeight: 300,
+      lineHeight: 1.5, color: '#555555', margin: 0,
+    }}>
+      For a broader understanding of formats, seasonal differences, and how mountain retreats are
+      structured across regions, see our complete guide to{' '}
+      <Link href="/retreats/himalayan-retreats" style={{
+        color: 'var(--color-primary)', textDecoration: 'none',
+        borderBottom: '1px solid rgba(15,118,110,0.3)',
+      }}>
+        Himalayan Retreats in India
+      </Link>
+      .
+    </p>
+  </div>
+</div>
+{/* SECTION 1: OPENING — THE LAND ITSELF */}
       <section style={{
         marginBottom: '0',
         marginTop: '0',
