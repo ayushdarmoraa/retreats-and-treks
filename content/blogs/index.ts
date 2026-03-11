@@ -30,6 +30,17 @@ import sankriVsMunsiyariRetreat from './sankri-vs-munsiyari-retreat';
 import bestSnowTreksGarhwalHimalaya from './best-snow-treks-garhwal-himalaya';
 import highAltitudeTreksGarhwalAbove4000m from './high-altitude-treks-garhwal-above-4000m';
 import beginnerToAdvancedTrekProgressionGarhwal from './beginner-to-advanced-trek-progression-garhwal';
+import whyArtRetreatsWork from './why-art-retreats-work';
+import artRetreatVsArtClass from './art-retreat-vs-art-class';
+import canARetreatUnblockCreativity from './can-a-retreat-unblock-creativity';
+import whatToExpectAtAnArtRetreat from './what-to-expect-at-an-art-retreat';
+import artRetreatForBeginners from './art-retreat-for-beginners';
+import artAndYogaRetreatHimalayas from './art-and-yoga-retreat-himalayas';
+import paintingInTheHimalayas from './painting-in-the-himalayas';
+import artTherapyVsArtRetreat from './art-therapy-vs-art-retreat';
+import bestHimalayanLocationsForArtRetreat from './best-himalayan-locations-for-art-retreat';
+import howNatureInspiresCreativePractice from './how-nature-inspires-creative-practice';
+import artRetreatPackingList from './art-retreat-packing-list';
 
 // Hardcoded blog posts (extracted from static routes)
 const chakrataVsSankri: BlogContent = {
@@ -269,6 +280,17 @@ export const ALL_BLOG_POSTS: ReadonlyArray<BlogContent> = [
   bestSnowTreksGarhwalHimalaya,
   highAltitudeTreksGarhwalAbove4000m,
   beginnerToAdvancedTrekProgressionGarhwal,
+  whyArtRetreatsWork,
+  artRetreatVsArtClass,
+  canARetreatUnblockCreativity,
+  whatToExpectAtAnArtRetreat,
+  artRetreatForBeginners,
+  artAndYogaRetreatHimalayas,
+  paintingInTheHimalayas,
+  artTherapyVsArtRetreat,
+  bestHimalayanLocationsForArtRetreat,
+  howNatureInspiresCreativePractice,
+  artRetreatPackingList,
 ] as const;
 
 /**

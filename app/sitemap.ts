@@ -198,6 +198,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'meditation-retreat-and-trek',
     'himalayan-retreat-with-trekking',
     'trek-and-meditate-himalayas',
+    'trek-and-paint-himalayas',
   ]) {
     entries.push({
       url: buildCanonicalUrl(`/${slug}`),

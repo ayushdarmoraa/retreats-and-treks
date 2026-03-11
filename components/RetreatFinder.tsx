@@ -77,6 +77,7 @@ const QUESTIONS: Question[] = [
           'rest-and-reset': 5,
           'burnout-recovery': 4,
           'sound-healing': 3,
+          'art-and-creative': 1,
         },
       },
       {
@@ -143,6 +144,7 @@ const QUESTIONS: Question[] = [
         scores: {
           'sound-healing': 6,
           'meditation-and-silence': 2,
+          'art-and-creative': 2,
         },
       },
     ],

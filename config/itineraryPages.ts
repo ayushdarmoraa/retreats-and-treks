@@ -364,6 +364,44 @@ const ARCS: Record<string, ExperienceArc> = {
       '11:30 AM — Departure',
     ],
   },
+
+  'creative-retreat': {
+    urlPrefix: 'art-retreat',
+    duration: 7,
+    themes: [
+      'Arrival & First Marks',
+      'Loosening the Grip',
+      'Seeing Without Judging',
+      'The Creative Deepening',
+      'Nature as Medium',
+      'Integration & Expression',
+      'Closing Gallery & Departure',
+    ],
+    descriptions: [
+      'You arrive in {location} and settle into your room. The evening begins with a simple creative exercise — blind contour drawing, or painting with your non-dominant hand. The point is not quality. The point is starting before the inner critic wakes up.',
+      'Your first full day of facilitated creation. Morning session introduces your chosen medium — watercolour, ink, clay, collage, or mixed media. The emphasis is on process, not product. Afternoon nature walk with a sketchbook. {location} becomes your subject.',
+      'The inner critic will have appeared by now. Today addresses it directly. Morning exercises designed to bypass perfectionism — timed drawings, collaborative pieces, working with limitations. Afternoon free creation time. Let the work be what it wants to be.',
+      'Practice deepens. The morning session explores emotional expression through art — what cannot be said in words sometimes finds form in colour, shape, texture. Extended studio time in the afternoon. {location} provides both inspiration and quiet.',
+      'Creation moves outdoors. Plein air painting, land art, natural material sculpture, or nature journalling in {location}. The landscape is not just backdrop but collaborator. Afternoon open studio with facilitator support.',
+      'The focus shifts from creating to understanding what you have created. Morning reflection on the week\'s work. What emerged? What surprised you? Afternoon session on maintaining a creative practice at home — how to protect creative time and keep the inner critic quiet.',
+      'A final morning session — create one piece that captures what the week held for you. Optional gallery walk where participants share their work. No critiques, only witnessing. Closing circle after lunch. Departure with everything you made.',
+    ],
+    arrivalSchedule: [
+      'Afternoon — Arrival and room allocation',
+      '4:30 PM — Welcome tea',
+      '5:30 PM — Introduction and creative warm-up exercise',
+      '7:00 PM — Dinner',
+      '8:00 PM — Free time — explore the materials',
+    ],
+    departureSchedule: [
+      '7:00 AM — Morning yoga or gentle movement',
+      '8:00 AM — Breakfast',
+      '9:00 AM — Final creative piece',
+      '10:30 AM — Optional gallery walk',
+      '11:30 AM — Closing circle',
+      '12:00 PM — Lunch and departure',
+    ],
+  },
 };
 
 // ── FAQ Generator ────────────────────────────────────────────────────────

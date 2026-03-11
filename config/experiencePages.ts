@@ -565,6 +565,92 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     closingNarrative:
       'Healing cannot be rushed or forced. It requires an environment that is safe enough to let the armour down and patient enough to wait. If you are looking for a healing retreat, describe where you are honestly — what you are carrying, what you need. We will recommend the right place without pressure or promises.',
   },
+
+  // ── 10. Creative Retreats ─────────────────────────────────────────────────
+  {
+    slug: 'creative-retreat',
+    title: 'Creative Healing Retreat — Art & Yoga in the Himalayas | Retreats And Treks',
+    h1: 'Creative Healing Retreat — Art & Yoga in the Himalayas',
+    metaDescription:
+      'Creative healing retreats combining painting, expressive arts, yoga, and emotional healing in the Himalayas. Mussoorie, Chakrata, Rishikesh, Zanskar, Sankri. Small groups, no experience needed.',
+    intro:
+      'A creative retreat is not an art class transplanted into the mountains. It is a container where creativity becomes a doorway to emotional truth. You do not need to be an artist. You do not need talent or training. What you need is willingness — to pick up a brush, shape clay, move your body, or sit with a blank page and let something emerge that is genuinely yours.\n\nThe Himalayas amplify this process. Mountain light changes how you see colour. Forest silence removes the inner critic. Altitude thins the habitual thinking that blocks creative flow. We run art retreats across five distinct locations, each offering a different quality of creative inspiration — from the gentle forests of Chakrata to the raw geology of Zanskar.',
+    whoIsThisFor: [
+      'Anyone seeking to reconnect with their creative voice — no experience required',
+      'People recovering from creative burnout, perfectionism, or self-censorship',
+      'Those who want emotional healing through art rather than talk-based therapy',
+      'Artists and writers seeking inspiration in a Himalayan environment',
+      'Anyone drawn to painting, drawing, clay work, collage, or expressive movement',
+    ],
+    whatToExpect: [
+      'Daily creative sessions — painting, drawing, clay, collage, nature sketching',
+      'Facilitated guidance without performance pressure or grading',
+      'Morning yoga or movement to connect body and creativity',
+      'Afternoon unstructured creation time in natural settings',
+      'Evening sharing circles (optional) for gentle witnessing',
+      'Small groups (maximum 10) ensuring personal attention and safety',
+    ],
+    retreatServiceSlugs: ['art-and-creative'],
+    locationAngles: [
+      {
+        locationId: 'mussoorie',
+        heading: 'Mussoorie — Mountain Light & Aesthetic Beauty',
+        description:
+          'Mussoorie\'s cloud forests, colonial architecture, and sweeping valley views create a naturally aesthetic environment that awakens the visual sense. The light here changes throughout the day — soft mist in the morning, warm gold in the afternoon, dramatic cloud play in the evening. For painters and visual artists, the landscape itself becomes your primary teacher. The most accessible art retreat location, just 1.5 hours from Dehradun.',
+      },
+      {
+        locationId: 'chakrata',
+        heading: 'Chakrata — Forest Silence for Deep Creation',
+        description:
+          'The dense deodar forests of Chakrata create a natural studio without walls. No tourist noise, no commercial distractions — just the sound of wind, birdsong, and your own creative process. The silence removes the inner critic. At 2,200 metres, the forest canopy provides natural shelter for outdoor creation. Ideal for expressive arts, journalling, clay work, and the kind of creativity that requires safety and solitude.',
+      },
+      {
+        locationId: 'rishikesh',
+        heading: 'Rishikesh — Spiritual Art on the Ganges',
+        description:
+          'Rishikesh adds a devotional dimension to creative practice. The river, the chanting from nearby ashrams, and the accumulated spiritual weight of the place infuse creative work with depth. Art here becomes a form of prayer — painting the Ganges at dawn, sketching temple architecture, or simply sitting with colour and letting the sacred geography move through your hands.',
+      },
+      {
+        locationId: 'zanskar',
+        heading: 'Zanskar — Raw Landscapes for Bold Creation',
+        description:
+          'Zanskar\'s Trans-Himalayan geology — ancient rock formations, stark valleys, prayer flags against blue sky — demands bold creative response. The landscape does not invite pretty watercolours; it demands something primal. At 3,500 metres, the thinking mind slows and the creative impulse intensifies. For experienced retreatants or those seeking radical creative breakthrough.',
+      },
+      {
+        locationId: 'sankri',
+        heading: 'Sankri — Mountain Village & Pastoral Simplicity',
+        description:
+          'Sankri sits in the Govind Wildlife Sanctuary, surrounded by pastoral mountain life — apple orchards, stone houses, river valleys. The simplicity of village life becomes creative material. Sketch journaling, landscape painting, and nature observation come naturally here. The 7-hour journey from Dehradun is itself a creative transition — leaving complexity behind.',
+      },
+    ],
+    closingNarrative:
+      'Creativity is not a luxury skill reserved for artists. It is your birthright — the part of you that makes, imagines, and expresses. Most of us have buried it under productivity, perfectionism, and the fear of not being good enough. A Himalayan art retreat does not teach you to create. It removes the conditions that stopped you. If you are drawn to this but unsure, reach out. We will help you choose the right location and format for wherever you are in your creative journey.',
+    deepContent: [
+      {
+        heading: 'What Is an Art Retreat?',
+        body: 'An art retreat is a structured period — typically five to fourteen days — spent in deliberate creative practice, away from the productivity demands and self-criticism of daily life. Unlike an art class or workshop, a retreat creates a continuous creative container where your authentic voice can emerge through sustained immersion.\n\nThe core elements are: daily creative sessions (painting, drawing, clay work, collage, or mixed media), facilitated guidance without grading or performance pressure, periods of unstructured creation time, nature immersion, group sharing, and rest. The structure is not about producing polished work — it is about recovering your relationship with creative expression.\n\nWhat surprises most participants is that the art itself is secondary. The real work is emotional. When you pick up a brush with no expectation of being good, what comes out is authentic — and authenticity is therapeutic. Repressed emotions surface through colour and form. The inner critic, denied its usual power, gradually quiets. By day three, most participants report a shift: from performing creativity to actually being creative.',
+      },
+      {
+        heading: 'Emotional Healing Through Art',
+        body: 'Art therapy is one of the oldest forms of human healing — cave paintings, ritual masks, devotional sculpture. The therapeutic power of creative expression is well-documented in clinical research published in journals including The Arts in Psychotherapy, Art Therapy, and the Journal of Clinical Psychology.\n\n**Bypassing verbal defences.** Many emotional experiences resist verbal processing. Trauma, grief, and complex feelings often cannot be talked through because the verbal mind introduces analysis, judgment, and intellectualisation. Visual and tactile creation bypasses these defences entirely — the hands know what the mouth cannot say.\n\n**Externalising internal states.** Putting emotion onto paper, canvas, or clay creates a therapeutic distance. What was overwhelming when trapped inside becomes manageable when it exists outside you as a visible form. You can look at it, modify it, add to it, or simply witness it.\n\n**The body-creativity connection.** Creative expression engages the body in ways that seated therapy cannot. The physical act of mixing paint, shaping clay, or moving charcoal across paper activates sensorimotor pathways that connect emotion to physical release. This is why art retreats include movement — yoga, walking, dance — alongside seated creation.\n\n**Flow state as healing.** Extended creative immersion produces flow — the psychological state where self-consciousness dissolves, time distorts, and action and awareness merge. Flow is inherently therapeutic because it interrupts the default mode network, the brain region associated with rumination, self-criticism, and anxiety.',
+      },
+      {
+        heading: 'The Art + Yoga + Nature Framework',
+        body: 'Our creative retreats integrate three modalities that amplify each other:\n\n**Art as expression.** Daily creative sessions — painting, drawing, clay, collage, nature sketching, journalling — provide structured channels for authentic self-expression. No technique is taught as an end in itself; every practice is a doorway to what wants to emerge.\n\n**Yoga as embodiment.** Morning movement practice connects you to your body before the creative work begins. Creativity that is rooted in the body has a different quality than creativity that lives only in the mind — it is more honest, more felt, more surprising. Gentle hatha yoga, breathwork, and walking meditation prepare the ground.\n\n**Nature as container.** The Himalayan environment is not a backdrop — it is an active participant. Mountain light teaches you about colour. Forest silence teaches you about form. River sound teaches you about rhythm. When you paint or draw in nature, the boundary between observer and landscape blurs, and the work that emerges carries the intelligence of the place.\n\nThis three-part framework means that even participants who arrive believing they "cannot create" find themselves producing work that is deeply personal and often beautiful — not because of technical skill, but because the conditions removed every barrier between them and their authentic creative impulse.',
+      },
+      {
+        heading: 'Types of Art Practices in Our Retreats',
+        body: '**Expressive painting.** Acrylic or watercolour on paper or canvas. No objectives, no still-life accuracy required. The prompt is emotional, not visual — "paint how your body feels right now" rather than "paint that tree." The results are always surprising and often deeply revealing.\n\n**Nature sketching and journalling.** Drawing the landscape as a form of attention practice. Sketch journalling combines visual observation with written reflection. Particularly powerful in locations like Mussoorie and Zanskar where the landscape demands attention.\n\n**Clay and sculpture.** Working with clay engages the tactile sense in ways that painting cannot. Shaping, pressing, building — the hands communicate directly. Clay work is especially effective for people who carry tension in the body or who find paper-based creation intimidating.\n\n**Collage and mixed media.** Tearing, arranging, layering — collage bypasses the "I can\'t draw" fear entirely. Using found materials (leaves, fabric, paper, natural objects) creates work that is inherently connected to the retreat environment.\n\n**Group mural.** A collaborative project that emerges over the retreat duration. Each participant contributes to a shared canvas. The mural becomes a physical record of the group\'s creative journey and a powerful closing ritual.\n\n**Postcard making.** A gentle, accessible practice where participants create small works intended as gifts. The act of creating for someone else shifts the creative energy from self-focus to generosity.',
+      },
+      {
+        heading: 'Art Retreat Duration Options',
+        body: '**7-day art retreat.** The recommended first experience. Days 1–2 establish the creative rhythm. Days 3–4 deepen into authentic expression. Days 5–6 produce the most personal work. Day 7 integrates and closes. Long enough for genuine creative unblocking.\n\n**14-day art retreat.** For those seeking deeper creative transformation. The first week follows the 7-day arc. The second week moves into self-directed creation — you work with your own emerging voice while the facilitator provides individual guidance. Participants who complete 14 days often describe a fundamental shift in their relationship with creativity.\n\n**21-day art retreat.** The full immersion. Three weeks allows the creative practice to become a daily rhythm rather than a special event. By week three, most participants are creating without self-consciousness, and the inner critic has been significantly weakened. This duration is recommended for people processing significant emotional material through creative practice.',
+      },
+    ],
+    storyLinks: [
+      { href: '/a-week-without-my-phone-digital-detox', label: 'A Week Without My Phone — Finding Creativity in Stillness' },
+    ],
+  },
 ] as const;
 
 /**

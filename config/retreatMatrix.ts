@@ -16,6 +16,7 @@ export interface MatrixMeta {
   intensity: IntensityLevel;
   format: RetreatFormat;
   bestFor: string;
+  axes?: string[];
 }
 
 export const RETREAT_MATRIX_META: Record<string, MatrixMeta> = {
@@ -42,7 +43,8 @@ export const RETREAT_MATRIX_META: Record<string, MatrixMeta> = {
   'art-and-creative': {
     intensity: 'medium',
     format: 'creative',
-    bestFor: 'Creative unblocking, expressive reset',
+    bestFor: 'Creative healing, emotional expression through art & yoga',
+    axes: ['creativity', 'healing', 'movement', 'nature'],
   },
   'sound-healing': {
     intensity: 'low',

@@ -186,6 +186,7 @@ export default function Header() {
           }}>
             <li><Link href="/" className={`hn-link${pathname === '/' ? ' active' : ''}`}>Home</Link></li>
             <li><Link href="/retreats" className={`hn-link${pathname.startsWith('/retreats') ? ' active' : ''}`}>Retreats</Link></li>
+            <li><Link href="/creative-retreat" className={`hn-link${pathname === '/creative-retreat' ? ' active' : ''}`}>Creative Healing Retreat</Link></li>
             <li><Link href="/retreats/best-retreat-in-uttarakhand" prefetch={true} className={`hn-link${pathname === '/retreats/best-retreat-in-uttarakhand' ? ' active' : ''}`}>Best Retreats</Link></li>
             <li><Link href="/retreat-programs" className={`hn-link${pathname.startsWith('/retreat-programs') ? ' active' : ''}`}>Programs</Link></li>
 
@@ -277,6 +278,7 @@ export default function Header() {
           }}>
             <Link href="/" className={`hn-mobile-link${pathname === '/' ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Home</Link>
             <Link href="/retreats" className={`hn-mobile-link${pathname.startsWith('/retreats') ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Retreats</Link>
+            <Link href="/creative-retreat" className={`hn-mobile-link${pathname === '/creative-retreat' ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Creative Healing Retreat</Link>
             <Link href="/retreats/best-retreat-in-uttarakhand" className={`hn-mobile-link${pathname === '/retreats/best-retreat-in-uttarakhand' ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Best Retreats</Link>
             <Link href="/retreat-programs" className={`hn-mobile-link${pathname.startsWith('/retreat-programs') ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Programs</Link>
             <Link href="/treks" className={`hn-mobile-link${pathname.startsWith('/treks') ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Treks</Link>

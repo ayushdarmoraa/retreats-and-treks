@@ -42,3 +42,5 @@ next-env.d.ts
 
 # Telemetry event log (server-side, not for version control)
 data/events.jsonl
+
+.vercel

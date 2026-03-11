@@ -5,17 +5,17 @@
 
 export const artAndCreativeRetreat = {
   slug: 'art-and-creative',
-  title: 'Art & Creative',
-  oneLineEssence: 'Awaken your creative voice in a container designed for authentic expression.',
+  title: 'Creative Healing Retreat',
+  oneLineEssence: 'Emotional healing through art & yoga in a container designed for authentic expression.',
 
   description: `
-Art & Creative is for anyone seeking to reconnect with the part of themselves that makes, creates, and imagines. You do not need experience. You do not need talent. You need only curiosity and a willingness to create without judgment.
+Creative Healing Retreat is for anyone seeking emotional healing through art & yoga — reconnecting with the part of themselves that makes, creates, and imagines. You do not need experience. You do not need talent. You need only curiosity and a willingness to create without judgment.
 
-This retreat is a permission structure for your creative voice. Whether that expression comes through painting, writing, movement, music, or forms you discover in the process—the work is about unfettering what wants to emerge.
+This retreat combines expressive arts with gentle yoga and nature immersion to create a healing container where creativity becomes a doorway to emotional truth. Whether that expression comes through painting, writing, movement, music, or forms you discover in the process — the work is about unfettering what wants to emerge.
 
-Days are structured to create flow. Mornings offer instruction or prompt-based exploration. Afternoons are free creation time. Evenings bring gentle sharing and reflection.
+Days are structured to create flow. Mornings offer yoga and creative instruction or prompt-based exploration. Afternoons are free creation time. Evenings bring gentle sharing and reflection.
 
-By the end, you will have created work that is authentically yours. More importantly, you will have remembered that creativity is your natural state.
+By the end, you will have created work that is authentically yours. More importantly, you will have remembered that creativity is your natural state — and experienced the emotional healing that authentic expression makes possible.
   `.trim(),
 
   forNotFor: {

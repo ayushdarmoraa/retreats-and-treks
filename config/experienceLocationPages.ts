@@ -208,6 +208,25 @@ const EXPERIENCE_TYPE_MAPPINGS: readonly ExperienceTypeMapping[] = [
     ],
     relatedDurationSlugs: ['7-day-healing-retreat', '3-day-meditation-retreat'],
   },
+  {
+    experienceSlug: 'creative-retreat',
+    urlPrefix: 'art-retreat',
+    label: 'Creative Healing Retreat',
+    sampleSchedule: [
+      '6:30 AM — Morning yoga or gentle movement',
+      '7:30 AM — Breakfast',
+      '9:00 AM — Facilitated creative session (painting, drawing, clay, collage)',
+      '11:00 AM — Tea and reflection',
+      '11:30 AM — Nature sketching or outdoor creation',
+      '12:30 PM — Lunch',
+      '2:00 PM — Unstructured creation time — your chosen medium',
+      '4:30 PM — Tea',
+      '5:00 PM — Group sharing or solo reflection (optional)',
+      '6:30 PM — Dinner',
+      '8:00 PM — Evening journalling or creative contemplation',
+    ],
+    relatedDurationSlugs: ['7-day-healing-retreat', '5-day-yoga-retreat'],
+  },
 ];
 
 // ── Location Supplements ─────────────────────────────────────────────────
