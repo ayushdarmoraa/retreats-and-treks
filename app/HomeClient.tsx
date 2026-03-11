@@ -63,7 +63,7 @@ const ready = pct > 0.15;
   position: 'relative',
   width: '100vw',
   marginLeft: 'calc(-50vw + 50%)',
-  minHeight: '100vh',
+  minHeight: '80vh',
   display: 'flex',
   alignItems: 'flex-end',
   overflow: 'hidden',
@@ -319,19 +319,6 @@ const ready = pct > 0.15;
     <Link href="/retreats" className="hh-btn">
       Explore all retreats
     </Link>
-  </div>
-
-  {/* Scroll hint */}
-  <div className="hh-scroll">
-    <span className="hh-scroll-text">Scroll</span>
-    <span className="hh-scroll-line" />
-  </div>
-
-  {/* Slide indicators */}
-  <div className="hh-indicators" id="hh-indicators">
-    <div className="hh-indicator active" />
-    <div className="hh-indicator" />
-    <div className="hh-indicator" />
   </div>
 
   {/* JS — slideshow + word-by-word sub2 */}
@@ -1065,23 +1052,21 @@ const ready = pct > 0.15;
     {/* Cards */}
     <div className="loc-grid">
       {locations.map((location) => {
-        const locationImages: Record<string, string> = {
-          'chakrata':  'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop',
-          'sankri':    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=85&fit=crop',
-          'munsiyari': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=85&fit=crop',
-          'joshimath': 'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=800&q=85&fit=crop',
-          'lohajung':  'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=85&fit=crop',
-          'rishikesh': 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=85&fit=crop',
-          'mussoorie': 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85&fit=crop',
-          'zanskar':   'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=85&fit=crop',
+        const locationImages: Record<string, { src: string; alt: string }> = {
+          'chakrata':  { src: '/Images/location/chakrata.webp',  alt: 'Chakrata — deodar forest ridge in Uttarakhand' },
+          'sankri':    { src: '/Images/location/sankri.webp',    alt: 'Sankri — pine valley at the edge of Govind Wildlife Sanctuary' },
+          'munsiyari': { src: '/Images/location/munsiyari.webp', alt: 'Munsiyari — Panchachuli massif views from Kumaon Himalaya' },
+          'joshimath': { src: 'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=800&q=85&fit=crop', alt: 'Joshimath — gateway to Kuari Pass and Auli in Garhwal' },
+          'lohajung':  { src: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=85&fit=crop', alt: 'Lohajung — base village for Roopkund and Brahmatal treks' },
+          'rishikesh': { src: '/Images/location/rishikesh.webp', alt: 'Rishikesh — Ganges riverside yoga and retreat destination' },
+          'mussoorie': { src: '/Images/location/mussoorie.webp', alt: 'Mussoorie — Queen of Hills in the Garhwal foothills' },
+          'zanskar':   { src: '/Images/location/zanskar.webp',   alt: 'Zanskar — remote high-altitude valley in Ladakh' },
         };
-        const imgSrc = locationImages[location.id] ??
-          'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop';
-
+        const imgData = locationImages[location.id] ?? { src: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop', alt: location.name };
         return (
           <Link key={location.id} href={`/retreats/${location.id}`} className="loc-card">
             <div className="loc-card-img-wrap">
-              <img src={imgSrc} alt={location.name} className="loc-card-img" />
+              <img src={imgData.src} alt={imgData.alt} className="loc-card-img" />
               <div className="loc-card-overlay" />
               <span className="loc-card-img-name">{location.name}</span>
             </div>

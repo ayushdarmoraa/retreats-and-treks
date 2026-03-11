@@ -1085,20 +1085,19 @@ export default function RetreatsClient({
             <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>we work with</span>
           </h2>
 
-          <div className="hl-grid">
+         <div className="hl-grid">
             {locations.map((location) => {
-              const locationImages: Record<string, string> = {
-                'chakrata':  'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop',
-                'sankri':    'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=85&fit=crop',
-                'munsiyari': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=85&fit=crop',
-                'joshimath': 'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=800&q=85&fit=crop',
-                'lohajung':  'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=85&fit=crop',
-                'rishikesh': 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=85&fit=crop',
-                'mussoorie': 'https://images.unsplash.com/photo-1579063890939-deb71d85a91a?w=800&q=85&fit=crop',
-                'zanskar':   'https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=85&fit=crop',
+              const locationImages: Record<string, { src: string; alt: string }> = {
+                'chakrata':  { src: '/Images/location/chakrata.webp',  alt: 'Chakrata — deodar forest ridge in Uttarakhand' },
+                'sankri':    { src: '/Images/location/sankri.webp',    alt: 'Sankri — pine valley at the edge of Govind Wildlife Sanctuary' },
+                'munsiyari': { src: '/Images/location/munsiyari.webp', alt: 'Munsiyari — Panchachuli massif views from Kumaon Himalaya' },
+                'joshimath': { src: 'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=800&q=85&fit=crop', alt: 'Joshimath — gateway to Kuari Pass and Auli in Garhwal' },
+                'lohajung':  { src: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=85&fit=crop', alt: 'Lohajung — base village for Roopkund and Brahmatal treks' },
+                'rishikesh': { src: '/Images/location/rishikesh.webp', alt: 'Rishikesh — Ganges riverside yoga and retreat destination' },
+                'mussoorie': { src: '/Images/location/mussoorie.webp', alt: 'Mussoorie — Queen of Hills in the Garhwal foothills' },
+                'zanskar':   { src: '/Images/location/zanskar.webp',   alt: 'Zanskar — remote high-altitude valley in Ladakh' },
               };
-              const imgSrc = locationImages[location.id] ??
-                'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop';
+              const imgData = locationImages[location.id] ?? { src: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop', alt: location.name };
 
               return (
                 <Link
@@ -1107,7 +1106,7 @@ export default function RetreatsClient({
                   className="hl-card"
                 >
                   <div className="hl-img-wrap">
-                    <img src={imgSrc} alt={location.name} className="hl-img" />
+                    <img src={imgData.src} alt={imgData.alt} className="hl-img" />
                     <div className="hl-img-overlay" />
                     <span className="hl-img-name">{location.name}</span>
                   </div>

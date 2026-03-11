@@ -105,16 +105,16 @@ export default function Footer() {
       <footer className="ft-root">
         <nav className="ft-nav">
 
-          {/* ── LOGO ── */}
-          <div className="ft-logo-row">
-            <Link href="/" className="ft-logo-placeholder">
-              {/*
-                Logo ready hone pe replace karo:
-                <Image src="/images/logo.png" width={140} height={38} alt="Retreats And Treks" />
-              */}
-              Your Logo
-            </Link>
-          </div>
+         {/* ── LOGO ── */}
+<div className="ft-logo-row">
+  <Link href="/">
+    <img
+      src="/Images/logo/headerlogo1.png"
+      alt="Retreats And Treks"
+      style={{ height: '60px', width: 'auto', display: 'block' }}
+    />
+  </Link>
+</div>
 
           {/* ── COLUMNS ── */}
           <div className="ft-grid">

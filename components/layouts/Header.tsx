@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 // ── Logo image path — replace with your actual image path ──
-const LOGO_IMAGE = '/logo.png'; // ya '/images/logo.svg' etc.
+const LOGO_IMAGE = '/Images/logo/headerlogo1.png'; // ya '/images/logo.svg' etc.
 
 export default function Header() {
   const [trekOpen, setTrekOpen] = useState(false);
@@ -14,6 +14,7 @@ export default function Header() {
 
   return (
     <>
+
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
 
@@ -148,7 +149,7 @@ export default function Header() {
                 src={LOGO_IMAGE}
                 alt="Himalayan Retreats"
                 onError={() => setLogoError(true)}
-                style={{ height: '38px', width: 'auto', display: 'block' }}
+                style={{ height: '60px', width: 'auto', display: 'block' }}
               />
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
