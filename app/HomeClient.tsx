@@ -814,20 +814,23 @@ const ready = pct > 0.15;
       gap: '1.75rem',
     }}>
       {(() => {
-        const images: Record<string, { src: string; tag: string }> = {
-          'weekend-retreat': {
-            src: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=85&fit=crop',
-            tag: 'Weekend',
-          },
-          'yoga-and-movement': {
-            src: 'https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=85&fit=crop',
-            tag: 'Yoga',
-          },
-          'meditation-and-silence': {
-            src: 'https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=800&q=85&fit=crop',
-            tag: 'Silence',
-          },
-        };
+        const images: Record<string, { src: string; tag: string; alt: string }> = {
+  'weekend-retreat': {
+    src: '/Images/Journeys/weekend.webp',
+    tag: 'Weekend',
+    alt: 'Weekend Retreat — rejuvenating escape into nature',
+  },
+  'yoga-and-movement': {
+    src: '/Images/Journeys/yoga.webp',
+    tag: 'Yoga',
+    alt: 'Yoga & Movement — mindful practice in serene surroundings',
+  },
+  'meditation-and-silence': {
+    src: '/Images/Journeys/meditation.webp',
+    tag: 'Silence',
+    alt: 'Meditation & Silence — deep stillness and inner clarity',
+  },
+};
 
         return getAllRetreatServices()
           .filter(s => ['weekend-retreat', 'yoga-and-movement', 'meditation-and-silence'].includes(s.slug))
@@ -1271,10 +1274,10 @@ const ready = pct > 0.15;
       <div className="path-card">
         <div className="path-card-img-wrap">
           <img
-            src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=1200&q=85&fit=crop"
-            alt="Himalayan retreat"
-            className="path-card-img"
-          />
+  src="/Images/Journeys/Stillness.webp"
+  alt="Stillness and inner reset — Himalayan retreat"
+  className="path-card-img"
+/>
           <div className="path-card-overlay" />
           <div className="path-img-label">
             <span className="path-img-tag">Retreats</span>
@@ -1294,11 +1297,11 @@ const ready = pct > 0.15;
       {/* Treks */}
       <div className="path-card">
         <div className="path-card-img-wrap">
-          <img
-            src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=1200&q=85&fit=crop"
-            alt="Himalayan trek"
-            className="path-card-img"
-          />
+         <img
+  src="/Images/Journeys/HighTerrain.webp"
+  alt="Movement and high terrain — Himalayan trek"
+  className="path-card-img"
+/>
           <div className="path-card-overlay" />
           <div className="path-img-label">
             <span className="path-img-tag">Treks</span>

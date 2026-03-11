@@ -357,14 +357,11 @@ export default function RetreatsClient({
         borderBottom: '1px solid #e5e7eb',
       }}>
         <style>{`
-          /* ── Grid ── */
           .rs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 1.75rem;
           }
-
-          /* ── Card ── */
           .rs-card {
             display: block;
             text-decoration: none;
@@ -379,169 +376,153 @@ export default function RetreatsClient({
             transform: translateY(-7px);
             box-shadow: 0 16px 48px rgba(0,0,0,0.12);
           }
-
-          /* ── Image ── */
-          .rs-img-wrap {
-            position: relative;
-            overflow: hidden;
-          }
+          .rs-img-wrap { position: relative; overflow: hidden; }
           .rs-img {
-            width: 100%;
-            height: 210px;
-            object-fit: cover;
-            display: block;
+            width: 100%; height: 210px;
+            object-fit: cover; display: block;
             transition: transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94);
           }
           .rs-card:hover .rs-img { transform: scale(1.07); }
-
           .rs-img-overlay {
-            position: absolute;
-            inset: 0;
+            position: absolute; inset: 0;
             background: linear-gradient(to top, rgba(2,10,2,0.65) 0%, rgba(2,10,2,0.1) 50%, rgba(2,10,2,0) 100%);
             transition: opacity 0.35s;
           }
           .rs-card:hover .rs-img-overlay { opacity: 0.85; }
-
           .rs-img-tag {
-            position: absolute;
-            top: 1rem; left: 1rem;
+            position: absolute; top: 1rem; left: 1rem;
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.52rem;
-            letter-spacing: 0.24em;
-            text-transform: uppercase;
-            color: #ffffff;
-            background: var(--color-primary);
-            padding: 4px 10px;
-            border-radius: 2px;
-            font-weight: 600;
+            font-size: 0.52rem; letter-spacing: 0.24em;
+            text-transform: uppercase; color: #ffffff;
+            background: var(--color-primary); padding: 4px 10px;
+            border-radius: 2px; font-weight: 600;
           }
-
           .rs-img-title {
-            position: absolute;
-            bottom: 1rem; left: 1.25rem; right: 1.25rem;
+            position: absolute; bottom: 1rem; left: 1.25rem; right: 1.25rem;
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #ece4d0;
-            line-height: 1.25;
-            opacity: 0;
-            transform: translateY(8px);
+            font-size: 1rem; font-weight: 500; color: #ece4d0;
+            line-height: 1.25; opacity: 0; transform: translateY(8px);
             transition: opacity 0.35s, transform 0.35s;
           }
           .rs-card:hover .rs-img-title { opacity: 1; transform: translateY(0); }
-
-          /* ── Body ── */
           .rs-body {
             padding: 1.4rem 1.5rem 1.6rem;
             border-top: 2px solid var(--color-primary);
             position: relative;
           }
           .rs-body::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0;
+            content: ''; position: absolute; bottom: 0; left: 0;
             height: 2px; width: 0;
-            background: var(--color-primary);
-            opacity: 0.2;
+            background: var(--color-primary); opacity: 0.2;
             transition: width 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
           }
           .rs-card:hover .rs-body::after { width: 100%; }
-
           .rs-card-title {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #111111;
-            margin: 0 0 0.45rem;
-            letter-spacing: -0.015em;
-            line-height: 1.25;
+            font-size: 1rem; font-weight: 600; color: #111111;
+            margin: 0 0 0.45rem; letter-spacing: -0.015em; line-height: 1.25;
           }
           .rs-card-desc {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.87rem;
-            color: #777777;
-            margin: 0 0 1.35rem;
-            line-height: 1.8;
-            font-weight: 300;
+            font-size: 0.87rem; color: #777777;
+            margin: 0 0 1.35rem; line-height: 1.8; font-weight: 300;
           }
           .rs-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
+            display: inline-flex; align-items: center; gap: 0.4rem;
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.6rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--color-primary);
-            transition: gap 0.22s;
+            font-size: 0.6rem; font-weight: 700;
+            letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--color-primary); transition: gap 0.22s;
           }
           .rs-card:hover .rs-cta { gap: 0.72rem; }
-
-          /* ── Eyebrow ── */
           .rs-eyebrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.9rem;
-            margin-bottom: 1rem;
+            display: flex; align-items: center; justify-content: center;
+            gap: 0.9rem; margin-bottom: 1rem;
           }
-          .rs-eyebrow-line {
-            width: 28px; height: 1px;
-            background: var(--color-primary);
-            opacity: 0.5;
-          }
+          .rs-eyebrow-line { width: 28px; height: 1px; background: var(--color-primary); opacity: 0.5; }
           .rs-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem;
-            letter-spacing: 0.32em;
-            text-transform: uppercase;
-            color: var(--color-primary);
-            font-weight: 500;
-            opacity: 0.7;
+            font-size: 0.56rem; letter-spacing: 0.32em; text-transform: uppercase;
+            color: var(--color-primary); font-weight: 500; opacity: 0.7;
           }
         `}</style>
 
         <div style={{ maxWidth: '78rem', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '2rem', paddingRight: '2rem' }}>
 
-          {/* Eyebrow — exact HomeClient pattern */}
           <div className="rs-eyebrow">
             <span className="rs-eyebrow-line" />
             <span className="rs-eyebrow-text">Our retreat services</span>
             <span className="rs-eyebrow-line" />
           </div>
 
-          {/* Heading — exact HomeClient font/weight/style */}
           <h2 style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
             fontSize: 'clamp(1.8rem, 2.8vw, 2.5rem)',
-            fontWeight: 200,
-            letterSpacing: '-0.03em',
-            color: '#111111',
-            margin: '0 0 3.5rem',
-            lineHeight: 1.1,
-            textAlign: 'center',
+            fontWeight: 200, letterSpacing: '-0.03em',
+            color: '#111111', margin: '0 0 3.5rem',
+            lineHeight: 1.1, textAlign: 'center',
           }}>
             Our Retreat{' '}
             <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Services</span>
           </h2>
 
+          {(() => {
+            // ← MAP KE BAHAR — ek baar banta hai
+            const serviceImages: Record<string, { src: string; alt: string }> = {
+              'rest-reset':             { src: '/Images/services/restreset.webp',      alt: 'Rest & Reset — gentle restoration retreat' },
+              'burnout-recovery':       { src: '/Images/services/burnoutrec.webp',     alt: 'Burnout Recovery — healing from exhaustion' },
+              'yoga-and-movement':      { src: '/Images/services/yogamov.webp',        alt: 'Yoga & Movement — mindful practice in nature' },
+              'yoga-movement':          { src: '/Images/services/yogamov.webp',        alt: 'Yoga & Movement — mindful practice in nature' },
+              'meditation-silence':     { src: '/Images/Journeys/meditation.webp',     alt: 'Meditation & Silence — deep stillness and clarity' },
+              'meditation-and-silence': { src: '/Images/Journeys/meditation.webp',     alt: 'Meditation & Silence — deep stillness and clarity' },
+              'art-creative':           { src: '/Images/services/artcreative.webp',    alt: 'Art & Creativity — expressive healing through art' },
+              'art-and-creative':       { src: '/Images/services/artcreative.webp',    alt: 'Art & Creativity — expressive healing through art' },
+              'sound-healing':          { src: '/Images/services/soundhealing.webp',   alt: 'Sound Healing — vibrational therapy and sound baths' },
+              'weekend-retreat':        { src: '/Images/services/weekendretreat.webp', alt: 'Weekend Retreat — short rejuvenating escape' },
+              'private-custom':         { src: '/Images/services/privatecustom.webp',  alt: 'Private & Custom Retreat — personalised journey' },
+              'private-and-custom':     { src: '/Images/services/privatecustom.webp',  alt: 'Private & Custom Retreat — personalised journey' },
+            };
+
+            return getAllRetreatServices().map((service) => {
+              console.log('slug:', service.slug); // ← ab console mein actual slugs dikhenge
+              const imgMeta = serviceImages[service.slug] ?? {
+                src: '/Images/services/restreset.webp',
+                alt: service.title,
+              };
+
+              return (
+                <div key={service.slug} style={{ display: 'contents' }}>
+                  {/* debug — remove after fix */}
+                  {!serviceImages[service.slug] && (
+                    <p style={{ color: 'red', fontSize: '0.7rem', gridColumn: '1/-1' }}>
+                    
+                    </p>
+                  )}
+                </div>
+              );
+            });
+          })()}
+
           <div className="rs-grid">
             {getAllRetreatServices().map((service) => {
-              const serviceImages: Record<string, string> = {
-                'rest-reset':             'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=85&fit=crop',
-                'burnout-recovery':       'https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=800&q=85&fit=crop',
-                'yoga-and-movement':      'https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=85&fit=crop',
-                'yoga-movement':          'https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=85&fit=crop',
-                'meditation-silence':     'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=85&fit=crop',
-                'meditation-and-silence': 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=85&fit=crop',
-                'art-creative':           'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=85&fit=crop',
-                'sound-healing': 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=85&fit=crop',
-                'weekend-retreat':        'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=85&fit=crop',
-                'private-custom':         'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop',
+              const serviceImages: Record<string, { src: string; alt: string }> = {
+                'rest-reset':             { src: '/Images/services/restreset.webp',      alt: 'Rest & Reset — gentle restoration retreat' },
+                'burnout-recovery':       { src: '/Images/services/burnoutrec.webp',     alt: 'Burnout Recovery — healing from exhaustion' },
+                'yoga-and-movement':      { src: '/Images/services/yoga.webp',        alt: 'Yoga & Movement — mindful practice in nature' },
+                'yoga-movement':          { src: '/Images/services/yoga.webp',        alt: 'Yoga & Movement — mindful practice in nature' },
+                'meditation-silence':     { src: '/Images/Journeys/meditation.webp',     alt: 'Meditation & Silence — deep stillness and clarity' },
+                'meditation-and-silence': { src: '/Images/Journeys/meditation.webp',     alt: 'Meditation & Silence — deep stillness and clarity' },
+                'art-creative':           { src: '/Images/services/artcreative.webp',    alt: 'Art & Creativity — expressive healing through art' },
+                'art-and-creative':       { src: '/Images/services/artcreative.webp',    alt: 'Art & Creativity — expressive healing through art' },
+                'sound-healing':          { src: '/Images/services/soundhealing.webp',   alt: 'Sound Healing — vibrational therapy and sound baths' },
+                'weekend-retreat':        { src: '/Images/services/weekendretreat.webp', alt: 'Weekend Retreat — short rejuvenating escape' },
+                'private-custom':         { src: '/Images/services/privatecustom.webp',  alt: 'Private & Custom Retreat — personalised journey' },
+                'private-and-custom':     { src: '/Images/services/privatecustom.webp',  alt: 'Private & Custom Retreat — personalised journey' },
               };
-              const imgSrc = serviceImages[service.slug] ??
-                'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop';
+              const imgMeta = serviceImages[service.slug] ?? {
+                src: '/Images/services/restreset.webp',
+                alt: service.title,
+              };
 
               return (
                 <Link
@@ -551,7 +532,7 @@ export default function RetreatsClient({
                   className="rs-card"
                 >
                   <div className="rs-img-wrap">
-                    <img src={imgSrc} alt={service.title} className="rs-img" />
+                    <img src={imgMeta.src} alt={imgMeta.alt} className="rs-img" />
                     <div className="rs-img-overlay" />
                     <span className="rs-img-tag">Retreat</span>
                     <span className="rs-img-title">{service.title}</span>
@@ -903,14 +884,13 @@ export default function RetreatsClient({
           <div className="rf-grid">
             {retreatFormats.map((format) => {
               const formatImages: Record<string, { src: string; tag: string }> = {
-                'weekend-retreat':   { src: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=85&fit=crop', tag: 'Weekend' },
-                'meditation-retreat':{ src: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=85&fit=crop', tag: 'Meditation' },
-                'yoga-retreat':      { src: 'https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=85&fit=crop', tag: 'Yoga' },
-                'silent-retreat':    { src: 'https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=800&q=85&fit=crop', tag: 'Silence' },
-                'healing-retreat':   { src: 'https://images.unsplash.com/photo-1600100397608-c1ac332f8669?w=800&q=85&fit=crop', tag: 'Healing' },
+                'weekend-retreat':   { src: '/Images/Journeys/weekend.webp',    tag: 'Weekend' },
+                'meditation-retreat':{ src: '/Images/Journeys/meditation.webp', tag: 'Meditation' },
+                'yoga-retreat':      { src: '/Images/Journeys/yoga.webp',       tag: 'Yoga' },
+          
               };
               const meta = formatImages[format.slug] ?? {
-                src: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop',
+                src: '/Images/Journeys/weekend.webp',
                 tag: 'Retreat',
               };
 

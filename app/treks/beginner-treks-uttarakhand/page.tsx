@@ -98,284 +98,387 @@ export default function BeginnerTreksPage() {
 
   return (
     <TrackedPage page={PATH}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+
+      <style>{`
+        .beg-body { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin: 0 0 1rem; }
+        .beg-h2 { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200; letter-spacing: -0.03em; color: #111; line-height: 1.15; margin: 0 0 0.75rem; }
+        .beg-h3 { font-family: var(--font-geist-sans), sans-serif; font-size: 0.95rem; font-weight: 500; color: #111; letter-spacing: -0.01em; margin: 0 0 0.5rem; }
+        .beg-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+        .beg-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; display: inline-block; }
+        .beg-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-primary); font-weight: 500; opacity: 0.7; }
+
+        .beg-trek-card { background: #fff; border: 1px solid #eef0ee; border-top: 2px solid var(--color-primary); border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 0.75rem; transition: transform 0.18s, box-shadow 0.18s; }
+        .beg-trek-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+        .beg-trek-meta { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 400; color: #888; margin-bottom: 0.65rem; }
+        .beg-trek-meta-pill { display: inline-flex; align-items: center; gap: 0.3rem; }
+        .beg-trek-meta-pill::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--color-primary); opacity: 0.45; display: inline-block; }
+        .beg-trek-link { display: inline-flex; align-items: center; gap: 0.35rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 500; color: var(--color-primary); text-decoration: none; border-bottom: 1px solid rgba(15,118,110,0.25); margin-top: 0.5rem; }
+        .beg-trek-link:hover { border-bottom-color: var(--color-primary); }
+
+        .beg-callout { background: #fff; border: 1px solid #e5e7eb; border-left: 3px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; }
+        .beg-callout a { color: var(--color-primary); font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(15,118,110,0.25); }
+        .beg-callout a:hover { border-bottom-color: var(--color-primary); }
+        .beg-callout strong { font-weight: 500; color: #111; }
+
+        .beg-table-wrap { border: 1px solid #eef0ee; border-radius: 8px; overflow: hidden; }
+        .beg-table { width: 100%; border-collapse: collapse; font-family: var(--font-geist-sans), sans-serif; font-size: 0.82rem; font-weight: 300; }
+        .beg-table thead tr { background: #f7f9f7; border-bottom: 2px solid #e5e7eb; }
+        .beg-table th { padding: 0.65rem 1rem; text-align: left; font-weight: 500; color: #111; font-size: 0.75rem; letter-spacing: 0.02em; }
+        .beg-table tbody tr { border-bottom: 1px solid #f0f0f0; transition: background 0.12s; }
+        .beg-table tbody tr:last-child { border-bottom: none; }
+        .beg-table tbody tr:hover { background: #f7f9f7; }
+        .beg-table td { padding: 0.65rem 1rem; color: #555; }
+        .beg-table td a { color: var(--color-primary); font-weight: 500; text-decoration: none; }
+        .beg-table td a:hover { text-decoration: underline; }
+        .beg-badge { display: inline-block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.55rem; border-radius: 3px; }
+        .beg-badge-easy { background: rgba(15,118,110,0.08); color: var(--color-primary); }
+        .beg-badge-moderate { background: rgba(37,99,235,0.08); color: #2563eb; }
+
+        .beg-nav-group { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
+        .beg-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; border-bottom: 1px solid #f0f0f0; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #333; text-decoration: none; transition: background 0.15s, color 0.15s; }
+        .beg-nav-link:last-child { border-bottom: none; }
+        .beg-nav-link:hover { background: #f7f9f7; color: var(--color-primary); }
+        .beg-nav-link.back::before { content: '←'; color: var(--color-primary); opacity: 0.5; margin-right: 0.5rem; }
+        .beg-nav-link:not(.back)::after { content: '→'; color: var(--color-primary); opacity: 0.5; }
+
+        @media (max-width: 700px) {
+          .beg-table-wrap { overflow-x: auto; }
+          .beg-trek-meta { gap: 0.25rem 0.75rem; }
+        }
+      `}</style>
+
       <article style={{ maxWidth: 720, margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
         <Breadcrumb items={BREADCRUMBS} />
 
-        <h1 style={{ fontSize: '1.75rem', fontWeight: 700, lineHeight: 1.25, marginBottom: 'var(--space-md)' }}>
-          Best Beginner Treks in Uttarakhand
-        </h1>
-
-        <aside style={{ background: 'var(--color-surface)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', padding: '1rem 1.25rem', marginBottom: '1.5rem', lineHeight: 1.7 }}>
-          <strong>Not sure which beginner trek to choose?</strong>{' '}
-          Start with{' '}
-          <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)' }}>Brahmatal</Link>{' '}
-          for snow views and a frozen alpine lake, or{' '}
-          <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)' }}>Kuari Pass</Link>{' '}
-          for panoramic Nanda Devi views on the historic Curzon Trail. Both are moderate, fully guided, and need no technical skills.
-        </aside>
-
-        <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-          You do not need expedition experience to trek in the Himalayas. Uttarakhand offers a clear pathway from
-          flat forest trails to moderate multi-day routes — each step building the skills and confidence for the next.
-          This page covers the 5 best treks for beginners: two easy day hikes (no gear, no altitude) and three
-          moderate routes (camping, gentle altitude, fully guided).
-        </p>
-        <p style={{ lineHeight: 1.8, marginBottom: '1.5rem' }}>
-          All five treks are included in our{' '}
-          <Link href={PARENT_PATH} style={{ color: 'var(--color-primary)' }}>
-            complete ranking of the 10 best treks in Uttarakhand
-          </Link>, which also covers challenging and high-altitude routes for experienced trekkers.
-        </p>
-
-        {/* ── EASY DAY TREKS ───────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Easy Day Treks — No Experience Needed
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Chakrata sits 2–3 hours from Dehradun in dense deodar forest below 2,500 metres.
-            These trails require no multi-day gear, no camping, and no altitude acclimatisation.
-            They are the ideal first step for anyone who has never walked a mountain trail.
-          </p>
-
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-            Tiger Fall Trek
-          </h3>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.5rem' }}>
-            <strong>~2,200 m</strong> &nbsp;|&nbsp; <strong>Easy</strong> &nbsp;|&nbsp;
-            <strong>1 day</strong> &nbsp;|&nbsp; <strong>Year-round</strong> &nbsp;|&nbsp;
-            Chakrata
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            A gentle forest walk to one of the tallest waterfalls in Uttarakhand. The trail stays below tree cover the
-            entire way, with no exposed ridges or steep scrambles. Perfect for families, first-timers, or as a
-            warm-up before a multi-day route.{' '}
-            <Link href="/treks/location/chakrata/tiger-fall-trek" style={{ color: 'var(--color-primary)' }}>
-              View full Tiger Fall trek details →
-            </Link>
-          </p>
-
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-            Budher Caves Trek
-          </h3>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.5rem' }}>
-            <strong>~2,200 m</strong> &nbsp;|&nbsp; <strong>Easy</strong> &nbsp;|&nbsp;
-            <strong>1 day</strong> &nbsp;|&nbsp; <strong>Year-round</strong> &nbsp;|&nbsp;
-            Chakrata
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            A slightly longer forest trail leading to ancient limestone caves, offering more trail variety than Tiger Fall
-            with a rewarding geological endpoint. Same low-altitude, low-risk profile, but adds exploration interest.{' '}
-            <Link href="/treks/location/chakrata/budher-caves-trek" style={{ color: 'var(--color-primary)' }}>
-              View full Budher Caves trek details →
-            </Link>
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Both Chakrata trails pair well with a{' '}
-            <Link href="/retreats/chakrata" style={{ color: 'var(--color-primary)' }}>
-              Chakrata retreat weekend
-            </Link>{' '}
-            — trek in the morning, rest and reset in the afternoon.
-          </p>
-        </section>
-
-        {/* ── MODERATE MULTI-DAY ───────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Moderate Multi-Day Treks — Your First Himalayan Camping Experience
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            These routes introduce camping at altitude, multi-day rhythm, and the full Himalayan trekking experience —
-            but with gradual altitude gain, well-established trails, and professional guides throughout.
-            No technical skills needed; 4–6 weeks of fitness preparation recommended.
-          </p>
-
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-            Brahmatal Trek
-          </h3>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.5rem' }}>
-            <strong>3,850 m</strong> &nbsp;|&nbsp; <strong>Moderate</strong> &nbsp;|&nbsp;
-            <strong>4 days</strong> &nbsp;|&nbsp; <strong>Dec–Mar</strong> &nbsp;|&nbsp;
-            Lohajung, Garhwal
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            The ideal first snow trek — frozen Brahmatal Lake, snow-covered ridges, and continuous Trishul and Nanda Ghunti
-            views. The 4-day duration limits cold exposure while delivering a genuinely alpine experience. The route
-            gains altitude gradually through forest before opening onto exposed ridge meadows.{' '}
-            <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)' }}>
-              View full Brahmatal trek details →
-            </Link>
-          </p>
-
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-            Kuari Pass Trek
-          </h3>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.5rem' }}>
-            <strong>3,876 m</strong> &nbsp;|&nbsp; <strong>Moderate</strong> &nbsp;|&nbsp;
-            <strong>5 days</strong> &nbsp;|&nbsp; <strong>Mar–May, Oct–Nov</strong> &nbsp;|&nbsp;
-            Joshimath, Garhwal
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            One of the most accessible ridge walks in the Himalayas — 5 days along the historic Curzon Trail with
-            Nanda Devi, Dronagiri, and Chaukhamba visible for most of the route. Spring brings snow on the upper
-            sections plus rhododendron bloom along the lower trail. This is the classic first moderate trek in Garhwal.{' '}
-            <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)' }}>
-              View full Kuari Pass trek details →
-            </Link>
-            {' '}Deciding between the two moderate routes?{' '}
-            <Link href="/treks/brahmatal-vs-kuari-pass" style={{ color: 'var(--color-primary)' }}>
-              Compare Brahmatal vs Kuari Pass →
-            </Link>
-          </p>
-
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-            Khaliya Top Trek
-          </h3>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.5rem' }}>
-            <strong>3,500 m</strong> &nbsp;|&nbsp; <strong>Moderate</strong> &nbsp;|&nbsp;
-            <strong>3–4 days</strong> &nbsp;|&nbsp; <strong>May–Jun, Sep–Oct</strong> &nbsp;|&nbsp;
-            Munsiyari, Kumaon
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            A quieter alternative to the popular Garhwal routes — Khaliya Top offers a 360-degree Panchachuli massif panorama
-            from 3,500 metres, with far fewer trekkers on trail. Based from Munsiyari in the Kumaon Himalaya, it provides
-            a genuine alpine meadow summit experience at gentler altitude than Garhwal. Ideal for trekkers who value solitude
-            alongside scenery.{' '}
-            <Link href="/treks/location/munsiyari/khaliya-top-trek" style={{ color: 'var(--color-primary)' }}>
-              View full Khaliya Top trek details →
-            </Link>
-          </p>
-        </section>
-
-        {/* ── COMPARISON CALLOUT ───────────────────────────────────── */}
-        <p style={{ lineHeight: 1.8, marginBottom: 'var(--space-xl)', background: 'var(--color-surface)', padding: '1rem 1.25rem', borderRadius: 'var(--radius-sm)', borderLeft: '3px solid var(--color-primary)' }}>
-          <strong>Still deciding between Brahmatal and Kuari Pass?</strong>{' '}
-          See our detailed{' '}
-          <Link href="/treks/brahmatal-vs-kuari-pass" style={{ color: 'var(--color-primary)' }}>
-            Brahmatal vs Kuari Pass comparison
-          </Link>{' '}
-          for a side-by-side breakdown of season, views, difficulty, and logistics.
-        </p>
-
-        {/* ── COMPARISON TABLE ─────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Beginner Treks at a Glance
-          </h2>
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              <thead>
-                <tr style={{ borderBottom: '2px solid var(--color-border)', textAlign: 'left' }}>
-                  <th style={{ padding: '0.5rem 0.75rem' }}>Trek</th>
-                  <th style={{ padding: '0.5rem 0.75rem' }}>Altitude</th>
-                  <th style={{ padding: '0.5rem 0.75rem' }}>Difficulty</th>
-                  <th style={{ padding: '0.5rem 0.75rem' }}>Days</th>
-                  <th style={{ padding: '0.5rem 0.75rem' }}>Best Season</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem' }}><Link href="/treks/location/chakrata/tiger-fall-trek" style={{ color: 'var(--color-primary)' }}>Tiger Fall</Link></td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>~2,200 m</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Easy</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>1</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Year-round</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem' }}><Link href="/treks/location/chakrata/budher-caves-trek" style={{ color: 'var(--color-primary)' }}>Budher Caves</Link></td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>~2,200 m</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Easy</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>1</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Year-round</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem' }}><Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)' }}>Brahmatal</Link></td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>3,850 m</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Moderate</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>4</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Dec–Mar</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem' }}><Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)' }}>Kuari Pass</Link></td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>3,876 m</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Moderate</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>5</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Mar–May, Oct–Nov</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem' }}><Link href="/treks/location/munsiyari/khaliya-top-trek" style={{ color: 'var(--color-primary)' }}>Khaliya Top</Link></td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>3,500 m</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>Moderate</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>3–4</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>May–Jun, Sep–Oct</td>
-                </tr>
-              </tbody>
-            </table>
+        {/* ── HERO ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-eyebrow">
+              <span className="beg-eyebrow-line" />
+              <span className="beg-eyebrow-text">Beginner Treks · Uttarakhand</span>
+            </div>
+            <h1 style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: 'clamp(1.75rem,3.5vw,2.4rem)', fontWeight: 200, letterSpacing: '-0.035em', color: '#111', lineHeight: 1.1, margin: '0 0 1.5rem' }}>
+              Best Beginner Treks in Uttarakhand
+            </h1>
+            <p className="beg-body" style={{ margin: '0 0 1rem' }}>
+              You do not need expedition experience to trek in the Himalayas. Uttarakhand offers a clear pathway from
+              flat forest trails to moderate multi-day routes — each step building the skills and confidence for the next.
+              This page covers the 5 best treks for beginners: two easy day hikes (no gear, no altitude) and three
+              moderate routes (camping, gentle altitude, fully guided).
+            </p>
+            <p className="beg-body" style={{ margin: 0 }}>
+              All five treks are included in our{' '}
+              <Link href={PARENT_PATH} style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
+                complete ranking of the 10 best treks in Uttarakhand
+              </Link>, which also covers challenging and high-altitude routes for experienced trekkers.
+            </p>
           </div>
         </section>
 
-        {/* ── WHAT TO EXPECT ───────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            What to Expect on Your First Trek
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Day treks (Chakrata):</strong> You will walk 4–8 km on forest trails at low altitude. Carry water, snacks,
-            and rain protection. No special equipment needed. Return to accommodation the same day.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Multi-day treks (Brahmatal, Kuari Pass, Khaliya Top):</strong> You will camp in tents at established sites,
-            eat meals prepared by a trek crew, and walk 6–12 km per day with 500–800 m elevation gain. Guides manage
-            navigation, safety, and logistics. Your main job is to walk and enjoy. Basic trekking gear (layering system,
-            trekking shoes, daypack) is needed — our{' '}
-            <Link href="/treks/garhwal-himalayas/packing-checklist" style={{ color: 'var(--color-primary)' }}>
-              packing checklist
-            </Link>{' '}
-            covers everything.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Ready to progress beyond beginner routes? The{' '}
-            <Link href={`${PARENT_PATH}#challenging-treks`} style={{ color: 'var(--color-primary)' }}>
-              challenging treks section
-            </Link>{' '}
-            covers Roopkund, Pangarchulla, and Milam Glacier for experienced trekkers.
-          </p>
+        {/* ── CALLOUT ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '3rem', paddingBottom: '3rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-callout">
+              <strong>Not sure which beginner trek to choose?</strong>{' '}
+              Start with{' '}
+              <Link href="/treks/location/lohajung/brahmatal-trek">Brahmatal</Link>{' '}
+              for snow views and a frozen alpine lake, or{' '}
+              <Link href="/treks/location/joshimath/kuari-pass-trek">Kuari Pass</Link>{' '}
+              for panoramic Nanda Devi views on the historic Curzon Trail. Both are moderate, fully guided, and need no technical skills.
+            </div>
+          </div>
         </section>
 
-        <PrimaryCTA
-          label="Plan My First Trek"
-          subtext="Tell us your dates and fitness level — we will recommend the perfect first route."
-          vertical="trek"
-          category="filter-beginner"
-          sourcePath={PATH}
-        />
-
-        {/* ── FAQ ───────────────────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-lg)' }}>
-            Frequently Asked Questions
-          </h2>
-          <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
+        {/* ── EASY DAY TREKS ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-eyebrow">
+              <span className="beg-eyebrow-line" />
+              <span className="beg-eyebrow-text">Easy Day Treks</span>
+            </div>
+            <h2 className="beg-h2">Easy Day Treks — No Experience Needed</h2>
+            <p className="beg-body">
+              Chakrata sits 2–3 hours from Dehradun in dense deodar forest below 2,500 metres.
+              These trails require no multi-day gear, no camping, and no altitude acclimatisation.
+              They are the ideal first step for anyone who has never walked a mountain trail.
+            </p>
+            <div className="beg-trek-card">
+              <h3 className="beg-h3">Tiger Fall Trek</h3>
+              <div className="beg-trek-meta">
+                <span className="beg-trek-meta-pill">~2,200 m</span>
+                <span className="beg-trek-meta-pill"><span className="beg-badge beg-badge-easy">Easy</span></span>
+                <span className="beg-trek-meta-pill">1 day</span>
+                <span className="beg-trek-meta-pill">Year-round</span>
+                <span className="beg-trek-meta-pill">Chakrata</span>
+              </div>
+              <p className="beg-body" style={{ margin: 0 }}>
+                A gentle forest walk to one of the tallest waterfalls in Uttarakhand. The trail stays below tree cover the
+                entire way, with no exposed ridges or steep scrambles. Perfect for families, first-timers, or as a
+                warm-up before a multi-day route.
+              </p>
+              <Link href="/treks/location/chakrata/tiger-fall-trek" className="beg-trek-link">
+                View full Tiger Fall trek details →
+              </Link>
+            </div>
+            <div className="beg-trek-card">
+              <h3 className="beg-h3">Budher Caves Trek</h3>
+              <div className="beg-trek-meta">
+                <span className="beg-trek-meta-pill">~2,200 m</span>
+                <span className="beg-trek-meta-pill"><span className="beg-badge beg-badge-easy">Easy</span></span>
+                <span className="beg-trek-meta-pill">1 day</span>
+                <span className="beg-trek-meta-pill">Year-round</span>
+                <span className="beg-trek-meta-pill">Chakrata</span>
+              </div>
+              <p className="beg-body" style={{ margin: 0 }}>
+                A slightly longer forest trail leading to ancient limestone caves, offering more trail variety than Tiger Fall
+                with a rewarding geological endpoint. Same low-altitude, low-risk profile, but adds exploration interest.
+              </p>
+              <Link href="/treks/location/chakrata/budher-caves-trek" className="beg-trek-link">
+                View full Budher Caves trek details →
+              </Link>
+            </div>
+            <p className="beg-body" style={{ margin: '1rem 0 0' }}>
+              Both Chakrata trails pair well with a{' '}
+              <Link href="/retreats/chakrata" style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
+                Chakrata retreat weekend
+              </Link>{' '}
+              — trek in the morning, rest and reset in the afternoon.
+            </p>
+          </div>
         </section>
 
-        {/* ── RELATED FILTER PAGES ─────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-md)', paddingTop: '1.5rem', borderTop: '1px solid var(--color-border)' }}>
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>
-            Browse by Category
-          </h2>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2.2 }}>
-            <li><Link href={PARENT_PATH} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>← All 10 Best Treks in Uttarakhand</Link></li>
-            <li><Link href={`${PARENT_PATH}/snow`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Snow Treks in Uttarakhand →</Link></li>
-            <li><Link href={`${PARENT_PATH}/high-altitude`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>High-Altitude Treks Above 4,000 m →</Link></li>
-            <li><Link href={`${PARENT_PATH}/challenging`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Challenging Treks in Uttarakhand →</Link></li>
-            <li><Link href="/treks/garhwal-himalayas" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Garhwal Himalayas — Complete Trekking Guide →</Link></li>
-          </ul>
+        {/* ── MODERATE MULTI-DAY ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-eyebrow">
+              <span className="beg-eyebrow-line" />
+              <span className="beg-eyebrow-text">Moderate Multi-Day Treks</span>
+            </div>
+            <h2 className="beg-h2">Moderate Multi-Day Treks — Your First Himalayan Camping Experience</h2>
+            <p className="beg-body">
+              These routes introduce camping at altitude, multi-day rhythm, and the full Himalayan trekking experience —
+              but with gradual altitude gain, well-established trails, and professional guides throughout.
+              No technical skills needed; 4–6 weeks of fitness preparation recommended.
+            </p>
+            <div className="beg-trek-card">
+              <h3 className="beg-h3">Brahmatal Trek</h3>
+              <div className="beg-trek-meta">
+                <span className="beg-trek-meta-pill">3,850 m</span>
+                <span className="beg-trek-meta-pill"><span className="beg-badge beg-badge-moderate">Moderate</span></span>
+                <span className="beg-trek-meta-pill">4 days</span>
+                <span className="beg-trek-meta-pill">Dec–Mar</span>
+                <span className="beg-trek-meta-pill">Lohajung, Garhwal</span>
+              </div>
+              <p className="beg-body" style={{ margin: 0 }}>
+                The ideal first snow trek — frozen Brahmatal Lake, snow-covered ridges, and continuous Trishul and Nanda Ghunti
+                views. The 4-day duration limits cold exposure while delivering a genuinely alpine experience. The route
+                gains altitude gradually through forest before opening onto exposed ridge meadows.
+              </p>
+              <Link href="/treks/location/lohajung/brahmatal-trek" className="beg-trek-link">
+                View full Brahmatal trek details →
+              </Link>
+            </div>
+            <div className="beg-trek-card">
+              <h3 className="beg-h3">Kuari Pass Trek</h3>
+              <div className="beg-trek-meta">
+                <span className="beg-trek-meta-pill">3,876 m</span>
+                <span className="beg-trek-meta-pill"><span className="beg-badge beg-badge-moderate">Moderate</span></span>
+                <span className="beg-trek-meta-pill">5 days</span>
+                <span className="beg-trek-meta-pill">Mar–May, Oct–Nov</span>
+                <span className="beg-trek-meta-pill">Joshimath, Garhwal</span>
+              </div>
+              <p className="beg-body" style={{ margin: 0 }}>
+                One of the most accessible ridge walks in the Himalayas — 5 days along the historic Curzon Trail with
+                Nanda Devi, Dronagiri, and Chaukhamba visible for most of the route. Spring brings snow on the upper
+                sections plus rhododendron bloom along the lower trail. This is the classic first moderate trek in Garhwal.
+              </p>
+              <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
+                <Link href="/treks/location/joshimath/kuari-pass-trek" className="beg-trek-link">
+                  View full Kuari Pass trek details →
+                </Link>
+                <Link href="/treks/brahmatal-vs-kuari-pass" className="beg-trek-link">
+                  Compare Brahmatal vs Kuari Pass →
+                </Link>
+              </div>
+            </div>
+            <div className="beg-trek-card">
+              <h3 className="beg-h3">Khaliya Top Trek</h3>
+              <div className="beg-trek-meta">
+                <span className="beg-trek-meta-pill">3,500 m</span>
+                <span className="beg-trek-meta-pill"><span className="beg-badge beg-badge-moderate">Moderate</span></span>
+                <span className="beg-trek-meta-pill">3–4 days</span>
+                <span className="beg-trek-meta-pill">May–Jun, Sep–Oct</span>
+                <span className="beg-trek-meta-pill">Munsiyari, Kumaon</span>
+              </div>
+              <p className="beg-body" style={{ margin: 0 }}>
+                A quieter alternative to the popular Garhwal routes — Khaliya Top offers a 360-degree Panchachuli massif panorama
+                from 3,500 metres, with far fewer trekkers on trail. Based from Munsiyari in the Kumaon Himalaya, it provides
+                a genuine alpine meadow summit experience at gentler altitude than Garhwal. Ideal for trekkers who value solitude
+                alongside scenery.
+              </p>
+              <Link href="/treks/location/munsiyari/khaliya-top-trek" className="beg-trek-link">
+                View full Khaliya Top trek details →
+              </Link>
+            </div>
+          </div>
         </section>
 
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
+        {/* ── COMPARISON CALLOUT ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '3rem', paddingBottom: '3rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-callout">
+              <strong>Still deciding between Brahmatal and Kuari Pass?</strong>{' '}
+              See our detailed{' '}
+              <Link href="/treks/brahmatal-vs-kuari-pass">
+                Brahmatal vs Kuari Pass comparison
+              </Link>{' '}
+              for a side-by-side breakdown of season, views, difficulty, and logistics.
+            </div>
+          </div>
+        </section>
+
+        {/* ── COMPARISON TABLE ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-eyebrow">
+              <span className="beg-eyebrow-line" />
+              <span className="beg-eyebrow-text">At a Glance</span>
+            </div>
+            <h2 className="beg-h2" style={{ marginBottom: '1.75rem' }}>Beginner Treks at a Glance</h2>
+            <div className="beg-table-wrap">
+              <table className="beg-table">
+                <thead>
+                  <tr>
+                    <th>Trek</th>
+                    <th>Altitude</th>
+                    <th>Difficulty</th>
+                    <th>Days</th>
+                    <th>Best Season</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><Link href="/treks/location/chakrata/tiger-fall-trek">Tiger Fall</Link></td>
+                    <td>~2,200 m</td>
+                    <td><span className="beg-badge beg-badge-easy">Easy</span></td>
+                    <td>1</td>
+                    <td>Year-round</td>
+                  </tr>
+                  <tr>
+                    <td><Link href="/treks/location/chakrata/budher-caves-trek">Budher Caves</Link></td>
+                    <td>~2,200 m</td>
+                    <td><span className="beg-badge beg-badge-easy">Easy</span></td>
+                    <td>1</td>
+                    <td>Year-round</td>
+                  </tr>
+                  <tr>
+                    <td><Link href="/treks/location/lohajung/brahmatal-trek">Brahmatal</Link></td>
+                    <td>3,850 m</td>
+                    <td><span className="beg-badge beg-badge-moderate">Moderate</span></td>
+                    <td>4</td>
+                    <td>Dec–Mar</td>
+                  </tr>
+                  <tr>
+                    <td><Link href="/treks/location/joshimath/kuari-pass-trek">Kuari Pass</Link></td>
+                    <td>3,876 m</td>
+                    <td><span className="beg-badge beg-badge-moderate">Moderate</span></td>
+                    <td>5</td>
+                    <td>Mar–May, Oct–Nov</td>
+                  </tr>
+                  <tr>
+                    <td><Link href="/treks/location/munsiyari/khaliya-top-trek">Khaliya Top</Link></td>
+                    <td>3,500 m</td>
+                    <td><span className="beg-badge beg-badge-moderate">Moderate</span></td>
+                    <td>3–4</td>
+                    <td>May–Jun, Sep–Oct</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        {/* ── WHAT TO EXPECT ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-eyebrow">
+              <span className="beg-eyebrow-line" />
+              <span className="beg-eyebrow-text">What to Expect</span>
+            </div>
+            <h2 className="beg-h2">What to Expect on Your First Trek</h2>
+            <p className="beg-body">
+              <strong style={{ fontWeight: 500, color: '#111' }}>Day treks (Chakrata):</strong>{' '}
+              You will walk 4–8 km on forest trails at low altitude. Carry water, snacks,
+              and rain protection. No special equipment needed. Return to accommodation the same day.
+            </p>
+            <p className="beg-body">
+              <strong style={{ fontWeight: 500, color: '#111' }}>Multi-day treks (Brahmatal, Kuari Pass, Khaliya Top):</strong>{' '}
+              You will camp in tents at established sites,
+              eat meals prepared by a trek crew, and walk 6–12 km per day with 500–800 m elevation gain. Guides manage
+              navigation, safety, and logistics. Your main job is to walk and enjoy. Basic trekking gear (layering system,
+              trekking shoes, daypack) is needed — our{' '}
+              <Link href="/treks/garhwal-himalayas/packing-checklist" style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
+                packing checklist
+              </Link>{' '}
+              covers everything.
+            </p>
+            <p className="beg-body" style={{ margin: 0 }}>
+              Ready to progress beyond beginner routes? The{' '}
+              <Link href={`${PARENT_PATH}#challenging-treks`} style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
+                challenging treks section
+              </Link>{' '}
+              covers Roopkund, Pangarchulla, and Milam Glacier for experienced trekkers.
+            </p>
+          </div>
+        </section>
+
+        {/* ── CTA ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <PrimaryCTA
+              label="Plan My First Trek"
+              subtext="Tell us your dates and fitness level — we will recommend the perfect first route."
+              vertical="trek"
+              category="filter-beginner"
+              sourcePath={PATH}
+            />
+          </div>
+        </section>
+
+        {/* ── FAQ ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-eyebrow">
+              <span className="beg-eyebrow-line" />
+              <span className="beg-eyebrow-text">FAQ</span>
+            </div>
+            <h2 className="beg-h2" style={{ marginBottom: '1.75rem' }}>Frequently Asked Questions</h2>
+            <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
+          </div>
+        </section>
+
+        {/* ── NAV ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-eyebrow">
+              <span className="beg-eyebrow-line" />
+              <span className="beg-eyebrow-text">Browse by Category</span>
+            </div>
+            <h2 className="beg-h2" style={{ marginBottom: '1.75rem' }}>Browse by Category</h2>
+            <div className="beg-nav-group">
+              <Link href={PARENT_PATH} className="beg-nav-link back">All 10 Best Treks in Uttarakhand</Link>
+              <Link href={`${PARENT_PATH}/snow`} className="beg-nav-link">Snow Treks in Uttarakhand</Link>
+              <Link href={`${PARENT_PATH}/high-altitude`} className="beg-nav-link">High-Altitude Treks Above 4,000 m</Link>
+              <Link href={`${PARENT_PATH}/challenging`} className="beg-nav-link">Challenging Treks in Uttarakhand</Link>
+              <Link href="/treks/garhwal-himalayas" className="beg-nav-link">Garhwal Himalayas — Complete Trekking Guide</Link>
+            </div>
+          </div>
+        </section>
+
       </article>
     </TrackedPage>
   );

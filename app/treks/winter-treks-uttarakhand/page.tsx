@@ -11,410 +11,472 @@ import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
 
-const PATH = '/treks/winter-treks-uttarakhand';
+const PATH = '/treks/best-treks-in-uttarakhand/beginner';
+const PARENT_PATH = '/treks/best-treks-in-uttarakhand';
+
+export const dynamic = 'force-static';
+export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Best Winter Treks in Uttarakhand — Snow Treks Guide (Dec–Feb) | Retreats And Treks',
+    title: 'Best Beginner Treks in Uttarakhand (2025) — Easy & Moderate Routes',
     description:
-      'Discover the best winter treks in Uttarakhand including Kedarkantha snow summit, Har Ki Dun valley and Tiger Fall. Guided snow treks from December to February for all levels.',
-    alternates: {
-      canonical: buildCanonicalUrl(PATH),
-    },
-    robots: {
-      index: true,
-      follow: true,
-    },
-    openGraph: {
-      title: 'Best Winter Treks in Uttarakhand — Snow Treks Guide',
-      description:
-        'Snow treks in Uttarakhand from December to February. Guided summit routes, valley walks and forest trails across Sankri and Chakrata.',
-      url: buildCanonicalUrl(PATH),
-      type: 'website',
-    },
+      'The 5 best beginner-friendly treks in Uttarakhand ranked by difficulty. From easy day hikes in Chakrata to moderate multi-day routes in Garhwal — no prior trekking experience needed.',
+    alternates: { canonical: buildCanonicalUrl(PATH) },
   };
 }
 
 const FAQ_ITEMS = [
   {
-    question: 'Which is the best snow trek in Uttarakhand?',
+    question: 'Which is the easiest trek in Uttarakhand?',
     answer:
-      'Kedarkantha is the best snow trek in Uttarakhand. It offers a four-day guided route from Sankri to a 3,800-metre summit with consistent snow cover from December through March. The trail passes through snow-laden deodar forest, open alpine meadows, and culminates in a summit with 360-degree Himalayan panoramas. It is accessible to beginners, professionally guided, and widely regarded as the finest winter trek in northern India.',
+      'Tiger Fall in Chakrata is the easiest featured trek — a single-day forest trail below 2,500 m with no altitude risk, no camping gear needed, and year-round accessibility. It is ideal for first-time trekkers and families.',
   },
   {
-    question: 'Is Kedarkantha safe in winter?',
+    question: 'Can a complete beginner do a multi-day trek in Uttarakhand?',
     answer:
-      'Yes. Kedarkantha is one of the safest winter treks in the Himalayas. The trail is well-established and operated by experienced guide teams throughout the season. Altitude gain is gradual over four days, reducing the risk of altitude sickness. Guided groups carry emergency communication equipment, first-aid supplies, and follow tested acclimatisation protocols. The route avoids avalanche-prone terrain and exposed ridges. Thousands of trekkers — including first-timers — complete Kedarkantha safely every winter.',
+      'Yes. Brahmatal (4 days, Moderate) and Kuari Pass (5 days, Moderate) are designed for fit beginners with no prior trekking experience. Both are fully guided, with established campsites and gradual altitude gain.',
   },
   {
-    question: 'What temperature does it reach on winter treks in Uttarakhand?',
+    question: 'What fitness level is needed for beginner treks?',
     answer:
-      'Temperatures vary by altitude and month. At Sankri base camp (1,920 metres), daytime temperatures range from 5 to 10°C and nighttime drops to minus 2 to minus 5°C in January. At higher camps on Kedarkantha (3,000 to 3,500 metres), nighttime temperatures reach minus 8 to minus 12°C. Summit day temperatures can drop to minus 15°C with wind chill. Proper layering — thermal base, insulating mid-layer, windproof outer shell — makes these conditions comfortable.',
+      'For Chakrata day treks, basic walking fitness is sufficient. For Brahmatal or Kuari Pass, 4–6 weeks of preparation including cardio (jogging, cycling) and stair climbing is recommended. You should be comfortable walking 8–12 km on uneven ground.',
   },
   {
-    question: 'Can beginners do winter treks in Uttarakhand?',
+    question: 'What is the best season for beginner treks in Uttarakhand?',
     answer:
-      'Yes, with the right trek choice and guided support. Kedarkantha is specifically designed to be beginner-accessible in winter — gradual altitude gain, established campsites, guided pace management, and gear support. Basic fitness is required: the ability to walk five to seven kilometres per day on uneven terrain with a daypack. No prior snow trekking experience is needed. Guided operators provide gaiters, microspikes, and trekking poles. Two to three weeks of daily walking or light jogging is sufficient preparation.',
-  },
-  {
-    question: 'What gear is required for winter treks in Uttarakhand?',
-    answer:
-      'Essential gear includes: thermal base layers (merino wool or synthetic), insulating mid-layer (fleece or down jacket), waterproof and windproof outer shell, insulated trekking boots with ankle support, wool or synthetic socks (two pairs per day), warm gloves (liner plus outer), balaclava or buff, sunglasses with UV protection, trekking poles, and a headlamp. For snow sections: gaiters and microspikes are essential and typically provided by guided operators. A 30 to 40 litre daypack carries daily essentials while porters handle camping gear.',
+      'October–November and March–May offer the most comfortable conditions — mild temperatures, clear skies, and dry trails. Brahmatal is a winter-specific trek (Dec–Mar) with snow but moderate difficulty. Chakrata day hikes are accessible year-round.',
   },
 ];
 
-export default function WinterTreksUttarakhandPage() {
+const BREADCRUMBS = [
+  { name: 'Home', href: '/' },
+  { name: 'Treks', href: '/treks' },
+  { name: 'Best Treks in Uttarakhand', href: PARENT_PATH },
+  { name: 'Beginner Treks' },
+];
+
+export default function BeginnerTreksPage() {
   validateFAQSync(FAQ_ITEMS, PATH);
-
-  const canonicalUrl = buildCanonicalUrl(PATH);
-
+  const faqSchema = generateFAQSchema(FAQ_ITEMS);
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
     { name: 'Treks', url: buildCanonicalUrl('/treks') },
-    { name: 'Winter Treks in Uttarakhand', url: canonicalUrl },
+    { name: 'Best Treks in Uttarakhand', url: buildCanonicalUrl(PARENT_PATH) },
+    { name: 'Beginner Treks', url: buildCanonicalUrl(PATH) },
   ]);
 
-  const faqSchema = generateFAQSchema(FAQ_ITEMS);
+  const schema = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'CollectionPage',
+        name: 'Best Beginner Treks in Uttarakhand',
+        description:
+          'Curated selection of easy and moderate treks in Uttarakhand for first-time trekkers, covering day hikes to multi-day routes.',
+        url: buildCanonicalUrl(PATH),
+        isPartOf: {
+          '@type': 'CollectionPage',
+          url: buildCanonicalUrl(PARENT_PATH),
+          name: '10 Best Treks in Uttarakhand',
+        },
+      },
+      {
+        '@type': 'ItemList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Tiger Fall Trek', url: buildCanonicalUrl('/treks/location/chakrata/tiger-fall-trek') },
+          { '@type': 'ListItem', position: 2, name: 'Budher Caves Trek', url: buildCanonicalUrl('/treks/location/chakrata/budher-caves-trek') },
+          { '@type': 'ListItem', position: 3, name: 'Brahmatal Trek', url: buildCanonicalUrl('/treks/location/lohajung/brahmatal-trek') },
+          { '@type': 'ListItem', position: 4, name: 'Kuari Pass Trek', url: buildCanonicalUrl('/treks/location/joshimath/kuari-pass-trek') },
+          { '@type': 'ListItem', position: 5, name: 'Khaliya Top Trek', url: buildCanonicalUrl('/treks/location/munsiyari/khaliya-top-trek') },
+        ],
+      },
+      breadcrumbSchema,
+      faqSchema,
+    ],
+  };
 
   return (
-    <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+    <TrackedPage page={PATH}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
 
-      <Breadcrumb
-        items={[
-          { name: 'Home', href: '/' },
-          { name: 'Treks', href: '/treks' },
-          { name: 'Winter Treks in Uttarakhand' },
-        ]}
-      />
+      <style>{`
+        .beg-body { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin: 0 0 1rem; }
+        .beg-h2 { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200; letter-spacing: -0.03em; color: #111; line-height: 1.15; margin: 0 0 0.75rem; }
+        .beg-h3 { font-family: var(--font-geist-sans), sans-serif; font-size: 0.95rem; font-weight: 500; color: #111; letter-spacing: -0.01em; margin: 0 0 0.5rem; }
+        .beg-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+        .beg-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; display: inline-block; }
+        .beg-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-primary); font-weight: 500; opacity: 0.7; }
 
-      <article>
+        .beg-trek-card { background: #fff; border: 1px solid #eef0ee; border-top: 2px solid var(--color-primary); border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 0.75rem; transition: transform 0.18s, box-shadow 0.18s; }
+        .beg-trek-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
+        .beg-trek-meta { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 400; color: #888; margin-bottom: 0.65rem; }
+        .beg-trek-meta-pill { display: inline-flex; align-items: center; gap: 0.3rem; }
+        .beg-trek-meta-pill::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--color-primary); opacity: 0.45; display: inline-block; }
+        .beg-trek-link { display: inline-flex; align-items: center; gap: 0.35rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 500; color: var(--color-primary); text-decoration: none; border-bottom: 1px solid rgba(15,118,110,0.25); margin-top: 0.5rem; }
+        .beg-trek-link:hover { border-bottom-color: var(--color-primary); }
 
-        {/* ── HERO ──────────────────────────────────────────────────── */}
-        <header style={{ marginBottom: 'var(--space-xl)' }}>
-          <h1 style={{ fontSize: '2rem', fontWeight: 400, marginBottom: '0.75rem' }}>
-            Best Winter Treks in Uttarakhand (Snow Treks Guide)
-          </h1>
-          <p style={{ fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '1rem' }}>
-            December to February transforms the Himalayan trails of Uttarakhand into an
-            entirely different landscape. Snow-covered forest. Frozen meadows. Summit
-            panoramas that stretch across 200 kilometres of white peaks. Winter trekking
-            in this region is not an extreme sport — it is an accessible, guided, and
-            profoundly photogenic way to experience the mountains at their most dramatic.
-          </p>
-          <p style={{ fontSize: '1.05rem', lineHeight: 1.8, margin: 0 }}>
-            The trails that are green and flowering in spring become white corridors through
-            deodar and oak forest in winter. The campsites that sit in alpine meadows become
-            snow fields under clear skies. And the summits — reachable in three to four
-            days by trekkers with no prior snow experience — deliver views that no other
-            season can match. If you are considering your first snow trek, winter in
-            Uttarakhand is where to start.
-          </p>
-        </header>
+        .beg-callout { background: #fff; border: 1px solid #e5e7eb; border-left: 3px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; }
+        .beg-callout a { color: var(--color-primary); font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(15,118,110,0.25); }
+        .beg-callout a:hover { border-bottom-color: var(--color-primary); }
+        .beg-callout strong { font-weight: 500; color: #111; }
 
-        <PrimaryCTA
-          label="Plan My Winter Trek"
-          subtext="Planning a winter trek? We can help you choose the right route."
-          vertical="trek"
-          category="seasonal"
-          sourcePath="/treks/winter-treks-uttarakhand"
-        />
+        .beg-table-wrap { border: 1px solid #eef0ee; border-radius: 8px; overflow: hidden; }
+        .beg-table { width: 100%; border-collapse: collapse; font-family: var(--font-geist-sans), sans-serif; font-size: 0.82rem; font-weight: 300; }
+        .beg-table thead tr { background: #f7f9f7; border-bottom: 2px solid #e5e7eb; }
+        .beg-table th { padding: 0.65rem 1rem; text-align: left; font-weight: 500; color: #111; font-size: 0.75rem; letter-spacing: 0.02em; }
+        .beg-table tbody tr { border-bottom: 1px solid #f0f0f0; transition: background 0.12s; }
+        .beg-table tbody tr:last-child { border-bottom: none; }
+        .beg-table tbody tr:hover { background: #f7f9f7; }
+        .beg-table td { padding: 0.65rem 1rem; color: #555; }
+        .beg-table td a { color: var(--color-primary); font-weight: 500; text-decoration: none; }
+        .beg-table td a:hover { text-decoration: underline; }
+        .beg-badge { display: inline-block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.55rem; border-radius: 3px; }
+        .beg-badge-easy { background: rgba(15,118,110,0.08); color: var(--color-primary); }
+        .beg-badge-moderate { background: rgba(37,99,235,0.08); color: #2563eb; }
 
-        {/* ── WHY UTTARAKHAND ──────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Why Uttarakhand Is Ideal for Winter Treks
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Not every Himalayan region is suitable for winter trekking. High passes in
-            Ladakh and Spiti are snowbound and inaccessible. Kashmir carries access
-            complexity. Uttarakhand occupies the narrow band where winter snow is reliable,
-            altitudes are managed, and road access remains open — making it the most
-            practical winter trekking destination in northern India.
-          </p>
-          <ul style={{ paddingLeft: '1.25rem', lineHeight: 2, marginBottom: '1rem' }}>
-            <li>
-              <strong>Reliable snow cover.</strong> Between 2,500 and 3,800 metres, trails
-              receive consistent snowfall from late November through February. The snow
-              line drops low enough that even two-day treks encounter winter conditions,
-              while summit routes are fully snow-covered for the entire season.
-            </li>
-            <li>
-              <strong>Managed altitudes.</strong> Winter treks in Uttarakhand stay below
-              4,000 metres. This is the threshold below which altitude sickness is rare in
-              healthy, acclimatised adults. The gradual altitude gain on trails like
-              Kedarkantha means your body adjusts naturally without pharmaceutical support.
-            </li>
-            <li>
-              <strong>Forest-to-summit routes.</strong> Trails begin in dense deodar and
-              oak forest — sheltered, windless, and visually spectacular under snow — before
-              opening into exposed alpine terrain near the summit. This progression provides
-              natural protection during the lower sections and dramatic exposure only at the
-              top, when you are acclimatised and prepared.
-            </li>
-            <li>
-              <strong>Accessible base camps.</strong> The{' '}
-              <Link href="/treks/location/sankri" style={{ color: 'var(--color-primary)' }}>
-                Sankri trek base
+        .beg-nav-group { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
+        .beg-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; border-bottom: 1px solid #f0f0f0; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #333; text-decoration: none; transition: background 0.15s, color 0.15s; }
+        .beg-nav-link:last-child { border-bottom: none; }
+        .beg-nav-link:hover { background: #f7f9f7; color: var(--color-primary); }
+        .beg-nav-link.back::before { content: '←'; color: var(--color-primary); opacity: 0.5; margin-right: 0.5rem; }
+        .beg-nav-link:not(.back)::after { content: '→'; color: var(--color-primary); opacity: 0.5; }
+
+        @media (max-width: 700px) {
+          .beg-table-wrap { overflow-x: auto; }
+          .beg-trek-meta { gap: 0.25rem 0.75rem; }
+        }
+      `}</style>
+
+      <article style={{ maxWidth: 720, margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+        <Breadcrumb items={BREADCRUMBS} />
+
+        {/* ── HERO ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-eyebrow">
+              <span className="beg-eyebrow-line" />
+              <span className="beg-eyebrow-text">Beginner Treks · Uttarakhand</span>
+            </div>
+            <h1 style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: 'clamp(1.75rem,3.5vw,2.4rem)', fontWeight: 200, letterSpacing: '-0.035em', color: '#111', lineHeight: 1.1, margin: '0 0 1.5rem' }}>
+              Best Beginner Treks in Uttarakhand
+            </h1>
+            <p className="beg-body" style={{ margin: '0 0 1rem' }}>
+              You do not need expedition experience to trek in the Himalayas. Uttarakhand offers a clear pathway from
+              flat forest trails to moderate multi-day routes — each step building the skills and confidence for the next.
+              This page covers the 5 best treks for beginners: two easy day hikes (no gear, no altitude) and three
+              moderate routes (camping, gentle altitude, fully guided).
+            </p>
+            <p className="beg-body" style={{ margin: 0 }}>
+              All five treks are included in our{' '}
+              <Link href={PARENT_PATH} style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
+                complete ranking of the 10 best treks in Uttarakhand
+              </Link>, which also covers challenging and high-altitude routes for experienced trekkers.
+            </p>
+          </div>
+        </section>
+
+        {/* ── CALLOUT ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '3rem', paddingBottom: '3rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-callout">
+              <strong>Not sure which beginner trek to choose?</strong>{' '}
+              Start with{' '}
+              <Link href="/treks/location/lohajung/brahmatal-trek">Brahmatal</Link>{' '}
+              for snow views and a frozen alpine lake, or{' '}
+              <Link href="/treks/location/joshimath/kuari-pass-trek">Kuari Pass</Link>{' '}
+              for panoramic Nanda Devi views on the historic Curzon Trail. Both are moderate, fully guided, and need no technical skills.
+            </div>
+          </div>
+        </section>
+
+        {/* ── EASY DAY TREKS ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-eyebrow">
+              <span className="beg-eyebrow-line" />
+              <span className="beg-eyebrow-text">Easy Day Treks</span>
+            </div>
+            <h2 className="beg-h2">Easy Day Treks — No Experience Needed</h2>
+            <p className="beg-body">
+              Chakrata sits 2–3 hours from Dehradun in dense deodar forest below 2,500 metres.
+              These trails require no multi-day gear, no camping, and no altitude acclimatisation.
+              They are the ideal first step for anyone who has never walked a mountain trail.
+            </p>
+            <div className="beg-trek-card">
+              <h3 className="beg-h3">Tiger Fall Trek</h3>
+              <div className="beg-trek-meta">
+                <span className="beg-trek-meta-pill">~2,200 m</span>
+                <span className="beg-trek-meta-pill"><span className="beg-badge beg-badge-easy">Easy</span></span>
+                <span className="beg-trek-meta-pill">1 day</span>
+                <span className="beg-trek-meta-pill">Year-round</span>
+                <span className="beg-trek-meta-pill">Chakrata</span>
+              </div>
+              <p className="beg-body" style={{ margin: 0 }}>
+                A gentle forest walk to one of the tallest waterfalls in Uttarakhand. The trail stays below tree cover the
+                entire way, with no exposed ridges or steep scrambles. Perfect for families, first-timers, or as a
+                warm-up before a multi-day route.
+              </p>
+              <Link href="/treks/location/chakrata/tiger-fall-trek" className="beg-trek-link">
+                View full Tiger Fall trek details →
+              </Link>
+            </div>
+            <div className="beg-trek-card">
+              <h3 className="beg-h3">Budher Caves Trek</h3>
+              <div className="beg-trek-meta">
+                <span className="beg-trek-meta-pill">~2,200 m</span>
+                <span className="beg-trek-meta-pill"><span className="beg-badge beg-badge-easy">Easy</span></span>
+                <span className="beg-trek-meta-pill">1 day</span>
+                <span className="beg-trek-meta-pill">Year-round</span>
+                <span className="beg-trek-meta-pill">Chakrata</span>
+              </div>
+              <p className="beg-body" style={{ margin: 0 }}>
+                A slightly longer forest trail leading to ancient limestone caves, offering more trail variety than Tiger Fall
+                with a rewarding geological endpoint. Same low-altitude, low-risk profile, but adds exploration interest.
+              </p>
+              <Link href="/treks/location/chakrata/budher-caves-trek" className="beg-trek-link">
+                View full Budher Caves trek details →
+              </Link>
+            </div>
+            <p className="beg-body" style={{ margin: '1rem 0 0' }}>
+              Both Chakrata trails pair well with a{' '}
+              <Link href="/retreats/chakrata" style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
+                Chakrata retreat weekend
               </Link>{' '}
-              — the starting point for the two most popular winter treks — remains road-accessible
-              throughout winter. Eight to nine hours from Delhi by car. No flights, no permits,
-              no multi-day approach marches. You drive to the trailhead and start walking.
-            </li>
-          </ul>
+              — trek in the morning, rest and reset in the afternoon.
+            </p>
+          </div>
         </section>
 
-        <PrimaryCTA
-          label="Plan My Winter Trek"
-          subtext="Tell us your dates and group size. We will match you to the right winter trek."
-          vertical="trek"
-          category="seasonal"
-          sourcePath="/treks/winter-treks-uttarakhand"
-        />
-
-        {/* ── BEST WINTER TREKS ────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Best Winter Treks in Uttarakhand
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: 'var(--space-md)' }}>
-            Three treks define the winter season — each offering a different character,
-            commitment level, and snow experience.
-          </p>
-
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-            Kedarkantha Trek — The Classic Snow Summit
-          </h3>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            The{' '}
-            <Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)' }}>
-              Kedarkantha Trek
-            </Link>{' '}
-            is the definitive winter trek in India. Four days, 20 km, summit at 3,800
-            metres. The trail climbs from Sankri
-            through snow-laden pine forest, crosses open meadows blanketed in white, and
-            ascends a final ridge to a summit that commands views of Swargarohini,
-            Bandarpoonch, and Black Peak. On a clear January morning, the panorama extends
-            across six major Himalayan ranges.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            What makes Kedarkantha exceptional for winter is the combination of snow depth
-            and accessibility. By mid-December, the trail carries 30 to 60 cm of snow at
-            camp level and deeper drifts above the tree line. Yet the gradient remains
-            gentle — 400 to 600 metres of altitude gain per day — and guided groups manage
-            pace, provide microspikes for icy sections, and set camps at tested locations.
-            Thousands of first-time trekkers complete this route every winter via{' '}
-            <Link href="/treks/location/sankri" style={{ color: 'var(--color-primary)' }}>
-              Sankri winter treks
-            </Link>. It is not an
-            expedition. It is a well-managed walk through extraordinary terrain.
-          </p>
-
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-            Har Ki Dun in Winter — Snow Valley Experience
-          </h3>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            The{' '}
-            <Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: 'var(--color-primary)' }}>
-              Har Ki Dun Trek
-            </Link>{' '}
-            transforms in winter from a green valley walk into a snow-covered corridor
-            between 5,000-metre walls. The Tons Valley narrows, the river quiets under
-            ice, and the villages along the trail become isolated outposts in a white
-            landscape. Five to six days, approximately 40 km.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Winter Har Ki Dun is more demanding than Kedarkantha — longer daily distances,
-            colder temperatures at camp, and fewer guided groups operating the route. It
-            is best suited for trekkers who have completed at least one winter trek
-            previously. The reward is proportional: the Har Ki Dun valley in January,
-            ringed by fresh snow and empty of other groups, is one of the most spectacular
-            sights in the Indian Himalayas. Access depends on road conditions — confirm
-            availability with operators before booking between January and mid-February.
-          </p>
-
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-            Tiger Fall Trek — Mild Winter Option
-          </h3>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            The{' '}
-            <Link href="/treks/location/chakrata/tiger-fall-trek" style={{ color: 'var(--color-primary)' }}>
-              Tiger Fall Trek in Chakrata
-            </Link>{' '}
-            operates year-round, including winter. At 1,800 to 2,200 metres, snowfall is
-            intermittent rather than guaranteed — some winters bring light dustings, others
-            remain dry. The forest canopy keeps the trail sheltered and the temperature
-            moderate.
-          </p>
-          <p style={{ lineHeight: 1.8, margin: 0 }}>
-            This is not a snow trek in the Kedarkantha sense. It is a winter forest walk
-            in{' '}
-            <Link href="/treks/location/chakrata" style={{ color: 'var(--color-primary)' }}>
-              Chakrata
-            </Link>{' '}
-            — quiet, cold-air trekking through deodar groves without the commitment,
-            altitude, or gear requirements of a high-altitude snow route. Ideal for
-            trekkers who want a winter mountain experience without multi-day investment,
-            or as a warm-up before a Kedarkantha attempt later in the season.
-          </p>
+        {/* ── MODERATE MULTI-DAY ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-eyebrow">
+              <span className="beg-eyebrow-line" />
+              <span className="beg-eyebrow-text">Moderate Multi-Day Treks</span>
+            </div>
+            <h2 className="beg-h2">Moderate Multi-Day Treks — Your First Himalayan Camping Experience</h2>
+            <p className="beg-body">
+              These routes introduce camping at altitude, multi-day rhythm, and the full Himalayan trekking experience —
+              but with gradual altitude gain, well-established trails, and professional guides throughout.
+              No technical skills needed; 4–6 weeks of fitness preparation recommended.
+            </p>
+            <div className="beg-trek-card">
+              <h3 className="beg-h3">Brahmatal Trek</h3>
+              <div className="beg-trek-meta">
+                <span className="beg-trek-meta-pill">3,850 m</span>
+                <span className="beg-trek-meta-pill"><span className="beg-badge beg-badge-moderate">Moderate</span></span>
+                <span className="beg-trek-meta-pill">4 days</span>
+                <span className="beg-trek-meta-pill">Dec–Mar</span>
+                <span className="beg-trek-meta-pill">Lohajung, Garhwal</span>
+              </div>
+              <p className="beg-body" style={{ margin: 0 }}>
+                The ideal first snow trek — frozen Brahmatal Lake, snow-covered ridges, and continuous Trishul and Nanda Ghunti
+                views. The 4-day duration limits cold exposure while delivering a genuinely alpine experience. The route
+                gains altitude gradually through forest before opening onto exposed ridge meadows.
+              </p>
+              <Link href="/treks/location/lohajung/brahmatal-trek" className="beg-trek-link">
+                View full Brahmatal trek details →
+              </Link>
+            </div>
+            <div className="beg-trek-card">
+              <h3 className="beg-h3">Kuari Pass Trek</h3>
+              <div className="beg-trek-meta">
+                <span className="beg-trek-meta-pill">3,876 m</span>
+                <span className="beg-trek-meta-pill"><span className="beg-badge beg-badge-moderate">Moderate</span></span>
+                <span className="beg-trek-meta-pill">5 days</span>
+                <span className="beg-trek-meta-pill">Mar–May, Oct–Nov</span>
+                <span className="beg-trek-meta-pill">Joshimath, Garhwal</span>
+              </div>
+              <p className="beg-body" style={{ margin: 0 }}>
+                One of the most accessible ridge walks in the Himalayas — 5 days along the historic Curzon Trail with
+                Nanda Devi, Dronagiri, and Chaukhamba visible for most of the route. Spring brings snow on the upper
+                sections plus rhododendron bloom along the lower trail. This is the classic first moderate trek in Garhwal.
+              </p>
+              <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap' }}>
+                <Link href="/treks/location/joshimath/kuari-pass-trek" className="beg-trek-link">
+                  View full Kuari Pass trek details →
+                </Link>
+                <Link href="/treks/brahmatal-vs-kuari-pass" className="beg-trek-link">
+                  Compare Brahmatal vs Kuari Pass →
+                </Link>
+              </div>
+            </div>
+            <div className="beg-trek-card">
+              <h3 className="beg-h3">Khaliya Top Trek</h3>
+              <div className="beg-trek-meta">
+                <span className="beg-trek-meta-pill">3,500 m</span>
+                <span className="beg-trek-meta-pill"><span className="beg-badge beg-badge-moderate">Moderate</span></span>
+                <span className="beg-trek-meta-pill">3–4 days</span>
+                <span className="beg-trek-meta-pill">May–Jun, Sep–Oct</span>
+                <span className="beg-trek-meta-pill">Munsiyari, Kumaon</span>
+              </div>
+              <p className="beg-body" style={{ margin: 0 }}>
+                A quieter alternative to the popular Garhwal routes — Khaliya Top offers a 360-degree Panchachuli massif panorama
+                from 3,500 metres, with far fewer trekkers on trail. Based from Munsiyari in the Kumaon Himalaya, it provides
+                a genuine alpine meadow summit experience at gentler altitude than Garhwal. Ideal for trekkers who value solitude
+                alongside scenery.
+              </p>
+              <Link href="/treks/location/munsiyari/khaliya-top-trek" className="beg-trek-link">
+                View full Khaliya Top trek details →
+              </Link>
+            </div>
+          </div>
         </section>
 
-        {/* ── WHO SHOULD CHOOSE ────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Who Should Choose a Winter Trek?
-          </h2>
-          <ul style={{ paddingLeft: '1.25rem', lineHeight: 2, marginBottom: '1rem' }}>
-            <li>
-              <strong>First snow experience.</strong> If you have never walked in deep snow,
-              Kedarkantha is the place to start. The guided format means you do not need
-              personal snow gear or navigation skills. Microspikes, gaiters, and trekking
-              poles are provided. You learn snow-walking technique on the trail — step
-              placement, pole usage, layering management — with expert guidance.
-            </li>
-            <li>
-              <strong>Photographers.</strong> Winter light in the Himalayas is the sharpest
-              of any season. Low sun angles create long shadows across snow fields. Dawn at
-              the Kedarkantha summit turns six mountain ranges golden. Frozen trees, mist
-              through forest, and snow-covered meadows offer compositions unavailable at
-              any other time of year. Bring a wide-angle and a telephoto — you will use both.
-            </li>
-            <li>
-              <strong>Corporate groups.</strong> A winter trek is the most memorable
-              team-building format available. Shared physical challenge in snow conditions,
-              campfire conversations at minus five, and a collective summit create bonds
-              that no conference or offsite can replicate. Kedarkantha works well for groups
-              of 8 to 15 — large enough for group dynamics, small enough for guided safety.
-            </li>
-            <li>
-              <strong>Beginner trekkers (with preparation).</strong> Winter treks are
-              accessible to{' '}
-              <Link href="/treks/beginner-treks-uttarakhand" style={{ color: 'var(--color-primary)' }}>
-                beginner-friendly treks
+        {/* ── COMPARISON CALLOUT ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '3rem', paddingBottom: '3rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-callout">
+              <strong>Still deciding between Brahmatal and Kuari Pass?</strong>{' '}
+              See our detailed{' '}
+              <Link href="/treks/brahmatal-vs-kuari-pass">
+                Brahmatal vs Kuari Pass comparison
               </Link>{' '}
-              who prepare adequately. Two to three weeks of daily cardio — walking, jogging,
-              or stair climbing — is sufficient for Kedarkantha. The cold is manageable with
-              proper layers. The snow is navigable with microspikes. The altitude is safe
-              with gradual acclimatisation. The only prerequisite is willingness.
-            </li>
-          </ul>
+              for a side-by-side breakdown of season, views, difficulty, and logistics.
+            </div>
+          </div>
         </section>
 
-        {/* ── WHAT TO EXPECT ───────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            What to Expect on a Snow Trek
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Snow trekking is fundamentally different from summer trekking. The physical
-            demands, the gear, and the daily rhythm all shift. Knowing what to expect
-            removes the uncertainty that makes winter trekking seem intimidating.
-          </p>
-          <ul style={{ paddingLeft: '1.25rem', lineHeight: 2, marginBottom: '1rem' }}>
-            <li>
-              <strong>Gaiters.</strong> Worn over boots and lower legs to keep snow out.
-              Essential above the tree line where snow depth exceeds ankle height. Provided
-              by most guided operators. Without gaiters, wet boots become the fastest route
-              to an uncomfortable — and potentially dangerous — trek.
-            </li>
-            <li>
-              <strong>Microspikes.</strong> Crampon-light traction devices that strap onto
-              trekking boots. Required on icy sections and compacted snow — especially on
-              summit day. They transform slippery terrain into firm footing. Provided by
-              guided operators.
-            </li>
-            <li>
-              <strong>Cold temperatures.</strong> Expect minus 5 to minus 12°C at camp and
-              colder at summit. The cold is manageable with proper layering: thermal base,
-              fleece or down mid-layer, windproof outer shell. The critical mistake is
-              cotton — it retains moisture and chills rapidly. Wear synthetics or wool
-              against the skin.
-            </li>
-            <li>
-              <strong>Snow depth and surface.</strong> Snow conditions vary by altitude and month. At 2,500 metres, expect 15 to 30 centimetres of compacted snow from late December onward — firm underfoot but requiring gaiters. Between 3,000 and 3,500 metres, accumulation reaches 60 to 90 centimetres with softer, powder-like sections where each step sinks to mid-shin; microspikes become essential for traction on icy traverses and frozen switchbacks. Summit-day snow near 3,800 metres can reach one metre or more in peak January, with wind-crusted surfaces interspersed with breakable crust. A three-layer system — moisture-wicking thermal base, insulating fleece or down mid-layer, windproof and waterproof outer shell — handles the full temperature swing from minus 5°C daytime walking to minus 12°C nighttime camp. Extremities lose heat fastest: liner gloves under insulated outers, two pairs of wool-blend socks per day, and a balaclava or thermal buff are non-negotiable above the tree line.
-            </li>
-            <li>
-              <strong>Short daylight.</strong> Winter days in the Himalayas offer about nine
-              hours of usable light. Trekking starts early — typically 7 AM — to ensure
-              camp arrival by mid-afternoon. Summit day starts before dawn (4 to 5 AM) to
-              catch sunrise from the peak. A headlamp is essential gear, not optional.
-            </li>
-            <li>
-              <strong>Fitness.</strong> Snow walking requires 20 to 30 percent more energy
-              than dry-trail walking. Each step sinks into snow, and the cold burns
-              additional calories for thermoregulation. The fitness baseline is the same as
-              a summer trek plus a margin — if a summer Kedarkantha requires moderate fitness,
-              winter Kedarkantha requires moderate-plus. The difference is manageable with
-              preparation.
-            </li>
-          </ul>
+        {/* ── COMPARISON TABLE ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-eyebrow">
+              <span className="beg-eyebrow-line" />
+              <span className="beg-eyebrow-text">At a Glance</span>
+            </div>
+            <h2 className="beg-h2" style={{ marginBottom: '1.75rem' }}>Beginner Treks at a Glance</h2>
+            <div className="beg-table-wrap">
+              <table className="beg-table">
+                <thead>
+                  <tr>
+                    <th>Trek</th>
+                    <th>Altitude</th>
+                    <th>Difficulty</th>
+                    <th>Days</th>
+                    <th>Best Season</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><Link href="/treks/location/chakrata/tiger-fall-trek">Tiger Fall</Link></td>
+                    <td>~2,200 m</td>
+                    <td><span className="beg-badge beg-badge-easy">Easy</span></td>
+                    <td>1</td>
+                    <td>Year-round</td>
+                  </tr>
+                  <tr>
+                    <td><Link href="/treks/location/chakrata/budher-caves-trek">Budher Caves</Link></td>
+                    <td>~2,200 m</td>
+                    <td><span className="beg-badge beg-badge-easy">Easy</span></td>
+                    <td>1</td>
+                    <td>Year-round</td>
+                  </tr>
+                  <tr>
+                    <td><Link href="/treks/location/lohajung/brahmatal-trek">Brahmatal</Link></td>
+                    <td>3,850 m</td>
+                    <td><span className="beg-badge beg-badge-moderate">Moderate</span></td>
+                    <td>4</td>
+                    <td>Dec–Mar</td>
+                  </tr>
+                  <tr>
+                    <td><Link href="/treks/location/joshimath/kuari-pass-trek">Kuari Pass</Link></td>
+                    <td>3,876 m</td>
+                    <td><span className="beg-badge beg-badge-moderate">Moderate</span></td>
+                    <td>5</td>
+                    <td>Mar–May, Oct–Nov</td>
+                  </tr>
+                  <tr>
+                    <td><Link href="/treks/location/munsiyari/khaliya-top-trek">Khaliya Top</Link></td>
+                    <td>3,500 m</td>
+                    <td><span className="beg-badge beg-badge-moderate">Moderate</span></td>
+                    <td>3–4</td>
+                    <td>May–Jun, Sep–Oct</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </section>
 
-        {/* ── BEST TIME ────────────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Best Time for Winter Treks
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>December.</strong> The season opens. Early December may have patchy
-            snow at lower elevations, but by mid-December the trails above 2,500 metres
-            are fully covered. Temperatures are cold but not extreme. This is the most
-            comfortable winter month — good snow, manageable cold, and the festive energy
-            of the season&apos;s first groups on the trail. Christmas and New Year weekends
-            are peak demand periods — book early.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>January.</strong> The coldest month and the deepest snow. Summit
-            temperatures drop to minus 15°C with wind chill. Snow depth at camp can exceed
-            one metre after heavy falls. For{' '}
-            <Link href="/treks/trek-near-delhi" style={{ color: 'var(--color-primary)' }}>
-              weekend treks near Delhi
-            </Link>, January is the most dramatic month — the landscape is at its most
-            photogenic, the snow is fresh and deep, and the mountain silence is absolute.
-            However, occasional heavy snowfall can delay summit attempts by a day. Guided
-            operators build flexibility into January itineraries for this reason.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>February.</strong> Snow begins to consolidate. Trails are firmer
-            underfoot — less post-holing, more efficient walking. Temperatures start to
-            moderate in the second half of the month. Daylight hours increase. February is
-            the pragmatic choice: winter conditions with slightly more comfort than January.
-            Snow cover remains excellent through the month on Kedarkantha.
-          </p>
-          <p style={{ lineHeight: 1.8, margin: 0 }}>
-            <strong>March.</strong> The shoulder month. Snow is retreating below 3,000
-            metres but remains thick near the summit. Daytime temperatures are pleasant —
-            5 to 10°C at camp — while nights are still cold. The trail becomes a mix of
-            snow and dry sections. March Kedarkantha is gentler than January Kedarkantha
-            but still delivers a snow summit experience. By late March, the winter season
-            transitions into spring.
-          </p>
+        {/* ── WHAT TO EXPECT ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-eyebrow">
+              <span className="beg-eyebrow-line" />
+              <span className="beg-eyebrow-text">What to Expect</span>
+            </div>
+            <h2 className="beg-h2">What to Expect on Your First Trek</h2>
+            <p className="beg-body">
+              <strong style={{ fontWeight: 500, color: '#111' }}>Day treks (Chakrata):</strong>{' '}
+              You will walk 4–8 km on forest trails at low altitude. Carry water, snacks,
+              and rain protection. No special equipment needed. Return to accommodation the same day.
+            </p>
+            <p className="beg-body">
+              <strong style={{ fontWeight: 500, color: '#111' }}>Multi-day treks (Brahmatal, Kuari Pass, Khaliya Top):</strong>{' '}
+              You will camp in tents at established sites,
+              eat meals prepared by a trek crew, and walk 6–12 km per day with 500–800 m elevation gain. Guides manage
+              navigation, safety, and logistics. Your main job is to walk and enjoy. Basic trekking gear (layering system,
+              trekking shoes, daypack) is needed — our{' '}
+              <Link href="/treks/garhwal-himalayas/packing-checklist" style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
+                packing checklist
+              </Link>{' '}
+              covers everything.
+            </p>
+            <p className="beg-body" style={{ margin: 0 }}>
+              Ready to progress beyond beginner routes? The{' '}
+              <Link href={`${PARENT_PATH}#challenging-treks`} style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
+                challenging treks section
+              </Link>{' '}
+              covers Roopkund, Pangarchulla, and Milam Glacier for experienced trekkers.
+            </p>
+          </div>
         </section>
 
-        {/* ── COMMERCIAL NAVIGATION ─────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)', padding: '1.5rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', backgroundColor: '#fafafa' }}>
-          <p style={{ lineHeight: 1.8, margin: 0, fontSize: '0.95rem' }}>
-            Exploring all seasons and difficulty levels? See the full{' '}
-            <Link href="/treks" style={{ color: 'var(--color-primary)' }}>
-              Himalayan treks directory
-            </Link>{' '}
-            for guided itineraries across Uttarakhand.
-          </p>
+        {/* ── CTA ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <PrimaryCTA
+              label="Plan My First Trek"
+              subtext="Tell us your dates and fitness level — we will recommend the perfect first route."
+              vertical="trek"
+              category="filter-beginner"
+              sourcePath={PATH}
+            />
+          </div>
         </section>
 
-        {/* ── FAQ ───────────────────────────────────────────────────── */}
-        <section>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-lg)' }}>
-            Frequently Asked Questions
-          </h2>
-          <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
+        {/* ── FAQ ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-eyebrow">
+              <span className="beg-eyebrow-line" />
+              <span className="beg-eyebrow-text">FAQ</span>
+            </div>
+            <h2 className="beg-h2" style={{ marginBottom: '1.75rem' }}>Frequently Asked Questions</h2>
+            <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
+          </div>
+        </section>
+
+        {/* ── NAV ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem' }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div className="beg-eyebrow">
+              <span className="beg-eyebrow-line" />
+              <span className="beg-eyebrow-text">Browse by Category</span>
+            </div>
+            <h2 className="beg-h2" style={{ marginBottom: '1.75rem' }}>Browse by Category</h2>
+            <div className="beg-nav-group">
+              <Link href={PARENT_PATH} className="beg-nav-link back">All 10 Best Treks in Uttarakhand</Link>
+              <Link href={`${PARENT_PATH}/snow`} className="beg-nav-link">Snow Treks in Uttarakhand</Link>
+              <Link href={`${PARENT_PATH}/high-altitude`} className="beg-nav-link">High-Altitude Treks Above 4,000 m</Link>
+              <Link href={`${PARENT_PATH}/challenging`} className="beg-nav-link">Challenging Treks in Uttarakhand</Link>
+              <Link href="/treks/garhwal-himalayas" className="beg-nav-link">Garhwal Himalayas — Complete Trekking Guide</Link>
+            </div>
+          </div>
         </section>
 
       </article>
