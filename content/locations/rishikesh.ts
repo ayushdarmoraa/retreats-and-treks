@@ -132,6 +132,7 @@ export const rishikeshLocation = {
     'sound-healing',
     'yoga-and-movement',
     'meditation-and-silence',
+    'art-and-creative',
     'private-and-custom',
   ],
   trekSlugs: [],

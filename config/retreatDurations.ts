@@ -5,7 +5,7 @@
  * When a durationDays field is added to retreat service files, replace this map.
  */
 
-export type DurationGroup = '3-day' | '5-day' | 'flexible';
+export type DurationGroup = '3-day' | '5-day' | '7-day' | 'flexible';
 
 export const RETREAT_DURATION_GROUP: Record<string, DurationGroup> = {
   'weekend-retreat': '3-day',
@@ -14,6 +14,6 @@ export const RETREAT_DURATION_GROUP: Record<string, DurationGroup> = {
   'burnout-recovery': '5-day',
   'yoga-and-movement': '5-day',
   'meditation-and-silence': '5-day',
-  'art-and-creative': '5-day',
+  'art-and-creative': '7-day',
   'private-and-custom': 'flexible',
 };

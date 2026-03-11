@@ -20,6 +20,9 @@ export default function DurationRetreatSuggestions() {
   const fiveDayRetreats = allServices.filter(
     (s) => RETREAT_DURATION_GROUP[s.slug] === '5-day'
   );
+  const sevenDayRetreats = allServices.filter(
+    (s) => RETREAT_DURATION_GROUP[s.slug] === '7-day'
+  );
 
   return (
     <section
@@ -53,7 +56,7 @@ export default function DurationRetreatSuggestions() {
       </ul>
 
       <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>5-Day Retreats</h3>
-      <ul style={{ paddingLeft: '1.25rem', lineHeight: 2, marginBottom: '0' }}>
+      <ul style={{ paddingLeft: '1.25rem', lineHeight: 2, marginBottom: '1.5rem' }}>
         {fiveDayRetreats.map((service) => (
           <li key={service.slug}>
             <Link
@@ -70,6 +73,29 @@ export default function DurationRetreatSuggestions() {
           </li>
         ))}
       </ul>
+
+      {sevenDayRetreats.length > 0 && (
+        <>
+          <h3 style={{ fontSize: '1.1rem', marginBottom: '0.5rem' }}>7-Day Retreats</h3>
+          <ul style={{ paddingLeft: '1.25rem', lineHeight: 2, marginBottom: '0' }}>
+            {sevenDayRetreats.map((service) => (
+              <li key={service.slug}>
+                <Link
+                  href={`/retreats/journeys/${service.slug}`}
+                  style={{ color: 'var(--color-primary)' }}
+                >
+                  {service.title}
+                </Link>
+                {service.oneLineEssence && (
+                  <span style={{ color: 'var(--color-muted)', fontSize: '0.9rem' }}>
+                    {' '}— {service.oneLineEssence}
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </section>
   );
 }

@@ -66,6 +66,8 @@ The facilitator helps you choose. If nothing attracts you, start with collage or
 - Anyone who feels a pull toward expression but lacks the mechanism
 
 You do not need to be an artist to attend an art retreat. You need to be willing to try. The retreat handles the rest.
+
+Ready to begin? Explore the [Creative Healing Retreat](/creative-retreat) — designed for people who have never held a paintbrush.
 `,
   targetMoneyPage: '/creative-retreat',
   relatedRetreats: ['art-and-creative'],

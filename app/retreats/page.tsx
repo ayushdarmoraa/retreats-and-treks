@@ -34,8 +34,8 @@ const intentOptions = [
     description: 'Connect body, breath, and place.',
   },
   {
-    title: 'Creative Retreats',
-    description: 'Rediscover focus and creative flow.',
+    title: 'Creative Healing Retreat',
+    description: 'Emotional healing through art & yoga.',
   },
   {
     title: 'Burnout Recovery',
@@ -138,7 +138,7 @@ export default function RetreatsPage() {
       margin: '0 0 1.25rem 0',
       maxWidth: '52rem',
     }}>
-      We design Himalayan retreats in India across carefully selected locations in Uttarakhand, offering wellness retreats and guided retreat programs built around small-group and private formats. From restorative yoga and burnout recovery retreats to silent meditation immersions and weekend resets, each experience is created for depth, clarity, and environmental harmony. Our retreats operate in mountain settings such as Chakrata, Sankri, and Rishikesh, with clear travel guidance from nearby hubs like Dehradun. Whether you are seeking a short restorative break or a longer transformational retreat, our programs balance intentional facilitation with practical planning — so you can focus fully on the experience.
+      We design Himalayan retreats in India across carefully selected locations in Uttarakhand, offering wellness retreats and guided retreat programs built around small-group and private formats. From restorative yoga and burnout recovery retreats to silent meditation immersions and weekend resets, each experience is created for depth, clarity, and environmental harmony. Our <Link href="/creative-retreat" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Creative Healing Retreat</Link> offers emotional healing through art, yoga, and nature. Our retreats operate in mountain settings such as Chakrata, Sankri, and Rishikesh, with clear travel guidance from nearby hubs like Dehradun. Whether you are seeking a short restorative break or a longer transformational retreat, our programs balance intentional facilitation with practical planning — so you can focus fully on the experience.
     </p>
 
     <p style={{

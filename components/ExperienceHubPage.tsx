@@ -17,17 +17,22 @@ import PrimaryCTA from '@/components/PrimaryCTA';
 
 interface ExperienceHubPageProps {
   page: ExperiencePage;
+  breadcrumbItems?: { name: string; href?: string }[];
 }
 
-export default function ExperienceHubPage({ page }: ExperienceHubPageProps) {
+export default function ExperienceHubPage({ page, breadcrumbItems }: ExperienceHubPageProps) {
   const retreatServices = page.retreatServiceSlugs
     .map((slug) => getRetreatServiceBySlug(slug))
     .filter((s) => s !== undefined);
 
-  const breadcrumbSchema = generateBreadcrumbSchema([
+  const defaultBreadcrumbs = [
     { name: 'Home', url: buildCanonicalUrl('/') },
     { name: page.h1, url: buildCanonicalUrl(`/${page.slug}`) },
-  ]);
+  ];
+  const schemaBreadcrumbs = breadcrumbItems
+    ? breadcrumbItems.map((b) => ({ name: b.name, url: buildCanonicalUrl(b.href || `/${page.slug}`) }))
+    : defaultBreadcrumbs;
+  const breadcrumbSchema = generateBreadcrumbSchema(schemaBreadcrumbs);
 
   const itemListSchema = generateItemListSchema(
     page.locationAngles.map((angle) => {
@@ -59,7 +64,7 @@ export default function ExperienceHubPage({ page }: ExperienceHubPageProps) {
 
   return (
     <>
-      <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: page.h1 }]} />
+      <Breadcrumb items={breadcrumbItems || [{ name: 'Home', href: '/' }, { name: page.h1 }]} />
 
       <script
         type="application/ld+json"

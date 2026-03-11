@@ -204,6 +204,13 @@ export default function TrekAndPaintPage() {
           </p>
         </section>
 
+        <section style={{ marginBottom: 'var(--space-xl)', background: 'linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%)', border: '1px solid #bfdbfe', borderRadius: 'var(--radius-md)', padding: 'var(--space-lg)' }}>
+          <p style={{ lineHeight: 1.8, margin: 0 }}>
+            If you want a deeper creative experience, explore the{' '}
+            <Link href="/creative-retreat" style={{ color: 'var(--color-primary)', fontWeight: 500 }}>Creative Healing Retreat</Link>.
+          </p>
+        </section>
+
         <PrimaryCTA
           label="Walk and Create With Us"
           subtext="Tell us your trekking experience and creative interests. We design the route and the art programme together."

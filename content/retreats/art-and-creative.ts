@@ -66,6 +66,6 @@ Solo retreat offers undistracted creation. Group retreats create a field of crea
   `.trim(),
 
   invitation: `
-Your creative voice wants to emerge. We create the conditions. You do the emergence. Come create with us.
+Emotional healing through art & yoga begins when you give yourself permission to create without judgment. We create the conditions — you do the emergence. Come heal through creativity with us.
   `.trim(),
 } as const;

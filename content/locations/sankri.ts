@@ -131,6 +131,7 @@ export const sankriLocation = {
     'burnout-recovery',
     'meditation-and-silence',
     'yoga-and-movement',
+    'art-and-creative',
     'weekend-retreat',
   ],
   trekSlugs: [

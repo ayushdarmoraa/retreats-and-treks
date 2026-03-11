@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import type { LocationId } from '@/config/locations';
+import MicroCommitment from '@/components/MicroCommitment';
 
 interface Location {
   id: LocationId;
@@ -133,7 +134,15 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           <p className="rj-desc-body">{retreat.description}</p>
         </div>
       </section>
-      
+
+      {/* MICRO COMMITMENT */}
+      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '1.5rem 2rem' }}>
+        <MicroCommitment
+          itemKey={retreat.title.toLowerCase().replace(/\s+/g, '-')}
+          title={`Save: ${retreat.title}`}
+          sourcePath={`/retreats/journeys/${retreat.title.toLowerCase().replace(/\s+/g, '-')}`}
+        />
+      </div>
 
       {/* FOR / NOT FOR */}
       <section style={{

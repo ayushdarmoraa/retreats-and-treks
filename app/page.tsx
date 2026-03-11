@@ -225,6 +225,7 @@ export default function HomePage() {
           <li><Link href="/retreats/journeys/burnout-recovery">Burnout Recovery retreat — deep restorative program</Link></li>
           <li><Link href="/retreats/journeys/rest-and-reset">Rest &amp; Reset retreat — nervous system recalibration</Link></li>
           <li><Link href="/retreats/journeys/yoga-and-movement">Yoga &amp; Movement retreat — embodied practice</Link></li>
+          <li><Link href="/creative-retreat">Creative Healing Retreat — emotional healing through art, yoga, and nature</Link></li>
         </ul>
       </div>
 

@@ -130,6 +130,7 @@ export const zanskarLocation = {
     'meditation-and-silence',
     'burnout-recovery',
     'yoga-and-movement',
+    'art-and-creative',
   ],
   trekSlugs: [],
   relatedBlogSlugs: [],

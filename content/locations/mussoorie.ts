@@ -130,7 +130,7 @@ export const mussoorieLocation = {
   // Data Associations
   retreatSlugs: [
     'rest-and-reset',
-    'creative-arts-retreat',
+    'art-and-creative',
     'yoga-and-movement',
     'weekend-retreat',
   ],

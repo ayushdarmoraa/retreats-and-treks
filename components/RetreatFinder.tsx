@@ -77,7 +77,7 @@ const QUESTIONS: Question[] = [
           'rest-and-reset': 5,
           'burnout-recovery': 4,
           'sound-healing': 3,
-          'art-and-creative': 1,
+          'art-and-creative': 2,
         },
       },
       {
@@ -86,7 +86,7 @@ const QUESTIONS: Question[] = [
         scores: {
           'meditation-and-silence': 4,
           'rest-and-reset': 3,
-          'art-and-creative': 3,
+          'art-and-creative': 4,
         },
       },
       {
@@ -144,7 +144,7 @@ const QUESTIONS: Question[] = [
         scores: {
           'sound-healing': 6,
           'meditation-and-silence': 2,
-          'art-and-creative': 2,
+          'art-and-creative': 3,
         },
       },
     ],
@@ -238,8 +238,8 @@ const RETREAT_LABELS: Record<string, { title: string; essence: string }> = {
     essence: 'Extended stillness in a contained mountain environment.',
   },
   'art-and-creative': {
-    title: 'Art & Creative',
-    essence: 'Unstructured creative time with facilitated guidance.',
+    title: 'Creative Healing Retreat',
+    essence: 'Emotional healing through art, yoga, and nature immersion.',
   },
   'sound-healing': {
     title: 'Sound Healing',
