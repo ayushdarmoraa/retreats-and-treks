@@ -45,155 +45,215 @@ export default function SiteMapPage() {
   return (
     <TrackedPage
       page={PATH}
-      style={{
-        maxWidth: '56rem',
-        margin: '0 auto',
-        padding: 'var(--space-lg) var(--space-md)',
-      }}
+      style={{ maxWidth: '72rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}
     >
-      <Breadcrumb
-        items={[
-          { name: 'Home', href: '/' },
-          { name: 'Site Map' },
-        ]}
-      />
+      <style>{`
+        /* ── Hero ── */
+        .smp-hero {
+          width: 100vw; margin-left: calc(-50vw + 50%);
+          background: #f7f9f7;
+          padding: 4rem 0 3.5rem;
+          border-bottom: 1px solid #e5e7eb;
+          margin-bottom: 3.5rem;
+        }
+        .smp-hero-inner { max-width: 72rem; margin: 0 auto; padding: 0 2rem; }
+        .smp-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+        .smp-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; flex-shrink: 0; }
+        .smp-eyebrow-text { font-family: var(--font-geist-sans),sans-serif; font-size: 0.56rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-primary); opacity: 0.7; }
+        .smp-h1 { font-family: var(--font-geist-sans),sans-serif; font-size: clamp(1.75rem,3.5vw,2.4rem); font-weight: 200; letter-spacing: -0.035em; color: #111; line-height: 1.1; margin: 0; }
 
-      <h1 style={{ fontSize: '2rem', fontWeight: 400, marginBottom: 'var(--space-lg)' }}>
-        Site Map
-      </h1>
+        /* ── Grid ── */
+        .smp-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 1.5rem;
+          align-items: start;
+        }
+        @media (max-width: 900px) { .smp-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .smp-grid { grid-template-columns: 1fr; } }
 
-      {/* ── Discovery Hubs ────────────────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={headingStyle}>Trek Discovery</h2>
-        <ul style={listStyle}>
-          <li><Link href="/treks/best-treks-in-uttarakhand" style={linkStyle}>Best Treks in Uttarakhand</Link></li>
-          <li><Link href="/treks/best-treks-in-uttarakhand/beginner" style={linkStyle}>Beginner Treks</Link></li>
-          <li><Link href="/treks/best-treks-in-uttarakhand/snow" style={linkStyle}>Snow Treks</Link></li>
-          <li><Link href="/treks/best-treks-in-uttarakhand/challenging" style={linkStyle}>Challenging Treks</Link></li>
-          <li><Link href="/treks/best-treks-in-uttarakhand/high-altitude" style={linkStyle}>High-Altitude Treks</Link></li>
-          <li><Link href="/treks/garhwal-himalayas" style={linkStyle}>Garhwal Himalaya Treks</Link></li>
-        </ul>
-      </section>
+        /* ── Group card ── */
+        .smp-group {
+          background: #fff;
+          border: 1px solid #eef0ee;
+          border-radius: 8px;
+          overflow: hidden;
+        }
+        .smp-group-header {
+          padding: 0.85rem 1.25rem;
+          border-bottom: 1px solid #f0f2f0;
+          background: #f7f9f7;
+        }
+        .smp-group-title {
+          font-family: var(--font-geist-sans),sans-serif;
+          font-size: 0.56rem; font-weight: 600;
+          letter-spacing: 0.24em; text-transform: uppercase;
+          color: var(--color-primary);
+        }
+        .smp-group-links { padding: 0.5rem 0; }
+        .smp-group-link {
+          display: block;
+          font-family: var(--font-geist-sans),sans-serif;
+          font-size: 0.82rem; font-weight: 300;
+          color: #333; text-decoration: none;
+          padding: 0.45rem 1.25rem;
+          border-bottom: 1px solid #f5f5f5;
+          transition: background 0.15s, color 0.15s, padding-left 0.15s;
+        }
+        .smp-group-link:last-child { border-bottom: none; }
+        .smp-group-link:hover { background: #f0f7f5; color: var(--color-primary); padding-left: 1.5rem; }
+        .smp-group-link::before { content: '→'; font-size: 0.65rem; margin-right: 0.5rem; opacity: 0.4; }
+      `}</style>
 
-      {/* ── Filter & Attribute Pages ─────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={headingStyle}>Trek Filters</h2>
-        <ul style={listStyle}>
-          <li><Link href="/treks/beginner-treks-uttarakhand" style={linkStyle}>Beginner Treks in Uttarakhand</Link></li>
-          <li><Link href="/treks/winter-treks-uttarakhand" style={linkStyle}>Winter Treks (December–February)</Link></li>
-          <li><Link href="/treks/summer-treks-uttarakhand" style={linkStyle}>Summer Treks (May–June)</Link></li>
-          <li><Link href="/treks/spring-treks-uttarakhand" style={linkStyle}>Spring Treks (March–May)</Link></li>
-          <li><Link href="/treks/autumn-treks-uttarakhand" style={linkStyle}>Autumn Treks (September–November)</Link></li>
-          <li><Link href="/treks/3-day-treks-uttarakhand" style={linkStyle}>3-Day Treks</Link></li>
-          <li><Link href="/treks/5-day-treks-uttarakhand" style={linkStyle}>5-Day Treks</Link></li>
-          <li><Link href="/treks/week-long-treks-uttarakhand" style={linkStyle}>Week-Long Treks (6–10 Days)</Link></li>
-          <li><Link href="/treks/above-4000m-treks-uttarakhand" style={linkStyle}>Treks Above 4,000m</Link></li>
-          <li><Link href="/treks/low-altitude-treks-uttarakhand" style={linkStyle}>Low-Altitude Treks (Below 3,500m)</Link></li>
-          <li><Link href="/treks/trek-near-delhi" style={linkStyle}>Treks Near Delhi</Link></li>
-          <li><Link href="/treks/trek-packages-uttarakhand" style={linkStyle}>Trek Packages in Uttarakhand</Link></li>
-        </ul>
-      </section>
+      {/* Hero */}
+      <div className="smp-hero">
+        <div className="smp-hero-inner">
+          <div className="smp-eyebrow">
+            <span className="smp-eyebrow-line" />
+            <span className="smp-eyebrow-text">Directory</span>
+          </div>
+          <h1 className="smp-h1">Site Map</h1>
+        </div>
+      </div>
 
-      {/* ── Trek Regions ──────────────────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={headingStyle}>Trek Regions</h2>
-        <ul style={listStyle}>
-          <li><Link href="/treks/location/chakrata" style={linkStyle}>Chakrata Treks</Link></li>
-          <li><Link href="/treks/location/sankri" style={linkStyle}>Sankri Treks</Link></li>
-          <li><Link href="/treks/location/joshimath" style={linkStyle}>Joshimath Treks</Link></li>
-          <li><Link href="/treks/location/lohajung" style={linkStyle}>Lohajung Treks</Link></li>
-          <li><Link href="/treks/location/munsiyari" style={linkStyle}>Munsiyari Treks</Link></li>
-        </ul>
-      </section>
+      <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Site Map' }]} />
 
-      {/* ── Trek Detail Pages ─────────────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={headingStyle}>All Treks</h2>
-        <ul style={listStyle}>
-          <li><Link href="/treks/location/lohajung/brahmatal-trek" style={linkStyle}>Brahmatal Trek</Link></li>
-          <li><Link href="/treks/location/joshimath/kuari-pass-trek" style={linkStyle}>Kuari Pass Trek</Link></li>
-          <li><Link href="/treks/location/lohajung/roopkund-trek" style={linkStyle}>Roopkund Trek</Link></li>
-          <li><Link href="/treks/location/joshimath/pangarchulla-trek" style={linkStyle}>Pangarchulla Peak Trek</Link></li>
-          <li><Link href="/treks/location/sankri/kedarkantha-trek" style={linkStyle}>Kedarkantha Trek</Link></li>
-          <li><Link href="/treks/location/sankri/har-ki-dun-trek" style={linkStyle}>Har Ki Dun Trek</Link></li>
-          <li><Link href="/treks/location/munsiyari/khaliya-top-trek" style={linkStyle}>Khaliya Top Trek</Link></li>
-          <li><Link href="/treks/location/munsiyari/milam-glacier-trek" style={linkStyle}>Milam Glacier Trek</Link></li>
-          <li><Link href="/treks/location/chakrata/tiger-fall-trek" style={linkStyle}>Tiger Fall Trek</Link></li>
-          <li><Link href="/treks/location/chakrata/budher-caves-trek" style={linkStyle}>Budher Caves Trek</Link></li>
-          <li><Link href="/treks/location/chakrata/weekend-trek" style={linkStyle}>Chakrata Weekend Trek</Link></li>
-          <li><Link href="/treks/location/chakrata/guided-treks" style={linkStyle}>Guided Chakrata Treks</Link></li>
-        </ul>
-      </section>
+      <div className="smp-grid" style={{ marginTop: '2rem' }}>
 
-      {/* ── Comparisons ───────────────────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={headingStyle}>Trek Comparisons</h2>
-        <ul style={listStyle}>
-          <li><Link href="/treks/kedarkantha-vs-har-ki-dun" style={linkStyle}>Kedarkantha vs Har Ki Dun</Link></li>
-          <li><Link href="/treks/brahmatal-vs-kuari-pass" style={linkStyle}>Brahmatal vs Kuari Pass</Link></li>
-          <li><Link href="/treks/roopkund-vs-pangarchulla" style={linkStyle}>Roopkund vs Pangarchulla</Link></li>
-        </ul>
-      </section>
+        {/* Trek Discovery */}
+        <div className="smp-group">
+          <div className="smp-group-header"><span className="smp-group-title">Trek Discovery</span></div>
+          <div className="smp-group-links">
+            <Link href="/treks/best-treks-in-uttarakhand" className="smp-group-link">Best Treks in Uttarakhand</Link>
+            <Link href="/treks/best-treks-in-uttarakhand/beginner" className="smp-group-link">Beginner Treks</Link>
+            <Link href="/treks/best-treks-in-uttarakhand/snow" className="smp-group-link">Snow Treks</Link>
+            <Link href="/treks/best-treks-in-uttarakhand/challenging" className="smp-group-link">Challenging Treks</Link>
+            <Link href="/treks/best-treks-in-uttarakhand/high-altitude" className="smp-group-link">High-Altitude Treks</Link>
+            <Link href="/treks/garhwal-himalayas" className="smp-group-link">Garhwal Himalaya Treks</Link>
+          </div>
+        </div>
 
-      {/* ── Guides ────────────────────────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={headingStyle}>Trekking Guides</h2>
-        <ul style={listStyle}>
-          <li><Link href="/treks/garhwal-himalayas/fitness-guide" style={linkStyle}>Garhwal Trek Fitness Guide</Link></li>
-          <li><Link href="/treks/garhwal-himalayas/packing-checklist" style={linkStyle}>Trek Packing Checklist</Link></li>
-        </ul>
-      </section>
+        {/* Trek Filters */}
+        <div className="smp-group">
+          <div className="smp-group-header"><span className="smp-group-title">Trek Filters</span></div>
+          <div className="smp-group-links">
+            <Link href="/treks/beginner-treks-uttarakhand" className="smp-group-link">Beginner Treks in Uttarakhand</Link>
+            <Link href="/treks/winter-treks-uttarakhand" className="smp-group-link">Winter Treks (December–February)</Link>
+            <Link href="/treks/summer-treks-uttarakhand" className="smp-group-link">Summer Treks (May–June)</Link>
+            <Link href="/treks/spring-treks-uttarakhand" className="smp-group-link">Spring Treks (March–May)</Link>
+            <Link href="/treks/autumn-treks-uttarakhand" className="smp-group-link">Autumn Treks (September–November)</Link>
+            <Link href="/treks/3-day-treks-uttarakhand" className="smp-group-link">3-Day Treks</Link>
+            <Link href="/treks/5-day-treks-uttarakhand" className="smp-group-link">5-Day Treks</Link>
+            <Link href="/treks/week-long-treks-uttarakhand" className="smp-group-link">Week-Long Treks (6–10 Days)</Link>
+            <Link href="/treks/above-4000m-treks-uttarakhand" className="smp-group-link">Treks Above 4,000m</Link>
+            <Link href="/treks/low-altitude-treks-uttarakhand" className="smp-group-link">Low-Altitude Treks (Below 3,500m)</Link>
+            <Link href="/treks/trek-near-delhi" className="smp-group-link">Treks Near Delhi</Link>
+            <Link href="/treks/trek-packages-uttarakhand" className="smp-group-link">Trek Packages in Uttarakhand</Link>
+          </div>
+        </div>
 
-      {/* ── Retreats ──────────────────────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={headingStyle}>Retreats</h2>
-        <ul style={listStyle}>
-          <li><Link href="/retreats" style={linkStyle}>All Retreats</Link></li>
-          <li><Link href="/retreats/himalayan-retreats" style={linkStyle}>Himalayan Retreats</Link></li>
-          <li><Link href="/retreats/best-retreat-in-uttarakhand" style={linkStyle}>Best Retreat in Uttarakhand</Link></li>
-          <li><Link href="/retreat-programs" style={linkStyle}>Retreat Programs</Link></li>
-          <li><Link href="/retreats/winter-himalayan-retreats" style={linkStyle}>Winter Retreats</Link></li>
-          <li><Link href="/retreats/summer-himalayan-retreats" style={linkStyle}>Summer Retreats</Link></li>
-          <li><Link href="/retreats/weekend-himalayan-retreats" style={linkStyle}>Weekend Retreats</Link></li>
-        </ul>
-      </section>
+        {/* Trek Regions */}
+        <div className="smp-group">
+          <div className="smp-group-header"><span className="smp-group-title">Trek Regions</span></div>
+          <div className="smp-group-links">
+            <Link href="/treks/location/chakrata" className="smp-group-link">Chakrata Treks</Link>
+            <Link href="/treks/location/sankri" className="smp-group-link">Sankri Treks</Link>
+            <Link href="/treks/location/joshimath" className="smp-group-link">Joshimath Treks</Link>
+            <Link href="/treks/location/lohajung" className="smp-group-link">Lohajung Treks</Link>
+            <Link href="/treks/location/munsiyari" className="smp-group-link">Munsiyari Treks</Link>
+          </div>
+        </div>
 
-      {/* ── Retreat Journeys ──────────────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={headingStyle}>Retreat Journeys</h2>
-        <ul style={listStyle}>
-          <li><Link href="/retreats/journeys/rest-and-reset" style={linkStyle}>Rest &amp; Reset</Link></li>
-          <li><Link href="/retreats/journeys/burnout-recovery" style={linkStyle}>Burnout Recovery</Link></li>
-          <li><Link href="/retreats/journeys/yoga-and-movement" style={linkStyle}>Yoga &amp; Movement</Link></li>
-          <li><Link href="/retreats/journeys/meditation-and-silence" style={linkStyle}>Meditation &amp; Silence</Link></li>
-          <li><Link href="/retreats/journeys/art-and-creative" style={linkStyle}>Art &amp; Creative</Link></li>
-          <li><Link href="/retreats/journeys/sound-healing" style={linkStyle}>Sound Healing</Link></li>
-          <li><Link href="/retreats/journeys/weekend-retreat" style={linkStyle}>Weekend Retreat</Link></li>
-          <li><Link href="/retreats/journeys/private-and-custom" style={linkStyle}>Private &amp; Custom</Link></li>
-        </ul>
-      </section>
+        {/* All Treks */}
+        <div className="smp-group">
+          <div className="smp-group-header"><span className="smp-group-title">All Treks</span></div>
+          <div className="smp-group-links">
+            <Link href="/treks/location/lohajung/brahmatal-trek" className="smp-group-link">Brahmatal Trek</Link>
+            <Link href="/treks/location/joshimath/kuari-pass-trek" className="smp-group-link">Kuari Pass Trek</Link>
+            <Link href="/treks/location/lohajung/roopkund-trek" className="smp-group-link">Roopkund Trek</Link>
+            <Link href="/treks/location/joshimath/pangarchulla-trek" className="smp-group-link">Pangarchulla Peak Trek</Link>
+            <Link href="/treks/location/sankri/kedarkantha-trek" className="smp-group-link">Kedarkantha Trek</Link>
+            <Link href="/treks/location/sankri/har-ki-dun-trek" className="smp-group-link">Har Ki Dun Trek</Link>
+            <Link href="/treks/location/munsiyari/khaliya-top-trek" className="smp-group-link">Khaliya Top Trek</Link>
+            <Link href="/treks/location/munsiyari/milam-glacier-trek" className="smp-group-link">Milam Glacier Trek</Link>
+            <Link href="/treks/location/chakrata/tiger-fall-trek" className="smp-group-link">Tiger Fall Trek</Link>
+            <Link href="/treks/location/chakrata/budher-caves-trek" className="smp-group-link">Budher Caves Trek</Link>
+            <Link href="/treks/location/chakrata/weekend-trek" className="smp-group-link">Chakrata Weekend Trek</Link>
+            <Link href="/treks/location/chakrata/guided-treks" className="smp-group-link">Guided Chakrata Treks</Link>
+          </div>
+        </div>
 
-      {/* ── Retreat Locations ─────────────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={headingStyle}>Retreat Locations</h2>
-        <ul style={listStyle}>
-          <li><Link href="/retreats/chakrata" style={linkStyle}>Retreats in Chakrata</Link></li>
-          <li><Link href="/retreats/sankri" style={linkStyle}>Retreats in Sankri</Link></li>
-          <li><Link href="/retreats/mussoorie" style={linkStyle}>Retreats in Mussoorie</Link></li>
-          <li><Link href="/retreats/munsiyari" style={linkStyle}>Retreats in Munsiyari</Link></li>
-          <li><Link href="/retreats/rishikesh" style={linkStyle}>Retreats in Rishikesh</Link></li>
-        </ul>
-      </section>
+        {/* Trek Comparisons */}
+        <div className="smp-group">
+          <div className="smp-group-header"><span className="smp-group-title">Trek Comparisons</span></div>
+          <div className="smp-group-links">
+            <Link href="/treks/kedarkantha-vs-har-ki-dun" className="smp-group-link">Kedarkantha vs Har Ki Dun</Link>
+            <Link href="/treks/brahmatal-vs-kuari-pass" className="smp-group-link">Brahmatal vs Kuari Pass</Link>
+            <Link href="/treks/roopkund-vs-pangarchulla" className="smp-group-link">Roopkund vs Pangarchulla</Link>
+          </div>
+        </div>
 
-      {/* ── Blog & About ──────────────────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={headingStyle}>Blog &amp; Company</h2>
-        <ul style={listStyle}>
-          <li><Link href="/blog" style={linkStyle}>Blog</Link></li>
-          <li><Link href="/about" style={linkStyle}>About</Link></li>
-          <li><Link href="/contact" style={linkStyle}>Contact</Link></li>
-        </ul>
-      </section>
+        {/* Trekking Guides */}
+        <div className="smp-group">
+          <div className="smp-group-header"><span className="smp-group-title">Trekking Guides</span></div>
+          <div className="smp-group-links">
+            <Link href="/treks/garhwal-himalayas/fitness-guide" className="smp-group-link">Garhwal Trek Fitness Guide</Link>
+            <Link href="/treks/garhwal-himalayas/packing-checklist" className="smp-group-link">Trek Packing Checklist</Link>
+          </div>
+        </div>
+
+        {/* Retreats */}
+        <div className="smp-group">
+          <div className="smp-group-header"><span className="smp-group-title">Retreats</span></div>
+          <div className="smp-group-links">
+            <Link href="/retreats" className="smp-group-link">All Retreats</Link>
+            <Link href="/retreats/himalayan-retreats" className="smp-group-link">Himalayan Retreats</Link>
+            <Link href="/retreats/best-retreat-in-uttarakhand" className="smp-group-link">Best Retreat in Uttarakhand</Link>
+            <Link href="/retreat-programs" className="smp-group-link">Retreat Programs</Link>
+            <Link href="/retreats/winter-himalayan-retreats" className="smp-group-link">Winter Retreats</Link>
+            <Link href="/retreats/summer-himalayan-retreats" className="smp-group-link">Summer Retreats</Link>
+            <Link href="/retreats/weekend-himalayan-retreats" className="smp-group-link">Weekend Retreats</Link>
+          </div>
+        </div>
+
+        {/* Retreat Journeys */}
+        <div className="smp-group">
+          <div className="smp-group-header"><span className="smp-group-title">Retreat Journeys</span></div>
+          <div className="smp-group-links">
+            <Link href="/retreats/journeys/rest-and-reset" className="smp-group-link">Rest &amp; Reset</Link>
+            <Link href="/retreats/journeys/burnout-recovery" className="smp-group-link">Burnout Recovery</Link>
+            <Link href="/retreats/journeys/yoga-and-movement" className="smp-group-link">Yoga &amp; Movement</Link>
+            <Link href="/retreats/journeys/meditation-and-silence" className="smp-group-link">Meditation &amp; Silence</Link>
+            <Link href="/retreats/journeys/art-and-creative" className="smp-group-link">Art &amp; Creative</Link>
+            <Link href="/retreats/journeys/sound-healing" className="smp-group-link">Sound Healing</Link>
+            <Link href="/retreats/journeys/weekend-retreat" className="smp-group-link">Weekend Retreat</Link>
+            <Link href="/retreats/journeys/private-and-custom" className="smp-group-link">Private &amp; Custom</Link>
+          </div>
+        </div>
+
+        {/* Retreat Locations */}
+        <div className="smp-group">
+          <div className="smp-group-header"><span className="smp-group-title">Retreat Locations</span></div>
+          <div className="smp-group-links">
+            <Link href="/retreats/chakrata" className="smp-group-link">Retreats in Chakrata</Link>
+            <Link href="/retreats/sankri" className="smp-group-link">Retreats in Sankri</Link>
+            <Link href="/retreats/mussoorie" className="smp-group-link">Retreats in Mussoorie</Link>
+            <Link href="/retreats/munsiyari" className="smp-group-link">Retreats in Munsiyari</Link>
+            <Link href="/retreats/rishikesh" className="smp-group-link">Retreats in Rishikesh</Link>
+          </div>
+        </div>
+
+        {/* Blog & Company */}
+        <div className="smp-group">
+          <div className="smp-group-header"><span className="smp-group-title">Blog &amp; Company</span></div>
+          <div className="smp-group-links">
+            <Link href="/blog" className="smp-group-link">Blog</Link>
+            <Link href="/about" className="smp-group-link">About</Link>
+            <Link href="/contact" className="smp-group-link">Contact</Link>
+          </div>
+        </div>
+
+      </div>
     </TrackedPage>
   );
 }
