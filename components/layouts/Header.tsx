@@ -7,6 +7,7 @@ import { usePathname } from 'next/navigation';
 const LOGO_IMAGE = '/Images/logo/headerlogo1.png'; // ya '/images/logo.svg' etc.
 
 export default function Header() {
+  const [retreatOpen, setRetreatOpen] = useState(false);
   const [trekOpen, setTrekOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [logoError, setLogoError] = useState(false);
@@ -185,44 +186,55 @@ export default function Header() {
             alignItems: 'center',
           }}>
             <li><Link href="/" className={`hn-link${pathname === '/' ? ' active' : ''}`}>Home</Link></li>
-            <li style={{ position: 'relative' }}
-                onMouseEnter={e => { e.currentTarget.classList.add('open'); }}
-                onMouseLeave={e => { e.currentTarget.classList.remove('open'); }}
+            {/* Retreats dropdown */}
+            <li
+              style={{ position: 'relative' }}
+              onMouseEnter={() => setRetreatOpen(true)}
+              onMouseLeave={() => setRetreatOpen(false)}
             >
-              <Link href="/retreats" className={`hn-link${pathname.startsWith('/retreats') ? ' active' : ''}`}>Retreats
-                <span style={{ fontSize: '0.45rem', color: 'rgba(15,118,110,0.6)', marginLeft: 4 }}>
-                  ▼
-                </span>
+              <Link href="/retreats" className={`hn-link${pathname.startsWith('/retreats') ? ' active' : ''}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.35rem' }}>
+                Retreats
+                <span style={{
+                  fontSize: '0.45rem', color: 'rgba(15,118,110,0.6)',
+                  transition: 'transform 0.25s', display: 'inline-block',
+                  transform: retreatOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                }}>▼</span>
               </Link>
-              {/* Retreats dropdown */}
-              <ul style={{
-                display: 'none',
-                position: 'absolute',
-                top: 'calc(100% + 2px)',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                background: 'rgba(10,16,10,0.97)',
-                border: '1px solid rgba(15,118,110,0.2)',
-                borderTop: '2px solid rgba(15,118,110,0.6)',
-                borderRadius: '2px',
-                padding: '0.5rem 0',
-                margin: 0,
-                listStyle: 'none',
-                minWidth: '230px',
-                boxShadow: '0 20px 48px rgba(0,0,0,0.45)',
-                zIndex: 100,
-                animation: 'dropIn 0.2s ease both',
-              }}
-                className="retreats-dropdown"
-              >
-                <li>
-                  <Link href="/retreats/art" className="hn-drop-link">Art Retreats</Link>
-                </li>
-                <li>
-                  <Link href="/retreats/journeys/art-and-creative" className="hn-drop-link">Creative Healing Retreat</Link>
-                </li>
-                {/* ...add other retreat links here as needed... */}
-              </ul>
+
+              {retreatOpen && (
+                <ul style={{
+                  position: 'absolute',
+                  top: 'calc(100% + 2px)', left: '50%',
+                  transform: 'translateX(-50%)',
+                  background: 'rgba(10,16,10,0.97)',
+                  border: '1px solid rgba(15,118,110,0.2)',
+                  borderTop: '2px solid rgba(15,118,110,0.6)',
+                  borderRadius: '2px',
+                  padding: '0.5rem 0', margin: 0, listStyle: 'none',
+                  minWidth: '230px',
+                  boxShadow: '0 20px 48px rgba(0,0,0,0.45)',
+                  zIndex: 100,
+                  animation: 'dropIn 0.2s ease both',
+                }}>
+                  <li style={{ padding: '0.3rem 1.4rem 0.6rem', borderBottom: '1px solid rgba(15,118,110,0.12)', marginBottom: '0.3rem' }}>
+                    <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.58rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(15,118,110,0.4)' }}>Explore Retreats</span>
+                  </li>
+                  {[
+                    { href: '/retreats/journeys/rest-and-reset', label: 'Rest & Reset' },
+                    { href: '/retreats/journeys/burnout-recovery', label: 'Burnout Recovery' },
+                    { href: '/retreats/journeys/yoga-and-movement', label: 'Yoga & Movement' },
+                    { href: '/retreats/journeys/meditation-and-silence', label: 'Meditation & Silence' },
+                    { href: '/retreats/journeys/sound-healing', label: 'Sound Healing' },
+                    { href: '/retreats/journeys/weekend-retreat', label: 'Weekend Retreat' },
+                    { href: '/retreats/journeys/private-and-custom', label: 'Private & Custom' },
+                    { href: '/retreats/art', label: 'Art Retreats', gold: true },
+                  ].map((item, i) => (
+                    <li key={i}>
+                      <Link href={item.href} className={`hn-drop-link${item.gold ? ' gold' : ''}`}>{item.label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
             <li><Link href="/retreats/best-retreat-in-uttarakhand" prefetch={true} className={`hn-link${pathname === '/retreats/best-retreat-in-uttarakhand' ? ' active' : ''}`}>Best Retreats</Link></li>
             <li><Link href="/retreat-programs" className={`hn-link${pathname.startsWith('/retreat-programs') ? ' active' : ''}`}>Programs</Link></li>
@@ -315,6 +327,14 @@ export default function Header() {
           }}>
             <Link href="/" className={`hn-mobile-link${pathname === '/' ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Home</Link>
             <Link href="/retreats" className={`hn-mobile-link${pathname.startsWith('/retreats') ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Retreats</Link>
+            <Link href="/retreats/journeys/rest-and-reset" className="hn-mobile-sub" onClick={() => setMenuOpen(false)}>Rest & Reset</Link>
+            <Link href="/retreats/journeys/burnout-recovery" className="hn-mobile-sub" onClick={() => setMenuOpen(false)}>Burnout Recovery</Link>
+            <Link href="/retreats/journeys/yoga-and-movement" className="hn-mobile-sub" onClick={() => setMenuOpen(false)}>Yoga & Movement</Link>
+            <Link href="/retreats/journeys/meditation-and-silence" className="hn-mobile-sub" onClick={() => setMenuOpen(false)}>Meditation & Silence</Link>
+            <Link href="/retreats/journeys/sound-healing" className="hn-mobile-sub" onClick={() => setMenuOpen(false)}>Sound Healing</Link>
+            <Link href="/retreats/journeys/weekend-retreat" className="hn-mobile-sub" onClick={() => setMenuOpen(false)}>Weekend Retreat</Link>
+            <Link href="/retreats/journeys/private-and-custom" className="hn-mobile-sub" onClick={() => setMenuOpen(false)}>Private & Custom</Link>
+            <Link href="/retreats/art" className="hn-mobile-sub gold" onClick={() => setMenuOpen(false)}>Art Retreats</Link>
             <Link href="/retreats/best-retreat-in-uttarakhand" className={`hn-mobile-link${pathname === '/retreats/best-retreat-in-uttarakhand' ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Best Retreats</Link>
             <Link href="/retreat-programs" className={`hn-mobile-link${pathname.startsWith('/retreat-programs') ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Programs</Link>
             <Link href="/treks" className={`hn-mobile-link${pathname.startsWith('/treks') ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Treks</Link>
