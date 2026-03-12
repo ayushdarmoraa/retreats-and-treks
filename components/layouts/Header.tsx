@@ -220,6 +220,7 @@ export default function Header() {
                     <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.58rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(15,118,110,0.4)' }}>Explore Retreats</span>
                   </li>
                   {[
+                    { href: '/retreats', label: 'Explore All Retreats', gold: true },
                     { href: '/retreats/journeys/rest-and-reset', label: 'Rest & Reset' },
                     { href: '/retreats/journeys/burnout-recovery', label: 'Burnout Recovery' },
                     { href: '/retreats/journeys/yoga-and-movement', label: 'Yoga & Movement' },
