@@ -185,9 +185,45 @@ export default function Header() {
             alignItems: 'center',
           }}>
             <li><Link href="/" className={`hn-link${pathname === '/' ? ' active' : ''}`}>Home</Link></li>
-            <li><Link href="/retreats" className={`hn-link${pathname === '/retreats' ? ' active' : ''}`}>Retreats</Link></li>
-            <li><Link href="/retreats/art" className={`hn-link${pathname.startsWith('/retreats/art') ? ' active' : ''}`}>Art Retreats</Link></li>
-            <li><Link href="/creative-retreat" className={`hn-link${pathname === '/creative-retreat' ? ' active' : ''}`}>Creative Healing Retreat</Link></li>
+            <li style={{ position: 'relative' }}
+                onMouseEnter={e => { e.currentTarget.classList.add('open'); }}
+                onMouseLeave={e => { e.currentTarget.classList.remove('open'); }}
+            >
+              <Link href="/retreats" className={`hn-link${pathname.startsWith('/retreats') ? ' active' : ''}`}>Retreats
+                <span style={{ fontSize: '0.45rem', color: 'rgba(15,118,110,0.6)', marginLeft: 4 }}>
+                  ▼
+                </span>
+              </Link>
+              {/* Retreats dropdown */}
+              <ul style={{
+                display: 'none',
+                position: 'absolute',
+                top: 'calc(100% + 2px)',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                background: 'rgba(10,16,10,0.97)',
+                border: '1px solid rgba(15,118,110,0.2)',
+                borderTop: '2px solid rgba(15,118,110,0.6)',
+                borderRadius: '2px',
+                padding: '0.5rem 0',
+                margin: 0,
+                listStyle: 'none',
+                minWidth: '230px',
+                boxShadow: '0 20px 48px rgba(0,0,0,0.45)',
+                zIndex: 100,
+                animation: 'dropIn 0.2s ease both',
+              }}
+                className="retreats-dropdown"
+              >
+                <li>
+                  <Link href="/retreats/art" className="hn-drop-link">Art Retreats</Link>
+                </li>
+                <li>
+                  <Link href="/retreats/journeys/art-and-creative" className="hn-drop-link">Creative Healing Retreat</Link>
+                </li>
+                {/* ...add other retreat links here as needed... */}
+              </ul>
+            </li>
             <li><Link href="/retreats/best-retreat-in-uttarakhand" prefetch={true} className={`hn-link${pathname === '/retreats/best-retreat-in-uttarakhand' ? ' active' : ''}`}>Best Retreats</Link></li>
             <li><Link href="/retreat-programs" className={`hn-link${pathname.startsWith('/retreat-programs') ? ' active' : ''}`}>Programs</Link></li>
 
@@ -278,9 +314,7 @@ export default function Header() {
             maxHeight: '85vh', overflowY: 'auto',
           }}>
             <Link href="/" className={`hn-mobile-link${pathname === '/' ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Home</Link>
-            <Link href="/retreats" className={`hn-mobile-link${pathname === '/retreats' ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Retreats</Link>
-            <Link href="/retreats/art" className={`hn-mobile-link${pathname.startsWith('/retreats/art') ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Art Retreats</Link>
-            <Link href="/creative-retreat" className={`hn-mobile-link${pathname === '/creative-retreat' ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Creative Healing Retreat</Link>
+            <Link href="/retreats" className={`hn-mobile-link${pathname.startsWith('/retreats') ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Retreats</Link>
             <Link href="/retreats/best-retreat-in-uttarakhand" className={`hn-mobile-link${pathname === '/retreats/best-retreat-in-uttarakhand' ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Best Retreats</Link>
             <Link href="/retreat-programs" className={`hn-mobile-link${pathname.startsWith('/retreat-programs') ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Programs</Link>
             <Link href="/treks" className={`hn-mobile-link${pathname.startsWith('/treks') ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Treks</Link>
