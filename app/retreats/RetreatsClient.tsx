@@ -504,7 +504,7 @@ export default function RetreatsClient({
           })()}
 
           <div className="rs-grid">
-            {getAllRetreatServices().map((service) => {
+            {getAllRetreatServices().filter((service) => (service.slug as string) !== 'art-and-creative').map((service) => {
               const serviceImages: Record<string, { src: string; alt: string }> = {
                 'rest-reset':             { src: '/Images/services/restreset.webp',      alt: 'Rest & Reset — gentle restoration retreat' },
                 'burnout-recovery':       { src: '/Images/services/burnoutrec.webp',     alt: 'Burnout Recovery — healing from exhaustion' },
@@ -545,6 +545,25 @@ export default function RetreatsClient({
                 </Link>
               );
             })}
+
+            {/* Art Retreats hub card */}
+            <Link
+              href="/retreats/art"
+              onClick={() => { logIntentClick('art-retreats', undefined, '/retreats'); }}
+              className="rs-card"
+            >
+              <div className="rs-img-wrap">
+                <img src="/Images/services/artcreative.webp" alt="Art Retreats — creative retreats combining art, nature, and healing" className="rs-img" />
+                <div className="rs-img-overlay" />
+                <span className="rs-img-tag">Collection</span>
+                <span className="rs-img-title">Art Retreats</span>
+              </div>
+              <div className="rs-body">
+                <h3 className="rs-card-title">Art Retreats</h3>
+                <p className="rs-card-desc">Creative retreats combining art, nature, and healing practices.</p>
+                <div className="rs-cta">Explore art retreats →</div>
+              </div>
+            </Link>
           </div>
 
         </div>

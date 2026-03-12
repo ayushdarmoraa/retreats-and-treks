@@ -34,8 +34,8 @@ const intentOptions = [
     description: 'Connect body, breath, and place.',
   },
   {
-    title: 'Creative Healing Retreat',
-    description: 'Emotional healing through art & yoga.',
+    title: 'Art Retreats',
+    description: 'Creative retreats combining art, nature, and healing.',
   },
   {
     title: 'Burnout Recovery',

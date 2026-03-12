@@ -175,9 +175,27 @@ export default async function RetreatDetailPage({ params }: PageProps) {
         items={[
           { name: 'Home', href: '/' },
           { name: 'Retreats', href: '/retreats' },
+          ...(retreat === 'art-and-creative' ? [{ name: 'Art Retreats', href: '/retreats/art' }] : []),
           { name: retreatService.title },
         ]}
       />
+
+      {retreat === 'art-and-creative' && (
+        <div style={{ paddingTop: '1rem' }}>
+          <Link
+            href="/retreats/art"
+            style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.82rem',
+              fontWeight: 300,
+              color: 'var(--color-primary)',
+              textDecoration: 'none',
+            }}
+          >
+            ← Back to Art Retreats
+          </Link>
+        </div>
+      )}
 
       {aggregateRating && (
   <div style={{ marginBottom: '1rem', paddingTop: '2rem' }}>
