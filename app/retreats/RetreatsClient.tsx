@@ -45,7 +45,7 @@ export default function RetreatsClient({
   return (
     <>
       {/* SECTION 1: HERO — BRAND PROMISE */}
-      <section style={{
+      <section className="rc-hero-section" style={{
         position: 'relative',
         minHeight: '92vh',
         display: 'grid',
@@ -251,10 +251,42 @@ export default function RetreatsClient({
             100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
           }
 
-          @media (max-width: 900px) {
+         @media (max-width: 900px) {
             .rc-hero-left { padding: 5rem 2rem 4rem; }
             .rc-hero-left::after { display: none; }
             .rc-hero-right { height: 55vw; min-height: 320px; }
+            .rc-hero-scroll { display: none; }
+          }
+
+          @media (max-width: 700px) {
+            /* Stack to single column */
+            .rc-hero-section {
+              grid-template-columns: 1fr !important;
+              min-height: unset !important;
+            }
+            .rc-hero-left {
+              padding: 7rem 1.5rem 3rem;
+              order: 2;
+            }
+            .rc-hero-right {
+              order: 1;
+              height: 60vw;
+              min-height: 260px;
+              position: relative;
+            }
+            .rc-hero-heading {
+              font-size: clamp(1.75rem, 7vw, 2.4rem) !important;
+            }
+            .rc-hero-sub {
+              font-size: 0.88rem;
+              max-width: 100%;
+            }
+            .rc-hero-actions { flex-direction: column; align-items: flex-start; }
+            .rc-hero-btn { width: 100%; justify-content: center; }
+            .rc-hero-trust { gap: 1rem; }
+            .rc-hero-tag { bottom: 1rem; left: 1rem; }
+            .rc-hero-altitude { top: 1rem; right: 1rem; }
+            .rc-hero-altitude-num { font-size: 1.5rem; }
             .rc-hero-scroll { display: none; }
           }
         `}</style>
@@ -300,7 +332,7 @@ export default function RetreatsClient({
         {/* RIGHT — image panel */}
         <div className="rc-hero-right">
           <img
-            src="https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=1400&q=85"
+            src="/Images/location/rehero.webp"
             alt="Himalayas"
             style={{
               position: 'absolute', inset: 0,

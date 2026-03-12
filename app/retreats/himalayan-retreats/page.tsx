@@ -863,7 +863,7 @@ export default function HimalayanRetreatsPage() {
 
       {/* Hero image */}
       <img
-        src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1400&q=85&fit=crop"
+        src="/Images/whyhimalaya/top.webp"
         alt="Himalayan valley landscape"
         className="wh-hero-img"
       />
@@ -874,7 +874,7 @@ export default function HimalayanRetreatsPage() {
         <div className="wh-card">
           <div className="wh-card-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80&fit=crop"
+              src="/Images/whyhimalaya/environment.webp"
               alt="Himalayan mountains stillness"
               className="wh-card-img"
             />
@@ -907,7 +907,7 @@ export default function HimalayanRetreatsPage() {
         <div className="wh-card">
           <div className="wh-card-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=80&fit=crop"
+              src="/Images/whyhimalaya/psycological.webp"
               alt="Himalayan ridge perspective"
               className="wh-card-img"
             />
@@ -940,7 +940,7 @@ export default function HimalayanRetreatsPage() {
         <div className="wh-card">
           <div className="wh-card-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80&fit=crop"
+              src="/Images/whyhimalaya/cultural.webp"
               alt="Himalayan village culture"
               className="wh-card-img"
             />
@@ -971,7 +971,7 @@ export default function HimalayanRetreatsPage() {
         <div className="wh-card">
           <div className="wh-card-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80&fit=crop"
+              src="/Images/whyhimalaya/nature.webp"
               alt="Nature forest mountain"
               className="wh-card-img"
             />
@@ -1139,7 +1139,7 @@ export default function HimalayanRetreatsPage() {
         <div className="tr-card">
           <div className="tr-card-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=80&fit=crop"
+              src="/Images/himalayanretreats/yoga.webp"
               alt="Yoga retreat Himalayas"
               className="tr-card-img"
             />
@@ -1171,7 +1171,7 @@ export default function HimalayanRetreatsPage() {
         <div className="tr-card">
           <div className="tr-card-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=800&q=80&fit=crop"
+              src="/Images/himalayanretreats/silentretreat.webp"
               alt="Silent retreat mountains"
               className="tr-card-img"
             />
@@ -1203,7 +1203,7 @@ export default function HimalayanRetreatsPage() {
         <div className="tr-card">
           <div className="tr-card-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80&fit=crop"
+              src="/Images/himalayanretreats/weekend.webp"
               alt="Wellness reset retreat"
               className="tr-card-img"
             />
@@ -1234,7 +1234,7 @@ export default function HimalayanRetreatsPage() {
         <div className="tr-card">
           <div className="tr-card-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&fit=crop"
+              src="/Images/himalayanretreats/creative.webp"
               alt="Creative reflection retreat"
               className="tr-card-img"
             />
@@ -1264,7 +1264,7 @@ export default function HimalayanRetreatsPage() {
         <div className="tr-card">
           <div className="tr-card-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=80&fit=crop"
+              src="/Images/himalayanretreats/retreaktrek.webp"
               alt="Retreat trek hybrid Himalayas"
               className="tr-card-img"
             />
@@ -1425,16 +1425,18 @@ export default function HimalayanRetreatsPage() {
 
       {(() => {
         const retreatImages: Record<string, string> = {
-          'rest-reset':             'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80&fit=crop',
-          'burnout-recovery':       'https://images.unsplash.com/photo-1593811167562-9cef47bfc4d7?w=800&q=80&fit=crop',
-          'yoga-and-movement':      'https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=80&fit=crop',
-          'yoga-movement':          'https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=80&fit=crop',
-          'meditation-and-silence': 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop',
-          'meditation-silence':     'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop',
-          'art-creative':           'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&fit=crop',
-          'sound-healing':          'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop',
-          'weekend-retreat':        'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80&fit=crop',
-          'private-custom':         'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80&fit=crop',
+          'rest-reset':             '/Images/services/restreset.webp',
+          'burnout-recovery':       '/Images/services/burnoutrec.webp',
+          'yoga-and-movement':      '/Images/services/yoga.webp',
+          'yoga-movement':          '/Images/services/yogamov.webp',
+          'meditation-and-silence': '/Images/Journeys/meditation.webp',
+          'meditation-silence':     '/Images/Journeys/meditation.webp',
+          'art-creative':           '/Images/services/artcreative.webp',
+          'art-and-creative':       '/Images/services/artcreative.webp',
+          'sound-healing':          '/Images/services/soundhealing.webp',
+          'weekend-retreat':        '/Images/services/weekendretreat.webp',
+          'private-custom':         '/Images/services/privatecustom.webp',
+          'private-and-custom':     '/Images/services/privatecustom.webp',
         };
         return (
           <ul className="rj-grid">
@@ -1443,10 +1445,10 @@ export default function HimalayanRetreatsPage() {
                 <Link href={`/retreats/journeys/${retreat.slug}`} className="rj-card">
                   <div className="rj-card-img-wrap">
                     <img
-                      src={retreatImages[retreat.slug] ?? 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80&fit=crop'}
-                      alt={retreat.title}
-                      className="rj-card-img"
-                    />
+  src={retreatImages[retreat.slug] ?? '/Images/services/restreset.webp'}
+  alt={retreat.title}
+  className="rj-card-img"
+/>
                     <div className="rj-card-img-overlay" />
                     <span className="rj-card-img-tag">Retreat</span>
                   </div>
@@ -1642,7 +1644,7 @@ export default function HimalayanRetreatsPage() {
         <Link href="/retreats/chakrata" className="loc-sec-card">
           <div className="loc-sec-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80&fit=crop"
+              src="/Images/location/chakrata.webp"
               alt="Chakrata forested ridge"
               className="loc-sec-img"
             />
@@ -1675,7 +1677,7 @@ export default function HimalayanRetreatsPage() {
         <Link href="/retreats/sankri" className="loc-sec-card">
           <div className="loc-sec-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop"
+              src="/Images/location/sankri.webp"
               alt="Sankri valley mountain"
               className="loc-sec-img"
             />
@@ -1707,7 +1709,7 @@ export default function HimalayanRetreatsPage() {
         <Link href="/retreats/munsiyari" className="loc-sec-card">
           <div className="loc-sec-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80&fit=crop"
+              src="/Images/location/munsiyari.webp"
               alt="Munsiyari alpine frontier"
               className="loc-sec-img"
             />
@@ -1741,7 +1743,7 @@ export default function HimalayanRetreatsPage() {
         <Link href="/retreats/rishikesh" className="loc-sec-card">
           <div className="loc-sec-img-wrap">
             <img
-              src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?w=800&q=80&fit=crop"
+              src="/Images/location/rishikesh.webp"
               alt="Rishikesh Ganges spiritual"
               className="loc-sec-img"
             />
@@ -1816,13 +1818,7 @@ export default function HimalayanRetreatsPage() {
     }
     .wf-h2 span { color: var(--color-primary); }
 
-    /* Two col layout */
-    .wf-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
-      align-items: start;
-    }
+  
     @media (max-width: 700px) { .wf-layout { grid-template-columns: 1fr; } }
 
     .wf-p {
@@ -1927,15 +1923,7 @@ export default function HimalayanRetreatsPage() {
           </p>
         </div>
 
-        {/* Right — image */}
-        <div>
-          <img
-            src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=900&q=85&fit=crop"
-            alt="Person in Himalayan retreat setting"
-            className="wf-img"
-          />
-        </div>
-
+        
       </div>
     </div>
   </div>
@@ -1978,22 +1966,18 @@ export default function HimalayanRetreatsPage() {
       color: #111111; line-height: 1.15;
       margin: 0 0 1rem;
     }
-    .bt-h2 span { color: var(--color-primary); }
     .bt-intro {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.95rem; font-weight: 300;
       line-height: 1.9; color: #555555;
       margin: 0 0 2.5rem; max-width: 52rem;
     }
-
-    /* Season cards grid */
     .bt-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.25rem;
     }
     @media (max-width: 700px) { .bt-grid { grid-template-columns: 1fr; } }
-
     .bt-card {
       border: 1px solid #eef0ee;
       border-radius: 8px;
@@ -2017,26 +2001,6 @@ export default function HimalayanRetreatsPage() {
       transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
     }
     .bt-card:hover::before { transform: scaleX(1); }
-
-    .bt-card-img-wrap { position: relative; overflow: hidden; }
-    .bt-card-img {
-      width: 100%; height: 180px;
-      object-fit: cover; display: block;
-      transition: transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94);
-    }
-    .bt-card:hover .bt-card-img { transform: scale(1.06); }
-    .bt-card-img-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(2,10,2,0.55) 0%, transparent 60%);
-    }
-    .bt-card-season-tag {
-      position: absolute; bottom: 0.75rem; left: 1rem;
-      font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.85rem; font-weight: 200;
-      color: rgba(236,228,208,0.9);
-      letter-spacing: 0.05em;
-    }
-
     .bt-card-body { padding: 1.5rem 1.75rem 1.75rem; }
     .bt-card-label {
       font-family: var(--font-geist-sans), sans-serif;
@@ -2058,8 +2022,6 @@ export default function HimalayanRetreatsPage() {
       margin: 0 0 0.65rem;
     }
     .bt-card-p:last-child { margin: 0; }
-
-    /* Closing note */
     .bt-note {
       margin-top: 2rem;
       padding: 1.5rem 1.75rem;
@@ -2080,9 +2042,7 @@ export default function HimalayanRetreatsPage() {
         <span className="bt-eyebrow-text">Seasonality</span>
       </div>
 
-      <h2 className="bt-h2">
-        Best Time for a Himalayan Retreat
-      </h2>
+      <h2 className="bt-h2">Best Time for a Himalayan Retreat</h2>
 
       <p className="bt-intro">
         Seasonality influences both environmental conditions and the psychological tone of a
@@ -2092,17 +2052,7 @@ export default function HimalayanRetreatsPage() {
 
       <div className="bt-grid">
 
-        {/* Spring */}
         <div className="bt-card">
-          <div className="bt-card-img-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&fit=crop"
-              alt="Spring Himalayas blooming"
-              className="bt-card-img"
-            />
-            <div className="bt-card-img-overlay" />
-            <span className="bt-card-season-tag">Spring</span>
-          </div>
           <div className="bt-card-body">
             <p className="bt-card-label">March – May</p>
             <h3 className="bt-card-h3">Spring (March–May)</h3>
@@ -2118,17 +2068,7 @@ export default function HimalayanRetreatsPage() {
           </div>
         </div>
 
-        {/* Summer */}
         <div className="bt-card">
-          <div className="bt-card-img-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80&fit=crop"
-              alt="Summer Himalayan green"
-              className="bt-card-img"
-            />
-            <div className="bt-card-img-overlay" />
-            <span className="bt-card-season-tag">Summer</span>
-          </div>
           <div className="bt-card-body">
             <p className="bt-card-label">June – July</p>
             <h3 className="bt-card-h3">Summer (June–July)</h3>
@@ -2144,17 +2084,7 @@ export default function HimalayanRetreatsPage() {
           </div>
         </div>
 
-        {/* Autumn */}
         <div className="bt-card">
-          <div className="bt-card-img-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80&fit=crop"
-              alt="Autumn clear Himalayas"
-              className="bt-card-img"
-            />
-            <div className="bt-card-img-overlay" />
-            <span className="bt-card-season-tag">Autumn</span>
-          </div>
           <div className="bt-card-body">
             <p className="bt-card-label">September – November</p>
             <h3 className="bt-card-h3">Autumn (September–November)</h3>
@@ -2170,17 +2100,7 @@ export default function HimalayanRetreatsPage() {
           </div>
         </div>
 
-        {/* Winter */}
         <div className="bt-card">
-          <div className="bt-card-img-wrap">
-            <img
-              src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=800&q=80&fit=crop"
-              alt="Winter snow Himalayas"
-              className="bt-card-img"
-            />
-            <div className="bt-card-img-overlay" />
-            <span className="bt-card-season-tag">Winter</span>
-          </div>
           <div className="bt-card-body">
             <p className="bt-card-label">December – February</p>
             <h3 className="bt-card-h3">Winter (December–February)</h3>
@@ -2199,7 +2119,6 @@ export default function HimalayanRetreatsPage() {
 
       </div>
 
-      {/* Closing note */}
       <div className="bt-note">
         Choosing the right season depends less on &ldquo;ideal weather&rdquo; and more on personal
         intention. Those seeking outward engagement may prefer spring or autumn, while

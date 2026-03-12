@@ -171,7 +171,7 @@ export default function HighAltitudeTreksPage() {
 
       {/* Roopkund */}
       <div className="ha-card">
-        <img src="https://images.unsplash.com/photo-1533130061792-64b345e4a833?w=800&q=80" alt="Roopkund trek — glacial lake at 4800m in Garhwal Himalaya" loading="lazy" />
+        <img src="/Images/trek/challenging/roopkund_lake.webp" alt="Roopkund trek — glacial lake at 4800m in Garhwal Himalaya" loading="lazy" />
         <div className="ha-card-body">
           <h2>Roopkund — 4,800 m — The Mystery Lake Expedition</h2>
           <div className="ha-pills">
@@ -188,7 +188,7 @@ export default function HighAltitudeTreksPage() {
 
       {/* Pangarchulla */}
       <div className="ha-card">
-        <img src="https://images.unsplash.com/photo-1571401835393-8c5f35328320?w=800&q=80" alt="Pangarchulla peak — summit climb at 4590m from Joshimath" loading="lazy" />
+        <img src="/Images/trek/challenging/pangarchulla.webp" alt="Pangarchulla peak — summit climb at 4590m from Joshimath" loading="lazy" />
         <div className="ha-card-body">
           <h2>Pangarchulla — 4,590 m — The True Summit Climb</h2>
           <div className="ha-pills">
@@ -206,7 +206,7 @@ export default function HighAltitudeTreksPage() {
 
       {/* Brahmatal */}
       <div className="ha-card">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Brahmatal trek — frozen alpine lake at 3850m in Garhwal" loading="lazy" />
+        <img src="/Images/trek/challenging/milamglacier.webp" alt="Brahmatal trek — frozen alpine lake at 3850m in Garhwal" loading="lazy" />
         <div className="ha-card-body">
           <h2>Brahmatal — 3,850 m — Gateway to High Altitude</h2>
           <div className="ha-pills">

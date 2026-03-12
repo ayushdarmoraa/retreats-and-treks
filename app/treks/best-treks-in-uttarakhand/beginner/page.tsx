@@ -229,7 +229,7 @@ export default function BeginnerTreksPage() {
       </p>
 
       <div className="beg-trek-card" style={{ padding: 0, overflow: 'hidden' }}>
-        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80" alt="Tiger Fall trek — deodar forest trail in Chakrata" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+        <img src="/Images/trek/begineertrek/tigerfall.webp" alt="Tiger Fall trek — deodar forest trail in Chakrata" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
         <div style={{ padding: '1.5rem' }}>
           <h3>Tiger Fall Trek</h3>
           <div className="beg-pills">
@@ -247,7 +247,7 @@ export default function BeginnerTreksPage() {
       </div>
 
       <div className="beg-trek-card" style={{ padding: 0, overflow: 'hidden' }}>
-        <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=800&q=80" alt="Budher Caves trek — limestone caves near Chakrata" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+        <img src="/Images/trek/begineertrek/budher.webp" alt="Budher Caves trek — limestone caves near Chakrata" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
         <div style={{ padding: '1.5rem' }}>
           <h3>Budher Caves Trek</h3>
           <div className="beg-pills">
@@ -291,7 +291,7 @@ export default function BeginnerTreksPage() {
       </p>
 
       <div className="beg-trek-card" style={{ background: '#ffffff', padding: 0, overflow: 'hidden' }}>
-        <img src="https://images.unsplash.com/photo-1534637126672-b67a59f61580?w=800&q=80" alt="Brahmatal trek — frozen alpine lake and snow ridges in Garhwal" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+        <img src="/Images/trek/begineertrek/bramhatal.webp" alt="Brahmatal trek — frozen alpine lake and snow ridges in Garhwal" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
         <div style={{ padding: '1.5rem' }}>
           <h3>Brahmatal Trek</h3>
           <div className="beg-pills">
@@ -309,7 +309,7 @@ export default function BeginnerTreksPage() {
       </div>
 
       <div className="beg-trek-card" style={{ background: '#ffffff', padding: 0, overflow: 'hidden' }}>
-        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Kuari Pass trek — Curzon Trail ridge walk with Nanda Devi views" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+        <img src="/Images/trek/begineertrek/kuari.webp" alt="Kuari Pass trek — Curzon Trail ridge walk with Nanda Devi views" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
         <div style={{ padding: '1.5rem' }}>
           <h3>Kuari Pass Trek</h3>
           <div className="beg-pills">
@@ -329,7 +329,7 @@ export default function BeginnerTreksPage() {
       </div>
 
       <div className="beg-trek-card" style={{ background: '#ffffff', padding: 0, overflow: 'hidden' }}>
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Khaliya Top trek — Panchachuli panorama from Munsiyari" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+        <img src="/Images/trek/begineertrek/Khaliya.webp" alt="Khaliya Top trek — Panchachuli panorama from Munsiyari" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
         <div style={{ padding: '1.5rem' }}>
           <h3>Khaliya Top Trek</h3>
           <div className="beg-pills">

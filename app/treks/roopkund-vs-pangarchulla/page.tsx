@@ -269,13 +269,13 @@ export default function RoopkundVsPangarchullaPage() {
           </h2>
           <div className="rvp-split">
             <div className="rvp-split-card">
-              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=600&q=80&fit=crop" alt="Roopkund glacial lake high altitude expedition" loading="lazy" style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
+              <img src="/Images/trek/region/roopkund_lake.webp" alt="Roopkund glacial lake high altitude expedition" loading="lazy" style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
               <h3>Roopkund — The Mystery Lake Expedition</h3>
               <p>Roopkund is a journey trek. The destination — the glacial lake at 4,800 metres with its mysterious ancient skeletal remains — is the goal, but the route itself is rich in terrain transitions. You cross Bedni Bugyal (one of India&apos;s largest alpine meadows), ascend through exposed high-altitude moraine, and navigate terrain that changes character every day.</p>
               <p>The challenge is cumulative: day after day above 3,500 metres. Roopkund tests endurance, altitude tolerance, and the ability to maintain morale across a week-long expedition in remote terrain. The final approach to the lake is steep and exposed but not technical.</p>
             </div>
             <div className="rvp-split-card">
-              <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&q=80&fit=crop" alt="Pangarchulla summit climb steep snow alpine" loading="lazy" style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
+              <img src="/Images/trek/region/pangarchulla.webp" alt="Pangarchulla summit climb steep snow alpine" loading="lazy" style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
               <h3>Pangarchulla — The Summit Climb</h3>
               <p>Pangarchulla is a peak trek. The first three days follow the scenic but non-technical Kuari Pass approach through forests and meadows. Then it diverges. Day five is summit day: a 3 AM alpine start from Khullara camp, a 700-metre climb through steep snow and scree, and arrival on a narrow peak with 360° views of the Nanda Devi Sanctuary.</p>
               <p>The challenge is concentrated. You use crampons. You carry a headlamp. You push through physical limits. The reward — standing on a true summit — is a fundamentally different feeling from reaching a lake or a pass.</p>

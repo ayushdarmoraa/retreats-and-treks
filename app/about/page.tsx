@@ -115,7 +115,7 @@ export default function AboutPage() {
             </div>
             <h2 className="abt-h2">How We Design Retreat Programs</h2>
             <img
-              src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=80&fit=crop"
+              src="/Images/Journeys/yoga.webp"
               alt="Structured morning yoga session in a Himalayan retreat setting"
               loading="lazy"
               style={{ width: '100%', height: '260px', objectFit: 'cover', borderRadius: '8px', margin: '1.5rem 0', display: 'block' }}
@@ -151,10 +151,10 @@ export default function AboutPage() {
             </p>
             <div className="abt-loc-grid">
               {[
-                { name: 'Chakrata', img: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80&fit=crop', desc: 'Forest containment on a quiet cantonment ridge, 2,200m.' },
-                { name: 'Sankri', img: 'https://images.unsplash.com/photo-1586348943529-beaae6c28db9?w=800&q=80&fit=crop', desc: 'Remote valley immersion near Govind Wildlife Sanctuary.' },
-                { name: 'Munsiyari', img: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop', desc: 'Alpine silence facing the Panchachuli range, Kumaon.' },
-                { name: 'Rishikesh', img: 'https://images.unsplash.com/photo-1604251049519-c7f076f7dbb0?w=800&q=80&fit=crop', desc: 'Structured yoga infrastructure on the Ganges riverbank.' },
+                { name: 'Chakrata', img: '/Images/location/chakrata.webp', desc: 'Forest containment on a quiet cantonment ridge, 2,200m.' },
+                { name: 'Sankri', img: '/Images/location/sankri.webp', desc: 'Remote valley immersion near Govind Wildlife Sanctuary.' },
+                { name: 'Munsiyari', img: '/Images/location/munsiyari.webp', desc: 'Alpine silence facing the Panchachuli range, Kumaon.' },
+                { name: 'Rishikesh', img: '/Images/location/rishikesh.webp', desc: 'Structured yoga infrastructure on the Ganges riverbank.' },
               ].map((loc) => (
                 <div key={loc.name} className="abt-loc-card">
                   <img src={loc.img} alt={`${loc.name} — Himalayan retreat location`} loading="lazy" />

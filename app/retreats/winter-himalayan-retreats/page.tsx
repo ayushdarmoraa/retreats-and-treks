@@ -208,7 +208,7 @@ export default function WinterHimalayanRetreatsPage() {
 
       {/* Sankri */}
       <div className="win-loc-card">
-        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&q=80" alt="Sankri — snow-covered valley and pine forests in winter, Garhwal" loading="lazy" />
+        <img src="/Images/location/sankri.webp" alt="Sankri — snow-covered valley and pine forests in winter, Garhwal" loading="lazy" />
         <div className="win-loc-card-body">
           <h3><Link href="/retreats/sankri">Sankri — Snow and High-Altitude Stillness</Link></h3>
           <p>Sankri in winter is a snow-covered valley at the edge of the treeline. The village empties of trekkers. The Tons River slows. Pine forests hold snow on their branches, creating corridors of white silence. Temperatures drop below freezing at night, and mornings require real warmth — both external and internal. Retreats here operate in genuine mountain winter: wood fires, layered clothing, and the kind of quiet that only comes with snow on the ground. This is for people who want winter as an active element of the retreat, not a backdrop. For seasonal planning, see our guide on <Link href="/blog/best-time-for-retreat-in-sankri" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>the best time for a retreat in Sankri</Link>.</p>
@@ -217,7 +217,7 @@ export default function WinterHimalayanRetreatsPage() {
 
       {/* Chakrata */}
       <div className="win-loc-card">
-        <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&q=80" alt="Chakrata — deodar forest in winter calm near Dehradun" loading="lazy" />
+        <img src="/Images/location/chakrata.webp" alt="Chakrata — deodar forest in winter calm near Dehradun" loading="lazy" />
         <div className="win-loc-card-body">
           <h3><Link href="/retreats/chakrata">Chakrata — Quiet Forest Winter</Link></h3>
           <p>Chakrata sits lower than Sankri, along a forested ridge that sees winter as cold calm rather than deep snow. The deodar and oak forests thin in winter, opening longer views across valleys. Morning frost covers the ground. Days are clear and bright, nights cold but not extreme. Snow visits occasionally — a light dusting rather than a blanket. This is the right winter location for people who want seasonal stillness without the intensity of high-altitude cold. Accessibility from Delhi remains straightforward even in January, making it practical for three- to five-day formats.</p>
@@ -226,7 +226,7 @@ export default function WinterHimalayanRetreatsPage() {
 
       {/* Munsiyari */}
       <div className="win-loc-card">
-        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Munsiyari — Panchachuli range under winter snow, Kumaon Himalaya" loading="lazy" />
+        <img src="/Images/location/munsiyari.webp" alt="Munsiyari — Panchachuli range under winter snow, Kumaon Himalaya" loading="lazy" />
         <div className="win-loc-card-body">
           <h3><Link href="/retreats/munsiyari">Munsiyari — Alpine Silence (Weather Dependent)</Link></h3>
           <p>Munsiyari in winter faces the Panchachuli range under full snow. The alpine meadows above the town become inaccessible. The village itself becomes very quiet — few visitors, reduced services, and a pace set entirely by weather. Winter retreats in Munsiyari are not guaranteed — road access can close after heavy snowfall, and programs operate on a weather-dependent basis. But when conditions allow, this is perhaps the most raw and unmediated winter retreat setting we offer. For participants who are comfortable with uncertainty and genuine remoteness.</p>
@@ -235,7 +235,7 @@ export default function WinterHimalayanRetreatsPage() {
 
       {/* Rishikesh */}
       <div className="win-loc-card">
-        <img src="https://images.unsplash.com/photo-1604251049519-c7f076f7dbb0?w=800&q=80" alt="Rishikesh — Ganges riverside in mild winter, ashram and yoga programs" loading="lazy" />
+        <img src="/Images/location/rishikesh.webp" alt="Rishikesh — Ganges riverside in mild winter, ashram and yoga programs" loading="lazy" />
         <div className="win-loc-card-body">
           <h3><Link href="/retreats/rishikesh">Rishikesh — Mild Winter on the Ganges</Link></h3>
           <p>Rishikesh does not experience mountain winter. Days are cool and comfortable (15–20°C), nights are brisk but not cold. The Ganges runs clearer in winter. Pilgrimage traffic peaks around festivals, creating collective spiritual energy. For participants who want a winter retreat without cold-weather intensity — or who prefer spiritual tradition and community over isolation — Rishikesh offers structured practice in a mild, accessible climate. Winter here means deeper ashram rhythms and smaller yoga cohorts, not snow.</p>

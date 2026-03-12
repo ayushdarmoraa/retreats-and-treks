@@ -166,7 +166,7 @@ export default function SnowTreksPage() {
 
       {/* Brahmatal */}
       <div className="snow-card">
-        <img className="snow-card-img" src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80" alt="Brahmatal snow trek — frozen alpine lake in Garhwal Himalaya" loading="lazy" />
+        <img className="snow-card-img" src="/Images/trek/snow/bramhatal.webp" alt="Brahmatal snow trek — frozen alpine lake in Garhwal Himalaya" loading="lazy" />
         <div className="snow-card-body">
           <h2>Brahmatal — The Ideal First Snow Trek</h2>
           <div className="snow-pills">
@@ -183,7 +183,7 @@ export default function SnowTreksPage() {
 
       {/* Kedarkantha */}
       <div className="snow-card">
-        <img className="snow-card-img" src="https://images.unsplash.com/photo-1571401835393-8c5f35328320?w=800&q=80" alt="Kedarkantha summit — winter snow trek from Sankri" loading="lazy" />
+        <img className="snow-card-img" src="/Images/trek/snow/kedarkantha.webp" alt="Kedarkantha summit — winter snow trek from Sankri" loading="lazy" />
         <div className="snow-card-body">
           <h2>Kedarkantha — The Quintessential Winter Summit</h2>
           <div className="snow-pills">
@@ -201,7 +201,7 @@ export default function SnowTreksPage() {
 
       {/* Kuari Pass */}
       <div className="snow-card">
-        <img className="snow-card-img" src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Kuari Pass March — snow and spring on the Curzon Trail" loading="lazy" />
+        <img className="snow-card-img" src="/Images/trek/snow/kuari.webp" alt="Kuari Pass March — snow and spring on the Curzon Trail" loading="lazy" />
         <div className="snow-card-body">
           <h2>Kuari Pass (March) — Snow Meets Spring</h2>
           <div className="snow-pills">

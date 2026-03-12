@@ -579,16 +579,19 @@ export default async function TrekHubPage({ params }: PageProps) {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem', marginBottom: '1.5rem' }}>
         {treks.map((trek) => {
-          const TREK_IMAGES: Record<string, string> = {
-            'brahmatal-trek': 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80&fit=crop',
-            'roopkund-trek': 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80&fit=crop',
-            'kuari-pass-trek': 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=80&fit=crop',
-            'pangarchulla-trek': 'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=80&fit=crop',
-            'kedarkantha-trek': 'https://images.unsplash.com/photo-1548013146-72479768bada?w=800&q=80&fit=crop',
-            'har-ki-dun-trek': 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop',
-            'weekend-trek': 'https://images.unsplash.com/photo-1585409677983-0f6c41ca9c3b?w=800&q=80&fit=crop',
-            'tiger-fall-trek': 'https://images.unsplash.com/photo-1511884642898-4c92249e20b6?w=800&q=80&fit=crop',
-            'budher-caves-trek': 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80&fit=crop',
+          const TREK_IMAGES: Record<string, { src: string; alt: string }> = {
+            'brahmatal-trek':   { src: '/Images/trek/region/bramhatal.webp',    alt: 'Brahmatal Trek — frozen lake trail in Uttarakhand' },
+            'roopkund-trek':    { src: '/Images/trek/region/roopkund_lake.webp', alt: 'Roopkund Trek — mystery lake at high altitude' },
+            'kuari-pass-trek':  { src: '/Images/trek/region/kuari.webp',         alt: 'Kuari Pass Trek — Garhwal Himalaya panoramic ridge' },
+            'pangarchulla-trek':{ src: '/Images/trek/region/pangarchulla.webp',  alt: 'Pangarchulla Trek — summit climb in Garhwal' },
+            'kedarkantha-trek': { src: '/Images/trek/region/kedarkantha.webp',   alt: 'Kedarkantha Trek — winter snow trek in Sankri' },
+            'har-ki-dun-trek':  { src: '/Images/trek/region/harkidun.webp',      alt: 'Har Ki Dun Trek — valley of gods in Govind Wildlife Sanctuary' },
+            'weekend-trek':     { src: '/Images/trek/region/chakraweekend.webp', alt: 'Weekend Trek — short Himalayan escape from Chakrata' },
+            'tiger-fall-trek':  { src: '/Images/trek/region/tigerfall.webp',     alt: 'Tiger Fall Trek — Chakrata waterfall trail' },
+            'budher-caves-trek':{ src: '/Images/trek/region/budher.webp',        alt: 'Budher Caves Trek — limestone caves in Chakrata forest' },
+            'guided-treks':      { src: '/Images/trek/region/chakraguided.webp',  alt: 'Chakrata Guided Treks — expert-led forest and ridge trails' },
+            'khaliya-top-trek':  { src: '/Images/trek/region/Khaliya.webp',       alt: 'Khaliya Top Trek — Panchachuli panorama from Munsiyari' },
+            'milam-glacier-trek':{ src: '/Images/trek/region/milamglacier.webp',  alt: 'Milam Glacier Trek — historic Johar Valley expedition' },
           };
           const imgSrc = TREK_IMAGES[trek.slug] ?? 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80&fit=crop';
           const isModerate = trek.difficulty?.toLowerCase() === 'moderate';
@@ -609,8 +612,9 @@ export default async function TrekHubPage({ params }: PageProps) {
                 {/* Image */}
                 <div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden' }}>
                   <img
-                    src={imgSrc}
-                    alt={trek.title}
+                    src={TREK_IMAGES[trek.slug]?.src ?? '/Images/trek/region/bramhatal.webp'}
+alt={TREK_IMAGES[trek.slug]?.alt ?? trek.title}
+                    
                     style={{
                       width: '100%', height: '100%',
                       objectFit: 'cover', objectPosition: 'center',

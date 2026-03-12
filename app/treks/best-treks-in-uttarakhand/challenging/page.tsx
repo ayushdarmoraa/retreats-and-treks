@@ -171,7 +171,7 @@ export default function ChallengingTreksPage() {
 
       {/* Roopkund */}
       <div className="chal-card">
-        <img src="https://images.unsplash.com/photo-1533130061792-64b345e4a833?w=800&q=80" alt="Roopkund trek — glacial lake at 4800m in Garhwal Himalaya" loading="lazy" />
+        <img src="/Images/trek/challenging/roopkund_lake.webp" alt="Roopkund trek — glacial lake at 4800m in Garhwal Himalaya" loading="lazy" />
         <div className="chal-card-body">
           <h2>Roopkund — The Mystery Lake Expedition</h2>
           <div className="chal-pills">
@@ -188,7 +188,7 @@ export default function ChallengingTreksPage() {
 
       {/* Pangarchulla */}
       <div className="chal-card">
-        <img src="https://images.unsplash.com/photo-1571401835393-8c5f35328320?w=800&q=80" alt="Pangarchulla peak — summit climb at 4590m from Joshimath" loading="lazy" />
+        <img src="/Images/trek/challenging/pangarchulla.webp" alt="Pangarchulla peak — summit climb at 4590m from Joshimath" loading="lazy" />
         <div className="chal-card-body">
           <h2>Pangarchulla Peak — The Summit Climb</h2>
           <div className="chal-pills">
@@ -206,7 +206,7 @@ export default function ChallengingTreksPage() {
 
       {/* Milam Glacier */}
       <div className="chal-card">
-        <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80" alt="Milam Glacier trek — remote Johar Valley expedition from Munsiyari" loading="lazy" />
+        <img src="/Images/trek/challenging/milamglacier.webp" alt="Milam Glacier trek — remote Johar Valley expedition from Munsiyari" loading="lazy" />
         <div className="chal-card-body">
           <h2>Milam Glacier — The Remote Expedition</h2>
           <div className="chal-pills">
