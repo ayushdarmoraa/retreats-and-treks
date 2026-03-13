@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -9,6 +9,7 @@ import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
+import AutoArticleSchema from '@/components/AutoArticleSchema';
 
 const PATH = '/retreats/meditation-retreat-rishikesh';
 
@@ -30,6 +31,7 @@ export function generateMetadata(): Metadata {
         'Residential meditation retreat programs in Rishikesh. Silent sittings, breath awareness and guided practice beside the Ganges in the Himalayan foothills.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Meditation Retreats in Rishikesh — Guided Silence on the Ganges'),
     },
   };
 }
@@ -82,6 +84,11 @@ export default function MeditationRetreatRishikeshPage() {
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+      <AutoArticleSchema
+        title="Meditation Retreats in Rishikesh"
+        description="Find meditation retreats in Rishikesh with guided silence, breath awareness and walking meditation on the Ganges."
+        path={PATH}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -250,7 +257,7 @@ export default function MeditationRetreatRishikeshPage() {
               </Link>{' '}
               are designed to break. Rishikesh is five to six hours from Delhi — accessible
               enough for a{' '}
-              <Link href="/retreats/retreat-near-delhi" style={{ color: 'var(--color-primary)' }}>
+              <Link href="/retreats/retreats-near-delhi" style={{ color: 'var(--color-primary)' }}>
                 retreats near Delhi
               </Link>{' '}
               without extended leave.

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { redirect, notFound } from 'next/navigation';
 import { getAllRetreatServices, getRetreatServiceBySlug } from '@/content/retreats/services';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateCollectionPageSchema, generateBreadcrumbSchema } from '@/components/seo/Schema';
 import { RETREAT_DURATION_GROUP } from '@/config/retreatDurations';
 import { RETREAT_SCORES, SCORE_LABELS } from '@/config/retreatScores';
@@ -69,6 +69,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: `Compare ${serviceA.title} and ${serviceB.title} to find the right Himalayan retreat for your needs.`,
       url: buildCanonicalUrl(canonicalPath),
       type: 'website',
+      images: buildOgImages(`${serviceA.title} vs ${serviceB.title} — Retreat Comparison`),
     },
   };
 }

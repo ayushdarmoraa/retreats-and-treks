@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -28,6 +28,7 @@ export function generateMetadata(): Metadata {
         'The real reasons behind the decision to leave ordinary life for silence, stillness, and structured introspection.',
       url: buildCanonicalUrl(PATH),
       type: 'article',
+      images: buildOgImages('Why People Go to Meditation Retreats'),
     },
   };
 }

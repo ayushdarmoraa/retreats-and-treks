@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -27,6 +27,7 @@ export function generateMetadata(): Metadata {
       description: '3 days vs 5 vs 7 vs 10 — which retreat duration is right for you.',
       url: buildCanonicalUrl(PATH),
       type: 'article',
+      images: buildOgImages('How Long Should a Meditation Retreat Be?'),
     },
   };
 }

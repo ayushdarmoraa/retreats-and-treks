@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -10,6 +10,7 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
+import AutoArticleSchema from '@/components/AutoArticleSchema';
 
 const PATH = '/retreats/winter-himalayan-retreats';
 
@@ -31,6 +32,7 @@ export function generateMetadata(): Metadata {
         'Snow silence, crisp air, fewer tourists, slower rhythm. Winter retreat programs across four Himalayan locations.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Winter Himalayan Retreats in India — December to February'),
     },
   };
 }
@@ -84,6 +86,11 @@ export default function WinterHimalayanRetreatsPage() {
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+      <AutoArticleSchema
+        title="Winter Himalayan Retreats in India"
+        description="Winter retreat experiences across the Indian Himalayas. Snow silence in Sankri, forest calm in Chakrata, alpine stillness in Munsiyari, and mild spiritual immersion in Rishikesh."
+        path={PATH}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}

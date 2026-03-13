@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -27,6 +27,7 @@ export function generateMetadata(): Metadata {
       description: 'Routes, transport, acclimatisation, and travel logistics for Zanskar.',
       url: buildCanonicalUrl(PATH),
       type: 'article',
+      images: buildOgImages('How to Reach Zanskar for a Meditation Retreat'),
     },
   };
 }

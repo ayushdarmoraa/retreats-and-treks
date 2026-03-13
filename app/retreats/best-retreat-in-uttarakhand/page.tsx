@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -10,6 +10,7 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
+import AutoArticleSchema from '@/components/AutoArticleSchema';
 
 const PATH = '/retreats/best-retreat-in-uttarakhand';
 
@@ -34,6 +35,7 @@ export function generateMetadata(): Metadata {
         'Looking for the best retreat in Uttarakhand? Compare yoga retreats in Rishikesh, luxury escapes in Munsiyari, weekend resets near Delhi and seasonal Himalayan wellness programs.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('10 Best Retreats in Uttarakhand (2026) — Yoga, Luxury & Weekend Picks'),
     },
   };
 }
@@ -119,7 +121,7 @@ export default function BestRetreatInUttarakhandPage() {
         '@type': 'ListItem',
         position: 5,
         name: 'Retreats Near Delhi',
-        url: buildCanonicalUrl('/retreats/retreat-near-delhi'),
+        url: buildCanonicalUrl('/retreats/retreats-near-delhi'),
       },
     ],
   };
@@ -147,6 +149,11 @@ export default function BestRetreatInUttarakhandPage() {
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+      <AutoArticleSchema
+        title="10 Best Retreats in Uttarakhand (2026 Guide)"
+        description="Looking for the best retreat in Uttarakhand? Compare yoga retreats in Rishikesh, luxury escapes in Munsiyari, weekend resets near Delhi and seasonal Himalayan wellness programs."
+        path={PATH}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify([
@@ -785,7 +792,7 @@ export default function BestRetreatInUttarakhandPage() {
       </Link>{' '}
       guide covers two-day and three-day formats across all locations. For options
       beyond Chakrata, including Rishikesh and Mussoorie, see the full{' '}
-      <Link href="/retreats/retreat-near-delhi" style={{ color: 'var(--color-primary)' }}>
+      <Link href="/retreats/retreats-near-delhi" style={{ color: 'var(--color-primary)' }}>
         retreat near Delhi
       </Link>{' '}
       comparison.

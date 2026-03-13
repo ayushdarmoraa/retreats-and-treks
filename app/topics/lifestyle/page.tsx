@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { ALL_BLOG_POSTS } from '@/content/blogs';
 import { generateBreadcrumbSchema } from '@/components/seo/Schema';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -21,6 +21,7 @@ export const metadata: Metadata = {
       'Perspectives on slow living, mountain lifestyle, retreat psychology, travel mindset, and trek culture.',
     url: buildCanonicalUrl(CANONICAL),
     type: 'website',
+    images: buildOgImages('Lifestyle & Himalayan Living — Retreats And Treks'),
   },
 };
 

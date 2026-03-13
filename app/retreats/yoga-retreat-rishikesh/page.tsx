@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -9,6 +9,7 @@ import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
+import AutoArticleSchema from '@/components/AutoArticleSchema';
 
 const PATH = '/retreats/yoga-retreat-rishikesh';
 
@@ -30,6 +31,7 @@ export function generateMetadata(): Metadata {
         'Residential yoga retreat programs in Rishikesh. Morning Ganga-side practice, pranayama, meditation and structured multi-day immersion in the Himalayan foothills.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Yoga Retreats in Rishikesh — Structured Practice on the Ganges'),
     },
   };
 }
@@ -82,6 +84,11 @@ export default function YogaRetreatRishikeshPage() {
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+      <AutoArticleSchema
+        title="Yoga Retreats in Rishikesh"
+        description="Find yoga retreats in Rishikesh with structured asana, pranayama and meditation on the Ganges. Multi-day residential programs in India's yoga capital."
+        path={PATH}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -251,7 +258,7 @@ export default function YogaRetreatRishikeshPage() {
               breathwork resets the autonomic nervous system. The environment completes the
               intervention — Rishikesh is five to six hours from Delhi, making it the most
               accessible serious reset available to NCR professionals. See all{' '}
-              <Link href="/retreats/retreat-near-delhi" style={{ color: 'var(--color-primary)' }}>
+              <Link href="/retreats/retreats-near-delhi" style={{ color: 'var(--color-primary)' }}>
                 retreats near Delhi
               </Link>{' '}
               for accessible options.

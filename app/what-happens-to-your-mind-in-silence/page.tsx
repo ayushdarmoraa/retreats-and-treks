@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -28,6 +28,7 @@ export function generateMetadata(): Metadata {
         'The psychology and neuroscience of what silence does to your brain — from day one restlessness to the deep shifts of day five and beyond.',
       url: buildCanonicalUrl(PATH),
       type: 'article',
+      images: buildOgImages('What Happens to Your Mind in Silence'),
     },
   };
 }

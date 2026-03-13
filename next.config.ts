@@ -24,6 +24,8 @@ const nextConfig: NextConfig = {
         destination: '/retreats/:location',
         permanent: true,
       },
+      // Consolidate singular → plural (prevent keyword cannibalization)
+      { source: '/retreats/retreat-near-delhi', destination: '/retreats/retreats-near-delhi', permanent: true },
     ];
   },
   reactStrictMode: true,

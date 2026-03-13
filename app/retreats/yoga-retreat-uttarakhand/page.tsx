@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -9,6 +9,7 @@ import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
+import AutoArticleSchema from '@/components/AutoArticleSchema';
 
 const PATH = '/retreats/yoga-retreat-uttarakhand';
 
@@ -30,6 +31,7 @@ export function generateMetadata(): Metadata {
         'Immersive yoga retreat programs in Uttarakhand. Rishikesh, Chakrata and Sankri — asana, breathwork and meditation in genuine Himalayan environments.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Yoga Retreats in Uttarakhand — Mountain Practice in the Himalayas'),
     },
   };
 }
@@ -82,6 +84,11 @@ export default function YogaRetreatUttarakhandPage() {
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+      <AutoArticleSchema
+        title="Yoga Retreats in Uttarakhand"
+        description="Find yoga retreats in Uttarakhand across Rishikesh, Chakrata and Sankri. Structured asana, pranayama and meditation programs in Himalayan mountain settings."
+        path={PATH}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}

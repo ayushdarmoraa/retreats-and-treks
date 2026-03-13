@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { getDurationPage } from '@/config/durationPages';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import DurationHubPage from '@/components/DurationHubPage';
 
 const PAGE = getDurationPage('10-day-silent-retreat')!;
@@ -17,6 +17,7 @@ export function generateMetadata(): Metadata {
       description: PAGE.metaDescription,
       url: buildCanonicalUrl(`/${PAGE.slug}`),
       type: 'website',
+      images: buildOgImages(PAGE.title),
     },
   };
 }

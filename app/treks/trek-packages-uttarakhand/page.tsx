@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -31,6 +31,7 @@ export function generateMetadata(): Metadata {
         'All-inclusive trekking packages across Uttarakhand. Certified guides, meals, permits and accommodation included. Individual and group packages from Sankri and Chakrata.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Himalayan Trek Packages in Uttarakhand'),
     },
   };
 }

@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllLocations } from '@/lib/locations';
 import { getLocationPremiumContent } from '@/content/locations';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateItemListSchema } from '@/components/seo/Schema';
 import Breadcrumb from '@/components/Breadcrumb';
 import type { LocationId } from '@/config/locations';
@@ -19,7 +19,8 @@ export function generateMetadata(): Metadata {
     title,
     description,
     alternates: { canonical },
-    openGraph: { title, description, url: canonical, type: 'website' },
+    openGraph: { title, description, url: canonical, type: 'website',       images: buildOgImages(title),
+},
   };
 }
 

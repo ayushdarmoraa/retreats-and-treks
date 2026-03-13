@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -25,6 +25,7 @@ export function generateMetadata(): Metadata {
       description: 'Why holidays don\'t fix burnout. What a retreat does that a vacation cannot.',
       url: buildCanonicalUrl(PATH),
       type: 'article',
+      images: buildOgImages('Retreat vs Vacation — What Is the Difference?'),
     },
   };
 }

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -27,6 +27,7 @@ export function generateMetadata(): Metadata {
       description: 'Who should (and shouldn\'t) attend a meditation retreat. An honest guide.',
       url: buildCanonicalUrl(PATH),
       type: 'article',
+      images: buildOgImages('Is a Meditation Retreat Worth It? An Honest Assessment'),
     },
   };
 }

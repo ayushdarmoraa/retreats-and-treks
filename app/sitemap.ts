@@ -18,18 +18,25 @@ function canonicalPair(a: string, b: string): [string, string] {
 }
 
 /**
+ * Change Frequency Hierarchy
+ * ───────────────────────────
+ * weekly  — hub pages, journey pages, calendar, program events
+ * monthly — guide pages, location hubs, duration/itinerary pages
+ * yearly  — editorial, stories, comparisons, blog posts
+ */
+
+/**
  * Crawl Budget Priority Hierarchy
  * ─────────────────────────────────
- * 1.0  Home
- * 1.0  Pillar (/retreats/himalayan-retreats)  ← revenue authority node
- * 0.9  Global hubs (/retreats, /treks)
+ * 1.0  Home, Retreat hub (/retreats), Pillar (/retreats/himalayan-retreats)
+ * 0.95 Experience pillars, Retreat journey pages, Program events
+ * 0.9  Guide pages (retreat-cost-india, weekend-retreat-near-delhi, etc.)
  * 0.9  Location hubs (/retreats/[location])
- * 0.85 Retreat journey pages
- * 0.8  Trek location hubs
- * 0.75 Trek detail pages
+ * 0.85 E×L intersection, Duration, Itinerary pages
+ * 0.8  Trek location hubs, Seasonal, Transformation
+ * 0.75 Trek detail pages, Micro-topic clusters
  * 0.7  Topic archive pages
- * 0.6  /blog hub, /about
- * 0.6  Blog posts
+ * 0.6  /blog hub, /about, Blog posts
  */
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];
@@ -100,7 +107,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: buildCanonicalUrl(`/${slug}`),
       lastModified: now,
       priority: 0.75,
-      changeFrequency: 'monthly',
+      changeFrequency: 'yearly',
     });
   }
 
@@ -116,7 +123,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: buildCanonicalUrl(`/${slug}`),
       lastModified: now,
       priority: 0.75,
-      changeFrequency: 'monthly',
+      changeFrequency: 'yearly',
     });
   }
 
@@ -135,7 +142,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: buildCanonicalUrl(`/${slug}`),
       lastModified: now,
       priority: 0.75,
-      changeFrequency: 'monthly',
+      changeFrequency: 'yearly',
     });
   }
 
@@ -149,7 +156,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: buildCanonicalUrl(`/${slug}`),
       lastModified: now,
       priority: 0.75,
-      changeFrequency: 'monthly',
+      changeFrequency: 'yearly',
     });
   }
 
@@ -258,7 +265,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: buildCanonicalUrl(`/facilitators/${f.slug}`),
       lastModified: now,
       priority: 0.75,
-      changeFrequency: 'monthly',
+      changeFrequency: 'yearly',
     });
   }
 
@@ -270,11 +277,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'weekly',
   });
 
-  // ── 2a. Retreat apex aggregator ───────────────────────────────────────
+  // ── 2a. Retreat guide pages (high authority) ──────────────────────────
   entries.push({
     url: buildCanonicalUrl('/retreats/best-retreat-in-uttarakhand'),
     lastModified: now,
-    priority: 0.95,
+    priority: 0.9,
     changeFrequency: 'monthly',
   });
 
@@ -298,6 +305,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
       changeFrequency: 'monthly',
     },
+    {
+      url: buildCanonicalUrl('/retreats/weekend-retreat-near-delhi'),
+      lastModified: now,
+      priority: 0.9,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/retreats/retreats-near-delhi'),
+      lastModified: now,
+      priority: 0.9,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/retreats/retreat-cost-india'),
+      lastModified: now,
+      priority: 0.9,
+      changeFrequency: 'monthly',
+    },
   );
 
   // ── 3. Global category hubs ───────────────────────────────────────────────
@@ -311,7 +336,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: buildCanonicalUrl('/retreats'),
       lastModified: now,
-      priority: 0.9,
+      priority: 1.0,
       changeFrequency: 'weekly',
     },
     {
@@ -473,8 +498,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     entries.push({
       url: buildCanonicalUrl(`/retreats/journeys/${service.slug}`),
       lastModified: now,
-      priority: 0.85,
-      changeFrequency: 'monthly',
+      priority: 0.95,
+      changeFrequency: 'weekly',
     });
   }
 
@@ -506,7 +531,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: buildCanonicalUrl(`/treks/${urlSlug}/${mc.month.toLowerCase()}`),
         lastModified: trek.updatedAt ? new Date(trek.updatedAt) : now,
         priority: 0.65,
-        changeFrequency: 'monthly',
+        changeFrequency: 'yearly',
       });
     }
   }
@@ -528,7 +553,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: buildCanonicalUrl(`/topics/${topic}`),
         lastModified: now,
         priority: 0.7,
-        changeFrequency: 'weekly',
+        changeFrequency: 'yearly',
       });
     }
   }
@@ -538,7 +563,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: buildCanonicalUrl('/topics/lifestyle'),
     lastModified: now,
     priority: 0.7,
-    changeFrequency: 'weekly',
+    changeFrequency: 'yearly',
   });
 
   // ── 8. Static authority pages ─────────────────────────────────────────────
@@ -547,7 +572,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: buildCanonicalUrl('/about'),
       lastModified: now,
       priority: 0.6,
-      changeFrequency: 'monthly',
+      changeFrequency: 'yearly',
     },
     {
       url: buildCanonicalUrl('/blog'),
@@ -559,7 +584,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: buildCanonicalUrl('/site-map'),
       lastModified: now,
       priority: 0.5,
-      changeFrequency: 'monthly',
+      changeFrequency: 'yearly',
     },
   );
 
@@ -572,7 +597,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         url: buildCanonicalUrl(`/compare/${a}${COMPARE_SEPARATOR}${b}`),
         lastModified: now,
         priority: 0.65,
-        changeFrequency: 'monthly' as const,
+        changeFrequency: 'yearly' as const,
       });
     }
   }
@@ -584,7 +609,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: buildCanonicalUrl(`/blog/${post.slug}`),
       lastModified: new Date(post.lastUpdated ?? post.publishedAt),
       priority: 0.6,
-      changeFrequency: 'monthly',
+      changeFrequency: 'yearly',
     });
   }
 

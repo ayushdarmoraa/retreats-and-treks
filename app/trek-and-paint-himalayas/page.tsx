@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -25,6 +25,7 @@ export function generateMetadata(): Metadata {
       description: 'Walk through mountain landscapes by morning, create art from what you saw by afternoon.',
       url: buildCanonicalUrl(PATH),
       type: 'article',
+      images: buildOgImages('Trek and Paint in the Himalayas'),
     },
   };
 }

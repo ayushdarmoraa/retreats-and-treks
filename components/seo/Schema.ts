@@ -2,6 +2,7 @@ import { RetreatContent } from '@/types/content';
 import { TrekContent } from '@/types/content';
 import { buildCanonicalUrl } from './Metadata';
 import type { RetreatReview } from '@/content/reviews';
+import { schemaIds } from '@/lib/schemaIds';
 
 const BRAND_NAME = 'Retreats And Treks';
 
@@ -24,10 +25,7 @@ export function generateRetreatSchema(retreat: RetreatContent) {
       '@type': 'TouristAttraction',
       name: item,
     })),
-    provider: {
-      '@type': 'Organization',
-      name: BRAND_NAME,
-    },
+    provider: { '@id': schemaIds.organization },
   };
 }
 
@@ -41,10 +39,7 @@ export function generateTrekSchema(trek: TrekContent) {
       '@type': 'TouristAttraction',
       name: item,
     })),
-    provider: {
-      '@type': 'Organization',
-      name: BRAND_NAME,
-    },
+    provider: { '@id': schemaIds.organization },
   };
 }
 
@@ -81,10 +76,12 @@ export function generateBlogPostingSchema({
   return {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
+    '@id': schemaIds.blogPosting(`/${url.split('/').slice(3).join('/')}`),
     headline: title,
     description,
     datePublished: publishedAt,
     dateModified: lastUpdated ?? publishedAt,
+    publisher: { '@id': schemaIds.organization },
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': url,
@@ -96,8 +93,10 @@ export function generateWebsiteSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': schemaIds.website,
     name: `${BRAND_NAME} — Himalayan Retreats & Treks`,
     url: buildCanonicalUrl('/'),
+    publisher: { '@id': schemaIds.organization },
     description:
       'Curated weekend retreats and guided treks in the Himalayas, starting from Dehradun.',
     inLanguage: 'en-IN',
@@ -117,6 +116,7 @@ export function generateOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': schemaIds.organization,
     name: BRAND_NAME,
     url: buildCanonicalUrl('/'),
     logo: buildCanonicalUrl('/logo.png'),
@@ -177,10 +177,7 @@ export function generateServiceSchema(
     name: service.title,
     description: service.description,
     url: canonicalUrl,
-    provider: {
-      '@type': 'Organization',
-      name: BRAND_NAME,
-    },
+    provider: { '@id': schemaIds.organization },
     areaServed: {
       '@type': 'TouristDestination',
       name: locationName,
@@ -203,10 +200,7 @@ export function generateCollectionPageSchema({
     name,
     description,
     url,
-    provider: {
-      '@type': 'Organization',
-      name: BRAND_NAME,
-    },
+    provider: { '@id': schemaIds.organization },
   };
 }
 
@@ -264,10 +258,7 @@ export function generateReviewSchemas(
       '@type': 'Service',
       name: serviceTitle,
       url: serviceUrl,
-      provider: {
-        '@type': 'Organization',
-        name: BRAND_NAME,
-      },
+      provider: { '@id': schemaIds.organization },
     },
     author: {
       '@type': 'Person',
@@ -299,10 +290,7 @@ export function generateAggregateRatingSchema(
     '@type': 'Service',
     name: serviceTitle,
     url: serviceUrl,
-    provider: {
-      '@type': 'Organization',
-      name: BRAND_NAME,
-    },
+    provider: { '@id': schemaIds.organization },
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: ratingValue,
@@ -314,9 +302,13 @@ export function generateAggregateRatingSchema(
 }
 
 export function generateBreadcrumbSchema(items: { name: string; url: string }[]) {
+  const lastUrl = items[items.length - 1]?.url ?? '';
+  const path = lastUrl.replace(/^https?:\/\/[^/]+/, '') || '/';
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
+    '@id': schemaIds.breadcrumbs(path),
     itemListElement: items.map((item, index) => ({
       '@type': 'ListItem',
       position: index + 1,

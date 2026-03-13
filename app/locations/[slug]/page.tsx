@@ -7,7 +7,7 @@ import { getRetreatServiceBySlug } from '@/content/retreats/services';
 import { getTrekBySlug } from '@/content/treks';
 import { getEventsByLocation } from '@/config/retreatProgramEvents';
 import type { LocationId } from '@/config/locations';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateTouristDestinationSchema,
   generateBreadcrumbSchema,
@@ -45,6 +45,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       url: canonical,
       type: 'website',
+      images: buildOgImages(title),
     },
   };
 }

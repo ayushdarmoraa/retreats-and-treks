@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -26,6 +26,7 @@ export function generateMetadata(): Metadata {
         'The best Himalayan retreats compared by purpose — ranked for depth, environment, group size, and accessibility.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Best Himalayan Retreats (2026) — Yoga, Meditation, Wellness & Silent Retreat Picks'),
     },
   };
 }

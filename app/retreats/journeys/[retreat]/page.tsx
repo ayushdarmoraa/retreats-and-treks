@@ -101,7 +101,9 @@ export default async function RetreatDetailPage({ params }: PageProps) {
     { name: retreatService.title, url: canonicalUrl },
   ]);
 
-  const faqItems = [
+  const faqItems = 'faqItems' in retreatService && Array.isArray((retreatService as Record<string, unknown>).faqItems)
+    ? (retreatService as unknown as { faqItems: { question: string; answer: string }[] }).faqItems
+    : [
     {
       question: `Who is the ${retreatService.title} retreat designed for?`,
       answer: retreatService.forNotFor.for.join('. '),

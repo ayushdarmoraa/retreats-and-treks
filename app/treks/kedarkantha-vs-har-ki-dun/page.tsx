@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -30,6 +30,7 @@ export function generateMetadata(): Metadata {
         'Compare Kedarkantha and Har Ki Dun treks from Sankri. Snow summit vs green valley. Winter vs summer. Difficulty, duration, and who should choose which.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Kedarkantha vs Har Ki Dun — Which Trek Is Right for You?'),
     },
   };
 }

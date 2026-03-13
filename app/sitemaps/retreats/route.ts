@@ -27,7 +27,7 @@ export async function GET() {
   urls.push(urlEntry(buildCanonicalUrl('/retreats/weekend-himalayan-retreats')));
   urls.push(urlEntry(buildCanonicalUrl('/retreats/luxury-himalayan-retreats')));
   urls.push(urlEntry(buildCanonicalUrl('/retreats/uttarakhand-retreats')));
-  urls.push(urlEntry(buildCanonicalUrl('/retreats/retreat-near-delhi')));
+  urls.push(urlEntry(buildCanonicalUrl('/retreats/retreats-near-delhi')));
   urls.push(urlEntry(buildCanonicalUrl('/retreats/yoga-retreat-uttarakhand')));
   urls.push(urlEntry(buildCanonicalUrl('/retreats/meditation-retreat-uttarakhand')));
   urls.push(urlEntry(buildCanonicalUrl('/retreats/yoga-retreat-rishikesh')));

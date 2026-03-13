@@ -13,7 +13,7 @@ import {
   getRetreatProgramEvent,
   getAllRetreatProgramSlugs,
 } from '@/config/retreatProgramEvents';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import ExperienceLocationPage from '@/components/ExperienceLocationPage';
 import ItineraryPage from '@/components/ItineraryPage';
 import ProgramEventPage from '@/components/ProgramEventPage';
@@ -47,6 +47,7 @@ export async function generateMetadata({
         description: elPage.metaDescription,
         url: buildCanonicalUrl(`/${elPage.slug}`),
         type: 'website',
+        images: buildOgImages(elPage.h1),
       },
     };
   }
@@ -63,6 +64,7 @@ export async function generateMetadata({
         description: itPage.metaDescription,
         url: buildCanonicalUrl(`/${itPage.slug}`),
         type: 'article',
+        images: buildOgImages(itPage.h1),
       },
     };
   }
@@ -79,6 +81,7 @@ export async function generateMetadata({
         description: ev.metaDescription,
         url: buildCanonicalUrl(`/${ev.slug}`),
         type: 'article',
+        images: buildOgImages(ev.h1),
       },
     };
   }

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -9,6 +9,7 @@ import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
+import AutoArticleSchema from '@/components/AutoArticleSchema';
 
 const PATH = '/retreats/meditation-retreat-uttarakhand';
 
@@ -30,6 +31,7 @@ export function generateMetadata(): Metadata {
         'Structured meditation retreat programs in Uttarakhand. Guided silence, breath awareness and walking meditation in genuine Himalayan environments.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Meditation Retreats in Uttarakhand — Silent Practice in the Himalayas'),
     },
   };
 }
@@ -82,6 +84,11 @@ export default function MeditationRetreatUttarakhandPage() {
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+      <AutoArticleSchema
+        title="Meditation Retreats in Uttarakhand"
+        description="Find meditation retreats in Uttarakhand across Rishikesh, Munsiyari and Sankri. Silent sittings, guided meditation and forest-based practice in Himalayan mountain settings."
+        path={PATH}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}

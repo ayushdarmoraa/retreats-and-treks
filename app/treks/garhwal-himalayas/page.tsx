@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -31,6 +31,7 @@ export function generateMetadata(): Metadata {
         'Compare 4 high-altitude Garhwal treks by difficulty, season & views. Brahmatal, Kuari Pass, Roopkund, Pangarchulla — the complete planning guide.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('4 Best Treks in Garhwal Himalayas — Routes from 3,850m to 4,800m'),
     },
   };
 }

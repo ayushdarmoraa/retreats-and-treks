@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -26,6 +26,7 @@ export function generateMetadata(): Metadata {
         'Silent retreats in the Himalayas — compare by depth, accessibility, and environment.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Himalayan Silent Retreats (2026) — Deep Silence in Mountain Forests & Valleys'),
     },
   };
 }

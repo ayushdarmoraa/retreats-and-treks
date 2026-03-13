@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -10,8 +10,9 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
+import AutoArticleSchema from '@/components/AutoArticleSchema';
 
-const PATH = '/retreats/retreat-near-delhi';
+const PATH = '/retreats/retreats-near-delhi';
 
 export function generateMetadata(): Metadata {
   return {
@@ -31,6 +32,7 @@ export function generateMetadata(): Metadata {
         'Mountain retreat programs within a day\'s drive of Delhi. Chakrata, Rishikesh and Sankri — yoga, meditation and structured restoration in Uttarakhand.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Himalayan Retreats Near Delhi — Mountain Wellness Within Driving Distance'),
     },
   };
 }
@@ -78,6 +80,11 @@ export default function RetreatNearDelhiPage() {
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+      <AutoArticleSchema
+        title="Himalayan Retreats Near Delhi"
+        description="Find Himalayan retreats near Delhi in Chakrata, Rishikesh and Sankri. Yoga, meditation and mountain wellness programs 5–9 hours from the capital by road."
+        path={PATH}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
@@ -124,7 +131,7 @@ export default function RetreatNearDelhiPage() {
           subtext="Planning a weekend retreat near Delhi? Let us help."
           vertical="retreat"
           category="near-delhi"
-          sourcePath="/retreats/retreat-near-delhi"
+          sourcePath="/retreats/retreats-near-delhi"
         />
 
         {/* ── HOW CLOSE ────────────────────────────────────────────── */}
@@ -169,7 +176,7 @@ export default function RetreatNearDelhiPage() {
           subtext="Tell us your preferred dates. We will recommend the right location."
           vertical="retreat"
           category="near-delhi"
-          sourcePath="/retreats/retreat-near-delhi"
+          sourcePath="/retreats/retreats-near-delhi"
         />
         {/* ── BEST DESTINATIONS ─────────────────────────────────────── */}
         <section style={{ marginBottom: 'var(--space-xl)' }}>

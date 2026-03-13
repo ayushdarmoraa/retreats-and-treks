@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -25,6 +25,7 @@ export function generateMetadata(): Metadata {
       description: 'Post-monsoon clarity, golden light, peak mountain views. The Himalayan season of release.',
       url: buildCanonicalUrl(PATH),
       type: 'article',
+      images: buildOgImages('Autumn Retreat in the Himalayas'),
     },
   };
 }

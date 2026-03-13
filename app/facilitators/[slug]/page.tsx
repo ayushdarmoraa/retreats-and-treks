@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema } from '@/components/seo/Schema';
 import Breadcrumb from '@/components/Breadcrumb';
 import TrackedPage from '@/components/TrackedPage';
@@ -31,6 +31,7 @@ export async function generateMetadata(
       description: facilitator.metaDescription,
       url: buildCanonicalUrl(`/facilitators/${slug}`),
       type: 'profile',
+      images: buildOgImages(`${facilitator.name} — ${facilitator.title}`),
     },
   };
 }

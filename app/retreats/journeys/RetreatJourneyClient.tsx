@@ -14,12 +14,30 @@ interface RetreatService {
   readonly title: string;
   readonly oneLineEssence: string;
   readonly description: string;
+  readonly keyHighlights?: readonly string[];
   readonly forNotFor: {
     readonly for: readonly string[];
     readonly notFor: readonly string[];
   };
+  readonly idealIf?: readonly string[];
+  readonly whatMakesItUnique?: {
+    readonly intro: string;
+    readonly points: readonly { readonly title: string; readonly description: string }[];
+  };
+  readonly experiences?: readonly { readonly title: string; readonly description: string }[];
+  readonly placesWeExplore?: readonly { readonly name: string; readonly description: string }[];
   readonly howItWorks: {
     readonly rhythm: string;
+  };
+  readonly foodAndAccommodation?: string;
+  readonly locationInfo?: {
+    readonly name: string;
+    readonly description: string;
+  };
+  readonly travel?: {
+    readonly fromDelhi: string;
+    readonly fromDehradun: string;
+    readonly note: string;
   };
   readonly whereItWorksBest: {
     readonly primary: string;
@@ -86,6 +104,28 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           </div>
           <h1 className="rj-title">{retreat.title}</h1>
           <p className="rj-essence">{retreat.oneLineEssence}</p>
+
+          {retreat.keyHighlights && retreat.keyHighlights.length > 0 && (
+            <div style={{
+              display: 'flex', flexWrap: 'wrap', gap: '0.6rem',
+              marginTop: '1.75rem',
+            }}>
+              {retreat.keyHighlights.map((h, i) => (
+                <span key={i} style={{
+                  fontFamily: 'var(--font-geist-sans), sans-serif',
+                  fontSize: '0.68rem', fontWeight: 500,
+                  letterSpacing: '0.08em', textTransform: 'uppercase',
+                  color: 'var(--color-primary)',
+                  background: 'rgba(15,118,110,0.08)',
+                  border: '1px solid rgba(15,118,110,0.18)',
+                  borderRadius: '4px',
+                  padding: '0.4rem 0.85rem',
+                }}>
+                  {h}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -303,6 +343,147 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           </div>
         </div>
       </section>
+
+      {/* IDEAL IF — optional */}
+      {retreat.idealIf && retreat.idealIf.length > 0 && (
+        <section style={{
+          marginBottom: '0', marginTop: '0',
+          paddingTop: '5rem', paddingBottom: '5rem',
+          background: '#ffffff',
+          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+          borderBottom: '1px solid #e5e7eb',
+        }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0 }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>You&apos;ll Love This If</span>
+            </div>
+            <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 2rem' }}>
+              This retreat may be <span style={{ color: 'var(--color-primary)' }}>ideal</span> if you want to
+            </h2>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              {retreat.idealIf.map((item, i) => (
+                <li key={i} style={{
+                  display: 'flex', alignItems: 'flex-start', gap: '0.75rem',
+                  fontFamily: 'var(--font-geist-sans), sans-serif',
+                  fontSize: '0.9rem', lineHeight: 1.7, fontWeight: 300, color: '#444444',
+                }}>
+                  <span style={{ width: 18, height: 18, borderRadius: '50%', background: 'var(--color-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '0.15rem', fontSize: '0.6rem', color: '#fff', fontWeight: 700 }}>✓</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
+
+      {/* WHAT MAKES IT UNIQUE — optional */}
+      {retreat.whatMakesItUnique && (
+        <section style={{
+          marginBottom: '0', marginTop: '0',
+          paddingTop: '5rem', paddingBottom: '5rem',
+          background: '#f7f9f7',
+          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+          borderBottom: '1px solid #e5e7eb',
+        }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0 }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>What Sets This Apart</span>
+            </div>
+            <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 1.5rem' }}>
+              What makes this retreat <span style={{ color: 'var(--color-primary)' }}>unique</span>
+            </h2>
+            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: '#555', fontWeight: 300, margin: '0 0 2.5rem' }}>
+              {retreat.whatMakesItUnique.intro}
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem' }}>
+              {retreat.whatMakesItUnique.points.map((pt, i) => (
+                <div key={i} style={{
+                  background: '#ffffff', border: '1px solid #eef0ee', borderRadius: 8,
+                  padding: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.03)',
+                }}>
+                  <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 600, color: '#111', margin: '0 0 0.6rem', letterSpacing: '-0.01em' }}>
+                    {pt.title}
+                  </h3>
+                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', lineHeight: 1.7, color: '#666', fontWeight: 300, margin: 0 }}>
+                    {pt.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* EXPERIENCES — optional */}
+      {retreat.experiences && retreat.experiences.length > 0 && (
+        <section style={{
+          marginBottom: '0', marginTop: '0',
+          paddingTop: '5rem', paddingBottom: '5rem',
+          background: '#ffffff',
+          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+          borderBottom: '1px solid #e5e7eb',
+        }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0 }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>The Experience</span>
+            </div>
+            <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 2.5rem' }}>
+              Experiences during the <span style={{ color: 'var(--color-primary)' }}>retreat</span>
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+              {retreat.experiences.map((exp, i) => (
+                <div key={i} style={{ paddingLeft: '1.5rem', borderLeft: '2px solid rgba(15,118,110,0.2)' }}>
+                  <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', fontWeight: 500, color: '#222', margin: '0 0 0.5rem', letterSpacing: '-0.01em' }}>
+                    {exp.title}
+                  </h3>
+                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', lineHeight: 1.8, color: '#555', fontWeight: 300, margin: 0 }}>
+                    {exp.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* PLACES WE EXPLORE — optional */}
+      {retreat.placesWeExplore && retreat.placesWeExplore.length > 0 && (
+        <section style={{
+          marginBottom: '0', marginTop: '0',
+          paddingTop: '5rem', paddingBottom: '5rem',
+          background: '#f7f9f7',
+          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+          borderBottom: '1px solid #e5e7eb',
+        }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0 }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Destinations</span>
+            </div>
+            <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 2.5rem' }}>
+              Places we <span style={{ color: 'var(--color-primary)' }}>explore</span>
+            </h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+              {retreat.placesWeExplore.map((place, i) => (
+                <div key={i} style={{
+                  background: '#ffffff', border: '1px solid #eef0ee', borderRadius: 8,
+                  padding: '1.25rem 1.35rem', boxShadow: '0 1px 3px rgba(0,0,0,0.03)',
+                }}>
+                  <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 600, color: '#111', margin: '0 0 0.4rem' }}>
+                    {place.name}
+                  </h3>
+                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', lineHeight: 1.6, color: '#777', fontWeight: 300, margin: 0 }}>
+                    {place.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* HOW IT WORKS */}
       <section style={{
@@ -553,6 +734,90 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           )}
         </div>
       </section>
+
+      {/* FOOD & ACCOMMODATION — optional */}
+      {retreat.foodAndAccommodation && (
+        <section style={{
+          marginBottom: '0', marginTop: '0',
+          paddingTop: '5rem', paddingBottom: '5rem',
+          background: '#ffffff',
+          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+          borderBottom: '1px solid #e5e7eb',
+        }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0 }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Stay & Food</span>
+            </div>
+            <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 1.5rem' }}>
+              Food &amp; <span style={{ color: 'var(--color-primary)' }}>accommodation</span>
+            </h2>
+            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: '#555', fontWeight: 300, margin: 0 }}>
+              {retreat.foodAndAccommodation}
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* LOCATION INFO — optional */}
+      {retreat.locationInfo && (
+        <section style={{
+          marginBottom: '0', marginTop: '0',
+          paddingTop: '5rem', paddingBottom: '5rem',
+          background: '#f7f9f7',
+          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+          borderBottom: '1px solid #e5e7eb',
+        }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0 }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>The Location</span>
+            </div>
+            <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 1.5rem' }}>
+              About <span style={{ color: 'var(--color-primary)' }}>{retreat.locationInfo.name}</span>
+            </h2>
+            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: '#555', fontWeight: 300, margin: 0 }}>
+              {retreat.locationInfo.description}
+            </p>
+          </div>
+        </section>
+      )}
+
+      {/* TRAVEL — optional */}
+      {retreat.travel && (
+        <section style={{
+          marginBottom: '0', marginTop: '0',
+          paddingTop: '5rem', paddingBottom: '5rem',
+          background: '#ffffff',
+          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+          borderBottom: '1px solid #e5e7eb',
+        }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0 }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Getting Here</span>
+            </div>
+            <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 2rem' }}>
+              Travel &amp; <span style={{ color: 'var(--color-primary)' }}>transportation</span>
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <div style={{ background: '#f7f9f7', border: '1px solid #eef0ee', borderRadius: 8, padding: '1.25rem 1.5rem' }}>
+                <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 600, color: '#111', margin: '0 0 0.4rem' }}>From Delhi</h3>
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', lineHeight: 1.7, color: '#555', fontWeight: 300, margin: 0 }}>{retreat.travel.fromDelhi}</p>
+              </div>
+              <div style={{ background: '#f7f9f7', border: '1px solid #eef0ee', borderRadius: 8, padding: '1.25rem 1.5rem' }}>
+                <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 600, color: '#111', margin: '0 0 0.4rem' }}>From Dehradun</h3>
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', lineHeight: 1.7, color: '#555', fontWeight: 300, margin: 0 }}>{retreat.travel.fromDehradun}</p>
+              </div>
+              {retreat.travel.note && (
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', lineHeight: 1.7, color: '#888', fontWeight: 300, fontStyle: 'italic', margin: '0.5rem 0 0' }}>
+                  {retreat.travel.note}
+                </p>
+              )}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ADAPTABILITY */}
       <section style={{

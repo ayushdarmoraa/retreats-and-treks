@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -23,6 +23,7 @@ export function generateMetadata(): Metadata {
         'Structured 8-week fitness preparation for moderate and challenging Garhwal Himalaya treks. Cardio, strength, altitude acclimatisation & complete gear checklist.',
       url: buildCanonicalUrl(PATH),
       type: 'article',
+      images: buildOgImages('Garhwal Trek Fitness Guide — 8-Week Training Plan'),
     },
   };
 }

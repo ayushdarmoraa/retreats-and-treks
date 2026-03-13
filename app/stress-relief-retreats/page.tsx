@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { getExperiencePage } from '@/config/experiencePages';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import ExperienceHubPage from '@/components/ExperienceHubPage';
 
 const PAGE = getExperiencePage('stress-relief-retreats')!;
@@ -17,6 +17,7 @@ export function generateMetadata(): Metadata {
       description: PAGE.metaDescription,
       url: buildCanonicalUrl(`/${PAGE.slug}`),
       type: 'website',
+      images: buildOgImages(PAGE.title),
     },
   };
 }

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -28,6 +28,7 @@ export function generateMetadata(): Metadata {
         'Frozen lake vs panoramic ridge. Compare altitude, season, difficulty & views for the two best moderate treks in the Garhwal Himalayas.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Brahmatal vs Kuari Pass — Moderate Garhwal Trek Comparison'),
     },
   };
 }

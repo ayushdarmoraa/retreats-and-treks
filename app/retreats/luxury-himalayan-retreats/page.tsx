@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -10,6 +10,7 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
+import AutoArticleSchema from '@/components/AutoArticleSchema';
 
 const PATH = '/retreats/luxury-himalayan-retreats';
 
@@ -31,6 +32,7 @@ export function generateMetadata(): Metadata {
         'Premium Himalayan retreat experiences in Munsiyari, Sankri and Chakrata. Private rooms, curated schedules, small groups and elevated mountain immersion.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Luxury Himalayan Retreats in India — Premium Mountain Stays'),
     },
   };
 }
@@ -83,6 +85,11 @@ export default function LuxuryHimalayanRetreatsPage() {
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+      <AutoArticleSchema
+        title="Luxury Himalayan Retreats in India"
+        description="Discover luxury Himalayan retreats in Munsiyari, Sankri and Chakrata. Premium stays, private sessions and curated mountain experiences in Uttarakhand."
+        path={PATH}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}

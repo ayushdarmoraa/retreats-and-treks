@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -31,6 +31,7 @@ export function generateMetadata(): Metadata {
         'Summer treks in Uttarakhand from May to June. Valley walks, alpine meadows and snow-free summit routes across Sankri and Chakrata.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Best Summer Treks in Uttarakhand — May–June Guide'),
     },
   };
 }

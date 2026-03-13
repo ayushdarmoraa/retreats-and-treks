@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateCollectionPageSchema,
   generateItemListSchema,
@@ -36,6 +36,7 @@ export function generateMetadata(): Metadata {
         'A complete guide to understanding, choosing, and experiencing retreats in the Indian Himalayas.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Himalayan Retreats in India'),
     },
   };
 }

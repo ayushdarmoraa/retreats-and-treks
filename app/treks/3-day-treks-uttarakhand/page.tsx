@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -30,6 +30,7 @@ export function generateMetadata(): Metadata {
         'Short Himalayan treks in Uttarakhand — 2 nights, 3 days. Forest trails, waterfall treks and cave explorations across Chakrata and Sankri, drivable from Delhi.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Best 3-Day Treks in Uttarakhand'),
     },
   };
 }

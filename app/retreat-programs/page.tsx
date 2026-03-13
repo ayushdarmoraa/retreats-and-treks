@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateCollectionPageSchema, generateBreadcrumbSchema, generateItemListSchema } from '@/components/seo/Schema';
 import { getAllRetreatServices } from '@/content/retreats/services';
 import { RETREAT_DURATION_GROUP } from '@/config/retreatDurations';
@@ -25,6 +25,7 @@ export function generateMetadata(): Metadata {
         'A complete matrix of structured retreat programs in the Indian Himalayas. Filter by duration, intensity, and format.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('All Himalayan Retreat Programs — Compare & Choose | Retreats And Treks'),
     },
   };
 }

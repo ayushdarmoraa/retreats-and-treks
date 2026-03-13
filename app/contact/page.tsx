@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import ContactClient from './ContactClient';
 import InquiryForm from '@/components/InquiryForm';
 
@@ -22,6 +22,7 @@ export function generateMetadata(): Metadata {
       description: 'Reach out directly to our retreat designers for a genuine conversation.',
       url: buildCanonicalUrl('/contact'),
       type: 'website',
+      images: buildOgImages('Contact Retreats And Treks'),
     },
   };
 }

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -27,6 +27,7 @@ export function generateMetadata(): Metadata {
       description: 'Answer 5 questions. Get matched to the right Himalayan retreat.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Find Your Retreat'),
     },
   };
 }

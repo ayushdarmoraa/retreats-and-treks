@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import AllRetreatPrograms from '@/components/AllRetreatPrograms';
 
 const PATH = '/about';
@@ -23,6 +23,7 @@ export function generateMetadata(): Metadata {
         'Learn how Retreats And Treks designs structured Himalayan retreat experiences across carefully selected mountain locations in North India.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('About Retreats And Treks — Our Approach to Himalayan Retreat Design'),
     },
   };
 }

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -31,6 +31,7 @@ export function generateMetadata(): Metadata {
         'Weekend Himalayan treks within driving distance of Delhi. Chakrata and Sankri — forest trails, ridge walks and guided itineraries for 2–3 day trips.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Best Treks Near Delhi for a Weekend Escape'),
     },
   };
 }
@@ -176,11 +177,43 @@ export default function TrekNearDelhiPage() {
           </div>
         </section>
 
-        {/* ── CTA 2 ── */}
-        <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'3rem', paddingBottom:'3rem', borderBottom:'1px solid #e5e7eb' }}>
-          <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
-            <PrimaryCTA label="Plan My Weekend Trek" subtext="Share your available dates. We will match you to the right trail." vertical="trek" category="near-delhi" sourcePath="/treks/trek-near-delhi" />
-          </div>
+        {/* ── WHO SHOULD CHOOSE ────────────────────────────────────── */}
+        <section style={{ marginBottom: 'var(--space-xl)' }}>
+          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
+            Who Should Choose a Trek Near Delhi
+          </h2>
+          <ul style={{ paddingLeft: '1.25rem', lineHeight: 2, marginBottom: '1rem' }}>
+            <li>
+              <strong>First-time trekkers.</strong> Chakrata is the ideal entry point — no
+              experience required, no extreme fitness demands, and professional guides who
+              manage pace and safety. A weekend trek here builds the confidence and
+              conditioning for longer expeditions later.
+            </li>
+            <li>
+              <strong>Corporate groups.</strong> Team offsites in the mountains deliver more
+              bonding than another conference room. A guided weekend trek — shared physical
+              challenge, campfire meals, ridge-top views — creates team cohesion that
+              structured workshops rarely achieve.
+            </li>
+            <li>
+              <strong>Couples.</strong> A shared mountain weekend without tourist crowds or
+              resort distractions. Trekking together in forest silence, camping under stars,
+              cooking over fire — this is a different quality of shared experience.
+            </li>
+            <li>
+              <strong>Solo travellers.</strong> Joining a guided group trek is the easiest
+              way for solo travellers to access the Himalayas safely. You get the mountain
+              experience without the logistics of planning a solo expedition.
+            </li>
+          </ul>
+          <p style={{ lineHeight: 1.8, margin: 0 }}>
+            Looking for restoration rather than trail time? Our{' '}
+            <Link href="/retreats/retreats-near-delhi" style={{ color: 'var(--color-primary)' }}>
+              Himalayan retreats near Delhi
+            </Link>{' '}
+            guide covers yoga, meditation, and wellness programmes within the same driving
+            radius.
+          </p>
         </section>
 
         {/* ── BEST WEEKEND TREKS ── */}

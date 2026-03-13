@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { ALL_BLOG_POSTS } from '@/content/blogs';
 import { generateBreadcrumbSchema } from '@/components/seo/Schema';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -61,6 +61,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description: `Articles related to ${category.toLowerCase()} within the Himalayan retreat platform.`,
       url: buildCanonicalUrl(path),
       type: 'website',
+      images: buildOgImages(`${category} — Retreats And Treks`),
     },
   };
 }

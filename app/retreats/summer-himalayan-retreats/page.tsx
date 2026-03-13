@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -10,6 +10,7 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
+import AutoArticleSchema from '@/components/AutoArticleSchema';
 
 const PATH = '/retreats/summer-himalayan-retreats';
 
@@ -31,6 +32,7 @@ export function generateMetadata(): Metadata {
         'Cool mountain air, open landscapes, and structured retreat programs across four Himalayan locations. May–June programs for heat escape and intentional pause.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Summer Himalayan Retreats in India — May & June Escape'),
     },
   };
 }
@@ -79,6 +81,11 @@ export default function SummerHimalayanRetreatsPage() {
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+      <AutoArticleSchema
+        title="Summer Himalayan Retreats in India"
+        description="Escape the Indian summer with Himalayan retreats in Sankri, Munsiyari, Chakrata and Rishikesh. Cool mountain air, yoga, meditation and transformational stays from May to June."
+        path={PATH}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}

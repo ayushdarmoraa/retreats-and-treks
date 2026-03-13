@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -25,6 +25,7 @@ export function generateMetadata(): Metadata {
       description: 'Not a seminar. An experience designed for genuine inner development in Himalayan environments.',
       url: buildCanonicalUrl(PATH),
       type: 'article',
+      images: buildOgImages('Personal Growth Retreat in the Himalayas'),
     },
   };
 }

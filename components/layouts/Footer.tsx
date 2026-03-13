@@ -175,6 +175,17 @@ export default function Footer() {
               </ul>
             </div>
 
+            <nav aria-labelledby="retreat-guides-heading" className="ft-col">
+              <h3 id="retreat-guides-heading" className="ft-col-heading">Retreat Guides</h3>
+              <ul className="ft-list">
+                <li><Link href="/retreats/weekend-retreat-near-delhi" prefetch={false} className="ft-link">Weekend Retreat Near Delhi</Link></li>
+                <li><Link href="/retreats/retreats-near-delhi" prefetch={false} className="ft-link">Retreats Near Delhi</Link></li>
+                <li><Link href="/retreats/weekend-himalayan-retreats" prefetch={false} className="ft-link">Weekend Himalayan Retreats</Link></li>
+                <li><Link href="/retreats/best-retreat-in-uttarakhand" prefetch={false} className="ft-link">Best Retreat in Uttarakhand</Link></li>
+                <li><Link href="/retreats/retreat-cost-india" prefetch={false} className="ft-link">Retreat Costs in India (2026)</Link></li>
+              </ul>
+            </nav>
+
           </div>
 
           {/* ── BOTTOM BAR ── */}

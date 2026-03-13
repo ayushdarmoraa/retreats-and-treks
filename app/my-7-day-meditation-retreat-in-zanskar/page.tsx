@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -28,6 +28,7 @@ export function generateMetadata(): Metadata {
         'What really happens during a week of silence at 3,500 metres in a Himalayan monastery valley. A first-person retreat story.',
       url: buildCanonicalUrl(PATH),
       type: 'article',
+      images: buildOgImages('My 7-Day Meditation Retreat in Zanskar'),
     },
   };
 }

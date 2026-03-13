@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -25,6 +25,7 @@ export function generateMetadata(): Metadata {
         'Print-ready packing checklist for all 4 Garhwal Himalaya treks. Organised by category, difficulty tier and season. Nothing forgotten.',
       url: buildCanonicalUrl(PATH),
       type: 'article',
+      images: buildOgImages('Garhwal Trek Packing Checklist — Complete Gear List'),
     },
   };
 }

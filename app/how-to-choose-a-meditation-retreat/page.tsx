@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -25,6 +25,7 @@ export function generateMetadata(): Metadata {
       description: 'Environment, duration, group size, teaching style. What actually matters when choosing a meditation retreat.',
       url: buildCanonicalUrl(PATH),
       type: 'article',
+      images: buildOgImages('How to Choose a Meditation Retreat — A Practical Guide'),
     },
   };
 }

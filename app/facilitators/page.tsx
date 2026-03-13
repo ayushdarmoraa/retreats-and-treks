@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema } from '@/components/seo/Schema';
 import Breadcrumb from '@/components/Breadcrumb';
 import TrackedPage from '@/components/TrackedPage';
@@ -23,6 +23,7 @@ export function generateMetadata(): Metadata {
       description: 'Meet the people behind our retreat programs.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Our Facilitators'),
     },
   };
 }

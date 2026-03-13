@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -28,6 +28,7 @@ export function generateMetadata(): Metadata {
         'What really happens when you disconnect for a week. A first-person digital detox story from the Himalayas.',
       url: buildCanonicalUrl(PATH),
       type: 'article',
+      images: buildOgImages('A Week Without My Phone — Digital Detox Retreat'),
     },
   };
 }

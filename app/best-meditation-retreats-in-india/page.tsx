@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -28,6 +28,7 @@ export function generateMetadata(): Metadata {
         'Compare the best meditation retreats in India — from monastery immersion in Zanskar to forest silence in Chakrata and Ganges-side practice in Rishikesh.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Best Meditation Retreats in India (2026) — Himalayan Silence & Depth'),
     },
   };
 }

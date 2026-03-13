@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { getExperiencePage } from '@/config/experiencePages';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateServiceSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import ExperienceHubPage from '@/components/ExperienceHubPage';
@@ -50,6 +50,7 @@ export function generateMetadata(): Metadata {
       description: PAGE.metaDescription,
       url: buildCanonicalUrl(`/${PAGE.slug}`),
       type: 'website',
+      images: buildOgImages(PAGE.title),
     },
   };
 }

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -28,6 +28,7 @@ export function generateMetadata(): Metadata {
         'Mystery lake expedition (4,800m) vs peak summit (4,590m). Side-by-side comparison of the two hardest Garhwal treks.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
+      images: buildOgImages('Roopkund vs Pangarchulla — Challenging Garhwal Trek Comparison'),
     },
   };
 }

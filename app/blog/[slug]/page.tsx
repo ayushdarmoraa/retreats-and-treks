@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { marked } from 'marked';
 import { getBlogBySlug, ALL_BLOG_POSTS } from '@/content/blogs';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBlogPostingSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { getTrekBySlug } from '@/lib/treks';
 import { getRetreatServiceBySlug } from '@/content/retreats/services';
@@ -33,6 +33,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: buildCanonicalUrl(path),
       type: 'article',
       publishedTime: blog.publishedAt,
+      images: buildOgImages(blog.title),
     },
   };
 }
