@@ -524,7 +524,7 @@ const ready = pct > 0.15;
     }
   `}</style>
 
-  {/* Header */}
+  {/* Header section*/}
   <div className="ph-header">
     <div>
       <div className="ph-eyebrow">
