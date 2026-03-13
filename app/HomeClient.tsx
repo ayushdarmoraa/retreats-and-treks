@@ -4,6 +4,10 @@ import Link from 'next/link';
 import type { LocationId } from '@/config/locations';
 import { logIntentClick, logWhatsAppOpen } from '@/lib/analytics';
 import { getAllRetreatServices } from '@/content/retreats/services';
+import Image from 'next/image';
+import { images } from '@/lib/images';
+import { CardImage } from '@/components/images';
+
 
 interface Location {
   id: LocationId;
@@ -78,14 +82,7 @@ const ready = pct > 0.15;
       transition: opacity 2.2s ease;
     }
     .hh-slide.active { opacity: 1; }
-    .hh-slide img {
-      width: 100%; height: 100%;
-      object-fit: cover; object-position: center 40%;
-      filter: brightness(0.82) saturate(1.1);
-    }
-    .hh-slide.active img {
-      animation: hhZoom 10s ease-out forwards;
-    }
+  
     @keyframes hhZoom {
       from { transform: scale(1.08); }
       to   { transform: scale(1); }
@@ -271,30 +268,28 @@ const ready = pct > 0.15;
     }
   `}</style>
 
-  {/* Slides — better images */}
-  <div className="hh-slides" id="hh-slides">
-    <div className="hh-slide active">
-      <img
-        src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920&q=90&fit=crop"
-        alt="Himalayan snow peaks"
-      />
-    </div>
-    <div className="hh-slide">
-      <img
-        src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1920&q=90&fit=crop"
-        alt="Himalayan valley"
-      />
-    </div>
-    <div className="hh-slide">
-      <img
-        src="https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=1920&q=90&fit=crop"
-        alt="Trekking in Himalayas"
-      />
-    </div>
+  {/* Slides */}
+<div className="hh-slides" id="hh-slides">
+  <div className="hh-slide active">
+    <Image src={images.heroes.himalayanSunrise.src} alt={images.heroes.himalayanSunrise.alt} fill quality={90} style={{objectFit:'cover', objectPosition:'center 40%', filter:'brightness(0.82) saturate(1.1)'}} priority />
   </div>
+  <div className="hh-slide">
+    <Image src={images.heroes.valleyForest.src} alt={images.heroes.valleyForest.alt} fill quality={90} style={{objectFit:'cover', objectPosition:'center 40%', filter:'brightness(0.82) saturate(1.1)'}} />
+  </div>
+  <div className="hh-slide">
+    <Image src={images.heroes.alpineRidge.src} alt={images.heroes.alpineRidge.alt} fill quality={90} style={{objectFit:'cover', objectPosition:'center 40%', filter:'brightness(0.82) saturate(1.1)'}} />
+  </div>
+</div>
 
-  {/* Overlay */}
-  <div className="hh-overlay" />
+{/* Slide indicators */}
+<div className="hh-indicators" id="hh-indicators">
+  <div className="hh-indicator active" />
+  <div className="hh-indicator" />
+  <div className="hh-indicator" />
+</div>
+
+{/* Overlay — SIRF EK */}
+<div className="hh-overlay" />
 
   {/* Content */}
   <div className="hh-content">
@@ -363,7 +358,6 @@ const ready = pct > 0.15;
       to   { transform: scaleX(1); }
     }
 
-    /* ── HEADER ── */
     .ph-header {
       max-width: 78rem;
       margin: 0 auto;
@@ -374,7 +368,6 @@ const ready = pct > 0.15;
       align-items: flex-end;
       animation: fadeUp 0.6s ease 0.1s both;
     }
-
     .ph-eyebrow {
       display: flex; align-items: center; gap: 0.9rem;
       margin-bottom: 1.5rem;
@@ -394,7 +387,6 @@ const ready = pct > 0.15;
       font-weight: 500;
       opacity: 0.7;
     }
-
     .ph-headline {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: clamp(3rem, 5.5vw, 5rem);
@@ -408,10 +400,7 @@ const ready = pct > 0.15;
       display: block;
       font-weight: 200;
       color: var(--color-primary);
-      font-style: normal;
-      position: relative;
     }
-
     .ph-intro {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.95rem;
@@ -423,7 +412,6 @@ const ready = pct > 0.15;
       padding-bottom: 0.4rem;
     }
 
-    /* ── RULE ── */
     .ph-rule {
       max-width: 78rem;
       margin: 3.5rem auto 0;
@@ -431,30 +419,23 @@ const ready = pct > 0.15;
     }
     .ph-rule-inner {
       height: 1px;
-      background: linear-gradient(
-        to right,
-        var(--color-primary) 80px,
-        var(--color-border) 80px
-      );
+      background: linear-gradient(to right, var(--color-primary) 80px, var(--color-border) 80px);
       animation: fadeUp 0.5s ease 0.25s both;
     }
 
-    /* ── CARDS GRID ── */
     .ph-cards-wrap {
       max-width: 78rem;
       margin: 0 auto;
       padding: 0 5rem;
     }
-
     .ph-cards {
       display: grid;
       grid-template-columns: 1fr 1fr 1fr;
       animation: fadeUp 0.6s ease 0.35s both;
-      border-top: none;
     }
 
     .ph-card {
-      padding: 3.5rem 2.5rem 3.5rem;
+      padding: 3.5rem 2.5rem;
       border-right: 1px solid var(--color-border);
       cursor: default;
       transition: background 0.35s ease;
@@ -463,52 +444,62 @@ const ready = pct > 0.15;
     }
     .ph-card:last-child { border-right: none; }
     .ph-card:first-child { padding-left: 0; }
+    .ph-card:hover { background: rgba(15,118,110,0.03); }
 
-    /* Green top reveal line */
+    /* Green top reveal */
     .ph-card-line {
       position: absolute;
-      top: 0; left: 0; right: 2.5rem;
+      top: 0; left: 0; right: 0;
       height: 2px;
       background: var(--color-primary);
       transform: scaleX(0);
       transform-origin: left;
-      transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.55s cubic-bezier(0.16,1,0.3,1);
     }
-    .ph-card:first-child .ph-card-line { left: 0; }
     .ph-card:hover .ph-card-line { transform: scaleX(1); }
-    .ph-card:hover { background: rgba(15, 118, 110, 0.03); }
+
+    /* Icon box */
+    .ph-card-icon-box {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 8px;
+      background: rgba(15,118,110,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.75rem;
+      transition: background 0.3s;
+    }
+    .ph-card:hover .ph-card-icon-box {
+      background: rgba(15,118,110,0.15);
+    }
 
     /* Big faint number */
     .ph-card-num {
-      font-family: var(--font-geist-sans), sans-serif;
-      font-size: 4.5rem;
-      font-weight: 200;
-      color: var(--color-primary);
-      opacity: 0.07;
-      line-height: 1;
-      margin-bottom: 1.8rem;
-      display: block;
-      letter-spacing: -0.04em;
-      transition: opacity 0.35s;
-    }
-    .ph-card:hover .ph-card-num { opacity: 0.18; }
+  font-family: var(--font-geist-sans), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  color: var(--color-primary);
+  opacity: 1;
+  display: block;
+  margin-bottom: 0.6rem;
+}
 
     .ph-card-title {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.68rem;
+      font-size: 1rem;
       font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
+      letter-spacing: -0.01em;
       color: #1a1814;
-      opacity: 0.5;
       margin-bottom: 1rem;
       transition: opacity 0.3s;
+      line-height: 1.3;
     }
-    .ph-card:hover .ph-card-title { opacity: 1; }
 
     .ph-card-body {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.95rem;
+      font-size: 0.87rem;
       line-height: 1.9;
       color: var(--color-muted);
       font-weight: 300;
@@ -517,15 +508,11 @@ const ready = pct > 0.15;
     }
     .ph-card:hover .ph-card-body { color: #3a3428; }
 
-    /* ── BOTTOM SPACER ── */
-    .ph-bottom-spacer {
-      padding-bottom: 4rem;
-    }
+    .ph-bottom-spacer { padding-bottom: 4rem; }
 
     @media (max-width: 900px) {
       .ph-header { grid-template-columns: 1fr; padding: 3.5rem 2rem 0; gap: 1.5rem; }
       .ph-rule { padding: 0 2rem; }
-      .ph-rule-inner { margin: 2.5rem 0 0; }
       .ph-cards-wrap { padding: 0 2rem; }
       .ph-cards { grid-template-columns: 1fr; }
       .ph-card {
@@ -533,12 +520,11 @@ const ready = pct > 0.15;
         border-bottom: 1px solid var(--color-border);
         padding: 2.5rem 0;
       }
-      .ph-card:first-child { padding-left: 0; }
       .ph-card:last-child { border-bottom: none; }
     }
   `}</style>
 
-  {/* ── Header ── */}
+  {/* Header */}
   <div className="ph-header">
     <div>
       <div className="ph-eyebrow">
@@ -556,35 +542,61 @@ const ready = pct > 0.15;
     </p>
   </div>
 
-  {/* ── Rule ── */}
+  {/* Rule */}
   <div className="ph-rule">
     <div className="ph-rule-inner" />
   </div>
 
-  {/* ── 3 Cards ── */}
+  {/* Cards */}
   <div className="ph-cards-wrap">
     <div className="ph-cards">
       {[
         {
           n: '01',
           title: 'Designed Around You',
+          icon: (
+            <svg width="20" height="20" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+            </svg>
+          ),
           body: "We don't run fixed events or fixed schedules. We design journeys around what you're actually seeking — whether that's stillness, challenge, or transformation.",
         },
         {
           n: '02',
           title: 'Locations With Purpose',
+          icon: (
+            <svg width="20" height="20" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" viewBox="0 0 24 24">
+              <path d="M8 3L4 8l8 13 8-13-4-5H8z"/><path d="M4 8h16M12 21V8M8 3l4 5 4-5"/>
+            </svg>
+          ),
           body: 'Each Himalayan location is chosen deliberately — for its landscape, its silence, and its medicine. Not for convenience. Not for trend.',
         },
         {
           n: '03',
           title: 'Conversation First',
+          icon: (
+            <svg width="20" height="20" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" viewBox="0 0 24 24">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+          ),
           body: 'Your journey takes shape in dialogue, not forms. We listen before we suggest — because the right retreat may not be the first one you imagine.',
         },
       ].map((c, i) => (
         <div key={i} className="ph-card" style={{ animationDelay: `${0.1 + i * 0.12}s` }}>
           <div className="ph-card-line" />
+
+          {/* Icon box top */}
+          <div className="ph-card-icon-box">
+            {c.icon}
+          </div>
+
+          {/* Number */}
           <span className="ph-card-num">{c.n}</span>
+
+          {/* Title */}
           <div className="ph-card-title">{c.title}</div>
+
+          {/* Body */}
           <p className="ph-card-body">{c.body}</p>
         </div>
       ))}
@@ -592,7 +604,6 @@ const ready = pct > 0.15;
   </div>
 
   <div className="ph-bottom-spacer" />
-
 </section>
       {/* SECTION 3: FEATURED RETREATS */}
 <section style={{
@@ -808,59 +819,47 @@ const ready = pct > 0.15;
     </h2>
 
     {/* Cards grid */}
-    <div style={{
-      display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-      gap: '1.75rem',
-    }}>
-      {(() => {
-        const images: Record<string, { src: string; tag: string; alt: string }> = {
-  'weekend-retreat': {
-    src: '/Images/Journeys/weekend.webp',
-    tag: 'Weekend',
-    alt: 'Weekend Retreat — rejuvenating escape into nature',
-  },
-  'yoga-and-movement': {
-    src: '/Images/Journeys/yoga.webp',
-    tag: 'Yoga',
-    alt: 'Yoga & Movement — mindful practice in serene surroundings',
-  },
-  'meditation-and-silence': {
-    src: '/Images/Journeys/meditation.webp',
-    tag: 'Silence',
-    alt: 'Meditation & Silence — deep stillness and inner clarity',
-  },
-};
+<div style={{
+  display: 'grid',
+  gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+  gap: '1.75rem',
+}}>
+  {(() => {
+    const cardMeta: Record<string, { image: typeof images.journeys.weekend; tag: string }> = {
+      'weekend-retreat':        { image: images.journeys.weekend,    tag: 'Weekend' },
+      'yoga-and-movement':      { image: images.journeys.yoga,       tag: 'Yoga'    },
+      'meditation-and-silence': { image: images.journeys.meditation, tag: 'Silence' },
+    };
 
-        return getAllRetreatServices()
-          .filter(s => ['weekend-retreat', 'yoga-and-movement', 'meditation-and-silence'].includes(s.slug))
-          .map(retreat => {
-            const meta = images[retreat.slug] ?? {
-              src: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop',
-              tag: 'Retreat',
-            };
-            return (
-              <Link key={retreat.slug} href={`/retreats/journeys/${retreat.slug}`} className="retreat-card">
+    return getAllRetreatServices()
+      .filter(s => ['weekend-retreat', 'yoga-and-movement', 'meditation-and-silence'].includes(s.slug))
+      .map(retreat => {
+        const meta = cardMeta[retreat.slug] ?? {
+          image: { src: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop', alt: retreat.title },
+          tag: 'Retreat',
+        };
+        return (
+          <Link key={retreat.slug} href={`/retreats/journeys/${retreat.slug}`} className="retreat-card">
 
-                {/* Image */}
-                <div className="retreat-card-img-wrap">
-                  <img src={meta.src} alt={retreat.title} className="retreat-card-img" />
-                  <div className="retreat-card-overlay" />
-                  <span className="retreat-card-tag">{meta.tag}</span>
-                  <span className="retreat-card-img-title">{retreat.title}</span>
-                </div>
+            {/* Image */}
+            <div className="retreat-card-img-wrap">
+              <CardImage image={meta.image} height={250} />
+              <div className="retreat-card-overlay" />
+              <span className="retreat-card-tag">{meta.tag}</span>
+              <span className="retreat-card-img-title">{retreat.title}</span>
+            </div>
 
-                {/* Body */}
-                <div className="retreat-card-body">
-                  <h3 className="retreat-card-title">{retreat.title}</h3>
-                  <p className="retreat-card-desc">{retreat.oneLineEssence}</p>
-                  <span className="retreat-arrow">Explore retreat →</span>
-                </div>
-              </Link>
-            );
-          });
-      })()}
-    </div>
+            {/* Body */}
+            <div className="retreat-card-body">
+              <h3 className="retreat-card-title">{retreat.title}</h3>
+              <p className="retreat-card-desc">{retreat.oneLineEssence}</p>
+              <span className="retreat-arrow">Explore retreat →</span>
+            </div>
+          </Link>
+        );
+      });
+  })()}
+</div>
 
     {/* View all */}
     <div style={{ marginTop: '3.5rem', textAlign: 'center' }}>
@@ -1055,21 +1054,21 @@ const ready = pct > 0.15;
     {/* Cards */}
     <div className="loc-grid">
       {locations.map((location) => {
-        const locationImages: Record<string, { src: string; alt: string }> = {
-          'chakrata':  { src: '/Images/location/chakrata.webp',  alt: 'Chakrata — deodar forest ridge in Uttarakhand' },
-          'sankri':    { src: '/Images/location/sankri.webp',    alt: 'Sankri — pine valley at the edge of Govind Wildlife Sanctuary' },
-          'munsiyari': { src: '/Images/location/munsiyari.webp', alt: 'Munsiyari — Panchachuli massif views from Kumaon Himalaya' },
-          'joshimath': { src: 'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=800&q=85&fit=crop', alt: 'Joshimath — gateway to Kuari Pass and Auli in Garhwal' },
-          'lohajung':  { src: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=85&fit=crop', alt: 'Lohajung — base village for Roopkund and Brahmatal treks' },
-          'rishikesh': { src: '/Images/location/rishikesh.webp', alt: 'Rishikesh — Ganges riverside yoga and retreat destination' },
-          'mussoorie': { src: '/Images/location/mussoorie.webp', alt: 'Mussoorie — Queen of Hills in the Garhwal foothills' },
-          'zanskar':   { src: '/Images/location/zanskar.webp',   alt: 'Zanskar — remote high-altitude valley in Ladakh' },
-        };
-        const imgData = locationImages[location.id] ?? { src: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop', alt: location.name };
+        const locImages: Record<string, typeof images.locations.chakrata> = {
+  'chakrata':  images.locations.chakrata,
+  'sankri':    images.locations.sankri,
+  'munsiyari': images.locations.munsiyari,
+  'mussoorie': images.locations.mussoorie,
+  'rishikesh': images.locations.rishikesh,
+  'zanskar':   images.locations.zanskar,
+  'joshimath': images.locations.joshimath,
+  'lohajung':  images.locations.lohajung,
+};
+const imgData = locImages[location.id] ?? { src: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop', alt: location.name };
         return (
           <Link key={location.id} href={`/retreats/${location.id}`} className="loc-card">
             <div className="loc-card-img-wrap">
-              <img src={imgData.src} alt={imgData.alt} className="loc-card-img" />
+             <CardImage image={imgData} height={175} />
               <div className="loc-card-overlay" />
               <span className="loc-card-img-name">{location.name}</span>
             </div>
@@ -1322,7 +1321,7 @@ const ready = pct > 0.15;
   </div>
 </section>
 
-      {/* SECTION 6: HOW IT WORKS */}
+     {/* SECTION 6: HOW IT WORKS */}
 <section style={{
   marginBottom: '0',
   marginTop: '0',
@@ -1336,12 +1335,11 @@ const ready = pct > 0.15;
   marginLeft: 'calc(-50vw + 50%)',
 }}>
   <style>{`
-    /* ── Step card ── */
     .step-card {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      padding: 2.25rem 2rem;
+      gap: 1.25rem;
+      padding: 2.5rem 2rem;
       border-radius: 6px;
       border: 1px solid #eef0ee;
       background: #ffffff;
@@ -1354,8 +1352,6 @@ const ready = pct > 0.15;
       box-shadow: 0 12px 36px rgba(0,0,0,0.09);
       border-color: rgba(15,118,110,0.25);
     }
-
-    /* Top reveal line on hover */
     .step-card::before {
       content: '';
       position: absolute;
@@ -1369,7 +1365,12 @@ const ready = pct > 0.15;
     }
     .step-card:hover::before { transform: scaleX(1); }
 
-    /* Step number circle */
+    .step-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
     .step-num {
       flex-shrink: 0;
       width: 2.75rem;
@@ -1392,6 +1393,20 @@ const ready = pct > 0.15;
       color: #ffffff;
     }
 
+    .step-icon {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 8px;
+      background: rgba(15,118,110,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .step-card:hover .step-icon {
+      background: rgba(15,118,110,0.12);
+    }
+
     .step-title {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.95rem;
@@ -1410,7 +1425,6 @@ const ready = pct > 0.15;
       font-weight: 300;
     }
 
-    /* Connector arrow between cards */
     .step-arrow {
       display: none;
     }
@@ -1434,7 +1448,6 @@ const ready = pct > 0.15;
       }
     }
 
-    /* ── Grid ── */
     .step-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1445,7 +1458,6 @@ const ready = pct > 0.15;
       .step-grid { grid-template-columns: 1fr; gap: 1rem; }
     }
 
-    /* ── Eyebrow ── */
     .step-eyebrow {
       display: flex;
       align-items: center;
@@ -1471,14 +1483,12 @@ const ready = pct > 0.15;
 
   <div style={{ maxWidth: '78rem', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '2rem', paddingRight: '2rem' }}>
 
-    {/* Eyebrow */}
     <div className="step-eyebrow">
       <span className="step-eyebrow-line" />
       <span className="step-eyebrow-text">The Process</span>
       <span className="step-eyebrow-line" />
     </div>
 
-    {/* Heading — last word green */}
     <h2 style={{
       fontFamily: 'var(--font-geist-sans), sans-serif',
       fontSize: 'clamp(1.8rem, 2.8vw, 2.5rem)',
@@ -1499,20 +1509,40 @@ const ready = pct > 0.15;
           step: '01',
           title: "You share what you're seeking",
           desc: "Your intention, what's happening in your life, what a retreat would need to be.",
+          icon: (
+            <svg width="18" height="18" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" viewBox="0 0 24 24">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+          ),
         },
         {
           step: '02',
           title: 'We help you choose the right land',
           desc: 'Which location and which retreat format makes sense — or we suggest something unexpected.',
+          icon: (
+            <svg width="18" height="18" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" viewBox="0 0 24 24">
+              <path d="M3 12l9-9 9 9M5 10v9a1 1 0 001 1h4v-5h4v5h4a1 1 0 001-1v-9"/>
+            </svg>
+          ),
         },
         {
           step: '03',
           title: 'Your journey takes shape',
           desc: 'In conversation. Not checkout pages, not templates. A retreat designed for you.',
+          icon: (
+            <svg width="18" height="18" fill="none" stroke="var(--color-primary)" strokeWidth="1.5" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+            </svg>
+          ),
         },
       ].map((item, i, arr) => (
         <div key={item.step} className="step-card">
-          <div className="step-num">{item.step}</div>
+          {/* Header — number left, icon right */}
+          <div className="step-card-header">
+            <div className="step-num">{item.step}</div>
+            <div className="step-icon">{item.icon}</div>
+          </div>
+          {/* Content */}
           <div>
             <h3 className="step-title">{item.title}</h3>
             <p className="step-desc">{item.desc}</p>
@@ -1682,19 +1712,61 @@ const ready = pct > 0.15;
       {/* Grid */}
       <div className="s7-grid">
         {[
-          { num: '01', title: 'Small Groups Only',    desc: 'Intimate groups or private journeys — never crowded, never rushed, never compromised.' },
-          { num: '02', title: 'Request-Based Dates',  desc: 'No fixed schedules. You reach out, we shape the timing entirely around your life.' },
-          { num: '03', title: 'No Price Lists',       desc: 'No rate cards, no fixed itineraries. Every journey is priced in conversation.' },
-          { num: '04', title: 'Designed for You',     desc: 'Built from scratch each time. Your retreat is yours alone — not a recycled template.' },
-        ].map((item) => (
-          <div key={item.num} className="s7-item">
-            <div className="s7-big-num">{item.num}</div>
-            <div>
-              <div className="s7-item-title">{item.title}</div>
-              <p className="s7-item-desc">{item.desc}</p>
-            </div>
-          </div>
-        ))}
+  {
+    num: '01',
+    title: 'Small Groups Only',
+    desc: 'Intimate groups or private journeys — never crowded, never rushed, never compromised.',
+    icon: (
+      <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+        <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+      </svg>
+    ),
+  },
+  {
+    num: '02',
+    title: 'Request-Based Dates',
+    desc: 'No fixed schedules. You reach out, we shape the timing entirely around your life.',
+    icon: (
+      <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+      </svg>
+    ),
+  },
+  {
+    num: '03',
+    title: 'No Price Lists',
+    desc: 'No rate cards, no fixed itineraries. Every journey is priced in conversation.',
+    icon: (
+      <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+    ),
+  },
+  {
+    num: '04',
+    title: 'Designed for You',
+    desc: 'Built from scratch each time. Your retreat is yours alone — not a recycled template.',
+    icon: (
+      <svg width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+        <path d="M12 20h9M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/>
+      </svg>
+    ),
+  },
+].map((item) => (
+  <div key={item.num} className="s7-item">
+    <div className="s7-big-num">{item.num}</div>
+    <div>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+        <span style={{ color: 'var(--color-primary)', opacity: 0.7, display: 'flex' }}>
+          {item.icon}
+        </span>
+        <div className="s7-item-title" style={{ margin: 0 }}>{item.title}</div>
+      </div>
+      <p className="s7-item-desc">{item.desc}</p>
+    </div>
+  </div>
+))}
       </div>
 
     </div>
@@ -1705,7 +1777,6 @@ const ready = pct > 0.15;
 <section style={{
   position: 'relative',
   overflow: 'hidden',
-  background: '#f7f9f7',
   width: '100vw',
   marginLeft: 'calc(-50vw + 50%)',
 }}>
@@ -1740,7 +1811,7 @@ const ready = pct > 0.15;
     }
     .cta8-eyebrow-line {
       width: 28px; height: 1px;
-      background: var(--color-primary);
+      background: rgba(255,255,255,0.5);
       opacity: 0.5;
       display: block;
       transform-origin: left;
@@ -1751,7 +1822,7 @@ const ready = pct > 0.15;
       font-size: 0.56rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: rgba(255,255,255,0.7);
       font-weight: 500;
       opacity: 0.7;
     }
@@ -1761,7 +1832,7 @@ const ready = pct > 0.15;
       font-size: clamp(2.2rem, 4vw, 3.5rem);
       font-weight: 200;
       letter-spacing: -0.035em;
-      color: #111111;
+      color: #ffffff;
       line-height: 1.05;
       margin: 0 0 1.75rem;
     }
@@ -1782,7 +1853,7 @@ const ready = pct > 0.15;
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.95rem;
       line-height: 2;
-      color: var(--color-muted);
+      color: rgba(255,255,255,0.75);
       font-weight: 300;
       max-width: 380px;
       margin: 0 0 2.5rem;
@@ -1809,7 +1880,7 @@ const ready = pct > 0.15;
     .cta8-pillar-text {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.82rem;
-      color: var(--color-muted);
+      color: rgba(255,255,255,0.65);
       font-weight: 300;
     }
 
@@ -1971,17 +2042,40 @@ const ready = pct > 0.15;
       .cta8-headline { font-size: clamp(2rem, 7vw, 2.8rem); }
     }
   `}</style>
-
+{/* Mountain background */}
+<div style={{
+  position: 'absolute',
+  inset: 0,
+  zIndex: 0,
+}}>
+  <Image
+    src={images.heroes.valleyForest.src}
+    alt={images.heroes.valleyForest.alt}
+    fill
+    quality={85}
+    style={{
+      objectFit: 'cover',
+      objectPosition: 'center',
+      filter: 'brightness(0.6) saturate(1)',
+    }}
+  />
+  <div style={{
+    position: 'absolute',
+    inset: 0,
+    background: 'linear-gradient(to right, rgba(5,20,10,0.75) 0%, rgba(5,20,10,0.55) 50%, rgba(5,20,10,0.15) 100%)'
+  }} />
+</div>
   {/* Top green line */}
   <div style={{
     height: '2px',
+    zIndex: 1,
     background: 'linear-gradient(to right, transparent 0%, var(--color-primary) 30%, var(--color-primary) 70%, transparent 100%)',
     opacity: 0.25,
     transformOrigin: 'left',
     animation: 'ctaLineGrow 1.2s ease forwards',
   }} />
 
-  <div className="cta8-inner">
+  <div className="cta8-inner" style={{ position: 'relative', zIndex: 1 }}>
 
     {/* ── LEFT ── */}
     <div>
