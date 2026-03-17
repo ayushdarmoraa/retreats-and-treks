@@ -843,7 +843,7 @@ const ready = pct > 0.15;
 
             {/* Image */}
             <div className="retreat-card-img-wrap">
-              <CardImage image={meta.image} height={250} />
+              <CardImage image={meta.image} />
               <div className="retreat-card-overlay" />
               <span className="retreat-card-tag">{meta.tag}</span>
               <span className="retreat-card-img-title">{retreat.title}</span>
@@ -1068,7 +1068,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
         return (
           <Link key={location.id} href={`/retreats/${location.id}`} className="loc-card">
             <div className="loc-card-img-wrap">
-             <CardImage image={imgData} height={175} />
+             <CardImage image={imgData} />
               <div className="loc-card-overlay" />
               <span className="loc-card-img-name">{location.name}</span>
             </div>
