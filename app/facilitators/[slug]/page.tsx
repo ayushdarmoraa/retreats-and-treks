@@ -1,11 +1,12 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema } from '@/components/seo/Schema';
 import Breadcrumb from '@/components/Breadcrumb';
 import TrackedPage from '@/components/TrackedPage';
-import { getFacilitator, getAllFacilitatorSlugs, type Facilitator } from '@/config/facilitators';
+import { getFacilitator, getAllFacilitatorSlugs } from '@/config/facilitators';
 import { getAllRetreatServices } from '@/content/retreats/services';
 
 export const dynamic = 'force-static';
@@ -78,13 +79,20 @@ export default async function FacilitatorPage(
         { name: facilitator.name },
       ]} />
 
-      <header style={{ marginBottom: 'var(--space-xl)' }}>
-        <h1 style={{ fontSize: '2rem', fontWeight: 400, marginBottom: '0.5rem' }}>
-          {facilitator.name}
-        </h1>
-        <p style={{ fontSize: '1.05rem', color: 'var(--color-text-secondary)', margin: 0 }}>
-          {facilitator.title} · {facilitator.yearsExperience} years experience
-        </p>
+      <header style={{ marginBottom: 'var(--space-xl)', display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+        {facilitator.image && (
+          <div style={{ flexShrink: 0, width: 120, height: 120, borderRadius: '50%', overflow: 'hidden' }}>
+            <Image src={facilitator.image.src} alt={facilitator.image.alt} width={120} height={120} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+          </div>
+        )}
+        <div>
+          <h1 style={{ fontSize: '2rem', fontWeight: 400, marginBottom: '0.5rem' }}>
+            {facilitator.name}
+          </h1>
+          <p style={{ fontSize: '1.05rem', color: 'var(--color-text-secondary)', margin: 0 }}>
+            {facilitator.title} · {facilitator.yearsExperience} years experience
+          </p>
+        </div>
       </header>
 
       <section style={{ marginBottom: 'var(--space-xl)' }}>

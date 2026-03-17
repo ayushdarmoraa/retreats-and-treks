@@ -7,10 +7,13 @@
  * Schema: schema.org/Person (generated on facilitator pages)
  */
 
+import { facilitatorImageMap, type SiteImage } from '@/lib/images';
+
 export interface Facilitator {
   readonly slug: string;
   readonly name: string;
   readonly title: string;
+  readonly image?: SiteImage;
   readonly metaDescription: string;
   readonly bio: string;
   readonly background: readonly string[];
@@ -29,6 +32,7 @@ const FACILITATORS: Facilitator[] = [
     slug: 'arjun-mehta',
     name: 'Arjun Mehta',
     title: 'Meditation & Silence Facilitator',
+    image: facilitatorImageMap['arjun-mehta'],
     metaDescription:
       'Arjun Mehta leads meditation and silent retreat programs across Zanskar, Chakrata, and Munsiyari. 12 years of practice. Trained in Vipassana and Zen traditions.',
     bio:
@@ -55,6 +59,7 @@ const FACILITATORS: Facilitator[] = [
     slug: 'kavya-sharma',
     name: 'Kavya Sharma',
     title: 'Yoga & Movement Facilitator',
+    image: facilitatorImageMap['kavya-sharma'],
     metaDescription:
       'Kavya Sharma leads yoga and movement retreat programs in Rishikesh and Chakrata. 15 years of teaching. Trained in Hatha, Vinyasa, and therapeutic yoga.',
     bio:
@@ -81,6 +86,7 @@ const FACILITATORS: Facilitator[] = [
     slug: 'nidhi-rawat',
     name: 'Nidhi Rawat',
     title: 'Burnout Recovery & Rest Facilitator',
+    image: facilitatorImageMap['nidhi-rawat'],
     metaDescription:
       'Nidhi Rawat leads burnout recovery and rest retreat programs in Chakrata and Sankri. Clinical psychology background. 8 years facilitating recovery programs.',
     bio:
@@ -107,6 +113,7 @@ const FACILITATORS: Facilitator[] = [
     slug: 'tenzin-dorje',
     name: 'Tenzin Dorje',
     title: 'Himalayan Retreat & Trek Guide',
+    image: facilitatorImageMap['tenzin-dorje'],
     metaDescription:
       'Tenzin Dorje leads retreat programs and guided treks in Zanskar and Munsiyari. Born in Ladakh. 20 years of mountain experience.',
     bio:
@@ -133,6 +140,7 @@ const FACILITATORS: Facilitator[] = [
     slug: 'sunaina-bhat',
     name: 'Sunaina Bhat',
     title: 'Sound Healing & Creative Retreat Facilitator',
+    image: facilitatorImageMap['sunaina-bhat'],
     metaDescription:
       'Sunaina Bhat leads sound healing and creative retreat programs in Chakrata. Trained in Tibetan singing bowls and gong therapy. 10 years of practice.',
     bio:

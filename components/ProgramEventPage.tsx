@@ -4,6 +4,7 @@
  */
 
 import Link from 'next/link';
+import Image from 'next/image';
 import type { RetreatProgramEvent } from '@/config/retreatProgramEvents';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema, generateReviewSchemas, generateAggregateRatingSchema } from '@/components/seo/Schema';
@@ -235,11 +236,20 @@ export default function ProgramEventPage({ event }: Props) {
                 <div
                   key={f.slug}
                   style={{
+                    display: 'flex',
+                    gap: '1rem',
+                    alignItems: 'flex-start',
                     border: '1px solid var(--color-border, #e0e0e0)',
                     borderRadius: 'var(--radius-sm, 8px)',
                     padding: '1rem 1.25rem',
                   }}
                 >
+                  {f.image && (
+                    <div style={{ flexShrink: 0, width: 56, height: 56, borderRadius: '50%', overflow: 'hidden' }}>
+                      <Image src={f.image.src} alt={f.image.alt} width={56} height={56} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                    </div>
+                  )}
+                  <div>
                   <Link href={`/facilitators/${f.slug}`} style={{ color: 'var(--color-primary)', fontWeight: 600, fontSize: '1rem' }}>
                     {f.name}
                   </Link>
@@ -251,6 +261,7 @@ export default function ProgramEventPage({ event }: Props) {
                     {' '}
                     <Link href={`/facilitators/${f.slug}`} style={{ color: 'var(--color-primary)', fontSize: '0.85rem' }}>Read full profile →</Link>
                   </p>
+                  </div>
                 </div>
               ))}
             </div>

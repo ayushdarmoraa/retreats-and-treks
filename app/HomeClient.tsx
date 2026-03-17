@@ -835,7 +835,7 @@ const ready = pct > 0.15;
       .filter(s => ['weekend-retreat', 'yoga-and-movement', 'meditation-and-silence'].includes(s.slug))
       .map(retreat => {
         const meta = cardMeta[retreat.slug] ?? {
-          image: { src: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop', alt: retreat.title },
+          image: { src: '/Images/location/chakrata.webp', alt: retreat.title },
           tag: 'Retreat',
         };
         return (
@@ -1064,7 +1064,7 @@ const ready = pct > 0.15;
   'joshimath': images.locations.joshimath,
   'lohajung':  images.locations.lohajung,
 };
-const imgData = locImages[location.id] ?? { src: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop', alt: location.name };
+const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp', alt: location.name };
         return (
           <Link key={location.id} href={`/retreats/${location.id}`} className="loc-card">
             <div className="loc-card-img-wrap">

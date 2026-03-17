@@ -593,7 +593,7 @@ export default async function TrekHubPage({ params }: PageProps) {
             'khaliya-top-trek':  { src: '/Images/trek/region/Khaliya.webp',       alt: 'Khaliya Top Trek — Panchachuli panorama from Munsiyari' },
             'milam-glacier-trek':{ src: '/Images/trek/region/milamglacier.webp',  alt: 'Milam Glacier Trek — historic Johar Valley expedition' },
           };
-          const imgSrc = TREK_IMAGES[trek.slug] ?? 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800&q=80&fit=crop';
+          // imgSrc unused — TREK_IMAGES used directly in JSX via ?.src / ?.alt
           const isModerate = trek.difficulty?.toLowerCase() === 'moderate';
 
           return (

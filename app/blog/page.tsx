@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { blogImageMap } from '@/lib/images';
 
 export function generateMetadata(): Metadata {
   return {
@@ -444,11 +446,13 @@ export default function BlogPage() {
             {/* Article 1 — Featured (full width) */}
             <Link href="/blog/kedarkantha-vs-har-ki-dun" className="bl-card bl-card-featured">
               <div className="bl-card-img-wrap">
-                <img
+                <Image
+                  fill
                   className="bl-card-img"
-                  src="https://images.unsplash.com/photo-1513023654725-b7382eba0003?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  
-                  alt="Kedarkantha winter snow trek"
+                  style={{ objectFit: 'cover' }}
+                  src={blogImageMap['kedarkantha-vs-har-ki-dun']?.src ?? '/Images/hero/alpine-ridge.webp'}
+                  alt={blogImageMap['kedarkantha-vs-har-ki-dun']?.alt ?? 'Kedarkantha winter snow trek'}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 45vw"
                 />
                 <div className="bl-card-img-overlay" />
                 <span className="bl-card-tag">Trek Guide</span>
@@ -467,10 +471,13 @@ export default function BlogPage() {
             {/* Article 2 */}
             <Link href="/blog/chakrata-vs-sankri" className="bl-card">
               <div className="bl-card-img-wrap">
-                <img
+                <Image
+                  fill
                   className="bl-card-img"
-                  src="https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=80&fit=crop"
-                  alt="Chakrata deodar forest"
+                  style={{ objectFit: 'cover' }}
+                  src={blogImageMap['chakrata-vs-sankri']?.src ?? '/Images/hero/alpine-ridge.webp'}
+                  alt={blogImageMap['chakrata-vs-sankri']?.alt ?? 'Chakrata deodar forest'}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="bl-card-img-overlay" />
                 <span className="bl-card-tag">Location Guide</span>
@@ -489,10 +496,13 @@ export default function BlogPage() {
             {/* Article 3 */}
             <Link href="/blog/trek-vs-retreat" className="bl-card">
               <div className="bl-card-img-wrap">
-                <img
+                <Image
+                  fill
                   className="bl-card-img"
-                  src="https://media.istockphoto.com/id/1069744476/photo/hiking-in-the-mountains-alone.webp?a=1&b=1&s=612x612&w=0&k=20&c=RdfTSUhKMC20HykMekoA6An2XWFlqFp_lsUOa7jP79s="
-                  alt="Himalayan meditation retreat"
+                  style={{ objectFit: 'cover' }}
+                  src={blogImageMap['trek-vs-retreat']?.src ?? '/Images/hero/alpine-ridge.webp'}
+                  alt={blogImageMap['trek-vs-retreat']?.alt ?? 'Himalayan meditation retreat'}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="bl-card-img-overlay" />
                 <span className="bl-card-tag">Retreat Decision</span>
@@ -511,10 +521,13 @@ export default function BlogPage() {
             {/* Article 4 */}
             <Link href="/blog/is-weekend-retreat-worth-it" className="bl-card">
               <div className="bl-card-img-wrap">
-                <img
+                <Image
+                  fill
                   className="bl-card-img"
-                  src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&q=80&fit=crop"
-                  alt="Peaceful Himalayan mountain view"
+                  style={{ objectFit: 'cover' }}
+                  src={blogImageMap['is-weekend-retreat-worth-it']?.src ?? '/Images/hero/alpine-ridge.webp'}
+                  alt={blogImageMap['is-weekend-retreat-worth-it']?.alt ?? 'Peaceful Himalayan mountain view'}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="bl-card-img-overlay" />
                 <span className="bl-card-tag">Lifestyle</span>
@@ -533,10 +546,13 @@ export default function BlogPage() {
             {/* Article 5 */}
             <Link href="/blog/chakrata-vs-mussoorie-weekend-trip" className="bl-card">
               <div className="bl-card-img-wrap">
-                <img
+                <Image
+                  fill
                   className="bl-card-img"
-                  src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bmF0dXJlfGVufDB8fDB8fHww"
-                  alt="Mussoorie hill station Himalayan town"
+                  style={{ objectFit: 'cover' }}
+                  src={blogImageMap['chakrata-vs-mussoorie-weekend-trip']?.src ?? '/Images/hero/alpine-ridge.webp'}
+                  alt={blogImageMap['chakrata-vs-mussoorie-weekend-trip']?.alt ?? 'Mussoorie hill station Himalayan town'}
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="bl-card-img-overlay" />
                 <span className="bl-card-tag">Location Guide</span>

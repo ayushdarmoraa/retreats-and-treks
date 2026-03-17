@@ -8,18 +8,18 @@ export interface SiteImage {
 
 export const images = {
 
-  // ── Heroes (folder is empty, using Unsplash for now) ──
+  // ── Heroes ──
   heroes: {
     himalayanSunrise: {
-     src: '/Images/heros/himalayan-sunrise.webp',
+      src: '/Images/hero/himalayan-sunrise.webp',
       alt: 'Himalayan snow peaks at sunrise',
     },
     valleyForest: {
-      src: '/Images/heros/valley-forest.webp',
+      src: '/Images/hero/valley-forest.webp',
       alt: 'Himalayan valley with forest',
     },
     alpineRidge: {
-      src: '/Images/heros/alpine-ridge.webp',
+      src: '/Images/hero/alpine-ridge.webp',
       alt: 'Alpine ridge trekking in Himalayas',
     },
     retreatHero: {
@@ -307,4 +307,240 @@ export const images = {
       alt: 'Himalayan Retreats & Treks logo',
     },
   },
+
+  // ── Facilitators ──
+  facilitators: {
+    arjunMehta: {
+      src: '/Images/facilitators/arjun-mehta.webp',
+      alt: 'Arjun Mehta — retreat facilitator',
+    },
+    kavyaSharma: {
+      src: '/Images/facilitators/kavya-sharma.webp',
+      alt: 'Kavya Sharma — retreat facilitator',
+    },
+    nidhiRawat: {
+      src: '/Images/facilitators/nidhi-rawat.webp',
+      alt: 'Nidhi Rawat — retreat facilitator',
+    },
+    tenzinDorje: {
+      src: '/Images/facilitators/tenzin-dorje.webp',
+      alt: 'Tenzin Dorje — retreat facilitator',
+    },
+    sunainaBhat: {
+      src: '/Images/facilitators/sunaina-bhat.webp',
+      alt: 'Sunaina Bhat — retreat facilitator',
+    },
+  },
+
+  // ── Blog Featured Images ──
+  blog: {
+    // Location blogs
+    bestTimeChakrata: {
+      src: '/Images/blog/best-time-for-retreat-in-chakrata.webp',
+      alt: 'Best time to visit Chakrata for a retreat',
+    },
+    bestTimeMunsiyari: {
+      src: '/Images/blog/best-time-for-retreat-in-munsiyari.webp',
+      alt: 'Best time to visit Munsiyari for a retreat',
+    },
+    bestTimeRishikesh: {
+      src: '/Images/blog/best-time-for-retreat-in-rishikesh.webp',
+      alt: 'Best time to visit Rishikesh for a retreat',
+    },
+    bestTimeSankri: {
+      src: '/Images/blog/best-time-for-retreat-in-sankri.webp',
+      alt: 'Best time to visit Sankri for a retreat',
+    },
+    reachChakrata: {
+      src: '/Images/blog/how-to-reach-chakrata-for-a-retreat.webp',
+      alt: 'How to reach Chakrata — mountain road',
+    },
+    reachMunsiyari: {
+      src: '/Images/blog/how-to-reach-munsiyari-for-a-retreat.webp',
+      alt: 'How to reach Munsiyari — mountain highway',
+    },
+    reachRishikesh: {
+      src: '/Images/blog/how-to-reach-rishikesh-for-a-retreat.webp',
+      alt: 'How to reach Rishikesh for a retreat',
+    },
+    reachSankri: {
+      src: '/Images/blog/how-to-reach-sankri-for-a-retreat.webp',
+      alt: 'How to reach Sankri — jeep trail through mountains',
+    },
+    isChakrataGood: {
+      src: '/Images/blog/is-chakrata-good-for-a-retreat.webp',
+      alt: 'Is Chakrata good for a retreat — peaceful mountain town',
+    },
+    isMunsiyariGood: {
+      src: '/Images/blog/is-munsiyari-good-for-a-retreat.webp',
+      alt: 'Is Munsiyari good for a retreat — Panchachuli peaks',
+    },
+    isRishikeshGood: {
+      src: '/Images/blog/is-rishikesh-good-for-a-retreat.webp',
+      alt: 'Is Rishikesh good for a retreat — yoga by Ganga',
+    },
+    isSankriGood: {
+      src: '/Images/blog/is-sankri-good-for-a-retreat.webp',
+      alt: 'Is Sankri good for a retreat — quiet village setting',
+    },
+    // Comparison blogs
+    chakrataVsMussoorie: {
+      src: '/Images/blog/chakrata-vs-mussoorie-weekend-trip.webp',
+      alt: 'Chakrata vs Mussoorie weekend trip comparison',
+    },
+    chakrataVsRishikesh: {
+      src: '/Images/blog/chakrata-vs-rishikesh-for-a-retreat.webp',
+      alt: 'Chakrata vs Rishikesh for a retreat',
+    },
+    chakrataVsSankri: {
+      src: '/Images/blog/chakrata-vs-sankri.webp',
+      alt: 'Chakrata vs Sankri retreat comparison',
+    },
+    sankriVsMunsiyari: {
+      src: '/Images/blog/sankri-vs-munsiyari-retreat.webp',
+      alt: 'Sankri vs Munsiyari retreat comparison',
+    },
+    // Trek blogs
+    kedarkanthaVsHarKiDun: {
+      src: '/Images/blog/kedarkantha-vs-har-ki-dun.webp',
+      alt: 'Kedarkantha vs Har Ki Dun trek comparison',
+    },
+    bestSnowTreks: {
+      src: '/Images/blog/best-snow-treks-garhwal-himalaya.webp',
+      alt: 'Best snow treks in Garhwal Himalaya',
+    },
+    highAltitudeTreks: {
+      src: '/Images/blog/high-altitude-treks-garhwal-above-4000m.webp',
+      alt: 'High altitude treks in Garhwal above 4000m',
+    },
+    beginnerToAdvanced: {
+      src: '/Images/blog/beginner-to-advanced-trek-progression-garhwal.webp',
+      alt: 'Beginner to advanced trek progression in Garhwal',
+    },
+    // Retreat decision blogs
+    threeDayVsFiveDay: {
+      src: '/Images/blog/3-day-vs-5-day-himalayan-retreat.webp',
+      alt: '3-day vs 5-day Himalayan retreat comparison',
+    },
+    retreatCost: {
+      src: '/Images/blog/how-much-does-a-himalayan-retreat-cost.webp',
+      alt: 'How much does a Himalayan retreat cost',
+    },
+    weekendWorthIt: {
+      src: '/Images/blog/is-weekend-retreat-worth-it.webp',
+      alt: 'Is a weekend retreat worth it',
+    },
+    retreatVsTrek: {
+      src: '/Images/blog/retreat-vs-trek-which-is-right-for-you.webp',
+      alt: 'Retreat vs trek — which is right for you',
+    },
+    trekVsRetreat: {
+      src: '/Images/blog/trek-vs-retreat.webp',
+      alt: 'Trek vs retreat — adventure vs peace',
+    },
+    // Art retreat blogs
+    artAndYoga: {
+      src: '/Images/blog/art-and-yoga-retreat-himalayas.webp',
+      alt: 'Art and yoga retreat in the Himalayas',
+    },
+    artBeginners: {
+      src: '/Images/blog/art-retreat-for-beginners.webp',
+      alt: 'Art retreat for beginners',
+    },
+    artPackingList: {
+      src: '/Images/blog/art-retreat-packing-list.webp',
+      alt: 'Art retreat packing list — supplies flat lay',
+    },
+    artVsClass: {
+      src: '/Images/blog/art-retreat-vs-art-class.webp',
+      alt: 'Art retreat vs art class comparison',
+    },
+    artTherapyVsRetreat: {
+      src: '/Images/blog/art-therapy-vs-art-retreat.webp',
+      alt: 'Art therapy vs art retreat',
+    },
+    unblockCreativity: {
+      src: '/Images/blog/can-a-retreat-unblock-creativity.webp',
+      alt: 'Can a retreat unblock creativity — sunrise and blank canvas',
+    },
+    whatToExpectArt: {
+      src: '/Images/blog/what-to-expect-at-an-art-retreat.webp',
+      alt: 'What to expect at an art retreat',
+    },
+    whyArtRetreatsWork: {
+      src: '/Images/blog/why-art-retreats-work.webp',
+      alt: 'Why art retreats work — finished art in nature',
+    },
+    // Other blogs
+    bestLocationsArt: {
+      src: '/Images/blog/best-himalayan-locations-for-art-retreat.webp',
+      alt: 'Best Himalayan locations for an art retreat',
+    },
+    natureInspires: {
+      src: '/Images/blog/how-nature-inspires-creative-practice.webp',
+      alt: 'How nature inspires creative practice',
+    },
+    paintingHimalayas: {
+      src: '/Images/blog/painting-in-the-himalayas.webp',
+      alt: 'Painting in the Himalayas — artist with mountain view',
+    },
+    digitalDetoxWorks: {
+      src: '/Images/blog/why-digital-detox-works-in-the-himalayas.webp',
+      alt: 'Why digital detox works in the Himalayas',
+    },
+  },
+
+
+};
+
+// ── Convenience lookups (slug → image) ──
+
+/** Facilitator slug → image. Use: `facilitatorImageMap['arjun-mehta']` */
+export const facilitatorImageMap: Record<string, SiteImage> = {
+  'arjun-mehta':   images.facilitators.arjunMehta,
+  'kavya-sharma':  images.facilitators.kavyaSharma,
+  'nidhi-rawat':   images.facilitators.nidhiRawat,
+  'tenzin-dorje':  images.facilitators.tenzinDorje,
+  'sunaina-bhat':  images.facilitators.sunainaBhat,
+};
+
+/** Blog slug → featured image. Use: `blogImageMap['trek-vs-retreat']` */
+export const blogImageMap: Record<string, SiteImage> = {
+  'best-time-for-retreat-in-chakrata':          images.blog.bestTimeChakrata,
+  'best-time-for-retreat-in-munsiyari':         images.blog.bestTimeMunsiyari,
+  'best-time-for-retreat-in-rishikesh':         images.blog.bestTimeRishikesh,
+  'best-time-for-retreat-in-sankri':            images.blog.bestTimeSankri,
+  'how-to-reach-chakrata-for-a-retreat':        images.blog.reachChakrata,
+  'how-to-reach-munsiyari-for-a-retreat':       images.blog.reachMunsiyari,
+  'how-to-reach-rishikesh-for-a-retreat':       images.blog.reachRishikesh,
+  'how-to-reach-sankri-for-a-retreat':          images.blog.reachSankri,
+  'is-chakrata-good-for-a-retreat':             images.blog.isChakrataGood,
+  'is-munsiyari-good-for-a-retreat':            images.blog.isMunsiyariGood,
+  'is-rishikesh-good-for-a-retreat':            images.blog.isRishikeshGood,
+  'is-sankri-good-for-a-retreat':               images.blog.isSankriGood,
+  'chakrata-vs-mussoorie-weekend-trip':         images.blog.chakrataVsMussoorie,
+  'chakrata-vs-rishikesh-for-a-retreat':        images.blog.chakrataVsRishikesh,
+  'chakrata-vs-sankri':                         images.blog.chakrataVsSankri,
+  'sankri-vs-munsiyari-retreat':                images.blog.sankriVsMunsiyari,
+  'kedarkantha-vs-har-ki-dun':                  images.blog.kedarkanthaVsHarKiDun,
+  'best-snow-treks-garhwal-himalaya':           images.blog.bestSnowTreks,
+  'high-altitude-treks-garhwal-above-4000m':    images.blog.highAltitudeTreks,
+  'beginner-to-advanced-trek-progression-garhwal': images.blog.beginnerToAdvanced,
+  '3-day-vs-5-day-himalayan-retreat':           images.blog.threeDayVsFiveDay,
+  'how-much-does-a-himalayan-retreat-cost':     images.blog.retreatCost,
+  'is-weekend-retreat-worth-it':                images.blog.weekendWorthIt,
+  'retreat-vs-trek-which-is-right-for-you':     images.blog.retreatVsTrek,
+  'trek-vs-retreat':                            images.blog.trekVsRetreat,
+  'art-and-yoga-retreat-himalayas':             images.blog.artAndYoga,
+  'art-retreat-for-beginners':                  images.blog.artBeginners,
+  'art-retreat-packing-list':                   images.blog.artPackingList,
+  'art-retreat-vs-art-class':                   images.blog.artVsClass,
+  'art-therapy-vs-art-retreat':                 images.blog.artTherapyVsRetreat,
+  'can-a-retreat-unblock-creativity':           images.blog.unblockCreativity,
+  'what-to-expect-at-an-art-retreat':           images.blog.whatToExpectArt,
+  'why-art-retreats-work':                      images.blog.whyArtRetreatsWork,
+  'best-himalayan-locations-for-art-retreat':   images.blog.bestLocationsArt,
+  'how-nature-inspires-creative-practice':      images.blog.natureInspires,
+  'painting-in-the-himalayas':                  images.blog.paintingHimalayas,
+  'why-digital-detox-works-in-the-himalayas':   images.blog.digitalDetoxWorks,
 };

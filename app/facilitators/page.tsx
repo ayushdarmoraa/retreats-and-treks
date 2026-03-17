@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema } from '@/components/seo/Schema';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -56,7 +57,9 @@ export default function FacilitatorsPage() {
             key={f.slug}
             href={`/facilitators/${f.slug}`}
             style={{
-              display: 'block',
+              display: 'flex',
+              gap: '1.25rem',
+              alignItems: 'flex-start',
               border: '1px solid var(--color-border, #e0e0e0)',
               borderRadius: 'var(--radius-sm, 8px)',
               padding: '1.25rem',
@@ -65,15 +68,22 @@ export default function FacilitatorsPage() {
               transition: 'border-color 0.15s',
             }}
           >
-            <h2 style={{ fontSize: '1.1rem', fontWeight: 600, margin: '0 0 0.25rem 0' }}>
-              {f.name}
-            </h2>
-            <p style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', margin: '0 0 0.5rem 0' }}>
-              {f.title} · {f.yearsExperience} years
-            </p>
-            <p style={{ fontSize: '0.9rem', lineHeight: 1.6, margin: 0 }}>
-              {f.specialisations.join(' · ')}
-            </p>
+            {f.image && (
+              <div style={{ flexShrink: 0, width: 80, height: 80, borderRadius: '50%', overflow: 'hidden', position: 'relative' }}>
+                <Image src={f.image.src} alt={f.image.alt} width={80} height={80} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+              </div>
+            )}
+            <div>
+              <h2 style={{ fontSize: '1.1rem', fontWeight: 600, margin: '0 0 0.25rem 0' }}>
+                {f.name}
+              </h2>
+              <p style={{ fontSize: '0.9rem', color: 'var(--color-text-secondary)', margin: '0 0 0.5rem 0' }}>
+                {f.title} · {f.yearsExperience} years
+              </p>
+              <p style={{ fontSize: '0.9rem', lineHeight: 1.6, margin: 0 }}>
+                {f.specialisations.join(' · ')}
+              </p>
+            </div>
           </Link>
         ))}
       </div>

@@ -1122,13 +1122,13 @@ export default function RetreatsClient({
                 'chakrata':  { src: '/Images/location/chakrata.webp',  alt: 'Chakrata — deodar forest ridge in Uttarakhand' },
                 'sankri':    { src: '/Images/location/sankri.webp',    alt: 'Sankri — pine valley at the edge of Govind Wildlife Sanctuary' },
                 'munsiyari': { src: '/Images/location/munsiyari.webp', alt: 'Munsiyari — Panchachuli massif views from Kumaon Himalaya' },
-                'joshimath': { src: 'https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?w=800&q=85&fit=crop', alt: 'Joshimath — gateway to Kuari Pass and Auli in Garhwal' },
-                'lohajung':  { src: 'https://images.unsplash.com/photo-1483728642387-6c3bdd6c93e5?w=800&q=85&fit=crop', alt: 'Lohajung — base village for Roopkund and Brahmatal treks' },
+                'joshimath': { src: '/Images/location/joshimath.webp', alt: 'Joshimath — gateway to Kuari Pass and Auli in Garhwal' },
+                'lohajung':  { src: '/Images/location/lohajung.webp', alt: 'Lohajung — base village for Roopkund and Brahmatal treks' },
                 'rishikesh': { src: '/Images/location/rishikesh.webp', alt: 'Rishikesh — Ganges riverside yoga and retreat destination' },
                 'mussoorie': { src: '/Images/location/mussoorie.webp', alt: 'Mussoorie — Queen of Hills in the Garhwal foothills' },
                 'zanskar':   { src: '/Images/location/zanskar.webp',   alt: 'Zanskar — remote high-altitude valley in Ladakh' },
               };
-              const imgData = locationImages[location.id] ?? { src: 'https://images.unsplash.com/photo-1626621341517-bbf3d9990a23?w=800&q=85&fit=crop', alt: location.name };
+              const imgData = locationImages[location.id] ?? { src: '/Images/location/chakrata.webp', alt: location.name };
 
               return (
                 <Link

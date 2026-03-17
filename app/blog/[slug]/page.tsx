@@ -1,7 +1,9 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { marked } from 'marked';
 import { getBlogBySlug, ALL_BLOG_POSTS } from '@/content/blogs';
+import { blogImageMap } from '@/lib/images';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBlogPostingSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { getTrekBySlug } from '@/lib/treks';
@@ -171,6 +173,24 @@ export default async function BlogPostPage({ params }: PageProps) {
             </div>
           </div>
         </section>
+
+        {/* ── FEATURED IMAGE ── */}
+        {blogImageMap[slug] && (
+          <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', borderBottom: '1px solid #e5e7eb' }}>
+            <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '1.5rem 2rem 0' }}>
+              <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', borderRadius: '8px', overflow: 'hidden' }}>
+                <Image
+                  fill
+                  src={blogImageMap[slug].src}
+                  alt={blogImageMap[slug].alt}
+                  style={{ objectFit: 'cover' }}
+                  sizes="(max-width: 640px) 100vw, 52rem"
+                  priority
+                />
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ── CONTENT ── */}
         <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '3.5rem', paddingBottom: '3.5rem', borderBottom: '1px solid #e5e7eb' }}>
