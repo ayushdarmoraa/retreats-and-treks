@@ -20,18 +20,19 @@ export default function SectionImage({
     <div
       className={className}
       style={{
+        position: 'relative',
         maxWidth: typeof maxWidth === 'number' ? `${maxWidth}px` : maxWidth,
         borderRadius: `${rounded}px`,
         overflow: 'hidden',
+        aspectRatio: '16 / 9',
       }}
     >
       <Image
         src={image.src}
         alt={image.alt}
-        width={image.width}
-        height={image.height}
+        fill
         sizes="(max-width: 768px) 100vw, 50vw"
-        style={{ width: '100%', height: 'auto', display: 'block' }}
+        style={{ objectFit: 'cover' }}
       />
     </div>
   );
