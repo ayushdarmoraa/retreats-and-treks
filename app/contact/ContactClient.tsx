@@ -1,5 +1,7 @@
 'use client';
 
+import Image from 'next/image';
+
 export default function ContactClient() {
   return (
     <div>
@@ -265,9 +267,18 @@ export default function ContactClient() {
             <span className="ccl-eyebrow-line" />
             <span className="ccl-eyebrow-text">Who You'll Speak To</span>
           </div>
-          <h2 className="ccl-h2">Who you'll speak to</h2>
+          <h2 className="ccl-h2">Who you&#39;ll speak to</h2>
+          <div style={{ borderRadius: '12px', overflow: 'hidden', marginBottom: '1.5rem' }}>
+            <Image
+              src="/Images/people/team.webp"
+              alt="Retreats And Treks team in the Himalayas"
+              width={600}
+              height={400}
+              style={{ width: '100%', height: 'auto', display: 'block' }}
+            />
+          </div>
           <div className="ccl-who-callout">
-            You'll connect directly with someone who designs and hosts our retreats. Not a booking agent. Not an automated response. Someone who understands the landscape, the practice, and what truly matters when you come away.
+            You&#39;ll connect directly with someone who designs and hosts our retreats. Not a booking agent. Not an automated response. Someone who understands the landscape, the practice, and what truly matters when you come away.
           </div>
         </div>
       </section>

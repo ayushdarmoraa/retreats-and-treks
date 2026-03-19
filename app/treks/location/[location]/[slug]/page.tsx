@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import Breadcrumb from '@/components/Breadcrumb';
 import TrekConversionLayer from '@/components/TrekConversionLayer';
 import TrekDeparturesTable from '@/components/TrekDeparturesTable';
@@ -18,6 +19,16 @@ import {
 
 // Deterministic trek comparison blog mapping
 // Only add entries where a dedicated comparison blog exists
+
+// Map trek slugs to itinerary photo folder names
+const trekItineraryFolderMap: Record<string, string> = {
+  'kedarkantha-trek': 'kedarkantha',
+  'brahmatal-trek': 'brahmatal',
+  'har-ki-dun-trek': 'har-ki-dun',
+  'kuari-pass-trek': 'kuari-pass',
+  'roopkund-trek': 'roopkund',
+  'pangarchulla-trek': 'pangarchulla',
+};
 // Deterministic trek comparison mapping
 // `path` is the full path (e.g. '/treks/brahmatal-vs-kuari-pass' or '/blog/kedarkantha-vs-har-ki-dun')
 const COMPARISON_BLOGS: Record<string, { path: string; title: string }> = {
@@ -510,7 +521,12 @@ export default async function TrekDetailPage({ params }: PageProps) {
       }}>Route Overview</h2>
 
       <div style={{ display: 'flex', flexDirection: 'column' as const }}>
-        {trek.itinerary.map((day, i) => (
+        {trek.itinerary.map((day, i) => {
+          const folderName = trekItineraryFolderMap[trek.slug];
+          const dayPhotoSrc = folderName
+            ? `/Images/trek/itinerary/${folderName}/day${i + 1}.webp`
+            : null;
+          return (
           <div key={i} style={{ display: 'grid', gridTemplateColumns: '2rem 1fr', gap: '0 1.25rem' }}>
             <div style={{ display: 'flex', flexDirection: 'column' as const, alignItems: 'center' }}>
               <span style={{
@@ -537,9 +553,21 @@ export default async function TrekDetailPage({ params }: PageProps) {
                 </strong>
                 {day.includes(':') ? day.substring(day.indexOf(':') + 1) : day}
               </p>
+              {dayPhotoSrc && (
+                <div style={{ marginTop: '0.75rem', borderRadius: '8px', overflow: 'hidden' }}>
+                  <Image
+                    src={dayPhotoSrc}
+                    alt={`${trek.title} — ${day.split(':')[0]}`}
+                    width={800}
+                    height={500}
+                    style={{ width: '100%', height: 'auto', display: 'block' }}
+                  />
+                </div>
+              )}
             </div>
           </div>
-        ))}
+          );
+        })}
       </div>
 
       <div style={{ marginTop: '2rem' }}>
