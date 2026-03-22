@@ -8,6 +8,8 @@ import Image from 'next/image';
 import { images } from '@/lib/images';
 import { CardImage } from '@/components/images';
 
+// test deploy
+
 
 interface Location {
   id: LocationId;
