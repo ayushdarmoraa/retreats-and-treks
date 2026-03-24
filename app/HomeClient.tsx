@@ -265,7 +265,7 @@ const ready = pct > 0.15;
     <source src="/videos/hero-video.mp4" type="video/mp4" />
   </video>
 
-  {/* Overlay */}
+  {/* Overlay a */}
   <div className="hh-overlay" />
 
   {/* Content */}
