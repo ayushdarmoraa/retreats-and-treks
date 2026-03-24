@@ -131,3 +131,36 @@ main {
   margin: 0 auto;
   padding: var(--space-lg) var(--space-md);
 }
+/* Featured Retreat cards */
+.retreat-card .retreat-card-img-wrap img {
+  transition: transform 0.5s ease !important;
+}
+.retreat-card:hover .retreat-card-img-wrap img {
+  transform: scale(1.07) !important;
+}
+
+/* Location cards */
+.loc-card .loc-card-img-wrap img {
+  transition: transform 0.5s ease !important;
+}
+.loc-card:hover .loc-card-img-wrap img {
+  transform: scale(1.07) !important;
+}
+/* Trek hub cards hover zoom */
+.trek-card-img-wrap img {
+  transition: transform 0.5s ease !important;
+}
+
+a:hover .trek-card-img-wrap img {
+  transform: scale(1.07) !important;
+}
+
+/* CardImage component hover zoom */
+.retreat-card:hover .card-img-inner,
+.loc-card:hover .card-img-inner {
+  transform: scale(1.07) !important;
+}
+
+.card-img-inner {
+  transition: transform 0.5s ease !important;
+}

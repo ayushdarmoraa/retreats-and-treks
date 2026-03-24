@@ -14,6 +14,10 @@ export const images = {
       src: '/Images/hero/himalayan-sunrise.webp',
       alt: 'Himalayan snow peaks at sunrise',
     },
+    mountainsnow: {
+      src: '/Images/hero/mountain-snow.webp',
+      alt: 'mountain snow',
+    },
     valleyForest: {
       src: '/Images/hero/valley-forest.webp',
       alt: 'Himalayan valley with forest',
@@ -308,7 +312,24 @@ export const images = {
     },
   },
 
-  // ── Facilitators ──
+ 
+  // ── Testimonials ──
+  testimonials: {
+    priya: {
+      src: '/Images/testimonials/priya.webp',
+      alt: 'Priya Mehta — retreat guest',
+    },
+    rohan: {
+      src: '/Images/testimonials/rohan.webp',
+      alt: 'Rohan Sharma — retreat guest',
+    },
+    anika: {
+      src: '/Images/testimonials/anika.webp',
+      alt: 'Anika Verma — retreat guest',
+    },
+  },
+
+  // ── Facilitators ──   
   facilitators: {
     arjunMehta: {
       src: '/Images/facilitators/arjun-mehta.webp',

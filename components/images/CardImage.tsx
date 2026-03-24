@@ -28,7 +28,12 @@ export default function CardImage({
         alt={image.alt}
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        style={{ objectFit: 'cover', objectPosition: 'center' }}
+        style={{
+  objectFit: 'cover',
+  objectPosition: 'center',
+  transition: 'transform 0.5s ease',
+}}
+className="card-img-inner"
       />
     </div>
   );

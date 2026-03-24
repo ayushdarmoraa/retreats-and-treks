@@ -610,17 +610,17 @@ export default async function TrekHubPage({ params }: PageProps) {
                 display: 'flex', flexDirection: 'column' as const,
               }}>
                 {/* Image */}
-                <div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden' }}>
-                  <img
-                    src={TREK_IMAGES[trek.slug]?.src ?? '/Images/trek/region/bramhatal.webp'}
-alt={TREK_IMAGES[trek.slug]?.alt ?? trek.title}
-                    
-                    style={{
-                      width: '100%', height: '100%',
-                      objectFit: 'cover', objectPosition: 'center',
-                      display: 'block',
-                    }}
-                  />
+<div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden' }} className="trek-card-img-wrap">
+  <img
+    src={TREK_IMAGES[trek.slug]?.src ?? '/Images/trek/region/bramhatal.webp'}
+    alt={TREK_IMAGES[trek.slug]?.alt ?? trek.title}
+    style={{
+      width: '100%', height: '100%',
+      objectFit: 'cover', objectPosition: 'center',
+      display: 'block',
+      transition: 'transform 0.5s ease',
+    }}
+  />
                   {/* Difficulty badge over image */}
                   <span style={{
                     position: 'absolute', top: '0.75rem', right: '0.75rem',

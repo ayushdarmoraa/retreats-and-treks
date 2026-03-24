@@ -76,63 +76,28 @@ const ready = pct > 0.15;
   marginBottom: '6rem',
 }}>
   <style>{`
-    /* ── Slideshow ── */
-    .hh-slides { position: absolute; inset: 0; }
-    .hh-slide {
-      position: absolute; inset: 0;
-      opacity: 0;
-      transition: opacity 2.2s ease;
-    }
-    .hh-slide.active { opacity: 1; }
-  
-    @keyframes hhZoom {
-      from { transform: scale(1.08); }
-      to   { transform: scale(1); }
-    }
-
-    /* Slide indicators */
-    .hh-indicators {
-      position: absolute; bottom: 2.5rem; right: 2.5rem;
-      display: flex; gap: 0.5rem; z-index: 4;
-    }
-    .hh-indicator {
-      width: 24px; height: 2px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 2px; cursor: pointer;
-      transition: background 0.3s, width 0.4s;
-    }
-    .hh-indicator.active {
-      background: var(--color-primary);
-      width: 40px;
-    }
-
-    /* ── Overlay ── */
     .hh-overlay {
-      position: absolute; inset: 0; z-index: 1;
-      background:
-        linear-gradient(
-          105deg,
-          rgba(2,8,2,0.92) 0%,
-          rgba(2,8,2,0.7) 45%,
-          rgba(2,8,2,0.15) 100%
-        ),
-        linear-gradient(
-          to top,
-          rgba(2,6,2,0.98) 0%,
-          rgba(2,6,2,0.85) 28%,
-          rgba(2,6,2,0.3) 60%,
-          transparent 100%
-        );
-    }
-
-    /* ── Content ── */
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(
+      105deg,
+      rgba(2,8,2,0.75) 0%,
+      rgba(2,8,2,0.45) 45%,
+      rgba(2,8,2,0.05) 100%
+    ),
+    linear-gradient(
+  to top,
+  rgba(2,6,2,0.70) 0%,
+  rgba(2,6,2,0.35) 28%,
+  rgba(2,6,2,0.05) 60%,
+  transparent 100%
+);
+}
     .hh-content {
       position: relative; z-index: 2;
       width: 100%; max-width: 820px;
       padding: clamp(2rem,6vw,5rem) clamp(1.5rem,6vw,5rem) clamp(3.5rem,10vh,6rem);
     }
-
-    /* Eyebrow */
     .hh-eyebrow {
       display: flex; align-items: center; gap: 0.75rem;
       margin-bottom: 1.75rem;
@@ -152,8 +117,6 @@ const ready = pct > 0.15;
       font-size: 0.55rem; letter-spacing: 0.32em; text-transform: uppercase;
       color: rgba(255,255,255,0.4); font-weight: 500;
     }
-
-    /* Heading — reveal line by line */
     .hh-heading {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: clamp(3rem, 7vw, 6rem);
@@ -173,14 +136,10 @@ const ready = pct > 0.15;
     }
     .hh-heading-line:nth-child(1) span { animation-delay: 0.28s; }
     .hh-heading-line:nth-child(2) span { animation-delay: 0.42s; }
-    .hh-heading-line:nth-child(3) span { animation-delay: 0.56s; }
-
     @keyframes hhSlideUp {
       from { opacity: 0; transform: translateY(100%); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
-    /* Sub lines */
     .hh-sub1 {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: clamp(1rem, 1.6vw, 1.2rem);
@@ -197,20 +156,22 @@ const ready = pct > 0.15;
       max-width: 480px; margin: 0 0 2.75rem;
       opacity: 0; animation: hhFadeUp 0.8s ease 0.78s forwards;
     }
-
-    /* Word-by-word reveal for sub2 */
     .hh-word {
       display: inline-block;
       opacity: 0;
       transform: translateY(8px);
       animation: hhWordIn 0.4s ease forwards;
     }
-
     @keyframes hhWordIn {
       to { opacity: 1; transform: translateY(0); }
     }
-
-    /* CTA */
+    .hh-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      animation: hhFadeUp 0.7s ease 0.95s forwards;
+    }
     .hh-btn {
       display: inline-flex; align-items: center; gap: 0.6rem;
       padding: 15px 32px;
@@ -221,7 +182,6 @@ const ready = pct > 0.15;
       border-radius: 4px; text-decoration: none;
       position: relative; overflow: hidden;
       transition: transform 0.18s, box-shadow 0.22s;
-      opacity: 0; animation: hhFadeUp 0.7s ease 0.95s forwards;
     }
     .hh-btn::before {
       content: '';
@@ -235,13 +195,27 @@ const ready = pct > 0.15;
       transform: translateY(-2px);
       box-shadow: 0 14px 40px rgba(15,118,110,0.45);
     }
-
+    .hh-btn-wa {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 15px 32px;
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #ffffff;
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.62rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      border-radius: 4px; text-decoration: none;
+      transition: transform 0.18s, background 0.22s, border-color 0.22s;
+    }
+    .hh-btn-wa:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.08);
+      border-color: rgba(255,255,255,0.45);
+    }
     @keyframes hhFadeUp {
       from { opacity: 0; transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-
-    /* Scroll hint */
     .hh-scroll {
       position: absolute; bottom: 2.5rem; left: 50%;
       transform: translateX(-50%);
@@ -263,41 +237,42 @@ const ready = pct > 0.15;
       0%, 100% { opacity: 0.3; transform: scaleY(1); }
       50%       { opacity: 0.8; transform: scaleY(1.15); }
     }
-
     @media (max-width: 700px) {
-      .hh-indicators { bottom: 1.5rem; right: 1.5rem; }
       .hh-scroll { display: none; }
+      .hh-btns { flex-direction: column; }
+      .hh-btn, .hh-btn-wa { text-align: center; justify-content: center; }
     }
   `}</style>
 
-  {/* Slides */}
-<div className="hh-slides" id="hh-slides">
-  <div className="hh-slide active">
-    <Image src={images.heroes.himalayanSunrise.src} alt={images.heroes.himalayanSunrise.alt} fill quality={90} style={{objectFit:'cover', objectPosition:'center 40%', filter:'brightness(0.82) saturate(1.1)'}} priority />
-  </div>
-  <div className="hh-slide">
-    <Image src={images.heroes.valleyForest.src} alt={images.heroes.valleyForest.alt} fill quality={90} style={{objectFit:'cover', objectPosition:'center 40%', filter:'brightness(0.82) saturate(1.1)'}} />
-  </div>
-  <div className="hh-slide">
-    <Image src={images.heroes.alpineRidge.src} alt={images.heroes.alpineRidge.alt} fill quality={90} style={{objectFit:'cover', objectPosition:'center 40%', filter:'brightness(0.82) saturate(1.1)'}} />
-  </div>
-</div>
+  {/* Video Background */}
+  <video
+    autoPlay
+    muted
+    loop
+    playsInline
+    preload="none"
+    poster={images.heroes.mountainsnow.src}
+    style={{
+      position: 'absolute',
+      inset: 0,
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      objectPosition: 'center',
+      filter: 'brightness(0.82) saturate(1.1)',
+    }}
+  >
+    <source src="/videos/hero-video.mp4" type="video/mp4" />
+  </video>
 
-{/* Slide indicators */}
-<div className="hh-indicators" id="hh-indicators">
-  <div className="hh-indicator active" />
-  <div className="hh-indicator" />
-  <div className="hh-indicator" />
-</div>
-
-{/* Overlay — SIRF EK */}
-<div className="hh-overlay" />
+  {/* Overlay */}
+  <div className="hh-overlay" />
 
   {/* Content */}
   <div className="hh-content">
     <div className="hh-eyebrow">
       <span className="hh-eyebrow-line" />
-      <span className="hh-eyebrow-text">Himalayan Retreats & Treks</span>
+      <span className="hh-eyebrow-text">Himalayan Retreats &amp; Treks</span>
     </div>
 
     <h2 className="hh-heading">
@@ -313,29 +288,25 @@ const ready = pct > 0.15;
       Retreats and treks across carefully chosen Himalayan landscapes. Designed around your intention, not fixed schedules.
     </p>
 
-    <Link href="/retreats" className="hh-btn">
-      Explore all retreats
-    </Link>
+    {/* Buttons */}
+    <div className="hh-btns">
+      <Link href="/retreats" className="hh-btn">
+        Plan My Retreat
+      </Link>
+      
+       <a href="https://wa.me/919760446101?text=Hi%2C%20I%20want%20to%20plan%20a%20custom%20retreat."
+        target="_blank"
+        rel="noopener noreferrer"
+        className="hh-btn-wa"
+      >
+        💬 WhatsApp Now
+      </a>
+    </div>
   </div>
 
-  {/* JS — slideshow + word-by-word sub2 */}
+  {/* JS — word-by-word sub2 only */}
   <script dangerouslySetInnerHTML={{ __html: `
     (function() {
-      // Slideshow
-      var slides = document.querySelectorAll('#hh-slides .hh-slide');
-      var dots   = document.querySelectorAll('#hh-indicators .hh-indicator');
-      var cur = 0;
-      function goTo(n) {
-        slides[cur].classList.remove('active');
-        dots[cur].classList.remove('active');
-        cur = (n + slides.length) % slides.length;
-        slides[cur].classList.add('active');
-        dots[cur].classList.add('active');
-      }
-      dots.forEach(function(d,i){ d.addEventListener('click', function(){ goTo(i); }); });
-      setInterval(function(){ goTo(cur+1); }, 6500);
-
-      // Word-by-word animation for sub2
       var el = document.getElementById('hh-sub2-text');
       if (el) {
         var words = el.innerText.split(' ');
@@ -1774,7 +1745,545 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     </div>
   </div>
 </section>
+{/* SECTION: TESTIMONIALS — Real People. Real Experiences. */}
+<section style={{
+  marginBottom: '0',
+  marginTop: '0',
+  paddingTop: '6rem',
+  paddingBottom: '6rem',
+  paddingLeft: '0',
+  paddingRight: '0',
+  borderBottom: '1px solid #e5e7eb',
+  background: '#faf8f4',
+  width: '100vw',
+  marginLeft: 'calc(-50vw + 50%)',
+}}>
+  <style>{`
+    /* ── Testimonial Card ── */
+    .t-card {
+      background: #ffffff;
+      border-radius: 6px;
+      border: 1px solid #eef0ee;
+      padding: 2.5rem 2.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.05);
+      transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.35s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .t-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 44px rgba(0,0,0,0.10);
+      border-color: rgba(15,118,110,0.2);
+    }
+    .t-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--color-primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
+    }
+    .t-card:hover::before { transform: scaleX(1); }
 
+    /* Quote mark */
+    .t-quote-mark {
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 4rem;
+      font-weight: 200;
+      color: var(--color-primary);
+      opacity: 0.12;
+      line-height: 1;
+      position: absolute;
+      top: 1.25rem;
+      right: 1.75rem;
+      user-select: none;
+    }
+
+    /* Stars */
+    .t-stars {
+      display: flex;
+      gap: 0.2rem;
+    }
+    .t-star {
+      color: var(--color-primary);
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+
+    /* Review text */
+    .t-review {
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.9rem;
+      line-height: 1.9;
+      color: #555550;
+      font-weight: 300;
+      margin: 0;
+      font-style: italic;
+    }
+
+    /* Vibe tag */
+    .t-vibe {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.5rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      background: rgba(15,118,110,0.07);
+      padding: 4px 10px;
+      border-radius: 2px;
+      font-weight: 600;
+      width: fit-content;
+    }
+
+    /* Person row */
+    .t-person {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      border-top: 1px solid #f0f0ee;
+      padding-top: 1.25rem;
+    }
+    .t-avatar {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(15,118,110,0.15);
+      flex-shrink: 0;
+    }
+    .t-avatar-placeholder {
+      width: 2.75rem;
+      height: 2.75rem;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(15,118,110,0.15) 0%, rgba(15,118,110,0.08) 100%);
+      border: 2px solid rgba(15,118,110,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-primary);
+      opacity: 0.7;
+    }
+    .t-name {
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #111111;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.15rem;
+    }
+    .t-meta {
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.72rem;
+      color: #999990;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Grid ── */
+    .t-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .t-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 580px) {
+      .t-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Eyebrow ── */
+    .t-eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .t-eyebrow-line {
+      width: 28px; height: 1px;
+      background: var(--color-primary);
+      opacity: 0.5;
+    }
+    .t-eyebrow-text {
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.56rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      font-weight: 500;
+      opacity: 0.7;
+    }
+  `}</style>
+
+  <div style={{ maxWidth: '78rem', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '2rem', paddingRight: '2rem' }}>
+
+    {/* Eyebrow */}
+    <div className="t-eyebrow">
+      <span className="t-eyebrow-line" />
+      <span className="t-eyebrow-text">Real People. Real Experiences.</span>
+      <span className="t-eyebrow-line" />
+    </div>
+
+    {/* Heading */}
+    <h2 style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: 'clamp(1.8rem, 2.8vw, 2.5rem)',
+      fontWeight: 200,
+      letterSpacing: '-0.03em',
+      color: '#111111',
+      margin: '0 0 3.5rem',
+      lineHeight: 1.1,
+      textAlign: 'center',
+    }}>
+      Those Who Came{' '}
+      <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Before You</span>
+    </h2>
+
+    {/* Cards */}
+    <div className="t-grid">
+      {[
+  {
+    image: images.testimonials.priya,
+    name: 'Priya Mehta',
+    meta: 'Chakrata · Meditation Retreat',
+    vibe: '🧘 Meditation',
+    review: 'I came burnt out and left feeling like myself again. The silence, the mountains, the pace — nothing was rushed. It felt designed just for me, because it was.',
+    stars: 5,
+  },
+  {
+    image: images.testimonials.rohan,
+    name: 'Rohan Sharma',
+    meta: 'Sankri · Weekend Retreat',
+    vibe: '🍵 Tea Vibes',
+    review: "Woke up to mist over the valley every morning. The evenings around the fire with chai — I didn't know I needed this until I was in it. Already planning the next one.",
+    stars: 5,
+  },
+  {
+    image: images.testimonials.anika,
+    name: 'Anika Verma',
+    meta: 'Munsiyari · Walking Retreat',
+    vibe: '🚶 Walking',
+    review: "The walks weren't just physical — something shifted internally. By day three, my mind was quieter than it's been in years. This place changes you.",
+    stars: 5,
+  },
+].map((t, i) => (
+  <div key={i} className="t-card">
+    <span className="t-quote-mark">"</span>
+
+    <div className="t-stars">
+      {Array.from({ length: t.stars }).map((_, s) => (
+        <span key={s} className="t-star">★</span>
+      ))}
+    </div>
+
+    <span className="t-vibe">{t.vibe}</span>
+
+    <p className="t-review">"{t.review}"</p>
+
+    <div className="t-person">
+      <Image
+        src={t.image.src}
+        alt={t.image.alt}
+        width={44}
+        height={44}
+        className="t-avatar"
+        style={{ borderRadius: '50%' }}
+      />
+      <div>
+        <div className="t-name">{t.name}</div>
+        <div className="t-meta">{t.meta}</div>
+      </div>
+    </div>
+  </div>
+))}
+    </div>
+
+  </div>
+</section>
+{/* SECTION: A DAY IN YOUR RETREAT — Timeline */}
+<section style={{
+  marginBottom: '0',
+  marginTop: '0',
+  paddingTop: '6rem',
+  paddingBottom: '6rem',
+  background: '#ffffff',
+  width: '100vw',
+  marginLeft: 'calc(-50vw + 50%)',
+  position: 'relative',
+  overflow: 'hidden',
+  borderBottom: '1px solid #e5e7eb',
+}}>
+  <style>{`
+    .day-bg-line {
+      position: absolute;
+      left: 50%;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, rgba(15,118,110,0.1) 20%, rgba(15,118,110,0.1) 80%, transparent);
+      transform: translateX(-50%);
+    }
+
+    .day-eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .day-eyebrow-line {
+      width: 28px; height: 1px;
+      background: var(--color-primary);
+      opacity: 0.5;
+    }
+    .day-eyebrow-text {
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.56rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      font-weight: 500;
+      opacity: 0.7;
+    }
+
+    .day-timeline {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 0;
+      margin-top: 4rem;
+    }
+
+    .day-timeline::before {
+      content: '';
+      position: absolute;
+      top: 2.6rem;
+      left: 12.5%;
+      right: 12.5%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(15,118,110,0.2) 20%, rgba(15,118,110,0.2) 80%, transparent);
+    }
+
+    .day-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 1.5rem;
+      position: relative;
+    }
+
+    .day-dot-wrap {
+      position: relative;
+      margin-bottom: 1.75rem;
+    }
+    .day-dot {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      background: rgba(15,118,110,0.06);
+      border: 1px solid rgba(15,118,110,0.18);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.75rem;
+      transition: background 0.35s, border-color 0.35s, transform 0.35s;
+      cursor: default;
+      position: relative;
+    }
+    .day-block:hover .day-dot {
+      background: rgba(15,118,110,0.12);
+      border-color: rgba(15,118,110,0.4);
+      transform: scale(1.08);
+    }
+    .day-dot::after {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 1px solid rgba(15,118,110,0.15);
+      opacity: 0;
+      transform: scale(0.85);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    .day-block:hover .day-dot::after {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .day-time {
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.52rem;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      font-weight: 600;
+      opacity: 0.8;
+      margin-bottom: 0.6rem;
+    }
+
+    .day-title {
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #1a1814;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+      margin-bottom: 0.75rem;
+    }
+
+    .day-divider {
+      width: 20px;
+      height: 1px;
+      background: rgba(15,118,110,0.35);
+      margin: 0 auto 0.75rem;
+    }
+
+    .day-desc {
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.82rem;
+      line-height: 1.85;
+      color: rgba(80,70,55,0.65);
+      font-weight: 300;
+      max-width: 180px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+      .day-timeline {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+      .day-timeline::before { display: none; }
+      .day-block {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-start;
+        padding: 2rem 1rem;
+        border-bottom: 1px solid rgba(15,118,110,0.08);
+        gap: 1.5rem;
+      }
+      .day-block:last-child { border-bottom: none; }
+      .day-dot-wrap { margin-bottom: 0; flex-shrink: 0; }
+      .day-dot { width: 3.5rem; height: 3.5rem; font-size: 1.25rem; }
+      .day-desc { max-width: 100%; }
+      .day-bg-line { display: none; }
+    }
+  `}</style>
+
+  <div className="day-bg-line" />
+
+  <div style={{ maxWidth: '78rem', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '2rem', paddingRight: '2rem', position: 'relative', zIndex: 1 }}>
+
+    <div className="day-eyebrow">
+      <span className="day-eyebrow-line" />
+      <span className="day-eyebrow-text">The Experience</span>
+      <span className="day-eyebrow-line" />
+    </div>
+
+    <h2 style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: 'clamp(1.8rem, 2.8vw, 2.5rem)',
+      fontWeight: 200,
+      letterSpacing: '-0.03em',
+      color: '#111111',
+      margin: '0',
+      lineHeight: 1.1,
+      textAlign: 'center',
+    }}>
+      A Day in Your{' '}
+      <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Retreat</span>
+    </h2>
+
+    <p style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: '0.9rem',
+      color: 'rgba(80,70,55,0.6)',
+      fontWeight: 300,
+      textAlign: 'center',
+      marginTop: '0.75rem',
+      marginBottom: '0',
+      letterSpacing: '0.01em',
+    }}>
+      No alarms. No schedules. Just a rhythm that feels right.
+    </p>
+
+    <div className="day-timeline">
+      {[
+  {
+    icon: (
+      <svg width="28" height="28" fill="none" stroke="var(--color-primary)" strokeWidth="1.2" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+      </svg>
+    ),
+    time: 'Morning',
+    title: 'Yoga & Stillness',
+    desc: 'Gentle movement as the sun rises over the peaks. Breathwork, asana, and silence before the world wakes.',
+  },
+  {
+    icon: (
+      <svg width="28" height="28" fill="none" stroke="var(--color-primary)" strokeWidth="1.2" viewBox="0 0 24 24">
+        <path d="M3 17l4-8 4 4 3-6 4 10"/>
+        <path d="M2 20h20"/>
+      </svg>
+    ),
+    time: 'Afternoon',
+    title: 'Explore & Wander',
+    desc: 'Forest walks, village trails, or simply sitting by a stream. The mountain teaches at its own pace.',
+  },
+  {
+    icon: (
+      <svg width="28" height="28" fill="none" stroke="var(--color-primary)" strokeWidth="1.2" viewBox="0 0 24 24">
+        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z"/>
+        <path d="M19 3v4M21 5h-4"/>
+      </svg>
+    ),
+    time: 'Evening',
+    title: 'Sunset & Reflection',
+    desc: 'Watch the light shift over the valley. Journal, sketch, or just be. No agenda, only presence.',
+  },
+  {
+    icon: (
+      <svg width="28" height="28" fill="none" stroke="var(--color-primary)" strokeWidth="1.2" viewBox="0 0 24 24">
+        <path d="M12 22c4.97 0 9-2.69 9-6 0-1.5-.75-2.87-2-3.9"/>
+        <path d="M12 16c4.97 0 9-2.69 9-6S16.97 4 12 4 3 6.69 3 10c0 1.5.75 2.87 2 3.9"/>
+        <path d="M12 16v6M8 18l4 4 4-4"/>
+      </svg>
+    ),
+    time: 'Night',
+    title: 'Chill & Unwind',
+    desc: 'Chai around the fire. Conversations that matter, or the comfort of deep mountain silence.',
+  },
+].map((item, i) => (
+  <div key={i} className="day-block">
+    <div className="day-dot-wrap">
+      <div className="day-dot">{item.icon}</div>
+    </div>
+    <div>
+      <div className="day-time">{item.time}</div>
+      <div className="day-title">{item.title}</div>
+      <div className="day-divider" />
+      <p className="day-desc">{item.desc}</p>
+    </div>
+  </div>
+))}
+    </div>
+
+  </div>
+</section>
      {/* SECTION 8: FINAL INVITATION CTA */}
 <section style={{
   position: 'relative',
