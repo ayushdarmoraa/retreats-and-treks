@@ -164,3 +164,51 @@ a:hover .trek-card-img-wrap img {
 .card-img-inner {
   transition: transform 0.5s ease !important;
 }
+/* ── GLOBAL SCROLL FADE-IN ── */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+              transform 0.75s cubic-bezier(0.22,1,0.36,1);
+}
+.scroll-fade.sf-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.scroll-fade-stagger > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
+              transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.scroll-fade-stagger.sf-visible > *:nth-child(1) { transition-delay: 0.00s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(2) { transition-delay: 0.08s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(3) { transition-delay: 0.16s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(4) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(5) { transition-delay: 0.32s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(6) { transition-delay: 0.40s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(7) { transition-delay: 0.48s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(8) { transition-delay: 0.56s; opacity: 1; transform: translateY(0); }
+
+/* ── GLOBAL IMAGE HOVER ZOOM ── */
+.img-zoom {
+  overflow: hidden;
+}
+.img-zoom img,
+.img-zoom .card-img-inner {
+  transition: transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.img-zoom:hover img,
+.img-zoom:hover .card-img-inner {
+  transform: scale(1.07);
+}
+
+/* ── GLOBAL BUTTON HOVER POP ── */
+.btn-pop {
+  transition: transform 0.18s cubic-bezier(0.22,1,0.36,1),
+              box-shadow 0.18s cubic-bezier(0.22,1,0.36,1);
+}
+.btn-pop:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(15,118,110,0.2);
+}

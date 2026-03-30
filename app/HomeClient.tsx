@@ -37,6 +37,24 @@ useEffect(() => {
   rafRef.current = requestAnimationFrame(tick);
   return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
 }, []);
+// ── Scroll fade-in observer ──
+useEffect(() => {
+  const els = document.querySelectorAll('.scroll-fade, .scroll-fade-stagger');
+  if (!els.length) return;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('sf-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+  );
+  els.forEach((el) => observer.observe(el));
+  return () => observer.disconnect();
+}, []);
 const ready = pct > 0.15;
   const intentOptions = [
     {
@@ -76,6 +94,7 @@ const ready = pct > 0.15;
   marginBottom: '6rem',
 }}>
   <style>{`
+  
     .hh-overlay {
   position: absolute; inset: 0; z-index: 1;
   background:
@@ -92,7 +111,32 @@ const ready = pct > 0.15;
   rgba(2,6,2,0.05) 60%,
   transparent 100%
 );
+
+}/* ── Scroll Fade-in ── */           ← phir yahan daalo bahar
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+              transform 0.75s cubic-bezier(0.22,1,0.36,1);
 }
+.scroll-fade.sf-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.scroll-fade-stagger > * {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
+              transform 0.65s cubic-bezier(0.22,1,0.36,1);
+}
+.scroll-fade-stagger.sf-visible > *:nth-child(1) { transition-delay: 0.00s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(2) { transition-delay: 0.08s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(3) { transition-delay: 0.16s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(4) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(5) { transition-delay: 0.32s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(6) { transition-delay: 0.40s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(7) { transition-delay: 0.48s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(8) { transition-delay: 0.56s; opacity: 1; transform: translateY(0); }
     .hh-content {
       position: relative; z-index: 2;
       width: 100%; max-width: 820px;
@@ -522,7 +566,7 @@ const ready = pct > 0.15;
 
   {/* Cards */}
   <div className="ph-cards-wrap">
-    <div className="ph-cards">
+    <div className="ph-cards scroll-fade-stagger">
       {[
         {
           n: '01',
@@ -792,7 +836,7 @@ const ready = pct > 0.15;
     </h2>
 
     {/* Cards grid */}
-<div style={{
+<div className="scroll-fade-stagger" style={{
   display: 'grid',
   gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
   gap: '1.75rem',
@@ -1025,7 +1069,7 @@ const ready = pct > 0.15;
     </h2>
 
     {/* Cards */}
-    <div className="loc-grid">
+    <div className="loc-grid scroll-fade-stagger">
       {locations.map((location) => {
         const locImages: Record<string, typeof images.locations.chakrata> = {
   'chakrata':  images.locations.chakrata,
@@ -1240,7 +1284,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Forward</span>
     </h2>
 
-    <div className="path-grid">
+    <div className="path-grid scroll-fade-stagger">
 
       {/* Retreats */}
       <div className="path-card">
@@ -1476,7 +1520,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Works</span>
     </h2>
 
-    <div className="step-grid">
+    <div className="step-grid scroll-fade-stagger">
       {[
         {
           step: '01',
@@ -1683,7 +1727,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       </div>
 
       {/* Grid */}
-      <div className="s7-grid">
+      <div className="s7-grid scroll-fade">
         {[
   {
     num: '01',
@@ -1953,7 +1997,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     </h2>
 
     {/* Cards */}
-    <div className="t-grid">
+    <div className="t-grid scroll-fade-stagger">
       {[
   {
     image: images.testimonials.priya,
@@ -2009,6 +2053,205 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     </div>
   </div>
 ))}
+    </div>
+
+  </div>
+</section>
+{/* SECTION: LIFE AT THE RETREAT */}
+<section style={{
+  marginBottom: '0',
+  marginTop: '0',
+  paddingTop: '6rem',
+  paddingBottom: '6rem',
+  background: '#f7f9f7',
+  width: '100vw',
+  marginLeft: 'calc(-50vw + 50%)',
+  borderBottom: '1px solid #e5e7eb',
+}}>
+  <style>{`
+    .life-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 900px) {
+      .life-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 580px) {
+      .life-grid { grid-template-columns: 1fr; }
+    }
+
+    .life-card {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: default;
+    }
+
+    .life-card-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 420px;
+    }
+
+    .life-card-img-wrap img {
+      transition: transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .life-card:hover .life-card-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .life-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(2,10,2,0.82) 0%,
+        rgba(2,10,2,0.25) 45%,
+        rgba(2,10,2,0) 100%
+      );
+      transition: opacity 0.35s;
+      z-index: 1;
+    }
+    .life-card:hover .life-card-overlay { opacity: 0.9; }
+
+    .life-card-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 2rem 1.75rem;
+      z-index: 2;
+    }
+
+    .life-card-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.5rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #ffffff;
+      background: rgba(15,118,110,0.75);
+      padding: 4px 10px;
+      border-radius: 2px;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      backdrop-filter: blur(4px);
+    }
+
+    .life-card-title {
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 1.35rem;
+      font-weight: 200;
+      color: #f5f0e8;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .life-card-desc {
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.82rem;
+      color: rgba(236,228,208,0.7);
+      font-weight: 300;
+      line-height: 1.7;
+      margin: 0;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.35s, transform 0.35s;
+    }
+    .life-card:hover .life-card-desc {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .life-eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .life-eyebrow-line {
+      width: 28px; height: 1px;
+      background: var(--color-primary);
+      opacity: 0.5;
+    }
+    .life-eyebrow-text {
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.56rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      font-weight: 500;
+      opacity: 0.7;
+    }
+  `}</style>
+
+  <div style={{ maxWidth: '78rem', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '2rem', paddingRight: '2rem' }}>
+
+    <div className="life-eyebrow">
+      <span className="life-eyebrow-line" />
+      <span className="life-eyebrow-text">Life at the Retreat</span>
+      <span className="life-eyebrow-line" />
+    </div>
+
+    <h2 style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: 'clamp(1.8rem, 2.8vw, 2.5rem)',
+      fontWeight: 200,
+      letterSpacing: '-0.03em',
+      color: '#111111',
+      margin: '0 0 3.5rem',
+      lineHeight: 1.1,
+      textAlign: 'center',
+    }}>
+      Mountains. People.{' '}
+      <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Moments.</span>
+    </h2>
+
+    <div className="life-grid scroll-fade-stagger">
+      {[
+        {
+          image: images.moments.meditation,
+          tag: '🧘 Meditation',
+          title: 'Stillness in the Mountains',
+          desc: 'Morning practice as mist lifts over the valley. Breathwork, silence, and the sound of wind.',
+        },
+        {
+          image: images.moments.walking,
+          tag: '🚶 Walking',
+          title: 'Trails That Clear the Mind',
+          desc: 'Forest paths, ridge walks, and the kind of quiet that only mountains offer.',
+        },
+        {
+          image: images.moments.tea,
+          tag: '🍵 Tea Vibes',
+          title: 'Evenings Around the Fire',
+          desc: 'Chai, conversation, and the warmth of a fire as the Himalayas turn golden.',
+        },
+      ].map((item, i) => (
+        <div key={i} className="life-card">
+          <div className="life-card-img-wrap">
+            <Image
+              src={item.image.src}
+              alt={item.image.alt}
+              fill
+              sizes="(max-width: 580px) 100vw, (max-width: 900px) 50vw, 33vw"
+              style={{ objectFit: 'cover', objectPosition: 'center' }}
+              quality={85}
+            />
+          </div>
+          <div className="life-card-overlay" />
+          <div className="life-card-content">
+            <div className="life-card-tag">{item.tag}</div>
+            <div className="life-card-title">{item.title}</div>
+            <p className="life-card-desc">{item.desc}</p>
+          </div>
+        </div>
+      ))}
     </div>
 
   </div>
@@ -2220,7 +2463,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       No alarms. No schedules. Just a rhythm that feels right.
     </p>
 
-    <div className="day-timeline">
+    <div className="day-timeline scroll-fade-stagger">
       {[
   {
     icon: (
@@ -2638,10 +2881,32 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
         ))}
       </div>
 
-      <h3 className="cta8-card-heading">Start with a conversation</h3>
+      <div style={{
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  marginBottom: '0.4rem',
+  flexWrap: 'wrap',
+  gap: '0.5rem',
+}}>
+  <h3 className="cta8-card-heading" style={{ margin: 0 }}>Start with a conversation</h3>
+  <span style={{
+    fontFamily: 'var(--font-geist-sans), sans-serif',
+    fontSize: '0.72rem',
+    fontWeight: 600,
+    color: 'var(--color-primary)',
+    background: 'rgba(15,118,110,0.08)',
+    padding: '4px 10px',
+    borderRadius: '2px',
+    letterSpacing: '0.05em',
+  }}>Starting from ₹18,000</span>
+</div>
       <p className="cta8-card-sub">
-        No forms, no checkout. Just tell us what you&apos;re looking for — we&apos;ll take it from there.
-      </p>
+  No forms, no checkout. Just tell us what you&apos;re looking for — we&apos;ll take it from there.
+  <span style={{ display: 'block', marginTop: '0.3rem', opacity: 0.7 }}>
+    Custom pricing based on your plan.
+  </span>
+</p>
 
       <button
         className="cta8-btn-primary"

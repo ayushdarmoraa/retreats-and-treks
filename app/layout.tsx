@@ -5,7 +5,7 @@ import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { schemaIds, SCHEMA_SITE_URL } from "@/lib/schemaIds";
-
+import ScrollObserver from "@/components/ScrollObserver";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -119,6 +119,7 @@ export default function RootLayout({
       >
         <Header />
         <BreadcrumbSchema />
+         <ScrollObserver />
         {children}
         <Footer />
       </body>

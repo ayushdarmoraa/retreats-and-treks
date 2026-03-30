@@ -312,7 +312,21 @@ export const images = {
     },
   },
 
- 
+ // ── Life at the Retreat ──
+  moments: {
+    meditation: {
+      src: '/Images/moments/meditation.webp',
+      alt: 'Morning meditation on a wooden deck overlooking Himalayan valley',
+    },
+    walking: {
+      src: '/Images/moments/walking.webp',
+      alt: 'Two people walking on a forest trail in the Himalayas',
+    },
+    tea: {
+      src: '/Images/moments/tea.webp',
+      alt: 'Group of friends having chai on a sunlit mountain terrace',
+    },
+  },
   // ── Testimonials ──
   testimonials: {
     priya: {
