@@ -19,8 +19,7 @@ export function generateMetadata(): Metadata {
     title,
     description,
     alternates: { canonical },
-    openGraph: { title, description, url: canonical, type: 'website',       images: buildOgImages(title),
-},
+    openGraph: { title, description, url: canonical, type: 'website', images: buildOgImages(title) },
   };
 }
 
@@ -43,24 +42,21 @@ export default function LocationsIndexPage() {
     <>
       <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Locations' }]} />
 
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }} />
 
       <main style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
-        <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Our Locations</h1>
-        <p style={{ fontSize: '1.05rem', lineHeight: 1.75, color: 'var(--color-muted)', marginBottom: 'var(--space-xl)' }}>
-          Each location in our network is chosen for a specific quality — silence, altitude, remoteness, 
-          monastic lineage, forest density, or river energy. We do not operate from tourist hubs. 
-          We work with places where the land itself supports inner work and movement.
-        </p>
 
-        <div style={{ display: 'grid', gap: '1.5rem' }}>
+        <header className="loc-header-fade" style={{ marginBottom: 'var(--space-xl)' }}>
+          <h1 style={{ fontSize: '2rem', marginBottom: '0.5rem' }}>Our Locations</h1>
+          <p style={{ fontSize: '1.05rem', lineHeight: 1.75, color: 'var(--color-muted)', margin: 0 }}>
+            Each location in our network is chosen for a specific quality — silence, altitude, remoteness,
+            monastic lineage, forest density, or river energy. We do not operate from tourist hubs.
+            We work with places where the land itself supports inner work and movement.
+          </p>
+        </header>
+
+        <div className="loc-index-grid" style={{ display: 'grid', gap: '1.5rem' }}>
           {locations.map((loc) => {
             const content = getLocationPremiumContent(loc.id as LocationId);
             const tags: string[] = [];
@@ -70,6 +66,7 @@ export default function LocationsIndexPage() {
             return (
               <article
                 key={loc.id}
+                className="loc-index-card"
                 style={{
                   border: '1px solid var(--color-border)',
                   borderRadius: 'var(--radius-sm)',
@@ -81,10 +78,7 @@ export default function LocationsIndexPage() {
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: '0.5rem' }}>
                   <h2 style={{ fontSize: '1.25rem', fontWeight: 600, margin: 0 }}>
-                    <Link
-                      href={`/locations/${loc.id}`}
-                      style={{ color: 'var(--color-primary)', textDecoration: 'none' }}
-                    >
+                    <Link href={`/locations/${loc.id}`} style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>
                       {loc.name}
                     </Link>
                   </h2>
@@ -105,24 +99,15 @@ export default function LocationsIndexPage() {
 
                 <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
                   {tags.map((tag) => (
-                    <span
-                      key={tag}
-                      style={{
-                        fontSize: '0.8rem',
-                        padding: '0.2rem 0.6rem',
-                        borderRadius: '999px',
-                        border: '1px solid var(--color-border)',
-                        color: 'var(--color-muted)',
-                      }}
-                    >
+                    <span key={tag} style={{
+                      fontSize: '0.8rem', padding: '0.2rem 0.6rem',
+                      borderRadius: '999px', border: '1px solid var(--color-border)',
+                      color: 'var(--color-muted)',
+                    }}>
                       {tag}
                     </span>
                   ))}
-
-                  <Link
-                    href={`/locations/${loc.id}`}
-                    style={{ fontSize: '0.9rem', color: 'var(--color-primary)', marginLeft: 'auto' }}
-                  >
+                  <Link href={`/locations/${loc.id}`} style={{ fontSize: '0.9rem', color: 'var(--color-primary)', marginLeft: 'auto' }}>
                     Explore {loc.name} →
                   </Link>
                 </div>
@@ -131,8 +116,7 @@ export default function LocationsIndexPage() {
           })}
         </div>
 
-        {/* ── Network narrative ──────────────────────────────────── */}
-        <section style={{ marginTop: 'var(--space-2xl)' }}>
+        <section className="loc-narrative-fade" style={{ marginTop: 'var(--space-2xl)' }}>
           <h2 style={{ fontSize: '1.3rem', fontWeight: 600, marginBottom: '0.75rem' }}>
             A Himalayan Network, Not a Single Destination
           </h2>
@@ -148,12 +132,11 @@ export default function LocationsIndexPage() {
           </p>
           <p style={{ lineHeight: 1.75, color: 'var(--color-text)' }}>
             If you are unsure which location suits you,{' '}
-            <Link href="/contact" style={{ color: 'var(--color-primary)' }}>
-              reach out
-            </Link>
+            <Link href="/contact" style={{ color: 'var(--color-primary)' }}>reach out</Link>
             . We will help you choose based on your intention, fitness, and what you are seeking.
           </p>
         </section>
+
       </main>
     </>
   );

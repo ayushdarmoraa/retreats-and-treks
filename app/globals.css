@@ -212,3 +212,563 @@ a:hover .trek-card-img-wrap img {
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 8px 24px rgba(15,118,110,0.2);
 }
+
+/* ── HOME PAGE ENHANCEMENTS ── */
+
+/* Scroll fade smoother */
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1),
+              transform 0.9s cubic-bezier(0.16,1,0.3,1);
+}
+.scroll-fade.sf-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.scroll-fade-stagger > * {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
+              transform 0.75s cubic-bezier(0.16,1,0.3,1);
+}
+.scroll-fade-stagger.sf-visible > *:nth-child(1) { transition-delay: 0.00s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(2) { transition-delay: 0.12s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(3) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(4) { transition-delay: 0.36s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(5) { transition-delay: 0.48s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(6) { transition-delay: 0.60s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(7) { transition-delay: 0.72s; opacity: 1; transform: translateY(0); }
+.scroll-fade-stagger.sf-visible > *:nth-child(8) { transition-delay: 0.84s; opacity: 1; transform: translateY(0); }
+
+/* Image hover zoom — smoother + bigger */
+.retreat-card-img-wrap img,
+.retreat-card-img-wrap .card-img-inner,
+.loc-card-img-wrap img,
+.loc-card-img-wrap .card-img-inner {
+  transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94) !important;
+}
+.retreat-card:hover .retreat-card-img-wrap img,
+.retreat-card:hover .retreat-card-img-wrap .card-img-inner,
+.retreat-card:hover .retreat-card-img { transform: scale(1.1) !important; }
+
+.loc-card:hover .loc-card-img-wrap img,
+.loc-card:hover .loc-card-img-wrap .card-img-inner,
+.loc-card:hover .loc-card-img { transform: scale(1.1) !important; }
+
+.path-card-img { transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94) !important; }
+.path-card:hover .path-card-img { transform: scale(1.08) !important; }
+
+.life-card-img-wrap img { transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94) !important; }
+.life-card:hover .life-card-img-wrap img { transform: scale(1.08) !important; }
+
+/* Card hover — spring lift */
+.retreat-card,
+.loc-card,
+.path-card,
+.step-card,
+.t-card {
+  transition: transform 0.45s cubic-bezier(0.34,1.4,0.64,1),
+              box-shadow 0.45s cubic-bezier(0.34,1.4,0.64,1),
+              border-color 0.3s ease !important;
+}
+.retreat-card:hover { transform: translateY(-10px) !important; box-shadow: 0 24px 60px rgba(0,0,0,0.13) !important; }
+.loc-card:hover     { transform: translateY(-8px) !important;  box-shadow: 0 20px 52px rgba(0,0,0,0.11) !important; }
+.path-card:hover    { transform: translateY(-10px) !important; box-shadow: 0 22px 56px rgba(0,0,0,0.13) !important; }
+.t-card:hover       { transform: translateY(-8px) !important;  box-shadow: 0 20px 52px rgba(0,0,0,0.10) !important; }
+.step-card:hover    { transform: translateY(-7px) !important;  box-shadow: 0 16px 44px rgba(0,0,0,0.10) !important; }
+
+/* Button hover — spring pop */
+.hh-btn {
+  transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.28s ease !important;
+}
+.hh-btn:hover {
+  transform: translateY(-4px) scale(1.025) !important;
+  box-shadow: 0 18px 48px rgba(15,118,110,0.5) !important;
+}
+.hh-btn-wa {
+  transition: transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
+              background 0.25s ease, border-color 0.25s ease !important;
+}
+.hh-btn-wa:hover { transform: translateY(-4px) scale(1.02) !important; }
+
+.cta8-btn-primary {
+  transition: opacity 0.2s, transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.25s ease !important;
+}
+.cta8-btn-primary:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 12px 36px rgba(15,118,110,0.32) !important;
+}
+.cta8-btn-ghost {
+  transition: border-color 0.2s, color 0.2s,
+              transform 0.22s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.cta8-btn-ghost:hover { transform: translateY(-3px) !important; }
+
+.retreat-view-all {
+  transition: background 0.28s, color 0.28s, border-color 0.28s,
+              transform 0.22s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.retreat-view-all:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(15,118,110,0.2) !important;
+}
+
+/* Icon box bounce */
+.ph-card-icon-box {
+  transition: background 0.3s, transform 0.4s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.ph-card:hover .ph-card-icon-box { transform: scale(1.1) !important; }
+
+/* Step number bounce */
+.step-num {
+  transition: background 0.35s, color 0.35s,
+              transform 0.4s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.step-card:hover .step-num { transform: scale(1.08) !important; }
+
+/* Day dot bounce */
+.day-dot {
+  transition: background 0.35s, border-color 0.35s,
+              transform 0.45s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.day-block:hover .day-dot { transform: scale(1.12) !important; }
+/* ── RETREATS PAGE ENHANCEMENTS ── */
+
+/* Hero button */
+.rc-hero-btn {
+  transition: background 0.2s, transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.25s ease !important;
+}
+.rc-hero-btn:hover {
+  transform: translateY(-4px) scale(1.025) !important;
+  box-shadow: 0 14px 36px rgba(15,118,110,0.32) !important;
+}
+
+/* Service cards */
+.rs-card,
+.rf-card,
+.hl-card,
+.hw-card,
+.wb-item {
+  transition: transform 0.45s cubic-bezier(0.34,1.4,0.64,1),
+              box-shadow 0.45s cubic-bezier(0.34,1.4,0.64,1),
+              border-color 0.3s ease !important;
+}
+.rs-card:hover { transform: translateY(-10px) !important; box-shadow: 0 24px 60px rgba(0,0,0,0.13) !important; }
+.rf-card:hover { transform: translateY(-10px) !important; box-shadow: 0 24px 60px rgba(0,0,0,0.13) !important; }
+.hl-card:hover { transform: translateY(-8px) !important;  box-shadow: 0 20px 52px rgba(0,0,0,0.11) !important; }
+.hw-card:hover { transform: translateY(-7px) !important;  box-shadow: 0 16px 44px rgba(0,0,0,0.10) !important; }
+.wb-item:hover { transform: translateY(-7px) !important;  box-shadow: 0 16px 44px rgba(0,0,0,0.10) !important; }
+
+/* Image zoom — service/format/location cards */
+.rs-img, .rf-img, .hl-img {
+  transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94) !important;
+}
+.rs-card:hover .rs-img { transform: scale(1.1) !important; }
+.rf-card:hover .rf-img { transform: scale(1.1) !important; }
+.hl-card:hover .hl-img { transform: scale(1.1) !important; }
+
+/* Step number bounce */
+.hw-num {
+  transition: background 0.3s, color 0.3s,
+              transform 0.4s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.hw-card:hover .hw-num { transform: scale(1.1) !important; }
+
+/* Why-us check circle bounce */
+.wb-check {
+  transition: background 0.3s, color 0.3s,
+              transform 0.4s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.wb-item:hover .wb-check { transform: scale(1.12) !important; }
+
+/* CTA buttons — bottom dark section */
+.s7-btn-primary {
+  transition: background 0.2s, transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.25s ease !important;
+}
+.s7-btn-primary:hover {
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 14px 40px rgba(15,118,110,0.4) !important;
+}
+.s7-btn-ghost {
+  transition: border-color 0.2s, color 0.2s,
+              transform 0.22s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.s7-btn-ghost:hover { transform: translateY(-3px) !important; }
+
+/* Arrow links */
+.rs-cta, .hl-cta {
+  transition: gap 0.28s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+
+/* Stat hover */
+.s7-stat {
+  transition: background 0.25s ease !important;
+}
+
+/* ── TREK CONTENT PAGES ── */
+
+/* Trek cards hover */
+.trek-card {
+  transition: transform 0.45s cubic-bezier(0.34,1.4,0.64,1),
+              box-shadow 0.45s cubic-bezier(0.34,1.4,0.64,1) !important;
+}
+.trek-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.10) !important;
+}
+
+/* Snow / High-altitude / Challenging / Beginner cards */
+.snow-card, .ha-card, .chal-card, .beg-trek-card {
+  transition: transform 0.45s cubic-bezier(0.34,1.4,0.64,1),
+              box-shadow 0.45s cubic-bezier(0.34,1.4,0.64,1) !important;
+}
+.snow-card:hover, .ha-card:hover, .chal-card:hover, .beg-trek-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 16px 44px rgba(0,0,0,0.10) !important;
+}
+
+/* Card image zoom */
+.snow-card img, .ha-card img, .chal-card img, .beg-trek-card img {
+  transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94) !important;
+}
+.snow-card:hover img, .ha-card:hover img,
+.chal-card:hover img, .beg-trek-card:hover img {
+  transform: scale(1.07) !important;
+}
+
+/* Nav links */
+.toc-item, .explore-link,
+.snow-nav-link, .ha-nav-link, .chal-nav-link, .beg-nav-link {
+  transition: background 0.2s ease, color 0.22s ease,
+              padding-left 0.22s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.toc-item:hover, .explore-link:hover,
+.snow-nav-link:hover, .ha-nav-link:hover,
+.chal-nav-link:hover, .beg-nav-link:hover {
+  padding-left: 1.4rem !important;
+}
+
+/* Region cards */
+.region-card {
+  transition: transform 0.4s cubic-bezier(0.34,1.4,0.64,1),
+              box-shadow 0.4s ease, border-color 0.3s ease !important;
+}
+.region-card:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 12px 36px rgba(0,0,0,0.08) !important;
+  border-color: rgba(15,118,110,0.35) !important;
+}
+
+/* Filter pills */
+.filter-pill {
+  transition: background 0.22s ease, color 0.22s ease,
+              transform 0.22s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.filter-pill:hover {
+  transform: translateY(-2px) scale(1.04) !important;
+}
+
+/* ── ABOUT PAGE ── */
+
+.abt-loc-card {
+  transition: transform 0.45s cubic-bezier(0.34,1.4,0.64,1),
+              box-shadow 0.45s cubic-bezier(0.34,1.4,0.64,1) !important;
+}
+.abt-loc-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.10) !important;
+}
+
+.abt-loc-card img {
+  transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94) !important;
+}
+.abt-loc-card:hover img {
+  transform: scale(1.07) !important;
+}
+
+.abt-nav-link {
+  transition: background 0.2s ease, color 0.2s ease,
+              padding-left 0.22s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.abt-nav-link:hover {
+  padding-left: 1.4rem !important;
+}
+
+.abt-vision-callout {
+  transition: border-color 0.25s ease, transform 0.35s cubic-bezier(0.34,1.4,0.64,1) !important;
+}
+.abt-vision-callout:hover {
+  border-left-color: rgba(15,118,110,0.6) !important;
+  transform: translateX(4px) !important;
+}
+
+/* ── BLOG PAGES ── */
+
+/* Blog listing cards */
+.bl-card {
+  transition: transform 0.45s cubic-bezier(0.34,1.4,0.64,1),
+              box-shadow 0.45s cubic-bezier(0.34,1.4,0.64,1),
+              border-color 0.25s ease !important;
+}
+.bl-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 18px 48px rgba(0,0,0,0.11) !important;
+}
+
+.bl-card-img {
+  transition: transform 0.9s cubic-bezier(0.25,0.46,0.45,0.94) !important;
+}
+.bl-card:hover .bl-card-img {
+  transform: scale(1.08) !important;
+}
+
+/* Topic pills */
+.bl-topic-pill {
+  transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease,
+              transform 0.22s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.bl-topic-pill:hover {
+  transform: translateY(-3px) scale(1.04) !important;
+}
+
+/* Blog post nav links */
+.blg-nav-link, .blg-related-link {
+  transition: background 0.2s ease, color 0.2s ease,
+              padding-left 0.22s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.blg-nav-link:hover, .blg-related-link:hover {
+  padding-left: 1.4rem !important;
+}
+
+/* CTA strip */
+.blg-cta-strip {
+  transition: border-left-color 0.25s ease,
+              transform 0.35s cubic-bezier(0.34,1.4,0.64,1) !important;
+}
+.blg-cta-strip:hover {
+  transform: translateX(4px) !important;
+}
+
+/* ── CONTACT PAGE ── */
+
+.ccl-method-card {
+  transition: transform 0.45s cubic-bezier(0.34,1.4,0.64,1),
+              box-shadow 0.45s cubic-bezier(0.34,1.4,0.64,1) !important;
+}
+.ccl-method-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.09) !important;
+}
+
+.ccl-btn-primary {
+  transition: opacity 0.18s ease,
+              transform 0.22s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.ccl-btn-primary:hover {
+  opacity: 0.88 !important;
+  transform: translateY(-2px) scale(1.02) !important;
+}
+
+.ccl-btn-outline {
+  transition: background 0.18s ease, color 0.18s ease,
+              transform 0.22s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.ccl-btn-outline:hover {
+  transform: translateY(-2px) scale(1.02) !important;
+}
+
+.ccl-q-item {
+  transition: transform 0.35s cubic-bezier(0.34,1.4,0.64,1),
+              border-left-color 0.25s ease !important;
+}
+.ccl-q-item:hover {
+  transform: translateX(5px) !important;
+  border-left-color: rgba(15,118,110,0.6) !important;
+}
+
+.ccl-who-callout {
+  transition: transform 0.35s cubic-bezier(0.34,1.4,0.64,1) !important;
+}
+.ccl-who-callout:hover {
+  transform: translateX(4px) !important;
+}
+
+/* ── RETREAT JOURNEY PAGE ── */
+
+/* Location cards — spring lift */
+.rj-wib-card {
+  transition: border-color 0.35s cubic-bezier(0.34,1.4,0.64,1),
+              background 0.25s,
+              box-shadow 0.35s cubic-bezier(0.34,1.4,0.64,1),
+              transform 0.35s cubic-bezier(0.34,1.4,0.64,1) !important;
+}
+.rj-wib-card:hover {
+  border-color: rgba(15,118,110,0.35) !important;
+  background: #f0f7f0 !important;
+  box-shadow: 0 8px 24px rgba(15,118,110,0.09) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* Timeline dot bounce */
+.rj-hiw-dot {
+  transition: background 0.25s cubic-bezier(0.34,1.56,0.64,1),
+              transform 0.3s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.rj-hiw-item:hover .rj-hiw-dot {
+  background: var(--color-primary) !important;
+  transform: scale(1.25) !important;
+}
+
+/* Related trek card — lift */
+.rj-rt-card {
+  transition: border-color 0.35s cubic-bezier(0.34,1.4,0.64,1),
+              box-shadow 0.35s cubic-bezier(0.34,1.4,0.64,1),
+              transform 0.35s cubic-bezier(0.34,1.4,0.64,1) !important;
+}
+.rj-rt-card:hover {
+  border-color: rgba(15,118,110,0.3) !important;
+  box-shadow: 0 10px 28px rgba(15,118,110,0.09) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* Trek explore button — spring pop */
+.rj-rt-btn {
+  transition: background 0.2s, color 0.2s, border-color 0.2s,
+              transform 0.22s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.rj-rt-btn:hover {
+  background: var(--color-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--color-primary) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* WhatsApp CTA button — spring pop */
+.rj-whatsapp-btn {
+  transition: background 0.2s,
+              transform 0.22s cubic-bezier(0.34,1.56,0.64,1),
+              box-shadow 0.25s ease !important;
+}
+.rj-whatsapp-btn:hover {
+  background: #0d9e95 !important;
+  transform: translateY(-3px) scale(1.02) !important;
+  box-shadow: 0 12px 32px rgba(15,118,110,0.25) !important;
+}
+
+/* Back link */
+.rj-back-link {
+  transition: border-color 0.2s, color 0.2s,
+              transform 0.22s cubic-bezier(0.34,1.56,0.64,1) !important;
+}
+.rj-back-link:hover {
+  border-color: var(--color-primary) !important;
+  color: var(--color-primary) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ── FACILITATORS PAGE ── */
+
+.fac-header-fade {
+  animation: facCardIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.05s both;
+}
+
+.fac-grid > * {
+  animation: facCardIn 0.6s cubic-bezier(0.22,1,0.36,1) both;
+}
+.fac-grid > *:nth-child(1) { animation-delay: 0.05s; }
+.fac-grid > *:nth-child(2) { animation-delay: 0.12s; }
+.fac-grid > *:nth-child(3) { animation-delay: 0.19s; }
+.fac-grid > *:nth-child(4) { animation-delay: 0.26s; }
+.fac-grid > *:nth-child(5) { animation-delay: 0.33s; }
+.fac-grid > *:nth-child(6) { animation-delay: 0.40s; }
+
+@keyframes facCardIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fac-card {
+  transition: border-color 0.35s cubic-bezier(0.34,1.4,0.64,1),
+              box-shadow 0.35s cubic-bezier(0.34,1.4,0.64,1),
+              transform 0.35s cubic-bezier(0.34,1.4,0.64,1) !important;
+}
+.fac-card:hover {
+  border-color: rgba(15,118,110,0.35) !important;
+  box-shadow: 0 10px 32px rgba(0,0,0,0.08) !important;
+  transform: translateY(-4px) !important;
+}
+
+.fac-card img {
+  transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94) !important;
+}
+.fac-card:hover img {
+  transform: scale(1.06) !important;
+}
+
+/* ── LOCATIONS PAGES ── */
+
+@keyframes locFadeIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.loc-header-fade {
+  animation: locFadeIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.05s both;
+}
+
+.loc-narrative-fade {
+  animation: locFadeIn 0.7s cubic-bezier(0.22,1,0.36,1) 0.1s both;
+}
+
+/* Index page — location cards */
+.loc-index-grid > * {
+  animation: locFadeIn 0.6s cubic-bezier(0.22,1,0.36,1) both;
+}
+.loc-index-grid > *:nth-child(1) { animation-delay: 0.06s; }
+.loc-index-grid > *:nth-child(2) { animation-delay: 0.13s; }
+.loc-index-grid > *:nth-child(3) { animation-delay: 0.20s; }
+.loc-index-grid > *:nth-child(4) { animation-delay: 0.27s; }
+.loc-index-grid > *:nth-child(5) { animation-delay: 0.34s; }
+.loc-index-grid > *:nth-child(6) { animation-delay: 0.41s; }
+.loc-index-grid > *:nth-child(7) { animation-delay: 0.48s; }
+.loc-index-grid > *:nth-child(8) { animation-delay: 0.55s; }
+
+.loc-index-card {
+  transition: border-color 0.35s cubic-bezier(0.34,1.4,0.64,1),
+              box-shadow 0.35s cubic-bezier(0.34,1.4,0.64,1),
+              transform 0.35s cubic-bezier(0.34,1.4,0.64,1) !important;
+}
+.loc-index-card:hover {
+  border-color: rgba(15,118,110,0.35) !important;
+  box-shadow: 0 10px 32px rgba(0,0,0,0.08) !important;
+  transform: translateY(-4px) !important;
+}
+
+/* Detail page — retreat/trek cards */
+.loc-detail-card {
+  transition: border-color 0.35s cubic-bezier(0.34,1.4,0.64,1),
+              box-shadow 0.35s cubic-bezier(0.34,1.4,0.64,1),
+              transform 0.35s cubic-bezier(0.34,1.4,0.64,1) !important;
+}
+.loc-detail-card:hover {
+  border-color: rgba(15,118,110,0.3) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* Event cards */
+.loc-event-card {
+  transition: border-color 0.35s cubic-bezier(0.34,1.4,0.64,1),
+              box-shadow 0.35s cubic-bezier(0.34,1.4,0.64,1),
+              transform 0.35s cubic-bezier(0.34,1.4,0.64,1) !important;
+}
+.loc-event-card:hover {
+  border-color: rgba(15,118,110,0.35) !important;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.07) !important;
+  transform: translateY(-3px) !important;
+}

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import type { LocationId } from '@/config/locations';
 import MicroCommitment from '@/components/MicroCommitment';
-
+import { useEffect } from 'react';
 interface Location {
   id: LocationId;
   name: string;
@@ -62,7 +62,25 @@ interface RetreatJourneyClientProps {
 }
 
 export default function RetreatJourneyClient({ retreat, locations, suggestedTrek }: RetreatJourneyClientProps) {
-  return (
+ // ✅ YAHAN andar hai useEffect
+  useEffect(() => {
+    const els = document.querySelectorAll('.scroll-fade, .scroll-fade-stagger');
+    if (!els.length) return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('sf-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+    );
+    els.forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
+  }, []);
+   return (
     <>
       {/* HEADER */}
       <section style={{
@@ -97,7 +115,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           }
         `}</style>
 
-        <div className="rj-inner">
+        <div className="rj-inner scroll-fade">
           <div className="rj-eyebrow">
             <span className="rj-eyebrow-line" />
             <span className="rj-eyebrow-text">Retreat Journey</span>
@@ -111,16 +129,16 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
               marginTop: '1.75rem',
             }}>
               {retreat.keyHighlights.map((h, i) => (
-                <span key={i} style={{
-                  fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '0.68rem', fontWeight: 500,
-                  letterSpacing: '0.08em', textTransform: 'uppercase',
-                  color: 'var(--color-primary)',
-                  background: 'rgba(15,118,110,0.08)',
-                  border: '1px solid rgba(15,118,110,0.18)',
-                  borderRadius: '4px',
-                  padding: '0.4rem 0.85rem',
-                }}>
+                <span key={i} className="rj-highlight-tag" style={{
+  fontFamily: 'var(--font-geist-sans), sans-serif',
+  fontSize: '0.68rem', fontWeight: 500,
+  letterSpacing: '0.08em', textTransform: 'uppercase',
+  color: 'var(--color-primary)',
+  background: 'rgba(15,118,110,0.08)',
+  border: '1px solid rgba(15,118,110,0.18)',
+  borderRadius: '4px',
+  padding: '0.4rem 0.85rem',
+}}>
                   {h}
                 </span>
               ))}
@@ -166,7 +184,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           }
         `}</style>
 
-        <div className="rj-desc-inner">
+        <div className="rj-desc-inner scroll-fade">
           <div className="rj-desc-eyebrow">
             <span className="rj-desc-eyebrow-line" />
             <span className="rj-desc-eyebrow-text">About This Retreat</span>
@@ -302,7 +320,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             Who this is <span>for</span>
           </h2>
 
-          <div className="rj-fn-wrap">
+          <div className="rj-fn-wrap scroll-fade">
 
             {/* Label bar */}
             <div className="rj-fn-bar">
@@ -399,10 +417,10 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             </p>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem' }}>
               {retreat.whatMakesItUnique.points.map((pt, i) => (
-                <div key={i} style={{
-                  background: '#ffffff', border: '1px solid #eef0ee', borderRadius: 8,
-                  padding: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.03)',
-                }}>
+                <div key={i} className="rj-unique-card" style={{
+  background: '#ffffff', border: '1px solid #eef0ee', borderRadius: 8,
+  padding: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.03)',
+}}>
                   <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 600, color: '#111', margin: '0 0 0.6rem', letterSpacing: '-0.01em' }}>
                     {pt.title}
                   </h3>
@@ -565,7 +583,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             How it <span>works</span>
           </h2>
 
-          <div className="rj-hiw-timeline">
+          <div className="rj-hiw-timeline scroll-fade-stagger">
             {retreat.howItWorks.rhythm
               .split('\n\n')
               .filter(Boolean)
@@ -716,7 +734,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           {locations.length > 0 && (
             <div>
               <p className="rj-wib-also-label">Also held in</p>
-              <div className="rj-wib-grid">
+              <div className="rj-wib-grid scroll-fade-stagger">
                 {locations.map((loc) => (
                   <Link key={loc.id} href={`/retreats/${loc.id}`} className="rj-wib-card">
                     <div>

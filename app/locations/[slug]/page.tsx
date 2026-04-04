@@ -198,13 +198,14 @@ export default async function LocationHubPage({ params }: PageProps) {
           <div style={{ display: 'grid', gap: '1rem' }}>
             {retreatServices.map((service) => (
               <div
-                key={service.slug}
-                style={{
-                  border: '1px solid var(--color-border)',
-                  borderRadius: 'var(--radius-sm)',
-                  padding: '1.25rem',
-                }}
-              >
+  key={service.slug}
+  className="loc-detail-card"
+  style={{
+    border: '1px solid var(--color-border)',
+    borderRadius: 'var(--radius-sm)',
+    padding: '1.25rem',
+  }}
+>
                 <h3 style={{ fontSize: '1.05rem', fontWeight: 600, marginBottom: '0.5rem' }}>
                   <Link
                     href={`/retreats/journeys/${service.slug}`}
@@ -235,16 +236,17 @@ export default async function LocationHubPage({ params }: PageProps) {
           <div style={{ display: 'grid', gap: '1rem', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))' }}>
             {trekContent.map((trek) => (
               <div
-                key={trek.slug}
-                style={{
-                  border: '1px solid var(--color-border)',
-                  borderRadius: 'var(--radius-sm)',
-                  padding: '1.25rem',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '0.75rem',
-                }}
-              >
+  key={trek.slug}
+  className="loc-detail-card"
+  style={{
+    border: '1px solid var(--color-border)',
+    borderRadius: 'var(--radius-sm)',
+    padding: '1.25rem',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '0.75rem',
+  }}
+>
                 <h3 style={{ margin: 0, fontSize: '1.05rem', fontWeight: 600 }}>
                   <Link
                     href={`/treks/location/${trek.locationId}/${trek.slug}`}
@@ -374,21 +376,22 @@ export default async function LocationHubPage({ params }: PageProps) {
             <div style={{ display: 'grid', gap: '0.75rem' }}>
               {events.map((ev) => (
                 <Link
-                  key={ev.slug}
-                  href={`/${ev.slug}`}
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    flexWrap: 'wrap',
-                    gap: '0.5rem',
-                    border: '1px solid var(--color-border)',
-                    borderRadius: 'var(--radius-sm)',
-                    padding: '1rem 1.25rem',
-                    textDecoration: 'none',
-                    color: 'inherit',
-                  }}
-                >
+  key={ev.slug}
+  href={`/${ev.slug}`}
+  className="loc-event-card"
+  style={{
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexWrap: 'wrap',
+    gap: '0.5rem',
+    border: '1px solid var(--color-border)',
+    borderRadius: 'var(--radius-sm)',
+    padding: '1rem 1.25rem',
+    textDecoration: 'none',
+    color: 'inherit',
+  }}
+>
                   <div>
                     <strong style={{ fontSize: '0.95rem', color: 'var(--color-primary)' }}>
                       {ev.label} — {ev.month} {ev.year}

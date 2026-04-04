@@ -40,7 +40,7 @@ export default function FacilitatorsPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema]) }} />
       <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Our Facilitators' }]} />
 
-      <header style={{ marginBottom: 'var(--space-xl)' }}>
+      <header className="fac-header-fade" style={{ marginBottom: 'var(--space-xl)' }}>
         <h1 style={{ fontSize: '2rem', fontWeight: 400, marginBottom: '0.75rem' }}>
           Our Facilitators
         </h1>
@@ -51,11 +51,12 @@ export default function FacilitatorsPage() {
         </p>
       </header>
 
-      <div style={{ display: 'grid', gap: '1.5rem' }}>
+      <div className="fac-grid" style={{ display: 'grid', gap: '1.5rem' }}>
         {FACILITATOR_PROFILES.map((f) => (
           <Link
             key={f.slug}
             href={`/facilitators/${f.slug}`}
+            className="fac-card"
             style={{
               display: 'flex',
               gap: '1.25rem',
@@ -65,7 +66,6 @@ export default function FacilitatorsPage() {
               padding: '1.25rem',
               textDecoration: 'none',
               color: 'inherit',
-              transition: 'border-color 0.15s',
             }}
           >
             {f.image && (
