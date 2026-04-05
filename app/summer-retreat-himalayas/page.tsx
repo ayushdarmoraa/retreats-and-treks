@@ -7,6 +7,7 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
+import { useEffect } from 'react';
 
 const PATH = '/summer-retreat-himalayas';
 
@@ -56,6 +57,22 @@ const FAQ_ITEMS = [
 export default function SummerRetreatPage() {
   validateFAQSync(FAQ_ITEMS, PATH);
 
+  useEffect(() => {
+  const els = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+  els.forEach((el) => observer.observe(el));
+  return () => observer.disconnect();
+}, []);
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
     { name: 'Summer Retreat in the Himalayas', url: buildCanonicalUrl(PATH) },
@@ -68,7 +85,7 @@ export default function SummerRetreatPage() {
       <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Summer Retreat Himalayas' }]} />
 
       <article>
-        <header style={{ marginBottom: 'var(--space-xl)' }}>
+       <header className="fade-in" style={{ marginBottom: 'var(--space-xl)' }}>
           <h1 style={{ fontSize: '2rem', fontWeight: 400, marginBottom: '0.75rem' }}>
             Summer Retreat in the Himalayas
           </h1>
@@ -82,7 +99,7 @@ export default function SummerRetreatPage() {
           </p>
         </header>
 
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
+        <section className="fade-in" style={{ marginBottom: 'var(--space-xl)' }}>
           <h2 style={{ fontSize: '1.35rem', fontWeight: 600, marginBottom: '0.75rem' }}>
             Why Summer for a Himalayan Retreat
           </h2>
@@ -95,12 +112,12 @@ export default function SummerRetreatPage() {
           </ul>
         </section>
 
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
+        <section className="fade-in" style={{ marginBottom: 'var(--space-xl)' }}>
           <h2 style={{ fontSize: '1.35rem', fontWeight: 600, marginBottom: '0.75rem' }}>
             Summer Retreat Locations
           </h2>
           <div style={{ display: 'grid', gap: '1.25rem' }}>
-            <div style={{ border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', padding: '1.25rem' }}>
+            <div className="img-hover" style={{ border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', padding: '1.25rem' }}>
               <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
                 <Link href="/locations/chakrata" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Chakrata</Link> — Cool Forest at 2,200 m
               </h3>
@@ -111,7 +128,7 @@ export default function SummerRetreatPage() {
               </p>
             </div>
 
-            <div style={{ border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', padding: '1.25rem' }}>
+            <div className="img-hover" style={{ border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', padding: '1.25rem' }}>
               <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
                 <Link href="/locations/zanskar" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Zanskar</Link> — Trans-Himalayan Immersion
               </h3>
@@ -122,7 +139,7 @@ export default function SummerRetreatPage() {
               </p>
             </div>
 
-            <div style={{ border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', padding: '1.25rem' }}>
+            <div className="img-hover" style={{ border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', padding: '1.25rem' }}>
               <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
                 <Link href="/locations/munsiyari" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Munsiyari</Link> — Alpine Meadows at 2,300 m
               </h3>
@@ -132,8 +149,8 @@ export default function SummerRetreatPage() {
                 who want dramatic landscape alongside inner work.
               </p>
             </div>
-
-            <div style={{ border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', padding: '1.25rem' }}>
+<div className="img-hover" style={{ border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', padding: '1.25rem' }}>
+            
               <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
                 <Link href="/locations/sankri" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Sankri</Link> — Trek-Retreat Gateway
               </h3>
@@ -154,7 +171,7 @@ export default function SummerRetreatPage() {
           sourcePath={PATH}
         />
 
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
+        <section className="fade-in" style={{ marginBottom: 'var(--space-xl)' }}>
           <h2 style={{ fontSize: '1.35rem', fontWeight: 600, marginBottom: '0.75rem' }}>
             Popular Summer Retreats
           </h2>

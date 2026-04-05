@@ -874,51 +874,49 @@ a:hover,
   }
 }
 
-/* ===== GLOBAL SPACING IMPROVEMENT ===== */
+
+
+
+/* ===== GLOBAL SPACING ===== */
 section {
   margin-bottom: var(--space-xl);
 }
-
 article > section {
-  margin-bottom: calc(var(--space-xl) + 0.5rem);
+  margin-bottom: calc(var(--space-xl) + 1rem);
 }
+section h2 { margin-bottom: 1rem; }
+section h3 { margin-bottom: 0.6rem; }
 
-/* headings breathing space */
-section h2 {
-  margin-bottom: 1rem;
-}
-section h3 {
-  margin-bottom: 0.6rem;
-}
-
-/* ===== UNIVERSAL FADE-IN (SAFE) ===== */
+/* ===== FADE-IN ===== */
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1),
+              transform 0.8s cubic-bezier(0.16,1,0.3,1);
 }
-
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* ===== IMAGE HOVER (GENERIC SAFE) ===== */
+/* ===== IMAGE HOVER ===== */
 img {
   transition: transform 0.5s ease;
 }
-
 .img-hover:hover img {
   transform: scale(1.06);
 }
 
-/* ===== BUTTON POP UNIVERSAL ===== */
+/* ===== BUTTON POP ===== */
 button,
+.primary-cta,
+[class*="cta"],
 a[class*="btn"] {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-
 button:hover,
+.primary-cta:hover,
+[class*="cta"]:hover,
 a[class*="btn"]:hover {
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 10px 28px rgba(0,0,0,0.12);
