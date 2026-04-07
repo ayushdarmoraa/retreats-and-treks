@@ -14,6 +14,7 @@ import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateItemListSchema } from '@/components/seo/Schema';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
+import ReviewCard from '@/components/reviews/ReviewCard';
 
 interface ExperienceHubPageProps {
   page: ExperiencePage;
@@ -208,35 +209,42 @@ export default function ExperienceHubPage({ page, breadcrumbItems }: ExperienceH
           </div>
         </section>
       )}
+
       {/* ── Participant Testimonials ───────────────────────────── */}
       {(() => {
         const allReviews = page.retreatServiceSlugs.flatMap((slug) => getReviewsForSlug(slug));
         if (allReviews.length === 0) return null;
         const topReviews = allReviews.filter((r) => r.ratingValue >= 4).slice(0, 3);
         if (topReviews.length === 0) return null;
+        // Internal link to cluster page (e.g., silent retreats)
+        let clusterLink = null;
+        if (page.slug === 'meditation-retreats') {
+          clusterLink = (
+            <p style={{ marginTop: '1rem', fontSize: '0.98rem', color: 'var(--color-primary)' }}>
+              Read real experiences from our silent retreats →{' '}
+              <Link href="/reviews/silent-retreats" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
+                /reviews/silent-retreats
+              </Link>
+            </p>
+          );
+        }
         return (
           <section style={sectionStyle}>
             <h2 style={h2Style}>What Participants Say</h2>
             <div style={{ display: 'grid', gap: '1rem' }}>
               {topReviews.map((review) => (
-                <blockquote
+                <ReviewCard
                   key={`${review.participantName}-${review.datePublished}`}
-                  style={{
-                    margin: 0,
-                    padding: '1rem 1.25rem',
-                    border: '1px solid var(--color-border)',
-                    borderRadius: 'var(--radius-sm)',
-                    fontSize: '0.9rem',
-                    lineHeight: 1.7,
-                  }}
-                >
-                  <p style={{ margin: 0 }}>&ldquo;{review.reviewBody}&rdquo;</p>
-                  <footer style={{ marginTop: '0.5rem', fontSize: '0.8rem', color: 'var(--color-text-secondary)' }}>
-                    — {review.participantName}, {'★'.repeat(review.ratingValue)}
-                  </footer>
-                </blockquote>
+                  review={review}
+                />
               ))}
             </div>
+            <p style={{ marginTop: '1rem', fontSize: '0.9rem' }}>
+              <Link href="/reviews" style={{ color: 'var(--color-primary)' }}>
+                Read more experiences →
+              </Link>
+            </p>
+            {clusterLink}
           </section>
         );
       })()}

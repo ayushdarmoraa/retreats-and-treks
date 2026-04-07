@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { getExperiencePage } from '@/config/experiencePages';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
+import { getReviewSchemasForPage } from '@/lib/reviewsSchema';
 import ExperienceHubPage from '@/components/ExperienceHubPage';
 
 const PAGE = getExperiencePage('meditation-retreats')!;
@@ -23,5 +24,23 @@ export function generateMetadata(): Metadata {
 }
 
 export default function MeditationRetreatsPage() {
-  return <ExperienceHubPage page={PAGE} />;
+  const { reviewSchemas, aggregateSchema } = getReviewSchemasForPage(PAGE);
+
+  return (
+    <>
+      {reviewSchemas.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              ...reviewSchemas,
+              ...(aggregateSchema ? [aggregateSchema] : []),
+            ]),
+          }}
+        />
+      )}
+
+      <ExperienceHubPage page={PAGE} />
+    </>
+  );
 }

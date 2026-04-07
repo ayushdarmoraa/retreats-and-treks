@@ -22,6 +22,8 @@ export interface RetreatReview {
   ratingValue: number;     // 1–5
   reviewBody: string;
   datePublished: string;   // ISO date: YYYY-MM-DD
+  /** Optional avatar path (relative to /public), e.g. '/images/reviews/priya-s.jpg' */
+  participantImage?: string;
 }
 
 /**

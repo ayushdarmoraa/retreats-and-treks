@@ -207,6 +207,8 @@ export default async function BlogPostPage({ params }: PageProps) {
               <div style={{ fontSize: '0.55rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', opacity: 0.7, marginBottom: '0.35rem' }}>Experience It</div>
               Ready to experience what we write about? Explore our{' '}
               <Link href={blog.targetMoneyPage}>offerings →</Link>
+              {' · '}
+              <Link href="/reviews">Read real experiences from our retreats →</Link>
             </div>
           </div>
         </section>
