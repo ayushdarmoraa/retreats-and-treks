@@ -41,6 +41,18 @@ import artTherapyVsArtRetreat from './art-therapy-vs-art-retreat';
 import bestHimalayanLocationsForArtRetreat from './best-himalayan-locations-for-art-retreat';
 import howNatureInspiresCreativePractice from './how-nature-inspires-creative-practice';
 import artRetreatPackingList from './art-retreat-packing-list';
+import brahmatalTrekCost from './brahmatal-trek-cost';
+import brahmatalTrekBestTime from './brahmatal-trek-best-time';
+import brahmatalTrekDifficulty from './brahmatal-trek-difficulty';
+import brahmatalTrekPackingList from './brahmatal-trek-packing-list';
+import harKiDunTrekCost from './har-ki-dun-trek-cost';
+import harKiDunBestTime from './har-ki-dun-best-time';
+import harKiDunTrekDifficulty from './har-ki-dun-difficulty';
+import harKiDunTrekPackingList from './har-ki-dun-packing-list';
+import dayaraBugyalTrekCost from './dayara-bugyal-trek-cost';
+import dayaraBugyalBestTime from './dayara-bugyal-best-time';
+import dayaraBugyalDifficulty from './dayara-bugyal-difficulty';
+import dayaraBugyalPackingList from './dayara-bugyal-packing-list';
 
 // Hardcoded blog posts (extracted from static routes)
 const chakrataVsSankri: BlogContent = {
@@ -291,6 +303,18 @@ export const ALL_BLOG_POSTS: ReadonlyArray<BlogContent> = [
   bestHimalayanLocationsForArtRetreat,
   howNatureInspiresCreativePractice,
   artRetreatPackingList,
+  brahmatalTrekCost,
+  brahmatalTrekBestTime,
+  brahmatalTrekDifficulty,
+  brahmatalTrekPackingList,
+  harKiDunTrekCost,
+  harKiDunBestTime,
+  harKiDunTrekDifficulty,
+  harKiDunTrekPackingList,
+  dayaraBugyalTrekCost,
+  dayaraBugyalBestTime,
+  dayaraBugyalDifficulty,
+  dayaraBugyalPackingList,
 ] as const;
 
 /**

@@ -97,12 +97,21 @@ export type TrekContent = {
 	/** Content linking */
 	relatedBlogSlugs?: string[];
 
+
 	/** Depth content (Phase 1 expansion) */
 	safety?: string;
 	permits?: string;
 	monthlyConditions?: { month: string; conditions: string }[];
 	whoShouldAvoid?: string;
 	localLogistics?: string;
+
+	/** High-intent sections (2026 upgrade) */
+	priceRange?: string;
+	groupSize?: string;
+	howToReach?: string[];
+	packingList?: string[];
+	altitudeProfile?: string[];
+	risksAndSafety?: string[];
 
 	/** Freshness signal for sitemap lastmod */
 	updatedAt?: string;

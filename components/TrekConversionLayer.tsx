@@ -33,6 +33,7 @@ interface TrekConversionLayerProps {
 function getTrustBadges(
   difficulty: string,
   bestSeason: string[],
+  trekSlug: string,
 ): { icon: string; text: string }[] {
   const badges: { icon: string; text: string }[] = [];
 
@@ -48,6 +49,11 @@ function getTrustBadges(
     badges.push({ icon: '☀️', text: 'Limited summer slots (May–Jun)' });
   } else {
     badges.push({ icon: '📅', text: 'Limited departures per season' });
+  }
+
+  // Special urgency for Roopkund
+  if (trekSlug === 'roopkund-trek') {
+    badges.push({ icon: '⏰', text: 'Limited departures. Small group batches.' });
   }
 
   // Social proof
@@ -76,7 +82,7 @@ export default function TrekConversionLayer({
   whatsappNumber,
   phoneNumber,
 }: TrekConversionLayerProps) {
-  const badges = getTrustBadges(difficulty, bestSeason);
+  const badges = getTrustBadges(difficulty, bestSeason, trekSlug);
 
   function handlePhoneClick() {
     track({ event: 'phone_click', from: sourcePath, meta: { trek: trekSlug, source: sourcePath } });

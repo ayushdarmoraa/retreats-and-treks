@@ -1,6 +1,38 @@
 import { TrekContent } from '@/types/content';
 
 const harKiDunTrek: TrekContent = {
+    priceRange: "₹10,000 – ₹15,000",
+    groupSize: "8–16 people",
+
+    howToReach: [
+      "Reach Dehradun",
+      "Drive to Sankri (8–9 hrs)",
+      "Start trek from Sankri base"
+    ],
+
+    packingList: [
+      "Trekking shoes",
+      "Warm jacket",
+      "Thermal layers",
+      "Rain cover",
+      "Trekking pole",
+    ],
+
+    altitudeProfile: [
+      "Sankri – 1,950 m",
+      "Pulna – 2,400 m",
+      "Taluka – 2,700 m",
+      "Har Ki Dun – 3,566 m"
+    ],
+
+    permits: "Forest entry permit required from Sankri",
+
+    risksAndSafety: [
+      "River crossings",
+      "Remote location, limited evacuation",
+      "Altitude gain above 3,500 m",
+      "Weather changes in valley"
+    ],
   slug: 'har-ki-dun-trek',
   title: 'Har Ki Dun Trek',
   description:
@@ -79,8 +111,34 @@ const harKiDunTrek: TrekContent = {
       answer:
         'Very remote. There are no villages or services beyond Sankri. Proper preparation and guides are essential.',
     },
+    {
+      question: 'What is the total distance of Har Ki Dun trek?',
+      answer: 'The total distance is approximately 30–35 km over 5–6 days including acclimatization. Daily distances range from 5–8 km depending on altitude gains and valley terrain.',
+    },
+    {
+      question: 'What is the highest altitude of Har Ki Dun trek?',
+      answer: 'Har Ki Dun meadow plateau is located at approximately 3,400 meters (11,155 feet) above sea level.',
+    },
+    {
+      question: 'How many days does Har Ki Dun trek take?',
+      answer: 'The standard Har Ki Dun trek takes 5–6 days including acclimatization. This provides proper adjustment time and reduces altitude-related issues.',
+    },
+    {
+      question: 'Can families with children do Har Ki Dun?',
+      answer: 'Yes, Har Ki Dun is suitable for families with children aged 10 and above who have basic fitness. The trail is well-maintained and the altitude gain is gradual.',
+    },
+    {
+      question: 'Do I need permits for Har Ki Dun trek?',
+      answer: 'Local forest permits are required from the Uttarakhand forest department. Trek operators typically arrange permits through Sankri. Permit availability may vary by season.',
+    },
   ],
 
+  relatedBlogSlugs: [
+    'har-ki-dun-trek-cost',
+    'har-ki-dun-best-time',
+    'har-ki-dun-difficulty',
+    'har-ki-dun-packing-list',
+  ],
   updatedAt: '2026-03-05',
 };
 

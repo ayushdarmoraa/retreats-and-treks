@@ -1,6 +1,37 @@
 import { TrekContent } from '@/types/content';
 
 const roopkundTrek: TrekContent = {
+    priceRange: "₹12,000 – ₹18,000",
+    groupSize: "8–15 people",
+
+    howToReach: [
+      "Reach Rishikesh/Dehradun",
+      "Drive to Lohajung (10–12 hrs)",
+      "Start trek from Lohajung base"
+    ],
+
+    packingList: [
+      "Trekking shoes (waterproof)",
+      "Down jacket",
+      "Thermals",
+      "Rain cover",
+      "Trekking pole",
+    ],
+
+    altitudeProfile: [
+      "Lohajung – 2,300 m",
+      "Ali Bugyal – 3,400 m",
+      "Bhagwabasa – 4,100 m",
+      "Roopkund – 4,800 m"
+    ],
+
+    permits: "Forest permit required from Lohajung checkpost",
+
+    risksAndSafety: [
+      "High altitude sickness risk",
+      "Sudden weather changes",
+      "Snow sections near summit",
+    ],
   slug: 'roopkund-trek',
   title: 'Roopkund Trek (4,800m) – Mystery Lake Expedition from Lohajung',
   description:
@@ -79,8 +110,42 @@ const roopkundTrek: TrekContent = {
       question: 'What fitness level is required?',
       answer: 'You should be able to walk 8–10 hours on consecutive days at altitude. Regular cardiovascular training (running, cycling, stair climbing) for at least 8 weeks before the trek is recommended.',
     },
+    {
+      question: "What is the success rate of Roopkund trek?",
+      answer: "Most trekkers complete it successfully with proper acclimatization and fitness."
+    },
+    {
+      question: "Is Roopkund trek worth it?",
+      answer: "Yes, it offers one of the most unique landscapes and high-altitude experiences in India."
+    },
+    {
+      question: "What is the total distance of Roopkund trek?",
+      answer: "The total distance is approximately 53 km over 7 days. The daily distances vary from 6–10 km depending on the route and acclimatization needs."
+    },
+    {
+      question: "Can beginners do Roopkund trek?",
+      answer: "Roopkund is not recommended for beginners. It requires prior high-altitude trekking experience, excellent fitness, and comfort with altitude above 4,000 m. First-time trekkers should start with easier routes like Brahmatal or Har Ki Dun."
+    },
+    {
+      question: "What is the highest altitude of Roopkund trek?",
+      answer: "Roopkund lake is located at 4,800 meters (15,748 feet) above sea level, making it one of the highest lake treks in India."
+    },
+    {
+      question: "Do we need permits for Roopkund trek?",
+      answer: "Yes, forest permits are mandatory from the Uttarakhand forest department at Lohajung. You must trek with an authorized operator who handles the permit process. Permit availability varies by season."
+    },
+    {
+      question: "How many days are required for Roopkund trek?",
+      answer: "Typically 7 days are required for the complete Roopkund trek. This includes proper acclimatization days, trek days, and descent days to minimize altitude sickness risk."
+    }
   ],
 
+  relatedBlogSlugs: [
+    'roopkund-trek-cost',
+    'roopkund-trek-best-time',
+    'roopkund-trek-difficulty',
+    'roopkund-trek-packing-list',
+  ],
   updatedAt: '2026-03-05',
 };
 

@@ -39,6 +39,11 @@ export function generateTrekSchema(trek: TrekContent) {
       '@type': 'TouristAttraction',
       name: item,
     })),
+    offers: {
+      '@type': 'Offer',
+      priceRange: trek.priceRange || '₹8,000–₹15,000',
+      priceCurrency: 'INR',
+    },
     provider: { '@id': schemaIds.organization },
   };
 }

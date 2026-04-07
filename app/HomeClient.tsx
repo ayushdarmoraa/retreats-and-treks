@@ -4,6 +4,7 @@ import Link from 'next/link';
 import type { LocationId } from '@/config/locations';
 import { logIntentClick, logWhatsAppOpen } from '@/lib/analytics';
 import { getAllRetreatServices } from '@/content/retreats/services';
+import { getAllTreks } from '@/lib/treks';
 import Image from 'next/image';
 import { images } from '@/lib/images';
 import { CardImage } from '@/components/images';
@@ -25,6 +26,8 @@ export default function HomeClient({ locations }: HomeClientProps) {
   const whatsappMessage = `Hi, I'm interested in learning more about your Himalayan journeys.`;
   const whatsappLink = `https://wa.me/919760446101?text=${encodeURIComponent(whatsappMessage)}`;
 const [pct, setPct] = useState(0);
+const [loadVideo, setLoadVideo] = useState(false);
+const [isMobile, setIsMobile] = useState(false);
 const rafRef = useRef<number | null>(null);
 useEffect(() => {
   let start: number | null = null;
@@ -37,6 +40,24 @@ useEffect(() => {
   rafRef.current = requestAnimationFrame(tick);
   return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
 }, []);
+// ── Video lazy load & mobile detection ──
+useEffect(() => {
+  const updateMobile = () => setIsMobile(window.innerWidth <= 768);
+  updateMobile();
+
+  const timer = window.setTimeout(() => setLoadVideo(true), 2200);
+  const onInteraction = () => setLoadVideo(true);
+
+  window.addEventListener('resize', updateMobile);
+  window.addEventListener('pointerdown', onInteraction, { once: true });
+
+  return () => {
+    window.clearTimeout(timer);
+    window.removeEventListener('resize', updateMobile);
+    window.removeEventListener('pointerdown', onInteraction);
+  };
+}, []);
+
 // ── Scroll fade-in observer ──
 useEffect(() => {
   const els = document.querySelectorAll('.scroll-fade, .scroll-fade-stagger');
@@ -289,25 +310,27 @@ const ready = pct > 0.15;
   `}</style>
 
   {/* Video Background */}
-  <video
-    autoPlay
-    muted
-    loop
-    playsInline
-    preload="none"
-    poster={images.heroes.mountainsnow.src}
-    style={{
-      position: 'absolute',
-      inset: 0,
-      width: '100%',
-      height: '100%',
-      objectFit: 'cover',
-      objectPosition: 'center',
-      filter: 'brightness(0.82) saturate(1.1)',
-    }}
-  >
-    <source src="/videos/hero-video.mp4" type="video/mp4" />
-  </video>
+  {loadVideo && (
+    <video
+      autoPlay={!isMobile}
+      muted
+      loop
+      playsInline
+      preload="none"
+      poster={images.heroes.mountainsnow.src}
+      style={{
+        position: 'absolute',
+        inset: 0,
+        width: '100%',
+        height: '100%',
+        objectFit: 'cover',
+        objectPosition: 'center',
+        filter: 'brightness(0.82) saturate(1.1)',
+      }}
+    >
+      <source src="/videos/hero-video.mp4" type="video/mp4" />
+    </video>
+  )}
 
   {/* Overlay a */}
   <div className="hh-overlay" />
@@ -1334,6 +1357,152 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
         </div>
       </div>
 
+    </div>
+  </div>
+</section>
+
+     {/* SECTION 5A: POPULAR TREKS (INTERNAL SEO AUTHORITY) — Step 84 */}
+<section style={{
+  marginBottom: '0',
+  marginTop: '0',
+  paddingTop: '6rem',
+  paddingBottom: '6rem',
+  paddingLeft: '0',
+  paddingRight: '0',
+  borderBottom: '1px solid #e5e7eb',
+  background: '#f7f9f7',
+  width: '100vw',
+  marginLeft: 'calc(-50vw + 50%)',
+}}>
+  <style>{`
+    .trek-pop-eyebrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .trek-pop-eyebrow-line {
+      width: 28px; height: 1px;
+      background: var(--color-primary);
+      opacity: 0.5;
+    }
+    .trek-pop-eyebrow-text {
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.56rem;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      font-weight: 500;
+      opacity: 0.7;
+    }
+    .trek-pop-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .trek-pop-card {
+      display: block;
+      padding: 1.5rem;
+      background: #ffffff;
+      border-radius: 8px;
+      border: 1px solid #e5e7eb;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    .trek-pop-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .trek-pop-card-title {
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--color-primary);
+      margin: 0 0 0.5rem;
+      line-height: 1.3;
+    }
+    .trek-pop-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-family: var(--font-geist-sans), sans-serif;
+      font-size: 0.75rem;
+      color: #999999;
+      margin: 0;
+      font-weight: 300;
+    }
+    @media (max-width: 1024px) {
+      .trek-pop-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .trek-pop-grid { grid-template-columns: 1fr; }
+    }
+  `}</style>
+
+  <div style={{ maxWidth: '78rem', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '2rem', paddingRight: '2rem' }}>
+
+    {/* Eyebrow */}
+    <div className="trek-pop-eyebrow">
+      <span className="trek-pop-eyebrow-line" />
+      <span className="trek-pop-eyebrow-text">Popular Treks</span>
+      <span className="trek-pop-eyebrow-line" />
+    </div>
+
+    {/* Heading */}
+    <h2 style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: 'clamp(1.8rem, 2.8vw, 2.5rem)',
+      fontWeight: 200,
+      letterSpacing: '-0.03em',
+      color: '#111111',
+      margin: '0 0 3.5rem',
+      lineHeight: 1.1,
+      textAlign: 'center',
+    }}>
+      Our Most{' '}
+      <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Sought Treks</span>
+    </h2>
+
+    {/* Trek Grid */}
+    <div className="trek-pop-grid scroll-fade-stagger">
+      {(() => {
+        const allTreks = getAllTreks();
+        // Select 4 featured treks - top rated/popular ones
+        const featuredTreks = allTreks.slice(0, 4);
+        return featuredTreks.map((trek) => (
+          <Link 
+            key={trek.slug}
+            href={`/treks/location/${trek.locationId}/${trek.slug}`}
+            className="trek-pop-card"
+          >
+            <h3 className="trek-pop-card-title">{trek.title}</h3>
+            <p className="trek-pop-card-meta">
+              <span>{trek.difficulty}</span>
+              <span>·</span>
+              <span>{trek.duration}</span>
+            </p>
+          </Link>
+        ));
+      })()}
+    </div>
+
+    <div style={{ marginTop: '3rem', textAlign: 'center' }}>
+      <Link href="/treks" style={{
+        display: 'inline-flex',
+        alignItems: 'center',
+        gap: '0.5rem',
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontSize: '0.85rem',
+        fontWeight: 600,
+        letterSpacing: '0.1em',
+        textTransform: 'uppercase',
+        color: 'var(--color-primary)',
+        textDecoration: 'none',
+      }}>
+        View all treks →
+      </Link>
     </div>
   </div>
 </section>

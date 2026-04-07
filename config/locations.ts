@@ -1,3 +1,4 @@
+
 /* =========================================================
    LOCATION REGISTRY — v1.0 (SINGLE SOURCE OF TRUTH)
    Every location in the platform is defined here.
@@ -108,6 +109,18 @@ export const LOCATIONS = [
     distanceFromAirport: '230 km (~8–10 hours by road)',
     accommodationType: 'Guesthouse & camping',
     maxGroupSize: 12,
+  },
+  {
+    id: 'barsu',
+    name: 'Barsu',
+    tagline: 'Base village for Dayara Bugyal — meadows and Himalayan views.',
+    supportsRetreats: false,
+    supportsTreks: true,
+    active: true,
+    priority: 9,
+    geo: { latitude: 30.857, longitude: 78.656 },
+    address: { region: 'Uttarakhand', country: 'IN' },
+    touristType: ['Beginner Trekkers', 'Nature Lovers', 'Families'],
   },
 ] as const;
 

@@ -238,10 +238,19 @@ export default function HomePage() {
           <li><Link href="/retreats/rishikesh">Rishikesh retreat hub — yoga infrastructure &amp; riverfront retreats</Link></li>
         </ul>
       </div>
-    </div>
 
+      <div className="home-featured-col">
+        <h3>Popular Treks</h3>
+        <ul>
+          <li><Link href="/treks/location/lohajung/roopkund-trek">Roopkund Trek — 4,800m mystery lake expedition</Link></li>
+          <li><Link href="/treks/location/lohajung/brahmatal-trek">Brahmatal Trek — frozen lake winter snow trek</Link></li>
+          <li><Link href="/treks/location/sankri/har-ki-dun-trek">Har Ki Dun Trek — sacred valley trek</Link></li>
+          <li><Link href="/treks/location/barsu/dayara-bugyal-trek">Dayara Bugyal Trek — alpine meadow beginner trek</Link></li>
+        </ul>
+      </div>
+    </div>
   </div>
-</section>
+  </section>
 
       <section className="rf-wrap" style={{ maxWidth: '56rem', margin: '0 auto', padding: '0 var(--space-md) var(--space-xl)' }}>
   <style>{`

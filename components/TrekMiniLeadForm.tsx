@@ -115,7 +115,7 @@ export default function TrekMiniLeadForm({
       </div>
 
       <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', fontWeight: 400, color: '#111111', marginBottom: '1.5rem', lineHeight: 1.5 }}>
-        Interested in {trekTitle}? Get availability &amp; pricing
+        {trekSlug === 'roopkund-trek' ? 'Plan Your Roopkund Trek → Get Dates & Cost' : trekSlug === 'brahmatal-trek' ? 'Plan Your Brahmatal Trek → Get Dates & Cost' : trekSlug === 'har-ki-dun-trek' ? 'Plan Your Har Ki Dun Trek → Get Dates & Cost' : trekSlug === 'dayara-bugyal-trek' ? 'Plan Your Dayara Bugyal Trek → Get Dates & Cost' : `Interested in ${trekTitle}? Get availability & pricing`}
       </p>
 
       <form onSubmit={handleSubmit}>
