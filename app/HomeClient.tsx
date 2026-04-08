@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import Link from 'next/link';
 import type { LocationId } from '@/config/locations';
 import { logIntentClick, logWhatsAppOpen } from '@/lib/analytics';
@@ -25,19 +25,7 @@ interface HomeClientProps {
 export default function HomeClient({ locations }: HomeClientProps) {
   const whatsappMessage = `Hi, I'm interested in learning more about your Himalayan journeys.`;
   const whatsappLink = `https://wa.me/919760446101?text=${encodeURIComponent(whatsappMessage)}`;
-const [pct, setPct] = useState(0);
-const rafRef = useRef<number | null>(null);
-useEffect(() => {
-  let start: number | null = null;
-  const tick = (now: number) => {
-    if (!start) start = now;
-    const p = Math.min((now - start) / 1800, 1);
-    setPct(1 - Math.pow(1 - p, 4));
-    if (p < 1) rafRef.current = requestAnimationFrame(tick);
-  };
-  rafRef.current = requestAnimationFrame(tick);
-  return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
-}, []);
+
 
 
 // ── Scroll fade-in observer ──
@@ -58,7 +46,7 @@ useEffect(() => {
   els.forEach((el) => observer.observe(el));
   return () => observer.disconnect();
 }, []);
-const ready = pct > 0.15;
+
   const intentOptions = [
     {
       key: 'deep-rest',
@@ -151,13 +139,16 @@ const ready = pct > 0.15;
       opacity: 0; animation: hhFadeUp 0.7s ease 0.1s forwards;
     }
     .hh-eyebrow-line {
-      width: 0px; height: 1px;
+      width: 28px; height: 1px;
       background: var(--color-primary);
+      transform: scaleX(0);
+      transform-origin: left;
+      will-change: transform, opacity;
       animation: hhLineGrow 0.9s ease 0.3s forwards;
     }
     @keyframes hhLineGrow {
-      from { width: 0px; opacity: 0; }
-      to   { width: 28px; opacity: 1; }
+      from { transform: scaleX(0); opacity: 0; }
+      to   { transform: scaleX(1); opacity: 1; }
     }
     .hh-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
