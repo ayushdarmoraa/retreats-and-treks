@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
@@ -166,7 +167,7 @@ export default function SnowTreksPage() {
 
       {/* Brahmatal */}
       <div className="snow-card">
-        <img className="snow-card-img" src="/Images/trek/snow/bramhatal.webp" alt="Brahmatal snow trek — frozen alpine lake in Garhwal Himalaya" loading="lazy" />
+        <Image className="snow-card-img" src="/Images/trek/snow/bramhatal.webp" alt="Brahmatal snow trek — frozen alpine lake in Garhwal Himalaya" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="snow-card-body">
           <h2>Brahmatal — The Ideal First Snow Trek</h2>
           <div className="snow-pills">
@@ -183,7 +184,7 @@ export default function SnowTreksPage() {
 
       {/* Kedarkantha */}
       <div className="snow-card">
-        <img className="snow-card-img" src="/Images/trek/snow/kedarkantha.webp" alt="Kedarkantha summit — winter snow trek from Sankri" loading="lazy" />
+        <Image className="snow-card-img" src="/Images/trek/snow/kedarkantha.webp" alt="Kedarkantha summit — winter snow trek from Sankri" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="snow-card-body">
           <h2>Kedarkantha — The Quintessential Winter Summit</h2>
           <div className="snow-pills">
@@ -201,7 +202,7 @@ export default function SnowTreksPage() {
 
       {/* Kuari Pass */}
       <div className="snow-card">
-        <img className="snow-card-img" src="/Images/trek/snow/kuari.webp" alt="Kuari Pass March — snow and spring on the Curzon Trail" loading="lazy" />
+        <Image className="snow-card-img" src="/Images/trek/snow/kuari.webp" alt="Kuari Pass March — snow and spring on the Curzon Trail" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="snow-card-body">
           <h2>Kuari Pass (March) — Snow Meets Spring</h2>
           <div className="snow-pills">

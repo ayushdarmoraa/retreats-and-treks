@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
@@ -250,13 +251,13 @@ export default function BrahmatalVsKuariPassPage() {
           </h2>
           <div className="bvk-split">
             <div className="bvk-split-card">
-              <img src="/Images/trek/begineertrek/bramhatal.webp" alt="Brahmatal frozen alpine lake in winter" loading="lazy" style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
+              <Image src="/Images/trek/begineertrek/bramhatal.webp" alt="Brahmatal frozen alpine lake in winter" width={600} height={150} sizes="(max-width: 768px) 100vw, 50vw" quality={70} style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
               <h3>Brahmatal — The Frozen Lake Winter Trek</h3>
               <p>Brahmatal is a winter trek. You walk through snow-laden oak and rhododendron forest, camp on snow-covered clearings, and reach a frozen alpine lake at 3,850 metres. The landscape is white, silent, and dramatic. Night temperatures drop to −10°C at camp. The trail above 3,000 metres is consistently snow-covered from December through March.</p>
               <p>The signature moment is arriving at Brahmatal Lake — a frozen sheet of ice surrounded by snow ridges with the Trishul massif rising behind. It is a visual that exists only in winter and cannot be replicated in any other season, on any other route.</p>
             </div>
             <div className="bvk-split-card">
-              <img src="/Images/trek/begineertrek/kuari.webp" alt="Kuari Pass ridge walk with Nanda Devi panorama" loading="lazy" style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
+              <Image src="/Images/trek/begineertrek/kuari.webp" alt="Kuari Pass ridge walk with Nanda Devi panorama" width={600} height={150} sizes="(max-width: 768px) 100vw, 50vw" quality={70} style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
               <h3>Kuari Pass — The Panoramic Ridge Walk</h3>
               <p>Kuari Pass is a ridge trek. Instead of walking toward a single destination, you walk along a high ridge with the Himalayan range arrayed before you for days at a stretch. Nanda Devi (7,816 m), Dronagiri, Chaukhamba, Kamet — the entire Nanda Devi Sanctuary unfolds to your north.</p>
               <p>In spring, rhododendrons bloom below the treeline. In autumn, the forests turn gold and the peaks appear almost three-dimensional. The descent via Auli adds variety that Brahmatal&apos;s out-and-back structure does not offer.</p>

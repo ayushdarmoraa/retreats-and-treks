@@ -26,8 +26,6 @@ export default function HomeClient({ locations }: HomeClientProps) {
   const whatsappMessage = `Hi, I'm interested in learning more about your Himalayan journeys.`;
   const whatsappLink = `https://wa.me/919760446101?text=${encodeURIComponent(whatsappMessage)}`;
 const [pct, setPct] = useState(0);
-const [loadVideo, setLoadVideo] = useState(false);
-const [isMobile, setIsMobile] = useState(false);
 const rafRef = useRef<number | null>(null);
 useEffect(() => {
   let start: number | null = null;
@@ -40,23 +38,7 @@ useEffect(() => {
   rafRef.current = requestAnimationFrame(tick);
   return () => { if (rafRef.current) cancelAnimationFrame(rafRef.current); };
 }, []);
-// ── Video lazy load & mobile detection ──
-useEffect(() => {
-  const updateMobile = () => setIsMobile(window.innerWidth <= 768);
-  updateMobile();
 
-  const timer = window.setTimeout(() => setLoadVideo(true), 2200);
-  const onInteraction = () => setLoadVideo(true);
-
-  window.addEventListener('resize', updateMobile);
-  window.addEventListener('pointerdown', onInteraction, { once: true });
-
-  return () => {
-    window.clearTimeout(timer);
-    window.removeEventListener('resize', updateMobile);
-    window.removeEventListener('pointerdown', onInteraction);
-  };
-}, []);
 
 // ── Scroll fade-in observer ──
 useEffect(() => {
@@ -309,28 +291,23 @@ const ready = pct > 0.15;
     }
   `}</style>
 
-  {/* Video Background */}
-  {loadVideo && (
-    <video
-      autoPlay={!isMobile}
-      muted
-      loop
-      playsInline
-      preload="none"
-      poster={images.heroes.mountainsnow.src}
-      style={{
-        position: 'absolute',
-        inset: 0,
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-        objectPosition: 'center',
-        filter: 'brightness(0.82) saturate(1.1)',
-      }}
-    >
-      <source src="/videos/hero-video.mp4" type="video/mp4" />
-    </video>
-  )}
+  {/* Hero Poster — LCP element, present in initial HTML */}
+  <Image
+    src={images.heroes.mountainsnow.src}
+    alt="Himalayan mountain landscape"
+    fill
+    priority
+    fetchPriority="high"
+    sizes="100vw"
+    quality={70}
+    style={{
+      objectFit: 'cover',
+      objectPosition: 'center',
+      filter: 'brightness(0.82) saturate(1.1)',
+    }}
+  />
+
+
 
   {/* Overlay a */}
   <div className="hh-overlay" />
@@ -371,15 +348,22 @@ const ready = pct > 0.15;
     </div>
   </div>
 
-  {/* JS — word-by-word sub2 only */}
+  {/* JS — word-by-word sub2 only — deferred to idle time */}
   <script dangerouslySetInnerHTML={{ __html: `
     (function() {
-      var el = document.getElementById('hh-sub2-text');
-      if (el) {
-        var words = el.innerText.split(' ');
-        el.innerHTML = words.map(function(w, i) {
-          return '<span class="hh-word" style="animation-delay:' + (0.82 + i * 0.055) + 's">' + w + '\u00a0</span>';
-        }).join('');
+      var run = function() {
+        var el = document.getElementById('hh-sub2-text');
+        if (el) {
+          var words = el.innerText.split(' ');
+          el.innerHTML = words.map(function(w, i) {
+            return '<span class="hh-word" style="animation-delay:' + (0.82 + i * 0.055) + 's">' + w + '\u00a0</span>';
+          }).join('');
+        }
+      };
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(run);
+      } else {
+        setTimeout(run, 1);
       }
     })();
   `}} />

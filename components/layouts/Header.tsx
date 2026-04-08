@@ -1,10 +1,11 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
-// ── Logo image path — replace with your actual image path ──
-const LOGO_IMAGE = '/Images/logo/headerlogo1.png'; // ya '/images/logo.svg' etc.
+// ── Logo image path ──
+const LOGO_IMAGE = '/Images/logo/headerlogo1.webp';
 
 export default function Header() {
   const [retreatOpen, setRetreatOpen] = useState(false);
@@ -17,7 +18,7 @@ export default function Header() {
     <>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+        /* Cormorant Garamond loaded via next/font in layout.tsx */
 
         .hn-link {
           font-family: var(--font-geist-sans), sans-serif;
@@ -146,16 +147,20 @@ export default function Header() {
           {/* ── LOGO ── */}
           <Link href="/" style={{ textDecoration: 'none', flexShrink: 0 }}>
             {!logoError ? (
-              <img
+              <Image
                 src={LOGO_IMAGE}
                 alt="Himalayan Retreats"
+                width={200}
+                height={212}
                 onError={() => setLogoError(true)}
                 style={{ height: '60px', width: 'auto', display: 'block' }}
+                priority
+                quality={75}
               />
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
                 <span style={{
-                  fontFamily: '"Cormorant Garamond", Georgia, serif',
+                  fontFamily: 'var(--font-cormorant), Georgia, serif',
                   fontSize: '1.6rem',
                   fontWeight: 300,
                   letterSpacing: '0.06em',

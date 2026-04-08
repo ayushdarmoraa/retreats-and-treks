@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import AllRetreatPrograms from '@/components/AllRetreatPrograms';
 
@@ -158,7 +159,7 @@ export default function AboutPage() {
                 { name: 'Rishikesh', img: '/Images/location/rishikesh.webp', desc: 'Structured yoga infrastructure on the Ganges riverbank.' },
               ].map((loc) => (
                 <div key={loc.name} className="abt-loc-card">
-                  <img src={loc.img} alt={`${loc.name} — Himalayan retreat location`} loading="lazy" />
+                  <Image src={loc.img} alt={`${loc.name} — Himalayan retreat location`} width={400} height={200} sizes="(max-width: 768px) 100vw, 25vw" quality={70} />
                   <div className="abt-loc-card-body">
                     <p className="abt-loc-label">{loc.name}</p>
                     <p>{loc.desc}</p>

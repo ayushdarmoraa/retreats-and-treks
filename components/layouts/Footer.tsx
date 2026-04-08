@@ -1,5 +1,5 @@
 import Link from 'next/link';
-// import Image from 'next/image';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -108,10 +108,13 @@ export default function Footer() {
          {/* ── LOGO ── */}
 <div className="ft-logo-row">
   <Link href="/">
-    <img
-      src="/Images/logo/headerlogo1.png"
+    <Image
+      src="/Images/logo/headerlogo1.webp"
       alt="Retreats And Treks"
+      width={200}
+      height={212}
       style={{ height: '60px', width: 'auto', display: 'block' }}
+      quality={75}
     />
   </Link>
 </div>

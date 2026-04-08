@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
@@ -171,7 +172,7 @@ export default function HighAltitudeTreksPage() {
 
       {/* Roopkund */}
       <div className="ha-card">
-        <img src="/Images/trek/challenging/roopkund_lake.webp" alt="Roopkund trek — glacial lake at 4800m in Garhwal Himalaya" loading="lazy" />
+        <Image src="/Images/trek/challenging/roopkund_lake.webp" alt="Roopkund trek — glacial lake at 4800m in Garhwal Himalaya" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="ha-card-body">
           <h2>Roopkund — 4,800 m — The Mystery Lake Expedition</h2>
           <div className="ha-pills">
@@ -188,7 +189,7 @@ export default function HighAltitudeTreksPage() {
 
       {/* Pangarchulla */}
       <div className="ha-card">
-        <img src="/Images/trek/challenging/pangarchulla.webp" alt="Pangarchulla peak — summit climb at 4590m from Joshimath" loading="lazy" />
+        <Image src="/Images/trek/challenging/pangarchulla.webp" alt="Pangarchulla peak — summit climb at 4590m from Joshimath" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="ha-card-body">
           <h2>Pangarchulla — 4,590 m — The True Summit Climb</h2>
           <div className="ha-pills">
@@ -206,7 +207,7 @@ export default function HighAltitudeTreksPage() {
 
       {/* Brahmatal */}
       <div className="ha-card">
-        <img src="/Images/trek/challenging/milamglacier.webp" alt="Brahmatal trek — frozen alpine lake at 3850m in Garhwal" loading="lazy" />
+        <Image src="/Images/trek/challenging/milamglacier.webp" alt="Brahmatal trek — frozen alpine lake at 3850m in Garhwal" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="ha-card-body">
           <h2>Brahmatal — 3,850 m — Gateway to High Altitude</h2>
           <div className="ha-pills">

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
@@ -171,7 +172,7 @@ export default function ChallengingTreksPage() {
 
       {/* Roopkund */}
       <div className="chal-card">
-        <img src="/Images/trek/challenging/roopkund_lake.webp" alt="Roopkund trek — glacial lake at 4800m in Garhwal Himalaya" loading="lazy" />
+        <Image src="/Images/trek/challenging/roopkund_lake.webp" alt="Roopkund trek — glacial lake at 4800m in Garhwal Himalaya" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="chal-card-body">
           <h2>Roopkund — The Mystery Lake Expedition</h2>
           <div className="chal-pills">
@@ -188,7 +189,7 @@ export default function ChallengingTreksPage() {
 
       {/* Pangarchulla */}
       <div className="chal-card">
-        <img src="/Images/trek/challenging/pangarchulla.webp" alt="Pangarchulla peak — summit climb at 4590m from Joshimath" loading="lazy" />
+        <Image src="/Images/trek/challenging/pangarchulla.webp" alt="Pangarchulla peak — summit climb at 4590m from Joshimath" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="chal-card-body">
           <h2>Pangarchulla Peak — The Summit Climb</h2>
           <div className="chal-pills">
@@ -206,7 +207,7 @@ export default function ChallengingTreksPage() {
 
       {/* Milam Glacier */}
       <div className="chal-card">
-        <img src="/Images/trek/challenging/milamglacier.webp" alt="Milam Glacier trek — remote Johar Valley expedition from Munsiyari" loading="lazy" />
+        <Image src="/Images/trek/challenging/milamglacier.webp" alt="Milam Glacier trek — remote Johar Valley expedition from Munsiyari" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="chal-card-body">
           <h2>Milam Glacier — The Remote Expedition</h2>
           <div className="chal-pills">

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
@@ -229,7 +230,7 @@ export default function BeginnerTreksPage() {
       </p>
 
       <div className="beg-trek-card" style={{ padding: 0, overflow: 'hidden' }}>
-        <img src="/Images/trek/begineertrek/tigerfall.webp" alt="Tiger Fall trek — deodar forest trail in Chakrata" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+        <Image src="/Images/trek/begineertrek/tigerfall.webp" alt="Tiger Fall trek — deodar forest trail in Chakrata" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
         <div style={{ padding: '1.5rem' }}>
           <h3>Tiger Fall Trek</h3>
           <div className="beg-pills">
@@ -247,7 +248,7 @@ export default function BeginnerTreksPage() {
       </div>
 
       <div className="beg-trek-card" style={{ padding: 0, overflow: 'hidden' }}>
-        <img src="/Images/trek/begineertrek/budher.webp" alt="Budher Caves trek — limestone caves near Chakrata" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+        <Image src="/Images/trek/begineertrek/budher.webp" alt="Budher Caves trek — limestone caves near Chakrata" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
         <div style={{ padding: '1.5rem' }}>
           <h3>Budher Caves Trek</h3>
           <div className="beg-pills">
@@ -291,7 +292,7 @@ export default function BeginnerTreksPage() {
       </p>
 
       <div className="beg-trek-card" style={{ background: '#ffffff', padding: 0, overflow: 'hidden' }}>
-        <img src="/Images/trek/begineertrek/bramhatal.webp" alt="Brahmatal trek — frozen alpine lake and snow ridges in Garhwal" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+        <Image src="/Images/trek/begineertrek/bramhatal.webp" alt="Brahmatal trek — frozen alpine lake and snow ridges in Garhwal" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
         <div style={{ padding: '1.5rem' }}>
           <h3>Brahmatal Trek</h3>
           <div className="beg-pills">
@@ -309,7 +310,7 @@ export default function BeginnerTreksPage() {
       </div>
 
       <div className="beg-trek-card" style={{ background: '#ffffff', padding: 0, overflow: 'hidden' }}>
-        <img src="/Images/trek/begineertrek/kuari.webp" alt="Kuari Pass trek — Curzon Trail ridge walk with Nanda Devi views" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+        <Image src="/Images/trek/begineertrek/kuari.webp" alt="Kuari Pass trek — Curzon Trail ridge walk with Nanda Devi views" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
         <div style={{ padding: '1.5rem' }}>
           <h3>Kuari Pass Trek</h3>
           <div className="beg-pills">
@@ -329,7 +330,7 @@ export default function BeginnerTreksPage() {
       </div>
 
       <div className="beg-trek-card" style={{ background: '#ffffff', padding: 0, overflow: 'hidden' }}>
-        <img src="/Images/trek/begineertrek/Khaliya.webp" alt="Khaliya Top trek — Panchachuli panorama from Munsiyari" loading="lazy" style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
+        <Image src="/Images/trek/begineertrek/Khaliya.webp" alt="Khaliya Top trek — Panchachuli panorama from Munsiyari" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} style={{ width: '100%', height: '200px', objectFit: 'cover', display: 'block' }} />
         <div style={{ padding: '1.5rem' }}>
           <h3>Khaliya Top Trek</h3>
           <div className="beg-pills">

@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
@@ -210,7 +211,7 @@ export default function WeekendHimalayanRetreatsPage() {
 
       {/* Chakrata */}
       <div className="wknd-loc-card">
-        <img src="/Images/location/chakrata.webp" alt="Chakrata — deodar forest ridge retreat near Dehradun, 6–7 hours from Delhi" loading="lazy" />
+        <Image src="/Images/location/chakrata.webp" alt="Chakrata — deodar forest ridge retreat near Dehradun, 6–7 hours from Delhi" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="wknd-loc-card-body">
           <h3><Link href="/retreats/chakrata">Chakrata — 6–7 Hours from Delhi</Link></h3>
           <p>Chakrata is arguably the strongest weekend retreat destination from Delhi. At approximately 2,200 metres on a quiet cantonment ridge, it offers genuine mountain environment without extreme altitude or tourist congestion. The drive from Delhi via Dehradun takes six to seven hours — leave by 5 PM on Friday, and you are settling into a forest-edge retreat by midnight.</p>
@@ -221,7 +222,7 @@ export default function WeekendHimalayanRetreatsPage() {
 
       {/* Rishikesh */}
       <div className="wknd-loc-card">
-        <img src="/Images/location/rishikesh.webp" alt="Rishikesh — Ganges riverside yoga and meditation, 5–6 hours from Delhi" loading="lazy" />
+        <Image src="/Images/location/rishikesh.webp" alt="Rishikesh — Ganges riverside yoga and meditation, 5–6 hours from Delhi" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="wknd-loc-card-body">
           <h3><Link href="/retreats/rishikesh">Rishikesh — 5–6 Hours from Delhi</Link></h3>
           <p>Rishikesh is the fastest Himalayan destination from Delhi and the most established centre for <Link href="/retreats/journeys/yoga-and-movement" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>yoga and movement</Link> practice in India. The five-to-six-hour drive places you on the Ganges by late evening. For professionals who want the most efficient Friday-to-Sunday format with minimal travel overhead, Rishikesh delivers consistently.</p>
@@ -232,7 +233,7 @@ export default function WeekendHimalayanRetreatsPage() {
 
       {/* Sankri */}
       <div className="wknd-loc-card">
-        <img src="/Images/location/sankri.webp" alt="Sankri — remote Himalayan valley near Govind Wildlife Sanctuary, extended weekend" loading="lazy" />
+        <Image src="/Images/location/sankri.webp" alt="Sankri — remote Himalayan valley near Govind Wildlife Sanctuary, extended weekend" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="wknd-loc-card-body">
           <h3><Link href="/retreats/sankri">Sankri — Extended Weekend Option (8–9 Hours)</Link></h3>
           <p>Sankri sits deeper in the Himalayas — roughly eight to nine hours from Delhi, in the upper Tons Valley near the Govind Wildlife Sanctuary. This travel time makes it tight for a standard Friday–Sunday weekend, but it works well for extended weekends and three-day holidays. If you have a Friday off, or can depart Thursday evening, Sankri offers something the closer locations cannot: true remote mountain immersion at the edge of the treeline. Pine forests, glacial rivers, and complete digital disconnection. For a longer comparison of retreat formats by duration, see our guide to <Link href="/blog/3-day-vs-5-day-himalayan-retreat" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>choosing the right retreat length</Link>.</p>

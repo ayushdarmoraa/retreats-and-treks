@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
@@ -215,7 +216,7 @@ export default function SummerHimalayanRetreatsPage() {
 
       {/* Sankri */}
       <div className="sum-loc-card">
-        <img src="/Images/location/sankri.webp" alt="Sankri — pine forest valley in Govind Wildlife Sanctuary, Garhwal" loading="lazy" />
+        <Image src="/Images/location/sankri.webp" alt="Sankri — pine forest valley in Govind Wildlife Sanctuary, Garhwal" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="sum-loc-card-body">
           <h3><Link href="/retreats/sankri">Sankri — Cool Pine Forest Valleys</Link></h3>
           <p>Sankri sits at the upper edge of the treeline in the Govind Wildlife Sanctuary corridor, where summer temperatures rarely exceed 22°C. The pine and oak forests surrounding the village provide natural air conditioning and walking routes that stay cool even at midday. Summer is when Sankri comes fully alive — the valley is green, the rivers are strong, and the high-altitude meadows above the village open for the first time since autumn.</p>
@@ -225,7 +226,7 @@ export default function SummerHimalayanRetreatsPage() {
 
       {/* Munsiyari */}
       <div className="sum-loc-card">
-        <img src="/Images/location/munsiyari.webp" alt="Munsiyari — Panchachuli massif views from high altitude Kumaon village" loading="lazy" />
+        <Image src="/Images/location/munsiyari.webp" alt="Munsiyari — Panchachuli massif views from high altitude Kumaon village" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="sum-loc-card-body">
           <h3><Link href="/retreats/munsiyari">Munsiyari — High Altitude and Panchachuli Views</Link></h3>
           <p>Munsiyari in summer is the premium alpine option. At over 2,200 metres, with the Panchachuli massif filling the northern horizon, this is mountain retreat at its most dramatic. Summer temperatures hover around 15–22°C — genuinely cool, never hot. Khaliya Top meadows bloom with wildflowers. The Milam Glacier approach opens for the season. Bhotiya villages are active and welcoming.</p>
@@ -235,7 +236,7 @@ export default function SummerHimalayanRetreatsPage() {
 
       {/* Chakrata */}
       <div className="sum-loc-card">
-        <img src="/Images/location/chakrata.webp" alt="Chakrata — deodar forest trails on forested ridge near Dehradun" loading="lazy" />
+        <Image src="/Images/location/chakrata.webp" alt="Chakrata — deodar forest trails on forested ridge near Dehradun" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="sum-loc-card-body">
           <h3><Link href="/retreats/chakrata">Chakrata — Quiet Hill Escape</Link></h3>
           <p>Chakrata is the most accessible summer escape — reachable from Delhi within a day, sitting on a forested ridge at moderate altitude. Summer days are warm but comfortable (20–30°C), and the deodar forests provide shade and walking routes. Tiger Falls and the surrounding forest trails are at their best in May and June. For professionals seeking a long weekend or three-to-five-day retreat without complex logistics, Chakrata delivers genuine mountain environment with minimal travel friction.</p>
@@ -244,7 +245,7 @@ export default function SummerHimalayanRetreatsPage() {
 
       {/* Rishikesh */}
       <div className="sum-loc-card">
-        <img src="/Images/location/rishikesh.webp" alt="Rishikesh — Ganges riverside yoga and retreat before monsoon" loading="lazy" />
+        <Image src="/Images/location/rishikesh.webp" alt="Rishikesh — Ganges riverside yoga and retreat before monsoon" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="sum-loc-card-body">
           <h3><Link href="/retreats/rishikesh">Rishikesh — Riverside Retreats Before Monsoon</Link></h3>
           <p>Rishikesh in May–June is warmer than the mountain locations (28–38°C) but remains cooler than the deep plains. Pre-monsoon energy creates intensity — the Ganges runs strong, ashram routines shift toward early-morning practice to avoid midday heat, and serious yoga courses run their intensive summer cohorts. This is not a cool-climate escape but a spiritual-intensity window. For those drawn to <Link href="/retreats/journeys/yoga-and-movement" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>yoga and movement</Link> or teacher-led philosophical study, pre-monsoon Rishikesh has a focused energy that cooler seasons dilute with tourist traffic.</p>
