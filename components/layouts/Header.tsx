@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 // ── Logo image path ──
-const LOGO_IMAGE = '/Images/logo/retreatsandtreks2.jpg';
+const LOGO_IMAGE = '/Images/logo/retreatsandtreks1.png';
 
 export default function Header() {
   const [retreatOpen, setRetreatOpen] = useState(false);
@@ -134,8 +134,21 @@ export default function Header() {
           .hn-hamburger { display: flex !important; }
         }
         @media (min-width: 769px) {
-          .hn-mobile-nav { display: none !important; }
-        }
+  .hn-mobile-nav { display: none !important; }
+}
+.hn-logo-link {
+  display: block;
+  line-height: 0;
+  transform: none !important;
+  transition: none !important;
+}
+.hn-logo-link:hover {
+  transform: none !important;
+}
+.hn-logo-link img {
+  transform: none !important;
+  transition: none !important;
+}
       `}</style>
 
       <header style={{
@@ -150,7 +163,7 @@ export default function Header() {
         <nav style={{
           maxWidth: '72rem',
           margin: '0 auto',
-          padding: '0 2rem',
+          padding: '0 2rem 0 0',
           height: '80px',
           display: 'flex',
           alignItems: 'center',
@@ -158,7 +171,7 @@ export default function Header() {
         }}>
 
           {/* ── LOGO ── */}
-          <Link href="/" style={{ textDecoration: 'none', flexShrink: 0 }} aria-label="Himalayan Retreats - Go to homepage">
+          <Link href="/" className="hn-logo-link" style={{ textDecoration: 'none', flexShrink: 0 }} aria-label="Himalayan Retreats - Go to homepage">
             {!logoError ? (
               <Image
                 src={LOGO_IMAGE}
@@ -166,7 +179,7 @@ export default function Header() {
                 width={200}
                 height={212}
                 onError={() => setLogoError(true)}
-                style={{ height: '72px', width: 'auto', display: 'block' }}
+                style={{ height: '72px', width: 'auto', display: 'block', transition: 'none' }}
                 priority
                 quality={75}
               />
