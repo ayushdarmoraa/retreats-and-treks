@@ -8,12 +8,7 @@ import HomeClient from './HomeClient';
 import PrimaryCTA from '@/components/PrimaryCTA';
 import { getAllRetreatServices } from '@/content/retreats/services';
 import { getAggregateRating, RETREAT_REVIEWS } from '@/content/reviews';
-
-// Lazy load reviewer section with all reviews and finder
-const DynamicReviewerSection = dynamic(
-  () => import('@/components/DynamicReviewerSection'),
-  { ssr: false, loading: () => null }
-);
+import DeferredReviewerSection from '@/components/client/DeferredReviewerSection';
 
 export function generateMetadata(): Metadata {
   return {
@@ -250,7 +245,7 @@ export default function HomePage() {
   </div>
   </section>
 
-      <RetreatFinder fromPath="/" ratings={finderRatings} />
+      <DeferredReviewerSection finderRatings={finderRatings} />
 
       {/* ── FEATURED RETREATS & TREKS (server-rendered links for crawl depth) ── */}
 <style>{`
