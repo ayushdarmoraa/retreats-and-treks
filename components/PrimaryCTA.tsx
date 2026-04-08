@@ -49,7 +49,7 @@ export default function PrimaryCTA({
         transform: 'translateX(-50%)',
         width: '80px', height: '2px',
         background: 'var(--color-primary)',
-        opacity: 0.6,
+        
       }} />
 
       <div style={{ maxWidth: '32rem', margin: '0 auto', position: 'relative' }}>
@@ -63,7 +63,7 @@ export default function PrimaryCTA({
           <span style={{
             width: '20px', height: '1px',
             background: 'var(--color-primary)',
-            opacity: 0.4, display: 'inline-block',
+             display: 'inline-block',
           }} />
           <span style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -74,7 +74,7 @@ export default function PrimaryCTA({
           <span style={{
             width: '20px', height: '1px',
             background: 'var(--color-primary)',
-            opacity: 0.4, display: 'inline-block',
+             display: 'inline-block',
           }} />
         </div>
 

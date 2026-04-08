@@ -86,21 +86,21 @@ export default function ThreeDayTreksUttarakhandPage() {
         .tdt-h2 { font-family:var(--font-geist-sans),sans-serif; font-size:clamp(1.4rem,2.5vw,1.85rem); font-weight:200; letter-spacing:-0.03em; color:#111; line-height:1.15; margin:0 0 0.75rem; }
         .tdt-h3 { font-family:var(--font-geist-sans),sans-serif; font-size:0.95rem; font-weight:500; color:#111; letter-spacing:-0.01em; margin:0 0 0.4rem; }
         .tdt-eyebrow { display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem; }
-        .tdt-eyebrow-line { width:24px; height:1px; background:var(--color-primary); opacity:0.5; display:inline-block; }
-        .tdt-eyebrow-text { font-size:0.56rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--color-primary); font-weight:500; opacity:0.7; }
-        .tdt-link { color:var(--color-primary); font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
-        .tdt-link:hover { border-bottom-color:var(--color-primary); }
+        .tdt-eyebrow-line { width:24px; height:1px; background:var(--color-primary);  display:inline-block; }
+        .tdt-eyebrow-text { font-size: 0.75rem; letter-spacing:0.28em; text-transform:uppercase; color: #374151; font-weight:500; }
+        .tdt-link { color: #374151; font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
+        .tdt-link:hover { border-bottom-color: #374151; }
         .tdt-trek-card { background:#fff; border:1px solid #eef0ee; border-top:2px solid var(--color-primary); border-radius:8px; padding:1.25rem 1.5rem; margin-bottom:0.75rem; transition:transform 0.18s,box-shadow 0.18s; }
         .tdt-trek-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,0.07); }
         .tdt-why-item { border-left:2px solid var(--color-primary); padding-left:1rem; margin-bottom:1.25rem; }
         .tdt-why-item strong { display:block; font-size:0.82rem; font-weight:500; color:#111; margin-bottom:0.2rem; }
         .tdt-who-item { display:flex; gap:0.75rem; padding:0.9rem 1rem; border-bottom:1px solid #f0f0f0; }
         .tdt-who-item:last-child { border-bottom:none; }
-        .tdt-who-dot { width:6px; height:6px; border-radius:50%; background:var(--color-primary); flex-shrink:0; margin-top:0.55rem; opacity:0.6; }
+        .tdt-who-dot { width:6px; height:6px; border-radius:50%; background:var(--color-primary); flex-shrink:0; margin-top:0.75rem;  }
         .tdt-season-card { background:#fff; border:1px solid #eef0ee; border-radius:8px; padding:1rem 1.25rem; margin-bottom:0.75rem; }
-        .tdt-season-label { font-size:0.75rem; font-weight:600; color:var(--color-primary); letter-spacing:0.05em; display:block; margin-bottom:0.35rem; }
+        .tdt-season-label { font-size:0.75rem; font-weight:600; color: #374151; letter-spacing:0.05em; display:block; margin-bottom:0.35rem; }
         .tdt-callout { background:#fff; border:1px solid #e5e7eb; border-left:3px solid var(--color-primary); border-radius:8px; padding:1rem 1.25rem; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; }
-        .tdt-callout a { color:var(--color-primary); font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
+        .tdt-callout a { color: #374151; font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
         @media(max-width:700px){ .tdt-trek-card,.tdt-season-card { padding:1rem; } }
       `}</style>
 

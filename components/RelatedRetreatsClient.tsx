@@ -93,7 +93,7 @@ export default function RelatedRetreatsClient({
     }
     .rrc-eyebrow-line {
       width: 24px; height: 1px;
-      background: var(--color-primary); opacity: 0.5;
+      background: var(--color-primary); 
       flex-shrink: 0;
     }
 
@@ -107,7 +107,7 @@ export default function RelatedRetreatsClient({
       margin: 0;
     }
     .rrc-h2-accent {
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 200;
     }
 
@@ -171,14 +171,14 @@ export default function RelatedRetreatsClient({
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.92rem;
       font-weight: 400;
-      color: var(--color-primary);
+      color: #374151;
       text-decoration: none;
       letter-spacing: -0.01em;
       display: block;
       margin-bottom: 0.3rem;
       transition: opacity 0.2s;
     }
-    .rrc-item:hover .rrc-link { opacity: 0.8; }
+    .rrc-item:hover .rrc-link {  }
 
     .rrc-essence {
       font-family: var(--font-geist-sans), sans-serif;

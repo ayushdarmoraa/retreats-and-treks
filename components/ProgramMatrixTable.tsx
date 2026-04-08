@@ -93,11 +93,11 @@ function compareRows(a: MatrixRow, b: MatrixRow, key: SortKey, dir: SortDir): nu
 
 function SortIndicator({ active, dir }: { active: boolean; dir: SortDir }) {
   if (!active) return <span style={{ marginLeft: '0.35rem', fontSize: '0.75rem' }}>⇅</span>;
-  return <span style={{ marginLeft: '0.35rem', color: 'var(--color-primary)', fontSize: '0.75rem' }}>{dir === 'asc' ? '↑' : '↓'}</span>;
+  return <span style={{ marginLeft: '0.35rem', color: '#374151', fontSize: '0.75rem' }}>{dir === 'asc' ? '↑' : '↓'}</span>;
 }
 
 const INTENSITY_PILL: Record<string, React.CSSProperties> = {
-  low:    { background: 'rgba(15,118,110,0.08)', color: 'var(--color-primary)' },
+  low:    { background: 'rgba(15,118,110,0.08)', color: '#374151' },
   medium: { background: 'rgba(245,158,11,0.08)', color: '#b45309' },
   high:   { background: 'rgba(220,38,38,0.08)',  color: '#b91c1c' },
 };
@@ -172,13 +172,13 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
         }
         .pmt-select:focus {
           outline: none;
-          border-color: var(--color-primary);
+          border-color: #374151;
         }
 
         .pmt-clear-btn {
           font-size: 0.75rem;
           font-family: var(--font-geist-sans), sans-serif;
-          color: var(--color-primary);
+          color: #374151;
           background: none;
           border: none;
           cursor: pointer;
@@ -224,8 +224,8 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
           white-space: nowrap;
           transition: color 0.2s;
         }
-        .pmt-th:hover { color: var(--color-primary); }
-        .pmt-th.active { color: var(--color-primary); }
+        .pmt-th:hover { color: #374151; }
+        .pmt-th.active { color: #374151; }
         .pmt-th.no-sort { cursor: default; }
         .pmt-th.no-sort:hover { color: #aaaaaa; }
 
@@ -250,13 +250,13 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
         .pmt-title-link {
           font-size: 0.88rem;
           font-weight: 400;
-          color: var(--color-primary);
+          color: #374151;
           text-decoration: none;
           letter-spacing: -0.01em;
           transition: opacity 0.2s;
           display: block;
         }
-        .pmt-title-link:hover { opacity: 0.75; }
+        .pmt-title-link:hover { 5; }
 
         /* Pills */
         .pmt-pill {

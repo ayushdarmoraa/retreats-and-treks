@@ -118,7 +118,7 @@ export default function WeekendHimalayanRetreatsPage() {
     .wknd-loc-card-body { padding:1.5rem; }
     .wknd-loc-card-body h3 { font-family:var(--font-geist-sans),sans-serif; font-size:0.95rem; font-weight:500; color:#111; margin:0 0 0.85rem; letter-spacing:-0.01em; }
     .wknd-loc-card-body h3 a { color:inherit; text-decoration:none; }
-    .wknd-loc-card-body h3 a:hover { color:var(--color-primary); }
+    .wknd-loc-card-body h3 a:hover { color: #374151; }
     .wknd-loc-card-body p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0 0 0.75rem; }
     .wknd-loc-card-body p:last-child { margin-bottom:0; }
     .wknd-why-item { border-left:2px solid var(--color-primary); padding-left:1rem; margin-bottom:1.25rem; }
@@ -127,14 +127,14 @@ export default function WeekendHimalayanRetreatsPage() {
     .wknd-day-item p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0; }
     .wknd-who-item { display:flex; gap:1rem; padding:0.85rem 0; border-bottom:1px solid #f0f0f0; }
     .wknd-who-item:last-child { border-bottom:none; }
-    .wknd-who-dot { flex-shrink:0; margin-top:0.55rem; width:8px; height:8px; border-radius:50%; background:var(--color-primary); opacity:0.6; }
+    .wknd-who-dot { flex-shrink:0; margin-top:0.75rem; width:8px; height:8px; border-radius:50%; background:var(--color-primary);  }
     .wknd-who-item p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0; }
     .wknd-plan-item { background:#fff; border:1px solid #e5e7eb; border-left:3px solid var(--color-primary); border-radius:8px; padding:1rem 1.25rem; margin-bottom:0.75rem; }
     .wknd-plan-item p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0; }
     .wknd-nav-link { display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1rem; border-bottom:1px solid #f0f0f0; font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; color:#333; text-decoration:none; }
-    .wknd-nav-link:hover { background:#f7f9f7; color:var(--color-primary); }
-    .wknd-nav-link.back::before { content:'←'; color:var(--color-primary); opacity:0.5; margin-right:0.5rem; }
-    .wknd-nav-link:not(.back)::after { content:'→'; color:var(--color-primary); opacity:0.5; }
+    .wknd-nav-link:hover { background:#f7f9f7; color: #374151; }
+    .wknd-nav-link.back::before { content:'←'; color: #374151;  margin-right:0.5rem; }
+    .wknd-nav-link:not(.back)::after { content:'→'; color: #374151;  }
     .wknd-nav-group { border:1px solid #e5e7eb; border-radius:8px; overflow:hidden; }
     .wknd-nav-group .wknd-nav-link:last-child { border-bottom:none; }
     @media(max-width:640px){
@@ -148,8 +148,8 @@ export default function WeekendHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Weekend Retreats · Delhi NCR</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Weekend Retreats · Delhi NCR</span>
       </div>
       <h1 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.75rem,3.5vw,2.4rem)', fontWeight:200, letterSpacing:'-0.035em', color:'#111', lineHeight:1.1, margin:'0 0 1.5rem' }}>
         Weekend Himalayan Retreats Near Delhi
@@ -168,8 +168,8 @@ export default function WeekendHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Why It Works</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Why It Works</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'0.75rem' }}>
         Why a Weekend Retreat Works for Busy Professionals
@@ -181,7 +181,7 @@ export default function WeekendHimalayanRetreatsPage() {
         {[
           { label:'No leave required.', body:'A Friday evening departure and Sunday evening return uses zero annual leave. For mid-career professionals and founders who guard their leave days, this is the critical advantage.' },
           { label:'Minimal travel fatigue.', body:"Five to seven hours by road from Delhi is shorter than most domestic flights once you factor in airport time. Self-drive, shared cab, or overnight bus — the approach is straightforward. You arrive tired from travel, which actually helps: the first night's sleep in mountain air is often the deepest in months." },
-          { label:'Structured intensity.', body: <span>Weekend retreats are not diluted versions of longer programs. They are compressed by design — early morning sessions, full-day immersion, evening integration. Every hour is intentional. Participants frequently report that a focused 48-hour <Link href="/retreats/journeys/burnout-recovery" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>burnout recovery</Link> retreat delivers more reset than a week of unstructured holiday.</span> },
+          { label:'Structured intensity.', body: <span>Weekend retreats are not diluted versions of longer programs. They are compressed by design — early morning sessions, full-day immersion, evening integration. Every hour is intentional. Participants frequently report that a focused 48-hour <Link href="/retreats/journeys/burnout-recovery" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>burnout recovery</Link> retreat delivers more reset than a week of unstructured holiday.</span> },
           { label:'Repeatable rhythm.', body:'A single week-long retreat per year is meaningful. A weekend retreat every quarter is transformational. The proximity of the Himalayas to Delhi makes quarterly reset not just possible but practical.' },
         ].map((item, i) => (
           <div key={i} className="wknd-why-item">
@@ -199,8 +199,8 @@ export default function WeekendHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Three Locations</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Three Locations</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'0.75rem' }}>
         Best Weekend Himalayan Retreat Locations from Delhi
@@ -216,7 +216,7 @@ export default function WeekendHimalayanRetreatsPage() {
           <h3><Link href="/retreats/chakrata">Chakrata — 6–7 Hours from Delhi</Link></h3>
           <p>Chakrata is arguably the strongest weekend retreat destination from Delhi. At approximately 2,200 metres on a quiet cantonment ridge, it offers genuine mountain environment without extreme altitude or tourist congestion. The drive from Delhi via Dehradun takes six to seven hours — leave by 5 PM on Friday, and you are settling into a forest-edge retreat by midnight.</p>
           <p>The landscape is defined by deodar forests, waterfalls, and ridge walks with Himalayan views on clear days. Tiger Falls provides a natural anchor point for immersive walking. The cantonment area's military heritage means low commercial development — just forest and villages. This quietness is what makes Chakrata effective for short-duration retreat work.</p>
-          <p>Weekend retreat programs in <Link href="/retreats/chakrata" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Chakrata</Link> typically include morning yoga on forest platforms, guided meditation walks, breathwork sessions, and campfire integration in the evenings. The 2-night format here feels unhurried because the environment does half the work — the quiet and the air begin the reset before any programmed session starts.</p>
+          <p>Weekend retreat programs in <Link href="/retreats/chakrata" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Chakrata</Link> typically include morning yoga on forest platforms, guided meditation walks, breathwork sessions, and campfire integration in the evenings. The 2-night format here feels unhurried because the environment does half the work — the quiet and the air begin the reset before any programmed session starts.</p>
         </div>
       </div>
 
@@ -225,9 +225,9 @@ export default function WeekendHimalayanRetreatsPage() {
         <Image src="/Images/location/rishikesh.webp" alt="Rishikesh — Ganges riverside yoga and meditation, 5–6 hours from Delhi" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="wknd-loc-card-body">
           <h3><Link href="/retreats/rishikesh">Rishikesh — 5–6 Hours from Delhi</Link></h3>
-          <p>Rishikesh is the fastest Himalayan destination from Delhi and the most established centre for <Link href="/retreats/journeys/yoga-and-movement" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>yoga and movement</Link> practice in India. The five-to-six-hour drive places you on the Ganges by late evening. For professionals who want the most efficient Friday-to-Sunday format with minimal travel overhead, Rishikesh delivers consistently.</p>
+          <p>Rishikesh is the fastest Himalayan destination from Delhi and the most established centre for <Link href="/retreats/journeys/yoga-and-movement" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>yoga and movement</Link> practice in India. The five-to-six-hour drive places you on the Ganges by late evening. For professionals who want the most efficient Friday-to-Sunday format with minimal travel overhead, Rishikesh delivers consistently.</p>
           <p>The retreat character here is different from Chakrata. Where Chakrata is forest silence, Rishikesh is spiritual infrastructure — ashram traditions, experienced yoga teachers, riverside meditation, and a lineage of practice that adds depth to even a short stay. Early morning practice on the riverbank, with mist rising off the water and temple bells in the distance, creates a container that manufactured settings cannot replicate.</p>
-          <p>Weekend formats in <Link href="/retreats/rishikesh" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Rishikesh</Link> tend toward structured yoga and meditation programming — two sessions per day, pranayama instruction, philosophical context, and facilitated group reflection. This suits participants who want guided practice rather than open-ended nature immersion.</p>
+          <p>Weekend formats in <Link href="/retreats/rishikesh" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Rishikesh</Link> tend toward structured yoga and meditation programming — two sessions per day, pranayama instruction, philosophical context, and facilitated group reflection. This suits participants who want guided practice rather than open-ended nature immersion.</p>
         </div>
       </div>
 
@@ -236,7 +236,7 @@ export default function WeekendHimalayanRetreatsPage() {
         <Image src="/Images/location/sankri.webp" alt="Sankri — remote Himalayan valley near Govind Wildlife Sanctuary, extended weekend" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="wknd-loc-card-body">
           <h3><Link href="/retreats/sankri">Sankri — Extended Weekend Option (8–9 Hours)</Link></h3>
-          <p>Sankri sits deeper in the Himalayas — roughly eight to nine hours from Delhi, in the upper Tons Valley near the Govind Wildlife Sanctuary. This travel time makes it tight for a standard Friday–Sunday weekend, but it works well for extended weekends and three-day holidays. If you have a Friday off, or can depart Thursday evening, Sankri offers something the closer locations cannot: true remote mountain immersion at the edge of the treeline. Pine forests, glacial rivers, and complete digital disconnection. For a longer comparison of retreat formats by duration, see our guide to <Link href="/blog/3-day-vs-5-day-himalayan-retreat" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>choosing the right retreat length</Link>.</p>
+          <p>Sankri sits deeper in the Himalayas — roughly eight to nine hours from Delhi, in the upper Tons Valley near the Govind Wildlife Sanctuary. This travel time makes it tight for a standard Friday–Sunday weekend, but it works well for extended weekends and three-day holidays. If you have a Friday off, or can depart Thursday evening, Sankri offers something the closer locations cannot: true remote mountain immersion at the edge of the treeline. Pine forests, glacial rivers, and complete digital disconnection. For a longer comparison of retreat formats by duration, see our guide to <Link href="/blog/3-day-vs-5-day-himalayan-retreat" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>choosing the right retreat length</Link>.</p>
         </div>
       </div>
     </div>
@@ -246,8 +246,8 @@ export default function WeekendHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>A Typical Weekend</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>A Typical Weekend</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'0.75rem' }}>
         What a 2–3 Day Weekend Retreat Looks Like
@@ -271,8 +271,8 @@ export default function WeekendHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Is This For You</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Is This For You</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'0.75rem' }}>
         Who Should Consider a Weekend Retreat
@@ -295,7 +295,7 @@ export default function WeekendHimalayanRetreatsPage() {
         ))}
       </div>
       <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', marginTop:'1.5rem', marginBottom:0 }}>
-        If burnout is already present, not approaching, see our dedicated <Link href="/retreats/journeys/burnout-recovery" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Burnout Recovery</Link> program — available in weekend and extended formats at all locations.
+        If burnout is already present, not approaching, see our dedicated <Link href="/retreats/journeys/burnout-recovery" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Burnout Recovery</Link> program — available in weekend and extended formats at all locations.
       </p>
     </div>
   </section>
@@ -304,8 +304,8 @@ export default function WeekendHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Before You Book</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Before You Book</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>
         Planning Your Friday–Sunday Himalayan Retreat
@@ -314,7 +314,7 @@ export default function WeekendHimalayanRetreatsPage() {
         { label:'Travel from Delhi.', body:'Self-drive is the most flexible option — it allows departure timing that matches your Friday schedule. Shared cabs from Delhi to Dehradun (for Chakrata) or Haridwar (for Rishikesh) are available through retreat coordination. Overnight buses are an option if you prefer sleeping through the journey. For Rishikesh, the Delhi–Dehradun Shatabdi train followed by a short taxi is the most comfortable public transport route.' },
         { label:'What to pack.', body:'Light and practical. Comfortable clothing for yoga and walking. A warm layer for mountain evenings — even in summer, nights at 2,000 metres are cool. Minimal luggage. The less you carry, the faster the mental shift begins.' },
         { label:'When to book.', body:'Weekend programs run year-round but fill quickly for long weekends, festival holidays, and popular windows (October–November, March–April). Booking two to three weeks ahead is advisable. For peak weekends, four weeks is safer.' },
-        { label:'Ideal months.', body: <span>Every month has its quality. October and November bring crisp clear skies. February and March offer warming days with snow-capped views. May–June is ideal for <Link href="/retreats/summer-himalayan-retreats" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>summer Himalayan retreats</Link> — escaping Delhi heat for mountain air. December–January suits <Link href="/retreats/winter-himalayan-retreats" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>winter Himalayan retreats</Link> for those drawn to cold-weather contemplation.</span> },
+        { label:'Ideal months.', body: <span>Every month has its quality. October and November bring crisp clear skies. February and March offer warming days with snow-capped views. May–June is ideal for <Link href="/retreats/summer-himalayan-retreats" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>summer Himalayan retreats</Link> — escaping Delhi heat for mountain air. December–January suits <Link href="/retreats/winter-himalayan-retreats" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>winter Himalayan retreats</Link> for those drawn to cold-weather contemplation.</span> },
         { label:'Weather notes.', body:'Chakrata and Rishikesh are accessible by road in all seasons. Sankri roads may be affected by snow in January–February or landslides during monsoon.' },
       ].map((item, i) => (
         <div key={i} className="wknd-plan-item">
@@ -328,9 +328,9 @@ export default function WeekendHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ background:'#fff', border:'1px solid #e5e7eb', borderLeft:'3px solid var(--color-primary)', borderRadius:'8px', padding:'1rem 1.25rem', fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555' }}>
-        <div style={{ fontSize:'0.55rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'var(--color-primary)', opacity:0.7, marginBottom:'0.35rem' }}>Longer Programs</div>
+        <div style={{ fontSize: '0.75rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color: '#374151', marginBottom:'0.35rem' }}>Longer Programs</div>
         Looking for longer immersion?{' '}
-        <Link href="/retreats/himalayan-retreats" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Himalayan Retreats in India</Link>{' '}
+        <Link href="/retreats/himalayan-retreats" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Himalayan Retreats in India</Link>{' '}
         covers five-day, seven-day, and custom-length formats across all four locations.
       </div>
     </div>
@@ -340,8 +340,8 @@ export default function WeekendHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>FAQ</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>FAQ</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>
         Frequently Asked Questions

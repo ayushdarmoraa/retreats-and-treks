@@ -45,12 +45,12 @@ export default function ContactPage() {
           color: #555;
         }
         .cnt-callout a {
-          color: var(--color-primary);
+          color: #374151;
           font-weight: 500;
           text-decoration: none;
           border-bottom: 1px solid rgba(15,118,110,0.25);
         }
-        .cnt-callout a:hover { border-bottom-color: var(--color-primary); }
+        .cnt-callout a:hover { border-bottom-color: #374151; }
         .cnt-inquiry {
           background: #fff;
           border: 1px solid #eef0ee;
@@ -67,8 +67,8 @@ export default function ContactPage() {
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Contact</span>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Contact</span>
           </div>
           <h1 style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: 'clamp(1.75rem,3.5vw,2.4rem)', fontWeight: 200, letterSpacing: '-0.035em', color: '#111', lineHeight: 1.1, margin: '0 0 1.5rem' }}>
             Contact Us
@@ -85,7 +85,7 @@ export default function ContactPage() {
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '3rem', paddingBottom: '3rem', borderBottom: '1px solid #e5e7eb' }}>
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
           <div className="cnt-callout">
-            <div style={{ fontSize: '0.55rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', opacity: 0.7, marginBottom: '0.35rem' }}>Before You Reach Out</div>
+            <div style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: '#374151', marginBottom: '0.35rem' }}>Before You Reach Out</div>
             If you are still exploring options, our{' '}
             <Link href="/retreats/himalayan-retreats">Himalayan retreats guide</Link>{' '}
             and the{' '}
@@ -109,8 +109,8 @@ export default function ContactPage() {
       >
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Send an Inquiry</span>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Send an Inquiry</span>
           </div>
           <h2 style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: 'clamp(1.4rem,2.5vw,1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, margin: '0 0 0.75rem' }}>
             Send an Inquiry

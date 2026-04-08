@@ -108,13 +108,13 @@ export default function ChallengingTreksPage() {
     .chal-card-body p:last-child { margin-bottom:0; }
     .chal-pills { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1rem; }
     .chal-pill { font-family:var(--font-geist-sans),sans-serif; font-size:0.68rem; color:#555; background:#f7f9f7; border:1px solid #e5e7eb; border-radius:100px; padding:3px 10px; }
-    .chal-th { font-family:var(--font-geist-sans),sans-serif; font-size:0.55rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-primary); opacity:0.7; padding:0.75rem 1rem; text-align:left; }
+    .chal-th { font-family:var(--font-geist-sans),sans-serif; font-size: 0.75rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color: #374151; padding:0.75rem 1rem; text-align:left; }
     .chal-td { font-family:var(--font-geist-sans),sans-serif; font-size:0.84rem; font-weight:300; color:#444; padding:0.75rem 1rem; border-bottom:1px solid #f0f0f0; }
     .chal-table tbody tr:last-child td { border-bottom:none; }
     .chal-table tbody tr:hover td { background:#f7f9f7; }
     .chal-nav-link { display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1rem; border-bottom:1px solid #f0f0f0; font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; color:#333; text-decoration:none; }
-    .chal-nav-link:hover { background:#f7f9f7; color:var(--color-primary); }
-    .chal-nav-link::after { content:'→'; color:var(--color-primary); opacity:0.5; }
+    .chal-nav-link:hover { background:#f7f9f7; color: #374151; }
+    .chal-nav-link::after { content:'→'; color: #374151;  }
     .chal-nav-group { border:1px solid #e5e7eb; border-radius:8px; overflow:hidden; }
     .chal-nav-group .chal-nav-link:last-child { border-bottom:none; }
     @media(max-width:640px){
@@ -130,8 +130,8 @@ export default function ChallengingTreksPage() {
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <Breadcrumb items={BREADCRUMBS} />
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', margin:'1.5rem 0 1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Challenging Treks · Uttarakhand</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Challenging Treks · Uttarakhand</span>
       </div>
       <h1 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.75rem,3.5vw,2.4rem)', fontWeight:200, letterSpacing:'-0.035em', color:'#111', lineHeight:1.1, margin:'0 0 1.5rem' }}>
         Most Challenging Treks in Uttarakhand
@@ -145,8 +145,8 @@ export default function ChallengingTreksPage() {
           { label:'Remote Expedition', href:'/treks/location/munsiyari/milam-glacier-trek', name:'Milam Glacier', desc:'8–10 days along the ancient Johar Valley trade route.' },
         ].map(c => (
           <div key={c.href} style={{ background:'#fff', border:'1px solid #e5e7eb', borderLeft:'3px solid #e65100', borderRadius:'8px', padding:'1rem 1.25rem', fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', lineHeight:1.85, color:'#555' }}>
-            <div style={{ fontSize:'0.55rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'#e65100', opacity:0.8, marginBottom:'0.35rem' }}>{c.label}</div>
-            <span style={{ fontWeight:500, color:'#111' }}><Link href={c.href} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>{c.name}</Link></span>{' '}
+            <div style={{ fontSize: '0.75rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'#e65100', marginBottom:'0.35rem' }}>{c.label}</div>
+            <span style={{ fontWeight:500, color:'#111' }}><Link href={c.href} style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>{c.name}</Link></span>{' '}
             <span style={{ fontWeight:300 }}>— {c.desc}</span>
           </div>
         ))}
@@ -156,7 +156,7 @@ export default function ChallengingTreksPage() {
         These are not enhanced day hikes. They are serious mountain routes where preparation directly determines safety and enjoyment. All three require prior high-altitude experience (above 3,500 m), 6–8 weeks of structured fitness work, and comfort with steep, exposed, and potentially snow-covered terrain. Each offers a fundamentally different type of challenge — from sustained expedition endurance to a single do-or-die summit push.
       </p>
       <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', margin:0 }}>
-        These routes are drawn from our <Link href={PARENT_PATH} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>complete ranking of the 10 best treks in Uttarakhand</Link>. Not ready for challenging routes yet? The <Link href={`${PARENT_PATH}/beginner`} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>beginner treks</Link> page covers easy and moderate alternatives.
+        These routes are drawn from our <Link href={PARENT_PATH} style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>complete ranking of the 10 best treks in Uttarakhand</Link>. Not ready for challenging routes yet? The <Link href={`${PARENT_PATH}/beginner`} style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>beginner treks</Link> page covers easy and moderate alternatives.
       </p>
     </div>
   </section>
@@ -165,8 +165,8 @@ export default function ChallengingTreksPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Three Routes</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Three Routes</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'2rem' }}>Three Different Types of Challenge</h2>
 
@@ -182,7 +182,7 @@ export default function ChallengingTreksPage() {
             <span className="chal-pill">May–Jun, Sep–Oct</span>
             <span className="chal-pill">Lohajung, Garhwal</span>
           </div>
-          <p><Link href="/treks/location/lohajung/roopkund-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Roopkund</Link> is India&apos;s most iconic high-altitude trek — a 53 km expedition from Lohajung to a glacial lake at 4,800 metres, known for the centuries-old skeletal remains at its shores. The route crosses the vast Bedni Bugyal alpine meadow, navigates moraine fields, and demands sustained altitude tolerance across multiple days above 4,000 metres. The Bugyal alone — stretching kilometres in every direction with Trishul views — justifies the effort.</p>
+          <p><Link href="/treks/location/lohajung/roopkund-trek" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Roopkund</Link> is India&apos;s most iconic high-altitude trek — a 53 km expedition from Lohajung to a glacial lake at 4,800 metres, known for the centuries-old skeletal remains at its shores. The route crosses the vast Bedni Bugyal alpine meadow, navigates moraine fields, and demands sustained altitude tolerance across multiple days above 4,000 metres. The Bugyal alone — stretching kilometres in every direction with Trishul views — justifies the effort.</p>
           <p><strong style={{ fontWeight:500, color:'#111' }}>Why it is challenging:</strong> Unlike Pangarchulla (where the difficulty concentrates in a single summit day), Roopkund distributes its demands across 7 days with sustained exposure above 4,000 m. Altitude sickness risk is cumulative. The moraine fields above 4,200 m require careful foot placement for hours at a time. Weather deteriorates rapidly above the Bugyal. This is expedition trekking, not a weekend challenge.</p>
         </div>
       </div>
@@ -199,9 +199,9 @@ export default function ChallengingTreksPage() {
             <span className="chal-pill">Mar–May</span>
             <span className="chal-pill">Joshimath, Garhwal</span>
           </div>
-          <p><Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Pangarchulla</Link> is one of the few accessible true summit experiences in Uttarakhand. The route follows the Kuari Pass approach before diverging toward a steep snow-and-scree ascent with an alpine start. At the top: a 360-degree panorama of Nanda Devi, Dronagiri, Chaukhamba, and the entire Nanda Devi Sanctuary. Crampons required. For experienced trekkers who want to stand on a peak, not a pass.</p>
+          <p><Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Pangarchulla</Link> is one of the few accessible true summit experiences in Uttarakhand. The route follows the Kuari Pass approach before diverging toward a steep snow-and-scree ascent with an alpine start. At the top: a 360-degree panorama of Nanda Devi, Dronagiri, Chaukhamba, and the entire Nanda Devi Sanctuary. Crampons required. For experienced trekkers who want to stand on a peak, not a pass.</p>
           <p><strong style={{ fontWeight:500, color:'#111' }}>Why it is challenging:</strong> Summit day gains 1,200 m from high camp in a single alpine-start push beginning before dawn. The snow-and-scree terrain above 4,200 m requires crampons and confident movement on steep ground. The rest of the approach (Days 1–4 via the Kuari Pass trail) is moderate — the difficulty is concentrated into one relentless day.</p>
-          <p>Choosing between the two Garhwal challenges? <Link href="/treks/roopkund-vs-pangarchulla" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Compare Roopkund vs Pangarchulla →</Link></p>
+          <p>Choosing between the two Garhwal challenges? <Link href="/treks/roopkund-vs-pangarchulla" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Compare Roopkund vs Pangarchulla →</Link></p>
         </div>
       </div>
 
@@ -217,7 +217,7 @@ export default function ChallengingTreksPage() {
             <span className="chal-pill">May–Jun, Sep–Oct</span>
             <span className="chal-pill">Munsiyari, Kumaon</span>
           </div>
-          <p><Link href="/treks/location/munsiyari/milam-glacier-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Milam Glacier</Link> is Uttarakhand&apos;s great expedition trek — an 8–10 day, 118 km journey along the ancient Johar Valley trade route from Munsiyari to the glacier snout beneath the Panchachuli massif. The route passes through abandoned Bhotiya trading villages (Martoli, Burfu), crosses glacial moraines, and follows the Goriganga River into genuinely wild terrain.</p>
+          <p><Link href="/treks/location/munsiyari/milam-glacier-trek" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Milam Glacier</Link> is Uttarakhand&apos;s great expedition trek — an 8–10 day, 118 km journey along the ancient Johar Valley trade route from Munsiyari to the glacier snout beneath the Panchachuli massif. The route passes through abandoned Bhotiya trading villages (Martoli, Burfu), crosses glacial moraines, and follows the Goriganga River into genuinely wild terrain.</p>
           <p><strong style={{ fontWeight:500, color:'#111' }}>Why it is challenging:</strong> The altitude is lower than Roopkund (3,450 m max), but the sustained 8–10 day commitment through remote terrain with limited evacuation options makes it equally demanding. You are walking deep into the mountains — days from the nearest road — with river crossings, moraines, and unpredictable weather. This is for trekkers who want genuine wilderness immersion, not a curated mountain experience.</p>
         </div>
       </div>
@@ -225,10 +225,10 @@ export default function ChallengingTreksPage() {
       {/* Callout */}
       <div style={{ display:'flex', flexDirection:'column', gap:'0.75rem', marginTop:'1.5rem' }}>
         <div style={{ background:'#f7f9f7', border:'1px solid #e5e7eb', borderLeft:'3px solid #e65100', borderRadius:'8px', padding:'1rem 1.25rem', fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', lineHeight:1.85, color:'#555' }}>
-          <div style={{ fontSize:'0.55rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'#e65100', opacity:0.8, marginBottom:'0.35rem' }}>Still Deciding?</div>
+          <div style={{ fontSize: '0.75rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'#e65100', marginBottom:'0.35rem' }}>Still Deciding?</div>
           <span style={{ fontWeight:500, color:'#111' }}>Roopkund vs Pangarchulla</span>{' '}
           <span style={{ fontWeight:300 }}>— sustained altitude vs intense summit push. </span>
-          <Link href="/treks/roopkund-vs-pangarchulla" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>See full comparison →</Link>
+          <Link href="/treks/roopkund-vs-pangarchulla" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>See full comparison →</Link>
         </div>
       </div>
     </div>
@@ -238,8 +238,8 @@ export default function ChallengingTreksPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Quick Comparison</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Quick Comparison</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>Challenging Treks at a Glance</h2>
       <div style={{ overflowX:'auto', border:'1px solid #e5e7eb', borderRadius:'8px', background:'#fff' }}>
@@ -258,7 +258,7 @@ export default function ChallengingTreksPage() {
               { href:'/treks/location/munsiyari/milam-glacier-trek', name:'Milam Glacier', alt:'3,450 m', days:'8–10', type:'Remote endurance', region:'Kumaon' },
             ].map(r => (
               <tr key={r.href}>
-                <td className="chal-td"><Link href={r.href} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>{r.name}</Link></td>
+                <td className="chal-td"><Link href={r.href} style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>{r.name}</Link></td>
                 <td className="chal-td">{r.alt}</td>
                 <td className="chal-td">{r.days}</td>
                 <td className="chal-td">{r.type}</td>
@@ -275,16 +275,16 @@ export default function ChallengingTreksPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Progression</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Progression</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'0.75rem' }}>The Path to Challenging Treks</h2>
       <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', marginBottom:'1.5rem' }}>
         Attempting a challenging trek without proper progression increases both risk and misery. The recommended build-up:
       </p>
       {[
-        { num:'01', label:'First multi-day', body: <><Link href="/treks/location/lohajung/brahmatal-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Brahmatal</Link> or <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Kuari Pass</Link> — tests altitude response at 3,850–3,876 m.</> },
-        { num:'02', label:'Summit experience', body: <><Link href="/treks/location/sankri/kedarkantha-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Kedarkantha</Link> — adds a genuine summit push and snow conditions.</> },
+        { num:'01', label:'First multi-day', body: <><Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Brahmatal</Link> or <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Kuari Pass</Link> — tests altitude response at 3,850–3,876 m.</> },
+        { num:'02', label:'Summit experience', body: <><Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Kedarkantha</Link> — adds a genuine summit push and snow conditions.</> },
         { num:'03', label:'Challenging route', body: <>Pangarchulla, Roopkund, or Milam Glacier — full high-altitude or expedition demands.</> },
       ].map((step, i, arr) => (
         <div key={step.num} style={{ display:'flex', gap:'1.5rem', position:'relative' as const }}>
@@ -293,14 +293,14 @@ export default function ChallengingTreksPage() {
             <div style={{ width:'10px', height:'10px', borderRadius:'50%', background:'var(--color-primary)' }} />
           </div>
           <div style={{ paddingBottom:'1.5rem' }}>
-            <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.55rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'var(--color-primary)', opacity:0.6, margin:'0 0 0.25rem' }}>{step.num}</p>
+            <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color: '#374151',  margin:'0 0 0.25rem' }}>{step.num}</p>
             <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:500, color:'#111', margin:'0 0 0.25rem' }}>{step.label}</p>
             <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', margin:0 }}>{step.body}</p>
           </div>
         </div>
       ))}
       <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', marginTop:'0.5rem', marginBottom:0 }}>
-        For the complete progression framework with training plans for each level, see our <Link href="/blog/beginner-to-advanced-trek-progression-garhwal" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>beginner-to-advanced trek progression guide</Link> and the <Link href="/treks/garhwal-himalayas/fitness-guide" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>8-week fitness preparation plan</Link>.
+        For the complete progression framework with training plans for each level, see our <Link href="/blog/beginner-to-advanced-trek-progression-garhwal" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>beginner-to-advanced trek progression guide</Link> and the <Link href="/treks/garhwal-himalayas/fitness-guide" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>8-week fitness preparation plan</Link>.
       </p>
     </div>
   </section>
@@ -311,8 +311,8 @@ export default function ChallengingTreksPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>FAQ</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>FAQ</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>Frequently Asked Questions</h2>
       <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
@@ -323,8 +323,8 @@ export default function ChallengingTreksPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Explore More</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Explore More</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>Browse by Category</h2>
       <div className="chal-nav-group">

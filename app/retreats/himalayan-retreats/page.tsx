@@ -190,18 +190,17 @@ export default function HimalayanRetreatsPage() {
     .hr-hero-eyebrow-line {
       width: 24px; height: 1px;
       background: var(--color-primary);
-      opacity: 0.5;
+      
       flex-shrink: 0;
       display: inline-block;
     }
     .hr-hero-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem;
+      font-size: 0.75rem;
       font-weight: 500;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--color-primary);
-      opacity: 0.7;
+      color: #374151;
     }
     .hr-hero-h1 {
       font-family: var(--font-geist-sans), sans-serif;
@@ -216,7 +215,7 @@ export default function HimalayanRetreatsPage() {
     .hr-hero-divider {
       width: 40px; height: 2px;
       background: var(--color-primary);
-      opacity: 0.3;
+      
       margin-bottom: 2rem;
       border-radius: 2px;
     }
@@ -238,7 +237,7 @@ export default function HimalayanRetreatsPage() {
       transition: border-color 0.3s, color 0.3s;
     }
     .hr-hero-p:first-child {
-      border-left-color: var(--color-primary);
+      border-left-color: #374151;
       color: #3a3a3a;
       font-size: 1rem;
     }
@@ -318,18 +317,17 @@ export default function HimalayanRetreatsPage() {
     .tn-eyebrow-line {
       width: 24px; height: 1px;
       background: var(--color-primary);
-      opacity: 0.5;
+      
       flex-shrink: 0;
       display: inline-block;
     }
     .tn-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem;
+      font-size: 0.75rem;
       font-weight: 500;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--color-primary);
-      opacity: 0.7;
+      color: #374151;
     }
     .tn-h2 {
       font-family: var(--font-geist-sans), sans-serif;
@@ -340,7 +338,7 @@ export default function HimalayanRetreatsPage() {
       line-height: 1.15;
       margin: 0 0 2rem;
     }
-    .tn-h2 span { color: var(--color-primary); }
+    .tn-h2 span { color: #374151; }
 
     .tn-grid {
       display: grid;
@@ -389,17 +387,17 @@ export default function HimalayanRetreatsPage() {
       transition: color 0.2s;
       gap: 1rem;
     }
-    .tn-link:hover { color: var(--color-primary); }
+    .tn-link:hover { color: #374151; }
 
     .tn-arrow {
       font-size: 0.7rem;
-      color: var(--color-primary);
-      opacity: 0.3;
+      color: #374151;
+      
       flex-shrink: 0;
       transition: opacity 0.2s, transform 0.2s;
     }
     .tn-item:hover .tn-arrow {
-      opacity: 0.9;
+      
       transform: translateX(3px);
     }
   `}</style>
@@ -477,18 +475,17 @@ export default function HimalayanRetreatsPage() {
     .whr-eyebrow-line {
       width: 24px; height: 1px;
       background: var(--color-primary);
-      opacity: 0.5;
+      
       flex-shrink: 0;
       display: inline-block;
     }
     .whr-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem;
+      font-size: 0.75rem;
       font-weight: 500;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--color-primary);
-      opacity: 0.7;
+      color: #374151;
     }
     .whr-h2 {
       font-family: var(--font-geist-sans), sans-serif;
@@ -499,7 +496,7 @@ export default function HimalayanRetreatsPage() {
       line-height: 1.15;
       margin: 0 0 2rem;
     }
-    .whr-h2 span { color: var(--color-primary); }
+    .whr-h2 span { color: #374151; }
 
     /* Body text */
     .whr-p {
@@ -544,14 +541,14 @@ export default function HimalayanRetreatsPage() {
       transition: border-color 0.2s, background 0.2s;
     }
     .whr-list-item:hover {
-      border-left-color: var(--color-primary);
+      border-left-color: #374151;
       background: #f0f7f0;
     }
     .whr-list-dot {
       width: 6px; height: 6px;
       border-radius: 50%;
       background: var(--color-primary);
-      opacity: 0.5;
+      
       flex-shrink: 0;
       margin-top: 0.45rem;
     }
@@ -560,7 +557,7 @@ export default function HimalayanRetreatsPage() {
     .whr-divider {
       width: 40px; height: 1px;
       background: var(--color-primary);
-      opacity: 0.2;
+      
       margin: 2rem 0;
     }
 
@@ -604,8 +601,7 @@ export default function HimalayanRetreatsPage() {
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--color-primary);
-      opacity: 0.7;
+      color: #374151;
       margin: 0 0 0.5rem;
     }
     .whr-compare-h3 {
@@ -625,12 +621,12 @@ export default function HimalayanRetreatsPage() {
       margin: 0;
     }
     .whr-compare-p a {
-      color: var(--color-primary);
+      color: #374151;
       text-decoration: none;
       border-bottom: 1px solid rgba(15,118,110,0.25);
       transition: border-color 0.2s;
     }
-    .whr-compare-p a:hover { border-bottom-color: var(--color-primary); }
+    .whr-compare-p a:hover { border-bottom-color: #374151; }
   `}</style>
 
   <div className="whr-wrap">
@@ -751,14 +747,14 @@ export default function HimalayanRetreatsPage() {
     }
     .wh-eyebrow-line {
       width: 24px; height: 1px;
-      background: var(--color-primary); opacity: 0.5;
+      background: var(--color-primary); 
       flex-shrink: 0; display: inline-block;
     }
     .wh-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem; font-weight: 500;
+      font-size: 0.75rem; font-weight: 500;
       letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--color-primary); opacity: 0.7;
+      color: #374151;
     }
     .wh-h2 {
       font-family: var(--font-geist-sans), sans-serif;
@@ -767,7 +763,7 @@ export default function HimalayanRetreatsPage() {
       color: #111111; line-height: 1.15;
       margin: 0 0 2.5rem;
     }
-    .wh-h2 span { color: var(--color-primary); }
+    .wh-h2 span { color: #374151; }
 
     /* Hero image */
     .wh-hero-img {
@@ -831,9 +827,9 @@ export default function HimalayanRetreatsPage() {
 
     .wh-card-label {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem; font-weight: 600;
+      font-size: 0.75rem; font-weight: 600;
       letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--color-primary); opacity: 0.7;
+      color: #374151;
       margin: 0 0 0.5rem;
     }
     .wh-card-h3 {
@@ -1025,14 +1021,14 @@ export default function HimalayanRetreatsPage() {
     }
     .tr-eyebrow-line {
       width: 24px; height: 1px;
-      background: var(--color-primary); opacity: 0.5;
+      background: var(--color-primary); 
       flex-shrink: 0; display: inline-block;
     }
     .tr-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem; font-weight: 500;
+      font-size: 0.75rem; font-weight: 500;
       letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--color-primary); opacity: 0.7;
+      color: #374151;
     }
     .tr-h2 {
       font-family: var(--font-geist-sans), sans-serif;
@@ -1041,7 +1037,7 @@ export default function HimalayanRetreatsPage() {
       color: #111111; line-height: 1.15;
       margin: 0 0 2.5rem;
     }
-    .tr-h2 span { color: var(--color-primary); }
+    .tr-h2 span { color: #374151; }
 
     /* Cards */
     .tr-list {
@@ -1315,14 +1311,14 @@ export default function HimalayanRetreatsPage() {
     }
     .rj-eyebrow-line {
       width: 24px; height: 1px;
-      background: var(--color-primary); opacity: 0.5;
+      background: var(--color-primary); 
       flex-shrink: 0; display: inline-block;
     }
     .rj-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem; font-weight: 500;
+      font-size: 0.75rem; font-weight: 500;
       letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--color-primary); opacity: 0.7;
+      color: #374151;
     }
     .rj-h2 {
       font-family: var(--font-geist-sans), sans-serif;
@@ -1331,7 +1327,7 @@ export default function HimalayanRetreatsPage() {
       color: #111111; line-height: 1.15;
       margin: 0 0 2.5rem;
     }
-    .rj-h2 span { color: var(--color-primary); }
+    .rj-h2 span { color: #374151; }
 
     .rj-grid {
       display: grid;
@@ -1379,7 +1375,7 @@ export default function HimalayanRetreatsPage() {
       background: linear-gradient(to top, rgba(2,10,2,0.6) 0%, transparent 60%);
       transition: opacity 0.35s;
     }
-    .rj-card:hover .rj-card-img-overlay { opacity: 0.85; }
+    .rj-card:hover .rj-card-img-overlay {5; }
     .rj-card-img-tag {
       position: absolute; top: 0.75rem; left: 0.75rem;
       font-family: var(--font-geist-sans), sans-serif;
@@ -1406,7 +1402,7 @@ export default function HimalayanRetreatsPage() {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.58rem; font-weight: 700;
       letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       transition: gap 0.22s;
     }
     .rj-card:hover .rj-card-cta { gap: 0.6rem; }
@@ -1490,14 +1486,14 @@ export default function HimalayanRetreatsPage() {
     }
     .loc-sec-eyebrow-line {
       width: 24px; height: 1px;
-      background: var(--color-primary); opacity: 0.5;
+      background: var(--color-primary); 
       flex-shrink: 0; display: inline-block;
     }
     .loc-sec-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem; font-weight: 500;
+      font-size: 0.75rem; font-weight: 500;
       letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--color-primary); opacity: 0.7;
+      color: #374151;
     }
     .loc-sec-h2 {
       font-family: var(--font-geist-sans), sans-serif;
@@ -1506,7 +1502,7 @@ export default function HimalayanRetreatsPage() {
       color: #111111; line-height: 1.15;
       margin: 0 0 1rem;
     }
-    .loc-sec-h2 span { color: var(--color-primary); }
+    .loc-sec-h2 span { color: #374151; }
     .loc-sec-intro {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.95rem; font-weight: 300;
@@ -1515,7 +1511,7 @@ export default function HimalayanRetreatsPage() {
     }
     .loc-sec-divider {
       width: 40px; height: 1px;
-      background: var(--color-primary); opacity: 0.2;
+      background: var(--color-primary); 
       margin: 1.75rem 0 2.5rem;
     }
 
@@ -1568,7 +1564,7 @@ export default function HimalayanRetreatsPage() {
     .loc-sec-img-name {
       position: absolute; bottom: 1rem; left: 1rem;
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.55rem; letter-spacing: 0.22em;
+      font-size: 0.75rem; letter-spacing: 0.22em;
       text-transform: uppercase;
       color: rgba(236,228,208,0.8); font-weight: 500;
     }
@@ -1580,9 +1576,9 @@ export default function HimalayanRetreatsPage() {
     }
     .loc-sec-body-label {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem; font-weight: 600;
+      font-size: 0.75rem; font-weight: 600;
       letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--color-primary); opacity: 0.7;
+      color: #374151;
       margin: 0 0 0.5rem;
     }
     .loc-sec-body-h3 {
@@ -1603,7 +1599,7 @@ export default function HimalayanRetreatsPage() {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.58rem; font-weight: 700;
       letter-spacing: 0.18em; text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       transition: gap 0.22s;
     }
     .loc-sec-card:hover .loc-sec-cta { gap: 0.6rem; }
@@ -1801,14 +1797,14 @@ export default function HimalayanRetreatsPage() {
     }
     .wf-eyebrow-line {
       width: 24px; height: 1px;
-      background: var(--color-primary); opacity: 0.5;
+      background: var(--color-primary); 
       flex-shrink: 0; display: inline-block;
     }
     .wf-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem; font-weight: 500;
+      font-size: 0.75rem; font-weight: 500;
       letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--color-primary); opacity: 0.7;
+      color: #374151;
     }
     .wf-h2 {
       font-family: var(--font-geist-sans), sans-serif;
@@ -1817,7 +1813,7 @@ export default function HimalayanRetreatsPage() {
       color: #111111; line-height: 1.15;
       margin: 0 0 2rem;
     }
-    .wf-h2 span { color: var(--color-primary); }
+    .wf-h2 span { color: #374151; }
 
   
     @media (max-width: 700px) { .wf-layout { grid-template-columns: 1fr; } }
@@ -1852,12 +1848,12 @@ export default function HimalayanRetreatsPage() {
       transition: border-color 0.2s, background 0.2s;
     }
     .wf-list-item:hover {
-      border-left-color: var(--color-primary);
+      border-left-color: #374151;
       background: #f0f7f0;
     }
     .wf-list-dot {
       width: 6px; height: 6px; border-radius: 50%;
-      background: var(--color-primary); opacity: 0.5;
+      background: var(--color-primary); 
       flex-shrink: 0; margin-top: 0.45rem;
     }
 
@@ -1951,14 +1947,14 @@ export default function HimalayanRetreatsPage() {
     }
     .bt-eyebrow-line {
       width: 24px; height: 1px;
-      background: var(--color-primary); opacity: 0.5;
+      background: var(--color-primary); 
       flex-shrink: 0; display: inline-block;
     }
     .bt-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem; font-weight: 500;
+      font-size: 0.75rem; font-weight: 500;
       letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--color-primary); opacity: 0.7;
+      color: #374151;
     }
     .bt-h2 {
       font-family: var(--font-geist-sans), sans-serif;
@@ -2005,9 +2001,9 @@ export default function HimalayanRetreatsPage() {
     .bt-card-body { padding: 1.5rem 1.75rem 1.75rem; }
     .bt-card-label {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem; font-weight: 600;
+      font-size: 0.75rem; font-weight: 600;
       letter-spacing: 0.22em; text-transform: uppercase;
-      color: var(--color-primary); opacity: 0.7;
+      color: #374151;
       margin: 0 0 0.5rem;
     }
     .bt-card-h3 {
@@ -2151,14 +2147,14 @@ export default function HimalayanRetreatsPage() {
     }
     .hc-eyebrow-line {
       width: 24px; height: 1px;
-      background: var(--color-primary); opacity: 0.5;
+      background: var(--color-primary); 
       flex-shrink: 0; display: inline-block;
     }
     .hc-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem; font-weight: 500;
+      font-size: 0.75rem; font-weight: 500;
       letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--color-primary); opacity: 0.7;
+      color: #374151;
     }
     .hc-h2 {
       font-family: var(--font-geist-sans), sans-serif;
@@ -2167,7 +2163,7 @@ export default function HimalayanRetreatsPage() {
       color: #111111; line-height: 1.15;
       margin: 0 0 1rem;
     }
-    .hc-h2 span { color: var(--color-primary); }
+    .hc-h2 span { color: #374151; }
     .hc-intro {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.95rem; font-weight: 300;
@@ -2210,12 +2206,12 @@ export default function HimalayanRetreatsPage() {
     .hc-card-num {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 2.5rem; font-weight: 200;
-      color: var(--color-primary); opacity: 0.08;
+      color: #374151; 
       line-height: 1; margin: 0 0 0.75rem;
       letter-spacing: -0.04em;
       transition: opacity 0.3s;
     }
-    .hc-card:hover .hc-card-num { opacity: 0.18; }
+    .hc-card:hover .hc-card-num {  }
 
     .hc-card-h3 {
       font-family: var(--font-geist-sans), sans-serif;
@@ -2231,11 +2227,11 @@ export default function HimalayanRetreatsPage() {
     }
     .hc-card-p:last-child { margin: 0; }
     .hc-card-p a {
-      color: var(--color-primary); text-decoration: none;
+      color: #374151; text-decoration: none;
       border-bottom: 1px solid rgba(15,118,110,0.25);
       transition: border-color 0.2s;
     }
-    .hc-card-p a:hover { border-bottom-color: var(--color-primary); }
+    .hc-card-p a:hover { border-bottom-color: #374151; }
 
     /* Closing note */
     .hc-note {
@@ -2249,11 +2245,11 @@ export default function HimalayanRetreatsPage() {
       line-height: 1.85; color: #555555;
     }
     .hc-note a {
-      color: var(--color-primary); text-decoration: none;
+      color: #374151; text-decoration: none;
       border-bottom: 1px solid rgba(15,118,110,0.25);
       transition: border-color 0.2s;
     }
-    .hc-note a:hover { border-bottom-color: var(--color-primary); }
+    .hc-note a:hover { border-bottom-color: #374151; }
   `}</style>
 
   <div className="hc-wrap">
@@ -2386,14 +2382,14 @@ export default function HimalayanRetreatsPage() {
     }
     .fr-eyebrow-line {
       width: 24px; height: 1px;
-      background: var(--color-primary); opacity: 0.6;
+      background: var(--color-primary); 
       flex-shrink: 0; display: inline-block;
     }
     .fr-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem; font-weight: 500;
+      font-size: 0.75rem; font-weight: 500;
       letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--color-primary); opacity: 0.8;
+      color: #374151;
     }
     .fr-h2 {
       font-family: var(--font-geist-sans), sans-serif;
@@ -2402,7 +2398,7 @@ export default function HimalayanRetreatsPage() {
       color: #f0ece3; line-height: 1.15;
       margin: 0 0 1rem;
     }
-    .fr-h2 span { color: var(--color-primary); }
+    .fr-h2 span { color: #374151; }
     .fr-sub {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.95rem; font-weight: 300;
@@ -2461,14 +2457,14 @@ export default function HimalayanRetreatsPage() {
     }
     .faq-eyebrow-line {
       width: 24px; height: 1px;
-      background: var(--color-primary); opacity: 0.5;
+      background: var(--color-primary); 
       flex-shrink: 0; display: inline-block;
     }
     .faq-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem; font-weight: 500;
+      font-size: 0.75rem; font-weight: 500;
       letter-spacing: 0.28em; text-transform: uppercase;
-      color: var(--color-primary); opacity: 0.7;
+      color: #374151;
     }
     .faq-h2 {
       font-family: var(--font-geist-sans), sans-serif;
@@ -2477,7 +2473,7 @@ export default function HimalayanRetreatsPage() {
       color: #111111; line-height: 1.15;
       margin: 0 0 2.5rem;
     }
-    .faq-h2 span { color: var(--color-primary); }
+    .faq-h2 span { color: #374151; }
     .faq-component-wrap {
       max-width: 52rem;
     }
@@ -2525,7 +2521,7 @@ export default function HimalayanRetreatsPage() {
       font-weight: 500;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       text-decoration: none;
       padding: 0.6rem 1.25rem;
       border: 1px solid rgba(15,118,110,0.3);
@@ -2535,7 +2531,7 @@ export default function HimalayanRetreatsPage() {
     }
     .nav-back:hover {
       background: rgba(15,118,110,0.05);
-      border-color: var(--color-primary);
+      border-color: #374151;
       gap: 0.75rem;
     }
     .nav-back-arrow {

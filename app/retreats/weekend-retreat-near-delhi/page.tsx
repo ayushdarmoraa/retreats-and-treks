@@ -113,11 +113,11 @@ export default function WeekendRetreatNearDelhiPage() {
   .wnrd-section { width:100vw; margin-left:calc(-50vw + 50%); padding-top:4rem; padding-bottom:4rem; border-bottom:1px solid #e5e7eb; }
   .wnrd-inner { max-width:52rem; margin:0 auto; padding:0 2rem; }
   .wnrd-eyebrow { display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem; }
-  .wnrd-eyebrow-line { width:24px; height:1px; background:var(--color-primary); opacity:0.5; display:inline-block; }
-  .wnrd-eyebrow-text { font-family:var(--font-geist-sans),sans-serif; font-size:0.56rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--color-primary); font-weight:500; opacity:0.7; }
+  .wnrd-eyebrow-line { width:24px; height:1px; background:var(--color-primary);  display:inline-block; }
+  .wnrd-eyebrow-text { font-family:var(--font-geist-sans),sans-serif; font-size: 0.75rem; letter-spacing:0.28em; text-transform:uppercase; color: #374151; font-weight:500; }
   .wnrd-h1 { font-family:var(--font-geist-sans),sans-serif; font-size:clamp(1.75rem,3.5vw,2.4rem); font-weight:200; letter-spacing:-0.035em; color:#111; line-height:1.1; margin:0 0 1.5rem; }
   .wnrd-h2 { font-family:var(--font-geist-sans),sans-serif; font-size:clamp(1.4rem,2.5vw,1.85rem); font-weight:200; letter-spacing:-0.03em; color:#111; line-height:1.15; margin:0 0 1.5rem; }
-  .wnrd-h2 span { color:var(--color-primary); }
+  .wnrd-h2 span { color: #374151; }
   .wnrd-p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0 0 1.25rem; }
   .wnrd-p:last-child { margin-bottom:0; }
   .wnrd-list { list-style:none; padding:0; margin:0 0 1.5rem; display:flex; flex-direction:column; gap:0.6rem; }
@@ -128,14 +128,14 @@ export default function WeekendRetreatNearDelhiPage() {
   .wnrd-retreat-card { background:#fff; border:1px solid #eef0ee; border-radius:8px; padding:1.5rem; border-top:2px solid var(--color-primary); }
   .wnrd-retreat-title { font-family:var(--font-geist-sans),sans-serif; font-size:0.95rem; font-weight:500; color:#111; margin:0 0 0.75rem; }
   .wnrd-retreat-title a { color:inherit; text-decoration:none; }
-  .wnrd-retreat-title a:hover { color:var(--color-primary); }
+  .wnrd-retreat-title a:hover { color: #374151; }
   .wnrd-travel-card { background:#f7f9f7; border:1px solid #eef0ee; border-radius:8px; padding:1.25rem 1.5rem; }
   .wnrd-travel-label { font-family:var(--font-geist-sans),sans-serif; font-size:0.85rem; font-weight:600; color:#111; margin:0 0 0.4rem; }
   .wnrd-nav-group { border:1px solid #e5e7eb; border-radius:8px; overflow:hidden; }
   .wnrd-nav-link { display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1rem; border-bottom:1px solid #f0f0f0; font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; color:#333; text-decoration:none; }
   .wnrd-nav-link:last-child { border-bottom:none; }
-  .wnrd-nav-link:hover { background:#f7f9f7; color:var(--color-primary); }
-  .wnrd-nav-link::after { content:'→'; color:var(--color-primary); opacity:0.5; }
+  .wnrd-nav-link:hover { background:#f7f9f7; color: #374151; }
+  .wnrd-nav-link::after { content:'→'; color: #374151;  }
   @media(max-width:640px){
     .wnrd-section { padding-top:3rem; padding-bottom:3rem; }
     .wnrd-inner { padding:0 1.25rem; }
@@ -278,7 +278,7 @@ export default function WeekendRetreatNearDelhiPage() {
               </h3>
               <p className="wnrd-p">A weekend retreat designed for people feeling mentally exhausted from work or city life.</p>
               <p className="wnrd-p">Participants spend three days exploring forests, waterfalls, and mountain villages while enjoying peaceful evenings and authentic local food.</p>
-              <Link href="/retreats/journeys/burnout-recovery" style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.82rem', fontWeight: 500, color: 'var(--color-primary)', textDecoration: 'none' }}>
+              <Link href="/retreats/journeys/burnout-recovery" style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.82rem', fontWeight: 500, color: '#374151', textDecoration: 'none' }}>
                 Learn more about this retreat →
               </Link>
             </div>

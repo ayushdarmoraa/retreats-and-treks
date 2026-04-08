@@ -68,8 +68,8 @@ export default function HomePage() {
   <div className="home-seo-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'rgba(15, 118, 110, 0.5)', flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(15, 118, 110, 0.7)' }}>
+    <span style={{ width: 24, height: 1, background: 'rgba(15, 118, 110, 0.5)', flexShrink: 0, display: 'inline-block' }} />
+    <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151' }}>
         Himalayan Journeys
       </span>
     </div>
@@ -138,11 +138,11 @@ export default function HomePage() {
   }
   .home-featured-col h3 {
     font-family: var(--font-geist-sans), sans-serif;
-    font-size: 0.56rem;
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: rgba(15, 118, 110, 0.7);
+    color: #374151;
     margin: 0 0 1rem 0;
   }
   .home-featured-col ul {
@@ -162,7 +162,7 @@ export default function HomePage() {
     text-decoration: none;
   }
   .home-featured-col a:hover {
-    color: var(--color-primary);
+    color: #374151;
     text-decoration: underline;
   }
 `}</style>
@@ -172,7 +172,7 @@ export default function HomePage() {
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
       <span style={{ width: 24, height: 1, background: 'rgba(15, 118, 110, 0.5)', flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(15, 118, 110, 0.7)' }}>
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151' }}>
         Featured Retreats &amp; Treks
       </span>
     </div>
@@ -274,11 +274,11 @@ export default function HomePage() {
   }
   .home-featured-col h3 {
     font-family: var(--font-geist-sans), sans-serif;
-    font-size: 0.56rem;
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: rgba(15, 118, 110, 0.7);
+    color: #374151;
     margin: 0 0 1rem 0;
   }
   .home-featured-col ul {
@@ -299,12 +299,12 @@ export default function HomePage() {
     color: #444444;
     text-decoration: none;
     display: block;
-    padding: 0.55rem 0;
+    padding: 0.75rem 0;
     transition: color 0.2s, padding-left 0.2s;
     line-height: 1.5;
   }
   .home-featured-col ul li a:hover {
-    color: var(--color-primary);
+    color: #374151;
     padding-left: 4px;
   }
 `}</style>
@@ -314,7 +314,7 @@ export default function HomePage() {
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
       <span style={{ width: 24, height: 1, background: 'rgba(15, 118, 110, 0.5)', flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(15, 118, 110, 0.7)' }}>
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151' }}>
         Featured Retreats &amp; Treks
       </span>
     </div>
@@ -415,7 +415,7 @@ export default function HomePage() {
       padding-top: 0;
     }
     .rpr-h2-accent {
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 200;
     }
 
@@ -456,7 +456,7 @@ export default function HomePage() {
       transition: color 0.2s, padding-left 0.25s cubic-bezier(0.16,1,0.3,1);
     }
     .rpr-list li:hover a {
-      color: var(--color-primary);
+      color: #374151;
       padding-left: 1.4rem;
     }
   `}</style>

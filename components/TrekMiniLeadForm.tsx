@@ -68,7 +68,7 @@ export default function TrekMiniLeadForm({
         marginBottom: '2rem',
         textAlign: 'center',
       }}>
-        <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontWeight: 500, color: 'var(--color-primary)', marginBottom: '0.35rem', fontSize: '0.95rem' }}>
+        <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontWeight: 500, color: '#374151', marginBottom: '0.35rem', fontSize: '0.95rem' }}>
           Inquiry received!
         </p>
         <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, color: '#555555', margin: 0 }}>
@@ -108,7 +108,7 @@ export default function TrekMiniLeadForm({
     }}>
       {/* Eyebrow */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
         <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500 }}>
           Check Availability
         </span>

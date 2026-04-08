@@ -76,8 +76,8 @@ export default function OtherComparisonsAdaptive({
       <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 var(--space-md)' }}>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-          <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+          <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151'}}>
             Other Comparisons
           </span>
         </div>
@@ -119,11 +119,11 @@ export default function OtherComparisonsAdaptive({
                   <span style={{
                     display: 'block',
                     fontFamily: 'var(--font-geist-sans), sans-serif',
-                    fontSize: '0.56rem',
+                    fontSize: '0.75rem',
                     fontWeight: 500,
                     letterSpacing: '0.2em',
-                    color: 'var(--color-primary)',
-                    opacity: 0.4,
+                    color: '#374151',
+                    
                     marginBottom: '0.35rem',
                   }}>
                     0{i + 1}
@@ -139,8 +139,8 @@ export default function OtherComparisonsAdaptive({
                 </span>
                 <span className="ocmp-arrow" style={{
                   fontSize: '0.7rem',
-                  color: 'var(--color-primary)',
-                  opacity: 0.3,
+                  color: '#374151',
+                  
                   flexShrink: 0,
                 }}>
                   →

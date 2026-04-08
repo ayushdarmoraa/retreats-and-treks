@@ -109,7 +109,7 @@ useEffect(() => {
 
 }/* ── Scroll Fade-in ── */           ← phir yahan daalo bahar
 .scroll-fade {
-  opacity: 0;
+  
   transform: translateY(26px);
   transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
               transform 0.75s cubic-bezier(0.22,1,0.36,1);
@@ -119,7 +119,7 @@ useEffect(() => {
   transform: translateY(0);
 }
 .scroll-fade-stagger > * {
-  opacity: 0;
+  
   transform: translateY(22px);
   transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
               transform 0.65s cubic-bezier(0.22,1,0.36,1);
@@ -140,7 +140,7 @@ useEffect(() => {
     .hh-eyebrow {
       display: flex; align-items: center; gap: 0.75rem;
       margin-bottom: 1.75rem;
-      opacity: 0; animation: hhFadeUp 0.7s ease 0.1s forwards;
+       animation: hhFadeUp 0.7s ease 0.1s forwards;
     }
     .hh-eyebrow-line {
       width: 28px; height: 1px;
@@ -151,7 +151,7 @@ useEffect(() => {
       animation: hhLineGrow 0.9s ease 0.3s forwards;
     }
     @keyframes hhLineGrow {
-      from { transform: scaleX(0); opacity: 0; }
+      from { transform: scaleX(0);  }
       to   { transform: scaleX(1); opacity: 1; }
     }
     .hh-eyebrow-text {
@@ -172,14 +172,14 @@ useEffect(() => {
     }
     .hh-heading-line span {
       display: block;
-      opacity: 0;
+      
       transform: translateY(100%);
       animation: hhSlideUp 0.75s cubic-bezier(0.22,1,0.36,1) forwards;
     }
     .hh-heading-line:nth-child(1) span { animation-delay: 0.28s; }
     .hh-heading-line:nth-child(2) span { animation-delay: 0.42s; }
     @keyframes hhSlideUp {
-      from { opacity: 0; transform: translateY(100%); }
+      from {  transform: translateY(100%); }
       to   { opacity: 1; transform: translateY(0); }
     }
     .hh-sub1 {
@@ -188,7 +188,7 @@ useEffect(() => {
       font-weight: 300; line-height: 1.7;
       color: rgba(230,220,200,0.85);
       margin: 0 0 0.75rem;
-      opacity: 0; animation: hhFadeUp 0.8s ease 0.65s forwards;
+       animation: hhFadeUp 0.8s ease 0.65s forwards;
     }
     .hh-sub2 {
       font-family: var(--font-geist-sans), sans-serif;
@@ -196,11 +196,11 @@ useEffect(() => {
       font-weight: 300; line-height: 1.65;
       color: rgba(210,200,180,0.6);
       max-width: 480px; margin: 0 0 2.75rem;
-      opacity: 0; animation: hhFadeUp 0.8s ease 0.78s forwards;
+       animation: hhFadeUp 0.8s ease 0.78s forwards;
     }
     .hh-word {
       display: inline-block;
-      opacity: 0;
+      
       transform: translateY(8px);
       animation: hhWordIn 0.4s ease forwards;
     }
@@ -211,7 +211,7 @@ useEffect(() => {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
-      opacity: 0;
+      
       animation: hhFadeUp 0.7s ease 0.95s forwards;
     }
     .hh-btn {
@@ -255,7 +255,7 @@ useEffect(() => {
       border-color: rgba(255,255,255,0.45);
     }
     @keyframes hhFadeUp {
-      from { opacity: 0; transform: translateY(18px); }
+      from {  transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     .hh-scroll {
@@ -263,7 +263,7 @@ useEffect(() => {
       transform: translateX(-50%);
       z-index: 4;
       display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
-      opacity: 0; animation: hhFadeUp 0.8s ease 1.4s forwards;
+       animation: hhFadeUp 0.8s ease 1.4s forwards;
     }
     .hh-scroll-text {
       font-family: var(--font-geist-sans), sans-serif;
@@ -276,8 +276,8 @@ useEffect(() => {
       animation: hhScrollPulse 2s ease-in-out 1.6s infinite;
     }
     @keyframes hhScrollPulse {
-      0%, 100% { opacity: 0.3; transform: scaleY(1); }
-      50%       { opacity: 0.8; transform: scaleY(1.15); }
+      0%, 100% {  transform: scaleY(1); }
+      50%       {  transform: scaleY(1.15); }
     }
     @media (max-width: 700px) {
       .hh-scroll { display: none; }
@@ -371,7 +371,7 @@ useEffect(() => {
 <section style={{ position: 'relative', marginBottom: '0', marginTop: '-4rem', background: '#faf8f4', width: '100vw', marginLeft: 'calc(-50vw + 50%)' }}>
   <style>{`
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(18px); }
+      from {  transform: translateY(18px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes growX {
@@ -404,7 +404,7 @@ useEffect(() => {
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
     .ph-headline {
@@ -419,7 +419,7 @@ useEffect(() => {
     .ph-headline-accent {
       display: block;
       font-weight: 200;
-      color: var(--color-primary);
+      color: #374151;
     }
     .ph-intro {
       font-family: var(--font-geist-sans), sans-serif;
@@ -500,7 +500,7 @@ useEffect(() => {
   font-size: 0.72rem;
   font-weight: 700;
   letter-spacing: 0.25em;
-  color: var(--color-primary);
+  color: #374151;
   opacity: 1;
   display: block;
   margin-bottom: 0.6rem;

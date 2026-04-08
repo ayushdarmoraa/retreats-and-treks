@@ -98,11 +98,11 @@ export default function KedarkanthaVsHarKiDunPage() {
 
       {/* INTENT TRAIL — discovery cluster reinforcement */}
       <nav aria-label="Discovery trail" className="kvh-trail">
-        <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+        <Link href="/treks/best-treks-in-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
           Best Treks in Uttarakhand
         </Link>
         {' → '}
-        <Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+        <Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
           Snow Treks
         </Link>
         {' → '}
@@ -114,17 +114,17 @@ export default function KedarkanthaVsHarKiDunPage() {
         .kvh-trail { font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 300; color: #888; line-height: 1.6; margin-bottom: 0.75rem; }
         .kvh-body { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555555; margin: 0; }
         .kvh-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-        .kvh-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; display: inline-block; }
-        .kvh-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-primary); font-weight: 500; opacity: 0.7; }
+        .kvh-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  display: inline-block; }
+        .kvh-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase; color: #374151; font-weight: 500; }
 
         .kvh-pick { background: #fff; border: 1px solid #eef0ee; border-left: 3px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; line-height: 1.85; color: #555; transition: box-shadow 0.2s ease; }
         .kvh-pick:hover { box-shadow: 0 4px 16px rgba(15,118,110,0.08); }
-        .kvh-pick-label { font-size: 0.55rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-primary); opacity: 0.7; margin-bottom: 0.35rem; }
+        .kvh-pick-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #374151; margin-bottom: 0.35rem; }
 
         .kvh-table-wrap { overflow-x: auto; border: 1px solid #e5e7eb; border-radius: 10px; background: #ffffff; }
         .kvh-table { width: 100%; border-collapse: collapse; }
         .kvh-table thead tr { border-bottom: 2px solid #e5e7eb; }
-        .kvh-table th { font-family: var(--font-geist-sans), sans-serif; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-primary); opacity: 0.7; padding: 0.75rem 1rem; text-align: left; }
+        .kvh-table th { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #374151; padding: 0.75rem 1rem; text-align: left; }
         .kvh-table td { font-family: var(--font-geist-sans), sans-serif; font-size: 0.84rem; font-weight: 300; color: #444; padding: 0.75rem 1rem; border-bottom: 1px solid #f0f0f0; }
         .kvh-table td:first-child { font-weight: 500; color: #111; }
         .kvh-table tbody tr:last-child td { border-bottom: none; }
@@ -140,7 +140,7 @@ export default function KedarkanthaVsHarKiDunPage() {
         .kvh-season { background: #fff; border: 1px solid #eef0ee; border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; transition: box-shadow 0.2s ease; }
         .kvh-season:hover { box-shadow: 0 4px 16px rgba(15,118,110,0.07); }
         .kvh-season:last-of-type { margin-bottom: 0; }
-        .kvh-season-label { font-family: var(--font-geist-sans), sans-serif; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-primary); opacity: 0.7; margin-bottom: 0.5rem; }
+        .kvh-season-label { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #374151; margin-bottom: 0.5rem; }
         .kvh-season p { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin: 0; }
 
         .kvh-choose-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.75rem; }
@@ -149,13 +149,13 @@ export default function KedarkanthaVsHarKiDunPage() {
         .kvh-choose-card ul { margin: 0; padding: 0; list-style: none; }
         .kvh-choose-card ul li { font-family: var(--font-geist-sans), sans-serif; font-size: 0.84rem; font-weight: 300; line-height: 1.85; color: #555; padding: 0.2rem 0 0.2rem 1.1rem; position: relative; border-bottom: 1px solid #f7f9f7; }
         .kvh-choose-card ul li:last-child { border-bottom: none; }
-        .kvh-choose-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--color-primary); opacity: 0.5; font-size: 0.75rem; }
+        .kvh-choose-card ul li::before { content: '→'; position: absolute; left: 0; color: #374151;  font-size: 0.75rem; }
 
         .kvh-nav-block { background: #f7f9f7; border: 1px solid #e5e7eb; border-left: 3px solid var(--color-primary); border-radius: 10px; padding: 1.25rem 1.5rem; }
         .kvh-nav-block p { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin: 0; }
         .kvh-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.1rem; border-bottom: 1px solid #f0f0f0; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #333; text-decoration: none; transition: background 0.15s ease, color 0.15s ease; }
-        .kvh-nav-link:hover { background: #f7f9f7; color: var(--color-primary); }
-        .kvh-nav-link::after { content: '→'; color: var(--color-primary); opacity: 0.5; }
+        .kvh-nav-link:hover { background: #f7f9f7; color: #374151; }
+        .kvh-nav-link::after { content: '→'; color: #374151;  }
         .kvh-nav-group { border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; }
         .kvh-nav-group .kvh-nav-link:last-child { border-bottom: none; }
 
@@ -176,24 +176,24 @@ export default function KedarkanthaVsHarKiDunPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem' }}>
             <div className="kvh-pick">
               <div className="kvh-pick-label">Snow Summit · 4 days · Dec–Mar</div>
-              <span style={{ fontWeight: 500, color: '#111' }}><Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Kedarkantha Trek</Link></span>{' '}
+              <span style={{ fontWeight: 500, color: '#111' }}><Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Kedarkantha Trek</Link></span>{' '}
               <span style={{ fontWeight: 300 }}>— 3,800 m summit with 360° Himalayan panorama. First-time snow trekkers.</span>
             </div>
             <div className="kvh-pick">
               <div className="kvh-pick-label">Valley Journey · 6 days · Apr–Jun, Sep–Nov</div>
-              <span style={{ fontWeight: 500, color: '#111' }}><Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Har Ki Dun Trek</Link></span>{' '}
+              <span style={{ fontWeight: 500, color: '#111' }}><Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Har Ki Dun Trek</Link></span>{' '}
               <span style={{ fontWeight: 300 }}>— Glacial valley, ancient villages, wildflower meadows. Sustained summer walking.</span>
             </div>
           </div>
           <p className="kvh-body">
             Both treks start from the same place —{' '}
-            <Link href="/treks/location/sankri" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Sankri trek base</Link>,
+            <Link href="/treks/location/sankri" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Sankri trek base</Link>,
             the primary trek base in Uttarakhand&apos;s Tons Valley. Both are among the most popular Himalayan treks in India. And both are accessible to first-time trekkers. But the experience they deliver is fundamentally different: the{' '}
-            <Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Kedarkantha Trek</Link>{' '}
+            <Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Kedarkantha Trek</Link>{' '}
             is a snow summit, while the{' '}
-            <Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Har Ki Dun Trek</Link>{' '}
+            <Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Har Ki Dun Trek</Link>{' '}
             is a green valley journey. One is a four-day sprint to a peak, the other is a six-day walk through a glacial corridor. Choosing between them is not about which is better — it is about which is right for you. Both are featured in our{' '}
-            <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>top trekking routes in Uttarakhand</Link>.
+            <Link href="/treks/best-treks-in-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>top trekking routes in Uttarakhand</Link>.
           </p>
         </div>
       </section>
@@ -234,13 +234,13 @@ export default function KedarkanthaVsHarKiDunPage() {
           <div className="kvh-split">
             <div className="kvh-split-card">
               <Image src="/Images/trek/region/kedarkantha.webp" alt="Kedarkantha summit snow trail" width={600} height={150} sizes="(max-width: 768px) 100vw, 50vw" quality={70} style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
-              <h3><Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Kedarkantha</Link></h3>
-              <p>A concentrated experience that builds to a single defining moment. The{' '}<Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Kedarkantha Trek</Link>{' '}rises through dense pine and oak forest — silent and snow-covered in winter — crosses open alpine meadows, and ascends a final ridge to a 3,800-metre summit. The panorama from the top spans Swargarohini, Bandarpoonch, Black Peak, and the Gangotri group. On a clear winter morning, that summit view is the single most spectacular sight available on any beginner trek in India. The trek is four days, but the defining moment is twenty minutes on the peak.</p>
+              <h3><Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: '#374151', textDecoration: 'none' }}>Kedarkantha</Link></h3>
+              <p>A concentrated experience that builds to a single defining moment. The{' '}<Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Kedarkantha Trek</Link>{' '}rises through dense pine and oak forest — silent and snow-covered in winter — crosses open alpine meadows, and ascends a final ridge to a 3,800-metre summit. The panorama from the top spans Swargarohini, Bandarpoonch, Black Peak, and the Gangotri group. On a clear winter morning, that summit view is the single most spectacular sight available on any beginner trek in India. The trek is four days, but the defining moment is twenty minutes on the peak.</p>
             </div>
             <div className="kvh-split-card">
               <Image src="/Images/trek/region/harkidun.webp" alt="Har Ki Dun green valley trail" width={600} height={150} sizes="(max-width: 768px) 100vw, 50vw" quality={70} style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
-              <h3><Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Har Ki Dun</Link></h3>
-              <p>A sustained experience that deepens over five to six days. The{' '}<Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Har Ki Dun Trek</Link>{' '}follows the ancient Tons Valley through traditional Himalayan villages, across wooden bridges over glacial rivers, through dense forest and open meadow, and into the vast Har Ki Dun valley — a natural amphitheatre surrounded by 5,000-metre peaks. There is no single peak moment. Instead, the beauty accumulates — each day&apos;s landscape is different from the last, and the valley itself, when you finally reach it, feels earned. If Kedarkantha is a photograph, Har Ki Dun is a film.</p>
+              <h3><Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: '#374151', textDecoration: 'none' }}>Har Ki Dun</Link></h3>
+              <p>A sustained experience that deepens over five to six days. The{' '}<Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Har Ki Dun Trek</Link>{' '}follows the ancient Tons Valley through traditional Himalayan villages, across wooden bridges over glacial rivers, through dense forest and open meadow, and into the vast Har Ki Dun valley — a natural amphitheatre surrounded by 5,000-metre peaks. There is no single peak moment. Instead, the beauty accumulates — each day&apos;s landscape is different from the last, and the valley itself, when you finally reach it, feels earned. If Kedarkantha is a photograph, Har Ki Dun is a film.</p>
             </div>
           </div>
         </div>
@@ -265,7 +265,7 @@ export default function KedarkanthaVsHarKiDunPage() {
           </div>
           <p className="kvh-body">
             Both are accessible to{' '}
-            <Link href="/treks/beginner-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>beginner treks in Uttarakhand</Link>.
+            <Link href="/treks/beginner-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>beginner treks in Uttarakhand</Link>.
             The preparation is the same: two to three weeks of daily cardio — walking, jogging, stair climbing. The difference is what kind of challenge you prefer. Short and sharp, or long and steady.
           </p>
         </div>
@@ -283,11 +283,11 @@ export default function KedarkanthaVsHarKiDunPage() {
           </p>
           <div className="kvh-season">
             <div className="kvh-season-label">Kedarkantha · December to March</div>
-            <p>This is a{' '}<Link href="/treks/winter-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>winter treks in Uttarakhand</Link>. The trail is snow-covered, the forest is silent and white, and the summit panorama is sharpest in cold, clear winter air. Kedarkantha in summer (May) is possible but loses the snow immersion that defines the experience. If you are choosing Kedarkantha, choose December to February for the definitive version.</p>
+            <p>This is a{' '}<Link href="/treks/winter-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>winter treks in Uttarakhand</Link>. The trail is snow-covered, the forest is silent and white, and the summit panorama is sharpest in cold, clear winter air. Kedarkantha in summer (May) is possible but loses the snow immersion that defines the experience. If you are choosing Kedarkantha, choose December to February for the definitive version.</p>
           </div>
           <div className="kvh-season">
             <div className="kvh-season-label">Har Ki Dun · April–June &amp; September–November</div>
-            <p>This is a{' '}<Link href="/treks/summer-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>summer treks in Uttarakhand</Link>. The valley is green, wildflowers blanket the meadows, the river runs clear, and the trail is dry and comfortable. Har Ki Dun in winter is spectacular but more demanding — snow-covered trails, colder temperatures, limited guided availability. Summer is when Har Ki Dun is most accessible and most beautiful.</p>
+            <p>This is a{' '}<Link href="/treks/summer-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>summer treks in Uttarakhand</Link>. The valley is green, wildflowers blanket the meadows, the river runs clear, and the trail is dry and comfortable. Har Ki Dun in winter is spectacular but more demanding — snow-covered trails, colder temperatures, limited guided availability. Summer is when Har Ki Dun is most accessible and most beautiful.</p>
           </div>
         </div>
       </section>
@@ -325,7 +325,7 @@ export default function KedarkanthaVsHarKiDunPage() {
           </div>
           <p className="kvh-body">
             Both treks leave from{' '}
-            <Link href="/treks/location/sankri" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Sankri trek base</Link>.
+            <Link href="/treks/location/sankri" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Sankri trek base</Link>.
             If you have the time, the strongest recommendation is to do both — Kedarkantha in winter, Har Ki Dun in summer. They are complementary experiences from the same base, and together they give you the full range of what Himalayan trekking offers.
           </p>
         </div>
@@ -341,10 +341,10 @@ export default function KedarkanthaVsHarKiDunPage() {
           <div className="kvh-nav-block" style={{ marginBottom: '1.5rem' }}>
             <p>
               Looking for more options? See the{' '}
-              <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>complete guide to Uttarakhand treks</Link>, the{' '}
-              <Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>snow treks filter</Link>{' '}
+              <Link href="/treks/best-treks-in-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>complete guide to Uttarakhand treks</Link>, the{' '}
+              <Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>snow treks filter</Link>{' '}
               for winter routes, or browse the full{' '}
-              <Link href="/treks" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Himalayan treks directory</Link>{' '}
+              <Link href="/treks" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Himalayan treks directory</Link>{' '}
               for guided itineraries across all seasons.
             </p>
           </div>

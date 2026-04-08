@@ -165,12 +165,12 @@ export default function GarhwalHimalayasTreksPage() {
 
     {/* Eyebrow */}
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
       <span style={{
         fontFamily: 'var(--font-geist-sans), sans-serif',
-        fontSize: '0.56rem', letterSpacing: '0.28em',
+        fontSize: '0.75rem', letterSpacing: '0.28em',
         textTransform: 'uppercase' as const,
-        color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7,
+        color: '#374151', fontWeight: 500
       }}>Trekking Guide · Uttarakhand</span>
     </div>
 
@@ -203,9 +203,9 @@ export default function GarhwalHimalayasTreksPage() {
           borderRadius: '100px', padding: '5px 14px',
         }}>
           <span style={{
-            fontSize: '0.55rem', fontWeight: 600,
+            fontSize: '0.75rem', fontWeight: 600,
             letterSpacing: '0.18em', textTransform: 'uppercase' as const,
-            color: 'var(--color-primary)', opacity: 0.75,
+            color: '#374151',
           }}>{item.label}</span>
           {item.value}
         </span>
@@ -238,9 +238,9 @@ export default function GarhwalHimalayasTreksPage() {
     }}>
       Unlike the heavily trafficked circuits of Nepal or the permit-restricted zones of Ladakh,
       the Garhwal trekking routes retain a sense of wildness and solitude. Two base towns —{' '}
-      <Link href="/treks/location/lohajung" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Lohajung</Link>{' '}
+      <Link href="/treks/location/lohajung" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Lohajung</Link>{' '}
       and{' '}
-      <Link href="/treks/location/joshimath" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Joshimath</Link>{' '}
+      <Link href="/treks/location/joshimath" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Joshimath</Link>{' '}
       — serve as launchpads for four distinct routes that together cover the full spectrum of
       Himalayan trekking: from moderate ridge walks with continuous panoramas to challenging
       summit pushes above 4,500 metres.
@@ -267,8 +267,8 @@ export default function GarhwalHimalayasTreksPage() {
 }}>
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Terrain</span>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Terrain</span>
     </div>
     <h2 style={{
       fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -299,9 +299,9 @@ export default function GarhwalHimalayasTreksPage() {
         {
           title: 'Nanda Devi Sanctuary zone.',
           body: <>The{' '}
-            <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Roopkund</Link>{' '}
+            <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Roopkund</Link>{' '}
             and{' '}
-            <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla</Link>{' '}
+            <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla</Link>{' '}
             routes approach the outer rim of the Nanda Devi Sanctuary, offering views into the inner
             sanctuary that are otherwise inaccessible. The sanctuary has been closed to trekkers since
             1983, making these peripheral routes the closest you can get to India&apos;s second-highest peak.</>
@@ -309,14 +309,14 @@ export default function GarhwalHimalayasTreksPage() {
         {
           title: 'Lake and glacier systems.',
           body: <>Garhwal&apos;s trekking routes pass through a landscape shaped by Pleistocene glaciation — cirque lakes like{' '}
-            <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Brahmatal</Link>{' '}
+            <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Brahmatal</Link>{' '}
             and Roopkund sit in glacial hollows carved during the last ice age. In winter, these lakes
             freeze solid, creating the signature visual of Garhwal winter trekking.</>
         },
         {
           title: 'Ridge and valley structure.',
           body: <>The{' '}
-            <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Kuari Pass</Link>{' '}
+            <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Kuari Pass</Link>{' '}
             route follows a high ridge that runs parallel to the main Himalayan chain — this is why
             the views are continuous rather than episodic. You walk along the crest with the peaks
             arrayed before you for kilometres at a stretch.</>
@@ -360,8 +360,8 @@ export default function GarhwalHimalayasTreksPage() {
 }}>
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Base Towns</span>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Base Towns</span>
     </div>
     <h2 style={{
       fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -390,7 +390,7 @@ export default function GarhwalHimalayasTreksPage() {
           <Link href="/treks/location/lohajung" style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
             fontSize: '0.88rem', fontWeight: 500,
-            color: 'var(--color-primary)', textDecoration: 'none',
+            color: '#374151', textDecoration: 'none',
             letterSpacing: '-0.01em',
           }}>
             Lohajung — Gateway to Brahmatal &amp; Roopkund →
@@ -399,9 +399,9 @@ export default function GarhwalHimalayasTreksPage() {
         <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, lineHeight: 1.8, color: '#555555', margin: 0 }}>
           Lohajung is a small roadhead village at 2,350 metres in the Chamoli district, perched on
           a ridge overlooking the Wan valley. It serves as the common base camp for both the{' '}
-          <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Brahmatal Trek</Link>{' '}
+          <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Brahmatal Trek</Link>{' '}
           and the{' '}
-          <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Roopkund Trek</Link>.
+          <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Roopkund Trek</Link>.
           Reached by a 10-hour drive from Rishikesh via Karnaprayag and Dewal, Lohajung is as far
           from a tourist town as you can get — basic guesthouses, a handful of dhabas, and the
           quiet intensity of a working mountain village. This remoteness is precisely what makes
@@ -421,7 +421,7 @@ export default function GarhwalHimalayasTreksPage() {
           <Link href="/treks/location/joshimath" style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
             fontSize: '0.88rem', fontWeight: 500,
-            color: 'var(--color-primary)', textDecoration: 'none',
+            color: '#374151', textDecoration: 'none',
             letterSpacing: '-0.01em',
           }}>
             Joshimath — Gateway to Kuari Pass &amp; Pangarchulla →
@@ -431,9 +431,9 @@ export default function GarhwalHimalayasTreksPage() {
           Joshimath sits at 1,875 metres on the pilgrim road to Badrinath — a historic mountain
           town with deep religious significance (it houses one of the four cardinal matts established
           by Adi Shankaracharya). For trekkers, Joshimath is the launch point for the{' '}
-          <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Kuari Pass Trek</Link>{' '}
+          <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Kuari Pass Trek</Link>{' '}
           and the{' '}
-          <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla Peak Trek</Link>.
+          <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla Peak Trek</Link>.
           Better connected than Lohajung — with regular bus services from Rishikesh (9–10 hours)
           and more accommodation options — Joshimath also serves as a gateway to Auli, the Valley
           of Flowers, and Hemkund Sahib.
@@ -462,8 +462,8 @@ export default function GarhwalHimalayasTreksPage() {
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>The Routes</span>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>The Routes</span>
     </div>
 
     <h2 style={{
@@ -498,7 +498,7 @@ export default function GarhwalHimalayasTreksPage() {
             fontFamily: 'var(--font-geist-sans), sans-serif',
             fontSize: '0.6rem', fontWeight: 600,
             letterSpacing: '0.15em', textTransform: 'uppercase' as const,
-            color: 'var(--color-primary)',
+            color: '#374151',
             background: 'rgba(15,118,110,0.08)',
             border: '1px solid rgba(15,118,110,0.18)',
             borderRadius: '100px', padding: '3px 10px',
@@ -518,19 +518,19 @@ export default function GarhwalHimalayasTreksPage() {
               borderRadius: '100px', padding: '3px 10px',
               display: 'inline-flex', alignItems: 'center', gap: '0.3rem',
             }}>
-              <span style={{ fontSize: '0.55rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', opacity: 0.7 }}>{item.label}</span>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: '#374151'}}>{item.label}</span>
               {item.value}
             </span>
           ))}
         </div>
         <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
           The{' '}
-          <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Brahmatal Trek</Link>{' '}
+          <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Brahmatal Trek</Link>{' '}
           is Garhwal&apos;s premier winter trek — a 22 km route from Lohajung to the frozen Brahmatal lake
           at 3,850 metres. The trail passes through dense oak and rhododendron forest before emerging
           onto snow-covered ridges with views of Trishul and Nanda Ghunti. At moderate difficulty with
           no technical sections, Brahmatal is the ideal entry point to{' '}
-          <Link href="/treks/winter-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>winter trekking in Uttarakhand</Link>{' '}
+          <Link href="/treks/winter-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>winter trekking in Uttarakhand</Link>{' '}
           for those ready to go beyond the more crowded Kedarkantha circuit.
         </p>
       </div>
@@ -573,14 +573,14 @@ export default function GarhwalHimalayasTreksPage() {
               borderRadius: '100px', padding: '3px 10px',
               display: 'inline-flex', alignItems: 'center', gap: '0.3rem',
             }}>
-              <span style={{ fontSize: '0.55rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', opacity: 0.7 }}>{item.label}</span>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: '#374151'}}>{item.label}</span>
               {item.value}
             </span>
           ))}
         </div>
         <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
           The{' '}
-          <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Roopkund Trek</Link>{' '}
+          <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Roopkund Trek</Link>{' '}
           is one of the most iconic routes in the Indian Himalayas — a 53 km expedition from Lohajung
           to the glacial Roopkund Lake at 4,800 metres, famous for the ancient human skeletal remains
           discovered at its shores. The route crosses the vast Bedni Bugyal alpine meadow, navigates
@@ -608,7 +608,7 @@ export default function GarhwalHimalayasTreksPage() {
             fontFamily: 'var(--font-geist-sans), sans-serif',
             fontSize: '0.6rem', fontWeight: 600,
             letterSpacing: '0.15em', textTransform: 'uppercase' as const,
-            color: 'var(--color-primary)',
+            color: '#374151',
             background: 'rgba(15,118,110,0.08)',
             border: '1px solid rgba(15,118,110,0.18)',
             borderRadius: '100px', padding: '3px 10px',
@@ -628,20 +628,20 @@ export default function GarhwalHimalayasTreksPage() {
               borderRadius: '100px', padding: '3px 10px',
               display: 'inline-flex', alignItems: 'center', gap: '0.3rem',
             }}>
-              <span style={{ fontSize: '0.55rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', opacity: 0.7 }}>{item.label}</span>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: '#374151'}}>{item.label}</span>
               {item.value}
             </span>
           ))}
         </div>
         <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
           The{' '}
-          <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Kuari Pass Trek</Link>{' '}
+          <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Kuari Pass Trek</Link>{' '}
           follows the historic Lord Curzon Trail along a high ridge offering near-continuous views of
           the Nanda Devi Sanctuary, Dronagiri, Chaukhamba, and Kamet. At moderate difficulty with no
           technical challenges, this is widely considered the finest view-to-effort ratio of any trek
           in Uttarakhand. Spring brings rhododendron blooms; autumn delivers the sharpest visibility
           and golden forest colours. An excellent{' '}
-          <Link href="/treks/summer-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>summer trek</Link>{' '}
+          <Link href="/treks/summer-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>summer trek</Link>{' '}
           option for those who prefer moderate altitude without sacrificing Himalayan grandeur.
         </p>
       </div>
@@ -684,14 +684,14 @@ export default function GarhwalHimalayasTreksPage() {
               borderRadius: '100px', padding: '3px 10px',
               display: 'inline-flex', alignItems: 'center', gap: '0.3rem',
             }}>
-              <span style={{ fontSize: '0.55rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', opacity: 0.7 }}>{item.label}</span>
+              <span style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase' as const, color: '#374151'}}>{item.label}</span>
               {item.value}
             </span>
           ))}
         </div>
         <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
           The{' '}
-          <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla Peak Trek</Link>{' '}
+          <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla Peak Trek</Link>{' '}
           combines the Kuari Pass approach with a true summit push to 4,590 metres — one of the few
           accessible summit experiences in Garhwal. The final day involves a steep snow-and-scree
           ascent with an alpine start, rewarded by a 360° panorama that includes Nanda Devi, Nanda
@@ -716,8 +716,8 @@ export default function GarhwalHimalayasTreksPage() {
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Best Time to Go</span>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Best Time to Go</span>
     </div>
 
     <h2 style={{
@@ -739,11 +739,11 @@ export default function GarhwalHimalayasTreksPage() {
           months: 'December–March',
           dot: 'var(--color-primary)',
           body: <>
-            <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Brahmatal, a moderate snow trek from Lohajung,</Link>{' '}
+            <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Brahmatal, a moderate snow trek from Lohajung,</Link>{' '}
             is the standout winter route — frozen lakes, snow-covered ridges, and clear mountain visibility.
             Kuari Pass is also feasible in early spring (March) with lingering snow adding alpine character.
             Roopkund and Pangarchulla are inaccessible in deep winter. For more{' '}
-            <Link href="/treks/winter-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>winter trek options across Uttarakhand</Link>, see our seasonal guide.
+            <Link href="/treks/winter-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>winter trek options across Uttarakhand</Link>, see our seasonal guide.
           </>
         },
         {
@@ -754,7 +754,7 @@ export default function GarhwalHimalayasTreksPage() {
             The widest trekking window. Both Kuari Pass and Pangarchulla are in prime condition.
             Brahmatal transitions from snow to green in late March. Roopkund opens in late May.
             Rhododendron blooms colour the forests below 3,500 metres. This is the peak season for the{' '}
-            <Link href="/treks/summer-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>best summer treks in Uttarakhand</Link>.
+            <Link href="/treks/summer-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>best summer treks in Uttarakhand</Link>.
           </>
         },
         {
@@ -837,8 +837,8 @@ export default function GarhwalHimalayasTreksPage() {
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Compare Routes</span>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Compare Routes</span>
     </div>
 
     <h2 style={{
@@ -861,9 +861,9 @@ export default function GarhwalHimalayasTreksPage() {
             {['Trek', 'Difficulty', 'Max Altitude', 'Duration', 'Best For'].map((h) => (
               <th key={h} style={{
                 textAlign: 'left', padding: '0.75rem 1rem',
-                fontSize: '0.55rem', fontWeight: 600,
+                fontSize: '0.75rem', fontWeight: 600,
                 letterSpacing: '0.2em', textTransform: 'uppercase' as const,
-                color: 'var(--color-primary)', opacity: 0.75,
+                color: '#374151',
                 whiteSpace: 'nowrap' as const,
               }}>{h}</th>
             ))}
@@ -878,7 +878,7 @@ export default function GarhwalHimalayasTreksPage() {
           ].map((row, i, arr) => (
             <tr key={row.name} style={{ borderBottom: i < arr.length - 1 ? '1px solid #e5e7eb' : 'none' }}>
               <td style={{ padding: '0.85rem 1rem' }}>
-                <Link href={row.href} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500, fontSize: '0.85rem' }}>{row.name}</Link>
+                <Link href={row.href} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500, fontSize: '0.85rem' }}>{row.name}</Link>
               </td>
               <td style={{ padding: '0.85rem 1rem' }}>
                 <span style={{
@@ -901,20 +901,20 @@ export default function GarhwalHimalayasTreksPage() {
 
     <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1rem' }}>
       <strong style={{ fontWeight: 500, color: '#111111' }}>For beginners:</strong> Start with{' '}
-      <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>the Brahmatal winter trek</Link>{' '}
+      <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>the Brahmatal winter trek</Link>{' '}
       or{' '}
-      <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>the Kuari Pass ridge walk</Link>.
+      <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>the Kuari Pass ridge walk</Link>.
       Both stay below 4,000 metres, have no technical sections, and are well-supported by guided
       operations. If you are entirely new to Himalayan trekking, our{' '}
-      <Link href="/treks/beginner-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>beginner treks guide</Link>{' '}
+      <Link href="/treks/beginner-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>beginner treks guide</Link>{' '}
       can help you decide whether to start in Garhwal or closer to Dehradun.
     </p>
 
     <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
       <strong style={{ fontWeight: 500, color: '#111111' }}>For experienced trekkers:</strong>{' '}
-      <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>the Pangarchulla summit climb</Link>{' '}
+      <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>the Pangarchulla summit climb</Link>{' '}
       and{' '}
-      <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>the Roopkund expedition</Link>{' '}
+      <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>the Roopkund expedition</Link>{' '}
       demand prior high-altitude experience (above 4,000 m), multi-day trekking fitness, and
       comfort with steep, exposed terrain. These are serious mountain routes, not enhanced day hikes.
     </p>
@@ -933,8 +933,8 @@ export default function GarhwalHimalayasTreksPage() {
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Regional Context</span>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Regional Context</span>
     </div>
 
     <h2 style={{
@@ -960,14 +960,14 @@ export default function GarhwalHimalayasTreksPage() {
           <Link href="/treks/location/chakrata" style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
             fontSize: '0.88rem', fontWeight: 500,
-            color: 'var(--color-primary)', textDecoration: 'none',
+            color: '#374151', textDecoration: 'none',
           }}>Chakrata →</Link>
           <div style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', fontWeight: 300, color: '#999999', marginTop: '0.2rem' }}>mid-altitude · 2,000–2,400 m</div>
         </div>
         <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', fontWeight: 300, lineHeight: 1.8, color: '#555555', margin: 0 }}>
           Weekend-accessible from Dehradun. Forest trails, limestone caves, waterfalls. Easy to moderate
           difficulty. Ideal for first-time trekkers, families, and those combining a trek with a{' '}
-          <Link href="/retreats/chakrata" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>wellness retreat</Link>.
+          <Link href="/retreats/chakrata" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>wellness retreat</Link>.
           No high-altitude exposure.
         </p>
       </div>
@@ -982,7 +982,7 @@ export default function GarhwalHimalayasTreksPage() {
           <Link href="/treks/location/sankri" style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
             fontSize: '0.88rem', fontWeight: 500,
-            color: 'var(--color-primary)', textDecoration: 'none',
+            color: '#374151', textDecoration: 'none',
           }}>Sankri →</Link>
           <div style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', fontWeight: 300, color: '#999999', marginTop: '0.2rem' }}>western Garhwal · 3,500–3,800 m</div>
         </div>
@@ -1028,8 +1028,8 @@ export default function GarhwalHimalayasTreksPage() {
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Planning</span>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Planning</span>
     </div>
 
     <h2 style={{
@@ -1096,8 +1096,8 @@ export default function GarhwalHimalayasTreksPage() {
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Decide</span>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Decide</span>
     </div>
 
     <h2 style={{
@@ -1122,7 +1122,7 @@ export default function GarhwalHimalayasTreksPage() {
           transition: 'box-shadow 0.2s',
           cursor: 'pointer',
         }}>
-          <div style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 600, opacity: 0.7, marginBottom: '0.5rem' }}>Moderate treks</div>
+          <div style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 600, marginBottom: '0.5rem' }}>Moderate treks</div>
           <div style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 500, color: '#111111', marginBottom: '0.6rem', lineHeight: 1.4 }}>
             Brahmatal vs Kuari Pass — which moderate Garhwal trek? →
           </div>
@@ -1140,7 +1140,7 @@ export default function GarhwalHimalayasTreksPage() {
           borderRadius: '8px', padding: '1.5rem',
           cursor: 'pointer',
         }}>
-          <div style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: '#e65100', fontWeight: 600, opacity: 0.8, marginBottom: '0.5rem' }}>Challenging treks</div>
+          <div style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: '#e65100', fontWeight: 600, marginBottom: '0.5rem' }}>Challenging treks</div>
           <div style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 500, color: '#111111', marginBottom: '0.6rem', lineHeight: 1.4 }}>
             Roopkund vs Pangarchulla — expedition or summit? →
           </div>
@@ -1162,11 +1162,11 @@ export default function GarhwalHimalayasTreksPage() {
       <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
         <strong style={{ fontWeight: 500, color: '#111111' }}>The progression path:</strong>{' '}
         Most trekkers move through Garhwal in stages — a{' '}
-        <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>moderate snow trek from Lohajung</Link>{' '}
+        <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>moderate snow trek from Lohajung</Link>{' '}
         or a{' '}
-        <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>spring ridge walk from Joshimath</Link>{' '}
+        <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>spring ridge walk from Joshimath</Link>{' '}
         builds the altitude confidence needed for the{' '}
-        <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>challenging routes above 4,500 metres</Link>.
+        <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>challenging routes above 4,500 metres</Link>.
       </p>
     </div>
 
@@ -1192,8 +1192,8 @@ export default function GarhwalHimalayasTreksPage() {
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>FAQs</span>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>FAQs</span>
     </div>
 
     <h2 style={{
@@ -1228,8 +1228,8 @@ export default function GarhwalHimalayasTreksPage() {
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Keep Exploring</span>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Keep Exploring</span>
     </div>
 
     <h2 style={{
@@ -1273,8 +1273,8 @@ export default function GarhwalHimalayasTreksPage() {
               color: '#333333', lineHeight: 1.5,
             }}>{item.label}</span>
             <span style={{
-              color: 'var(--color-primary)', fontSize: '0.82rem',
-              fontWeight: 400, flexShrink: 0, opacity: 0.7,
+              color: '#374151', fontSize: '0.82rem',
+              fontWeight: 400, flexShrink: 0
             }}>→</span>
           </Link>
         );

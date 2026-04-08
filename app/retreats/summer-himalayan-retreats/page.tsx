@@ -113,25 +113,25 @@ export default function SummerHimalayanRetreatsPage() {
     .sum-loc-card-body { padding:1.5rem; }
     .sum-loc-card-body h3 { font-family:var(--font-geist-sans),sans-serif; font-size:0.95rem; font-weight:500; color:#111; margin:0 0 0.85rem; letter-spacing:-0.01em; }
     .sum-loc-card-body h3 a { color:inherit; text-decoration:none; }
-    .sum-loc-card-body h3 a:hover { color:var(--color-primary); }
+    .sum-loc-card-body h3 a:hover { color: #374151; }
     .sum-loc-card-body p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0 0 0.75rem; }
     .sum-loc-card-body p:last-child { margin-bottom:0; }
     .sum-why-item { border-left:2px solid var(--color-primary); padding-left:1rem; margin-bottom:1.25rem; }
     .sum-why-item p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0; }
     .sum-expect-item { display:flex; gap:1rem; padding:0.85rem 0; border-bottom:1px solid #f0f0f0; }
     .sum-expect-item:last-child { border-bottom:none; }
-    .sum-expect-dot { flex-shrink:0; margin-top:0.55rem; width:8px; height:8px; border-radius:50%; background:var(--color-primary); opacity:0.6; }
+    .sum-expect-dot { flex-shrink:0; margin-top:0.75rem; width:8px; height:8px; border-radius:50%; background:var(--color-primary);  }
     .sum-expect-item p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0; }
     .sum-who-item { display:flex; gap:1rem; padding:0.85rem 0; border-bottom:1px solid #f0f0f0; }
     .sum-who-item:last-child { border-bottom:none; }
-    .sum-who-dot { flex-shrink:0; margin-top:0.55rem; width:8px; height:8px; border-radius:50%; background:var(--color-primary); opacity:0.6; }
+    .sum-who-dot { flex-shrink:0; margin-top:0.75rem; width:8px; height:8px; border-radius:50%; background:var(--color-primary);  }
     .sum-who-item p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0; }
     .sum-plan-item { background:#fff; border:1px solid #e5e7eb; border-left:3px solid var(--color-primary); border-radius:8px; padding:1rem 1.25rem; margin-bottom:0.75rem; }
     .sum-plan-item p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0; }
     .sum-nav-link { display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1rem; border-bottom:1px solid #f0f0f0; font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; color:#333; text-decoration:none; }
-    .sum-nav-link:hover { background:#f7f9f7; color:var(--color-primary); }
-    .sum-nav-link.back::before { content:'←'; color:var(--color-primary); opacity:0.5; margin-right:0.5rem; }
-    .sum-nav-link:not(.back)::after { content:'→'; color:var(--color-primary); opacity:0.5; }
+    .sum-nav-link:hover { background:#f7f9f7; color: #374151; }
+    .sum-nav-link.back::before { content:'←'; color: #374151;  margin-right:0.5rem; }
+    .sum-nav-link:not(.back)::after { content:'→'; color: #374151;  }
     .sum-nav-group { border:1px solid #e5e7eb; border-radius:8px; overflow:hidden; }
     .sum-nav-group .sum-nav-link:last-child { border-bottom:none; }
     @media(max-width:640px){
@@ -150,8 +150,8 @@ export default function SummerHimalayanRetreatsPage() {
         { name:'Summer Retreats' },
       ]} />
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', margin:'1.5rem 0 1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Summer Retreats · May–June</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Summer Retreats · May–June</span>
       </div>
       <h1 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.75rem,3.5vw,2.4rem)', fontWeight:200, letterSpacing:'-0.035em', color:'#111', lineHeight:1.1, margin:'0 0 1.5rem' }}>
         Summer Himalayan Retreats in India
@@ -173,8 +173,8 @@ export default function SummerHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Why Summer</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Why Summer</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'0.75rem' }}>
         Why Choose the Himalayas in Summer
@@ -204,8 +204,8 @@ export default function SummerHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Four Locations</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Four Locations</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'0.75rem' }}>
         Best Himalayan Locations for a Summer Retreat
@@ -248,7 +248,7 @@ export default function SummerHimalayanRetreatsPage() {
         <Image src="/Images/location/rishikesh.webp" alt="Rishikesh — Ganges riverside yoga and retreat before monsoon" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="sum-loc-card-body">
           <h3><Link href="/retreats/rishikesh">Rishikesh — Riverside Retreats Before Monsoon</Link></h3>
-          <p>Rishikesh in May–June is warmer than the mountain locations (28–38°C) but remains cooler than the deep plains. Pre-monsoon energy creates intensity — the Ganges runs strong, ashram routines shift toward early-morning practice to avoid midday heat, and serious yoga courses run their intensive summer cohorts. This is not a cool-climate escape but a spiritual-intensity window. For those drawn to <Link href="/retreats/journeys/yoga-and-movement" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>yoga and movement</Link> or teacher-led philosophical study, pre-monsoon Rishikesh has a focused energy that cooler seasons dilute with tourist traffic.</p>
+          <p>Rishikesh in May–June is warmer than the mountain locations (28–38°C) but remains cooler than the deep plains. Pre-monsoon energy creates intensity — the Ganges runs strong, ashram routines shift toward early-morning practice to avoid midday heat, and serious yoga courses run their intensive summer cohorts. This is not a cool-climate escape but a spiritual-intensity window. For those drawn to <Link href="/retreats/journeys/yoga-and-movement" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>yoga and movement</Link> or teacher-led philosophical study, pre-monsoon Rishikesh has a focused energy that cooler seasons dilute with tourist traffic.</p>
         </div>
       </div>
     </div>
@@ -258,8 +258,8 @@ export default function SummerHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>A Typical Day</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>A Typical Day</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'0.75rem' }}>
         What to Expect in a Summer Retreat
@@ -283,7 +283,7 @@ export default function SummerHimalayanRetreatsPage() {
         ))}
       </div>
       <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', marginTop:'1.5rem', marginBottom:0 }}>
-        For a deeper comparison of retreat formats and how to choose between them, see our guide to <Link href="/blog/3-day-vs-5-day-himalayan-retreat" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>choosing the right retreat length</Link>.
+        For a deeper comparison of retreat formats and how to choose between them, see our guide to <Link href="/blog/3-day-vs-5-day-himalayan-retreat" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>choosing the right retreat length</Link>.
       </p>
     </div>
   </section>
@@ -292,8 +292,8 @@ export default function SummerHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Is This For You</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Is This For You</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>
         Who Is a Summer Retreat Ideal For
@@ -301,7 +301,7 @@ export default function SummerHimalayanRetreatsPage() {
       <div style={{ border:'1px solid #e5e7eb', borderRadius:'8px', background:'#fff', padding:'0 1.25rem' }}>
         {[
           { label:'Corporate professionals', body:'needing structured pause during the May–June window before Q3 intensity begins' },
-          { label:'Burnout recovery', body: <span>— the gentle climate and longer days create ideal conditions for nervous system recalibration without the intensity of winter cold. See our <Link href="/retreats/journeys/burnout-recovery" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Burnout Recovery</Link> program</span> },
+          { label:'Burnout recovery', body: <span>— the gentle climate and longer days create ideal conditions for nervous system recalibration without the intensity of winter cold. See our <Link href="/retreats/journeys/burnout-recovery" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Burnout Recovery</Link> program</span> },
           { label:'First-time retreat participants', body:'— summer removes barriers of cold, logistics complexity, and seasonal uncertainty, making it the most accessible entry point' },
           { label:'Couples', body:'seeking shared reflective experience in comfortable, scenic conditions' },
           { label:'Solo travellers', body:'— summer group sizes are moderate, creating community without being overwhelming' },
@@ -319,8 +319,8 @@ export default function SummerHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Before You Book</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Before You Book</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>
         Planning Your May–June Himalayan Retreat
@@ -342,11 +342,11 @@ export default function SummerHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ background:'#fff', border:'1px solid #e5e7eb', borderLeft:'3px solid var(--color-primary)', borderRadius:'8px', padding:'1rem 1.25rem', fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555' }}>
-        <div style={{ fontSize:'0.55rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'var(--color-primary)', opacity:0.7, marginBottom:'0.35rem' }}>Other Seasons</div>
+        <div style={{ fontSize: '0.75rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color: '#374151', marginBottom:'0.35rem' }}>Other Seasons</div>
         Looking for a different season?{' '}
-        <Link href="/retreats/winter-himalayan-retreats" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Winter Himalayan Retreats</Link>{' '}
+        <Link href="/retreats/winter-himalayan-retreats" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Winter Himalayan Retreats</Link>{' '}
         (December–February) offer snow silence, introspective depth, and small-group intimacy. For a complete overview of all seasons and formats, see{' '}
-        <Link href="/retreats/himalayan-retreats" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Himalayan Retreats in India</Link>.
+        <Link href="/retreats/himalayan-retreats" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Himalayan Retreats in India</Link>.
       </div>
     </div>
   </section>
@@ -355,8 +355,8 @@ export default function SummerHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>FAQ</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>FAQ</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>
         Frequently Asked Questions
@@ -369,8 +369,8 @@ export default function SummerHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Explore More</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Explore More</span>
       </div>
       <div className="sum-nav-group">
         <Link href="/retreats/himalayan-retreats" className="sum-nav-link back">Himalayan Retreats</Link>

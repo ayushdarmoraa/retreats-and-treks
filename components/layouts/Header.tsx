@@ -67,9 +67,9 @@ export default function Header() {
         .hn-drop-link:hover {
           color: #ffffff;
           background: rgba(15,118,110,0.12);
-          border-left-color: var(--color-primary);
+          border-left-color: #374151;
         }
-        .hn-drop-link.gold { color: var(--color-primary); font-weight: 600; }
+        .hn-drop-link.gold { color: #374151; font-weight: 600; }
         .hn-drop-link.gold:hover { color: #ffffff; }
 
         /* Mobile nav links */
@@ -100,8 +100,8 @@ export default function Header() {
           display: flex;
           align-items: center;
         }
-        .hn-mobile-sub:hover { color: var(--color-primary); }
-        .hn-mobile-sub.gold { color: var(--color-primary); }
+        .hn-mobile-sub:hover { color: #374151; }
+        .hn-mobile-sub.gold { color: #374151; }
 
         /* Hamburger */
         .hn-hamburger {
@@ -117,15 +117,15 @@ export default function Header() {
           transition: transform 0.3s, opacity 0.3s;
         }
         .hn-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
-        .hn-hamburger.open span:nth-child(2) { opacity: 0; }
+        .hn-hamburger.open span:nth-child(2) {  }
         .hn-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
         @keyframes dropIn {
-          from { opacity: 0; transform: translateX(-50%) translateY(-6px); }
+          from {  transform: translateX(-50%) translateY(-6px); }
           to   { opacity: 1; transform: translateX(-50%) translateY(0); }
         }
         @keyframes slideDown {
-          from { opacity: 0; transform: translateY(-8px); }
+          from {  transform: translateY(-8px); }
           to   { opacity: 1; transform: translateY(0); }
         }
 
@@ -179,7 +179,7 @@ export default function Header() {
                   letterSpacing: '0.06em',
                   color: '#ece4d0',
                 }}>
-                  Himalayan <em style={{ fontStyle: 'italic', color: 'var(--color-primary)' }}>Retreats</em>
+                  Himalayan <em style={{ fontStyle: 'italic', color: '#374151' }}>Retreats</em>
                 </span>
                 <span style={{
                   fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -316,7 +316,7 @@ export default function Header() {
                 textDecoration: 'none', padding: '12px 22px',
                 minHeight: '44px', minWidth: '44px',
                 display: 'inline-flex', alignItems: 'center',
-                background: 'rgba(15,118,110,0.12)', color: 'var(--color-primary)',
+                background: 'rgba(15,118,110,0.12)', color: '#374151',
                 border: '1px solid rgba(15,118,110,0.45)', borderRadius: '1px',
                 transition: 'background 0.25s, color 0.25s, border-color 0.25s',
               }}

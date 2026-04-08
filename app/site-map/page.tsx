@@ -37,7 +37,7 @@ const listStyle: React.CSSProperties = {
 };
 
 const linkStyle: React.CSSProperties = {
-  color: 'var(--color-primary)',
+  color: '#374151',
   textDecoration: 'none',
 };
 
@@ -58,8 +58,8 @@ export default function SiteMapPage() {
         }
         .smp-hero-inner { max-width: 72rem; margin: 0 auto; padding: 0 2rem; }
         .smp-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-        .smp-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; flex-shrink: 0; }
-        .smp-eyebrow-text { font-family: var(--font-geist-sans),sans-serif; font-size: 0.56rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-primary); opacity: 0.7; }
+        .smp-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  flex-shrink: 0; }
+        .smp-eyebrow-text { font-family: var(--font-geist-sans),sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: #374151; }
         .smp-h1 { font-family: var(--font-geist-sans),sans-serif; font-size: clamp(1.75rem,3.5vw,2.4rem); font-weight: 200; letter-spacing: -0.035em; color: #111; line-height: 1.1; margin: 0; }
 
         /* ── Grid ── */
@@ -86,9 +86,9 @@ export default function SiteMapPage() {
         }
         .smp-group-title {
           font-family: var(--font-geist-sans),sans-serif;
-          font-size: 0.56rem; font-weight: 600;
+          font-size: 0.75rem; font-weight: 600;
           letter-spacing: 0.24em; text-transform: uppercase;
-          color: var(--color-primary);
+          color: #374151;
         }
         .smp-group-links { padding: 0.5rem 0; }
         .smp-group-link {
@@ -101,8 +101,8 @@ export default function SiteMapPage() {
           transition: background 0.15s, color 0.15s, padding-left 0.15s;
         }
         .smp-group-link:last-child { border-bottom: none; }
-        .smp-group-link:hover { background: #f0f7f5; color: var(--color-primary); padding-left: 1.5rem; }
-        .smp-group-link::before { content: '→'; font-size: 0.65rem; margin-right: 0.5rem; opacity: 0.4; }
+        .smp-group-link:hover { background: #f0f7f5; color: #374151; padding-left: 1.5rem; }
+        .smp-group-link::before { content: '→'; font-size: 0.65rem; margin-right: 0.5rem;  }
       `}</style>
 
       {/* Hero */}

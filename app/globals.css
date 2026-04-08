@@ -12,7 +12,7 @@
   transition: border-color 0.2s, background-color 0.2s;
 }
 .chakra-card:hover, .chakra-card:focus-visible {
-  border-color: var(--color-primary);
+  border-color: #374151;
   background-color: #f6fffa;
   outline: none;
 }
@@ -21,7 +21,7 @@
   transition: opacity 0.2s;
 }
 .chakra-cta:hover, .chakra-cta:focus-visible {
-  opacity: 0.9;
+  
   outline: none;
 }
 @import "tailwindcss";
@@ -107,7 +107,7 @@ p {
 
 /* Links */
 a {
-  color: var(--color-primary);
+  color: #374151;
   text-decoration: none;
 }
 
@@ -166,7 +166,7 @@ a:hover .trek-card-img-wrap img {
 }
 /* ── GLOBAL SCROLL FADE-IN ── */
 .scroll-fade {
-  opacity: 0;
+  
   transform: translateY(26px);
   transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
               transform 0.75s cubic-bezier(0.22,1,0.36,1);
@@ -176,7 +176,7 @@ a:hover .trek-card-img-wrap img {
   transform: translateY(0);
 }
 .scroll-fade-stagger > * {
-  opacity: 0;
+  
   transform: translateY(22px);
   transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1),
               transform 0.65s cubic-bezier(0.22,1,0.36,1);
@@ -217,7 +217,7 @@ a:hover .trek-card-img-wrap img {
 
 /* Scroll fade smoother */
 .scroll-fade {
-  opacity: 0;
+  
   transform: translateY(36px);
   transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1),
               transform 0.9s cubic-bezier(0.16,1,0.3,1);
@@ -227,7 +227,7 @@ a:hover .trek-card-img-wrap img {
   transform: translateY(0);
 }
 .scroll-fade-stagger > * {
-  opacity: 0;
+  
   transform: translateY(28px);
   transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1),
               transform 0.75s cubic-bezier(0.16,1,0.3,1);
@@ -570,7 +570,6 @@ a:hover .trek-card-img-wrap img {
               transform 0.22s cubic-bezier(0.34,1.56,0.64,1) !important;
 }
 .ccl-btn-primary:hover {
-  opacity: 0.88 !important;
   transform: translateY(-2px) scale(1.02) !important;
 }
 
@@ -644,7 +643,7 @@ a:hover .trek-card-img-wrap img {
 .rj-rt-btn:hover {
   background: var(--color-primary) !important;
   color: #ffffff !important;
-  border-color: var(--color-primary) !important;
+  border-color: #374151 !important;
   transform: translateY(-2px) !important;
 }
 
@@ -666,8 +665,8 @@ a:hover .trek-card-img-wrap img {
               transform 0.22s cubic-bezier(0.34,1.56,0.64,1) !important;
 }
 .rj-back-link:hover {
-  border-color: var(--color-primary) !important;
-  color: var(--color-primary) !important;
+  border-color: #374151 !important;
+  color: #374151 !important;
   transform: translateY(-2px) !important;
 }
 
@@ -688,7 +687,7 @@ a:hover .trek-card-img-wrap img {
 .fac-grid > *:nth-child(6) { animation-delay: 0.40s; }
 
 @keyframes facCardIn {
-  from { opacity: 0; transform: translateY(20px); }
+  from {  transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -713,7 +712,7 @@ a:hover .trek-card-img-wrap img {
 /* ── LOCATIONS PAGES ── */
 
 @keyframes locFadeIn {
-  from { opacity: 0; transform: translateY(18px); }
+  from {  transform: translateY(18px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -800,7 +799,7 @@ a:hover,
 .bru-wknd,
 .bru-season,
 .bru-htc {
-  opacity: 0;
+  
   transform: translateY(28px);
   transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1),
               transform 0.85s cubic-bezier(0.16,1,0.3,1);
@@ -820,7 +819,7 @@ a:hover,
 .bru-season-cards.sf-visible > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
 .bru-season-cards.sf-visible > *:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
 .bru-season-cards > * {
-  opacity: 0;
+  
   transform: translateY(20px);
   transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
               transform 0.7s cubic-bezier(0.16,1,0.3,1);
@@ -828,7 +827,7 @@ a:hover,
 
 /* HTc grid — stagger */
 .bru-htc-grid > * {
-  opacity: 0;
+  
   transform: translateY(18px);
   transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1),
               transform 0.65s cubic-bezier(0.16,1,0.3,1);
@@ -849,7 +848,7 @@ a:hover,
 .bru-season-card:hover {
   transform: translateY(-6px) !important;
   box-shadow: 0 16px 40px rgba(0,0,0,0.09) !important;
-  border-top-color: var(--color-primary) !important;
+  border-top-color: #374151 !important;
 }
 
 /* HTc cell hover */
@@ -889,7 +888,7 @@ section h3 { margin-bottom: 0.6rem; }
 
 /* ===== FADE-IN ===== */
 .fade-in {
-  opacity: 0;
+  
   transform: translateY(30px);
   transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1),
               transform 0.8s cubic-bezier(0.16,1,0.3,1);

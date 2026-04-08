@@ -122,7 +122,7 @@ export default function DynamicReviewerSection({
                 <span
                   style={{
                     fontFamily: 'var(--font-geist-sans), sans-serif',
-                    fontSize: '0.56rem',
+                    fontSize: '0.75rem',
                     fontWeight: 500,
                     letterSpacing: '0.28em',
                     textTransform: 'uppercase',

@@ -488,7 +488,7 @@ export default async function TrekHubPage({ params }: PageProps) {
       <main style={{ width: '100%', padding: '0' }}>
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '4rem 2rem' }}>
           <h1 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontWeight: 200 }}>Location not found</h1>
-          <Link href="/treks" style={{ color: 'var(--color-primary)' }}>← Back to all treks</Link>
+          <Link href="/treks" style={{ color: '#374151' }}>← Back to all treks</Link>
         </div>
       </main>
     );
@@ -515,12 +515,12 @@ export default async function TrekHubPage({ params }: PageProps) {
             ]}
           />
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', margin: '1.5rem 0 1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
             <span style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
-              fontSize: '0.56rem', letterSpacing: '0.28em',
+              fontSize: '0.75rem', letterSpacing: '0.28em',
               textTransform: 'uppercase' as const,
-              color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7,
+              color: '#374151', fontWeight: 500
             }}>Trekking Base · Garhwal Himalayas</span>
           </div>
           <h1 style={{
@@ -544,9 +544,9 @@ export default async function TrekHubPage({ params }: PageProps) {
                     borderRadius: '100px', padding: '5px 14px',
                   }}>
                     <span style={{
-                      fontSize: '0.55rem', fontWeight: 600,
+                      fontSize: '0.75rem', fontWeight: 600,
                       letterSpacing: '0.18em', textTransform: 'uppercase' as const,
-                      color: 'var(--color-primary)', opacity: 0.75,
+                      color: '#374151',
                     }}>{trek.difficulty}</span>
                     {trek.title}
                   </span>
@@ -567,8 +567,8 @@ export default async function TrekHubPage({ params }: PageProps) {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Available Treks</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Available Treks</span>
       </div>
       <h2 style={{
         fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -656,7 +656,7 @@ export default async function TrekHubPage({ params }: PageProps) {
                     <span style={{
                       fontFamily: 'var(--font-geist-sans), sans-serif',
                       fontSize: '0.75rem', fontWeight: 500,
-                      color: 'var(--color-primary)',
+                      color: '#374151',
                     }}>View trek →</span>
                   </div>
                 </div>
@@ -668,7 +668,7 @@ export default async function TrekHubPage({ params }: PageProps) {
 
       <Link href="/treks" style={{
         fontFamily: 'var(--font-geist-sans), sans-serif',
-        color: 'var(--color-primary)', fontWeight: 500,
+        color: '#374151', fontWeight: 500,
         textDecoration: 'none', fontSize: '0.85rem',
       }}>
         Browse treks across locations →
@@ -709,8 +709,8 @@ export default async function TrekHubPage({ params }: PageProps) {
         `}</style>
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>
               {isFAQ ? 'FAQ' : String(i + 1).padStart(2, '0')}
             </span>
           </div>
@@ -745,7 +745,7 @@ export default async function TrekHubPage({ params }: PageProps) {
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, color: '#555555', lineHeight: 1.85 }}>
         {locationData.name} is a trekking destination in the Indian Himalayas. Explore the available treks below or discover{' '}
-        <Link href={`/retreats/${locationId}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>retreats in {locationData.name}</Link>.
+        <Link href={`/retreats/${locationId}`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>retreats in {locationData.name}</Link>.
       </p>
     </div>
   </section>
@@ -759,8 +759,8 @@ export default async function TrekHubPage({ params }: PageProps) {
       }}>
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Why Popular</span>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Why Popular</span>
           </div>
           <h2 style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -793,13 +793,13 @@ export default async function TrekHubPage({ params }: PageProps) {
       }}>
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', textAlign: 'center' as const }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-            <span style={{ width: '20px', height: '1px', background: 'var(--color-primary)', opacity: 0.4, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Plan Your Visit</span>
-            <span style={{ width: '20px', height: '1px', background: 'var(--color-primary)', opacity: 0.4, display: 'inline-block' }} />
+            <span style={{ width: '20px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Plan Your Visit</span>
+            <span style={{ width: '20px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
           </div>
           <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, color: '#555555', lineHeight: 1.85, marginBottom: '1.75rem' }}>
             {locationData.name} also offers{' '}
-            <Link href={`/retreats/${locationId}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+            <Link href={`/retreats/${locationId}`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
               wellness retreats and meditation experiences
             </Link>.
           </p>

@@ -67,7 +67,7 @@ export default function RatingBadge({ rating, variant = 'compact' }: RatingBadge
       >
         <span style={{ color: '#f59e0b' }}>★</span>
         <span style={{ fontWeight: 600 }}>{displayValue}</span>
-        <span style={{ opacity: 0.6 }}>· {count}</span>
+        <span style={{ }}>· {count}</span>
       </span>
     );
   }

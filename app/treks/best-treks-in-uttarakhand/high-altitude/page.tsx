@@ -108,13 +108,13 @@ export default function HighAltitudeTreksPage() {
     .ha-card-body p:last-child { margin-bottom:0; }
     .ha-pills { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1rem; }
     .ha-pill { font-family:var(--font-geist-sans),sans-serif; font-size:0.68rem; color:#555; background:#f7f9f7; border:1px solid #e5e7eb; border-radius:100px; padding:3px 10px; }
-    .ha-th { font-family:var(--font-geist-sans),sans-serif; font-size:0.55rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color:var(--color-primary); opacity:0.7; padding:0.75rem 1rem; text-align:left; }
+    .ha-th { font-family:var(--font-geist-sans),sans-serif; font-size: 0.75rem; font-weight:600; letter-spacing:0.2em; text-transform:uppercase; color: #374151; padding:0.75rem 1rem; text-align:left; }
     .ha-td { font-family:var(--font-geist-sans),sans-serif; font-size:0.84rem; font-weight:300; color:#444; padding:0.75rem 1rem; border-bottom:1px solid #f0f0f0; }
     .ha-table tbody tr:last-child td { border-bottom:none; }
     .ha-table tbody tr:hover td { background:#f7f9f7; }
     .ha-nav-link { display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1rem; border-bottom:1px solid #f0f0f0; font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; color:#333; text-decoration:none; }
-    .ha-nav-link:hover { background:#f7f9f7; color:var(--color-primary); }
-    .ha-nav-link::after { content:'→'; color:var(--color-primary); opacity:0.5; }
+    .ha-nav-link:hover { background:#f7f9f7; color: #374151; }
+    .ha-nav-link::after { content:'→'; color: #374151;  }
     .ha-nav-group { border:1px solid #e5e7eb; border-radius:8px; overflow:hidden; }
     .ha-nav-group .ha-nav-link:last-child { border-bottom:none; }
     @media(max-width:640px){
@@ -130,8 +130,8 @@ export default function HighAltitudeTreksPage() {
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <Breadcrumb items={BREADCRUMBS} />
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', margin:'1.5rem 0 1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>High Altitude · Uttarakhand</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>High Altitude · Uttarakhand</span>
       </div>
       <h1 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.75rem,3.5vw,2.4rem)', fontWeight:200, letterSpacing:'-0.035em', color:'#111', lineHeight:1.1, margin:'0 0 1.5rem' }}>
         High-Altitude Treks in Uttarakhand — Above 4,000 m
@@ -145,8 +145,8 @@ export default function HighAltitudeTreksPage() {
           { label:'Gateway · 3,850 m', href:'/treks/location/lohajung/brahmatal-trek', name:'Brahmatal', desc:'First high-altitude experience. Moderate, gradual gain over 4 days.' },
         ].map(c => (
           <div key={c.href} style={{ background:'#fff', border:'1px solid #e5e7eb', borderLeft:'3px solid var(--color-primary)', borderRadius:'8px', padding:'1rem 1.25rem', fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', lineHeight:1.85, color:'#555' }}>
-            <div style={{ fontSize:'0.55rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'var(--color-primary)', opacity:0.7, marginBottom:'0.35rem' }}>{c.label}</div>
-            <span style={{ fontWeight:500, color:'#111' }}><Link href={c.href} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>{c.name}</Link></span>{' '}
+            <div style={{ fontSize: '0.75rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color: '#374151', marginBottom:'0.35rem' }}>{c.label}</div>
+            <span style={{ fontWeight:500, color:'#111' }}><Link href={c.href} style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>{c.name}</Link></span>{' '}
             <span style={{ fontWeight:300 }}>— {c.desc}</span>
           </div>
         ))}
@@ -156,7 +156,7 @@ export default function HighAltitudeTreksPage() {
         Above 4,000 metres, the Himalayan landscape changes fundamentally. Treeline gives way to exposed moraine and glacial terrain, oxygen pressure drops to levels that affect decision-making, and weather windows shrink to hours. These treks demand prior altitude experience, 6–8 weeks of structured fitness preparation, and genuine respect for mountain conditions. The reward: landscapes, views, and experiences that simply do not exist at lower elevations.
       </p>
       <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', margin:0 }}>
-        These routes are drawn from our <Link href={PARENT_PATH} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>complete ranking of the 10 best treks in Uttarakhand</Link>. New to trekking? Start with the <Link href={`${PARENT_PATH}/beginner`} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>beginner treks</Link> page instead.
+        These routes are drawn from our <Link href={PARENT_PATH} style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>complete ranking of the 10 best treks in Uttarakhand</Link>. New to trekking? Start with the <Link href={`${PARENT_PATH}/beginner`} style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>beginner treks</Link> page instead.
       </p>
     </div>
   </section>
@@ -165,8 +165,8 @@ export default function HighAltitudeTreksPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Three Routes</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Three Routes</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'2rem' }}>Three Altitude Experiences</h2>
 
@@ -182,7 +182,7 @@ export default function HighAltitudeTreksPage() {
             <span className="ha-pill">May–Jun, Sep–Oct</span>
             <span className="ha-pill">Lohajung, Garhwal</span>
           </div>
-          <p><Link href="/treks/location/lohajung/roopkund-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Roopkund</Link> is the highest featured trek and India&apos;s most iconic high-altitude route. A 53 km, 7-day expedition from Lohajung to a glacial lake at 4,800 metres, known for centuries-old skeletal remains at its shores. The route crosses the vast Bedni Bugyal alpine meadow (one of the largest in Asia), navigates moraine fields above 4,200 m, and demands sustained altitude tolerance across multiple days above 4,000 m.</p>
+          <p><Link href="/treks/location/lohajung/roopkund-trek" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Roopkund</Link> is the highest featured trek and India&apos;s most iconic high-altitude route. A 53 km, 7-day expedition from Lohajung to a glacial lake at 4,800 metres, known for centuries-old skeletal remains at its shores. The route crosses the vast Bedni Bugyal alpine meadow (one of the largest in Asia), navigates moraine fields above 4,200 m, and demands sustained altitude tolerance across multiple days above 4,000 m.</p>
           <p><strong style={{ fontWeight:500, color:'#111' }}>Altitude profile:</strong> Gradual gain through forest (Day 1–2), exposed alpine meadow at 3,600 m (Day 3), moraine traverse above 4,200 m (Day 4–5), and the final lake approach at 4,800 m. Two full acclimatisation stops are built into the itinerary. The sustained time above 4,000 m — not just a single summit push — is what makes Roopkund uniquely demanding.</p>
         </div>
       </div>
@@ -199,9 +199,9 @@ export default function HighAltitudeTreksPage() {
             <span className="ha-pill">Mar–May</span>
             <span className="ha-pill">Joshimath, Garhwal</span>
           </div>
-          <p><Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Pangarchulla</Link> is one of the few accessible true peak summits in Uttarakhand — not a pass, not a lake, but the top of a mountain with 360-degree views of Nanda Devi, Dronagiri, Chaukhamba, and the entire Nanda Devi Sanctuary. The route follows the Kuari Pass approach before diverging toward a steep snow-and-scree ascent with an alpine-start summit day. Crampons required.</p>
+          <p><Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Pangarchulla</Link> is one of the few accessible true peak summits in Uttarakhand — not a pass, not a lake, but the top of a mountain with 360-degree views of Nanda Devi, Dronagiri, Chaukhamba, and the entire Nanda Devi Sanctuary. The route follows the Kuari Pass approach before diverging toward a steep snow-and-scree ascent with an alpine-start summit day. Crampons required.</p>
           <p><strong style={{ fontWeight:500, color:'#111' }}>Altitude profile:</strong> The approach follows the moderate Kuari Pass trail (gradual gain to 3,400 m over 3 days), then diverts into steep, technical terrain. Summit day gains 1,200 m from high camp in a single push starting before dawn — the most physically demanding single day on any featured trek. The altitude is slightly lower than Roopkund, but the concentrated summit push is more intense.</p>
-          <p>Choosing between the two Garhwal high-altitude routes? <Link href="/treks/roopkund-vs-pangarchulla" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Compare Roopkund vs Pangarchulla →</Link></p>
+          <p>Choosing between the two Garhwal high-altitude routes? <Link href="/treks/roopkund-vs-pangarchulla" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Compare Roopkund vs Pangarchulla →</Link></p>
         </div>
       </div>
 
@@ -212,12 +212,12 @@ export default function HighAltitudeTreksPage() {
           <h2>Brahmatal — 3,850 m — Gateway to High Altitude</h2>
           <div className="ha-pills">
             <span className="ha-pill">3,850 m</span>
-            <span className="ha-pill" style={{ color:'var(--color-primary)', borderColor:'rgba(15,118,110,0.25)', background:'rgba(15,118,110,0.05)' }}>Moderate</span>
+            <span className="ha-pill" style={{ color: '#374151', borderColor:'rgba(15,118,110,0.25)', background:'rgba(15,118,110,0.05)' }}>Moderate</span>
             <span className="ha-pill">4 days</span>
             <span className="ha-pill">Dec–Mar</span>
             <span className="ha-pill">Lohajung, Garhwal</span>
           </div>
-          <p><Link href="/treks/location/lohajung/brahmatal-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Brahmatal</Link> is the recommended stepping stone before attempting Roopkund or Pangarchulla. At 3,850 m, it provides genuine high-altitude exposure (above treeline, reduced oxygen, cold) with moderate difficulty and gradual altitude gain. The 4-day duration means limited time at altitude — enough to test your body&apos;s response without the sustained multi-day exposure of the Challenging routes.</p>
+          <p><Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Brahmatal</Link> is the recommended stepping stone before attempting Roopkund or Pangarchulla. At 3,850 m, it provides genuine high-altitude exposure (above treeline, reduced oxygen, cold) with moderate difficulty and gradual altitude gain. The 4-day duration means limited time at altitude — enough to test your body&apos;s response without the sustained multi-day exposure of the Challenging routes.</p>
           <p><strong style={{ fontWeight:500, color:'#111' }}>Why it matters as a stepping stone:</strong> If you handle 3,850 m well — no persistent headache, good sleep quality, maintained appetite — you are likely ready for Roopkund (4,800 m) or Pangarchulla (4,590 m) after additional fitness preparation. If altitude affects you significantly on Brahmatal, you know to invest more in acclimatisation before attempting higher routes.</p>
         </div>
       </div>
@@ -225,7 +225,7 @@ export default function HighAltitudeTreksPage() {
       {/* Callout */}
       <div style={{ background:'#f7f9f7', border:'1px solid #e5e7eb', borderLeft:'3px solid var(--color-primary)', borderRadius:'8px', padding:'1rem 1.25rem', marginTop:'1.5rem', fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555' }}>
         <strong style={{ fontWeight:500, color:'#111' }}>Choosing between the two challenging high-altitude routes?</strong>{' '}
-        Our detailed <Link href="/treks/roopkund-vs-pangarchulla" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Roopkund vs Pangarchulla comparison</Link> covers summit difficulty, fitness requirements, and seasonal windows in detail.
+        Our detailed <Link href="/treks/roopkund-vs-pangarchulla" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Roopkund vs Pangarchulla comparison</Link> covers summit difficulty, fitness requirements, and seasonal windows in detail.
       </div>
     </div>
   </section>
@@ -234,8 +234,8 @@ export default function HighAltitudeTreksPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Quick Comparison</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Quick Comparison</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>High-Altitude Treks at a Glance</h2>
       <div style={{ overflowX:'auto', border:'1px solid #e5e7eb', borderRadius:'8px', background:'#fff' }}>
@@ -251,10 +251,10 @@ export default function HighAltitudeTreksPage() {
             {[
               { href:'/treks/location/lohajung/roopkund-trek', name:'Roopkund', alt:'4,800 m', diff:'Challenging', days:'7', type:'Lake expedition', color:'#e65100' },
               { href:'/treks/location/joshimath/pangarchulla-trek', name:'Pangarchulla', alt:'4,590 m', diff:'Challenging', days:'6', type:'Peak summit', color:'#e65100' },
-              { href:'/treks/location/lohajung/brahmatal-trek', name:'Brahmatal', alt:'3,850 m', diff:'Moderate', days:'4', type:'Frozen lake', color:'var(--color-primary)' },
+              { href:'/treks/location/lohajung/brahmatal-trek', name:'Brahmatal', alt:'3,850 m', diff:'Moderate', days:'4', type:'Frozen lake', color: '#374151' },
             ].map(r => (
               <tr key={r.href}>
-                <td className="ha-td"><Link href={r.href} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>{r.name}</Link></td>
+                <td className="ha-td"><Link href={r.href} style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>{r.name}</Link></td>
                 <td className="ha-td">{r.alt}</td>
                 <td className="ha-td">
                   <span style={{ fontSize:'0.6rem', fontWeight:600, letterSpacing:'0.12em', textTransform:'uppercase' as const, borderRadius:'100px', padding:'2px 10px', display:'inline-block', color: r.color, background: r.color === '#e65100' ? 'rgba(230,81,0,0.07)' : 'rgba(15,118,110,0.07)', border: `1px solid ${r.color === '#e65100' ? 'rgba(230,81,0,0.2)' : 'rgba(15,118,110,0.2)'}` }}>{r.diff}</span>
@@ -273,15 +273,15 @@ export default function HighAltitudeTreksPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Preparation</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Preparation</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>Preparing for High Altitude</h2>
       <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', marginBottom:'1rem' }}>
         The single most important factor for safe high-altitude trekking is prior mountain experience. The recommended progression: Brahmatal (3,850 m) → Kedarkantha (3,810 m summit push) → Pangarchulla or Roopkund (4,500+ m). Each step tests your body&apos;s altitude response in progressively more demanding conditions.
       </p>
       <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', marginBottom:0 }}>
-        Physical preparation for routes above 4,000 m requires 6–8 weeks minimum: running or cycling (30–45 min, 4×/week), loaded stair climbing (15 kg pack, 2×/week), and core stability work. Our <Link href="/treks/garhwal-himalayas/fitness-guide" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>8-week fitness guide</Link> provides a week-by-week programme targeting Garhwal high-altitude routes specifically. For gear requirements, see the <Link href="/treks/garhwal-himalayas/packing-checklist" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>packing checklist</Link> which includes a high-altitude section covering crampons, altitude medication, and layering for sustained cold.
+        Physical preparation for routes above 4,000 m requires 6–8 weeks minimum: running or cycling (30–45 min, 4×/week), loaded stair climbing (15 kg pack, 2×/week), and core stability work. Our <Link href="/treks/garhwal-himalayas/fitness-guide" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>8-week fitness guide</Link> provides a week-by-week programme targeting Garhwal high-altitude routes specifically. For gear requirements, see the <Link href="/treks/garhwal-himalayas/packing-checklist" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>packing checklist</Link> which includes a high-altitude section covering crampons, altitude medication, and layering for sustained cold.
       </p>
     </div>
   </section>
@@ -292,8 +292,8 @@ export default function HighAltitudeTreksPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>FAQ</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>FAQ</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>Frequently Asked Questions</h2>
       <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
@@ -304,8 +304,8 @@ export default function HighAltitudeTreksPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Explore More</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Explore More</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>Browse by Category</h2>
       <div className="ha-nav-group">

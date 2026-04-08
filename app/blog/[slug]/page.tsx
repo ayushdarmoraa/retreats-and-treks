@@ -49,7 +49,7 @@ export default async function BlogPostPage({ params }: PageProps) {
       <main style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
         <h1>Blog post not found</h1>
         <p>This blog post doesn&apos;t exist. Return to{' '}
-          <Link href="/blog" style={{ color: 'var(--color-primary)' }}>all blog posts</Link>.
+          <Link href="/blog" style={{ color: '#374151' }}>all blog posts</Link>.
         </p>
       </main>
     );
@@ -95,13 +95,13 @@ export default async function BlogPostPage({ params }: PageProps) {
         .blg-prose ul li { position: relative; padding: 0.6rem 1rem 0.6rem 2rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #555555; line-height: 1.75; border-bottom: 1px solid #f0f0f0; transition: background 0.12s; }
         .blg-prose ul li:last-child { border-bottom: none; }
         .blg-prose ul li:hover { background: #f7f9f7; }
-        .blg-prose ul li::before { content: '→'; position: absolute; left: 0.75rem; color: var(--color-primary); opacity: 0.5; font-size: 0.75rem; top: 0.65rem; }
+        .blg-prose ul li::before { content: '→'; position: absolute; left: 0.75rem; color: #374151;  font-size: 0.75rem; top: 0.65rem; }
         .blg-prose ol { padding-left: 0; list-style: none; margin: 0 0 1.25rem; counter-reset: blg-ol; border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; background: #fff; }
         .blg-prose ol li { counter-increment: blg-ol; position: relative; padding: 0.6rem 1rem 0.6rem 2rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #555555; line-height: 1.75; border-bottom: 1px solid #f0f0f0; }
         .blg-prose ol li:last-child { border-bottom: none; }
-        .blg-prose ol li::before { content: counter(blg-ol) '.'; position: absolute; left: 0.75rem; color: var(--color-primary); font-size: 0.75rem; font-weight: 600; top: 0.65rem; }
-        .blg-prose a { color: var(--color-primary); font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(15,118,110,0.25); }
-        .blg-prose a:hover { border-bottom-color: var(--color-primary); }
+        .blg-prose ol li::before { content: counter(blg-ol) '.'; position: absolute; left: 0.75rem; color: #374151; font-size: 0.75rem; font-weight: 600; top: 0.65rem; }
+        .blg-prose a { color: #374151; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(15,118,110,0.25); }
+        .blg-prose a:hover { border-bottom-color: #374151; }
         .blg-prose strong { font-weight: 500; color: #222222; }
         .blg-prose blockquote { border-left: 3px solid var(--color-primary); margin: 1.75rem 0; padding: 0.85rem 1.25rem; background: #f7f9f7; border-radius: 0 8px 8px 0; color: #555; }
 
@@ -109,25 +109,25 @@ export default async function BlogPostPage({ params }: PageProps) {
         .blg-related-card { background: #fff; border: 1px solid #e5e7eb; border-top: 2px solid var(--color-primary); border-radius: 8px; overflow: hidden; }
         .blg-related-link { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; border-bottom: 1px solid #f0f0f0; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #333; text-decoration: none; transition: background 0.15s, color 0.15s; }
         .blg-related-link:last-child { border-bottom: none; }
-        .blg-related-link:hover { background: #f7f9f7; color: var(--color-primary); }
-        .blg-related-link::after { content: '→'; color: var(--color-primary); opacity: 0.5; }
+        .blg-related-link:hover { background: #f7f9f7; color: #374151; }
+        .blg-related-link::after { content: '→'; color: #374151;  }
 
         /* Nav */
         .blg-nav-group { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
         .blg-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; border-bottom: 1px solid #f0f0f0; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #333; text-decoration: none; transition: background 0.15s, color 0.15s; }
         .blg-nav-link:last-child { border-bottom: none; }
-        .blg-nav-link:hover { background: #f7f9f7; color: var(--color-primary); }
-        .blg-nav-link.back::before { content: '←'; color: var(--color-primary); opacity: 0.5; margin-right: 0.5rem; }
+        .blg-nav-link:hover { background: #f7f9f7; color: #374151; }
+        .blg-nav-link.back::before { content: '←'; color: #374151;  margin-right: 0.5rem; }
 
         /* CTA inline strip */
         .blg-cta-strip { background: #fff; border: 1px solid #e5e7eb; border-left: 3px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; }
-        .blg-cta-strip a { color: var(--color-primary); font-weight: 500; text-decoration: none; }
+        .blg-cta-strip a { color: #374151; font-weight: 500; text-decoration: none; }
         .blg-cta-strip a:hover { text-decoration: underline; }
 
         /* Meta */
         .blg-meta { display: flex; flex-wrap: wrap; gap: 0.3rem 0.75rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 300; color: #888; align-items: center; }
-        .blg-meta-dot { opacity: 0.3; }
-        .blg-category { display: inline-block; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.18rem 0.6rem; border-radius: 3px; background: rgba(15,118,110,0.08); color: var(--color-primary); text-decoration: none; transition: background 0.15s; }
+        .blg-meta-dot {  }
+        .blg-category { display: inline-block; font-size: 0.58rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; padding: 0.18rem 0.6rem; border-radius: 3px; background: rgba(15,118,110,0.08); color: #374151; text-decoration: none; transition: background 0.15s; }
         .blg-category:hover { background: rgba(15,118,110,0.15); }
 
         @media (max-width: 640px) {
@@ -148,8 +148,8 @@ export default async function BlogPostPage({ params }: PageProps) {
         <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
           <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-              <span style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>
+              <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>
                 Blog · {blog.category}
               </span>
             </div>
@@ -204,7 +204,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '3rem', paddingBottom: '3rem', borderBottom: '1px solid #e5e7eb' }}>
           <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
             <div className="blg-cta-strip">
-              <div style={{ fontSize: '0.55rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', opacity: 0.7, marginBottom: '0.35rem' }}>Experience It</div>
+              <div style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: '#374151', marginBottom: '0.35rem' }}>Experience It</div>
               Ready to experience what we write about? Explore our{' '}
               <Link href={blog.targetMoneyPage}>offerings →</Link>
               {' · '}
@@ -218,8 +218,8 @@ export default async function BlogPostPage({ params }: PageProps) {
           <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
             <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-                <span style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Related Experiences</span>
+                <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+                <span style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Related Experiences</span>
               </div>
               <h2 style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: 'clamp(1.4rem,2.5vw,1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
                 Explore related experiences

@@ -118,7 +118,7 @@ export default function WinterHimalayanRetreatsPage() {
     .win-loc-card-body { padding:1.5rem; }
     .win-loc-card-body h3 { font-family:var(--font-geist-sans),sans-serif; font-size:0.95rem; font-weight:500; color:#111; margin:0 0 0.85rem; letter-spacing:-0.01em; }
     .win-loc-card-body h3 a { color:inherit; text-decoration:none; }
-    .win-loc-card-body h3 a:hover { color:var(--color-primary); }
+    .win-loc-card-body h3 a:hover { color: #374151; }
     .win-loc-card-body p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0 0 0.75rem; }
     .win-loc-card-body p:last-child { margin-bottom:0; }
     .win-why-item { border-left:2px solid var(--color-primary); padding-left:1rem; margin-bottom:1.25rem; }
@@ -127,16 +127,16 @@ export default function WinterHimalayanRetreatsPage() {
     .win-month-item p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0; }
     .win-who-item { display:flex; gap:1rem; padding:0.85rem 0; border-bottom:1px solid #f0f0f0; }
     .win-who-item:last-child { border-bottom:none; }
-    .win-who-dot { flex-shrink:0; margin-top:0.55rem; width:8px; height:8px; border-radius:50%; background:var(--color-primary); opacity:0.6; }
+    .win-who-dot { flex-shrink:0; margin-top:0.75rem; width:8px; height:8px; border-radius:50%; background:var(--color-primary);  }
     .win-who-item p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0; }
     .win-format-item { display:flex; gap:1rem; padding:0.85rem 0; border-bottom:1px solid #f0f0f0; }
     .win-format-item:last-child { border-bottom:none; }
-    .win-format-dot { flex-shrink:0; margin-top:0.55rem; width:8px; height:8px; border-radius:50%; background:var(--color-primary); opacity:0.6; }
+    .win-format-dot { flex-shrink:0; margin-top:0.75rem; width:8px; height:8px; border-radius:50%; background:var(--color-primary);  }
     .win-format-item p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0; }
     .win-nav-link { display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1rem; border-bottom:1px solid #f0f0f0; font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; color:#333; text-decoration:none; }
-    .win-nav-link:hover { background:#f7f9f7; color:var(--color-primary); }
-    .win-nav-link.back::before { content:'←'; color:var(--color-primary); opacity:0.5; margin-right:0.5rem; }
-    .win-nav-link:not(.back)::after { content:'→'; color:var(--color-primary); opacity:0.5; }
+    .win-nav-link:hover { background:#f7f9f7; color: #374151; }
+    .win-nav-link.back::before { content:'←'; color: #374151;  margin-right:0.5rem; }
+    .win-nav-link:not(.back)::after { content:'→'; color: #374151;  }
     .win-nav-group { border:1px solid #e5e7eb; border-radius:8px; overflow:hidden; }
     .win-nav-group .win-nav-link:last-child { border-bottom:none; }
     @media(max-width:640px){
@@ -149,8 +149,8 @@ export default function WinterHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', margin:'0 0 1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Winter Retreats · Dec–Feb</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Winter Retreats · Dec–Feb</span>
       </div>
       <h1 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.75rem,3.5vw,2.4rem)', fontWeight:200, letterSpacing:'-0.035em', color:'#111', lineHeight:1.1, margin:'0 0 1.5rem' }}>
         Winter Himalayan Retreats in India
@@ -172,8 +172,8 @@ export default function WinterHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Why Winter</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Why Winter</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'0.75rem' }}>
         Why Winter Changes the Retreat Experience
@@ -204,8 +204,8 @@ export default function WinterHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Four Locations</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Four Locations</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'0.75rem' }}>
         Our Winter Retreat Locations
@@ -219,7 +219,7 @@ export default function WinterHimalayanRetreatsPage() {
         <Image src="/Images/location/sankri.webp" alt="Sankri — snow-covered valley and pine forests in winter, Garhwal" width={600} height={200} sizes="(max-width: 768px) 100vw, 50vw" quality={70} />
         <div className="win-loc-card-body">
           <h3><Link href="/retreats/sankri">Sankri — Snow and High-Altitude Stillness</Link></h3>
-          <p>Sankri in winter is a snow-covered valley at the edge of the treeline. The village empties of trekkers. The Tons River slows. Pine forests hold snow on their branches, creating corridors of white silence. Temperatures drop below freezing at night, and mornings require real warmth — both external and internal. Retreats here operate in genuine mountain winter: wood fires, layered clothing, and the kind of quiet that only comes with snow on the ground. This is for people who want winter as an active element of the retreat, not a backdrop. For seasonal planning, see our guide on <Link href="/blog/best-time-for-retreat-in-sankri" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>the best time for a retreat in Sankri</Link>.</p>
+          <p>Sankri in winter is a snow-covered valley at the edge of the treeline. The village empties of trekkers. The Tons River slows. Pine forests hold snow on their branches, creating corridors of white silence. Temperatures drop below freezing at night, and mornings require real warmth — both external and internal. Retreats here operate in genuine mountain winter: wood fires, layered clothing, and the kind of quiet that only comes with snow on the ground. This is for people who want winter as an active element of the retreat, not a backdrop. For seasonal planning, see our guide on <Link href="/blog/best-time-for-retreat-in-sankri" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>the best time for a retreat in Sankri</Link>.</p>
         </div>
       </div>
 
@@ -256,8 +256,8 @@ export default function WinterHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>When To Come</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>When To Come</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>
         Best Months for a Winter Retreat
@@ -278,8 +278,8 @@ export default function WinterHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Is This For You</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Is This For You</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'0.75rem' }}>
         Who a Winter Retreat Is For
@@ -307,8 +307,8 @@ export default function WinterHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Best Fit</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Best Fit</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'0.75rem' }}>
         Which Retreat Format Works Best in Winter
@@ -324,12 +324,12 @@ export default function WinterHimalayanRetreatsPage() {
         ].map(item => (
           <div key={item.href} className="win-format-item">
             <div className="win-format-dot" />
-            <p><Link href={item.href} style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>{item.label}</Link>{' — '}{item.body}</p>
+            <p><Link href={item.href} style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>{item.label}</Link>{' — '}{item.body}</p>
           </div>
         ))}
       </div>
       <p style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', fontWeight:300, lineHeight:1.85, color:'#555', marginTop:'1.5rem', marginBottom:0 }}>
-        For a broader view of how all retreat formats are structured, see our complete guide to <Link href="/retreats/himalayan-retreats" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Himalayan Retreats in India</Link>.
+        For a broader view of how all retreat formats are structured, see our complete guide to <Link href="/retreats/himalayan-retreats" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Himalayan Retreats in India</Link>.
       </p>
     </div>
   </section>
@@ -338,8 +338,8 @@ export default function WinterHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>FAQ</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>FAQ</span>
       </div>
       <h2 style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'clamp(1.4rem,2.5vw,1.85rem)', fontWeight:200, letterSpacing:'-0.03em', color:'#111', lineHeight:1.15, marginBottom:'1.75rem' }}>
         Frequently Asked Questions
@@ -352,8 +352,8 @@ export default function WinterHimalayanRetreatsPage() {
   <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem' }}>
     <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
       <div style={{ display:'flex', alignItems:'center', gap:'0.75rem', marginBottom:'1rem' }}>
-        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)', opacity:0.5, display:'inline-block' }} />
-        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.56rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color:'var(--color-primary)', fontWeight:500, opacity:0.7 }}>Explore More</span>
+        <span style={{ width:'24px', height:'1px', background:'var(--color-primary)',  display:'inline-block' }} />
+        <span style={{ fontFamily:'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing:'0.28em', textTransform:'uppercase' as const, color: '#374151', fontWeight:500}}>Explore More</span>
       </div>
       <div className="win-nav-group">
         <Link href="/retreats/himalayan-retreats" className="win-nav-link back">Himalayan Retreats</Link>

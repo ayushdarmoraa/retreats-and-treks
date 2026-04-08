@@ -87,27 +87,27 @@ export default function TrekNearDelhiPage() {
         .tnd-h2 { font-family:var(--font-geist-sans),sans-serif; font-size:clamp(1.4rem,2.5vw,1.85rem); font-weight:200; letter-spacing:-0.03em; color:#111; line-height:1.15; margin:0 0 0.75rem; }
         .tnd-h3 { font-family:var(--font-geist-sans),sans-serif; font-size:0.95rem; font-weight:500; color:#111; letter-spacing:-0.01em; margin:0 0 0.4rem; }
         .tnd-eyebrow { display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem; }
-        .tnd-eyebrow-line { width:24px; height:1px; background:var(--color-primary); opacity:0.5; display:inline-block; }
-        .tnd-eyebrow-text { font-size:0.56rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--color-primary); font-weight:500; opacity:0.7; }
-        .tnd-link { color:var(--color-primary); font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
-        .tnd-link:hover { border-bottom-color:var(--color-primary); }
+        .tnd-eyebrow-line { width:24px; height:1px; background:var(--color-primary);  display:inline-block; }
+        .tnd-eyebrow-text { font-size: 0.75rem; letter-spacing:0.28em; text-transform:uppercase; color: #374151; font-weight:500; }
+        .tnd-link { color: #374151; font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
+        .tnd-link:hover { border-bottom-color: #374151; }
         .tnd-trek-card { background:#fff; border:1px solid #eef0ee; border-top:2px solid var(--color-primary); border-radius:8px; padding:1.25rem 1.5rem; margin-bottom:0.75rem; transition:transform 0.18s,box-shadow 0.18s; }
         .tnd-trek-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,0.07); }
         .tnd-trek-card h3 a { color:#111; text-decoration:none; }
-        .tnd-trek-card h3 a:hover { color:var(--color-primary); }
+        .tnd-trek-card h3 a:hover { color: #374151; }
         .tnd-why-item { border-left:2px solid var(--color-primary); padding-left:1rem; margin-bottom:1.25rem; }
         .tnd-why-item strong { display:block; font-size:0.82rem; font-weight:500; color:#111; margin-bottom:0.2rem; }
         .tnd-who-item { display:flex; gap:0.75rem; padding:0.9rem 1rem; border-bottom:1px solid #f0f0f0; }
         .tnd-who-item:last-child { border-bottom:none; }
-        .tnd-who-dot { width:6px; height:6px; border-radius:50%; background:var(--color-primary); flex-shrink:0; margin-top:0.55rem; opacity:0.6; }
+        .tnd-who-dot { width:6px; height:6px; border-radius:50%; background:var(--color-primary); flex-shrink:0; margin-top:0.75rem;  }
         .tnd-distance-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:0.75rem; margin-bottom:1.25rem; }
         .tnd-distance-card { background:#fff; border:1px solid #eef0ee; border-radius:8px; padding:1rem 1.25rem; }
-        .tnd-distance-label { font-size:0.62rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color:var(--color-primary); display:block; margin-bottom:0.3rem; }
+        .tnd-distance-label { font-size:0.62rem; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; color: #374151; display:block; margin-bottom:0.3rem; }
         .tnd-distance-time { font-size:1rem; font-weight:200; color:#111; letter-spacing:-0.02em; display:block; margin-bottom:0.3rem; }
         .tnd-season-card { background:#fff; border:1px solid #eef0ee; border-radius:8px; padding:1rem 1.25rem; margin-bottom:0.75rem; }
-        .tnd-season-label { font-size:0.75rem; font-weight:600; color:var(--color-primary); letter-spacing:0.05em; display:block; margin-bottom:0.35rem; }
+        .tnd-season-label { font-size:0.75rem; font-weight:600; color: #374151; letter-spacing:0.05em; display:block; margin-bottom:0.35rem; }
         .tnd-callout { background:#fff; border:1px solid #e5e7eb; border-left:3px solid var(--color-primary); border-radius:8px; padding:1rem 1.25rem; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; }
-        .tnd-callout a { color:var(--color-primary); font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
+        .tnd-callout a { color: #374151; font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
         @media(max-width:700px){ .tnd-distance-grid { grid-template-columns:1fr; } .tnd-trek-card { padding:1rem; } }
       `}</style>
 
@@ -208,7 +208,7 @@ export default function TrekNearDelhiPage() {
           </ul>
           <p style={{ lineHeight: 1.8, margin: 0 }}>
             Looking for restoration rather than trail time? Our{' '}
-            <Link href="/retreats/retreats-near-delhi" style={{ color: 'var(--color-primary)' }}>
+            <Link href="/retreats/retreats-near-delhi" style={{ color: '#374151' }}>
               Himalayan retreats near Delhi
             </Link>{' '}
             guide covers yoga, meditation, and wellness programmes within the same driving
@@ -339,7 +339,7 @@ export default function TrekNearDelhiPage() {
         <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'3rem', paddingBottom:'3rem', borderBottom:'1px solid #e5e7eb' }}>
           <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
             <div className="tnd-callout">
-              <p style={{ margin:0 }}>Exploring all trekking options? See the full <Link href="/treks" style={{ color:'var(--color-primary)', fontWeight:500, textDecoration:'none', borderBottom:'1px solid rgba(15,118,110,0.25)' }}>Himalayan treks directory</Link> for guided itineraries across all locations, difficulty levels, and durations.</p>
+              <p style={{ margin:0 }}>Exploring all trekking options? See the full <Link href="/treks" style={{ color: '#374151', fontWeight:500, textDecoration:'none', borderBottom:'1px solid rgba(15,118,110,0.25)' }}>Himalayan treks directory</Link> for guided itineraries across all locations, difficulty levels, and durations.</p>
             </div>
           </div>
         </section>

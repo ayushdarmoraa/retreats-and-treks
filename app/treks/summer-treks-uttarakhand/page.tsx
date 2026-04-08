@@ -87,25 +87,25 @@ export default function SummerTreksUttarakhandPage() {
       .smt-h2 { font-family:var(--font-geist-sans),sans-serif; font-size:clamp(1.4rem,2.5vw,1.85rem); font-weight:200; letter-spacing:-0.03em; color:#111; line-height:1.15; margin:0 0 0.75rem; }
       .smt-h3 { font-family:var(--font-geist-sans),sans-serif; font-size:0.95rem; font-weight:500; color:#111; letter-spacing:-0.01em; margin:0 0 0.4rem; }
       .smt-eyebrow { display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem; }
-      .smt-eyebrow-line { width:24px; height:1px; background:var(--color-primary); opacity:0.5; display:inline-block; }
-      .smt-eyebrow-text { font-size:0.56rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--color-primary); font-weight:500; opacity:0.7; }
-      .smt-link { color:var(--color-primary); font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
-      .smt-link:hover { border-bottom-color:var(--color-primary); }
+      .smt-eyebrow-line { width:24px; height:1px; background:var(--color-primary);  display:inline-block; }
+      .smt-eyebrow-text { font-size: 0.75rem; letter-spacing:0.28em; text-transform:uppercase; color: #374151; font-weight:500; }
+      .smt-link { color: #374151; font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
+      .smt-link:hover { border-bottom-color: #374151; }
 
       .smt-trek-card { background:#fff; border:1px solid #eef0ee; border-top:2px solid var(--color-primary); border-radius:8px; padding:1.25rem 1.5rem; margin-bottom:0.75rem; transition:transform 0.18s,box-shadow 0.18s; }
       .smt-trek-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,0.07); }
-      .smt-trek-link { display:inline-flex; align-items:center; gap:0.3rem; font-size:0.75rem; font-weight:500; color:var(--color-primary); text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); margin-top:0.5rem; }
-      .smt-trek-link:hover { border-bottom-color:var(--color-primary); }
+      .smt-trek-link { display:inline-flex; align-items:center; gap:0.3rem; font-size:0.75rem; font-weight:500; color: #374151; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); margin-top:0.5rem; }
+      .smt-trek-link:hover { border-bottom-color: #374151; }
 
       .smt-why-item { border-left:2px solid var(--color-primary); padding-left:1rem; margin-bottom:1.25rem; }
       .smt-why-item strong { display:block; font-size:0.82rem; font-weight:500; color:#111; margin-bottom:0.2rem; }
 
       .smt-who-item { display:flex; gap:0.75rem; padding:0.85rem 0; border-bottom:1px solid #f0f0f0; }
       .smt-who-item:last-child { border-bottom:none; }
-      .smt-who-dot { width:6px; height:6px; border-radius:50%; background:var(--color-primary); flex-shrink:0; margin-top:0.55rem; opacity:0.6; }
+      .smt-who-dot { width:6px; height:6px; border-radius:50%; background:var(--color-primary); flex-shrink:0; margin-top:0.75rem;  }
 
       .smt-callout { background:#fff; border:1px solid #e5e7eb; border-left:3px solid var(--color-primary); border-radius:8px; padding:1rem 1.25rem; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; }
-      .smt-callout a { color:var(--color-primary); font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
+      .smt-callout a { color: #374151; font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
 
       @media(max-width:700px){ .smt-trek-card { padding:1rem; } }
     `}</style>

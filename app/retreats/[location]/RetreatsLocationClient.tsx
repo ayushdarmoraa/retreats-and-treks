@@ -56,8 +56,7 @@ export default function RetreatsLocationClient({
       fontFamily: 'var(--font-geist-sans), sans-serif',
       fontSize: '0.52rem', fontWeight: 600,
       letterSpacing: '0.22em', textTransform: 'uppercase',
-      color: 'var(--color-primary)', opacity: 0.7,
-      whiteSpace: 'nowrap', flexShrink: 0,
+      color: '#374151', whiteSpace: 'nowrap', flexShrink: 0,
     }}>Guide</span>
     <div style={{ width: '1px', height: '14px', background: 'rgba(15,118,110,0.2)', flexShrink: 0 }} />
     <p style={{
@@ -68,7 +67,7 @@ export default function RetreatsLocationClient({
       For a broader understanding of formats, seasonal differences, and how mountain retreats are
       structured across regions, see our complete guide to{' '}
       <Link href="/retreats/himalayan-retreats" style={{
-        color: 'var(--color-primary)', textDecoration: 'none',
+        color: '#374151', textDecoration: 'none',
         borderBottom: '1px solid rgba(15,118,110,0.3)',
       }}>
         Himalayan Retreats in India
@@ -92,7 +91,7 @@ export default function RetreatsLocationClient({
       }}>
         <style>{`
           @keyframes rlc1FadeUp {
-            from { opacity: 0; transform: translateY(20px); }
+            from {  transform: translateY(20px); }
             to   { opacity: 1; transform: translateY(0); }
           }
 
@@ -110,8 +109,8 @@ export default function RetreatsLocationClient({
             font-family: 'Georgia', serif;
             font-size: 8rem;
             line-height: 0.6;
-            color: var(--color-primary);
-            opacity: 0.07;
+            color: #374151;
+            
             display: block;
             margin-bottom: 1.5rem;
             user-select: none;
@@ -128,7 +127,7 @@ export default function RetreatsLocationClient({
           .rlc1-eyebrow-line {
             width: 32px; height: 1px;
             background: var(--color-primary);
-            opacity: 0.5;
+            
             flex-shrink: 0;
           }
           .rlc1-eyebrow-text {
@@ -136,9 +135,8 @@ export default function RetreatsLocationClient({
             font-size: 0.58rem;
             letter-spacing: 0.28em;
             text-transform: uppercase;
-            color: var(--color-primary);
+            color: #374151;
             font-weight: 500;
-            opacity: 0.7;
           }
 
           /* Main text */
@@ -177,7 +175,7 @@ export default function RetreatsLocationClient({
             width: 6px; height: 6px;
             border-radius: 50%;
             background: var(--color-primary);
-            opacity: 0.5;
+            
             flex-shrink: 0;
           }
           .rlc1-location-text {
@@ -185,9 +183,9 @@ export default function RetreatsLocationClient({
             font-size: 0.7rem;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: var(--color-primary);
+            color: #374151;
             font-weight: 500;
-            opacity: 0.6;
+            
           }
         `}</style>
 
@@ -262,17 +260,16 @@ export default function RetreatsLocationClient({
           .rlc2-eyebrow-line {
             width: 24px; height: 1px;
             background: var(--color-primary);
-            opacity: 0.5;
+            
             flex-shrink: 0;
           }
           .rlc2-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem;
+            font-size: 0.75rem;
             letter-spacing: 0.28em;
             text-transform: uppercase;
-            color: var(--color-primary);
+            color: #374151;
             font-weight: 500;
-            opacity: 0.7;
           }
 
           .rlc2-title {
@@ -286,7 +283,7 @@ export default function RetreatsLocationClient({
           }
           .rlc2-title-accent {
             display: block;
-            color: var(--color-primary);
+            color: #374151;
           }
 
           /* ── Right: description ── */
@@ -349,16 +346,15 @@ export default function RetreatsLocationClient({
           .rlc3-eyebrow-line {
             width: 24px; height: 1px;
             background: var(--color-primary);
-            opacity: 0.5;
+            
           }
           .rlc3-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem;
+            font-size: 0.75rem;
             letter-spacing: 0.28em;
             text-transform: uppercase;
-            color: var(--color-primary);
+            color: #374151;
             font-weight: 500;
-            opacity: 0.7;
           }
 
           .rlc3-heading {
@@ -371,7 +367,7 @@ export default function RetreatsLocationClient({
             margin: 0 0 3rem;
           }
           .rlc3-heading-accent {
-            color: var(--color-primary);
+            color: #374151;
           }
 
           /* ── Factor cards ── */
@@ -415,13 +411,13 @@ export default function RetreatsLocationClient({
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 0.65rem;
             font-weight: 600;
-            color: var(--color-primary);
-            opacity: 0.35;
+            color: #374151;
+            
             letter-spacing: 0.1em;
             padding-top: 0.2rem;
             transition: opacity 0.25s;
           }
-          .rlc3-factor:hover .rlc3-idx { opacity: 0.7; }
+          .rlc3-factor:hover .rlc3-idx { }
 
           .rlc3-factor-title {
             font-family: var(--font-geist-sans), sans-serif;
@@ -496,16 +492,15 @@ export default function RetreatsLocationClient({
             .rlc4-eyebrow-line {
               width: 24px; height: 1px;
               background: var(--color-primary);
-              opacity: 0.5;
+              
             }
             .rlc4-eyebrow-text {
               font-family: var(--font-geist-sans), sans-serif;
-              font-size: 0.56rem;
+              font-size: 0.75rem;
               letter-spacing: 0.28em;
               text-transform: uppercase;
-              color: var(--color-primary);
+              color: #374151;
               font-weight: 500;
-              opacity: 0.7;
             }
 
             .rlc4-heading {
@@ -573,12 +568,12 @@ export default function RetreatsLocationClient({
               font-size: 0.58rem;
               font-weight: 500;
               letter-spacing: 0.18em;
-              color: var(--color-primary);
-              opacity: 0.3;
+              color: #374151;
+              
               margin-bottom: 0.85rem;
               transition: opacity 0.25s;
             }
-            .rlc4-card:hover .rlc4-card-idx { opacity: 0.6; }
+            .rlc4-card:hover .rlc4-card-idx {  }
 
             .rlc4-card-title {
               font-family: var(--font-geist-sans), sans-serif;
@@ -605,7 +600,7 @@ export default function RetreatsLocationClient({
               font-family: var(--font-geist-sans), sans-serif;
               font-size: 0.7rem;
               font-weight: 500;
-              color: var(--color-primary);
+              color: #374151;
               transition: gap 0.22s;
             }
             .rlc4-card:hover .rlc4-cta { gap: 0.6rem; }
@@ -656,11 +651,11 @@ export default function RetreatsLocationClient({
             .rlc5-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
 
             .rlc5-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-            .rlc5-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+            .rlc5-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  }
             .rlc5-eyebrow-text {
               font-family: var(--font-geist-sans), sans-serif;
-              font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-              color: var(--color-primary); font-weight: 500; opacity: 0.7;
+              font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+              color: #374151; font-weight: 500;
             }
 
             .rlc5-heading {
@@ -703,7 +698,7 @@ export default function RetreatsLocationClient({
             }
             .rlc5-exp-time {
               font-family: var(--font-geist-sans), sans-serif;
-              font-size: 0.75rem; color: var(--color-primary); font-weight: 500;
+              font-size: 0.75rem; color: #374151; font-weight: 500;
               background: rgba(15,118,110,0.08); padding: 2px 8px; border-radius: 100px;
             }
             .rlc5-exp-desc {
@@ -750,11 +745,11 @@ export default function RetreatsLocationClient({
             .rlc5t-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
 
             .rlc5t-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-            .rlc5t-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+            .rlc5t-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  }
             .rlc5t-eyebrow-text {
               font-family: var(--font-geist-sans), sans-serif;
-              font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-              color: var(--color-primary); font-weight: 500; opacity: 0.7;
+              font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+              color: #374151; font-weight: 500;
             }
 
             .rlc5t-heading {
@@ -821,7 +816,7 @@ export default function RetreatsLocationClient({
               display: inline-flex; align-items: center; gap: 0.35rem;
               margin-top: 1rem;
               font-family: var(--font-geist-sans), sans-serif;
-              font-size: 0.7rem; font-weight: 500; color: var(--color-primary);
+              font-size: 0.7rem; font-weight: 500; color: #374151;
               transition: gap 0.22s;
             }
             .rlc5t-card:hover .rlc5t-cta { gap: 0.6rem; }
@@ -885,11 +880,11 @@ export default function RetreatsLocationClient({
             .rlc6-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
 
             .rlc6-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-            .rlc6-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+            .rlc6-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  }
             .rlc6-eyebrow-text {
               font-family: var(--font-geist-sans), sans-serif;
-              font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-              color: var(--color-primary); font-weight: 500; opacity: 0.7;
+              font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+              color: #374151; font-weight: 500;
             }
 
             .rlc6-heading {
@@ -950,7 +945,7 @@ export default function RetreatsLocationClient({
             }
             .rlc6-card-season {
               font-family: var(--font-geist-sans), sans-serif;
-              font-size: 0.68rem; color: var(--color-primary); font-weight: 500;
+              font-size: 0.68rem; color: #374151; font-weight: 500;
               background: rgba(15,118,110,0.08); padding: 2px 8px; border-radius: 100px;
             }
             .rlc6-card-desc {
@@ -1001,11 +996,11 @@ export default function RetreatsLocationClient({
             .rlc7-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
 
             .rlc7-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-            .rlc7-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+            .rlc7-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  }
             .rlc7-eyebrow-text {
               font-family: var(--font-geist-sans), sans-serif;
-              font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-              color: var(--color-primary); font-weight: 500; opacity: 0.7;
+              font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+              color: #374151; font-weight: 500;
             }
 
             .rlc7-heading {
@@ -1040,27 +1035,27 @@ export default function RetreatsLocationClient({
             .rlc7-card:hover {
               transform: translateY(-4px);
               box-shadow: 0 10px 32px rgba(0,0,0,0.08);
-              border-left-color: rgba(15,118,110,0.8);
+              border-left-color: #374151;
             }
 
             /* Subtle top green line on hover */
             .rlc7-card::after {
               content: ''; position: absolute;
               top: 0; left: 0; right: 0; height: 1px;
-              background: var(--color-primary); opacity: 0;
+              background: var(--color-primary); 
               transition: opacity 0.3s;
               border-radius: 8px 8px 0 0;
             }
-            .rlc7-card:hover::after { opacity: 0.3; }
+            .rlc7-card:hover::after {  }
 
             /* Index dot */
             .rlc7-card-dot {
               width: 6px; height: 6px; border-radius: 50%;
-              background: var(--color-primary); opacity: 0.25;
+              background: var(--color-primary); 
               display: inline-block; margin-bottom: 0.85rem;
               transition: opacity 0.25s;
             }
-            .rlc7-card:hover .rlc7-card-dot { opacity: 0.6; }
+            .rlc7-card:hover .rlc7-card-dot {  }
 
             .rlc7-card-name {
               font-family: var(--font-geist-sans), sans-serif;
@@ -1111,11 +1106,11 @@ export default function RetreatsLocationClient({
           .rlc8-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
 
           .rlc8-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-          .rlc8-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+          .rlc8-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  }
           .rlc8-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-            color: var(--color-primary); font-weight: 500; opacity: 0.7;
+            font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+            color: #374151; font-weight: 500;
           }
 
           .rlc8-heading {
@@ -1159,9 +1154,9 @@ export default function RetreatsLocationClient({
           .rlc8-label {
             display: inline-block;
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem; font-weight: 600;
+            font-size: 0.75rem; font-weight: 600;
             letter-spacing: 0.2em; text-transform: uppercase;
-            color: var(--color-primary);
+            color: #374151;
             background: rgba(15,118,110,0.07);
             padding: 3px 10px; border-radius: 100px;
             margin-bottom: 0.85rem;
@@ -1231,11 +1226,11 @@ export default function RetreatsLocationClient({
           .rlc9-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
 
           .rlc9-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-          .rlc9-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+          .rlc9-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  }
           .rlc9-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-            color: var(--color-primary); font-weight: 500; opacity: 0.7;
+            font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+            color: #374151; font-weight: 500;
           }
 
           .rlc9-heading {
@@ -1260,7 +1255,7 @@ export default function RetreatsLocationClient({
             top: 0.5rem; bottom: 0.5rem;
             width: 1px;
             background: linear-gradient(to bottom, var(--color-primary), rgba(15,118,110,0.1));
-            opacity: 0.25;
+            
           }
 
           /* ── Season row ── */
@@ -1354,11 +1349,11 @@ export default function RetreatsLocationClient({
             .rlc10-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
 
             .rlc10-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-            .rlc10-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+            .rlc10-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  }
             .rlc10-eyebrow-text {
               font-family: var(--font-geist-sans), sans-serif;
-              font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-              color: var(--color-primary); font-weight: 500; opacity: 0.7;
+              font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+              color: #374151; font-weight: 500;
             }
 
             .rlc10-heading {
@@ -1421,13 +1416,13 @@ export default function RetreatsLocationClient({
               border-radius: 50%;
               border: 1px solid #e5e7eb;
               display: flex; align-items: center; justify-content: center;
-              color: var(--color-primary);
+              color: #374151;
               font-size: 0.75rem;
               transition: background 0.25s, border-color 0.25s, transform 0.25s;
             }
             .rlc10-card:hover .rlc10-arrow {
               background: var(--color-primary);
-              border-color: var(--color-primary);
+              border-color: #374151;
               color: #ffffff;
               transform: translateX(3px);
             }
@@ -1480,11 +1475,11 @@ export default function RetreatsLocationClient({
           .rlc105-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
 
           .rlc105-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-          .rlc105-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+          .rlc105-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  }
           .rlc105-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-            color: var(--color-primary); font-weight: 500; opacity: 0.7;
+            font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+            color: #374151; font-weight: 500;
           }
 
           .rlc105-heading {
@@ -1546,7 +1541,7 @@ export default function RetreatsLocationClient({
             display: inline-flex; align-items: center; gap: 0.35rem;
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 0.7rem; font-weight: 500;
-            color: var(--color-primary);
+            color: #374151;
             transition: gap 0.22s;
           }
           .rlc105-card:hover .rlc105-cta { gap: 0.6rem; }
@@ -1630,8 +1625,8 @@ export default function RetreatsLocationClient({
           .rlc11-eyebrow-line { width: 24px; height: 1px; background: rgba(15,118,110,0.6); }
           .rlc11-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-            color: var(--color-primary); font-weight: 500; opacity: 0.8;
+            font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+            color: #374151; font-weight: 500;
           }
 
           .rlc11-network {
@@ -1712,7 +1707,7 @@ export default function RetreatsLocationClient({
           }
           .rlc11-btn-ghost:hover {
             border-color: rgba(15,118,110,0.5);
-            color: var(--color-primary);
+            color: #374151;
             transform: translateY(-2px);
           }
         `}</style>

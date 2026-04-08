@@ -18,7 +18,7 @@ import { notFound } from 'next/navigation';
 const sectionHeadingStyle: React.CSSProperties = {
   fontSize: '1.5rem',
   fontWeight: 700,
-  color: 'var(--color-primary)',
+  color: '#374151',
   marginTop: 'var(--space-xl)',
   marginBottom: 'var(--space-md)',
 };
@@ -283,7 +283,6 @@ export default function DeparturePage({ urlSlug }: { urlSlug: string }) {
                     key={i}
                     style={{
                       borderBottom: '1px solid #e5e7eb',
-                      opacity: dep.status === 'sold-out' ? 0.5 : 1,
                     }}
                   >
                     <td style={{ padding: '12px 16px', fontWeight: 600 }}>{dep.dateRange}</td>
@@ -402,7 +401,7 @@ export default function DeparturePage({ urlSlug }: { urlSlug: string }) {
           <p style={{ marginTop: 'var(--space-md)', fontSize: '0.9rem', color: 'var(--color-muted)' }}>
             → <Link
               href={`/treks/location/${trek.slug.includes('brahmatal') || trek.slug.includes('roopkund') ? 'lohajung' : 'joshimath'}/${trek.slug}`}
-              style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}
+              style={{ color: '#374151', textDecoration: 'underline' }}
             >
               Read the full {trek.shortName} trek guide
             </Link> for detailed day-by-day itinerary, packing list, and trail conditions.
@@ -440,7 +439,7 @@ export default function DeparturePage({ urlSlug }: { urlSlug: string }) {
         <p style={{ fontSize: '1.05rem', color: 'var(--color-muted)', marginBottom: 'var(--space-xs)' }}>
           {openDepartures.length} departure{openDepartures.length !== 1 ? 's' : ''} available · Limited to {trek.departures[0]?.groupSize || 16} per batch · Free cancellation up to 15 days
         </p>
-        <p style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--color-primary)', marginBottom: 'var(--space-md)' }}>
+        <p style={{ fontSize: '1.2rem', fontWeight: 700, color: '#374151', marginBottom: 'var(--space-md)' }}>
           From ₹{trek.basePrice.toLocaleString('en-IN')} per person
         </p>
         <div style={{ display: 'flex', gap: 'var(--space-md)', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -523,7 +522,7 @@ export default function DeparturePage({ urlSlug }: { urlSlug: string }) {
               background: '#f9fafb',
               borderRadius: 'var(--radius-sm)',
               border: '1px solid #e5e7eb',
-              color: 'var(--color-primary)',
+              color: '#374151',
               fontWeight: 600,
               textDecoration: 'none',
             }}
@@ -538,7 +537,7 @@ export default function DeparturePage({ urlSlug }: { urlSlug: string }) {
               background: '#f9fafb',
               borderRadius: 'var(--radius-sm)',
               border: '1px solid #e5e7eb',
-              color: 'var(--color-primary)',
+              color: '#374151',
               fontWeight: 600,
               textDecoration: 'none',
             }}
@@ -553,7 +552,7 @@ export default function DeparturePage({ urlSlug }: { urlSlug: string }) {
               background: '#f9fafb',
               borderRadius: 'var(--radius-sm)',
               border: '1px solid #e5e7eb',
-              color: 'var(--color-primary)',
+              color: '#374151',
               fontWeight: 600,
               textDecoration: 'none',
             }}
@@ -568,7 +567,7 @@ export default function DeparturePage({ urlSlug }: { urlSlug: string }) {
               background: '#f9fafb',
               borderRadius: 'var(--radius-sm)',
               border: '1px solid #e5e7eb',
-              color: 'var(--color-primary)',
+              color: '#374151',
               fontWeight: 600,
               textDecoration: 'none',
             }}

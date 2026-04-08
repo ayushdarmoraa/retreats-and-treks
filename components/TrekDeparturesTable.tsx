@@ -62,7 +62,7 @@ export default function TrekDeparturesTable({
 
       {/* Eyebrow */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
         <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500 }}>
           Departures
         </span>
@@ -74,7 +74,7 @@ export default function TrekDeparturesTable({
 
       <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, color: '#888888', marginBottom: '1.5rem', lineHeight: 1.6 }}>
         See upcoming{' '}
-        <Link href={`/treks/${trekSlug}/departures`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+        <Link href={`/treks/${trekSlug}/departures`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
           {trekTitle.toLowerCase()} departures
         </Link>{' '}
         for all available dates.
@@ -94,7 +94,7 @@ export default function TrekDeparturesTable({
                   fontWeight: 600,
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase' as const,
-                  color: 'var(--color-primary)',
+                  color: '#374151',
                   whiteSpace: 'nowrap' as const,
                 }}>{h}</th>
               ))}
@@ -122,7 +122,7 @@ export default function TrekDeparturesTable({
                     style={{
                       padding: '0.45rem 1rem',
                       background: 'transparent',
-                      color: 'var(--color-primary)',
+                      color: '#374151',
                       border: '1px solid rgba(15,118,110,0.35)',
                       borderRadius: '4px',
                       fontFamily: 'var(--font-geist-sans), sans-serif',

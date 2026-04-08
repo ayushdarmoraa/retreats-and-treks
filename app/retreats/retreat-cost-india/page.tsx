@@ -125,11 +125,11 @@ export default function RetreatCostIndiaPage() {
   .rci-section { width:100vw; margin-left:calc(-50vw + 50%); padding-top:4rem; padding-bottom:4rem; border-bottom:1px solid #e5e7eb; }
   .rci-inner { max-width:52rem; margin:0 auto; padding:0 2rem; }
   .rci-eyebrow { display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem; }
-  .rci-eyebrow-line { width:24px; height:1px; background:var(--color-primary); opacity:0.5; display:inline-block; }
-  .rci-eyebrow-text { font-family:var(--font-geist-sans),sans-serif; font-size:0.56rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--color-primary); font-weight:500; opacity:0.7; }
+  .rci-eyebrow-line { width:24px; height:1px; background:var(--color-primary);  display:inline-block; }
+  .rci-eyebrow-text { font-family:var(--font-geist-sans),sans-serif; font-size: 0.75rem; letter-spacing:0.28em; text-transform:uppercase; color: #374151; font-weight:500; }
   .rci-h1 { font-family:var(--font-geist-sans),sans-serif; font-size:clamp(1.75rem,3.5vw,2.4rem); font-weight:200; letter-spacing:-0.035em; color:#111; line-height:1.1; margin:0 0 1.5rem; }
   .rci-h2 { font-family:var(--font-geist-sans),sans-serif; font-size:clamp(1.4rem,2.5vw,1.85rem); font-weight:200; letter-spacing:-0.03em; color:#111; line-height:1.15; margin:0 0 1.5rem; }
-  .rci-h2 span { color:var(--color-primary); }
+  .rci-h2 span { color: #374151; }
   .rci-p { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0 0 1.25rem; }
   .rci-p:last-child { margin-bottom:0; }
   .rci-list { list-style:none; padding:0; margin:0 0 1.5rem; display:flex; flex-direction:column; gap:0.6rem; }
@@ -142,18 +142,18 @@ export default function RetreatCostIndiaPage() {
   .rci-loc-card { background:#fff; border:1px solid #eef0ee; border-radius:8px; padding:1.5rem; }
   .rci-loc-name { font-family:var(--font-geist-sans),sans-serif; font-size:0.95rem; font-weight:600; color:#111; margin:0 0 0.4rem; }
   .rci-loc-desc { font-family:var(--font-geist-sans),sans-serif; font-size:0.85rem; font-weight:300; color:#555; line-height:1.7; margin:0 0 0.6rem; }
-  .rci-loc-price { font-family:var(--font-geist-sans),sans-serif; font-size:0.85rem; font-weight:500; color:var(--color-primary); margin:0; }
+  .rci-loc-price { font-family:var(--font-geist-sans),sans-serif; font-size:0.85rem; font-weight:500; color: #374151; margin:0; }
   .rci-nav-group { border:1px solid #e5e7eb; border-radius:8px; overflow:hidden; }
   .rci-nav-link { display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1rem; border-bottom:1px solid #f0f0f0; font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; color:#333; text-decoration:none; }
   .rci-nav-link:last-child { border-bottom:none; }
-  .rci-nav-link:hover { background:#f7f9f7; color:var(--color-primary); }
-  .rci-nav-link::after { content:'→'; color:var(--color-primary); opacity:0.5; }
+  .rci-nav-link:hover { background:#f7f9f7; color: #374151; }
+  .rci-nav-link::after { content:'→'; color: #374151;  }
   .rci-table { width:100%; border-collapse:collapse; font-family:var(--font-geist-sans),sans-serif; font-size:0.85rem; }
   .rci-table th { text-align:left; padding:0.85rem 1rem; background:#f7f9f7; border-bottom:2px solid var(--color-primary); font-weight:500; color:#111; font-size:0.8rem; letter-spacing:0.02em; }
   .rci-table td { padding:0.85rem 1rem; border-bottom:1px solid #eef0ee; color:#555; font-weight:300; line-height:1.6; }
   .rci-table tr:last-child td { border-bottom:none; }
   .rci-table tr:hover td { background:#f7f9f7; }
-  .rci-download-link { display:inline-flex; align-items:center; gap:0.5rem; font-family:var(--font-geist-sans),sans-serif; font-size:0.85rem; font-weight:400; color:var(--color-primary); text-decoration:none; padding:0.7rem 1.25rem; border:1px solid var(--color-primary); border-radius:6px; transition:background 0.2s, color 0.2s; }
+  .rci-download-link { display:inline-flex; align-items:center; gap:0.5rem; font-family:var(--font-geist-sans),sans-serif; font-size:0.85rem; font-weight:400; color: #374151; text-decoration:none; padding:0.7rem 1.25rem; border:1px solid var(--color-primary); border-radius:6px; transition:background 0.2s, color 0.2s; }
   .rci-download-link:hover { background:var(--color-primary); color:#fff; }
   @media(max-width:640px){
     .rci-section { padding-top:3rem; padding-bottom:3rem; }
@@ -365,12 +365,12 @@ export default function RetreatCostIndiaPage() {
               <div className="rci-loc-card" style={{ borderLeft: '2px solid var(--color-primary)' }}>
                 <p className="rci-loc-name"><Link href="/retreats/journeys/burnout-recovery" style={{ color: 'inherit', textDecoration: 'none' }}>Burnout Recovery Retreat</Link></p>
                 <p className="rci-loc-desc">A 3-day weekend retreat designed for people feeling mentally exhausted from work or city life.</p>
-                <Link href="/retreats/journeys/burnout-recovery" style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.82rem', fontWeight: 500, color: 'var(--color-primary)', textDecoration: 'none' }}>View retreat details →</Link>
+                <Link href="/retreats/journeys/burnout-recovery" style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.82rem', fontWeight: 500, color: '#374151', textDecoration: 'none' }}>View retreat details →</Link>
               </div>
               <div className="rci-loc-card" style={{ borderLeft: '2px solid var(--color-primary)' }}>
                 <p className="rci-loc-name"><Link href="/retreats/journeys/rest-and-reset" style={{ color: 'inherit', textDecoration: 'none' }}>Rest &amp; Reset Retreat</Link></p>
                 <p className="rci-loc-desc">A nature-based retreat focused on quiet environments, forest immersion, and mental clarity.</p>
-                <Link href="/retreats/journeys/rest-and-reset" style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.82rem', fontWeight: 500, color: 'var(--color-primary)', textDecoration: 'none' }}>View retreat details →</Link>
+                <Link href="/retreats/journeys/rest-and-reset" style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.82rem', fontWeight: 500, color: '#374151', textDecoration: 'none' }}>View retreat details →</Link>
               </div>
             </div>
           </div>
