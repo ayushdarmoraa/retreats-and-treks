@@ -772,3 +772,88 @@ a:hover .trek-card-img-wrap img {
   box-shadow: 0 8px 24px rgba(0,0,0,0.07) !important;
   transform: translateY(-3px) !important;
 }
+
+/* ── BEST RETREAT IN UTTARAKHAND PAGE ── */
+
+/* Scroll fade — section level */
+.bru-cmp,
+.bru-yoga,
+.bru-med,
+.bru-lux,
+.bru-wknd,
+.bru-season,
+.bru-htc {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.85s cubic-bezier(0.16,1,0.3,1),
+              transform 0.85s cubic-bezier(0.16,1,0.3,1);
+}
+.bru-cmp.sf-visible,
+.bru-yoga.sf-visible,
+.bru-med.sf-visible,
+.bru-lux.sf-visible,
+.bru-wknd.sf-visible,
+.bru-season.sf-visible,
+.bru-htc.sf-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Season cards — stagger */
+.bru-season-cards.sf-visible > *:nth-child(1) { transition-delay: 0.05s; opacity: 1; transform: translateY(0); }
+.bru-season-cards.sf-visible > *:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+.bru-season-cards > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
+              transform 0.7s cubic-bezier(0.16,1,0.3,1);
+}
+
+/* HTc grid — stagger */
+.bru-htc-grid > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1),
+              transform 0.65s cubic-bezier(0.16,1,0.3,1);
+}
+.bru-htc-grid.sf-visible > *:nth-child(1) { transition-delay: 0.00s; opacity: 1; transform: translateY(0); }
+.bru-htc-grid.sf-visible > *:nth-child(2) { transition-delay: 0.08s; opacity: 1; transform: translateY(0); }
+.bru-htc-grid.sf-visible > *:nth-child(3) { transition-delay: 0.16s; opacity: 1; transform: translateY(0); }
+.bru-htc-grid.sf-visible > *:nth-child(4) { transition-delay: 0.24s; opacity: 1; transform: translateY(0); }
+.bru-htc-grid.sf-visible > *:nth-child(5) { transition-delay: 0.32s; opacity: 1; transform: translateY(0); }
+.bru-htc-grid.sf-visible > *:nth-child(6) { transition-delay: 0.40s; opacity: 1; transform: translateY(0); }
+
+/* Season card hover */
+.bru-season-card {
+  transition: transform 0.4s cubic-bezier(0.34,1.4,0.64,1),
+              box-shadow 0.4s cubic-bezier(0.34,1.4,0.64,1),
+              border-color 0.3s ease !important;
+}
+.bru-season-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.09) !important;
+  border-top-color: var(--color-primary) !important;
+}
+
+/* HTc cell hover */
+.bru-htc-cell {
+  transition: background 0.25s ease,
+              transform 0.35s cubic-bezier(0.34,1.4,0.64,1) !important;
+}
+.bru-htc-cell:hover {
+  transform: translateY(-3px) !important;
+}
+
+/* Table row hover — already in inline styles, strengthen here */
+.bru-table tbody tr {
+  transition: background 0.2s ease !important;
+}
+
+/* Spacing — slightly more breathing room on mobile */
+@media (max-width: 640px) {
+  .bru-cmp, .bru-yoga, .bru-med,
+  .bru-lux, .bru-wknd, .bru-season, .bru-htc {
+    padding: 3.5rem 0;
+  }
+}
+

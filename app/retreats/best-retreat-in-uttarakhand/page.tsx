@@ -410,7 +410,7 @@ export default function BestRetreatInUttarakhandPage() {
   }
 `}</style>
 
-<section className="bru-cmp" style={{ marginBottom: 0 }}>
+<section className="bru-cmp scroll-fade" style={{ marginBottom: 0 }}>
   <div className="bru-cmp-inner">
 
     {/* eyebrow */}
@@ -504,7 +504,7 @@ export default function BestRetreatInUttarakhandPage() {
   }
 `}</style>
 
-<section className="bru-yoga">
+<section className="bru-yoga scroll-fade">
   <div className="bru-yoga-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
@@ -583,7 +583,7 @@ export default function BestRetreatInUttarakhandPage() {
   }
 `}</style>
 
-<section className="bru-med">
+<section className="bru-med scroll-fade">
   <div className="bru-med-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
@@ -668,7 +668,7 @@ export default function BestRetreatInUttarakhandPage() {
   }
 `}</style>
 
-<section className="bru-lux">
+<section className="bru-lux scroll-fade">
   <div className="bru-lux-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
@@ -740,7 +740,7 @@ export default function BestRetreatInUttarakhandPage() {
   }
 `}</style>
 
-<section className="bru-wknd">
+<section className="bru-wknd scroll-fade">
   <div className="bru-wknd-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
@@ -881,7 +881,7 @@ export default function BestRetreatInUttarakhandPage() {
       Season determines which locations are at their peak and which offer off-season value.
     </p>
 
-    <div className="bru-season-cards">
+    <div className="bru-season-cards sf-stagger">
 
       <div className="bru-season-card">
         <span className="bru-season-card-label">April – June</span>
@@ -993,7 +993,7 @@ export default function BestRetreatInUttarakhandPage() {
   }
 `}</style>
 
-<section className="bru-htc">
+<section className="bru-htc scroll-fade">
   <div className="bru-htc-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
@@ -1019,7 +1019,7 @@ export default function BestRetreatInUttarakhandPage() {
       Five dimensions determine the right retreat.
     </p>
 
-    <div className="bru-htc-grid">
+    <div className="bru-htc-grid sf-stagger">
       {[
         { label: 'Duration', content: <><strong>Duration.</strong> Two to three days: Chakrata or Rishikesh weekend format. Five to seven days: Rishikesh deep program, Munsiyari immersion, or Sankri wilderness stay. Ten days or more: teacher training, silent retreat, or extended personal practice.</> },
         { label: 'Budget', content: <><strong>Budget.</strong> Chakrata and Sankri offer the most affordable mountain wellness experiences. Rishikesh spans every price bracket from ashram-basic to heritage-premium. Munsiyari skews toward the higher end due to its exclusivity and limited capacity.</> },
@@ -1060,11 +1060,11 @@ export default function BestRetreatInUttarakhandPage() {
 </section>
 
         {/* ── FAQ ───────────────────────────────────────────────────── */}
-<section style={{
+<section className="bru-faq scroll-fade" style={{
   width: '100vw',
   marginLeft: 'calc(-50vw + 50%)',
   background: '#f7f9f7',
-  padding: '5rem 0',
+  padding: '6rem 0',
 }}>
   <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '0 var(--space-md, 1.5rem)' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
