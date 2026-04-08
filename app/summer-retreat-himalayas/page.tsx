@@ -7,7 +7,7 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
-import SummerRetreatClient from '@/components/SummerRetreatClient';
+import DeferredSummerRetreatClient from '@/components/client/DeferredSummerRetreatClient';
 
 const PATH = '/summer-retreat-himalayas';
 
@@ -178,7 +178,7 @@ export default function SummerRetreatPage() {
           </p>
         </article>
       </TrackedPage>
-      <SummerRetreatClient />
+      <DeferredSummerRetreatClient />
     </>
   );
 }
