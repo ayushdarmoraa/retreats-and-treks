@@ -63,7 +63,7 @@ export default function TrekDeparturesTable({
       {/* Eyebrow */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
         <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500 }}>
           Departures
         </span>
       </div>
@@ -90,12 +90,11 @@ export default function TrekDeparturesTable({
                   padding: '0.75rem 1rem',
                   textAlign: 'left',
                   fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '0.55rem',
+                  fontSize: '0.75rem',
                   fontWeight: 600,
                   letterSpacing: '0.18em',
                   textTransform: 'uppercase' as const,
                   color: 'var(--color-primary)',
-                  opacity: 0.75,
                   whiteSpace: 'nowrap' as const,
                 }}>{h}</th>
               ))}
@@ -117,7 +116,7 @@ export default function TrekDeparturesTable({
                   {row.seats} left
                 </td>
                 <td style={{ padding: '0.9rem 1rem' }}>
-                  <button
+                      <button
                     type="button"
                     onClick={() => handleCheckAvailability(row.date)}
                     style={{
@@ -127,7 +126,7 @@ export default function TrekDeparturesTable({
                       border: '1px solid rgba(15,118,110,0.35)',
                       borderRadius: '4px',
                       fontFamily: 'var(--font-geist-sans), sans-serif',
-                      fontSize: '0.62rem',
+                          fontSize: '0.75rem',
                       fontWeight: 600,
                       letterSpacing: '0.12em',
                       textTransform: 'uppercase' as const,

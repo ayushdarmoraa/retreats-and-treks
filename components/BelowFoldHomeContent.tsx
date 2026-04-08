@@ -102,7 +102,7 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       top: 1rem;
       left: 1rem;
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.52rem;
+      font-size: 0.75rem;
       letter-spacing: 0.24em;
       text-transform: uppercase;
       color: #ffffff;
@@ -177,7 +177,7 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       align-items: center;
       gap: 0.4rem;
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.6rem;
+      font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -204,14 +204,14 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
 
     /* ── View all button ── */
     .retreat-view-all {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.65rem;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
@@ -366,10 +366,10 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       bottom: 0.75rem;
       left: 1rem;
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.55rem;
+      font-size: 0.75rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(236,228,208,0.75);
+      color: #374151;
       font-weight: 500;
     }
 
@@ -415,7 +415,7 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       align-items: center;
       gap: 0.35rem;
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.58rem;
+      font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
@@ -459,7 +459,7 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
   `}</style>
@@ -581,7 +581,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     .path-img-tag {
       display: inline-block;
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.52rem;
+      font-size: 0.75rem;
       letter-spacing: 0.24em;
       text-transform: uppercase;
       color: #ffffff;
@@ -650,7 +650,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       grid-template-columns: repeat(2, 1fr);
       gap: 1.75rem;
     }
-    @media (max-width: 768px) {
+      font-size: 0.75rem;
       .path-grid { grid-template-columns: 1fr; }
       .path-card-img { height: 260px; }
       .path-img-title { font-size: 1.3rem; }
@@ -674,7 +674,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
   `}</style>
@@ -794,7 +794,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
     .trek-pop-grid {
@@ -969,7 +969,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       align-items: center;
       justify-content: center;
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.68rem;
+      font-size: 0.75rem;
       font-weight: 600;
       color: var(--color-primary);
       letter-spacing: 0.05em;
@@ -1062,7 +1062,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
   `}</style>
@@ -1176,7 +1176,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
 
@@ -1534,7 +1534,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
   `}</style>
@@ -1751,7 +1751,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
   `}</style>
@@ -1862,7 +1862,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
 
@@ -2018,7 +2018,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     <p style={{
       fontFamily: 'var(--font-geist-sans), sans-serif',
       fontSize: '0.9rem',
-      color: 'rgba(80,70,55,0.6)',
+      color: '#1f2937',
       fontWeight: 300,
       textAlign: 'center',
       marginTop: '0.75rem',
@@ -2466,7 +2466,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
 </div>
       <p className="cta8-card-sub">
   No forms, no checkout. Just tell us what you&apos;re looking for — we&apos;ll take it from there.
-  <span style={{ display: 'block', marginTop: '0.3rem', opacity: 0.7 }}>
+  <span style={{ display: 'block', marginTop: '0.3rem', color: '#4b5563' }}>
     Custom pricing based on your plan.
   </span>
 </p>

@@ -401,12 +401,11 @@ useEffect(() => {
     }
     .ph-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.58rem;
+      font-size: 0.75rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
-      opacity: 0.7;
     }
     .ph-headline {
       font-family: var(--font-geist-sans), sans-serif;

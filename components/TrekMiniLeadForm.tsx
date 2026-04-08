@@ -109,7 +109,7 @@ export default function TrekMiniLeadForm({
       {/* Eyebrow */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
         <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500 }}>
           Check Availability
         </span>
       </div>
@@ -163,7 +163,7 @@ export default function TrekMiniLeadForm({
             border: 'none',
             borderRadius: '6px',
             fontFamily: 'var(--font-geist-sans), sans-serif',
-            fontSize: '0.62rem',
+            fontSize: '0.75rem',
             fontWeight: 600,
             letterSpacing: '0.18em',
             textTransform: 'uppercase' as const,

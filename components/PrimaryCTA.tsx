@@ -67,9 +67,9 @@ export default function PrimaryCTA({
           }} />
           <span style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
-            fontSize: '0.55rem', letterSpacing: '0.28em',
+            fontSize: '0.75rem', letterSpacing: '0.28em',
             textTransform: 'uppercase' as const,
-            color: 'var(--color-primary)', fontWeight: 500, opacity: 0.65,
+            color: '#374151', fontWeight: 500,
           }}>Ready to Trek?</span>
           <span style={{
             width: '20px', height: '1px',
