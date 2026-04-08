@@ -14,8 +14,8 @@ export const images = {
       src: '/Images/hero/himalayan-sunrise.webp',
       alt: 'Himalayan snow peaks at sunrise',
     },
-    mountainsnow: {
-      src: '/Images/hero/mountain-snow.webp',
+    heroimage: {
+      src: '/Images/hero/heroimage.jpg',
       alt: 'mountain snow',
     },
     valleyForest: {

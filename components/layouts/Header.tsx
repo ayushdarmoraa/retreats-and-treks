@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 // ── Logo image path ──
-const LOGO_IMAGE = '/Images/logo/headerlogo1.webp';
+const LOGO_IMAGE = '/Images/logo/retreatsandtreks2.jpg';
 
 export default function Header() {
   const [retreatOpen, setRetreatOpen] = useState(false);
@@ -151,7 +151,7 @@ export default function Header() {
           maxWidth: '72rem',
           margin: '0 auto',
           padding: '0 2rem',
-          height: '68px',
+          height: '80px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
@@ -166,7 +166,7 @@ export default function Header() {
                 width={200}
                 height={212}
                 onError={() => setLogoError(true)}
-                style={{ height: '60px', width: 'auto', display: 'block' }}
+                style={{ height: '72px', width: 'auto', display: 'block' }}
                 priority
                 quality={75}
               />
