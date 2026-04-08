@@ -1,10 +1,11 @@
 'use client';
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
-// ── Logo image path — replace with your actual image path ──
-const LOGO_IMAGE = '/Images/logo/headerlogo1.png'; // ya '/images/logo.svg' etc.
+// ── Logo image path ──
+const LOGO_IMAGE = '/Images/logo/headerlogo1.webp';
 
 export default function Header() {
   const [retreatOpen, setRetreatOpen] = useState(false);
@@ -17,7 +18,7 @@ export default function Header() {
     <>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap');
+        /* Cormorant Garamond loaded via next/font in layout.tsx */
 
         .hn-link {
           font-family: var(--font-geist-sans), sans-serif;
@@ -29,7 +30,11 @@ export default function Header() {
           text-decoration: none;
           position: relative;
           transition: color 0.25s;
-          padding-bottom: 2px;
+          padding: 12px 8px;
+          min-height: 44px;
+          min-width: 44px;
+          display: inline-flex;
+          align-items: center;
         }
         .hn-link::after {
           content: '';
@@ -52,9 +57,12 @@ export default function Header() {
           color: rgba(255,255,255,0.5);
           text-decoration: none;
           display: block;
-          padding: 0.55rem 1.4rem;
+          padding: 12px 14px;
+          min-height: 44px;
           transition: color 0.2s, background 0.2s;
           border-left: 2px solid transparent;
+          display: flex;
+          align-items: center;
         }
         .hn-drop-link:hover {
           color: #ffffff;
@@ -70,9 +78,12 @@ export default function Header() {
           font-size: 0.78rem; font-weight: 500;
           letter-spacing: 0.22em; text-transform: uppercase;
           color: rgba(255,255,255,0.7); text-decoration: none;
-          display: block; padding: 1rem 1.5rem;
+          display: block; padding: 12px 15px;
+          min-height: 44px;
           border-bottom: 1px solid rgba(15,118,110,0.1);
           transition: color 0.2s, background 0.2s;
+          display: flex;
+          align-items: center;
         }
         .hn-mobile-link:hover, .hn-mobile-link.active {
           color: #ffffff; background: rgba(15,118,110,0.08);
@@ -82,9 +93,12 @@ export default function Header() {
           font-size: 0.7rem; font-weight: 400;
           letter-spacing: 0.12em; text-transform: uppercase;
           color: rgba(255,255,255,0.4); text-decoration: none;
-          display: block; padding: 0.75rem 2.5rem;
+          display: block; padding: 12px 25px;
+          min-height: 44px;
           border-bottom: 1px solid rgba(15,118,110,0.07);
           transition: color 0.2s;
+          display: flex;
+          align-items: center;
         }
         .hn-mobile-sub:hover { color: var(--color-primary); }
         .hn-mobile-sub.gold { color: var(--color-primary); }
@@ -144,18 +158,22 @@ export default function Header() {
         }}>
 
           {/* ── LOGO ── */}
-          <Link href="/" style={{ textDecoration: 'none', flexShrink: 0 }}>
+          <Link href="/" style={{ textDecoration: 'none', flexShrink: 0 }} aria-label="Himalayan Retreats - Go to homepage">
             {!logoError ? (
-              <img
+              <Image
                 src={LOGO_IMAGE}
                 alt="Himalayan Retreats"
+                width={200}
+                height={212}
                 onError={() => setLogoError(true)}
                 style={{ height: '60px', width: 'auto', display: 'block' }}
+                priority
+                quality={75}
               />
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>
                 <span style={{
-                  fontFamily: '"Cormorant Garamond", Georgia, serif',
+                  fontFamily: 'var(--font-cormorant), Georgia, serif',
                   fontSize: '1.6rem',
                   fontWeight: 300,
                   letterSpacing: '0.06em',
@@ -295,7 +313,9 @@ export default function Header() {
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '0.68rem', fontWeight: 700,
                 letterSpacing: '0.22em', textTransform: 'uppercase',
-                textDecoration: 'none', padding: '9px 22px',
+                textDecoration: 'none', padding: '12px 22px',
+                minHeight: '44px', minWidth: '44px',
+                display: 'inline-flex', alignItems: 'center',
                 background: 'rgba(15,118,110,0.12)', color: 'var(--color-primary)',
                 border: '1px solid rgba(15,118,110,0.45)', borderRadius: '1px',
                 transition: 'background 0.25s, color 0.25s, border-color 0.25s',

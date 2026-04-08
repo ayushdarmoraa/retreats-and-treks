@@ -1,21 +1,32 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import DeferredScrollObserver from '@/components/client/DeferredScrollObserver';
+import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { schemaIds, SCHEMA_SITE_URL } from "@/lib/schemaIds";
-import ScrollObserver from "@/components/ScrollObserver";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
   display: "swap",
+  preload: true,
 });
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
   display: "swap",
+  preload: false,
+});
+
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400"],
+  style: ["normal"],
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -50,6 +61,9 @@ export default function RootLayout({
   return (
     <html lang="en"  suppressHydrationWarning>
       <head>
+        {/* Inline minimal critical CSS for header/nav to reduce render-blocking */}
+        <style>{`header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(8,14,8,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(15,118,110,0.18)} nav{max-width:72rem;margin:0 auto;padding:0 2rem;height:68px;display:flex;align-items:center;justify-content:space-between}`}</style>
+
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -114,12 +128,12 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${cormorant.variable} antialiased`}
         suppressHydrationWarning 
       >
         <Header />
-        <BreadcrumbSchema />
-         <ScrollObserver />
+         <BreadcrumbSchema />
+         <DeferredScrollObserver />
         {children}
         <Footer />
       </body>

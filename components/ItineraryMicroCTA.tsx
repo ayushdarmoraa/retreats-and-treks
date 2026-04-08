@@ -40,7 +40,15 @@ export default function ItineraryMicroCTA({
   const shortTitle = trekTitle.split('–')[0].split('—')[0].trim();
 
   const copy =
-    difficulty === 'Challenging'
+    trekSlug === 'roopkund-trek'
+      ? 'Not sure if Roopkund is right for you? Get a quick callback from our trek expert'
+      : trekSlug === 'brahmatal-trek'
+      ? 'First Himalayan trek? Talk to our trek expert before you decide'
+      : trekSlug === 'har-ki-dun-trek'
+      ? 'Planning your first Himalayan trek? Talk to our expert'
+      : trekSlug === 'dayara-bugyal-trek'
+      ? 'Short on time but want to trek? Let\'s find the right fit'
+      : difficulty === 'Challenging'
       ? `Ready to attempt ${shortTitle}? Check fitness requirements & dates.`
       : `Planning this trek? Check upcoming departure dates.`;
 

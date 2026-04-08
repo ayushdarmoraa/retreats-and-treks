@@ -1,5 +1,8 @@
 import type { NextConfig } from 'next';
 
+// Wrap next config with @next/bundle-analyzer when ANALYZE=true
+const withBundleAnalyzer = require('@next/bundle-analyzer')({ enabled: process.env.ANALYZE === 'true' });
+
 const nextConfig: NextConfig = {
   async redirects() {
     return [
@@ -29,6 +32,14 @@ const nextConfig: NextConfig = {
     ];
   },
   reactStrictMode: true,
+  images: {
+    formats: ['image/webp'],
+    minimumCacheTTL: 31536000,
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
+  },
+  // Ensure server-side compression for responses (gzip) — hosting may provide brotli
+  compress: true, // This line is already present
 };
 
-export default nextConfig;
+export default withBundleAnalyzer(nextConfig);

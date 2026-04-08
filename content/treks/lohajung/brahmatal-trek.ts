@@ -1,6 +1,36 @@
 import { TrekContent } from '@/types/content';
 
 const brahmatalTrek: TrekContent = {
+    priceRange: "₹8,500 – ₹12,500",
+    groupSize: "8–18 people",
+
+    howToReach: [
+      "Reach Rishikesh/Dehradun",
+      "Drive to Lohajung (10–12 hrs) via Karnaprayag",
+      "Start trek from Lohajung base"
+    ],
+
+    packingList: [
+      "Waterproof trekking shoes",
+      "Down/synthetic jacket",
+      "Thermal base layers",
+      "Woolen cap and gloves",
+      "Microspikes/gaiters (for snow)",
+    ],
+
+    altitudeProfile: [
+      "Lohajung – 2,300 m",
+      "Bekaltal – 2,700 m",
+      "Brahmatal – 3,250 m",
+      "Summit ridge – 3,850 m"
+    ],
+
+    risksAndSafety: [
+      "Cold exposure (down to -12°C)",
+      "Trail ice above 3,200 m",
+      "Heavy snow in January",
+      "Remote location, limited evacuation"
+    ],
   slug: 'brahmatal-trek',
   title: 'Brahmatal Trek (3,850m) – Snow Trek from Lohajung',
   description:
@@ -98,8 +128,34 @@ const brahmatalTrek: TrekContent = {
       question: 'Is there mobile network on the Brahmatal trek?',
       answer: 'BSNL has spotty coverage in Lohajung village only. There is no mobile network once you leave the village. Inform your emergency contacts before departure. Guided operators carry satellite communication devices for emergencies.',
     },
+    {
+      question: 'What is the total distance of Brahmatal trek?',
+      answer: 'The total distance is approximately 23–28 km over 4 days. Daily distances range from 4–8 km depending on trail conditions and snow coverage.',
+    },
+    {
+      question: 'What is the highest altitude of Brahmatal trek?',
+      answer: 'Brahmatal lake is located at 3,660 meters (12,008 feet) above sea level, with the highest point on the trek ridge at around 3,700 meters.',
+    },
+    {
+      question: 'How many days does the Brahmatal trek take?',
+      answer: 'The standard Brahmatal trek duration is 4 days and 3 nights. This includes one day for driving to the trailhead, two full trekking days, and one descent day.',
+    },
+    {
+      question: 'Do I need permits for Brahmatal trek?',
+      answer: 'Forest permits are required from the Uttarakhand forest department. Your trek operator arranges this through the Lohajung check post. Permit costs are typically included in trek packages.',
+    },
+    {
+      question: 'What is the best time to trek Brahmatal?',
+      answer: 'The best times are December to March for snow trekking, and September to October for clear skies and relatively mild weather. December to February offer the most snow coverage but are the coldest.',
+    },
   ],
 
+  relatedBlogSlugs: [
+    'brahmatal-trek-cost',
+    'brahmatal-trek-best-time',
+    'brahmatal-trek-difficulty',
+    'brahmatal-trek-packing-list',
+  ],
   updatedAt: '2026-03-05',
 };
 

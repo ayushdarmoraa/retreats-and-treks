@@ -1,5 +1,5 @@
 import Link from 'next/link';
-// import Image from 'next/image';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -67,7 +67,11 @@ export default function Footer() {
           font-family: var(--font-geist-sans), 'Geist', sans-serif;
           font-weight: 400;
           line-height: 2.1;
-          display: inline-block;
+          display: inline-flex;
+          align-items: center;
+          min-height: 44px;
+          min-width: 44px;
+          padding: 8px;
           transition: color 0.18s ease;
         }
         .ft-link:hover {
@@ -94,6 +98,11 @@ export default function Footer() {
           font-family: var(--font-geist-sans), 'Geist', sans-serif;
           font-weight: 400;
           transition: color 0.18s ease;
+          display: inline-flex;
+          align-items: center;
+          min-height: 44px;
+          min-width: 44px;
+          padding: 8px;
         }
         .ft-bottom-link:hover {
           color: var(--color-primary);
@@ -108,10 +117,13 @@ export default function Footer() {
          {/* ── LOGO ── */}
 <div className="ft-logo-row">
   <Link href="/">
-    <img
-      src="/Images/logo/headerlogo1.png"
+    <Image
+      src="/Images/logo/headerlogo1.webp"
       alt="Retreats And Treks"
+      width={200}
+      height={212}
       style={{ height: '60px', width: 'auto', display: 'block' }}
+      quality={75}
     />
   </Link>
 </div>

@@ -32,6 +32,10 @@ const CTA_TEXT: Record<string, string> = {
   Moderate: 'Check Available Dates',
   Challenging: 'Check Fitness & Dates',
   Easy: 'Check Available Dates',
+  'roopkund-trek': 'Still thinking? Talk to someone who has done this trek.',
+  'brahmatal-trek': 'Still unsure? We\'ll help you choose the right trek',
+  'har-ki-dun-trek': 'Still unsure? We\'ll guide you to the right trek',
+  'dayara-bugyal-trek': 'Quick question? We\'ll help you get started',
 };
 
 export default function StickyTrekCTA({
@@ -65,7 +69,7 @@ export default function StickyTrekCTA({
     setModalOpen(true);
   }
 
-  const ctaLabel = CTA_TEXT[difficulty] || 'Check Available Dates';
+  const ctaLabel = CTA_TEXT[trekSlug] || CTA_TEXT[difficulty] || 'Check Available Dates';
 
   return (
     <>

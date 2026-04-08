@@ -95,9 +95,7 @@ const INTENT_TRAIL: Record<string, { path: string; label: string }> = {
 // Best-for blocks: authority flows back up to filter/discovery pages
 const BEST_FOR: Record<string, { label: string; href: string }[]> = {
   'brahmatal-trek': [
-    { label: 'Beginner snow trekking', href: '/treks/best-treks-in-uttarakhand/beginner' },
-    { label: 'Winter Himalayan treks', href: '/treks/best-treks-in-uttarakhand/snow' },
-    { label: 'First high-altitude experience', href: '/treks/best-treks-in-uttarakhand/high-altitude' },
+    { label: 'Beginners to intermediate trekkers looking for snow trek', href: '/treks/best-treks-in-uttarakhand/beginner' },
   ],
   'kuari-pass-trek': [
     { label: 'Beginner panoramic trekking', href: '/treks/best-treks-in-uttarakhand/beginner' },
@@ -132,8 +130,10 @@ const BEST_FOR: Record<string, { label: string; href: string }[]> = {
     { label: 'Best treks in Uttarakhand', href: '/treks/best-treks-in-uttarakhand' },
   ],
   'har-ki-dun-trek': [
-    { label: 'Summer valley trekking', href: '/treks/best-treks-in-uttarakhand' },
-    { label: 'Beginner Himalayan trek', href: '/treks/best-treks-in-uttarakhand/beginner' },
+    { label: 'Beginners, families, and scenic valley lovers', href: '/treks/best-treks-in-uttarakhand/beginner' },
+  ],
+  'dayara-bugyal-trek': [
+    { label: 'Short weekend trekkers and first-timers', href: '/treks/best-treks-in-uttarakhand/beginner' },
   ],
   'weekend-trek': [
     { label: 'Weekend Himalayan getaway', href: '/treks/best-treks-in-uttarakhand/beginner' },
@@ -368,6 +368,42 @@ export default async function TrekDetailPage({ params }: PageProps) {
       ))}
     </div>
 
+    {slug === 'roopkund-trek' && (
+      <div style={{
+        marginTop: '2rem',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.5rem',
+      }}>
+        <p style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: '0.85rem',
+          fontWeight: 400,
+          color: '#555555',
+          margin: 0,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+        }}>
+          <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✔</span>
+          100+ trekkers completed this route
+        </p>
+        <p style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: '0.85rem',
+          fontWeight: 400,
+          color: '#555555',
+          margin: 0,
+          display: 'flex',
+          alignItems: 'center',
+          gap: '0.5rem',
+        }}>
+          <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✔</span>
+          Local operators from Uttarakhand
+        </p>
+      </div>
+    )}
+
   </div>
 </section>
 
@@ -403,6 +439,18 @@ export default async function TrekDetailPage({ params }: PageProps) {
             </Link>
           ))}
         </div>
+        {slug === 'roopkund-trek' && (
+          <p style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 400,
+            color: '#555555',
+            marginTop: '1rem',
+            marginBottom: '0',
+          }}>
+            Best for: Experienced trekkers looking for a challenging high-altitude trek
+          </p>
+        )}
       </div>
     )}
 
@@ -424,7 +472,39 @@ export default async function TrekDetailPage({ params }: PageProps) {
   </div>
 </section>
 
+{/* WHY POPULAR - AI DISCOVERABILITY BOOST */}
+<section style={{
+  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+  background: '#ffffff',
+  paddingTop: '3rem', paddingBottom: '3rem',
+  borderBottom: '1px solid #e5e7eb',
+  marginBottom: '0',
+}}>
+  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+    <h3 style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: '1.15rem',
+      fontWeight: 500,
+      color: '#111111',
+      marginBottom: '0.75rem',
+    }}>
+      Why {trek.title} is Popular
+    </h3>
+    <p style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: '0.88rem',
+      fontWeight: 300,
+      lineHeight: 1.85,
+      color: '#555555',
+      margin: 0,
+    }}>
+      {trek.title} is one of the most searched and recommended treks in Uttarakhand due to its unique landscape, accessibility, and the transformative experience it offers. This trek combines physical challenge with memorable views, making it a top choice for trekkers seeking both adventure and natural beauty in the Indian Himalayas.
+    </p>
+  </div>
+</section>
+
 {/* OVERVIEW — f7f9f7 */}
+
 {overviewParagraphs.length > 0 && (
   <section style={{
     width: '100vw', marginLeft: 'calc(-50vw + 50%)',
@@ -455,6 +535,91 @@ export default async function TrekDetailPage({ params }: PageProps) {
           marginBottom: '1rem',
         }}>{para}</p>
       ))}
+
+      {/* --- HIGH-INTENT SECTIONS --- */}
+
+      {/* 1. Quick Facts */}
+      <div style={{ margin: '2.5rem 0', background: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
+        <h2 style={{ fontSize: '1.15rem', fontWeight: 600, marginBottom: '1.2rem', color: 'var(--color-primary)' }}>Quick Facts</h2>
+        <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexWrap: 'wrap', gap: '1.5rem' }}>
+          {trek.priceRange && <li><strong>Price:</strong> {trek.priceRange}</li>}
+          <li><strong>Duration:</strong> {trek.duration}</li>
+          <li><strong>Difficulty:</strong> {trek.difficulty}</li>
+          {trek.altitude && <li><strong>Max Altitude:</strong> {trek.altitude}</li>}
+          {trek.groupSize && <li><strong>Group Size:</strong> {trek.groupSize}</li>}
+        </ul>
+      </div>
+
+      {/* 2. How to Reach */}
+      {trek.howToReach && trek.howToReach.length > 0 && (
+        <div style={{ margin: '2.5rem 0', background: '#f7f9f7', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
+          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.2rem', color: 'var(--color-primary)' }}>How to Reach</h2>
+          <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
+            {trek.howToReach.map((step, i) => <li key={i}>{step}</li>)}
+          </ul>
+        </div>
+      )}
+
+      {/* 3. Altitude Profile */}
+      {trek.altitudeProfile && trek.altitudeProfile.length > 0 && (
+        <div style={{ margin: '2.5rem 0', background: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
+          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.2rem', color: 'var(--color-primary)' }}>Altitude Profile</h2>
+          <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
+            {trek.altitudeProfile.map((alt, i) => <li key={i}>{alt}</li>)}
+          </ul>
+        </div>
+      )}
+
+      {/* 4. Packing List */}
+      {trek.packingList && trek.packingList.length > 0 && (
+        <div style={{ margin: '2.5rem 0', background: '#f7f9f7', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
+          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.2rem', color: 'var(--color-primary)' }}>Packing List</h2>
+          <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
+            {trek.packingList.map((item, i) => <li key={i}>{item}</li>)}
+          </ul>
+        </div>
+      )}
+
+      {/* 5. Permits & Safety */}
+      {(trek.permits || (trek.risksAndSafety && trek.risksAndSafety.length > 0)) && (
+        <div style={{ margin: '2.5rem 0', background: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
+          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.2rem', color: 'var(--color-primary)' }}>Permits & Safety</h2>
+          {trek.permits && <p><strong>Permits:</strong> {trek.permits}</p>}
+          {trek.risksAndSafety && trek.risksAndSafety.length > 0 && (
+            <>
+              <strong>Risks & Safety:</strong>
+              <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
+                {trek.risksAndSafety.map((risk, i) => <li key={i}>{risk}</li>)}
+              </ul>
+            </>
+          )}
+        </div>
+      )}
+
+      {/* --- CRITICAL SEO BLOCK: Roopkund Trek Cost --- */}
+      {trek.priceRange && (
+        <div style={{ margin: '2.5rem 0', background: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
+          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.2rem', color: 'var(--color-primary)' }}>Roopkund Trek Cost</h2>
+          <p>The typical cost for the Roopkund trek is <strong>{trek.priceRange}</strong>. This includes most meals, camping, guides, permits, and support staff. See inclusions and exclusions below for details.</p>
+        </div>
+      )}
+
+      {/* --- INTERNAL LINKING: Best Time to Do This Trek --- */}
+      {trek.monthlyConditions && trek.monthlyConditions.length > 0 && (
+        <div style={{ margin: '2.5rem 0', background: '#f7f9f7', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
+          <h2>Best Time to Do This Trek</h2>
+          <ul>
+            {trek.monthlyConditions.map((m) => (
+              <li key={m.month}>
+                <Link href={`/treks/${trek.slug.replace('-trek','')}/${m.month.toLowerCase()}`}>
+                  {trek.title.split('(')[0].trim()} in {m.month}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
     </div>
   </section>
 )}
@@ -689,6 +854,290 @@ export default async function TrekDetailPage({ params }: PageProps) {
       </p>
     </aside>
 
+    {slug === 'roopkund-trek' && (
+      <div style={{ marginBottom: '2rem' }}>
+        <h2 style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: '1.5rem',
+          fontWeight: 300,
+          color: '#111111',
+          marginBottom: '1rem',
+        }}>
+          Why Choose Us for Roopkund Trek
+        </h2>
+        <ul style={{
+          listStyle: 'none',
+          padding: 0,
+          margin: 0,
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '0.5rem',
+        }}>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            Experienced local guides
+          </li>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            Small group sizes
+          </li>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            High safety standards
+          </li>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            Transparent pricing
+          </li>
+        </ul>
+      </div>
+    )}
+
+    {slug === 'brahmatal-trek' && (
+      <div style={{ marginBottom: '2rem' }}>
+        <h2 style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: '1.5rem',
+          fontWeight: 300,
+          color: '#111111',
+          marginBottom: '1rem',
+        }}>
+          Why Choose Us for Brahmatal Trek
+        </h2>
+        <ul style={{
+          listStyle: 'none',
+          padding: 0,
+          margin: 0,
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '0.5rem',
+        }}>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            Best winter trek for beginners
+          </li>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            Safe and well-marked trail
+          </li>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            Ideal snow trekking experience
+          </li>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            Great summit views without extreme altitude
+          </li>
+        </ul>
+      </div>
+    )}
+
+    {slug === 'har-ki-dun-trek' && (
+      <div style={{ marginBottom: '2rem' }}>
+        <h2 style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: '1.5rem',
+          fontWeight: 300,
+          color: '#111111',
+          marginBottom: '1rem',
+        }}>
+          Why Choose Us for Har Ki Dun Trek
+        </h2>
+        <ul style={{
+          listStyle: 'none',
+          padding: 0,
+          margin: 0,
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '0.5rem',
+        }}>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            Perfect for families and beginners
+          </li>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            Beautiful valley views
+          </li>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            Well-maintained trails
+          </li>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            Safe and scenic route
+          </li>
+        </ul>
+      </div>
+    )}
+
+    {slug === 'dayara-bugyal-trek' && (
+      <div style={{ marginBottom: '2rem' }}>
+        <h2 style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: '1.5rem',
+          fontWeight: 300,
+          color: '#111111',
+          marginBottom: '1rem',
+        }}>
+          Why Choose Us for Dayara Bugyal Trek
+        </h2>
+        <ul style={{
+          listStyle: 'none',
+          padding: 0,
+          margin: 0,
+          display: 'grid',
+          gridTemplateColumns: '1fr 1fr',
+          gap: '0.5rem',
+        }}>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            Perfect for weekend trekkers
+          </li>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            Snow meadows in winter
+          </li>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            Minimal hiking experience needed
+          </li>
+          <li style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 300,
+            color: '#555555',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            Affordable high-altitude trek
+          </li>
+        </ul>
+      </div>
+    )}
+
     <TrekConversionLayer
       trekTitle={trek.title}
       trekSlug={trek.slug}
@@ -703,6 +1152,163 @@ export default async function TrekDetailPage({ params }: PageProps) {
     />
   </div>
 </section>
+
+{slug === 'roopkund-trek' && (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#ffffff',
+    paddingTop: '2rem', paddingBottom: '2rem',
+    borderBottom: '1px solid #e5e7eb',
+    marginBottom: '0',
+  }}>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <h2 style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontSize: '1.5rem',
+        fontWeight: 300,
+        color: '#111111',
+        marginBottom: '1rem',
+      }}>
+        Not Sure? Compare With Other Treks
+      </h2>
+      <ul style={{
+        listStyle: 'none',
+        padding: 0,
+        margin: 0,
+        display: 'flex',
+        flexWrap: 'wrap',
+        gap: '1rem',
+      }}>
+        <li>
+          <Link href="/treks/location/lohajung/brahmatal-trek" style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 400,
+            color: 'var(--color-primary)',
+            textDecoration: 'none',
+            border: '1px solid rgba(15,118,110,0.2)',
+            borderRadius: '6px',
+            padding: '0.5rem 1rem',
+            display: 'inline-block',
+          }}>
+            Brahmatal Trek
+          </Link>
+        </li>
+        <li>
+          <Link href="/treks/location/sankri/har-ki-dun-trek" style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.9rem',
+            fontWeight: 400,
+            color: 'var(--color-primary)',
+            textDecoration: 'none',
+            border: '1px solid rgba(15,118,110,0.2)',
+            borderRadius: '6px',
+            padding: '0.5rem 1rem',
+            display: 'inline-block',
+          }}>
+            Har Ki Dun Trek
+          </Link>
+        </li>
+      </ul>
+    </div>
+  </section>
+)}
+
+{slug === 'brahmatal-trek' && (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#ffffff',
+    paddingTop: '2rem', paddingBottom: '2rem',
+    borderBottom: '1px solid #e5e7eb',
+    marginBottom: '0',
+  }}>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <h2 style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontSize: '1.5rem',
+        fontWeight: 300,
+        color: '#111111',
+        marginBottom: '1rem',
+      }}>
+        Brahmatal vs Kedarkantha
+      </h2>
+      <p style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontSize: '0.95rem',
+        fontWeight: 300,
+        color: '#555555',
+        lineHeight: 1.6,
+        margin: 0,
+      }}>
+        Brahmatal offers better summit views and less crowd compared to Kedarkantha, while Kedarkantha is shorter and more popular among beginners.
+      </p>
+    </div>
+  </section>
+)}
+
+{slug === 'har-ki-dun-trek' && (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#ffffff',
+    paddingTop: '2rem', paddingBottom: '2rem',
+    borderBottom: '1px solid #e5e7eb',
+    marginBottom: '0',
+  }}>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <h2 style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontSize: '1.5rem',
+        fontWeight: 300,
+        color: '#111111',
+        marginBottom: '1rem',
+      }}>
+        Har Ki Dun vs Kedarkantha
+      </h2>
+      <p style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontSize: '0.95rem',
+        fontWeight: 300,
+        color: '#555555',
+        lineHeight: 1.6,
+        margin: 0,
+      }}>
+        Har Ki Dun offers more scenic valley views and is better for families, while Kedarkantha provides a summit experience with better winter snow conditions.
+      </p>
+    </div>
+  </section>
+)}
+
+{slug === 'dayara-bugyal-trek' && (
+  <section style={{
+    width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+    background: '#ffffff',
+    paddingTop: '2rem', paddingBottom: '2rem',
+    borderBottom: '1px solid #e5e7eb',
+    marginBottom: '0',
+  }}>
+    <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+      <h2 style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontSize: '1.5rem',
+        fontWeight: 300,
+        color: '#111111',
+        marginBottom: '1rem',
+      }}>
+        Dayara Bugyal vs Auli Meadow
+      </h2>
+      <p style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontSize: '0.95rem',
+        fontWeight: 300,
+        color: '#555555',
+        lineHeight: 1.6,
+        margin: 0,
+      }}>
+        Dayara Bugyal is more accessible and better for beginners, with easier terrain. Auli is higher altitude and offers ski opportunities in winter, but requires better fitness.
+      </p>
+    </div>
+  </section>
+)}
 
 {/* BEST TIME — #f7f9f7 */}
 <section style={{
@@ -1082,7 +1688,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
   </div>
 </section>
 
-{/* RELATED TREKS — #f7f9f7 */}
+{/* RELATED TREKS GRID — #f7f9f7 — Step 89 */}
 {relatedTreks.length > 0 && (
   <section style={{
     width: '100vw', marginLeft: 'calc(-50vw + 50%)',
@@ -1094,42 +1700,70 @@ export default async function TrekDetailPage({ params }: PageProps) {
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
         <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Also from {location.name}</span>
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Explore Similar Treks</span>
       </div>
       <h2 style={{
         fontFamily: 'var(--font-geist-sans), sans-serif',
         fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
         fontWeight: 200, letterSpacing: '-0.03em',
-        color: '#111111', lineHeight: 1.15, marginBottom: '1.5rem',
-      }}>Related Treks in {location.name}</h2>
-      <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
-        {relatedTreks.map((related, i) => (
-          <li key={related.slug} style={{
-            borderBottom: i < relatedTreks.length - 1 ? '1px solid #e5e7eb' : 'none',
-          }}>
-            <Link href={`/treks/location/${locationId}/${related.slug}`} style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
+        color: '#111111', lineHeight: 1.15, marginBottom: '2rem',
+      }}>Other Treks in {location.name}</h2>
+      
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: relatedTreks.length === 1 ? '1fr' : relatedTreks.length === 2 ? 'repeat(2, 1fr)' : 'repeat(auto-fit, minmax(240px, 1fr))',
+        gap: '1.5rem',
+      }}>
+        {relatedTreks.map((related) => (
+          <Link
+            key={related.slug}
+            href={`/treks/location/${locationId}/${related.slug}`}
+            style={{
+              display: 'block',
+              background: '#ffffff',
+              border: '1px solid #e5e7eb',
+              borderRadius: '8px',
+              padding: '1.5rem',
               textDecoration: 'none',
-              padding: '1rem 0',
-              gap: '1rem',
+              transition: 'transform 0.3s, box-shadow 0.3s',
+              boxShadow: '0 1px 3px rgba(0,0,0,0.05)',
+            }}
+          >
+            <h3 style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.95rem',
+              fontWeight: 600,
+              color: 'var(--color-primary)',
+              margin: '0 0 0.75rem',
+              letterSpacing: '-0.01em',
+              lineHeight: 1.25,
             }}>
-              <span style={{
-                fontFamily: 'var(--font-geist-sans), sans-serif',
-                fontSize: '0.9rem', fontWeight: 500,
-                color: 'var(--color-primary)',
-              }}>{related.title}</span>
-              <span style={{
-                fontFamily: 'var(--font-geist-sans), sans-serif',
-                fontSize: '0.75rem', fontWeight: 300,
-                color: '#999999', whiteSpace: 'nowrap' as const,
-                flexShrink: 0,
-              }}>{related.duration} · {related.difficulty}</span>
-            </Link>
-          </li>
+              {related.title}
+            </h3>
+            <p style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.78rem',
+              color: '#777777',
+              margin: '0 0 1rem',
+              fontWeight: 300,
+              lineHeight: 1.6,
+            }}>
+              {related.description}
+            </p>
+            <div style={{
+              display: 'flex',
+              gap: '1rem',
+              fontSize: '0.75rem',
+              color: '#999999',
+              fontWeight: 300,
+            }}>
+              <span>{related.difficulty}</span>
+              <span>·</span>
+              <span>{related.duration}</span>
+            </div>
+          </Link>
         ))}
-      </ul>
+      </div>
     </div>
   </section>
 )}
@@ -1179,6 +1813,211 @@ export default async function TrekDetailPage({ params }: PageProps) {
     </div>
   </section>
 )}
+    {/* HELPFUL GUIDES — #f7f9f7 */}
+    {trek.relatedBlogSlugs && trek.relatedBlogSlugs.length > 0 && (
+      <section style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        background: '#f7f9f7',
+        paddingTop: '4rem', paddingBottom: '4rem',
+        borderBottom: '1px solid #e5e7eb',
+        marginBottom: '0',
+      }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Helpful Guides</span>
+          </div>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            {trek.relatedBlogSlugs.map(slug => (
+              <li key={slug} style={{ marginBottom: '0.75rem' }}>
+                <Link href={`/blog/${slug}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+                  Read more →
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+
+    {/* STEP 70 - INTERNAL LINK GRID */}
+    {relatedTreks.length > 0 && (
+      <section style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        background: '#ffffff',
+        paddingTop: '4rem', paddingBottom: '4rem',
+        borderBottom: '1px solid #e5e7eb',
+        marginBottom: '0',
+      }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Explore More</span>
+          </div>
+          <h2 style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+            fontWeight: 200, letterSpacing: '-0.03em',
+            color: '#111111', lineHeight: 1.15,
+            marginBottom: '1.5rem',
+          }}>
+            More Treks in {location.name}
+          </h2>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+            {relatedTreks.map((t) => (
+              <li key={t.slug}>
+                <Link href={`/treks/location/${locationId}/${t.slug}`} style={{
+                  fontFamily: 'var(--font-geist-sans), sans-serif',
+                  fontSize: '0.9rem',
+                  fontWeight: 400,
+                  color: 'var(--color-primary)',
+                  textDecoration: 'none',
+                  border: '1px solid rgba(15,118,110,0.2)',
+                  borderRadius: '6px',
+                  padding: '0.75rem 1rem',
+                  display: 'block',
+                  transition: 'all 0.2s ease',
+                }}>
+                  {t.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    )}
+
+    {/* STEP 71 - LOCATION SEO BOOST */}
+    <section style={{
+      width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+      background: '#f7f9f7',
+      paddingTop: '4rem', paddingBottom: '4rem',
+      borderBottom: '1px solid #e5e7eb',
+      marginBottom: '0',
+    }}>
+      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+          <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Destination</span>
+        </div>
+        <h2 style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+          fontWeight: 200, letterSpacing: '-0.03em',
+          color: '#111111', lineHeight: 1.15,
+          marginBottom: '1.5rem',
+        }}>
+          Trekking in {location.name}
+        </h2>
+        <p style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: '0.88rem', fontWeight: 300,
+          lineHeight: 1.85, color: '#555555',
+          marginBottom: '1rem',
+        }}>
+          {location.name} is one of the most popular trekking regions in Uttarakhand, offering world-class Himalayan experiences. The region provides diverse routes including {trek.title} and other renowned peak treks, snow treks, and valley expeditions. Whether you\\'re a beginner or an experienced trekker, {location.name} has routes suitable for all levels of experience and fitness.
+        </p>
+      </div>
+    </section>
+
+    {/* STEP 72 - KEYWORD VARIATION BLOCK */}
+    <section style={{
+      width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+      background: '#ffffff',
+      paddingTop: '4rem', paddingBottom: '4rem',
+      borderBottom: '1px solid #e5e7eb',
+      marginBottom: '0',
+    }}>
+      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+        <h2 style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+          fontWeight: 200, letterSpacing: '-0.03em',
+          color: '#111111', lineHeight: 1.15,
+          marginBottom: '1.5rem',
+        }}>
+          {trek.title} — Complete Trek Guide
+        </h2>
+        <p style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: '0.88rem', fontWeight: 300,
+          lineHeight: 1.85, color: '#555555',
+          marginBottom: '1rem',
+        }}>
+          This comprehensive guide to {trek.title} covers everything you need to know: trek cost, detailed itinerary, difficulty assessment, best time to visit, complete packing list, and insider tips. Learn about the altitude profile, permits required, how to reach the trailhead, acclimatization strategies, and what to expect on the trail. Whether you\\'re researching, planning, or preparing for {trek.title}, this guide provides all the essential information and local insights to help you prepare for a successful Himalayan trekking experience.
+        </p>
+        <div style={{ marginTop: '2rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          {['Cost', 'Itinerary', 'Difficulty', 'Best Time', 'Packing'].map((section) => (
+            <span key={section} style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.75rem', fontWeight: 500,
+              color: 'var(--color-primary)',
+              background: 'rgba(15,118,110,0.08)',
+              border: '1px solid rgba(15,118,110,0.2)',
+              borderRadius: '100px',
+              padding: '4px 12px',
+            }}>
+              #{trek.title.split(' ')[0].toLowerCase()}-{section.toLowerCase()}
+            </span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    {/* STEP 90 — LOCATION PAGE BOOST — #ffffff */}
+    <section style={{
+      width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+      background: '#ffffff',
+      paddingTop: '4rem', paddingBottom: '4rem',
+      borderBottom: '1px solid #e5e7eb',
+      marginBottom: '0',
+    }}>
+      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+          <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>More from this region</span>
+        </div>
+        <h2 style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+          fontWeight: 200, letterSpacing: '-0.03em',
+          color: '#111111', lineHeight: 1.15,
+          marginBottom: '1.5rem',
+        }}>
+          Explore All Treks in {location.name}
+        </h2>
+        <p style={{
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: '0.88rem', fontWeight: 300,
+          lineHeight: 1.85, color: '#555555',
+          marginBottom: '2rem',
+        }}>
+          {location.name} offers diverse trekking experiences with multiple routes suiting all fitness levels. Discover other peaks, valley treks, and scenic routes in the {location.name} region for your next Himalayan adventure.
+        </p>
+        <Link
+          href={`/treks/location/${locationId}`}
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '0.6rem',
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.85rem',
+            fontWeight: 600,
+            letterSpacing: '0.1em',
+            textTransform: 'uppercase',
+            color: '#ffffff',
+            background: 'var(--color-primary)',
+            padding: '14px 28px',
+            borderRadius: '4px',
+            textDecoration: 'none',
+            transition: 'transform 0.2s, box-shadow 0.2s',
+          }}
+        >
+          View All Treks in {location.name} →
+        </Link>
+      </div>
+    </section>
+
     </main>
     </>
   );

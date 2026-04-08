@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
@@ -232,12 +233,12 @@ export default function KedarkanthaVsHarKiDunPage() {
           </h2>
           <div className="kvh-split">
             <div className="kvh-split-card">
-              <img src="/Images/trek/region/kedarkantha.webp" alt="Kedarkantha summit snow trail" loading="lazy" style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
+              <Image src="/Images/trek/region/kedarkantha.webp" alt="Kedarkantha summit snow trail" width={600} height={150} sizes="(max-width: 768px) 100vw, 50vw" quality={70} style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
               <h3><Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Kedarkantha</Link></h3>
               <p>A concentrated experience that builds to a single defining moment. The{' '}<Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Kedarkantha Trek</Link>{' '}rises through dense pine and oak forest — silent and snow-covered in winter — crosses open alpine meadows, and ascends a final ridge to a 3,800-metre summit. The panorama from the top spans Swargarohini, Bandarpoonch, Black Peak, and the Gangotri group. On a clear winter morning, that summit view is the single most spectacular sight available on any beginner trek in India. The trek is four days, but the defining moment is twenty minutes on the peak.</p>
             </div>
             <div className="kvh-split-card">
-              <img src="/Images/trek/region/harkidun.webp" alt="Har Ki Dun green valley trail" loading="lazy" style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
+              <Image src="/Images/trek/region/harkidun.webp" alt="Har Ki Dun green valley trail" width={600} height={150} sizes="(max-width: 768px) 100vw, 50vw" quality={70} style={{ width: '100%', height: '150px', objectFit: 'cover', borderRadius: '6px', marginBottom: '1rem', display: 'block' }} />
               <h3><Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Har Ki Dun</Link></h3>
               <p>A sustained experience that deepens over five to six days. The{' '}<Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Har Ki Dun Trek</Link>{' '}follows the ancient Tons Valley through traditional Himalayan villages, across wooden bridges over glacial rivers, through dense forest and open meadow, and into the vast Har Ki Dun valley — a natural amphitheatre surrounded by 5,000-metre peaks. There is no single peak moment. Instead, the beauty accumulates — each day&apos;s landscape is different from the last, and the valley itself, when you finally reach it, feels earned. If Kedarkantha is a photograph, Har Ki Dun is a film.</p>
             </div>

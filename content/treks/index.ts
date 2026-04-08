@@ -11,6 +11,7 @@ import { JOSHIMATH_TREKS } from './joshimath';
 import { LOHAJUNG_TREKS } from './lohajung';
 import { MUNSIYARI_TREKS } from './munsiyari';
 import { SANKRI_TREKS } from './sankri';
+import { BARSU_TREKS } from './barsu';
 
 /**
  * ALL TREKS (GLOBAL)
@@ -22,6 +23,7 @@ export const ALL_TREKS: ReadonlyArray<TrekContent> = [
   ...LOHAJUNG_TREKS,
   ...MUNSIYARI_TREKS,
   ...SANKRI_TREKS,
+  ...BARSU_TREKS,
 ] as const;
 
 /**

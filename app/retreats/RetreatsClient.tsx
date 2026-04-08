@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import type { RetreatContent } from '@/types/content';
 import type { LocationId } from '@/config/locations';
 import { logIntentClick, logWhatsAppOpen } from '@/lib/analytics';
@@ -331,12 +332,13 @@ export default function RetreatsClient({
 
         {/* RIGHT — image panel */}
         <div className="rc-hero-right">
-          <img
+          <Image
             src="/Images/location/rehero.webp"
             alt="Himalayas"
+            fill
+            sizes="50vw"
+            quality={70}
             style={{
-              position: 'absolute', inset: 0,
-              width: '100%', height: '100%',
               objectFit: 'cover', objectPosition: 'center',
             }}
           />
@@ -564,7 +566,7 @@ export default function RetreatsClient({
                   className="rs-card"
                 >
                   <div className="rs-img-wrap">
-                    <img src={imgMeta.src} alt={imgMeta.alt} className="rs-img" />
+                    <Image src={imgMeta.src} alt={imgMeta.alt} className="rs-img" width={400} height={210} sizes="(max-width: 768px) 100vw, 33vw" quality={70} />
                     <div className="rs-img-overlay" />
                     <span className="rs-img-tag">Retreat</span>
                     <span className="rs-img-title">{service.title}</span>
@@ -585,7 +587,7 @@ export default function RetreatsClient({
               className="rs-card"
             >
               <div className="rs-img-wrap">
-                <img src="/Images/services/artcreative.webp" alt="Art Retreats — creative retreats combining art, nature, and healing" className="rs-img" />
+                <Image src="/Images/services/artcreative.webp" alt="Art Retreats — creative retreats combining art, nature, and healing" className="rs-img" width={400} height={210} sizes="(max-width: 768px) 100vw, 33vw" quality={70} />
                 <div className="rs-img-overlay" />
                 <span className="rs-img-tag">Collection</span>
                 <span className="rs-img-title">Art Retreats</span>
@@ -948,7 +950,7 @@ export default function RetreatsClient({
               return (
                 <div key={format.slug} className="rf-card">
                   <div className="rf-img-wrap">
-                    <img src={meta.src} alt={format.title} className="rf-img" />
+                    <Image src={meta.src} alt={format.title} className="rf-img" width={400} height={210} sizes="(max-width: 768px) 100vw, 33vw" quality={70} />
                     <div className="rf-img-overlay" />
                     <span className="rf-img-tag">{meta.tag}</span>
                     <span className="rf-img-title">{format.title}</span>
@@ -1137,7 +1139,7 @@ export default function RetreatsClient({
                   className="hl-card"
                 >
                   <div className="hl-img-wrap">
-                    <img src={imgData.src} alt={imgData.alt} className="hl-img" />
+                    <Image src={imgData.src} alt={imgData.alt} className="hl-img" width={400} height={210} sizes="(max-width: 768px) 100vw, 33vw" quality={70} />
                     <div className="hl-img-overlay" />
                     <span className="hl-img-name">{location.name}</span>
                   </div>

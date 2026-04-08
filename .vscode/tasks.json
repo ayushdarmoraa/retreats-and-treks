@@ -6,6 +6,21 @@
 			"type": "shell",
 			"command": "npm run dev",
 			"isBackground": true
+		},
+		{
+			"label": "build",
+			"type": "shell",
+			"command": "npm run build"
+		},
+		{
+			"label": "build",
+			"type": "shell",
+			"command": "npm run build"
+		},
+		{
+			"label": "build",
+			"type": "shell",
+			"command": "npm run build"
 		}
 	]
 }

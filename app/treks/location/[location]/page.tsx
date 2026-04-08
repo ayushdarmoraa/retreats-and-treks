@@ -757,6 +757,40 @@ export default async function TrekHubPage({ params }: PageProps) {
         background: guideSections.length % 2 === 0 ? '#ffffff' : '#f7f9f7',
         paddingTop: '4rem', paddingBottom: '4rem',
       }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Why Popular</span>
+          </div>
+          <h2 style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+            fontWeight: 200, letterSpacing: '-0.03em',
+            color: '#111111', lineHeight: 1.15,
+            marginBottom: '1rem',
+          }}>
+            Why {locationData.name} Is a Premier Trekking Destination
+          </h2>
+          <p style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.88rem',
+            fontWeight: 300,
+            lineHeight: 1.85,
+            color: '#555555',
+            margin: 0,
+            maxWidth: '52rem',
+          }}>
+            {locationData.name} has become one of the most popular trekking bases in Uttarakhand because of its unique combination of accessibility, varied terrain, and transformative mountain experiences. Whether you are looking for your first Himalayan trek or a challenging multi-day expedition, {locationData.name} offers routes suitable for all fitness levels and ambitions.
+          </p>
+        </div>
+      </section>
+
+      {/* ── RELATED EXPERIENCES + CTA ── */}
+      <section style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        background: guideSections.length % 2 === 0 ? '#ffffff' : '#f7f9f7',
+        paddingTop: '4rem', paddingBottom: '4rem',
+      }}>
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', textAlign: 'center' as const }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
             <span style={{ width: '20px', height: '1px', background: 'var(--color-primary)', opacity: 0.4, display: 'inline-block' }} />

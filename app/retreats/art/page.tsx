@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import Breadcrumb from '@/components/Breadcrumb';
 
@@ -194,7 +195,7 @@ export default function ArtRetreatsPage() {
             <>
               <div className="art-img-wrap">
                 {program.image ? (
-                  <img src={program.image} alt={program.title} className="art-img" />
+                  <Image src={program.image} alt={program.title} className="art-img" width={400} height={210} sizes="(max-width: 768px) 100vw, 33vw" quality={70} />
                 ) : (
                   <div className="art-placeholder">Coming Soon</div>
                 )}

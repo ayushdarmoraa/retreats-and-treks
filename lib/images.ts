@@ -307,7 +307,7 @@ export const images = {
       alt: 'Himalayan Retreats & Treks logo',
     },
     headerPng: {
-      src: '/Images/logo/headerlogo1.png',
+      src: '/Images/logo/headerlogo1.webp',
       alt: 'Himalayan Retreats & Treks logo',
     },
   },

@@ -38,6 +38,11 @@ const TREK_SLUG_MAP: Record<string, { contentSlug: string; displayName: string; 
     locationPath: '/treks/location/joshimath/pangarchulla-trek',
     departuresPath: '/treks/pangarchulla/departures',
   },
+  dayara: {
+    contentSlug: 'dayara-bugyal-trek',
+    displayName: 'Dayara Bugyal Trek',
+    locationPath: '/treks/location/barsu/dayara-bugyal-trek',
+  },
   kedarkantha: {
     contentSlug: 'kedarkantha-trek',
     displayName: 'Kedarkantha Trek',

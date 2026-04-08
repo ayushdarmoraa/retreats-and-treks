@@ -98,7 +98,7 @@ export default function IsAMeditationRetreatWorthItPage() {
       <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Meditation Retreats', href: '/meditation-retreats' }, { name: 'Is It Worth It?' }]} />
 
       <article>
-        <header style={{ marginBottom: 'var(--space-xl)' }}>
+        <header className="fade-in" style={{ marginBottom: 'var(--space-xl)' }}>
           <h1 style={{ fontSize: '2rem', fontWeight: 400, marginBottom: '0.75rem' }}>
             Is a Meditation Retreat Worth It? An Honest Assessment
           </h1>
@@ -116,7 +116,7 @@ export default function IsAMeditationRetreatWorthItPage() {
         </header>
 
         {/* ── SECTION 1: DOUBTS ─────────────────────────────────── */}
-        <section style={sectionStyle}>
+        <section className="fade-in" style={sectionStyle}>
           <h2 style={h2Style}>The Doubts You Probably Have Right Now</h2>
           <p style={proseStyle}>
             If you are reading this page, you are not looking for spiritual platitudes. You are
@@ -190,6 +190,7 @@ export default function IsAMeditationRetreatWorthItPage() {
         </section>
 
         <PrimaryCTA
+        
           label="Talk to Us Honestly"
           subtext="Not sure if a retreat is right for you? Describe where you are — we'll give you an honest answer."
           vertical="retreat"
