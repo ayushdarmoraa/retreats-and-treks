@@ -156,8 +156,8 @@ useEffect(() => {
     }
     .hh-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.55rem; letter-spacing: 0.32em; text-transform: uppercase;
-      color: rgba(255,255,255,0.4); font-weight: 500;
+      font-size: 0.875rem; letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85); font-weight: 500;
     }
     .hh-heading {
       font-family: var(--font-geist-sans), sans-serif;
@@ -401,12 +401,11 @@ useEffect(() => {
     }
     .ph-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.58rem;
+      font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--color-primary);
       font-weight: 500;
-      opacity: 0.7;
     }
     .ph-headline {
       font-family: var(--font-geist-sans), sans-serif;

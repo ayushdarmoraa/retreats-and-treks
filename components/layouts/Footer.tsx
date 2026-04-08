@@ -67,7 +67,11 @@ export default function Footer() {
           font-family: var(--font-geist-sans), 'Geist', sans-serif;
           font-weight: 400;
           line-height: 2.1;
-          display: inline-block;
+          display: inline-flex;
+          align-items: center;
+          min-height: 44px;
+          min-width: 44px;
+          padding: 8px;
           transition: color 0.18s ease;
         }
         .ft-link:hover {
@@ -94,6 +98,11 @@ export default function Footer() {
           font-family: var(--font-geist-sans), 'Geist', sans-serif;
           font-weight: 400;
           transition: color 0.18s ease;
+          display: inline-flex;
+          align-items: center;
+          min-height: 44px;
+          min-width: 44px;
+          padding: 8px;
         }
         .ft-bottom-link:hover {
           color: var(--color-primary);

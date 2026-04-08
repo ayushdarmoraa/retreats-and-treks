@@ -30,7 +30,11 @@ export default function Header() {
           text-decoration: none;
           position: relative;
           transition: color 0.25s;
-          padding-bottom: 2px;
+          padding: 12px 8px;
+          min-height: 44px;
+          min-width: 44px;
+          display: inline-flex;
+          align-items: center;
         }
         .hn-link::after {
           content: '';
@@ -53,9 +57,12 @@ export default function Header() {
           color: rgba(255,255,255,0.5);
           text-decoration: none;
           display: block;
-          padding: 0.55rem 1.4rem;
+          padding: 12px 14px;
+          min-height: 44px;
           transition: color 0.2s, background 0.2s;
           border-left: 2px solid transparent;
+          display: flex;
+          align-items: center;
         }
         .hn-drop-link:hover {
           color: #ffffff;
@@ -71,9 +78,12 @@ export default function Header() {
           font-size: 0.78rem; font-weight: 500;
           letter-spacing: 0.22em; text-transform: uppercase;
           color: rgba(255,255,255,0.7); text-decoration: none;
-          display: block; padding: 1rem 1.5rem;
+          display: block; padding: 12px 15px;
+          min-height: 44px;
           border-bottom: 1px solid rgba(15,118,110,0.1);
           transition: color 0.2s, background 0.2s;
+          display: flex;
+          align-items: center;
         }
         .hn-mobile-link:hover, .hn-mobile-link.active {
           color: #ffffff; background: rgba(15,118,110,0.08);
@@ -83,9 +93,12 @@ export default function Header() {
           font-size: 0.7rem; font-weight: 400;
           letter-spacing: 0.12em; text-transform: uppercase;
           color: rgba(255,255,255,0.4); text-decoration: none;
-          display: block; padding: 0.75rem 2.5rem;
+          display: block; padding: 12px 25px;
+          min-height: 44px;
           border-bottom: 1px solid rgba(15,118,110,0.07);
           transition: color 0.2s;
+          display: flex;
+          align-items: center;
         }
         .hn-mobile-sub:hover { color: var(--color-primary); }
         .hn-mobile-sub.gold { color: var(--color-primary); }
@@ -145,7 +158,7 @@ export default function Header() {
         }}>
 
           {/* ── LOGO ── */}
-          <Link href="/" style={{ textDecoration: 'none', flexShrink: 0 }}>
+          <Link href="/" style={{ textDecoration: 'none', flexShrink: 0 }} aria-label="Himalayan Retreats - Go to homepage">
             {!logoError ? (
               <Image
                 src={LOGO_IMAGE}
@@ -300,7 +313,9 @@ export default function Header() {
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '0.68rem', fontWeight: 700,
                 letterSpacing: '0.22em', textTransform: 'uppercase',
-                textDecoration: 'none', padding: '9px 22px',
+                textDecoration: 'none', padding: '12px 22px',
+                minHeight: '44px', minWidth: '44px',
+                display: 'inline-flex', alignItems: 'center',
                 background: 'rgba(15,118,110,0.12)', color: 'var(--color-primary)',
                 border: '1px solid rgba(15,118,110,0.45)', borderRadius: '1px',
                 transition: 'background 0.25s, color 0.25s, border-color 0.25s',

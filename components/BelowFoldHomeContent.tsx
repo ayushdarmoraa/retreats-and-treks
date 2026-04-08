@@ -201,12 +201,11 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
     }
     .retreat-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem;
+      font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--color-primary);
       font-weight: 500;
-      opacity: 0.7;
     }
 
     /* ── View all button ── */
@@ -457,12 +456,11 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
     }
     .loc-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem;
+      font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--color-primary);
       font-weight: 500;
-      opacity: 0.7;
     }
   `}</style>
 
@@ -673,12 +671,11 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     }
     .path-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem;
+      font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--color-primary);
       font-weight: 500;
-      opacity: 0.7;
     }
   `}</style>
 
@@ -794,12 +791,11 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     }
     .trek-pop-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem;
+      font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--color-primary);
       font-weight: 500;
-      opacity: 0.7;
     }
     .trek-pop-grid {
       display: grid;
@@ -1063,12 +1059,11 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     }
     .step-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem;
+      font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--color-primary);
       font-weight: 500;
-      opacity: 0.7;
     }
   `}</style>
 
@@ -1178,12 +1173,11 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     }
     .s7-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem;
+      font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--color-primary);
       font-weight: 500;
-      opacity: 0.7;
     }
 
     /* ── Heading ── */
@@ -1537,12 +1531,11 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     }
     .t-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem;
+      font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--color-primary);
       font-weight: 500;
-      opacity: 0.7;
     }
   `}</style>
 
@@ -1755,12 +1748,11 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     }
     .life-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem;
+      font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--color-primary);
       font-weight: 500;
-      opacity: 0.7;
     }
   `}</style>
 
@@ -1867,12 +1859,11 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     }
     .day-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem;
+      font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: var(--color-primary);
       font-weight: 500;
-      opacity: 0.7;
     }
 
     .day-timeline {
@@ -2258,8 +2249,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-size: 0.5rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--color-muted);
-      opacity: 0.6;
+      color: #666666;
     }
 
     /* Card heading */
@@ -2315,7 +2305,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       width: 100%;
       padding: 13px 28px;
       background: transparent;
-      color: var(--color-muted);
+      color: #444444;
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.62rem;
       font-weight: 400;
@@ -2347,8 +2337,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-size: 0.54rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      color: var(--color-muted);
-      opacity: 0.5;
+      color: #666666;
       display: flex;
       align-items: center;
       gap: 0.4rem;
