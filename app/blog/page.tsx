@@ -50,17 +50,16 @@ export default function BlogPage() {
           width: 24px;
           height: 1px;
           background: var(--color-primary);
-          opacity: 0.5;
+          
           display: inline-block;
         }
         .bl-eyebrow-text {
           font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.56rem;
+          font-size: 0.75rem;
           letter-spacing: 0.28em;
           text-transform: uppercase;
-          color: var(--color-primary);
+          color: #374151;
           font-weight: 500;
-          opacity: 0.7;
         }
         .bl-hero h1 {
           font-family: var(--font-geist-sans), sans-serif;
@@ -130,7 +129,7 @@ export default function BlogPage() {
         .bl-topic-pill:hover {
           background: rgba(15, 118, 110, 0.06);
           border-color: rgba(15, 118, 110, 0.35);
-          color: var(--color-primary);
+          color: #374151;
           transform: translateY(-2px);
         }
         .bl-topic-dot {
@@ -138,7 +137,7 @@ export default function BlogPage() {
           height: 5px;
           border-radius: 50%;
           background: var(--color-primary);
-          opacity: 0.4;
+          
           flex-shrink: 0;
         }
 
@@ -229,7 +228,7 @@ export default function BlogPage() {
           background: linear-gradient(to top, rgba(2,10,2,0.55) 0%, rgba(2,10,2,0) 60%);
           transition: opacity 0.32s;
         }
-        .bl-card:hover .bl-card-img-overlay { opacity: 0.75; }
+        .bl-card:hover .bl-card-img-overlay {5; }
 
         /* Topic tag over image */
         .bl-card-tag {
@@ -265,7 +264,7 @@ export default function BlogPage() {
           margin: 0 0 0.6rem;
           transition: color 0.2s;
         }
-        .bl-card:hover .bl-card-body h3 { color: var(--color-primary); }
+        .bl-card:hover .bl-card-body h3 { color: #374151; }
         .bl-card-body p {
           font-family: var(--font-geist-sans), sans-serif;
           font-size: 0.84rem;
@@ -284,7 +283,7 @@ export default function BlogPage() {
           font-weight: 700;
           letter-spacing: 0.2em;
           text-transform: uppercase;
-          color: var(--color-primary);
+          color: #374151;
           text-decoration: none;
           transition: gap 0.2s;
         }
@@ -385,11 +384,11 @@ export default function BlogPage() {
           display: inline-block;
           margin-top: 1rem;
           font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.56rem;
+          font-size: 0.75rem;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: var(--color-primary);
-          opacity: 0.6;
+          color: #374151;
+          
           font-weight: 500;
         }
       `}</style>

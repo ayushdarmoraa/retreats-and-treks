@@ -29,11 +29,11 @@ function MiniScores({ scores }: { scores: RetreatScores }) {
     physicalDemand: 'Phy',
   };
   return (
-    <div style={{ display: 'grid', gap: '5px', minWidth: '90px' }}>
+          <div style={{ display: 'grid', gap: '5px', minWidth: '90px' }}>
       {dims.map(([dim, val]) => (
         <div key={dim} title={`${dim}: ${val}/10`} style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
           <span style={{
-            fontSize: '0.6rem',
+            fontSize: '0.75rem',
             color: '#aaaaaa',
             width: '22px',
             flexShrink: 0,
@@ -59,7 +59,7 @@ function MiniScores({ scores }: { scores: RetreatScores }) {
             }} />
           </div>
           <span style={{
-            fontSize: '0.6rem',
+            fontSize: '0.75rem',
             color: '#999999',
             width: '14px',
             textAlign: 'right',
@@ -92,12 +92,12 @@ function compareRows(a: MatrixRow, b: MatrixRow, key: SortKey, dir: SortDir): nu
 }
 
 function SortIndicator({ active, dir }: { active: boolean; dir: SortDir }) {
-  if (!active) return <span style={{ opacity: 0.2, marginLeft: '0.35rem', fontSize: '0.65rem' }}>⇅</span>;
-  return <span style={{ marginLeft: '0.35rem', color: 'var(--color-primary)', fontSize: '0.65rem' }}>{dir === 'asc' ? '↑' : '↓'}</span>;
+  if (!active) return <span style={{ marginLeft: '0.35rem', fontSize: '0.75rem' }}>⇅</span>;
+  return <span style={{ marginLeft: '0.35rem', color: '#374151', fontSize: '0.75rem' }}>{dir === 'asc' ? '↑' : '↓'}</span>;
 }
 
 const INTENSITY_PILL: Record<string, React.CSSProperties> = {
-  low:    { background: 'rgba(15,118,110,0.08)', color: 'var(--color-primary)' },
+  low:    { background: 'rgba(15,118,110,0.08)', color: '#374151' },
   medium: { background: 'rgba(245,158,11,0.08)', color: '#b45309' },
   high:   { background: 'rgba(220,38,38,0.08)',  color: '#b91c1c' },
 };
@@ -143,7 +143,7 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
         }
 
         .pmt-filter-label {
-          font-size: 0.72rem;
+          font-size: 0.75rem;
           font-weight: 500;
           letter-spacing: 0.08em;
           color: #555555;
@@ -172,27 +172,26 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
         }
         .pmt-select:focus {
           outline: none;
-          border-color: var(--color-primary);
+          border-color: #374151;
         }
 
         .pmt-clear-btn {
-          font-size: 0.72rem;
+          font-size: 0.75rem;
           font-family: var(--font-geist-sans), sans-serif;
-          color: var(--color-primary);
+          color: #374151;
           background: none;
           border: none;
           cursor: pointer;
           padding: 0;
           text-decoration: underline;
           text-underline-offset: 2px;
-          opacity: 0.7;
           transition: opacity 0.2s;
         }
         .pmt-clear-btn:hover { opacity: 1; }
 
         .pmt-count {
           margin-left: auto;
-          font-size: 0.72rem;
+          font-size: 0.75rem;
           color: #aaaaaa;
           letter-spacing: 0.05em;
         }
@@ -214,7 +213,7 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
           padding: 0.85rem 1rem;
           text-align: left;
           font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.58rem;
+          font-size: 0.75rem;
           font-weight: 600;
           letter-spacing: 0.2em;
           text-transform: uppercase;
@@ -225,8 +224,8 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
           white-space: nowrap;
           transition: color 0.2s;
         }
-        .pmt-th:hover { color: var(--color-primary); }
-        .pmt-th.active { color: var(--color-primary); }
+        .pmt-th:hover { color: #374151; }
+        .pmt-th.active { color: #374151; }
         .pmt-th.no-sort { cursor: default; }
         .pmt-th.no-sort:hover { color: #aaaaaa; }
 
@@ -251,13 +250,13 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
         .pmt-title-link {
           font-size: 0.88rem;
           font-weight: 400;
-          color: var(--color-primary);
+          color: #374151;
           text-decoration: none;
           letter-spacing: -0.01em;
           transition: opacity 0.2s;
           display: block;
         }
-        .pmt-title-link:hover { opacity: 0.75; }
+        .pmt-title-link:hover { 5; }
 
         /* Pills */
         .pmt-pill {
@@ -265,7 +264,7 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
           align-items: center;
           padding: 2px 8px;
           border-radius: 100px;
-          font-size: 0.68rem;
+          font-size: 0.75rem;
           font-weight: 500;
           font-family: var(--font-geist-sans), sans-serif;
           text-transform: capitalize;

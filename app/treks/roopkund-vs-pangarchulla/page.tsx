@@ -108,11 +108,11 @@ export default function RoopkundVsPangarchullaPage() {
 
       {/* INTENT TRAIL — discovery cluster reinforcement */}
       <nav aria-label="Discovery trail" className="rvp-trail">
-        <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+        <Link href="/treks/best-treks-in-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
           Best Treks in Uttarakhand
         </Link>
         {' → '}
-        <Link href="/treks/best-treks-in-uttarakhand/challenging" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+        <Link href="/treks/best-treks-in-uttarakhand/challenging" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
           Challenging Treks
         </Link>
         {' → '}
@@ -124,19 +124,19 @@ export default function RoopkundVsPangarchullaPage() {
         .rvp-trail { font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 300; color: #888; line-height: 1.6; margin-bottom: 0.75rem; }
         .rvp-body { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555555; margin: 0; }
         .rvp-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-        .rvp-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.6; display: inline-block; }
-        .rvp-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-primary); font-weight: 500; opacity: 0.8; }
+        .rvp-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  display: inline-block; }
+        .rvp-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase; color: #374151; font-weight: 500; }
 
         /* Quick-pick cards */
         .rvp-pick { background: #fff; border: 1px solid #eef0ee; border-left: 3px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; line-height: 1.85; color: #555; transition: box-shadow 0.2s ease; }
         .rvp-pick:hover { box-shadow: 0 4px 16px rgba(15,118,110,0.08); }
-        .rvp-pick-label { font-size: 0.55rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-primary); opacity: 0.7; margin-bottom: 0.35rem; }
+        .rvp-pick-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #374151; margin-bottom: 0.35rem; }
 
         /* Table */
         .rvp-table-wrap { overflow-x: auto; border: 1px solid #e5e7eb; border-radius: 10px; background: #ffffff; }
         .rvp-table { width: 100%; border-collapse: collapse; }
         .rvp-table thead tr { border-bottom: 2px solid #e5e7eb; }
-        .rvp-table th { font-family: var(--font-geist-sans), sans-serif; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-primary); opacity: 0.7; padding: 0.75rem 1rem; text-align: left; }
+        .rvp-table th { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #374151; padding: 0.75rem 1rem; text-align: left; }
         .rvp-table td { font-family: var(--font-geist-sans), sans-serif; font-size: 0.84rem; font-weight: 300; color: #444; padding: 0.75rem 1rem; border-bottom: 1px solid #f0f0f0; }
         .rvp-table td:first-child { font-weight: 500; color: #111; width: 25%; }
         .rvp-table tbody tr:last-child td { border-bottom: none; }
@@ -155,7 +155,7 @@ export default function RoopkundVsPangarchullaPage() {
         .rvp-season { background: #fff; border: 1px solid #eef0ee; border-radius: 10px; padding: 1.25rem 1.5rem; margin-bottom: 1rem; transition: box-shadow 0.2s ease; }
         .rvp-season:hover { box-shadow: 0 4px 16px rgba(15,118,110,0.07); }
         .rvp-season:last-of-type { margin-bottom: 0; }
-        .rvp-season-label { font-family: var(--font-geist-sans), sans-serif; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-primary); opacity: 0.7; margin-bottom: 0.5rem; }
+        .rvp-season-label { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #374151; margin-bottom: 0.5rem; }
         .rvp-season p { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin: 0; }
 
         /* Callout */
@@ -178,13 +178,13 @@ export default function RoopkundVsPangarchullaPage() {
         .rvp-choose-card ul { margin: 0; padding: 0; list-style: none; }
         .rvp-choose-card ul li { font-family: var(--font-geist-sans), sans-serif; font-size: 0.84rem; font-weight: 300; line-height: 1.85; color: #555; padding: 0.2rem 0 0.2rem 1.1rem; position: relative; border-bottom: 1px solid #f7f9f7; }
         .rvp-choose-card ul li:last-child { border-bottom: none; }
-        .rvp-choose-card ul li::before { content: '→'; position: absolute; left: 0; color: var(--color-primary); opacity: 0.5; font-size: 0.75rem; }
+        .rvp-choose-card ul li::before { content: '→'; position: absolute; left: 0; color: #374151;  font-size: 0.75rem; }
 
         /* Nav */
         .rvp-nav-group { border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; }
         .rvp-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.1rem; border-bottom: 1px solid #f0f0f0; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #333; text-decoration: none; transition: background 0.15s ease, color 0.15s ease; }
-        .rvp-nav-link:hover { background: #f7f9f7; color: var(--color-primary); }
-        .rvp-nav-link::after { content: '→'; color: var(--color-primary); opacity: 0.5; }
+        .rvp-nav-link:hover { background: #f7f9f7; color: #374151; }
+        .rvp-nav-link::after { content: '→'; color: #374151;  }
         .rvp-nav-group .rvp-nav-link:last-child { border-bottom: none; }
 
         @media (max-width: 700px) {
@@ -204,28 +204,28 @@ export default function RoopkundVsPangarchullaPage() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem' }}>
             <div className="rvp-pick">
               <div className="rvp-pick-label">Mystery Lake Expedition · 7 days · 4,800 m · May–Jun, Sep–Oct</div>
-              <span style={{ fontWeight: 500, color: '#111' }}><Link href="/treks/location/lohajung/roopkund-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Roopkund Trek</Link></span>{' '}
+              <span style={{ fontWeight: 500, color: '#111' }}><Link href="/treks/location/lohajung/roopkund-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Roopkund Trek</Link></span>{' '}
               <span style={{ fontWeight: 300 }}>— Sustained high-altitude expedition. Glacial skeleton lake, Bedni Bugyal, Trishul views.</span>
             </div>
             <div className="rvp-pick">
               <div className="rvp-pick-label">Summit Climb · 6 days · 4,590 m · Mar–May only</div>
-              <span style={{ fontWeight: 500, color: '#111' }}><Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla Peak</Link></span>{' '}
+              <span style={{ fontWeight: 500, color: '#111' }}><Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla Peak</Link></span>{' '}
               <span style={{ fontWeight: 300 }}>— Concentrated summit push. 3 AM alpine start, crampons, 360° Nanda Devi Sanctuary panorama.</span>
             </div>
           </div>
           <p className="rvp-body" style={{ marginBottom: '1rem' }}>
             If you have completed moderate treks like{' '}
-            <Link href="/treks/brahmatal-vs-kuari-pass" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>the Brahmatal or Kuari Pass routes</Link>{' '}
+            <Link href="/treks/brahmatal-vs-kuari-pass" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>the Brahmatal or Kuari Pass routes</Link>{' '}
             and are ready to step into challenging territory, the{' '}
-            <Link href="/treks/garhwal-himalayas" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Garhwal trekking region</Link>{' '}
+            <Link href="/treks/garhwal-himalayas" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Garhwal trekking region</Link>{' '}
             offer two outstanding options: the{' '}
-            <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Roopkund mystery lake expedition</Link>{' '}
+            <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Roopkund mystery lake expedition</Link>{' '}
             and the{' '}
-            <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla Peak summit climb</Link>.
+            <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla Peak summit climb</Link>.
           </p>
           <p className="rvp-body">
             Both are rated challenging, both exceed 4,500 metres, and both demand prior high-altitude experience. But they test different skills, occur in different seasons, and deliver fundamentally different types of mountain achievement. This comparison helps you decide which challenge matches your experience and ambition. For the full range of routes from easy to expedition-grade, see our{' '}
-            <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Uttarakhand trekking guide</Link>.
+            <Link href="/treks/best-treks-in-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Uttarakhand trekking guide</Link>.
           </p>
         </div>
       </section>
@@ -242,7 +242,7 @@ export default function RoopkundVsPangarchullaPage() {
               <thead><tr><th></th><th>Roopkund</th><th>Pangarchulla</th></tr></thead>
               <tbody>
                 {[
-                  { f: 'Base Town',     r: <><Link href="/treks/location/lohajung" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Lohajung</Link> (2,350 m)</>, p: <><Link href="/treks/location/joshimath" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Joshimath</Link> (1,875 m)</> },
+                  { f: 'Base Town',     r: <><Link href="/treks/location/lohajung" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Lohajung</Link> (2,350 m)</>, p: <><Link href="/treks/location/joshimath" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Joshimath</Link> (1,875 m)</> },
                   { f: 'Max Altitude',  r: '4,800 m',                          p: '4,590 m' },
                   { f: 'Distance',      r: '53 km',                            p: '32 km' },
                   { f: 'Duration',      r: '7 days',                           p: '6 days' },
@@ -307,9 +307,9 @@ export default function RoopkundVsPangarchullaPage() {
           </div>
           <div className="rvp-callout">
             <strong>Prior experience requirement for both:</strong> At least one completed trek above 4,000 metres. Comfort with cold-weather camping (sub-zero temperatures). Mental readiness for sustained physical exertion in thin air. If you have completed{' '}
-            <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Brahmatal</Link>{' '}
+            <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Brahmatal</Link>{' '}
             or{' '}
-            <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Kuari Pass</Link>,
+            <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Kuari Pass</Link>,
             you have the altitude foundation — but both Roopkund and Pangarchulla require a meaningful step up in fitness and commitment.
           </div>
         </div>
@@ -413,24 +413,24 @@ export default function RoopkundVsPangarchullaPage() {
           <div className="rvp-steps">
             <div className="rvp-step">
               <div className="rvp-step-num">1</div>
-              <div className="rvp-step-body"><strong><Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Brahmatal</Link></strong> (Moderate, 3,850 m) — winter snow trek introduction</div>
+              <div className="rvp-step-body"><strong><Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration: 'none' }}>Brahmatal</Link></strong> (Moderate, 3,850 m) — winter snow trek introduction</div>
             </div>
             <div className="rvp-step">
               <div className="rvp-step-num">2</div>
-              <div className="rvp-step-body"><strong><Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Kuari Pass</Link></strong> (Moderate, 3,876 m) — panoramic ridge walk</div>
+              <div className="rvp-step-body"><strong><Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration: 'none' }}>Kuari Pass</Link></strong> (Moderate, 3,876 m) — panoramic ridge walk</div>
             </div>
             <div className="rvp-step">
               <div className="rvp-step-num">3</div>
-              <div className="rvp-step-body"><strong><Link href="/treks/location/lohajung/roopkund-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Roopkund</Link></strong> (Challenging, 4,800 m) — extended high-altitude expedition</div>
+              <div className="rvp-step-body"><strong><Link href="/treks/location/lohajung/roopkund-trek" style={{ color: '#374151', textDecoration: 'none' }}>Roopkund</Link></strong> (Challenging, 4,800 m) — extended high-altitude expedition</div>
             </div>
             <div className="rvp-step">
               <div className="rvp-step-num">4</div>
-              <div className="rvp-step-body"><strong><Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none' }}>Pangarchulla</Link></strong> (Challenging, 4,590 m) — true summit experience</div>
+              <div className="rvp-step-body"><strong><Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: '#374151', textDecoration: 'none' }}>Pangarchulla</Link></strong> (Challenging, 4,590 m) — true summit experience</div>
             </div>
           </div>
           <p className="rvp-body" style={{ marginTop: '1.25rem' }}>
             You do not need to follow this order rigidly, but each trek builds skills and altitude confidence that the next one demands. See our{' '}
-            <Link href="/treks/garhwal-himalayas" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Garhwal Himalayas trekking guide</Link>{' '}
+            <Link href="/treks/garhwal-himalayas" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Garhwal Himalayas trekking guide</Link>{' '}
             for the full picture.
           </p>
         </div>

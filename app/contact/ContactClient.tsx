@@ -59,12 +59,11 @@ export default function ContactClient() {
         }
         .ccl-method-label {
           font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.56rem;
+          font-size: 0.75rem;
           font-weight: 600;
           letter-spacing: 0.22em;
           text-transform: uppercase;
-          color: var(--color-primary);
-          opacity: 0.7;
+          color: #374151;
         }
         .ccl-method-title {
           font-family: var(--font-geist-sans), sans-serif;
@@ -105,13 +104,13 @@ export default function ContactClient() {
           transition: opacity 0.18s;
           align-self: flex-start;
         }
-        .ccl-btn-primary:hover { opacity: 0.88; }
+        .ccl-btn-primary:hover {8; }
         .ccl-btn-outline {
           display: inline-block;
           margin-top: auto;
           padding: 0.6rem 1.25rem;
           background: transparent;
-          color: var(--color-primary);
+          color: #374151;
           font-family: var(--font-geist-sans), sans-serif;
           font-size: 0.82rem;
           font-weight: 500;
@@ -175,7 +174,7 @@ export default function ContactClient() {
         }
         .ccl-dark-eyebrow-text {
           font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.56rem;
+          font-size: 0.75rem;
           letter-spacing: 0.28em;
           text-transform: uppercase;
           color: rgba(255,255,255,0.4);
@@ -210,7 +209,7 @@ export default function ContactClient() {
           border-radius: 4px;
           transition: opacity 0.18s;
         }
-        .ccl-dark-btn:hover { opacity: 0.88; }
+        .ccl-dark-btn:hover {8; }
 
         /* Eyebrow section helper */
         .ccl-eyebrow {
@@ -219,15 +218,14 @@ export default function ContactClient() {
           gap: 0.75rem;
           margin-bottom: 1rem;
         }
-        .ccl-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; display: inline-block; }
+        .ccl-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  display: inline-block; }
         .ccl-eyebrow-text {
           font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.56rem;
+          font-size: 0.75rem;
           letter-spacing: 0.28em;
           text-transform: uppercase;
-          color: var(--color-primary);
+          color: #374151;
           font-weight: 500;
-          opacity: 0.7;
         }
         .ccl-h2 {
           font-family: var(--font-geist-sans), sans-serif;

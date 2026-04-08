@@ -121,8 +121,8 @@ export default function PackingChecklistPage() {
         /* ── PCL scoped styles — prefix: pcl- ── */
         .pcl-body { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555555; margin: 0; }
         .pcl-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-        .pcl-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; display: inline-block; }
-        .pcl-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-primary); font-weight: 500; opacity: 0.7; }
+        .pcl-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  display: inline-block; }
+        .pcl-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase; color: #374151; font-weight: 500; }
 
         /* Badges */
         .pcl-badge { display: inline-block; font-family: var(--font-geist-sans), sans-serif; font-size: 0.6rem; font-weight: 600; padding: 0.1rem 0.45rem; border-radius: 3px; margin-left: 0.4rem; vertical-align: middle; letter-spacing: 0.04em; }
@@ -137,14 +137,14 @@ export default function PackingChecklistPage() {
         .pcl-gear-item { display: flex; align-items: baseline; gap: 0.6rem; padding: 0.45rem 1.25rem; border-bottom: 1px solid #f7f9f7; font-family: var(--font-geist-sans), sans-serif; font-size: 0.84rem; font-weight: 300; color: #555; line-height: 1.7; transition: background 0.12s ease; }
         .pcl-gear-item:last-child { border-bottom: none; }
         .pcl-gear-item:hover { background: #f7f9f7; }
-        .pcl-gear-item input[type="checkbox"] { flex-shrink: 0; accent-color: var(--color-primary); width: 0.9rem; height: 0.9rem; margin-top: 0.15rem; cursor: pointer; }
+        .pcl-gear-item input[type="checkbox"] { flex-shrink: 0; accent-color: #374151; width: 0.9rem; height: 0.9rem; margin-top: 0.15rem; cursor: pointer; }
         .pcl-gear-item label { cursor: pointer; flex: 1; }
 
         /* Table */
         .pcl-table-wrap { overflow-x: auto; border: 1px solid #e5e7eb; border-radius: 10px; background: #ffffff; }
         .pcl-table { width: 100%; border-collapse: collapse; }
         .pcl-table thead tr { border-bottom: 2px solid #e5e7eb; }
-        .pcl-table th { font-family: var(--font-geist-sans), sans-serif; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--color-primary); opacity: 0.7; padding: 0.75rem 1rem; text-align: left; }
+        .pcl-table th { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #374151; padding: 0.75rem 1rem; text-align: left; }
         .pcl-table td { font-family: var(--font-geist-sans), sans-serif; font-size: 0.84rem; font-weight: 300; color: #444; padding: 0.75rem 1rem; border-bottom: 1px solid #f0f0f0; }
         .pcl-table td:first-child { font-weight: 500; color: #111; }
         .pcl-table tbody tr:last-child td { border-bottom: none; }
@@ -153,8 +153,8 @@ export default function PackingChecklistPage() {
         /* Nav */
         .pcl-nav-group { border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; }
         .pcl-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.1rem; border-bottom: 1px solid #f0f0f0; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #333; text-decoration: none; transition: background 0.15s ease, color 0.15s ease; }
-        .pcl-nav-link:hover { background: #f7f9f7; color: var(--color-primary); }
-        .pcl-nav-link::after { content: '→'; color: var(--color-primary); opacity: 0.5; }
+        .pcl-nav-link:hover { background: #f7f9f7; color: #374151; }
+        .pcl-nav-link::after { content: '→'; color: #374151;  }
         .pcl-nav-group .pcl-nav-link:last-child { border-bottom: none; }
 
         /* 2-col gear grid */
@@ -190,11 +190,11 @@ export default function PackingChecklistPage() {
           </h1>
           <p className="pcl-body" style={{ marginBottom: '1.25rem' }}>
             A complete, print-ready packing list for all 4{' '}
-            <Link href="/treks/garhwal-himalayas" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Garhwal Himalaya treks</Link>{' '}
+            <Link href="/treks/garhwal-himalayas" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Garhwal Himalaya treks</Link>{' '}
             — from the moderate{' '}
-            <Link href="/treks/brahmatal-vs-kuari-pass" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Brahmatal and Kuari Pass routes</Link>{' '}
+            <Link href="/treks/brahmatal-vs-kuari-pass" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Brahmatal and Kuari Pass routes</Link>{' '}
             to the challenging{' '}
-            <Link href="/treks/roopkund-vs-pangarchulla" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Roopkund and Pangarchulla expeditions</Link>.
+            <Link href="/treks/roopkund-vs-pangarchulla" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Roopkund and Pangarchulla expeditions</Link>.
             Items are organised by category, with colour badges indicating which treks require each item.
           </p>
           <p className="pcl-body" style={{ marginBottom: '1.5rem' }}>
@@ -505,7 +505,7 @@ export default function PackingChecklistPage() {
           </div>
           <p className="pcl-body" style={{ marginTop: '1.25rem' }}>
             Weigh your fully packed bag at home. If you are over target, eliminate items from the non-essential category first. Every extra kilogram costs energy you will need above 4,000 metres. For a structured training plan that builds load tolerance, see the{' '}
-            <Link href="/treks/garhwal-himalayas/fitness-guide" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>8-week Garhwal fitness preparation guide</Link>.
+            <Link href="/treks/garhwal-himalayas/fitness-guide" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>8-week Garhwal fitness preparation guide</Link>.
           </p>
         </div>
       </section>

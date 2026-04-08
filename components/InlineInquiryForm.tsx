@@ -113,7 +113,7 @@ export default function InlineInquiryForm({
 
   const inputStyle: React.CSSProperties = {
     width: '100%',
-    padding: '0.55rem 0.7rem',
+    padding: '0.75rem 0.7rem',
     border: '1px solid var(--color-border)',
     borderRadius: 'var(--radius-sm)',
     fontSize: '0.9rem',

@@ -46,7 +46,7 @@ export default function AboutPage() {
 
         .abt-who-item { display: flex; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid #f0f0f0; }
         .abt-who-item:last-child { border-bottom: none; }
-        .abt-who-dot { flex-shrink: 0; margin-top: 0.55rem; width: 8px; height: 8px; border-radius: 50%; background: var(--color-primary); opacity: 0.6; }
+        .abt-who-dot { flex-shrink: 0; margin-top: 0.75rem; width: 8px; height: 8px; border-radius: 50%; background: var(--color-primary);  }
         .abt-who-item p { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin: 0; }
 
         .abt-vision-callout { background: #fff; border: 1px solid #e5e7eb; border-left: 3px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
@@ -55,12 +55,12 @@ export default function AboutPage() {
         .abt-nav-group { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
         .abt-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; border-bottom: 1px solid #f0f0f0; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #333; text-decoration: none; transition: background 0.15s, color 0.15s; }
         .abt-nav-link:last-child { border-bottom: none; }
-        .abt-nav-link:hover { background: #f7f9f7; color: var(--color-primary); }
-        .abt-nav-link::after { content: '→'; color: var(--color-primary); opacity: 0.5; }
+        .abt-nav-link:hover { background: #f7f9f7; color: #374151; }
+        .abt-nav-link::after { content: '→'; color: #374151;  }
 
         .abt-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-        .abt-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; display: inline-block; }
-        .abt-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-primary); font-weight: 500; opacity: 0.7; }
+        .abt-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  display: inline-block; }
+        .abt-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase; color: #374151; font-weight: 500; }
         .abt-h2 { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200; letter-spacing: -0.03em; color: #111; line-height: 1.15; margin: 0 0 0.75rem; }
         .abt-body { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin: 0 0 1rem; }
 

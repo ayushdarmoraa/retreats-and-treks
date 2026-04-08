@@ -108,20 +108,20 @@ export default function BeginnerTreksPage() {
         .beg-h2 { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200; letter-spacing: -0.03em; color: #111; line-height: 1.15; margin: 0 0 0.75rem; }
         .beg-h3 { font-family: var(--font-geist-sans), sans-serif; font-size: 0.95rem; font-weight: 500; color: #111; letter-spacing: -0.01em; margin: 0 0 0.5rem; }
         .beg-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-        .beg-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; display: inline-block; }
-        .beg-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--color-primary); font-weight: 500; opacity: 0.7; }
+        .beg-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  display: inline-block; }
+        .beg-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase; color: #374151; font-weight: 500; }
 
         .beg-trek-card { background: #fff; border: 1px solid #eef0ee; border-top: 2px solid var(--color-primary); border-radius: 8px; padding: 1.25rem 1.5rem; margin-bottom: 0.75rem; transition: transform 0.18s, box-shadow 0.18s; }
         .beg-trek-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,0.07); }
         .beg-trek-meta { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 400; color: #888; margin-bottom: 0.65rem; }
         .beg-trek-meta-pill { display: inline-flex; align-items: center; gap: 0.3rem; }
-        .beg-trek-meta-pill::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--color-primary); opacity: 0.45; display: inline-block; }
-        .beg-trek-link { display: inline-flex; align-items: center; gap: 0.35rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 500; color: var(--color-primary); text-decoration: none; border-bottom: 1px solid rgba(15,118,110,0.25); margin-top: 0.5rem; }
-        .beg-trek-link:hover { border-bottom-color: var(--color-primary); }
+        .beg-trek-meta-pill::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--color-primary);  display: inline-block; }
+        .beg-trek-link { display: inline-flex; align-items: center; gap: 0.35rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 500; color: #374151; text-decoration: none; border-bottom: 1px solid rgba(15,118,110,0.25); margin-top: 0.5rem; }
+        .beg-trek-link:hover { border-bottom-color: #374151; }
 
         .beg-callout { background: #fff; border: 1px solid #e5e7eb; border-left: 3px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; }
-        .beg-callout a { color: var(--color-primary); font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(15,118,110,0.25); }
-        .beg-callout a:hover { border-bottom-color: var(--color-primary); }
+        .beg-callout a { color: #374151; font-weight: 500; text-decoration: none; border-bottom: 1px solid rgba(15,118,110,0.25); }
+        .beg-callout a:hover { border-bottom-color: #374151; }
         .beg-callout strong { font-weight: 500; color: #111; }
 
         .beg-table-wrap { border: 1px solid #eef0ee; border-radius: 8px; overflow: hidden; }
@@ -132,18 +132,18 @@ export default function BeginnerTreksPage() {
         .beg-table tbody tr:last-child { border-bottom: none; }
         .beg-table tbody tr:hover { background: #f7f9f7; }
         .beg-table td { padding: 0.65rem 1rem; color: #555; }
-        .beg-table td a { color: var(--color-primary); font-weight: 500; text-decoration: none; }
+        .beg-table td a { color: #374151; font-weight: 500; text-decoration: none; }
         .beg-table td a:hover { text-decoration: underline; }
-        .beg-badge { display: inline-block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.55rem; border-radius: 3px; }
-        .beg-badge-easy { background: rgba(15,118,110,0.08); color: var(--color-primary); }
+        .beg-badge { display: inline-block; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.15rem 0.75rem; border-radius: 3px; }
+        .beg-badge-easy { background: rgba(15,118,110,0.08); color: #374151; }
         .beg-badge-moderate { background: rgba(37,99,235,0.08); color: #2563eb; }
 
         .beg-nav-group { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
         .beg-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; border-bottom: 1px solid #f0f0f0; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #333; text-decoration: none; transition: background 0.15s, color 0.15s; }
         .beg-nav-link:last-child { border-bottom: none; }
-        .beg-nav-link:hover { background: #f7f9f7; color: var(--color-primary); }
-        .beg-nav-link.back::before { content: '←'; color: var(--color-primary); opacity: 0.5; margin-right: 0.5rem; }
-        .beg-nav-link:not(.back)::after { content: '→'; color: var(--color-primary); opacity: 0.5; }
+        .beg-nav-link:hover { background: #f7f9f7; color: #374151; }
+        .beg-nav-link.back::before { content: '←'; color: #374151;  margin-right: 0.5rem; }
+        .beg-nav-link:not(.back)::after { content: '→'; color: #374151;  }
 
         @media (max-width: 700px) {
           .beg-table-wrap { overflow-x: auto; }
@@ -172,7 +172,7 @@ export default function BeginnerTreksPage() {
             </p>
             <p className="beg-body" style={{ margin: 0 }}>
               All five treks are included in our{' '}
-              <Link href={PARENT_PATH} style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
+              <Link href={PARENT_PATH} style={{ color: '#374151', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
                 complete ranking of the 10 best treks in Uttarakhand
               </Link>, which also covers challenging and high-altitude routes for experienced trekkers.
             </p>
@@ -243,7 +243,7 @@ export default function BeginnerTreksPage() {
             </div>
             <p className="beg-body" style={{ margin: '1rem 0 0' }}>
               Both Chakrata trails pair well with a{' '}
-              <Link href="/retreats/chakrata" style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
+              <Link href="/retreats/chakrata" style={{ color: '#374151', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
                 Chakrata retreat weekend
               </Link>{' '}
               — trek in the morning, rest and reset in the afternoon.
@@ -421,14 +421,14 @@ export default function BeginnerTreksPage() {
               eat meals prepared by a trek crew, and walk 6–12 km per day with 500–800 m elevation gain. Guides manage
               navigation, safety, and logistics. Your main job is to walk and enjoy. Basic trekking gear (layering system,
               trekking shoes, daypack) is needed — our{' '}
-              <Link href="/treks/garhwal-himalayas/packing-checklist" style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
+              <Link href="/treks/garhwal-himalayas/packing-checklist" style={{ color: '#374151', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
                 packing checklist
               </Link>{' '}
               covers everything.
             </p>
             <p className="beg-body" style={{ margin: 0 }}>
               Ready to progress beyond beginner routes? The{' '}
-              <Link href={`${PARENT_PATH}#challenging-treks`} style={{ color: 'var(--color-primary)', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
+              <Link href={`${PARENT_PATH}#challenging-treks`} style={{ color: '#374151', fontWeight: 500, textDecoration: 'none', borderBottom: '1px solid rgba(15,118,110,0.25)' }}>
                 challenging treks section
               </Link>{' '}
               covers Roopkund, Pangarchulla, and Milam Glacier for experienced trekkers.

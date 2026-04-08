@@ -124,7 +124,7 @@ export default function RetreatProgramsPage() {
         }
         .rpm-eyebrow-line {
           width: 24px; height: 1px;
-          background: var(--color-primary); opacity: 0.5;
+          background: var(--color-primary); 
           flex-shrink: 0;
         }
 
@@ -138,14 +138,14 @@ export default function RetreatProgramsPage() {
           margin: 0 0 0.75rem;
         }
         .rpm-h1-accent {
-          color: var(--color-primary);
+          color: #374151;
           font-weight: 200;
         }
 
         .rpm-rule {
           width: 36px; height: 1px;
           background: var(--color-primary);
-          opacity: 0.22;
+          
           margin: 1.75rem 0;
         }
 
@@ -182,7 +182,7 @@ export default function RetreatProgramsPage() {
           line-height: 1.15;
           margin: 0 0 2rem;
         }
-        .rpm-h2-accent { color: var(--color-primary); font-weight: 200; }
+        .rpm-h2-accent { color: #374151; font-weight: 200; }
 
         /* Link lists */
         .rpm-linklist {
@@ -233,16 +233,16 @@ export default function RetreatProgramsPage() {
           line-height: 1.5;
           transition: color 0.2s;
         }
-        .rpm-linklist a:hover { color: var(--color-primary); }
+        .rpm-linklist a:hover { color: #374151; }
         .rpm-linklist-arrow {
           font-size: 0.7rem;
-          color: var(--color-primary);
-          opacity: 0.3;
+          color: #374151;
+          
           flex-shrink: 0;
           transition: opacity 0.2s, transform 0.2s;
         }
         .rpm-linklist li:hover .rpm-linklist-arrow {
-          opacity: 0.9;
+          
           transform: translateX(3px);
         }
       `}</style>
@@ -333,20 +333,20 @@ export default function RetreatProgramsPage() {
     gap: 1rem;
     transition: color 0.2s;
   }
-  .rpm-cmp-item:hover a { color: var(--color-primary); }
+  .rpm-cmp-item:hover a { color: #374151; }
   .rpm-cmp-num {
-    font-size: 0.56rem;
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.2em;
-    color: var(--color-primary);
-    opacity: 0.4;
+    color: #374151;
+    
     display: block;
     margin-bottom: 0.35rem;
   }
   .rpm-cmp-arrow {
     font-size: 0.7rem;
-    color: var(--color-primary);
-    opacity: 0.3;
+    color: #374151;
+    
     flex-shrink: 0;
     transition: opacity 0.2s, transform 0.2s;
   }

@@ -94,11 +94,11 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           .rj-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
 
           .rj-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
-          .rj-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; flex-shrink: 0; }
+          .rj-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  flex-shrink: 0; }
           .rj-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-            color: var(--color-primary); font-weight: 500; opacity: 0.7;
+            font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+            color: #374151; font-weight: 500;
           }
 
           .rj-title {
@@ -133,7 +133,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
   fontFamily: 'var(--font-geist-sans), sans-serif',
   fontSize: '0.68rem', fontWeight: 500,
   letterSpacing: '0.08em', textTransform: 'uppercase',
-  color: 'var(--color-primary)',
+  color: '#374151',
   background: 'rgba(15,118,110,0.08)',
   border: '1px solid rgba(15,118,110,0.18)',
   borderRadius: '4px',
@@ -159,11 +159,11 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           .rj-desc-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
 
           .rj-desc-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 2rem; }
-          .rj-desc-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+          .rj-desc-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  }
           .rj-desc-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-            color: var(--color-primary); font-weight: 500; opacity: 0.7;
+            font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+            color: #374151; font-weight: 500;
           }
 
           .rj-desc-body {
@@ -214,11 +214,11 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           .rj-fn-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
 
           .rj-fn-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-          .rj-fn-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+          .rj-fn-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  }
           .rj-fn-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-            color: var(--color-primary); font-weight: 500; opacity: 0.7;
+            font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+            color: #374151; font-weight: 500;
           }
 
           .rj-fn-heading {
@@ -226,7 +226,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200;
             letter-spacing: -0.03em; color: #111111; line-height: 1.15; margin: 0 0 2.5rem;
           }
-          .rj-fn-heading span { color: var(--color-primary); }
+          .rj-fn-heading span { color: #374151; }
 
           /* ── Wrap ── */
           .rj-fn-wrap {
@@ -258,7 +258,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 0.6rem; font-weight: 600;
             letter-spacing: 0.2em; text-transform: uppercase;
-            color: #111111; opacity: 0.5;
+            color: #111111; 
           }
 
           /* Body columns */
@@ -373,11 +373,11 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         }}>
           <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0 }} />
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>You&apos;ll Love This If</span>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0 }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', fontWeight: 500}}>You&apos;ll Love This If</span>
             </div>
             <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 2rem' }}>
-              This retreat may be <span style={{ color: 'var(--color-primary)' }}>ideal</span> if you want to
+              This retreat may be <span style={{ color: '#374151' }}>ideal</span> if you want to
             </h2>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {retreat.idealIf.map((item, i) => (
@@ -406,11 +406,11 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         }}>
           <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0 }} />
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>What Sets This Apart</span>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0 }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', fontWeight: 500}}>What Sets This Apart</span>
             </div>
             <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 1.5rem' }}>
-              What makes this retreat <span style={{ color: 'var(--color-primary)' }}>unique</span>
+              What makes this retreat <span style={{ color: '#374151' }}>unique</span>
             </h2>
             <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: '#555', fontWeight: 300, margin: '0 0 2.5rem' }}>
               {retreat.whatMakesItUnique.intro}
@@ -445,11 +445,11 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         }}>
           <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0 }} />
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>The Experience</span>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0 }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', fontWeight: 500}}>The Experience</span>
             </div>
             <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 2.5rem' }}>
-              Experiences during the <span style={{ color: 'var(--color-primary)' }}>retreat</span>
+              Experiences during the <span style={{ color: '#374151' }}>retreat</span>
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
               {retreat.experiences.map((exp, i) => (
@@ -478,11 +478,11 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         }}>
           <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0 }} />
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Destinations</span>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0 }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', fontWeight: 500}}>Destinations</span>
             </div>
             <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 2.5rem' }}>
-              Places we <span style={{ color: 'var(--color-primary)' }}>explore</span>
+              Places we <span style={{ color: '#374151' }}>explore</span>
             </h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
               {retreat.placesWeExplore.map((place, i) => (
@@ -515,11 +515,11 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           .rj-hiw-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
 
           .rj-hiw-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-          .rj-hiw-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+          .rj-hiw-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  }
           .rj-hiw-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-            color: var(--color-primary); font-weight: 500; opacity: 0.7;
+            font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+            color: #374151; font-weight: 500;
           }
 
           .rj-hiw-heading {
@@ -527,7 +527,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200;
             letter-spacing: -0.03em; color: #111111; line-height: 1.15; margin: 0 0 2.5rem;
           }
-          .rj-hiw-heading span { color: var(--color-primary); }
+          .rj-hiw-heading span { color: #374151; }
 
           /* ── Timeline ── */
           .rj-hiw-timeline { display: flex; flex-direction: column; }
@@ -563,7 +563,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 0.58rem; font-weight: 600;
             letter-spacing: 0.2em; text-transform: uppercase;
-            color: var(--color-primary); opacity: 0.75; margin: 0 0 0.4rem;
+            color: #374151;5; margin: 0 0 0.4rem;
           }
           .rj-hiw-text {
             font-family: var(--font-geist-sans), sans-serif;
@@ -621,11 +621,11 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           .rj-wib-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
 
           .rj-wib-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-          .rj-wib-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+          .rj-wib-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  }
           .rj-wib-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-            color: var(--color-primary); font-weight: 500; opacity: 0.7;
+            font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+            color: #374151; font-weight: 500;
           }
 
           .rj-wib-heading {
@@ -633,7 +633,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200;
             letter-spacing: -0.03em; color: #111111; line-height: 1.15; margin: 0 0 2.5rem;
           }
-          .rj-wib-heading span { color: var(--color-primary); }
+          .rj-wib-heading span { color: #374151; }
 
           /* Primary block */
           .rj-wib-primary {
@@ -649,7 +649,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 0.58rem; font-weight: 600;
             letter-spacing: 0.22em; text-transform: uppercase;
-            color: var(--color-primary); opacity: 0.7;
+            color: #374151;
             margin: 0 0 0.5rem;
           }
           .rj-wib-primary-reason {
@@ -703,12 +703,12 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             font-weight: 300; margin: 0; line-height: 1.5;
           }
           .rj-wib-card-arrow {
-            font-size: 0.75rem; color: var(--color-primary);
-            opacity: 0.3; flex-shrink: 0;
+            font-size: 0.75rem; color: #374151;
+             flex-shrink: 0;
             transition: opacity 0.2s, transform 0.2s;
           }
           .rj-wib-card:hover .rj-wib-card-arrow {
-            opacity: 0.9; transform: translateX(3px);
+             transform: translateX(3px);
           }
         `}</style>
 
@@ -764,11 +764,11 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         }}>
           <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0 }} />
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Stay & Food</span>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0 }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', fontWeight: 500}}>Stay & Food</span>
             </div>
             <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 1.5rem' }}>
-              Food &amp; <span style={{ color: 'var(--color-primary)' }}>accommodation</span>
+              Food &amp; <span style={{ color: '#374151' }}>accommodation</span>
             </h2>
             <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: '#555', fontWeight: 300, margin: 0 }}>
               {retreat.foodAndAccommodation}
@@ -788,11 +788,11 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         }}>
           <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0 }} />
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>The Location</span>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0 }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', fontWeight: 500}}>The Location</span>
             </div>
             <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 1.5rem' }}>
-              About <span style={{ color: 'var(--color-primary)' }}>{retreat.locationInfo.name}</span>
+              About <span style={{ color: '#374151' }}>{retreat.locationInfo.name}</span>
             </h2>
             <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: '#555', fontWeight: 300, margin: 0 }}>
               {retreat.locationInfo.description}
@@ -812,11 +812,11 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         }}>
           <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0 }} />
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Getting Here</span>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0 }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', fontWeight: 500}}>Getting Here</span>
             </div>
             <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 2rem' }}>
-              Travel &amp; <span style={{ color: 'var(--color-primary)' }}>transportation</span>
+              Travel &amp; <span style={{ color: '#374151' }}>transportation</span>
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
               <div style={{ background: '#f7f9f7', border: '1px solid #eef0ee', borderRadius: 8, padding: '1.25rem 1.5rem' }}>
@@ -849,11 +849,11 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           .rj-ada-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
 
           .rj-ada-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-          .rj-ada-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+          .rj-ada-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  }
           .rj-ada-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-            color: var(--color-primary); font-weight: 500; opacity: 0.7;
+            font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+            color: #374151; font-weight: 500;
           }
 
           .rj-ada-heading {
@@ -861,7 +861,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200;
             letter-spacing: -0.03em; color: #111111; line-height: 1.15; margin: 0 0 2rem;
           }
-          .rj-ada-heading span { color: var(--color-primary); }
+          .rj-ada-heading span { color: #374151; }
 
           .rj-ada-body {
             font-family: var(--font-geist-sans), sans-serif;
@@ -908,11 +908,11 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             .rj-rt-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
 
             .rj-rt-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-            .rj-rt-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+            .rj-rt-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  }
             .rj-rt-eyebrow-text {
               font-family: var(--font-geist-sans), sans-serif;
-              font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-              color: var(--color-primary); font-weight: 500; opacity: 0.7;
+              font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+              color: #374151; font-weight: 500;
             }
 
             .rj-rt-heading {
@@ -920,7 +920,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
               font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200;
               letter-spacing: -0.03em; color: #111111; line-height: 1.15; margin: 0 0 2rem;
             }
-            .rj-rt-heading span { color: var(--color-primary); }
+            .rj-rt-heading span { color: #374151; }
 
             .rj-rt-card {
               display: flex; align-items: center;
@@ -940,9 +940,9 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
 
             .rj-rt-card-label {
               font-family: var(--font-geist-sans), sans-serif;
-              font-size: 0.55rem; font-weight: 600;
+              font-size: 0.75rem; font-weight: 600;
               letter-spacing: 0.22em; text-transform: uppercase;
-              color: var(--color-primary); opacity: 0.65; margin: 0 0 0.35rem;
+              color: #374151;  margin: 0 0 0.35rem;
             }
             .rj-rt-card-title {
               font-family: var(--font-geist-sans), sans-serif;
@@ -960,7 +960,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
               font-family: var(--font-geist-sans), sans-serif;
               font-size: 0.62rem; font-weight: 600;
               letter-spacing: 0.18em; text-transform: uppercase;
-              color: var(--color-primary);
+              color: #374151;
               border: 1px solid rgba(15,118,110,0.35);
               padding: 10px 18px; border-radius: 4px;
               text-decoration: none; white-space: nowrap; flex-shrink: 0;
@@ -969,7 +969,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             .rj-rt-btn:hover {
               background: var(--color-primary);
               color: #ffffff;
-              border-color: var(--color-primary);
+              border-color: #374151;
             }
           `}</style>
 
@@ -1036,11 +1036,11 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             display: flex; align-items: center;
             gap: 0.75rem; margin-bottom: 1.25rem;
           }
-          .rj-cta-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); opacity: 0.45; }
+          .rj-cta-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  }
           .rj-cta-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem; letter-spacing: 0.28em; text-transform: uppercase;
-            color: var(--color-primary); font-weight: 500; opacity: 0.7;
+            font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+            color: #374151; font-weight: 500;
           }
 
           .rj-cta-heading {
@@ -1049,7 +1049,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             letter-spacing: -0.035em; color: #111111;
             line-height: 1.1; margin: 0 0 1.25rem;
           }
-          .rj-cta-heading span { color: var(--color-primary); }
+          .rj-cta-heading span { color: #374151; }
 
           .rj-invitation {
             font-family: var(--font-geist-sans), sans-serif;
@@ -1107,8 +1107,8 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             transition: border-color 0.2s, color 0.2s, transform 0.18s;
           }
           .rj-back-link:hover {
-            border-color: var(--color-primary);
-            color: var(--color-primary);
+            border-color: #374151;
+            color: #374151;
             transform: translateY(-2px);
           }
 

@@ -79,14 +79,14 @@ export default function RetreatsClient({
           .rc-hero-eyebrow {
             display: flex; align-items: center;
             gap: 0.75rem; margin-bottom: 2rem;
-            opacity: 0;
+            
             animation: rcHeroFadeUp 0.8s ease 0.1s forwards;
           }
-          .rc-hero-eyebrow-line { width: 32px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+          .rc-hero-eyebrow-line { width: 32px; height: 1px; background: var(--color-primary);  }
           .rc-hero-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.55rem; letter-spacing: 0.32em; text-transform: uppercase;
-            color: var(--color-primary); font-weight: 500;
+            font-size: 0.75rem; letter-spacing: 0.32em; text-transform: uppercase;
+            color: #374151; font-weight: 500;
           }
 
           /* Heading */
@@ -97,12 +97,12 @@ export default function RetreatsClient({
             line-height: 1.05; color: #111111;
             letter-spacing: -0.035em;
             margin-bottom: 1.75rem;
-            opacity: 0;
+            
             animation: rcHeroFadeUp 0.8s ease 0.25s forwards;
           }
           .rc-hero-heading em {
             font-style: normal;
-            color: var(--color-primary);
+            color: #374151;
             font-weight: 200;
           }
 
@@ -112,7 +112,7 @@ export default function RetreatsClient({
             font-size: 0.95rem; color: #666666;
             font-weight: 300; line-height: 1.85;
             max-width: 380px; margin-bottom: 2.5rem;
-            opacity: 0;
+            
             animation: rcHeroFadeUp 0.8s ease 0.4s forwards;
           }
 
@@ -120,7 +120,7 @@ export default function RetreatsClient({
           .rc-hero-actions {
             display: flex; align-items: center;
             gap: 1.25rem; flex-wrap: wrap;
-            opacity: 0;
+            
             animation: rcHeroFadeUp 0.8s ease 0.55s forwards;
           }
           .rc-hero-btn {
@@ -144,14 +144,14 @@ export default function RetreatsClient({
             display: flex; gap: 1.5rem; flex-wrap: wrap;
             margin-top: 3rem; padding-top: 2rem;
             border-top: 1px solid #ebebeb;
-            opacity: 0;
+            
             animation: rcHeroFadeUp 0.8s ease 0.7s forwards;
           }
           .rc-hero-trust-item { display: flex; flex-direction: column; gap: 0.2rem; }
           .rc-hero-trust-num {
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 1.5rem; font-weight: 200;
-            color: var(--color-primary); line-height: 1;
+            color: #374151; line-height: 1;
           }
           .rc-hero-trust-label {
             font-family: var(--font-geist-sans), sans-serif;
@@ -179,7 +179,7 @@ export default function RetreatsClient({
             border: 1px solid rgba(255,255,255,0.15);
             border-radius: 6px; padding: 0.85rem 1.25rem;
             display: flex; align-items: center; gap: 0.75rem;
-            opacity: 0;
+            
             animation: rcHeroFadeUp 0.8s ease 0.9s forwards;
           }
           .rc-hero-tag-dot {
@@ -197,7 +197,7 @@ export default function RetreatsClient({
           .rc-hero-altitude {
             position: absolute; top: 2.5rem; right: 2rem;
             text-align: right;
-            opacity: 0;
+            
             animation: rcHeroFadeUp 0.8s ease 1s forwards;
           }
           .rc-hero-altitude-num {
@@ -207,7 +207,7 @@ export default function RetreatsClient({
           }
           .rc-hero-altitude-label {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.55rem; letter-spacing: 0.2em;
+            font-size: 0.75rem; letter-spacing: 0.2em;
             text-transform: uppercase; color: rgba(255,255,255,0.4);
           }
 
@@ -217,7 +217,7 @@ export default function RetreatsClient({
             transform: translateX(-50%);
             display: flex; flex-direction: column;
             align-items: center; gap: 0.5rem;
-            opacity: 0;
+            
             animation: rcHeroFadeUp 0.8s ease 1.1s forwards;
             z-index: 3;
           }
@@ -235,7 +235,7 @@ export default function RetreatsClient({
 
           /* ── Keyframes ── */
           @keyframes rcHeroFadeUp {
-            from { opacity: 0; transform: translateY(18px); }
+            from {  transform: translateY(18px); }
             to   { opacity: 1; transform: translateY(0); }
           }
           @keyframes rcKenBurns {
@@ -249,7 +249,7 @@ export default function RetreatsClient({
           @keyframes rcScrollDrop {
             0%   { transform: scaleY(0); transform-origin: top; opacity: 1; }
             50%  { transform: scaleY(1); transform-origin: top; opacity: 1; }
-            100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+            100% { transform: scaleY(1); transform-origin: bottom;  }
           }
 
          @media (max-width: 900px) {
@@ -422,7 +422,7 @@ export default function RetreatsClient({
             background: linear-gradient(to top, rgba(2,10,2,0.65) 0%, rgba(2,10,2,0.1) 50%, rgba(2,10,2,0) 100%);
             transition: opacity 0.35s;
           }
-          .rs-card:hover .rs-img-overlay { opacity: 0.85; }
+          .rs-card:hover .rs-img-overlay {5; }
           .rs-img-tag {
             position: absolute; top: 1rem; left: 1rem;
             font-family: var(--font-geist-sans), sans-serif;
@@ -435,7 +435,7 @@ export default function RetreatsClient({
             position: absolute; bottom: 1rem; left: 1.25rem; right: 1.25rem;
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 1rem; font-weight: 500; color: #ece4d0;
-            line-height: 1.25; opacity: 0; transform: translateY(8px);
+            line-height: 1.25;  transform: translateY(8px);
             transition: opacity 0.35s, transform 0.35s;
           }
           .rs-card:hover .rs-img-title { opacity: 1; transform: translateY(0); }
@@ -447,7 +447,7 @@ export default function RetreatsClient({
           .rs-body::after {
             content: ''; position: absolute; bottom: 0; left: 0;
             height: 2px; width: 0;
-            background: var(--color-primary); opacity: 0.2;
+            background: var(--color-primary); 
             transition: width 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
           }
           .rs-card:hover .rs-body::after { width: 100%; }
@@ -466,18 +466,18 @@ export default function RetreatsClient({
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 0.6rem; font-weight: 700;
             letter-spacing: 0.2em; text-transform: uppercase;
-            color: var(--color-primary); transition: gap 0.22s;
+            color: #374151; transition: gap 0.22s;
           }
           .rs-card:hover .rs-cta { gap: 0.72rem; }
           .rs-eyebrow {
             display: flex; align-items: center; justify-content: center;
             gap: 0.9rem; margin-bottom: 1rem;
           }
-          .rs-eyebrow-line { width: 28px; height: 1px; background: var(--color-primary); opacity: 0.5; }
+          .rs-eyebrow-line { width: 28px; height: 1px; background: var(--color-primary);  }
           .rs-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem; letter-spacing: 0.32em; text-transform: uppercase;
-            color: var(--color-primary); font-weight: 500; opacity: 0.7;
+            font-size: 0.75rem; letter-spacing: 0.32em; text-transform: uppercase;
+            color: #374151; font-weight: 500;
           }
         `}</style>
 
@@ -497,7 +497,7 @@ export default function RetreatsClient({
             lineHeight: 1.1, textAlign: 'center',
           }}>
             Our Retreat{' '}
-            <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Services</span>
+            <span style={{ color: '#374151', fontWeight: 200 }}>Services</span>
           </h2>
 
           {(() => {
@@ -661,7 +661,7 @@ export default function RetreatsClient({
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 1.25rem;
             font-weight: 600;
-            color: var(--color-primary);
+            color: #374151;
             transition: background 0.3s, color 0.3s;
             flex-shrink: 0;
           }
@@ -707,16 +707,15 @@ export default function RetreatsClient({
           .hw-eyebrow-line {
             width: 28px; height: 1px;
             background: var(--color-primary);
-            opacity: 0.5;
+            
           }
           .hw-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem;
+            font-size: 0.75rem;
             letter-spacing: 0.32em;
             text-transform: uppercase;
-            color: var(--color-primary);
+            color: #374151;
             font-weight: 500;
-            opacity: 0.7;
           }
         `}</style>
 
@@ -739,7 +738,7 @@ export default function RetreatsClient({
             textAlign: 'center',
           }}>
             How our retreats{' '}
-            <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>work</span>
+            <span style={{ color: '#374151', fontWeight: 200 }}>work</span>
           </h2>
 
           <div className="hw-grid">
@@ -804,7 +803,7 @@ export default function RetreatsClient({
             background: linear-gradient(to top, rgba(2,10,2,0.65) 0%, rgba(2,10,2,0.1) 50%, rgba(2,10,2,0) 100%);
             transition: opacity 0.35s;
           }
-          .rf-card:hover .rf-img-overlay { opacity: 0.85; }
+          .rf-card:hover .rf-img-overlay {5; }
 
           .rf-img-tag {
             position: absolute;
@@ -828,7 +827,7 @@ export default function RetreatsClient({
             font-weight: 500;
             color: #ece4d0;
             line-height: 1.25;
-            opacity: 0;
+            
             transform: translateY(8px);
             transition: opacity 0.35s, transform 0.35s;
           }
@@ -846,7 +845,7 @@ export default function RetreatsClient({
             bottom: 0; left: 0;
             height: 2px; width: 0;
             background: var(--color-primary);
-            opacity: 0.2;
+            
             transition: width 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
           }
           .rf-card:hover .rf-body::after { width: 100%; }
@@ -887,16 +886,15 @@ export default function RetreatsClient({
           .rf-eyebrow-line {
             width: 28px; height: 1px;
             background: var(--color-primary);
-            opacity: 0.5;
+            
           }
           .rf-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem;
+            font-size: 0.75rem;
             letter-spacing: 0.32em;
             text-transform: uppercase;
-            color: var(--color-primary);
+            color: #374151;
             font-weight: 500;
-            opacity: 0.7;
           }
         `}</style>
 
@@ -919,7 +917,7 @@ export default function RetreatsClient({
             textAlign: 'center',
           }}>
             Retreat formats{' '}
-            <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>we offer</span>
+            <span style={{ color: '#374151', fontWeight: 200 }}>we offer</span>
           </h2>
 
           <p style={{
@@ -1013,13 +1011,13 @@ export default function RetreatsClient({
             background: linear-gradient(to top, rgba(2,10,2,0.62) 0%, rgba(2,10,2,0.05) 55%, transparent 100%);
             transition: opacity 0.35s;
           }
-          .hl-card:hover .hl-img-overlay { opacity: 0.82; }
+          .hl-card:hover .hl-img-overlay {2; }
 
           .hl-img-name {
             position: absolute;
             bottom: 0.75rem; left: 1rem;
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.55rem;
+            font-size: 0.75rem;
             letter-spacing: 0.22em;
             text-transform: uppercase;
             color: rgba(236,228,208,0.75);
@@ -1060,7 +1058,7 @@ export default function RetreatsClient({
             font-weight: 700;
             letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: var(--color-primary);
+            color: #374151;
             transition: gap 0.22s;
           }
           .hl-card:hover .hl-cta { gap: 0.62rem; }
@@ -1083,16 +1081,15 @@ export default function RetreatsClient({
           .hl-eyebrow-line {
             width: 28px; height: 1px;
             background: var(--color-primary);
-            opacity: 0.5;
+            
           }
           .hl-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem;
+            font-size: 0.75rem;
             letter-spacing: 0.32em;
             text-transform: uppercase;
-            color: var(--color-primary);
+            color: #374151;
             font-weight: 500;
-            opacity: 0.7;
           }
         `}</style>
 
@@ -1115,7 +1112,7 @@ export default function RetreatsClient({
             textAlign: 'center',
           }}>
             Himalayan locations{' '}
-            <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>we work with</span>
+            <span style={{ color: '#374151', fontWeight: 200 }}>we work with</span>
           </h2>
 
          <div className="hl-grid">
@@ -1222,14 +1219,14 @@ export default function RetreatsClient({
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 2.8rem;
             font-weight: 200;
-            color: var(--color-primary);
-            opacity: 0.1;
+            color: #374151;
+            
             line-height: 1;
             letter-spacing: -0.04em;
             transition: opacity 0.3s;
             user-select: none;
           }
-          .wb-item:hover .wb-num { opacity: 0.22; }
+          .wb-item:hover .wb-num {  }
 
           .wb-check {
             width: 34px; height: 34px;
@@ -1238,7 +1235,7 @@ export default function RetreatsClient({
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--color-primary);
+            color: #374151;
             font-size: 0.72rem;
             font-weight: 700;
             transition: background 0.3s, color 0.3s;
@@ -1271,16 +1268,15 @@ export default function RetreatsClient({
           .wb-eyebrow-line {
             width: 28px; height: 1px;
             background: var(--color-primary);
-            opacity: 0.5;
+            
           }
           .wb-eyebrow-text {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.56rem;
+            font-size: 0.75rem;
             letter-spacing: 0.32em;
             text-transform: uppercase;
-            color: var(--color-primary);
+            color: #374151;
             font-weight: 500;
-            opacity: 0.7;
           }
         `}</style>
 
@@ -1303,7 +1299,7 @@ export default function RetreatsClient({
             textAlign: 'center',
           }}>
             What makes our retreats{' '}
-            <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>different</span>
+            <span style={{ color: '#374151', fontWeight: 200 }}>different</span>
           </h2>
 
           <ul className="wb-grid">
@@ -1333,16 +1329,16 @@ export default function RetreatsClient({
       }}>
         <style>{`
           @keyframes s7FadeUp {
-            from { opacity: 0; transform: translateY(32px); }
+            from {  transform: translateY(32px); }
             to   { opacity: 1; transform: translateY(0); }
           }
           @keyframes s7LineGrow {
-            from { transform: scaleX(0); opacity: 0; }
+            from { transform: scaleX(0);  }
             to   { transform: scaleX(1); opacity: 1; }
           }
           @keyframes s7Pulse {
-            0%, 100% { opacity: 0.4; transform: scale(1); }
-            50%       { opacity: 0.7; transform: scale(1.08); }
+            0%, 100% {  transform: scale(1); }
+            50%       { transform: scale(1.08); }
           }
 
           /* ── Radial glows ── */
@@ -1400,7 +1396,7 @@ export default function RetreatsClient({
           .s7-tag {
             display: inline-flex;
             align-items: center;
-            gap: 0.55rem;
+            gap: 0.75rem;
             padding: 6px 14px;
             border: 1px solid rgba(15,118,110,0.4);
             border-radius: 100px;
@@ -1417,7 +1413,7 @@ export default function RetreatsClient({
             font-size: 0.58rem;
             letter-spacing: 0.22em;
             text-transform: uppercase;
-            color: var(--color-primary);
+            color: #374151;
             font-weight: 500;
           }
 
@@ -1432,7 +1428,7 @@ export default function RetreatsClient({
           }
           .s7-headline em {
             font-style: italic;
-            color: var(--color-primary);
+            color: #374151;
             font-weight: 200;
           }
 
@@ -1462,7 +1458,7 @@ export default function RetreatsClient({
             justify-content: center;
             flex-shrink: 0;
             font-size: 0.6rem;
-            color: var(--color-primary);
+            color: #374151;
           }
           .s7-trust-text {
             font-family: var(--font-geist-sans), sans-serif;
@@ -1514,7 +1510,7 @@ export default function RetreatsClient({
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 1.6rem;
             font-weight: 200;
-            color: var(--color-primary);
+            color: #374151;
             letter-spacing: -0.03em;
             line-height: 1;
             margin-bottom: 0.3rem;
@@ -1603,7 +1599,7 @@ export default function RetreatsClient({
           }
           .s7-btn-ghost:hover {
             border-color: rgba(15,118,110,0.5);
-            color: var(--color-primary);
+            color: #374151;
             transform: translateY(-2px);
           }
 

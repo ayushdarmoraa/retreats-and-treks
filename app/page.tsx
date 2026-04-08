@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import { generateWebsiteSchema, generateOrganizationSchema } from '@/components/seo/Schema';
 import { getLocationsWithRetreats } from '@/lib/locations';
 import HomeClient from './HomeClient';
-import RetreatFinder from '@/components/RetreatFinder';
 import PrimaryCTA from '@/components/PrimaryCTA';
-import ReviewCard from '@/components/reviews/ReviewCard';
 import { getAllRetreatServices } from '@/content/retreats/services';
 import { getAggregateRating, RETREAT_REVIEWS } from '@/content/reviews';
+import DeferredReviewerSection from '@/components/client/DeferredReviewerSection';
 
 export function generateMetadata(): Metadata {
   return {
@@ -68,8 +68,8 @@ export default function HomePage() {
   <div className="home-seo-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+    <span style={{ width: 24, height: 1, background: 'rgba(15, 118, 110, 0.5)', flexShrink: 0, display: 'inline-block' }} />
+    <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151' }}>
         Himalayan Journeys
       </span>
     </div>
@@ -138,12 +138,11 @@ export default function HomePage() {
   }
   .home-featured-col h3 {
     font-family: var(--font-geist-sans), sans-serif;
-    font-size: 0.56rem;
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--color-primary);
-    opacity: 0.7;
+    color: #374151;
     margin: 0 0 1rem 0;
   }
   .home-featured-col ul {
@@ -151,26 +150,20 @@ export default function HomePage() {
     margin: 0;
     list-style: none;
   }
-  .home-featured-col ul li {
-    border-bottom: 1px solid rgba(15,118,110,0.07);
+  .home-featured-col li {
+    margin: 0 0 0.5rem 0;
   }
-  .home-featured-col ul li:last-child {
-    border-bottom: none;
-  }
-  .home-featured-col ul li a {
+  .home-featured-col a {
     font-family: var(--font-geist-sans), sans-serif;
-    font-size: 0.82rem;
-    font-weight: 300;
-    color: #444444;
+    font-size: 0.88rem;
+    font-weight: 400;
+    line-height: 1.7;
+    color: #1f2937;
     text-decoration: none;
-    display: block;
-    padding: 0.55rem 0;
-    transition: color 0.2s, padding-left 0.2s;
-    line-height: 1.5;
   }
-  .home-featured-col ul li a:hover {
-    color: var(--color-primary);
-    padding-left: 4px;
+  .home-featured-col a:hover {
+    color: #374151;
+    text-decoration: underline;
   }
 `}</style>
 
@@ -178,8 +171,8 @@ export default function HomePage() {
   <div className="home-featured-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+      <span style={{ width: 24, height: 1, background: 'rgba(15, 118, 110, 0.5)', flexShrink: 0, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151' }}>
         Featured Retreats &amp; Treks
       </span>
     </div>
@@ -252,123 +245,148 @@ export default function HomePage() {
   </div>
   </section>
 
-      <section className="rf-wrap" style={{ maxWidth: '56rem', margin: '0 auto', padding: '0 var(--space-md) var(--space-xl)' }}>
-  <style>{`
-    .rf-wrap {
-      position: relative;
-    }
+      <DeferredReviewerSection finderRatings={finderRatings} />
 
-    .rf-h2 {
-      font-family: var(--font-geist-sans), sans-serif;
-      font-size: clamp(1.4rem, 2.5vw, 1.85rem);
-      font-weight: 200;
-      letter-spacing: -0.03em;
-      color: #111111;
-      line-height: 1.15;
-      margin: 0 0 0.75rem 0;
-      padding-top: 6rem;
-    }
-    .rf-h2-accent {
-      color: var(--color-primary);
-      font-weight: 200;
-    }
-
-    .rf-sub {
-      font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.88rem;
-      font-weight: 300;
-      line-height: 1.8;
-      color: #555555;
-      margin: 0 0 var(--space-md) 0;
-    }
-  `}</style>
-
-  <h2 className="rf-h2">
-    Not sure which{' '}
-    <span className="rf-h2-accent">retreat</span>
-    {' '}is right for you?
-  </h2>
-
-  <p className="rf-sub">
-    Five questions. Two matches. No login required.
-  </p>
-
-  <RetreatFinder fromPath="/" ratings={finderRatings} />
-</section>
-
-      {/* ── WHAT OUR PARTICIPANTS SAY ── */}
-      {(() => {
-        const topReviews = [...RETREAT_REVIEWS]
-          .filter((r) => r.ratingValue >= 5)
-          .sort((a, b) => new Date(b.datePublished).getTime() - new Date(a.datePublished).getTime())
-          .slice(0, 4);
-        if (topReviews.length === 0) return null;
-        return (
-          <>
-            <style>{`
-  .home-reviews {
+      {/* ── FEATURED RETREATS & TREKS (server-rendered links for crawl depth) ── */}
+<style>{`
+  .home-featured {
     width: 100vw;
     margin-left: calc(-50vw + 50%);
-    background: #ffffff;
+    background: #f7f9f7;
     padding: 5rem 0;
-    border-top: 1px solid #e5e7eb;
   }
-  .home-reviews-inner {
+  .home-featured-inner {
     max-width: 56rem;
     margin: 0 auto;
     padding: 0 var(--space-md, 1.5rem);
   }
-  .home-reviews-grid {
+  .home-featured-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(min(100%, 24rem), 1fr));
-    gap: var(--space-md, 1.25rem);
-    margin-top: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1px;
+    background: rgba(15,118,110,0.08);
+    border: 1px solid rgba(15,118,110,0.08);
+    margin-top: 2rem;
+  }
+  .home-featured-col {
+    background: #f7f9f7;
+    padding: 1.75rem;
+  }
+  .home-featured-col h3 {
+    font-family: var(--font-geist-sans), sans-serif;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #374151;
+    margin: 0 0 1rem 0;
+  }
+  .home-featured-col ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+  .home-featured-col ul li {
+    border-bottom: 1px solid rgba(15,118,110,0.07);
+  }
+  .home-featured-col ul li:last-child {
+    border-bottom: none;
+  }
+  .home-featured-col ul li a {
+    font-family: var(--font-geist-sans), sans-serif;
+    font-size: 0.82rem;
+    font-weight: 300;
+    color: #444444;
+    text-decoration: none;
+    display: block;
+    padding: 0.75rem 0;
+    transition: color 0.2s, padding-left 0.2s;
+    line-height: 1.5;
+  }
+  .home-featured-col ul li a:hover {
+    color: #374151;
+    padding-left: 4px;
   }
 `}</style>
-            <section className="home-reviews">
-              <div className="home-reviews-inner">
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                  <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-                  <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
-                    Participant Experiences
-                  </span>
-                </div>
-                <h2 style={{
-                  fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
-                  fontWeight: 200,
-                  letterSpacing: '-0.03em',
-                  color: '#111111',
-                  lineHeight: 1.15,
-                  marginBottom: '0.5rem',
-                }}>
-                  What Our Participants Say
-                </h2>
-                <p style={{
-                  fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '0.88rem',
-                  fontWeight: 300,
-                  lineHeight: 1.85,
-                  color: '#555555',
-                  margin: 0,
-                }}>
-                  Real stories from people who attended our Himalayan retreats.
-                </p>
-                <div className="home-reviews-grid">
-                  {topReviews.map((review) => (
-                    <ReviewCard key={`${review.participantName}-${review.datePublished}`} review={review} />
-                  ))}
-                </div>
-                <p style={{ marginTop: '1.5rem', fontSize: '0.88rem', fontWeight: 300 }}>
-                  <Link href="/reviews" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
-                    Read all reviews →
-                  </Link>
-                </p>
-              </div>
-            </section>
-          </>
-        );
-      })()}
+
+<section className="home-featured">
+  <div className="home-featured-inner">
+
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+      <span style={{ width: 24, height: 1, background: 'rgba(15, 118, 110, 0.5)', flexShrink: 0, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151' }}>
+        Featured Retreats &amp; Treks
+      </span>
+    </div>
+
+    <h2 style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+      fontWeight: 200,
+      letterSpacing: '-0.03em',
+      color: '#111111',
+      marginBottom: '0.5rem',
+      lineHeight: 1.15,
+    }}>
+      Featured Retreats &amp; Treks
+    </h2>
+
+    <p style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: '0.88rem',
+      fontWeight: 300,
+      lineHeight: 1.85,
+      color: '#555555',
+      margin: 0,
+    }}>
+      Quick access to our core hubs, high-intent retreat programs, and priority locations.
+    </p>
+
+    <div className="home-featured-grid">
+      <div className="home-featured-col">
+        <h3>Core Hubs</h3>
+        <ul>
+          <li><Link href="/retreats">Himalayan retreats — all locations &amp; programs</Link></li>
+          <li><Link href="/retreats/best-retreat-in-uttarakhand">Best retreats in Uttarakhand — ranked by purpose &amp; season</Link></li>
+          <li><Link href="/treks">Himalayan treks — weekend &amp; multi-day routes</Link></li>
+          <li><Link href="/treks/best-treks-in-uttarakhand">Best treks in Uttarakhand — beginner to high-altitude guide</Link></li>
+          <li><Link href="/retreat-programs">Program comparison matrix — filter by duration &amp; intensity</Link></li>
+          <li><Link href="/blog">Retreat &amp; trek blog — guides and comparisons</Link></li>
+        </ul>
+      </div>
+
+      <div className="home-featured-col">
+        <h3>High-Intent Programs</h3>
+        <ul>
+          <li><Link href="/retreats/journeys/burnout-recovery">Burnout Recovery retreat — deep restorative program</Link></li>
+          <li><Link href="/retreats/journeys/rest-and-reset">Rest &amp; Reset retreat — nervous system recalibration</Link></li>
+          <li><Link href="/retreats/journeys/yoga-and-movement">Yoga &amp; Movement retreat — embodied practice</Link></li>
+          <li><Link href="/creative-retreat">Creative Healing Retreat — emotional healing through art, yoga, and nature</Link></li>
+        </ul>
+      </div>
+
+      <div className="home-featured-col">
+        <h3>Priority Locations</h3>
+        <ul>
+          <li><Link href="/retreats/chakrata">Chakrata retreat hub — forest retreats &amp; weekend escapes</Link></li>
+          <li><Link href="/retreats/sankri">Sankri retreat hub — remote mountain retreats &amp; trek access</Link></li>
+          <li><Link href="/retreats/rishikesh">Rishikesh retreat hub — yoga infrastructure &amp; riverfront retreats</Link></li>
+        </ul>
+      </div>
+
+      <div className="home-featured-col">
+        <h3>Popular Treks</h3>
+        <ul>
+          <li><Link href="/treks/location/lohajung/roopkund-trek">Roopkund Trek — 4,800m mystery lake expedition</Link></li>
+          <li><Link href="/treks/location/lohajung/brahmatal-trek">Brahmatal Trek — frozen lake winter snow trek</Link></li>
+          <li><Link href="/treks/location/sankri/har-ki-dun-trek">Har Ki Dun Trek — sacred valley trek</Link></li>
+          <li><Link href="/treks/location/barsu/dayara-bugyal-trek">Dayara Bugyal Trek — alpine meadow beginner trek</Link></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  </section>
+
 
       <section className="rpr-wrap">
   <style>{`
@@ -397,7 +415,7 @@ export default function HomePage() {
       padding-top: 0;
     }
     .rpr-h2-accent {
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 200;
     }
 
@@ -438,7 +456,7 @@ export default function HomePage() {
       transition: color 0.2s, padding-left 0.25s cubic-bezier(0.16,1,0.3,1);
     }
     .rpr-list li:hover a {
-      color: var(--color-primary);
+      color: #374151;
       padding-left: 1.4rem;
     }
   `}</style>

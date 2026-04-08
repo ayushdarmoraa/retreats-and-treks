@@ -100,8 +100,8 @@ export default function TreksClient() {
   <div className="trk-hero-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+      <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', }}>
         Himalayan Treks
       </span>
     </div>
@@ -154,12 +154,12 @@ export default function TreksClient() {
   .trk-filter-label {
     display: block;
     font-family: var(--font-geist-sans), sans-serif;
-    font-size: 0.56rem;
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--color-primary);
-    opacity: 0.7;
+    color: #374151;
+    
     margin-bottom: 0.75rem;
   }
   .trk-filter-btns {
@@ -183,8 +183,8 @@ export default function TreksClient() {
     color: #555555;
   }
   .trk-btn-inactive:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+    border-color: #374151;
+    color: #374151;
     background: rgba(15,118,110,0.04);
   }
   .trk-btn-active {
@@ -320,7 +320,7 @@ export default function TreksClient() {
     font-family: var(--font-geist-sans), sans-serif;
     font-size: 0.82rem;
     font-weight: 400;
-    color: var(--color-primary);
+    color: #374151;
     text-decoration: none;
     text-transform: capitalize;
     display: inline-flex;
@@ -356,8 +356,8 @@ export default function TreksClient() {
           <div key={locationId} className="trk-cat-location">
 
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', }}>
                 {location.name}
               </span>
             </div>
@@ -454,7 +454,7 @@ export default function TreksClient() {
     font-family: var(--font-geist-sans), sans-serif;
     font-size: 0.78rem;
     font-weight: 400;
-    color: var(--color-primary);
+    color: #374151;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -468,8 +468,8 @@ export default function TreksClient() {
   <div className="trk-curated-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+      <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', }}>
         By Interest
       </span>
     </div>
@@ -638,7 +638,7 @@ export default function TreksClient() {
     font-family: var(--font-geist-sans), sans-serif;
     font-size: 0.75rem;
     font-weight: 400;
-    color: var(--color-primary);
+    color: #374151;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
@@ -652,8 +652,8 @@ export default function TreksClient() {
   <div className="trk-discovery-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+      <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', }}>
         Find Your Trek
       </span>
     </div>
@@ -763,7 +763,7 @@ export default function TreksClient() {
     height: 6px;
     border-radius: 50%;
     background: var(--color-primary);
-    opacity: 0.4;
+    
     margin-bottom: 0.75rem;
   }
 `}</style>
@@ -772,8 +772,8 @@ export default function TreksClient() {
   <div className="trk-trust-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+      <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', }}>
         Our Approach
       </span>
     </div>
@@ -842,14 +842,14 @@ export default function TreksClient() {
   .trk-cta-eyebrow-line {
     width: 24px; height: 1px;
     background: var(--color-primary);
-    opacity: 0.4;
+    
     display: inline-block; flex-shrink: 0;
   }
   .trk-cta-eyebrow-text {
     font-family: var(--font-geist-sans), sans-serif;
-    font-size: 0.56rem; font-weight: 500;
+    font-size: 0.75rem; font-weight: 500;
     letter-spacing: 0.28em; text-transform: uppercase;
-    color: var(--color-primary); opacity: 0.7;
+    color: #374151; 
   }
   .trk-cta-heading {
     font-family: var(--font-geist-sans), sans-serif;

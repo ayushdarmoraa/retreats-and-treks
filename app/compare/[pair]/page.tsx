@@ -128,12 +128,12 @@ export default async function ComparisonPage({ params }: PageProps) {
           display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;
         }
         .cmp-eyebrow-line {
-          width: 24px; height: 1px; background: var(--color-primary); opacity: 0.5; flex-shrink: 0;
+          width: 24px; height: 1px; background: var(--color-primary);  flex-shrink: 0;
         }
         .cmp-eyebrow-text {
           font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.56rem; font-weight: 500; letter-spacing: 0.28em;
-          text-transform: uppercase; color: var(--color-primary); opacity: 0.7;
+          font-size: 0.75rem; font-weight: 500; letter-spacing: 0.28em;
+          text-transform: uppercase; color: #374151;
         }
         .cmp-h1 {
           font-family: var(--font-geist-sans), sans-serif;
@@ -142,7 +142,7 @@ export default async function ComparisonPage({ params }: PageProps) {
           color: #111111; line-height: 1.15;
           margin: 0 0 1rem;
         }
-        .cmp-h1 em { color: var(--color-primary); font-style: normal; font-weight: 200; }
+        .cmp-h1 em { color: #374151; font-style: normal; font-weight: 200; }
         .cmp-lead {
           font-family: var(--font-geist-sans), sans-serif;
           font-size: 0.88rem; font-weight: 300;
@@ -169,7 +169,7 @@ export default async function ComparisonPage({ params }: PageProps) {
           color: #111111; line-height: 1.15;
           margin: 0 0 2rem;
         }
-        .cmp-h2 em { color: var(--color-primary); font-style: normal; font-weight: 200; }
+        .cmp-h2 em { color: #374151; font-style: normal; font-weight: 200; }
 
         /* table */
         .cmp-table {
@@ -182,11 +182,11 @@ export default async function ComparisonPage({ params }: PageProps) {
         }
         .cmp-table th {
           text-align: left; padding: 0.75rem 1rem;
-          font-size: 0.56rem; font-weight: 500;
+          font-size: 0.75rem; font-weight: 500;
           letter-spacing: 0.22em; text-transform: uppercase;
-          color: var(--color-primary); opacity: 0.7;
+          color: #374151;
         }
-        .cmp-table th:first-child { opacity: 0.4; }
+        .cmp-table th:first-child {  }
         .cmp-table tbody tr {
           border-bottom: 1px solid rgba(15,118,110,0.07);
           transition: background 0.2s;
@@ -214,7 +214,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         .cmp-table ul li::before {
           content: '—';
           position: absolute; left: 0;
-          color: var(--color-primary); opacity: 0.4;
+          color: #374151; 
           font-size: 0.7rem;
         }
 
@@ -271,13 +271,13 @@ export default async function ComparisonPage({ params }: PageProps) {
           top: 0; left: 0; right: 0;
           height: 2px;
           background: var(--color-primary);
-          opacity: 0.3;
+          
         }
         .cmp-choose-cell-label {
           font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.56rem; font-weight: 500;
+          font-size: 0.75rem; font-weight: 500;
           letter-spacing: 0.28em; text-transform: uppercase;
-          color: var(--color-primary); opacity: 0.7;
+          color: #374151;
           display: block; margin-bottom: 0.75rem;
         }
         .cmp-choose-cell p {
@@ -495,7 +495,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <span className="cmp-choose-cell-label">{serviceA.title}</span>
               <p>
                 If your primary need is {serviceA.oneLineEssence.toLowerCase().replace(/\.$/, '')}, the{' '}
-                <Link href={`/retreats/journeys/${ca}`} style={{ color: 'var(--color-primary)' }}>
+                <Link href={`/retreats/journeys/${ca}`} style={{ color: '#374151' }}>
                   {serviceA.title}
                 </Link>{' '}
                 retreat may be more aligned.
@@ -505,7 +505,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <span className="cmp-choose-cell-label">{serviceB.title}</span>
               <p>
                 If your primary need is {serviceB.oneLineEssence.toLowerCase().replace(/\.$/, '')}, explore the{' '}
-                <Link href={`/retreats/journeys/${cb}`} style={{ color: 'var(--color-primary)' }}>
+                <Link href={`/retreats/journeys/${cb}`} style={{ color: '#374151' }}>
                   {serviceB.title}
                 </Link>{' '}
                 retreat instead.
@@ -516,7 +516,7 @@ export default async function ComparisonPage({ params }: PageProps) {
           <div className="cmp-cta-note">
             <p>
               For a broader overview of all retreat programs and formats, visit our complete guide to{' '}
-              <Link href="/retreats/himalayan-retreats" style={{ color: 'var(--color-primary)' }}>
+              <Link href="/retreats/himalayan-retreats" style={{ color: '#374151' }}>
                 Himalayan Retreats in India
               </Link>
               .

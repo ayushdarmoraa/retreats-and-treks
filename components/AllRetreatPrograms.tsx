@@ -44,14 +44,14 @@ export default function AllRetreatPrograms() {
         }
         .arp-eyebrow-line {
           width: 24px; height: 1px;
-          background: var(--color-primary); opacity: 0.5;
+          background: var(--color-primary); 
           flex-shrink: 0; display: inline-block;
         }
         .arp-eyebrow-text {
           font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.56rem; font-weight: 500;
+          font-size: 0.75rem; font-weight: 500;
           letter-spacing: 0.28em; text-transform: uppercase;
-          color: var(--color-primary); opacity: 0.7;
+          color: #374151; 
         }
         .arp-h2 {
           font-family: var(--font-geist-sans), sans-serif;
@@ -60,7 +60,7 @@ export default function AllRetreatPrograms() {
           color: #111111; line-height: 1.15;
           margin: 0 0 2.5rem;
         }
-        .arp-h2 span { color: var(--color-primary); }
+        .arp-h2 span { color: #374151; }
 
         /* Grid */
         .arp-grid {
@@ -110,7 +110,7 @@ export default function AllRetreatPrograms() {
           letter-spacing: -0.01em; line-height: 1.35;
           transition: color 0.2s;
         }
-        .arp-card:hover .arp-card-title { color: var(--color-primary); }
+        .arp-card:hover .arp-card-title { color: #374151; }
 
         .arp-card-essence {
           font-family: var(--font-geist-sans), sans-serif;
@@ -124,7 +124,7 @@ export default function AllRetreatPrograms() {
           font-family: var(--font-geist-sans), sans-serif;
           font-size: 0.58rem; font-weight: 700;
           letter-spacing: 0.18em; text-transform: uppercase;
-          color: var(--color-primary);
+          color: #374151;
           transition: gap 0.22s;
         }
         .arp-card:hover .arp-card-cta { gap: 0.6rem; }

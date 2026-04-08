@@ -122,7 +122,7 @@ export default async function TopicPage({ params }: PageProps) {
           letter-spacing: -0.01em;
           transition: color 0.15s;
         }
-        .tpc-post-card:hover .tpc-post-title { color: var(--color-primary); }
+        .tpc-post-card:hover .tpc-post-title { color: #374151; }
         .tpc-post-desc {
           font-family: var(--font-geist-sans), sans-serif;
           font-size: 0.88rem;
@@ -136,12 +136,12 @@ export default async function TopicPage({ params }: PageProps) {
           right: 1.25rem;
           top: 50%;
           transform: translateY(-50%);
-          color: var(--color-primary);
-          opacity: 0.35;
+          color: #374151;
+          
           font-size: 0.85rem;
           transition: opacity 0.15s, right 0.15s;
         }
-        .tpc-post-card:hover .tpc-post-arrow { opacity: 0.7; right: 1rem; }
+        .tpc-post-card:hover .tpc-post-arrow { right: 1rem; }
         .tpc-nav-group { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
         .tpc-nav-link {
           display: flex; align-items: center; justify-content: space-between;
@@ -153,8 +153,8 @@ export default async function TopicPage({ params }: PageProps) {
           transition: background 0.15s, color 0.15s;
         }
         .tpc-nav-link:last-child { border-bottom: none; }
-        .tpc-nav-link:hover { background: #f7f9f7; color: var(--color-primary); }
-        .tpc-nav-link::before { content: '←'; color: var(--color-primary); opacity: 0.5; margin-right: 0.5rem; }
+        .tpc-nav-link:hover { background: #f7f9f7; color: #374151; }
+        .tpc-nav-link::before { content: '←'; color: #374151;  margin-right: 0.5rem; }
         .tpc-callout {
           background: #fff;
           border: 1px solid #e5e7eb;
@@ -164,7 +164,7 @@ export default async function TopicPage({ params }: PageProps) {
           font-family: var(--font-geist-sans), sans-serif;
           font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555;
         }
-        .tpc-callout a { color: var(--color-primary); font-weight: 500; text-decoration: none; }
+        .tpc-callout a { color: #374151; font-weight: 500; text-decoration: none; }
         .tpc-callout a:hover { text-decoration: underline; }
         @media (max-width: 640px) {
           .tpc-post-card { padding: 1rem 1.1rem; }
@@ -189,8 +189,8 @@ export default async function TopicPage({ params }: PageProps) {
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>
               Topic · {posts.length} {posts.length === 1 ? 'article' : 'articles'}
             </span>
           </div>
@@ -207,8 +207,8 @@ export default async function TopicPage({ params }: PageProps) {
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Articles</span>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Articles</span>
           </div>
           <h2 style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: 'clamp(1.4rem,2.5vw,1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
             All articles in this topic
@@ -227,7 +227,7 @@ export default async function TopicPage({ params }: PageProps) {
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '3rem', paddingBottom: '3rem', borderBottom: '1px solid #e5e7eb' }}>
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
           <div className="tpc-callout">
-            <div style={{ fontSize: '0.55rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', opacity: 0.7, marginBottom: '0.35rem' }}>Related</div>
+            <div style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: '#374151', marginBottom: '0.35rem' }}>Related</div>
             For a complete overview of structured mountain-based programs, visit our{' '}
             <Link href="/retreats/himalayan-retreats">Himalayan Retreats guide</Link>.
           </div>

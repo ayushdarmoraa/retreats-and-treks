@@ -92,22 +92,22 @@ export default function TrekPackagesUttarakhandPage() {
         .tpu-h2 { font-family:var(--font-geist-sans),sans-serif; font-size:clamp(1.4rem,2.5vw,1.85rem); font-weight:200; letter-spacing:-0.03em; color:#111; line-height:1.15; margin:0 0 0.75rem; }
         .tpu-h3 { font-family:var(--font-geist-sans),sans-serif; font-size:0.95rem; font-weight:500; color:#111; letter-spacing:-0.01em; margin:0 0 0.4rem; }
         .tpu-eyebrow { display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem; }
-        .tpu-eyebrow-line { width:24px; height:1px; background:var(--color-primary); opacity:0.5; display:inline-block; }
-        .tpu-eyebrow-text { font-size:0.56rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--color-primary); font-weight:500; opacity:0.7; }
-        .tpu-link { color:var(--color-primary); font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
-        .tpu-link:hover { border-bottom-color:var(--color-primary); }
+        .tpu-eyebrow-line { width:24px; height:1px; background:var(--color-primary);  display:inline-block; }
+        .tpu-eyebrow-text { font-size: 0.75rem; letter-spacing:0.28em; text-transform:uppercase; color: #374151; font-weight:500; }
+        .tpu-link { color: #374151; font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
+        .tpu-link:hover { border-bottom-color: #374151; }
         .tpu-trek-card { background:#fff; border:1px solid #eef0ee; border-top:2px solid var(--color-primary); border-radius:8px; padding:1.25rem 1.5rem; margin-bottom:0.75rem; transition:transform 0.18s,box-shadow 0.18s; }
         .tpu-trek-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,0.07); }
         .tpu-why-item { border-left:2px solid var(--color-primary); padding-left:1rem; margin-bottom:1.25rem; }
         .tpu-why-item strong { display:block; font-size:0.82rem; font-weight:500; color:#111; margin-bottom:0.2rem; }
         .tpu-who-item { display:flex; gap:0.75rem; padding:0.9rem 1rem; border-bottom:1px solid #f0f0f0; }
         .tpu-who-item:last-child { border-bottom:none; }
-        .tpu-who-dot { width:6px; height:6px; border-radius:50%; background:var(--color-primary); flex-shrink:0; margin-top:0.55rem; opacity:0.6; }
+        .tpu-who-dot { width:6px; height:6px; border-radius:50%; background:var(--color-primary); flex-shrink:0; margin-top:0.75rem;  }
         .tpu-includes-grid { display:grid; grid-template-columns:1fr 1fr; gap:0.75rem; margin-bottom:1.25rem; }
         .tpu-include-card { background:#fff; border:1px solid #eef0ee; border-radius:8px; padding:1rem 1.25rem; }
         .tpu-include-card strong { display:block; font-size:0.82rem; font-weight:500; color:#111; margin-bottom:0.25rem; }
         .tpu-callout { background:#fff; border:1px solid #e5e7eb; border-left:3px solid var(--color-primary); border-radius:8px; padding:1rem 1.25rem; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; }
-        .tpu-callout a { color:var(--color-primary); font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
+        .tpu-callout a { color: #374151; font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
         @media(max-width:700px){ .tpu-includes-grid { grid-template-columns:1fr; } .tpu-trek-card { padding:1rem; } }
       `}</style>
 
@@ -269,7 +269,7 @@ export default function TrekPackagesUttarakhandPage() {
         <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'3rem', paddingBottom:'3rem', borderBottom:'1px solid #e5e7eb' }}>
           <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
             <div className="tpu-callout">
-              <p style={{ margin:0 }}>Exploring routes before booking? See the full <Link href="/treks" style={{ color:'var(--color-primary)', fontWeight:500, textDecoration:'none', borderBottom:'1px solid rgba(15,118,110,0.25)' }}>Himalayan treks directory</Link> for detailed itineraries across all seasons and difficulty levels.</p>
+              <p style={{ margin:0 }}>Exploring routes before booking? See the full <Link href="/treks" style={{ color: '#374151', fontWeight:500, textDecoration:'none', borderBottom:'1px solid rgba(15,118,110,0.25)' }}>Himalayan treks directory</Link> for detailed itineraries across all seasons and difficulty levels.</p>
             </div>
           </div>
         </section>

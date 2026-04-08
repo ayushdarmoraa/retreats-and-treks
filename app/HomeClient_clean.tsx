@@ -156,8 +156,8 @@ useEffect(() => {
     }
     .hh-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.875rem; letter-spacing: 0.32em; text-transform: uppercase;
-      color: rgba(255,255,255,0.85); font-weight: 500;
+      font-size: 0.75rem; letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); font-weight: 500;
     }
     .hh-heading {
       font-family: var(--font-geist-sans), sans-serif;
@@ -277,7 +277,7 @@ useEffect(() => {
     }
     @keyframes hhScrollPulse {
       0%, 100% {  transform: scaleY(1); }
-      50%       {  transform: scaleY(1.15); }
+      50%       { transform: scaleY(1.15); }
     }
     @media (max-width: 700px) {
       .hh-scroll { display: none; }
@@ -288,7 +288,7 @@ useEffect(() => {
 
   {/* Hero Poster — LCP element, present in initial HTML */}
   <Image
-    src={images.heroes.heroimage.src}
+    src={images.heroes.mountainsnow.src}
     alt="Himalayan mountain landscape"
     fill
     priority
@@ -300,7 +300,7 @@ useEffect(() => {
     style={{
       objectFit: 'cover',
       objectPosition: 'center',
-      filter: 'brightness(1.2) saturate(1.1)',
+      filter: 'brightness(0.82) saturate(1.1)',
     }}
   />
 
@@ -401,7 +401,7 @@ useEffect(() => {
     }
     .ph-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.875rem;
+      font-size: 0.75rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: #374151;

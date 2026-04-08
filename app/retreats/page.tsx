@@ -129,13 +129,13 @@ export default function RetreatsPage() {
     transition: border-color 0.2s, color 0.2s;
   }
   .retreat-guide-card:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary);
+    border-color: #374151;
+    color: #374151;
   }
   .retreat-guide-card::after {
     content: '→';
-    color: var(--color-primary);
-    opacity: 0.5;
+    color: #374151;
+    
     flex-shrink: 0;
     margin-left: 0.75rem;
   }
@@ -144,8 +144,8 @@ export default function RetreatsPage() {
       <div className="retreat-guides">
         <div className="retreat-guides-inner">
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+            <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151'}}>
               Retreat Guides
             </span>
           </div>
@@ -158,7 +158,7 @@ export default function RetreatsPage() {
             lineHeight: 1.15,
             margin: '0 0 0.5rem',
           }}>
-            Explore Our <span style={{ color: 'var(--color-primary)' }}>Retreat Guides</span>
+            Explore Our <span style={{ color: '#374151' }}>Retreat Guides</span>
           </h2>
           <p style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -209,8 +209,8 @@ export default function RetreatsPage() {
   <div className="retreats-seo-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+      <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151'}}>
         Himalayan Retreats
       </span>
     </div>
@@ -237,7 +237,7 @@ export default function RetreatsPage() {
       margin: '0 0 1.25rem 0',
       maxWidth: '52rem',
     }}>
-      We design Himalayan retreats in India across carefully selected locations in Uttarakhand, offering wellness retreats and guided retreat programs built around small-group and private formats. From restorative yoga and burnout recovery retreats to silent meditation immersions and weekend resets, each experience is created for depth, clarity, and environmental harmony. Our <Link href="/creative-retreat" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>Creative Healing Retreat</Link> offers emotional healing through art, yoga, and nature. Our retreats operate in mountain settings such as Chakrata, Sankri, and Rishikesh, with clear travel guidance from nearby hubs like Dehradun. Whether you are seeking a short restorative break or a longer transformational retreat, our programs balance intentional facilitation with practical planning — so you can focus fully on the experience.
+      We design Himalayan retreats in India across carefully selected locations in Uttarakhand, offering wellness retreats and guided retreat programs built around small-group and private formats. From restorative yoga and burnout recovery retreats to silent meditation immersions and weekend resets, each experience is created for depth, clarity, and environmental harmony. Our <Link href="/creative-retreat" style={{ color: '#374151', textDecoration: 'underline' }}>Creative Healing Retreat</Link> offers emotional healing through art, yoga, and nature. Our retreats operate in mountain settings such as Chakrata, Sankri, and Rishikesh, with clear travel guidance from nearby hubs like Dehradun. Whether you are seeking a short restorative break or a longer transformational retreat, our programs balance intentional facilitation with practical planning — so you can focus fully on the experience.
     </p>
 
     <p style={{
@@ -250,7 +250,7 @@ export default function RetreatsPage() {
       maxWidth: '52rem',
     }}>
       To compare all programs side by side by duration, intensity, and format, see the{' '}
-      <Link href="/retreat-programs" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
+      <Link href="/retreat-programs" style={{ color: '#374151', textDecoration: 'underline' }}>
         full program comparison matrix
       </Link>
       .

@@ -270,7 +270,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
       alignItems: 'center',
       gap: '0.5rem',
       flexWrap: 'wrap',
-      fontSize: '0.56rem',
+      fontSize: '0.75rem',
       letterSpacing: '0.28em',
       textTransform: 'uppercase' as const,
       fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -278,13 +278,13 @@ export default async function TrekDetailPage({ params }: PageProps) {
       marginBottom: '2rem',
       color: '#999999',
     }}>
-      <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', opacity: 0.7 }}>
+      <Link href="/treks/best-treks-in-uttarakhand" style={{ color: '#374151', textDecoration: 'none'}}>
         Best Treks in Uttarakhand
       </Link>
       {INTENT_TRAIL[slug] && (
         <>
           <span style={{ color: '#cccccc' }}>→</span>
-          <Link href={INTENT_TRAIL[slug].path} style={{ color: 'var(--color-primary)', textDecoration: 'none', opacity: 0.7 }}>
+          <Link href={INTENT_TRAIL[slug].path} style={{ color: '#374151', textDecoration: 'none'}}>
             {INTENT_TRAIL[slug].label}
           </Link>
         </>
@@ -354,12 +354,11 @@ export default async function TrekDetailPage({ params }: PageProps) {
           padding: '5px 14px',
         }}>
           <span style={{
-            fontSize: '0.55rem',
+            fontSize: '0.75rem',
             fontWeight: 600,
             letterSpacing: '0.18em',
             textTransform: 'uppercase' as const,
-            color: 'var(--color-primary)',
-            opacity: 0.75,
+            color: '#374151',
           }}>
             {item.label}
           </span>
@@ -385,7 +384,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
           alignItems: 'center',
           gap: '0.5rem',
         }}>
-          <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✔</span>
+          <span style={{ color: '#374151', fontSize: '1rem' }}>✔</span>
           100+ trekkers completed this route
         </p>
         <p style={{
@@ -398,7 +397,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
           alignItems: 'center',
           gap: '0.5rem',
         }}>
-          <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✔</span>
+          <span style={{ color: '#374151', fontSize: '1rem' }}>✔</span>
           Local operators from Uttarakhand
         </p>
       </div>
@@ -420,15 +419,15 @@ export default async function TrekDetailPage({ params }: PageProps) {
     {BEST_FOR[slug] && (
       <div style={{ marginBottom: '2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.85rem' }}>
-          <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Best for</span>
+          <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Best for</span>
         </div>
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
           {BEST_FOR[slug].map((item, i) => (
             <Link key={i} href={item.href} style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
               fontSize: '0.78rem', fontWeight: 400,
-              color: 'var(--color-primary)',
+              color: '#374151',
               background: 'rgba(15,118,110,0.06)',
               border: '1px solid rgba(15,118,110,0.18)',
               borderRadius: '100px',
@@ -464,7 +463,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
     }}>
       {trek.description}{' '}
       Frequently listed among the{' '}
-      <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+      <Link href="/treks/best-treks-in-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
         {DISCOVERY_ANCHORS[slug] || 'Best Treks in Uttarakhand guide'}
       </Link>.
     </p>
@@ -515,8 +514,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Overview</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Overview</span>
       </div>
       <h2 style={{
         fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -540,7 +539,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
 
       {/* 1. Quick Facts */}
       <div style={{ margin: '2.5rem 0', background: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
-        <h2 style={{ fontSize: '1.15rem', fontWeight: 600, marginBottom: '1.2rem', color: 'var(--color-primary)' }}>Quick Facts</h2>
+        <h2 style={{ fontSize: '1.15rem', fontWeight: 600, marginBottom: '1.2rem', color: '#374151' }}>Quick Facts</h2>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexWrap: 'wrap', gap: '1.5rem' }}>
           {trek.priceRange && <li><strong>Price:</strong> {trek.priceRange}</li>}
           <li><strong>Duration:</strong> {trek.duration}</li>
@@ -553,7 +552,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
       {/* 2. How to Reach */}
       {trek.howToReach && trek.howToReach.length > 0 && (
         <div style={{ margin: '2.5rem 0', background: '#f7f9f7', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
-          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.2rem', color: 'var(--color-primary)' }}>How to Reach</h2>
+          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.2rem', color: '#374151' }}>How to Reach</h2>
           <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
             {trek.howToReach.map((step, i) => <li key={i}>{step}</li>)}
           </ul>
@@ -563,7 +562,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
       {/* 3. Altitude Profile */}
       {trek.altitudeProfile && trek.altitudeProfile.length > 0 && (
         <div style={{ margin: '2.5rem 0', background: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
-          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.2rem', color: 'var(--color-primary)' }}>Altitude Profile</h2>
+          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.2rem', color: '#374151' }}>Altitude Profile</h2>
           <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
             {trek.altitudeProfile.map((alt, i) => <li key={i}>{alt}</li>)}
           </ul>
@@ -573,7 +572,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
       {/* 4. Packing List */}
       {trek.packingList && trek.packingList.length > 0 && (
         <div style={{ margin: '2.5rem 0', background: '#f7f9f7', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
-          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.2rem', color: 'var(--color-primary)' }}>Packing List</h2>
+          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.2rem', color: '#374151' }}>Packing List</h2>
           <ul style={{ paddingLeft: '1.2rem', margin: 0 }}>
             {trek.packingList.map((item, i) => <li key={i}>{item}</li>)}
           </ul>
@@ -583,7 +582,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
       {/* 5. Permits & Safety */}
       {(trek.permits || (trek.risksAndSafety && trek.risksAndSafety.length > 0)) && (
         <div style={{ margin: '2.5rem 0', background: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
-          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.2rem', color: 'var(--color-primary)' }}>Permits & Safety</h2>
+          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.2rem', color: '#374151' }}>Permits & Safety</h2>
           {trek.permits && <p><strong>Permits:</strong> {trek.permits}</p>}
           {trek.risksAndSafety && trek.risksAndSafety.length > 0 && (
             <>
@@ -599,7 +598,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
       {/* --- CRITICAL SEO BLOCK: Roopkund Trek Cost --- */}
       {trek.priceRange && (
         <div style={{ margin: '2.5rem 0', background: '#fff', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
-          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.2rem', color: 'var(--color-primary)' }}>Roopkund Trek Cost</h2>
+          <h2 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1.2rem', color: '#374151' }}>Roopkund Trek Cost</h2>
           <p>The typical cost for the Roopkund trek is <strong>{trek.priceRange}</strong>. This includes most meals, camping, guides, permits, and support staff. See inclusions and exclusions below for details.</p>
         </div>
       )}
@@ -635,8 +634,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Trek Highlights</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Trek Highlights</span>
       </div>
       <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
         {trek.highlights.map((h, i) => (
@@ -674,8 +673,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Itinerary</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Itinerary</span>
       </div>
       <h2 style={{
         fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -789,8 +788,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
 }}>
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Preparation</span>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Preparation</span>
     </div>
     <h2 style={{
       fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -843,8 +842,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
       background: '#f7f9f7',
     }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Quick questions</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Quick questions</span>
       </div>
       <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '0.85rem' }}>
         <strong style={{ fontWeight: 500, color: '#111111' }}>Can I cancel?</strong> Free cancellation up to 7 days before departure. Full refund, no questions asked.
@@ -882,7 +881,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             Experienced local guides
           </li>
           <li style={{
@@ -894,7 +893,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             Small group sizes
           </li>
           <li style={{
@@ -906,7 +905,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             High safety standards
           </li>
           <li style={{
@@ -918,7 +917,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             Transparent pricing
           </li>
         </ul>
@@ -953,7 +952,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             Best winter trek for beginners
           </li>
           <li style={{
@@ -965,7 +964,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             Safe and well-marked trail
           </li>
           <li style={{
@@ -977,7 +976,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             Ideal snow trekking experience
           </li>
           <li style={{
@@ -989,7 +988,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             Great summit views without extreme altitude
           </li>
         </ul>
@@ -1024,7 +1023,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             Perfect for families and beginners
           </li>
           <li style={{
@@ -1036,7 +1035,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             Beautiful valley views
           </li>
           <li style={{
@@ -1048,7 +1047,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             Well-maintained trails
           </li>
           <li style={{
@@ -1060,7 +1059,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             Safe and scenic route
           </li>
         </ul>
@@ -1095,7 +1094,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             Perfect for weekend trekkers
           </li>
           <li style={{
@@ -1107,7 +1106,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             Snow meadows in winter
           </li>
           <li style={{
@@ -1119,7 +1118,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             Minimal hiking experience needed
           </li>
           <li style={{
@@ -1131,7 +1130,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             alignItems: 'center',
             gap: '0.5rem',
           }}>
-            <span style={{ color: 'var(--color-primary)', fontSize: '1rem' }}>✓</span>
+            <span style={{ color: '#374151', fontSize: '1rem' }}>✓</span>
             Affordable high-altitude trek
           </li>
         </ul>
@@ -1184,7 +1183,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             fontFamily: 'var(--font-geist-sans), sans-serif',
             fontSize: '0.9rem',
             fontWeight: 400,
-            color: 'var(--color-primary)',
+            color: '#374151',
             textDecoration: 'none',
             border: '1px solid rgba(15,118,110,0.2)',
             borderRadius: '6px',
@@ -1199,7 +1198,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             fontFamily: 'var(--font-geist-sans), sans-serif',
             fontSize: '0.9rem',
             fontWeight: 400,
-            color: 'var(--color-primary)',
+            color: '#374151',
             textDecoration: 'none',
             border: '1px solid rgba(15,118,110,0.2)',
             borderRadius: '6px',
@@ -1320,8 +1319,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
 }}>
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Season</span>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Season</span>
     </div>
     <h2 style={{
       fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -1369,8 +1368,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
     }}>
       <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-          <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Conditions</span>
+          <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Conditions</span>
         </div>
         <h2 style={{
           fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -1418,8 +1417,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Safety</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Safety</span>
       </div>
       <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.5rem' }}>Safety &amp; Precautions</h2>
       <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>{trek.safety}</p>
@@ -1438,8 +1437,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Documentation</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Documentation</span>
       </div>
       <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.5rem' }}>Permits &amp; Documentation</h2>
       <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>{trek.permits}</p>
@@ -1458,8 +1457,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Suitability</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Suitability</span>
       </div>
       <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.5rem' }}>Who Should Reconsider</h2>
       <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>{trek.whoShouldAvoid}</p>
@@ -1478,8 +1477,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Logistics</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Logistics</span>
       </div>
       <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.5rem' }}>Getting There &amp; Local Info</h2>
       <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>{trek.localLogistics}</p>
@@ -1497,16 +1496,16 @@ export default async function TrekDetailPage({ params }: PageProps) {
 }}>
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>What&apos;s Included</span>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>What&apos;s Included</span>
     </div>
     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
       <div style={{ background: '#ffffff', border: '1px solid #e5e7eb', borderTop: '2px solid var(--color-primary)', borderRadius: '8px', padding: '1.5rem' }}>
-        <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', marginBottom: '1.25rem' }}>Included</h3>
+        <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' as const, color: '#374151', marginBottom: '1.25rem' }}>Included</h3>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
           {trek.inclusions.map((item, i) => (
             <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.65rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, color: '#333333', lineHeight: 1.7, padding: '0.5rem 0', borderBottom: i < trek.inclusions.length - 1 ? '1px solid rgba(0,0,0,0.05)' : 'none' }}>
-              <span style={{ width: '16px', height: '16px', borderRadius: '50%', background: 'var(--color-primary)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '0.15rem', fontSize: '0.55rem', color: '#ffffff', fontWeight: 700 }}>✓</span>
+              <span style={{ width: '16px', height: '16px', borderRadius: '50%', background: 'var(--color-primary)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '0.15rem', fontSize: '0.75rem', color: '#ffffff', fontWeight: 700 }}>✓</span>
               {item}
             </li>
           ))}
@@ -1543,8 +1542,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
     `}</style>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>FAQ</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>FAQ</span>
       </div>
       <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '2rem' }}>
         Frequently Asked Questions
@@ -1569,8 +1568,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
               {faq.question}
               <span className="faq-icon" style={{
                 fontSize: '1.1rem',
-                color: 'var(--color-primary)',
-                opacity: 0.6,
+                color: '#374151',
+                
                 flexShrink: 0,
                 fontWeight: 300,
               }} />
@@ -1615,7 +1614,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
         }}>
           {PEER_TREKS[slug].prompt}{' '}
           Consider the{' '}
-          <Link href={`/treks/location/${PEER_TREKS[slug].location}/${PEER_TREKS[slug].slug}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+          <Link href={`/treks/location/${PEER_TREKS[slug].location}/${PEER_TREKS[slug].slug}`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
             {PEER_TREKS[slug].label}
           </Link>.
         </p>
@@ -1629,11 +1628,11 @@ export default async function TrekDetailPage({ params }: PageProps) {
       marginBottom: '0',
     }}>
       Explore more{' '}
-      <Link href={`/treks/location/${locationId}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+      <Link href={`/treks/location/${locationId}`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
         treks around {location.name}
       </Link>{' '}
       or discover{' '}
-      <Link href={`/retreats/${locationId}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+      <Link href={`/retreats/${locationId}`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
         wellness retreats in {location.name}
       </Link>.
     </p>
@@ -1651,8 +1650,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
 }}>
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Explore the region</span>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Explore the region</span>
     </div>
     <nav aria-label="Region links">
       <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: '0' }}>
@@ -1679,7 +1678,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
               transition: 'color 0.18s',
             }}>
               {item.label}
-              <span style={{ color: 'var(--color-primary)', opacity: 0.5, fontSize: '0.8rem' }}>→</span>
+              <span style={{ color: '#374151',  fontSize: '0.8rem' }}>→</span>
             </Link>
           </li>
         ))}
@@ -1699,8 +1698,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Explore Similar Treks</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Explore Similar Treks</span>
       </div>
       <h2 style={{
         fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -1733,7 +1732,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
               fontFamily: 'var(--font-geist-sans), sans-serif',
               fontSize: '0.95rem',
               fontWeight: 600,
-              color: 'var(--color-primary)',
+              color: '#374151',
               margin: '0 0 0.75rem',
               letterSpacing: '-0.01em',
               lineHeight: 1.25,
@@ -1800,7 +1799,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
           fontFamily: 'var(--font-geist-sans), sans-serif',
           fontSize: '0.62rem', fontWeight: 600,
           letterSpacing: '0.18em', textTransform: 'uppercase' as const,
-          color: 'var(--color-primary)',
+          color: '#374151',
           border: '1px solid rgba(15,118,110,0.35)',
           padding: '10px 18px', borderRadius: '4px',
           textDecoration: 'none', whiteSpace: 'nowrap' as const,
@@ -1824,13 +1823,13 @@ export default async function TrekDetailPage({ params }: PageProps) {
       }}>
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Helpful Guides</span>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Helpful Guides</span>
           </div>
           <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
             {trek.relatedBlogSlugs.map(slug => (
               <li key={slug} style={{ marginBottom: '0.75rem' }}>
-                <Link href={`/blog/${slug}`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
+                <Link href={`/blog/${slug}`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
                   Read more →
                 </Link>
               </li>
@@ -1851,8 +1850,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
       }}>
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Explore More</span>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Explore More</span>
           </div>
           <h2 style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -1870,7 +1869,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
                   fontFamily: 'var(--font-geist-sans), sans-serif',
                   fontSize: '0.9rem',
                   fontWeight: 400,
-                  color: 'var(--color-primary)',
+                  color: '#374151',
                   textDecoration: 'none',
                   border: '1px solid rgba(15,118,110,0.2)',
                   borderRadius: '6px',
@@ -1897,8 +1896,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
     }}>
       <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-          <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Destination</span>
+          <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Destination</span>
         </div>
         <h2 style={{
           fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -1951,7 +1950,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             <span key={section} style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
               fontSize: '0.75rem', fontWeight: 500,
-              color: 'var(--color-primary)',
+              color: '#374151',
               background: 'rgba(15,118,110,0.08)',
               border: '1px solid rgba(15,118,110,0.2)',
               borderRadius: '100px',
@@ -1974,8 +1973,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
     }}>
       <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-          <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>More from this region</span>
+          <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>More from this region</span>
         </div>
         <h2 style={{
           fontFamily: 'var(--font-geist-sans), sans-serif',

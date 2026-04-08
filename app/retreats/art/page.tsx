@@ -71,7 +71,6 @@ export default function ArtRetreatsPage() {
         }
         .art-card-disabled {
           pointer-events: none;
-          opacity: 0.7;
         }
         .art-img-wrap { position: relative; overflow: hidden; }
         .art-img {
@@ -123,7 +122,7 @@ export default function ArtRetreatsPage() {
           font-family: var(--font-geist-sans), sans-serif;
           font-size: 0.6rem; font-weight: 700;
           letter-spacing: 0.2em; text-transform: uppercase;
-          color: var(--color-primary);
+          color: #374151;
         }
       `}</style>
 
@@ -138,11 +137,11 @@ export default function ArtRetreatsPage() {
       {/* Header */}
       <div style={{ marginBottom: '3rem' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-          <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
+          <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
           <span style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
-            fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em',
-            textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7,
+            fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em',
+            textTransform: 'uppercase', color: '#374151'
           }}>
             Art & Creativity
           </span>
@@ -180,7 +179,7 @@ export default function ArtRetreatsPage() {
           color: '#555555',
           marginTop: '1rem',
         }}>
-          <Link href="/creative-retreat" style={{ color: 'var(--color-primary)', textDecoration: 'underline' }}>
+          <Link href="/creative-retreat" style={{ color: '#374151', textDecoration: 'underline' }}>
             Learn about the Creative Healing Retreat experience →
           </Link>
         </p>

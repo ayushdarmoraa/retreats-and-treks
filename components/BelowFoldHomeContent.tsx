@@ -94,7 +94,7 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       background: linear-gradient(to top, rgba(2,10,2,0.65) 0%, rgba(2,10,2,0.1) 50%, rgba(2,10,2,0) 100%);
       transition: opacity 0.35s;
     }
-    .retreat-card:hover .retreat-card-overlay { opacity: 0.85; }
+    .retreat-card:hover .retreat-card-overlay { 5; }
 
     /* Tag pill */
     .retreat-card-tag {
@@ -102,7 +102,7 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       top: 1rem;
       left: 1rem;
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.52rem;
+      font-size: 0.75rem;
       letter-spacing: 0.24em;
       text-transform: uppercase;
       color: #ffffff;
@@ -124,7 +124,7 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       color: #ece4d0;
       line-height: 1.25;
       letter-spacing: -0.01em;
-      opacity: 0;
+      
       transform: translateY(8px);
       transition: opacity 0.35s, transform 0.35s;
     }
@@ -148,7 +148,7 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       height: 2px;
       width: 0;
       background: var(--color-primary);
-      opacity: 0.2;
+      
       transition: width 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
     }
     .retreat-card:hover .retreat-card-body::after { width: 100%; }
@@ -177,11 +177,11 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       align-items: center;
       gap: 0.4rem;
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.6rem;
+      font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       transition: gap 0.22s;
     }
     .retreat-card:hover .retreat-arrow { gap: 0.72rem; }
@@ -197,28 +197,28 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
     .retreat-eyebrow-line {
       width: 28px; height: 1px;
       background: var(--color-primary);
-      opacity: 0.5;
+      
     }
     .retreat-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
 
     /* ── View all button ── */
     .retreat-view-all {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.65rem;
+      font-size: 0.75rem;
       font-weight: 600;
       letter-spacing: 0.22em;
       text-transform: uppercase;
       text-decoration: none;
       padding: 12px 32px;
       border: 1px solid rgba(15,118,110,0.35);
-      color: var(--color-primary);
+      color: #374151;
       border-radius: 2px;
       display: inline-flex;
       align-items: center;
@@ -228,7 +228,7 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
     .retreat-view-all:hover {
       background: var(--color-primary);
       color: #ffffff;
-      border-color: var(--color-primary);
+      border-color: #374151;
     }
   `}</style>
 
@@ -253,7 +253,7 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       textAlign: 'center',
     }}>
       Featured Retreat{' '}
-      <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Journeys</span>
+      <span style={{ color: '#374151', fontWeight: 200 }}>Journeys</span>
     </h2>
 
     {/* Cards grid */}
@@ -358,7 +358,7 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       background: linear-gradient(to top, rgba(2,10,2,0.62) 0%, rgba(2,10,2,0.05) 55%, rgba(2,10,2,0) 100%);
       transition: opacity 0.35s;
     }
-    .loc-card:hover .loc-card-overlay { opacity: 0.82; }
+    .loc-card:hover .loc-card-overlay { 2; }
 
     /* Location name over image */
     .loc-card-img-name {
@@ -366,10 +366,10 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       bottom: 0.75rem;
       left: 1rem;
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.55rem;
+      font-size: 0.75rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(236,228,208,0.75);
+      color: #374151;
       font-weight: 500;
     }
 
@@ -386,7 +386,7 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       height: 2px;
       width: 0;
       background: var(--color-primary);
-      opacity: 0.15;
+      
       transition: width 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
     }
     .loc-card:hover .loc-card-body::after { width: 100%; }
@@ -415,11 +415,11 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       align-items: center;
       gap: 0.35rem;
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.58rem;
+      font-size: 0.75rem;
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       transition: gap 0.22s;
     }
     .loc-card:hover .loc-arrow { gap: 0.62rem; }
@@ -452,14 +452,14 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
     .loc-eyebrow-line {
       width: 28px; height: 1px;
       background: var(--color-primary);
-      opacity: 0.5;
+      
     }
     .loc-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
   `}</style>
@@ -485,7 +485,7 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       textAlign: 'center',
     }}>
       The Landscapes We{' '}
-      <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Work With</span>
+      <span style={{ color: '#374151', fontWeight: 200 }}>Work With</span>
     </h2>
 
     {/* Cards */}
@@ -569,7 +569,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       background: linear-gradient(to top, rgba(2,10,2,0.85) 0%, rgba(2,10,2,0.18) 50%, rgba(2,10,2,0) 100%);
       transition: opacity 0.35s;
     }
-    .path-card:hover .path-card-overlay { opacity: 0.92; }
+    .path-card:hover .path-card-overlay {  }
 
     /* Label over image */
     .path-img-label {
@@ -581,7 +581,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     .path-img-tag {
       display: inline-block;
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.52rem;
+      font-size: 0.75rem;
       letter-spacing: 0.24em;
       text-transform: uppercase;
       color: #ffffff;
@@ -614,7 +614,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       height: 2px;
       width: 0;
       background: var(--color-primary);
-      opacity: 0.15;
+      
       transition: width 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
     }
     .path-card:hover .path-card-body::after { width: 100%; }
@@ -638,7 +638,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       text-decoration: none;
       transition: gap 0.22s;
     }
@@ -650,7 +650,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       grid-template-columns: repeat(2, 1fr);
       gap: 1.75rem;
     }
-    @media (max-width: 768px) {
+      font-size: 0.75rem;
       .path-grid { grid-template-columns: 1fr; }
       .path-card-img { height: 260px; }
       .path-img-title { font-size: 1.3rem; }
@@ -667,14 +667,14 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     .path-eyebrow-line {
       width: 28px; height: 1px;
       background: var(--color-primary);
-      opacity: 0.5;
+      
     }
     .path-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
   `}</style>
@@ -700,7 +700,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       textAlign: 'center',
     }}>
       Two Paths{' '}
-      <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Forward</span>
+      <span style={{ color: '#374151', fontWeight: 200 }}>Forward</span>
     </h2>
 
     <div className="path-grid scroll-fade-stagger">
@@ -787,14 +787,14 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     .trek-pop-eyebrow-line {
       width: 28px; height: 1px;
       background: var(--color-primary);
-      opacity: 0.5;
+      
     }
     .trek-pop-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
     .trek-pop-grid {
@@ -820,7 +820,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.95rem;
       font-weight: 600;
-      color: var(--color-primary);
+      color: #374151;
       margin: 0 0 0.5rem;
       line-height: 1.3;
     }
@@ -863,7 +863,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       textAlign: 'center',
     }}>
       Our Most{' '}
-      <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Sought Treks</span>
+      <span style={{ color: '#374151', fontWeight: 200 }}>Sought Treks</span>
     </h2>
 
     {/* Trek Grid */}
@@ -899,7 +899,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
         fontWeight: 600,
         letterSpacing: '0.1em',
         textTransform: 'uppercase',
-        color: 'var(--color-primary)',
+        color: '#374151',
         textDecoration: 'none',
       }}>
         View all treks →
@@ -969,9 +969,9 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       align-items: center;
       justify-content: center;
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.68rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      color: var(--color-primary);
+      color: #374151;
       letter-spacing: 0.05em;
       transition: background 0.3s, color 0.3s;
     }
@@ -1029,7 +1029,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
         border: 1px solid rgba(15,118,110,0.2);
         border-radius: 50%;
         font-size: 0.52rem;
-        color: var(--color-primary);
+        color: #374151;
         z-index: 1;
         box-shadow: 0 2px 8px rgba(0,0,0,0.06);
       }
@@ -1055,14 +1055,14 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     .step-eyebrow-line {
       width: 28px; height: 1px;
       background: var(--color-primary);
-      opacity: 0.5;
+      
     }
     .step-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
   `}</style>
@@ -1086,7 +1086,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       textAlign: 'center',
     }}>
       How This{' '}
-      <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Works</span>
+      <span style={{ color: '#374151', fontWeight: 200 }}>Works</span>
     </h2>
 
     <div className="step-grid scroll-fade-stagger">
@@ -1169,14 +1169,14 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     .s7-eyebrow-line {
       width: 28px; height: 1px;
       background: var(--color-primary);
-      opacity: 0.5;
+      
     }
     .s7-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
 
@@ -1195,7 +1195,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       margin: 0;
     }
     .s7-headline-accent {
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 200;
     }
 
@@ -1240,8 +1240,8 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 3.5rem;
       font-weight: 200;
-      color: var(--color-primary);
-      opacity: 0.1;
+      color: #374151;
+      
       line-height: 1;
       flex-shrink: 0;
       margin-top: -0.4rem;
@@ -1249,7 +1249,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       transition: opacity 0.3s;
       user-select: none;
     }
-    .s7-item:hover .s7-big-num { opacity: 0.22; }
+    .s7-item:hover .s7-big-num {  }
 
     .s7-item-title {
       font-family: var(--font-geist-sans), sans-serif;
@@ -1343,7 +1343,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     <div className="s7-big-num">{item.num}</div>
     <div>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-        <span style={{ color: 'var(--color-primary)', opacity: 0.7, display: 'flex' }}>
+        <span style={{ color: '#374151',  display: 'flex' }}>
           {item.icon}
         </span>
         <div className="s7-item-title" style={{ margin: 0 }}>{item.title}</div>
@@ -1407,8 +1407,8 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 4rem;
       font-weight: 200;
-      color: var(--color-primary);
-      opacity: 0.12;
+      color: #374151;
+      
       line-height: 1;
       position: absolute;
       top: 1.25rem;
@@ -1422,9 +1422,9 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       gap: 0.2rem;
     }
     .t-star {
-      color: var(--color-primary);
+      color: #374151;
       font-size: 0.75rem;
-      opacity: 0.8;
+      
     }
 
     /* Review text */
@@ -1447,7 +1447,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-size: 0.5rem;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       background: rgba(15,118,110,0.07);
       padding: 4px 10px;
       border-radius: 2px;
@@ -1484,8 +1484,8 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.9rem;
       font-weight: 500;
-      color: var(--color-primary);
-      opacity: 0.7;
+      color: #374151;
+      
     }
     .t-name {
       font-family: var(--font-geist-sans), sans-serif;
@@ -1527,14 +1527,14 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     .t-eyebrow-line {
       width: 28px; height: 1px;
       background: var(--color-primary);
-      opacity: 0.5;
+      
     }
     .t-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
   `}</style>
@@ -1560,7 +1560,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       textAlign: 'center',
     }}>
       Those Who Came{' '}
-      <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Before You</span>
+      <span style={{ color: '#374151', fontWeight: 200 }}>Before You</span>
     </h2>
 
     {/* Cards */}
@@ -1680,7 +1680,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       transition: opacity 0.35s;
       z-index: 1;
     }
-    .life-card:hover .life-card-overlay { opacity: 0.9; }
+    .life-card:hover .life-card-overlay {  }
 
     .life-card-content {
       position: absolute;
@@ -1725,7 +1725,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-weight: 300;
       line-height: 1.7;
       margin: 0;
-      opacity: 0;
+      
       transform: translateY(8px);
       transition: opacity 0.35s, transform 0.35s;
     }
@@ -1744,14 +1744,14 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     .life-eyebrow-line {
       width: 28px; height: 1px;
       background: var(--color-primary);
-      opacity: 0.5;
+      
     }
     .life-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
   `}</style>
@@ -1775,7 +1775,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       textAlign: 'center',
     }}>
       Mountains. People.{' '}
-      <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Moments.</span>
+      <span style={{ color: '#374151', fontWeight: 200 }}>Moments.</span>
     </h2>
 
     <div className="life-grid scroll-fade-stagger">
@@ -1855,14 +1855,14 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     .day-eyebrow-line {
       width: 28px; height: 1px;
       background: var(--color-primary);
-      opacity: 0.5;
+      
     }
     .day-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 0.875rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 500;
     }
 
@@ -1922,7 +1922,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       inset: -6px;
       border-radius: 50%;
       border: 1px solid rgba(15,118,110,0.15);
-      opacity: 0;
+      
       transform: scale(0.85);
       transition: opacity 0.4s, transform 0.4s;
     }
@@ -1936,9 +1936,9 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-size: 0.52rem;
       letter-spacing: 0.28em;
       text-transform: uppercase;
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 600;
-      opacity: 0.8;
+      
       margin-bottom: 0.6rem;
     }
 
@@ -2012,13 +2012,13 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       textAlign: 'center',
     }}>
       A Day in Your{' '}
-      <span style={{ color: 'var(--color-primary)', fontWeight: 200 }}>Retreat</span>
+      <span style={{ color: '#374151', fontWeight: 200 }}>Retreat</span>
     </h2>
 
     <p style={{
       fontFamily: 'var(--font-geist-sans), sans-serif',
       fontSize: '0.9rem',
-      color: 'rgba(80,70,55,0.6)',
+      color: '#1f2937',
       fontWeight: 300,
       textAlign: 'center',
       marginTop: '0.75rem',
@@ -2105,7 +2105,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       to   { transform: scaleX(1); }
     }
     @keyframes ctaFadeUp {
-      from { opacity: 0; transform: translateY(20px); }
+      from {  transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
 
@@ -2131,19 +2131,19 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     .cta8-eyebrow-line {
       width: 28px; height: 1px;
       background: rgba(255,255,255,0.5);
-      opacity: 0.5;
+      
       display: block;
       transform-origin: left;
       animation: ctaLineGrow 0.8s ease 0.4s both;
     }
     .cta8-eyebrow-text {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.56rem;
+      font-size: 0.75rem;
       letter-spacing: 0.32em;
       text-transform: uppercase;
       color: rgba(255,255,255,0.7);
       font-weight: 500;
-      opacity: 0.7;
+      
     }
 
     .cta8-headline {
@@ -2156,7 +2156,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       margin: 0 0 1.75rem;
     }
     .cta8-headline-accent {
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 200;
       display: block;
     }
@@ -2193,7 +2193,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       width: 5px; height: 5px;
       border-radius: 50%;
       background: var(--color-primary);
-      opacity: 0.4;
+      
       flex-shrink: 0;
     }
     .cta8-pillar-text {
@@ -2239,7 +2239,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       font-family: var(--font-geist-sans), sans-serif;
       font-size: 1.5rem;
       font-weight: 200;
-      color: var(--color-primary);
+      color: #374151;
       letter-spacing: -0.03em;
       line-height: 1;
       margin-bottom: 0.3rem;
@@ -2293,7 +2293,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       margin-bottom: 0.75rem;
     }
     .cta8-btn-primary:hover {
-      opacity: 0.88;
+      8;
       transform: translateY(-2px);
       box-shadow: 0 8px 28px rgba(15,118,110,0.2);
     }
@@ -2318,8 +2318,8 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       transition: border-color 0.2s, color 0.2s, transform 0.18s;
     }
     .cta8-btn-ghost:hover {
-      border-color: var(--color-primary);
-      color: var(--color-primary);
+      border-color: #374151;
+      color: #374151;
       transform: translateY(-2px);
     }
 
@@ -2346,7 +2346,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       width: 3px; height: 3px;
       border-radius: 50%;
       background: var(--color-primary);
-      opacity: 0.4;
+      
     }
     .cta8-trust-item:first-child .cta8-trust-dot { display: none; }
 
@@ -2387,7 +2387,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     height: '2px',
     zIndex: 1,
     background: 'linear-gradient(to right, transparent 0%, var(--color-primary) 30%, var(--color-primary) 70%, transparent 100%)',
-    opacity: 0.25,
+    
     transformOrigin: 'left',
     animation: 'ctaLineGrow 1.2s ease forwards',
   }} />
@@ -2457,7 +2457,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
     fontFamily: 'var(--font-geist-sans), sans-serif',
     fontSize: '0.72rem',
     fontWeight: 600,
-    color: 'var(--color-primary)',
+    color: '#374151',
     background: 'rgba(15,118,110,0.08)',
     padding: '4px 10px',
     borderRadius: '2px',
@@ -2466,7 +2466,7 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
 </div>
       <p className="cta8-card-sub">
   No forms, no checkout. Just tell us what you&apos;re looking for — we&apos;ll take it from there.
-  <span style={{ display: 'block', marginTop: '0.3rem', opacity: 0.7 }}>
+  <span style={{ display: 'block', marginTop: '0.3rem', color: '#4b5563' }}>
     Custom pricing based on your plan.
   </span>
 </p>

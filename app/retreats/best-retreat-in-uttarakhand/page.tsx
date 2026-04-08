@@ -192,7 +192,7 @@ export default function BestRetreatInUttarakhandPage() {
     top: 0; left: 0; right: 0;
     height: 2px;
     background: linear-gradient(90deg, transparent 0%, var(--color-primary) 30%, var(--color-primary) 70%, transparent 100%);
-    opacity: 0.35;
+    
   }
 
   /* faint mountain silhouette — purely decorative */
@@ -225,17 +225,16 @@ export default function BestRetreatInUttarakhandPage() {
     width: 24px;
     height: 1px;
     background: var(--color-primary);
-    opacity: 0.5;
+    
     flex-shrink: 0;
   }
   .bru-eyebrow-text {
     font-family: var(--font-geist-sans), sans-serif;
-    font-size: 0.56rem;
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--color-primary);
-    opacity: 0.7;
+    color: #374151;
   }
 
   /* h1 */
@@ -252,7 +251,7 @@ export default function BestRetreatInUttarakhandPage() {
 
   .bru-h1 em {
     font-style: normal;
-    color: var(--color-primary);
+    color: #374151;
     font-weight: 200;
   }
 
@@ -282,7 +281,7 @@ export default function BestRetreatInUttarakhandPage() {
     padding: 3px 10px;
     border-radius: 100px;
     background: rgba(15,118,110,0.08);
-    color: var(--color-primary);
+    color: #374151;
     border: 1px solid rgba(15,118,110,0.15);
   }
 
@@ -366,12 +365,11 @@ export default function BestRetreatInUttarakhandPage() {
   .bru-table th {
     text-align: left;
     padding: 0.75rem 1rem;
-    font-size: 0.56rem;
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: var(--color-primary);
-    opacity: 0.7;
+    color: #374151;
   }
   .bru-table tbody tr {
     border-bottom: 1px solid rgba(15,118,110,0.07);
@@ -382,7 +380,7 @@ export default function BestRetreatInUttarakhandPage() {
     background: rgba(15,118,110,0.03);
   }
   .bru-table tbody tr:hover .bru-td-cat {
-    color: var(--color-primary);
+    color: #374151;
   }
   .bru-td-cat {
     padding: 0.85rem 1rem;
@@ -401,7 +399,7 @@ export default function BestRetreatInUttarakhandPage() {
   .bru-td-opt-pill {
     display: inline-block;
     background: rgba(15,118,110,0.07);
-    color: var(--color-primary);
+    color: #374151;
     font-size: 0.72rem;
     font-weight: 500;
     padding: 2px 10px;
@@ -415,8 +413,8 @@ export default function BestRetreatInUttarakhandPage() {
 
     {/* eyebrow */}
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+      <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151'}}>
         At a Glance
       </span>
     </div>
@@ -508,8 +506,8 @@ export default function BestRetreatInUttarakhandPage() {
   <div className="bru-yoga-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+      <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151'}}>
         Best Yoga Retreat
       </span>
     </div>
@@ -543,7 +541,7 @@ export default function BestRetreatInUttarakhandPage() {
       The concentration of certified instructors, the range of styles (Hatha,
       Vinyasa, Ashtanga, Yin, Kundalini), and the Ganges-side practice settings
       make it the default choice for anyone whose primary retreat goal is yoga. Our{' '}
-      <Link href="/retreats/yoga-retreat-rishikesh" style={{ color: 'var(--color-primary)' }}>
+      <Link href="/retreats/yoga-retreat-rishikesh" style={{ color: '#374151' }}>
         yoga retreat in Rishikesh
       </Link>{' '}
       guide covers structure, scheduling, and instructor profiles in detail.
@@ -559,7 +557,7 @@ export default function BestRetreatInUttarakhandPage() {
     <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
       For yoga practice combined with mountain altitude and forest immersion rather
       than river-valley energy, see the broader{' '}
-      <Link href="/retreats/yoga-retreat-uttarakhand" style={{ color: 'var(--color-primary)' }}>
+      <Link href="/retreats/yoga-retreat-uttarakhand" style={{ color: '#374151' }}>
         yoga retreat in Uttarakhand
       </Link>{' '}
       overview, which includes Chakrata and Sankri options alongside Rishikesh.
@@ -587,8 +585,8 @@ export default function BestRetreatInUttarakhandPage() {
   <div className="bru-med-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+      <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151'}}>
         Best Meditation Retreat
       </span>
     </div>
@@ -619,20 +617,20 @@ export default function BestRetreatInUttarakhandPage() {
 
     <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1rem' }}>
       Meditation retreats split into two distinct experiences in Uttarakhand.{' '}
-      <Link href="/retreats/rishikesh" style={{ color: 'var(--color-primary)' }}>
+      <Link href="/retreats/rishikesh" style={{ color: '#374151' }}>
         Rishikesh
       </Link>{' '}
       offers structured programs: guided Vipassana, mindfulness courses, silent
       retreats with group support, and ashram-based practice rooted in decades of
       lineage. The{' '}
-      <Link href="/retreats/meditation-retreat-rishikesh" style={{ color: 'var(--color-primary)' }}>
+      <Link href="/retreats/meditation-retreat-rishikesh" style={{ color: '#374151' }}>
         meditation retreat in Rishikesh
       </Link>{' '}
       guide covers these programs in detail.
     </p>
 
     <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1rem' }}>
-      <Link href="/retreats/munsiyari" style={{ color: 'var(--color-primary)' }}>
+      <Link href="/retreats/munsiyari" style={{ color: '#374151' }}>
         Munsiyari
       </Link>{' '}
       offers something different — altitude silence. At 2,200 metres facing the
@@ -644,7 +642,7 @@ export default function BestRetreatInUttarakhandPage() {
 
     <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
       For a complete view across all meditation-friendly locations, see{' '}
-      <Link href="/retreats/meditation-retreat-uttarakhand" style={{ color: 'var(--color-primary)' }}>
+      <Link href="/retreats/meditation-retreat-uttarakhand" style={{ color: '#374151' }}>
         meditation retreats in Uttarakhand
       </Link>
       .
@@ -672,8 +670,8 @@ export default function BestRetreatInUttarakhandPage() {
   <div className="bru-lux-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+      <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151'}}>
         Best Luxury Retreat
       </span>
     </div>
@@ -712,7 +710,7 @@ export default function BestRetreatInUttarakhandPage() {
 
     <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
       The{' '}
-      <Link href="/retreats/luxury-himalayan-retreats" style={{ color: 'var(--color-primary)' }}>
+      <Link href="/retreats/luxury-himalayan-retreats" style={{ color: '#374151' }}>
         luxury Himalayan retreats
       </Link>{' '}
       guide compares premium options across all locations — Munsiyari for
@@ -744,8 +742,8 @@ export default function BestRetreatInUttarakhandPage() {
   <div className="bru-wknd-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+      <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151'}}>
         Best Weekend Retreat
       </span>
     </div>
@@ -776,7 +774,7 @@ export default function BestRetreatInUttarakhandPage() {
 
     <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1rem' }}>
       For a two-day mountain wellness escape from Delhi, NCR or Chandigarh,{' '}
-      <Link href="/retreats/chakrata" style={{ color: 'var(--color-primary)' }}>
+      <Link href="/retreats/chakrata" style={{ color: '#374151' }}>
         Chakrata
       </Link>{' '}
       is the most time-efficient option. Six hours by road, no flight, no complex
@@ -787,12 +785,12 @@ export default function BestRetreatInUttarakhandPage() {
 
     <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
       Our{' '}
-      <Link href="/retreats/weekend-himalayan-retreats" style={{ color: 'var(--color-primary)' }}>
+      <Link href="/retreats/weekend-himalayan-retreats" style={{ color: '#374151' }}>
         weekend Himalayan retreats
       </Link>{' '}
       guide covers two-day and three-day formats across all locations. For options
       beyond Chakrata, including Rishikesh and Mussoorie, see the full{' '}
-      <Link href="/retreats/retreats-near-delhi" style={{ color: 'var(--color-primary)' }}>
+      <Link href="/retreats/retreats-near-delhi" style={{ color: '#374151' }}>
         retreat near Delhi
       </Link>{' '}
       comparison.
@@ -832,12 +830,11 @@ export default function BestRetreatInUttarakhandPage() {
   }
   .bru-season-card-label {
     font-family: var(--font-geist-sans), sans-serif;
-    font-size: 0.56rem;
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--color-primary);
-    opacity: 0.7;
+    color: #374151;
     margin-bottom: 0.75rem;
     display: block;
   }
@@ -859,8 +856,8 @@ export default function BestRetreatInUttarakhandPage() {
   <div className="bru-season-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+      <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151'}}>
         Best Retreat by Season
       </span>
     </div>
@@ -887,14 +884,14 @@ export default function BestRetreatInUttarakhandPage() {
         <span className="bru-season-card-label">April – June</span>
         <p>
           <strong>Summer (April to June).</strong> Munsiyari and{' '}
-          <Link href="/retreats/sankri" style={{ color: 'var(--color-primary)' }}>
+          <Link href="/retreats/sankri" style={{ color: '#374151' }}>
             Sankri
           </Link>{' '}
           are at their best —
           green valleys, snow-peak views, temperatures between 15 and 25 degrees while
           the plains bake above 40. High-altitude summer retreats combine forest bathing,
           yoga, and the clearest mountain visibility of the year. See{' '}
-          <Link href="/retreats/summer-himalayan-retreats" style={{ color: 'var(--color-primary)' }}>
+          <Link href="/retreats/summer-himalayan-retreats" style={{ color: '#374151' }}>
             summer Himalayan retreats
           </Link>{' '}
           for full seasonal options.
@@ -909,7 +906,7 @@ export default function BestRetreatInUttarakhandPage() {
           is at its clearest, and the valley is uncrowded after monsoon. Chakrata offers
           cold-air forest stillness with occasional frost. High-altitude locations
           (Munsiyari, Sankri) close or operate limited winter programs. See{' '}
-          <Link href="/retreats/winter-himalayan-retreats" style={{ color: 'var(--color-primary)' }}>
+          <Link href="/retreats/winter-himalayan-retreats" style={{ color: '#374151' }}>
             winter Himalayan retreats
           </Link>{' '}
           for details.
@@ -956,12 +953,11 @@ export default function BestRetreatInUttarakhandPage() {
   }
   .bru-htc-cell-label {
     font-family: var(--font-geist-sans), sans-serif;
-    font-size: 0.56rem;
+    font-size: 0.75rem;
     font-weight: 500;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--color-primary);
-    opacity: 0.7;
+    color: #374151;
     display: block;
     margin-bottom: 0.6rem;
   }
@@ -997,8 +993,8 @@ export default function BestRetreatInUttarakhandPage() {
   <div className="bru-htc-inner">
 
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>
+      <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151'}}>
         How to Choose
       </span>
     </div>
@@ -1038,11 +1034,11 @@ export default function BestRetreatInUttarakhandPage() {
         <span className="bru-htc-cell-label">All Options</span>
         <p>
           For a structured view of all options by location and program type, see the{' '}
-          <Link href="/retreats/uttarakhand-retreats" style={{ color: 'var(--color-primary)' }}>
+          <Link href="/retreats/uttarakhand-retreats" style={{ color: '#374151' }}>
             Uttarakhand retreats
           </Link>{' '}
           overview and the main{' '}
-          <Link href="/retreats/himalayan-retreats" style={{ color: 'var(--color-primary)' }}>
+          <Link href="/retreats/himalayan-retreats" style={{ color: '#374151' }}>
             Himalayan retreats in India
           </Link>{' '}
           directory.
@@ -1068,8 +1064,8 @@ export default function BestRetreatInUttarakhandPage() {
 }}>
   <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '0 var(--space-md, 1.5rem)' }}>
     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)', opacity: 0.5, flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: 'var(--color-primary)', opacity: 0.7 }}>FAQ</span>
+      <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
+      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151'}}>FAQ</span>
     </div>
     <h2 style={{
       fontFamily: 'var(--font-geist-sans), sans-serif',

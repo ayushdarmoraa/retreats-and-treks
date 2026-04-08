@@ -77,10 +77,10 @@ export default function TrekAttributePage({
         .tap-body { font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; line-height:1.85; color:#555; margin:0 0 1rem; }
         .tap-h2 { font-family:var(--font-geist-sans),sans-serif; font-size:clamp(1.4rem,2.5vw,1.85rem); font-weight:200; letter-spacing:-0.03em; color:#111; line-height:1.15; margin:0 0 0.75rem; }
         .tap-eyebrow { display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem; }
-        .tap-eyebrow-line { width:24px; height:1px; background:var(--color-primary); opacity:0.5; display:inline-block; }
-        .tap-eyebrow-text { font-size:0.56rem; letter-spacing:0.28em; text-transform:uppercase; color:var(--color-primary); font-weight:500; opacity:0.7; }
-        .tap-link { color:var(--color-primary); font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
-        .tap-link:hover { border-bottom-color:var(--color-primary); }
+        .tap-eyebrow-line { width:24px; height:1px; background:var(--color-primary);  display:inline-block; }
+        .tap-eyebrow-text { font-size:0.75rem; letter-spacing:0.28em; text-transform:uppercase; color:#374151; font-weight:500; }
+        .tap-link { color: #374151; font-weight:500; text-decoration:none; border-bottom:1px solid rgba(15,118,110,0.25); }
+        .tap-link:hover { border-bottom-color: #374151; }
 
         .tap-table-wrap { border:1px solid #eef0ee; border-radius:8px; overflow:hidden; }
         .tap-table { width:100%; border-collapse:collapse; font-family:var(--font-geist-sans),sans-serif; font-size:0.82rem; font-weight:300; }
@@ -90,22 +90,22 @@ export default function TrekAttributePage({
         .tap-table tbody tr:last-child { border-bottom:none; }
         .tap-table tbody tr:hover { background:#f7f9f7; }
         .tap-table td { padding:0.65rem 1rem; color:#555; }
-        .tap-table td a { color:var(--color-primary); font-weight:500; text-decoration:none; }
+        .tap-table td a { color: #374151; font-weight:500; text-decoration:none; }
         .tap-table td a:hover { text-decoration:underline; }
 
         .tap-trek-card { background:#fff; border:1px solid #eef0ee; border-top:2px solid var(--color-primary); border-radius:8px; padding:1.25rem 1.5rem; margin-bottom:0.75rem; transition:transform 0.18s,box-shadow 0.18s; }
         .tap-trek-card:hover { transform:translateY(-3px); box-shadow:0 8px 24px rgba(0,0,0,0.07); }
         .tap-trek-meta { font-size:0.75rem; font-weight:400; color:#888; margin:0.35rem 0 0.65rem; }
-        .tap-trek-title a { font-family:var(--font-geist-sans),sans-serif; font-size:0.95rem; font-weight:500; color:var(--color-primary); text-decoration:none; }
+        .tap-trek-title a { font-family:var(--font-geist-sans),sans-serif; font-size:0.95rem; font-weight:500; color: #374151; text-decoration:none; }
         .tap-trek-title a:hover { text-decoration:underline; }
 
         .tap-nav-group { border:1px solid #e5e7eb; border-radius:8px; overflow:hidden; }
         .tap-nav-link { display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1rem; border-bottom:1px solid #f0f0f0; font-family:var(--font-geist-sans),sans-serif; font-size:0.88rem; font-weight:300; color:#333; text-decoration:none; transition:background 0.15s,color 0.15s; }
         .tap-nav-link:last-child { border-bottom:none; }
-        .tap-nav-link:hover { background:#f7f9f7; color:var(--color-primary); }
-        .tap-nav-link::after { content:'→'; color:var(--color-primary); opacity:0.5; }
+        .tap-nav-link:hover { background:#f7f9f7; color: #374151; }
+        .tap-nav-link::after { content:'→'; color: #374151;  }
 
-        .tap-count { display:inline-block; font-size:0.72rem; font-weight:500; color:var(--color-primary); background:rgba(15,118,110,0.08); border-radius:3px; padding:0.15rem 0.55rem; letter-spacing:0.04em; }
+        .tap-count { display:inline-block; font-size:0.75rem; font-weight:500; color: #374151; background:rgba(15,118,110,0.08); border-radius:3px; padding:0.15rem 0.75rem; letter-spacing:0.04em; }
 
         @media(max-width:700px){ .tap-table-wrap { overflow-x:auto; } .tap-trek-card { padding:1rem; } }
       `}</style>

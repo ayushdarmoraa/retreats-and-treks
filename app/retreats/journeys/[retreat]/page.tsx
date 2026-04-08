@@ -65,7 +65,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
     return (
       <main style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
         <h1>Retreat not found</h1>
-        <Link href="/retreats" style={{ color: 'var(--color-primary)' }}>
+        <Link href="/retreats" style={{ color: '#374151' }}>
           ← Back to all retreats
         </Link>
       </main>
@@ -190,7 +190,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
               fontFamily: 'var(--font-geist-sans), sans-serif',
               fontSize: '0.82rem',
               fontWeight: 300,
-              color: 'var(--color-primary)',
+              color: '#374151',
               textDecoration: 'none',
             }}
           >
@@ -224,7 +224,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
     For a broader understanding of retreat formats, seasonal considerations, and how mountain
     programs differ across regions, see our complete guide to{' '}
     <Link href="/retreats/himalayan-retreats" style={{
-      color: 'var(--color-primary)',
+      color: '#374151',
       textDecoration: 'none',
       borderBottom: '1px solid rgba(15,118,110,0.25)',
     }}>
@@ -275,7 +275,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
         }
         .rct-eyebrow-line {
           width: 24px; height: 1px;
-          background: var(--color-primary); opacity: 0.5;
+          background: var(--color-primary); 
           flex-shrink: 0;
         }
 
@@ -289,7 +289,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
           margin: 0 0 2rem;
         }
         .rct-h2-accent {
-          color: var(--color-primary);
+          color: #374151;
           font-weight: 200;
         }
 
@@ -336,22 +336,22 @@ export default async function RetreatDetailPage({ params }: PageProps) {
           font-family: var(--font-geist-sans), sans-serif;
           font-size: 0.85rem;
           font-weight: 300;
-          color: var(--color-primary);
+          color: #374151;
           text-decoration: none;
           line-height: 1.5;
           transition: opacity 0.2s;
         }
-        .rct-link:hover { opacity: 0.8; }
+        .rct-link:hover {  }
 
         .rct-arrow {
           font-size: 0.7rem;
-          color: var(--color-primary);
-          opacity: 0.35;
+          color: #374151;
+          
           flex-shrink: 0;
           transition: opacity 0.2s, transform 0.2s;
         }
         .rct-item:hover .rct-arrow {
-          opacity: 0.9;
+          
           transform: translateX(3px);
         }
       `}</style>
@@ -432,7 +432,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
       }
       .rps-eyebrow-line {
         width: 24px; height: 1px;
-        background: var(--color-primary); opacity: 0.5;
+        background: var(--color-primary); 
         flex-shrink: 0;
       }
 
@@ -446,7 +446,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
         margin: 0 0 1rem;
       }
       .rps-h2-accent {
-        color: var(--color-primary);
+        color: #374151;
         font-weight: 200;
       }
 
@@ -462,7 +462,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
       .rps-divider {
         width: 32px; height: 1px;
         background: var(--color-primary);
-        opacity: 0.2;
+        
         margin: 1.5rem 0;
       }
 
@@ -540,7 +540,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
     }
     .rfaq-eyebrow-line {
       width: 24px; height: 1px;
-      background: var(--color-primary); opacity: 0.5;
+      background: var(--color-primary); 
       flex-shrink: 0;
     }
 
@@ -554,7 +554,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
       margin: 0 0 2.5rem;
     }
     .rfaq-h2-accent {
-      color: var(--color-primary);
+      color: #374151;
       font-weight: 200;
     }
   `}</style>

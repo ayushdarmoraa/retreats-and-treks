@@ -136,9 +136,9 @@ export default function BeginnerTreksPage() {
     .beg-table thead tr { border-bottom: 2px solid #e5e7eb; }
     .beg-table th {
       font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.55rem; font-weight: 600;
+      font-size: 0.75rem; font-weight: 600;
       letter-spacing: 0.2em; text-transform: uppercase;
-      color: var(--color-primary); opacity: 0.7;
+      color: #374151;
       padding: 0.75rem 1rem; text-align: left;
     }
     .beg-table td {
@@ -157,8 +157,8 @@ export default function BeginnerTreksPage() {
       font-size: 0.88rem; font-weight: 300;
       color: #333333; text-decoration: none;
     }
-    .beg-nav-link:hover { background: #f7f9f7; color: var(--color-primary); }
-    .beg-nav-link::after { content: '→'; color: var(--color-primary); opacity: 0.5; }
+    .beg-nav-link:hover { background: #f7f9f7; color: #374151; }
+    .beg-nav-link::after { content: '→'; color: #374151;  }
     .beg-nav-group { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
     .beg-nav-group .beg-nav-link:last-child { border-bottom: none; }
     @media (max-width: 640px) {
@@ -177,8 +177,8 @@ export default function BeginnerTreksPage() {
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <Breadcrumb items={BREADCRUMBS} />
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', margin: '1.5rem 0 1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Beginner Guide · Uttarakhand</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Beginner Guide · Uttarakhand</span>
       </div>
       <h1 style={{
         fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -190,13 +190,13 @@ export default function BeginnerTreksPage() {
       </h1>
       <div style={{ display:'flex', flexDirection:'column', gap:'0.75rem', marginBottom:'1.5rem' }}>
   <div style={{ background:'#fff', border:'1px solid #e5e7eb', borderLeft:'3px solid var(--color-primary)', borderRadius:'8px', padding:'1rem 1.25rem', fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', lineHeight:1.85, color:'#555' }}>
-    <div style={{ fontSize:'0.55rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'var(--color-primary)', opacity:0.7, marginBottom:'0.35rem' }}>Want Snow & Lakes</div>
-    <span style={{ fontWeight:500, color:'#111' }}>Choose <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Brahmatal</Link></span>{' '}
+    <div style={{ fontSize: '0.75rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color: '#374151', marginBottom:'0.35rem' }}>Want Snow & Lakes</div>
+    <span style={{ fontWeight:500, color:'#111' }}>Choose <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Brahmatal</Link></span>{' '}
     <span style={{ fontWeight:300 }}>— frozen alpine lake, snow ridges, Trishul views. 4 days from Lohajung.</span>
   </div>
   <div style={{ background:'#fff', border:'1px solid #e5e7eb', borderLeft:'3px solid var(--color-primary)', borderRadius:'8px', padding:'1rem 1.25rem', fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', lineHeight:1.85, color:'#555' }}>
-    <div style={{ fontSize:'0.55rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'var(--color-primary)', opacity:0.7, marginBottom:'0.35rem' }}>Want Panoramic Views</div>
-    <span style={{ fontWeight:500, color:'#111' }}>Choose <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>Kuari Pass</Link></span>{' '}
+    <div style={{ fontSize: '0.75rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color: '#374151', marginBottom:'0.35rem' }}>Want Panoramic Views</div>
+    <span style={{ fontWeight:500, color:'#111' }}>Choose <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>Kuari Pass</Link></span>{' '}
     <span style={{ fontWeight:300 }}>— Nanda Devi panorama on the historic Curzon Trail. 5 days from Joshimath.</span>
   </div>
 </div>
@@ -205,7 +205,7 @@ export default function BeginnerTreksPage() {
       </p>
       <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
         All five treks are included in our{' '}
-        <Link href={PARENT_PATH} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>complete ranking of the 10 best treks in Uttarakhand</Link>, which also covers challenging and high-altitude routes for experienced trekkers.
+        <Link href={PARENT_PATH} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>complete ranking of the 10 best treks in Uttarakhand</Link>, which also covers challenging and high-altitude routes for experienced trekkers.
       </p>
     </div>
   </section>
@@ -219,8 +219,8 @@ export default function BeginnerTreksPage() {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Easy Treks</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Easy Treks</span>
       </div>
       <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>
         Easy Day Treks — No Experience Needed
@@ -242,7 +242,7 @@ export default function BeginnerTreksPage() {
           </div>
           <p>
             A gentle forest walk to one of the tallest waterfalls in Uttarakhand. The trail stays below tree cover the entire way, with no exposed ridges or steep scrambles. Perfect for families, first-timers, or as a warm-up before a multi-day route.{' '}
-            <Link href="/treks/location/chakrata/tiger-fall-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>View full Tiger Fall trek details →</Link>
+            <Link href="/treks/location/chakrata/tiger-fall-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>View full Tiger Fall trek details →</Link>
           </p>
         </div>
       </div>
@@ -260,11 +260,11 @@ export default function BeginnerTreksPage() {
           </div>
           <p>
             A slightly longer forest trail leading to ancient limestone caves, offering more trail variety than Tiger Fall with a rewarding geological endpoint. Same low-altitude, low-risk profile, but adds exploration interest.{' '}
-            <Link href="/treks/location/chakrata/budher-caves-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>View full Budher Caves trek details →</Link>
+            <Link href="/treks/location/chakrata/budher-caves-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>View full Budher Caves trek details →</Link>
           </p>
           <p style={{ marginTop: '0.75rem' }}>
             Both Chakrata trails pair well with a{' '}
-            <Link href="/retreats/chakrata" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Chakrata retreat weekend</Link>{' '}
+            <Link href="/retreats/chakrata" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Chakrata retreat weekend</Link>{' '}
             — trek in the morning, rest and reset in the afternoon.
           </p>
         </div>
@@ -281,8 +281,8 @@ export default function BeginnerTreksPage() {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Moderate Treks</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Moderate Treks</span>
       </div>
       <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>
         Moderate Multi-Day Treks — Your First Himalayan Camping Experience
@@ -297,14 +297,14 @@ export default function BeginnerTreksPage() {
           <h3>Brahmatal Trek</h3>
           <div className="beg-pills">
             <span className="beg-pill">3,850 m</span>
-            <span className="beg-pill" style={{ color: 'var(--color-primary)', borderColor: 'rgba(15,118,110,0.25)', background: 'rgba(15,118,110,0.05)' }}>Moderate</span>
+            <span className="beg-pill" style={{ color: '#374151', borderColor: 'rgba(15,118,110,0.25)', background: 'rgba(15,118,110,0.05)' }}>Moderate</span>
             <span className="beg-pill">4 days</span>
             <span className="beg-pill">Dec–Mar</span>
             <span className="beg-pill">Lohajung, Garhwal</span>
           </div>
           <p>
             The ideal first snow trek — frozen Brahmatal Lake, snow-covered ridges, and continuous Trishul and Nanda Ghunti views. The 4-day duration limits cold exposure while delivering a genuinely alpine experience. The route gains altitude gradually through forest before opening onto exposed ridge meadows.{' '}
-            <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>View full Brahmatal trek details →</Link>
+            <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>View full Brahmatal trek details →</Link>
           </p>
         </div>
       </div>
@@ -315,16 +315,16 @@ export default function BeginnerTreksPage() {
           <h3>Kuari Pass Trek</h3>
           <div className="beg-pills">
             <span className="beg-pill">3,876 m</span>
-            <span className="beg-pill" style={{ color: 'var(--color-primary)', borderColor: 'rgba(15,118,110,0.25)', background: 'rgba(15,118,110,0.05)' }}>Moderate</span>
+            <span className="beg-pill" style={{ color: '#374151', borderColor: 'rgba(15,118,110,0.25)', background: 'rgba(15,118,110,0.05)' }}>Moderate</span>
             <span className="beg-pill">5 days</span>
             <span className="beg-pill">Mar–May, Oct–Nov</span>
             <span className="beg-pill">Joshimath, Garhwal</span>
           </div>
           <p>
             One of the most accessible ridge walks in the Himalayas — 5 days along the historic Curzon Trail with Nanda Devi, Dronagiri, and Chaukhamba visible for most of the route. Spring brings snow on the upper sections plus rhododendron bloom along the lower trail. This is the classic first moderate trek in Garhwal.{' '}
-            <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>View full Kuari Pass trek details →</Link>{' '}
+            <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>View full Kuari Pass trek details →</Link>{' '}
             Deciding between the two moderate routes?{' '}
-            <Link href="/treks/brahmatal-vs-kuari-pass" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Compare Brahmatal vs Kuari Pass →</Link>
+            <Link href="/treks/brahmatal-vs-kuari-pass" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Compare Brahmatal vs Kuari Pass →</Link>
           </p>
         </div>
       </div>
@@ -335,14 +335,14 @@ export default function BeginnerTreksPage() {
           <h3>Khaliya Top Trek</h3>
           <div className="beg-pills">
             <span className="beg-pill">3,500 m</span>
-            <span className="beg-pill" style={{ color: 'var(--color-primary)', borderColor: 'rgba(15,118,110,0.25)', background: 'rgba(15,118,110,0.05)' }}>Moderate</span>
+            <span className="beg-pill" style={{ color: '#374151', borderColor: 'rgba(15,118,110,0.25)', background: 'rgba(15,118,110,0.05)' }}>Moderate</span>
             <span className="beg-pill">3–4 days</span>
             <span className="beg-pill">May–Jun, Sep–Oct</span>
             <span className="beg-pill">Munsiyari, Kumaon</span>
           </div>
           <p>
             A quieter alternative to the popular Garhwal routes — Khaliya Top offers a 360-degree Panchachuli massif panorama from 3,500 metres, with far fewer trekkers on trail. Based from Munsiyari in the Kumaon Himalaya, it provides a genuine alpine meadow summit experience at gentler altitude than Garhwal. Ideal for trekkers who value solitude alongside scenery.{' '}
-            <Link href="/treks/location/munsiyari/khaliya-top-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>View full Khaliya Top trek details →</Link>
+            <Link href="/treks/location/munsiyari/khaliya-top-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>View full Khaliya Top trek details →</Link>
           </p>
         </div>
       </div>
@@ -350,10 +350,10 @@ export default function BeginnerTreksPage() {
       {/* Comparison callout */}
       <div style={{ display:'flex', flexDirection:'column', gap:'0.75rem', marginTop:'1.5rem' }}>
         <div style={{ background:'#ffffff', border:'1px solid #e5e7eb', borderLeft:'3px solid var(--color-primary)', borderRadius:'8px', padding:'1rem 1.25rem', fontFamily:'var(--font-geist-sans),sans-serif', fontSize:'0.88rem', lineHeight:1.85, color:'#555' }}>
-          <div style={{ fontSize:'0.55rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color:'var(--color-primary)', opacity:0.7, marginBottom:'0.35rem' }}>Still Deciding?</div>
+          <div style={{ fontSize: '0.75rem', fontWeight:600, letterSpacing:'0.2em', textTransform:'uppercase' as const, color: '#374151', marginBottom:'0.35rem' }}>Still Deciding?</div>
           <span style={{ fontWeight:500, color:'#111' }}>Brahmatal vs Kuari Pass</span>{' '}
           <span style={{ fontWeight:300 }}>— same difficulty, different seasons and landscapes. </span>
-          <Link href="/treks/brahmatal-vs-kuari-pass" style={{ color:'var(--color-primary)', textDecoration:'none', fontWeight:500 }}>See full side-by-side comparison →</Link>
+          <Link href="/treks/brahmatal-vs-kuari-pass" style={{ color: '#374151', textDecoration:'none', fontWeight:500 }}>See full side-by-side comparison →</Link>
         </div>
       </div>
     </div>
@@ -367,8 +367,8 @@ export default function BeginnerTreksPage() {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Quick Comparison</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Quick Comparison</span>
       </div>
       <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
         Beginner Treks at a Glance
@@ -393,7 +393,7 @@ export default function BeginnerTreksPage() {
               { href: '/treks/location/munsiyari/khaliya-top-trek', name: 'Khaliya Top', alt: '3,500 m', diff: 'Moderate', days: '3–4', season: 'May–Jun, Sep–Oct' },
             ].map(row => (
               <tr key={row.href}>
-                <td><Link href={row.href} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>{row.name}</Link></td>
+                <td><Link href={row.href} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>{row.name}</Link></td>
                 <td>{row.alt}</td>
                 <td>
                   <span style={{
@@ -402,7 +402,7 @@ export default function BeginnerTreksPage() {
                     padding: '2px 10px', display: 'inline-block',
                     ...(row.diff === 'Easy'
                       ? { color: '#555', background: '#f0f0f0', border: '1px solid #e0e0e0' }
-                      : { color: 'var(--color-primary)', background: 'rgba(15,118,110,0.07)', border: '1px solid rgba(15,118,110,0.2)' })
+                      : { color: '#374151', background: 'rgba(15,118,110,0.07)', border: '1px solid rgba(15,118,110,0.2)' })
                   }}>{row.diff}</span>
                 </td>
                 <td>{row.days}</td>
@@ -424,18 +424,18 @@ export default function BeginnerTreksPage() {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>On the Trail</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>On the Trail</span>
       </div>
       <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
         What to Expect on Your First Trek
       </h2>
       {[
         { label: 'Day treks (Chakrata)', text: 'You will walk 4–8 km on forest trails at low altitude. Carry water, snacks, and rain protection. No special equipment needed. Return to accommodation the same day.' },
-        { label: 'Multi-day treks (Brahmatal, Kuari Pass, Khaliya Top)', text: <>You will camp in tents at established sites, eat meals prepared by a trek crew, and walk 6–12 km per day with 500–800 m elevation gain. Guides manage navigation, safety, and logistics. Your main job is to walk and enjoy. Basic trekking gear (layering system, trekking shoes, daypack) is needed — our <Link href="/treks/garhwal-himalayas/packing-checklist" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>packing checklist</Link> covers everything.</> },
+        { label: 'Multi-day treks (Brahmatal, Kuari Pass, Khaliya Top)', text: <>You will camp in tents at established sites, eat meals prepared by a trek crew, and walk 6–12 km per day with 500–800 m elevation gain. Guides manage navigation, safety, and logistics. Your main job is to walk and enjoy. Basic trekking gear (layering system, trekking shoes, daypack) is needed — our <Link href="/treks/garhwal-himalayas/packing-checklist" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>packing checklist</Link> covers everything.</> },
       ].map((item, i) => (
         <div key={i} style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start', padding: '1.25rem 0', borderBottom: '1px solid #e8ece8' }}>
-          <span style={{ flexShrink: 0, width: '10px', height: '10px', borderRadius: '50%', background: 'var(--color-primary)', opacity: 0.4, marginTop: '0.45rem' }} />
+          <span style={{ flexShrink: 0, width: '10px', height: '10px', borderRadius: '50%', background: 'var(--color-primary)',  marginTop: '0.45rem' }} />
           <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
             <strong style={{ fontWeight: 500, color: '#111111' }}>{item.label}:</strong>{' '}{item.text}
           </p>
@@ -443,7 +443,7 @@ export default function BeginnerTreksPage() {
       ))}
       <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginTop: '1.5rem', marginBottom: 0 }}>
         Ready to progress beyond beginner routes? The{' '}
-        <Link href={`${PARENT_PATH}#challenging-treks`} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>challenging treks section</Link>{' '}
+        <Link href={`${PARENT_PATH}#challenging-treks`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>challenging treks section</Link>{' '}
         covers Roopkund, Pangarchulla, and Milam Glacier for experienced trekkers.
       </p>
     </div>
@@ -466,8 +466,8 @@ export default function BeginnerTreksPage() {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>FAQ</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>FAQ</span>
       </div>
       <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
         Frequently Asked Questions
@@ -484,8 +484,8 @@ export default function BeginnerTreksPage() {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Explore More</span>
+        <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Explore More</span>
       </div>
       <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
         Browse by Category

@@ -83,9 +83,9 @@ export default function GarhwalFitnessGuidePage() {
         .fg-table thead tr { border-bottom: 2px solid #e5e7eb; }
         .fg-table th {
           font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.55rem; font-weight: 600;
+          font-size: 0.75rem; font-weight: 600;
           letter-spacing: 0.2em; text-transform: uppercase;
-          color: var(--color-primary); opacity: 0.7;
+          color: #374151;
           padding: 0.75rem 1rem; text-align: left; white-space: nowrap;
         }
         .fg-table td {
@@ -107,7 +107,7 @@ export default function GarhwalFitnessGuidePage() {
           vertical-align: middle; margin-left: 6px;
         }
         .fg-badge-moderate {
-          color: var(--color-primary);
+          color: #374151;
           background: rgba(15,118,110,0.07);
           border: 1px solid rgba(15,118,110,0.2);
         }
@@ -130,9 +130,9 @@ export default function GarhwalFitnessGuidePage() {
         }
         .fg-pick:hover { box-shadow: 0 4px 16px rgba(15,118,110,0.08); }
         .fg-pick-label {
-          font-size: 0.55rem; font-weight: 600;
+          font-size: 0.75rem; font-weight: 600;
           letter-spacing: 0.2em; text-transform: uppercase;
-          color: var(--color-primary); opacity: 0.7; margin-bottom: 0.35rem;
+          color: #374151; margin-bottom: 0.35rem;
         }
 
         /* Section body text */
@@ -206,8 +206,8 @@ export default function GarhwalFitnessGuidePage() {
           color: #333333; text-decoration: none;
           transition: background 0.15s ease, color 0.15s ease;
         }
-        .fg-nav-link:hover { background: #f7f9f7; color: var(--color-primary); }
-        .fg-nav-link::after { content: '→'; color: var(--color-primary); opacity: 0.5; }
+        .fg-nav-link:hover { background: #f7f9f7; color: #374151; }
+        .fg-nav-link::after { content: '→'; color: #374151;  }
         .fg-nav-group { border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; }
         .fg-nav-group .fg-nav-link:last-child { border-bottom: none; }
 
@@ -240,8 +240,8 @@ export default function GarhwalFitnessGuidePage() {
           ]} />
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', margin: '1.5rem 0 1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Fitness Guide · Garhwal Himalayas</span>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Fitness Guide · Garhwal Himalayas</span>
           </div>
 
           <h1 style={{
@@ -258,18 +258,18 @@ export default function GarhwalFitnessGuidePage() {
             <div className="fg-pick">
               <div className="fg-pick-label">Moderate Routes — 4 weeks prep</div>
               <span style={{ fontWeight: 500, color: '#111' }}>
-                <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Brahmatal</Link>
+                <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Brahmatal</Link>
                 {' '}or{' '}
-                <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Kuari Pass</Link>
+                <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Kuari Pass</Link>
               </span>{' '}
               <span style={{ fontWeight: 300 }}>— 4-day routes at 3,850–3,876 m. Beginner-friendly with guided campsites.</span>
             </div>
             <div className="fg-pick" style={{ borderLeftColor: '#e65100' }}>
               <div className="fg-pick-label" style={{ color: '#e65100' }}>Challenging Routes — 6–8 weeks prep</div>
               <span style={{ fontWeight: 500, color: '#111' }}>
-                <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Roopkund</Link>
+                <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Roopkund</Link>
                 {' '}or{' '}
-                <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla</Link>
+                <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla</Link>
               </span>{' '}
               <span style={{ fontWeight: 300 }}>— 6–7 day routes above 4,500 m. Prior high-altitude experience required.</span>
             </div>
@@ -277,7 +277,7 @@ export default function GarhwalFitnessGuidePage() {
 
           <p className="fg-body" style={{ marginBottom: '1rem' }}>
             The{' '}
-            <Link href="/treks/garhwal-himalayas" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Garhwal Himalaya treks</Link>{' '}
+            <Link href="/treks/garhwal-himalayas" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Garhwal Himalaya treks</Link>{' '}
             range from moderate 4-day routes at 3,850 metres to challenging 7-day expeditions at 4,800 metres.
             Every route demands specific physical preparation — and the training differs significantly between
             difficulty tiers. This guide provides a structured 8-week plan that covers both, with clear
@@ -285,9 +285,9 @@ export default function GarhwalFitnessGuidePage() {
           </p>
           <p className="fg-body">
             Whether you are preparing for the{' '}
-            <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Brahmatal winter trek</Link>{' '}
+            <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Brahmatal winter trek</Link>{' '}
             or the{' '}
-            <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla summit climb</Link>,
+            <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla summit climb</Link>,
             this plan scales to your target route.
           </p>
         </div>
@@ -305,8 +305,8 @@ export default function GarhwalFitnessGuidePage() {
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>By Route</span>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>By Route</span>
           </div>
 
           <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>
@@ -314,7 +314,7 @@ export default function GarhwalFitnessGuidePage() {
           </h2>
           <p className="fg-body" style={{ marginBottom: '1.75rem' }}>
             If you are choosing between the two moderate snow treks, the{' '}
-            <Link href="/treks/brahmatal-vs-kuari-pass" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Brahmatal vs Kuari Pass comparison</Link>{' '}
+            <Link href="/treks/brahmatal-vs-kuari-pass" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Brahmatal vs Kuari Pass comparison</Link>{' '}
             breaks down the differences in terrain, views, and season. Once you have chosen your target route, follow the corresponding training plan below.
           </p>
 
@@ -348,7 +348,7 @@ export default function GarhwalFitnessGuidePage() {
                 ].map(row => (
                   <tr key={row.href}>
                     <td>
-                      <Link href={row.href} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>{row.name}</Link>
+                      <Link href={row.href} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>{row.name}</Link>
                       <span className={`fg-badge fg-badge-${row.diff}`}>{row.diff}</span>
                     </td>
                     <td>{row.alt}</td>
@@ -375,8 +375,8 @@ export default function GarhwalFitnessGuidePage() {
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Readiness Check</span>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Readiness Check</span>
           </div>
 
           <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>
@@ -427,8 +427,8 @@ export default function GarhwalFitnessGuidePage() {
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Training Plan</span>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Training Plan</span>
           </div>
 
           <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>
@@ -438,7 +438,7 @@ export default function GarhwalFitnessGuidePage() {
             This plan assumes a baseline of normal activity (walking, occasional gym) but no structured endurance training.
             4 training days per week. Rest days are not optional — they prevent overuse injury.
             If you are new to Himalayan trekking, read the{' '}
-            <Link href="/blog/beginner-to-advanced-trek-progression-garhwal" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>beginner to advanced trek progression</Link>{' '}
+            <Link href="/blog/beginner-to-advanced-trek-progression-garhwal" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>beginner to advanced trek progression</Link>{' '}
             to understand where Brahmatal and Kuari Pass sit in the overall difficulty scale.
           </p>
 
@@ -479,10 +479,10 @@ export default function GarhwalFitnessGuidePage() {
 
           <p className="fg-body" style={{ marginTop: '1.5rem' }}>
             If you are training for the{' '}
-            <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Brahmatal Trek</Link>,
+            <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Brahmatal Trek</Link>,
             emphasise cold-weather endurance — add outdoor sessions in colder hours and practice layering on the move.
             For the{' '}
-            <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Kuari Pass Trek</Link>,
+            <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Kuari Pass Trek</Link>,
             focus on sustained ridge walking — longer weekend hikes with moderate elevation gain build the right stamina.
           </p>
         </div>
@@ -500,8 +500,8 @@ export default function GarhwalFitnessGuidePage() {
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: '#e65100', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#e65100', fontWeight: 500, opacity: 0.7 }}>Advanced Plan</span>
+            <span style={{ width: '24px', height: '1px', background: '#e65100',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#e65100', fontWeight: 500}}>Advanced Plan</span>
           </div>
 
           <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>
@@ -511,9 +511,9 @@ export default function GarhwalFitnessGuidePage() {
             This plan assumes you have already completed a moderate Himalayan trek or equivalent multi-day endurance activity.
             If starting from scratch, complete the moderate plan first, then add 4 weeks of this programme.
             5 training days per week. For context on what separates these routes from lower treks, see our guide to{' '}
-            <Link href="/blog/high-altitude-treks-garhwal-above-4000m" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>high-altitude treks above 4,000m in Garhwal</Link>.
+            <Link href="/blog/high-altitude-treks-garhwal-above-4000m" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>high-altitude treks above 4,000m in Garhwal</Link>.
             Not sure which challenging route suits you? The{' '}
-            <Link href="/treks/roopkund-vs-pangarchulla" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Roopkund vs Pangarchulla breakdown</Link>{' '}
+            <Link href="/treks/roopkund-vs-pangarchulla" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Roopkund vs Pangarchulla breakdown</Link>{' '}
             compares summit difficulty, permit requirements, and best seasons.
           </p>
 
@@ -554,10 +554,10 @@ export default function GarhwalFitnessGuidePage() {
 
           <p className="fg-body" style={{ marginTop: '1.5rem' }}>
             If you are preparing for the{' '}
-            <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Roopkund Trek</Link>,
+            <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Roopkund Trek</Link>,
             prioritise multi-day endurance — your body must sustain effort across seven consecutive days above 3,500 m.
             For the{' '}
-            <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla Peak</Link>{' '}
+            <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla Peak</Link>{' '}
             summit, focus on explosive climbing power and summit-day simulation — the single hardest day on any Garhwal trek.
           </p>
         </div>
@@ -575,8 +575,8 @@ export default function GarhwalFitnessGuidePage() {
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>What to Carry</span>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>What to Carry</span>
           </div>
 
           <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>
@@ -586,7 +586,7 @@ export default function GarhwalFitnessGuidePage() {
             Gear requirements differ between moderate winter treks and challenging high-altitude routes.
             This summary covers the essentials. For a complete, print-ready list organised by category and
             difficulty badge, see the{' '}
-            <Link href="/treks/garhwal-himalayas/packing-checklist" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Garhwal trek packing checklist</Link>.
+            <Link href="/treks/garhwal-himalayas/packing-checklist" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Garhwal trek packing checklist</Link>.
           </p>
 
           <div className="fg-gear-group">
@@ -645,8 +645,8 @@ export default function GarhwalFitnessGuidePage() {
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Altitude Safety</span>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Altitude Safety</span>
           </div>
 
           <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>
@@ -682,7 +682,7 @@ export default function GarhwalFitnessGuidePage() {
                         textTransform: 'uppercase' as const, borderRadius: '100px',
                         padding: '2px 8px', display: 'inline-block', whiteSpace: 'nowrap',
                         ...(r.risk === 'Low'       ? { color: '#555', background: '#f0f0f0', border: '1px solid #e0e0e0' } :
-                            r.risk === 'Moderate'  ? { color: 'var(--color-primary)', background: 'rgba(15,118,110,0.07)', border: '1px solid rgba(15,118,110,0.2)' } :
+                            r.risk === 'Moderate'  ? { color: '#374151', background: 'rgba(15,118,110,0.07)', border: '1px solid rgba(15,118,110,0.2)' } :
                             r.risk === 'High'      ? { color: '#b45309', background: 'rgba(180,83,9,0.07)', border: '1px solid rgba(180,83,9,0.2)' } :
                                                      { color: '#e65100', background: 'rgba(230,81,0,0.05)', border: '1px solid rgba(230,81,0,0.2)' })
                       }}>{r.risk}</span>
@@ -699,7 +699,7 @@ export default function GarhwalFitnessGuidePage() {
             AMS Warning Signs — When to Turn Back
           </p>
           {[
-            { label: 'Mild AMS', color: 'var(--color-primary)', bg: 'rgba(15,118,110,0.07)', body: 'Persistent headache not relieved by ibuprofen, loss of appetite, mild nausea, difficulty sleeping. Action: do not ascend further until symptoms resolve.' },
+            { label: 'Mild AMS', color: '#374151', bg: 'rgba(15,118,110,0.07)', body: 'Persistent headache not relieved by ibuprofen, loss of appetite, mild nausea, difficulty sleeping. Action: do not ascend further until symptoms resolve.' },
             { label: 'Moderate AMS', color: '#b45309', bg: 'rgba(180,83,9,0.07)', body: 'Severe headache, vomiting, extreme fatigue at rest, ataxia (unsteady walking). Action: descend immediately by at least 500m.' },
             { label: 'Severe AMS (HACE/HAPE)', color: '#e65100', bg: 'rgba(230,81,0,0.07)', body: 'Confusion, inability to walk straight, persistent cough with pink/frothy sputum, blue lips. Action: emergency descent. This is life-threatening.' },
           ].map((a, i) => (
@@ -713,7 +713,7 @@ export default function GarhwalFitnessGuidePage() {
 
           <p className="fg-body" style={{ marginTop: '1.5rem' }}>
             All guided{' '}
-            <Link href="/treks/garhwal-himalayas" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Garhwal trekking routes</Link>{' '}
+            <Link href="/treks/garhwal-himalayas" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Garhwal trekking routes</Link>{' '}
             include trained leaders who monitor group members for AMS symptoms and carry emergency communication equipment.
           </p>
         </div>
@@ -731,8 +731,8 @@ export default function GarhwalFitnessGuidePage() {
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>On the Trail</span>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>On the Trail</span>
           </div>
 
           <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
@@ -747,7 +747,7 @@ export default function GarhwalFitnessGuidePage() {
             { label: 'Avoid', text: 'Alcohol (impairs acclimatisation), excessive caffeine (diuretic at altitude), heavy fatty meals before climb days.' },
           ].map((item, i, arr) => (
             <div key={i} style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start', padding: '1.1rem 0', borderBottom: i < arr.length - 1 ? '1px solid #f0f0f0' : 'none' }}>
-              <span style={{ flexShrink: 0, width: '10px', height: '10px', borderRadius: '50%', background: 'var(--color-primary)', opacity: 0.4, marginTop: '0.45rem' }} />
+              <span style={{ flexShrink: 0, width: '10px', height: '10px', borderRadius: '50%', background: 'var(--color-primary)',  marginTop: '0.45rem' }} />
               <p className="fg-body" style={{ margin: 0 }}>
                 <strong style={{ fontWeight: 500, color: '#111' }}>{item.label}:</strong>{' '}{item.text}
               </p>
@@ -779,8 +779,8 @@ export default function GarhwalFitnessGuidePage() {
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>FAQ</span>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>FAQ</span>
           </div>
 
           <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
@@ -801,8 +801,8 @@ export default function GarhwalFitnessGuidePage() {
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', opacity: 0.5, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.56rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'var(--color-primary)', fontWeight: 500, opacity: 0.7 }}>Choose Your Trek</span>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Choose Your Trek</span>
           </div>
 
           <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
