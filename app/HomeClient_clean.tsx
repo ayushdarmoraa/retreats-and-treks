@@ -288,7 +288,7 @@ useEffect(() => {
 
   {/* Hero Poster — LCP element, present in initial HTML */}
   <Image
-    src={images.heroes.mountainsnow.src}
+     src={images.heroes.himalayanSunrise.src}
     alt="Himalayan mountain landscape"
     fill
     priority
