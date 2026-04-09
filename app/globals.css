@@ -920,3 +920,24 @@ a[class*="btn"]:hover {
   transform: translateY(-2px) scale(1.02);
   box-shadow: 0 10px 28px rgba(0,0,0,0.12);
 }
+/* Footer Grid */
+.ft-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 1.5rem 1rem;
+  margin-bottom: 2.5rem;
+  align-items: start;
+}
+.ft-col {
+  min-width: 0;
+}
+@media (max-width: 1024px) {
+  .ft-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .ft-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

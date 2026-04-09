@@ -100,11 +100,11 @@ export default function Footer() {
           <div className="ft-top">
             <Link href="/">
               <Image
-                src="/Images/logo/headerlogo1.webp"
+                src="/Images/logo/footlogo1.png"
                 alt="Retreats And Treks"
                 width={200}
                 height={212}
-                style={{ height: '60px', width: 'auto', display: 'block' }}
+                style={{ height: '100px', width: 'auto', display: 'block' }}
                 quality={75}
               />
             </Link>
