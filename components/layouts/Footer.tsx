@@ -11,140 +11,122 @@ export default function Footer() {
           margin-top: 3rem;
           font-family: var(--font-geist-sans), 'Geist', sans-serif;
         }
-        .ft-nav {
-          max-width: 72rem;
+        .footer-container {
+          max-width: 1200px;
           margin: 0 auto;
-          padding: 3rem 1.5rem 2rem;
+          padding: 60px 20px 30px;
         }
-        .ft-logo-row {
-          margin-bottom: 2.5rem;
-          padding-bottom: 2rem;
-          border-bottom: 1px solid var(--color-border);
-        }
-        .ft-logo-placeholder {
-          width: 140px;
-          height: 38px;
-          border: 1.5px dashed var(--color-border);
-          border-radius: 6px;
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          color: #444444;
-          font-size: 0.65rem;
-          letter-spacing: 0.12em;
-          text-transform: uppercase;
-          font-family: var(--font-geist-sans), 'Geist', sans-serif;
-          text-decoration: none;
-        }
-        .ft-grid {
+        .ft-top {
           display: flex;
-          flex-wrap: wrap;
-          gap: 2rem 3rem;
-          margin-bottom: 2.5rem;
+          align-items: center;
+          margin-bottom: 8px;
         }
+
+        .ft-grid {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          gap: 40px;
+          margin-top: 40px;
+        }
+
         .ft-col {
-          min-width: 165px;
-          flex: 1 1 165px;
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
         }
-        .ft-col-heading {
-          font-family: var(--font-geist-sans), 'Geist', sans-serif;
+
+        .ft-col h3 {
+          font-size: 0.95rem;
           font-weight: 600;
-          font-size: 0.72rem;
-          letter-spacing: 0.14em;
+          letter-spacing: 0.08em;
           text-transform: uppercase;
-          color: var(--color-primary);
-          margin: 0 0 0.85rem 0;
+          color: #0f766e;
+          margin-bottom: 8px;
         }
+
         .ft-list {
           list-style: none;
           padding: 0;
           margin: 0;
         }
+
         .ft-link {
-          text-decoration: none;
-          color: #444444;
           font-size: 0.85rem;
-          font-family: var(--font-geist-sans), 'Geist', sans-serif;
-          font-weight: 400;
-          line-height: 2.1;
-          display: inline-flex;
-          align-items: center;
-          min-height: 44px;
-          min-width: 44px;
-          padding: 8px;
-          transition: color 0.18s ease;
-        }
-        .ft-link:hover {
-          color: var(--color-primary);
-          text-decoration: underline;
-          text-underline-offset: 3px;
-        }
-        .ft-bottom {
-          border-top: 1px solid var(--color-border);
-          padding-top: 1.25rem;
-          display: flex;
-          flex-wrap: wrap;
-          gap: 1.5rem;
-          align-items: center;
-          font-size: 0.78rem;
-          color: #666666;
-          font-family: var(--font-geist-sans), 'Geist', sans-serif;
-          font-weight: 400;
-        }
-        .ft-bottom-link {
+          color: #444;
           text-decoration: none;
-          color: #666666;
+          line-height: 1.6;
+        }
+
+        .ft-link:hover {
+          color: #0f766e;
+        }
+
+        .ft-bottom {
+          margin-top: 50px;
+          padding-top: 20px;
+          border-top: 1px solid #e5e5e5;
+
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
           font-size: 0.78rem;
+          color: #666666;
           font-family: var(--font-geist-sans), 'Geist', sans-serif;
           font-weight: 400;
-          transition: color 0.18s ease;
-          display: inline-flex;
-          align-items: center;
-          min-height: 44px;
-          min-width: 44px;
-          padding: 8px;
         }
-        .ft-bottom-link:hover {
-          color: var(--color-primary);
+
+        .ft-bottom-links {
+          display: flex;
+          gap: 20px;
+          flex-wrap: wrap;
+        }
+
+        .ft-bottom a {
+          color: #666;
+          text-decoration: none;
+        }
+
+        .ft-bottom a:hover {
+          color: #0f766e;
           text-decoration: underline;
-          text-underline-offset: 3px;
         }
       `}</style>
 
       <footer className="ft-root">
-        <nav className="ft-nav">
+        <div className="footer-container">
 
-         {/* ── LOGO ── */}
-<div className="ft-logo-row">
-  <Link href="/">
-    <Image
-      src="/Images/logo/headerlogo1.webp"
-      alt="Retreats And Treks"
-      width={200}
-      height={212}
-      style={{ height: '60px', width: 'auto', display: 'block' }}
-      quality={75}
-    />
-  </Link>
-</div>
+          {/* LOGO */}
+          <div className="ft-top">
+            <Link href="/">
+              <Image
+                src="/Images/logo/headerlogo1.webp"
+                alt="Retreats And Treks"
+                width={200}
+                height={212}
+                style={{ height: '60px', width: 'auto', display: 'block' }}
+                quality={75}
+              />
+            </Link>
+          </div>
 
-          {/* ── COLUMNS ── */}
+          {/* GRID */}
           <div className="ft-grid">
 
             <div className="ft-col">
-              <p className="ft-col-heading">Popular Treks</p>
+              <h3>Popular Treks</h3>
               <ul className="ft-list">
                 <li><Link href="/treks/location/lohajung/brahmatal-trek" className="ft-link">Brahmatal Trek</Link></li>
                 <li><Link href="/treks/location/joshimath/kuari-pass-trek" className="ft-link">Kuari Pass Trek</Link></li>
                 <li><Link href="/treks/location/lohajung/roopkund-trek" className="ft-link">Roopkund Trek</Link></li>
-                <li><Link href="/treks/location/joshimath/pangarchulla-trek" className="ft-link">Pangarchulla Trek</Link></li>
-                <li><Link href="/treks/location/sankri/kedarkantha-trek" className="ft-link">Kedarkantha Trek</Link></li>
-                <li><Link href="/treks/location/sankri/har-ki-dun-trek" className="ft-link">Har Ki Dun Trek</Link></li>
+                <li><Link href="/treks/location/joshimath/pangarchulla-trek" className="ft-link">Pangarchulla Peak</Link></li>
+                <li><Link href="/treks/location/lohajung" className="ft-link">Treks in Lohajung</Link></li>
+                <li><Link href="/treks/location/joshimath" className="ft-link">Treks in Joshimath</Link></li>
               </ul>
             </div>
 
             <div className="ft-col">
-              <p className="ft-col-heading">Garhwal Himalaya</p>
+              <h3>Garhwal Himalaya</h3>
               <ul className="ft-list">
                 <li><Link href="/treks/garhwal-himalayas" className="ft-link">Garhwal Trek Guide</Link></li>
                 <li><Link href="/treks/location/lohajung/brahmatal-trek" className="ft-link">Brahmatal Trek</Link></li>
@@ -157,7 +139,7 @@ export default function Footer() {
             </div>
 
             <div className="ft-col">
-              <p className="ft-col-heading">Trekking Guides</p>
+              <h3>Trekking Guides</h3>
               <ul className="ft-list">
                 <li><Link href="/treks/best-treks-in-uttarakhand" className="ft-link">Best Treks in Uttarakhand</Link></li>
                 <li><Link href="/treks/best-treks-in-uttarakhand/beginner" className="ft-link">Beginner Treks</Link></li>
@@ -168,7 +150,7 @@ export default function Footer() {
             </div>
 
             <div className="ft-col">
-              <p className="ft-col-heading">Trek Comparisons</p>
+              <h3>Trek Comparisons</h3>
               <ul className="ft-list">
                 <li><Link href="/treks/brahmatal-vs-kuari-pass" className="ft-link">Brahmatal vs Kuari Pass</Link></li>
                 <li><Link href="/treks/roopkund-vs-pangarchulla" className="ft-link">Roopkund vs Pangarchulla</Link></li>
@@ -177,7 +159,7 @@ export default function Footer() {
             </div>
 
             <div className="ft-col">
-              <p className="ft-col-heading">Retreats</p>
+              <h3>Retreats</h3>
               <ul className="ft-list">
                 <li><Link href="/retreats/himalayan-retreats" className="ft-link">Himalayan Retreats</Link></li>
                 <li><Link href="/retreats/chakrata" className="ft-link">Chakrata</Link></li>
@@ -187,8 +169,8 @@ export default function Footer() {
               </ul>
             </div>
 
-            <nav aria-labelledby="retreat-guides-heading" className="ft-col">
-              <h3 id="retreat-guides-heading" className="ft-col-heading">Retreat Guides</h3>
+            <div className="ft-col">
+              <h3>Retreat Guides</h3>
               <ul className="ft-list">
                 <li><Link href="/retreats/weekend-retreat-near-delhi" prefetch={false} className="ft-link">Weekend Retreat Near Delhi</Link></li>
                 <li><Link href="/retreats/retreats-near-delhi" prefetch={false} className="ft-link">Retreats Near Delhi</Link></li>
@@ -196,21 +178,23 @@ export default function Footer() {
                 <li><Link href="/retreats/best-retreat-in-uttarakhand" prefetch={false} className="ft-link">Best Retreat in Uttarakhand</Link></li>
                 <li><Link href="/retreats/retreat-cost-india" prefetch={false} className="ft-link">Retreat Costs in India (2026)</Link></li>
               </ul>
-            </nav>
+            </div>
 
           </div>
 
-          {/* ── BOTTOM BAR ── */}
+          {/* BOTTOM */}
           <div className="ft-bottom">
             <span>© {new Date().getFullYear()} Retreats And Treks</span>
-            <Link href="/blog" className="ft-bottom-link">Blog</Link>
-            <Link href="/about" className="ft-bottom-link">About</Link>
-            <Link href="/contact" className="ft-bottom-link">Contact</Link>
-            <Link href="/site-map" className="ft-bottom-link">Site Map</Link>
-            <Link href="/sitemap.xml" className="ft-bottom-link">Sitemap</Link>
+            <div className="ft-bottom-links">
+              <Link href="/blog">Blog</Link>
+              <Link href="/about">About</Link>
+              <Link href="/contact">Contact</Link>
+              <Link href="/site-map">Site Map</Link>
+              <Link href="/sitemap.xml">Sitemap</Link>
+            </div>
           </div>
 
-        </nav>
+        </div>
       </footer>
     </>
   );
