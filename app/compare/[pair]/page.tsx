@@ -101,17 +101,16 @@ export default async function ComparisonPage({ params }: PageProps) {
   ]);
 
   return (
-    <main style={{ maxWidth: '72rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
-      <style>{`
+<main style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 var(--space-md)' }}>      
+  <style>{`
         .cmp-hero {
-          width: 100vw;
-          margin-left: calc(-50vw + 50%);
-          background: #f7f9f7;
-          padding: 5rem 0 4rem;
-          margin-bottom: 0;
-          position: relative;
-          overflow: hidden;
-        }
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: #f7f9f7;
+  padding: 5rem 0 4rem;
+  margin-bottom: 0;
+  position: relative;
+}
         .cmp-hero::before {
           content: '';
           position: absolute;
@@ -120,10 +119,11 @@ export default async function ComparisonPage({ params }: PageProps) {
           background: linear-gradient(90deg, transparent, rgba(15,118,110,0.5) 30%, rgba(15,118,110,0.5) 70%, transparent);
         }
         .cmp-hero-inner {
-          max-width: 72rem;
-          margin: 0 auto;
-          padding: 0 var(--space-md);
-        }
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+  width: 100%;
+}
         .cmp-eyebrow {
           display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;
         }
@@ -302,9 +302,15 @@ export default async function ComparisonPage({ params }: PageProps) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      {/* ── HERO ── */}
-      <div className="cmp-hero">
-        <div className="cmp-hero-inner">
+      {/* ── BREADCRUMB ── */}
+      <div style={{
+        width: '100%',
+        background: '#ffffff',
+        borderBottom: '1px solid #e5e7eb',
+        padding: '1rem 0',
+        marginTop: '4rem',
+      }}>
+        <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 var(--space-md)' }}>
           <Breadcrumb
             items={[
               { name: 'Home', href: '/' },
@@ -312,6 +318,12 @@ export default async function ComparisonPage({ params }: PageProps) {
               { name: `${serviceA.title} vs ${serviceB.title}` },
             ]}
           />
+        </div>
+      </div>
+
+      {/* ── HERO ── */}
+      <div className="cmp-hero">
+        <div className="cmp-hero-inner">
           <div className="cmp-eyebrow">
             <span className="cmp-eyebrow-line" />
             <span className="cmp-eyebrow-text">Retreat Comparison</span>

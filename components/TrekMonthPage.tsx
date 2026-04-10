@@ -167,21 +167,46 @@ export default function TrekMonthPage({
   );
 
   return (
-    <TrackedPage
-      page={path}
-      style={{
-        maxWidth: '56rem',
-        margin: '0 auto',
-        padding: 'var(--space-lg) var(--space-md)',
+  <TrackedPage
+    page={path}
+    style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}
+  >
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: JSON.stringify([breadcrumbSchema, faqSchema]),
       }}
-    >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([breadcrumbSchema, faqSchema]),
-        }}
-      />
+    />
 
+    <style>{`
+      .tm-body { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555555; margin: 0; }
+      .tm-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+      .tm-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); display: inline-block; }
+      .tm-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase; color: #374151; font-weight: 500; }
+
+      .tm-table-wrap { overflow-x: auto; border: 1px solid #e5e7eb; border-radius: 10px; background: #ffffff; }
+      .tm-table { width: 100%; border-collapse: collapse; }
+      .tm-table td { font-family: var(--font-geist-sans), sans-serif; font-size: 0.84rem; font-weight: 300; color: #444; padding: 0.75rem 1rem; border-bottom: 1px solid #f0f0f0; }
+      .tm-table td:first-child { font-weight: 500; color: #111; width: 35%; }
+      .tm-table tr:last-child td { border-bottom: none; }
+      .tm-table tbody tr { transition: background 0.15s ease; }
+      .tm-table tbody tr:hover td { background: #f7f9f7; }
+
+      .tm-callout { background: #f7f9f7; border: 1px solid #eef0ee; border-left: 3px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin-bottom: 1rem; }
+
+      .tm-faq-item { border-bottom: 1px solid #f0f0f0; padding: 0.85rem 0; }
+      .tm-faq-item summary { cursor: pointer; font-family: var(--font-geist-sans), sans-serif; font-weight: 500; font-size: 0.92rem; line-height: 1.6; color: #111; }
+      .tm-faq-item p { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin-top: 0.5rem; }
+
+      .tm-nav-group { border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; }
+      .tm-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.1rem; border-bottom: 1px solid #f0f0f0; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #333; text-decoration: none; transition: background 0.15s ease, color 0.15s ease; }
+      .tm-nav-link:hover { background: #f7f9f7; color: #374151; }
+      .tm-nav-link::after { content: '→'; color: #374151; }
+      .tm-nav-group .tm-nav-link:last-child { border-bottom: none; }
+    `}</style>
+
+    {/* ── BREADCRUMB ── */}
+    <div style={{ padding: '0 0 0.5rem' }}>
       <Breadcrumb
         items={[
           { name: 'Home', href: '/' },
@@ -190,233 +215,188 @@ export default function TrekMonthPage({
           { name: monthCapitalised },
         ]}
       />
+    </div>
 
-      <article>
-        {/* ── HERO ──────────────────────────────────────────────────── */}
-        <header style={{ marginBottom: 'var(--space-xl)' }}>
-          <h1 style={{ fontSize: '2rem', fontWeight: 400, marginBottom: '0.75rem' }}>
-            {trekInfo.displayName} in {monthCapitalised}
-          </h1>
-          <p style={{ fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '1rem' }}>
-            {condition.conditions}
-          </p>
-          {isBestSeason && (
-            <p
-              style={{
-                display: 'inline-block',
-                background: '#ecfdf5',
-                color: '#065f46',
-                padding: '0.35rem 0.85rem',
-                borderRadius: '4px',
-                fontSize: '0.85rem',
-                fontWeight: 600,
-              }}
-            >
-              {monthCapitalised} is within the best season for this trek
-            </p>
-          )}
-        </header>
+    {/* ── HERO ── */}
+<section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+    <div className="tm-eyebrow">
+      <span className="tm-eyebrow-line" />
+      <span className="tm-eyebrow-text">
+        {trekInfo.displayName} · {trek.difficulty} · {trek.altitude}
+      </span>
+    </div>
+    <h1 style={{
+      fontFamily: 'var(--font-geist-sans), sans-serif',
+      fontSize: 'clamp(1.75rem, 3.5vw, 2.4rem)',
+      fontWeight: 200,
+      letterSpacing: '-0.035em',
+      color: '#111111',
+      lineHeight: 1.1,
+      margin: '0 0 1.5rem',
+    }}>
+      {trekInfo.displayName} in {monthCapitalised}
+    </h1>
+    <p style={{ fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '1.5rem', color: '#555555', fontFamily: 'var(--font-geist-sans), sans-serif', fontWeight: 300 }}>
+      {condition.conditions}
+    </p>
+    {isBestSeason && (
+      <span style={{
+        display: 'inline-block',
+        background: '#ecfdf5',
+        color: '#065f46',
+        padding: '0.35rem 0.85rem',
+        borderRadius: '4px',
+        fontSize: '0.82rem',
+        fontWeight: 600,
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        letterSpacing: '0.02em',
+      }}>
+        {monthCapitalised} is within the best season for this trek
+      </span>
+    )}
+  </div>
+</section>
 
-        {/* ── QUICK CONDITIONS TABLE ──────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            {monthCapitalised} at a Glance
+    {/* ── AT A GLANCE TABLE ── */}
+    <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+        <div className="tm-eyebrow"><span className="tm-eyebrow-line" /><span className="tm-eyebrow-text">{monthCapitalised} at a Glance</span></div>
+        <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
+          {monthCapitalised} at a Glance
+        </h2>
+        <div className="tm-table-wrap">
+          <table className="tm-table">
+            <tbody>
+              {[
+                { label: 'Trek', value: trekInfo.displayName },
+                { label: 'Month', value: monthCapitalised },
+                { label: 'Altitude', value: trek.altitude },
+                { label: 'Distance', value: trek.distance },
+                { label: 'Duration', value: trek.duration },
+                { label: 'Difficulty', value: trek.difficulty },
+                { label: 'Best Season', value: trek.bestSeason.join(', ') },
+                { label: `${monthCapitalised} Rating`, value: isBestSeason ? '★ Best Season' : 'Outside Primary Season' },
+              ].map((row, i) => (
+                <tr key={i}><td>{row.label}</td><td>{row.value}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    {/* ── TREK OVERVIEW ── */}
+    <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+        <div className="tm-eyebrow"><span className="tm-eyebrow-line" /><span className="tm-eyebrow-text">About the Trek</span></div>
+        <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
+          About the {trekInfo.displayName}
+        </h2>
+        <p className="tm-body" style={{ marginBottom: '1rem' }}>
+          {trek.overview.split('\n\n')[0]}
+        </p>
+        <p className="tm-body">
+          Read the full{' '}
+          <Link href={trekInfo.locationPath} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
+            {trekInfo.displayName} guide →
+          </Link>
+        </p>
+      </div>
+    </section>
+
+    {/* ── CTA ── */}
+    <PrimaryCTA
+      label={`Plan My ${monthCapitalised} Trek`}
+      subtext={`Tell us your dates in ${monthCapitalised} and we will confirm availability and conditions.`}
+      vertical="trek"
+      category="month"
+      sourcePath={path}
+    />
+
+    {/* ── DEPARTURES ── */}
+    {trekInfo.departuresPath && (
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div className="tm-eyebrow"><span className="tm-eyebrow-line" /><span className="tm-eyebrow-text">{monthCapitalised} Departures</span></div>
+          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.25rem' }}>
+            {monthCapitalised} Departures
           </h2>
-          <div style={{ overflowX: 'auto' }}>
-            <table
-              style={{
-                width: '100%',
-                borderCollapse: 'collapse',
-                fontSize: '0.95rem',
-                lineHeight: 1.7,
-              }}
-            >
-              <tbody>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem', fontWeight: 600 }}>Trek</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>{trekInfo.displayName}</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem', fontWeight: 600 }}>Month</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>{monthCapitalised}</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem', fontWeight: 600 }}>Altitude</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>{trek.altitude}</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem', fontWeight: 600 }}>Distance</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>{trek.distance}</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem', fontWeight: 600 }}>Duration</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>{trek.duration}</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem', fontWeight: 600 }}>Difficulty</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>{trek.difficulty}</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.5rem 0.75rem', fontWeight: 600 }}>Best Season</td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>{trek.bestSeason.join(', ')}</td>
-                </tr>
-                <tr>
-                  <td style={{ padding: '0.5rem 0.75rem', fontWeight: 600 }}>
-                    {monthCapitalised} Rating
-                  </td>
-                  <td style={{ padding: '0.5rem 0.75rem' }}>
-                    {isBestSeason ? '★ Best Season' : 'Outside Primary Season'}
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
+          <p className="tm-body">
+            Check{' '}
+            <Link href={trekInfo.departuresPath} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
+              upcoming {trekInfo.displayName} departure dates →
+            </Link>
+          </p>
+        </div>
+      </section>
+    )}
 
-        {/* ── TREK OVERVIEW ────────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            About the {trekInfo.displayName}
+    {/* ── FAQ ── */}
+    <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+        <div className="tm-eyebrow"><span className="tm-eyebrow-line" /><span className="tm-eyebrow-text">FAQ</span></div>
+        <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
+          Frequently Asked Questions
+        </h2>
+        {faqItems.map((faq, i) => (
+          <details key={i} className="tm-faq-item">
+            <summary>{faq.question}</summary>
+            <p>{faq.answer}</p>
+          </details>
+        ))}
+      </div>
+    </section>
+
+    {/* ── OTHER MONTHS ── */}
+    {otherMonths.length > 0 && (
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div className="tm-eyebrow"><span className="tm-eyebrow-line" /><span className="tm-eyebrow-text">Other Months</span></div>
+          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
+            {trekInfo.displayName} in Other Months
           </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            {trek.overview.split('\n\n')[0]}
-          </p>
-          <p style={{ lineHeight: 1.8 }}>
-            Read the full{' '}
-            <Link href={trekInfo.locationPath} style={{ color: 'var(--color-primary)' }}>
-              {trekInfo.displayName} guide
-            </Link>{' '}
-            for itinerary, inclusions, and safety information.
-          </p>
-        </section>
-
-        <PrimaryCTA
-          label={`Plan My ${monthCapitalised} Trek`}
-          subtext={`Tell us your dates in ${monthCapitalised} and we will confirm availability and conditions.`}
-          vertical="trek"
-          category="month"
-          sourcePath={path}
-        />
-
-        {/* ── DEPARTURES LINK ─────────────────────────────────────── */}
-        {trekInfo.departuresPath && (
-          <section style={{ marginBottom: 'var(--space-xl)' }}>
-            <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-              {monthCapitalised} Departures
-            </h2>
-            <p style={{ lineHeight: 1.8 }}>
-              Check{' '}
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+            {otherMonths.map((mc) => (
               <Link
-                href={trekInfo.departuresPath}
-                style={{ color: 'var(--color-primary)', fontWeight: 500 }}
-              >
-                upcoming {trekInfo.displayName} departure dates →
-              </Link>
-            </p>
-          </section>
-        )}
-
-        {/* ── FAQ ──────────────────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Frequently Asked Questions
-          </h2>
-          {faqItems.map((faq, i) => (
-            <details
-              key={i}
-              style={{
-                borderBottom: '1px solid var(--color-border)',
-                padding: 'var(--space-sm) 0',
-              }}
-            >
-              <summary
+                key={mc.month}
+                href={`/treks/${urlSlug}/${mc.month.toLowerCase()}`}
                 style={{
-                  cursor: 'pointer',
+                  display: 'inline-block',
+                  padding: '0.4rem 0.85rem',
+                  borderRadius: '6px',
+                  border: '1px solid var(--color-primary)',
+                  color: 'var(--color-primary)',
+                  fontSize: '0.85rem',
                   fontWeight: 500,
-                  fontSize: '1rem',
-                  lineHeight: 1.6,
+                  textDecoration: 'none',
+                  fontFamily: 'var(--font-geist-sans), sans-serif',
                 }}
               >
-                {faq.question}
-              </summary>
-              <p style={{ lineHeight: 1.8, marginTop: '0.5rem' }}>{faq.answer}</p>
-            </details>
-          ))}
-        </section>
+                {mc.month}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
 
-        {/* ── OTHER MONTHS ─────────────────────────────────────────── */}
-        {otherMonths.length > 0 && (
-          <section style={{ marginBottom: 'var(--space-xl)' }}>
-            <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-              {trekInfo.displayName} in Other Months
-            </h2>
-            <ul
-              style={{
-                listStyle: 'none',
-                padding: 0,
-                margin: 0,
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '0.5rem',
-              }}
-            >
-              {otherMonths.map((mc) => (
-                <li key={mc.month}>
-                  <Link
-                    href={`/treks/${urlSlug}/${mc.month.toLowerCase()}`}
-                    style={{
-                      display: 'inline-block',
-                      padding: '0.4rem 0.85rem',
-                      borderRadius: 'var(--radius-sm, 6px)',
-                      border: '1px solid var(--color-primary)',
-                      color: 'var(--color-primary)',
-                      fontSize: '0.85rem',
-                      fontWeight: 500,
-                      textDecoration: 'none',
-                    }}
-                  >
-                    {mc.month}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
+    {/* ── EXPLORE MORE ── */}
+    <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem' }}>
+      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+        <div className="tm-eyebrow"><span className="tm-eyebrow-line" /><span className="tm-eyebrow-text">Explore More</span></div>
+        <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
+          Explore More
+        </h2>
+        <div className="tm-nav-group">
+          <Link href={trekInfo.locationPath} className="tm-nav-link">{trekInfo.displayName} — Full Guide</Link>
+          <Link href="/treks/best-treks-in-uttarakhand" className="tm-nav-link">Best Treks in Uttarakhand</Link>
+          <Link href="/treks/winter-treks-uttarakhand" className="tm-nav-link">Winter Treks in Uttarakhand</Link>
+          <Link href="/treks/summer-treks-uttarakhand" className="tm-nav-link">Summer Treks in Uttarakhand</Link>
+        </div>
+      </div>
+    </section>
 
-        {/* ── EXPLORE MORE ─────────────────────────────────────────── */}
-        <section
-          style={{
-            paddingTop: '1.5rem',
-            borderTop: '1px solid var(--color-border)',
-          }}
-        >
-          <h2 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '1rem' }}>
-            Explore More
-          </h2>
-          <ul style={{ listStyle: 'none', padding: 0, margin: 0, lineHeight: 2.2 }}>
-            <li>
-              <Link href={trekInfo.locationPath} style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
-                {trekInfo.displayName} — Full Guide →
-              </Link>
-            </li>
-            <li>
-              <Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
-                Best Treks in Uttarakhand →
-              </Link>
-            </li>
-            <li>
-              <Link href="/treks/winter-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
-                Winter Treks in Uttarakhand →
-              </Link>
-            </li>
-            <li>
-              <Link href="/treks/summer-treks-uttarakhand" style={{ color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>
-                Summer Treks in Uttarakhand →
-              </Link>
-            </li>
-          </ul>
-        </section>
-      </article>
-    </TrackedPage>
-  );
+  </TrackedPage>
+);
 }

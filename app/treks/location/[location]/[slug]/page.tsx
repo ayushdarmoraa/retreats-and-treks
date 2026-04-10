@@ -1644,46 +1644,56 @@ export default async function TrekDetailPage({ params }: PageProps) {
 <section style={{
   width: '100vw', marginLeft: 'calc(-50vw + 50%)',
   background: '#ffffff',
-  paddingTop: '4rem', paddingBottom: '4rem',
+  paddingTop: '4rem',
+  paddingBottom: '4rem',
   borderBottom: '1px solid #e5e7eb',
   marginBottom: '0',
 }}>
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Explore the region</span>
+    <div style={{
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.75rem',
+      marginBottom: '1.5rem',
+    }}>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', display: 'inline-block', flexShrink: 0 }} />
+      <span style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontSize: '0.75rem',
+        letterSpacing: '0.28em',
+        textTransform: 'uppercase' as const,
+        color: '#374151',
+        fontWeight: 500,
+        display: 'block',
+      }}>Explore the region</span>
     </div>
-    <nav aria-label="Region links">
-      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column' as const, gap: '0' }}>
-        {[
-          { href: '/treks/best-treks-in-uttarakhand', label: 'Best Treks in Uttarakhand' },
-          ...(INTENT_TRAIL[slug] ? [{ href: INTENT_TRAIL[slug].path, label: INTENT_TRAIL[slug].label }] : []),
-          { href: `/treks/location/${locationId}`, label: `All treks from ${location.name}` },
-          ...(GARHWAL_LOCATIONS.has(locationId) ? [{ href: '/treks/garhwal-himalayas', label: 'Garhwal Himalayas trekking guide' }] : []),
-          ...(trek.bestSeason.some((m: string) => ['December', 'January', 'February', 'March'].includes(m)) ? [{ href: '/treks/winter-treks-uttarakhand', label: 'Winter treks in Uttarakhand' }] : []),
-          ...(trek.bestSeason.some((m: string) => ['May', 'June', 'April'].includes(m)) ? [{ href: '/treks/summer-treks-uttarakhand', label: 'Summer treks in Uttarakhand' }] : []),
-        ].map((item, i, arr) => (
-          <li key={item.href} style={{
-            borderBottom: i < arr.length - 1 ? '1px solid #f0f0f0' : 'none',
-          }}>
-            <Link href={item.href} style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              fontFamily: 'var(--font-geist-sans), sans-serif',
-              fontSize: '0.88rem', fontWeight: 300,
-              color: '#333333',
-              textDecoration: 'none',
-              padding: '0.85rem 0',
-              transition: 'color 0.18s',
-            }}>
-              {item.label}
-              <span style={{ color: '#374151',  fontSize: '0.8rem' }}>→</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div style={{ display: 'flex', flexDirection: 'column' as const, borderTop: '1px solid #f0f0f0' }}>
+      {[
+        { href: '/treks/best-treks-in-uttarakhand', label: 'Best Treks in Uttarakhand' },
+        ...(INTENT_TRAIL[slug] ? [{ href: INTENT_TRAIL[slug].path, label: INTENT_TRAIL[slug].label }] : []),
+        { href: `/treks/location/${locationId}`, label: `All treks from ${location.name}` },
+        ...(GARHWAL_LOCATIONS.has(locationId) ? [{ href: '/treks/garhwal-himalayas', label: 'Garhwal Himalayas trekking guide' }] : []),
+        ...(trek.bestSeason.some((m: string) => ['December', 'January', 'February', 'March'].includes(m)) ? [{ href: '/treks/winter-treks-uttarakhand', label: 'Winter treks in Uttarakhand' }] : []),
+        ...(trek.bestSeason.some((m: string) => ['May', 'June', 'April'].includes(m)) ? [{ href: '/treks/summer-treks-uttarakhand', label: 'Summer treks in Uttarakhand' }] : []),
+      ].map((item, i, arr) => (
+        <Link key={item.href} href={item.href} style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          fontFamily: 'var(--font-geist-sans), sans-serif',
+          fontSize: '0.88rem',
+          fontWeight: 300,
+          color: '#333333',
+          textDecoration: 'none',
+          padding: '0.85rem 0',
+          borderBottom: '1px solid #f0f0f0',
+          margin: 0,
+        }}>
+          {item.label}
+          <span style={{ color: '#374151', fontSize: '0.8rem', flexShrink: 0 }}>→</span>
+        </Link>
+      ))}
+    </div>
   </div>
 </section>
 
