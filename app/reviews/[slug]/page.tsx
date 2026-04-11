@@ -38,19 +38,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-/* ── Styles ─────────────────────────────────────────────────────────── */
-const sectionStyle = {
-  maxWidth: '56rem',
-  margin: '0 auto',
-  padding: 'var(--space-xl) var(--space-md)',
-} as const;
-
-const h2Style = {
-  fontSize: '1.35rem',
-  fontWeight: 600,
-  marginBottom: '0.75rem',
-} as const;
-
 export default async function ReviewClusterPage({ params }: PageProps) {
   const { slug } = await params;
   const cluster = getReviewCluster(slug);
@@ -58,10 +45,7 @@ export default async function ReviewClusterPage({ params }: PageProps) {
 
   const canonical = buildCanonicalUrl(`/reviews/${cluster.slug}`);
 
-  // Aggregate reviews across all service slugs for this cluster
   const allReviews = cluster.retreatServiceSlugs.flatMap((s) => getReviewsForSlug(s));
-
-  // Deduplicate reviews that share slugs with other clusters
   const seen = new Set<string>();
   const uniqueReviews = allReviews.filter((r) => {
     const key = `${r.participantName}-${r.datePublished}`;
@@ -69,8 +53,6 @@ export default async function ReviewClusterPage({ params }: PageProps) {
     seen.add(key);
     return true;
   });
-
-  // Sort newest first
   const sortedReviews = uniqueReviews.sort(
     (a, b) => new Date(b.datePublished).getTime() - new Date(a.datePublished).getTime(),
   );
@@ -81,7 +63,6 @@ export default async function ReviewClusterPage({ params }: PageProps) {
       ? Math.round((sortedReviews.reduce((sum, r) => sum + r.ratingValue, 0) / totalReviews) * 10) / 10
       : 0;
 
-  // Schema
   const reviewSchemas = generateReviewSchemas(sortedReviews, cluster.h1, canonical);
   const aggregateSchema =
     totalReviews >= 2
@@ -96,12 +77,7 @@ export default async function ReviewClusterPage({ params }: PageProps) {
 
   return (
     <>
-      <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Reviews', href: '/reviews' }, { name: cluster.h1 }]} />
-
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       {reviewSchemas.length > 0 && (
         <script
           type="application/ld+json"
@@ -114,108 +90,225 @@ export default async function ReviewClusterPage({ params }: PageProps) {
         />
       )}
 
+      <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Reviews', href: '/reviews' }, { name: cluster.h1 }]} />
 
-      {/* ── Hero & Context Block ────────────────────────────────── */}
-      <header style={{ ...sectionStyle, paddingBottom: 0 }}>
-        <h1 style={{ fontSize: '2rem', marginBottom: '1rem' }}>{cluster.h1}</h1>
-        <p
-          style={{
-            lineHeight: 1.75,
-            color: 'var(--color-text)',
-            fontSize: '1.05rem',
-            marginBottom: '1rem',
-          }}
-        >
-          {cluster.intro}
-        </p>
-        {/* Context Block: What People Actually Experience */}
-        <section style={{ marginTop: '1.5rem', marginBottom: '1.5rem', background: 'var(--color-bg-alt)', padding: '1.25rem', borderRadius: 'var(--radius-sm)' }}>
-          <h2 style={{ fontSize: '1.15rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-            What People Actually Experience in {cluster.h1.replace('Experiences', '').trim()}
-          </h2>
-          <p style={{ marginBottom: '0.75rem' }}>
-            Many participants describe the initial challenge of embracing silence, with the first day often being the hardest. As the retreat progresses, people report a deepening sense of calm and clarity, with emotional releases being common—sometimes through tears, sometimes through laughter. The natural surroundings play a powerful role, helping guests reconnect with themselves and the world around them.
-          </p>
-          <p style={{ marginBottom: '0.75rem' }}>
-            For most, the absence of digital devices and constant communication leads to a profound digital detox. Many reviews mention the impact of nature: waking up to mountain sunrises, meditating in forests, and feeling the support of a like-minded group. By the end, participants often express gratitude for the space to reflect, heal, and rediscover their inner peace.
-          </p>
-          <p>
-            These patterns—silence difficulty, emotional release, and nature’s impact—are echoed across nearly every review. Scroll down to read real, unfiltered stories from those who have completed these retreats.
-          </p>
-        </section>
-      </header>
-
-      {/* ── Aggregate Stats ──────────────────────────────────────── */}
-      {totalReviews > 0 && (
-        <section style={{ ...sectionStyle, paddingTop: 0, paddingBottom: 0 }}>
-          <div
-            style={{
-              display: 'flex',
-              gap: 'var(--space-xl)',
-              flexWrap: 'wrap',
-              padding: '1rem 1.25rem',
-              border: '1px solid var(--color-border)',
-              borderRadius: 'var(--radius-sm)',
-              fontSize: '0.95rem',
-              color: 'var(--color-text)',
-            }}
-          >
-            <span>
-              <strong>{totalReviews}</strong> reviews
-            </span>
-            <span>
-              <strong>{avgRating}</strong> average rating {'★'.repeat(Math.round(avgRating))}
-            </span>
+      {/* ── HERO ── */}
+      <div style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        background: '#f7f9f7',
+        paddingTop: '4rem', paddingBottom: '4rem',
+        borderBottom: '1px solid #e5e7eb',
+      }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', display: 'inline-block' }} />
+            <span style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.75rem', letterSpacing: '0.28em',
+              textTransform: 'uppercase' as const,
+              color: '#374151', fontWeight: 500,
+            }}>Participant Stories</span>
           </div>
-        </section>
-      )}
+          <h1 style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: 'clamp(1.75rem, 3.5vw, 2.4rem)',
+            fontWeight: 200, letterSpacing: '-0.035em',
+            color: '#111111', lineHeight: 1.1,
+            margin: '0 0 1.5rem',
+          }}>{cluster.h1}</h1>
+          <p style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.95rem', fontWeight: 300,
+            lineHeight: 1.85, color: '#3a3a3a',
+            margin: '0 0 1.5rem',
+            paddingLeft: '1.5rem',
+            borderLeft: '2px solid rgba(15,118,110,0.25)',
+          }}>{cluster.intro}</p>
 
+          {/* Stats pills */}
+          {totalReviews > 0 && (
+            <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: '0.5rem', marginBottom: '1.5rem' }}>
+              <span style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.78rem', fontWeight: 300, color: '#333333',
+                background: '#ffffff', border: '1px solid #e5e7eb',
+                borderRadius: '100px', padding: '5px 14px',
+              }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: '#374151' }}>Reviews</span>
+                {totalReviews} verified
+              </span>
+              <span style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.78rem', fontWeight: 300, color: '#333333',
+                background: '#ffffff', border: '1px solid #e5e7eb',
+                borderRadius: '100px', padding: '5px 14px',
+              }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase' as const, color: '#374151' }}>Rating</span>
+                {avgRating} / 5
+              </span>
+            </div>
+          )}
 
-      {/* ── Review Grid ──────────────────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={h2Style}>All Reviews</h2>
-        <div
-          style={{
+          {/* What People Experience box */}
+          <div style={{
+            background: '#ffffff', border: '1px solid #e5e7eb',
+            borderLeft: '3px solid var(--color-primary)',
+            borderRadius: '8px', padding: '1.5rem',
+          }}>
+            <h2 style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.92rem', fontWeight: 500,
+              color: '#111111', margin: '0 0 0.75rem',
+            }}>
+              What People Actually Experience in {cluster.h1.replace('Experiences', '').trim()}
+            </h2>
+            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: '0 0 0.75rem' }}>
+              Many participants describe the initial challenge of embracing silence, with the first day often being the hardest. As the retreat progresses, people report a deepening sense of calm and clarity, with emotional releases being common—sometimes through tears, sometimes through laughter.
+            </p>
+            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: '0 0 0.75rem' }}>
+              For most, the absence of digital devices and constant communication leads to a profound digital detox. Many reviews mention the impact of nature: waking up to mountain sunrises, meditating in forests, and feeling the support of a like-minded group.
+            </p>
+            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
+              These patterns—silence difficulty, emotional release, and nature's impact—are echoed across nearly every review. Scroll down to read real, unfiltered stories.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* ── REVIEW GRID ── */}
+      <div style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        background: '#ffffff',
+        paddingTop: '4rem', paddingBottom: '4rem',
+        borderBottom: '1px solid #e5e7eb',
+      }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem' }}>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', display: 'inline-block' }} />
+            <span style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.75rem', letterSpacing: '0.28em',
+              textTransform: 'uppercase' as const,
+              color: '#374151', fontWeight: 500,
+            }}>All Reviews</span>
+          </div>
+          <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 26rem), 1fr))',
-            gap: 'var(--space-md)',
-          }}
-        >
-          {sortedReviews.map((review) => (
-            <ReviewCard
-              key={`${review.participantName}-${review.datePublished}`}
-              review={review}
-            />
-          ))}
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 24rem), 1fr))',
+            gap: '1.25rem',
+          }}>
+            {sortedReviews.map((review) => (
+              <ReviewCard
+                key={`${review.participantName}-${review.datePublished}`}
+                review={review}
+              />
+            ))}
+          </div>
         </div>
-      </section>
+      </div>
 
-      {/* ── Summary Insights ─────────────────────────────────────── */}
-      <section style={{ ...sectionStyle, background: 'var(--color-bg-alt)', marginTop: '2rem', borderRadius: 'var(--radius-sm)', padding: '1.25rem' }}>
-        <h2 style={{ fontSize: '1.15rem', fontWeight: 600, marginBottom: '0.5rem' }}>Common Themes Across Reviews</h2>
-        <ul style={{ marginLeft: '1.25rem', marginBottom: '0.75rem', lineHeight: 1.7 }}>
-          <li>Deep mental clarity and peace after initial silence difficulty</li>
-          <li>Emotional release—tears, laughter, and breakthroughs</li>
-          <li>Profound impact of nature and digital detox</li>
-          <li>Supportive group environment and personal transformation</li>
-        </ul>
-        <p style={{ fontSize: '0.98rem', color: 'var(--color-text)' }}>
-          These insights are distilled from real participant stories. Every journey is unique, but these themes appear again and again in the reviews below.
-        </p>
-      </section>
-
-      {/* ── Internal Links ───────────────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={h2Style}>Explore Further</h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', fontSize: '0.95rem' }}>
-          <Link href={cluster.primaryPageHref} style={{ color: 'var(--color-primary)' }}>
-            {cluster.primaryPageLabel} →
-          </Link>
-          <Link href="/reviews" style={{ color: 'var(--color-primary)' }}>
-            All reviews →
-          </Link>
+      {/* ── COMMON THEMES ── */}
+      <div style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        background: '#f7f9f7',
+        paddingTop: '4rem', paddingBottom: '4rem',
+        borderBottom: '1px solid #e5e7eb',
+      }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', display: 'inline-block' }} />
+            <span style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.75rem', letterSpacing: '0.28em',
+              textTransform: 'uppercase' as const,
+              color: '#374151', fontWeight: 500,
+            }}>Insights</span>
+          </div>
+          <h2 style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+            fontWeight: 200, letterSpacing: '-0.03em',
+            color: '#111111', lineHeight: 1.15,
+            margin: '0 0 1.5rem',
+          }}>Common Themes Across Reviews</h2>
+          <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.75rem', marginBottom: '1.5rem' }}>
+            {[
+              'Deep mental clarity and peace after initial silence difficulty',
+              'Emotional release — tears, laughter, and breakthroughs',
+              'Profound impact of nature and digital detox',
+              'Supportive group environment and personal transformation',
+            ].map((theme) => (
+              <div key={theme} style={{
+                display: 'flex', alignItems: 'flex-start', gap: '0.75rem',
+                background: '#ffffff', border: '1px solid #e5e7eb',
+                borderRadius: '8px', padding: '0.875rem 1.125rem',
+              }}>
+                <span style={{ color: 'var(--color-primary)', fontSize: '0.8rem', marginTop: '2px', flexShrink: 0 }}>✦</span>
+                <span style={{
+                  fontFamily: 'var(--font-geist-sans), sans-serif',
+                  fontSize: '0.88rem', fontWeight: 300,
+                  lineHeight: 1.6, color: '#3a3a3a',
+                }}>{theme}</span>
+              </div>
+            ))}
+          </div>
+          <p style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.85rem', fontWeight: 300,
+            lineHeight: 1.85, color: '#6b7280',
+          }}>
+            These insights are distilled from real participant stories. Every journey is unique, but these themes appear again and again.
+          </p>
         </div>
-      </section>
+      </div>
+
+      {/* ── EXPLORE FURTHER ── */}
+      <div style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        background: '#ffffff',
+        paddingTop: '3rem', paddingBottom: '3rem',
+      }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
+            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', display: 'inline-block' }} />
+            <span style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.75rem', letterSpacing: '0.28em',
+              textTransform: 'uppercase' as const,
+              color: '#374151', fontWeight: 500,
+            }}>Explore Further</span>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0', border: '1px solid #e5e7eb', borderRadius: '8px', overflow: 'hidden' }}>
+            <Link href={cluster.primaryPageHref} style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              padding: '1rem 1.25rem',
+              borderBottom: '1px solid #e5e7eb',
+              textDecoration: 'none',
+              background: '#ffffff',
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.88rem', fontWeight: 300,
+              color: '#333333',
+            }}>
+              <span>{cluster.primaryPageLabel}</span>
+              <span style={{ color: '#374151', fontSize: '0.8rem' }}>→</span>
+            </Link>
+            <Link href="/reviews" style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              padding: '1rem 1.25rem',
+              textDecoration: 'none',
+              background: '#ffffff',
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.88rem', fontWeight: 300,
+              color: '#333333',
+            }}>
+              <span>All Reviews</span>
+              <span style={{ color: '#374151', fontSize: '0.8rem' }}>→</span>
+            </Link>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

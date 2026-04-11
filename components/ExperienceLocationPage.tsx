@@ -1,8 +1,3 @@
-/**
- * ExperienceLocationPage — shared server component for experience × location intersection pages
- * Renders: breadcrumb → hero → location detail → schedule → who-is-this-for → durations → siblings → CTA → FAQ
- */
-
 import Link from 'next/link';
 import type { ExperienceLocationPage as PageConfig } from '@/config/experienceLocationPages';
 import { getSiblingPages } from '@/config/experienceLocationPages';
@@ -30,186 +25,269 @@ export default function ExperienceLocationPage({ page }: Props) {
   ]);
   const faqSchema = generateFAQSchema(page.faqItems as { question: string; answer: string }[]);
 
-  const sectionStyle = {
-    maxWidth: '56rem',
-    margin: '0 auto',
-    padding: 'var(--space-xl) var(--space-md)',
-  } as const;
-
-  const h2Style = {
-    fontSize: '1.35rem',
-    fontWeight: 600,
-    marginBottom: '0.75rem',
-  } as const;
+  const eyebrow = { display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' } as const;
+  const eyebrowLine = { width: '24px', height: '1px', background: 'var(--color-primary)', display: 'inline-block' } as const;
+  const eyebrowText = {
+    fontFamily: 'var(--font-geist-sans), sans-serif',
+    fontSize: '0.75rem', letterSpacing: '0.28em',
+    textTransform: 'uppercase' as const,
+    color: '#374151', fontWeight: 500,
+  };
 
   return (
     <TrackedPage page={`/${page.slug}`} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema]) }}
-      />
-      <Breadcrumb
-        items={[
-          { name: 'Home', href: '/' },
-          { name: `${page.label}s`, href: `/${page.parentHubSlug}` },
-          { name: `in ${page.locationName}` },
-        ]}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema]) }} />
+      <Breadcrumb items={[
+        { name: 'Home', href: '/' },
+        { name: `${page.label}s`, href: `/${page.parentHubSlug}` },
+        { name: `in ${page.locationName}` },
+      ]} />
 
-      {/* ── Hero ──────────────────────────────────────────────── */}
-      <header style={{ marginBottom: 'var(--space-xl)' }}>
-        <h1 style={{ fontSize: '2rem', fontWeight: 400, marginBottom: '0.75rem' }}>
-          {page.h1}
-        </h1>
-        <p style={{ fontSize: '0.9rem', color: 'var(--color-muted)', marginBottom: '0.75rem' }}>
-          {page.locationHeading}
-        </p>
-        <p style={{ fontSize: '1.05rem', lineHeight: 1.8, margin: 0 }}>{page.intro}</p>
-      </header>
-
-      <PrimaryCTA
-        label={`Inquire About This ${page.label}`}
-        subtext={`${page.label} in ${page.locationName}. Small groups, experienced guides. Tell us what you're seeking.`}
-        vertical="retreat"
-        category={`exp-loc-${page.locationId}`}
-        sourcePath={`/${page.slug}`}
-      />
-
-      {/* ── Location Details ──────────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={h2Style}>About {page.locationName}</h2>
-        <div style={{ display: 'grid', gap: '0.75rem', fontSize: '0.95rem', lineHeight: 1.75 }}>
-          <p style={{ margin: 0 }}><strong>Terrain:</strong> {page.terrain}</p>
-          <p style={{ margin: 0 }}><strong>Best seasons:</strong> {page.bestSeasons}</p>
-          <p style={{ margin: 0 }}><strong>How to reach:</strong> {page.access}</p>
-          <p style={{ margin: 0 }}><strong>Atmosphere:</strong> {page.atmosphere}</p>
-          {page.landmarks.length > 0 && (
-            <p style={{ margin: 0 }}>
-              <strong>Nearby:</strong>{' '}
-              {page.landmarks.join(', ')}
-            </p>
-          )}
+      {/* ── HERO ── */}
+      <div style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        background: '#f7f9f7',
+        paddingTop: '4rem', paddingBottom: '4rem',
+        borderBottom: '1px solid #e5e7eb',
+      }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={eyebrow}>
+            <span style={eyebrowLine} />
+            <span style={eyebrowText}>{page.locationName}</span>
+          </div>
+          <h1 style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: 'clamp(1.75rem, 3.5vw, 2.4rem)',
+            fontWeight: 200, letterSpacing: '-0.035em',
+            color: '#111111', lineHeight: 1.1,
+            margin: '0 0 0.75rem',
+          }}>{page.h1}</h1>
+          <p style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.8rem', letterSpacing: '0.1em',
+            color: '#6b7280', margin: '0 0 1.25rem',
+          }}>{page.locationHeading}</p>
+          <p style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.95rem', fontWeight: 300,
+            lineHeight: 1.85, color: '#3a3a3a',
+            margin: 0,
+            paddingLeft: '1.5rem',
+            borderLeft: '2px solid rgba(15,118,110,0.25)',
+          }}>{page.intro}</p>
         </div>
-        <p style={{ marginTop: '1rem', fontSize: '0.9rem' }}>
-          <Link href={`/locations/${page.locationId}`} style={{ color: 'var(--color-primary)' }}>
+      </div>
+
+      {/* ── CTA ── */}
+      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '2rem 2rem 0' }}>
+        <PrimaryCTA
+          label={`Inquire About This ${page.label}`}
+          subtext={`${page.label} in ${page.locationName}. Small groups, experienced guides. Tell us what you're seeking.`}
+          vertical="retreat"
+          category={`exp-loc-${page.locationId}`}
+          sourcePath={`/${page.slug}`}
+        />
+      </div>
+
+      {/* ── ABOUT LOCATION ── */}
+      <div style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        background: '#ffffff',
+        paddingTop: '4rem', paddingBottom: '4rem',
+        borderBottom: '1px solid #e5e7eb',
+      }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={eyebrow}>
+            <span style={eyebrowLine} />
+            <span style={eyebrowText}>About {page.locationName}</span>
+          </div>
+          <div style={{
+            background: '#f7f9f7', border: '1px solid #e5e7eb',
+            borderLeft: '3px solid var(--color-primary)',
+            borderRadius: '8px', padding: '1.5rem',
+            display: 'grid', gap: '0.6rem',
+          }}>
+            <p style={{ margin: 0, fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.75, color: '#3a3a3a' }}>
+              <strong style={{ fontWeight: 500, color: '#111111' }}>Terrain:</strong> {page.terrain}
+            </p>
+            <p style={{ margin: 0, fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.75, color: '#3a3a3a' }}>
+              <strong style={{ fontWeight: 500, color: '#111111' }}>Best seasons:</strong> {page.bestSeasons}
+            </p>
+            <p style={{ margin: 0, fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.75, color: '#3a3a3a' }}>
+              <strong style={{ fontWeight: 500, color: '#111111' }}>How to reach:</strong> {page.access}
+            </p>
+            <p style={{ margin: 0, fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.75, color: '#3a3a3a' }}>
+              <strong style={{ fontWeight: 500, color: '#111111' }}>Atmosphere:</strong> {page.atmosphere}
+            </p>
+            {page.landmarks.length > 0 && (
+              <p style={{ margin: 0, fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.75, color: '#3a3a3a' }}>
+                <strong style={{ fontWeight: 500, color: '#111111' }}>Nearby:</strong> {page.landmarks.join(', ')}
+              </p>
+            )}
+          </div>
+          <Link href={`/locations/${page.locationId}`} style={{
+            display: 'inline-block', marginTop: '1rem',
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.82rem', fontWeight: 300,
+            color: 'var(--color-primary)',
+          }}>
             Full guide to {page.locationName} →
           </Link>
-        </p>
-      </section>
-
-      {/* ── Who Is This For ──────────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={h2Style}>Who Is This For</h2>
-        <ul style={{ paddingLeft: '1.25rem', lineHeight: 2 }}>
-          {page.whoIsThisFor.map((item) => (
-            <li key={item} style={{ fontSize: '0.95rem' }}>{item}</li>
-          ))}
-        </ul>
-      </section>
-
-      {/* ── Sample Day ────────────────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={h2Style}>Sample Day</h2>
-        <div style={{ overflowX: 'auto' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', lineHeight: 1.6 }}>
-            <tbody>
-              {page.sampleSchedule.map((row) => {
-                const [time, ...rest] = row.split(' — ');
-                const activity = rest.join(' — ');
-                return (
-                  <tr key={row} style={{ borderBottom: '1px solid var(--color-border)' }}>
-                    <td style={{ padding: '0.6rem 0.5rem', whiteSpace: 'nowrap', fontWeight: 500 }}>{time}</td>
-                    <td style={{ padding: '0.6rem 0.5rem' }}>{activity}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
         </div>
-        <p style={{ fontSize: '0.85rem', color: 'var(--color-muted)', marginTop: '0.5rem' }}>
-          Schedules adapt to the season, group energy, and {page.locationName}&rsquo;s natural rhythms.
-        </p>
-      </section>
+      </div>
 
-      {/* ── What to Expect ────────────────────────────────────── */}
-      <section style={sectionStyle}>
-        <h2 style={h2Style}>What to Expect</h2>
-        <ul style={{ paddingLeft: '1.25rem', lineHeight: 2 }}>
-          {page.whatToExpect.map((item) => (
-            <li key={item} style={{ fontSize: '0.95rem' }}>{item}</li>
-          ))}
-        </ul>
-      </section>
-
-      <PrimaryCTA
-        label="Plan My Retreat"
-        subtext={`Tell us about yourself — we'll design a ${page.label.toLowerCase()} in ${page.locationName} that fits.`}
-        vertical="retreat"
-        category={`exp-loc-${page.locationId}`}
-        sourcePath={`/${page.slug}`}
-      />
-
-      {/* ── Duration Options ──────────────────────────────────── */}
-      {page.relatedDurationSlugs.length > 0 && (
-        <section style={sectionStyle}>
-          <h2 style={h2Style}>Duration Options</h2>
-          <ul style={{ paddingLeft: '1.25rem', lineHeight: 2 }}>
-            {page.relatedDurationSlugs.map((dSlug) => (
-              <li key={dSlug}>
-                <Link href={`/${dSlug}`} style={{ color: 'var(--color-primary)' }}>
-                  {dSlug.split('-').map((w) => w[0].toUpperCase() + w.slice(1)).join(' ')}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {/* ── Other Locations ──────────────────────────────────── */}
-      {siblings.length > 0 && (
-        <section style={sectionStyle}>
-          <h2 style={h2Style}>{page.label} in Other Locations</h2>
-          <div style={{ display: 'grid', gap: '0.75rem' }}>
-            {siblings.map((sib) => (
-              <Link
-                key={sib.slug}
-                href={`/${sib.slug}`}
-                style={{
-                  display: 'block',
-                  padding: '1rem',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: 'var(--radius-sm)',
-                  textDecoration: 'none',
-                  color: 'inherit',
-                }}
-              >
-                <strong style={{ color: 'var(--color-primary)' }}>{sib.locationName}</strong>
-                <span style={{ display: 'block', fontSize: '0.85rem', color: 'var(--color-muted)', marginTop: '0.25rem' }}>
-                  {sib.locationHeading}
-                </span>
-              </Link>
-            ))}
+      {/* ── WHO IS THIS FOR + WHAT TO EXPECT ── */}
+      <div style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        background: '#f7f9f7',
+        paddingTop: '4rem', paddingBottom: '4rem',
+        borderBottom: '1px solid #e5e7eb',
+      }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 22rem), 1fr))', gap: '2.5rem' }}>
+          <div>
+            <div style={eyebrow}><span style={eyebrowLine} /><span style={eyebrowText}>Who Is This For</span></div>
+            <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.6rem' }}>
+              {page.whoIsThisFor.map((item) => (
+                <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.65, color: '#3a3a3a' }}>
+                  <span style={{ color: 'var(--color-primary)', flexShrink: 0, marginTop: '2px' }}>✦</span>
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
-        </section>
+          <div>
+            <div style={eyebrow}><span style={eyebrowLine} /><span style={eyebrowText}>What to Expect</span></div>
+            <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.6rem' }}>
+              {page.whatToExpect.map((item) => (
+                <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.65, color: '#3a3a3a' }}>
+                  <span style={{ color: 'var(--color-primary)', flexShrink: 0, marginTop: '2px' }}>✦</span>
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ── SAMPLE DAY ── */}
+      <div style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        background: '#ffffff',
+        paddingTop: '4rem', paddingBottom: '4rem',
+        borderBottom: '1px solid #e5e7eb',
+      }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={eyebrow}><span style={eyebrowLine} /><span style={eyebrowText}>Sample Day</span></div>
+          <div style={{ border: '1px solid #e5e7eb', borderRadius: '8px', overflow: 'hidden' }}>
+            {page.sampleSchedule.map((row, i, arr) => {
+              const [time, ...rest] = row.split(' — ');
+              const activity = rest.join(' — ');
+              return (
+                <div key={row} style={{
+                  display: 'grid', gridTemplateColumns: '7rem 1fr',
+                  padding: '0.75rem 1.25rem',
+                  borderBottom: i < arr.length - 1 ? '1px solid #e5e7eb' : 'none',
+                  background: i % 2 === 0 ? '#ffffff' : '#f7f9f7',
+                }}>
+                  <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', fontWeight: 500, color: '#374151' }}>{time}</span>
+                  <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', fontWeight: 300, color: '#3a3a3a', lineHeight: 1.6 }}>{activity}</span>
+                </div>
+              );
+            })}
+          </div>
+          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', fontWeight: 300, color: '#9ca3af', marginTop: '0.75rem' }}>
+            Schedules adapt to the season, group energy, and {page.locationName}&rsquo;s natural rhythms.
+          </p>
+        </div>
+      </div>
+
+      {/* ── CTA 2 ── */}
+      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '2rem 2rem 0' }}>
+        <PrimaryCTA
+          label="Plan My Retreat"
+          subtext={`Tell us about yourself — we'll design a ${page.label.toLowerCase()} in ${page.locationName} that fits.`}
+          vertical="retreat"
+          category={`exp-loc-${page.locationId}`}
+          sourcePath={`/${page.slug}`}
+        />
+      </div>
+
+      {/* ── DURATION OPTIONS ── */}
+      {page.relatedDurationSlugs.length > 0 && (
+        <div style={{
+          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+          background: '#f7f9f7',
+          paddingTop: '4rem', paddingBottom: '4rem',
+          borderBottom: '1px solid #e5e7eb',
+        }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div style={eyebrow}><span style={eyebrowLine} /><span style={eyebrowText}>Duration Options</span></div>
+            <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0', border: '1px solid #e5e7eb', borderRadius: '8px', overflow: 'hidden' }}>
+              {page.relatedDurationSlugs.map((dSlug, i, arr) => (
+                <Link key={dSlug} href={`/${dSlug}`} style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  padding: '1rem 1.25rem',
+                  borderBottom: i < arr.length - 1 ? '1px solid #e5e7eb' : 'none',
+                  textDecoration: 'none', background: '#ffffff',
+                  fontFamily: 'var(--font-geist-sans), sans-serif',
+                  fontSize: '0.88rem', fontWeight: 300, color: '#333333',
+                }}>
+                  <span>{dSlug.split('-').map((w) => w[0].toUpperCase() + w.slice(1)).join(' ')}</span>
+                  <span style={{ color: '#374151', fontSize: '0.8rem' }}>→</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
       )}
 
-      {/* ── FAQ ───────────────────────────────────────────────── */}
-      <TrackedFAQ items={page.faqItems as { question: string; answer: string }[]} page={`/${page.slug}`} />
+      {/* ── OTHER LOCATIONS ── */}
+      {siblings.length > 0 && (
+        <div style={{
+          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+          background: '#ffffff',
+          paddingTop: '4rem', paddingBottom: '4rem',
+          borderBottom: '1px solid #e5e7eb',
+        }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div style={eyebrow}><span style={eyebrowLine} /><span style={eyebrowText}>{page.label} in Other Locations</span></div>
+            <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0', border: '1px solid #e5e7eb', borderRadius: '8px', overflow: 'hidden' }}>
+              {siblings.map((sib, i, arr) => (
+                <Link key={sib.slug} href={`/${sib.slug}`} style={{
+                  display: 'flex', flexDirection: 'column' as const,
+                  padding: '1rem 1.25rem',
+                  borderBottom: i < arr.length - 1 ? '1px solid #e5e7eb' : 'none',
+                  textDecoration: 'none', background: '#ffffff',
+                }}>
+                  <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 400, color: 'var(--color-primary)' }}>{sib.locationName} →</span>
+                  <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', fontWeight: 300, color: '#6b7280', marginTop: '0.2rem' }}>{sib.locationHeading}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
-      {/* ── Footer Links ──────────────────────────────────────── */}
-      <p style={{ marginTop: 'var(--space-xl)', fontSize: '0.9rem', maxWidth: '56rem', margin: 'var(--space-xl) auto 0', padding: '0 var(--space-md)' }}>
-        <Link href={`/${page.parentHubSlug}`} style={{ color: 'var(--color-primary)' }}>
-          &larr; All {page.label}s
+      {/* ── FAQ ── */}
+      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '4rem 2rem 0' }}>
+        <div style={eyebrow}><span style={eyebrowLine} /><span style={eyebrowText}>FAQ</span></div>
+        <TrackedFAQ items={page.faqItems as { question: string; answer: string }[]} page={`/${page.slug}`} />
+      </div>
+
+      {/* ── FOOTER LINKS ── */}
+      <div style={{ maxWidth: '52rem', margin: '2rem auto 0', padding: '0 2rem 4rem', display: 'flex', gap: '1rem', flexWrap: 'wrap' as const }}>
+        <Link href={`/${page.parentHubSlug}`} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', fontWeight: 300, color: 'var(--color-primary)' }}>
+          ← All {page.label}s
         </Link>
-        {' '}&nbsp;|&nbsp;{' '}
-        <Link href={`/locations/${page.locationId}`} style={{ color: 'var(--color-primary)' }}>
+        <span style={{ color: '#e5e7eb' }}>|</span>
+        <Link href={`/locations/${page.locationId}`} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', fontWeight: 300, color: 'var(--color-primary)' }}>
           {page.locationName} Guide
         </Link>
-        {' '}&nbsp;|&nbsp;{' '}
-        <Link href="/contact" style={{ color: 'var(--color-primary)' }}>
+        <span style={{ color: '#e5e7eb' }}>|</span>
+        <Link href="/contact" style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', fontWeight: 300, color: 'var(--color-primary)' }}>
           Contact Us
         </Link>
-      </p>
+      </div>
     </TrackedPage>
   );
 }

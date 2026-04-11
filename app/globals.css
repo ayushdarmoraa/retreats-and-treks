@@ -67,7 +67,6 @@
     --foreground: #ededed;
   }
 }
-
 /* Base page styling */
 body {
   background-color: var(--color-bg);
