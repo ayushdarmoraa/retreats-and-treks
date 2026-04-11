@@ -400,7 +400,6 @@ export default function ExperienceHubPage({ page, breadcrumbItems }: ExperienceH
             fontFamily: 'var(--font-geist-sans), sans-serif',
             fontSize: '0.92rem', fontWeight: 300,
             lineHeight: 1.85, color: '#6b7280',
-            textAlign: 'center' as const,
             paddingLeft: '1.5rem',
             borderLeft: '2px solid rgba(15,118,110,0.2)',
             textAlign: 'left' as const,
