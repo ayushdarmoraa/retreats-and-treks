@@ -261,53 +261,75 @@ export default function BestTreksInUttarakhandPage() {
 <section style={{
   width: '100vw', marginLeft: 'calc(-50vw + 50%)',
   background: '#ffffff',
-  paddingTop: '4rem', paddingBottom: '4rem',
+  paddingTop: '2rem', paddingBottom: '8rem',
   borderBottom: '1px solid #e5e7eb',
 }}>
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-      <span style={{
-        fontFamily: 'var(--font-geist-sans), sans-serif',
-        fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const,
-        color: '#374151', fontWeight: 500
-      }}>In This Guide</span>
-    </div>
+
     <style>{`
+      .toc-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        overflow: hidden;
+      }
       .toc-item {
-        display: flex; align-items: center; gap: 1rem;
-        padding: 0.85rem 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        padding: 1.5rem;
+        border-right: 1px solid #e5e7eb;
         border-bottom: 1px solid #e5e7eb;
         text-decoration: none;
-        font-family: var(--font-geist-sans), sans-serif;
-        font-size: 0.88rem; font-weight: 300; color: #333333;
-        transition: color 0.2s;
+        background: #ffffff;
+        transition: background 0.15s;
       }
-      .toc-item:last-child { border-bottom: none; }
-      .toc-item:hover { color: #374151; }
+      .toc-item:hover { background: #f7f9f7; }
+      .toc-item:nth-child(4n) { border-right: none; }
+      .toc-item:nth-child(n+5) { border-bottom: none; }
       .toc-num {
-        font-size: 0.75rem; font-weight: 600;
-        letter-spacing: 0.18em; color: #374151;
-         flex-shrink: 0; width: 1.5rem;
+        font-size: 0.65rem; font-weight: 700;
+        letter-spacing: 0.18em;
+        color: var(--color-primary);
+      }
+      .toc-label {
+        font-family: var(--font-geist-sans), sans-serif;
+        font-size: 0.82rem; font-weight: 400;
+        color: #333333; line-height: 1.4;
       }
     `}</style>
-    <nav aria-label="Table of contents">
-      {[
-        { href: '#beginner-treks', label: 'Beginner-Friendly Treks' },
-        { href: '#moderate-treks', label: 'Moderate Multi-Day Treks' },
-        { href: '#challenging-treks', label: 'Challenging High-Altitude Treks' },
-        { href: '#snow-treks', label: 'Best Snow Treks' },
-        { href: '#high-altitude', label: 'High-Altitude Treks Above 4,000 m' },
-        { href: '#regions', label: 'Trekking Regions in Uttarakhand' },
-        { href: '#progression', label: 'The Trekking Progression Path' },
-        { href: '#how-to-choose', label: 'How to Choose the Right Trek' },
-      ].map((item, i) => (
-        <a key={item.href} href={item.href} className="toc-item">
-          <span className="toc-num">{String(i + 1).padStart(2, '0')}</span>
-          {item.label}
-        </a>
-      ))}
+
+    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem', }}>
+      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', display: 'inline-block' }} />
+      <span style={{
+        fontFamily: 'var(--font-geist-sans), sans-serif',
+        fontSize: '0.75rem', letterSpacing: '0.28em',
+        textTransform: 'uppercase' as const,
+        color: '#374151', fontWeight: 500,
+      }}>In This Guide</span>
+    </div>
+
+    <nav aria-label="Table of contents" style={{ marginTop: '8rem' }}>
+      <div className="toc-grid">
+        {[
+          { href: '#beginner-treks', label: 'Beginner-Friendly Treks' },
+          { href: '#moderate-treks', label: 'Moderate Multi-Day Treks' },
+          { href: '#challenging-treks', label: 'Challenging High-Altitude Treks' },
+          { href: '#snow-treks', label: 'Best Snow Treks' },
+          { href: '#high-altitude', label: 'High-Altitude Treks Above 4,000 m' },
+          { href: '#regions', label: 'Trekking Regions in Uttarakhand' },
+          { href: '#progression', label: 'The Trekking Progression Path' },
+          { href: '#how-to-choose', label: 'How to Choose the Right Trek' },
+        ].map((item, i) => (
+          <a key={item.href} href={item.href} className="toc-item">
+            <span className="toc-num">{String(i + 1).padStart(2, '0')}</span>
+            <span className="toc-label">{item.label}</span>
+          </a>
+        ))}
+      </div>
     </nav>
+
   </div>
 </section>
 

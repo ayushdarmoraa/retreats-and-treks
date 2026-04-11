@@ -166,9 +166,11 @@ export default function HimalayanRetreatsPage() {
       <article>
 
        {/* ── HERO ──────────────────────────────────────────────────── */}
-<header style={{ marginBottom: 'var(--space-xl)' }}>
+<div style={{ marginBottom: 'var(--space-xl)' }}>
   <style>{`
     .hr-hero {
+    position: relative;   /* 👈 yeh add karo */
+    z-index: 0; 
       width: 100vw;
       margin-left: calc(-50vw + 50%);
       background: #ffffff;
@@ -291,7 +293,7 @@ export default function HimalayanRetreatsPage() {
 
     </div>
   </div>
-</header>
+</div>
 
        {/* ── TOPIC NAVIGATION ──────────────────────────────────────── */}
 <section style={{ marginBottom: 'var(--space-xl)' }}>

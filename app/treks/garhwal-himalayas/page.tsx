@@ -153,6 +153,8 @@ export default function GarhwalHimalayasTreksPage() {
 
         {/* ── HERO ──────────────────────────────────────────────────── */}
 <header style={{
+  position: 'relative',
+  zIndex: 0,   
   width: '100vw',
   marginLeft: 'calc(-50vw + 50%)',
   background: '#f7f9f7',
