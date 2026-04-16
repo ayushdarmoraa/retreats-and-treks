@@ -206,10 +206,10 @@ export default function TreksClient() {
   .trk-h2 { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200; letter-spacing: -0.03em; color: #111111; line-height: 1.15; margin: 0 0 2.5rem 0; }
 
   /* ── HERO ── */
-  .trk-hero { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; overflow: hidden; display: flex; align-items: flex-end; min-height: 75vh; }
+  .trk-hero { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: flex-start; min-height: 85vh; }
   .trk-hero-img-wrap { position: absolute; inset: 0; }
-  .trk-hero-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.62) 60%, rgba(0,0,0,0.78) 100%); z-index: 1; }
-  .trk-hero .trk-section-inner { position: relative; z-index: 2; padding-bottom: 5rem; padding-top: 2rem; }
+  .trk-hero-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.52) 40%, rgba(0,0,0,0.75) 100%); z-index: 1; }
+  .trk-hero .trk-section-inner { position: relative; z-index: 2; padding-top: 12vh; padding-bottom: 6rem; }
   .trk-hero .trk-eyebrow-text { color: rgba(255,255,255,0.7); }
   .trk-hero .trk-eyebrow-line { background: rgba(255,255,255,0.4); }
 
@@ -271,10 +271,10 @@ export default function TreksClient() {
   .trk-empty { text-align: center; padding: 4rem 2rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #888888; }
 
   /* ── TREK CARD ── */
-  .trk-item-card { background: #ffffff; border: 1px solid rgba(15,118,110,0.1); display: flex; flex-direction: column; position: relative; overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; border-radius: 4px; }
+  .trk-item-card { background: #ffffff; border: 1px solid rgba(15,118,110,0.1); display: flex; flex-direction: column; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
   .trk-item-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--color-primary); transform: scaleX(0); transform-origin: left; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1); z-index: 2; }
   .trk-item-card:hover::before { transform: scaleX(1); }
-  .trk-item-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.08); border-color: rgba(15,118,110,0.25); }
+  .trk-item-card:hover { transform: translateY(-6px); box-shadow: 0 20px 52px rgba(0,0,0,0.1); border-color: rgba(15,118,110,0.25); }
   .trk-item-card:hover .trk-item-arrow { gap: 0.65rem !important; }
   .trk-item-img-wrap { position: relative; width: 100%; height: 200px; overflow: hidden; flex-shrink: 0; }
   .trk-item-card:hover .trk-item-img-wrap img { transform: scale(1.05); }
@@ -424,6 +424,8 @@ export default function TreksClient() {
   .trk-plan-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
   .trk-plan-btn-primary { font-family: var(--font-geist-sans), sans-serif; display: inline-flex; align-items: center; gap: 0.75rem; padding: 1.1rem 2.75rem; background: #ffffff; color: #0a3d35; text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 100px; border: 2px solid #ffffff; transition: gap 0.2s, background 0.25s, color 0.25s, transform 0.2s; }
   .trk-plan-btn-primary:hover { background: transparent; color: #ffffff; gap: 1.1rem; transform: translateY(-2px); }
+  @keyframes trk-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.4); } 50% { box-shadow: 0 0 0 10px rgba(255,255,255,0); } }
+  .trk-plan-btn-primary { animation: trk-pulse 3.5s ease-in-out infinite; }
   .trk-plan-btn-secondary { font-family: var(--font-geist-sans), sans-serif; display: inline-flex; align-items: center; gap: 0.75rem; padding: 1.1rem 2.75rem; background: transparent; color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 100px; border: 1.5px solid rgba(255,255,255,0.3); transition: gap 0.2s, border-color 0.25s, color 0.25s, transform 0.2s; }
   .trk-plan-btn-secondary:hover { border-color: rgba(255,255,255,0.7); color: #ffffff; gap: 1.1rem; transform: translateY(-2px); }
   .trk-plan-cta .trk-microcopy { color: rgba(255,255,255,0.4); }
@@ -467,10 +469,10 @@ export default function TreksClient() {
   .trk-scarcity { font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 300; font-style: italic; color: #888888; margin: 0 0 2rem 0; }
 
   /* ── SIGNATURE VISUAL ── */
-  .trk-signature { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; height: clamp(300px, 40vw, 480px); overflow: hidden; display: flex; align-items: center; justify-content: center; }
-  .trk-signature::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.55) 0%, rgba(15,118,110,0.3) 100%); z-index: 1; }
-  .trk-signature-text { position: relative; z-index: 2; max-width: 36rem; text-align: center; padding: 2rem; }
-  .trk-signature-quote { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.1rem, 2.2vw, 1.5rem); font-weight: 200; color: #ffffff; line-height: 1.65; letter-spacing: -0.02em; margin: 0; }
+  .trk-signature { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; height: 50vh; min-height: 360px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  .trk-signature::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.6) 0%, rgba(15,118,110,0.35) 100%); z-index: 1; }
+  .trk-signature-text { position: relative; z-index: 2; max-width: 38rem; text-align: center; padding: 2rem; }
+  .trk-signature-quote { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.25rem, 2.6vw, 1.75rem); font-weight: 200; color: #ffffff; line-height: 1.6; letter-spacing: -0.025em; margin: 0; }
   .trk-signature-line { width: 32px; height: 1px; background: rgba(255,255,255,0.4); margin: 1.25rem auto 0; display: block; }
 
   /* ── FEATURED TESTIMONIAL ── */
@@ -497,6 +499,15 @@ export default function TreksClient() {
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Himalayan Treks</span></div>
     <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 200, letterSpacing: '-0.04em', color: '#ffffff', lineHeight: 1.1, margin: '0 0 1.25rem 0', maxWidth: '52rem', textShadow: '0 2px 24px rgba(0,0,0,0.3)' }}>Trekking in the Himalayas</h2>
     <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1rem', fontWeight: 300, lineHeight: 1.85, color: 'rgba(255,255,255,0.82)', margin: 0, maxWidth: '38rem' }}>Not all treks are created equal. We curate only the ones worth your time.</p>
+  </div>
+</section>
+
+{/* ═══ 1.05: VISUAL BREAK — AFTER HERO ═══ */}
+<section className="trk-signature">
+  <Image src="/Images/hero/himalayan-sunrise.webp" alt="Himalayan sunrise over Uttarakhand mountain trails" fill loading="lazy" sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 30%' }} />
+  <div className="trk-signature-text">
+    <p className="trk-signature-quote">The Himalayas aren&rsquo;t meant to be rushed.</p>
+    <span className="trk-signature-line" />
   </div>
 </section>
 
@@ -533,7 +544,8 @@ export default function TreksClient() {
         const trekImg = trekImageMap[trek.slug];
         return (
           <Link key={trek.slug} href={`/treks/location/${trek.locationId}/${trek.slug}`} className="trk-feat-card">
-            {trekImg && <div className="trk-feat-img"><Image src={trekImg} alt={trekAltMap[trek.slug] || `${trek.title} trek in Uttarakhand`} fill loading="lazy" sizes="(max-width: 540px) 100vw, 240px" style={{ objectFit: 'cover' }} /></div>}
+            <span style={{ position: 'absolute', top: '14px', left: '14px', zIndex: 3, fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#ffffff', background: 'var(--color-primary)', padding: '4px 12px', borderRadius: '100px' }}>Recommended</span>
+            {trekImg && <div className="trk-feat-img"><Image src={trekImg} alt={trekAltMap[trek.slug] || `${trek.title} trek in Uttarakhand`} fill loading="lazy" sizes="(max-width: 540px) 100vw, 360px" style={{ objectFit: 'cover' }} /></div>}
             <div className="trk-feat-body">
               <div className="trk-feat-meta">
                 <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 400, color: '#888888' }}>{trek.duration}</span>
