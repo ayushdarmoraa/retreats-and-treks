@@ -12,11 +12,11 @@ const trekImageMap: Record<string, string> = {
   'tiger-fall-trek': '/Images/trek/region/tigerfall.webp',
   'budher-caves-trek': '/Images/trek/region/budher.webp',
   'guided-treks': '/Images/trek/region/chakraguided.webp',
-  'kedarkantha-trek': '/Images/trek/region/kedarkantha.webp',
-  'har-ki-dun-trek': '/Images/trek/region/harkidun.webp',
+  'kedarkantha-trek': '/Images/trek/region/summit_shot.png',
+  'har-ki-dun-trek': '/Images/hero/alpine-ridge.webp',
   'khaliya-top-trek': '/Images/trek/region/Khaliya.webp',
   'milam-glacier-trek': '/Images/trek/region/milamglacier.webp',
-  'brahmatal-trek': '/Images/trek/region/bramhatal.webp',
+  'brahmatal-trek': '/Images/trek/region/sunrise_ridge.png',
   'roopkund-trek': '/Images/trek/region/roopkund_lake.webp',
   'kuari-pass-trek': '/Images/trek/region/kuari.webp',
   'pangarchulla-trek': '/Images/trek/region/pangarchulla.webp',
@@ -207,8 +207,10 @@ export default function TreksClient() {
 
   /* ── HERO ── */
   .trk-hero { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: flex-start; min-height: 85vh; }
-  .trk-hero-img-wrap { position: absolute; inset: 0; }
-  .trk-hero-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.52) 40%, rgba(0,0,0,0.75) 100%); z-index: 1; }
+  .trk-hero-img-wrap { position: absolute; inset: 0; overflow: hidden; }
+  .trk-hero-img-wrap img { animation: trk-hero-zoom 20s infinite alternate linear; transform-origin: center; }
+  @keyframes trk-hero-zoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+  .trk-hero-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.85) 100%); z-index: 1; }
   .trk-hero .trk-section-inner { position: relative; z-index: 2; padding-top: 12vh; padding-bottom: 6rem; }
   .trk-hero .trk-eyebrow-text { color: rgba(255,255,255,0.7); }
   .trk-hero .trk-eyebrow-line { background: rgba(255,255,255,0.4); }
@@ -221,7 +223,7 @@ export default function TreksClient() {
   .trk-quicknav-btn:hover { border-color: var(--color-primary); background: rgba(15,118,110,0.04); color: var(--color-primary); }
 
   /* ── FEATURED ── */
-  .trk-featured { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 7rem 0; }
+  .trk-featured { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 9rem 0; }
   .trk-featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 2rem; }
   @media (max-width: 720px) { .trk-featured-grid { grid-template-columns: 1fr; } }
   .trk-feat-card { background: #ffffff; border: 1px solid rgba(15,118,110,0.1); display: flex; flex-direction: column; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; border-radius: 10px; text-decoration: none; color: inherit; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
@@ -476,9 +478,9 @@ export default function TreksClient() {
   .trk-signature-line { width: 32px; height: 1px; background: rgba(255,255,255,0.4); margin: 1.25rem auto 0; display: block; }
 
   /* ── FEATURED TESTIMONIAL ── */
-  .trk-test-card--featured { grid-column: 1 / -1; text-align: center; max-width: 48rem; margin: 0 auto 1rem; padding: 3rem 3.5rem; background: #ffffff; border: 1.5px solid rgba(15,118,110,0.18); border-radius: 12px; box-shadow: 0 8px 40px rgba(15,118,110,0.07); }
-  .trk-test-card--featured .trk-test-quote { font-size: 1.1rem; line-height: 1.95; font-style: normal; color: #333333; font-weight: 300; }
-  .trk-test-card--featured .trk-test-author { justify-content: center; }
+  .trk-test-card--featured { grid-column: 1 / -1; text-align: center; max-width: 48rem; margin: 0 auto 1rem; padding: 3rem 3.5rem; background: #f0fdf4; border: 1.5px solid var(--color-primary); border-radius: 12px; box-shadow: 0 12px 48px rgba(15,118,110,0.12); }
+  .trk-test-card--featured .trk-test-quote { font-size: 1.25rem; line-height: 1.85; font-style: normal; color: #111111; font-weight: 300; }
+  .trk-test-card--featured .trk-test-author { justify-content: center; margin-top: 1.5rem; }
   .trk-test-card--featured .trk-test-avatar { width: 44px; height: 44px; font-size: 0.9rem; }
   @media (max-width: 768px) { .trk-test-card--featured { padding: 2rem 1.75rem; } .trk-test-card--featured .trk-test-quote { font-size: 0.96rem; } }
 
@@ -493,11 +495,11 @@ export default function TreksClient() {
 {/* ═══ 1: HERO ═══ */}
 <section className="trk-hero">
   <div className="trk-hero-img-wrap">
-    <Image src="/Images/hero/mountain-snow.webp" alt="Snow-covered Himalayan peaks for trekking in Uttarakhand" fill priority sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
+    <Image src="/Images/hero/hero_cinematic.png" alt="Snow-covered Himalayan peaks for trekking in Uttarakhand" fill priority sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
   </div>
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Himalayan Treks</span></div>
-    <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 200, letterSpacing: '-0.04em', color: '#ffffff', lineHeight: 1.1, margin: '0 0 1.25rem 0', maxWidth: '52rem', textShadow: '0 2px 24px rgba(0,0,0,0.3)' }}>Trekking in the Himalayas</h2>
+    <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 200, letterSpacing: '-0.04em', color: '#ffffff', lineHeight: 1.1, margin: '0 0 1.25rem 0', maxWidth: '52rem', textShadow: '0 2px 32px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.5)' }}>Trekking in the Himalayas</h2>
     <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1rem', fontWeight: 300, lineHeight: 1.85, color: 'rgba(255,255,255,0.82)', margin: 0, maxWidth: '38rem' }}>Not all treks are created equal. We curate only the ones worth your time.</p>
   </div>
 </section>
@@ -544,7 +546,7 @@ export default function TreksClient() {
         const trekImg = trekImageMap[trek.slug];
         return (
           <Link key={trek.slug} href={`/treks/location/${trek.locationId}/${trek.slug}`} className="trk-feat-card">
-            <span style={{ position: 'absolute', top: '14px', left: '14px', zIndex: 3, fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#ffffff', background: 'var(--color-primary)', padding: '4px 12px', borderRadius: '100px' }}>Recommended</span>
+            <span style={{ position: 'absolute', top: '14px', left: '14px', zIndex: 3, fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#ffffff', background: 'var(--color-primary)', padding: '4px 12px', borderRadius: '100px' }}>Most Popular</span>
             {trekImg && <div className="trk-feat-img"><Image src={trekImg} alt={trekAltMap[trek.slug] || `${trek.title} trek in Uttarakhand`} fill loading="lazy" sizes="(max-width: 540px) 100vw, 360px" style={{ objectFit: 'cover' }} /></div>}
             <div className="trk-feat-body">
               <div className="trk-feat-meta">
@@ -887,7 +889,7 @@ export default function TreksClient() {
     <p className="trk-plan-desc">Not sure which trek is right for you? Let our team help you plan the perfect Himalayan adventure based on your experience, schedule, and goals.</p>
     <p className="trk-scarcity">Limited group sizes for each trek</p>
     <div className="trk-plan-btns">
-      <a href="https://wa.me/919760446101?text=Hi%2C%20I%27d%20like%20a%20personalised%20trek%20recommendation." className="trk-plan-btn-primary">Talk to a Local Trek Expert →</a>
+      <a href="https://wa.me/919760446101?text=Hi%2C%20I%27d%20like%20a%20personalised%20trek%20recommendation." className="trk-plan-btn-primary">Talk to a Local Expert Before You Book Your Trek →</a>
       <Link href="/treks/best-treks-in-uttarakhand" className="trk-plan-btn-secondary">Browse All Treks →</Link>
     </div>
     <p className="trk-microcopy">Free consultation · No spam · Quick response</p>
