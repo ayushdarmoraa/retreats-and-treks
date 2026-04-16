@@ -206,10 +206,12 @@ export default function TreksClient() {
   .trk-h2 { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200; letter-spacing: -0.03em; color: #111111; line-height: 1.15; margin: 0 0 2.5rem 0; }
 
   /* ── HERO ── */
-  .trk-hero { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 0 0 4rem; position: relative; overflow: hidden; }
-  .trk-hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(15,118,110,0.5) 30%, rgba(15,118,110,0.5) 70%, transparent); }
-  .trk-hero-img-wrap { width: 100%; position: relative; height: clamp(260px, 40vw, 480px); margin-bottom: 3rem; overflow: hidden; }
-  .trk-hero-img-wrap::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 120px; background: linear-gradient(to top, #f7f9f7, transparent); z-index: 1; }
+  .trk-hero { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; overflow: hidden; display: flex; align-items: flex-end; min-height: 75vh; }
+  .trk-hero-img-wrap { position: absolute; inset: 0; }
+  .trk-hero-img-wrap::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.62) 60%, rgba(0,0,0,0.78) 100%); z-index: 1; }
+  .trk-hero .trk-section-inner { position: relative; z-index: 2; padding-bottom: 5rem; padding-top: 2rem; }
+  .trk-hero .trk-eyebrow-text { color: rgba(255,255,255,0.7); }
+  .trk-hero .trk-eyebrow-line { background: rgba(255,255,255,0.4); }
 
   /* ── QUICK NAV ── */
   .trk-quicknav { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 1.25rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
@@ -219,23 +221,22 @@ export default function TreksClient() {
   .trk-quicknav-btn:hover { border-color: var(--color-primary); background: rgba(15,118,110,0.04); color: var(--color-primary); }
 
   /* ── FEATURED ── */
-  .trk-featured { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 5rem 0; }
-  .trk-featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.75rem; }
+  .trk-featured { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 7rem 0; }
+  .trk-featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 2rem; }
   @media (max-width: 720px) { .trk-featured-grid { grid-template-columns: 1fr; } }
-  .trk-feat-card { background: #ffffff; border: 1px solid rgba(15,118,110,0.1); display: flex; flex-direction: row; position: relative; overflow: hidden; transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; border-radius: 4px; min-height: 200px; text-decoration: none; color: inherit; }
-  @media (max-width: 540px) { .trk-feat-card { flex-direction: column; min-height: auto; } .trk-feat-card .trk-feat-img { width: 100%; height: 180px; } }
-  .trk-feat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--color-primary); transform: scaleX(0); transform-origin: left; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1); z-index: 2; }
+  .trk-feat-card { background: #ffffff; border: 1px solid rgba(15,118,110,0.1); display: flex; flex-direction: column; position: relative; overflow: hidden; transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; border-radius: 10px; text-decoration: none; color: inherit; box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
+  .trk-feat-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--color-primary), rgba(15,118,110,0.4)); transform: scaleX(0); transform-origin: left; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1); z-index: 2; }
   .trk-feat-card:hover::before { transform: scaleX(1); }
-  .trk-feat-card:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); border-color: rgba(15,118,110,0.3); }
-  .trk-feat-card:hover .trk-feat-img img { transform: scale(1.06); }
+  .trk-feat-card:hover { transform: translateY(-8px); box-shadow: 0 24px 64px rgba(0,0,0,0.13); border-color: rgba(15,118,110,0.3); }
+  .trk-feat-card:hover .trk-feat-img img { transform: scale(1.07); }
   .trk-feat-card:hover .trk-feat-cta { gap: 0.65rem; }
-  .trk-feat-img { position: relative; width: 240px; flex-shrink: 0; overflow: hidden; }
-  .trk-feat-img img { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
-  .trk-feat-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
+  .trk-feat-img { position: relative; width: 100%; height: 240px; flex-shrink: 0; overflow: hidden; }
+  .trk-feat-img img { transition: transform 0.55s cubic-bezier(0.16,1,0.3,1); }
+  .trk-feat-body { padding: 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; flex: 1; }
   .trk-feat-meta { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-  .trk-feat-title { font-family: var(--font-geist-sans), sans-serif; font-size: 1.05rem; font-weight: 400; letter-spacing: -0.01em; color: #111111; margin: 0; line-height: 1.3; }
-  .trk-feat-desc { font-family: var(--font-geist-sans), sans-serif; font-size: 0.82rem; font-weight: 300; line-height: 1.7; color: #666666; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-  .trk-feat-cta { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 400; color: var(--color-primary); letter-spacing: 0.02em; transition: gap 0.2s; margin-top: auto; }
+  .trk-feat-title { font-family: var(--font-geist-sans), sans-serif; font-size: 1.15rem; font-weight: 400; letter-spacing: -0.02em; color: #111111; margin: 0; line-height: 1.3; }
+  .trk-feat-desc { font-family: var(--font-geist-sans), sans-serif; font-size: 0.84rem; font-weight: 300; line-height: 1.75; color: #666666; margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .trk-feat-cta { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 500; color: var(--color-primary); letter-spacing: 0.04em; transition: gap 0.2s; margin-top: auto; padding-top: 0.5rem; border-top: 1px solid rgba(15,118,110,0.1); }
 
   /* ── POPULAR ── */
   .trk-popular { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 4rem 0; }
@@ -412,15 +413,20 @@ export default function TreksClient() {
   .trk-links-item::before { content: '→'; color: var(--color-primary); font-size: 0.8rem; flex-shrink: 0; }
 
   /* ── PLAN CTA ── */
-  .trk-plan-cta { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 5rem 0; position: relative; overflow: hidden; }
-  .trk-plan-cta::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(15,118,110,0.4) 30%, rgba(15,118,110,0.4) 70%, transparent); }
-  .trk-plan-inner { max-width: 72rem; margin: 0 auto; padding: 0 var(--space-md, 1.5rem); display: flex; flex-direction: column; align-items: center; text-align: center; }
-  .trk-plan-desc { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #555555; line-height: 1.85; margin: 0 0 2.5rem 0; max-width: 36rem; }
+  .trk-plan-cta { width: 100vw; margin-left: calc(-50vw + 50%); background: #0a3d35; padding: 7rem 0; position: relative; overflow: hidden; }
+  .trk-plan-cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 50%, rgba(15,118,110,0.18) 0%, transparent 70%); pointer-events: none; }
+  .trk-plan-inner { max-width: 72rem; margin: 0 auto; padding: 0 var(--space-md, 1.5rem); display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 1; }
+  .trk-plan-cta .trk-h2 { color: #ffffff; }
+  .trk-plan-cta .trk-eyebrow-text { color: rgba(255,255,255,0.6); }
+  .trk-plan-cta .trk-eyebrow-line { background: rgba(255,255,255,0.3); }
+  .trk-plan-cta .trk-scarcity { color: rgba(255,255,255,0.45); }
+  .trk-plan-desc { font-family: var(--font-geist-sans), sans-serif; font-size: 0.92rem; font-weight: 300; color: rgba(255,255,255,0.7); line-height: 1.85; margin: 0 0 2.5rem 0; max-width: 36rem; }
   .trk-plan-btns { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-  .trk-plan-btn-primary { font-family: var(--font-geist-sans), sans-serif; display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2.5rem; background: var(--color-primary); color: #ffffff; text-decoration: none; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--color-primary); transition: gap 0.2s, background 0.25s; }
-  .trk-plan-btn-primary:hover { background: rgba(15,118,110,0.85); gap: 1.1rem; }
-  .trk-plan-btn-secondary { font-family: var(--font-geist-sans), sans-serif; display: inline-flex; align-items: center; gap: 0.75rem; padding: 1rem 2.5rem; background: transparent; color: var(--color-primary); text-decoration: none; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--color-primary); transition: gap 0.2s, background 0.25s, color 0.25s; }
-  .trk-plan-btn-secondary:hover { background: var(--color-primary); color: #ffffff; gap: 1.1rem; }
+  .trk-plan-btn-primary { font-family: var(--font-geist-sans), sans-serif; display: inline-flex; align-items: center; gap: 0.75rem; padding: 1.1rem 2.75rem; background: #ffffff; color: #0a3d35; text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 100px; border: 2px solid #ffffff; transition: gap 0.2s, background 0.25s, color 0.25s, transform 0.2s; }
+  .trk-plan-btn-primary:hover { background: transparent; color: #ffffff; gap: 1.1rem; transform: translateY(-2px); }
+  .trk-plan-btn-secondary { font-family: var(--font-geist-sans), sans-serif; display: inline-flex; align-items: center; gap: 0.75rem; padding: 1.1rem 2.75rem; background: transparent; color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 100px; border: 1.5px solid rgba(255,255,255,0.3); transition: gap 0.2s, border-color 0.25s, color 0.25s, transform 0.2s; }
+  .trk-plan-btn-secondary:hover { border-color: rgba(255,255,255,0.7); color: #ffffff; gap: 1.1rem; transform: translateY(-2px); }
+  .trk-plan-cta .trk-microcopy { color: rgba(255,255,255,0.4); }
 
   /* ── SOFT CTA ── */
   .trk-cta { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 5rem 0; position: relative; overflow: hidden; }
@@ -468,10 +474,11 @@ export default function TreksClient() {
   .trk-signature-line { width: 32px; height: 1px; background: rgba(255,255,255,0.4); margin: 1.25rem auto 0; display: block; }
 
   /* ── FEATURED TESTIMONIAL ── */
-  .trk-test-card--featured { grid-column: 1 / -1; text-align: center; max-width: 44rem; margin: 0 auto; padding: 2.5rem 2.5rem; }
-  .trk-test-card--featured .trk-test-quote { font-size: 1.05rem; line-height: 1.9; font-style: normal; }
+  .trk-test-card--featured { grid-column: 1 / -1; text-align: center; max-width: 48rem; margin: 0 auto 1rem; padding: 3rem 3.5rem; background: #ffffff; border: 1.5px solid rgba(15,118,110,0.18); border-radius: 12px; box-shadow: 0 8px 40px rgba(15,118,110,0.07); }
+  .trk-test-card--featured .trk-test-quote { font-size: 1.1rem; line-height: 1.95; font-style: normal; color: #333333; font-weight: 300; }
   .trk-test-card--featured .trk-test-author { justify-content: center; }
-  @media (max-width: 768px) { .trk-test-card--featured { padding: 2rem 1.5rem; } .trk-test-card--featured .trk-test-quote { font-size: 0.95rem; } }
+  .trk-test-card--featured .trk-test-avatar { width: 44px; height: 44px; font-size: 0.9rem; }
+  @media (max-width: 768px) { .trk-test-card--featured { padding: 2rem 1.75rem; } .trk-test-card--featured .trk-test-quote { font-size: 0.96rem; } }
 
   /* ── ANTI-MASS INTRO ── */
   .trk-anti-mass { font-family: var(--font-geist-sans), sans-serif; font-size: 0.85rem; font-weight: 300; color: #555555; line-height: 1.85; margin: 0 0 2.5rem 0; max-width: 48rem; }
@@ -488,8 +495,8 @@ export default function TreksClient() {
   </div>
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Himalayan Treks</span></div>
-    <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.6rem, 3.2vw, 2.4rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 1rem 0', maxWidth: '44rem' }}>Trekking in the Himalayas</h2>
-    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>Not all treks are created equal. We curate only the ones worth your time.</p>
+    <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 200, letterSpacing: '-0.04em', color: '#ffffff', lineHeight: 1.1, margin: '0 0 1.25rem 0', maxWidth: '52rem', textShadow: '0 2px 24px rgba(0,0,0,0.3)' }}>Trekking in the Himalayas</h2>
+    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1rem', fontWeight: 300, lineHeight: 1.85, color: 'rgba(255,255,255,0.82)', margin: 0, maxWidth: '38rem' }}>Not all treks are created equal. We curate only the ones worth your time.</p>
   </div>
 </section>
 
