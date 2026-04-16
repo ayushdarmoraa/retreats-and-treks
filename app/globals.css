@@ -129,6 +129,7 @@ main {
   max-width: 78rem; /* ~1150px */
   margin: 0 auto;
   padding: var(--space-lg) var(--space-md);
+  padding-top: 80px;
 }
 /* Featured Retreat cards */
 .retreat-card .retreat-card-img-wrap img {

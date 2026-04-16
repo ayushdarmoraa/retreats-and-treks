@@ -43,6 +43,7 @@ export default function HeroImage({
           style={{
             position: 'absolute',
             inset: 0,
+            zIndex: 1,
             background: 'linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.45) 100%)',
           }}
         />

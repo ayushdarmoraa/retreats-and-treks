@@ -151,6 +151,7 @@ export default function ContentHero({ path }: ContentHeroProps) {
         style={{
           position: 'absolute',
           inset: 0,
+          zIndex: 1,
           background: 'linear-gradient(to bottom, rgba(0,0,0,0.05), rgba(0,0,0,0.3))',
         }}
       />
