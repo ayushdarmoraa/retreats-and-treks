@@ -1,11 +1,50 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import TrekCard from '@/components/TrekCard';
 import Breadcrumb from '@/components/Breadcrumb';
 import { getTreksByLocation } from '@/lib/treks';
 import { getLocationById, getAllLocations } from '@/lib/locations';
 import { getTrekHubMetadata } from '@/lib/metadata';
 import type { LocationId } from '@/config/locations';
+
+/* ── Location hero images ── */
+const LOCATION_HERO_MAP: Record<string, string> = {
+  chakrata: '/Images/location/chakrata.webp',
+  sankri: '/Images/location/sankri.webp',
+  munsiyari: '/Images/location/munsiyari.webp',
+  lohajung: '/Images/location/lohajung.webp',
+  joshimath: '/Images/location/joshimath.webp',
+  barsu: '/Images/trek/region/garhwal.webp',
+  zanskar: '/Images/location/zanskar.webp',
+};
+
+const LOCATION_HERO_ALT: Record<string, string> = {
+  chakrata: 'Panoramic view of Chakrata mountain trails in Uttarakhand',
+  sankri: 'Snow-capped peaks above Sankri basecamp in the Tons Valley, Uttarakhand',
+  munsiyari: 'Panchachuli peaks panorama from Munsiyari, Kumaon Himalayas',
+  lohajung: 'Mountain ridges above Lohajung village, gateway to Brahmatal and Roopkund',
+  joshimath: 'Himalayan peaks from Joshimath, gateway to Kuari Pass and Pangarchulla',
+  barsu: 'Alpine meadows of Dayara Bugyal near Barsu village, Uttarakhand',
+  zanskar: 'Dramatic Zanskar valley landscape in Ladakh',
+};
+
+/* ── Trek card images (moved outside render for performance) ── */
+const TREK_CARD_IMAGES: Record<string, { src: string; alt: string }> = {
+  'brahmatal-trek':    { src: '/Images/trek/region/brahmatal-lake.webp',    alt: 'Brahmatal Trek — frozen alpine lake trail in Uttarakhand' },
+  'roopkund-trek':     { src: '/Images/trek/region/roopkund_lake.webp', alt: 'Roopkund Trek — mystery lake at high altitude' },
+  'kuari-pass-trek':   { src: '/Images/trek/region/kuari.webp',         alt: 'Kuari Pass Trek — Garhwal Himalaya panoramic ridge walk' },
+  'pangarchulla-trek': { src: '/Images/trek/region/pangarchulla.webp',  alt: 'Pangarchulla Trek — summit climb in Garhwal Himalayas' },
+  'kedarkantha-trek':  { src: '/Images/trek/region/kedarkantha-summit.webp', alt: 'Kedarkantha summit at sunrise — winter snow trek from Sankri' },
+  'har-ki-dun-trek':   { src: '/Images/trek/region/harkidun-valley.webp',   alt: 'Har Ki Dun valley — lush green meadows and Swargarohini peaks' },
+  'weekend-trek':      { src: '/Images/trek/region/chakraweekend.webp', alt: 'Chakrata Weekend Trek — forest trail in Uttarakhand' },
+  'tiger-fall-trek':   { src: '/Images/trek/region/tigerfall.webp',     alt: 'Tiger Fall Trek — waterfall trail in Chakrata' },
+  'budher-caves-trek': { src: '/Images/trek/region/budher.webp',        alt: 'Budher Caves Trek — limestone caves in Chakrata forest' },
+  'guided-treks':      { src: '/Images/trek/region/chakraguided.webp',  alt: 'Chakrata Guided Treks — expert-led forest and ridge trails' },
+  'khaliya-top-trek':  { src: '/Images/trek/region/Khaliya.webp',       alt: 'Khaliya Top Trek — Panchachuli panorama from Munsiyari' },
+  'milam-glacier-trek':{ src: '/Images/trek/region/milamglacier.webp',  alt: 'Milam Glacier Trek — historic Johar Valley expedition' },
+  'dayara-bugyal-trek':{ src: '/Images/trek/region/garhwal.webp',       alt: 'Dayara Bugyal Trek — alpine meadow in Barsu, Uttarakhand' },
+};
 
 // ── Per-location authority content ──────────────────────────
 type GuideSection = { heading: string; body: React.ReactNode };
@@ -450,15 +489,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   // CTR-optimized overrides for Garhwal trek hubs
   const GARHWAL_HUB_META: Record<string, { title: string; description: string }> = {
+    sankri: {
+      title: 'Treks from Sankri (2 Routes: 3,566m–3,810m) — Kedarkantha & Har Ki Dun | Retreats And Treks',
+      description: 'Sankri is the basecamp for Kedarkantha (3,810m, challenging, winter snow trek) and Har Ki Dun (3,566m, moderate, valley trek). Season guide, difficulty & booking.',
+    },
+    munsiyari: {
+      title: 'Treks from Munsiyari (2 Routes: 3,500m–3,600m) — Khaliya Top & Milam Glacier | Retreats And Treks',
+      description: 'Munsiyari is the gateway to Khaliya Top (3,500m, moderate meadow trek) and Milam Glacier (3,450m, challenging expedition). Best season, permits & planning guide.',
+    },
     lohajung: {
       title: 'Treks from Lohajung (2 Routes: 3,850m–4,800m) — Brahmatal & Roopkund | Retreats And Treks',
-      description:
-        'Lohajung is the base for 2 Garhwal Himalaya treks: Brahmatal (3,850m, moderate, winter) and Roopkund (4,800m, challenging, summer). How to reach, best season, difficulty & booking guide.',
+      description: 'Lohajung is the base for 2 Garhwal Himalaya treks: Brahmatal (3,850m, moderate, winter) and Roopkund (4,800m, challenging, summer). How to reach, best season, difficulty & booking guide.',
     },
     joshimath: {
       title: 'Treks from Joshimath (2 Routes: 3,876m–4,590m) — Kuari Pass & Pangarchulla | Retreats And Treks',
-      description:
-        'Joshimath is the base for 2 Garhwal Himalaya treks: Kuari Pass (3,876m, moderate, spring/autumn) and Pangarchulla Peak (4,590m, challenging, spring). Season, difficulty & planning guide.',
+      description: 'Joshimath is the base for 2 Garhwal Himalaya treks: Kuari Pass (3,876m, moderate, spring/autumn) and Pangarchulla Peak (4,590m, challenging, spring). Season, difficulty & planning guide.',
     },
   };
 
@@ -499,63 +544,133 @@ export default async function TrekHubPage({ params }: PageProps) {
   return (
     <main style={{ width: '100%', padding: '0' }}>
 
-      {/* ── HERO ── */}
+      {/* ── HERO WITH IMAGE ── */}
       <section style={{
         width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-        background: '#f7f9f7',
-        paddingTop: '4rem', paddingBottom: '4rem',
-        borderBottom: '1px solid #e5e7eb',
+        position: 'relative', overflow: 'hidden',
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        minHeight: '70vh', textAlign: 'center' as const,
       }}>
-        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-          <Breadcrumb
-            items={[
-              { name: 'Home', href: '/' },
-              { name: 'Treks', href: '/treks' },
-              { name: locationData.name },
-            ]}
-          />
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', margin: '1.5rem 0 1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+        {LOCATION_HERO_MAP[locationId] && (
+          <div style={{ position: 'absolute', inset: 0 }}>
+            <Image
+              src={LOCATION_HERO_MAP[locationId]}
+              alt={LOCATION_HERO_ALT[locationId] || `Trekking destination ${locationData.name}, Uttarakhand`}
+              fill
+              priority
+              fetchPriority="high"
+              quality={60}
+              sizes="100vw"
+              style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
+            />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.85) 100%)' }} />
+          </div>
+        )}
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', display: 'flex', flexDirection: 'column' as const, alignItems: 'center' }}>
+          <div style={{ marginBottom: '1.5rem' }}>
+            <Breadcrumb
+              items={[
+                { name: 'Home', href: '/' },
+                { name: 'Treks', href: '/treks' },
+                { name: locationData.name },
+              ]}
+            />
+          </div>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', justifyContent: 'center' }}>
+            <span style={{ width: '24px', height: '1px', background: 'rgba(255,255,255,0.5)', display: 'inline-block' }} />
             <span style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
               fontSize: '0.75rem', letterSpacing: '0.28em',
               textTransform: 'uppercase' as const,
-              color: '#374151', fontWeight: 500
-            }}>Trekking Base · Garhwal Himalayas</span>
+              color: 'rgba(255,255,255,0.75)', fontWeight: 500
+            }}>Trekking Base · {treks.length} {treks.length === 1 ? 'Route' : 'Routes'}</span>
           </div>
           <h1 style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
-            fontSize: 'clamp(1.75rem, 3.5vw, 2.4rem)',
-            fontWeight: 200, letterSpacing: '-0.035em',
-            color: '#111111', lineHeight: 1.1,
-            margin: '0 0 1.5rem',
+            fontSize: 'clamp(2rem, 5vw, 3.2rem)',
+            fontWeight: 200, letterSpacing: '-0.04em',
+            color: '#ffffff', lineHeight: 1.1,
+            margin: '0 0 1rem',
+            textShadow: '0 2px 24px rgba(0,0,0,0.7)',
           }}>
-            Treks Around {locationData.name}
+            Treks from {locationData.name}
           </h1>
+          <p style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '1rem', fontWeight: 300, lineHeight: 1.8,
+            color: 'rgba(255,255,255,0.8)', margin: '0 0 1.5rem', maxWidth: '36rem',
+          }}>
+            {locationData.tagline}
+          </p>
           {treks.length > 0 && (
-            <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: '0.5rem' }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap' as const, gap: '0.5rem', justifyContent: 'center', marginBottom: '2rem' }}>
               {treks.map((trek) => (
                 <Link key={trek.slug} href={`/treks/location/${trek.locationId}/${trek.slug}`} style={{ textDecoration: 'none' }}>
                   <span style={{
                     display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
                     fontFamily: 'var(--font-geist-sans), sans-serif',
-                    fontSize: '0.78rem', fontWeight: 300, color: '#333333',
-                    background: '#ffffff', border: '1px solid #e5e7eb',
-                    borderRadius: '100px', padding: '5px 14px',
+                    fontSize: '0.78rem', fontWeight: 400, color: 'rgba(255,255,255,0.9)',
+                    background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.25)',
+                    borderRadius: '100px', padding: '6px 16px',
+                    backdropFilter: 'blur(4px)',
                   }}>
-                    <span style={{
-                      fontSize: '0.75rem', fontWeight: 600,
-                      letterSpacing: '0.18em', textTransform: 'uppercase' as const,
-                      color: '#374151',
-                    }}>{trek.difficulty}</span>
-                    {trek.title}
+                    {trek.title} →
                   </span>
                 </Link>
               ))}
             </div>
           )}
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' as const, justifyContent: 'center' }}>
+            <a
+              href={`https://wa.me/919760446101?text=Hi%2C%20I%27m%20interested%20in%20a%20trek%20from%20${encodeURIComponent(locationData.name)}.`}
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                padding: '0.9rem 2rem', background: '#ffffff', color: '#0a3d35',
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.78rem', fontWeight: 600, letterSpacing: '0.06em',
+                textTransform: 'uppercase' as const, borderRadius: '100px',
+                border: '2px solid #ffffff', textDecoration: 'none',
+              }}
+            >
+              Talk to a Trek Expert →
+            </a>
+            <Link
+              href="/treks"
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                padding: '0.9rem 2rem', background: 'transparent',
+                color: 'rgba(255,255,255,0.85)',
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.78rem', fontWeight: 400, letterSpacing: '0.06em',
+                textTransform: 'uppercase' as const, borderRadius: '100px',
+                border: '1.5px solid rgba(255,255,255,0.35)', textDecoration: 'none',
+              }}
+            >
+              Browse All Treks
+            </Link>
+          </div>
         </div>
       </section>
+
+      {/* ── TRUST STRIP ── */}
+      <div style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '1rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', display: 'flex', gap: '1.5rem', alignItems: 'center', justifyContent: 'center', flexWrap: 'wrap' as const }}>
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', fontWeight: 400, color: '#595959' }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--color-primary)' }}><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            Small group sizes
+          </span>
+          <span style={{ width: 1, height: 16, background: 'rgba(15,118,110,0.15)' }} />
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', fontWeight: 400, color: '#595959' }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--color-primary)' }}><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+            Local mountain guides
+          </span>
+          <span style={{ width: 1, height: 16, background: 'rgba(15,118,110,0.15)' }} />
+          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', fontWeight: 400, color: '#595959' }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" style={{ color: 'var(--color-primary)' }}><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Safety-first approach
+          </span>
+        </div>
+      </div>
 
       {/* ── TREK CARDS ── */}
 {treks.length > 0 && (
@@ -575,26 +690,12 @@ export default async function TrekHubPage({ params }: PageProps) {
         fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
         fontWeight: 200, letterSpacing: '-0.03em',
         color: '#111111', lineHeight: 1.15, marginBottom: '2rem',
-      }}>Available Treks</h2>
+      }}>Choose Your {locationData.name} Trek</h2>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem', marginBottom: '1.5rem' }}>
         {treks.map((trek) => {
-          const TREK_IMAGES: Record<string, { src: string; alt: string }> = {
-            'brahmatal-trek':   { src: '/Images/trek/region/bramhatal.webp',    alt: 'Brahmatal Trek — frozen lake trail in Uttarakhand' },
-            'roopkund-trek':    { src: '/Images/trek/region/roopkund_lake.webp', alt: 'Roopkund Trek — mystery lake at high altitude' },
-            'kuari-pass-trek':  { src: '/Images/trek/region/kuari.webp',         alt: 'Kuari Pass Trek — Garhwal Himalaya panoramic ridge' },
-            'pangarchulla-trek':{ src: '/Images/trek/region/pangarchulla.webp',  alt: 'Pangarchulla Trek — summit climb in Garhwal' },
-            'kedarkantha-trek': { src: '/Images/trek/region/kedarkantha.webp',   alt: 'Kedarkantha Trek — winter snow trek in Sankri' },
-            'har-ki-dun-trek':  { src: '/Images/trek/region/harkidun.webp',      alt: 'Har Ki Dun Trek — valley of gods in Govind Wildlife Sanctuary' },
-            'weekend-trek':     { src: '/Images/trek/region/chakraweekend.webp', alt: 'Weekend Trek — short Himalayan escape from Chakrata' },
-            'tiger-fall-trek':  { src: '/Images/trek/region/tigerfall.webp',     alt: 'Tiger Fall Trek — Chakrata waterfall trail' },
-            'budher-caves-trek':{ src: '/Images/trek/region/budher.webp',        alt: 'Budher Caves Trek — limestone caves in Chakrata forest' },
-            'guided-treks':      { src: '/Images/trek/region/chakraguided.webp',  alt: 'Chakrata Guided Treks — expert-led forest and ridge trails' },
-            'khaliya-top-trek':  { src: '/Images/trek/region/Khaliya.webp',       alt: 'Khaliya Top Trek — Panchachuli panorama from Munsiyari' },
-            'milam-glacier-trek':{ src: '/Images/trek/region/milamglacier.webp',  alt: 'Milam Glacier Trek — historic Johar Valley expedition' },
-          };
-          // imgSrc unused — TREK_IMAGES used directly in JSX via ?.src / ?.alt
           const isModerate = trek.difficulty?.toLowerCase() === 'moderate';
+          const cardImg = TREK_CARD_IMAGES[trek.slug];
 
           return (
             <Link
@@ -605,22 +706,22 @@ export default async function TrekHubPage({ params }: PageProps) {
               <div style={{
                 background: '#ffffff',
                 border: '1px solid #e5e7eb',
-                borderRadius: '8px',
+                borderRadius: '12px',
                 overflow: 'hidden',
                 display: 'flex', flexDirection: 'column' as const,
+                boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
               }}>
                 {/* Image */}
-<div style={{ position: 'relative', width: '100%', height: '180px', overflow: 'hidden' }} className="trek-card-img-wrap">
-  <img
-    src={TREK_IMAGES[trek.slug]?.src ?? '/Images/trek/region/bramhatal.webp'}
-    alt={TREK_IMAGES[trek.slug]?.alt ?? trek.title}
-    style={{
-      width: '100%', height: '100%',
-      objectFit: 'cover', objectPosition: 'center',
-      display: 'block',
-      transition: 'transform 0.5s ease',
-    }}
-  />
+                <div style={{ position: 'relative', width: '100%', height: '200px', overflow: 'hidden' }}>
+                  <Image
+                    src={cardImg?.src ?? '/Images/trek/region/garhwal.webp'}
+                    alt={cardImg?.alt ?? trek.title}
+                    fill
+                    loading="lazy"
+                    quality={60}
+                    sizes="(max-width: 640px) 100vw, 50vw"
+                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                  />
                   {/* Difficulty badge over image */}
                   <span style={{
                     position: 'absolute', top: '0.75rem', right: '0.75rem',
@@ -638,7 +739,7 @@ export default async function TrekHubPage({ params }: PageProps) {
                 <div style={{ padding: '1.25rem', flex: 1, display: 'flex', flexDirection: 'column' as const }}>
                   <h3 style={{
                     fontFamily: 'var(--font-geist-sans), sans-serif',
-                    fontSize: '0.92rem', fontWeight: 500,
+                    fontSize: '0.95rem', fontWeight: 500,
                     color: '#111111', margin: '0 0 0.5rem',
                     lineHeight: 1.3,
                   }}>{trek.title}</h3>
@@ -648,7 +749,7 @@ export default async function TrekHubPage({ params }: PageProps) {
                     color: '#666666', lineHeight: 1.7,
                     margin: '0 0 1rem', flex: 1,
                   }}>{trek.description}</p>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid rgba(15,118,110,0.07)', paddingTop: '0.75rem' }}>
                     <span style={{
                       fontFamily: 'var(--font-geist-sans), sans-serif',
                       fontSize: '0.75rem', fontWeight: 300, color: '#999999',
@@ -656,7 +757,7 @@ export default async function TrekHubPage({ params }: PageProps) {
                     <span style={{
                       fontFamily: 'var(--font-geist-sans), sans-serif',
                       fontSize: '0.75rem', fontWeight: 500,
-                      color: '#374151',
+                      color: 'var(--color-primary)',
                     }}>View trek →</span>
                   </div>
                 </div>
@@ -668,10 +769,10 @@ export default async function TrekHubPage({ params }: PageProps) {
 
       <Link href="/treks" style={{
         fontFamily: 'var(--font-geist-sans), sans-serif',
-        color: '#374151', fontWeight: 500,
+        color: 'var(--color-primary)', fontWeight: 500,
         textDecoration: 'none', fontSize: '0.85rem',
       }}>
-        Browse treks across locations →
+        Browse treks across all locations →
       </Link>
     </div>
   </section>
@@ -785,38 +886,72 @@ export default async function TrekHubPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* ── RELATED EXPERIENCES + CTA ── */}
+      {/* ── CTA / CONVERSION BLOCK ── */}
       <section style={{
         width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-        background: guideSections.length % 2 === 0 ? '#ffffff' : '#f7f9f7',
-        paddingTop: '4rem', paddingBottom: '4rem',
+        background: '#0a3d35',
+        paddingTop: '5rem', paddingBottom: '5rem',
       }}>
-        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', textAlign: 'center' as const }}>
+        <div style={{ maxWidth: '42rem', margin: '0 auto', padding: '0 2rem', textAlign: 'center' as const }}>
           <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
-            <span style={{ width: '20px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Plan Your Visit</span>
-            <span style={{ width: '20px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+            <span style={{ width: '24px', height: '1px', background: 'rgba(255,255,255,0.4)',  display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: 'rgba(255,255,255,0.8)', fontWeight: 500}}>Start Planning</span>
+            <span style={{ width: '24px', height: '1px', background: 'rgba(255,255,255,0.4)',  display: 'inline-block' }} />
           </div>
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, color: '#555555', lineHeight: 1.85, marginBottom: '1.75rem' }}>
-            {locationData.name} also offers{' '}
-            <Link href={`/retreats/${locationId}`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
-              wellness retreats and meditation experiences
-            </Link>.
+          <h2 style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: 'clamp(1.75rem, 4vw, 2.4rem)',
+            fontWeight: 200, letterSpacing: '-0.035em',
+            color: '#ffffff', lineHeight: 1.15,
+            marginBottom: '1rem',
+          }}>
+            Talk to a {locationData.name} Local Expert
+          </h2>
+          <p style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '1rem', fontWeight: 300,
+            lineHeight: 1.8, color: 'rgba(255, 255, 255, 0.85)',
+            marginBottom: '2rem',
+          }}>
+            Not sure which {locationData.name} trek is right for you? Our local team can help you choose the best route based on your fitness, schedule, and previous experience.
           </p>
-          <a
-             href={`https://wa.me/919760446101?text=Hi%2C%20I%20am%20interested%20in%20a%20trek%20in%20${encodeURIComponent(locationData.name)}.`}
-            style={{
-              display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-              fontFamily: 'var(--font-geist-sans), sans-serif',
-              padding: '13px 28px',
-              background: 'var(--color-primary)', color: '#ffffff',
-              fontSize: '0.62rem', fontWeight: 600,
-              letterSpacing: '0.2em', textTransform: 'uppercase' as const,
-              borderRadius: '4px', textDecoration: 'none',
-            }}
-          >
-            Chat on WhatsApp
-          </a>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' as const, justifyContent: 'center' }}>
+            <a
+              href={`https://wa.me/919760446101?text=Hi%2C%20I%20need%20a%20trek%20recommendation%20for%20${encodeURIComponent(locationData.name)}.`}
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                padding: '0.95rem 2.25rem', background: '#ffffff', color: '#0a3d35',
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.78rem', fontWeight: 600, letterSpacing: '0.06em',
+                textTransform: 'uppercase' as const, borderRadius: '100px',
+                border: '2px solid #ffffff', textDecoration: 'none',
+                transition: 'transform 0.2s ease',
+              }}
+            >
+              Get a Recommendation →
+            </a>
+            <Link
+              href={`/retreats/${locationId}`}
+              style={{
+                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                padding: '0.95rem 2.25rem', background: 'transparent',
+                color: 'rgba(255,255,255,0.85)',
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.78rem', fontWeight: 400, letterSpacing: '0.06em',
+                textTransform: 'uppercase' as const, borderRadius: '100px',
+                border: '1.5px solid rgba(255,255,255,0.35)', textDecoration: 'none',
+              }}
+            >
+              View Retreats Instead
+            </Link>
+          </div>
+          <p style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.75rem', fontWeight: 300, color: 'rgba(255,255,255,0.6)',
+            marginTop: '2rem', letterSpacing: '0.02em',
+          }}>
+            Free consultation · No spam · Local team
+          </p>
         </div>
       </section>
 
