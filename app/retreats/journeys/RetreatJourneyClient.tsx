@@ -112,9 +112,9 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         /* ── HERO IMAGE ── */
         .rj-hero { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 70vh; text-align: center; }
         .rj-hero-img { position: absolute; inset: 0; overflow: hidden; }
-        .rj-hero-img img { animation: rj-hero-zoom 20s 1s infinite alternate linear; will-change: transform; transform-origin: center; }
-        @keyframes rj-hero-zoom { from { transform: scale(1); } to { transform: scale(1.06); } }
-        .rj-hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.88) 100%); z-index: 1; }
+        .rj-hero-img img { transform-origin: center; }
+        
+        .rj-hero-img::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.55); z-index: 1; }
         .rj-hero .rj-inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
         .rj-hero .rj-eyebrow { justify-content: center; }
         .rj-hero .rj-eyebrow-text { color: rgba(255,255,255,0.75); }
