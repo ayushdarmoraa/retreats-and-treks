@@ -1,13 +1,19 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
-import Image from 'next/image';
 import { preload } from 'react-dom';
-import TrekCard from '@/components/TrekCard';
-import Breadcrumb from '@/components/Breadcrumb';
 import { getTreksByLocation } from '@/lib/treks';
 import { getLocationById, getAllLocations } from '@/lib/locations';
 import { getTrekHubMetadata } from '@/lib/metadata';
 import type { LocationId } from '@/config/locations';
+
+/* Server-side Link — renders <a> instead of next/link to eliminate client JS hydration.
+   This page is an SEO entry point (users arrive from Google), so SPA navigation
+   is unnecessary. Full page loads are fine and eliminate ~1.6s of hydration delay. */
+function Link({ href, children, style, className }: {
+  href: string; children: React.ReactNode;
+  style?: React.CSSProperties; className?: string;
+}) {
+  return <a href={href} style={style} className={className}>{children}</a>;
+}
 
 /* ── Location hero images ── */
 const LOCATION_HERO_MAP: Record<string, string> = {
@@ -637,13 +643,13 @@ export default async function TrekHubPage({ params }: PageProps) {
         )}
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', display: 'flex', flexDirection: 'column' as const, alignItems: 'center' }}>
           <div style={{ marginBottom: '1.5rem' }}>
-            <Breadcrumb
-              items={[
-                { name: 'Home', href: '/' },
-                { name: 'Treks', href: '/treks' },
-                { name: locationData.name },
-              ]}
-            />
+            <nav aria-label="Breadcrumb" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <a href="/" style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 300, color: 'rgba(255,255,255,0.6)', textDecoration: 'none' }}>Home</a>
+              <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.7rem' }}>/</span>
+              <a href="/treks" style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 300, color: 'rgba(255,255,255,0.6)', textDecoration: 'none' }}>Treks</a>
+              <span style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.7rem' }}>/</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 400, color: 'rgba(255,255,255,0.85)' }}>{locationData.name}</span>
+            </nav>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', justifyContent: 'center' }}>
             <span style={{ width: '24px', height: '1px', background: 'rgba(255,255,255,0.5)', display: 'inline-block' }} />
@@ -781,14 +787,12 @@ export default async function TrekHubPage({ params }: PageProps) {
               }}>
                 {/* Image */}
                 <div style={{ position: 'relative', width: '100%', height: '200px', overflow: 'hidden' }}>
-                  <Image
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
                     src={cardImg?.src ?? '/Images/trek/region/garhwal.webp'}
                     alt={cardImg?.alt ?? trek.title}
-                    fill
                     loading="lazy"
-                    quality={45}
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                    style={{ objectFit: 'cover', objectPosition: 'center' }}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', position: 'absolute', inset: 0 }}
                   />
                   {/* Difficulty badge over image */}
                   <span style={{
@@ -877,14 +881,12 @@ export default async function TrekHubPage({ params }: PageProps) {
                 borderRadius: '10px', overflow: 'hidden',
                 scrollSnapAlign: 'start' as const,
               }}>
-                <Image
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
                   src={img.src}
                   alt={img.alt}
-                  fill
                   loading="lazy"
-                  quality={45}
-                  sizes="280px"
-                  style={{ objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'absolute', inset: 0 }}
                 />
               </div>
             ))}
@@ -964,14 +966,12 @@ export default async function TrekHubPage({ params }: PageProps) {
             position: 'relative', height: '320px',
             overflow: 'hidden', margin: 0,
           }}>
-            <Image
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
               src={sectionImg.src}
               alt={sectionImg.alt}
-              fill
               loading="lazy"
-              quality={45}
-              sizes="100vw"
-              style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block', position: 'absolute', inset: 0 }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%)' }} />
             {sectionImg.caption && (
