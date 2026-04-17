@@ -112,7 +112,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         /* ── HERO IMAGE ── */
         .rj-hero { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 70vh; text-align: center; }
         .rj-hero-img { position: absolute; inset: 0; overflow: hidden; }
-        .rj-hero-img img { animation: rj-hero-zoom 20s infinite alternate linear; transform-origin: center; }
+        .rj-hero-img img { animation: rj-hero-zoom 20s 1s infinite alternate linear; will-change: transform; transform-origin: center; }
         @keyframes rj-hero-zoom { from { transform: scale(1); } to { transform: scale(1.06); } }
         .rj-hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.88) 100%); z-index: 1; }
         .rj-hero .rj-inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
@@ -147,7 +147,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
       {retreat.heroImage ? (
         <section className="rj-hero">
           <div className="rj-hero-img">
-            <Image src={retreat.heroImage} alt={retreat.heroAlt || `${retreat.title} retreat in the Himalayas`} fill priority sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
+            <Image src={retreat.heroImage} alt={retreat.heroAlt || `${retreat.title} retreat in the Himalayas`} fill priority fetchPriority="high" quality={60} sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
           </div>
           <div className="rj-inner scroll-fade">
             <div className="rj-eyebrow">
@@ -234,7 +234,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             <div className="rj-gallery scroll-fade" style={{ marginTop: '3rem' }}>
               {retreat.galleryImages.map((img, i) => (
                 <div key={i} className="rj-gallery-item">
-                  <Image src={img.src} alt={img.alt} fill loading="lazy" sizes="(max-width: 600px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
+                  <Image src={img.src} alt={img.alt} fill loading="lazy" quality={60} sizes="(max-width: 600px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
                 </div>
               ))}
             </div>
@@ -334,7 +334,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           }
           .rj-fn-item:last-child { border-bottom: none; }
           .rj-fn-item-for { color: #333333; }
-          .rj-fn-item-not { color: #888888; }
+          .rj-fn-item-not { color: #595959; }
 
           .rj-fn-icon-for {
             width: 18px; height: 18px; border-radius: 50%;
@@ -348,7 +348,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             background: #eeeeee;
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0; margin-top: 0.1rem;
-            font-size: 0.75rem; color: #aaaaaa; font-weight: 400;
+            font-size: 0.75rem; color: #636363; font-weight: 400;
           }
 
           @media (max-width: 600px) {
@@ -552,7 +552,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
                   <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 600, color: '#111', margin: '0 0 0.4rem' }}>
                     {place.name}
                   </h3>
-                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', lineHeight: 1.6, color: '#777', fontWeight: 300, margin: 0 }}>
+                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', lineHeight: 1.6, color: '#595959', fontWeight: 300, margin: 0 }}>
                     {place.description}
                   </p>
                 </div>
@@ -722,7 +722,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 0.58rem; font-weight: 600;
             letter-spacing: 0.22em; text-transform: uppercase;
-            color: #aaaaaa;
+            color: #636363;
             margin: 0 0 0.85rem;
             display: flex; align-items: center; gap: 0.75rem;
           }
@@ -758,7 +758,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           }
           .rj-wib-card-context {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.78rem; color: #888888;
+            font-size: 0.78rem; color: #595959;
             font-weight: 300; margin: 0; line-height: 1.5;
           }
           .rj-wib-card-arrow {
@@ -887,7 +887,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
                 <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', lineHeight: 1.7, color: '#555', fontWeight: 300, margin: 0 }}>{retreat.travel.fromDehradun}</p>
               </div>
               {retreat.travel.note && (
-                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', lineHeight: 1.7, color: '#888', fontWeight: 300, fontStyle: 'italic', margin: '0.5rem 0 0' }}>
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', lineHeight: 1.7, color: '#595959', fontWeight: 300, fontStyle: 'italic', margin: '0.5rem 0 0' }}>
                   {retreat.travel.note}
                 </p>
               )}
@@ -957,7 +957,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
       {/* SIGNATURE VISUAL BREAK — if image exists */}
       {retreat.signatureImage && (
         <section className="rj-signature">
-          <Image src={retreat.signatureImage} alt={retreat.signatureAlt || 'Himalayan landscape'} fill loading="lazy" sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 30%' }} />
+          <Image src={retreat.signatureImage} alt={retreat.signatureAlt || 'Himalayan landscape'} fill loading="lazy" quality={60} sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 30%' }} />
           <div className="rj-signature-text">
             <p className="rj-signature-quote">{retreat.signatureQuote || 'The mountains are calling.'}</p>
           </div>
@@ -1020,7 +1020,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             }
             .rj-rt-card-sub {
               font-family: var(--font-geist-sans), sans-serif;
-              font-size: 0.8rem; color: #888888;
+              font-size: 0.8rem; color: #595959;
               font-weight: 300; margin: 0;
             }
 
@@ -1172,7 +1172,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 0.62rem; font-weight: 400;
             letter-spacing: 0.18em; text-transform: uppercase;
-            color: #888888;
+            color: #595959;
             transition: border-color 0.2s, color 0.2s, transform 0.18s;
           }
           .rj-back-link:hover {
@@ -1188,7 +1188,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           .rj-cta-trust-item {
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
-            color: #aaaaaa; font-weight: 400;
+            color: #636363; font-weight: 400;
             display: flex; align-items: center; gap: 0.4rem;
           }
           .rj-cta-trust-dot {

@@ -230,7 +230,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
     fontSize: '0.82rem',
     fontWeight: 300,
     lineHeight: 1.8,
-    color: '#777777',
+    color: '#595959',
     margin: 0,
   }}>
     For a broader understanding of retreat formats, seasonal considerations, and how mountain

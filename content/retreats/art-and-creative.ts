@@ -9,16 +9,16 @@ export const artAndCreativeRetreat = {
   oneLineEssence: 'Emotional healing through art & yoga in a container designed for authentic expression.',
 
   /* ── Visual Assets ── */
-  heroImage: '/Images/art-retreat/hero.png',
+  heroImage: '/Images/art-retreat/hero.webp',
   heroAlt: 'Creative healing retreat in the Himalayas — painting and yoga with mountain views in Uttarakhand',
-  signatureImage: '/Images/art-retreat/signature.png',
+  signatureImage: '/Images/art-retreat/signature.webp',
   signatureAlt: 'Himalayan ridgeline at dawn — creative retreat landscape in Uttarakhand',
   signatureQuote: `Creativity is not what you produce. It's what you allow to emerge.`,
   galleryImages: [
-    { src: '/Images/art-retreat/yoga-morning.png', alt: 'Morning yoga session during art retreat in the Himalayan mountains' },
-    { src: '/Images/art-retreat/art-supplies.png', alt: 'Watercolor painting supplies at a creative healing retreat in India' },
-    { src: '/Images/art-retreat/sharing-circle.png', alt: 'Evening sharing circle at a Himalayan creative retreat' },
-    { src: '/Images/art-retreat/solo-sketching.png', alt: 'Solo sketching on a hilltop during a creative retreat in Uttarakhand' },
+    { src: '/Images/art-retreat/yoga-morning.webp', alt: 'Morning yoga session during art retreat in the Himalayan mountains' },
+    { src: '/Images/art-retreat/art-supplies.webp', alt: 'Watercolor painting supplies at a creative healing retreat in India' },
+    { src: '/Images/art-retreat/sharing-circle.webp', alt: 'Evening sharing circle at a Himalayan creative retreat' },
+    { src: '/Images/art-retreat/solo-sketching.webp', alt: 'Solo sketching on a hilltop during a creative retreat in Uttarakhand' },
   ],
 
   keyHighlights: ['Art & Yoga', 'Himalayan Setting', 'No Experience Needed', '3–7 Days'],
