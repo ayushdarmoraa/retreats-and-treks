@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 // ── Logo image path ──
-const LOGO_IMAGE = '/Images/logo/retreatsandtreks1.png';
+const LOGO_IMAGE = '/Images/logo/retreatsandtreks1-small.webp';
 
 export default function Header() {
   const [retreatOpen, setRetreatOpen] = useState(false);
