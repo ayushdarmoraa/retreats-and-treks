@@ -625,7 +625,7 @@ export default async function TrekHubPage({ params }: PageProps) {
               fill
               priority
               fetchPriority="high"
-              quality={60}
+              quality={45}
               sizes="100vw"
               style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
             />
@@ -676,9 +676,8 @@ export default async function TrekHubPage({ params }: PageProps) {
                     display: 'inline-flex', alignItems: 'center', gap: '0.4rem',
                     fontFamily: 'var(--font-geist-sans), sans-serif',
                     fontSize: '0.78rem', fontWeight: 400, color: 'rgba(255,255,255,0.9)',
-                    background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.25)',
+                    background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.25)',
                     borderRadius: '100px', padding: '6px 16px',
-                    backdropFilter: 'blur(4px)',
                   }}>
                     {trek.title} →
                   </span>
@@ -784,7 +783,7 @@ export default async function TrekHubPage({ params }: PageProps) {
                     alt={cardImg?.alt ?? trek.title}
                     fill
                     loading="lazy"
-                    quality={60}
+                    quality={45}
                     sizes="(max-width: 640px) 100vw, 50vw"
                     style={{ objectFit: 'cover', objectPosition: 'center' }}
                   />
@@ -818,7 +817,7 @@ export default async function TrekHubPage({ params }: PageProps) {
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderTop: '1px solid rgba(15,118,110,0.07)', paddingTop: '0.75rem' }}>
                     <span style={{
                       fontFamily: 'var(--font-geist-sans), sans-serif',
-                      fontSize: '0.75rem', fontWeight: 300, color: '#999999',
+                      fontSize: '0.75rem', fontWeight: 400, color: '#595959',
                     }}>{trek.duration}</span>
                     <span style={{
                       fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -880,7 +879,7 @@ export default async function TrekHubPage({ params }: PageProps) {
                   alt={img.alt}
                   fill
                   loading="lazy"
-                  quality={55}
+                  quality={45}
                   sizes="280px"
                   style={{ objectFit: 'cover' }}
                 />
@@ -939,13 +938,17 @@ export default async function TrekHubPage({ params }: PageProps) {
               marginBottom: '1.75rem',
             }}>{section.heading}</h2>
             <div
-              className={isFAQ ? 'faq-body' : undefined}
+              className={isFAQ ? 'faq-body guide-body' : 'guide-body'}
               style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '0.88rem', fontWeight: 300,
                 lineHeight: 1.85, color: '#555555',
               }}
             >
+              <style>{`
+                .guide-body a { text-decoration: underline; text-underline-offset: 2px; }
+                .guide-body a:hover { text-decoration-thickness: 2px; }
+              `}</style>
               {section.body}
             </div>
           </div>
@@ -963,7 +966,7 @@ export default async function TrekHubPage({ params }: PageProps) {
               alt={sectionImg.alt}
               fill
               loading="lazy"
-              quality={55}
+              quality={45}
               sizes="100vw"
               style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
             />
