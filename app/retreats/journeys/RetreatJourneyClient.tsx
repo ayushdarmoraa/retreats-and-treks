@@ -69,23 +69,33 @@ interface RetreatJourneyClientProps {
 }
 
 export default function RetreatJourneyClient({ retreat, locations, suggestedTrek }: RetreatJourneyClientProps) {
- // ✅ YAHAN andar hai useEffect
+ // Defer scroll-fade observer to after LCP paint
   useEffect(() => {
-    const els = document.querySelectorAll('.scroll-fade, .scroll-fade-stagger');
-    if (!els.length) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('sf-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-    els.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    const init = () => {
+      const els = document.querySelectorAll('.scroll-fade, .scroll-fade-stagger');
+      if (!els.length) return;
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('sf-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      );
+      els.forEach((el) => observer.observe(el));
+      return () => observer.disconnect();
+    };
+    // Use requestIdleCallback to defer after main thread is free
+    if ('requestIdleCallback' in window) {
+      const id = requestIdleCallback(init, { timeout: 2000 });
+      return () => cancelIdleCallback(id);
+    } else {
+      const tid = setTimeout(init, 500);
+      return () => clearTimeout(tid);
+    }
   }, []);
    return (
     <>
@@ -111,10 +121,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         }
         /* ── HERO IMAGE ── */
         .rj-hero { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 70vh; text-align: center; }
-        .rj-hero-img { position: absolute; inset: 0; overflow: hidden; }
-        .rj-hero-img img { transform-origin: center; }
-        
-        .rj-hero-img::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.55); z-index: 1; }
+        .rj-hero-img { position: absolute; inset: 0; }
         .rj-hero .rj-inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
         .rj-hero .rj-eyebrow { justify-content: center; }
         .rj-hero .rj-eyebrow-text { color: rgba(255,255,255,0.75); }
@@ -126,11 +133,8 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         .rj-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem; }
         @media (max-width: 600px) { .rj-gallery { grid-template-columns: 1fr; } }
         .rj-gallery-item { position: relative; border-radius: 10px; overflow: hidden; height: 260px; }
-        .rj-gallery-item img { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
-        .rj-gallery-item:hover img { transform: scale(1.05); }
         /* ── SIGNATURE ── */
         .rj-signature { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; height: 50vh; min-height: 400px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-        .rj-signature::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.35) 0%, rgba(15,118,110,0.45) 100%); z-index: 1; }
         .rj-signature-text { position: relative; z-index: 2; max-width: 44rem; text-align: center; padding: 2rem; }
         .rj-signature-quote { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.3rem, 3.5vw, 2.4rem); font-weight: 100; color: #ffffff; line-height: 1.4; letter-spacing: -0.03em; margin: 0; text-shadow: 0 4px 24px rgba(0,0,0,0.5); }
         /* ── MID-PAGE CTA ── */
