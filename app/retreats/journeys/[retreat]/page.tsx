@@ -44,9 +44,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const path = `/retreats/journeys/${retreat}`;
   const canonicalUrl = buildCanonicalUrl(path);
 
+  const seoDescription = `${retreatService.oneLineEssence} Join this curated retreat in the Indian Himalayas. Small groups, no experience needed.`;
+
+  const heroImage = 'heroImage' in retreatService ? (retreatService as Record<string, unknown>).heroImage as string | undefined : undefined;
+
   return {
-    title: `${retreatService.title} – Himalayan Retreat`,
-    description: retreatService.oneLineEssence,
+    title: `${retreatService.title} in the Himalayas – Retreats And Treks`,
+    description: seoDescription.length > 160 ? seoDescription.slice(0, 157) + '...' : seoDescription,
     alternates: {
       canonical: canonicalUrl,
     },
@@ -54,6 +58,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       index: true,
       follow: true,
     },
+    ...(heroImage ? {
+      openGraph: {
+        title: `${retreatService.title} in the Himalayas`,
+        description: retreatService.oneLineEssence,
+        url: canonicalUrl,
+        images: [{ url: heroImage, width: 1200, height: 630, alt: `${retreatService.title} retreat in the Himalayas` }],
+      },
+    } : {}),
   };
 }
 

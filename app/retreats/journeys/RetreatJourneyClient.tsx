@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import type { LocationId } from '@/config/locations';
 import MicroCommitment from '@/components/MicroCommitment';
 import { useEffect } from 'react';
@@ -15,6 +16,12 @@ interface RetreatService {
   readonly oneLineEssence: string;
   readonly description: string;
   readonly keyHighlights?: readonly string[];
+  readonly heroImage?: string;
+  readonly heroAlt?: string;
+  readonly signatureImage?: string;
+  readonly signatureAlt?: string;
+  readonly signatureQuote?: string;
+  readonly galleryImages?: readonly { readonly src: string; readonly alt: string }[];
   readonly forNotFor: {
     readonly for: readonly string[];
     readonly notFor: readonly string[];
@@ -82,70 +89,101 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
   }, []);
    return (
     <>
-      {/* HEADER */}
-      <section style={{
-        marginBottom: '0', marginTop: '0',
-        paddingTop: '5rem', paddingBottom: '5rem',
-        background: '#f7f9f7',
-        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-        borderBottom: '1px solid #e5e7eb',
-      }}>
-        <style>{`
-          .rj-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
+      <style>{`
+        .rj-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
+        .rj-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
+        .rj-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); flex-shrink: 0; }
+        .rj-eyebrow-text {
+          font-family: var(--font-geist-sans), sans-serif;
+          font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
+          color: #374151; font-weight: 500;
+        }
+        .rj-title {
+          font-family: var(--font-geist-sans), sans-serif;
+          font-size: clamp(2rem, 4vw, 2.8rem);
+          font-weight: 200; letter-spacing: -0.035em;
+          color: #111111; margin: 0 0 0.85rem; line-height: 1.05;
+        }
+        .rj-essence {
+          font-family: var(--font-geist-sans), sans-serif;
+          font-size: 1rem; color: #666666;
+          font-weight: 300; line-height: 1.75; margin: 0;
+        }
+        /* ── HERO IMAGE ── */
+        .rj-hero { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 70vh; text-align: center; }
+        .rj-hero-img { position: absolute; inset: 0; overflow: hidden; }
+        .rj-hero-img img { animation: rj-hero-zoom 20s infinite alternate linear; transform-origin: center; }
+        @keyframes rj-hero-zoom { from { transform: scale(1); } to { transform: scale(1.06); } }
+        .rj-hero-img::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.65) 50%, rgba(0,0,0,0.88) 100%); z-index: 1; }
+        .rj-hero .rj-inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
+        .rj-hero .rj-eyebrow { justify-content: center; }
+        .rj-hero .rj-eyebrow-text { color: rgba(255,255,255,0.75); }
+        .rj-hero .rj-eyebrow-line { background: rgba(255,255,255,0.5); }
+        .rj-hero .rj-title { color: #ffffff; text-shadow: 0 2px 32px rgba(0,0,0,0.7); }
+        .rj-hero .rj-essence { color: rgba(255,255,255,0.82); }
+        .rj-hero .rj-highlight-tag { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.85); }
+        /* ── GALLERY ── */
+        .rj-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem; }
+        @media (max-width: 600px) { .rj-gallery { grid-template-columns: 1fr; } }
+        .rj-gallery-item { position: relative; border-radius: 10px; overflow: hidden; height: 260px; }
+        .rj-gallery-item img { transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); }
+        .rj-gallery-item:hover img { transform: scale(1.05); }
+        /* ── SIGNATURE ── */
+        .rj-signature { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; height: 50vh; min-height: 400px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        .rj-signature::after { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,0,0,0.35) 0%, rgba(15,118,110,0.45) 100%); z-index: 1; }
+        .rj-signature-text { position: relative; z-index: 2; max-width: 44rem; text-align: center; padding: 2rem; }
+        .rj-signature-quote { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.3rem, 3.5vw, 2.4rem); font-weight: 100; color: #ffffff; line-height: 1.4; letter-spacing: -0.03em; margin: 0; text-shadow: 0 4px 24px rgba(0,0,0,0.5); }
+        /* ── MID-PAGE CTA ── */
+        .rj-mid-cta { width: 100vw; margin-left: calc(-50vw + 50%); background: #0a1f1c; padding: 4rem 0; text-align: center; }
+        .rj-mid-cta-inner { max-width: 44rem; margin: 0 auto; padding: 0 2rem; }
+        .rj-mid-cta h3 { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 200; color: #ffffff; margin: 0 0 0.75rem; letter-spacing: -0.02em; }
+        .rj-mid-cta p { font-family: var(--font-geist-sans), sans-serif; font-size: 0.85rem; color: rgba(255,255,255,0.55); font-weight: 300; margin: 0 0 2rem; line-height: 1.7; }
+        .rj-mid-cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2.25rem; background: var(--color-primary); color: #fff; text-decoration: none; font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; border-radius: 100px; transition: background 0.2s, transform 0.2s; }
+        .rj-mid-cta-btn:hover { background: #0d9e95; transform: translateY(-2px); }
+        .rj-mid-cta-micro { font-family: var(--font-geist-sans), sans-serif; font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 1rem; }
+      `}</style>
 
-          .rj-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
-          .rj-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  flex-shrink: 0; }
-          .rj-eyebrow-text {
-            font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase;
-            color: #374151; font-weight: 500;
-          }
-
-          .rj-title {
-            font-family: var(--font-geist-sans), sans-serif;
-            font-size: clamp(2rem, 4vw, 2.8rem);
-            font-weight: 200; letter-spacing: -0.035em;
-            color: #111111; margin: 0 0 0.85rem; line-height: 1.05;
-          }
-
-          .rj-essence {
-            font-family: var(--font-geist-sans), sans-serif;
-            font-size: 1rem; color: #666666;
-            font-weight: 300; line-height: 1.75; margin: 0;
-          }
-        `}</style>
-
-        <div className="rj-inner scroll-fade">
-          <div className="rj-eyebrow">
-            <span className="rj-eyebrow-line" />
-            <span className="rj-eyebrow-text">Retreat Journey</span>
+      {/* HEADER — with or without hero image */}
+      {retreat.heroImage ? (
+        <section className="rj-hero">
+          <div className="rj-hero-img">
+            <Image src={retreat.heroImage} alt={retreat.heroAlt || `${retreat.title} retreat in the Himalayas`} fill priority sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
           </div>
-          <h1 className="rj-title">{retreat.title}</h1>
-          <p className="rj-essence">{retreat.oneLineEssence}</p>
-
-          {retreat.keyHighlights && retreat.keyHighlights.length > 0 && (
-            <div style={{
-              display: 'flex', flexWrap: 'wrap', gap: '0.6rem',
-              marginTop: '1.75rem',
-            }}>
-              {retreat.keyHighlights.map((h, i) => (
-                <span key={i} className="rj-highlight-tag" style={{
-  fontFamily: 'var(--font-geist-sans), sans-serif',
-  fontSize: '0.68rem', fontWeight: 500,
-  letterSpacing: '0.08em', textTransform: 'uppercase',
-  color: '#374151',
-  background: 'rgba(15,118,110,0.08)',
-  border: '1px solid rgba(15,118,110,0.18)',
-  borderRadius: '4px',
-  padding: '0.4rem 0.85rem',
-}}>
-                  {h}
-                </span>
-              ))}
+          <div className="rj-inner scroll-fade">
+            <div className="rj-eyebrow">
+              <span className="rj-eyebrow-line" />
+              <span className="rj-eyebrow-text">Retreat Journey</span>
             </div>
-          )}
-        </div>
-      </section>
+            <h1 className="rj-title">{retreat.title}</h1>
+            <p className="rj-essence">{retreat.oneLineEssence}</p>
+            {retreat.keyHighlights && retreat.keyHighlights.length > 0 && (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginTop: '1.75rem', justifyContent: 'center' }}>
+                {retreat.keyHighlights.map((h, i) => (
+                  <span key={i} className="rj-highlight-tag" style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.25)', color: 'rgba(255,255,255,0.85)', borderRadius: '4px', padding: '0.4rem 0.85rem' }}>{h}</span>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      ) : (
+        <section style={{ marginBottom: '0', marginTop: '0', paddingTop: '5rem', paddingBottom: '5rem', background: '#f7f9f7', width: '100vw', marginLeft: 'calc(-50vw + 50%)', borderBottom: '1px solid #e5e7eb' }}>
+          <div className="rj-inner scroll-fade">
+            <div className="rj-eyebrow">
+              <span className="rj-eyebrow-line" />
+              <span className="rj-eyebrow-text">Retreat Journey</span>
+            </div>
+            <h1 className="rj-title">{retreat.title}</h1>
+            <p className="rj-essence">{retreat.oneLineEssence}</p>
+            {retreat.keyHighlights && retreat.keyHighlights.length > 0 && (
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginTop: '1.75rem' }}>
+                {retreat.keyHighlights.map((h, i) => (
+                  <span key={i} className="rj-highlight-tag" style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#374151', background: 'rgba(15,118,110,0.08)', border: '1px solid rgba(15,118,110,0.18)', borderRadius: '4px', padding: '0.4rem 0.85rem' }}>{h}</span>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+      )}
 
       {/* DESCRIPTION */}
       <section style={{
@@ -190,6 +228,17 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             <span className="rj-desc-eyebrow-text">About This Retreat</span>
           </div>
           <p className="rj-desc-body">{retreat.description}</p>
+
+          {/* GALLERY — if images exist */}
+          {retreat.galleryImages && retreat.galleryImages.length > 0 && (
+            <div className="rj-gallery scroll-fade" style={{ marginTop: '3rem' }}>
+              {retreat.galleryImages.map((img, i) => (
+                <div key={i} className="rj-gallery-item">
+                  <Image src={img.src} alt={img.alt} fill loading="lazy" sizes="(max-width: 600px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
@@ -359,6 +408,16 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* MID-PAGE CTA — after Who-This-Is-For */}
+      <section className="rj-mid-cta">
+        <div className="rj-mid-cta-inner">
+          <h3>Ready to explore this retreat?</h3>
+          <p>Talk with us directly — no forms, no commitment. Just a conversation about what you need.</p>
+          <a href={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I'm interested in the ${retreat.title} retreat. Can you tell me more?`)}`} className="rj-mid-cta-btn" target="_blank" rel="noopener noreferrer">Talk to Us on WhatsApp →</a>
+          <p className="rj-mid-cta-micro">Free consultation · No spam · Quick response</p>
         </div>
       </section>
 
@@ -894,6 +953,16 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           <p className="rj-ada-body">{retreat.adaptability}</p>
         </div>
       </section>
+
+      {/* SIGNATURE VISUAL BREAK — if image exists */}
+      {retreat.signatureImage && (
+        <section className="rj-signature">
+          <Image src={retreat.signatureImage} alt={retreat.signatureAlt || 'Himalayan landscape'} fill loading="lazy" sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 30%' }} />
+          <div className="rj-signature-text">
+            <p className="rj-signature-quote">{retreat.signatureQuote || 'The mountains are calling.'}</p>
+          </div>
+        </section>
+      )}
 
       {/* RELATED TREK */}
       {suggestedTrek && (
