@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
+import { preload } from 'react-dom';
 import TrekCard from '@/components/TrekCard';
 import Breadcrumb from '@/components/Breadcrumb';
 import { getTreksByLocation } from '@/lib/treks';
@@ -607,6 +608,10 @@ export default async function TrekHubPage({ params }: PageProps) {
 
   const guideSections = LOCATION_GUIDES[locationId] || [];
 
+  if (LOCATION_HERO_MAP[locationId]) {
+    preload(LOCATION_HERO_MAP[locationId], { as: 'image', fetchPriority: 'high' });
+  }
+
   return (
     <main style={{ width: '100%', padding: '0' }}>
 
@@ -625,7 +630,6 @@ export default async function TrekHubPage({ params }: PageProps) {
               src={LOCATION_HERO_MAP[locationId]}
               alt={LOCATION_HERO_ALT[locationId] || `Trekking destination ${locationData.name}, Uttarakhand`}
               fetchPriority="high"
-              decoding="async"
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}
             />
             <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.85) 100%)' }} />
