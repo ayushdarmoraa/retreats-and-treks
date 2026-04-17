@@ -46,6 +46,72 @@ const TREK_CARD_IMAGES: Record<string, { src: string; alt: string }> = {
   'dayara-bugyal-trek':{ src: '/Images/trek/region/garhwal.webp',       alt: 'Dayara Bugyal Trek — alpine meadow in Barsu, Uttarakhand' },
 };
 
+/* ── Section break images — inserted between guide sections ── */
+type SectionImage = { src: string; alt: string; caption?: string };
+const LOCATION_SECTION_IMAGES: Record<string, Record<number, SectionImage>> = {
+  sankri: {
+    // After section 0 (Why Sankri)
+    0: { src: '/Images/trek/itinerary/kedarkantha/day2.webp', alt: 'Trekkers hiking through snow-covered forest trail near Sankri, Uttarakhand', caption: 'Snow trail on the Kedarkantha route from Sankri basecamp' },
+    // After section 1 (Best Time)
+    1: { src: '/Images/trek/itinerary/har-ki-dun/day3.webp', alt: 'Har Ki Dun valley in summer with lush green meadows and Swargarohini peaks', caption: 'Summer meadows on the Har Ki Dun trail — best visited May–June' },
+    // After section 2 (Popular Treks)
+    2: { src: '/Images/trek/itinerary/kedarkantha/day4.webp', alt: 'Kedarkantha summit day — trekkers ascending through deep snow above treeline', caption: 'Summit approach on Kedarkantha — 3,810m on a clear winter morning' },
+    // After section 4 (How to Reach)
+    4: { src: '/Images/trek/itinerary/har-ki-dun/day1.webp', alt: 'Mountain road winding through the Tons Valley towards Sankri village', caption: 'The road to Sankri through the Tons Valley' },
+  },
+  chakrata: {
+    0: { src: '/Images/trek/region/budher.webp', alt: 'Dense deodar forest trail leading to Budher Caves in Chakrata', caption: 'Forest trail to Budher Caves — Chakrata\'s most distinctive route' },
+    2: { src: '/Images/trek/region/tigerfall.webp', alt: 'Tiger Fall cascade in Chakrata during monsoon season', caption: 'Tiger Fall at peak flow during the monsoon months' },
+  },
+  munsiyari: {
+    0: { src: '/Images/trek/region/Khaliya.webp', alt: 'Panchachuli peaks viewed from Khaliya Top meadow near Munsiyari', caption: 'Panchachuli panorama from the Khaliya Top summit meadow' },
+    2: { src: '/Images/trek/region/milamglacier.webp', alt: 'Milam Glacier moraine trail in the Johar Valley, Munsiyari', caption: 'The Milam Glacier approach through Johar Valley' },
+  },
+  lohajung: {
+    0: { src: '/Images/trek/itinerary/brahmatal/day3.webp', alt: 'Frozen Brahmatal lake surrounded by snow in winter', caption: 'Brahmatal lake frozen solid in January — Lohajung\'s signature view' },
+    1: { src: '/Images/trek/itinerary/roopkund/day4.webp', alt: 'High altitude terrain on the Roopkund trail above Bedni Bugyal', caption: 'Above the treeline on the Roopkund approach' },
+  },
+  joshimath: {
+    0: { src: '/Images/trek/itinerary/kuari-pass/day3.webp', alt: 'Panoramic Himalayan view from Kuari Pass ridge near Joshimath', caption: 'The Curzon Trail view from Kuari Pass — 3,876m' },
+    1: { src: '/Images/trek/itinerary/pangarchulla/day4.webp', alt: 'Alpine terrain on the Pangarchulla summit approach from Joshimath', caption: 'Pangarchulla summit approach at 4,590m' },
+  },
+};
+
+/* ── Photo gallery strip — showcases the terrain diversity ── */
+type GalleryImage = { src: string; alt: string };
+const LOCATION_GALLERY: Record<string, GalleryImage[]> = {
+  sankri: [
+    { src: '/Images/trek/itinerary/kedarkantha/day1.webp', alt: 'Sankri village basecamp — starting point for Kedarkantha and Har Ki Dun treks' },
+    { src: '/Images/trek/itinerary/kedarkantha/day3.webp', alt: 'Snow-covered alpine meadow above Sankri on the Kedarkantha trail' },
+    { src: '/Images/trek/itinerary/har-ki-dun/day2.webp', alt: 'Ancient wooden village architecture on the Har Ki Dun trail' },
+    { src: '/Images/trek/itinerary/kedarkantha/day5.webp', alt: 'Kedarkantha summit panorama — 360° view of Garhwal Himalayas' },
+    { src: '/Images/trek/itinerary/har-ki-dun/day4.webp', alt: 'Har Ki Dun glacial valley — the Valley of Gods at 3,566m' },
+    { src: '/Images/trek/itinerary/har-ki-dun/day5.webp', alt: 'Return trek from Har Ki Dun along the Supin River valley' },
+  ],
+  chakrata: [
+    { src: '/Images/trek/region/chakraweekend.webp', alt: 'Weekend camping in Chakrata forest — deodar canopy and campfire' },
+    { src: '/Images/trek/region/budher.webp', alt: 'Entrance to Budher Caves — ancient limestone formations in Chakrata' },
+    { src: '/Images/trek/region/tigerfall.webp', alt: 'Tiger Fall waterfall surrounded by lush forest in Chakrata' },
+    { src: '/Images/trek/region/chakraguided.webp', alt: 'Guided nature walk through Chakrata ridge trail' },
+  ],
+  munsiyari: [
+    { src: '/Images/trek/region/Khaliya.webp', alt: 'Khaliya Top alpine meadow with Panchachuli peaks in the background' },
+    { src: '/Images/trek/region/milamglacier.webp', alt: 'Milam Glacier and moraine field in the Johar Valley' },
+  ],
+  lohajung: [
+    { src: '/Images/trek/itinerary/brahmatal/day1.webp', alt: 'Oak and rhododendron forest trail from Lohajung village' },
+    { src: '/Images/trek/itinerary/brahmatal/day2.webp', alt: 'Snow ridge above treeline on the Brahmatal winter trek' },
+    { src: '/Images/trek/itinerary/brahmatal/day4.webp', alt: 'Trishul and Nanda Ghunti peaks seen from the Brahmatal trail' },
+    { src: '/Images/trek/itinerary/roopkund/day2.webp', alt: 'Ali Bugyal alpine meadow on the Roopkund trek route' },
+  ],
+  joshimath: [
+    { src: '/Images/trek/itinerary/kuari-pass/day1.webp', alt: 'Auli forest trail at the start of the Kuari Pass trek' },
+    { src: '/Images/trek/itinerary/kuari-pass/day2.webp', alt: 'Panoramic mountain view from the Curzon Trail near Kuari Pass' },
+    { src: '/Images/trek/itinerary/pangarchulla/day2.webp', alt: 'Mountain campsite on the Pangarchulla trek from Joshimath' },
+    { src: '/Images/trek/itinerary/pangarchulla/day5.webp', alt: 'Pangarchulla peak summit view at dawn' },
+  ],
+};
+
 // ── Per-location authority content ──────────────────────────
 type GuideSection = { heading: string; body: React.ReactNode };
 
@@ -778,62 +844,184 @@ export default async function TrekHubPage({ params }: PageProps) {
   </section>
 )}
 
-      {/* ── AUTHORITY GUIDE SECTIONS — alternating bg ── */}
+      {/* ── TERRAIN PHOTO GALLERY ── */}
+      {(LOCATION_GALLERY[locationId]?.length ?? 0) > 0 && (
+        <section style={{
+          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+          background: '#ffffff',
+          paddingTop: '3.5rem', paddingBottom: '3.5rem',
+          borderBottom: '1px solid #e5e7eb',
+        }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.75rem' }}>
+              <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', display: 'inline-block' }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500 }}>On The Trail</span>
+            </div>
+            <h2 style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+              fontWeight: 200, letterSpacing: '-0.03em',
+              color: '#111111', lineHeight: 1.15, marginBottom: '1.5rem',
+            }}>What the {locationData.name} Terrain Looks Like</h2>
+          </div>
+          <div style={{
+            display: 'flex', gap: '0.5rem', overflowX: 'auto' as const,
+            padding: '0 2rem', scrollSnapType: 'x mandatory' as const,
+            WebkitOverflowScrolling: 'touch' as const,
+          }}>
+            {LOCATION_GALLERY[locationId]!.map((img, idx) => (
+              <div key={idx} style={{
+                flex: '0 0 280px', height: '200px', position: 'relative',
+                borderRadius: '10px', overflow: 'hidden',
+                scrollSnapAlign: 'start' as const,
+              }}>
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  loading="lazy"
+                  quality={55}
+                  sizes="280px"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* ── AUTHORITY GUIDE SECTIONS — alternating bg + section images ── */}
 {guideSections.length > 0 ? (
   guideSections.map((section, i) => {
     const isFAQ = section.heading.toLowerCase().includes('frequently asked');
+    const sectionImg = LOCATION_SECTION_IMAGES[locationId]?.[i];
+    const showMidCTA = i === 3; // Insert mid-page CTA after section 3
+
     return (
-      <section key={i} style={{
-        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-        background: i % 2 === 0 ? '#f7f9f7' : '#ffffff',
-        paddingTop: '4rem', paddingBottom: '4rem',
-        borderBottom: '1px solid #e5e7eb',
-      }}>
-        <style>{`
-          .faq-body > p {
-            background: #ffffff;
-            border: 1px solid #e5e7eb;
-            border-left: 3px solid var(--color-primary);
-            border-radius: 8px;
-            padding: 1.1rem 1.25rem;
-            margin: 0 0 0.75rem !important;
-          }
-          .faq-body > p:last-child { margin-bottom: 0 !important; }
-          .faq-body > p > strong:first-child {
-            display: block;
-            font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.88rem;
-            font-weight: 500;
-            color: #111111;
-            margin-bottom: 0.5rem;
-          }
-        `}</style>
-        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>
-              {isFAQ ? 'FAQ' : String(i + 1).padStart(2, '0')}
-            </span>
-          </div>
-          <h2 style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
-            fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
-            fontWeight: 200, letterSpacing: '-0.03em',
-            color: '#111111', lineHeight: 1.2,
-            marginBottom: '1.75rem',
-          }}>{section.heading}</h2>
-          <div
-            className={isFAQ ? 'faq-body' : undefined}
-            style={{
+      <div key={i}>
+        <section style={{
+          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+          background: i % 2 === 0 ? '#f7f9f7' : '#ffffff',
+          paddingTop: '4rem', paddingBottom: '4rem',
+          borderBottom: '1px solid #e5e7eb',
+        }}>
+          <style>{`
+            .faq-body > p {
+              background: #ffffff;
+              border: 1px solid #e5e7eb;
+              border-left: 3px solid var(--color-primary);
+              border-radius: 8px;
+              padding: 1.1rem 1.25rem;
+              margin: 0 0 0.75rem !important;
+            }
+            .faq-body > p:last-child { margin-bottom: 0 !important; }
+            .faq-body > p > strong:first-child {
+              display: block;
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.88rem;
+              font-weight: 500;
+              color: #111111;
+              margin-bottom: 0.5rem;
+            }
+          `}</style>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>
+                {isFAQ ? 'FAQ' : String(i + 1).padStart(2, '0')}
+              </span>
+            </div>
+            <h2 style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
-              fontSize: '0.88rem', fontWeight: 300,
-              lineHeight: 1.85, color: '#555555',
-            }}
-          >
-            {section.body}
+              fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
+              fontWeight: 200, letterSpacing: '-0.03em',
+              color: '#111111', lineHeight: 1.2,
+              marginBottom: '1.75rem',
+            }}>{section.heading}</h2>
+            <div
+              className={isFAQ ? 'faq-body' : undefined}
+              style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.88rem', fontWeight: 300,
+                lineHeight: 1.85, color: '#555555',
+              }}
+            >
+              {section.body}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Section break image */}
+        {sectionImg && (
+          <figure style={{
+            width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+            position: 'relative', height: '320px',
+            overflow: 'hidden', margin: 0,
+          }}>
+            <Image
+              src={sectionImg.src}
+              alt={sectionImg.alt}
+              fill
+              loading="lazy"
+              quality={55}
+              sizes="100vw"
+              style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
+            />
+            <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 50%)' }} />
+            {sectionImg.caption && (
+              <figcaption style={{
+                position: 'absolute', bottom: '1.25rem', left: 0, right: 0,
+                textAlign: 'center',
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.8rem', fontWeight: 300, color: 'rgba(255,255,255,0.85)',
+                letterSpacing: '0.02em',
+              }}>
+                {sectionImg.caption}
+              </figcaption>
+            )}
+          </figure>
+        )}
+
+        {/* Mid-page conversion CTA */}
+        {showMidCTA && (
+          <section style={{
+            width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+            background: 'linear-gradient(135deg, #0a3d35 0%, #145a4a 100%)',
+            paddingTop: '3.5rem', paddingBottom: '3.5rem',
+          }}>
+            <div style={{ maxWidth: '40rem', margin: '0 auto', padding: '0 2rem', textAlign: 'center' as const }}>
+              <p style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: 'clamp(1.2rem, 3vw, 1.6rem)',
+                fontWeight: 200, color: '#ffffff', lineHeight: 1.4,
+                marginBottom: '1.5rem',
+              }}>
+                Need help choosing between {locationData.name} treks?
+              </p>
+              <a
+                href={`https://wa.me/919760446101?text=Hi%2C%20I%20need%20help%20choosing%20a%20trek%20from%20${encodeURIComponent(locationData.name)}.`}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                  padding: '0.85rem 2rem', background: '#ffffff', color: '#0a3d35',
+                  fontFamily: 'var(--font-geist-sans), sans-serif',
+                  fontSize: '0.78rem', fontWeight: 600, letterSpacing: '0.06em',
+                  textTransform: 'uppercase' as const, borderRadius: '100px',
+                  textDecoration: 'none',
+                }}
+              >
+                Get a Free Recommendation →
+              </a>
+              <p style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.72rem', fontWeight: 300, color: 'rgba(255,255,255,0.5)',
+                marginTop: '1rem',
+              }}>
+                Expert advice · 2-minute response · No obligation
+              </p>
+            </div>
+          </section>
+        )}
+      </div>
     );
   })
 ) : (
