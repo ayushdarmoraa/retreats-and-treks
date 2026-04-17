@@ -41,7 +41,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
           font-family: var(--font-geist-sans), sans-serif;
           font-size: 0.75rem;
           font-weight: 300;
-          color: #999999;
+          color: #595959;
           text-decoration: none;
           letter-spacing: 0.02em;
           transition: color 0.2s;

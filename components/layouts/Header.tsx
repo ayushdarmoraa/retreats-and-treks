@@ -176,12 +176,12 @@ export default function Header() {
               <Image
                 src={LOGO_IMAGE}
                 alt="Himalayan Retreats"
-                width={200}
-                height={212}
+                width={68}
+                height={72}
                 onError={() => setLogoError(true)}
                 style={{ height: '72px', width: 'auto', display: 'block', transition: 'none' }}
                 priority
-                quality={75}
+                quality={60}
               />
             ) : (
               <div style={{ display: 'flex', flexDirection: 'column', lineHeight: 1 }}>

@@ -25,9 +25,9 @@ interface TrackedPageProps {
 
 export default function TrackedPage({ page, children, style }: TrackedPageProps) {
   return (
-    <div style={{ position: 'relative', ...style }}>
+    <main style={{ position: 'relative', ...style }}>
       <ScrollTracker page={page} />
       {children}
-    </div>
+    </main>
   );
 }

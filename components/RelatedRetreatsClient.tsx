@@ -185,7 +185,7 @@ export default function RelatedRetreatsClient({
       font-size: 0.82rem;
       font-weight: 300;
       line-height: 1.7;
-      color: #777777;
+      color: #595959;
       margin: 0;
     }
 

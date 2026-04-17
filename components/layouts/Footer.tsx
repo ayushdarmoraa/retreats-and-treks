@@ -135,7 +135,7 @@ export default function Footer() {
           font-weight: 600;
           letter-spacing: 0.14em;
           text-transform: uppercase;
-          color: rgba(255,255,255,0.35);
+          color: rgba(255,255,255,0.6);
           margin: 0 0 16px 0;
         }
         .ft-list {
@@ -189,7 +189,7 @@ export default function Footer() {
           gap: 0.5rem;
           font-size: 0.78rem;
           font-weight: 400;
-          color: rgba(255,255,255,0.45);
+          color: rgba(255,255,255,0.6);
           letter-spacing: 0.01em;
           white-space: nowrap;
         }
@@ -219,7 +219,7 @@ export default function Footer() {
           flex-wrap: wrap;
           gap: 12px;
           font-size: 0.75rem;
-          color: rgba(255,255,255,0.3);
+          color: rgba(255,255,255,0.55);
           font-weight: 400;
         }
         .ft-bottom-links {
@@ -228,7 +228,7 @@ export default function Footer() {
           flex-wrap: wrap;
         }
         .ft-bottom a {
-          color: rgba(255,255,255,0.3);
+          color: rgba(255,255,255,0.55);
           text-decoration: none;
           transition: color 0.15s;
         }
@@ -271,7 +271,7 @@ export default function Footer() {
                 />
               </Link>
               <p className="ft-brand-tagline">Curated Himalayan retreats & treks — designed, not sold.</p>
-              <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', fontWeight: 300, color: 'rgba(255,255,255,0.35)', margin: 0, letterSpacing: '0.02em' }}>Explore treks across Uttarakhand, Himachal & beyond.</p>
+              <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', fontWeight: 300, color: 'rgba(255,255,255,0.55)', margin: 0, letterSpacing: '0.02em' }}>Explore treks across Uttarakhand, Himachal & beyond.</p>
             </div>
             <div className="ft-brand-right">
               <Link href="/contact" className="ft-cta-btn">Plan Your Journey →</Link>
