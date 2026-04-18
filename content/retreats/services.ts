@@ -10,6 +10,8 @@ import { burnoutRecoveryRetreat } from './burnout-recovery';
 import { yogaAndMovementRetreat } from './yoga-and-movement';
 import { meditationAndSilenceRetreat } from './meditation-and-silence';
 import { artAndCreativeRetreat } from './art-and-creative';
+import { trekAndPaintRetreat } from './trek-and-paint';
+import { weekendArtRetreat } from './weekend-art-retreat';
 import { soundHealingRetreat } from './sound-healing';
 import { weekendRetreat } from './weekend-retreat';
 import { privateAndCustomRetreat } from './private-and-custom';
@@ -26,6 +28,8 @@ export const RETREAT_SERVICES = [
   yogaAndMovementRetreat,
   meditationAndSilenceRetreat,
   artAndCreativeRetreat,
+  trekAndPaintRetreat,
+  weekendArtRetreat,
   soundHealingRetreat,
   weekendRetreat,
   privateAndCustomRetreat,

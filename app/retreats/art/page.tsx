@@ -2,230 +2,504 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
-import Breadcrumb from '@/components/Breadcrumb';
+import { artAndCreativeRetreat } from '@/content/retreats/art-and-creative';
+import { trekAndPaintRetreat } from '@/content/retreats/trek-and-paint';
+import { weekendArtRetreat } from '@/content/retreats/weekend-art-retreat';
 
 export const dynamic = 'force-static';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Art Retreats | Retreats And Treks',
+    title: 'Art Retreats in the Himalayas — Creative Healing, Painting & Yoga | Retreats And Treks',
     description:
-      'Creative retreats combining art, nature, and healing practices in the Himalayas. Expressive arts, yoga, and nature immersion designed for authentic expression.',
+      'Art retreats in India combining painting, writing, movement & yoga in the Himalayan mountains. No experience needed. 2–7 day programs in Mussoorie, Chakrata & Rishikesh. Small groups, real guidance.',
     alternates: {
       canonical: buildCanonicalUrl('/retreats/art'),
     },
-    robots: {
-      index: true,
-      follow: true,
-    },
+    robots: { index: true, follow: true },
   };
 }
 
-const artPrograms = [
+const RETREATS = [
   {
-    title: 'Creative Healing Retreat',
-    description: 'Emotional healing through art & yoga in a container designed for authentic expression.',
-    href: '/retreats/journeys/art-and-creative',
+    ...artAndCreativeRetreat,
+    duration: '3–7 Days',
+    format: 'Immersive',
     image: '/Images/services/artcreative.webp',
-    tag: 'Available Now',
+    href: '/retreats/journeys/art-and-creative',
   },
   {
-    title: 'Trek & Paint Retreat',
-    description: 'Combine Himalayan treks with plein-air painting sessions in stunning mountain landscapes.',
-    href: null,
-    image: null,
-    tag: 'Coming Soon',
+    ...trekAndPaintRetreat,
+    duration: '5–7 Days',
+    format: 'Active + Creative',
+    image: '/Images/blog/painting-in-the-himalayas.webp',
+    href: '/retreats/journeys/trek-and-paint',
   },
   {
-    title: 'Art & Nature Retreat',
-    description: 'Immersive nature-based art practice — drawing, journaling, and creating in forest and mountain settings.',
-    href: null,
-    image: null,
-    tag: 'Coming Soon',
+    ...weekendArtRetreat,
+    duration: '2–3 Days',
+    format: 'Short Escape',
+    image: '/Images/blog/can-a-retreat-unblock-creativity.webp',
+    href: '/retreats/journeys/weekend-art-retreat',
   },
+];
+
+const LOCATIONS = [
+  { name: 'Mussoorie', id: 'mussoorie', context: 'Mountain vistas awaken aesthetic sense. The beauty around you invites creative response.', image: '/Images/location/mussoorie.webp' },
+  { name: 'Chakrata', id: 'chakrata', context: 'Forest silence creates space for internal creativity to emerge without distraction.', image: '/Images/location/chakrata.webp' },
+  { name: 'Rishikesh', id: 'rishikesh', context: 'Spiritual ground supports the vulnerability that authentic creation requires.', image: '/Images/location/rishikesh.webp' },
 ];
 
 export default function ArtRetreatsPage() {
   return (
-    <main style={{ maxWidth: '72rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+    <main style={{ width: '100%', padding: 0, overflowX: 'hidden' }}>
 
       <style>{`
-        .art-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-          gap: 1.75rem;
+        .art-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
+        .art-wide { max-width: 72rem; margin: 0 auto; padding: 0 2rem; }
+        .art-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+        .art-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); flex-shrink: 0; }
+        .art-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase; color: #374151; font-weight: 500; }
+        .art-section-title { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200; letter-spacing: -0.03em; color: #111111; line-height: 1.15; margin: 0 0 2rem; }
+        .art-section-title span { color: #374151; }
+        .art-body-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.92rem; line-height: 1.85; color: #555; font-weight: 300; margin: 0; }
+
+        /* Hero */
+        .art-hero { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 72vh; text-align: center; }
+        .art-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.85) 100%); }
+
+        /* Retreat Cards */
+        .art-retreat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        @media (max-width: 640px) { .art-retreat-grid { grid-template-columns: 1fr; } }
+        .art-retreat-card {
+          display: flex; flex-direction: column; text-decoration: none; color: inherit;
+          background: #fff; border: 1px solid rgba(15,118,110,0.1); border-radius: 8px;
+          overflow: hidden; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
         }
-        .art-card {
-          display: block;
-          text-decoration: none;
-          color: inherit;
-          border-radius: 6px;
-          overflow: hidden;
-          background: #ffffff;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.05), 0 4px 18px rgba(0,0,0,0.06);
-          transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.35s;
+        .art-retreat-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,0.1); border-color: rgba(15,118,110,0.3); }
+        .art-retreat-card-img { position: relative; height: 220px; overflow: hidden; }
+        .art-retreat-card-img img { transition: transform 0.6s; }
+        .art-retreat-card:hover .art-retreat-card-img img { transform: scale(1.05); }
+        .art-retreat-card-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+        .art-retreat-card-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: auto; padding-top: 1rem; }
+
+        /* Location Cards */
+        .art-loc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; }
+        .art-loc-card {
+          position: relative; height: 280px; border-radius: 10px; overflow: hidden;
+          text-decoration: none; color: #fff; display: flex; align-items: flex-end;
+          transition: transform 0.3s, box-shadow 0.3s;
         }
-        .art-card:hover {
-          transform: translateY(-7px);
-          box-shadow: 0 16px 48px rgba(0,0,0,0.12);
+        .art-loc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.15); }
+        .art-loc-card-content { position: relative; z-index: 2; padding: 1.5rem; width: 100%; }
+
+        /* Unique Cards */
+        .art-unique-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
+        .art-unique-card {
+          background: #fff; border: 1px solid #eef0ee; border-radius: 8px; padding: 1.5rem;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.03); transition: border-color 0.2s, box-shadow 0.2s;
         }
-        .art-card-disabled {
-          pointer-events: none;
+        .art-unique-card:hover { border-color: rgba(15,118,110,0.25); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+
+        /* CTA */
+        .art-cta-btn {
+          display: inline-flex; align-items: center; gap: 0.5rem;
+          padding: 0.85rem 2.25rem; background: var(--color-primary);
+          color: #fff; text-decoration: none; font-family: var(--font-geist-sans), sans-serif;
+          font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em;
+          border-radius: 100px; transition: background 0.2s, transform 0.2s;
         }
-        .art-img-wrap { position: relative; overflow: hidden; }
-        .art-img {
-          width: 100%; height: 210px;
-          object-fit: cover; display: block;
-          transition: transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94);
-        }
-        .art-card:hover .art-img { transform: scale(1.07); }
-        .art-img-overlay {
-          position: absolute; inset: 0;
-          background: linear-gradient(to top, rgba(2,10,2,0.65) 0%, rgba(2,10,2,0.1) 50%, rgba(2,10,2,0) 100%);
-        }
-        .art-img-tag {
-          position: absolute; top: 1rem; left: 1rem;
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.52rem; letter-spacing: 0.24em;
-          text-transform: uppercase; color: #ffffff;
-          background: var(--color-primary); padding: 4px 10px;
-          border-radius: 2px; font-weight: 600;
-        }
-        .art-img-tag-soon {
-          background: #888888;
-        }
-        .art-placeholder {
-          width: 100%; height: 210px;
-          display: flex; align-items: center; justify-content: center;
-          background: linear-gradient(135deg, #f0f4f0 0%, #e8ede8 100%);
-          color: #aaaaaa;
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.85rem;
-          font-weight: 300;
-        }
-        .art-body {
-          padding: 1.4rem 1.5rem 1.6rem;
-          border-top: 2px solid var(--color-primary);
-        }
-        .art-card-title {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 1rem; font-weight: 600; color: #111111;
-          margin: 0 0 0.45rem; letter-spacing: -0.015em; line-height: 1.25;
-        }
-        .art-card-desc {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.87rem; color: #777777;
-          margin: 0 0 1.35rem; line-height: 1.8; font-weight: 300;
-        }
-        .art-cta {
+        .art-cta-btn:hover { background: #0d9e95; transform: translateY(-2px); }
+        .art-cta-outline {
           display: inline-flex; align-items: center; gap: 0.4rem;
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.6rem; font-weight: 700;
-          letter-spacing: 0.2em; text-transform: uppercase;
-          color: #374151;
+          padding: 0.7rem 1.8rem; border: 1px solid rgba(15,118,110,0.3);
+          color: var(--color-primary); text-decoration: none; font-family: var(--font-geist-sans), sans-serif;
+          font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em;
+          border-radius: 100px; transition: all 0.2s;
         }
+        .art-cta-outline:hover { border-color: var(--color-primary); background: rgba(15,118,110,0.04); }
       `}</style>
 
-      <Breadcrumb
-        items={[
-          { name: 'Home', href: '/' },
-          { name: 'Retreats', href: '/retreats' },
-          { name: 'Art Retreats' },
-        ]}
-      />
-
-      {/* Header */}
-      <div style={{ marginBottom: '3rem' }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-          <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
-          <span style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
-            fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em',
-            textTransform: 'uppercase', color: '#374151'
-          }}>
-            Art & Creativity
-          </span>
+      {/* ═══════════════════════════════════════════
+          SECTION 1 — CINEMATIC HERO
+      ═══════════════════════════════════════════ */}
+      <section className="art-hero">
+        <div style={{ position: 'absolute', inset: 0 }}>
+          <img
+            src="/Images/art-retreat/category-hero.webp"
+            alt="Art retreats in the Himalayas — painting, yoga, and creative healing in the mountains"
+            fetchPriority="high"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}
+          />
+          <div className="art-hero-overlay" />
         </div>
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem', justifyContent: 'center' }}>
+            <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.5)', display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>Art & Creativity</span>
+            <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.5)', display: 'inline-block' }} />
+          </div>
+          <h1 style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: 'clamp(2rem, 4.5vw, 3rem)', fontWeight: 200,
+            letterSpacing: '-0.035em', color: '#ffffff', margin: '0 0 1rem',
+            lineHeight: 1.05, textShadow: '0 2px 32px rgba(0,0,0,0.7)',
+          }}>
+            Art Retreats in the Himalayas
+          </h1>
+          <p style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '1rem', color: 'rgba(255,255,255,0.82)',
+            fontWeight: 300, lineHeight: 1.75, maxWidth: '38rem', margin: '0 0 2rem',
+          }}>
+            Emotional healing through painting, writing, movement & yoga — no experience needed. Small groups. Real guidance. Mountain silence.
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', justifyContent: 'center', marginBottom: '2rem' }}>
+            {['Art & Yoga', 'No Experience Needed', '2–7 Days', 'Small Groups'].map((tag) => (
+              <span key={tag} style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 500,
+                letterSpacing: '0.08em', textTransform: 'uppercase',
+                background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.25)',
+                color: 'rgba(255,255,255,0.85)', borderRadius: '4px', padding: '0.4rem 0.85rem',
+              }}>{tag}</span>
+            ))}
+          </div>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I\'m interested in your art retreats in the Himalayas. Can you tell me more?')}`} className="art-cta-btn" target="_blank" rel="noopener noreferrer">Talk to Us on WhatsApp →</a>
+            <a href="#retreats" className="art-cta-outline" style={{ borderColor: 'rgba(255,255,255,0.35)', color: 'rgba(255,255,255,0.9)' }}>Explore Retreats ↓</a>
+          </div>
+        </div>
+      </section>
 
-        <h1 style={{
-          fontFamily: 'var(--font-geist-sans), sans-serif',
-          fontSize: 'clamp(1.6rem, 3vw, 2.2rem)',
-          fontWeight: 200,
-          letterSpacing: '-0.03em',
-          color: '#111111',
-          lineHeight: 1.15,
-          margin: '0 0 1rem 0',
-        }}>
-          Art Retreats
-        </h1>
+      {/* ═══════════════════════════════════════════
+          SECTION 2 — WHAT IS AN ART RETREAT? (SEO)
+      ═══════════════════════════════════════════ */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+        <div className="art-inner">
+          <div className="art-eyebrow">
+            <span className="art-eyebrow-line" />
+            <span className="art-eyebrow-text">Understanding Art Retreats</span>
+          </div>
+          <h2 className="art-section-title">What is an <span>art retreat</span>?</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+            <p className="art-body-text">
+              An art retreat is a structured period of creative immersion — typically 2 to 7 days — where you step away from daily life to focus entirely on creative expression. Unlike art classes, the goal is not technical mastery. It is reconnection with your own creative voice.
+            </p>
+            <p className="art-body-text">
+              In the Himalayas, art retreats take on a different character. Mountain silence, forest light, and the sheer scale of the landscape become active participants in your creative process. Many participants discover that their most authentic work emerges not from instruction, but from the combination of creative space, nature, and stillness.
+            </p>
+            <p className="art-body-text">
+              Our art retreats use multiple mediums — painting, writing, collage, movement, and music — as doorways to emotional truth and creative reconnection. No experience is needed. No talent is required. Only curiosity and a willingness to create without judgment.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <p style={{
-          fontFamily: 'var(--font-geist-sans), sans-serif',
-          fontSize: '0.92rem',
-          fontWeight: 300,
-          lineHeight: 1.85,
-          color: '#555555',
-          margin: 0,
-          maxWidth: '52rem',
-        }}>
-          Creative retreats combining art, nature, and healing practices. These programs use expressive arts — painting, writing, movement, and other forms — as doorways to emotional truth and creative reconnection.
-        </p>
-
-        <p style={{
-          fontFamily: 'var(--font-geist-sans), sans-serif',
-          fontSize: '0.88rem',
-          fontWeight: 300,
-          lineHeight: 1.85,
-          color: '#555555',
-          marginTop: '1rem',
-        }}>
-          <Link href="/creative-retreat" style={{ color: '#374151', textDecoration: 'underline' }}>
-            Learn about the Creative Healing Retreat experience →
-          </Link>
-        </p>
-      </div>
-
-      {/* Program Cards */}
-      <div className="art-grid">
-        {artPrograms.map((program) => {
-          const isAvailable = program.href !== null;
-
-          const inner = (
-            <>
-              <div className="art-img-wrap">
-                {program.image ? (
-                  <Image src={program.image} alt={program.title} className="art-img" width={400} height={210} sizes="(max-width: 768px) 100vw, 33vw" quality={70} />
-                ) : (
-                  <div className="art-placeholder">Coming Soon</div>
-                )}
-                {program.image && <div className="art-img-overlay" />}
-                <span className={`art-img-tag${!isAvailable ? ' art-img-tag-soon' : ''}`}>
-                  {program.tag}
-                </span>
+      {/* ═══════════════════════════════════════════
+          SECTION 3 — WHY ART RETREATS WORK
+      ═══════════════════════════════════════════ */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+        <div className="art-inner">
+          <div className="art-eyebrow">
+            <span className="art-eyebrow-line" />
+            <span className="art-eyebrow-text">Why It Works</span>
+          </div>
+          <h2 className="art-section-title">Why art retreats <span>heal</span></h2>
+          <p className="art-body-text" style={{ marginBottom: '2.5rem' }}>
+            This is not an art class. It is a healing container where creativity is the modality — and the Himalayas are the co-facilitator.
+          </p>
+          <div className="art-unique-grid">
+            {artAndCreativeRetreat.whatMakesItUnique!.points.map((pt, i) => (
+              <div key={i} className="art-unique-card">
+                <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 600, color: '#111', margin: '0 0 0.6rem', letterSpacing: '-0.01em' }}>
+                  {pt.title}
+                </h3>
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', lineHeight: 1.7, color: '#666', fontWeight: 300, margin: 0 }}>
+                  {pt.description}
+                </p>
               </div>
-              <div className="art-body">
-                <h2 className="art-card-title">{program.title}</h2>
-                <p className="art-card-desc">{program.description}</p>
-                {isAvailable && <div className="art-cta">Learn more →</div>}
-              </div>
-            </>
-          );
+            ))}
+          </div>
+        </div>
+      </section>
 
-          if (isAvailable) {
-            return (
-              <Link key={program.title} href={program.href as string} className="art-card">
-                {inner}
-              </Link>
-            );
-          }
+      {/* ═══════════════════════════════════════════
+          VISUAL BREAK 1
+      ═══════════════════════════════════════════ */}
+      <figure style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', height: '300px', overflow: 'hidden', margin: 0 }}>
+        <img src="/Images/whyhimalaya/nature.webp" alt="Himalayan landscape — the natural setting for creative retreats" loading="lazy"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }} />
+        <figcaption style={{ position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em', fontStyle: 'italic' }}>
+          The Himalayan landscape becomes part of the creative process
+        </figcaption>
+      </figure>
 
-          return (
-            <div key={program.title} className="art-card art-card-disabled">
-              {inner}
+      {/* ═══════════════════════════════════════════
+          SECTION 4 — WHO THIS IS FOR
+      ═══════════════════════════════════════════ */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+        <div className="art-inner">
+          <div className="art-eyebrow">
+            <span className="art-eyebrow-line" />
+            <span className="art-eyebrow-text">Is This For You</span>
+          </div>
+          <h2 className="art-section-title">Who art retreats are <span>for</span></h2>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+            <div>
+              <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', margin: '0 0 1.25rem' }}>
+                ✓ Perfect if you are
+              </h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                {[
+                  'A complete beginner who has never painted or created before',
+                  'Feeling creatively blocked and wanting to reconnect with expression',
+                  'An experienced artist seeking new inspiration in a natural setting',
+                  'Recovering from burnout and wanting healing through creativity',
+                  'Looking for a retreat that combines art with yoga and nature',
+                  'Wanting to gift yourself a transformative experience',
+                ].map((item, i) => (
+                  <li key={i} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', lineHeight: 1.6, color: '#444', fontWeight: 300, display: 'flex', gap: '0.6rem', alignItems: 'flex-start' }}>
+                    <span style={{ width: 16, height: 16, borderRadius: '50%', background: 'var(--color-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '0.15rem', fontSize: '0.5rem', color: '#fff', fontWeight: 700 }}>✓</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
             </div>
-          );
-        })}
-      </div>
+            <div>
+              <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', margin: '0 0 1.25rem' }}>
+                — Not the right fit if you want
+              </h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                {[
+                  'Technical art mastery or academic instruction',
+                  'Portfolio-ready or market-oriented artwork',
+                  'External validation, critiques, or grading',
+                  'A structured classroom environment',
+                ].map((item, i) => (
+                  <li key={i} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', lineHeight: 1.6, color: '#777', fontWeight: 300, display: 'flex', gap: '0.6rem', alignItems: 'flex-start' }}>
+                    <span style={{ width: 16, height: 16, borderRadius: '50%', background: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '0.15rem', fontSize: '0.6rem', color: '#999' }}>—</span>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 5 — RETREAT OPTIONS (THE MONEY SECTION)
+      ═══════════════════════════════════════════ */}
+      <section id="retreats" style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+        <div className="art-wide">
+          <div className="art-eyebrow" style={{ justifyContent: 'center' }}>
+            <span className="art-eyebrow-line" />
+            <span className="art-eyebrow-text">Choose Your Retreat</span>
+            <span className="art-eyebrow-line" />
+          </div>
+          <h2 className="art-section-title" style={{ textAlign: 'center' }}>Our art <span>retreats</span></h2>
+          <p className="art-body-text" style={{ textAlign: 'center', maxWidth: '40rem', margin: '0 auto 3rem' }}>
+            Three formats, one promise: authentic creative expression in the Himalayan mountains. Choose the retreat that matches your time and intention.
+          </p>
+
+          <div className="art-retreat-grid">
+            {RETREATS.map((retreat) => (
+              <Link key={retreat.slug} href={retreat.href} className="art-retreat-card">
+                <div className="art-retreat-card-img">
+                  <Image src={retreat.image} alt={retreat.title} fill loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }} />
+                  <span style={{
+                    position: 'absolute', top: '1rem', left: '1rem',
+                    fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.52rem',
+                    letterSpacing: '0.24em', textTransform: 'uppercase', color: '#fff',
+                    background: 'var(--color-primary)', padding: '4px 10px', borderRadius: '2px', fontWeight: 600,
+                  }}>{retreat.format}</span>
+                </div>
+                <div className="art-retreat-card-body">
+                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', color: '#999', fontWeight: 400, margin: '0 0 0.4rem', letterSpacing: '0.02em' }}>
+                    {retreat.duration}
+                  </p>
+                  <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.05rem', fontWeight: 500, color: '#111', margin: '0 0 0.6rem', letterSpacing: '-0.015em' }}>
+                    {retreat.title}
+                  </h3>
+                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: '#666', fontWeight: 300, lineHeight: 1.7, margin: '0' }}>
+                    {retreat.oneLineEssence}
+                  </p>
+                  <div className="art-retreat-card-tags">
+                    {retreat.keyHighlights.map((tag) => (
+                      <span key={tag} style={{
+                        fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', fontWeight: 500,
+                        letterSpacing: '0.06em', textTransform: 'uppercase',
+                        background: 'rgba(15,118,110,0.07)', color: 'var(--color-primary)',
+                        borderRadius: '3px', padding: '3px 8px',
+                      }}>{tag}</span>
+                    ))}
+                  </div>
+                  <div style={{ marginTop: '1.25rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)' }}>
+                    View Details →
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 6 — A DAY AT THE RETREAT
+      ═══════════════════════════════════════════ */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+        <div className="art-inner">
+          <div className="art-eyebrow">
+            <span className="art-eyebrow-line" />
+            <span className="art-eyebrow-text">The Experience</span>
+          </div>
+          <h2 className="art-section-title">What a day <span>looks like</span></h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
+            {[
+              { time: 'Morning', text: 'Gentle yoga or movement practice. Then a guided creative session — the facilitator introduces a theme, prompt, or technique. You explore through your chosen medium.' },
+              { time: 'Midday', text: 'Break. Tea, reflection, a walk. The mountain air does something to your thinking — ideas arrive unbidden.' },
+              { time: 'Afternoon', text: 'Open creation time. This is your space. Paint, write, sketch, collage. The facilitator is available. The work is entirely yours.' },
+              { time: 'Evening', text: 'Simple dinner. Then, if you wish, a sharing circle. Show your work and receive presence for it. Or keep it private. Both are honored.' },
+            ].map((phase, idx) => (
+              <div key={idx} style={{ display: 'grid', gridTemplateColumns: '2rem 1fr', gap: '0 1.25rem' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#fff', border: '2px solid var(--color-primary)', marginTop: '0.28rem', zIndex: 1 }} />
+                  {idx < 3 && <span style={{ width: 1, flex: 1, background: 'linear-gradient(to bottom, rgba(15,118,110,0.3), rgba(15,118,110,0.05))', marginTop: 4, minHeight: '1.5rem' }} />}
+                </div>
+                <div style={{ paddingBottom: idx < 3 ? '2rem' : 0 }}>
+                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.58rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: '#374151', margin: '0 0 0.4rem' }}>{phase.time}</p>
+                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: '#555', fontWeight: 300, margin: 0 }}>{phase.text}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          VISUAL BREAK 2
+      ═══════════════════════════════════════════ */}
+      <figure style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', height: '300px', overflow: 'hidden', margin: 0 }}>
+        <img src="/Images/hero/valley-forest.webp" alt="Himalayan valley — art retreat landscape" loading="lazy"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 35%', display: 'block' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }} />
+        <figcaption style={{ position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em', fontStyle: 'italic' }}>
+          The valleys provide the silence creativity needs
+        </figcaption>
+      </figure>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 7 — WHERE WE HOST ART RETREATS
+      ═══════════════════════════════════════════ */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+        <div className="art-wide">
+          <div className="art-eyebrow" style={{ justifyContent: 'center' }}>
+            <span className="art-eyebrow-line" />
+            <span className="art-eyebrow-text">Locations</span>
+            <span className="art-eyebrow-line" />
+          </div>
+          <h2 className="art-section-title" style={{ textAlign: 'center' }}>Where we host art <span>retreats</span></h2>
+          <p className="art-body-text" style={{ textAlign: 'center', maxWidth: '38rem', margin: '0 auto 3rem' }}>
+            Each location brings a different creative energy. Mussoorie for aesthetic beauty. Chakrata for forest silence. Rishikesh for spiritual depth.
+          </p>
+          <div className="art-loc-grid">
+            {LOCATIONS.map((loc) => (
+              <Link key={loc.id} href={`/retreats/${loc.id}`} className="art-loc-card">
+                <Image src={loc.image} alt={`${loc.name} — art retreat location`} fill loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)' }} />
+                <div className="art-loc-card-content">
+                  <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.1rem', fontWeight: 400, color: '#fff', margin: '0 0 0.4rem', letterSpacing: '-0.01em' }}>
+                    {loc.name}
+                  </h3>
+                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.75)', fontWeight: 300, lineHeight: 1.6, margin: 0 }}>
+                    {loc.context}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          MID-PAGE CTA
+      ═══════════════════════════════════════════ */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#0a1f1c', padding: '4rem 0', textAlign: 'center' }}>
+        <div style={{ maxWidth: '44rem', margin: '0 auto', padding: '0 2rem' }}>
+          <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)', fontWeight: 200, color: '#ffffff', margin: '0 0 0.75rem', letterSpacing: '-0.02em' }}>
+            Ready to explore your creative retreat?
+          </h3>
+          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, margin: '0 0 2rem', lineHeight: 1.7 }}>
+            Talk with us directly — no forms, no commitment. Just a conversation about what you need.
+          </p>
+          <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I\'m interested in your art retreats in the Himalayas. Can you help me choose the right format?')}`} className="art-cta-btn" target="_blank" rel="noopener noreferrer">
+            Talk to Us on WhatsApp →
+          </a>
+          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', color: 'rgba(255,255,255,0.3)', marginTop: '1rem' }}>
+            Free consultation · No spam · Quick response
+          </p>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 8 — GALLERY
+      ═══════════════════════════════════════════ */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+        <div className="art-inner">
+          <div className="art-eyebrow">
+            <span className="art-eyebrow-line" />
+            <span className="art-eyebrow-text">Moments</span>
+          </div>
+          <h2 className="art-section-title">From our <span>retreats</span></h2>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1.5rem' }}>
+            {artAndCreativeRetreat.galleryImages.map((img, i) => (
+              <div key={i} style={{ position: 'relative', borderRadius: '10px', overflow: 'hidden', height: '240px' }}>
+                <Image src={img.src} alt={img.alt} fill loading="lazy" quality={55} sizes="(max-width: 600px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 9 — BOTTOM CTA
+      ═══════════════════════════════════════════ */}
+      <section style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        position: 'relative', overflow: 'hidden',
+        minHeight: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center',
+        textAlign: 'center',
+      }}>
+        <div style={{ position: 'absolute', inset: 0 }}>
+          <img src="/Images/location/mussoorie.webp" alt="Mountain retreat setting" loading="lazy"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,31,28,0.85)' }} />
+        </div>
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '44rem', padding: '4rem 2rem' }}>
+          <h2 style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 200,
+            color: '#ffffff', margin: '0 0 1rem', letterSpacing: '-0.02em',
+          }}>
+            Begin Your Creative Retreat
+          </h2>
+          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', fontWeight: 300, lineHeight: 1.75, margin: '0 0 2rem' }}>
+            No fixed dates. No rigid schedules. We design each retreat around you — your time, your medium, your intention. The mountains are always ready.
+          </p>
+          <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I want to book an art retreat in the Himalayas. Can we discuss dates and options?')}`} className="art-cta-btn" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.85rem', padding: '1rem 2.5rem' }}>
+            Book Your Art Retreat →
+          </a>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
+            {['Small groups', 'No fixed dates', 'Fully custom'].map((trust) => (
+              <span key={trust} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', color: 'rgba(255,255,255,0.4)', fontWeight: 400, letterSpacing: '0.05em' }}>
+                {trust}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
 
     </main>
   );
