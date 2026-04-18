@@ -98,7 +98,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
     }
   }, []);
    return (
-    <>
+    <div style={{ overflowX: 'hidden', width: '100%' }}>
       <style>{`
         .rj-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
         .rj-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
@@ -458,6 +458,26 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         </section>
       )}
 
+      {/* ── VISUAL BREAK: Mountain landscape ── */}
+      <figure style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        position: 'relative', height: '280px',
+        overflow: 'hidden', margin: 0,
+      }}>
+        <img
+          src="/Images/whyhimalaya/nature.webp"
+          alt="Himalayan mountain landscape — natural setting for creative healing retreats"
+          loading="lazy"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%)' }} />
+        <figcaption style={{
+          position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center',
+          fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem',
+          color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em',
+        }}>The Himalayan landscape becomes part of the healing process</figcaption>
+      </figure>
+
       {/* WHAT MAKES IT UNIQUE — optional */}
       {retreat.whatMakesItUnique && (
         <section style={{
@@ -528,6 +548,28 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             </div>
           </div>
         </section>
+      )}
+
+      {/* ── VISUAL BREAK: Mountain verandah ── */}
+      {retreat.experiences && retreat.experiences.length > 0 && (
+        <figure style={{
+          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+          position: 'relative', height: '280px',
+          overflow: 'hidden', margin: 0,
+        }}>
+          <img
+            src="/Images/location/mussoorie.webp"
+            alt="Mountain retreat verandah in Mussoorie — the primary location for creative healing retreats"
+            loading="lazy"
+            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%', display: 'block' }}
+          />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%)' }} />
+          <figcaption style={{
+            position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center',
+            fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem',
+            color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em',
+          }}>Our retreat spaces in Mussoorie — where creativity meets the mountains</figcaption>
+        </figure>
       )}
 
       {/* PLACES WE EXPLORE — optional */}
@@ -671,6 +713,26 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           </div>
         </div>
       </section>
+
+      {/* ── VISUAL BREAK: Evening mountain light ── */}
+      <figure style={{
+        width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+        position: 'relative', height: '280px',
+        overflow: 'hidden', margin: 0,
+      }}>
+        <img
+          src="/Images/hero/valley-forest.webp"
+          alt="Evening light across Himalayan valley forest — retreat setting for creative healing"
+          loading="lazy"
+          style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 35%', display: 'block' }}
+        />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.45) 0%, transparent 50%)' }} />
+        <figcaption style={{
+          position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center',
+          fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem',
+          color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em',
+        }}>The Himalayan valleys provide the silence creativity needs</figcaption>
+      </figure>
 
      {/* WHERE IT WORKS BEST */}
       <section style={{
@@ -1248,6 +1310,6 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
 
         </div>
       </section>
-    </>
+    </div>
   );
 }
