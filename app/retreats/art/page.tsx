@@ -71,7 +71,7 @@ const ART_TESTIMONIALS = [
 
 export default function ArtRetreatsPage() {
   return (
-    <main style={{ width: '100%', padding: 0, overflowX: 'hidden' }}>
+    <main style={{ width: '100%', padding: 0, overflowX: 'hidden', marginTop: '-68px' }}>
 
       <style>{`
         .art-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
@@ -84,11 +84,12 @@ export default function ArtRetreatsPage() {
         .art-body-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.92rem; line-height: 1.85; color: #555; font-weight: 300; margin: 0; }
 
         /* Hero */
-        .art-hero { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 72vh; text-align: center; }
+        .art-hero { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 82vh; text-align: center; padding-top: 68px; }
         .art-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.85) 100%); }
 
         /* Retreat Cards */
-        .art-retreat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .art-retreat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        @media (max-width: 960px) { .art-retreat-grid { grid-template-columns: 1fr 1fr; } }
         @media (max-width: 640px) { .art-retreat-grid { grid-template-columns: 1fr; } }
         .art-retreat-card {
           display: flex; flex-direction: column; text-decoration: none; color: inherit;
@@ -138,10 +139,13 @@ export default function ArtRetreatsPage() {
         }
         .art-cta-outline:hover { border-color: var(--color-primary); background: rgba(15,118,110,0.04); }
 
+        /* Who grid responsive */
+        @media (max-width: 640px) { .art-who-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; } }
+
         /* Testimonials */
         .art-test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
         @media (max-width: 768px) { .art-test-grid { grid-template-columns: 1fr; } }
-        .art-test-card { background: #fff; border: 1px solid rgba(15,118,110,0.1); border-radius: 4px; padding: 2rem 1.75rem; display: flex; flex-direction: column; gap: 1rem; position: relative; overflow: hidden; transition: border-color 0.25s; }
+        .art-test-card { background: #fff; border: 1px solid rgba(15,118,110,0.1); border-radius: 8px; padding: 2rem 1.75rem; display: flex; flex-direction: column; gap: 1rem; position: relative; overflow: hidden; transition: border-color 0.25s; }
         .art-test-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--color-primary); transform: scaleX(0); transform-origin: left; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1); }
         .art-test-card:hover { border-color: rgba(15,118,110,0.25); }
         .art-test-card:hover::before { transform: scaleX(1); }
@@ -224,7 +228,7 @@ export default function ArtRetreatsPage() {
       {/* ═══════════════════════════════════════════
           SECTION 2 — WHAT IS AN ART RETREAT? (SEO)
       ═══════════════════════════════════════════ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
         <div className="art-inner">
           <div className="art-eyebrow">
             <span className="art-eyebrow-line" />
@@ -248,7 +252,7 @@ export default function ArtRetreatsPage() {
       {/* ═══════════════════════════════════════════
           SECTION 3 — WHY ART RETREATS WORK
       ═══════════════════════════════════════════ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
         <div className="art-inner">
           <div className="art-eyebrow">
             <span className="art-eyebrow-line" />
@@ -276,7 +280,7 @@ export default function ArtRetreatsPage() {
       {/* ═══════════════════════════════════════════
           VISUAL BREAK 1
       ═══════════════════════════════════════════ */}
-      <figure style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', height: '300px', overflow: 'hidden', margin: 0 }}>
+      <figure style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', height: '300px', overflow: 'hidden', margin: 0, padding: 0 }}>
         <img src="/Images/whyhimalaya/nature.webp" alt="Himalayan landscape — the natural setting for creative retreats" loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }} />
@@ -288,14 +292,14 @@ export default function ArtRetreatsPage() {
       {/* ═══════════════════════════════════════════
           SECTION 4 — WHO THIS IS FOR
       ═══════════════════════════════════════════ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
         <div className="art-inner">
           <div className="art-eyebrow">
             <span className="art-eyebrow-line" />
             <span className="art-eyebrow-text">Is This For You</span>
           </div>
           <h2 className="art-section-title">Who art retreats are <span>for</span></h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }} className="art-who-grid">
             <div>
               <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', margin: '0 0 1.25rem' }}>
                 ✓ Perfect if you are
@@ -341,7 +345,7 @@ export default function ArtRetreatsPage() {
       {/* ═══════════════════════════════════════════
           SECTION 5 — RETREAT OPTIONS (THE MONEY SECTION)
       ═══════════════════════════════════════════ */}
-      <section id="retreats" style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+      <section id="retreats" style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
         <div className="art-wide">
           <div className="art-eyebrow" style={{ justifyContent: 'center' }}>
             <span className="art-eyebrow-line" />
@@ -415,7 +419,7 @@ export default function ArtRetreatsPage() {
       {/* ═══════════════════════════════════════════
           SECTION 6 — A DAY AT THE RETREAT
       ═══════════════════════════════════════════ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
         <div className="art-inner">
           <div className="art-eyebrow">
             <span className="art-eyebrow-line" />
@@ -447,7 +451,7 @@ export default function ArtRetreatsPage() {
       {/* ═══════════════════════════════════════════
           VISUAL BREAK 2
       ═══════════════════════════════════════════ */}
-      <figure style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', height: '300px', overflow: 'hidden', margin: 0 }}>
+      <figure style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', height: '300px', overflow: 'hidden', margin: 0, padding: 0 }}>
         <img src="/Images/hero/valley-forest.webp" alt="Himalayan valley — art retreat landscape" loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 35%', display: 'block' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }} />
@@ -459,7 +463,7 @@ export default function ArtRetreatsPage() {
       {/* ═══════════════════════════════════════════
           SECTION 7 — WHERE WE HOST ART RETREATS
       ═══════════════════════════════════════════ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
         <div className="art-wide">
           <div className="art-eyebrow" style={{ justifyContent: 'center' }}>
             <span className="art-eyebrow-line" />
@@ -512,11 +516,11 @@ export default function ArtRetreatsPage() {
       {/* ═══════════════════════════════════════════
           SECTION 7.5 — TESTIMONIALS (SOCIAL PROOF)
       ═══════════════════════════════════════════ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
         <div className="art-wide">
           <div className="art-eyebrow" style={{ justifyContent: 'center' }}>
             <span className="art-eyebrow-line" />
-            <span className="art-eyebrow-text">Trekker Stories</span>
+            <span className="art-eyebrow-text">Guest Stories</span>
             <span className="art-eyebrow-line" />
           </div>
           <h2 className="art-section-title" style={{ textAlign: 'center' }}>Real <span>retreat experiences</span></h2>
@@ -540,7 +544,7 @@ export default function ArtRetreatsPage() {
       {/* ═══════════════════════════════════════════
           SECTION 8 — GALLERY
       ═══════════════════════════════════════════ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
         <div className="art-inner">
           <div className="art-eyebrow">
             <span className="art-eyebrow-line" />
