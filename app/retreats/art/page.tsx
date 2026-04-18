@@ -71,7 +71,7 @@ const ART_TESTIMONIALS = [
 
 export default function ArtRetreatsPage() {
   return (
-    <main style={{ width: '100%', padding: 0, overflowX: 'hidden', marginTop: '-68px' }}>
+    <main style={{ width: '100%', maxWidth: '100%', padding: 0, paddingTop: 0, overflowX: 'hidden' }}>
 
       <style>{`
         .art-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
