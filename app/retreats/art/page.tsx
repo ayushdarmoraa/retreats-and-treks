@@ -198,29 +198,9 @@ export default function ArtRetreatsPage() {
               }}>{tag}</span>
             ))}
           </div>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I\'m interested in your art retreats in the Himalayas. Can you tell me more?')}`} className="art-cta-btn" target="_blank" rel="noopener noreferrer">Talk to Us on WhatsApp →</a>
-            <a href="#retreats" className="art-cta-outline" style={{ borderColor: 'rgba(255,255,255,0.35)', color: 'rgba(255,255,255,0.9)' }}>Explore Retreats ↓</a>
-          </div>
-        </div>
-        {/* Hero Info Strip */}
-        <div style={{
-          position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 3,
-          background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)',
-          borderTop: '1px solid rgba(255,255,255,0.1)',
-        }}>
-          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0.85rem 2rem', display: 'flex', justifyContent: 'center', gap: '2.5rem', flexWrap: 'wrap' }}>
-            {[
-              { label: 'Next Retreat', value: 'October 2026' },
-              { label: 'Starting From', value: '₹14,000' },
-              { label: 'Group Size', value: 'Max 10' },
-              { label: 'Seats Available', value: '8 of 10' },
-            ].map((item) => (
-              <div key={item.label} style={{ textAlign: 'center' }}>
-                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.55rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', margin: '0 0 0.15rem' }}>{item.label}</p>
-                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 400, color: '#fff', margin: 0 }}>{item.value}</p>
-              </div>
-            ))}
+          <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '2.5rem' }}>
+            <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I\'m interested in your art retreats in the Himalayas. Can you tell me more?')}`} className="art-cta-btn" target="_blank" rel="noopener noreferrer" style={{ padding: '1rem 2.5rem', fontSize: '0.82rem' }}>Talk to Us on WhatsApp →</a>
+            <a href="#retreats" className="art-cta-outline" style={{ borderColor: 'rgba(255,255,255,0.35)', color: 'rgba(255,255,255,0.9)', padding: '0.9rem 2rem', fontSize: '0.78rem' }}>Explore Retreats ↓</a>
           </div>
         </div>
       </section>
