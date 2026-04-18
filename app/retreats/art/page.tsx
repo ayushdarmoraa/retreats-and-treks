@@ -27,6 +27,10 @@ const RETREATS = [
     format: 'Immersive',
     image: '/Images/services/artcreative.webp',
     href: '/retreats/journeys/art-and-creative',
+    price: '₹35,000',
+    outcome: 'Return with authentic creative work — and the memory that creativity is your natural state.',
+    nextBatch: 'Oct 2026',
+    seats: 8,
   },
   {
     ...trekAndPaintRetreat,
@@ -34,6 +38,10 @@ const RETREATS = [
     format: 'Active + Creative',
     image: '/Images/blog/painting-in-the-himalayas.webp',
     href: '/retreats/journeys/trek-and-paint',
+    price: '₹30,000',
+    outcome: 'Walk into Himalayan landscapes by day, paint what you see by evening.',
+    nextBatch: 'Booking Open',
+    seats: 10,
   },
   {
     ...weekendArtRetreat,
@@ -41,6 +49,10 @@ const RETREATS = [
     format: 'Short Escape',
     image: '/Images/blog/can-a-retreat-unblock-creativity.webp',
     href: '/retreats/journeys/weekend-art-retreat',
+    price: '₹14,000',
+    outcome: 'Two days is enough to remember why you create. Start here.',
+    nextBatch: 'Flexible Dates',
+    seats: 10,
   },
 ];
 
@@ -49,6 +61,13 @@ const LOCATIONS = [
   { name: 'Chakrata', id: 'chakrata', context: 'Forest silence creates space for internal creativity to emerge without distraction.', image: '/Images/location/chakrata.webp' },
   { name: 'Rishikesh', id: 'rishikesh', context: 'Spiritual ground supports the vulnerability that authentic creation requires.', image: '/Images/location/rishikesh.webp' },
 ];
+
+const ART_TESTIMONIALS = [
+  { name: 'Aditi', retreat: 'Art & Creative Healing', text: 'I booked this retreat heavily burnt out. I hadn\'t painted in ten years. By day three, I was crying over a canvas, and I felt infinitely lighter. It\'s not an art class, it\'s an unburdening.' },
+  { name: 'Rohan', retreat: 'Trek & Paint', text: 'Painting a Himalayan sunrise live, sitting on a ridge, changes how you see the world. The facilitators held space so beautifully. Zero pressure, pure creation.' },
+  { name: 'Meera', retreat: 'Weekend Art Escape', text: 'I didn\'t know I needed the silence. The combination of early yoga, pine forests, and watercolors cracked something open for me. I went back to the city with a fresh mind.' },
+];
+
 
 export default function ArtRetreatsPage() {
   return (
@@ -118,6 +137,17 @@ export default function ArtRetreatsPage() {
           border-radius: 100px; transition: all 0.2s;
         }
         .art-cta-outline:hover { border-color: var(--color-primary); background: rgba(15,118,110,0.04); }
+
+        /* Testimonials */
+        .art-test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        @media (max-width: 768px) { .art-test-grid { grid-template-columns: 1fr; } }
+        .art-test-card { background: #fff; border: 1px solid rgba(15,118,110,0.1); border-radius: 4px; padding: 2rem 1.75rem; display: flex; flex-direction: column; gap: 1rem; position: relative; overflow: hidden; transition: border-color 0.25s; }
+        .art-test-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--color-primary); transform: scaleX(0); transform-origin: left; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1); }
+        .art-test-card:hover { border-color: rgba(15,118,110,0.25); }
+        .art-test-card:hover::before { transform: scaleX(1); }
+        .art-test-quote { font-family: var(--font-geist-sans), sans-serif; font-size: 0.85rem; font-weight: 300; font-style: italic; color: #555; line-height: 1.8; margin: 0; }
+        .art-test-author { display: flex; align-items: center; gap: 0.75rem; margin-top: auto; }
+        .art-test-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--color-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-geist-sans), sans-serif; font-size: 0.8rem; font-weight: 500; flex-shrink: 0; }
       `}</style>
 
       {/* ═══════════════════════════════════════════
@@ -167,6 +197,26 @@ export default function ArtRetreatsPage() {
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', justifyContent: 'center' }}>
             <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I\'m interested in your art retreats in the Himalayas. Can you tell me more?')}`} className="art-cta-btn" target="_blank" rel="noopener noreferrer">Talk to Us on WhatsApp →</a>
             <a href="#retreats" className="art-cta-outline" style={{ borderColor: 'rgba(255,255,255,0.35)', color: 'rgba(255,255,255,0.9)' }}>Explore Retreats ↓</a>
+          </div>
+        </div>
+        {/* Hero Info Strip */}
+        <div style={{
+          position: 'absolute', bottom: 0, left: 0, right: 0, zIndex: 3,
+          background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)',
+          borderTop: '1px solid rgba(255,255,255,0.1)',
+        }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0.85rem 2rem', display: 'flex', justifyContent: 'center', gap: '2.5rem', flexWrap: 'wrap' }}>
+            {[
+              { label: 'Next Retreat', value: 'October 2026' },
+              { label: 'Starting From', value: '₹14,000' },
+              { label: 'Group Size', value: 'Max 10' },
+              { label: 'Seats Available', value: '8 of 10' },
+            ].map((item) => (
+              <div key={item.label} style={{ textAlign: 'center' }}>
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.55rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.5)', margin: '0 0 0.15rem' }}>{item.label}</p>
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 400, color: '#fff', margin: 0 }}>{item.value}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -320,11 +370,16 @@ export default function ArtRetreatsPage() {
                   <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', color: '#999', fontWeight: 400, margin: '0 0 0.4rem', letterSpacing: '0.02em' }}>
                     {retreat.duration}
                   </p>
-                  <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.05rem', fontWeight: 500, color: '#111', margin: '0 0 0.6rem', letterSpacing: '-0.015em' }}>
-                    {retreat.title}
-                  </h3>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', margin: '0 0 0.6rem' }}>
+                    <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.05rem', fontWeight: 500, color: '#111', margin: '0', letterSpacing: '-0.015em' }}>
+                      {retreat.title}
+                    </h3>
+                    <div style={{ textAlign: 'right' }}>
+                      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 600, color: '#111', display: 'block' }}>{retreat.price}</span>
+                    </div>
+                  </div>
                   <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: '#666', fontWeight: 300, lineHeight: 1.7, margin: '0' }}>
-                    {retreat.oneLineEssence}
+                    {retreat.outcome}
                   </p>
                   <div className="art-retreat-card-tags">
                     {retreat.keyHighlights.map((tag) => (
@@ -336,8 +391,19 @@ export default function ArtRetreatsPage() {
                       }}>{tag}</span>
                     ))}
                   </div>
-                  <div style={{ marginTop: '1.25rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)' }}>
-                    View Details →
+                  
+                  <div style={{ marginTop: '1.25rem', paddingTop: '1rem', borderTop: '1px solid #f0f0f0', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.2rem' }}>
+                      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, color: '#d97706', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                        {retreat.nextBatch}
+                      </span>
+                      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', color: '#888' }}>
+                        Only {retreat.seats} seats total
+                      </span>
+                    </div>
+                    <div style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)' }}>
+                      View Details →
+                    </div>
                   </div>
                 </div>
               </Link>
@@ -440,6 +506,34 @@ export default function ArtRetreatsPage() {
           <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', color: 'rgba(255,255,255,0.3)', marginTop: '1rem' }}>
             Free consultation · No spam · Quick response
           </p>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 7.5 — TESTIMONIALS (SOCIAL PROOF)
+      ═══════════════════════════════════════════ */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+        <div className="art-wide">
+          <div className="art-eyebrow" style={{ justifyContent: 'center' }}>
+            <span className="art-eyebrow-line" />
+            <span className="art-eyebrow-text">Trekker Stories</span>
+            <span className="art-eyebrow-line" />
+          </div>
+          <h2 className="art-section-title" style={{ textAlign: 'center' }}>Real <span>retreat experiences</span></h2>
+          <div className="art-test-grid" style={{ marginTop: '3rem' }}>
+            {ART_TESTIMONIALS.map((t, i) => (
+              <div key={i} className="art-test-card">
+                <p className="art-test-quote">&ldquo;{t.text}&rdquo;</p>
+                <div className="art-test-author">
+                  <span className="art-test-avatar">{t.name[0]}</span>
+                  <div>
+                    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', fontWeight: 400, color: '#222', margin: 0 }}>{t.name}</p>
+                    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', fontWeight: 300, color: '#888', margin: 0 }}>{t.retreat}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
