@@ -1080,6 +1080,74 @@ export default async function TrekHubPage({ params }: PageProps) {
         </div>
       </section>
 
+      {/* ── CROSS-LINK: COMBINE WITH A RETREAT (Chakrata only) ── */}
+      {locationId === 'chakrata' && (
+        <section style={{
+          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+          background: '#f7f9f7',
+          paddingTop: '4rem', paddingBottom: '4rem',
+          borderTop: '1px solid #e5e7eb',
+        }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)' }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500 }}>Beyond the Trek</span>
+            </div>
+            <h2 style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200,
+              letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15,
+              margin: '0 0 0.75rem',
+            }}>
+              Combine your trek with a <span style={{ color: '#374151' }}>retreat</span>
+            </h2>
+            <p style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.88rem', color: '#777', fontWeight: 300,
+              lineHeight: 1.7, margin: '0 0 2rem',
+            }}>
+              Chakrata is one of the few Himalayan destinations where trek and retreat operate from the same base. A 2-day trek followed by a 3-day retreat is our most popular combination — no additional travel needed.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem' }}>
+              {[
+                { title: 'Weekend Retreat', desc: '2 nights / 3 days. Forest stay, guided sessions, bonfire. Ideal after a trek.', href: '/retreats/chakrata/weekend-retreat-from-dehradun' },
+                { title: 'Meditation Retreat', desc: 'Guided meditation, breathwork, silent walks. Deepen the stillness from your trek.', href: '/retreats/chakrata/meditation-retreat' },
+                { title: 'Yoga Retreat', desc: 'Asana, pranayama, and forest living. Recover and stretch after mountain trails.', href: '/retreats/chakrata/yoga-retreat' },
+                { title: 'All Chakrata Retreats', desc: 'Browse burnout recovery, digital detox, and more retreat formats in Chakrata.', href: '/retreats/chakrata' },
+              ].map((card) => (
+                <Link
+                  key={card.title}
+                  href={card.href}
+                  style={{
+                    display: 'block', textDecoration: 'none', color: 'inherit',
+                    background: '#ffffff', border: '1px solid #eef0ee', borderRadius: '8px',
+                    padding: '1.5rem',
+                    transition: 'transform 0.3s, box-shadow 0.3s, border-color 0.3s',
+                  }}
+                  className="ck-cross-card"
+                >
+                  <h3 style={{
+                    fontFamily: 'var(--font-geist-sans), sans-serif',
+                    fontSize: '0.92rem', fontWeight: 500, color: '#111',
+                    margin: '0 0 0.4rem',
+                  }}>{card.title}</h3>
+                  <p style={{
+                    fontFamily: 'var(--font-geist-sans), sans-serif',
+                    fontSize: '0.78rem', color: '#666', fontWeight: 300,
+                    lineHeight: 1.6, margin: '0 0 0.75rem',
+                  }}>{card.desc}</p>
+                  <span style={{
+                    fontFamily: 'var(--font-geist-sans), sans-serif',
+                    fontSize: '0.62rem', fontWeight: 600, letterSpacing: '0.12em',
+                    textTransform: 'uppercase' as const, color: 'var(--color-primary)',
+                  }}>Learn More →</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── CTA / CONVERSION BLOCK ── */}
       <section style={{
         width: '100vw', marginLeft: 'calc(-50vw + 50%)',
