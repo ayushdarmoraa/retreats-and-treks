@@ -145,6 +145,38 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         .rj-mid-cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2.25rem; background: var(--color-primary); color: #fff; text-decoration: none; font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; border-radius: 100px; transition: background 0.2s, transform 0.2s; }
         .rj-mid-cta-btn:hover { background: #0d9e95; transform: translateY(-2px); }
         .rj-mid-cta-micro { font-family: var(--font-geist-sans), sans-serif; font-size: 0.7rem; color: rgba(255,255,255,0.3); margin-top: 1rem; }
+        /* ── HERO CTA BUTTONS (above the fold) ── */
+        .rj-hero-ctas { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; justify-content: center; }
+        .rj-hero-cta-primary {
+          display: inline-flex; align-items: center; gap: 0.5rem;
+          padding: 0.85rem 2rem; background: #ffffff; color: #0a1f1c;
+          font-family: var(--font-geist-sans), sans-serif;
+          font-size: 0.78rem; font-weight: 600; letter-spacing: 0.06em;
+          text-transform: uppercase; text-decoration: none;
+          border-radius: 100px; border: 2px solid #ffffff;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .rj-hero-cta-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+        .rj-hero-cta-secondary {
+          display: inline-flex; align-items: center; gap: 0.5rem;
+          padding: 0.85rem 2rem; background: transparent;
+          color: rgba(255,255,255,0.85);
+          font-family: var(--font-geist-sans), sans-serif;
+          font-size: 0.78rem; font-weight: 400; letter-spacing: 0.06em;
+          text-transform: uppercase; text-decoration: none;
+          border-radius: 100px; border: 1.5px solid rgba(255,255,255,0.35);
+          transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+        .rj-hero-cta-secondary:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.7); }
+        /* Non-hero (light bg) variants */
+        .rj-hero-ctas--light .rj-hero-cta-primary {
+          background: var(--color-primary); color: #fff; border-color: var(--color-primary);
+        }
+        .rj-hero-ctas--light .rj-hero-cta-secondary {
+          color: #374151; border-color: rgba(15,118,110,0.3);
+        }
+        .rj-hero-ctas--light .rj-hero-cta-secondary:hover { border-color: var(--color-primary); }
+        @media (max-width: 520px) { .rj-hero-ctas { flex-direction: column; align-items: center; } }
       `}</style>
 
       {/* HEADER — with or without hero image */}
@@ -167,6 +199,15 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
                 ))}
               </div>
             )}
+            {/* Above-the-fold CTA */}
+            <div className="rj-hero-ctas">
+              <a
+                href={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I'm interested in the ${retreat.title} retreat. Can you tell me more?`)}`}
+                target="_blank" rel="noopener noreferrer"
+                className="rj-hero-cta-primary"
+              >Talk to a Retreat Planner →</a>
+              <a href="#about-this-retreat" className="rj-hero-cta-secondary">Explore This Retreat ↓</a>
+            </div>
           </div>
         </section>
       ) : (
@@ -185,12 +226,21 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
                 ))}
               </div>
             )}
+            {/* Above-the-fold CTA (light bg variant) */}
+            <div className="rj-hero-ctas rj-hero-ctas--light">
+              <a
+                href={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I'm interested in the ${retreat.title} retreat. Can you tell me more?`)}`}
+                target="_blank" rel="noopener noreferrer"
+                className="rj-hero-cta-primary"
+              >Talk to a Retreat Planner →</a>
+              <a href="#about-this-retreat" className="rj-hero-cta-secondary">Explore This Retreat ↓</a>
+            </div>
           </div>
         </section>
       )}
 
       {/* DESCRIPTION */}
-      <section style={{
+      <section id="about-this-retreat" style={{
         marginBottom: '0', marginTop: '0',
         paddingTop: '5rem', paddingBottom: '5rem',
         background: '#ffffff',

@@ -4,6 +4,7 @@ import { Geist, Geist_Mono, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { schemaIds, SCHEMA_SITE_URL } from "@/lib/schemaIds";
 const geistSans = Geist({
@@ -135,6 +136,7 @@ export default function RootLayout({
          <BreadcrumbSchema />
          <DeferredScrollObserver />
         {children}
+        <FloatingWhatsApp />
         <Footer />
       </body>
     </html>
