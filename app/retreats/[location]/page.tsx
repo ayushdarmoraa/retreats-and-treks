@@ -23,6 +23,8 @@ interface PageProps {
 export function generateStaticParams(): { location: string }[] {
   return getAllLocations()
     .filter((loc) => loc.supportsRetreats)
+    // chakrata has a dedicated /retreats/chakrata/page.tsx — skip dynamic route
+    .filter((loc) => loc.id !== 'chakrata')
     .map((loc) => ({ location: loc.id }));
 }
 
