@@ -223,6 +223,52 @@ export default function MeditationRetreatsPage() {
 
         /* Who grid responsive */
         @media (max-width: 640px) { .med-who-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; } }
+
+        /* Featured Program Cards (MONEY SECTION) */
+        .med-prog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .med-prog-card {
+          background: #fff; border: 1px solid #e5e7eb; border-radius: 10px;
+          overflow: hidden; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+          display: flex; flex-direction: column;
+        }
+        .med-prog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); border-color: rgba(15,118,110,0.3); }
+        .med-prog-card-header { padding: 1.5rem 1.5rem 0; display: flex; justify-content: space-between; align-items: flex-start; }
+        .med-prog-card-body { padding: 1rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+        .med-prog-status { font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; padding: 3px 8px; border-radius: 3px; white-space: nowrap; }
+        .med-prog-status-open { background: #ecfdf5; color: #065f46; }
+        .med-prog-status-filling { background: #fef3c7; color: #92400e; }
+        .med-prog-status-last { background: #fee2e2; color: #991b1b; }
+
+        /* Decision Cards */
+        .med-dec-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+        @media (max-width: 768px) { .med-dec-grid { grid-template-columns: 1fr; } }
+        .med-dec-card {
+          background: #fff; border: 1px solid #e5e7eb; border-radius: 10px;
+          padding: 2rem 1.75rem; display: flex; flex-direction: column; gap: 0.75rem;
+          text-decoration: none; color: inherit; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+        }
+        .med-dec-card:hover { transform: translateY(-4px); border-color: rgba(15,118,110,0.3); box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+
+        /* Trust block */
+        .med-trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        @media (max-width: 768px) { .med-trust-grid { grid-template-columns: 1fr; } }
+        .med-trust-item {
+          text-align: center; padding: 2rem 1.5rem;
+          border: 1px solid #e5e7eb; border-radius: 10px;
+          background: #fff; transition: border-color 0.2s;
+        }
+        .med-trust-item:hover { border-color: rgba(15,118,110,0.25); }
+
+        /* Guided funnel */
+        .med-funnel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        @media (max-width: 768px) { .med-funnel-grid { grid-template-columns: 1fr; } }
+        .med-funnel-card {
+          background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+          border-radius: 10px; padding: 1.75rem 1.5rem; text-decoration: none;
+          display: flex; flex-direction: column; gap: 0.6rem; align-items: center; text-align: center;
+          transition: background 0.25s, border-color 0.25s, transform 0.25s;
+        }
+        .med-funnel-card:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.3); transform: translateY(-3px); }
       `}</style>
 
       {reviewSchemas.length > 0 && (
@@ -531,22 +577,43 @@ export default function MeditationRetreatsPage() {
       </section>
 
       {/* ═══════════════════════════════════════════
-          MID-PAGE CTA
+          GUIDED DECISION FUNNEL ("Decision UX" — Critical for Conversion)
       ═══════════════════════════════════════════ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#0a1f1c', padding: '4rem 0', textAlign: 'center' }}>
-        <div style={{ maxWidth: '44rem', margin: '0 auto', padding: '0 2rem' }}>
-          <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)', fontWeight: 200, color: '#ffffff', margin: '0 0 0.75rem', letterSpacing: '-0.02em' }}>
-            Not sure which location suits your practice?
-          </h3>
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, margin: '0 0 2rem', lineHeight: 1.7 }}>
-            Tell us your experience level and intention — we&apos;ll recommend the right setting. No forms, no commitment. Just a conversation.
-          </p>
-          <Link href="/contact" className="med-cta-btn">
-            Talk to a Retreat Planner →
-          </Link>
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', color: 'rgba(255,255,255,0.3)', marginTop: '1rem' }}>
-            Free consultation · No spam · Quick response
-          </p>
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#0a1f1c', padding: '4.5rem 0' }}>
+        <div className="med-wide">
+          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', justifyContent: 'center' }}>
+              <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.25)', display: 'inline-block' }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', fontWeight: 500 }}>Not Sure Where to Start?</span>
+              <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.25)', display: 'inline-block' }} />
+            </div>
+            <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)', fontWeight: 200, color: '#ffffff', margin: '0 0 0.6rem', letterSpacing: '-0.02em' }}>
+              Three ways to find your retreat
+            </h3>
+            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: 'rgba(255,255,255,0.45)', fontWeight: 300, maxWidth: '36rem', margin: '0 auto', lineHeight: 1.7 }}>
+              Choose the path that feels right for where you are right now.
+            </p>
+          </div>
+          <div className="med-funnel-grid">
+            <Link href="/contact" className="med-funnel-card">
+              <span style={{ fontSize: '1.6rem' }}>💬</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', fontWeight: 500, color: '#ffffff' }}>Get Matched</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, lineHeight: 1.6 }}>Tell us about yourself — we&apos;ll recommend the right retreat, location, and duration. Free, no pressure.</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', marginTop: 'auto', paddingTop: '0.5rem' }}>Talk to a planner →</span>
+            </Link>
+            <Link href="/how-to-choose-a-meditation-retreat" className="med-funnel-card">
+              <span style={{ fontSize: '1.6rem' }}>📋</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', fontWeight: 500, color: '#ffffff' }}>Compare Options</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, lineHeight: 1.6 }}>Read our detailed comparison guide — formats, locations, durations side by side. Decide at your own pace.</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', marginTop: 'auto', paddingTop: '0.5rem' }}>Read the guide →</span>
+            </Link>
+            <Link href="/retreats-for-beginners" className="med-funnel-card">
+              <span style={{ fontSize: '1.6rem' }}>🌱</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', fontWeight: 500, color: '#ffffff' }}>First Retreat?</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, lineHeight: 1.6 }}>Never done a retreat? Start here. Our beginner&apos;s guide removes objections and recommends the gentlest entry point.</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', marginTop: 'auto', paddingTop: '0.5rem' }}>Beginner&apos;s guide →</span>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -655,66 +722,120 @@ export default function MeditationRetreatsPage() {
       )}
 
       {/* ═══════════════════════════════════════════
-          SECTION 10 — UPCOMING DEPARTURES
+          SECTION 10 — FEATURED PROGRAMS (MONEY SECTION — Real Products)
       ═══════════════════════════════════════════ */}
       {upcomingEvents.length > 0 && (
-        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0', borderBottom: '1px solid #e5e7eb' }}>
-          <div className="med-inner">
-            <div className="med-eyebrow">
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
+          <div className="med-wide">
+            <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
               <span className="med-eyebrow-line" />
-              <span className="med-eyebrow-text">Upcoming Departures</span>
+              <span className="med-eyebrow-text">Scheduled Retreats</span>
+              <span className="med-eyebrow-line" />
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0', border: '1px solid #e5e7eb', borderRadius: '8px', overflow: 'hidden' }}>
-              {upcomingEvents.map((ev, i, arr) => (
-                <Link key={ev.slug} href={`/${ev.slug}`} style={{
-                  display: 'flex', justifyContent: 'space-between', alignItems: 'center',
-                  flexWrap: 'wrap', gap: '0.5rem',
-                  padding: '1rem 1.25rem',
-                  borderBottom: i < arr.length - 1 ? '1px solid #e5e7eb' : 'none',
-                  textDecoration: 'none', background: '#ffffff', color: 'inherit',
-                }}>
-                  <div>
-                    <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 400, color: 'var(--color-primary)', display: 'block' }}>{ev.label} in {ev.locationName}</span>
-                    <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.8rem', fontWeight: 300, color: '#6b7280' }}>{ev.dateRange} · {ev.durationDays} days · ₹{ev.price.toLocaleString('en-IN')}</span>
-                  </div>
-                  <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.8rem', fontWeight: 500, color: ev.seatsLeft <= 3 ? '#c92a2a' : '#6b7280' }}>{ev.seatsLeft} seats left →</span>
-                </Link>
-              ))}
+            <h2 className="med-section-title" style={{ textAlign: 'center' }}>Upcoming <span>meditation programs</span></h2>
+            <p className="med-body-text" style={{ textAlign: 'center', maxWidth: '36rem', margin: '0 auto 3rem' }}>
+              These are confirmed departures with fixed dates, pricing, and limited seats. Book directly or reach out to discuss.
+            </p>
+            <div className="med-prog-grid">
+              {upcomingEvents.map((ev) => {
+                const statusClass = ev.status === 'filling-fast' ? 'med-prog-status-filling' : ev.status === 'last-few' ? 'med-prog-status-last' : 'med-prog-status-open';
+                const statusLabel = ev.status === 'filling-fast' ? 'Filling Fast' : ev.status === 'last-few' ? 'Last Few Seats' : 'Open';
+                return (
+                  <Link key={ev.slug} href={`/${ev.slug}`} className="med-prog-card" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <div className="med-prog-card-header">
+                      <div>
+                        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#999', fontWeight: 500, display: 'block', marginBottom: '0.35rem' }}>
+                          {ev.locationName} · {ev.month} {ev.year}
+                        </span>
+                        <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.05rem', fontWeight: 500, color: '#111', margin: 0, letterSpacing: '-0.01em' }}>
+                          {ev.label}
+                        </h3>
+                      </div>
+                      <span className={`med-prog-status ${statusClass}`}>{statusLabel}</span>
+                    </div>
+                    <div className="med-prog-card-body">
+                      <div style={{ display: 'flex', gap: '1.5rem', margin: '1rem 0', flexWrap: 'wrap' }}>
+                        <div>
+                          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', display: 'block', marginBottom: '0.15rem' }}>Duration</span>
+                          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 400, color: '#222' }}>{ev.durationDays} Days</span>
+                        </div>
+                        <div>
+                          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', display: 'block', marginBottom: '0.15rem' }}>Price</span>
+                          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 500, color: '#111' }}>₹{ev.price.toLocaleString('en-IN')}</span>
+                        </div>
+                        <div>
+                          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', display: 'block', marginBottom: '0.15rem' }}>Group</span>
+                          <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 400, color: '#222' }}>Max {ev.groupSize}</span>
+                        </div>
+                      </div>
+                      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.8rem', color: '#777', fontWeight: 300, lineHeight: 1.7, margin: '0 0 0.75rem' }}>
+                        {ev.dateRange} · All-inclusive
+                      </p>
+                      <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1rem', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                        {ev.included.slice(0, 4).map((inc, idx) => (
+                          <li key={idx} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.72rem', color: '#888', fontWeight: 300, display: 'flex', gap: '0.4rem', alignItems: 'center' }}>
+                            <span style={{ color: 'var(--color-primary)', fontSize: '0.65rem' }}>✓</span> {inc}
+                          </li>
+                        ))}
+                      </ul>
+                      <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #f0f0f0', paddingTop: '1rem' }}>
+                        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-primary)' }}>View Details →</span>
+                        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.72rem', fontWeight: 500, color: ev.seatsLeft <= 3 ? '#c92a2a' : '#6b7280' }}>{ev.seatsLeft} seats left</span>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+            <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+              <Link href="/contact" className="med-cta-btn">Don&apos;t See Your Dates? Request a Custom Retreat →</Link>
             </div>
           </div>
         </section>
       )}
 
       {/* ═══════════════════════════════════════════
-          SECTION 11 — HOW TO CHOOSE
+          SECTION 11 — DECISION CARDS (How to Choose — Visual)
       ═══════════════════════════════════════════ */}
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
-        <div className="med-inner">
-          <div className="med-eyebrow">
+        <div className="med-wide">
+          <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
             <span className="med-eyebrow-line" />
             <span className="med-eyebrow-text">Decision Guide</span>
+            <span className="med-eyebrow-line" />
           </div>
-          <h2 className="med-section-title">How to choose <span>your retreat</span></h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '2rem' }}>
-            <p className="med-body-text">
-              The &ldquo;best&rdquo; meditation retreat depends on three factors:
-            </p>
-            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-              {[
-                { bold: 'Experience level:', text: 'Beginners start at Chakrata or Rishikesh. Experienced practitioners choose Zanskar.' },
-                { bold: 'Desired depth:', text: 'For a reset, 3 days in Chakrata. For transformation, 7+ days in Zanskar.' },
-                { bold: 'Relationship with movement:', text: 'If you need body and mind together, trek-and-meditation combinations work.' },
-              ].map((item) => (
-                <li key={item.bold} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', lineHeight: 1.7, color: '#555', fontWeight: 300, paddingLeft: '1rem', borderLeft: '2px solid rgba(15,118,110,0.3)' }}>
-                  <strong style={{ fontWeight: 500, color: '#222' }}>{item.bold}</strong> {item.text}
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link href="/retreats-for-beginners" className="med-cta-outline">First Retreat Guide →</Link>
-            <Link href="/best-meditation-retreats-in-india" className="med-cta-outline">Best Meditation Retreats →</Link>
-            <Link href="/how-to-choose-a-meditation-retreat" className="med-cta-outline">How to Choose →</Link>
+          <h2 className="med-section-title" style={{ textAlign: 'center' }}>Choose the retreat that <span>matches you</span></h2>
+          <p className="med-body-text" style={{ textAlign: 'center', maxWidth: '36rem', margin: '0 auto 3rem' }}>
+            The right retreat depends on where you are. Use these decision paths to find your match.
+          </p>
+          <div className="med-dec-grid">
+            <Link href="/retreats-for-beginners" className="med-dec-card">
+              <span style={{ fontSize: '1.5rem' }}>🌱</span>
+              <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', fontWeight: 500, color: '#111', margin: 0 }}>I&apos;ve Never Done a Retreat</h3>
+              <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', color: '#666', fontWeight: 300, lineHeight: 1.7, margin: 0 }}>Start with 3–5 days in Chakrata. Gentle forest setting, guided instruction, no extreme conditions. Our most accessible entry point.</p>
+              <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid #f3f3f3' }}>
+                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-primary)' }}>Beginner&apos;s Guide →</span>
+                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.62rem', color: '#aaa' }}>From ₹14,000</span>
+              </div>
+            </Link>
+            <Link href="/best-meditation-retreats-in-india" className="med-dec-card">
+              <span style={{ fontSize: '1.5rem' }}>🧘</span>
+              <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', fontWeight: 500, color: '#111', margin: 0 }}>I Want to Go Deeper</h3>
+              <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', color: '#666', fontWeight: 300, lineHeight: 1.7, margin: 0 }}>5–7 days in Chakrata or Zanskar. Extended silence, structured practice, experienced teachers. For practitioners ready for sustained immersion.</p>
+              <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid #f3f3f3' }}>
+                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-primary)' }}>Compare Retreats →</span>
+                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.62rem', color: '#aaa' }}>From ₹32,000</span>
+              </div>
+            </Link>
+            <Link href="/how-to-choose-a-meditation-retreat" className="med-dec-card">
+              <span style={{ fontSize: '1.5rem' }}>🏔️</span>
+              <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', fontWeight: 500, color: '#111', margin: 0 }}>I Need Radical Disconnection</h3>
+              <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', color: '#666', fontWeight: 300, lineHeight: 1.7, margin: 0 }}>7–10 days in Zanskar. Monastery setting, 3,500m, no phone signal. The most immersive meditation environment we offer.</p>
+              <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '0.75rem', borderTop: '1px solid #f3f3f3' }}>
+                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-primary)' }}>How to Choose →</span>
+                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.62rem', color: '#aaa' }}>From ₹45,000</span>
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -749,9 +870,36 @@ export default function MeditationRetreatsPage() {
       )}
 
       {/* ═══════════════════════════════════════════
-          SECTION 13 — FAQ
+          TRUST & DIFFERENTIATION BLOCK
       ═══════════════════════════════════════════ */}
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
+        <div className="med-wide">
+          <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+            <span className="med-eyebrow-line" />
+            <span className="med-eyebrow-text">Why Us</span>
+            <span className="med-eyebrow-line" />
+          </div>
+          <h2 className="med-section-title" style={{ textAlign: 'center' }}>What makes our retreats <span>different</span></h2>
+          <div className="med-trust-grid">
+            {[
+              { num: '12', label: 'Max Group Size', text: 'Not a meditation factory. Personal attention from experienced teachers. Your questions get answered. Your practice gets seen.' },
+              { num: '0', label: 'Commercial Noise', text: 'No tourist traffic, no spa menus, no upsells. Non-commercial Himalayan locations chosen for silence and depth, not aesthetics or marketing.' },
+              { num: '100%', label: 'Designed Retreats', text: 'Every retreat is designed — not packaged. Schedule, location, teacher, season — all chosen deliberately to serve the practice, not the business.' },
+            ].map((item) => (
+              <div key={item.label} className="med-trust-item">
+                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '2rem', fontWeight: 200, color: 'var(--color-primary)', display: 'block', marginBottom: '0.25rem', letterSpacing: '-0.03em' }}>{item.num}</span>
+                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#999', fontWeight: 600, display: 'block', marginBottom: '0.75rem' }}>{item.label}</span>
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', lineHeight: 1.7, color: '#666', fontWeight: 300, margin: 0 }}>{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 13 — FAQ
+      ═══════════════════════════════════════════ */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
         <div className="med-inner">
           <div className="med-eyebrow">
             <span className="med-eyebrow-line" />

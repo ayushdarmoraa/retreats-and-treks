@@ -175,6 +175,24 @@ export default function SilentRetreatsPage() {
         .sil-faq-item:last-child { border-bottom: none; }
 
         @media (max-width: 640px) { .sil-who-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; } }
+
+        .sil-prog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .sil-prog-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; display: flex; flex-direction: column; }
+        .sil-prog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); border-color: rgba(15,118,110,0.3); }
+        .sil-prog-status { font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; padding: 3px 8px; border-radius: 3px; white-space: nowrap; }
+        .sil-prog-open { background: #ecfdf5; color: #065f46; }
+        .sil-prog-filling { background: #fef3c7; color: #92400e; }
+        .sil-prog-last { background: #fee2e2; color: #991b1b; }
+
+        .sil-trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        @media (max-width: 768px) { .sil-trust-grid { grid-template-columns: 1fr; } }
+        .sil-trust-item { text-align: center; padding: 2rem 1.5rem; border: 1px solid #e5e7eb; border-radius: 10px; background: #fff; transition: border-color 0.2s; }
+        .sil-trust-item:hover { border-color: rgba(15,118,110,0.25); }
+
+        .sil-funnel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+        @media (max-width: 768px) { .sil-funnel-grid { grid-template-columns: 1fr; } }
+        .sil-funnel-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 1.75rem 1.5rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.6rem; align-items: center; text-align: center; transition: background 0.25s, border-color 0.25s, transform 0.25s; }
+        .sil-funnel-card:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.3); transform: translateY(-3px); }
       `}</style>
 
       {reviewSchemas.length > 0 && (
@@ -357,13 +375,33 @@ export default function SilentRetreatsPage() {
         </div>
       </section>
 
-      {/* ═══ MID CTA ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#0a1f1c', padding: '4rem 0', textAlign: 'center' }}>
-        <div style={{ maxWidth: '44rem', margin: '0 auto', padding: '0 2rem' }}>
-          <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)', fontWeight: 200, color: '#ffffff', margin: '0 0 0.75rem' }}>Ready to enter the silence?</h3>
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, margin: '0 0 2rem', lineHeight: 1.7 }}>Tell us where you are — your experience, your intention, your readiness. We&apos;ll recommend the right container.</p>
-          <Link href="/contact" className="sil-cta-btn">Talk to a Retreat Planner →</Link>
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', color: 'rgba(255,255,255,0.3)', marginTop: '1rem' }}>Free consultation · No spam · Quick response</p>
+      {/* ═══ GUIDED DECISION FUNNEL ═══ */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#0a1f1c', padding: '4.5rem 0' }}>
+        <div className="sil-wide">
+          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)', fontWeight: 200, color: '#ffffff', margin: '0 0 0.6rem' }}>Three ways to enter the silence</h3>
+            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: 'rgba(255,255,255,0.45)', fontWeight: 300, maxWidth: '36rem', margin: '0 auto', lineHeight: 1.7 }}>Choose based on your readiness and intention.</p>
+          </div>
+          <div className="sil-funnel-grid">
+            <Link href="/contact" className="sil-funnel-card">
+              <span style={{ fontSize: '1.6rem' }}>💬</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', fontWeight: 500, color: '#ffffff' }}>Get Matched</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, lineHeight: 1.6 }}>Tell us about your experience and intention — we&apos;ll recommend the right format, location, and duration.</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', marginTop: 'auto', paddingTop: '0.5rem' }}>Talk to a planner →</span>
+            </Link>
+            <Link href="/what-happens-at-a-silent-retreat" className="sil-funnel-card">
+              <span style={{ fontSize: '1.6rem' }}>📚</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', fontWeight: 500, color: '#ffffff' }}>Learn What to Expect</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, lineHeight: 1.6 }}>Read our detailed guide on what actually happens during a silent retreat — hour by hour, day by day.</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', marginTop: 'auto', paddingTop: '0.5rem' }}>Read the guide →</span>
+            </Link>
+            <Link href="/vipassana-vs-meditation-retreat" className="sil-funnel-card">
+              <span style={{ fontSize: '1.6rem' }}>⚖️</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', fontWeight: 500, color: '#ffffff' }}>Vipassana vs Our Format</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, lineHeight: 1.6 }}>Wondering how we compare to Vipassana? Smaller groups, multiple techniques, nature-integrated. See the differences.</span>
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', marginTop: 'auto', paddingTop: '0.5rem' }}>Compare formats →</span>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -381,22 +419,46 @@ export default function SilentRetreatsPage() {
         </section>
       )}
 
-      {/* ═══ UPCOMING DEPARTURES ═══ */}
+      {/* ═══ FEATURED PROGRAMS ═══ */}
       {upcomingEvents.length > 0 && (
         <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
-          <div className="sil-inner">
-            <div className="sil-eyebrow"><span className="sil-eyebrow-line" /><span className="sil-eyebrow-text">Upcoming Departures</span></div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0', border: '1px solid #e5e7eb', borderRadius: '8px', overflow: 'hidden' }}>
-              {upcomingEvents.map((ev, i, arr) => (
-                <Link key={ev.slug} href={`/${ev.slug}`} style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '0.5rem', padding: '1rem 1.25rem', borderBottom: i < arr.length - 1 ? '1px solid #e5e7eb' : 'none', textDecoration: 'none', background: '#ffffff', color: 'inherit' }}>
-                  <div>
-                    <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 400, color: 'var(--color-primary)', display: 'block' }}>{ev.label} in {ev.locationName}</span>
-                    <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.8rem', fontWeight: 300, color: '#6b7280' }}>{ev.dateRange} · {ev.durationDays} days · ₹{ev.price.toLocaleString('en-IN')}</span>
-                  </div>
-                  <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.8rem', fontWeight: 500, color: ev.seatsLeft <= 3 ? '#c92a2a' : '#6b7280' }}>{ev.seatsLeft} seats left →</span>
-                </Link>
-              ))}
+          <div className="sil-wide">
+            <div className="sil-eyebrow" style={{ justifyContent: 'center' }}><span className="sil-eyebrow-line" /><span className="sil-eyebrow-text">Scheduled Retreats</span><span className="sil-eyebrow-line" /></div>
+            <h2 className="sil-section-title" style={{ textAlign: 'center' }}>Upcoming <span>silent retreat programs</span></h2>
+            <p className="sil-body-text" style={{ textAlign: 'center', maxWidth: '36rem', margin: '0 auto 3rem' }}>Confirmed departures with fixed dates, pricing, and limited seats.</p>
+            <div className="sil-prog-grid">
+              {upcomingEvents.map((ev) => {
+                const sc = ev.status === 'filling-fast' ? 'sil-prog-filling' : ev.status === 'last-few' ? 'sil-prog-last' : 'sil-prog-open';
+                const sl = ev.status === 'filling-fast' ? 'Filling Fast' : ev.status === 'last-few' ? 'Last Few Seats' : 'Open';
+                return (
+                  <Link key={ev.slug} href={`/${ev.slug}`} className="sil-prog-card" style={{ textDecoration: 'none', color: 'inherit' }}>
+                    <div style={{ padding: '1.5rem 1.5rem 0', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                      <div>
+                        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#999', fontWeight: 500, display: 'block', marginBottom: '0.35rem' }}>{ev.locationName} · {ev.month} {ev.year}</span>
+                        <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.05rem', fontWeight: 500, color: '#111', margin: 0 }}>{ev.label}</h3>
+                      </div>
+                      <span className={`sil-prog-status ${sc}`}>{sl}</span>
+                    </div>
+                    <div style={{ padding: '1rem 1.5rem 1.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                      <div style={{ display: 'flex', gap: '1.5rem', margin: '1rem 0', flexWrap: 'wrap' }}>
+                        <div><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', display: 'block', marginBottom: '0.15rem' }}>Duration</span><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 400, color: '#222' }}>{ev.durationDays} Days</span></div>
+                        <div><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', display: 'block', marginBottom: '0.15rem' }}>Price</span><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 500, color: '#111' }}>₹{ev.price.toLocaleString('en-IN')}</span></div>
+                        <div><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', display: 'block', marginBottom: '0.15rem' }}>Group</span><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 400, color: '#222' }}>Max {ev.groupSize}</span></div>
+                      </div>
+                      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.8rem', color: '#777', fontWeight: 300, lineHeight: 1.7, margin: '0 0 0.75rem' }}>{ev.dateRange} · All-inclusive</p>
+                      <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1rem', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
+                        {ev.included.slice(0, 4).map((inc, idx) => (<li key={idx} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.72rem', color: '#888', fontWeight: 300, display: 'flex', gap: '0.4rem', alignItems: 'center' }}><span style={{ color: 'var(--color-primary)', fontSize: '0.65rem' }}>✓</span> {inc}</li>))}
+                      </ul>
+                      <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #f0f0f0', paddingTop: '1rem' }}>
+                        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-primary)' }}>View Details →</span>
+                        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.72rem', fontWeight: 500, color: ev.seatsLeft <= 3 ? '#c92a2a' : '#6b7280' }}>{ev.seatsLeft} seats left</span>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
+            <div style={{ textAlign: 'center', marginTop: '2rem' }}><Link href="/contact" className="sil-cta-btn">Don&apos;t See Your Dates? Request a Custom Retreat →</Link></div>
           </div>
         </section>
       )}
@@ -433,8 +495,29 @@ export default function SilentRetreatsPage() {
         </div>
       </section>
 
-      {/* ═══ FAQ ═══ */}
+      {/* ═══ TRUST & DIFFERENTIATION ═══ */}
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
+        <div className="sil-wide">
+          <div className="sil-eyebrow" style={{ justifyContent: 'center' }}><span className="sil-eyebrow-line" /><span className="sil-eyebrow-text">Why Us</span><span className="sil-eyebrow-line" /></div>
+          <h2 className="sil-section-title" style={{ textAlign: 'center' }}>What makes our retreat <span>different</span></h2>
+          <div className="sil-trust-grid">
+            {[
+              { num: '8–12', label: 'Max Group Size', text: 'Smaller than Vipassana (50–100 people). Every retreatant is known to the facilitator. You are held, not herded.' },
+              { num: '3+', label: 'Techniques Offered', text: 'Not locked into a single method. Walking meditation, sitting, body scans, breathwork — find what works for your mind.' },
+              { num: '100%', label: 'Nature-Integrated', text: 'Silence in a hall is different from silence in a Himalayan forest. Our locations make the landscape part of the practice.' },
+            ].map((item) => (
+              <div key={item.label} className="sil-trust-item">
+                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '2rem', fontWeight: 200, color: 'var(--color-primary)', display: 'block', marginBottom: '0.25rem' }}>{item.num}</span>
+                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#999', fontWeight: 600, display: 'block', marginBottom: '0.75rem' }}>{item.label}</span>
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', lineHeight: 1.7, color: '#666', fontWeight: 300, margin: 0 }}>{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══ FAQ ═══ */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
         <div className="sil-inner">
           <div className="sil-eyebrow"><span className="sil-eyebrow-line" /><span className="sil-eyebrow-text">Common Questions</span></div>
           <h2 className="sil-section-title">Frequently asked <span>questions</span></h2>
