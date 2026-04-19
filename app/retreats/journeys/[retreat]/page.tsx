@@ -44,12 +44,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const path = `/retreats/journeys/${retreat}`;
   const canonicalUrl = buildCanonicalUrl(path);
 
-  const seoDescription = `${retreatService.oneLineEssence} Join this curated retreat in the Indian Himalayas. Small groups, no experience needed.`;
+  const customSeoTitle = 'seoTitle' in retreatService ? (retreatService as Record<string, unknown>).seoTitle as string | undefined : undefined;
+  const customSeoDesc = 'seoDescription' in retreatService ? (retreatService as Record<string, unknown>).seoDescription as string | undefined : undefined;
+  const seoDescription = customSeoDesc ?? `${retreatService.oneLineEssence} Join this curated retreat in the Indian Himalayas. Small groups, no experience needed.`;
 
   const heroImage = 'heroImage' in retreatService ? (retreatService as Record<string, unknown>).heroImage as string | undefined : undefined;
 
   return {
-    title: `${retreatService.title} in the Himalayas – Retreats And Treks`,
+    title: customSeoTitle ?? `${retreatService.title} in the Himalayas – Retreats And Treks`,
     description: seoDescription.length > 160 ? seoDescription.slice(0, 157) + '...' : seoDescription,
     alternates: {
       canonical: canonicalUrl,
