@@ -7,6 +7,8 @@ export const artAndCreativeRetreat = {
   slug: 'art-and-creative',
   title: 'Creative Healing Retreat',
   oneLineEssence: 'Emotional healing through art & yoga in a container designed for authentic expression.',
+  seoTitle: 'Creative Healing Retreat in the Himalayas — Art & Yoga for Emotional Expression | Retreats And Treks',
+  seoDescription: 'Join a creative healing retreat in the Indian Himalayas. Painting, writing, collage, and yoga in mountain silence. No experience needed. 3–7 days in Mussoorie and Chakrata, Uttarakhand. Small groups.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/art-retreat/hero.webp',
@@ -110,4 +112,47 @@ Solo retreat offers undistracted creation. Group retreats create a field of crea
 
   invitation: `\
 Emotional healing through art & yoga begins when you give yourself permission to create without judgment. We create the conditions — you do the emergence. Come heal through creativity with us.`,
+
+  faqItems: [
+    {
+      question: 'Do I need any art experience to attend?',
+      answer: 'No. This retreat is designed for all levels — from people who haven\'t picked up a paintbrush since school to practising artists wanting a new context for their work. The facilitator adapts guidance to your level. There are no critiques, no grades, no performance expectations. Your creative expression is the point, regardless of technical skill.',
+    },
+    {
+      question: 'What art mediums are available?',
+      answer: 'Watercolour, acrylic, pencils, ink, pastels, collage materials, and writing supplies are all provided. You can work in one medium throughout or switch daily. The facilitator guides technique in whatever medium you choose. If you have a preferred medium, bring your own materials and we will accommodate.',
+    },
+    {
+      question: 'Is this art therapy?',
+      answer: 'Not in the clinical sense — we are not licensed therapists and this is not a substitute for mental health treatment. However, the retreat uses creativity as a healing modality: the act of authentic expression, in a non-judgmental container, consistently produces emotional release, clarity, and a sense of renewal. Many participants describe it as profoundly therapeutic.',
+    },
+    {
+      question: 'How does yoga fit into a creative retreat?',
+      answer: 'Yoga opens the body and quiets the mind — both essential for creative flow. Morning yoga sessions (gentle, all-levels) create physical and mental space for the creative work that follows. The combination is deliberate: movement loosens what words and paintbrushes can then express.',
+    },
+    {
+      question: 'What if I create something and hate it?',
+      answer: 'That is part of the process. Judgment of your own work is often the loudest voice that blocks creative expression. The retreat is designed to soften that voice — through facilitation, through the mountain environment, and through the experience of creating alongside others who are also being brave. Most participants surprise themselves by the end.',
+    },
+    {
+      question: 'Can I attend alone?',
+      answer: 'Absolutely. Many participants come solo — often because they need space away from roles and relationships to reconnect with their creative self. The small group format creates natural, gentle community without social pressure.',
+    },
+    {
+      question: 'Where is this retreat held?',
+      answer: 'Primarily in Mussoorie and Chakrata — both in Uttarakhand, India. Mussoorie offers aesthetic mountain beauty and colonial-era atmosphere. Chakrata offers forest silence and deeper nature immersion. Both are within 3 hours of Dehradun. Also available in Rishikesh.',
+    },
+    {
+      question: 'How long is the retreat?',
+      answer: 'The standard Creative Healing Retreat is 5–7 days, which allows time for deep creative immersion. If that feels like too much commitment, our Weekend Art Retreat (2–3 days) is a perfect entry point. Many participants do the weekend first and then return for the longer format.',
+    },
+    {
+      question: 'Do I keep the art I create?',
+      answer: 'Yes — everything you create is yours. You leave with a physical portfolio of work made during the retreat. Many participants later frame or display these pieces — not because they are technically perfect, but because they represent a moment of authentic expression.',
+    },
+    {
+      question: 'What is the sharing circle like?',
+      answer: 'Evening sharing is entirely optional. If you choose to share your work, it is witnessed — not critiqued. The group offers presence and appreciation, never technical feedback. Many participants find this the most emotionally powerful part of the retreat: being seen in their vulnerability. If you prefer to keep your work private, that is equally honoured.',
+    },
+  ],
 } as const;

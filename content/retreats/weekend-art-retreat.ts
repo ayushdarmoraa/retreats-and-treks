@@ -8,6 +8,8 @@ export const weekendArtRetreat = {
   slug: 'weekend-art-retreat',
   title: 'Weekend Art Retreat',
   oneLineEssence: 'Two days of uninterrupted creative expression in the mountains — enough to remember why you create.',
+  seoTitle: 'Weekend Art Retreat Near Delhi — 2–3 Day Creative Escape in the Mountains | Retreats And Treks',
+  seoDescription: 'Join a weekend art retreat in the Himalayas. 2–3 days of painting, writing, and creative expression in mountain silence. No experience needed. Friday to Sunday. Close to Delhi and Dehradun.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/blog/can-a-retreat-unblock-creativity.webp',
@@ -122,4 +124,47 @@ You don't need a week off. You don't need to be an artist. You just need a weeke
     fromDehradun: '2–3 hours depending on location. Pickup can be arranged from Dehradun railway station or airport.',
     note: 'All art supplies are provided. Arrive by Friday 5 PM, depart Sunday 3 PM.',
   },
+
+  faqItems: [
+    {
+      question: 'Do I need to be an artist?',
+      answer: 'No. Most participants are not trained artists. This retreat is for anyone who wants to create — whether you last picked up a paintbrush in school or you paint every weekend. The facilitator meets you where you are. There are no critiques, no expectations, no portfolio review. Your expression is the point.',
+    },
+    {
+      question: 'Can I really get anything from just a weekend?',
+      answer: 'Yes. Two days of dedicated, uninterrupted creative time — without emails, deadlines, or household tasks — produces surprising breakthroughs. Research shows that even 48 hours of immersive creative practice significantly shifts how people relate to their own expression. Many participants leave with work that surprises them.',
+    },
+    {
+      question: 'What mediums can I work in?',
+      answer: 'Painting (watercolour, acrylic), drawing (pencils, charcoal, ink), collage, and writing. All supplies are provided. The facilitator guides technique across mediums. You can work in one medium all weekend or try several — the choice is entirely yours.',
+    },
+    {
+      question: 'Is this a good first retreat experience?',
+      answer: 'It is designed to be exactly that. The weekend format is a low-commitment entry point — two days off work, one bag, no elaborate planning. Many participants do this retreat first and then return for the full Creative Healing Retreat (5–7 days) or Trek & Paint. Think of it as a taster that often becomes a turning point.',
+    },
+    {
+      question: 'How do I get there from Delhi?',
+      answer: 'Chakrata is about 6 hours from Delhi by road. Mussoorie is about 5.5 hours. We recommend leaving Delhi by noon on Friday to arrive by evening. We provide detailed directions and can help coordinate shared transport between participants.',
+    },
+    {
+      question: 'Do I need to take leave from work?',
+      answer: 'No — the retreat runs Friday evening to Sunday afternoon. You travel after work on Friday and return Sunday evening. No leave days required. This is the primary design advantage of the weekend format.',
+    },
+    {
+      question: 'What is included?',
+      answer: 'All meals, accommodation, art supplies, guided creative sessions, open creation time, and sharing circles. Travel to the retreat is not included, but we provide detailed guidance. You arrive with nothing but yourself and leave with work you created.',
+    },
+    {
+      question: 'Can I come with a friend or partner?',
+      answer: 'Yes — pair retreats work beautifully for this format. Creating alongside someone you trust often deepens both the relationship and the creative work. We can arrange joint or separate rooms.',
+    },
+    {
+      question: 'What happens in the sharing circle?',
+      answer: 'Completely optional. If you choose to show your work, the group offers presence and appreciation — never critique. If you prefer to keep your work private, that is equally honoured. The circle is about being witnessed, not evaluated.',
+    },
+    {
+      question: 'What if I want to extend to a longer retreat?',
+      answer: 'The weekend format naturally leads into our longer offerings. Many participants return for the 5–7 day Creative Healing Retreat or the Trek & Paint Retreat. We can help you plan your next step based on what emerges during the weekend.',
+    },
+  ],
 } as const;

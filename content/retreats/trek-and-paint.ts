@@ -8,6 +8,8 @@ export const trekAndPaintRetreat = {
   slug: 'trek-and-paint',
   title: 'Trek & Paint Retreat',
   oneLineEssence: 'Walk the Himalayas by day, paint what you see by evening — where trail meets canvas.',
+  seoTitle: 'Trek & Paint Retreat in the Himalayas — Plein Air Art & Mountain Hiking | Retreats And Treks',
+  seoDescription: 'Combine Himalayan trekking with plein air painting. Walk forest trails by morning, paint mountain landscapes by afternoon. No art or hiking experience needed. 5–7 days in Chakrata, Uttarakhand.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/blog/painting-in-the-himalayas.webp',
@@ -119,4 +121,47 @@ Walk the Himalayas. See them differently. Paint what you find. Trek & Paint is f
     fromDehradun: 'Drive to the trailhead (2–4 hours depending on location). We handle all logistics.',
     note: 'All art supplies (watercolors, paper, pencils, ink) are provided. Bring your own if you prefer.',
   },
+
+  faqItems: [
+    {
+      question: 'Do I need trekking experience?',
+      answer: 'No. The trails are moderate — 3–5 hours of walking at a gentle pace through forests and ridgelines. If you can walk for a few hours on a trail, you are ready. This is not mountaineering; it is walking through beautiful landscapes with deliberate stops for art.',
+    },
+    {
+      question: 'Do I need painting experience?',
+      answer: 'No. The facilitator guides you through techniques — composition, colour mixing, capturing light — at your level. Many participants have never painted outdoors before. The mountain landscape is patient and forgiving as a subject. Some of the most compelling work comes from complete beginners.',
+    },
+    {
+      question: 'What art supplies are provided?',
+      answer: 'All supplies: watercolours, pencils, ink, sketchbooks, and paper. Everything is selected for portability on the trail. If you have preferred materials, bring them — we can accommodate. The emphasis is on capturing the experience, not producing gallery-ready work.',
+    },
+    {
+      question: 'How much do we trek vs paint each day?',
+      answer: 'Roughly half and half. Mornings are typically 3–5 hours of trekking. Afternoons are dedicated painting time at viewpoints discovered along the trail. Rest days are built in for sustained painting sessions or solo exploration.',
+    },
+    {
+      question: 'What fitness level is required?',
+      answer: 'Moderate fitness: ability to walk 3–5 hours on uneven terrain at a comfortable pace with a daypack. We carry art supplies in shared packs. The trails involve gradual elevation gain — not steep climbs. If you walk regularly, you are likely ready.',
+    },
+    {
+      question: 'Where does this retreat take place?',
+      answer: 'Primarily in Chakrata — dense forests, dramatic viewpoints, and varied terrain perfect for both walking and painting. Also available in Mussoorie (more accessible) and Sankri (higher altitude, snow-capped peak subjects). All locations are in Uttarakhand, India.',
+    },
+    {
+      question: 'Do I keep the art I create?',
+      answer: 'Yes — your visual journal, sketches, and paintings are entirely yours. You leave with a physical record of every trail and viewpoint you experienced. Many participants frame their work or continue the practice at home.',
+    },
+    {
+      question: 'What is the accommodation like?',
+      answer: 'Comfortable guesthouses or tented camps depending on the trail. Warm bedding, hot meals, and mountain views. The accommodation ranges from simple to basic — the landscape is the luxury. All meals are included.',
+    },
+    {
+      question: 'Can I join as a solo traveller?',
+      answer: 'Absolutely. Many participants come solo. The group format (max 10) creates natural connection through shared experience — walking the same trail, painting the same view, sharing work over dinner. It is one of the most bonding retreat formats we offer.',
+    },
+    {
+      question: 'What is the best season for Trek & Paint?',
+      answer: 'Autumn (October–November) offers the clearest skies and best mountain visibility — ideal for painting distant peaks. Spring (March–May) brings wildflowers and soft light. Both seasons provide comfortable trekking temperatures. Monsoon is avoided due to trail conditions.',
+    },
+  ],
 } as const;
