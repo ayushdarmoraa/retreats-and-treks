@@ -21,7 +21,7 @@ const kedarkanthaTrek: TrekContent = {
 
   /* ----------------- VISUAL / CONVERSION UPGRADE (2026-Q2) ----------------- */
 
-  heroImage: '/Images/trek/hero/kedarkantha-hero.webp',
+  heroImage: '/Images/trek/region/kedarkantha-summit.webp',
   heroImageAlt: 'Trekkers making their way to the snowy summit of Kedarkantha at sunrise',
   heroTagline: 'The definitive Indian winter trek. A thrilling summit climb through deep pine forests to a 360-degree Himalayan panorama.',
 
@@ -61,15 +61,15 @@ const kedarkanthaTrek: TrekContent = {
   ],
 
   experienceGallery: [
-    { src: '/Images/trek/experience/kedarkantha-1.webp', alt: 'Trekkers climbing the final ridge to Kedarkantha summit in snow' },
-    { src: '/Images/trek/experience/kedarkantha-2.webp', alt: 'Camping in the snow at Juda Ka Talab' },
-    { src: '/Images/trek/experience/kedarkantha-3.webp', alt: 'A beautiful morning in the pine forests of Sankri' },
-    { src: '/Images/trek/experience/kedarkantha-4.webp', alt: '360 degree panoramic view from Kedarkantha top' },
-    { src: '/Images/trek/experience/kedarkantha-5.webp', alt: 'Trekkers having hot tea at a snowy campsite' },
+    { src: '/Images/trek/itinerary/kedarkantha/day1.webp', alt: 'Trekkers climbing the final ridge to Kedarkantha summit in snow' },
+    { src: '/Images/trek/itinerary/kedarkantha/day2.webp', alt: 'Camping in the snow at Juda Ka Talab' },
+    { src: '/Images/trek/itinerary/kedarkantha/day3.webp', alt: 'A beautiful morning in the pine forests of Sankri' },
+    { src: '/Images/trek/itinerary/kedarkantha/day4.webp', alt: '360 degree panoramic view from Kedarkantha top' },
+    { src: '/Images/trek/itinerary/kedarkantha/day5.webp', alt: 'Trekkers having hot tea at a snowy campsite' },
   ],
 
   cinematicMoment: {
-    image: '/Images/trek/hero/kedarkantha-cinematic.webp',
+    image: '/Images/trek/region/kedarkantha.webp',
     alt: 'The golden hour light hitting the Swargarohini peaks viewed from Kedarkantha',
     quote: "When you reach the summit at dawn and the entire Himalayan range turns gold, every freezing step you took to get there instantly makes sense.",
     attribution: 'The Kedarkantha Summit',
@@ -145,7 +145,7 @@ const kedarkanthaTrek: TrekContent = {
 
   images: [
     {
-      src: '/Images/trek/hero/kedarkantha-hero.webp',
+      src: '/Images/trek/region/kedarkantha-summit.webp',
       alt: 'Kedarkantha summit in winter snow',
     },
   ],
