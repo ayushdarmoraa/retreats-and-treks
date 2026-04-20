@@ -76,32 +76,7 @@ export default function RetreatsLocationClient({
       .
     </p>
   </div>
-{/* Optional hero image (non-breaking) */}
-      {locationPremiumContent.heroImage && (
-        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', overflow: 'hidden' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative' }}>
-            <Image
-              src={locationPremiumContent.heroImage}
-              alt={locationPremiumContent.heroImageAlt || locationPremiumContent.name}
-              width={1600}
-              height={900}
-              priority
-              style={{ width: '100%', height: '420px', objectFit: 'cover' }}
-            />
-            <div style={{ position: 'absolute', left: '2rem', bottom: '2rem', color: '#ffffff', textShadow: '0 6px 20px rgba(0,0,0,0.6)', maxWidth: '56rem' }}>
-              <h1 style={{ margin: 0, fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 300 }}>{locationPremiumContent.name}</h1>
-              <p style={{ marginTop: '0.5rem', color: 'rgba(255,255,255,0.95)', fontWeight: 300 }}>{locationPremiumContent.landTone.opening}</p>
-              <a
-                href={whatsappLink}
-                onClick={() => logWhatsAppOpen(locationId, 'hero-cta')}
-                style={{ display: 'inline-block', marginTop: '1rem', background: 'var(--color-primary)', color: '#fff', padding: '10px 14px', borderRadius: 8, textDecoration: 'none', fontWeight: 600 }}
-              >
-                WhatsApp Us
-              </a>
-            </div>
-          </div>
-        </section>
-      )}
+      {/* hero is server-rendered in page.tsx to keep layout consistent */}
 
       {/* Optional gallery */}
       {locationPremiumContent.gallery && locationPremiumContent.gallery.length > 0 && (

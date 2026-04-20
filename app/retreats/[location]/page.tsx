@@ -14,6 +14,7 @@ import {
   generateFAQSchema,
   generateItemListSchema,
 } from '@/components/seo/Schema';
+import { TrekHeroImmersive, TrekTrustStrip } from '@/components/trek/TrekRichSections';
 import RetreatsLocationClient from './RetreatsLocationClient';
 import Breadcrumb from '@/components/Breadcrumb';
 
@@ -113,17 +114,34 @@ export default async function RetreatsLocationPage({ params }: PageProps) {
       {faqSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       )}
-      {/* Deep topical content (server-rendered for SEO) */}
-      {locationPremiumContent.deepTopicalContent && locationPremiumContent.deepTopicalContent.length > 0 && (
-        <section style={{ maxWidth: '64rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
-          {locationPremiumContent.deepTopicalContent.map((block, idx) => (
-            <div key={idx} style={{ marginBottom: '1.25rem' }}>
-              <h2 style={{ fontSize: '1.25rem', margin: '0 0 0.5rem', fontWeight: 500 }}>{block.heading}</h2>
-              <p style={{ margin: 0, lineHeight: 1.8, color: '#444', fontWeight: 300 }}>{block.body}</p>
-            </div>
-          ))}
-        </section>
-      )}
+
+      {/* Use Trek-style immersive hero + trust strip to match trek detail pages */}
+      {locationPremiumContent.heroImage && (() => {
+        const whatsappMessage = encodeURIComponent(`Hi! I'm interested in retreats in ${locationData.name}.`);
+        const whatsappHref = `https://wa.me/919760446101?text=${whatsappMessage}`;
+
+        const syntheticTrek = {
+          heroImage: locationPremiumContent.heroImage,
+          heroImageAlt: locationPremiumContent.heroImageAlt,
+          title: locationData.name,
+          heroTagline: locationPremiumContent.landTone?.opening,
+          trekType: 'Guided Trek',
+        } as unknown as any;
+
+        const trustItems = [
+          { label: 'Basecamp', sublabel: locationData.name },
+          { label: 'Retreat Formats', sublabel: `${locationPremiumContent.retreatSlugs.length} types` },
+          { label: 'Nearby Treks', sublabel: `${locationPremiumContent.trekSlugs.length}` },
+          { label: 'Season', sublabel: locationPremiumContent.practicalContext?.bestSeasons || '' },
+        ];
+
+        return (
+          <>
+            <TrekHeroImmersive trek={syntheticTrek} locationName={locationData.name} whatsappHref={whatsappHref} />
+            <TrekTrustStrip items={trustItems} />
+          </>
+        );
+      })()}
 
       <RetreatsLocationClient
         locationPremiumContent={locationPremiumContent}
@@ -276,6 +294,17 @@ export default async function RetreatsLocationPage({ params }: PageProps) {
             </Link>
             .
           </p>
+        </section>
+      )}
+      {/* Deep topical content (server-rendered for SEO) - placed after interactive/client content */}
+      {locationPremiumContent.deepTopicalContent && locationPremiumContent.deepTopicalContent.length > 0 && (
+        <section style={{ maxWidth: '64rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+          {locationPremiumContent.deepTopicalContent.map((block, idx) => (
+            <div key={idx} style={{ marginBottom: '1.25rem' }}>
+              <h2 style={{ fontSize: '1.25rem', margin: '0 0 0.5rem', fontWeight: 500 }}>{block.heading}</h2>
+              <p style={{ margin: 0, lineHeight: 1.8, color: '#444', fontWeight: 300 }}>{block.body}</p>
+            </div>
+          ))}
         </section>
       )}
     </>
