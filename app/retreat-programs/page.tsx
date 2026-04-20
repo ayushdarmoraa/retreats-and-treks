@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateCollectionPageSchema, generateBreadcrumbSchema, generateItemListSchema } from '@/components/seo/Schema';
+import Image from 'next/image';
 import { getAllRetreatServices } from '@/content/retreats/services';
 import { RETREAT_DURATION_GROUP } from '@/config/retreatDurations';
 import { RETREAT_MATRIX_META } from '@/config/retreatMatrix';
@@ -82,31 +83,21 @@ export default function RetreatProgramsPage() {
         .rpm-hero {
           width: 100vw;
           margin-left: calc(-50vw + 50%);
-          background: #f7f9f7;
-          padding: 5rem 0;
-          margin-bottom: var(--space-xl);
+          min-height: 50vh;
           position: relative;
           overflow: hidden;
+          display: flex;
+          align-items: center;
+          padding: 6rem 0;
+          color: #fff;
         }
-        .rpm-hero::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 2px;
-          background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(15,118,110,0.5) 30%,
-            rgba(15,118,110,0.5) 70%,
-            transparent
-          );
+        .rpm-hero-bg {
+          position: absolute; inset: 0; z-index: 0;
         }
-        .rpm-hero::after {
+        .rpm-hero-bg::after {
           content: '';
-          position: absolute;
-          inset: 0;
-          background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(15,118,110,0.05) 0%, transparent 70%);
-          pointer-events: none;
+          position: absolute; inset: 0;
+          background: linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.4));
         }
         .rpm-hero-inner {
           max-width: 72rem;
@@ -117,30 +108,20 @@ export default function RetreatProgramsPage() {
         }
 
         .rpm-eyebrow {
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          margin-bottom: 1rem;
+          display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;
         }
         .rpm-eyebrow-line {
-          width: 24px; height: 1px;
-          background: var(--color-primary); 
-          flex-shrink: 0;
+          width: 24px; height: 1px; background: var(--color-primary); flex-shrink: 0;
         }
 
         .rpm-h1 {
           font-family: var(--font-geist-sans), sans-serif;
-          font-size: clamp(1.75rem, 3.8vw, 2.65rem);
-          font-weight: 200;
-          letter-spacing: -0.03em;
-          color: #111111;
-          line-height: 1.15;
-          margin: 0 0 0.75rem;
+          font-size: clamp(2rem, 3.8vw, 3.5rem);
+          font-weight: 200; letter-spacing: -0.03em;
+          color: #fff; line-height: 1.15; margin: 0 0 0.75rem;
+          text-shadow: 0 2px 10px rgba(0,0,0,0.5);
         }
-        .rpm-h1-accent {
-          color: #374151;
-          font-weight: 200;
-        }
+        .rpm-h1-accent { color: #aaa; font-weight: 200; }
 
         .rpm-rule {
           width: 36px; height: 1px;
@@ -151,12 +132,13 @@ export default function RetreatProgramsPage() {
 
         .rpm-sub {
           font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.88rem;
+          font-size: 1.05rem;
           font-weight: 300;
           line-height: 1.8;
-          color: #555555;
+          color: #d1d5db;
           margin: 0;
           max-width: 48rem;
+          text-shadow: 0 1px 5px rgba(0,0,0,0.5);
         }
 
         /* Sections */
@@ -262,11 +244,14 @@ export default function RetreatProgramsPage() {
 
       {/* Hero */}
       <div className="rpm-hero">
+        <div className="rpm-hero-bg">
+          <Image src="/Images/Journeys/Stillness.webp" alt="Himalayan retreating" fill style={{ objectFit: 'cover' }} />
+        </div>
         <div className="rpm-hero-inner">
           <Breadcrumb
             items={[
               { name: 'Home', href: '/' },
-              { name: 'Himalayan Retreats', href: '/retreats/himalayan-retreats' },
+              { name: 'Himalayan Retreats', href: '/retreats' },
               { name: 'All Programs' },
             ]}
           />

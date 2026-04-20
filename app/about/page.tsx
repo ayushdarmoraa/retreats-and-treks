@@ -31,219 +31,236 @@ export function generateMetadata(): Metadata {
 
 export default function AboutPage() {
   return (
-    <main style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+    <main style={{ overflowX: 'hidden' }}>
 
-      <style>{`
-        .abt-why-item { border-left: 2px solid var(--color-primary); padding-left: 1rem; margin-bottom: 1.25rem; }
-        .abt-why-item p { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin: 0; }
+      {/* ── CINEMATIC HERO ── */}
+      <section style={{
+        position: 'relative',
+        width: '100vw',
+        marginLeft: 'calc(-50vw + 50%)',
+        minHeight: '80vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: '#111',
+        overflow: 'hidden'
+      }}>
+        <Image
+          src="/Images/Journeys/HighTerrain.webp"
+          alt="Himalayan mountain peaks"
+          fill
+          priority
+          sizes="100vw"
+          style={{ objectFit: 'cover', opacity: 0.6 }}
+        />
+        <div style={{
+          position: 'absolute', inset: 0,
+          background: 'linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%)',
+          zIndex: 1
+        }} />
+        <div style={{
+          position: 'relative',
+          zIndex: 2,
+          maxWidth: '56rem',
+          margin: '0 auto',
+          padding: '0 2rem',
+          textAlign: 'center',
+          color: '#fff',
+          marginTop: '4rem'
+        }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' }}>
+            <span style={{ width: '24px', height: '1px', background: '#e5e7eb', display: 'inline-block' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#e5e7eb', fontWeight: 500 }}>
+              Our Story & Philosophy
+            </span>
+            <span style={{ width: '24px', height: '1px', background: '#e5e7eb', display: 'inline-block' }} />
+          </div>
+          <h1 style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: 'clamp(3rem, 6vw, 4.5rem)',
+            fontWeight: 200, letterSpacing: '-0.035em',
+            lineHeight: 1.1,
+            margin: '0 0 1.5rem',
+            textShadow: '0 2px 10px rgba(0,0,0,0.5)'
+          }}>
+            Designing the Himalayan <br />
+            <span style={{ color: '#aaa', fontWeight: 200 }}>Experience</span>
+          </h1>
+          <p style={{
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: 'clamp(1.1rem, 1.5vw, 1.25rem)',
+            fontWeight: 300,
+            lineHeight: 1.7,
+            color: '#f3f4f6',
+            margin: '0 auto',
+            maxWidth: '46rem',
+            textShadow: '0 1px 5px rgba(0,0,0,0.5)'
+          }}>
+            We curate structured, profound physical and mental journeys across carefully selected mountain landscapes in North India.
+          </p>
+        </div>
+      </section>
 
-        .abt-loc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 1.75rem; }
-        .abt-loc-card { background: #fff; border: 1px solid #eef0ee; border-top: 2px solid var(--color-primary); border-radius: 8px; overflow: hidden; }
-        .abt-loc-card img { width: 100%; height: 140px; object-fit: cover; display: block; }
-        .abt-loc-card-body { padding: 1rem 1.1rem; }
-        .abt-loc-card-body p { font-family: var(--font-geist-sans), sans-serif; font-size: 0.82rem; font-weight: 300; line-height: 1.75; color: #555; margin: 0; }
-        .abt-loc-label { font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 500; color: #111; margin: 0 0 0.3rem; letter-spacing: -0.01em; }
-
-        .abt-who-item { display: flex; gap: 1rem; padding: 0.85rem 0; border-bottom: 1px solid #f0f0f0; }
-        .abt-who-item:last-child { border-bottom: none; }
-        .abt-who-dot { flex-shrink: 0; margin-top: 0.75rem; width: 8px; height: 8px; border-radius: 50%; background: var(--color-primary);  }
-        .abt-who-item p { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin: 0; }
-
-        .abt-vision-callout { background: #fff; border: 1px solid #e5e7eb; border-left: 3px solid var(--color-primary); border-radius: 8px; padding: 1rem 1.25rem; margin-bottom: 0.75rem; }
-        .abt-vision-callout p { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin: 0; }
-
-        .abt-nav-group { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; }
-        .abt-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.85rem 1rem; border-bottom: 1px solid #f0f0f0; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #333; text-decoration: none; transition: background 0.15s, color 0.15s; }
-        .abt-nav-link:last-child { border-bottom: none; }
-        .abt-nav-link:hover { background: #f7f9f7; color: #374151; }
-        .abt-nav-link::after { content: '→'; color: #374151;  }
-
-        .abt-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-        .abt-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary);  display: inline-block; }
-        .abt-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase; color: #374151; font-weight: 500; }
-        .abt-h2 { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200; letter-spacing: -0.03em; color: #111; line-height: 1.15; margin: 0 0 0.75rem; }
-        .abt-body { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin: 0 0 1rem; }
-
-        @media (max-width: 700px) {
-          .abt-loc-grid { grid-template-columns: 1fr; }
-          .abt-loc-card img { height: 120px; }
-        }
-      `}</style>
-
-      <article>
-
-        {/* ── HERO ── */}
-        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
-          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-            <div className="abt-eyebrow">
-              <span className="abt-eyebrow-line" />
-              <span className="abt-eyebrow-text">About</span>
-            </div>
-            <h1 style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: 'clamp(1.75rem,3.5vw,2.4rem)', fontWeight: 200, letterSpacing: '-0.035em', color: '#111', lineHeight: 1.1, margin: '0 0 1.25rem' }}>
-              About Retreats And Treks
-            </h1>
-            <p className="abt-body" style={{ margin: 0 }}>
-              Retreats And Treks designs structured Himalayan retreat experiences across carefully selected mountain locations in North India. This page explains our approach, our location philosophy, and who our programs are built for.
+      {/* ── MANIFESTO (Why We Focus on Himalayan Retreats) ── */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '8rem', paddingBottom: '8rem', borderBottom: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', textAlign: 'center' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+            <span style={{ width: 24, height: 1, background: 'var(--color-primary)' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', fontWeight: 500 }}>
+              The Environment
+            </span>
+            <span style={{ width: 24, height: 1, background: 'var(--color-primary)' }} />
+          </div>
+          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', margin: '0 0 2.5rem' }}>
+            The Logic of the Mountains
+          </h2>
+          <div style={{ columns: '1', columnGap: '3rem', textAlign: 'left' }}>
+            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.1rem', fontWeight: 300, lineHeight: 1.85, color: '#444', marginBottom: '1.5rem' }}>
+              The Himalayan region of North India offers environmental conditions that meaningfully support inner work. Lower population density, reduced sensory stimulation, cooler climates, and expansive landscapes create a natural containment for structured reflection.
+            </p>
+            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.1rem', fontWeight: 300, lineHeight: 1.85, color: '#444', marginBottom: '1.5rem' }}>
+              <strong>Retreats are not simply vacations in quiet places.</strong> They are intentionally designed containers for recalibration. The Himalayas provide the psychological stability required for that container to function effectively.
+            </p>
+            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.1rem', fontWeight: 300, lineHeight: 1.85, color: '#444', marginBottom: '0' }}>
+              We focus specifically on mountain-based environments because geography fundamentally influences psychological pace. Open ridgelines, forested trails, and the complete absence of urban chaos naturally force a deceleration of the human nervous system.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── WHY HIMALAYAN RETREATS ── */}
-        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
-          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-            <div className="abt-eyebrow">
-              <span className="abt-eyebrow-line" />
-              <span className="abt-eyebrow-text">Our Focus</span>
-            </div>
-            <h2 className="abt-h2">Why We Focus on Himalayan Retreats</h2>
-            <div style={{ marginTop: '1.5rem' }}>
-              {[
-                'The Himalayan region of North India offers environmental conditions that meaningfully support retreat work. Lower population density, reduced sensory stimulation, cooler climates, and expansive landscapes create natural containment for structured reflection.',
-                'Retreats are not simply vacations in quiet places. They are intentionally designed containers for recalibration. The Himalayas provide the environmental stability required for that container to function effectively.',
-                'We focus specifically on mountain-based retreat environments because geography influences psychological pace. Open ridgelines, forested trails, and reduced urban exposure support sustained attention in ways that high-density destinations do not.',
-              ].map((text, i) => (
-                <div key={i} className="abt-why-item"><p>{text}</p></div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── HOW WE DESIGN ── */}
-        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
-          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-            <div className="abt-eyebrow">
-              <span className="abt-eyebrow-line" />
-              <span className="abt-eyebrow-text">Program Design</span>
-            </div>
-            <h2 className="abt-h2">How We Design Retreat Programs</h2>
-            <img
+      {/* ── METHODOLOGY (Image + Text Split) ── */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#111', color: '#fff' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
+          <div style={{ flex: '1 1 50%', minWidth: '300px', position: 'relative', minHeight: '600px' }}>
+            <Image
               src="/Images/Journeys/yoga.webp"
-              alt="Structured morning yoga session in a Himalayan retreat setting"
-              loading="lazy"
-              style={{ width: '100%', height: '260px', objectFit: 'cover', borderRadius: '8px', margin: '1.5rem 0', display: 'block' }}
+              alt="Structured morning yoga and meditation session in a Himalayan retreat setting"
+              fill
+              style={{ objectFit: 'cover' }}
+              sizes="(max-width: 1024px) 100vw, 50vw"
             />
-            <div>
-              {[
-                'Each retreat program is structured around rhythm rather than intensity. Days are intentionally paced to balance guided sessions, quiet integration time, shared meals, and unstructured reflection.',
-                'Program design prioritizes containment over stimulation. Rather than compressing activities into tight schedules, retreats are built to allow transition into slower mental states.',
-                'Facilitators are selected based on alignment with retreat-first methodology rather than performance-driven formats. The objective is not productivity, but recalibration.',
-              ].map((text, i) => (
-                <div key={i} className="abt-why-item"><p>{text}</p></div>
-              ))}
-            </div>
           </div>
-        </section>
-
-        {/* ── LOCATION SELECTION ── */}
-        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
-          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-            <div className="abt-eyebrow">
-              <span className="abt-eyebrow-line" />
-              <span className="abt-eyebrow-text">Locations</span>
+          <div style={{ flex: '1 1 50%', minWidth: '300px', padding: '6rem 4rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <span style={{ width: 24, height: 1, background: '#666' }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#ccc', fontWeight: 500 }}>
+                Program Design
+              </span>
             </div>
-            <h2 className="abt-h2">Our Location Selection Philosophy</h2>
-            <p className="abt-body">
-              Not all mountain destinations are equally suited for retreat formats. We prioritize locations that offer environmental quiet, manageable accessibility, and stable seasonal conditions.
-            </p>
-            <p className="abt-body">
-              Locations such as Chakrata, Sankri, Munsiyari, and Rishikesh are selected for specific reasons — ranging from forest containment to valley immersion to structured yoga infrastructure.
-            </p>
-            <p className="abt-body">
-              Geographic selection is deliberate. Retreat work depends on environmental reinforcement rather than environmental resistance.
-            </p>
-            <div className="abt-loc-grid">
+            <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#fff', margin: '0 0 2rem' }}>
+              Pacing Over <span style={{ color: '#aaa', fontWeight: 200 }}>Productivity</span>
+            </h2>
+            <div style={{ display: 'grid', gap: '1.5rem' }}>
               {[
-                { name: 'Chakrata', img: '/Images/location/chakrata.webp', desc: 'Forest containment on a quiet cantonment ridge, 2,200m.' },
-                { name: 'Sankri', img: '/Images/location/sankri.webp', desc: 'Remote valley immersion near Govind Wildlife Sanctuary.' },
-                { name: 'Munsiyari', img: '/Images/location/munsiyari.webp', desc: 'Alpine silence facing the Panchachuli range, Kumaon.' },
-                { name: 'Rishikesh', img: '/Images/location/rishikesh.webp', desc: 'Structured yoga infrastructure on the Ganges riverbank.' },
-              ].map((loc) => (
-                <div key={loc.name} className="abt-loc-card">
-                  <Image src={loc.img} alt={`${loc.name} — Himalayan retreat location`} width={400} height={200} sizes="(max-width: 768px) 100vw, 25vw" quality={70} />
-                  <div className="abt-loc-card-body">
-                    <p className="abt-loc-label">{loc.name}</p>
-                    <p>{loc.desc}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ── WHO IT'S FOR ── */}
-        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
-          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-            <div className="abt-eyebrow">
-              <span className="abt-eyebrow-line" />
-              <span className="abt-eyebrow-text">Who It's For</span>
-            </div>
-            <h2 className="abt-h2">Who Our Retreats Are Designed For</h2>
-            <p className="abt-body" style={{ marginBottom: '1.5rem' }}>
-              Our retreats are structured for individuals seeking intentional pause. Programs are designed to accommodate mixed experience levels. Prior retreat experience is not required. What matters is willingness to engage with slower pacing and structured reflection.
-            </p>
-            <div style={{ border: '1px solid #e5e7eb', borderRadius: '8px', background: '#fff', padding: '0 1.25rem' }}>
-              {[
-                { label: 'Professionals under sustained workload pressure', body: '— seeking structured restoration without consuming annual leave.' },
-                { label: 'Founders navigating transition', body: '— requiring genuine separation from decision-making environments.' },
-                { label: 'Creatives needing uninterrupted thought space', body: '— mountain environments remove the stimuli that block creative recalibration.' },
-                { label: 'First-time retreat participants', body: '— retreat-first design means programs remain accessible without sacrificing depth.' },
+                { title: 'Designing for Rhythm', body: 'Each program is structured around rhythm rather than intensity. Days are intentionally paced to balance guided sessions, quiet integration time, shared meals, and unstructured reflection.' },
+                { title: 'Creating Containment', body: 'Program design prioritizes containment over stimulation. Rather than compressing activities into tight, stressful schedules, our journeys allow a natural transition into slower brain-wave states.' },
+                { title: 'Expert Facilitation', body: 'Our facilitators are selected based on alignment with a retreat-first methodology rather than performance-driven formats. The objective is not productivity, but ultimate recalibration.' }
               ].map((item, i) => (
-                <div key={i} className="abt-who-item">
-                  <div className="abt-who-dot" />
-                  <p><strong style={{ fontWeight: 500, color: '#111' }}>{item.label}</strong>{item.body}</p>
+                <div key={i} style={{ borderLeft: '2px solid var(--color-primary)', paddingLeft: '1.5rem' }}>
+                  <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.1rem', fontWeight: 500, color: '#fff', margin: '0 0 0.5rem' }}>{item.title}</h3>
+                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', fontWeight: 300, lineHeight: 1.7, color: '#ccc', margin: 0 }}>{item.body}</p>
                 </div>
               ))}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── LONG-TERM VISION ── */}
-        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
-          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-            <div className="abt-eyebrow">
-              <span className="abt-eyebrow-line" />
-              <span className="abt-eyebrow-text">Long-Term Vision</span>
+      {/* ── LOCATION PHILOSOPHY (Visual Cards) ── */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '6rem', paddingBottom: '6rem', borderBottom: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)' }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', fontWeight: 500 }}>
+                Destinations
+              </span>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)' }} />
             </div>
-            <h2 className="abt-h2">Our Long-Term Vision</h2>
-            <div style={{ marginTop: '1.5rem' }}>
-              {[
-                'Retreats And Treks is built as a Himalayan retreat authority platform rather than a single-location operator. Our long-term vision is to curate structured mountain-based programs across carefully selected regions while maintaining program quality and environmental integrity.',
-                'We believe retreat environments should remain smaller-scale, structured, and intentionally designed. Growth is approached through geographic depth rather than volume expansion.',
-                'By combining structured retreat programming with carefully selected mountain settings, we aim to build a sustainable ecosystem that supports both participants and the regions that host them.',
-              ].map((text, i) => (
-                <div key={i} className="abt-vision-callout"><p>{text}</p></div>
-              ))}
-            </div>
+            <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', margin: '0 0 1rem' }}>
+              Curating the Wild
+            </h2>
+            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1rem', fontWeight: 300, color: '#555', maxWidth: '42rem', margin: '0 auto' }}>
+              Not all mountain destinations are equally suited for deep work. We prioritize locations that offer environmental quiet, manageable accessibility, and stable seasonal conditions.
+            </p>
           </div>
-        </section>
 
-        {/* ── KNOWLEDGE BASE ── */}
-        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
-          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-            <div className="abt-eyebrow">
-              <span className="abt-eyebrow-line" />
-              <span className="abt-eyebrow-text">Knowledge Base</span>
-            </div>
-            <h2 className="abt-h2" style={{ marginBottom: '1.75rem' }}>Explore Our Retreat Knowledge Base</h2>
-            <div className="abt-nav-group">
-              <Link href="/topics/retreat-decision" className="abt-nav-link">
-                Decision &amp; Planning Guides
-              </Link>
-              <Link href="/topics/location-authority" className="abt-nav-link">
-                Location-Based Retreat Guides
-              </Link>
-            </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
+            {[
+              { name: 'Chakrata', img: '/Images/location/chakrata.webp', desc: 'Forest containment on a quiet cantonment ridge, 2,200m.' },
+              { name: 'Sankri', img: '/Images/location/sankri.webp', desc: 'Remote valley immersion near Govind Wildlife Sanctuary.' },
+              { name: 'Munsiyari', img: '/Images/location/munsiyari.webp', desc: 'Alpine silence facing the massive Panchachuli range.' },
+              { name: 'Rishikesh', img: '/Images/location/rishikesh.webp', desc: 'Structured yoga infrastructure on the riverbank.' }
+            ].map((loc) => (
+               <div key={loc.name} style={{ background: '#fff', borderRadius: '12px', overflow: 'hidden', border: '1px solid #e5e7eb', transition: 'transform 0.2s', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }} className="hover:-translate-y-1">
+                 <div style={{ position: 'relative', width: '100%', height: '180px' }}>
+                   <Image src={loc.img} alt={`${loc.name} — Himalayan retreat location`} fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 300px" />
+                 </div>
+                 <div style={{ padding: '1.5rem' }}>
+                   <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.15rem', fontWeight: 600, color: '#111', margin: '0 0 0.5rem' }}>{loc.name}</h3>
+                   <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', fontWeight: 300, lineHeight: 1.6, color: '#555', margin: 0 }}>{loc.desc}</p>
+                 </div>
+               </div>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        {/* ── ALL RETREAT PROGRAMS ── */}
-        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem' }}>
-          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-            <AllRetreatPrograms />
+      {/* ── WHO IS THIS FOR ── */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '6rem', paddingBottom: '6rem', borderBottom: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+            <span style={{ width: 24, height: 1, background: 'var(--color-primary)' }} />
+            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', fontWeight: 500 }}>
+              The Participant
+            </span>
           </div>
-        </section>
+          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(2rem, 3vw, 2.5rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', margin: '0 0 1.5rem' }}>
+            Who These Journeys Are Built For
+          </h2>
+          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.05rem', fontWeight: 300, lineHeight: 1.7, color: '#444', marginBottom: '3rem' }}>
+            Our retreats are structured for individuals seeking intentional pause. Prior retreat experience is entirely unnecessary. What matters is a willingness to engage with slower pacing and structured reflection.
+          </p>
 
-      </article>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+            {[
+              { label: 'High-Paced Professionals', body: 'Those under sustained workload pressure seeking structured restoration without consuming all their annual leave.' },
+              { label: 'Founders & Leaders', body: 'Entrepreneurs navigating transition who require genuine separation from rapid decision-making environments.' },
+              { label: 'Creative Thinkers', body: 'Individuals needing uninterrupted thought space. Mountain environments remove the stimuli that block creative recalibration.' },
+              { label: 'First-time Participants', body: 'Our retreat-first design means all programs remain highly accessible to beginners without sacrificing psychological depth.' }
+            ].map((item, i) => (
+              <div key={i} style={{ background: '#f7f9f7', padding: '1.75rem', borderRadius: '12px', border: '1px solid #e5e7eb', borderLeft: '3px solid var(--color-primary)' }}>
+                <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.05rem', fontWeight: 600, color: '#111', margin: '0 0 0.5rem' }}>{item.label}</h3>
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', fontWeight: 300, lineHeight: 1.6, color: '#555', margin: 0 }}>{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── PLANNING & EXPLORATION LINKS ── */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#111', color: '#fff', paddingTop: '4rem', paddingBottom: '4rem' }}>
+        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', textAlign: 'center' }}>
+          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#fff', margin: '0 0 2.5rem' }}>
+            Begin Your Planning
+          </h2>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <Link href="/topics/retreat-decision" style={{
+              display: 'block', background: '#222', padding: '1.25rem 2rem', borderRadius: '8px', border: '1px solid #333',
+              fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1rem', color: '#fff', textDecoration: 'none', transition: 'background 0.2s'
+            }} className="hover:bg-[#333]">
+              Read our Decision &amp; Planning Guides →
+            </Link>
+            <Link href="/locations" style={{
+              display: 'block', background: '#222', padding: '1.25rem 2rem', borderRadius: '8px', border: '1px solid #333',
+              fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1rem', color: '#fff', textDecoration: 'none', transition: 'background 0.2s'
+            }} className="hover:bg-[#333]">
+              Explore all our Basecamp Locations →
+            </Link>
+          </div>
+        </div>
+      </section>
+
     </main>
   );
 }
