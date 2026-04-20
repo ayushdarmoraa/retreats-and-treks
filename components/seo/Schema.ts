@@ -248,7 +248,9 @@ export function generateTouristDestinationSchema(
 }
 
 /**
- * Generate Review JSON-LD objects for schema.org/Service or schema.org/TouristTrip.
+ * Generate Review JSON-LD objects.
+ * Uses LocalBusiness as itemReviewed because Google does not support
+ * Service for Review rich results.
  * Only call when reviews.length > 0.
  */
 export function generateReviewSchemas(
@@ -260,10 +262,16 @@ export function generateReviewSchemas(
     '@context': 'https://schema.org',
     '@type': 'Review',
     itemReviewed: {
-      '@type': 'Service',
-      name: serviceTitle,
-      url: serviceUrl,
-      provider: { '@id': schemaIds.organization },
+      '@type': 'LocalBusiness',
+      '@id': schemaIds.organization,
+      name: BRAND_NAME,
+      url: buildCanonicalUrl('/'),
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Dehradun',
+        addressRegion: 'Uttarakhand',
+        addressCountry: 'IN',
+      },
     },
     author: {
       '@type': 'Person',
@@ -282,6 +290,8 @@ export function generateReviewSchemas(
 
 /**
  * Generate AggregateRating JSON-LD.
+ * Uses LocalBusiness as the parent type because Google does not support
+ * aggregateRating on Service for rich results.
  * Only call when reviewCount >= 2.
  */
 export function generateAggregateRatingSchema(
@@ -292,10 +302,16 @@ export function generateAggregateRatingSchema(
 ) {
   return {
     '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: serviceTitle,
-    url: serviceUrl,
-    provider: { '@id': schemaIds.organization },
+    '@type': 'LocalBusiness',
+    '@id': schemaIds.organization,
+    name: BRAND_NAME,
+    url: buildCanonicalUrl('/'),
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Dehradun',
+      addressRegion: 'Uttarakhand',
+      addressCountry: 'IN',
+    },
     aggregateRating: {
       '@type': 'AggregateRating',
       ratingValue: ratingValue,
