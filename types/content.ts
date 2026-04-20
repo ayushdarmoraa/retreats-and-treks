@@ -115,6 +115,24 @@ export type TrekContent = {
 
 	/** Freshness signal for sitemap lastmod */
 	updatedAt?: string;
+
+	/** Visual/conversion upgrade (2026-Q2) — all optional, backward compatible */
+	heroImage?: string;                  // Hero image src (e.g. /Images/trek/hero/brahmatal-hero.webp)
+	heroImageAlt?: string;               // Hero image alt for SEO
+	heroTagline?: string;                // Emotional subheadline under H1
+	trustSignals?: { label: string; sublabel?: string }[];  // Hero trust strip (4 items ideal)
+	whyThisTrek?: { headline: string; body: string };       // Narrative "why" block, 150-250 words
+	emotionalHooks?: { icon?: string; title: string; body: string }[];  // 4-6 icon cards
+	experienceGallery?: { src: string; alt: string; caption?: string }[]; // 4-6 cinematic images
+	cinematicMoment?: { image: string; alt: string; quote: string; attribution?: string }; // Full-bleed quote
+	difficultyProfile?: {                // Visual 4-axis meter (0-5 integer scale)
+		physical: number;
+		technical: number;
+		altitude: number;
+		weather: number;
+	};
+	whatYouExperience?: string[];        // Secondary highlights for visual cards
+	seoKeywordCluster?: string[];        // Long-tail keywords surfaced in final summary
 };
 
 /* ---------- Blog ---------- */

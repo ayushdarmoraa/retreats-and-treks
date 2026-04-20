@@ -16,6 +16,17 @@ import {
   generateBreadcrumbSchema,
   generateFAQSchema,
 } from '@/components/seo/Schema';
+import {
+  TrekHeroImmersive,
+  TrekTrustStrip,
+  TrekWhySection,
+  TrekEmotionalHooks,
+  TrekExperienceGallery,
+  TrekCinematicMoment,
+  TrekDifficultyProfile,
+  TrekAuthoritySection,
+  TrekFinalCTA,
+} from '@/components/trek/TrekRichSections';
 
 // Deterministic trek comparison blog mapping
 // Only add entries where a dedicated comparison blog exists
@@ -45,20 +56,6 @@ const GARHWAL_LOCATIONS = new Set(['lohajung', 'joshimath']);
 
 // WhatsApp business number (international format, no +)
 const WHATSAPP_NUMBER = '919760446101';
-
-// Social proof — editorial ratings (real aggregate Google/platform scores)
-const TREK_RATINGS: Record<string, { value: number; count: number }> = {
-  'brahmatal-trek': { value: 4.8, count: 320 },
-  'kuari-pass-trek': { value: 4.7, count: 280 },
-  'kedarkantha-trek': { value: 4.9, count: 510 },
-  'roopkund-trek': { value: 4.6, count: 190 },
-  'pangarchulla-trek': { value: 4.7, count: 150 },
-  'har-ki-dun-trek': { value: 4.8, count: 260 },
-  'khaliya-top-trek': { value: 4.6, count: 85 },
-  'tiger-fall-trek': { value: 4.5, count: 120 },
-  'budher-caves-trek': { value: 4.4, count: 70 },
-  'milam-glacier-trek': { value: 4.7, count: 60 },
-};
 
 // Upward context link: varied anchor text pointing to the discovery page
 const DISCOVERY_ANCHORS: Record<string, string> = {
@@ -189,11 +186,38 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Trek Not Found' };
   }
 
+  const canonical = `https://www.retreatsandtreks.com/treks/location/${locationId}/${slug}`;
+  const ogImage = trek.heroImage
+    ? `https://www.retreatsandtreks.com${trek.heroImage}`
+    : undefined;
+
   return {
     title: `${trek.title} in ${location.name} | Retreats And Treks`,
     description: trek.description,
-    alternates: {
-      canonical: `https://www.retreatsandtreks.com/treks/location/${locationId}/${slug}`,
+    alternates: { canonical },
+    openGraph: {
+      title: `${trek.title} in ${location.name}`,
+      description: trek.description,
+      url: canonical,
+      type: 'article',
+      ...(ogImage
+        ? {
+            images: [
+              {
+                url: ogImage,
+                width: 1600,
+                height: 900,
+                alt: trek.heroImageAlt || `${trek.title} in ${location.name}`,
+              },
+            ],
+          }
+        : {}),
+    },
+    twitter: {
+      card: ogImage ? 'summary_large_image' : 'summary',
+      title: `${trek.title} in ${location.name}`,
+      description: trek.description,
+      ...(ogImage ? { images: [ogImage] } : {}),
     },
   };
 }
@@ -216,6 +240,10 @@ export default async function TrekDetailPage({ params }: PageProps) {
     : [];
 
   const canonicalUrl = buildCanonicalUrl(`/treks/location/${locationId}/${slug}`);
+  const whatsappMessage = encodeURIComponent(
+    `Hi! I'm interested in the ${trek.title}. Can you share available dates and pricing?`,
+  );
+  const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
   const trekSchema = generateTrekSchema(trek);
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
@@ -252,7 +280,21 @@ export default async function TrekDetailPage({ params }: PageProps) {
         ]}
       />
 
-      {/* HERO SECTION — full bleed */}
+      {/* IMMERSIVE HERO — full bleed image with overlay (new, 2026-Q2) */}
+      {trek.heroImage && (
+        <TrekHeroImmersive
+          trek={trek}
+          locationName={location.name}
+          whatsappHref={whatsappHref}
+        />
+      )}
+
+      {/* TRUST STRIP — credibility signals below hero */}
+      {trek.trustSignals && trek.trustSignals.length > 0 && (
+        <TrekTrustStrip items={trek.trustSignals} />
+      )}
+
+      {/* HERO SECTION — full bleed (text / meta) */}
 <section style={{
   width: '100vw',
   marginLeft: 'calc(-50vw + 50%)',
@@ -293,38 +335,19 @@ export default async function TrekDetailPage({ params }: PageProps) {
       <span style={{ color: '#111111' }}>{trek.title}</span>
     </nav>
 
-    {/* H1 */}
-    <h1 style={{
-      fontFamily: 'var(--font-geist-sans), sans-serif',
-      fontSize: 'clamp(1.75rem, 3.5vw, 2.4rem)',
-      fontWeight: 200,
-      letterSpacing: '-0.035em',
-      color: '#111111',
-      lineHeight: 1.1,
-      margin: '0 0 1.25rem',
-    }}>
-      {trek.title}
-    </h1>
-
-    {/* RATING */}
-    {TREK_RATINGS[slug] && (
-      <p style={{
-        display: 'inline-flex',
-        alignItems: 'center',
-        gap: '0.4rem',
+    {/* H1 — only when immersive hero is NOT present (backward compat for treks without heroImage) */}
+    {!trek.heroImage && (
+      <h1 style={{
         fontFamily: 'var(--font-geist-sans), sans-serif',
-        fontSize: '0.78rem',
-        fontWeight: 300,
-        color: '#666666',
-        marginBottom: '2rem',
-        marginTop: '0',
+        fontSize: 'clamp(1.75rem, 3.5vw, 2.4rem)',
+        fontWeight: 200,
+        letterSpacing: '-0.035em',
+        color: '#111111',
+        lineHeight: 1.1,
+        margin: '0 0 1.25rem',
       }}>
-        <span style={{ color: '#f59e0b' }}>★</span>
-        <strong style={{ fontWeight: 500, color: '#111111' }}>
-          {TREK_RATINGS[slug].value.toFixed(1)}
-        </strong>
-        rating from {TREK_RATINGS[slug].count}+ trekkers
-      </p>
+        {trek.title}
+      </h1>
     )}
 
     {/* META BAR */}
@@ -623,6 +646,12 @@ export default async function TrekDetailPage({ params }: PageProps) {
   </section>
 )}
 
+{/* WHY THIS TREK — editorial narrative (new 2026-Q2) */}
+<TrekWhySection whyThisTrek={trek.whyThisTrek} />
+
+{/* EMOTIONAL HOOKS — icon cards (new 2026-Q2) */}
+<TrekEmotionalHooks hooks={trek.emotionalHooks} />
+
 {/* HIGHLIGHTS — white */}
 {trek.highlights.length > 0 && (
   <section style={{
@@ -662,14 +691,18 @@ export default async function TrekDetailPage({ params }: PageProps) {
   </section>
 )}
 
+{/* EXPERIENCE GALLERY — cinematic image strip (new 2026-Q2) */}
+<TrekExperienceGallery images={trek.experienceGallery} />
+
 {/* ITINERARY — f7f9f7 */}
 {trek.itinerary.length > 0 && (
-  <section style={{
+  <section id="itinerary" style={{
     width: '100vw', marginLeft: 'calc(-50vw + 50%)',
     background: '#f7f9f7',
     paddingTop: '4rem', paddingBottom: '4rem',
     borderBottom: '1px solid #e5e7eb',
     marginBottom: '0',
+    scrollMarginTop: '2rem',
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
@@ -777,6 +810,12 @@ export default async function TrekDetailPage({ params }: PageProps) {
     />
   </div>
 </section>
+
+{/* CINEMATIC MOMENT — full-bleed emotional anchor (new 2026-Q2) */}
+<TrekCinematicMoment moment={trek.cinematicMoment} />
+
+{/* DIFFICULTY PROFILE — visual 4-axis meter (new 2026-Q2) */}
+<TrekDifficultyProfile profile={trek.difficultyProfile} difficulty={trek.difficulty} />
 
 {/* DIFFICULTY & PREPARATION — #f7f9f7 */}
 <section style={{
@@ -1136,6 +1175,14 @@ export default async function TrekDetailPage({ params }: PageProps) {
         </ul>
       </div>
     )}
+
+      <TrekAuthoritySection trekTitle={trek.title} />
+
+      <TrekFinalCTA 
+        trekTitle={trek.title} 
+        whatsappHref={whatsappHref} 
+        bestSeason={trek.bestSeason} 
+      />
 
     <TrekConversionLayer
       trekTitle={trek.title}
