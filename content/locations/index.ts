@@ -86,6 +86,11 @@ export type LocationPremiumContent = {
     readonly heading: string;
     readonly body: string;
   }>;
+  /** Frequently asked questions for the location (optional) */
+  readonly faq?: ReadonlyArray<{
+    readonly question: string;
+    readonly answer: string;
+  }>;
   /** VISUAL ASSETS (2026 upgrade) */
   readonly heroImage?: string;
   readonly heroImageAlt?: string;

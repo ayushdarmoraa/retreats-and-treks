@@ -5,7 +5,7 @@
  */
 
 import { Metadata } from 'next';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { getLocationById } from './locations';
 import type { LocationId } from '@/config/locations';
 
@@ -52,6 +52,9 @@ export function getLocationMetadata(locationId: LocationId, context?: 'treks' | 
   return {
     title,
     description,
+    openGraph: {
+      images: buildOgImages(title),
+    },
     alternates: {
       canonical: buildCanonicalUrl(path),
     },

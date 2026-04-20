@@ -220,4 +220,61 @@ export const sankriLocation = {
         'Observing the daily rhythm of a working basecamp: porters sorting gear at dawn, guides discussing routes over chai, mules arriving with supplies. This is not performance — it is livelihood. Sitting within this rhythm, rather than consuming it, reveals how mountain communities actually function.',
     },
   ],
+  // Visual assets (optional)
+  heroImage: '/Images/location/sankri.webp',
+  heroImageAlt: 'Sankri basecamp meadow with Himalayan peaks in the distance',
+  gallery: [
+    { src: '/Images/location/sankri.webp', alt: 'Sankri basecamp meadow looking towards Kedarkantha' },
+    { src: '/Images/trek/region/kedarkantha.webp', alt: 'Kedarkantha peak near Sankri' },
+    { src: '/Images/trek/itinerary/kedarkantha/day3.webp', alt: 'Pine forest trail near Sankri' },
+  ],
+  deepTopicalContent: [
+    {
+      heading: 'Getting to Sankri — Practical Logistics',
+      body:
+        'Sankri sits at the head of several high-altitude treks and is best reached from Dehradun. Expect a long, scenic drive (8–10 hours) on mountain roads; shared pickups are common. We recommend arriving a day early to rest and check equipment. There are limited ATMs and basic shops — prepare cash for small purchases, and confirm gear rentals in advance.',
+    },
+    {
+      heading: 'Safety, Acclimatisation & What to Expect',
+      body:
+        'Altitude matters here. We prioritise conservative acclimatisation: shorter first-day walks, hydration, and rest. Our guides monitor the group and use clear turnaround rules for safety. If you are concerned about pre-existing conditions, consult your physician before booking. Packing warm layers, rain protection, and sturdy footwear will transform your experience.',
+    },
+    {
+      heading: 'Sample 5‑Day Pattern (Kedarkantha Focus)',
+      body:
+        'Day 1: Drive to Sankri and overnight in a local guesthouse. Day 2: Trek to Juda Ka Talab, acclimatise in the pine forest. Day 3: Higher ascent toward the alpine meadow. Day 4: Summit attempt at dawn and descend to camp. Day 5: Return to Sankri and drive back. This pattern blends purposeful movement with time for silent practice.',
+    },
+  ],
+  faq: [
+    {
+      question: 'When is the best time to go to Sankri for a retreat?',
+      answer:
+        'The ideal windows are May–June and September–October. September–October offers the clearest skies and stable weather. Sankri is typically inaccessible in deep winter (Nov–Apr).',
+    },
+    {
+      question: 'Do I need previous trekking experience to join a Sankri retreat?',
+      answer:
+        'Basic fitness is required because Sankri involves altitude and uneven trails. Most retreat participants manage with regular walking fitness; for summit-focused treks, prior trekking experience helps. We tailor journeys to group ability and offer alternative low-intensity options.',
+    },
+    {
+      question: 'What should I pack for a Sankri retreat?',
+      answer:
+        'Bring layered warm clothing, a waterproof shell, sturdy trekking shoes, sun protection, and personal medications. Winters require heavy down and microspikes. We provide group-level gear like medical kits and some rental options locally.',
+    },
+    {
+      question: 'Are there ATMs or medical facilities in Sankri?',
+      answer:
+        'No reliable ATMs are available in Sankri; withdraw cash in Purola or Dehradun. Medical facilities are basic — we carry comprehensive wilderness med-kits and emergency plans, but serious medical emergencies require evacuation to larger towns.',
+    },
+    {
+      question: 'Can I combine a silent retreat with trekking?',
+      answer:
+        'Yes — many of our Sankri programs blend silent or meditative retreat days with guided trekking. The movement becomes part of the practice; schedules are designed to keep contemplative time intact while moving through landscape.',
+    },
+    {
+      question: 'How do I enquire or check availability?',
+      answer:
+        'Message us on WhatsApp at +91 97604 46101 or use the WhatsApp buttons on this page to start a conversation. We prefer quick chats to understand your needs and availability before advising dates.',
+    },
+  ],
 } as const;
