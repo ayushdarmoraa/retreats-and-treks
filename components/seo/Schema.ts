@@ -30,11 +30,16 @@ export function generateRetreatSchema(retreat: RetreatContent) {
 }
 
 export function generateTrekSchema(trek: TrekContent) {
+  const heroImageUrl = trek.heroImage ? buildCanonicalUrl(trek.heroImage) : undefined;
+  const galleryUrls = trek.experienceGallery?.map((img) => buildCanonicalUrl(img.src)) ?? [];
+  const allImages = [heroImageUrl, ...galleryUrls].filter(Boolean) as string[];
+
   return {
     '@context': 'https://schema.org',
     '@type': 'TouristTrip',
     name: trek.title,
     description: trek.description,
+    ...(allImages.length > 0 ? { image: allImages } : {}),
     itinerary: trek.itinerary.map((item) => ({
       '@type': 'TouristAttraction',
       name: item,
