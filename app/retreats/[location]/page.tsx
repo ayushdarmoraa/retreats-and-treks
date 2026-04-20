@@ -14,7 +14,7 @@ import {
   generateFAQSchema,
   generateItemListSchema,
 } from '@/components/seo/Schema';
-import Image from 'next/image';
+import { TrekHeroImmersive, TrekTrustStrip } from '@/components/trek/TrekRichSections';
 import RetreatsLocationClient from './RetreatsLocationClient';
 import Breadcrumb from '@/components/Breadcrumb';
 
@@ -115,27 +115,33 @@ export default async function RetreatsLocationPage({ params }: PageProps) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       )}
 
-      {/* Server-rendered hero (keeps hero above all content like trek pages) */}
-      {locationPremiumContent.heroImage && (
-        <section style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', minHeight: '56vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#111', overflow: 'hidden' }}>
-          <Image
-            src={locationPremiumContent.heroImage}
-            alt={locationPremiumContent.heroImageAlt || locationData.name}
-            fill
-            priority
-            sizes="100vw"
-            style={{ objectFit: 'cover', opacity: 0.85 }}
-          />
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 60%)', zIndex: 1 }} />
-          <div style={{ position: 'relative', zIndex: 2, maxWidth: '56rem', margin: '0 auto', padding: '3rem 2rem', color: '#fff' }}>
-            <h1 style={{ margin: 0, fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300 }}>{locationData.name}</h1>
-            <p style={{ marginTop: '0.75rem', color: 'rgba(255,255,255,0.95)', fontWeight: 300 }}>{locationPremiumContent.landTone.opening}</p>
-            <div style={{ marginTop: '1rem' }}>
-              <a href={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I'm interested in retreats in ${locationData.name}.`)}`} style={{ display: 'inline-block', background: 'var(--color-primary)', color: '#fff', padding: '10px 14px', borderRadius: 8, textDecoration: 'none', fontWeight: 600 }}>WhatsApp Us</a>
-            </div>
-          </div>
-        </section>
-      )}
+      {/* Use Trek-style immersive hero + trust strip to match trek detail pages */}
+      {locationPremiumContent.heroImage && (() => {
+        const whatsappMessage = encodeURIComponent(`Hi! I'm interested in retreats in ${locationData.name}.`);
+        const whatsappHref = `https://wa.me/919760446101?text=${whatsappMessage}`;
+
+        const syntheticTrek = {
+          heroImage: locationPremiumContent.heroImage,
+          heroImageAlt: locationPremiumContent.heroImageAlt,
+          title: locationData.name,
+          heroTagline: locationPremiumContent.landTone?.opening,
+          trekType: 'Guided Trek',
+        } as unknown as any;
+
+        const trustItems = [
+          { label: 'Basecamp', sublabel: locationData.name },
+          { label: 'Retreat Formats', sublabel: `${locationPremiumContent.retreatSlugs.length} types` },
+          { label: 'Nearby Treks', sublabel: `${locationPremiumContent.trekSlugs.length}` },
+          { label: 'Season', sublabel: locationPremiumContent.practicalContext?.bestSeasons || '' },
+        ];
+
+        return (
+          <>
+            <TrekHeroImmersive trek={syntheticTrek} locationName={locationData.name} whatsappHref={whatsappHref} />
+            <TrekTrustStrip items={trustItems} />
+          </>
+        );
+      })()}
 
       <RetreatsLocationClient
         locationPremiumContent={locationPremiumContent}
