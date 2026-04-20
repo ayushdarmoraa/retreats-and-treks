@@ -126,7 +126,7 @@ export default function RetreatNearDelhiPage() {
       <article>
 
         {/* ── HERO ──────────────────────────────────────────────────── */}
-        <header style={{ marginBottom: 'var(--space-xl)' }}>
+        <div style={{ marginBottom: 'var(--space-xl)' }}>
           <h1 style={{ fontSize: '2rem', fontWeight: 400, marginBottom: '0.75rem' }}>
             Himalayan Retreats Near Delhi
           </h1>
@@ -145,7 +145,7 @@ export default function RetreatNearDelhiPage() {
             question is not whether a retreat near Delhi is feasible. It is which location
             matches your intention and how quickly you can get there.
           </p>
-        </header>
+        </div>
 
         <PrimaryCTA
           label="Plan My Weekend Retreat"
