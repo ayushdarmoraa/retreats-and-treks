@@ -194,8 +194,52 @@ export default async function BlogPostPage({ params }: PageProps) {
 
         {/* ── CONTENT ── */}
         <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '3.5rem', paddingBottom: '3.5rem', borderBottom: '1px solid #e5e7eb' }}>
-          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-            <div className="blg-prose" dangerouslySetInnerHTML={{ __html: marked(blog.content) as string }} />
+          <div style={{ maxWidth: '48rem', margin: '0 auto', padding: '0 2rem' }}>
+            {(() => {
+              // Parse markdown
+              const rawHtml = marked(blog.content) as string;
+              
+              // We'll split the HTML by <h3> tags so we can inject visuals between sections
+              const sections = rawHtml.split(/(?=<h3)/i);
+              
+              const imgData = blogImageMap[slug] || { src: '/Images/whyhimalaya/nature.webp', alt: blog.title };
+              
+              return (
+                <div className="blg-prose">
+                  {sections.map((sectionHTML, index) => {
+                    // Inject a beautiful full-bleed image after the first h3 section
+                    const renderImage = index === 1 && (
+                      <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', margin: '3rem 0', borderRadius: '12px', overflow: 'hidden', border: '1px solid #e5e7eb' }}>
+                        <Image src={imgData.src} alt={imgData.alt} fill style={{ objectFit: 'cover' }} sizes="(max-width: 640px) 100vw, 48rem" />
+                      </div>
+                    );
+
+                    // Inject a high-converting inline banner after the third h3
+                    const renderBanner = index === 3 && (
+                      <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '12px', padding: '2.5rem', margin: '3rem 0', textAlign: 'center' }}>
+                        <h4 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.25rem', fontWeight: 500, color: '#111', margin: '0 0 0.75rem' }}>
+                          Let us help you plan
+                        </h4>
+                        <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', color: '#555', margin: '0 0 1.5rem', lineHeight: 1.6 }}>
+                          Not sure which {blog.category.includes('Treks') ? 'trek' : 'retreat'} fits your experience level? Speak with our experts and we'll craft the perfect journey for you.
+                        </p>
+                        <Link href={blog.targetMoneyPage} style={{ display: 'inline-block', background: 'var(--color-primary)', color: '#fff', padding: '0.75rem 1.75rem', borderRadius: '6px', fontSize: '0.9rem', fontWeight: 500, textDecoration: 'none' }}>
+                          Explore {blog.category.includes('Treks') ? 'Treks' : 'Retreats'}
+                        </Link>
+                      </div>
+                    );
+
+                    return (
+                      <div key={index}>
+                        <div dangerouslySetInnerHTML={{ __html: sectionHTML }} />
+                        {renderImage}
+                        {renderBanner}
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })()}
             {slug === '3-day-vs-5-day-himalayan-retreat' && <DurationRetreatSuggestions />}
           </div>
         </section>

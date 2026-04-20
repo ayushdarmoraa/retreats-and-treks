@@ -86,6 +86,13 @@ export type LocationPremiumContent = {
     readonly heading: string;
     readonly body: string;
   }>;
+  /** VISUAL ASSETS (2026 upgrade) */
+  readonly heroImage?: string;
+  readonly heroImageAlt?: string;
+  readonly gallery?: ReadonlyArray<{
+    readonly src: string;
+    readonly alt: string;
+  }>;
 };
 
 const LOCATION_CONTENT: Record<LocationId, LocationPremiumContent> = {
