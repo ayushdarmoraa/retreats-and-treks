@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import type { LocationPremiumContent } from '@/content/locations';
 import { getAllLocationContent } from '@/content/locations';
 import type { RetreatContent } from '@/types/content';
@@ -75,6 +76,48 @@ export default function RetreatsLocationClient({
       .
     </p>
   </div>
+{/* Optional hero image (non-breaking) */}
+      {locationPremiumContent.heroImage && (
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative' }}>
+            <Image
+              src={locationPremiumContent.heroImage}
+              alt={locationPremiumContent.heroImageAlt || locationPremiumContent.name}
+              width={1600}
+              height={900}
+              priority
+              style={{ width: '100%', height: '420px', objectFit: 'cover' }}
+            />
+            <div style={{ position: 'absolute', left: '2rem', bottom: '2rem', color: '#ffffff', textShadow: '0 6px 20px rgba(0,0,0,0.6)', maxWidth: '56rem' }}>
+              <h1 style={{ margin: 0, fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 300 }}>{locationPremiumContent.name}</h1>
+              <p style={{ marginTop: '0.5rem', color: 'rgba(255,255,255,0.95)', fontWeight: 300 }}>{locationPremiumContent.landTone.opening}</p>
+              <a
+                href={whatsappLink}
+                onClick={() => logWhatsAppOpen(locationId, 'hero-cta')}
+                style={{ display: 'inline-block', marginTop: '1rem', background: 'var(--color-primary)', color: '#fff', padding: '10px 14px', borderRadius: 8, textDecoration: 'none', fontWeight: 600 }}
+              >
+                WhatsApp Us
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Optional gallery */}
+      {locationPremiumContent.gallery && locationPremiumContent.gallery.length > 0 && (
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', padding: '2rem 0', background: '#ffffff' }}>
+          <div style={{ maxWidth: '64rem', margin: '0 auto', padding: '0 1.5rem' }}>
+            <h3 style={{ margin: '0 0 1rem', fontWeight: 600, fontSize: '1.05rem' }}>Photos</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.75rem' }}>
+              {locationPremiumContent.gallery.map((img, idx) => (
+                <a key={idx} href={img.src} target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: 8, overflow: 'hidden' }}>
+                  <Image src={img.src} alt={img.alt} width={800} height={600} style={{ width: '100%', height: '160px', objectFit: 'cover', display: 'block' }} />
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 </div>
 {/* SECTION 1: OPENING — THE LAND ITSELF */}
       <section style={{
@@ -219,6 +262,36 @@ export default function RetreatsLocationClient({
 
         </div>
       </section>
+
+      {/* SECTION 9.5: FAQ */}
+      {locationPremiumContent.faq && locationPremiumContent.faq.length > 0 && (
+        <section style={{ marginBottom: '0', marginTop: '0', paddingTop: '3rem', paddingBottom: '3rem', background: '#ffffff', width: '100vw', marginLeft: 'calc(-50vw + 50%)', borderBottom: '1px solid #e5e7eb' }}>
+          <style>{`
+            .rlcFAQ-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
+            .rlcFAQ-eyebrow { display:flex; align-items:center; gap:0.75rem; margin-bottom:1rem }
+            .rlcFAQ-heading { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.2rem, 2.2vw, 1.6rem); font-weight: 300; margin:0 0 1rem }
+            .rlcFAQ-list { display:flex; flex-direction:column; gap:0.6rem }
+            .rlcFAQ-item summary { cursor: pointer; font-weight:600; font-size:0.95rem; }
+            .rlcFAQ-item { background:#fafafa; padding:0.9rem 1rem; border-radius:6px; border:1px solid #eef0ee }
+            .rlcFAQ-item p { margin:0.6rem 0 0; color:#555; font-weight:300 }
+          `}</style>
+          <div className="rlcFAQ-inner">
+            <div className="rlcFAQ-eyebrow"><span style={{ width: 24, height: 1, background: 'var(--color-primary)', display: 'inline-block' }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', fontWeight: 500 }}>FAQ</span>
+            </div>
+            <h3 className="rlcFAQ-heading">Frequently asked questions about {locationPremiumContent.name}</h3>
+
+            <div className="rlcFAQ-list">
+              {locationPremiumContent.faq.map((f, idx) => (
+                <details key={idx} className="rlcFAQ-item">
+                  <summary>{f.question}</summary>
+                  <p>{f.answer}</p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* SECTION 2: BRIDGE INNER WORK & MOVEMENT */}
       <section style={{
@@ -620,18 +693,34 @@ export default function RetreatsLocationClient({
             </p>
 
             <div className="rlc4-grid">
-              {retreatServices.map((service, i) => (
-                <Link
-                  key={service.slug}
-                  href={`/retreats/journeys/${service.slug}`}
-                  className="rlc4-card"
-                >
-                  <div className="rlc4-card-idx">{String(i + 1).padStart(2, '0')}</div>
-                  <h3 className="rlc4-card-title">{service.title}</h3>
-                  <p className="rlc4-card-essence">{service.oneLineEssence}</p>
-                  <div className="rlc4-cta">Learn more →</div>
-                </Link>
-              ))}
+              {retreatServices.map((service, i) => {
+                const serviceWhatsApp = `https://wa.me/919760446101?text=${encodeURIComponent(
+                  `Hi, I'm interested in the ${service.title} in ${locationPremiumContent.name}. Can you share dates and pricing?`,
+                )}`;
+
+                return (
+                  <div key={service.slug} className="rlc4-card">
+                    <div className="rlc4-card-idx">{String(i + 1).padStart(2, '0')}</div>
+                    <h3 className="rlc4-card-title">
+                      <Link href={`/retreats/journeys/${service.slug}`} style={{ color: 'inherit', textDecoration: 'none' }}>
+                        {service.title}
+                      </Link>
+                    </h3>
+                    <p className="rlc4-card-essence">{service.oneLineEssence}</p>
+                    <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.5rem', alignItems: 'center' }}>
+                      <Link href={`/retreats/journeys/${service.slug}`} className="rlc4-cta">Learn more →</Link>
+                      <a
+                        href={serviceWhatsApp}
+                        onClick={() => logWhatsAppOpen(locationId, `service-enquire-${service.slug}`)}
+                        className="rlc4-cta"
+                        style={{ background: 'var(--color-primary)', color: '#fff', padding: '6px 10px', borderRadius: 6, textDecoration: 'none' }}
+                      >
+                        Enquire
+                      </a>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
 
           </div>

@@ -11,6 +11,7 @@ import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import {
   generateTouristDestinationSchema,
   generateBreadcrumbSchema,
+  generateFAQSchema,
   generateItemListSchema,
 } from '@/components/seo/Schema';
 import RetreatsLocationClient from './RetreatsLocationClient';
@@ -83,6 +84,11 @@ export default async function RetreatsLocationPage({ params }: PageProps) {
     })),
   ]);
 
+  // FAQ schema (if the location provides FAQs)
+  const faqSchema = locationPremiumContent.faq && locationPremiumContent.faq.length > 0
+    ? generateFAQSchema(locationPremiumContent.faq.map((f) => ({ question: f.question, answer: f.answer })))
+    : null;
+
   return (
     <>
       <Breadcrumb
@@ -104,7 +110,21 @@ export default async function RetreatsLocationPage({ params }: PageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
-      
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
+      {/* Deep topical content (server-rendered for SEO) */}
+      {locationPremiumContent.deepTopicalContent && locationPremiumContent.deepTopicalContent.length > 0 && (
+        <section style={{ maxWidth: '64rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+          {locationPremiumContent.deepTopicalContent.map((block, idx) => (
+            <div key={idx} style={{ marginBottom: '1.25rem' }}>
+              <h2 style={{ fontSize: '1.25rem', margin: '0 0 0.5rem', fontWeight: 500 }}>{block.heading}</h2>
+              <p style={{ margin: 0, lineHeight: 1.8, color: '#444', fontWeight: 300 }}>{block.body}</p>
+            </div>
+          ))}
+        </section>
+      )}
+
       <RetreatsLocationClient
         locationPremiumContent={locationPremiumContent}
         retreats={retreats}
