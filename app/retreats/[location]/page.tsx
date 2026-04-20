@@ -14,6 +14,7 @@ import {
   generateFAQSchema,
   generateItemListSchema,
 } from '@/components/seo/Schema';
+import Image from 'next/image';
 import RetreatsLocationClient from './RetreatsLocationClient';
 import Breadcrumb from '@/components/Breadcrumb';
 
@@ -113,15 +114,26 @@ export default async function RetreatsLocationPage({ params }: PageProps) {
       {faqSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       )}
-      {/* Deep topical content (server-rendered for SEO) */}
-      {locationPremiumContent.deepTopicalContent && locationPremiumContent.deepTopicalContent.length > 0 && (
-        <section style={{ maxWidth: '64rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
-          {locationPremiumContent.deepTopicalContent.map((block, idx) => (
-            <div key={idx} style={{ marginBottom: '1.25rem' }}>
-              <h2 style={{ fontSize: '1.25rem', margin: '0 0 0.5rem', fontWeight: 500 }}>{block.heading}</h2>
-              <p style={{ margin: 0, lineHeight: 1.8, color: '#444', fontWeight: 300 }}>{block.body}</p>
+
+      {/* Server-rendered hero (keeps hero above all content like trek pages) */}
+      {locationPremiumContent.heroImage && (
+        <section style={{ position: 'relative', width: '100vw', marginLeft: 'calc(-50vw + 50%)', minHeight: '56vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#111', overflow: 'hidden' }}>
+          <Image
+            src={locationPremiumContent.heroImage}
+            alt={locationPremiumContent.heroImageAlt || locationData.name}
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover', opacity: 0.85 }}
+          />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.15) 60%)', zIndex: 1 }} />
+          <div style={{ position: 'relative', zIndex: 2, maxWidth: '56rem', margin: '0 auto', padding: '3rem 2rem', color: '#fff' }}>
+            <h1 style={{ margin: 0, fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 300 }}>{locationData.name}</h1>
+            <p style={{ marginTop: '0.75rem', color: 'rgba(255,255,255,0.95)', fontWeight: 300 }}>{locationPremiumContent.landTone.opening}</p>
+            <div style={{ marginTop: '1rem' }}>
+              <a href={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I'm interested in retreats in ${locationData.name}.`)}`} style={{ display: 'inline-block', background: 'var(--color-primary)', color: '#fff', padding: '10px 14px', borderRadius: 8, textDecoration: 'none', fontWeight: 600 }}>WhatsApp Us</a>
             </div>
-          ))}
+          </div>
         </section>
       )}
 
@@ -276,6 +288,17 @@ export default async function RetreatsLocationPage({ params }: PageProps) {
             </Link>
             .
           </p>
+        </section>
+      )}
+      {/* Deep topical content (server-rendered for SEO) - placed after interactive/client content */}
+      {locationPremiumContent.deepTopicalContent && locationPremiumContent.deepTopicalContent.length > 0 && (
+        <section style={{ maxWidth: '64rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+          {locationPremiumContent.deepTopicalContent.map((block, idx) => (
+            <div key={idx} style={{ marginBottom: '1.25rem' }}>
+              <h2 style={{ fontSize: '1.25rem', margin: '0 0 0.5rem', fontWeight: 500 }}>{block.heading}</h2>
+              <p style={{ margin: 0, lineHeight: 1.8, color: '#444', fontWeight: 300 }}>{block.body}</p>
+            </div>
+          ))}
         </section>
       )}
     </>
