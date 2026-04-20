@@ -11,6 +11,9 @@ import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
+import ContentHero from '@/components/ContentHero';
+import { TrekTrustStrip, TrekExperienceGallery } from '@/components/trek/TrekRichSections';
+import { images } from '@/lib/images';
 
 const PATH = '/retreats/retreats-near-delhi';
 
@@ -78,6 +81,21 @@ export default function RetreatNearDelhiPage() {
 
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
 
+  const trustItems = [
+    { label: 'Accessible from Delhi', sublabel: '5–9 hours — Chakrata · Rishikesh · Sankri' },
+    { label: 'Small groups', sublabel: 'Max 12 participants' },
+    { label: 'Meals & transfers', sublabel: 'Seasonal local food included' },
+    { label: 'Free cancellation', sublabel: 'Up to 7 days prior' },
+  ];
+
+  const galleryImages = [
+    images.heroes.valleyForest,
+    images.himalayanRetreats.weekendHimalayan,
+    images.locations.chakrata,
+    images.locations.rishikesh,
+    images.moments.walking,
+  ];
+
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
       <AutoArticleSchema
@@ -101,6 +119,9 @@ export default function RetreatNearDelhiPage() {
           { name: 'Retreats Near Delhi' },
         ]}
       />
+
+      <ContentHero path={PATH} />
+      <TrekTrustStrip items={trustItems} />
 
       <article>
 
@@ -133,6 +154,8 @@ export default function RetreatNearDelhiPage() {
           category="near-delhi"
           sourcePath="/retreats/retreats-near-delhi"
         />
+
+        <TrekExperienceGallery images={galleryImages} />
 
         {/* ── HOW CLOSE ────────────────────────────────────────────── */}
         <section style={{ marginBottom: 'var(--space-xl)' }}>
