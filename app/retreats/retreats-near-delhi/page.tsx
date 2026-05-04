@@ -96,6 +96,36 @@ export default function RetreatNearDelhiPage() {
     images.moments.walking,
   ];
 
+  const destinations = [
+    {
+      name: 'Chakrata Retreat',
+      travelTime: '6–7 hours from Delhi',
+      bestFor: 'Quiet forest-ridge disconnection and gentle mountain immersion',
+      idealDuration: '2 nights (weekend) or 3 nights',
+      vibe: 'Deodar canopy, minimal tourist density, and deep silence — ideal for restorative stillness',
+      ctaLine: 'Choose Chakrata for a peaceful weekend retreat near Delhi',
+      href: '/retreats/chakrata',
+    },
+    {
+      name: 'Rishikesh Retreat',
+      travelTime: '5–6 hours from Delhi',
+      bestFor: 'Structured yoga, riverside practice, and spiritual tradition',
+      idealDuration: '2 nights (weekend) or extended stay',
+      vibe: 'Established ashram lineage, morning riverbank practice, and guided spiritual immersion',
+      ctaLine: 'Book a Rishikesh retreat for the fastest Himalayan reset from Delhi',
+      href: '/retreats/rishikesh',
+    },
+    {
+      name: 'Sankri Retreat',
+      travelTime: '8–9 hours from Delhi',
+      bestFor: 'Remote wilderness and true digital detox at the treeline',
+      idealDuration: '3 nights (extended weekend) or longer',
+      vibe: 'Pine forests, glacial rivers, and complete mountain solitude beyond the ridge',
+      ctaLine: 'Select Sankri for an extended weekend retreat near Delhi with deep wilderness',
+      href: '/retreats/sankri',
+    },
+  ];
+
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
       <AutoArticleSchema
@@ -156,36 +186,96 @@ export default function RetreatNearDelhiPage() {
           <p style={{ lineHeight: 1.8, marginBottom: 'var(--space-lg)', color: '#4b5563' }}>
             Three distinct mountain experiences within a day of Delhi. Choose the environment that matches your retreat intention.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 'var(--space-md)', marginBottom: 'var(--space-lg)' }}>
-            <div style={{ padding: 'var(--space-md)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', backgroundColor: '#fff' }}>
-              <h3 style={{ fontSize: '1.05rem', fontWeight: 600, marginBottom: '0.25rem' }}>Chakrata</h3>
-              <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '0.5rem' }}>Quiet forest ridge • 6–7 hrs</p>
-              <p style={{ fontSize: '0.9rem', lineHeight: 1.6, margin: 0, color: '#374151' }}>
-                Deodar canopy, minimal tourist density, and deep silence. Best for disconnection and gentle forest immersion.
-              </p>
-            </div>
-            <div style={{ padding: 'var(--space-md)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', backgroundColor: '#fff' }}>
-              <h3 style={{ fontSize: '1.05rem', fontWeight: 600, marginBottom: '0.25rem' }}>Rishikesh</h3>
-              <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '0.5rem' }}>Riverside yoga hub • 5–6 hrs</p>
-              <p style={{ fontSize: '0.9rem', lineHeight: 1.6, margin: 0, color: '#374151' }}>
-                Established yoga lineage, ashram traditions, and riverside practice. Best for structured spiritual immersion.
-              </p>
-            </div>
-            <div style={{ padding: 'var(--space-md)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', backgroundColor: '#fff' }}>
-              <h3 style={{ fontSize: '1.05rem', fontWeight: 600, marginBottom: '0.25rem' }}>Sankri</h3>
-              <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '0.5rem' }}>Remote wilderness • 8–9 hrs</p>
-              <p style={{ fontSize: '0.9rem', lineHeight: 1.6, margin: 0, color: '#374151' }}>
-                Deep mountain solitude at the treeline. Best for extended weekends and true digital detox.
-              </p>
-            </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 'var(--space-md)' }}>
+            {destinations.map((d) => (
+              <div
+                key={d.name}
+                style={{
+                  padding: 'var(--space-lg)',
+                  border: '1px solid var(--color-border)',
+                  borderRadius: 'var(--radius-md)',
+                  backgroundColor: '#fff',
+                  boxShadow: '0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04)',
+                  transition: 'transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease',
+                }}
+                onMouseEnter={(e) => {
+                  const el = e.currentTarget;
+                  el.style.transform = 'translateY(-2px)';
+                  el.style.boxShadow = '0 8px 24px rgba(15, 23, 42, 0.1), 0 4px 12px rgba(15, 23, 42, 0.06)';
+                  el.style.borderColor = 'var(--color-primary)';
+                }}
+                onMouseLeave={(e) => {
+                  const el = e.currentTarget;
+                  el.style.transform = 'translateY(0)';
+                  el.style.boxShadow = '0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04)';
+                  el.style.borderColor = 'var(--color-border)';
+                }}
+              >
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: 'var(--space-md)' }}>
+                  <div>
+                    <h3 style={{ fontSize: '1.15rem', fontWeight: 700, margin: 0, color: '#0f172a' }}>{d.name}</h3>
+                    <p style={{ fontSize: '0.875rem', color: 'var(--color-primary)', fontWeight: 600, margin: '0.125rem 0 0' }}>{d.travelTime}</p>
+                  </div>
+                </div>
+
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 'var(--space-md)', marginBottom: 'var(--space-md)' }}>
+                  <div>
+                    <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#64748b', fontWeight: 600, margin: 0 }}>Best for</p>
+                    <p style={{ fontSize: '0.9rem', color: '#334155', margin: '0.25rem 0 0', lineHeight: 1.5 }}>{d.bestFor}</p>
+                  </div>
+                  <div>
+                    <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#64748b', fontWeight: 600, margin: 0 }}>Ideal duration</p>
+                    <p style={{ fontSize: '0.9rem', color: '#334155', margin: '0.25rem 0 0', lineHeight: 1.5 }}>{d.idealDuration}</p>
+                  </div>
+                </div>
+
+                <div style={{ marginBottom: 'var(--space-md)' }}>
+                  <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.05em', color: '#64748b', fontWeight: 600, margin: 0 }}>Retreat vibe</p>
+                  <p style={{ fontSize: '0.9rem', color: '#475569', margin: '0.25rem 0 0', lineHeight: 1.6 }}>{d.vibe}</p>
+                </div>
+
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: 'var(--space-md)', paddingTop: 'var(--space-md)', borderTop: '1px solid var(--color-border)' }}>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--color-primary)', fontWeight: 600, margin: 0 }}>{d.ctaLine}</p>
+                  <Link
+                    href={d.href}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '0.35rem',
+                      fontSize: '0.875rem',
+                      fontWeight: 600,
+                      color: '#fff',
+                      backgroundColor: 'var(--color-primary)',
+                      padding: '0.5rem 0.875rem',
+                      borderRadius: 'var(--radius-sm)',
+                      textDecoration: 'none',
+                      transition: 'background-color 0.15s ease, transform 0.1s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = '#1e40af';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = 'var(--color-primary)';
+                    }}
+                  >
+                    Explore
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <path d="M3.5 7H10.5M10.5 7L7 3.5M10.5 7L7 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
-          <PrimaryCTA
-            label="Choose My Destination"
-            subtext="Tell us your preferred vibe and dates. We’ll match you to the right mountain space."
-            vertical="retreat"
-            category="near-delhi"
-            sourcePath="/retreats/retreats-near-delhi"
-          />
+          <div style={{ marginTop: 'var(--space-lg)' }}>
+            <PrimaryCTA
+              label="Choose My Destination"
+              subtext="Tell us your preferred vibe and dates. We’ll match you to the right mountain space."
+              vertical="retreat"
+              category="near-delhi"
+              sourcePath="/retreats/retreats-near-delhi"
+            />
+          </div>
         </section>
 
         {/* ── HOW CLOSE ────────────────────────────────────────────── */}
