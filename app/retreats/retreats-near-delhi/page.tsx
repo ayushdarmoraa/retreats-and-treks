@@ -127,29 +127,20 @@ export default function RetreatNearDelhiPage() {
 
         {/* ── HERO ──────────────────────────────────────────────────── */}
         <div style={{ marginBottom: 'var(--space-xl)' }}>
-          <h1 style={{ fontSize: '2rem', fontWeight: 400, marginBottom: '0.75rem' }}>
-            Himalayan Retreats Near Delhi
+          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 2.75rem)', fontWeight: 300, letterSpacing: '-0.02em', marginBottom: '1rem', lineHeight: 1.1 }}>
+            The 48-Hour Himalayan Reset: Weekend Retreats Near Delhi
           </h1>
-          <p style={{ fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '1rem' }}>
-            Five to seven hours by road separates Delhi from genuine mountain retreat
-            environments. That is shorter than most domestic flights once you account for
-            airport time — and it means a Friday evening departure places you in the Himalayas
-            by midnight. Two nights of structured restoration. Sunday return. Zero annual leave
-            required. For professionals in Delhi and NCR carrying accumulated stress, this is
-            the most practical wellness intervention available: a mountain reset that fits inside
-            a working week.
+          <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: '#374151', fontWeight: 300, margin: '0 0 1.25rem' }}>
+            For professionals in Delhi NCR seeking a genuine stress reset, a weekend retreat near Delhi provides the most practical path to restoration. Moving beyond the city&apos;s heat and noise into the high-altitude forests of Chakrata, the spiritual heritage of Rishikesh, or the wilderness solitude of Sankri creates the neurological separation required for deep recovery.
           </p>
-          <p style={{ fontSize: '1.05rem', lineHeight: 1.8, margin: 0 }}>
-            The Uttarakhand foothills hold multiple retreat destinations within this driving
-            radius — each offering a different character, altitude, and program style. The
-            question is not whether a retreat near Delhi is feasible. It is which location
-            matches your intention and how quickly you can get there.
+          <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: '#374151', fontWeight: 300, margin: 0 }}>
+            These structured mountain forest stays focus on yoga and meditation tailored to the urban practitioner. With a Friday evening departure placing you in the Himalayas by midnight, you can experience a complete cycle of restoration and return by Sunday evening—zero annual leave required.
           </p>
         </div>
 
         <PrimaryCTA
-          label="Plan My Weekend Retreat"
-          subtext="Planning a weekend retreat near Delhi? Let us help."
+          label="Start Planning on WhatsApp"
+          subtext="Planning a weekend retreat near Delhi? Start a conversation for a personalized recommendation."
           vertical="retreat"
           category="near-delhi"
           sourcePath="/retreats/retreats-near-delhi"
