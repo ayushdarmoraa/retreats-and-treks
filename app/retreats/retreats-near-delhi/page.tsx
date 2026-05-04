@@ -148,6 +148,46 @@ export default function RetreatNearDelhiPage() {
 
         <TrekExperienceGallery images={galleryImages} />
 
+        {/* ── QUICK COMPARISON ─────────────────────────────────────── */}
+        <section style={{ marginBottom: 'var(--space-xl)' }}>
+          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: '0.5rem' }}>
+            Pick Your Mountain Space
+          </h2>
+          <p style={{ lineHeight: 1.8, marginBottom: 'var(--space-lg)', color: '#4b5563' }}>
+            Three distinct mountain experiences within a day of Delhi. Choose the environment that matches your retreat intention.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 'var(--space-md)', marginBottom: 'var(--space-lg)' }}>
+            <div style={{ padding: 'var(--space-md)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', backgroundColor: '#fff' }}>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: 600, marginBottom: '0.25rem' }}>Chakrata</h3>
+              <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '0.5rem' }}>Quiet forest ridge • 6–7 hrs</p>
+              <p style={{ fontSize: '0.9rem', lineHeight: 1.6, margin: 0, color: '#374151' }}>
+                Deodar canopy, minimal tourist density, and deep silence. Best for disconnection and gentle forest immersion.
+              </p>
+            </div>
+            <div style={{ padding: 'var(--space-md)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', backgroundColor: '#fff' }}>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: 600, marginBottom: '0.25rem' }}>Rishikesh</h3>
+              <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '0.5rem' }}>Riverside yoga hub • 5–6 hrs</p>
+              <p style={{ fontSize: '0.9rem', lineHeight: 1.6, margin: 0, color: '#374151' }}>
+                Established yoga lineage, ashram traditions, and riverside practice. Best for structured spiritual immersion.
+              </p>
+            </div>
+            <div style={{ padding: 'var(--space-md)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', backgroundColor: '#fff' }}>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: 600, marginBottom: '0.25rem' }}>Sankri</h3>
+              <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '0.5rem' }}>Remote wilderness • 8–9 hrs</p>
+              <p style={{ fontSize: '0.9rem', lineHeight: 1.6, margin: 0, color: '#374151' }}>
+                Deep mountain solitude at the treeline. Best for extended weekends and true digital detox.
+              </p>
+            </div>
+          </div>
+          <PrimaryCTA
+            label="Choose My Destination"
+            subtext="Tell us your preferred vibe and dates. We’ll match you to the right mountain space."
+            vertical="retreat"
+            category="near-delhi"
+            sourcePath="/retreats/retreats-near-delhi"
+          />
+        </section>
+
         {/* ── HOW CLOSE ────────────────────────────────────────────── */}
         <section style={{ marginBottom: 'var(--space-xl)' }}>
           <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
