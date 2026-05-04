@@ -1,0 +1,7 @@
+show-diffs: true
+auto-commits: true
+dirty-commits: false
+auto-lint: false
+auto-test: false
+analytics-disable: true
+yes-always: false
