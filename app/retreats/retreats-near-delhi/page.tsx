@@ -305,12 +305,6 @@ export default function RetreatNearDelhiPage() {
 
         <TrekTrustStrip items={trustItems} />
 
-        <TrekExperienceGallery
-          images={galleryImages}
-          heading="A visual glimpse of your mountain reset"
-          topPadding="1.75rem"
-        />
-
         {/* ── QUICK COMPARISON ─────────────────────────────────────── */}
         <section id="destination-comparison" style={{ marginBottom: 'var(--space-xl)' }}>
           <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: '0.5rem' }}>
@@ -350,6 +344,12 @@ export default function RetreatNearDelhiPage() {
             sourcePath="/retreats/retreats-near-delhi"
           />
         </section>
+
+        <TrekExperienceGallery
+          images={galleryImages}
+          heading="A visual glimpse of your mountain reset"
+          topPadding="1.75rem"
+        />
 
         {/* ── HOW CLOSE ────────────────────────────────────────────── */}
         <section style={{ marginBottom: 'var(--space-xl)' }}>
