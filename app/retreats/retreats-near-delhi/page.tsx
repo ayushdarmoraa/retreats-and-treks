@@ -260,7 +260,7 @@ export default function RetreatNearDelhiPage() {
 
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', alignItems: 'center' }}>
                 <a
-                  href="#retreat-planning"
+                  href="#destination-comparison"
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
@@ -304,16 +304,6 @@ export default function RetreatNearDelhiPage() {
         </section>
 
         <TrekTrustStrip items={trustItems} />
-
-        <div id="retreat-planning">
-          <PrimaryCTA
-            label="Start Planning on WhatsApp"
-            subtext="Planning a weekend retreat near Delhi? Start a conversation for a personalized recommendation."
-            vertical="retreat"
-            category="near-delhi"
-            sourcePath="/retreats/retreats-near-delhi"
-          />
-        </div>
 
         <TrekExperienceGallery
           images={galleryImages}
