@@ -120,9 +120,6 @@ export default function RetreatNearDelhiPage() {
         ]}
       />
 
-      <ContentHero path={PATH} />
-      <TrekTrustStrip items={trustItems} />
-
       <article>
 
         {/* ── HERO ──────────────────────────────────────────────────── */}
@@ -137,6 +134,9 @@ export default function RetreatNearDelhiPage() {
             These structured mountain forest stays focus on yoga and meditation tailored to the urban practitioner. With a Friday evening departure placing you in the Himalayas by midnight, you can experience a complete cycle of restoration and return by Sunday evening—zero annual leave required.
           </p>
         </div>
+
+        <ContentHero path={PATH} />
+        <TrekTrustStrip items={trustItems} />
 
         <PrimaryCTA
           label="Start Planning on WhatsApp"
