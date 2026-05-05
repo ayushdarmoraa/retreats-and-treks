@@ -97,7 +97,7 @@ export default function RetreatNearDelhiPage() {
   ];
 
   return (
-    <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+    <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: '0 var(--space-md) var(--space-lg)' }}>
       <AutoArticleSchema
         title="Himalayan Retreats Near Delhi"
         description="Find Himalayan retreats near Delhi in Chakrata, Rishikesh and Sankri. Yoga, meditation and mountain wellness programs 5–9 hours from the capital by road."
