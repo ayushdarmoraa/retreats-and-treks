@@ -146,7 +146,10 @@ export default function RetreatNearDelhiPage() {
           sourcePath="/retreats/retreats-near-delhi"
         />
 
-        <TrekExperienceGallery images={galleryImages} />
+        <TrekExperienceGallery
+          images={galleryImages}
+          heading="A visual glimpse of your mountain reset"
+        />
 
         {/* ── QUICK COMPARISON ─────────────────────────────────────── */}
         <section style={{ marginBottom: 'var(--space-xl)' }}>

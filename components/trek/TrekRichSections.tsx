@@ -451,8 +451,10 @@ export function TrekEmotionalHooks({
 
 export function TrekExperienceGallery({
   images,
+  heading,
 }: {
   images?: { src: string; alt: string; caption?: string }[];
+  heading?: string;
 }) {
   if (!images || images.length === 0) return null;
   return (
@@ -507,7 +509,7 @@ export function TrekExperienceGallery({
             marginBottom: '2rem',
           }}
         >
-          A visual walk-through of the trail
+          {heading ?? 'A visual walk-through of the trail'}
         </h2>
         <div
           style={{
