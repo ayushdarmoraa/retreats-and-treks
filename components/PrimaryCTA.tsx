@@ -70,7 +70,7 @@ export default function PrimaryCTA({
             fontSize: '0.75rem', letterSpacing: '0.28em',
             textTransform: 'uppercase' as const,
             color: '#374151', fontWeight: 500,
-          }}>Ready to Trek?</span>
+          }}>{vertical === 'trek' ? 'Ready to Trek?' : 'Ready to Reset?'}</span>
           <span style={{
             width: '20px', height: '1px',
             background: 'var(--color-primary)',
