@@ -123,15 +123,108 @@ export default function RetreatNearDelhiPage() {
       <article>
 
         {/* ── HERO ──────────────────────────────────────────────────── */}
-        <div style={{ marginBottom: 'var(--space-xl)' }}>
-          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 2.75rem)', fontWeight: 300, letterSpacing: '-0.02em', marginBottom: '1rem', lineHeight: 1.1 }}>
-            The 48-Hour Himalayan Reset: Weekend Retreats Near Delhi
+        <div
+          style={{
+            marginBottom: 'var(--space-xl)',
+            padding: 'clamp(1.5rem, 4vw, 3rem)',
+            border: '1px solid rgba(15, 118, 110, 0.16)',
+            borderRadius: '24px',
+            background:
+              'linear-gradient(135deg, rgba(240, 253, 250, 0.9) 0%, rgba(255, 255, 255, 1) 52%, rgba(236, 253, 245, 0.72) 100%)',
+            boxShadow: '0 24px 70px rgba(15, 23, 42, 0.06)',
+          }}
+        >
+          <div
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.65rem',
+              padding: '0.45rem 0.8rem',
+              border: '1px solid rgba(15, 118, 110, 0.18)',
+              borderRadius: '999px',
+              backgroundColor: 'rgba(255, 255, 255, 0.72)',
+              color: '#0f766e',
+              fontSize: '0.72rem',
+              fontWeight: 600,
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              marginBottom: '1.25rem',
+            }}
+          >
+            Weekend retreats near Delhi NCR
+          </div>
+
+          <h1
+            style={{
+              fontSize: 'clamp(2.25rem, 6vw, 4.4rem)',
+              fontWeight: 300,
+              letterSpacing: '-0.055em',
+              marginBottom: '1rem',
+              lineHeight: 0.98,
+              color: '#0f172a',
+              maxWidth: '52rem',
+            }}
+          >
+            The 48-Hour Himalayan Reset
           </h1>
-          <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: '#374151', fontWeight: 300, margin: '0 0 1.25rem' }}>
-            For professionals in Delhi NCR seeking a genuine stress reset, a weekend retreat near Delhi provides the most practical path to restoration. Moving beyond the city&apos;s heat and noise into the high-altitude forests of Chakrata, the spiritual heritage of Rishikesh, or the wilderness solitude of Sankri creates the neurological separation required for deep recovery.
+
+          <p
+            style={{
+              fontSize: 'clamp(1.05rem, 2vw, 1.28rem)',
+              lineHeight: 1.75,
+              color: '#334155',
+              fontWeight: 300,
+              margin: '0 0 1.5rem',
+              maxWidth: '48rem',
+            }}
+          >
+            A practical weekend retreat near Delhi for professionals who need clean mountain air,
+            quiet forests, yoga, meditation, and a complete nervous-system reset without taking
+            annual leave.
           </p>
-          <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: '#374151', fontWeight: 300, margin: 0 }}>
-            These structured mountain forest stays focus on yoga and meditation tailored to the urban practitioner. With a Friday evening departure placing you in the Himalayas by midnight, you can experience a complete cycle of restoration and return by Sunday evening—zero annual leave required.
+
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              gap: '0.65rem',
+              marginBottom: '1.5rem',
+            }}
+          >
+            {['5–9 hrs from Delhi', '2–3 day formats', 'Yoga + meditation', 'Small groups', 'Custom dates'].map((item) => (
+              <span
+                key={item}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  padding: '0.55rem 0.85rem',
+                  borderRadius: '999px',
+                  backgroundColor: '#ffffff',
+                  border: '1px solid rgba(15, 118, 110, 0.14)',
+                  color: '#115e59',
+                  fontSize: '0.82rem',
+                  fontWeight: 500,
+                  boxShadow: '0 8px 24px rgba(15, 23, 42, 0.04)',
+                }}
+              >
+                {item}
+              </span>
+            ))}
+          </div>
+
+          <p
+            style={{
+              fontSize: '0.98rem',
+              lineHeight: 1.8,
+              color: '#475569',
+              fontWeight: 300,
+              margin: 0,
+              maxWidth: '46rem',
+            }}
+          >
+            Choose between Chakrata&apos;s forest silence, Rishikesh&apos;s riverside yoga culture,
+            or Sankri&apos;s deeper wilderness — each planned around your dates, group size, and
+            retreat intention.
           </p>
         </div>
 
