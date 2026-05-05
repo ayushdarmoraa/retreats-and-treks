@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
@@ -11,7 +12,6 @@ import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
-import ContentHero from '@/components/ContentHero';
 import { TrekTrustStrip, TrekExperienceGallery } from '@/components/trek/TrekRichSections';
 import { images } from '@/lib/images';
 
@@ -123,28 +123,197 @@ export default function RetreatNearDelhiPage() {
       <article>
 
         {/* ── HERO ──────────────────────────────────────────────────── */}
-        <div style={{ marginBottom: 'var(--space-xl)' }}>
-          <h1 style={{ fontSize: 'clamp(2rem, 5vw, 2.75rem)', fontWeight: 300, letterSpacing: '-0.02em', marginBottom: '1rem', lineHeight: 1.1 }}>
-            The 48-Hour Himalayan Reset: Weekend Retreats Near Delhi
-          </h1>
-          <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: '#374151', fontWeight: 300, margin: '0 0 1.25rem' }}>
-            For professionals in Delhi NCR seeking a genuine stress reset, a weekend retreat near Delhi provides the most practical path to restoration. Moving beyond the city&apos;s heat and noise into the high-altitude forests of Chakrata, the spiritual heritage of Rishikesh, or the wilderness solitude of Sankri creates the neurological separation required for deep recovery.
-          </p>
-          <p style={{ fontSize: '1.15rem', lineHeight: 1.7, color: '#374151', fontWeight: 300, margin: 0 }}>
-            These structured mountain forest stays focus on yoga and meditation tailored to the urban practitioner. With a Friday evening departure placing you in the Himalayas by midnight, you can experience a complete cycle of restoration and return by Sunday evening—zero annual leave required.
-          </p>
-        </div>
+        <section
+          style={{
+            width: '100vw',
+            marginLeft: 'calc(-50vw + 50%)',
+            position: 'relative',
+            minHeight: 'clamp(520px, 72vh, 760px)',
+            overflow: 'hidden',
+            marginBottom: 0,
+            display: 'flex',
+            alignItems: 'stretch',
+          }}
+        >
+          <Image
+            src={images.heroes.valleyForest.src}
+            alt={images.heroes.valleyForest.alt}
+            fill
+            priority
+            sizes="100vw"
+            style={{
+              objectFit: 'cover',
+              objectPosition: 'center',
+            }}
+          />
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background:
+                'linear-gradient(90deg, rgba(6, 20, 18, 0.82) 0%, rgba(6, 20, 18, 0.64) 42%, rgba(6, 20, 18, 0.22) 100%)',
+              zIndex: 1,
+            }}
+          />
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background:
+                'linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.18) 58%, rgba(0, 0, 0, 0.5) 100%)',
+              zIndex: 2,
+            }}
+          />
+          <div
+            style={{
+              position: 'relative',
+              zIndex: 3,
+              width: '100%',
+              maxWidth: '72rem',
+              margin: '0 auto',
+              padding: 'clamp(3rem, 7vw, 6rem) clamp(1.25rem, 4vw, 2rem)',
+              display: 'flex',
+              alignItems: 'center',
+            }}
+          >
+            <div style={{ maxWidth: '46rem' }}>
+              <div
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '0.65rem',
+                  padding: '0.45rem 0.85rem',
+                  border: '1px solid rgba(255, 255, 255, 0.38)',
+                  borderRadius: '999px',
+                  backgroundColor: 'rgba(255, 255, 255, 0.12)',
+                  color: '#ecfeff',
+                  fontSize: '0.72rem',
+                  fontWeight: 600,
+                  letterSpacing: '0.18em',
+                  textTransform: 'uppercase',
+                  backdropFilter: 'blur(10px)',
+                  marginBottom: '1.3rem',
+                }}
+              >
+                Weekend retreats near Delhi NCR
+              </div>
 
-        <ContentHero path={PATH} />
+              <h1
+                style={{
+                  fontSize: 'clamp(2.55rem, 7vw, 5.4rem)',
+                  fontWeight: 300,
+                  letterSpacing: '-0.06em',
+                  margin: '0 0 1rem',
+                  lineHeight: 0.95,
+                  color: '#ffffff',
+                  textShadow: '0 10px 34px rgba(0, 0, 0, 0.34)',
+                }}
+              >
+                The 48-Hour Himalayan Reset
+              </h1>
+
+              <p
+                style={{
+                  fontSize: 'clamp(1.05rem, 2vw, 1.28rem)',
+                  lineHeight: 1.7,
+                  color: 'rgba(255, 255, 255, 0.9)',
+                  fontWeight: 300,
+                  margin: '0 0 1.5rem',
+                  maxWidth: '42rem',
+                }}
+              >
+                Yoga, meditation, forest walks and quiet mountain stays in Chakrata,
+                Rishikesh and Sankri — planned for Delhi NCR travellers who need a complete
+                weekend reset without taking annual leave.
+              </p>
+
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '0.65rem',
+                  marginBottom: '1.8rem',
+                }}
+              >
+                {['5–9 hrs from Delhi', '2–3 day formats', 'Yoga + meditation', 'Small groups', 'Custom dates'].map((item) => (
+                  <span
+                    key={item}
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      padding: '0.55rem 0.85rem',
+                      borderRadius: '999px',
+                      backgroundColor: 'rgba(255, 255, 255, 0.14)',
+                      border: '1px solid rgba(255, 255, 255, 0.28)',
+                      color: '#ffffff',
+                      fontSize: '0.82rem',
+                      fontWeight: 500,
+                      backdropFilter: 'blur(10px)',
+                    }}
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', alignItems: 'center' }}>
+                <a
+                  href="#retreat-planning"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minHeight: '48px',
+                    padding: '0.9rem 1.35rem',
+                    borderRadius: '999px',
+                    backgroundColor: 'var(--color-primary)',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                    fontSize: '0.95rem',
+                    fontWeight: 600,
+                    boxShadow: '0 14px 34px rgba(15, 118, 110, 0.32)',
+                  }}
+                >
+                  Start Planning on WhatsApp
+                </a>
+                <a
+                  href="#destination-comparison"
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    minHeight: '48px',
+                    padding: '0.9rem 1.25rem',
+                    borderRadius: '999px',
+                    backgroundColor: 'rgba(255, 255, 255, 0.12)',
+                    border: '1px solid rgba(255, 255, 255, 0.34)',
+                    color: '#ffffff',
+                    textDecoration: 'none',
+                    fontSize: '0.95rem',
+                    fontWeight: 500,
+                    backdropFilter: 'blur(10px)',
+                  }}
+                >
+                  Compare destinations
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <TrekTrustStrip items={trustItems} />
 
-        <PrimaryCTA
-          label="Start Planning on WhatsApp"
-          subtext="Planning a weekend retreat near Delhi? Start a conversation for a personalized recommendation."
-          vertical="retreat"
-          category="near-delhi"
-          sourcePath="/retreats/retreats-near-delhi"
-        />
+        <div id="retreat-planning">
+          <PrimaryCTA
+            label="Start Planning on WhatsApp"
+            subtext="Planning a weekend retreat near Delhi? Start a conversation for a personalized recommendation."
+            vertical="retreat"
+            category="near-delhi"
+            sourcePath="/retreats/retreats-near-delhi"
+          />
+        </div>
 
         <TrekExperienceGallery
           images={galleryImages}
@@ -152,7 +321,7 @@ export default function RetreatNearDelhiPage() {
         />
 
         {/* ── QUICK COMPARISON ─────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
+        <section id="destination-comparison" style={{ marginBottom: 'var(--space-xl)' }}>
           <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: '0.5rem' }}>
             Pick Your Mountain Space
           </h2>
