@@ -307,33 +307,214 @@ export default function RetreatNearDelhiPage() {
 
         {/* ── QUICK COMPARISON ─────────────────────────────────────── */}
         <section id="destination-comparison" style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-            Pick Your Mountain Space
+          <h2 style={{ fontSize: 'clamp(1.65rem, 3vw, 2.2rem)', fontWeight: 300, marginBottom: '0.75rem', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
+            Choose Your Retreat Setting
           </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: 'var(--space-lg)', color: '#4b5563' }}>
-            Three distinct mountain experiences within a day of Delhi. Choose the environment that matches your retreat intention.
+          <p style={{ lineHeight: 1.8, marginBottom: '1.5rem', color: '#4b5563', maxWidth: '42rem', fontSize: '1rem' }}>
+            Each destination creates a different kind of reset. Choose quiet forest stillness, riverside yoga energy, or deep Himalayan remoteness.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: 'var(--space-md)', marginBottom: 'var(--space-lg)' }}>
-            <div style={{ padding: 'var(--space-md)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', backgroundColor: '#fff' }}>
-              <h3 style={{ fontSize: '1.05rem', fontWeight: 600, marginBottom: '0.25rem' }}>Chakrata</h3>
-              <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '0.5rem' }}>Quiet forest ridge • 6–7 hrs</p>
-              <p style={{ fontSize: '0.9rem', lineHeight: 1.6, margin: 0, color: '#374151' }}>
-                Deodar canopy, minimal tourist density, and deep silence. Best for disconnection and gentle forest immersion.
-              </p>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: '1rem',
+              marginBottom: 'var(--space-lg)',
+            }}
+          >
+            <div
+              style={{
+                backgroundColor: '#ffffff',
+                border: '1px solid #e5e7eb',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                boxShadow: '0 10px 30px rgba(15, 23, 42, 0.06)',
+              }}
+            >
+              <div style={{ position: 'relative', height: '220px' }}>
+                <Image
+                  src={images.locations.chakrata.src}
+                  alt={images.locations.chakrata.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  style={{ objectFit: 'cover' }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.5) 100%)',
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: '1rem',
+                    right: '1rem',
+                    bottom: '1rem',
+                    color: '#ffffff',
+                  }}
+                >
+                  <div style={{ fontSize: '0.75rem', letterSpacing: '0.16em', textTransform: 'uppercase', opacity: 0.92, marginBottom: '0.35rem' }}>
+                    6–7 hrs from Delhi
+                  </div>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 600, margin: 0 }}>Chakrata</h3>
+                </div>
+              </div>
+              <div style={{ padding: '1rem' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginBottom: '0.75rem' }}>
+                  {['Quiet', 'Forest', 'Low-stimulation'].map((item) => (
+                    <span
+                      key={item}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        padding: '0.35rem 0.65rem',
+                        borderRadius: '999px',
+                        backgroundColor: '#ecfdf5',
+                        color: '#065f46',
+                        fontSize: '0.74rem',
+                        fontWeight: 500,
+                      }}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+                <p style={{ fontSize: '0.92rem', lineHeight: 1.7, color: '#374151', margin: 0 }}>
+                  Best for silence, deodar forests, and a gentle nervous-system reset away from tourist noise.
+                </p>
+              </div>
             </div>
-            <div style={{ padding: 'var(--space-md)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', backgroundColor: '#fff' }}>
-              <h3 style={{ fontSize: '1.05rem', fontWeight: 600, marginBottom: '0.25rem' }}>Rishikesh</h3>
-              <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '0.5rem' }}>Riverside yoga hub • 5–6 hrs</p>
-              <p style={{ fontSize: '0.9rem', lineHeight: 1.6, margin: 0, color: '#374151' }}>
-                Established yoga lineage, ashram traditions, and riverside practice. Best for structured spiritual immersion.
-              </p>
+
+            <div
+              style={{
+                backgroundColor: '#ffffff',
+                border: '1px solid #e5e7eb',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                boxShadow: '0 10px 30px rgba(15, 23, 42, 0.06)',
+              }}
+            >
+              <div style={{ position: 'relative', height: '220px' }}>
+                <Image
+                  src={images.locations.rishikesh.src}
+                  alt={images.locations.rishikesh.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  style={{ objectFit: 'cover' }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.5) 100%)',
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: '1rem',
+                    right: '1rem',
+                    bottom: '1rem',
+                    color: '#ffffff',
+                  }}
+                >
+                  <div style={{ fontSize: '0.75rem', letterSpacing: '0.16em', textTransform: 'uppercase', opacity: 0.92, marginBottom: '0.35rem' }}>
+                    5–6 hrs from Delhi
+                  </div>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 600, margin: 0 }}>Rishikesh</h3>
+                </div>
+              </div>
+              <div style={{ padding: '1rem' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginBottom: '0.75rem' }}>
+                  {['Yoga', 'Riverside', 'Guided practice'].map((item) => (
+                    <span
+                      key={item}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        padding: '0.35rem 0.65rem',
+                        borderRadius: '999px',
+                        backgroundColor: '#eff6ff',
+                        color: '#1d4ed8',
+                        fontSize: '0.74rem',
+                        fontWeight: 500,
+                      }}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+                <p style={{ fontSize: '0.92rem', lineHeight: 1.7, color: '#374151', margin: 0 }}>
+                  Best for structured yoga, meditation, spiritual atmosphere, and the fastest weekend escape from Delhi.
+                </p>
+              </div>
             </div>
-            <div style={{ padding: 'var(--space-md)', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', backgroundColor: '#fff' }}>
-              <h3 style={{ fontSize: '1.05rem', fontWeight: 600, marginBottom: '0.25rem' }}>Sankri</h3>
-              <p style={{ fontSize: '0.85rem', color: '#6b7280', marginBottom: '0.5rem' }}>Remote wilderness • 8–9 hrs</p>
-              <p style={{ fontSize: '0.9rem', lineHeight: 1.6, margin: 0, color: '#374151' }}>
-                Deep mountain solitude at the treeline. Best for extended weekends and true digital detox.
-              </p>
+
+            <div
+              style={{
+                backgroundColor: '#ffffff',
+                border: '1px solid #e5e7eb',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                boxShadow: '0 10px 30px rgba(15, 23, 42, 0.06)',
+              }}
+            >
+              <div style={{ position: 'relative', height: '220px' }}>
+                <Image
+                  src={images.locations.sankri.src}
+                  alt={images.locations.sankri.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  style={{ objectFit: 'cover' }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    background: 'linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.5) 100%)',
+                  }}
+                />
+                <div
+                  style={{
+                    position: 'absolute',
+                    left: '1rem',
+                    right: '1rem',
+                    bottom: '1rem',
+                    color: '#ffffff',
+                  }}
+                >
+                  <div style={{ fontSize: '0.75rem', letterSpacing: '0.16em', textTransform: 'uppercase', opacity: 0.92, marginBottom: '0.35rem' }}>
+                    8–9 hrs from Delhi
+                  </div>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 600, margin: 0 }}>Sankri</h3>
+                </div>
+              </div>
+              <div style={{ padding: '1rem' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginBottom: '0.75rem' }}>
+                  {['Remote', 'Mountain', 'Digital detox'].map((item) => (
+                    <span
+                      key={item}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        padding: '0.35rem 0.65rem',
+                        borderRadius: '999px',
+                        backgroundColor: '#f5f3ff',
+                        color: '#6d28d9',
+                        fontSize: '0.74rem',
+                        fontWeight: 500,
+                      }}
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+                <p style={{ fontSize: '0.92rem', lineHeight: 1.7, color: '#374151', margin: 0 }}>
+                  Best for deeper mountain immersion, slower extended weekends, and a more complete disconnect from urban life.
+                </p>
+              </div>
             </div>
           </div>
           <PrimaryCTA
