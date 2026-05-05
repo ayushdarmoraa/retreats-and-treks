@@ -308,7 +308,7 @@ export default function RetreatNearDelhiPage() {
         <TrekExperienceGallery
           images={galleryImages}
           heading="A visual glimpse of your mountain reset"
-          topPadding="2.75rem"
+          topPadding="1.75rem"
         />
 
         {/* ── QUICK COMPARISON ─────────────────────────────────────── */}
