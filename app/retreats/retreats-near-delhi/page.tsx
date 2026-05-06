@@ -1116,6 +1116,106 @@ export default function RetreatNearDelhiPage() {
           </div>
         </section>
 
+        {/* ── SAMPLE RETREAT FORMATS ───────────────────────────────── */}
+        <section
+          style={{
+            marginBottom: '6.5rem',
+            paddingTop: '4.25rem',
+            borderTop: '1px solid #eef2f7',
+          }}
+        >
+          <div style={{ marginBottom: '1.4rem' }}>
+            <h2 style={{ fontSize: 'clamp(1.55rem, 2.8vw, 2rem)', fontWeight: 300, marginBottom: '0.65rem', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
+              Sample Weekend Retreat Formats
+            </h2>
+            <p style={{ lineHeight: 1.8, margin: 0, color: '#4b5563', maxWidth: '44rem' }}>
+              These are not fixed packages. They are starting points we can customize around your dates, group size, travel comfort, and intention.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+              gap: '1.15rem',
+            }}
+          >
+            {[
+              {
+                duration: '2 nights',
+                title: 'Chakrata Forest Reset',
+                bestFor: 'Best for silence, deodar forests, burnout recovery, and a low-stimulation weekend.',
+                includes: ['Morning yoga', 'Forest walk', 'Breathwork', 'Evening reflection'],
+              },
+              {
+                duration: '2 nights',
+                title: 'Rishikesh Yoga Weekend',
+                bestFor: 'Best for guided yoga, Ganga-side meditation, pranayama, and spiritual atmosphere.',
+                includes: ['Yoga practice', 'Meditation', 'Riverside time', 'Guided reflection'],
+              },
+              {
+                duration: '3 nights',
+                title: 'Sankri Mountain Immersion',
+                bestFor: 'Best for extended weekends, digital detox, pine valleys, and deeper wilderness.',
+                includes: ['Slow travel', 'Nature immersion', 'Digital detox', 'Mountain stillness'],
+              },
+            ].map((item) => (
+              <article
+                key={item.title}
+                style={{
+                  padding: '1.35rem',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '18px',
+                  background: 'linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)',
+                  boxShadow: '0 12px 32px rgba(15, 23, 42, 0.055)',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '0.35rem 0.7rem',
+                    borderRadius: '999px',
+                    backgroundColor: 'rgba(15, 118, 110, 0.09)',
+                    color: 'var(--color-primary)',
+                    fontSize: '0.76rem',
+                    fontWeight: 700,
+                    marginBottom: '0.9rem',
+                  }}
+                >
+                  {item.duration}
+                </div>
+                <h3 style={{ fontSize: '1.08rem', fontWeight: 650, marginBottom: '0.65rem', letterSpacing: '-0.01em' }}>
+                  {item.title}
+                </h3>
+                <p style={{ fontSize: '0.92rem', lineHeight: 1.7, color: '#374151', marginBottom: '0.9rem' }}>
+                  {item.bestFor}
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem' }}>
+                  {item.includes.map((included) => (
+                    <span
+                      key={included}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        padding: '0.35rem 0.6rem',
+                        borderRadius: '999px',
+                        backgroundColor: '#ffffff',
+                        border: '1px solid #e5e7eb',
+                        color: '#475467',
+                        fontSize: '0.74rem',
+                        fontWeight: 500,
+                      }}
+                    >
+                      {included}
+                    </span>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+
         {/* ── BEST TIME ────────────────────────────────────────────── */}
         <section
           style={{
