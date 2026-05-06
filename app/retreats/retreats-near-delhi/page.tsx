@@ -10,7 +10,6 @@ import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
-import PrimaryCTA from '@/components/PrimaryCTA';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
 import { TrekTrustStrip, TrekExperienceGallery } from '@/components/trek/TrekRichSections';
 import { images } from '@/lib/images';
@@ -609,13 +608,6 @@ export default function RetreatNearDelhiPage() {
             </p>
           </div>
         </section>
-        <PrimaryCTA
-          label="Plan My Weekend Retreat"
-          subtext="Tell us your preferred dates. We will recommend the right location."
-          vertical="retreat"
-          category="near-delhi"
-          sourcePath="/retreats/retreats-near-delhi"
-        />
         {/* ── BEST DESTINATIONS ─────────────────────────────────────── */}
         <section style={{ marginBottom: 'var(--space-xl)' }}>
           <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
