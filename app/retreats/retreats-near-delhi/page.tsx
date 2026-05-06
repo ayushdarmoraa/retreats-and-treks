@@ -18,9 +18,9 @@ const PATH = '/retreats/retreats-near-delhi';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Himalayan Retreats Near Delhi — Mountain Wellness Within Driving Distance | Retreats And Treks',
+    title: 'Retreats Near Delhi | Weekend Yoga & Himalayan Wellness Retreats',
     description:
-      'Find Himalayan retreats near Delhi in Chakrata, Rishikesh and Sankri. Yoga, meditation and mountain wellness programs 5–9 hours from the capital by road.',
+      'Plan a weekend retreat near Delhi in Rishikesh, Chakrata or Sankri. Yoga, meditation, forest walks, small groups, meals and custom Himalayan retreat planning.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },
@@ -29,12 +29,12 @@ export function generateMetadata(): Metadata {
       follow: true,
     },
     openGraph: {
-      title: 'Himalayan Retreats Near Delhi — Mountain Wellness Within Driving Distance',
+      title: 'Retreats Near Delhi | Weekend Yoga & Himalayan Wellness Retreats',
       description:
-        'Mountain retreat programs within a day\'s drive of Delhi. Chakrata, Rishikesh and Sankri — yoga, meditation and structured restoration in Uttarakhand.',
+        'Plan a weekend retreat near Delhi in Rishikesh, Chakrata or Sankri with yoga, meditation, forest walks, small groups and custom Himalayan retreat planning.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
-      images: buildOgImages('Himalayan Retreats Near Delhi — Mountain Wellness Within Driving Distance'),
+      images: buildOgImages('Retreats Near Delhi | Weekend Yoga & Himalayan Wellness Retreats'),
     },
   };
 }
