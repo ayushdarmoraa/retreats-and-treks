@@ -1081,6 +1081,93 @@ export default function RetreatNearDelhiPage() {
           </div>
         </section>
 
+        {/* ── BEST TIME ────────────────────────────────────────────── */}
+        <section
+          style={{
+            marginBottom: '6.5rem',
+            paddingTop: '4.25rem',
+            borderTop: '1px solid #eef2f7',
+          }}
+        >
+          <div style={{ marginBottom: '1.4rem' }}>
+            <h2 style={{ fontSize: 'clamp(1.55rem, 2.8vw, 2rem)', fontWeight: 300, marginBottom: '0.65rem', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
+              Best Time for Retreats Near Delhi
+            </h2>
+            <p style={{ lineHeight: 1.8, margin: 0, color: '#4b5563', maxWidth: '44rem' }}>
+              The best month depends on whether you want clear skies, cooler air, monsoon greenery, or deep winter quiet.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: '1.15rem',
+            }}
+          >
+            {[
+              {
+                season: 'February–April',
+                title: 'Spring reset',
+                body: 'Clear weather, comfortable yoga conditions, and fresh forest energy after winter.',
+              },
+              {
+                season: 'May–June',
+                title: 'Escape Delhi heat',
+                body: 'Good for cooler mountain air, early morning practice, and short summer wellness breaks.',
+              },
+              {
+                season: 'July–September',
+                title: 'Monsoon greenery',
+                body: 'Best for slow retreats and lush landscapes. Road conditions should be checked before travel.',
+              },
+              {
+                season: 'October–November',
+                title: 'Peak retreat weather',
+                body: 'Crisp air, clearer views, and comfortable days make this one of the strongest booking windows.',
+              },
+              {
+                season: 'December–January',
+                title: 'Winter calm',
+                body: 'Quiet stays, cold nights, and a slower rhythm. Chakrata and Sankri can feel especially still.',
+              },
+            ].map((item) => (
+              <article
+                key={item.season}
+                style={{
+                  padding: '1.3rem',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '16px',
+                  backgroundColor: '#ffffff',
+                  boxShadow: '0 10px 28px rgba(15, 23, 42, 0.045)',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '0.35rem 0.65rem',
+                    borderRadius: '999px',
+                    backgroundColor: 'rgba(15, 118, 110, 0.09)',
+                    color: 'var(--color-primary)',
+                    fontSize: '0.76rem',
+                    fontWeight: 700,
+                    marginBottom: '0.85rem',
+                  }}
+                >
+                  {item.season}
+                </div>
+                <h3 style={{ fontSize: '1rem', fontWeight: 650, marginBottom: '0.5rem', letterSpacing: '-0.01em' }}>
+                  {item.title}
+                </h3>
+                <p style={{ fontSize: '0.9rem', lineHeight: 1.7, color: '#4b5563', margin: 0 }}>
+                  {item.body}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
         {/* ── COMMERCIAL NAVIGATION ─────────────────────────────────── */}
         <section style={{ marginBottom: 'var(--space-xl)', padding: '1.5rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', backgroundColor: '#fafafa' }}>
           <p style={{ lineHeight: 1.8, margin: 0, fontSize: '0.95rem' }}>
