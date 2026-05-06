@@ -941,6 +941,79 @@ export default function RetreatNearDelhiPage() {
           </div>
         </section>
 
+        {/* ── WHAT YOUR RETREAT CAN INCLUDE ─────────────────────────── */}
+        <section style={{ marginBottom: 'var(--space-xl)' }}>
+          <div style={{ marginBottom: '1.4rem' }}>
+            <h2 style={{ fontSize: 'clamp(1.55rem, 2.8vw, 2rem)', fontWeight: 300, marginBottom: '0.65rem', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
+              What Your Weekend Retreat Can Include
+            </h2>
+            <p style={{ lineHeight: 1.8, margin: 0, color: '#4b5563', maxWidth: '44rem' }}>
+              Every retreat is planned around your dates, destination, group size, and intention — but these are the core elements most Delhi NCR travellers ask for.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: '1rem',
+            }}
+          >
+            {[
+              {
+                title: 'Guided yoga & meditation',
+                body: 'Beginner-friendly sessions focused on breath, stillness, mobility, and nervous-system recovery.',
+              },
+              {
+                title: 'Breathwork or pranayama',
+                body: 'Simple guided practices to release accumulated stress and settle the body after city life.',
+              },
+              {
+                title: 'Forest or riverside walks',
+                body: 'Slow nature immersion in Chakrata forests, Rishikesh riverside spaces, or Sankri mountain trails.',
+              },
+              {
+                title: 'Curated mountain stay',
+                body: 'Simple, comfortable properties chosen for quiet, access, views, and retreat-friendly surroundings.',
+              },
+              {
+                title: 'Local vegetarian meals',
+                body: 'Fresh, seasonal meals designed to support rest, lightness, and the rhythm of the retreat.',
+              },
+              {
+                title: 'Evening reflection circle',
+                body: 'Gentle integration time for journaling, sharing, silence, or guided reflection after the day.',
+              },
+              {
+                title: 'Delhi travel coordination',
+                body: 'Help with private car, shared cab, train-plus-taxi options, and practical Friday departure timing.',
+              },
+              {
+                title: 'Custom retreat planning',
+                body: 'Choose a private, couple, small-group, corporate, yoga, meditation, or digital-detox format.',
+              },
+            ].map((item) => (
+              <article
+                key={item.title}
+                style={{
+                  padding: '1.1rem',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '16px',
+                  backgroundColor: '#ffffff',
+                  boxShadow: '0 10px 28px rgba(15, 23, 42, 0.045)',
+                }}
+              >
+                <h3 style={{ fontSize: '1rem', fontWeight: 650, marginBottom: '0.5rem', letterSpacing: '-0.01em' }}>
+                  {item.title}
+                </h3>
+                <p style={{ fontSize: '0.9rem', lineHeight: 1.7, color: '#4b5563', margin: 0 }}>
+                  {item.body}
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+
         {/* ── COMMERCIAL NAVIGATION ─────────────────────────────────── */}
         <section style={{ marginBottom: 'var(--space-xl)', padding: '1.5rem', border: '1px solid var(--color-border)', borderRadius: 'var(--radius-sm)', backgroundColor: '#fafafa' }}>
           <p style={{ lineHeight: 1.8, margin: 0, fontSize: '0.95rem' }}>
