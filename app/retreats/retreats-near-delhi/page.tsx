@@ -610,94 +610,160 @@ export default function RetreatNearDelhiPage() {
         </section>
         {/* ── BEST DESTINATIONS ─────────────────────────────────────── */}
         <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Best Retreat Destinations Near Delhi
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: 'var(--space-md)' }}>
-            Proximity alone does not make a strong retreat location. Environment quality,
-            programme structure, and the ability to disconnect from urban rhythm matter
-            equally. These three destinations deliver on all counts.
-          </p>
+          <div style={{ marginBottom: '1.5rem' }}>
+            <h2 style={{ fontSize: 'clamp(1.65rem, 3vw, 2.15rem)', fontWeight: 300, marginBottom: '0.75rem', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
+              Best Retreat Destinations Near Delhi
+            </h2>
+            <p style={{ lineHeight: 1.8, margin: 0, color: '#4b5563', maxWidth: '44rem' }}>
+              Proximity matters, but the right retreat also depends on the atmosphere you need: forest silence, riverside practice, or deeper wilderness.
+            </p>
+          </div>
 
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-            <Link href="/retreats/chakrata" style={{ color: 'inherit' }}>
-              Chakrata — Quiet Mountain Escape (6–7 Hours)
-            </Link>
-          </h3>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Chakrata sits at 2,200 metres on a forested ridge in Dehradun district — a quiet
-            cantonment town with deodar canopy, waterfall walks, and Himalayan views on clear
-            days. The military heritage means minimal commercial development. No tourist strip.
-            No ambient noise. Just forest and villages.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            This quietness is what makes{' '}
-            <Link href="/retreats/chakrata" style={{ color: 'var(--color-primary)' }}>
-              Chakrata
-            </Link>{' '}
-            the strongest retreat-near-Delhi option for professionals seeking genuine
-            disconnection. Weekend programs here include morning yoga on forest platforms,
-            guided meditation walks, breathwork sessions, and evening campfire integration.
-            The 2-night format feels unhurried because the environment does half the work —
-            clean air and silence begin the reset before any programmed session starts.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: 'var(--space-md)' }}>
-            Chakrata is the practical default for first-time retreat participants from Delhi.
-            Accessible enough for a regular weekend, quiet enough for genuine transformation,
-            and structured enough that two nights deliver a complete cycle.
-          </p>
+          <div style={{ display: 'grid', gap: '1.25rem' }}>
+            <article
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'minmax(0, 0.9fr) minmax(0, 1.1fr)',
+                gap: '1.25rem',
+                alignItems: 'stretch',
+                padding: '1rem',
+                border: '1px solid #e5e7eb',
+                borderRadius: '18px',
+                backgroundColor: '#ffffff',
+                boxShadow: '0 12px 34px rgba(15, 23, 42, 0.055)',
+              }}
+            >
+              <div style={{ position: 'relative', minHeight: '240px', borderRadius: '14px', overflow: 'hidden', backgroundColor: '#f1f5f9' }}>
+                <Image
+                  src={images.locations.chakrata.src}
+                  alt={images.locations.chakrata.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+              <div style={{ padding: '0.25rem 0.25rem 0.25rem 0' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.85rem' }}>
+                  <span style={{ padding: '0.35rem 0.65rem', borderRadius: '999px', backgroundColor: '#ecfdf5', color: '#065f46', fontSize: '0.74rem', fontWeight: 600 }}>
+                    6–7 hours
+                  </span>
+                  <span style={{ padding: '0.35rem 0.65rem', borderRadius: '999px', backgroundColor: '#f8fafc', color: '#334155', fontSize: '0.74rem', fontWeight: 500 }}>
+                    Quiet forest reset
+                  </span>
+                </div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.6rem', letterSpacing: '-0.02em' }}>
+                  <Link href="/retreats/chakrata" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    Chakrata — Quiet Mountain Escape
+                  </Link>
+                </h3>
+                <p style={{ lineHeight: 1.75, color: '#374151', marginBottom: '0.85rem', fontSize: '0.95rem' }}>
+                  Chakrata is the strongest near-Delhi choice for silence, deodar forests, and low-stimulation recovery. It works especially well for professionals who want a genuine disconnect without committing to a remote expedition.
+                </p>
+                <p style={{ lineHeight: 1.75, color: '#4b5563', marginBottom: '1rem', fontSize: '0.9rem' }}>
+                  Best for: first-time retreat travellers, forest walks, breathwork, and two-night resets that still feel spacious.
+                </p>
+                <Link href="/retreats/chakrata" style={{ color: 'var(--color-primary)', fontWeight: 600, textDecoration: 'none', fontSize: '0.92rem' }}>
+                  Explore Chakrata retreats →
+                </Link>
+              </div>
+            </article>
 
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-            <Link href="/retreats/rishikesh" style={{ color: 'inherit' }}>
-              Rishikesh — Riverside Yoga Hub (5–6 Hours)
-            </Link>
-          </h3>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Rishikesh is the fastest Himalayan destination from Delhi and India&apos;s most
-            established centre for{' '}
-            <Link href="/retreats/journeys/yoga-and-movement" style={{ color: 'var(--color-primary)' }}>
-              yoga and movement retreats
-            </Link>.
-            The five-to-six-hour drive places you on the Ganges by late evening. For
-            professionals who want the most time-efficient Friday-to-Sunday format, Rishikesh
-            delivers consistently.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            The retreat character here is different from Chakrata. Where Chakrata is forest
-            silence,{' '}
-            <Link href="/retreats/rishikesh" style={{ color: 'var(--color-primary)' }}>
-              Rishikesh
-            </Link>{' '}
-            is spiritual infrastructure — ashram traditions, experienced yoga teachers,
-            riverside meditation, and a lineage of practice that adds depth to even a short
-            stay. Early morning practice on the riverbank, with mist on the water and temple
-            bells in the distance, creates a container that manufactured settings cannot
-            replicate.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: 'var(--space-md)' }}>
-            Weekend formats in Rishikesh tend toward structured yoga and meditation
-            programming — two sessions per day, pranayama instruction, and facilitated group
-            reflection. This suits participants who want guided practice rather than
-            open-ended nature immersion.
-          </p>
+            <article
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'minmax(0, 0.9fr) minmax(0, 1.1fr)',
+                gap: '1.25rem',
+                alignItems: 'stretch',
+                padding: '1rem',
+                border: '1px solid #e5e7eb',
+                borderRadius: '18px',
+                backgroundColor: '#ffffff',
+                boxShadow: '0 12px 34px rgba(15, 23, 42, 0.055)',
+              }}
+            >
+              <div style={{ position: 'relative', minHeight: '240px', borderRadius: '14px', overflow: 'hidden', backgroundColor: '#f1f5f9' }}>
+                <Image
+                  src={images.locations.rishikesh.src}
+                  alt={images.locations.rishikesh.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+              <div style={{ padding: '0.25rem 0.25rem 0.25rem 0' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.85rem' }}>
+                  <span style={{ padding: '0.35rem 0.65rem', borderRadius: '999px', backgroundColor: '#eff6ff', color: '#1d4ed8', fontSize: '0.74rem', fontWeight: 600 }}>
+                    5–6 hours
+                  </span>
+                  <span style={{ padding: '0.35rem 0.65rem', borderRadius: '999px', backgroundColor: '#f8fafc', color: '#334155', fontSize: '0.74rem', fontWeight: 500 }}>
+                    Riverside yoga hub
+                  </span>
+                </div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.6rem', letterSpacing: '-0.02em' }}>
+                  <Link href="/retreats/rishikesh" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    Rishikesh — Fastest Yoga Weekend
+                  </Link>
+                </h3>
+                <p style={{ lineHeight: 1.75, color: '#374151', marginBottom: '0.85rem', fontSize: '0.95rem' }}>
+                  Rishikesh is the quickest Himalayan retreat option from Delhi, with established yoga teachers, riverside meditation, and a spiritual atmosphere that gives short weekends more structure.
+                </p>
+                <p style={{ lineHeight: 1.75, color: '#4b5563', marginBottom: '1rem', fontSize: '0.9rem' }}>
+                  Best for: guided yoga, meditation practice, Ganga-side stillness, and travellers who want the shortest road time.
+                </p>
+                <Link href="/retreats/rishikesh" style={{ color: 'var(--color-primary)', fontWeight: 600, textDecoration: 'none', fontSize: '0.92rem' }}>
+                  Explore Rishikesh retreats →
+                </Link>
+              </div>
+            </article>
 
-          <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
-            <Link href="/retreats/sankri" style={{ color: 'inherit' }}>
-              Sankri — Extended Weekend Option (8–9 Hours)
-            </Link>
-          </h3>
-          <p style={{ lineHeight: 1.8, margin: 0 }}>
-            Sankri sits deeper in the Himalayas — eight to nine hours from Delhi in the upper
-            Tons Valley near the Govind Wildlife Sanctuary. The travel time makes it tight for
-            a standard Friday–Sunday weekend, but it works well for extended weekends and
-            three-day holidays. If you have a Friday off, or can depart Thursday evening,{' '}
-            <Link href="/retreats/sankri" style={{ color: 'var(--color-primary)' }}>
-              Sankri
-            </Link>{' '}
-            offers something the closer locations cannot: true remote mountain immersion at
-            the edge of the treeline. Pine forests, glacial rivers, and complete digital
-            disconnection.
-          </p>
+            <article
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'minmax(0, 0.9fr) minmax(0, 1.1fr)',
+                gap: '1.25rem',
+                alignItems: 'stretch',
+                padding: '1rem',
+                border: '1px solid #e5e7eb',
+                borderRadius: '18px',
+                backgroundColor: '#ffffff',
+                boxShadow: '0 12px 34px rgba(15, 23, 42, 0.055)',
+              }}
+            >
+              <div style={{ position: 'relative', minHeight: '240px', borderRadius: '14px', overflow: 'hidden', backgroundColor: '#f1f5f9' }}>
+                <Image
+                  src={images.locations.sankri.src}
+                  alt={images.locations.sankri.alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 40vw"
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+              <div style={{ padding: '0.25rem 0.25rem 0.25rem 0' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.85rem' }}>
+                  <span style={{ padding: '0.35rem 0.65rem', borderRadius: '999px', backgroundColor: '#f5f3ff', color: '#6d28d9', fontSize: '0.74rem', fontWeight: 600 }}>
+                    8–9 hours
+                  </span>
+                  <span style={{ padding: '0.35rem 0.65rem', borderRadius: '999px', backgroundColor: '#f8fafc', color: '#334155', fontSize: '0.74rem', fontWeight: 500 }}>
+                    Deeper wilderness
+                  </span>
+                </div>
+                <h3 style={{ fontSize: '1.25rem', fontWeight: 600, marginBottom: '0.6rem', letterSpacing: '-0.02em' }}>
+                  <Link href="/retreats/sankri" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    Sankri — Extended Weekend Wilderness
+                  </Link>
+                </h3>
+                <p style={{ lineHeight: 1.75, color: '#374151', marginBottom: '0.85rem', fontSize: '0.95rem' }}>
+                  Sankri sits deeper in the Himalayas and works best when you have a longer weekend. The extra travel rewards you with pine valleys, glacial rivers, and true digital disconnection.
+                </p>
+                <p style={{ lineHeight: 1.75, color: '#4b5563', marginBottom: '1rem', fontSize: '0.9rem' }}>
+                  Best for: extended weekends, slow travel, wilderness immersion, and guests who want to feel far from city life.
+                </p>
+                <Link href="/retreats/sankri" style={{ color: 'var(--color-primary)', fontWeight: 600, textDecoration: 'none', fontSize: '0.92rem' }}>
+                  Explore Sankri retreats →
+                </Link>
+              </div>
+            </article>
+          </div>
         </section>
 
         {/* ── WHO SHOULD CHOOSE ────────────────────────────────────── */}
