@@ -768,44 +768,85 @@ export default function RetreatNearDelhiPage() {
 
         {/* ── WHO SHOULD CHOOSE ────────────────────────────────────── */}
         <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Who Should Choose a Retreat Near Delhi
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Retreats near Delhi are specifically for people whose time constraints make longer
-            journeys impractical. The proximity advantage removes every logistical excuse.
-          </p>
-          <ul style={{ paddingLeft: '1.25rem', lineHeight: 2, marginBottom: '1rem' }}>
-            <li>
-              <strong>Corporate professionals (25–45)</strong> — carrying decision fatigue,
-              screen overload, and accumulated stress. A Friday departure and Sunday return
-              uses zero annual leave while delivering genuine neurological reset
-            </li>
-            <li>
-              <strong>Startup founders and entrepreneurs</strong> — operating in always-on
-              mode with no boundary between work and rest. A structured weekend container
-              creates the separation that willpower alone cannot
-            </li>
-            <li>
-              <strong>Couples needing a reset</strong> — a shared mountain retreat without
-              tourist distractions creates conversation and connection that a resort weekend
-              does not deliver
-            </li>
-            <li>
-              <strong>First-time retreat participants</strong> — a nearby destination with
-              short travel time is the lowest-commitment entry point. Chakrata or Rishikesh
-              for two nights is enough to experience the retreat container without the
-              intimidation factor of a remote journey
-            </li>
-          </ul>
-          <p style={{ lineHeight: 1.8, margin: 0 }}>
-            If your schedule allows for more than a weekend, our{' '}
-            <Link href="/retreats/weekend-himalayan-retreats" style={{ color: 'var(--color-primary)' }}>
+          <div style={{ marginBottom: '1.4rem' }}>
+            <h2 style={{ fontSize: 'clamp(1.55rem, 2.8vw, 2rem)', fontWeight: 300, marginBottom: '0.65rem', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
+              Who Should Choose a Retreat Near Delhi
+            </h2>
+            <p style={{ lineHeight: 1.8, margin: 0, color: '#4b5563', maxWidth: '43rem' }}>
+              These retreats are built for people who need a real reset, but cannot disappear for a full week.
+            </p>
+          </div>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+              gap: '1rem',
+              marginBottom: '1rem',
+            }}
+          >
+            {[
+              {
+                label: 'Corporate professionals',
+                detail: 'For decision fatigue, screen overload, and accumulated city stress.',
+                note: 'Friday departure. Sunday return. No annual leave required.',
+              },
+              {
+                label: 'Startup founders',
+                detail: 'For always-on minds that need a clear boundary between work and rest.',
+                note: 'A structured weekend container creates separation willpower cannot.',
+              },
+              {
+                label: 'Couples needing a reset',
+                detail: 'For shared time without resort noise, tourist crowds, or city distractions.',
+                note: 'Mountain silence creates space for conversation and reconnection.',
+              },
+              {
+                label: 'First-time retreat participants',
+                detail: 'For people who want the lowest-commitment entry point into retreat travel.',
+                note: 'Two nights in Chakrata or Rishikesh is enough to understand the format.',
+              },
+            ].map((item) => (
+              <article
+                key={item.label}
+                style={{
+                  padding: '1.15rem',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '16px',
+                  background: 'linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)',
+                  boxShadow: '0 10px 28px rgba(15, 23, 42, 0.045)',
+                }}
+              >
+                <h3 style={{ fontSize: '1rem', fontWeight: 650, marginBottom: '0.55rem', letterSpacing: '-0.01em' }}>
+                  {item.label}
+                </h3>
+                <p style={{ fontSize: '0.92rem', lineHeight: 1.7, color: '#374151', marginBottom: '0.7rem' }}>
+                  {item.detail}
+                </p>
+                <p style={{ fontSize: '0.82rem', lineHeight: 1.6, color: '#667085', margin: 0 }}>
+                  {item.note}
+                </p>
+              </article>
+            ))}
+          </div>
+
+          <div
+            style={{
+              padding: '1rem 1.1rem',
+              border: '1px solid rgba(15, 118, 110, 0.16)',
+              borderRadius: '14px',
+              backgroundColor: 'rgba(240, 253, 250, 0.55)',
+              color: '#374151',
+              lineHeight: 1.75,
+              fontSize: '0.92rem',
+            }}
+          >
+            Have more than a weekend? See our{' '}
+            <Link href="/retreats/weekend-himalayan-retreats" style={{ color: 'var(--color-primary)', fontWeight: 600, textDecoration: 'none' }}>
               weekend Himalayan retreats
             </Link>{' '}
-            guide covers the full two-to-three-day format across all locations, including
-            seasonal timing and booking guidance.
-          </p>
+            guide for the full two-to-three-day format across all locations.
+          </div>
         </section>
 
         {/* ── WHAT A 2–3 DAY RETREAT LOOKS LIKE ─────────────────────── */}
