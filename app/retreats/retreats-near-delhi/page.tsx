@@ -89,11 +89,10 @@ export default function RetreatNearDelhiPage() {
   ];
 
   const galleryImages = [
-    images.heroes.valleyForest,
-    images.himalayanRetreats.weekendHimalayan,
-    images.locations.chakrata,
-    images.locations.rishikesh,
+    images.moments.meditation,
     images.moments.walking,
+    images.moments.tea,
+    images.himalayanRetreats.yogaHimalayan,
   ];
 
   return (
