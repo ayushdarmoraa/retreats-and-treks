@@ -529,37 +529,85 @@ export default function RetreatNearDelhiPage() {
           <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
             How Close Are These Retreats to Delhi?
           </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Travel time is the decisive factor for retreat accessibility. Every hour of journey
-            subtracts from time in the mountains. Here are the realistic drive times from
-            central Delhi — not optimistic estimates, but Friday-evening-traffic-adjusted
-            numbers.
+          <p style={{ lineHeight: 1.8, marginBottom: '1.25rem', color: '#4b5563' }}>
+            Travel time is the first decision point for a weekend retreat from Delhi. Here are realistic Friday-evening drive windows, not ideal-condition estimates.
           </p>
-          <ul style={{ paddingLeft: '1.25rem', lineHeight: 2, marginBottom: '1rem' }}>
-            <li>
-              <strong>Rishikesh — 5–6 hours.</strong> The fastest Himalayan retreat destination.
-              Delhi–Haridwar highway is well-maintained. The final stretch along the Ganges
-              adds thirty minutes but signals the transition into retreat territory. Arrival by
-              10–11 PM on a Friday departure after work is realistic.
-            </li>
-            <li>
-              <strong>Chakrata — 6–7 hours.</strong> Via Dehradun, then a hill extension into
-              the cantonment area. The additional hour beyond Rishikesh buys significantly more
-              altitude, forest density, and quiet. Arrival by midnight on a Friday departure.
-            </li>
-            <li>
-              <strong>Sankri — 8–9 hours.</strong> Deeper into the mountains via Purola. This
-              is tight for a standard weekend but workable for extended weekends or three-day
-              holidays. The extra travel time delivers genuine wilderness immersion that closer
-              locations cannot replicate.
-            </li>
-          </ul>
-          <p style={{ lineHeight: 1.8, margin: 0 }}>
-            All three destinations are accessible by private car, shared cab, or a combination
-            of train and taxi. No flights required. The Delhi–Dehradun Shatabdi train is a
-            practical alternative for Rishikesh and Chakrata — four-and-a-half hours to
-            Dehradun station, followed by a short road transfer.
-          </p>
+
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+              gap: '1rem',
+              marginBottom: '1.25rem',
+            }}
+          >
+            <div
+              style={{
+                padding: '1.1rem',
+                border: '1px solid #e5e7eb',
+                borderRadius: '14px',
+                backgroundColor: '#ffffff',
+                boxShadow: '0 8px 24px rgba(15, 23, 42, 0.05)',
+              }}
+            >
+              <div style={{ fontSize: '1.8rem', fontWeight: 300, color: 'var(--color-primary)', marginBottom: '0.35rem' }}>
+                5–6 hrs
+              </div>
+              <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.35rem' }}>Rishikesh</h3>
+              <p style={{ fontSize: '0.88rem', lineHeight: 1.65, color: '#4b5563', margin: 0 }}>
+                Fastest Himalayan option from Delhi. Best when you want structured yoga, riverside meditation, and maximum retreat time.
+              </p>
+            </div>
+
+            <div
+              style={{
+                padding: '1.1rem',
+                border: '1px solid #e5e7eb',
+                borderRadius: '14px',
+                backgroundColor: '#ffffff',
+                boxShadow: '0 8px 24px rgba(15, 23, 42, 0.05)',
+              }}
+            >
+              <div style={{ fontSize: '1.8rem', fontWeight: 300, color: 'var(--color-primary)', marginBottom: '0.35rem' }}>
+                6–7 hrs
+              </div>
+              <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.35rem' }}>Chakrata</h3>
+              <p style={{ fontSize: '0.88rem', lineHeight: 1.65, color: '#4b5563', margin: 0 }}>
+                A quieter forest-ridge escape beyond Dehradun. Best for silence, lower tourist density, and a deeper nervous-system reset.
+              </p>
+            </div>
+
+            <div
+              style={{
+                padding: '1.1rem',
+                border: '1px solid #e5e7eb',
+                borderRadius: '14px',
+                backgroundColor: '#ffffff',
+                boxShadow: '0 8px 24px rgba(15, 23, 42, 0.05)',
+              }}
+            >
+              <div style={{ fontSize: '1.8rem', fontWeight: 300, color: 'var(--color-primary)', marginBottom: '0.35rem' }}>
+                8–9 hrs
+              </div>
+              <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.35rem' }}>Sankri</h3>
+              <p style={{ fontSize: '0.88rem', lineHeight: 1.65, color: '#4b5563', margin: 0 }}>
+                Best for extended weekends and three-day holidays. The longer road brings true wilderness, deeper quiet, and digital detox.
+              </p>
+            </div>
+          </div>
+
+          <div
+            style={{
+              padding: '1rem 1.1rem',
+              borderRadius: '14px',
+              backgroundColor: '#f8fafc',
+              border: '1px solid #e5e7eb',
+            }}
+          >
+            <p style={{ lineHeight: 1.75, margin: 0, color: '#374151', fontSize: '0.95rem' }}>
+              Travel works by private car, shared cab, or train plus taxi. Rishikesh and Chakrata can also use the Delhi–Dehradun Shatabdi route, followed by a road transfer.
+            </p>
+          </div>
         </section>
         <PrimaryCTA
           label="Plan My Weekend Retreat"
