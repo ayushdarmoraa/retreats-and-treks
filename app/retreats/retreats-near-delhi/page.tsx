@@ -609,7 +609,13 @@ export default function RetreatNearDelhiPage() {
           </div>
         </section>
         {/* ── BEST DESTINATIONS ─────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
+        <section
+          style={{
+            marginBottom: '6.5rem',
+            paddingTop: '4.25rem',
+            borderTop: '1px solid #eef2f7',
+          }}
+        >
           <div style={{ marginBottom: '1.5rem' }}>
             <h2 style={{ fontSize: 'clamp(1.65rem, 3vw, 2.15rem)', fontWeight: 300, marginBottom: '0.75rem', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
               Best Retreat Destinations Near Delhi
@@ -767,7 +773,13 @@ export default function RetreatNearDelhiPage() {
         </section>
 
         {/* ── WHO SHOULD CHOOSE ────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
+        <section
+          style={{
+            marginBottom: '6.5rem',
+            paddingTop: '4.25rem',
+            borderTop: '1px solid #eef2f7',
+          }}
+        >
           <div style={{ marginBottom: '1.4rem' }}>
             <h2 style={{ fontSize: 'clamp(1.55rem, 2.8vw, 2rem)', fontWeight: 300, marginBottom: '0.65rem', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
               Who Should Choose a Retreat Near Delhi
@@ -806,17 +818,35 @@ export default function RetreatNearDelhiPage() {
                 detail: 'For people who want the lowest-commitment entry point into retreat travel.',
                 note: 'Two nights in Chakrata or Rishikesh is enough to understand the format.',
               },
-            ].map((item) => (
+            ].map((item, index) => (
               <article
                 key={item.label}
                 style={{
-                  padding: '1.15rem',
+                  padding: '1.35rem',
                   border: '1px solid #e5e7eb',
                   borderRadius: '16px',
                   background: 'linear-gradient(180deg, #ffffff 0%, #f8fafc 100%)',
                   boxShadow: '0 10px 28px rgba(15, 23, 42, 0.045)',
                 }}
               >
+                <div
+                  style={{
+                    width: '38px',
+                    height: '38px',
+                    borderRadius: '999px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'rgba(15, 118, 110, 0.09)',
+                    color: 'var(--color-primary)',
+                    fontSize: '0.78rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.04em',
+                    marginBottom: '0.85rem',
+                  }}
+                >
+                  {String(index + 1).padStart(2, '0')}
+                </div>
                 <h3 style={{ fontSize: '1rem', fontWeight: 650, marginBottom: '0.55rem', letterSpacing: '-0.01em' }}>
                   {item.label}
                 </h3>
@@ -850,7 +880,13 @@ export default function RetreatNearDelhiPage() {
         </section>
 
         {/* ── WHAT A 2–3 DAY RETREAT LOOKS LIKE ─────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
+        <section
+          style={{
+            marginBottom: '6.5rem',
+            paddingTop: '4.25rem',
+            borderTop: '1px solid #eef2f7',
+          }}
+        >
           <div style={{ marginBottom: '1.4rem' }}>
             <h2 style={{ fontSize: 'clamp(1.55rem, 2.8vw, 2rem)', fontWeight: 300, marginBottom: '0.65rem', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
               What a 2–3 Day Retreat Near Delhi Looks Like
@@ -860,7 +896,7 @@ export default function RetreatNearDelhiPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gap: '1rem', marginBottom: '1rem' }}>
+          <div style={{ display: 'grid', gap: '1.15rem', marginBottom: '1rem' }}>
             {[
               {
                 day: 'Friday evening',
@@ -885,7 +921,7 @@ export default function RetreatNearDelhiPage() {
                   gridTemplateColumns: '72px 1fr',
                   gap: '1rem',
                   alignItems: 'start',
-                  padding: '1.1rem',
+                  padding: '1.25rem',
                   border: '1px solid #e5e7eb',
                   borderRadius: '16px',
                   backgroundColor: '#ffffff',
@@ -942,7 +978,13 @@ export default function RetreatNearDelhiPage() {
         </section>
 
         {/* ── WHAT YOUR RETREAT CAN INCLUDE ─────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
+        <section
+          style={{
+            marginBottom: '6.5rem',
+            paddingTop: '4.25rem',
+            borderTop: '1px solid #eef2f7',
+          }}
+        >
           <div style={{ marginBottom: '1.4rem' }}>
             <h2 style={{ fontSize: 'clamp(1.55rem, 2.8vw, 2rem)', fontWeight: 300, marginBottom: '0.65rem', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
               What Your Weekend Retreat Can Include
@@ -956,39 +998,47 @@ export default function RetreatNearDelhiPage() {
             style={{
               display: 'grid',
               gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-              gap: '1rem',
+              gap: '1.15rem',
             }}
           >
             {[
               {
+                icon: 'ॐ',
                 title: 'Guided yoga & meditation',
                 body: 'Beginner-friendly sessions focused on breath, stillness, mobility, and nervous-system recovery.',
               },
               {
+                icon: '◌',
                 title: 'Breathwork or pranayama',
                 body: 'Simple guided practices to release accumulated stress and settle the body after city life.',
               },
               {
+                icon: '↟',
                 title: 'Forest or riverside walks',
                 body: 'Slow nature immersion in Chakrata forests, Rishikesh riverside spaces, or Sankri mountain trails.',
               },
               {
+                icon: '⌂',
                 title: 'Curated mountain stay',
                 body: 'Simple, comfortable properties chosen for quiet, access, views, and retreat-friendly surroundings.',
               },
               {
+                icon: '✦',
                 title: 'Local vegetarian meals',
                 body: 'Fresh, seasonal meals designed to support rest, lightness, and the rhythm of the retreat.',
               },
               {
+                icon: '◍',
                 title: 'Evening reflection circle',
                 body: 'Gentle integration time for journaling, sharing, silence, or guided reflection after the day.',
               },
               {
+                icon: '→',
                 title: 'Delhi travel coordination',
                 body: 'Help with private car, shared cab, train-plus-taxi options, and practical Friday departure timing.',
               },
               {
+                icon: '✓',
                 title: 'Custom retreat planning',
                 body: 'Choose a private, couple, small-group, corporate, yoga, meditation, or digital-detox format.',
               },
@@ -996,13 +1046,30 @@ export default function RetreatNearDelhiPage() {
               <article
                 key={item.title}
                 style={{
-                  padding: '1.1rem',
+                  padding: '1.3rem',
                   border: '1px solid #e5e7eb',
                   borderRadius: '16px',
                   backgroundColor: '#ffffff',
                   boxShadow: '0 10px 28px rgba(15, 23, 42, 0.045)',
                 }}
               >
+                <div
+                  style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: '999px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'rgba(15, 118, 110, 0.09)',
+                    color: 'var(--color-primary)',
+                    fontSize: '1rem',
+                    fontWeight: 650,
+                    marginBottom: '0.85rem',
+                  }}
+                >
+                  {item.icon}
+                </div>
                 <h3 style={{ fontSize: '1rem', fontWeight: 650, marginBottom: '0.5rem', letterSpacing: '-0.01em' }}>
                   {item.title}
                 </h3>
