@@ -451,8 +451,14 @@ export function TrekEmotionalHooks({
 
 export function TrekExperienceGallery({
   images,
+  heading,
+  topPadding,
+  bottomPadding,
 }: {
   images?: { src: string; alt: string; caption?: string }[];
+  heading?: string;
+  topPadding?: string;
+  bottomPadding?: string;
 }) {
   if (!images || images.length === 0) return null;
   return (
@@ -461,8 +467,8 @@ export function TrekExperienceGallery({
         width: '100vw',
         marginLeft: 'calc(-50vw + 50%)',
         background: '#ffffff',
-        paddingTop: '4.5rem',
-        paddingBottom: '4.5rem',
+        paddingTop: topPadding ?? '4.5rem',
+        paddingBottom: bottomPadding ?? '4.5rem',
         borderBottom: '1px solid #e5e7eb',
       }}
     >
@@ -507,7 +513,7 @@ export function TrekExperienceGallery({
             marginBottom: '2rem',
           }}
         >
-          A visual walk-through of the trail
+          {heading ?? 'A visual walk-through of the trail'}
         </h2>
         <div
           style={{
