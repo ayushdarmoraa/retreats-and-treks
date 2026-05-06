@@ -851,46 +851,94 @@ export default function RetreatNearDelhiPage() {
 
         {/* ── WHAT A 2–3 DAY RETREAT LOOKS LIKE ─────────────────────── */}
         <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            What a 2–3 Day Retreat Near Delhi Looks Like
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.5rem' }}>
-            <strong>Friday evening — Arrival and settling.</strong>
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Depart Delhi after work. Arrive between 10 PM and midnight depending on your
-            destination. A light welcome — herbal tea, room orientation, brief grounding
-            exercise — marks the transition from travel mode to retreat space. No structured
-            programming. The journey fatigue becomes the bridge to deep first-night sleep in
-            mountain air.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.5rem' }}>
-            <strong>Saturday — Full immersion day.</strong>
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Saturday is the core of the retreat. Pre-dawn meditation or gentle yoga. A full
-            morning practice session with breathwork. Guided nature walk or forest immersion
-            after lunch. Afternoon workshop — sound healing, journaling, or restorative yoga.
-            Evening integration circle. Meals timed to support the rhythm. Screens stay off.
-            The full day in mountain environment, without decisions or obligations, is where
-            the reset happens.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.5rem' }}>
-            <strong>Sunday — Closing and departure.</strong>
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Sunday begins with a final morning practice — often the most powerful session
-            because the body and mind have already shifted. A closing circle or
-            intention-setting exercise anchors the experience. Breakfast and departure by late
-            morning allow comfortable return to Delhi by evening.
-          </p>
-          <p style={{ lineHeight: 1.8, margin: 0 }}>
-            For guidance on whether a shorter or longer format suits your needs, see our
-            comparison of{' '}
-            <Link href="/blog/3-day-vs-5-day-himalayan-retreat" style={{ color: 'var(--color-primary)' }}>
+          <div style={{ marginBottom: '1.4rem' }}>
+            <h2 style={{ fontSize: 'clamp(1.55rem, 2.8vw, 2rem)', fontWeight: 300, marginBottom: '0.65rem', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
+              What a 2–3 Day Retreat Near Delhi Looks Like
+            </h2>
+            <p style={{ lineHeight: 1.8, margin: 0, color: '#4b5563', maxWidth: '44rem' }}>
+              A short retreat works because the rhythm is simple: arrive, immerse, integrate, and return before Monday.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gap: '1rem', marginBottom: '1rem' }}>
+            {[
+              {
+                day: 'Friday evening',
+                title: 'Arrival and settling',
+                body: 'Depart Delhi after work and arrive between 10 PM and midnight depending on your destination. Herbal tea, room orientation, and a short grounding exercise mark the transition from travel mode to retreat space.',
+              },
+              {
+                day: 'Saturday',
+                title: 'Full immersion day',
+                body: 'The core day includes meditation or gentle yoga, breathwork, forest immersion, an afternoon workshop, meals timed around rest, and an evening integration circle. Screens stay off so the nervous system can actually downshift.',
+              },
+              {
+                day: 'Sunday',
+                title: 'Closing and return',
+                body: 'A final morning practice and closing circle anchor the experience. Breakfast and late-morning departure allow a comfortable return to Delhi by evening.',
+              },
+            ].map((item, index) => (
+              <article
+                key={item.day}
+                style={{
+                  display: 'grid',
+                  gridTemplateColumns: '72px 1fr',
+                  gap: '1rem',
+                  alignItems: 'start',
+                  padding: '1.1rem',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '16px',
+                  backgroundColor: '#ffffff',
+                  boxShadow: '0 10px 28px rgba(15, 23, 42, 0.045)',
+                }}
+              >
+                <div
+                  style={{
+                    width: '52px',
+                    height: '52px',
+                    borderRadius: '999px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    backgroundColor: 'rgba(15, 118, 110, 0.09)',
+                    color: 'var(--color-primary)',
+                    fontSize: '1.1rem',
+                    fontWeight: 600,
+                  }}
+                >
+                  {index + 1}
+                </div>
+                <div>
+                  <div style={{ fontSize: '0.76rem', letterSpacing: '0.16em', textTransform: 'uppercase', color: '#667085', fontWeight: 600, marginBottom: '0.35rem' }}>
+                    {item.day}
+                  </div>
+                  <h3 style={{ fontSize: '1.08rem', fontWeight: 650, marginBottom: '0.45rem', letterSpacing: '-0.01em' }}>
+                    {item.title}
+                  </h3>
+                  <p style={{ fontSize: '0.94rem', lineHeight: 1.75, color: '#374151', margin: 0 }}>
+                    {item.body}
+                  </p>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div
+            style={{
+              padding: '1rem 1.1rem',
+              border: '1px solid rgba(15, 118, 110, 0.16)',
+              borderRadius: '14px',
+              backgroundColor: 'rgba(240, 253, 250, 0.55)',
+              color: '#374151',
+              lineHeight: 1.75,
+              fontSize: '0.92rem',
+            }}
+          >
+            Not sure whether to choose a short or longer format? Read our comparison of{' '}
+            <Link href="/blog/3-day-vs-5-day-himalayan-retreat" style={{ color: 'var(--color-primary)', fontWeight: 600, textDecoration: 'none' }}>
               three-day versus five-day retreat formats
             </Link>.
-          </p>
+          </div>
         </section>
 
         {/* ── COMMERCIAL NAVIGATION ─────────────────────────────────── */}
