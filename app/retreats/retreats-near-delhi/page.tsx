@@ -517,13 +517,6 @@ export default function RetreatNearDelhiPage() {
               </div>
             </div>
           </div>
-          <PrimaryCTA
-            label="Choose My Destination"
-            subtext="Tell us your preferred vibe and dates. We’ll match you to the right mountain space."
-            vertical="retreat"
-            category="near-delhi"
-            sourcePath="/retreats/retreats-near-delhi"
-          />
         </section>
 
         <TrekExperienceGallery
