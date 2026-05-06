@@ -65,6 +65,41 @@ const FAQ_ITEMS = [
     answer:
       'Rishikesh and Chakrata operate retreat programs year-round. Rishikesh remains mild in winter and warm in summer. Chakrata is cool year-round with occasional light snow in January. Sankri is best from April through November — winter snowfall limits access. October to November and February to April are the most popular booking windows across all locations.',
   },
+  {
+    question: 'How much does a weekend retreat near Delhi cost?',
+    answer:
+      'The cost depends on destination, property type, group size, inclusions, and whether transport from Delhi NCR is required. A simple two-night retreat with stay, meals, yoga, meditation, and local guidance usually costs less than a luxury wellness resort, while private or corporate formats cost more. The best way to estimate pricing is to share your dates, group size, and preferred destination so the retreat can be planned around your budget.',
+  },
+  {
+    question: 'Are retreats near Delhi beginner-friendly?',
+    answer:
+      'Yes. Most weekend retreats near Delhi are designed for beginners, especially two-night yoga, meditation, breathwork, and nature-reset formats. You do not need previous yoga or meditation experience. Sessions can be kept gentle, restorative, and accessible, with more emphasis on rest, guided practice, clean air, and slowing down than on advanced postures or intense schedules.',
+  },
+  {
+    question: 'Can I come alone for a retreat near Delhi?',
+    answer:
+      'Yes. Solo travellers commonly choose retreats near Delhi because the short travel time makes the first retreat experience easier. Chakrata works well for solo guests who want quiet forest time, while Rishikesh works well for those who prefer a more structured yoga and meditation environment. Small-group and private options can both be planned depending on comfort level.',
+  },
+  {
+    question: 'Can transport be arranged from Delhi NCR?',
+    answer:
+      'Transport can usually be coordinated through a private car, shared cab, or train-plus-taxi route depending on destination and group size. Rishikesh and Chakrata are practical for Friday evening departures from Delhi NCR. Sankri needs more travel time and works better for extended weekends or three-day holidays. Exact pickup timing depends on your location in Delhi, Gurgaon, Noida, or surrounding NCR areas.',
+  },
+  {
+    question: 'Which retreat near Delhi is best for stress and burnout?',
+    answer:
+      'Chakrata is often the strongest option for stress and burnout because it offers forest silence, cooler air, low tourist density, and a slower rhythm within six to seven hours of Delhi. Rishikesh is better if you want guided yoga, pranayama, and riverside meditation with more spiritual structure. Sankri is best when you have more time and want deeper wilderness and digital detox.',
+  },
+  {
+    question: 'Which retreat near Delhi is best for couples?',
+    answer:
+      'Chakrata and Rishikesh both work well for couples, but the right choice depends on the mood you want. Chakrata is better for quiet time, forest walks, slow conversation, and a low-stimulation reset. Rishikesh is better for couples who want yoga, riverside practice, cafes, ashram energy, and a more active spiritual atmosphere. Private retreat planning can keep the experience calm and personal.',
+  },
+  {
+    question: 'Do retreats near Delhi include yoga and meditation?',
+    answer:
+      'Most retreat formats can include yoga and meditation, but the intensity depends on your intention. A gentle weekend reset may include morning yoga, breathwork, guided meditation, nature walks, and evening reflection. A deeper yoga retreat can include two structured practice sessions per day, pranayama, philosophy, and facilitated group integration.',
+  },
 ];
 
 export default function RetreatNearDelhiPage() {
