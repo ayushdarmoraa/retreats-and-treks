@@ -750,6 +750,19 @@ export default function RetreatsClient({
             <span style={{ color: '#374151', fontWeight: 200 }}>to Arrival</span>
           </h2>
 
+          <p style={{
+            textAlign: 'center',
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.95rem',
+            fontWeight: 300,
+            lineHeight: 1.75,
+            color: '#555555',
+            maxWidth: '42rem',
+            margin: '-2rem auto 3.25rem',
+          }}>
+            A simple, guided planning flow — you share what you need, we shape the retreat around your dates, pace, and intention.
+          </p>
+
           <div className="hw-grid">
             {processSteps.map((ps) => (
               <div key={ps.step} className="hw-card">
