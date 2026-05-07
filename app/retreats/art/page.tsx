@@ -474,6 +474,61 @@ export default function ArtRetreatsPage() {
       </section>
 
       {/* ═══════════════════════════════════════════
+          SECTION 7.25 — ART RETREAT PLANNING LINKS
+      ═══════════════════════════════════════════ */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
+        <div className="art-wide">
+          <div className="art-eyebrow" style={{ justifyContent: 'center' }}>
+            <span className="art-eyebrow-line" />
+            <span className="art-eyebrow-text">Plan Your Retreat</span>
+            <span className="art-eyebrow-line" />
+          </div>
+          <h2 className="art-section-title" style={{ textAlign: 'center' }}>Choose your art retreat with <span>clarity</span></h2>
+          <p className="art-body-text" style={{ textAlign: 'center', maxWidth: '40rem', margin: '0 auto 3rem' }}>
+            Explore practical guides, location advice, and deeper format pages before you decide which creative journey fits you best.
+          </p>
+          <div className="art-unique-grid">
+            {[
+              {
+                href: '/blog/best-himalayan-locations-for-art-retreat',
+                title: 'Best Himalayan locations for art retreats',
+                text: 'Compare the creative energy of Mussoorie, Chakrata, Rishikesh, Sankri, and other mountain settings.',
+              },
+              {
+                href: '/blog/art-retreat-for-beginners',
+                title: 'Art retreats for beginners',
+                text: 'A gentle guide if you feel curious, blocked, or unsure because you do not consider yourself an artist.',
+              },
+              {
+                href: '/blog/painting-in-the-himalayas',
+                title: 'Painting in the Himalayas',
+                text: 'Understand what plein air painting feels like when the trail, light, and mountain weather become part of the work.',
+              },
+              {
+                href: '/creative-retreat',
+                title: 'Creative retreat overview',
+                text: 'A deeper supporting page for emotional healing through art, yoga, expression, and mountain stillness.',
+              },
+              {
+                href: '/trek-and-paint-himalayas',
+                title: 'Trek and paint in the Himalayas',
+                text: 'Explore the active version of the art retreat for people who want walking, viewpoints, and visual journaling.',
+              },
+            ].map((item) => (
+              <Link key={item.href} href={item.href} className="art-unique-card" style={{ textDecoration: 'none', color: 'inherit' }}>
+                <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 600, color: '#111', margin: '0 0 0.6rem', letterSpacing: '-0.01em' }}>
+                  {item.title}
+                </h3>
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', lineHeight: 1.7, color: '#666', fontWeight: 300, margin: 0 }}>
+                  {item.text}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
           MID-PAGE CTA
       ═══════════════════════════════════════════ */}
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#0a1f1c', padding: '4rem 0', textAlign: 'center' }}>
