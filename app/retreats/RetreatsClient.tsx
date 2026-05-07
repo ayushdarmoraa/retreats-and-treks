@@ -792,7 +792,9 @@ export default function RetreatsClient({
         <style>{`
           /* ── Card ── */
           .rf-card {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
             border-radius: 6px;
             overflow: hidden;
             background: #ffffff;
@@ -825,7 +827,7 @@ export default function RetreatsClient({
             background: linear-gradient(to top, rgba(2,10,2,0.65) 0%, rgba(2,10,2,0.1) 50%, rgba(2,10,2,0) 100%);
             transition: opacity 0.35s;
           }
-          .rf-card:hover .rf-img-overlay {5; }
+          .rf-card:hover .rf-img-overlay { opacity: 0.85; }
 
           .rf-img-tag {
             position: absolute;
@@ -860,6 +862,9 @@ export default function RetreatsClient({
             padding: 1.4rem 1.5rem 1.6rem;
             border-top: 2px solid var(--color-primary);
             position: relative;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
           }
           .rf-body::after {
             content: '';
