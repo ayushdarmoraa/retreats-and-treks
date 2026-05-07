@@ -195,20 +195,34 @@ export default function RetreatsClient({
           }
 
           .rc-hero-altitude {
-            position: absolute; top: 2.5rem; right: 2rem;
+            position: absolute;
+            top: 2.5rem;
+            right: clamp(1.25rem, 2.4vw, 2.5rem);
+            max-width: calc(100% - 2.5rem);
             text-align: right;
-            
+            z-index: 3;
             animation: rcHeroFadeUp 0.8s ease 1s forwards;
           }
           .rc-hero-altitude-num {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 2.2rem; font-weight: 200;
-            color: rgba(255,255,255,0.9); line-height: 1; letter-spacing: -0.02em;
+            font-size: clamp(1.45rem, 2.4vw, 2rem);
+            font-weight: 200;
+            color: rgba(255,255,255,0.9);
+            line-height: 1;
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+          }
+          .rc-hero-altitude-unit {
+            font-size: 0.45em;
+            margin-left: 0.08em;
           }
           .rc-hero-altitude-label {
             font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.75rem; letter-spacing: 0.2em;
-            text-transform: uppercase; color: rgba(255,255,255,0.4);
+            font-size: clamp(0.55rem, 0.85vw, 0.68rem);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.48);
+            white-space: nowrap;
           }
 
           /* Scroll indicator */
@@ -286,8 +300,12 @@ export default function RetreatsClient({
             .rc-hero-btn { width: 100%; justify-content: center; }
             .rc-hero-trust { gap: 1rem; }
             .rc-hero-tag { bottom: 1rem; left: 1rem; }
-            .rc-hero-altitude { top: 1rem; right: 1rem; }
-            .rc-hero-altitude-num { font-size: 1.5rem; }
+            .rc-hero-altitude {
+              top: 1rem;
+              right: 1rem;
+              max-width: calc(100% - 2rem);
+            }
+            .rc-hero-altitude-num { font-size: 1.35rem; }
             .rc-hero-scroll { display: none; }
           }
         `}</style>
@@ -368,7 +386,9 @@ export default function RetreatsClient({
 
           {/* Altitude */}
           <div className="rc-hero-altitude">
-            <div className="rc-hero-altitude-num">3,900<span style={{ fontSize: '1rem' }}>m</span></div>
+            <div className="rc-hero-altitude-num">
+              3,900<span className="rc-hero-altitude-unit">m</span>
+            </div>
             <div className="rc-hero-altitude-label">avg altitude</div>
           </div>
         </div>
