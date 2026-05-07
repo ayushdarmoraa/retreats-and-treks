@@ -54,6 +54,9 @@ export default async function FacilitatorPage(
         images.chaitraArtRetreat.indoorWorkshop,
         images.chaitraArtRetreat.eveningReflection,
         images.chaitraArtRetreat.groupPaintings,
+        images.chaitraArtRetreat.outdoorEaselPainting,
+        images.chaitraArtRetreat.expressiveWallPainting,
+        images.chaitraArtRetreat.gardenCanvasPainting,
       ]
     : [];
 
