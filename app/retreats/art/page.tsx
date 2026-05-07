@@ -2,11 +2,16 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { generateFAQSchema } from '@/components/seo/Schema';
+import { validateFAQSync } from '@/utils/validateFAQSync';
+import TrackedFAQ from '@/components/TrackedFAQ';
 import { artAndCreativeRetreat } from '@/content/retreats/art-and-creative';
 import { trekAndPaintRetreat } from '@/content/retreats/trek-and-paint';
 import { weekendArtRetreat } from '@/content/retreats/weekend-art-retreat';
 
 export const dynamic = 'force-static';
+
+const PATH = '/retreats/art';
 
 export function generateMetadata(): Metadata {
   return {
@@ -14,7 +19,7 @@ export function generateMetadata(): Metadata {
     description:
       'Art retreats in India combining painting, writing, movement & yoga in the Himalayan mountains. No experience needed. 2–7 day programs in Mussoorie, Chakrata, Rishikesh, Sankri & Zanskar. Small groups, real guidance.',
     alternates: {
-      canonical: buildCanonicalUrl('/retreats/art'),
+      canonical: buildCanonicalUrl(PATH),
     },
     robots: { index: true, follow: true },
   };
@@ -71,9 +76,49 @@ const ART_TESTIMONIALS = [
 ];
 
 
+const FAQ_ITEMS = [
+  {
+    question: 'Do I need art experience to join an art retreat?',
+    answer:
+      'No. The art retreats are designed for beginners as well as experienced artists. The focus is expression, emotional clarity, and creative reconnection, not technical performance or producing perfect work.',
+  },
+  {
+    question: 'What is included in an art retreat?',
+    answer:
+      'Most art retreats include accommodation, vegetarian meals, guided creative sessions, open creation time, basic art materials, and support from the retreat team. Travel to the retreat location is usually planned separately, with guidance shared after dates and location are finalized.',
+  },
+  {
+    question: 'Which art retreat should I choose?',
+    answer:
+      'Choose Creative Healing if you want emotional expression through art and yoga, Trek & Paint if you want walking and outdoor painting, and Weekend Art Retreat if you want a short Friday-to-Sunday creative reset near Delhi.',
+  },
+  {
+    question: 'Where are the art retreats held?',
+    answer:
+      'Art retreats are hosted across Himalayan locations such as Mussoorie, Chakrata, Rishikesh, Sankri, and Zanskar. Each location has a different creative energy, from forest silence and mountain views to high-altitude wilderness and remote solitude.',
+  },
+  {
+    question: 'Can I come alone?',
+    answer:
+      'Yes. Many guests come alone. The retreats are small, guided, and designed to feel safe for solo travellers, beginners, and people who want quiet creative space without social pressure.',
+  },
+  {
+    question: 'How long should I come for?',
+    answer:
+      'A weekend retreat works well if you want a short creative reset. A 5–7 day Creative Healing or Trek & Paint retreat gives more time for deeper immersion, slower work, and stronger creative continuity.',
+  },
+];
+
 export default function ArtRetreatsPage() {
+  validateFAQSync(FAQ_ITEMS, PATH);
+  const faqSchema = generateFAQSchema(FAQ_ITEMS);
+
   return (
     <main style={{ width: '100%', maxWidth: '100%', padding: 0, paddingTop: 0, overflowX: 'hidden' }}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
 
       <style>{`
         .art-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
@@ -595,6 +640,20 @@ export default function ArtRetreatsPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 8.5 — FAQ
+      ═══════════════════════════════════════════ */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
+        <div className="art-inner">
+          <div className="art-eyebrow">
+            <span className="art-eyebrow-line" />
+            <span className="art-eyebrow-text">Common Questions</span>
+          </div>
+          <h2 className="art-section-title">Frequently asked <span>questions</span></h2>
+          <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
         </div>
       </section>
 
