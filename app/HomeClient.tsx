@@ -137,6 +137,11 @@ useEffect(() => {
       width: 100%; max-width: 820px;
       padding: clamp(2rem,6vw,5rem) clamp(1.5rem,6vw,5rem) clamp(3.5rem,10vh,6rem);
     }
+    @media (min-width: 769px) {
+      .hh-content {
+        padding-top: clamp(5.5rem, 9vw, 7rem);
+      }
+    }
     .hh-eyebrow {
       display: flex; align-items: center; gap: 0.75rem;
       margin-bottom: 1.75rem;

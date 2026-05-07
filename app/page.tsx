@@ -38,7 +38,7 @@ export default function HomePage() {
   );
 
   return (
-    <main style={{ overflowX: 'hidden' }}>
+    <main style={{ width: '100%', maxWidth: 'none', margin: 0, padding: 0, overflowX: 'hidden' }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
