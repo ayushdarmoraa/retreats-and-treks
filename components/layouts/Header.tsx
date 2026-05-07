@@ -149,6 +149,45 @@ export default function Header() {
   transform: none !important;
   transition: none !important;
 }
+
+        @media (max-width: 768px) {
+          .hn-main-nav {
+            height: 72px !important;
+            padding: 0 1rem !important;
+            max-width: 100% !important;
+            width: 100% !important;
+            overflow: hidden !important;
+            box-sizing: border-box !important;
+          }
+          .hn-logo-link {
+            max-width: 178px !important;
+            overflow: hidden !important;
+            flex: 0 1 auto !important;
+          }
+          .hn-logo-image {
+            height: 60px !important;
+            width: auto !important;
+            max-width: 178px !important;
+            object-fit: contain !important;
+            object-position: left center !important;
+          }
+          .hn-hamburger {
+            flex-shrink: 0 !important;
+            padding: 8px !important;
+            margin-left: 0.75rem !important;
+          }
+        }
+
+        @media (max-width: 380px) {
+          .hn-logo-link {
+            max-width: 158px !important;
+          }
+          .hn-logo-image {
+            height: 56px !important;
+            max-width: 158px !important;
+          }
+        }
+
       `}</style>
 
       <header style={{
@@ -160,7 +199,7 @@ export default function Header() {
         WebkitBackdropFilter: 'blur(16px)',
         borderBottom: '1px solid rgba(15,118,110,0.18)',
       }}>
-        <nav style={{
+        <nav className="hn-main-nav" style={{
           maxWidth: '72rem',
           margin: '0 auto',
           padding: '0 2rem 0 0',
@@ -174,6 +213,7 @@ export default function Header() {
           <Link href="/" className="hn-logo-link" style={{ textDecoration: 'none', flexShrink: 0 }} aria-label="Himalayan Retreats - Go to homepage">
             {!logoError ? (
               <Image
+                className="hn-logo-image"
                 src={LOGO_IMAGE}
                 alt="Himalayan Retreats"
                 width={68}
