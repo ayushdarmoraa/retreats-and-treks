@@ -530,6 +530,19 @@ export default function RetreatsClient({
             <span style={{ color: '#374151', fontWeight: 200 }}>Matches Your Intention</span>
           </h2>
 
+          <p style={{
+            textAlign: 'center',
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.95rem',
+            fontWeight: 300,
+            lineHeight: 1.75,
+            color: '#555555',
+            maxWidth: '44rem',
+            margin: '-2rem auto 3.25rem',
+          }}>
+            Each pathway is designed around a different need — rest, movement, silence, creativity, sound healing, or a fully private retreat.
+          </p>
+
           <div className="rs-grid">
             {getAllRetreatServices().filter((service) => (service.slug as string) !== 'art-and-creative').map((service) => {
               const serviceImages: Record<string, { src: string; alt: string }> = {
