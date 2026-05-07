@@ -365,6 +365,10 @@ export const images = {
       src: '/Images/facilitators/sunaina-bhat.webp',
       alt: 'Sunaina Bhat — retreat facilitator',
     },
+    chaitraRam: {
+      src: '/Images/facilitators/chaitra-ram.jpg',
+      alt: 'Chaitra Ram — artist and art therapist facilitating Himalayan art retreats',
+    },
   },
 
   // ── Blog Featured Images ──
@@ -537,6 +541,7 @@ export const facilitatorImageMap: Record<string, SiteImage> = {
   'nidhi-rawat':   images.facilitators.nidhiRawat,
   'tenzin-dorje':  images.facilitators.tenzinDorje,
   'sunaina-bhat':  images.facilitators.sunainaBhat,
+  'chaitra-ram':   images.facilitators.chaitraRam,
 };
 
 /** Blog slug → featured image. Use: `blogImageMap['trek-vs-retreat']` */

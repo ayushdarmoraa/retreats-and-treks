@@ -137,6 +137,35 @@ const FACILITATORS: Facilitator[] = [
     ],
   },
   {
+    slug: 'chaitra-ram',
+    name: 'Chaitra Ram',
+    title: 'Artist & Art Therapist',
+    image: facilitatorImageMap['chaitra-ram'],
+    metaDescription:
+      'Chaitra Ram leads art and creative healing retreats in Rishikesh and the Himalayas. Artist, art therapist, psychology graduate, and 12-year painting practitioner.',
+    bio:
+      'Chaitra Ram is an artist and art therapist from Mysore, Karnataka, now based in Rishikesh, where she has lived for the past seven years. Her work brings together painting, expressive art, psychology-informed reflection, and a grounded understanding of prana healing. She has spent twelve years developing her art and painting practice, and now guides creative spaces where guests can explore expression without judgment.',
+    background: [
+      'Artist from Mysore, Karnataka',
+      'Based in Rishikesh for the past 7 years',
+      'Graduate in psychology',
+      '12 years of art and painting practice',
+      'Experienced in prana healing and energy-awareness practices',
+    ],
+    approach:
+      'Chaitra holds art as a reflective and therapeutic process rather than a performance. Her sessions are beginner-friendly, emotionally aware, and rooted in the belief that painting, colour, line, and image-making can help people access what words often cannot. She works gently with prompts, creative exercises, and open studio time so participants can create from honesty instead of pressure.',
+    specialisations: ['Art therapy', 'Expressive painting', 'Creative healing', 'Beginner-friendly art', 'Prana healing'],
+    retreatSlugs: ['art-and-creative', 'trek-and-paint', 'weekend-art-retreat'],
+    locationIds: ['rishikesh', 'chakrata', 'mussoorie'],
+    yearsExperience: 12,
+    qualifications: [
+      'Graduate in psychology',
+      '12 years of art and painting practice',
+      'Art therapy and expressive arts facilitation',
+      'Prana healing practice',
+    ],
+  },
+  {
     slug: 'sunaina-bhat',
     name: 'Sunaina Bhat',
     title: 'Sound Healing & Creative Retreat Facilitator',
@@ -154,7 +183,7 @@ const FACILITATORS: Facilitator[] = [
     approach:
       'Sunaina works with sound as a physical medium, not a spiritual concept. Her sessions create vibration that participants feel in their bodies — chest, spine, skull. The mountain acoustics in Chakrata amplify this. She designs each session to take the group from stimulation to stillness, using resonance as the bridge.',
     specialisations: ['Sound healing', 'Singing bowl therapy', 'Creative retreats', 'Art and expression'],
-    retreatSlugs: ['sound-healing', 'art-and-creative'],
+    retreatSlugs: ['sound-healing'],
     locationIds: ['chakrata'],
     yearsExperience: 10,
     qualifications: [
