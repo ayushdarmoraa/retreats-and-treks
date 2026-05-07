@@ -24,7 +24,7 @@ export const trekAndPaintRetreat = {
     { src: '/Images/moments/tea.webp', alt: 'Tea break between painting sessions on the mountain trail' },
   ],
 
-  keyHighlights: ['Trekking + Art', 'Plein Air Painting', 'Mountain Trails', '5–7 Days'],
+  keyHighlights: ['From ₹22,000', '5–7 Days', 'Chakrata Trails', 'Moderate Walking', 'Art Supplies Included'],
 
   description: `\
 Trek & Paint is for people who want to move through landscapes — not just look at them. Each day combines a Himalayan trek with outdoor painting sessions at the most striking viewpoints along the trail.

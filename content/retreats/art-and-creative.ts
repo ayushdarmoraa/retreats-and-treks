@@ -23,7 +23,7 @@ export const artAndCreativeRetreat = {
     { src: '/Images/moments/walking.webp', alt: 'Forest walk during a creative retreat — nature immersion as part of the healing process' },
   ],
 
-  keyHighlights: ['Art & Yoga', 'Himalayan Setting', 'No Experience Needed', '3–7 Days'],
+  keyHighlights: ['From ₹18,000', '5–7 Days', 'Mussoorie & Chakrata', 'No Experience Needed', 'Materials Included'],
 
   description: `\
 Creative Healing Retreat is for anyone seeking emotional healing through art & yoga — reconnecting with the part of themselves that makes, creates, and imagines. You do not need experience. You do not need talent. You need only curiosity and a willingness to create without judgment.

@@ -24,7 +24,7 @@ export const weekendArtRetreat = {
     { src: '/Images/about/chakrata.webp', alt: 'Chakrata mountain landscape — setting for weekend art retreats' },
   ],
 
-  keyHighlights: ['2–3 Days', 'Perfect for Beginners', 'No Experience Needed', 'Close to Delhi'],
+  keyHighlights: ['From ₹14,000', '2–3 Days', 'Near Delhi', 'No Experience Needed', 'Meals, Stay & Supplies'],
 
   description: `\
 Weekend Art Retreat is designed for one thing: giving you enough uninterrupted time to create without the noise of daily life.
