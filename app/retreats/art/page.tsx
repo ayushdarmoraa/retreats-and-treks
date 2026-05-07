@@ -5,6 +5,7 @@ import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import { generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
+import ArtFixedDepartures from '@/components/ArtFixedDepartures';
 import { images } from '@/lib/images';
 import { getFacilitatorsByRetreat } from '@/config/facilitators';
 import { artAndCreativeRetreat } from '@/content/retreats/art-and-creative';
@@ -555,6 +556,8 @@ export default function ArtRetreatsPage() {
           </div>
         </div>
       </section>
+
+      <ArtFixedDepartures />
 
       {/* ═══════════════════════════════════════════
           SECTION 6 — A DAY AT THE RETREAT
