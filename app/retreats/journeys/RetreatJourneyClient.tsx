@@ -525,6 +525,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center',
           fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem',
           color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em',
+          padding: '0 1.25rem', boxSizing: 'border-box', lineHeight: 1.5, maxWidth: '100%',
         }}>The Himalayan landscape becomes part of the retreat experience</figcaption>
       </figure>
 
@@ -618,6 +619,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center',
             fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem',
             color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em',
+          padding: '0 1.25rem', boxSizing: 'border-box', lineHeight: 1.5, maxWidth: '100%',
           }}>Quiet retreat spaces where creativity meets the mountains</figcaption>
         </figure>
       )}
@@ -781,6 +783,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center',
           fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem',
           color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em',
+          padding: '0 1.25rem', boxSizing: 'border-box', lineHeight: 1.5, maxWidth: '100%',
         }}>The Himalayan valleys provide the silence retreat work needs</figcaption>
       </figure>
 
