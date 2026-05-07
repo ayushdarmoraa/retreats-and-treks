@@ -650,10 +650,38 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
       grid-template-columns: repeat(2, 1fr);
       gap: 1.75rem;
     }
-      font-size: 0.75rem;
-      .path-grid { grid-template-columns: 1fr; }
-      .path-card-img { height: 260px; }
-      .path-img-title { font-size: 1.3rem; }
+
+    @media (max-width: 768px) {
+      .path-grid {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+      }
+      .path-card {
+        width: 100%;
+      }
+      .path-card-img-wrap {
+        height: 260px;
+      }
+      .path-card-img {
+        height: 260px;
+      }
+      .path-card-body {
+        padding: 1.25rem;
+      }
+      .path-card-desc {
+        font-size: 0.88rem;
+        line-height: 1.7;
+        word-break: normal;
+        overflow-wrap: normal;
+      }
+      .path-link {
+        font-size: 0.62rem;
+        letter-spacing: 0.14em;
+        white-space: normal;
+      }
+      .path-img-title {
+        font-size: 1.3rem;
+      }
     }
 
     /* ── Eyebrow ── */
