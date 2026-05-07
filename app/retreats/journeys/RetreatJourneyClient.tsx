@@ -516,7 +516,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
       }}>
         <img
           src="/Images/whyhimalaya/nature.webp"
-          alt="Himalayan mountain landscape — natural setting for creative healing retreats"
+          alt="Himalayan mountain landscape — natural setting for retreat journeys"
           loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}
         />
@@ -525,7 +525,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center',
           fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem',
           color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em',
-        }}>The Himalayan landscape becomes part of the healing process</figcaption>
+        }}>The Himalayan landscape becomes part of the retreat experience</figcaption>
       </figure>
 
       {/* WHAT MAKES IT UNIQUE — optional */}
@@ -609,7 +609,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         }}>
           <img
             src="/Images/location/mussoorie.webp"
-            alt="Mountain retreat verandah in Mussoorie — the primary location for creative healing retreats"
+            alt="Mountain retreat verandah — quiet creative space in the Himalayas"
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%', display: 'block' }}
           />
@@ -618,7 +618,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center',
             fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem',
             color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em',
-          }}>Our retreat spaces in Mussoorie — where creativity meets the mountains</figcaption>
+          }}>Quiet retreat spaces where creativity meets the mountains</figcaption>
         </figure>
       )}
 
@@ -772,7 +772,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
       }}>
         <img
           src="/Images/hero/valley-forest.webp"
-          alt="Evening light across Himalayan valley forest — retreat setting for creative healing"
+          alt="Evening light across Himalayan valley forest — quiet setting for mountain retreats"
           loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 35%', display: 'block' }}
         />
@@ -781,7 +781,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center',
           fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem',
           color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em',
-        }}>The Himalayan valleys provide the silence creativity needs</figcaption>
+        }}>The Himalayan valleys provide the silence retreat work needs</figcaption>
       </figure>
 
      {/* WHERE IT WORKS BEST */}
