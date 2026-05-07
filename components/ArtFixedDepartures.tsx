@@ -19,7 +19,7 @@ export default function ArtFixedDepartures({ mode = 'all', retreatSlug }: ArtFix
   if (!departures.length) return null;
 
   return (
-    <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0', borderTop: '1px solid #eef0ee', borderBottom: '1px solid #eef0ee' }}>
+    <section style={{ width: '100%', maxWidth: '100%', overflowX: 'clip', background: '#ffffff', padding: '4rem 0', borderTop: '1px solid #eef0ee', borderBottom: '1px solid #eef0ee' }}>
       <style>{`
         .art-fixed-inner {
           max-width: 72rem;
@@ -29,9 +29,15 @@ export default function ArtFixedDepartures({ mode = 'all', retreatSlug }: ArtFix
 
         .art-fixed-grid {
           display: grid;
-          grid-template-columns: repeat(3, 1fr);
+          grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 1.25rem;
           margin-top: 2.5rem;
+          min-width: 0;
+        }
+
+        .art-fixed-grid-single {
+          grid-template-columns: minmax(0, 34rem);
+          justify-content: center;
         }
 
         .art-fixed-card {
@@ -43,6 +49,8 @@ export default function ArtFixedDepartures({ mode = 'all', retreatSlug }: ArtFix
           flex-direction: column;
           gap: 1rem;
           box-shadow: 0 14px 42px rgba(15,31,28,0.05);
+          min-width: 0;
+          box-sizing: border-box;
         }
 
         .art-fixed-date {
@@ -121,11 +129,11 @@ export default function ArtFixedDepartures({ mode = 'all', retreatSlug }: ArtFix
             Book a fixed-date <span style={{ color: '#374151' }}>art retreat</span>
           </h2>
           <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', lineHeight: 1.8, color: '#5f6865', fontWeight: 300, margin: 0 }}>
-            These dates are generated automatically for the current month. Choose a retreat, reserve your spot, and we will confirm availability on WhatsApp.
+            Choose a scheduled departure and reserve your place. We will confirm availability, stay details, inclusions, and the next booking step on WhatsApp.
           </p>
         </div>
 
-        <div className="art-fixed-grid">
+        <div className={`art-fixed-grid${mode === 'single' ? ' art-fixed-grid-single' : ''}`}>
           {departures.map((departure) => {
             const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(departure.whatsappText)}`;
 
