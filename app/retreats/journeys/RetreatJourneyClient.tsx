@@ -205,8 +205,8 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
                 href={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I'm interested in the ${retreat.title} retreat. Can you tell me more?`)}`}
                 target="_blank" rel="noopener noreferrer"
                 className="rj-hero-cta-primary"
-              >Talk to a Retreat Planner →</a>
-              <a href="#about-this-retreat" className="rj-hero-cta-secondary">Explore This Retreat ↓</a>
+              >Check Dates & Starting Price →</a>
+              <a href="#about-this-retreat" className="rj-hero-cta-secondary">See Retreat Details ↓</a>
             </div>
           </div>
         </section>
@@ -232,8 +232,8 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
                 href={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I'm interested in the ${retreat.title} retreat. Can you tell me more?`)}`}
                 target="_blank" rel="noopener noreferrer"
                 className="rj-hero-cta-primary"
-              >Talk to a Retreat Planner →</a>
-              <a href="#about-this-retreat" className="rj-hero-cta-secondary">Explore This Retreat ↓</a>
+              >Check Dates & Starting Price →</a>
+              <a href="#about-this-retreat" className="rj-hero-cta-secondary">See Retreat Details ↓</a>
             </div>
           </div>
         </section>
@@ -468,10 +468,10 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
       {/* MID-PAGE CTA — after Who-This-Is-For */}
       <section className="rj-mid-cta">
         <div className="rj-mid-cta-inner">
-          <h3>Ready to explore this retreat?</h3>
+          <h3>Want dates, price, and fit?</h3>
           <p>Talk with us directly — no forms, no commitment. Just a conversation about what you need.</p>
-          <a href={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I'm interested in the ${retreat.title} retreat. Can you tell me more?`)}`} className="rj-mid-cta-btn" target="_blank" rel="noopener noreferrer">Talk to Us on WhatsApp →</a>
-          <p className="rj-mid-cta-micro">Free consultation · No spam · Quick response</p>
+          <a href={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I'm interested in the ${retreat.title} retreat. Can you tell me more?`)}`} className="rj-mid-cta-btn" target="_blank" rel="noopener noreferrer">Ask About This Retreat →</a>
+          <p className="rj-mid-cta-micro">Dates · Starting price · Fit guidance</p>
         </div>
       </section>
 
@@ -1341,7 +1341,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
               target="_blank"
               rel="noopener noreferrer"
             >
-              Talk on WhatsApp
+              Check Dates on WhatsApp
             </a>
 
             <Link href="/retreats" className="rj-back-link">
