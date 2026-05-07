@@ -327,6 +327,30 @@ export const images = {
       alt: 'Group of friends having chai on a sunlit mountain terrace',
     },
   },
+  // ── Chaitra Art Retreats ──
+  chaitraArtRetreat: {
+    riversideSetup: {
+      src: '/Images/art-retreat/chaitra/riverside-art-retreat-setup-rishikesh.webp',
+      alt: 'Riverside art retreat setup in Rishikesh with canvases, cushions, lamps, and creative materials',
+    },
+    mountainSession: {
+      src: '/Images/art-retreat/chaitra/mountain-art-therapy-session-rishikesh.webp',
+      alt: 'Mountain-view art therapy session in Rishikesh guided by Chaitra Ram',
+    },
+    indoorWorkshop: {
+      src: '/Images/art-retreat/chaitra/indoor-expressive-art-workshop-retreat.webp',
+      alt: 'Indoor expressive art workshop with painting materials during a Himalayan art retreat',
+    },
+    eveningReflection: {
+      src: '/Images/art-retreat/chaitra/evening-reflection-art-retreat-group.webp',
+      alt: 'Evening reflection circle during an art retreat with Chaitra Ram',
+    },
+    groupPaintings: {
+      src: '/Images/art-retreat/chaitra/group-art-retreat-participants-paintings.webp',
+      alt: 'Art retreat participants holding finished paintings after a creative healing session',
+    },
+  },
+
   // ── Testimonials ──
   testimonials: {
     priya: {
