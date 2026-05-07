@@ -246,8 +246,8 @@ export default function ArtRetreatsPage() {
             ))}
           </div>
           <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '2.5rem' }}>
-            <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I\'m interested in your art retreats in the Himalayas. Can you tell me more?')}`} className="art-cta-btn" target="_blank" rel="noopener noreferrer" style={{ padding: '1rem 2.5rem', fontSize: '0.82rem' }}>Talk to Us on WhatsApp →</a>
-            <a href="#retreats" className="art-cta-outline" style={{ borderColor: 'rgba(255,255,255,0.35)', color: 'rgba(255,255,255,0.9)', padding: '0.9rem 2rem', fontSize: '0.78rem' }}>Explore Retreats ↓</a>
+            <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I\'m interested in your art retreats in the Himalayas. Can you tell me more?')}`} className="art-cta-btn" target="_blank" rel="noopener noreferrer" style={{ padding: '1rem 2.5rem', fontSize: '0.82rem' }}>Check Dates & Starting Price →</a>
+            <a href="#retreats" className="art-cta-outline" style={{ borderColor: 'rgba(255,255,255,0.35)', color: 'rgba(255,255,255,0.9)', padding: '0.9rem 2rem', fontSize: '0.78rem' }}>Compare Art Retreats ↓</a>
           </div>
         </div>
       </section>
@@ -581,16 +581,16 @@ export default function ArtRetreatsPage() {
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#0a1f1c', padding: '4rem 0', textAlign: 'center' }}>
         <div style={{ maxWidth: '44rem', margin: '0 auto', padding: '0 2rem' }}>
           <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)', fontWeight: 200, color: '#ffffff', margin: '0 0 0.75rem', letterSpacing: '-0.02em' }}>
-            Ready to explore your creative retreat?
+            Want help choosing the right art retreat?
           </h3>
           <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, margin: '0 0 2rem', lineHeight: 1.7 }}>
             Talk with us directly — no forms, no commitment. Just a conversation about what you need.
           </p>
           <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I\'m interested in your art retreats in the Himalayas. Can you help me choose the right format?')}`} className="art-cta-btn" target="_blank" rel="noopener noreferrer">
-            Talk to Us on WhatsApp →
+            Check Dates & Starting Price →
           </a>
           <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', color: 'rgba(255,255,255,0.3)', marginTop: '1rem' }}>
-            Free consultation · No spam · Quick response
+            Dates · Starting price · Format guidance
           </p>
         </div>
       </section>
@@ -677,13 +677,13 @@ export default function ArtRetreatsPage() {
             fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 200,
             color: '#ffffff', margin: '0 0 1rem', letterSpacing: '-0.02em',
           }}>
-            Begin Your Creative Retreat
+            Ready to plan your creative retreat?
           </h2>
           <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', fontWeight: 300, lineHeight: 1.75, margin: '0 0 2rem' }}>
             No fixed dates. No rigid schedules. We design each retreat around you — your time, your medium, your intention. The mountains are always ready.
           </p>
           <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I want to book an art retreat in the Himalayas. Can we discuss dates and options?')}`} className="art-cta-btn" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.85rem', padding: '1rem 2.5rem' }}>
-            Book Your Art Retreat →
+            Check Art Retreat Dates →
           </a>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
             {['Small groups', 'No fixed dates', 'Fully custom'].map((trust) => (
