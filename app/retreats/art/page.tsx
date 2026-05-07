@@ -210,6 +210,64 @@ export default function ArtRetreatsPage() {
         .art-test-quote { font-family: var(--font-geist-sans), sans-serif; font-size: 0.85rem; font-weight: 300; font-style: italic; color: #555; line-height: 1.8; margin: 0; }
         .art-test-author { display: flex; align-items: center; gap: 0.75rem; margin-top: auto; }
         .art-test-avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--color-primary); color: #fff; display: flex; align-items: center; justify-content: center; font-family: var(--font-geist-sans), sans-serif; font-size: 0.8rem; font-weight: 500; flex-shrink: 0; }
+
+        @media (max-width: 720px) {
+          .art-inner,
+          .art-wide {
+            padding-left: 1.25rem;
+            padding-right: 1.25rem;
+            max-width: 100%;
+            box-sizing: border-box;
+          }
+
+          .art-hero {
+            min-height: 86vh;
+            padding-top: 72px;
+          }
+
+          .art-cta-btn,
+          .art-cta-outline {
+            width: 100%;
+            max-width: 320px;
+            justify-content: center;
+            text-align: center;
+            box-sizing: border-box;
+            white-space: normal;
+            line-height: 1.35;
+            padding-left: 1.1rem !important;
+            padding-right: 1.1rem !important;
+          }
+
+          .art-section-title {
+            overflow-wrap: normal;
+            word-break: normal;
+          }
+
+          .art-body-text {
+            overflow-wrap: normal;
+            word-break: normal;
+          }
+
+          .art-facilitator-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.5rem !important;
+            max-width: 100% !important;
+          }
+
+          .art-facilitator-image {
+            max-width: 320px;
+            margin: 0 auto;
+          }
+
+          .art-gallery-grid {
+            grid-template-columns: 1fr !important;
+          }
+
+          .art-gallery-item {
+            min-height: 260px !important;
+            grid-row: auto !important;
+          }
+        }
       `}</style>
 
       {/* ═══════════════════════════════════════════
@@ -640,9 +698,9 @@ export default function ArtRetreatsPage() {
               <span className="art-eyebrow-line" />
             </div>
             <h2 className="art-section-title" style={{ textAlign: 'center' }}>Who holds the <span>creative space</span></h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(220px, 0.8fr) minmax(0, 1.4fr)', gap: '2rem', alignItems: 'center', maxWidth: '54rem', margin: '0 auto' }}>
+            <div className="art-facilitator-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(220px, 0.8fr) minmax(0, 1.4fr)', gap: '2rem', alignItems: 'center', maxWidth: '54rem', margin: '0 auto' }}>
               {ART_FACILITATOR.image && (
-                <div style={{ position: 'relative', width: '100%', aspectRatio: '1 / 1', borderRadius: '12px', overflow: 'hidden', background: '#eef0ee' }}>
+                <div className="art-facilitator-image" style={{ position: 'relative', width: '100%', aspectRatio: '1 / 1', borderRadius: '12px', overflow: 'hidden', background: '#eef0ee' }}>
                   <Image src={ART_FACILITATOR.image.src} alt={ART_FACILITATOR.image.alt} fill loading="lazy" quality={70} sizes="(max-width: 720px) 100vw, 320px" style={{ objectFit: 'cover' }} />
                 </div>
               )}
@@ -736,9 +794,10 @@ export default function ArtRetreatsPage() {
           <p className="art-body-text" style={{ marginBottom: '2rem' }}>
             Real creative spaces, art therapy sessions, reflection circles, and finished participant artwork from retreats guided by Chaitra Ram.
           </p>
-          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '1rem', marginTop: '1.5rem' }}>
+          <div className="art-gallery-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '1rem', marginTop: '1.5rem' }}>
             {CHAITRA_ART_GALLERY.map((img, i) => (
               <div
+                className="art-gallery-item"
                 key={img.src}
                 style={{
                   position: 'relative',
