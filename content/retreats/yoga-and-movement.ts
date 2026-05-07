@@ -12,10 +12,10 @@
 
 export const yogaAndMovementRetreat = {
   slug: 'yoga-and-movement',
-  title: 'Yoga & Movement',
-  oneLineEssence: 'Reconnect your body and breath through conscious movement in mountain silence.',
-  seoTitle: 'Yoga Retreat in the Himalayas — Asana, Pranayama & Meditation | Retreats And Treks',
-  seoDescription: 'Join a yoga retreat in the Indian Himalayas. Guided asana, pranayama, and meditation at 2,200m altitude. Small groups, all levels welcome. 3–7 day retreats in Rishikesh and Chakrata, Uttarakhand.',
+  title: 'Yoga Retreats & Movement',
+  oneLineEssence: 'Yoga retreats, teacher training, aerial yoga, and online classes guided by Sakshi.',
+  seoTitle: 'Yoga Retreats, TTC & Aerial Yoga in Rishikesh | Retreats And Treks',
+  seoDescription: 'Join yoga retreats, yoga teacher training courses, aerial yoga programs, and online yoga classes with Sakshi. Retreats in Rishikesh and the Himalayas; TTC in Rishikesh, Thailand, and Bali.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/experience-hubs/yoga-hero.png',
@@ -30,23 +30,23 @@ export const yogaAndMovementRetreat = {
     { src: '/Images/moments/tea.webp', alt: 'Tea break between yoga sessions — mindful rest at a Himalayan retreat in India' },
   ],
 
-  keyHighlights: ['All Levels', 'Himalayan Setting', '3–7 Days', 'Asana · Pranayama · Meditation'],
+  keyHighlights: ['Yoga Retreats', 'TTC: Rishikesh · Thailand · Bali', 'Aerial Yoga in Rishikesh', 'Online Yoga Classes'],
 
   description: `\
-Yoga & Movement is a retreat for people seeking to re-inhabit their bodies through practice. Whether you are new to yoga or have been practising for years, this retreat creates space for your form and breath to deepen in the presence of mountains.
+Our yoga work is led by Sakshi, who has been teaching yoga for 8 years. This page brings together the different ways you can practise with us — immersive yoga retreats, yoga teacher training courses, aerial yoga programs, and online yoga classes.
 
-The practice is grounded — no performance, no achievement metrics. You move at the pace your body knows, guided by teachers who understand that presence matters more than precision.
+The retreat experience remains grounded in conscious movement, breath, and stillness. Whether you are new to yoga or have been practising for years, the intention is not performance. You move at the pace your body understands, with guided asana, pranayama, meditation, rest, and nature around you.
 
-Days begin with gentle morning practice as the light shifts over the Himalayan ridgeline. You will explore asana, pranayama, and seated meditation. The afternoons offer rest and integration — forest walks, journaling, or simply being still. Evenings bring closing practice and reflection.
+For students who want to go deeper, our yoga teacher training courses are offered in Rishikesh, Thailand, and Bali. For students drawn to playful strength and supported movement, aerial yoga programs and classes are available in Rishikesh. For those who want regular practice from home, online yoga classes create a simple way to begin or continue.
 
-By the end of the retreat, you will notice: breath arrives more easily, your body feels more familiar, and the connection between movement and mind becomes clear. This is not a fitness programme — it is a return to presence through the body.`,
+The thread across all offerings is the same: yoga as a steady relationship with the body, breath, and attention.`,
 
   idealIf: [
-    'You want to establish a daily yoga practice but need an immersive environment to begin',
-    'You have been practising yoga and want to deepen your understanding in a non-competitive setting',
+    'You want to join a yoga retreat that combines asana, pranayama, meditation, rest, and nature',
+    'You are interested in yoga teacher training in Rishikesh, Thailand, or Bali',
+    'You want to explore aerial yoga classes or programs in Rishikesh',
+    'You want online yoga classes before or after travelling for a retreat',
     'You are seeking reconnection with your body after a period of stress, burnout, or sedentary work',
-    'You want to combine physical practice with breathwork and meditation in a structured retreat',
-    'You are drawn to learning pranayama techniques in a traditional mountain setting',
   ],
 
   whatMakesItUnique: {
@@ -74,11 +74,11 @@ By the end of the retreat, you will notice: breath arrives more easily, your bod
 
   forNotFor: {
     for: [
-      'Anyone seeking to deepen their yoga practice in a supported, non-competitive environment',
-      'People wanting to reconnect with their body through mindful movement after burnout or desk work',
-      'Practitioners new to yoga wanting to build a solid foundation with experienced teachers',
-      'Those seeking movement as a path to presence, calm, and nervous system regulation',
-      'Anyone interested in learning pranayama and breathwork in a traditional Himalayan setting',
+      'Anyone seeking a yoga retreat in a supported, non-competitive environment',
+      'Students who want to explore yoga teacher training in Rishikesh, Thailand, or Bali',
+      'People interested in aerial yoga programs or classes in Rishikesh',
+      'Practitioners new to yoga wanting to build a steady foundation with Sakshi',
+      'Students who want online yoga classes to begin or continue regular practice from home',
     ],
     notFor: [
       'People seeking intense physical training, power yoga, or advanced fitness challenges',
