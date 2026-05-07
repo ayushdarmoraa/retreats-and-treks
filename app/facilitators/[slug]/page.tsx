@@ -8,6 +8,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import TrackedPage from '@/components/TrackedPage';
 import { getFacilitator, getAllFacilitatorSlugs } from '@/config/facilitators';
 import { getAllRetreatServices } from '@/content/retreats/services';
+import { images } from '@/lib/images';
 
 export const dynamic = 'force-static';
 export const dynamicParams = false;
@@ -46,6 +47,15 @@ export default async function FacilitatorPage(
 
   const allServices = getAllRetreatServices();
   const linkedServices = allServices.filter((s) => facilitator.retreatSlugs.includes(s.slug));
+  const chaitraGallery = slug === 'chaitra-ram'
+    ? [
+        images.chaitraArtRetreat.riversideSetup,
+        images.chaitraArtRetreat.mountainSession,
+        images.chaitraArtRetreat.indoorWorkshop,
+        images.chaitraArtRetreat.eveningReflection,
+        images.chaitraArtRetreat.groupPaintings,
+      ]
+    : [];
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
@@ -221,6 +231,45 @@ export default async function FacilitatorPage(
                   )}
                   <span className="fac-detail-program-link">View retreat →</span>
                 </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {chaitraGallery.length > 0 && (
+        <section className="fac-detail-section" style={{ background: '#ffffff' }}>
+          <div className="fac-detail-inner">
+            <p className="fac-detail-eyebrow">Real retreat moments</p>
+            <h2 className="fac-detail-h2">From Chaitra’s <span>art retreats</span></h2>
+            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.98rem', lineHeight: 1.85, color: '#5f6865', fontWeight: 300, maxWidth: '42rem', margin: '0 0 2rem' }}>
+              Actual creative spaces, art therapy sessions, reflection circles, and participant artwork from retreats guided by Chaitra.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: '1.25fr 1fr 1fr', gap: '1rem' }} className="fac-detail-three-grid">
+              {chaitraGallery.map((image, index) => (
+                <div
+                  key={image.src}
+                  style={{
+                    position: 'relative',
+                    minHeight: index === 0 ? 420 : 205,
+                    borderRadius: 18,
+                    overflow: 'hidden',
+                    gridRow: index === 0 ? 'span 2' : undefined,
+                    boxShadow: '0 18px 48px rgba(15,31,28,0.08)',
+                    background: '#eef0ee',
+                  }}
+                >
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    loading="lazy"
+                    quality={70}
+                    sizes="(max-width: 760px) 100vw, 33vw"
+                    style={{ objectFit: 'cover' }}
+                  />
+                  <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(15,31,28,0.35), transparent 55%)' }} />
+                </div>
               ))}
             </div>
           </div>
