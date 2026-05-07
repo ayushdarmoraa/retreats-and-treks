@@ -12,7 +12,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Art Retreats in the Himalayas — Creative Healing, Painting & Yoga | Retreats And Treks',
     description:
-      'Art retreats in India combining painting, writing, movement & yoga in the Himalayan mountains. No experience needed. 2–7 day programs in Mussoorie, Chakrata & Rishikesh. Small groups, real guidance.',
+      'Art retreats in India combining painting, writing, movement & yoga in the Himalayan mountains. No experience needed. 2–7 day programs in Mussoorie, Chakrata, Rishikesh, Sankri & Zanskar. Small groups, real guidance.',
     alternates: {
       canonical: buildCanonicalUrl('/retreats/art'),
     },
@@ -60,6 +60,8 @@ const LOCATIONS = [
   { name: 'Mussoorie', id: 'mussoorie', context: 'Mountain vistas awaken aesthetic sense. The beauty around you invites creative response.', image: '/Images/location/mussoorie.webp' },
   { name: 'Chakrata', id: 'chakrata', context: 'Forest silence creates space for internal creativity to emerge without distraction.', image: '/Images/location/chakrata.webp' },
   { name: 'Rishikesh', id: 'rishikesh', context: 'Spiritual ground supports the vulnerability that authentic creation requires.', image: '/Images/location/rishikesh.webp' },
+  { name: 'Sankri', id: 'sankri', context: 'High-altitude wilderness supports visual journaling, silence, and creative intensity.', image: '/Images/location/sankri.webp' },
+  { name: 'Zanskar', id: 'zanskar', context: 'Remote Ladakh landscapes create a rare container for solitude, sketching, and deep attention.', image: '/Images/location/zanskar.webp' },
 ];
 
 const ART_TESTIMONIALS = [
@@ -452,7 +454,7 @@ export default function ArtRetreatsPage() {
           </div>
           <h2 className="art-section-title" style={{ textAlign: 'center' }}>Where we host art <span>retreats</span></h2>
           <p className="art-body-text" style={{ textAlign: 'center', maxWidth: '38rem', margin: '0 auto 3rem' }}>
-            Each location brings a different creative energy. Mussoorie for aesthetic beauty. Chakrata for forest silence. Rishikesh for spiritual depth.
+            Each location brings a different creative energy. Mussoorie for aesthetic beauty. Chakrata for forest silence. Rishikesh for spiritual depth. Sankri for high-altitude wilderness. Zanskar for remote creative solitude.
           </p>
           <div className="art-loc-grid">
             {LOCATIONS.map((loc) => (
