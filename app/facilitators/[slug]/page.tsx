@@ -79,7 +79,7 @@ export default async function FacilitatorPage(
         { name: facilitator.name },
       ]} />
 
-      <header style={{ marginBottom: 'var(--space-xl)', display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
+      <div style={{ marginBottom: 'var(--space-xl)', display: 'flex', gap: '1.5rem', alignItems: 'flex-start' }}>
         {facilitator.image && (
           <div style={{ flexShrink: 0, width: 120, height: 120, borderRadius: '50%', overflow: 'hidden' }}>
             <Image src={facilitator.image.src} alt={facilitator.image.alt} width={120} height={120} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
@@ -93,7 +93,7 @@ export default async function FacilitatorPage(
             {facilitator.title} · {facilitator.yearsExperience} years experience
           </p>
         </div>
-      </header>
+      </div>
 
       <section style={{ marginBottom: 'var(--space-xl)' }}>
         <p style={{ fontSize: '1.05rem', lineHeight: 1.8 }}>
