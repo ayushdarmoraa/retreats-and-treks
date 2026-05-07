@@ -1677,16 +1677,16 @@ export default function RetreatsClient({
           <div className="s7-left">
             <div className="s7-tag">
               <span className="s7-tag-dot" />
-              <span className="s7-tag-text">Begin Your Journey</span>
+              <span className="s7-tag-text">Begin With Intention</span>
             </div>
 
             <h2 className="s7-headline">
-              Let&apos;s design<br />
-              <em>your retreat.</em>
+              Let&apos;s shape<br />
+              <em>your mountain reset.</em>
             </h2>
 
             <p className="s7-body">
-              Every retreat is personal. Share what you&apos;re seeking, and we&apos;ll match you with the right location, format, and dates.
+              Tell us what you&apos;re carrying, seeking, or ready to release — we&apos;ll shape the right location, pace, and retreat format around you.
             </p>
 
             <div className="s7-trust-list">
