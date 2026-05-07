@@ -929,7 +929,7 @@ export default function RetreatsClient({
 
           <div className="rf-eyebrow">
             <span className="rf-eyebrow-line" />
-            <span className="rf-eyebrow-text">Retreat formats we offer</span>
+            <span className="rf-eyebrow-text">Retreat formats</span>
             <span className="rf-eyebrow-line" />
           </div>
 
@@ -943,8 +943,8 @@ export default function RetreatsClient({
             lineHeight: 1.1,
             textAlign: 'center',
           }}>
-            Retreat formats{' '}
-            <span style={{ color: '#374151', fontWeight: 200 }}>we offer</span>
+            Choose Your{' '}
+            <span style={{ color: '#374151', fontWeight: 200 }}>Pace</span>
           </h2>
 
           <p style={{
@@ -956,7 +956,7 @@ export default function RetreatsClient({
             lineHeight: 1.6,
             fontWeight: 300,
           }}>
-            These are examples — many retreats are designed specifically around you.
+            Short weekend reset, deeper meditation, or movement-led retreat — each format can be adapted around your intention, dates, and availability.
           </p>
 
           <div className="rf-grid">
