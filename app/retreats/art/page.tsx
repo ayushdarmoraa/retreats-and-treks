@@ -5,6 +5,7 @@ import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import { generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
+import { images } from '@/lib/images';
 import { getFacilitatorsByRetreat } from '@/config/facilitators';
 import { artAndCreativeRetreat } from '@/content/retreats/art-and-creative';
 import { trekAndPaintRetreat } from '@/content/retreats/trek-and-paint';
@@ -14,6 +15,14 @@ export const dynamic = 'force-static';
 
 const PATH = '/retreats/art';
 const ART_FACILITATOR = getFacilitatorsByRetreat('art-and-creative')[0];
+
+const CHAITRA_ART_GALLERY = [
+  images.chaitraArtRetreat.riversideSetup,
+  images.chaitraArtRetreat.mountainSession,
+  images.chaitraArtRetreat.indoorWorkshop,
+  images.chaitraArtRetreat.eveningReflection,
+  images.chaitraArtRetreat.groupPaintings,
+];
 
 export function generateMetadata(): Metadata {
   return {
@@ -723,11 +732,26 @@ export default function ArtRetreatsPage() {
             <span className="art-eyebrow-line" />
             <span className="art-eyebrow-text">Moments</span>
           </div>
-          <h2 className="art-section-title">From our <span>retreats</span></h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '1.5rem' }}>
-            {artAndCreativeRetreat.galleryImages.map((img, i) => (
-              <div key={i} style={{ position: 'relative', borderRadius: '10px', overflow: 'hidden', height: '240px' }}>
-                <Image src={img.src} alt={img.alt} fill loading="lazy" quality={55} sizes="(max-width: 600px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
+          <h2 className="art-section-title">From Chaitra’s <span>art retreats</span></h2>
+          <p className="art-body-text" style={{ marginBottom: '2rem' }}>
+            Real creative spaces, art therapy sessions, reflection circles, and finished participant artwork from retreats guided by Chaitra Ram.
+          </p>
+          <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '1rem', marginTop: '1.5rem' }}>
+            {CHAITRA_ART_GALLERY.map((img, i) => (
+              <div
+                key={img.src}
+                style={{
+                  position: 'relative',
+                  borderRadius: '14px',
+                  overflow: 'hidden',
+                  minHeight: i === 0 ? '420px' : '205px',
+                  gridRow: i === 0 ? 'span 2' : undefined,
+                  boxShadow: '0 18px 48px rgba(15,31,28,0.08)',
+                  background: '#eef0ee',
+                }}
+              >
+                <Image src={img.src} alt={img.alt} fill loading="lazy" quality={70} sizes="(max-width: 600px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(15,31,28,0.28), transparent 55%)' }} />
               </div>
             ))}
           </div>
