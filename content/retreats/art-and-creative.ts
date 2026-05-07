@@ -21,6 +21,7 @@ export const artAndCreativeRetreat = {
     { src: '/Images/art-retreat/chaitra/indoor-expressive-art-workshop-retreat.webp', alt: 'Indoor expressive art workshop with painting materials during a Himalayan creative healing retreat' },
     { src: '/Images/art-retreat/chaitra/group-art-retreat-participants-paintings.webp', alt: 'Creative healing retreat participants holding finished paintings after an art therapy session' },
     { src: '/Images/art-retreat/chaitra/riverside-art-retreat-setup-rishikesh.webp', alt: 'Riverside art retreat setup in Rishikesh with canvases, cushions, lamps, and creative materials' },
+    { src: '/Images/art-retreat/chaitra/expressive-wall-painting-art-workshop.webp', alt: 'Participant painting a wall mural during an expressive art workshop on a creative healing retreat' },
   ],
 
   keyHighlights: ['From ₹18,000', '5–7 Days', 'Mussoorie & Chakrata', 'No Experience Needed', 'Materials Included'],
