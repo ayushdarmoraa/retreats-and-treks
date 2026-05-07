@@ -1005,7 +1005,9 @@ export default function RetreatsClient({
         <style>{`
           /* ── Card ── */
           .hl-card {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
             text-decoration: none;
             border-radius: 6px;
             overflow: hidden;
@@ -1038,7 +1040,7 @@ export default function RetreatsClient({
             background: linear-gradient(to top, rgba(2,10,2,0.62) 0%, rgba(2,10,2,0.05) 55%, transparent 100%);
             transition: opacity 0.35s;
           }
-          .hl-card:hover .hl-img-overlay {2; }
+          .hl-card:hover .hl-img-overlay { opacity: 0.85; }
 
           .hl-img-name {
             position: absolute;
@@ -1056,6 +1058,9 @@ export default function RetreatsClient({
             padding: 1.1rem 1.25rem 1.3rem;
             border-top: 2px solid var(--color-primary);
             position: relative;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
           }
 
 
@@ -1075,6 +1080,10 @@ export default function RetreatsClient({
             color: #777777;
             margin: 0 0 0.85rem;
             font-weight: 300;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
           }
           .hl-cta {
             display: inline-flex;
@@ -1087,6 +1096,7 @@ export default function RetreatsClient({
             text-transform: uppercase;
             color: #374151;
             transition: gap 0.22s;
+            margin-top: auto;
           }
           .hl-card:hover .hl-cta { gap: 0.62rem; }
 
