@@ -1321,7 +1321,7 @@ export default function RetreatsClient({
 
           <div className="wb-eyebrow">
             <span className="wb-eyebrow-line" />
-            <span className="wb-eyebrow-text">What makes our retreats different</span>
+            <span className="wb-eyebrow-text">Why travel with us</span>
             <span className="wb-eyebrow-line" />
           </div>
 
@@ -1335,8 +1335,8 @@ export default function RetreatsClient({
             lineHeight: 1.1,
             textAlign: 'center',
           }}>
-            What makes our retreats{' '}
-            <span style={{ color: '#374151', fontWeight: 200 }}>different</span>
+            Retreats Built for{' '}
+            <span style={{ color: '#374151', fontWeight: 200 }}>Depth, Not Crowds</span>
           </h2>
 
           <ul className="wb-grid">
