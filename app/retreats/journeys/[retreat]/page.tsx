@@ -253,6 +253,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
         retreat={retreatService}
         locations={compatibleLocations}
         suggestedTrek={suggestedTrek}
+        retreatSlug={retreat}
       />
 
       <RelatedRetreats currentSlug={retreat} />

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { LocationId } from '@/config/locations';
 import MicroCommitment from '@/components/MicroCommitment';
+import ArtFixedDepartures from '@/components/ArtFixedDepartures';
 import { useEffect } from 'react';
 interface Location {
   id: LocationId;
@@ -66,9 +67,10 @@ interface RetreatJourneyClientProps {
   retreat: RetreatService;
   locations: Location[];
   suggestedTrek?: SuggestedTrek;
+  retreatSlug: string;
 }
 
-export default function RetreatJourneyClient({ retreat, locations, suggestedTrek }: RetreatJourneyClientProps) {
+export default function RetreatJourneyClient({ retreat, locations, suggestedTrek, retreatSlug }: RetreatJourneyClientProps) {
  // Defer scroll-fade observer to after LCP paint
   useEffect(() => {
     const init = () => {
@@ -238,6 +240,8 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           </div>
         </section>
       )}
+
+      <ArtFixedDepartures mode="single" retreatSlug={retreatSlug} />
 
       {/* DESCRIPTION */}
       <section id="about-this-retreat" style={{
