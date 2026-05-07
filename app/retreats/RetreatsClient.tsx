@@ -417,7 +417,9 @@ export default function RetreatsClient({
             gap: 1.75rem;
           }
           .rs-card {
-            display: block;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
             text-decoration: none;
             color: var(--color-text);
             border-radius: 6px;
@@ -442,7 +444,7 @@ export default function RetreatsClient({
             background: linear-gradient(to top, rgba(2,10,2,0.65) 0%, rgba(2,10,2,0.1) 50%, rgba(2,10,2,0) 100%);
             transition: opacity 0.35s;
           }
-          .rs-card:hover .rs-img-overlay {5; }
+          .rs-card:hover .rs-img-overlay { opacity: 0.85; }
           .rs-img-tag {
             position: absolute; top: 1rem; left: 1rem;
             font-family: var(--font-geist-sans), sans-serif;
@@ -463,6 +465,9 @@ export default function RetreatsClient({
             padding: 1.4rem 1.5rem 1.6rem;
             border-top: 2px solid var(--color-primary);
             position: relative;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
           }
           .rs-body::after {
             content: ''; position: absolute; bottom: 0; left: 0;
@@ -480,6 +485,10 @@ export default function RetreatsClient({
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 0.87rem; color: #777777;
             margin: 0 0 1.35rem; line-height: 1.8; font-weight: 300;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
           }
           .rs-cta {
             display: inline-flex; align-items: center; gap: 0.4rem;
@@ -487,6 +496,7 @@ export default function RetreatsClient({
             font-size: 0.6rem; font-weight: 700;
             letter-spacing: 0.2em; text-transform: uppercase;
             color: #374151; transition: gap 0.22s;
+            margin-top: auto;
           }
           .rs-card:hover .rs-cta { gap: 0.72rem; }
           .rs-eyebrow {
