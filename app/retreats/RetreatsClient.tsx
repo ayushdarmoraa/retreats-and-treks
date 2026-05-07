@@ -732,7 +732,7 @@ export default function RetreatsClient({
 
           <div className="hw-eyebrow">
             <span className="hw-eyebrow-line" />
-            <span className="hw-eyebrow-text">How our retreats work</span>
+            <span className="hw-eyebrow-text">The process</span>
             <span className="hw-eyebrow-line" />
           </div>
 
@@ -746,8 +746,8 @@ export default function RetreatsClient({
             lineHeight: 1.1,
             textAlign: 'center',
           }}>
-            How our retreats{' '}
-            <span style={{ color: '#374151', fontWeight: 200 }}>work</span>
+            From Intention{' '}
+            <span style={{ color: '#374151', fontWeight: 200 }}>to Arrival</span>
           </h2>
 
           <div className="hw-grid">
