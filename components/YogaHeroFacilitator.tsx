@@ -6,8 +6,8 @@ export default function YogaHeroFacilitator() {
     <section style={{ position: 'relative', textAlign: 'center', padding: '6rem 2rem', background: '#f5f5f5' }}>
       {/* Hero Image */}
       <img
-        src="/Images/retreats/yoga/yoga-backbend-cave-rishikesh.webp
-        alt="Yoga backbend pose in cave retreat with Sakshi"
+        src="/Images/retreats/yoga/d025ccab-2ac9-4f4b-876d-e95544ec5273.webp
+        alt="Yoga backbend pose in cave retreat guided by Sakshi in Rishikesh"
         style={{ width: '100%', height: 'auto', borderRadius: '12px', objectFit: 'cover' }}
       />
       {/* Hero Text Overlay */}
@@ -26,7 +26,7 @@ export default function YogaHeroFacilitator() {
       <div style={{ maxWidth: '28rem', margin: '4rem auto 0', padding: '1.5rem', background: '#fff', borderRadius: '12px', boxShadow: '0 2px 8px rgba(0,0,0,0.1)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <img
           src="/Images/retreats/yoga/pranayama-closeup-sakshi.webp
-          alt="Sakshi Yoga Facilitator"
+          alt="Yoga backbend pose in cave retreat guided by Sakshi in Rishikesh"
           style={{ width: '10rem', height: '10rem', borderRadius: '50%', objectFit: 'cover', marginBottom: '1rem' }}
         />
         <h2 style={{ fontSize: '1.25rem', fontWeight: 600 }}>Sakshi</h2>
