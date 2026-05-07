@@ -22,6 +22,8 @@ const CHAITRA_ART_GALLERY = [
   images.chaitraArtRetreat.indoorWorkshop,
   images.chaitraArtRetreat.eveningReflection,
   images.chaitraArtRetreat.groupPaintings,
+  images.chaitraArtRetreat.outdoorEaselPainting,
+  images.chaitraArtRetreat.gardenCanvasPainting,
 ];
 
 export function generateMetadata(): Metadata {
