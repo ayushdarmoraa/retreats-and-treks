@@ -18,10 +18,10 @@ export const weekendArtRetreat = {
   signatureAlt: 'Mountain dawn from the retreat — weekend creative escape in Uttarakhand',
   signatureQuote: `You don't need a week to change how you see. Sometimes, two days is everything.`,
   galleryImages: [
-    { src: '/Images/blog/why-art-retreats-work.webp', alt: 'Why art retreats work — creative unblocking through mountain immersion' },
-    { src: '/Images/moments/meditation.webp', alt: 'Quiet reflection between creative sessions during a weekend retreat' },
-    { src: '/Images/blog/art-retreat-for-beginners.webp', alt: 'Art retreat for beginners — no experience needed for weekend creative escape' },
-    { src: '/Images/about/chakrata.webp', alt: 'Chakrata mountain landscape — setting for weekend art retreats' },
+    { src: '/Images/art-retreat/chaitra/group-art-retreat-participants-paintings.webp', alt: 'Weekend art retreat participants holding finished paintings after a creative session with Chaitra Ram' },
+    { src: '/Images/art-retreat/chaitra/indoor-expressive-art-workshop-retreat.webp', alt: 'Indoor expressive art workshop during a weekend art retreat in the Himalayas' },
+    { src: '/Images/art-retreat/chaitra/riverside-art-retreat-setup-rishikesh.webp', alt: 'Riverside weekend art retreat setup in Rishikesh with canvases, cushions, and creative materials' },
+    { src: '/Images/art-retreat/chaitra/evening-reflection-art-retreat-group.webp', alt: 'Evening reflection group during a weekend art retreat guided by Chaitra Ram' },
   ],
 
   keyHighlights: ['From ₹14,000', '2–3 Days', 'Near Delhi', 'No Experience Needed', 'Meals, Stay & Supplies'],
