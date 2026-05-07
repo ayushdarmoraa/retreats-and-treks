@@ -5,6 +5,7 @@ import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import { generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
+import { getFacilitatorsByRetreat } from '@/config/facilitators';
 import { artAndCreativeRetreat } from '@/content/retreats/art-and-creative';
 import { trekAndPaintRetreat } from '@/content/retreats/trek-and-paint';
 import { weekendArtRetreat } from '@/content/retreats/weekend-art-retreat';
@@ -12,6 +13,7 @@ import { weekendArtRetreat } from '@/content/retreats/weekend-art-retreat';
 export const dynamic = 'force-static';
 
 const PATH = '/retreats/art';
+const ART_FACILITATOR = getFacilitatorsByRetreat('art-and-creative')[0];
 
 export function generateMetadata(): Metadata {
   return {
@@ -574,6 +576,53 @@ export default function ArtRetreatsPage() {
           </div>
         </div>
       </section>
+
+      {/* ═══════════════════════════════════════════
+          SECTION 7.35 — CREATIVE FACILITATION
+      ═══════════════════════════════════════════ */}
+      {ART_FACILITATOR && (
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
+          <div className="art-wide">
+            <div className="art-eyebrow" style={{ justifyContent: 'center' }}>
+              <span className="art-eyebrow-line" />
+              <span className="art-eyebrow-text">Creative Facilitation</span>
+              <span className="art-eyebrow-line" />
+            </div>
+            <h2 className="art-section-title" style={{ textAlign: 'center' }}>Who holds the <span>creative space</span></h2>
+            <div style={{ display: 'grid', gridTemplateColumns: 'minmax(220px, 0.8fr) minmax(0, 1.4fr)', gap: '2rem', alignItems: 'center', maxWidth: '54rem', margin: '0 auto' }}>
+              {ART_FACILITATOR.image && (
+                <div style={{ position: 'relative', width: '100%', aspectRatio: '1 / 1', borderRadius: '12px', overflow: 'hidden', background: '#eef0ee' }}>
+                  <Image src={ART_FACILITATOR.image.src} alt={ART_FACILITATOR.image.alt} fill loading="lazy" quality={70} sizes="(max-width: 720px) 100vw, 320px" style={{ objectFit: 'cover' }} />
+                </div>
+              )}
+              <div>
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#374151', margin: '0 0 0.75rem' }}>
+                  {ART_FACILITATOR.yearsExperience} years experience
+                </p>
+                <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.15rem, 2vw, 1.45rem)', fontWeight: 400, color: '#111', margin: '0 0 0.35rem', letterSpacing: '-0.02em' }}>
+                  {ART_FACILITATOR.name}
+                </h3>
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.86rem', color: '#374151', fontWeight: 400, margin: '0 0 1rem' }}>
+                  {ART_FACILITATOR.title}
+                </p>
+                <p className="art-body-text" style={{ marginBottom: '1.25rem' }}>
+                  {ART_FACILITATOR.approach}
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
+                  {ART_FACILITATOR.specialisations.map((item) => (
+                    <span key={item} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#374151', border: '1px solid rgba(15,118,110,0.18)', borderRadius: '100px', padding: '0.35rem 0.7rem', background: '#f7f9f7' }}>
+                      {item}
+                    </span>
+                  ))}
+                </div>
+                <Link href={`/facilitators/${ART_FACILITATOR.slug}`} className="art-cta-outline">
+                  Meet {ART_FACILITATOR.name.split(' ')[0]} →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ═══════════════════════════════════════════
           MID-PAGE CTA
