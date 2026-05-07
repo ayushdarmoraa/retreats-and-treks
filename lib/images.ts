@@ -349,6 +349,18 @@ export const images = {
       src: '/Images/art-retreat/chaitra/group-art-retreat-participants-paintings.webp',
       alt: 'Art retreat participants holding finished paintings after a creative healing session',
     },
+    outdoorEaselPainting: {
+      src: '/Images/art-retreat/chaitra/outdoor-easel-painting-art-retreat.webp',
+      alt: 'Artist painting on an easel during an outdoor art retreat session',
+    },
+    expressiveWallPainting: {
+      src: '/Images/art-retreat/chaitra/expressive-wall-painting-art-workshop.webp',
+      alt: 'Participant painting a wall mural during an expressive art workshop',
+    },
+    gardenCanvasPainting: {
+      src: '/Images/art-retreat/chaitra/garden-canvas-painting-art-retreat.webp',
+      alt: 'Artist painting a large canvas in a garden during an art retreat',
+    },
   },
 
   // ── Testimonials ──
