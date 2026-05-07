@@ -113,6 +113,14 @@ Solo retreat offers undistracted creation. Group retreats create a field of crea
   invitation: `\
 Emotional healing through art & yoga begins when you give yourself permission to create without judgment. We create the conditions — you do the emergence. Come heal through creativity with us.`,
 
+  foodAndAccommodation: 'Comfortable mountain stay with simple, nutritious vegetarian meals. Creative sessions are supported with tea, quiet work time, and shared retreat spaces designed for painting, writing, reflection, and rest.',
+
+  travel: {
+    fromDelhi: 'Drive to Mussoorie or Chakrata via Dehradun. Most guests travel overnight or leave early morning; shared transport guidance can be arranged based on the final retreat location.',
+    fromDehradun: 'Mussoorie is around 1.5–2 hours from Dehradun, while Chakrata is around 3–4 hours depending on road conditions. Pickup guidance can be shared after dates and location are finalized.',
+    note: 'All basic art materials are included. You may also bring your own sketchbook, journal, brushes, or preferred medium if you already have one.',
+  },
+
   faqItems: [
     {
       question: 'Do I need any art experience to attend?',
