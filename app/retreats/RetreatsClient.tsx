@@ -196,7 +196,7 @@ export default function RetreatsClient({
 
           .rc-hero-altitude {
             position: absolute;
-            top: 2.5rem;
+            top: 4.25rem;
             right: clamp(1.25rem, 2.4vw, 2.5rem);
             max-width: calc(100% - 2.5rem);
             text-align: right;
@@ -519,43 +519,6 @@ export default function RetreatsClient({
             Our Retreat{' '}
             <span style={{ color: '#374151', fontWeight: 200 }}>Services</span>
           </h2>
-
-          {(() => {
-            // ← MAP KE BAHAR — ek baar banta hai
-            const serviceImages: Record<string, { src: string; alt: string }> = {
-              'rest-reset':             { src: '/Images/services/restreset.webp',      alt: 'Rest & Reset — gentle restoration retreat' },
-              'burnout-recovery':       { src: '/Images/services/burnoutrec.webp',     alt: 'Burnout Recovery — healing from exhaustion' },
-              'yoga-and-movement':      { src: '/Images/services/yogamov.webp',        alt: 'Yoga & Movement — mindful practice in nature' },
-              'yoga-movement':          { src: '/Images/services/yogamov.webp',        alt: 'Yoga & Movement — mindful practice in nature' },
-              'meditation-silence':     { src: '/Images/Journeys/meditation.webp',     alt: 'Meditation & Silence — deep stillness and clarity' },
-              'meditation-and-silence': { src: '/Images/Journeys/meditation.webp',     alt: 'Meditation & Silence — deep stillness and clarity' },
-              'art-creative':           { src: '/Images/services/artcreative.webp',    alt: 'Art & Creativity — expressive healing through art' },
-              'art-and-creative':       { src: '/Images/services/artcreative.webp',    alt: 'Art & Creativity — expressive healing through art' },
-              'sound-healing':          { src: '/Images/services/soundhealing.webp',   alt: 'Sound Healing — vibrational therapy and sound baths' },
-              'weekend-retreat':        { src: '/Images/services/weekendretreat.webp', alt: 'Weekend Retreat — short rejuvenating escape' },
-              'private-custom':         { src: '/Images/services/privatecustom.webp',  alt: 'Private & Custom Retreat — personalised journey' },
-              'private-and-custom':     { src: '/Images/services/privatecustom.webp',  alt: 'Private & Custom Retreat — personalised journey' },
-            };
-
-            return getAllRetreatServices().map((service) => {
-              console.log('slug:', service.slug); // ← ab console mein actual slugs dikhenge
-              const imgMeta = serviceImages[service.slug] ?? {
-                src: '/Images/services/restreset.webp',
-                alt: service.title,
-              };
-
-              return (
-                <div key={service.slug} style={{ display: 'contents' }}>
-                  {/* debug — remove after fix */}
-                  {!serviceImages[service.slug] && (
-                    <p style={{ color: 'red', fontSize: '0.7rem', gridColumn: '1/-1' }}>
-                    
-                    </p>
-                  )}
-                </div>
-              );
-            });
-          })()}
 
           <div className="rs-grid">
             {getAllRetreatServices().filter((service) => (service.slug as string) !== 'art-and-creative').map((service) => {
