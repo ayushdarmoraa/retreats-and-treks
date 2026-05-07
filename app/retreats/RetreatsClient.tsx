@@ -515,7 +515,7 @@ export default function RetreatsClient({
 
           <div className="rs-eyebrow">
             <span className="rs-eyebrow-line" />
-            <span className="rs-eyebrow-text">Our retreat services</span>
+            <span className="rs-eyebrow-text">Retreat pathways</span>
             <span className="rs-eyebrow-line" />
           </div>
 
@@ -526,8 +526,8 @@ export default function RetreatsClient({
             color: '#111111', margin: '0 0 3.5rem',
             lineHeight: 1.1, textAlign: 'center',
           }}>
-            Our Retreat{' '}
-            <span style={{ color: '#374151', fontWeight: 200 }}>Services</span>
+            Choose the Retreat That{' '}
+            <span style={{ color: '#374151', fontWeight: 200 }}>Matches Your Intention</span>
           </h2>
 
           <div className="rs-grid">
