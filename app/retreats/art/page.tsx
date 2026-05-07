@@ -307,6 +307,48 @@ export default function ArtRetreatsPage() {
       </section>
 
       {/* ═══════════════════════════════════════════
+          SECTION 3.5 — WHAT YOU CREATE
+      ═══════════════════════════════════════════ */}
+      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
+        <div className="art-wide">
+          <div className="art-eyebrow" style={{ justifyContent: 'center' }}>
+            <span className="art-eyebrow-line" />
+            <span className="art-eyebrow-text">Creative Outcomes</span>
+            <span className="art-eyebrow-line" />
+          </div>
+          <h2 className="art-section-title" style={{ textAlign: 'center' }}>What you’ll create and <span>take home</span></h2>
+          <p className="art-body-text" style={{ textAlign: 'center', maxWidth: '40rem', margin: '0 auto 3rem' }}>
+            You do not come here to make perfect art. You come to make honest work — and leave with physical reminders of what opened during the retreat.
+          </p>
+          <div className="art-unique-grid">
+            {[
+              {
+                title: 'A personal creative portfolio',
+                text: 'In the Creative Healing format, everything you make is yours. You leave with paintings, writing, collage, or mixed-media work that reflects a real moment of expression.',
+              },
+              {
+                title: 'A visual journal of the mountains',
+                text: 'In Trek & Paint, each trail and viewpoint becomes part of your journal — sketches, watercolours, notes, and landscape studies made from direct experience.',
+              },
+              {
+                title: 'Materials, prompts, and a practice to continue',
+                text: 'Basic art materials are provided, and the retreat rhythm gives you prompts, techniques, and creative rituals you can carry back into everyday life.',
+              },
+            ].map((item) => (
+              <div key={item.title} className="art-unique-card">
+                <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 600, color: '#111', margin: '0 0 0.6rem', letterSpacing: '-0.01em' }}>
+                  {item.title}
+                </h3>
+                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', lineHeight: 1.7, color: '#666', fontWeight: 300, margin: 0 }}>
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════════
           VISUAL BREAK 1
       ═══════════════════════════════════════════ */}
       <figure style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', height: '300px', overflow: 'hidden', margin: 0, padding: 0 }}>
