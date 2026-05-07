@@ -300,6 +300,192 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         </div>
       </section>
 
+      {/* YOGA OFFERINGS — only for Yoga & Movement */}
+      {retreatSlug === 'yoga-and-movement' && (
+        <section style={{
+          marginBottom: '0', marginTop: '0',
+          paddingTop: '5rem', paddingBottom: '5rem',
+          background: '#f7f9f7',
+          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+          borderBottom: '1px solid #e5e7eb',
+        }}>
+          <style>{`
+            .rj-yoga-offerings-inner { max-width: 64rem; margin: 0 auto; padding: 0 2rem; }
+            .rj-yoga-offerings-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
+            .rj-yoga-offerings-line { width: 24px; height: 1px; background: var(--color-primary); flex-shrink: 0; }
+            .rj-yoga-offerings-label {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.75rem;
+              letter-spacing: 0.28em;
+              text-transform: uppercase;
+              color: #374151;
+              font-weight: 500;
+            }
+            .rj-yoga-offerings-heading {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: clamp(1.6rem, 3vw, 2.15rem);
+              font-weight: 200;
+              letter-spacing: -0.035em;
+              color: #111111;
+              line-height: 1.12;
+              margin: 0 0 1rem;
+            }
+            .rj-yoga-offerings-heading span { color: #374151; }
+            .rj-yoga-offerings-intro {
+              max-width: 46rem;
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.92rem;
+              line-height: 1.8;
+              color: #555555;
+              font-weight: 300;
+              margin: 0 0 2.5rem;
+            }
+            .rj-yoga-offerings-grid {
+              display: grid;
+              grid-template-columns: repeat(4, minmax(0, 1fr));
+              gap: 1rem;
+            }
+            .rj-yoga-offering-card {
+              display: flex;
+              flex-direction: column;
+              min-height: 100%;
+              background: #ffffff;
+              border: 1px solid #eef0ee;
+              border-radius: 10px;
+              padding: 1.35rem;
+              box-shadow: 0 1px 3px rgba(0,0,0,0.035);
+            }
+            .rj-yoga-offering-kicker {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.58rem;
+              font-weight: 600;
+              letter-spacing: 0.18em;
+              text-transform: uppercase;
+              color: #374151;
+              margin: 0 0 0.65rem;
+            }
+            .rj-yoga-offering-card h3 {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 1rem;
+              font-weight: 600;
+              color: #111111;
+              letter-spacing: -0.02em;
+              line-height: 1.25;
+              margin: 0 0 0.65rem;
+            }
+            .rj-yoga-offering-card p {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.82rem;
+              line-height: 1.7;
+              color: #595959;
+              font-weight: 300;
+              margin: 0 0 1rem;
+            }
+            .rj-yoga-offering-meta {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.72rem;
+              line-height: 1.55;
+              color: #374151;
+              font-weight: 500;
+              margin-top: auto;
+              padding-top: 0.75rem;
+              border-top: 1px solid #eef0ee;
+            }
+            .rj-yoga-offering-cta {
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              margin-top: 1rem;
+              padding: 0.72rem 1rem;
+              border-radius: 999px;
+              background: var(--color-primary);
+              color: #ffffff;
+              text-decoration: none;
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.72rem;
+              font-weight: 600;
+              letter-spacing: 0.05em;
+              text-transform: uppercase;
+              transition: transform 0.2s ease, background 0.2s ease;
+            }
+            .rj-yoga-offering-cta:hover { transform: translateY(-2px); background: #0d9e95; }
+            @media (max-width: 980px) {
+              .rj-yoga-offerings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            }
+            @media (max-width: 560px) {
+              .rj-yoga-offerings-grid { grid-template-columns: 1fr; }
+            }
+          `}</style>
+
+          <div className="rj-yoga-offerings-inner scroll-fade">
+            <div className="rj-yoga-offerings-eyebrow">
+              <span className="rj-yoga-offerings-line" />
+              <span className="rj-yoga-offerings-label">Our Yoga Offerings</span>
+            </div>
+
+            <h2 className="rj-yoga-offerings-heading">
+              Choose the yoga path that <span>fits you</span>
+            </h2>
+
+            <p className="rj-yoga-offerings-intro">
+              Practise with Sakshi through immersive retreats, teacher training, aerial yoga, or online classes. Each offering is designed for a different stage of practice — from beginning gently to training deeply.
+            </p>
+
+            <div className="rj-yoga-offerings-grid">
+              {[
+                {
+                  kicker: 'Retreats',
+                  title: 'Yoga Retreats',
+                  body: 'Immersive yoga retreats with asana, pranayama, meditation, rest, nature walks, and simple retreat rhythm in Rishikesh and Himalayan settings.',
+                  meta: 'Best for: reset, practice, breath, rest',
+                  cta: 'Ask Retreat Dates',
+                  text: 'Hi, I want to know about Yoga Retreat dates, price, inclusions, and location options.',
+                },
+                {
+                  kicker: 'Training',
+                  title: 'Yoga Teacher Training Course',
+                  body: 'Yoga teacher training pathways for students who want to deepen their practice or move toward teaching with more structure and discipline.',
+                  meta: 'Locations: Rishikesh · Thailand · Bali',
+                  cta: 'Ask TTC Details',
+                  text: 'Hi, I want details about the Yoga Teacher Training Course in Rishikesh, Thailand, or Bali.',
+                },
+                {
+                  kicker: 'Aerial',
+                  title: 'Aerial Yoga Programs',
+                  body: 'Aerial yoga programs and classes for supported movement, mobility, strength, decompression, and playful body awareness.',
+                  meta: 'Location: Rishikesh',
+                  cta: 'Ask Aerial Batches',
+                  text: 'Hi, I want details about Aerial Yoga programs and classes in Rishikesh.',
+                },
+                {
+                  kicker: 'Online',
+                  title: 'Online Yoga Classes',
+                  body: 'Live online yoga classes for students who want to begin from home, maintain regular practice, or continue after a retreat.',
+                  meta: 'Format: online guided classes',
+                  cta: 'Ask Online Classes',
+                  text: 'Hi, I want details about Online Yoga Classes with Sakshi.',
+                },
+              ].map((offering) => (
+                <article key={offering.title} className="rj-yoga-offering-card">
+                  <p className="rj-yoga-offering-kicker">{offering.kicker}</p>
+                  <h3>{offering.title}</h3>
+                  <p>{offering.body}</p>
+                  <div className="rj-yoga-offering-meta">{offering.meta}</div>
+                  <a
+                    href={`https://wa.me/919760446101?text=${encodeURIComponent(offering.text)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rj-yoga-offering-cta"
+                  >
+                    {offering.cta} →
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* MICRO COMMITMENT */}
       <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '1.5rem 2rem' }}>
         <MicroCommitment
