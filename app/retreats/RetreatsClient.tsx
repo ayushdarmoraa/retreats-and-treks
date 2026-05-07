@@ -524,6 +524,7 @@ export default function RetreatsClient({
             {getAllRetreatServices().filter((service) => (service.slug as string) !== 'art-and-creative').map((service) => {
               const serviceImages: Record<string, { src: string; alt: string }> = {
                 'rest-reset':             { src: '/Images/services/restreset.webp',      alt: 'Rest & Reset — gentle restoration retreat' },
+                'rest-and-reset':         { src: '/Images/services/restreset.webp',      alt: 'Rest & Reset — gentle restoration retreat' },
                 'burnout-recovery':       { src: '/Images/services/burnoutrec.webp',     alt: 'Burnout Recovery — healing from exhaustion' },
                 'yoga-and-movement':      { src: '/Images/services/yoga.webp',        alt: 'Yoga & Movement — mindful practice in nature' },
                 'yoga-movement':          { src: '/Images/services/yoga.webp',        alt: 'Yoga & Movement — mindful practice in nature' },
@@ -531,6 +532,8 @@ export default function RetreatsClient({
                 'meditation-and-silence': { src: '/Images/Journeys/meditation.webp',     alt: 'Meditation & Silence — deep stillness and clarity' },
                 'art-creative':           { src: '/Images/services/artcreative.webp',    alt: 'Art & Creativity — expressive healing through art' },
                 'art-and-creative':       { src: '/Images/services/artcreative.webp',    alt: 'Art & Creativity — expressive healing through art' },
+                'trek-and-paint':         { src: '/Images/blog/painting-in-the-himalayas.webp', alt: 'Trek & Paint Retreat — mountain trekking and creative expression' },
+                'weekend-art-retreat':    { src: '/Images/art-retreat/art-supplies.webp', alt: 'Weekend Art Retreat — short creative healing escape' },
                 'sound-healing':          { src: '/Images/services/soundhealing.webp',   alt: 'Sound Healing — vibrational therapy and sound baths' },
                 'weekend-retreat':        { src: '/Images/services/weekendretreat.webp', alt: 'Weekend Retreat — short rejuvenating escape' },
                 'private-custom':         { src: '/Images/services/privatecustom.webp',  alt: 'Private & Custom Retreat — personalised journey' },
