@@ -189,7 +189,7 @@ export default function ArtRetreatsPage() {
             Emotional healing through painting, writing, movement & yoga — no experience needed. Small groups. Real guidance. Mountain silence.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', justifyContent: 'center', marginBottom: '2rem' }}>
-            {['Art & Yoga', 'No Experience Needed', '2–7 Days', 'Small Groups'].map((tag) => (
+            {['From ₹14,000', 'Materials Included', 'No Experience Needed', '2–7 Days', 'Small Groups'].map((tag) => (
               <span key={tag} style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 500,
                 letterSpacing: '0.08em', textTransform: 'uppercase',
