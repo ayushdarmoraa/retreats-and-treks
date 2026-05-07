@@ -1134,7 +1134,7 @@ export default function RetreatsClient({
 
           <div className="hl-eyebrow">
             <span className="hl-eyebrow-line" />
-            <span className="hl-eyebrow-text">Himalayan locations we work with</span>
+            <span className="hl-eyebrow-text">Mountain settings</span>
             <span className="hl-eyebrow-line" />
           </div>
 
@@ -1148,9 +1148,22 @@ export default function RetreatsClient({
             lineHeight: 1.1,
             textAlign: 'center',
           }}>
-            Himalayan locations{' '}
-            <span style={{ color: '#374151', fontWeight: 200 }}>we work with</span>
+            Quiet Himalayan Places{' '}
+            <span style={{ color: '#374151', fontWeight: 200 }}>for Deep Retreat Work</span>
           </h2>
+
+          <p style={{
+            textAlign: 'center',
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.95rem',
+            fontWeight: 300,
+            lineHeight: 1.75,
+            color: '#555555',
+            maxWidth: '46rem',
+            margin: '-2rem auto 3.25rem',
+          }}>
+            Each location offers a different kind of stillness — forest ridges, river valleys, alpine meadows, or remote high-altitude silence.
+          </p>
 
          <div className="hl-grid">
             {locations.map((location) => {
