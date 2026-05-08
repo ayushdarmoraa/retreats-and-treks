@@ -22,7 +22,7 @@ interface RetreatService {
   readonly signatureImage?: string;
   readonly signatureAlt?: string;
   readonly signatureQuote?: string;
-  readonly galleryImages?: readonly { readonly src: string; readonly alt: string }[];
+  readonly galleryImages?: readonly { readonly src: string; readonly alt: string; readonly objectPosition?: string }[];
   readonly forNotFor: {
     readonly for: readonly string[];
     readonly notFor: readonly string[];
@@ -71,6 +71,7 @@ interface RetreatJourneyClientProps {
 }
 
 export default function RetreatJourneyClient({ retreat, locations, suggestedTrek, retreatSlug }: RetreatJourneyClientProps) {
+
  // Defer scroll-fade observer to after LCP paint
   useEffect(() => {
     const init = () => {
@@ -134,7 +135,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         /* ── GALLERY ── */
         .rj-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem; }
         @media (max-width: 600px) { .rj-gallery { grid-template-columns: 1fr; } }
-        .rj-gallery-item { position: relative; border-radius: 10px; overflow: hidden; height: 260px; }
+        .rj-gallery-item { border-radius: 10px; overflow: hidden; }
         /* ── SIGNATURE ── */
         .rj-signature { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; height: 50vh; min-height: 400px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
         .rj-signature-text { position: relative; z-index: 2; max-width: 44rem; text-align: center; padding: 2rem; }
@@ -292,7 +293,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             <div className="rj-gallery scroll-fade" style={{ marginTop: '3rem' }}>
               {retreat.galleryImages.map((img, i) => (
                 <div key={i} className="rj-gallery-item">
-                  <Image src={img.src} alt={img.alt} fill loading="lazy" quality={60} sizes="(max-width: 600px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
+                  <Image src={img.src} alt={img.alt} width={800} height={600} loading="lazy" quality={60} sizes="(max-width: 600px) 100vw, 50vw" style={{ width: '100%', height: 'auto', display: 'block', borderRadius: '10px' }} />
                 </div>
               ))}
             </div>
@@ -302,15 +303,25 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
 
       {/* YOGA OFFERINGS — only for Yoga & Movement */}
       {retreatSlug === 'yoga-and-movement' && (
-        <section style={{
-          marginBottom: '0', marginTop: '0',
-          paddingTop: '5rem', paddingBottom: '5rem',
-          background: '#f7f9f7',
-          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-          borderBottom: '1px solid #e5e7eb',
-        }}>
+        <section className="rj-yoga-offerings-section">
           <style>{`
-            .rj-yoga-offerings-inner { max-width: 64rem; margin: 0 auto; padding: 0 2rem; }
+            .rj-yoga-offerings-section {
+              position: relative;
+              margin: 0;
+              padding: 5rem 0;
+              border-bottom: 1px solid #e5e7eb;
+            }
+            .rj-yoga-offerings-section::before {
+              content: '';
+              position: absolute;
+              top: 0; bottom: 0;
+              left: 50%;
+              transform: translateX(-50%);
+              width: 100vw;
+              background: #f7f9f7;
+              z-index: -1;
+            }
+            .rj-yoga-offerings-inner { max-width: 56rem; margin: 0 auto; padding: 0 2rem; box-sizing: border-box; }
             .rj-yoga-offerings-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
             .rj-yoga-offerings-line { width: 24px; height: 1px; background: var(--color-primary); flex-shrink: 0; }
             .rj-yoga-offerings-label {
@@ -342,18 +353,23 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             }
             .rj-yoga-offerings-grid {
               display: grid;
-              grid-template-columns: repeat(4, minmax(0, 1fr));
-              gap: 1rem;
+              grid-template-columns: repeat(2, 1fr);
+              gap: 1.25rem;
             }
             .rj-yoga-offering-card {
               display: flex;
               flex-direction: column;
-              min-height: 100%;
               background: #ffffff;
               border: 1px solid #eef0ee;
               border-radius: 10px;
-              padding: 1.35rem;
+              padding: 1.5rem;
+              box-sizing: border-box;
               box-shadow: 0 1px 3px rgba(0,0,0,0.035);
+              transition: border-color 0.25s, box-shadow 0.25s;
+            }
+            .rj-yoga-offering-card:hover {
+              border-color: rgba(15,118,110,0.25);
+              box-shadow: 0 4px 16px rgba(0,0,0,0.06);
             }
             .rj-yoga-offering-kicker {
               font-family: var(--font-geist-sans), sans-serif;
@@ -361,12 +377,12 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
               font-weight: 600;
               letter-spacing: 0.18em;
               text-transform: uppercase;
-              color: #374151;
+              color: var(--color-primary);
               margin: 0 0 0.65rem;
             }
             .rj-yoga-offering-card h3 {
               font-family: var(--font-geist-sans), sans-serif;
-              font-size: 1rem;
+              font-size: 1.05rem;
               font-weight: 600;
               color: #111111;
               letter-spacing: -0.02em;
@@ -375,8 +391,8 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             }
             .rj-yoga-offering-card p {
               font-family: var(--font-geist-sans), sans-serif;
-              font-size: 0.82rem;
-              line-height: 1.7;
+              font-size: 0.85rem;
+              line-height: 1.75;
               color: #595959;
               font-weight: 300;
               margin: 0 0 1rem;
@@ -409,11 +425,12 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
               transition: transform 0.2s ease, background 0.2s ease;
             }
             .rj-yoga-offering-cta:hover { transform: translateY(-2px); background: #0d9e95; }
-            @media (max-width: 980px) {
-              .rj-yoga-offerings-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            @media (min-width: 980px) {
+              .rj-yoga-offerings-grid { grid-template-columns: repeat(4, 1fr); }
             }
             @media (max-width: 560px) {
               .rj-yoga-offerings-grid { grid-template-columns: 1fr; }
+              .rj-yoga-offerings-inner { padding: 0 1.25rem; }
             }
           `}</style>
 

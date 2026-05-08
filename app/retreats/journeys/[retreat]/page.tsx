@@ -20,6 +20,8 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import RetreatScorePanel from '@/components/RetreatScoreBar';
 import { RETREAT_SCORES } from '@/config/retreatScores';
 import RatingBadge from '@/components/RatingBadge';
+import Image from 'next/image';
+import { getFacilitatorsByRetreat } from '@/config/facilitators';
 import type { LocationId } from '@/config/locations';
 
 interface PageProps {
@@ -84,6 +86,21 @@ export default async function RetreatDetailPage({ params }: PageProps) {
         </Link>
       </main>
     );
+  }
+
+  // Override gallery for yoga-and-movement with curated yoga images
+  if (retreat === 'yoga-and-movement') {
+    (retreatService as Record<string, unknown>).galleryImages = [
+      { src: '/Images/retreats/yoga/aerial-yoga-group-rishikesh.webp', alt: 'Aerial Yoga Group Rishikesh' },
+      { src: '/Images/retreats/yoga/brahmari-pranayam-meditation.webp', alt: 'Brahmari Pranayam Meditation' },
+      { src: '/Images/retreats/yoga/pranayama-closeup-sakshi.webp', alt: 'Pranayama Closeup Sakshi' },
+      { src: '/Images/retreats/yoga/yoga-assist-inverted-rishikesh.webp', alt: 'Yoga Assist Inverted Rishikesh', objectPosition: 'top' },
+      { src: '/Images/retreats/yoga/yoga-backbend-cave-rishikesh.webp', alt: 'Yoga Backbend Cave Rishikesh' },
+      { src: '/Images/retreats/yoga/yoga-balance-pose-outdoors.webp', alt: 'Yoga Balance Pose Outdoors' },
+      { src: '/Images/retreats/yoga/yoga-meditation-river-rishikesh.webp', alt: 'Yoga Meditation River Rishikesh' },
+      { src: '/Images/retreats/yoga/yoga-scenic-rishikesh.webp', alt: 'Yoga Scenic Rishikesh', objectPosition: 'top' },
+      { src: '/Images/retreats/yoga/yoga-ttc-certificates-rishikesh (2).webp', alt: 'Yoga TTC Certificates Rishikesh (2)' },
+    ];
   }
 
   // Get locations where this retreat works best
@@ -257,6 +274,135 @@ export default async function RetreatDetailPage({ params }: PageProps) {
       />
 
       <RelatedRetreats currentSlug={retreat} />
+
+      {/* ── FACILITATOR SECTION — yoga-and-movement only ── */}
+      {retreat === 'yoga-and-movement' && (() => {
+        const facilitator = getFacilitatorsByRetreat('yoga-and-movement')[0];
+        if (!facilitator) return null;
+        return (
+          <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '5rem 0', borderTop: '1px solid #e5e7eb', borderBottom: '1px solid #e5e7eb' }}>
+            <style>{`
+              .yoga-fac-grid {
+                display: grid;
+                grid-template-columns: minmax(220px, 0.8fr) minmax(0, 1.4fr);
+                gap: 2rem;
+                align-items: center;
+                max-width: 54rem;
+                margin: 0 auto;
+              }
+              .yoga-fac-image {
+                position: relative;
+                width: 100%;
+                aspect-ratio: 1 / 1;
+                border-radius: 12px;
+                overflow: hidden;
+                background: #eef0ee;
+              }
+              @media (max-width: 720px) {
+                .yoga-fac-grid {
+                  grid-template-columns: 1fr !important;
+                  gap: 1.5rem !important;
+                  max-width: 100% !important;
+                }
+                .yoga-fac-image {
+                  max-width: 320px;
+                  margin: 0 auto;
+                }
+              }
+            `}</style>
+            <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 2rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', justifyContent: 'center' }}>
+                <span style={{ width: 24, height: 1, background: 'var(--color-primary)', display: 'inline-block' }} />
+                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', fontWeight: 500 }}>Your Facilitator</span>
+                <span style={{ width: 24, height: 1, background: 'var(--color-primary)', display: 'inline-block' }} />
+              </div>
+              <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 2rem', textAlign: 'center' }}>
+                Who guides your <span style={{ color: '#374151' }}>practice</span>
+              </h2>
+              <div className="yoga-fac-grid">
+                {facilitator.image && (
+                  <div className="yoga-fac-image">
+                    <Image src={facilitator.image.src} alt={facilitator.image.alt} fill loading="lazy" quality={70} sizes="(max-width: 720px) 100vw, 320px" style={{ objectFit: 'cover' }} />
+                  </div>
+                )}
+                <div>
+                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.18em', textTransform: 'uppercase', color: '#374151', margin: '0 0 0.75rem' }}>
+                    {facilitator.yearsExperience} years experience
+                  </p>
+                  <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.15rem, 2vw, 1.45rem)', fontWeight: 400, color: '#111', margin: '0 0 0.35rem', letterSpacing: '-0.02em' }}>
+                    {facilitator.name}
+                  </h3>
+                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.86rem', color: '#374151', fontWeight: 400, margin: '0 0 1rem' }}>
+                    {facilitator.title}
+                  </p>
+                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', lineHeight: 1.85, color: '#555', fontWeight: 300, margin: '0 0 1.25rem' }}>
+                    {facilitator.approach}
+                  </p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '1.25rem' }}>
+                    {facilitator.specialisations.map((item) => (
+                      <span key={item} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#374151', border: '1px solid rgba(15,118,110,0.18)', borderRadius: '100px', padding: '0.35rem 0.7rem', background: '#f7f9f7' }}>
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                  <Link href={`/facilitators/${facilitator.slug}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', padding: '0.7rem 1.8rem', border: '1px solid rgba(15,118,110,0.3)', color: 'var(--color-primary)', textDecoration: 'none', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.04em', borderRadius: '100px', transition: 'all 0.2s' }}>
+                    Meet {facilitator.name.split(' ')[0]} →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      })()}
+
+      {/* ── ALSO AVAILABLE IN — yoga international locations ── */}
+      {retreat === 'yoga-and-movement' && (
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid #e5e7eb' }}>
+          <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem', justifyContent: 'center' }}>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', display: 'inline-block' }} />
+              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', fontWeight: 500 }}>Also Available In</span>
+              <span style={{ width: 24, height: 1, background: 'var(--color-primary)', display: 'inline-block' }} />
+            </div>
+            <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 0.75rem', textAlign: 'center' }}>
+              Yoga courses <span style={{ color: '#374151' }}>beyond India</span>
+            </h2>
+            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', lineHeight: 1.85, color: '#555', fontWeight: 300, margin: '0 auto 2.5rem', textAlign: 'center', maxWidth: '40rem' }}>
+              Sakshi also leads yoga teacher training courses and retreats in Thailand, Bali, and Nepal. Ask for dates and details.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem' }}>
+              {[
+                { location: 'Rishikesh, India', context: 'Yoga\'s birthplace. Retreats, TTC, and aerial yoga programs with Sakshi.', badge: 'Primary', text: 'Hi, I want details about Yoga Retreats and TTC in Rishikesh.' },
+                { location: 'Thailand', context: 'Yoga teacher training in a tropical setting. Immersive multi-week format.', badge: 'TTC', text: 'Hi, I want details about Yoga Teacher Training in Thailand.' },
+                { location: 'Bali, Indonesia', context: 'Yoga teacher training surrounded by rice terraces and temple culture.', badge: 'TTC', text: 'Hi, I want details about Yoga Teacher Training in Bali.' },
+                { location: 'Nepal', context: 'Mountain yoga and teacher training near the Annapurna range.', badge: 'TTC', text: 'Hi, I want details about Yoga Teacher Training in Nepal.' },
+              ].map((loc) => (
+                <div key={loc.location} style={{ background: '#ffffff', border: '1px solid #eef0ee', borderRadius: 10, padding: '1.5rem', boxShadow: '0 1px 3px rgba(0,0,0,0.03)', display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1rem', fontWeight: 500, color: '#111', margin: 0, letterSpacing: '-0.01em' }}>
+                      {loc.location}
+                    </h3>
+                    <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.58rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-primary)', background: 'rgba(15,118,110,0.07)', borderRadius: '3px', padding: '3px 8px' }}>
+                      {loc.badge}
+                    </span>
+                  </div>
+                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', lineHeight: 1.7, color: '#666', fontWeight: 300, margin: 0 }}>
+                    {loc.context}
+                  </p>
+                  <a
+                    href={`https://wa.me/919760446101?text=${encodeURIComponent(loc.text)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', marginTop: 'auto', padding: '0.72rem 1rem', borderRadius: '999px', background: 'var(--color-primary)', color: '#ffffff', textDecoration: 'none', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.05em', textTransform: 'uppercase', transition: 'transform 0.2s ease, background 0.2s ease' }}
+                  >
+                    Ask {loc.location.split(',')[0]} Dates →
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Compare links — surfaces the comparison engine */}
 {(() => {

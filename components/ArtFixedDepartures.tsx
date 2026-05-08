@@ -126,7 +126,7 @@ export default function ArtFixedDepartures({ mode = 'all', retreatSlug }: ArtFix
             Fixed Dates This Month
           </p>
           <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.55rem, 3vw, 2.25rem)', lineHeight: 1.1, fontWeight: 250, letterSpacing: '-0.04em', color: '#111827', margin: '0 0 1rem' }}>
-            Book a fixed-date <span style={{ color: '#374151' }}>art retreat</span>
+            Book a fixed-date <span style={{ color: '#374151' }}>{retreatSlug === 'yoga-and-movement' ? 'yoga retreat' : 'art retreat'}</span>
           </h2>
           <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', lineHeight: 1.8, color: '#5f6865', fontWeight: 300, margin: 0 }}>
             Choose a scheduled departure and reserve your place. We will confirm availability, stay details, inclusions, and the next booking step on WhatsApp.

@@ -37,7 +37,7 @@ export function TrekHeroImmersive({
         fill
         priority
         sizes="100vw"
-        style={{ objectFit: 'cover', objectPosition: 'center' }}
+        style={{ objectFit: 'contain', objectPosition: 'center' }}
       />
       {/* gradient overlay */}
       <div
@@ -460,6 +460,17 @@ export function TrekExperienceGallery({
   topPadding?: string;
   bottomPadding?: string;
 }) {
+  const yogaImages = [
+    { src: "/Images/retreats/yoga/aerial-yoga-group-rishikesh.webp", alt: "Aerial yoga group session in Rishikesh" },
+    { src: "/Images/retreats/yoga/brahmari-pranayam-meditation.webp", alt: "Brahmari pranayam meditation session" },
+    { src: "/Images/retreats/yoga/pranayama-closeup-sakshi.webp", alt: "Close-up of Sakshi guiding pranayama" },
+    { src: "/Images/retreats/yoga/yoga-assist-inverted-rishikesh.webp", alt: "Yoga assisted inversion pose in Rishikesh" },
+    { src: "/Images/retreats/yoga/yoga-balance-pose-outdoors.webp", alt: "Yoga balance pose outdoors" },
+    { src: "/Images/retreats/yoga/yoga-meditation-river-rishikesh.webp", alt: "Yoga meditation by the river in Rishikesh" },
+    { src: "/Images/retreats/yoga/yoga-scenic-rishikesh.jpg.webp", alt: "Scenic yoga pose in Rishikesh" },
+  ];
+
+  if (!images || images.length === 0) images = yogaImages;
   if (!images || images.length === 0) return null;
   return (
     <section
@@ -540,7 +551,7 @@ export function TrekExperienceGallery({
                 alt={img.alt}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                style={{ objectFit: 'cover' }}
+        style={{ objectFit: 'contain', objectPosition: 'center' }}
               />
               {img.caption && (
                 <figcaption
@@ -598,7 +609,7 @@ export function TrekCinematicMoment({
         alt={moment.alt}
         fill
         sizes="100vw"
-        style={{ objectFit: 'cover', objectPosition: 'center' }}
+        style={{ objectFit: 'contain', objectPosition: 'center' }}
       />
       <div
         style={{

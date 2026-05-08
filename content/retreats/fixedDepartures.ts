@@ -1,4 +1,4 @@
-type ArtRetreatSlug = 'art-and-creative' | 'trek-and-paint' | 'weekend-art-retreat';
+type ArtRetreatSlug = 'art-and-creative' | 'trek-and-paint' | 'weekend-art-retreat' | 'yoga-and-movement';
 
 export interface FixedDeparture {
   slug: ArtRetreatSlug;
@@ -133,6 +133,16 @@ export function getCurrentMonthArtFixedDepartures(now = getIndiaNow()): FixedDep
       10,
       weekendStart,
       addDays(weekendStart, 2),
+    ),
+    createDeparture(
+      'yoga-and-movement',
+      'Yoga Retreat',
+      'Monthly yoga retreat with Sakshi',
+      'Rishikesh',
+      'From \u20B916,000',
+      8,
+      getNthWeekdayOfMonth(year, monthIndex, 1, 4), // 4th Monday
+      addDays(getNthWeekdayOfMonth(year, monthIndex, 1, 4), 6),
     ),
   ];
 }

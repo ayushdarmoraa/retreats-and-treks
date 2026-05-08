@@ -18,8 +18,8 @@ export const yogaAndMovementRetreat = {
   seoDescription: 'Join yoga retreats, yoga teacher training courses, aerial yoga programs, and online yoga classes with Sakshi. Retreats in Rishikesh and the Himalayas; TTC in Rishikesh, Thailand, and Bali.',
 
   /* ── Visual Assets ── */
-  heroImage: '/Images/experience-hubs/yoga-hero.png',
-  heroAlt: 'Yoga retreat in the Himalayas — morning practice with mountain views in Uttarakhand, India',
+  heroImage: '/Images/hero/himalayan-sunrise.webp',
+  heroAlt: 'Yoga backbend pose in cave retreat guided by Sakshi in Rishikesh',
   signatureImage: '/Images/services/yogamov.webp',
   signatureAlt: 'Sunrise yoga practice at a Himalayan retreat — movement and breath in mountain silence',
   signatureQuote: `The body already knows how to heal. The practice is learning to listen.`,
