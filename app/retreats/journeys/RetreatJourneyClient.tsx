@@ -71,6 +71,7 @@ interface RetreatJourneyClientProps {
 }
 
 export default function RetreatJourneyClient({ retreat, locations, suggestedTrek, retreatSlug }: RetreatJourneyClientProps) {
+  const isYogaJourney = retreatSlug === 'yoga-and-movement';
 
  // Defer scroll-fade observer to after LCP paint
   useEffect(() => {
@@ -132,6 +133,47 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         .rj-hero .rj-title { color: #ffffff; text-shadow: 0 2px 32px rgba(0,0,0,0.7); }
         .rj-hero .rj-essence { color: rgba(255,255,255,0.82); }
         .rj-hero .rj-highlight-tag { background: rgba(255,255,255,0.12); border-color: rgba(255,255,255,0.25); color: rgba(255,255,255,0.85); }
+        .rj-yoga-hero {
+          min-height: clamp(60vh, 78vh, 85vh);
+          background: #0a1a18;
+        }
+        .rj-yoga-hero::before {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(135deg, rgba(15,118,110,0.08) 0%, rgba(0,0,0,0) 40%, rgba(0,0,0,0) 60%, rgba(10,20,18,0.12) 100%);
+          z-index: 1;
+          pointer-events: none;
+        }
+        .rj-yoga-hero::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 35%, rgba(0,0,0,0.25) 60%, rgba(0,0,0,0.55) 100%);
+          z-index: 1;
+          pointer-events: none;
+        }
+        .rj-yoga-hero .rj-inner { padding: 5rem 2rem; }
+        .rj-yoga-hero .rj-eyebrow-text {
+          color: rgba(255,255,255,0.68);
+          font-weight: 500;
+          letter-spacing: 0.32em;
+        }
+        .rj-yoga-hero .rj-eyebrow-line { background: rgba(255,255,255,0.4); }
+        .rj-yoga-hero .rj-title {
+          font-size: clamp(2.2rem, 5vw, 3.2rem);
+          letter-spacing: -0.04em;
+          line-height: 1.1;
+          text-shadow: 0 8px 32px rgba(0,0,0,0.4);
+          margin-bottom: 1.2rem;
+        }
+        .rj-yoga-hero .rj-essence {
+          font-size: 1.02rem;
+          line-height: 1.8;
+          max-width: 42rem;
+          color: rgba(255,255,255,0.8);
+          text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
         /* ── GALLERY ── */
         .rj-gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 3rem; }
         @media (max-width: 600px) { .rj-gallery { grid-template-columns: 1fr; } }
@@ -171,6 +213,38 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           transition: transform 0.2s ease, border-color 0.2s ease;
         }
         .rj-hero-cta-secondary:hover { transform: translateY(-2px); border-color: rgba(255,255,255,0.7); }
+        .rj-yoga-hero .rj-hero-ctas { gap: 1rem; margin-top: 2.5rem; }
+        .rj-yoga-hero .rj-hero-cta-primary {
+          padding: 0.95rem 2.5rem;
+          border-radius: 50px;
+          border: none;
+          font-size: 0.8rem;
+          letter-spacing: 0.08em;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          box-shadow: 0 8px 24px rgba(255,255,255,0.15);
+        }
+        .rj-yoga-hero .rj-hero-cta-primary:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 32px rgba(255,255,255,0.25);
+          background: #f5f5f5;
+        }
+        .rj-yoga-hero .rj-hero-cta-secondary {
+          padding: 0.95rem 2.5rem;
+          background: rgba(255,255,255,0.06);
+          color: rgba(255,255,255,0.9);
+          font-size: 0.8rem;
+          font-weight: 500;
+          letter-spacing: 0.08em;
+          border-radius: 50px;
+          border-color: rgba(255,255,255,0.25);
+          backdrop-filter: blur(4px);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .rj-yoga-hero .rj-hero-cta-secondary:hover {
+          transform: translateY(-4px);
+          background: rgba(255,255,255,0.12);
+          border-color: rgba(255,255,255,0.5);
+        }
         /* Non-hero (light bg) variants */
         .rj-hero-ctas--light .rj-hero-cta-primary {
           background: var(--color-primary); color: #fff; border-color: var(--color-primary);
@@ -179,12 +253,16 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           color: #374151; border-color: rgba(15,118,110,0.3);
         }
         .rj-hero-ctas--light .rj-hero-cta-secondary:hover { border-color: var(--color-primary); }
-        @media (max-width: 520px) { .rj-hero-ctas { flex-direction: column; align-items: center; } }
+        @media (max-width: 520px) {
+          .rj-hero-ctas { flex-direction: column; align-items: center; }
+          .rj-yoga-hero .rj-hero-ctas { align-items: stretch; gap: 0.9rem; }
+          .rj-yoga-hero .rj-inner { padding: 3.5rem 1.5rem; }
+        }
       `}</style>
 
       {/* HEADER — with or without hero image */}
       {retreat.heroImage ? (
-        <section className="rj-hero">
+        <section className={isYogaJourney ? 'rj-hero rj-yoga-hero' : 'rj-hero'}>
           <div className="rj-hero-img">
             <Image src={retreat.heroImage} alt={retreat.heroAlt || `${retreat.title} retreat in the Himalayas`} fill priority fetchPriority="high" quality={60} sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
           </div>
@@ -196,9 +274,20 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
             <h1 className="rj-title">{retreat.title}</h1>
             <p className="rj-essence">{retreat.oneLineEssence}</p>
             {retreat.keyHighlights && retreat.keyHighlights.length > 0 && (
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginTop: '1.75rem', justifyContent: 'center' }}>
+              <div style={isYogaJourney
+                ? { display: 'flex', flexWrap: 'wrap', gap: '0.8rem', marginTop: '2rem', justifyContent: 'center' }
+                : { display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginTop: '1.75rem', justifyContent: 'center' }}
+              >
                 {retreat.keyHighlights.map((h, i) => (
-                  <span key={i} className="rj-highlight-tag" style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.25)', color: 'rgba(255,255,255,0.85)', borderRadius: '4px', padding: '0.4rem 0.85rem' }}>{h}</span>
+                  <span
+                    key={i}
+                    className="rj-highlight-tag"
+                    style={isYogaJourney
+                      ? { fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.18)', color: 'rgba(255,255,255,0.88)', borderRadius: '6px', padding: '0.5rem 1rem', backdropFilter: 'blur(8px)' }
+                      : { fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.25)', color: 'rgba(255,255,255,0.85)', borderRadius: '4px', padding: '0.4rem 0.85rem' }}
+                  >
+                    {h}
+                  </span>
                 ))}
               </div>
             )}

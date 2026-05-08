@@ -88,18 +88,14 @@ export default async function RetreatDetailPage({ params }: PageProps) {
     );
   }
 
-  // Override gallery for yoga-and-movement with curated yoga images
+  // Override hero + gallery for yoga-and-movement
   if (retreat === 'yoga-and-movement') {
+    (retreatService as Record<string, unknown>).heroImage = '/Images/retreats/yoga/yoga-backbend-cave-rishikesh.webp';
+    (retreatService as Record<string, unknown>).heroAlt = 'Yoga backbend pose in a natural cave during a retreat guided by Sakshi in Rishikesh';
     (retreatService as Record<string, unknown>).galleryImages = [
-      { src: '/Images/retreats/yoga/aerial-yoga-group-rishikesh.webp', alt: 'Aerial Yoga Group Rishikesh' },
-      { src: '/Images/retreats/yoga/brahmari-pranayam-meditation.webp', alt: 'Brahmari Pranayam Meditation' },
-      { src: '/Images/retreats/yoga/pranayama-closeup-sakshi.webp', alt: 'Pranayama Closeup Sakshi' },
-      { src: '/Images/retreats/yoga/yoga-assist-inverted-rishikesh.webp', alt: 'Yoga Assist Inverted Rishikesh', objectPosition: 'top' },
-      { src: '/Images/retreats/yoga/yoga-backbend-cave-rishikesh.webp', alt: 'Yoga Backbend Cave Rishikesh' },
-      { src: '/Images/retreats/yoga/yoga-balance-pose-outdoors.webp', alt: 'Yoga Balance Pose Outdoors' },
-      { src: '/Images/retreats/yoga/yoga-meditation-river-rishikesh.webp', alt: 'Yoga Meditation River Rishikesh' },
-      { src: '/Images/retreats/yoga/yoga-scenic-rishikesh.webp', alt: 'Yoga Scenic Rishikesh', objectPosition: 'top' },
-      { src: '/Images/retreats/yoga/yoga-ttc-certificates-rishikesh (2).webp', alt: 'Yoga TTC Certificates Rishikesh (2)' },
+      { src: '/Images/retreats/yoga/yoga-balance-pose-outdoors.webp', alt: 'Outdoor yoga balance pose — strength and focus in a natural Himalayan setting' },
+      { src: '/Images/retreats/yoga/pranayama-closeup-sakshi.webp', alt: 'Sakshi guiding pranayama — breath awareness in a yoga retreat' },
+      { src: '/Images/retreats/yoga/brahmari-pranayam-meditation.webp', alt: 'Brahmari pranayama meditation — deep breath practice at a Himalayan retreat' },
     ];
   }
 
