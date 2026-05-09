@@ -129,7 +129,7 @@ export function generateOrganizationSchema() {
     '@id': schemaIds.organization,
     name: BRAND_NAME,
     url: buildCanonicalUrl('/'),
-    logo: buildCanonicalUrl('/logo.png'),
+    logo: buildCanonicalUrl('/Images/logo/retreatsandtreks1.png'),
     description:
       'Retreats And Treks organizes curated Himalayan retreats and trekking experiences designed for rest, reset, and conscious travel.',
     email: 'neerajrawat@retreatsandtreks.com',
