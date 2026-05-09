@@ -38,7 +38,7 @@ export const metadata: Metadata = {
   description:
     'Curated weekend retreats and guided treks in the Himalayas. Starting from Dehradun.',
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.retreatsandtreks.com',
   ),
   openGraph: {
     siteName: 'Retreats And Treks',
