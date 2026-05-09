@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import TreksClient from './TreksClient';
 import { getAllTreks } from '@/lib/treks';
+import { buildCanonicalUrl } from '@/components/seo/Metadata';
 
 export const metadata: Metadata = {
   title: 'Himalayan Treks | Guided Trekking Experiences',
@@ -27,7 +28,7 @@ function generateSchemas() {
       '@type': 'ListItem',
       position: index + 1,
       name: trek.title,
-      url: `https://retreatsandtreks.com/treks/location/${trek.locationId}/${trek.slug}`,
+      url: buildCanonicalUrl(`/treks/location/${trek.locationId}/${trek.slug}`),
       description: trek.description,
     })),
   };
