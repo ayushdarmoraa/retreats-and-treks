@@ -62,8 +62,6 @@ export default function RootLayout({
   return (
     <html lang="en"  suppressHydrationWarning>
       <head>
-        {/* Inline minimal critical CSS for header/nav to reduce render-blocking */}
-        <style>{`header{position:fixed;top:0;left:0;right:0;z-index:9999;background:rgba(8,14,8,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(15,118,110,0.18)} nav{max-width:72rem;margin:0 auto;padding:0 2rem;height:68px;display:flex;align-items:center;justify-content:space-between}`}</style>
 
         <script
           type="application/ld+json"
