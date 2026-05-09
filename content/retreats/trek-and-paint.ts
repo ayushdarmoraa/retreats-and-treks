@@ -12,16 +12,16 @@ export const trekAndPaintRetreat = {
   seoDescription: 'Combine Himalayan trekking with plein air painting. Walk forest trails by morning, paint mountain landscapes by afternoon. No art or hiking experience needed. 5–7 days in Chakrata, Uttarakhand.',
 
   /* ── Visual Assets ── */
-  heroImage: '/Images/blog/painting-in-the-himalayas.webp',
-  heroAlt: 'Trekking and painting in the Himalayan mountains — plein air art retreat combining hiking and creative expression',
-  signatureImage: '/Images/hero/valley-forest.webp',
-  signatureAlt: 'Himalayan valley at golden hour — the landscape that becomes your subject',
+  heroImage: '/Images/art-retreat/chaitra/outdoor-easel-painting-art-retreat.webp',
+  heroAlt: 'Outdoor easel painting during an art retreat with Chaitra Ram — real plein air creative practice',
+  signatureImage: '/Images/art-retreat/chaitra/garden-canvas-painting-art-retreat.webp',
+  signatureAlt: 'Garden canvas painting during a real art retreat guided by Chaitra Ram',
   signatureQuote: `The mountain does not pose for you. It simply is. And somehow, that is enough.`,
   galleryImages: [
-    { src: '/Images/location/mussoorie.webp', alt: 'Mountain trails near Mussoorie — where trekking meets painting' },
-    { src: '/Images/moments/walking.webp', alt: 'Walking through Himalayan forests during a trek and paint retreat' },
-    { src: '/Images/whyhimalaya/nature.webp', alt: 'Himalayan nature — the subject of plein air painting sessions' },
-    { src: '/Images/moments/tea.webp', alt: 'Tea break between painting sessions on the mountain trail' },
+    { src: '/Images/art-retreat/chaitra/outdoor-easel-painting-art-retreat.webp', alt: 'Outdoor easel painting during a real Himalayan art retreat' },
+    { src: '/Images/art-retreat/chaitra/garden-canvas-painting-art-retreat.webp', alt: 'Garden canvas painting session during an art retreat' },
+    { src: '/Images/art-retreat/chaitra/group-art-retreat-participants-paintings.webp', alt: 'Participants holding paintings created during an art retreat' },
+    { src: '/Images/art-retreat/art-supplies.webp', alt: 'Art supplies provided for painting and creative retreat sessions' },
   ],
 
   keyHighlights: ['From ₹22,000', '5–7 Days', 'Chakrata Trails', 'Moderate Walking', 'Art Supplies Included'],
