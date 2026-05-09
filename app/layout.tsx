@@ -6,7 +6,7 @@ import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import BreadcrumbSchema from "@/components/BreadcrumbSchema";
-import { schemaIds, SCHEMA_SITE_URL } from "@/lib/schemaIds";
+import { generateWebsiteSchema, generateOrganizationSchema } from "@/components/seo/Schema";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -62,68 +62,13 @@ export default function RootLayout({
   return (
     <html lang="en"  suppressHydrationWarning>
       <head>
-
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Organization',
-              '@id': schemaIds.organization,
-              name: 'Retreats And Treks',
-              url: SCHEMA_SITE_URL,
-              sameAs: [],
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateOrganizationSchema()) }}
         />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'WebSite',
-              '@id': schemaIds.website,
-              name: 'Retreats and Treks',
-              url: SCHEMA_SITE_URL,
-              publisher: { '@id': schemaIds.organization },
-              about: {
-                '@type': 'Thing',
-                name: 'Himalayan Trekking',
-              },
-              hasPart: [
-                {
-                  '@type': 'CollectionPage',
-                  url: 'https://www.retreatsandtreks.com/treks/best-treks-in-uttarakhand',
-                  name: 'Best Treks in Uttarakhand',
-                },
-                {
-                  '@type': 'CollectionPage',
-                  url: 'https://www.retreatsandtreks.com/treks/garhwal-himalayas',
-                  name: 'Garhwal Himalaya Treks',
-                },
-                {
-                  '@type': 'CollectionPage',
-                  url: 'https://www.retreatsandtreks.com/treks/beginner-treks-uttarakhand',
-                  name: 'Beginner Treks in Uttarakhand',
-                },
-                {
-                  '@type': 'CollectionPage',
-                  url: 'https://www.retreatsandtreks.com/treks/winter-treks-uttarakhand',
-                  name: 'Winter Treks in Uttarakhand',
-                },
-                {
-                  '@type': 'CollectionPage',
-                  url: 'https://www.retreatsandtreks.com/treks/summer-treks-uttarakhand',
-                  name: 'Summer Treks in Uttarakhand',
-                },
-                {
-                  '@type': 'CollectionPage',
-                  url: 'https://www.retreatsandtreks.com/retreats',
-                  name: 'Himalayan Retreats',
-                },
-              ],
-            }),
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(generateWebsiteSchema()) }}
         />
       </head>
       <body

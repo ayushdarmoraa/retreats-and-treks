@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
-import { generateWebsiteSchema, generateOrganizationSchema } from '@/components/seo/Schema';
 import { getLocationsWithRetreats } from '@/lib/locations';
 import HomeClient from './HomeClient';
 import PrimaryCTA from '@/components/PrimaryCTA';
@@ -26,8 +25,6 @@ export function generateMetadata(): Metadata {
 }
 
 export default function HomePage() {
-  const websiteSchema = generateWebsiteSchema();
-  const organizationSchema = generateOrganizationSchema();
   const locationsWithRetreats = getLocationsWithRetreats();
   const allRetreats = getAllRetreatServices();
   const finderRatings = Object.fromEntries(
@@ -39,15 +36,6 @@ export default function HomePage() {
 
   return (
     <main style={{ width: '100%', maxWidth: 'none', margin: 0, padding: 0, overflowX: 'hidden' }}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
-      />
-
       <HomeClient locations={locationsWithRetreats} />
 
       {/* ── CINEMATIC SEO MANIFESTO ── */}
