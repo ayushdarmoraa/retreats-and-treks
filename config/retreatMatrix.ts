@@ -53,6 +53,20 @@ export const RETREAT_MATRIX_META: Record<string, MatrixMeta> = {
     format: 'sound healing',
     bestFor: 'Somatic release, first-time participants',
   },
+  'trek-and-paint': {
+    intensity: 'medium',
+    format: 'hybrid',
+    bestFor: 'Creative trekkers, outdoor artists',
+    axes: ['creativity', 'movement', 'nature', 'adventure'],
+    axisLevels: { creativity: 'high', movement: 'high', nature: 'high', adventure: 'medium' },
+  },
+  'weekend-art-retreat': {
+    intensity: 'low',
+    format: 'creative',
+    bestFor: 'Weekend creativity, first-time artists',
+    axes: ['creativity', 'rest', 'nature', 'accessibility'],
+    axisLevels: { creativity: 'high', rest: 'medium', nature: 'medium', accessibility: 'high' },
+  },
   'weekend-retreat': {
     intensity: 'low',
     format: 'hybrid',

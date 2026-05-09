@@ -56,6 +56,18 @@ export const RETREAT_SCORES: Record<string, RetreatScores> = {
     socialInteraction: 5,
     physicalDemand: 1,
   },
+  'trek-and-paint': {
+    intensity: 6,
+    reflectionDepth: 5,
+    socialInteraction: 6,
+    physicalDemand: 7,
+  },
+  'weekend-art-retreat': {
+    intensity: 3,
+    reflectionDepth: 5,
+    socialInteraction: 6,
+    physicalDemand: 2,
+  },
   'weekend-retreat': {
     intensity: 3,
     reflectionDepth: 5,
