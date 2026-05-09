@@ -33,7 +33,7 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   title: {
     default: 'Retreats And Treks — Himalayan Retreats & Weekend Treks',
-    template: '%s | Retreats And Treks',
+    template: '%s',
   },
   description:
     'Curated weekend retreats and guided treks in the Himalayas. Starting from Dehradun.',
