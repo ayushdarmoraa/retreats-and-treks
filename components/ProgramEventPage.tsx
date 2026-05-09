@@ -61,9 +61,7 @@ export default function ProgramEventPage({ event }: Props) {
     startDate: event.startDate,
     endDate: event.endDate,
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-    eventStatus: event.status === 'sold-out'
-      ? 'https://schema.org/EventCancelled'
-      : 'https://schema.org/EventScheduled',
+    eventStatus: 'https://schema.org/EventScheduled',
     location: {
       '@type': 'Place',
       name: event.locationName,
