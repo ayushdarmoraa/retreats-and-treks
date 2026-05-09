@@ -46,7 +46,7 @@ export const RETREAT_MATRIX_META: Record<string, MatrixMeta> = {
     format: 'creative',
     bestFor: 'Creative healing, emotional expression through art & yoga',
     axes: ['creativity', 'healing', 'movement', 'nature'],
-    axisLevels: { creativity: 'high', healing: 'high', movement: 'medium', silence: 'low', nature: 'high' },
+    axisLevels: { creativity: 'high', healing: 'high', movement: 'medium', nature: 'high' },
   },
   'sound-healing': {
     intensity: 'low',
