@@ -22,11 +22,6 @@ const nextConfig: NextConfig = {
       { source: '/treks/:location(chakrata|sankri|munsiyari)/:slug', destination: '/treks/location/:location/:slug', permanent: true },
       // Consolidate singular → plural best-treks authority page (prevent cannibalization)
       { source: '/treks/best-trek-in-uttarakhand', destination: '/treks/best-treks-in-uttarakhand', permanent: true },
-      {
-        source: '/locations/:location',
-        destination: '/retreats/:location',
-        permanent: true,
-      },
       // Consolidate singular → plural (prevent keyword cannibalization)
       { source: '/retreats/retreat-near-delhi', destination: '/retreats/retreats-near-delhi', permanent: true },
     ];
