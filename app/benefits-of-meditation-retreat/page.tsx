@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
-import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
+import { generateBreadcrumbSchema, generateFAQSchema, generateBlogPostingSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
@@ -62,12 +62,20 @@ export default function BenefitsOfMeditationRetreatPage() {
     { name: 'Benefits of a Meditation Retreat', url: canonicalUrl },
   ]);
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
+  const articleSchema = generateBlogPostingSchema({
+    title: 'Benefits of a Meditation Retreat — What Actually Changes',
+    description:
+      'The real benefits of a meditation retreat — nervous system reset, restored attention, emotional processing, and depth of silence. What changes in 3, 7, and 10 days.',
+    publishedAt: '2026-03-06',
+    lastUpdated: '2026-05-09',
+    url: canonicalUrl,
+  });
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md) 0' }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, articleSchema]) }}
       />
       <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Meditation Retreats', href: '/meditation-retreats' }, { name: 'Benefits of a Meditation Retreat' }]} />
 
