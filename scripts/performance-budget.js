@@ -3,7 +3,7 @@
  * Run after `next build` with: node scripts/performance-budget.js
  *
  * Checks:
- * 1. Static prerender coverage — flags any strategic page not statically generated
+ * 1. Static prerender coverage — flags any strategic page not statically/prerender generated
  * 2. Client JS bundle size — warns if shared chunks exceed threshold
  * 3. Build manifest sanity — counts total routes and client bundles
  */
@@ -14,6 +14,7 @@ const path = require('path');
 const BUILD_DIR = path.join(process.cwd(), '.next');
 const ROUTES_MANIFEST = path.join(BUILD_DIR, 'routes-manifest.json');
 const BUILD_MANIFEST = path.join(BUILD_DIR, 'build-manifest.json');
+const PRERENDER_MANIFEST = path.join(BUILD_DIR, 'prerender-manifest.json');
 
 const MAX_SHARED_BUNDLE_KB = 300;
 const MAX_SINGLE_CHUNK_KB = 150;
@@ -45,6 +46,27 @@ function getFileSizeKB(filePath) {
   }
 }
 
+function collectStaticPages() {
+  const staticPages = new Set();
+
+  if (fs.existsSync(ROUTES_MANIFEST)) {
+    const routes = JSON.parse(fs.readFileSync(ROUTES_MANIFEST, 'utf-8'));
+    for (const route of routes.staticRoutes ?? []) {
+      if (route.page) staticPages.add(route.page);
+      if (route.route) staticPages.add(route.route);
+    }
+  }
+
+  if (fs.existsSync(PRERENDER_MANIFEST)) {
+    const prerenderManifest = JSON.parse(fs.readFileSync(PRERENDER_MANIFEST, 'utf-8'));
+    for (const page of Object.keys(prerenderManifest.routes ?? {})) {
+      staticPages.add(page);
+    }
+  }
+
+  return staticPages;
+}
+
 function run() {
   console.log('\n╔══════════════════════════════════════════════════════════╗');
   console.log('║       PERFORMANCE BUDGET ENFORCEMENT                     ║');
@@ -58,9 +80,8 @@ function run() {
 
   console.log('  SECTION 1: Static Prerender Coverage\n');
 
-  if (fs.existsSync(ROUTES_MANIFEST)) {
-    const routes = JSON.parse(fs.readFileSync(ROUTES_MANIFEST, 'utf-8'));
-    const staticPages = new Set((routes.staticRoutes ?? []).map((r) => r.page));
+  if (fs.existsSync(ROUTES_MANIFEST) || fs.existsSync(PRERENDER_MANIFEST)) {
+    const staticPages = collectStaticPages();
 
     for (const page of MUST_BE_STATIC) {
       const isStatic = staticPages.has(page);
@@ -71,7 +92,7 @@ function run() {
       }
     }
   } else {
-    console.log('  ⚠  routes-manifest.json not found — skipping static check\n');
+    console.log('  ⚠  routes-manifest.json and prerender-manifest.json not found — skipping static check\n');
   }
 
   console.log('\n  SECTION 2: Client JS Bundle Sizes\n');
