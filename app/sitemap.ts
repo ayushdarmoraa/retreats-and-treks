@@ -581,6 +581,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
     },
     {
+      url: buildCanonicalUrl('/reviews'),
+      lastModified: now,
+      priority: 0.75,
+      changeFrequency: 'monthly',
+    },
+    {
       url: buildCanonicalUrl('/site-map'),
       lastModified: now,
       priority: 0.5,
