@@ -126,7 +126,7 @@ export default async function LocationHubPage({ params }: PageProps) {
       <Breadcrumb
         items={[
           { name: 'Home', href: '/' },
-          { name: 'Locations' },
+          { name: 'Locations', href: '/locations' },
           { name: locationData.name },
         ]}
       />
