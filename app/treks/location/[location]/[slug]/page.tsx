@@ -15,6 +15,7 @@ import {
   generateTrekSchema,
   generateBreadcrumbSchema,
   generateFAQSchema,
+  generateBlogPostingSchema,
 } from '@/components/seo/Schema';
 import {
   TrekHeroImmersive,
@@ -252,6 +253,13 @@ export default async function TrekDetailPage({ params }: PageProps) {
     { name: trek.title, url: canonicalUrl },
   ]);
   const faqSchema = trek.faqs.length > 0 ? generateFAQSchema(trek.faqs) : null;
+  const articleSchema = generateBlogPostingSchema({
+    title: `${trek.title} in ${location.name}`,
+    description: trek.description,
+    publishedAt: '2026-03-06',
+    lastUpdated: '2026-05-09',
+    url: canonicalUrl,
+  });
 
   return (
     <>
@@ -262,6 +270,10 @@ export default async function TrekDetailPage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
       />
       {faqSchema && (
         <script
