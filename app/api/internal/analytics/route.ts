@@ -13,7 +13,7 @@
  *   - Avg response time for booked leads (time from created_at to status change)
  *   - Daily lead volume (last 30 days)
  *
- * Auth: Handled by middleware.ts
+ * Auth: Handled by proxy.ts
  */
 
 import { NextResponse } from 'next/server';

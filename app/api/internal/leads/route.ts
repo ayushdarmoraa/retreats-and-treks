@@ -23,7 +23,7 @@ const VALID_TIERS = ['hot', 'warm', 'cold', 'unscored'];
 const VALID_SORTS = ['score', 'date'];
 
 export async function GET(request: NextRequest) {
-  // Auth handled by middleware.ts — no additional check needed here
+  // Auth handled by proxy.ts — no additional check needed here
 
   if (!process.env.DATABASE_URL) {
     return NextResponse.json({ error: 'Database not configured' }, { status: 503 });

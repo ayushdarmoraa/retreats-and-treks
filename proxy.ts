@@ -78,7 +78,7 @@ async function isValidSession(cookieValue: string): Promise<boolean> {
   }
 }
 
-export default async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // ── Allow login page and auth endpoints ────────────────
