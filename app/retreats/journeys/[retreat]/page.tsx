@@ -8,7 +8,6 @@ import {
   generateBreadcrumbSchema,
   generateServiceSchema,
   generateFAQSchema,
-  generateReviewSchemas,
   generateAggregateRatingSchema,
 } from '@/components/seo/Schema';
 import { getReviewsForSlug, getAggregateRating } from '@/content/reviews';
@@ -158,9 +157,6 @@ export default async function RetreatDetailPage({ params }: PageProps) {
   // Review schema — only injected when real reviews exist
   const reviews = getReviewsForSlug(retreat);
   const aggregateRating = getAggregateRating(retreat);
-  const reviewSchemas = reviews.length > 0
-    ? generateReviewSchemas(reviews, retreatService.title, canonicalUrl)
-    : [];
   const aggregateRatingSchema = aggregateRating
     ? generateAggregateRatingSchema(
         aggregateRating.ratingValue,
@@ -192,14 +188,6 @@ export default async function RetreatDetailPage({ params }: PageProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingSchema) }}
         />
       )}
-      {reviewSchemas.map((schema, i) => (
-        <script
-          key={i}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-        />
-      ))}
-
       <Breadcrumb
         items={[
           { name: 'Home', href: '/' },

@@ -34,9 +34,10 @@ export default function ProgramEventPage({ event }: Props) {
 
   // Reviews for the parent service type (e.g. 'meditation-and-silence')
   const reviews = getReviewsForSlug(event.serviceSlug);
+  const visibleReviews = reviews.slice(0, 3);
   const aggregateRating = getAggregateRating(event.serviceSlug);
-  const reviewSchemas = reviews.length > 0
-    ? generateReviewSchemas(reviews, event.title, buildCanonicalUrl(`/${event.slug}`))
+  const reviewSchemas = visibleReviews.length > 0
+    ? generateReviewSchemas(visibleReviews, event.title, buildCanonicalUrl(`/${event.slug}`))
     : [];
   const aggregateRatingSchema = aggregateRating
     ? generateAggregateRatingSchema(aggregateRating.ratingValue, aggregateRating.reviewCount, event.title, buildCanonicalUrl(`/${event.slug}`))
@@ -332,7 +333,7 @@ export default function ProgramEventPage({ event }: Props) {
             </p>
           )}
           <div style={{ display: 'grid', gap: '1rem' }}>
-            {reviews.slice(0, 3).map((review) => (
+            {visibleReviews.map((review) => (
               <blockquote
                 key={`${review.participantName}-${review.datePublished}`}
                 style={{
