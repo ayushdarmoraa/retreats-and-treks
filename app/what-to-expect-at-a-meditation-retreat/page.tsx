@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
-import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
+import { generateBreadcrumbSchema, generateFAQSchema, generateBlogPostingSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
@@ -63,12 +63,20 @@ export default function WhatToExpectMeditationRetreatPage() {
     { name: 'What to Expect', url: canonicalUrl },
   ]);
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
+  const articleSchema = generateBlogPostingSchema({
+    title: 'What to Expect at a Meditation Retreat — Day by Day',
+    description:
+      'What to expect at a meditation retreat — schedule, sitting, walking, meals, emotions, the discomfort and the depth. A realistic day-by-day guide for first-timers and experienced practitioners.',
+    publishedAt: '2026-03-06',
+    lastUpdated: '2026-05-09',
+    url: canonicalUrl,
+  });
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, articleSchema]) }}
       />
       <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Meditation Retreats', href: '/meditation-retreats' }, { name: 'What to Expect' }]} />
 
