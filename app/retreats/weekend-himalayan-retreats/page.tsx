@@ -750,7 +750,7 @@ export default function WeekendHimalayanRetreatsPage() {
           <div>
             <div className="wknd-proof-num">04</div>
             <h3>Repeatable rhythm.</h3>
-            <p>A single week-long retreat per year is meaningful. A weekend retreat every quarter is transformational. The proximity of the Himalayas to Delhi makes quarterly reset practical.</p>
+            <p>A single week-long retreat per year is meaningful. A <Link href="/retreats/journeys/weekend-retreat">weekend retreat</Link> every quarter is transformational. The proximity of the Himalayas to Delhi makes quarterly reset practical.</p>
           </div>
         </div>
       </div>

@@ -386,6 +386,7 @@ export default function WeekendRetreatNearDelhiPage() {
               Related <span>pages</span>
             </h2>
             <div className="wnrd-nav-group">
+              <Link href="/retreats/journeys/weekend-retreat" className="wnrd-nav-link">Weekend Retreat Journey</Link>
               <Link href="/retreats/journeys/burnout-recovery" className="wnrd-nav-link">Burnout Recovery Retreat</Link>
               <Link href="/retreats/journeys/rest-and-reset" className="wnrd-nav-link">Rest &amp; Reset Retreat</Link>
               <Link href="/retreats/chakrata" className="wnrd-nav-link">Retreats in Chakrata</Link>
