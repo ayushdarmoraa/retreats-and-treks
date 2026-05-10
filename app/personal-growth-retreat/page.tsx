@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
-import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
+import { generateBreadcrumbSchema, generateFAQSchema, generateBlogPostingSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
@@ -93,10 +93,18 @@ export default function PersonalGrowthRetreatPage() {
     { name: 'Personal Growth Retreat', url: buildCanonicalUrl(PATH) },
   ]);
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
+  const articleSchema = generateBlogPostingSchema({
+    title: 'Personal Growth Retreat in the Himalayas',
+    description:
+      'Personal growth retreat in the Himalayas — meditation, reflection, nature immersion. Not a seminar. An experience designed for genuine inner development. Chakrata, Rishikesh, Zanskar.',
+    publishedAt: '2026-03-06',
+    lastUpdated: '2026-05-09',
+    url: buildCanonicalUrl(PATH),
+  });
 
   return (
     <TrackedPage page={PATH}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema]) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, articleSchema]) }} />
       <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Personal Growth Retreat' }]} />
 
       <style>{`
