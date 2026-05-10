@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
-import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
+import { generateBreadcrumbSchema, generateFAQSchema, generateBlogPostingSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
@@ -66,10 +66,18 @@ export default function TrekAndPaintPage() {
     { name: 'Trek and Paint in the Himalayas', url: buildCanonicalUrl(PATH) },
   ]);
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
+  const articleSchema = generateBlogPostingSchema({
+    title: 'Trek and Paint in the Himalayas — Art on the Trail',
+    description:
+      'Trek and paint in the Himalayas. Walk through mountain landscapes by morning, create art from what you saw by afternoon. Plein air painting, nature sketching, and land art on Himalayan trails.',
+    publishedAt: '2026-01-01',
+    lastUpdated: '2026-05-09',
+    url: buildCanonicalUrl(PATH),
+  });
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema]) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, articleSchema]) }} />
       <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Trek & Paint' }]} />
 
       <article>
