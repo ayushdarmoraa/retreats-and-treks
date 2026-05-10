@@ -30,7 +30,7 @@ const REQUIRED_FIELDS = [
   'targetMoneyPage',
 ];
 
-const SOFT_WARN_FIELDS = ['lastUpdated'];
+const SOFT_WARN_FIELDS = [];
 
 function readText(filePath) {
   return fs.readFileSync(filePath, 'utf8');
