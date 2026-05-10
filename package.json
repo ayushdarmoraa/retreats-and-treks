@@ -11,7 +11,7 @@
     "audit:links": "node scripts/link-audit.js",
     "audit:schema": "node scripts/schema-validate.js",
     "audit:perf": "npx ts-node --project tsconfig.json scripts/performance-budget.ts",
-    "audit:analytics": "npx ts-node --project tsconfig.json scripts/analytics-report.ts",
+    "audit:analytics": "node scripts/analytics-report.js",
     "audit:all": "npm run audit:governance && npm run audit:links && npm run audit:schema && npm run audit:perf"
   },
   "dependencies": {
