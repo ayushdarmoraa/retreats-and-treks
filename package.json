@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "audit:governance": "npx ts-node --project tsconfig.json scripts/content-governance.ts",
-    "audit:links": "npx ts-node --project tsconfig.json scripts/link-audit.ts",
+    "audit:links": "node scripts/link-audit.js",
     "audit:schema": "node scripts/schema-validate.js",
     "audit:perf": "npx ts-node --project tsconfig.json scripts/performance-budget.ts",
     "audit:analytics": "npx ts-node --project tsconfig.json scripts/analytics-report.ts",
