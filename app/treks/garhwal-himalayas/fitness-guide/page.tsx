@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
-import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
+import { generateBreadcrumbSchema, generateFAQSchema, generateBlogPostingSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
@@ -64,11 +64,20 @@ export default function GarhwalFitnessGuidePage() {
   ]);
 
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
+  const articleSchema = generateBlogPostingSchema({
+    title: 'Garhwal Trek Fitness Guide — 8-Week Preparation Plan (3,850m–4,800m)',
+    description:
+      'Free 8-week fitness plan for Garhwal Himalaya treks. Week-by-week training for Brahmatal (3,850m), Kuari Pass, Roopkund (4,800m) & Pangarchulla. Cardio, strength, altitude prep & gear checklist.',
+    publishedAt: '2026-03-06',
+    lastUpdated: '2026-05-09',
+    url: canonicalUrl,
+  });
 
   return (
     <TrackedPage page={PATH} style={{ width: '100%', padding: '0' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
 
       <style>{`
         /* ── FITNESS GUIDE — scoped prefix: fg- ── */
