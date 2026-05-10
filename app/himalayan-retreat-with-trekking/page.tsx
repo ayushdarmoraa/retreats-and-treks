@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
-import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
+import { generateBreadcrumbSchema, generateFAQSchema, generateBlogPostingSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
@@ -61,10 +61,18 @@ export default function HimalayanRetreatWithTrekkingPage() {
     { name: 'Himalayan Retreat with Trekking', url: buildCanonicalUrl(PATH) },
   ]);
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
+  const articleSchema = generateBlogPostingSchema({
+    title: 'Himalayan Retreat with Trekking — Inner Work Meets Outer Terrain',
+    description:
+      'Himalayan retreat with trekking — meditation and silence combined with mountain walking. The rare platform that offers both. Chakrata, Sankri, Munsiyari, Zanskar.',
+    publishedAt: '2026-03-06',
+    lastUpdated: '2026-05-09',
+    url: buildCanonicalUrl(PATH),
+  });
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema]) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, articleSchema]) }} />
       <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Retreat with Trekking' }]} />
 
       <article>
