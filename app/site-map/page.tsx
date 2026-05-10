@@ -199,6 +199,7 @@ export default function SiteMapPage() {
           <div className="smp-group-links">
             <Link href="/treks/garhwal-himalayas/fitness-guide" className="smp-group-link">Garhwal Trek Fitness Guide</Link>
             <Link href="/treks/garhwal-himalayas/packing-checklist" className="smp-group-link">Trek Packing Checklist</Link>
+            <Link href="/trek-and-paint-himalayas" className="smp-group-link">Trek and Paint Guide</Link>
           </div>
         </div>
 
@@ -225,6 +226,8 @@ export default function SiteMapPage() {
             <Link href="/retreats/journeys/yoga-and-movement" className="smp-group-link">Yoga &amp; Movement</Link>
             <Link href="/retreats/journeys/meditation-and-silence" className="smp-group-link">Meditation &amp; Silence</Link>
             <Link href="/retreats/journeys/art-and-creative" className="smp-group-link">Art &amp; Creative</Link>
+            <Link href="/retreats/journeys/trek-and-paint" className="smp-group-link">Trek &amp; Paint</Link>
+            <Link href="/retreats/journeys/weekend-art-retreat" className="smp-group-link">Weekend Art Retreat</Link>
             <Link href="/retreats/journeys/sound-healing" className="smp-group-link">Sound Healing</Link>
             <Link href="/retreats/journeys/weekend-retreat" className="smp-group-link">Weekend Retreat</Link>
             <Link href="/retreats/journeys/private-and-custom" className="smp-group-link">Private &amp; Custom</Link>

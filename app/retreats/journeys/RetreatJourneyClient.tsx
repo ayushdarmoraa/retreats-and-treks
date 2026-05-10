@@ -4096,6 +4096,10 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
                 <Link href="/retreats/art" className="rj-tp-final-back">
                   View Art Retreats
                 </Link>
+
+                <Link href="/trek-and-paint-himalayas" className="rj-tp-final-back">
+                  Read Trek & Paint Guide
+                </Link>
               </div>
             </aside>
           </div>

@@ -231,7 +231,11 @@ export default function TrekAndPaintPage() {
         <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
 
         <p style={{ marginTop: 'var(--space-xl)', fontSize: '0.9rem' }}>
-          <Link href="/creative-retreat" style={{ color: 'var(--color-primary)' }}>Art Retreats</Link>
+          <Link href="/retreats/journeys/trek-and-paint" style={{ color: 'var(--color-primary)' }}>Trek & Paint Retreat</Link>
+          {' '}&nbsp;|&nbsp;{' '}
+          <Link href="/retreats/journeys/art-and-creative" style={{ color: 'var(--color-primary)' }}>Art & Creative Retreat</Link>
+          {' '}&nbsp;|&nbsp;{' '}
+          <Link href="/creative-retreat" style={{ color: 'var(--color-primary)' }}>Creative Retreat</Link>
           {' '}&nbsp;|&nbsp;{' '}
           <Link href="/trek-and-meditate-himalayas" style={{ color: 'var(--color-primary)' }}>Trek & Meditate</Link>
           {' '}&nbsp;|&nbsp;{' '}

@@ -300,6 +300,9 @@ export default function Header() {
                     { href: '/retreats/journeys/weekend-retreat', label: 'Weekend Retreat' },
                     { href: '/retreats/journeys/private-and-custom', label: 'Private & Custom' },
                     { href: '/retreats/art', label: 'Art Retreats', gold: true },
+                    { href: '/retreats/journeys/art-and-creative', label: 'Creative Healing' },
+                    { href: '/retreats/journeys/trek-and-paint', label: 'Trek & Paint' },
+                    { href: '/retreats/journeys/weekend-art-retreat', label: 'Weekend Art Retreat' },
                   ].map((item, i) => (
                     <li key={i}>
                       <Link href={item.href} className={`hn-drop-link${item.gold ? ' gold' : ''}`}>{item.label}</Link>
@@ -409,6 +412,9 @@ export default function Header() {
             <Link href="/retreats/journeys/weekend-retreat" className="hn-mobile-sub" onClick={() => setMenuOpen(false)}>Weekend Retreat</Link>
             <Link href="/retreats/journeys/private-and-custom" className="hn-mobile-sub" onClick={() => setMenuOpen(false)}>Private & Custom</Link>
             <Link href="/retreats/art" className="hn-mobile-sub gold" onClick={() => setMenuOpen(false)}>Art Retreats</Link>
+            <Link href="/retreats/journeys/art-and-creative" className="hn-mobile-sub" onClick={() => setMenuOpen(false)}>Creative Healing</Link>
+            <Link href="/retreats/journeys/trek-and-paint" className="hn-mobile-sub" onClick={() => setMenuOpen(false)}>Trek & Paint</Link>
+            <Link href="/retreats/journeys/weekend-art-retreat" className="hn-mobile-sub" onClick={() => setMenuOpen(false)}>Weekend Art Retreat</Link>
             <Link href="/retreats/best-retreat-in-uttarakhand" className={`hn-mobile-link${pathname === '/retreats/best-retreat-in-uttarakhand' ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Best Retreats</Link>
             <Link href="/retreat-programs" className={`hn-mobile-link${pathname.startsWith('/retreat-programs') ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Programs</Link>
             <Link href="/treks" className={`hn-mobile-link${pathname.startsWith('/treks') ? ' active' : ''}`} onClick={() => setMenuOpen(false)}>Treks</Link>
