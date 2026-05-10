@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "audit:governance": "npx ts-node --project tsconfig.json scripts/content-governance.ts",
+    "audit:governance": "node scripts/content-governance.js",
     "audit:links": "node scripts/link-audit.js",
     "audit:schema": "node scripts/schema-validate.js",
     "audit:perf": "node scripts/performance-budget.js",
