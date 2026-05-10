@@ -5,7 +5,6 @@ import "./globals.css";
 import Header from "@/components/layouts/Header";
 import Footer from "@/components/layouts/Footer";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
-import BreadcrumbSchema from "@/components/BreadcrumbSchema";
 import { generateWebsiteSchema, generateOrganizationSchema } from "@/components/seo/Schema";
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -76,7 +75,6 @@ export default function RootLayout({
         suppressHydrationWarning 
       >
         <Header />
-         <BreadcrumbSchema />
          <DeferredScrollObserver />
         {children}
         <FloatingWhatsApp />
