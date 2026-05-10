@@ -87,17 +87,6 @@ export default async function RetreatDetailPage({ params }: PageProps) {
     );
   }
 
-  // Override hero + gallery for yoga-and-movement
-  if (retreat === 'yoga-and-movement') {
-    (retreatService as Record<string, unknown>).heroImage = '/Images/retreats/yoga/yoga-backbend-cave-rishikesh.webp';
-    (retreatService as Record<string, unknown>).heroAlt = 'Yoga backbend pose in a natural cave during a retreat guided by Sakshi in Rishikesh';
-    (retreatService as Record<string, unknown>).galleryImages = [
-      { src: '/Images/retreats/yoga/yoga-balance-pose-outdoors.webp', alt: 'Outdoor yoga balance pose — strength and focus in a natural Himalayan setting' },
-      { src: '/Images/retreats/yoga/pranayama-closeup-sakshi.webp', alt: 'Sakshi guiding pranayama — breath awareness in a yoga retreat' },
-      { src: '/Images/retreats/yoga/brahmari-pranayam-meditation.webp', alt: 'Brahmari pranayama meditation — deep breath practice at a Himalayan retreat' },
-    ];
-  }
-
   // Get locations where this retreat works best
   const allLocationsWithRetreats = getLocationsWithRetreats();
   const compatibleLocationIds: string[] = [

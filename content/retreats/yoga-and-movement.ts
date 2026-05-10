@@ -18,16 +18,15 @@ export const yogaAndMovementRetreat = {
   seoDescription: 'Join yoga retreats, yoga teacher training courses, aerial yoga programs, and online yoga classes with Sakshi. Retreats in Rishikesh and the Himalayas; TTC in Rishikesh, Thailand, and Bali.',
 
   /* ── Visual Assets ── */
-  heroImage: '/Images/hero/himalayan-sunrise.webp',
-  heroAlt: 'Yoga backbend pose in cave retreat guided by Sakshi in Rishikesh',
+  heroImage: '/Images/retreats/yoga/yoga-backbend-cave-rishikesh.webp',
+  heroAlt: 'Yoga backbend pose in a natural cave during a retreat guided by Sakshi in Rishikesh',
   signatureImage: '/Images/services/yogamov.webp',
   signatureAlt: 'Sunrise yoga practice at a Himalayan retreat — movement and breath in mountain silence',
   signatureQuote: `The body already knows how to heal. The practice is learning to listen.`,
   galleryImages: [
-    { src: '/Images/experience-hubs/yoga-group.png', alt: 'Group yoga session during a mountain retreat in the Himalayas — asana practice in Uttarakhand' },
-    { src: '/Images/art-retreat/yoga-morning.webp', alt: 'Morning yoga practice on a mountain verandah — pranayama and gentle stretching at sunrise' },
-    { src: '/Images/moments/walking.webp', alt: 'Forest walk between yoga sessions — nature immersion as part of a Himalayan yoga retreat' },
-    { src: '/Images/moments/tea.webp', alt: 'Tea break between yoga sessions — mindful rest at a Himalayan retreat in India' },
+    { src: '/Images/retreats/yoga/yoga-balance-pose-outdoors.webp', alt: 'Outdoor yoga balance pose — strength and focus in a natural Himalayan setting' },
+    { src: '/Images/retreats/yoga/pranayama-closeup-sakshi.webp', alt: 'Sakshi guiding pranayama — breath awareness in a yoga retreat' },
+    { src: '/Images/retreats/yoga/brahmari-pranayam-meditation.webp', alt: 'Brahmari pranayama meditation — deep breath practice at a Himalayan retreat' },
   ],
 
   keyHighlights: ['Yoga Retreats', 'TTC: Rishikesh · Thailand · Bali', 'Aerial Yoga in Rishikesh', 'Online Yoga Classes'],
