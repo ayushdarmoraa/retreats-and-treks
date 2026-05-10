@@ -57,14 +57,14 @@ export function getRetreatsForLocation(locationId: LocationId): RetreatService[]
   // Map locations to retreat affinity
   const affinityMap: Record<LocationId, string[]> = {
     chakrata: ['rest-and-reset', 'meditation-and-silence', 'art-and-creative'],
-    sankri: ['burnout-recovery', 'threshold-work', 'yoga-and-movement', 'art-and-creative'],
-    mussoorie: ['creative-retreat', 'rest-and-reset', 'couples-retreat', 'art-and-creative'],
-    munsiyari: ['burnout-recovery', 'threshold-work', 'embodied-presence'],
-    rishikesh: ['spiritual-grounding', 'yoga-and-movement', 'meditation-and-silence', 'art-and-creative'],
-       lohajung: [],   // Trek-only location — no retreat affinity yet
-       joshimath: [],  // Trek-only location — no retreat affinity yet
-       zanskar: ['meditation-and-silence', 'burnout-recovery', 'yoga-and-movement', 'art-and-creative'],
-       barsu: [], // Trek-only location — no retreat affinity yet
+    sankri: ['burnout-recovery', 'yoga-and-movement', 'art-and-creative'],
+    mussoorie: ['rest-and-reset', 'art-and-creative'],
+    munsiyari: ['burnout-recovery'],
+    rishikesh: ['yoga-and-movement', 'meditation-and-silence', 'art-and-creative'],
+    lohajung: [],   // Trek-only location — no retreat affinity yet
+    joshimath: [],  // Trek-only location — no retreat affinity yet
+    zanskar: ['meditation-and-silence', 'burnout-recovery', 'yoga-and-movement', 'art-and-creative'],
+    barsu: [], // Trek-only location — no retreat affinity yet
   };
 
   const relevantSlugs = affinityMap[locationId] || [];
