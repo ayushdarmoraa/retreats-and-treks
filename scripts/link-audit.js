@@ -86,9 +86,54 @@ function countLinksToPath(files, targetPath) {
   return { count: sources.length, sources };
 }
 
+function isCoveredByDynamicSitemap(pathname, sitemapContent) {
+  if (
+    pathname.startsWith('/retreats/journeys/') &&
+    sitemapContent.includes('getAllRetreatServices') &&
+    sitemapContent.includes('/retreats/journeys/${service.slug}')
+  ) {
+    return true;
+  }
+
+  if (
+    pathname.startsWith('/retreats/') &&
+    sitemapContent.includes('getAllLocations') &&
+    sitemapContent.includes('/retreats/${location.id}')
+  ) {
+    return true;
+  }
+
+  if (
+    pathname.startsWith('/topics/') &&
+    sitemapContent.includes('TOPIC_MAP') &&
+    sitemapContent.includes('/topics/${topic}')
+  ) {
+    return true;
+  }
+
+  if (
+    ['/yoga-retreats', '/silent-retreats', '/meditation-retreats'].includes(pathname) &&
+    sitemapContent.includes('EXPERIENCE_PAGES')
+  ) {
+    return true;
+  }
+
+  return false;
+}
+
 function checkSitemapCoverage(paths) {
   const sitemapContent = fs.readFileSync(SITEMAP_FILE, 'utf-8');
-  return paths.filter((p) => !sitemapContent.includes(`'${p}'`) && !sitemapContent.includes(`"${p}"`));
+
+  return paths.filter((pathname) => {
+    const slugWithoutSlash = pathname.replace(/^\//, '');
+    const hasLiteralPath =
+      sitemapContent.includes(`'${pathname}'`) ||
+      sitemapContent.includes(`"${pathname}"`) ||
+      sitemapContent.includes(`'${slugWithoutSlash}'`) ||
+      sitemapContent.includes(`"${slugWithoutSlash}"`);
+
+    return !hasLiteralPath && !isCoveredByDynamicSitemap(pathname, sitemapContent);
+  });
 }
 
 function run() {
