@@ -54,3 +54,6 @@ data/events.jsonl
 
 .vercel
 .aider*
+
+# Local image compression temp output
+scripts/tmp/
