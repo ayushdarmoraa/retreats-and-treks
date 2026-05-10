@@ -8,7 +8,7 @@ import type { ItineraryPage as PageConfig } from '@/config/itineraryPages';
 import { getEventsByExperience } from '@/config/retreatProgramEvents';
 import { getReviewsForSlug } from '@/content/reviews';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
-import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
+import { generateBreadcrumbSchema, generateFAQSchema, generateBlogPostingSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import Breadcrumb from '@/components/Breadcrumb';
 import MicroCommitment from '@/components/MicroCommitment';
@@ -30,12 +30,19 @@ export default function ItineraryPage({ page }: Props) {
     { name: `${page.durationDays}-Day Itinerary`, url: buildCanonicalUrl(`/${page.slug}`) },
   ]);
   const faqSchema = generateFAQSchema(page.faqItems as { question: string; answer: string }[]);
+  const articleSchema = generateBlogPostingSchema({
+    title: page.title,
+    description: page.metaDescription,
+    publishedAt: '2026-03-06',
+    lastUpdated: '2026-05-09',
+    url: buildCanonicalUrl(`/${page.slug}`),
+  });
 
   return (
     <TrackedPage page={`/${page.slug}`} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, articleSchema]) }}
       />
       <Breadcrumb
         items={[
