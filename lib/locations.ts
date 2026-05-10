@@ -10,7 +10,7 @@ import {
   getLocation,
   getActiveLocations,
   getRetreatsLocations,
-  getTraksLocations,
+  getTreksLocations,
 } from '@/config/locations';
 
 /**
@@ -39,7 +39,7 @@ export function getLocationsWithRetreats() {
  * Get all locations that support treks
  */
 export function getLocationsWithTreks() {
-  return getTraksLocations();
+  return getTreksLocations();
 }
 
 /**

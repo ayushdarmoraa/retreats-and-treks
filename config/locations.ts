@@ -149,6 +149,6 @@ export function getRetreatsLocations() {
 /**
  * Get all locations that support treks
  */
-export function getTraksLocations() {
+export function getTreksLocations() {
   return getActiveLocations().filter((loc) => loc.supportsTreks);
 }
