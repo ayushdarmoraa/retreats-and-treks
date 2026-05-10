@@ -68,15 +68,21 @@ function getAllSourceFiles(dir) {
 function countLinksToPath(files, targetPath) {
   const sources = [];
   const escaped = targetPath.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-  const pattern = new RegExp(`href=["'\`]${escaped}["'\`/]`, 'g');
+
+  const jsxHrefPattern = new RegExp(`href=["'\`]${escaped}["'\`/]`, 'g');
+  const objectHrefPattern = new RegExp(`href:\\s*["'\`]${escaped}["'\`]`, 'g');
 
   for (const file of files) {
     const content = fs.readFileSync(file, 'utf-8');
-    if (pattern.test(content)) {
+
+    if (jsxHrefPattern.test(content) || objectHrefPattern.test(content)) {
       sources.push(file.replace(process.cwd(), ''));
     }
-    pattern.lastIndex = 0;
+
+    jsxHrefPattern.lastIndex = 0;
+    objectHrefPattern.lastIndex = 0;
   }
+
   return { count: sources.length, sources };
 }
 
