@@ -15,7 +15,7 @@ const PATH = '/retreats/yoga-retreat-uttarakhand';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Yoga Retreats in Uttarakhand — Mountain Practice in the Himalayas | Retreats And Treks',
+    title: 'Yoga Retreats in Uttarakhand | Retreats And Treks',
     description:
       'Find yoga retreats in Uttarakhand across Rishikesh, Chakrata and Sankri. Structured asana, pranayama and meditation programs in Himalayan mountain settings.',
     alternates: {

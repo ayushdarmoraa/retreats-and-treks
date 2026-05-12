@@ -29,7 +29,7 @@ const CHAITRA_ART_GALLERY = [
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Art Retreats in the Himalayas — Creative Healing, Painting & Yoga | Retreats And Treks',
+    title: 'Art Retreats in the Himalayas | Retreats And Treks',
     description:
       'Art retreats in India combining painting, writing, movement & yoga in the Himalayan mountains. No experience needed. 2–7 day programs in Mussoorie, Chakrata, Rishikesh, Sankri & Zanskar. Small groups, real guidance.',
     alternates: {

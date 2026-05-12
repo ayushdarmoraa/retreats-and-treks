@@ -15,7 +15,7 @@ const PATH = '/retreats/meditation-retreat-rishikesh';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Meditation Retreats in Rishikesh — Guided Silence on the Ganges | Retreats And Treks',
+    title: 'Meditation Retreats in Rishikesh | Retreats And Treks',
     description:
       'Find meditation retreats in Rishikesh with guided silence, breath awareness and walking meditation on the Ganges. Residential programs in India\'s meditation capital.',
     alternates: {

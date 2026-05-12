@@ -15,7 +15,7 @@ const PATH = '/retreats/yoga-retreat-rishikesh';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Yoga Retreats in Rishikesh — Structured Practice on the Ganges | Retreats And Treks',
+    title: 'Yoga Retreats in Rishikesh | Retreats And Treks',
     description:
       'Find yoga retreats in Rishikesh with structured asana, pranayama and meditation on the Ganges. Multi-day residential programs in India\'s yoga capital.',
     alternates: {

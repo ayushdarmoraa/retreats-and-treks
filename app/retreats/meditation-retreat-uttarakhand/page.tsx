@@ -15,7 +15,7 @@ const PATH = '/retreats/meditation-retreat-uttarakhand';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Meditation Retreats in Uttarakhand — Silent Practice in the Himalayas | Retreats And Treks',
+    title: 'Meditation Retreats in Uttarakhand | Retreats And Treks',
     description:
       'Find meditation retreats in Uttarakhand across Rishikesh, Munsiyari and Sankri. Silent sittings, guided meditation and forest-based practice in Himalayan mountain settings.',
     alternates: {

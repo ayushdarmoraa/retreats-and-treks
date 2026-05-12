@@ -16,7 +16,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Self-Discovery Retreat in the Himalayas — Who You Are Without the Noise | Retreats And Treks',
+    title: 'Self-Discovery Retreat | Retreats And Treks',
     description:
       'Self-discovery retreat in the Indian Himalayas. Remove the noise, the roles, the obligations — and see what remains. Small-group immersive retreats in Chakrata, Zanskar, Rishikesh.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

@@ -18,7 +18,7 @@ export const dynamic = 'force-static';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Yoga Retreats in the Himalayas — Asana, Pranayama & Mountain Practice | Retreats And Treks',
+    title: 'Yoga Retreats in the Himalayas | Retreats And Treks',
     description:
       'Himalayan yoga retreats in Rishikesh, Zanskar, and Sankri. Small-group practice (max 12) with experienced teachers — asana, pranayama, meditation. 3–10 day programs. Movement meets mountain silence.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

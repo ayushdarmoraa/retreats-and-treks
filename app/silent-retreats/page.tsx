@@ -18,7 +18,7 @@ export const dynamic = 'force-static';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Silent Retreats in the Himalayas — Extended Silence & Deep Rest | Retreats And Treks',
+    title: 'Silent Retreats in the Himalayas | Retreats And Treks',
     description:
       'Extended silent retreats in the Indian Himalayas — Chakrata, Zanskar, Munsiyari. No phones, no small talk, no tourist noise. Small groups (max 12), 3–10 day programs. Discover what happens when you stop talking.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

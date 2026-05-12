@@ -19,7 +19,7 @@ export const dynamic = 'force-static';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Meditation Retreats in the Himalayas — Guided Silence & Deep Practice | Retreats And Treks',
+    title: 'Meditation Retreats in the Himalayas | Retreats And Treks',
     description:
       'Guided meditation retreats in quiet Himalayan locations — Zanskar, Chakrata, Rishikesh. Small groups (max 12), deep silence, experienced teachers. 3–10 day programs from ₹18,000. Find the right setting for your practice.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
