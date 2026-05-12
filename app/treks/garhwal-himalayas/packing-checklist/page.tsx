@@ -12,7 +12,7 @@ const PATH = '/treks/garhwal-himalayas/packing-checklist';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Garhwal Trek Packing Checklist — Print-Ready Gear List by Difficulty | Retreats And Treks',
+    title: 'Garhwal Trek Packing Checklist | Retreats And Treks',
     description:
       'Complete packing checklist for Garhwal Himalaya treks (3,850m–4,800m). Print-ready gear list for Brahmatal, Kuari Pass, Roopkund & Pangarchulla. Organised by category, difficulty tier & season.',
     alternates: {

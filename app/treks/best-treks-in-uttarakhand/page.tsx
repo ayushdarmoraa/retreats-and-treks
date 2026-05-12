@@ -19,7 +19,7 @@ export const revalidate = 86400;
 export function generateMetadata(): Metadata {
   return {
     title:
-      '10 Best Treks in Uttarakhand (3,000–4,800m) — Difficulty, Season & Guide | Retreats And Treks',
+      'Best Treks in Uttarakhand | Retreats And Treks',
     description:
       'Compare the 10 best treks in Uttarakhand — Brahmatal, Kuari Pass, Roopkund, Pangarchulla and more. See altitude, difficulty, best season and trek duration to choose the right Himalayan route.',
     alternates: {

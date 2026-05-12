@@ -15,7 +15,7 @@ const PATH = '/treks/trek-near-delhi';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Best Treks Near Delhi for a Weekend Escape — 2–3 Day Himalayan Treks | Retreats And Treks',
+    title: 'Best Treks Near Delhi | Retreats And Treks',
     description:
       'Find the best treks near Delhi in Chakrata and Sankri. Weekend-friendly Himalayan treks 6–9 hours from the capital with guided itineraries and forest trails.',
     alternates: {

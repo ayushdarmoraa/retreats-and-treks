@@ -12,7 +12,7 @@ const PATH = '/treks/garhwal-himalayas/fitness-guide';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Garhwal Trek Fitness Guide — 8-Week Preparation Plan (3,850m–4,800m) | Retreats And Treks',
+    title: 'Garhwal Trek Fitness Guide | Retreats And Treks',
     description:
       'Free 8-week fitness plan for Garhwal Himalaya treks. Week-by-week training for Brahmatal (3,850m), Kuari Pass, Roopkund (4,800m) & Pangarchulla. Cardio, strength, altitude prep & gear checklist.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
