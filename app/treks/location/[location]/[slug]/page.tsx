@@ -193,7 +193,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     : undefined;
 
   return {
-    title: `${trek.title} in ${location.name} | Retreats And Treks`,
+    title: `${trek.title.split('(')[0].trim()} | Retreats And Treks`,
     description: trek.description,
     alternates: { canonical },
     openGraph: {
