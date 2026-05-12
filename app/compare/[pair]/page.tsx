@@ -36,6 +36,23 @@ function buildCompareUrl(a: string, b: string): string {
   return `/compare/${ca}${SEPARATOR}${cb}`;
 }
 
+const COMPARE_TITLE_LABELS: Record<string, string> = {
+  'art-and-creative': 'Creative Healing',
+  'burnout-recovery': 'Burnout Recovery',
+  'meditation-and-silence': 'Meditation & Silence',
+  'private-and-custom': 'Private & Custom',
+  'rest-and-reset': 'Rest & Reset',
+  'sound-healing': 'Sound Healing',
+  'trek-and-paint': 'Trek & Paint',
+  'weekend-art-retreat': 'Weekend Art',
+  'weekend-retreat': 'Weekend Retreat',
+  'yoga-and-movement': 'Yoga & Movement',
+};
+
+function compareTitleLabel(slug: string, fallback: string): string {
+  return COMPARE_TITLE_LABELS[slug] ?? fallback.replace(/ Retreat in the Himalayas$/, '').replace(/ Retreat$/, '');
+}
+
 export async function generateStaticParams(): Promise<{ pair: string }[]> {
   const services = getAllRetreatServices();
   const slugs = services.map((s) => s.slug);
@@ -59,8 +76,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const serviceB = getRetreatServiceBySlug(cb);
   if (!serviceA || !serviceB) return { title: 'Not Found', robots: { index: false } };
   const canonicalPath = buildCompareUrl(ca, cb);
+  const titleA = compareTitleLabel(ca, serviceA.title);
+  const titleB = compareTitleLabel(cb, serviceB.title);
+
   return {
-    title: `${serviceA.title} vs ${serviceB.title} | Retreats And Treks`,
+    title: `${titleA} vs ${titleB} | Retreats And Treks`,
     description: `A detailed comparison of ${serviceA.title} and ${serviceB.title} retreats — structure, intensity, duration, ideal participant, and how to choose between them.`,
     alternates: { canonical: buildCanonicalUrl(canonicalPath) },
     robots: { index: true, follow: true },
