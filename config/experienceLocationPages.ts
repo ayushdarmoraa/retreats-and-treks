@@ -359,7 +359,7 @@ function generatePages(): ExperienceLocationPage[] {
         locationId: angle.locationId,
         label: mapping.label,
         locationName,
-        title: `${mapping.label} in ${locationName} — ${angle.heading.split(' — ')[1] || locationName} | Retreats And Treks`,
+        title: `${mapping.label} in ${locationName} | Retreats And Treks`,
         h1: `${mapping.label} in ${locationName}`,
         metaDescription: `${mapping.label} in ${locationName}. ${angle.heading}. Best time: ${supplement.bestSeasons}. Small-group, immersive Himalayan retreat. Inquire now.`,
         intro: angle.description,
