@@ -15,7 +15,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Himalayan Silent Retreats (2026) — Deep Silence in Mountain Forests & Valleys',
+    title: 'Himalayan Silent Retreats | Retreats And Treks',
     description:
       'Silent retreats in the Himalayas — Chakrata forest silence, Zanskar monastery quiet, Munsiyari alpine stillness. Guided noble silence in small groups. Compare locations by depth and accessibility.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

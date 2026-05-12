@@ -16,7 +16,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Spiritual Awakening Retreat — Beyond the Self You Know | Retreats And Treks',
+    title: 'Spiritual Awakening Retreat | Retreats And Treks',
     description:
       'Spiritual awakening retreat in the Indian Himalayas. Sustained meditation, silence, and contemplative practice in environments where awakening has been happening for millennia. Zanskar, Rishikesh, Chakrata.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

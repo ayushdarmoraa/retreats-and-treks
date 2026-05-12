@@ -19,7 +19,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: '10 Best Retreats in Uttarakhand (2026 Guide) — Yoga, Luxury & Weekend Picks',
+    title: 'Best Retreats in Uttarakhand | Retreats And Treks',
     description:
       'Looking for the best retreat in Uttarakhand? Compare yoga retreats in Rishikesh, luxury escapes in Munsiyari, weekend resets near Delhi and seasonal Himalayan wellness programs — ranked by purpose and budget.',
     alternates: {

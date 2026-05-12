@@ -15,7 +15,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Meditation Retreat and Trek — Stillness Meets Movement | Retreats And Treks',
+    title: 'Meditation Retreat and Trek | Retreats And Treks',
     description:
       'Combine a meditation retreat with Himalayan trekking. Stillness and movement in the same journey — 3–5 days of silent practice followed by 3–5 days on the trail. Chakrata, Sankri, Zanskar.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

@@ -13,7 +13,7 @@ export const dynamic = 'force-static';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Retreats & Treks in Chakrata — Forest Silence at 2,200m | Retreats And Treks',
+    title: 'Retreats & Treks in Chakrata | Retreats And Treks',
     description:
       'Chakrata retreats and treks in the Himalayan deodar forest. Meditation, burnout recovery, yoga, weekend retreats + forest treks. 3.5 hours from Dehradun. Small groups (max 12). ₹14,000–₹32,000 all-inclusive.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

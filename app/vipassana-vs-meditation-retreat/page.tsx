@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Vipassana vs Meditation Retreat — Which Is Right for You? | Retreats And Treks',
+    title: 'Vipassana vs Meditation Retreat | Retreats And Treks',
     description:
       'The real differences between a Vipassana retreat and a general meditation retreat — structure, silence, technique, difficulty, and who benefits most from each.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

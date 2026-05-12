@@ -15,7 +15,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Trek and Meditate in the Himalayas — Walking as Practice | Retreats And Treks',
+    title: 'Trek and Meditate in the Himalayas | Retreats And Treks',
     description:
       'Trek and meditate in the Himalayas. Not a trek with meditation added — a practice where walking and sitting are equal partners. Himalayan trails as meditation halls. Chakrata, Sankri, Zanskar.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

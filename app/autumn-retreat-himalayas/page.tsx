@@ -15,7 +15,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Autumn Retreat in the Himalayas — The Letting-Go Season | Retreats And Treks',
+    title: 'Autumn Retreat in the Himalayas | Retreats And Treks',
     description:
       'Autumn Himalayan retreats (September–November) — post-monsoon clarity, golden light, peak mountain views. The season of release. Meditation, silence, healing in Chakrata, Munsiyari, Rishikesh.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Is a Meditation Retreat Worth It? An Honest Assessment | Retreats And Treks',
+    title: 'Is a Meditation Retreat Worth It? | Retreats And Treks',
     description:
       'Is a meditation retreat worth the time and money? An honest look at who benefits, who doesn\'t, what to expect, and how to decide if now is the right time.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

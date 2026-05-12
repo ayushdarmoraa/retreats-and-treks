@@ -11,7 +11,7 @@ const PATH = '/retreats/chakrata/weekend-retreat-from-dehradun';
 
 export function generateMetadata(): Metadata {
   return {
-    title: retreat.title + ' — 3-Day Forest Escape | Retreats And Treks',
+    title: 'Chakrata Weekend Retreat | Retreats And Treks',
     description: retreat.description,
     alternates: { canonical: buildCanonicalUrl(PATH) },
   };

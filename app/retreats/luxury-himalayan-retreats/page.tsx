@@ -16,7 +16,7 @@ const PATH = '/retreats/luxury-himalayan-retreats';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Luxury Himalayan Retreats in India — Premium Mountain Stays | Retreats And Treks',
+    title: 'Luxury Himalayan Retreats | Retreats And Treks',
     description:
       'Discover luxury Himalayan retreats in Munsiyari, Sankri and Chakrata. Premium stays, private sessions and curated mountain experiences in Uttarakhand.',
     alternates: {
