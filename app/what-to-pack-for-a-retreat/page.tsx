@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'What to Pack for a Meditation Retreat — Complete Packing List | Retreats And Treks',
+    title: 'What to Pack for a Retreat | Retreats And Treks',
     description:
       'The complete packing list for a Himalayan meditation retreat — what to bring, what to leave behind, and why less is more. Covers clothing, practice essentials, altitude gear, and common mistakes.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

@@ -15,7 +15,7 @@ const PATH = '/retreats/uttarakhand-retreats';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Uttarakhand Retreats in the Himalayas — Mountain Wellness Stays | Retreats And Treks',
+    title: 'Uttarakhand Retreats | Retreats And Treks',
     description:
       'Explore retreats in Uttarakhand across Munsiyari, Sankri, Chakrata and Rishikesh. Yoga, meditation and mountain wellness programs in India\u2019s Himalayan state.',
     alternates: {

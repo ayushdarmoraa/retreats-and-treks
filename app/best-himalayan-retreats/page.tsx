@@ -15,7 +15,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Best Himalayan Retreats (2026) — Yoga, Meditation, Wellness & Silent Retreat Picks',
+    title: 'Best Himalayan Retreats | Retreats And Treks',
     description:
       'The best Himalayan retreats compared by purpose — yoga in Rishikesh, silence in Chakrata, meditation in Zanskar, burnout recovery in Munsiyari. Small-group mountain retreats ranked for 2026.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

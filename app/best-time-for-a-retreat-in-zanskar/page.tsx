@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Best Time for a Meditation Retreat in Zanskar — Month-by-Month Guide | Retreats And Treks',
+    title: 'Best Time for a Zanskar Retreat | Retreats And Treks',
     description:
       'When to visit Zanskar for a meditation retreat — the best months, weather conditions, road access, and how seasonal changes affect your practice. A month-by-month planning guide.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

@@ -15,7 +15,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Winter Retreat in the Himalayas — Snow, Silence, Recalibration | Retreats And Treks',
+    title: 'Winter Retreat in the Himalayas | Retreats And Treks',
     description:
       'Winter retreats in the Himalayas — meditation, healing, and deep rest in Chakrata, Rishikesh, and Mussoorie. Cold air, clear skies, fewer people. The quietest season for the deepest work.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

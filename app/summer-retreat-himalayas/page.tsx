@@ -16,7 +16,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Summer Retreat in the Himalayas — Escape the Heat, Find Altitude | Retreats And Treks',
+    title: 'Summer Retreat in the Himalayas | Retreats And Treks',
     description:
       'Summer retreats in the Himalayas — meditation, yoga, and healing in cool mountain environments. Chakrata, Munsiyari, Zanskar. When the plains burn, the mountains hold space.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Retreat vs Therapy — Can a Meditation Retreat Replace Therapy? | Retreats And Treks',
+    title: 'Retreat vs Therapy | Retreats And Treks',
     description:
       'When a retreat is the right choice, when therapy is, and when you need both. An honest comparison of meditation retreats and psychotherapy for stress, burnout, and emotional processing.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

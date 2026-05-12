@@ -15,7 +15,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Himalayan Retreat with Trekking — Inner Work Meets Outer Terrain | Retreats And Treks',
+    title: 'Himalayan Retreat with Trekking | Retreats And Treks',
     description:
       'Himalayan retreat with trekking — meditation and silence combined with mountain walking. The rare platform that offers both. Chakrata, Sankri, Munsiyari, Zanskar.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
