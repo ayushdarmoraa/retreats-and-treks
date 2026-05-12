@@ -21,6 +21,13 @@ const DEPARTURES = [
   { date: '05 Apr 2026', duration: '4D/3N', price: '₹10,200', seats: 10 },
 ];
 
+const DEPARTURE_PAGE_PATHS: Record<string, string> = {
+  'brahmatal-trek': '/treks/brahmatal/departures',
+  'kuari-pass-trek': '/treks/kuari-pass/departures',
+  'roopkund-trek': '/treks/roopkund/departures',
+  'pangarchulla-trek': '/treks/pangarchulla/departures',
+};
+
 function seatColor(seats: number): string {
   if (seats <= 2) return '#d32f2f';
   if (seats <= 5) return '#e65100';
@@ -51,6 +58,7 @@ export default function TrekDeparturesTable({
 }: TrekDeparturesTableProps) {
   const [modalOpen, setModalOpen] = useState(false);
   const nextDep = getNextDeparture();
+  const departurePagePath = DEPARTURE_PAGE_PATHS[trekSlug];
 
   function handleCheckAvailability(date: string) {
     track({ event: 'departure_table_click', from: sourcePath, meta: { trek: trekSlug, source: sourcePath, date } });
@@ -74,9 +82,15 @@ export default function TrekDeparturesTable({
 
       <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, color: '#888888', marginBottom: '1.5rem', lineHeight: 1.6 }}>
         See upcoming{' '}
-        <Link href={`/treks/${trekSlug}/departures`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
-          {trekTitle.toLowerCase()} departures
-        </Link>{' '}
+        {departurePagePath ? (
+          <Link href={departurePagePath} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
+            {trekTitle.toLowerCase()} departures
+          </Link>
+        ) : (
+          <span style={{ color: '#374151', fontWeight: 500 }}>
+            {trekTitle.toLowerCase()} departures
+          </span>
+        )}{' '}
         for all available dates.
       </p>
 
