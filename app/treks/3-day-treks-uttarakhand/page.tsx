@@ -14,7 +14,7 @@ const PATH = '/treks/3-day-treks-uttarakhand';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Best 3-Day Treks in Uttarakhand — Short Himalayan Treks (2N/3D) | Retreats And Treks',
+    title: 'Best 3-Day Treks in Uttarakhand | Retreats And Treks',
     description:
       'Find the best 3-day treks in Uttarakhand including Tiger Fall, Budher Caves and short-format Kedarkantha. Weekend Himalayan treks within driving distance of Delhi.',
     alternates: {

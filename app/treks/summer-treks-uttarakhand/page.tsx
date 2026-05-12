@@ -15,7 +15,7 @@ const PATH = '/treks/summer-treks-uttarakhand';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Best Summer Treks in Uttarakhand (May–June Guide) | Retreats And Treks',
+    title: 'Best Summer Treks in Uttarakhand | Retreats And Treks',
     description:
       'Find the best summer treks in Uttarakhand for May and June. Har Ki Dun valley trek, Kedarkantha early-summer summit and Tiger Fall — guided Himalayan treks through green valleys and alpine meadows.',
     alternates: {

@@ -15,7 +15,7 @@ const PATH = '/treks/trek-packages-uttarakhand';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Himalayan Trek Packages in Uttarakhand — All-Inclusive Guided Treks | Retreats And Treks',
+    title: 'Trek Packages in Uttarakhand | Retreats And Treks',
     description:
       'Book all-inclusive trek packages in Uttarakhand — Kedarkantha, Har Ki Dun, Tiger Fall and more. Guide, meals, permits and camping included. Packages for beginners, groups and solo trekkers.',
     alternates: {
