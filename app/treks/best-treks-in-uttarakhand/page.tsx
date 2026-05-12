@@ -554,7 +554,7 @@ export default function BestTreksInUttarakhandPage() {
         is a 22 km route from Lohajung to a frozen alpine lake at 3,850 metres, passing through oak and rhododendron forest before emerging onto snow-covered ridges with views of Trishul (7,120 m) and Nanda Ghunti. The altitude gain is gradual, the trail is well-defined, and the 4-day duration keeps fatigue manageable. For anyone seeking their first real Himalayan trek beyond a day walk, Brahmatal delivers genuine high-altitude reward at moderate difficulty. It is the premier{' '}
         <Link href="/blog/best-snow-treks-garhwal-himalaya" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>snow trek in the Garhwal Himalaya</Link>.
         {' '}Check{' '}
-        <Link href="/treks/brahmatal-trek/departures" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>upcoming Brahmatal trek departures</Link>{' →'}
+        <Link href="/treks/brahmatal/departures" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>upcoming Brahmatal trek departures</Link>{' →'}
       </p>
     </div>
 
@@ -573,7 +573,7 @@ export default function BestTreksInUttarakhandPage() {
         follows the historic Lord Curzon Trail along a high ridge with near-continuous views of Nanda Devi (7,816 m), Dronagiri, Chaukhamba, and Kamet. No technical challenges, no glacier terrain — just sustained ridge walking through oak forest and alpine meadow. The view-to-effort ratio is the highest of any trek in Uttarakhand. Spring brings rhododendron blooms; autumn delivers the sharpest visibility. Choosing between these two?{' '}
         <Link href="/treks/brahmatal-vs-kuari-pass" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Compare Brahmatal vs Kuari Pass</Link>{' '}
         for the detailed breakdown. Check{' '}
-        <Link href="/treks/kuari-pass-trek/departures" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>upcoming Kuari Pass trek departures</Link>{' →'}
+        <Link href="/treks/kuari-pass/departures" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>upcoming Kuari Pass trek departures</Link>{' →'}
       </p>
     </div>
 
