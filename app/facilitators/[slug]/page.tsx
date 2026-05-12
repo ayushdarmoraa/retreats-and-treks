@@ -24,7 +24,7 @@ export async function generateMetadata(
   const facilitator = getFacilitator(slug);
   if (!facilitator) return {};
   return {
-    title: `${facilitator.name} — ${facilitator.title} | Retreats And Treks`,
+    title: `${facilitator.name} | Retreats And Treks`,
     description: facilitator.metaDescription,
     alternates: { canonical: buildCanonicalUrl(`/facilitators/${slug}`) },
     robots: { index: true, follow: true },

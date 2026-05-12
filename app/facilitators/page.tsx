@@ -14,7 +14,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Our Facilitators — Retreat Leaders & Guides | Retreats And Treks',
+    title: 'Our Facilitators | Retreats And Treks',
     description:
       'Meet the people who lead our Himalayan retreats. Meditation teachers, yoga instructors, clinical psychologists, mountain guides, and sound healing practitioners.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
