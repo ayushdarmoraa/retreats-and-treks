@@ -16,7 +16,7 @@ export const privateAndCustomRetreat = {
   slug: 'private-and-custom',
   title: 'Private & Custom',
   oneLineEssence: 'A retreat designed entirely around your needs, timeline, and intentions.',
-  seoTitle: 'Private & Custom Retreat in the Himalayas — Bespoke Experiences for Individuals & Groups | Retreats And Treks',
+  seoTitle: 'Private & Custom Retreat | Retreats And Treks',
   seoDescription: 'Design your own retreat in the Indian Himalayas. Solo, couples, families, or teams. Choose your focus: rest, yoga, meditation, creative work, sound healing. Any duration, any season. Chakrata, Rishikesh, or Mussoorie.',
 
   /* ── Visual Assets ── */

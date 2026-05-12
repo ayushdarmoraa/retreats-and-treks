@@ -17,7 +17,7 @@ export const burnoutRecoveryRetreat = {
   slug: 'burnout-recovery',
   title: 'Burnout Recovery Retreat in the Himalayas',
   oneLineEssence: 'A weekend mountain retreat designed to help you disconnect from constant work pressure and reconnect with nature, slow living, and meaningful rest.',
-  seoTitle: 'Burnout Recovery Retreat in the Himalayas — Weekend Reset from Work Stress | Retreats And Treks',
+  seoTitle: 'Burnout Recovery Retreat | Retreats And Treks',
   seoDescription: 'Recover from burnout with a 3-day weekend retreat in Chakrata, Uttarakhand. Forest walks, waterfalls, local culture, bonfire evenings. Small groups, all meals included. 3 hrs from Dehradun, 7 hrs from Delhi.',
 
   /* ── Visual Assets ── */

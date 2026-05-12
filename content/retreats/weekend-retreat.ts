@@ -17,7 +17,7 @@ export const weekendRetreat = {
   slug: 'weekend-retreat',
   title: 'Weekend Retreat',
   oneLineEssence: 'A compressed reset for those who need mountain time but have limited availability.',
-  seoTitle: 'Weekend Retreat Near Delhi — 3-Day Mountain Reset in the Himalayas | Retreats And Treks',
+  seoTitle: 'Weekend Retreat Near Delhi | Retreats And Treks',
   seoDescription: 'Join a weekend retreat in Chakrata — Friday to Sunday in the Himalayan forest. Nature walks, mountain food, bonfire evenings, genuine rest. 3 hrs from Dehradun, 7 hrs from Delhi. Small groups, all inclusive.',
 
   /* ── Visual Assets ── */

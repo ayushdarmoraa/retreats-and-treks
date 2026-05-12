@@ -7,7 +7,7 @@ export const artAndCreativeRetreat = {
   slug: 'art-and-creative',
   title: 'Creative Healing Retreat',
   oneLineEssence: 'Emotional healing through art & yoga in a container designed for authentic expression.',
-  seoTitle: 'Creative Healing Retreat in the Himalayas — Art & Yoga for Emotional Expression | Retreats And Treks',
+  seoTitle: 'Creative Healing Retreat | Retreats And Treks',
   seoDescription: 'Join a creative healing retreat in the Indian Himalayas. Painting, writing, collage, and yoga in mountain silence. No experience needed. 3–7 days in Mussoorie and Chakrata, Uttarakhand. Small groups.',
 
   /* ── Visual Assets ── */

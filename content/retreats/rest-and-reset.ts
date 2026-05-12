@@ -16,7 +16,7 @@ export const restAndResetRetreat = {
   slug: 'rest-and-reset',
   title: 'Rest & Reset',
   oneLineEssence: 'Permission to stop, for people who have been running too long.',
-  seoTitle: 'Rest & Reset Retreat in the Himalayas — Nervous System Recovery in Mountain Silence | Retreats And Treks',
+  seoTitle: 'Rest & Reset Retreat | Retreats And Treks',
   seoDescription: 'A rest retreat in the Indian Himalayas for people who have been running too long. No schedule, no structure — just forest silence, mountain air, and genuine permission to stop. 3–7 days in Chakrata, Uttarakhand.',
 
   /* ── Visual Assets ── */

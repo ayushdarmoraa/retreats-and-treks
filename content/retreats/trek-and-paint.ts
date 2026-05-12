@@ -8,7 +8,7 @@ export const trekAndPaintRetreat = {
   slug: 'trek-and-paint',
   title: 'Trek & Paint Retreat',
   oneLineEssence: 'Walk the Himalayas by day, paint what you see by evening — where trail meets canvas.',
-  seoTitle: 'Trek & Paint Retreat in the Himalayas — Plein Air Art & Mountain Hiking | Retreats And Treks',
+  seoTitle: 'Trek & Paint Retreat | Retreats And Treks',
   seoDescription: 'Combine Himalayan trekking with plein air painting. Walk forest trails by morning, paint mountain landscapes by afternoon. No art or hiking experience needed. 5–7 days in Chakrata, Uttarakhand.',
 
   /* ── Visual Assets ── */
