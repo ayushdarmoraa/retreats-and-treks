@@ -406,8 +406,8 @@ const EVENTS: RetreatProgramEvent[] = [
       'Day 5: Re-entry planning → Drive back to Dehradun',
     ],
     parentExperienceSlug: 'stress-relief-retreats',
-    parentLocationSlug: 'stress-relief-retreat-sankri',
-    itinerarySlug: '5-day-sankri-stress-relief-retreat-itinerary',
+    parentLocationSlug: 'retreats/sankri',
+    itinerarySlug: '5-day-sankri-burnout-recovery-retreat-itinerary',
     faqItems: [
       {
         question: 'How remote is Sankri?',
