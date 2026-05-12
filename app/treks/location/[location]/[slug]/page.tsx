@@ -643,13 +643,19 @@ export default async function TrekDetailPage({ params }: PageProps) {
         <div style={{ margin: '2.5rem 0', background: '#f7f9f7', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
           <h2>Best Time to Do This Trek</h2>
           <ul>
-            {trek.monthlyConditions.map((m) => (
-              <li key={m.month}>
-                <Link href={`/treks/${trek.slug.replace('-trek','')}/${m.month.toLowerCase()}`}>
-                  {trek.title.split('(')[0].trim()} in {m.month}
-                </Link>
-              </li>
-            ))}
+            {trek.monthlyConditions.map((m) => {
+              const monthRouteSlug = trek.slug === 'dayara-bugyal-trek'
+                ? 'dayara'
+                : trek.slug.replace('-trek', '');
+
+              return (
+                <li key={m.month}>
+                  <Link href={`/treks/${monthRouteSlug}/${m.month.toLowerCase()}`}>
+                    {trek.title.split('(')[0].trim()} in {m.month}
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}
