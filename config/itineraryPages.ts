@@ -28,6 +28,7 @@ export interface ItineraryPage {
   readonly label: string;
   readonly locationName: string;
   readonly title: string;
+  readonly seoTitle: string;
   readonly h1: string;
   readonly metaDescription: string;
   readonly intro: string;
@@ -470,6 +471,7 @@ function generateItineraryPages(): ItineraryPage[] {
       label: elPage.label,
       locationName: elPage.locationName,
       title: `${durationLabel} ${elPage.label} Itinerary — ${elPage.locationName} | Retreats And Treks`,
+      seoTitle: `${durationLabel} ${elPage.label.replace(/ Retreat$/, '')} — ${elPage.locationName} | Retreats And Treks`,
       h1: `${durationLabel} ${elPage.label} Itinerary in ${elPage.locationName}`,
       metaDescription: `Day-by-day itinerary for a ${arc.duration}-day ${elPage.label.toLowerCase()} in ${elPage.locationName}. Full schedule, daily themes, what to expect each day. Plan your Himalayan retreat.`,
       intro: `What actually happens during a ${arc.duration}-day ${elPage.label.toLowerCase()} in ${elPage.locationName}? Below is the day-by-day itinerary — not a marketing brochure, but the actual rhythm of the retreat. Times are approximate; the schedule serves the practice, not the other way around.`,

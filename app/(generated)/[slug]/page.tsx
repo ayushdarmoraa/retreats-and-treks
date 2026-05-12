@@ -55,7 +55,7 @@ export async function generateMetadata({
   const itPage = getItineraryPage(slug);
   if (itPage) {
     return {
-      title: itPage.title,
+      title: itPage.seoTitle,
       description: itPage.metaDescription,
       alternates: { canonical: buildCanonicalUrl(`/${itPage.slug}`) },
       robots: { index: true, follow: true },
