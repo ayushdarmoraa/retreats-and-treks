@@ -60,7 +60,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!serviceA || !serviceB) return { title: 'Not Found', robots: { index: false } };
   const canonicalPath = buildCompareUrl(ca, cb);
   return {
-    title: `${serviceA.title} vs ${serviceB.title} — Which Retreat Is Right for You? | Retreats And Treks`,
+    title: `${serviceA.title} vs ${serviceB.title} | Retreats And Treks`,
     description: `A detailed comparison of ${serviceA.title} and ${serviceB.title} retreats — structure, intensity, duration, ideal participant, and how to choose between them.`,
     alternates: { canonical: buildCanonicalUrl(canonicalPath) },
     robots: { index: true, follow: true },
