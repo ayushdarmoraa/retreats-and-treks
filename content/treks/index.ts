@@ -48,6 +48,8 @@ export function getTreksByLocation(locationId: LocationId): TrekContent[] {
       return [...LOHAJUNG_TREKS];
     case 'joshimath':
       return [...JOSHIMATH_TREKS];
+    case 'barsu':
+      return [...BARSU_TREKS];
     default:
       return [];
   }
