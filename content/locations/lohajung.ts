@@ -3,7 +3,7 @@ import type { LocationPremiumContent } from '@/content/locations/index';
 export const lohajungLocation: LocationPremiumContent = {
   id: 'lohajung',
   name: 'Lohajung',
-  heroImage: '/Images/locations/lohajung_pano.webp',
+  heroImage: '/Images/location/lohajung.webp',
   heroImageAlt: 'Panoramic view of the Lohajung basecamp in the Garhwal Himalayas',
   landTone: {
     opening: 'Lohajung is not a quiet pastoral retreat; it is a bustling, energetic staging ground. Sitting at 2,300 metres, this small mountain settlement is the nexus for three of India’s most famous Himalayan treks. It crackles with the nervous anticipation of arriving trekkers and the exhausted triumph of those returning from the snows of Roopkund or Brahmatal.'
@@ -68,8 +68,6 @@ export const lohajungLocation: LocationPremiumContent = {
     }
   ],
   gallery: [
-    { src: '/Images/locations/lohajung_market.webp', alt: 'The bustling trekker market in Lohajung village' },
-    { src: '/Images/locations/nanda_ghunti_lohajung.webp', alt: 'The majestic Nanda Ghunti peak visible from the basecamp' },
-    { src: '/Images/locations/lohajung_winter.webp', alt: 'Lohajung completely blanketted in thick winter snow' }
+    { src: '/Images/location/lohajung.webp', alt: 'Lohajung basecamp in the Garhwal Himalayas' }
   ]
 };
