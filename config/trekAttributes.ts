@@ -10,8 +10,10 @@ import { TrekContent } from '@/types/content';
 export interface TrekAttributeConfig {
   /** URL slug under /treks/ */
   slug: string;
-  /** Page title (H1 + <title>) */
+  /** Page title (H1 + visible heading) */
   title: string;
+  /** Optional SEO-only browser title */
+  seoTitle?: string;
   /** Meta description */
   description: string;
   /** Short intro paragraph */
@@ -39,6 +41,7 @@ export const TREK_ATTRIBUTE_PAGES: TrekAttributeConfig[] = [
   {
     slug: 'above-4000m-treks-uttarakhand',
     title: 'Treks Above 4,000m in Uttarakhand — High-Altitude Expeditions',
+    seoTitle: 'Treks Above 4,000m in Uttarakhand',
     description:
       'High-altitude treks above 4,000m in Uttarakhand: Roopkund (4,800m) and Pangarchulla (4,590m). Expedition routes, fitness requirements, and season guide for experienced trekkers.',
     intro:
@@ -61,6 +64,7 @@ export const TREK_ATTRIBUTE_PAGES: TrekAttributeConfig[] = [
   {
     slug: 'low-altitude-treks-uttarakhand',
     title: 'Low-Altitude Treks in Uttarakhand — Below 3,500m, No AMS Risk',
+    seoTitle: 'Low-Altitude Treks in Uttarakhand',
     description:
       'Low-altitude treks below 3,500m in Uttarakhand with no altitude sickness risk. Day hikes, weekend treks, and forest trails in Chakrata and Munsiyari. Ideal for families and first-timers.',
     intro:
@@ -85,6 +89,7 @@ export const TREK_ATTRIBUTE_PAGES: TrekAttributeConfig[] = [
   {
     slug: 'spring-treks-uttarakhand',
     title: 'Best Spring Treks in Uttarakhand (March–May) — Rhododendron Season',
+    seoTitle: 'Best Spring Treks in Uttarakhand',
     description:
       'Spring treks in Uttarakhand from March to May. Rhododendron blooms, clearing snow, and the best weather for Kuari Pass, Pangarchulla, Brahmatal, and Khaliya Top.',
     intro:
@@ -110,6 +115,7 @@ export const TREK_ATTRIBUTE_PAGES: TrekAttributeConfig[] = [
   {
     slug: 'autumn-treks-uttarakhand',
     title: 'Best Autumn Treks in Uttarakhand (September–November) — Clearest Skies',
+    seoTitle: 'Best Autumn Treks in Uttarakhand',
     description:
       'Autumn treks in Uttarakhand from September to November. Post-monsoon clarity, golden foliage, and the best mountain visibility of the year. Kuari Pass, Roopkund, Har Ki Dun, and more.',
     intro:
@@ -137,6 +143,7 @@ export const TREK_ATTRIBUTE_PAGES: TrekAttributeConfig[] = [
   {
     slug: '5-day-treks-uttarakhand',
     title: '5-Day Treks in Uttarakhand — Kedarkantha, Kuari Pass & Har Ki Dun',
+    seoTitle: '5-Day Treks in Uttarakhand',
     description:
       'Best 5-day treks in Uttarakhand: Kedarkantha summit, Kuari Pass ridge walk, and Har Ki Dun valley trek. Moderate to challenging routes ideal for a week off work.',
     intro:
@@ -159,6 +166,7 @@ export const TREK_ATTRIBUTE_PAGES: TrekAttributeConfig[] = [
   {
     slug: 'week-long-treks-uttarakhand',
     title: 'Week-Long Treks in Uttarakhand (6–10 Days) — Expedition Routes',
+    seoTitle: 'Week-Long Treks in Uttarakhand',
     description:
       'Week-long and multi-day treks in Uttarakhand: Pangarchulla (6 days), Roopkund (7 days), and Milam Glacier (8–10 days). Extended expedition routes for experienced trekkers.',
     intro:

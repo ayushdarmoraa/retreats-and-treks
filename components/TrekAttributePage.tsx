@@ -33,8 +33,10 @@ function trekPath(trek: TrekContent): string {
 
 export function generateAttributeMetadata(config: TrekAttributeConfig): Metadata {
   const path = `/treks/${config.slug}`;
+  const title = config.seoTitle ?? config.title;
+
   return {
-    title: `${config.title} | Retreats And Treks`,
+    title: `${title} | Retreats And Treks`,
     description: config.description,
     alternates: { canonical: buildCanonicalUrl(path) },
     robots: { index: true, follow: true },
