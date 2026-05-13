@@ -43,7 +43,7 @@ export const TREK_ATTRIBUTE_PAGES: TrekAttributeConfig[] = [
     title: 'Treks Above 4,000m in Uttarakhand — High-Altitude Expeditions',
     seoTitle: 'Treks Above 4,000m in Uttarakhand',
     description:
-      'High-altitude treks above 4,000m in Uttarakhand: Roopkund (4,800m) and Pangarchulla (4,590m). Expedition routes, fitness requirements, and season guide for experienced trekkers.',
+      'High-altitude treks above 4,000m in Uttarakhand, including Roopkund and Pangarchulla. Compare routes, fitness needs, seasons, and altitude risks.',
     intro:
       'Above 4,000 metres, Uttarakhand trekking enters expedition territory — glacier moraines, sustained altitude exposure, and mountain conditions that demand prior experience. These routes are for trekkers who have completed moderate Himalayan treks and are ready to push higher.',
     filter: (trek) => parseAltitude(trek) >= 4000,
@@ -66,7 +66,7 @@ export const TREK_ATTRIBUTE_PAGES: TrekAttributeConfig[] = [
     title: 'Low-Altitude Treks in Uttarakhand — Below 3,500m, No AMS Risk',
     seoTitle: 'Low-Altitude Treks in Uttarakhand',
     description:
-      'Low-altitude treks below 3,500m in Uttarakhand with no altitude sickness risk. Day hikes, weekend treks, and forest trails in Chakrata and Munsiyari. Ideal for families and first-timers.',
+      'Low-altitude treks below 3,500m in Uttarakhand with forest trails, day hikes, weekend routes, and beginner-friendly options for families.',
     intro:
       'Below 3,500 metres, altitude sickness is virtually absent and oxygen levels are comfortable for any fitness level. These Uttarakhand treks stay in forest and meadow terrain — no glacier approaches, no exposed ridges, no need for acclimatisation days. Ideal for families, weekend travellers, and anyone who wants a Himalayan experience without altitude concerns.',
     filter: (trek) => parseAltitude(trek) > 0 && parseAltitude(trek) < 3500,
@@ -91,7 +91,7 @@ export const TREK_ATTRIBUTE_PAGES: TrekAttributeConfig[] = [
     title: 'Best Spring Treks in Uttarakhand (March–May) — Rhododendron Season',
     seoTitle: 'Best Spring Treks in Uttarakhand',
     description:
-      'Spring treks in Uttarakhand from March to May. Rhododendron blooms, clearing snow, and the best weather for Kuari Pass, Pangarchulla, Brahmatal, and Khaliya Top.',
+      'Spring treks in Uttarakhand from March to May, with rhododendron blooms, clearing snow, and routes like Kuari Pass, Pangarchulla, Brahmatal, and Khaliya Top.',
     intro:
       'Spring in Uttarakhand (March–May) brings rhododendron blooms, retreating snow, and the longest daylight hours before monsoon. The trail conditions are ideal — firm, dry, and warm enough for comfortable camping. This is the widest trekking window of the year.',
     filter: (trek) =>
@@ -117,7 +117,7 @@ export const TREK_ATTRIBUTE_PAGES: TrekAttributeConfig[] = [
     title: 'Best Autumn Treks in Uttarakhand (September–November) — Clearest Skies',
     seoTitle: 'Best Autumn Treks in Uttarakhand',
     description:
-      'Autumn treks in Uttarakhand from September to November. Post-monsoon clarity, golden foliage, and the best mountain visibility of the year. Kuari Pass, Roopkund, Har Ki Dun, and more.',
+      'Autumn treks in Uttarakhand from September to November, with clear skies, golden foliage, mountain views, Kuari Pass, Roopkund, Har Ki Dun, and more.',
     intro:
       'Autumn (September–November) is the sharpest trekking season in Uttarakhand. The monsoon washes out haze, leaving crystal-clear skies and razor-sharp mountain views. Trails are dry, temperatures are comfortable, and crowds thin after the summer rush.',
     filter: (trek) =>
@@ -145,7 +145,7 @@ export const TREK_ATTRIBUTE_PAGES: TrekAttributeConfig[] = [
     title: '5-Day Treks in Uttarakhand — Kedarkantha, Kuari Pass & Har Ki Dun',
     seoTitle: '5-Day Treks in Uttarakhand',
     description:
-      'Best 5-day treks in Uttarakhand: Kedarkantha summit, Kuari Pass ridge walk, and Har Ki Dun valley trek. Moderate to challenging routes ideal for a week off work.',
+      'Best 5-day treks in Uttarakhand, including Kedarkantha, Kuari Pass, and Har Ki Dun. Compare difficulty, route style, season, and planning needs.',
     intro:
       'Five days is the sweet spot for Himalayan trekking — enough time for genuine altitude, landscape immersion, and a proper summit or valley experience without requiring extended leave. These three routes represent the best 5-day options across different seasons and difficulty levels.',
     filter: (trek) => parseDurationDays(trek) === 5,
@@ -168,7 +168,7 @@ export const TREK_ATTRIBUTE_PAGES: TrekAttributeConfig[] = [
     title: 'Week-Long Treks in Uttarakhand (6–10 Days) — Expedition Routes',
     seoTitle: 'Week-Long Treks in Uttarakhand',
     description:
-      'Week-long and multi-day treks in Uttarakhand: Pangarchulla (6 days), Roopkund (7 days), and Milam Glacier (8–10 days). Extended expedition routes for experienced trekkers.',
+      'Week-long treks in Uttarakhand, including Pangarchulla, Roopkund, and Milam Glacier. Compare duration, difficulty, altitude, and expedition-style routes.',
     intro:
       'Extended treks of 6 to 10 days take you deeper into the Himalaya than any short route can. These are expedition-grade commitments that reward with landscapes, terrain, and mountain experiences unavailable on shorter routes.',
     filter: (trek) => parseDurationDays(trek) >= 6,
