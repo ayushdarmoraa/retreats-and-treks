@@ -40,7 +40,7 @@ export const DURATION_PAGES: readonly DurationPage[] = [
     seoTitle: '3-Day Meditation Retreat | Retreats And Treks',
     h1: '3-Day Meditation Retreat in the Himalayas',
     metaDescription:
-      'A 3-day Himalayan meditation retreat — enough time for your nervous system to settle and genuine depth to begin. Chakrata forest, small groups, guided practice. No experience required.',
+      'A 3-day Himalayan meditation retreat in Chakrata forest with guided practice, small groups, nervous system rest, and no experience required.',
     intro:
       'Three days is the minimum commitment for genuine meditation depth. Day one is transition — your mind adjusts to the absence of input. Day two is settling — the internal noise begins to subside. Day three is opening — something quieter emerges beneath the habitual loops. A three-day meditation retreat in the Himalayas is not a taster. It is a complete experience that produces measurable change: reduced cortisol, restored attention, and the beginning of a relationship with your own silence.',
     durationLabel: '3 Days / 2 Nights',
@@ -88,7 +88,7 @@ export const DURATION_PAGES: readonly DurationPage[] = [
     seoTitle: '7-Day Meditation Retreat | Retreats And Treks',
     h1: '7-Day Meditation Retreat in the Himalayas',
     metaDescription:
-      'A 7-day Himalayan meditation retreat — deep immersion in forest or mountain silence. Guided practice, noble silence, small groups. Where real transformation begins.',
+      'A 7-day Himalayan meditation retreat with guided practice, noble silence, small groups, and deep forest or mountain immersion.',
     intro:
       'Seven days is where meditation retreats move from experience to transformation. The first three days follow the same arc as a short retreat — adjustment, settling, opening. But days four through seven take you somewhere new. The mind, having exhausted its habitual loops, begins to access a quality of stillness that most people have never encountered. Insights arise not through thinking but through a kind of direct knowing. The Himalayas amplify this process — altitude slows the mind, forest absorbs distraction, and the accumulated silence of the mountains becomes your meditation partner.',
     durationLabel: '7 Days / 6 Nights',
@@ -141,7 +141,7 @@ export const DURATION_PAGES: readonly DurationPage[] = [
     title: '10-Day Silent Retreat in the Himalayas | Retreats And Treks',
     h1: '10-Day Silent Retreat in the Himalayas',
     metaDescription:
-      'A 10-day Himalayan silent retreat — extended noble silence in Zanskar or Chakrata. Guided meditation, somatic practice, and the deep stillness that only sustained silence creates.',
+      'A 10-day Himalayan silent retreat in Zanskar or Chakrata with noble silence, guided meditation, somatic practice, and sustained stillness.',
     intro:
       'Ten days of silence changes you. Not metaphorically — physiologically. Your nervous system recalibrates. Your sensory awareness sharpens to a degree you did not know was possible. Emotional material that has been stored for years surfaces and processes. The quality of your attention transforms. A ten-day silent retreat is the gold standard of contemplative practice — long enough for genuine depth, structured enough to hold you through the difficult passages, and set in Himalayan environments where the silence of the land matches the silence you are cultivating.',
     durationLabel: '10 Days / 9 Nights',
@@ -230,7 +230,7 @@ export const DURATION_PAGES: readonly DurationPage[] = [
     title: '5-Day Yoga Retreat in the Himalayas | Retreats And Treks',
     h1: '5-Day Yoga Retreat in the Himalayas',
     metaDescription:
-      'A 5-day Himalayan yoga retreat — daily asana, pranayama, and meditation at altitude. Rishikesh, Zanskar, Sankri. Small groups, experienced teachers, mountain practice.',
+      'A 5-day Himalayan yoga retreat with daily asana, pranayama, meditation, small groups, experienced teachers, and mountain practice.',
     intro:
       'Five days is the ideal duration for a yoga retreat. One day to arrive and adjust. Three full days of twice-daily practice — morning and evening. One day to integrate and depart. In the Himalayas, every element of practice is amplified: pranayama changes at altitude because each breath is more conscious. Asana on a mountain morning, with clean cold air and sunrise on snow peaks, is not the same practice as in a city studio. Five days allows your body to adapt to the altitude and your practice to adapt to the environment. The result is a shift in how you relate to your body and your breath that persists long after you return home.',
     durationLabel: '5 Days / 4 Nights',
@@ -283,7 +283,7 @@ export const DURATION_PAGES: readonly DurationPage[] = [
     seoTitle: '3-Day Silent Retreat | Retreats And Treks',
     h1: '3-Day Silent Retreat in the Himalayas',
     metaDescription:
-      'A 3-day silent retreat for first-timers — guided noble silence in Himalayan forest. Chakrata, 2.5 hours from Dehradun. No meditation experience required. Discover what silence can do.',
+      'A 3-day silent retreat for first-timers in Himalayan forest, with guided noble silence, small groups, and no meditation experience required.',
     intro:
       'Three days of silence is the entry point. Long enough that your nervous system genuinely settles. Short enough that the commitment feels manageable. A three-day silent retreat is how most people discover that silence is not empty — it is full of something your daily life has been drowning out. In Chakrata\'s deodar forest, the silence is not imposed by rules alone. It is supported by the environment — the forest absorbs sound, the altitude slows thought, and the absence of stimulation makes quiet the natural state.',
     durationLabel: '3 Days / 2 Nights',
@@ -330,7 +330,7 @@ export const DURATION_PAGES: readonly DurationPage[] = [
     title: '7-Day Healing Retreat in the Himalayas | Retreats And Treks',
     h1: '7-Day Healing Retreat in the Himalayas',
     metaDescription:
-      'A 7-day Himalayan healing retreat — forest bathing, somatic work, breathwork, and silence. Chakrata, Zanskar, Rishikesh. Space for grief, transition, and emotional restoration.',
+      'A 7-day Himalayan healing retreat with forest bathing, somatic work, breathwork, silence, and space for grief, transition, and restoration.',
     intro:
       'Healing takes time. Not weeks or months necessarily, but more than a weekend. Seven days creates the minimum container for genuine healing work: three days for the armour to soften, two days for what lies beneath to surface, and two days to begin integrating what emerged. In a Himalayan healing retreat, the environment is the primary therapist — the forest regulates the nervous system, the altitude quiets the mind, the silence gives permission for whatever needs to surface. Seven days of this is not a luxury. For those carrying grief, exhaustion, or the residue of difficult transitions, it is a necessity.',
     durationLabel: '7 Days / 6 Nights',

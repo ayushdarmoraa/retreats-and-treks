@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Yoga Retreats in Rishikesh | Retreats And Treks',
     description:
-      'Find yoga retreats in Rishikesh with structured asana, pranayama and meditation on the Ganges. Multi-day residential programs in India\'s yoga capital.',
+      'Find yoga retreats in Rishikesh with structured asana, pranayama, meditation, Ganga-side practice, and multi-day residential programs.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

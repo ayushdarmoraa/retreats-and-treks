@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Trek and Paint in the Himalayas | Retreats And Treks',
     description:
-      'Trek and paint in the Himalayas. Walk through mountain landscapes by morning, create art from what you saw by afternoon. Plein air painting, nature sketching, and land art on Himalayan trails.',
+      'Trek and paint in the Himalayas with morning walks, afternoon art, plein air painting, nature sketching, and creative practice on mountain trails.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

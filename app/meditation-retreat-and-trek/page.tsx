@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Meditation Retreat and Trek | Retreats And Treks',
     description:
-      'Combine a meditation retreat with Himalayan trekking. Stillness and movement in the same journey — 3–5 days of silent practice followed by 3–5 days on the trail. Chakrata, Sankri, Zanskar.',
+      'Combine meditation retreat and Himalayan trekking with silent practice, guided trails, stillness, movement, and mountain journeys in Chakrata, Sankri, or Zanskar.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

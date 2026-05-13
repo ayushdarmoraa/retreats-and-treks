@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Trek and Meditate in the Himalayas | Retreats And Treks',
     description:
-      'Trek and meditate in the Himalayas. Not a trek with meditation added — a practice where walking and sitting are equal partners. Himalayan trails as meditation halls. Chakrata, Sankri, Zanskar.',
+      'Trek and meditate in the Himalayas with walking practice, sitting meditation, silent trails, and guided journeys across Chakrata, Sankri, and Zanskar.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

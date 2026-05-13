@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Meditation Retreats in Rishikesh | Retreats And Treks',
     description:
-      'Find meditation retreats in Rishikesh with guided silence, breath awareness and walking meditation on the Ganges. Residential programs in India\'s meditation capital.',
+      'Find meditation retreats in Rishikesh with guided silence, breath awareness, walking meditation, Ganga-side practice, and residential programs.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },
