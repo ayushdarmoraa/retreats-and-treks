@@ -18,7 +18,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Brahmatal vs Kuari Pass | Retreats And Treks',
     description:
-      'Brahmatal (3,850m, 4 days, winter) vs Kuari Pass (3,876m, 5 days, spring). Side-by-side comparison of altitude, difficulty, views, season & cost for these two moderate Garhwal Himalaya treks.',
+      'Brahmatal vs Kuari Pass trek comparison by altitude, difficulty, views, season, duration, and cost for these moderate Garhwal routes.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

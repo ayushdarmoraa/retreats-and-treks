@@ -14,7 +14,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Garhwal Trek Fitness Guide | Retreats And Treks',
     description:
-      'Free 8-week fitness plan for Garhwal Himalaya treks. Week-by-week training for Brahmatal (3,850m), Kuari Pass, Roopkund (4,800m) & Pangarchulla. Cardio, strength, altitude prep & gear checklist.',
+      'Free 8-week Garhwal trek fitness plan for Brahmatal, Kuari Pass, Roopkund, and Pangarchulla with cardio, strength, altitude prep, and gear guidance.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

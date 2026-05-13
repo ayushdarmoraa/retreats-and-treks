@@ -14,7 +14,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Garhwal Trek Packing Checklist | Retreats And Treks',
     description:
-      'Complete packing checklist for Garhwal Himalaya treks (3,850m–4,800m). Print-ready gear list for Brahmatal, Kuari Pass, Roopkund & Pangarchulla. Organised by category, difficulty tier & season.',
+      'Complete Garhwal trek packing checklist for Brahmatal, Kuari Pass, Roopkund, and Pangarchulla, organised by gear category, season, and difficulty.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

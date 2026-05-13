@@ -21,7 +21,7 @@ export function generateMetadata(): Metadata {
     title:
       'Best Treks in Uttarakhand | Retreats And Treks',
     description:
-      'Compare the 10 best treks in Uttarakhand — Brahmatal, Kuari Pass, Roopkund, Pangarchulla and more. See altitude, difficulty, best season and trek duration to choose the right Himalayan route.',
+      'Compare the best treks in Uttarakhand by altitude, difficulty, season, duration, and route style — Brahmatal, Kuari Pass, Roopkund, Pangarchulla, and more.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

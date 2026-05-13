@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Best Garhwal Himalaya Treks | Retreats And Treks',
     description:
-      'The 4 best Garhwal Himalaya treks ranked by difficulty: Brahmatal (3,850m), Kuari Pass (3,876m), Roopkund (4,800m) & Pangarchulla (4,590m). Season, route & comparison guide from Lohajung and Joshimath.',
+      'Compare the best Garhwal Himalaya treks by difficulty, season, route, and altitude — Brahmatal, Kuari Pass, Roopkund, and Pangarchulla.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },
