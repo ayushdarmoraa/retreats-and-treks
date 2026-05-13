@@ -12,7 +12,7 @@ export const dynamic = 'force-static';
 export function generateMetadata(): Metadata {
   const title = 'Himalayan Locations | Retreats And Treks';
   const description =
-    'Explore our network of Himalayan locations — from accessible hill towns to remote high-altitude valleys. Each chosen for depth, silence, and transformative potential.';
+    'Explore Himalayan locations for retreats and treks, from accessible hill towns to remote valleys chosen for silence, depth, and transformation.';
   const canonical = buildCanonicalUrl('/locations');
 
   return {

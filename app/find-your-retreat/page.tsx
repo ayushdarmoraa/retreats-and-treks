@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Find Your Retreat | Retreats And Treks',
     description:
-      'Answer 5 questions and get a personalised Himalayan retreat recommendation. Based on your energy, goals, duration, and preferences — not marketing. Takes 2 minutes.',
+      'Answer 5 questions and get a personalised Himalayan retreat recommendation based on your energy, goals, duration, and preferences.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

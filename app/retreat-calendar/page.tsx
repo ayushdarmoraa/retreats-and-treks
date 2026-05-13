@@ -18,7 +18,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Retreat Calendar | Retreats And Treks',
     description:
-      'Browse all scheduled Himalayan retreat dates for 2026. Filter by location, experience type, or month. See pricing, availability, and seats remaining. Book directly.',
+      'Browse scheduled Himalayan retreat dates, pricing, availability, locations, experience types, months, and seats remaining for upcoming programs.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

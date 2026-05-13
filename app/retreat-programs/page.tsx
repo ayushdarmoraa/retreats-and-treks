@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Himalayan Retreat Programs | Retreats And Treks',
     description:
-      'Compare all structured Himalayan retreat programs side by side. Filter and sort by duration, location, intensity, and format to find the retreat that matches your needs.',
+      'Compare Himalayan retreat programs by duration, location, intensity, and format to find the retreat that matches your needs.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

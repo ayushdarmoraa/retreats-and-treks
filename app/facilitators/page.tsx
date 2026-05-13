@@ -16,7 +16,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Our Facilitators | Retreats And Treks',
     description:
-      'Meet the people who lead our Himalayan retreats. Meditation teachers, yoga instructors, clinical psychologists, mountain guides, and sound healing practitioners.',
+      'Meet the facilitators who lead our Himalayan retreats, including meditation teachers, yoga instructors, psychologists, guides, and healers.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {
