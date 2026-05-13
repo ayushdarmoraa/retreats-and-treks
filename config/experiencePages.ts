@@ -252,7 +252,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     seoTitle: 'Burnout Recovery Retreats | Retreats And Treks',
     h1: 'Burnout Recovery Retreats',
     metaDescription:
-      'Himalayan burnout recovery retreats for professionals, founders, and remote workers. Not productivity optimisation — genuine recalibration in Chakrata, Zanskar, Munsiyari, and Sankri.',
+      'Himalayan burnout recovery retreats for professionals and founders. Deep rest, nervous system reset, and guided recalibration in Chakrata, Zanskar, Munsiyari, and Sankri.',
     heroImage: '/Images/retreat/services/rest.webp',
     heroImageAlt: 'Peaceful retreat environment for deep rest and recovery',
     intro:
@@ -325,7 +325,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     seoTitle: 'Spiritual Retreats in India | Retreats And Treks',
     h1: 'Spiritual Retreats in the Himalayas',
     metaDescription:
-      'Authentic Himalayan spiritual retreats in Rishikesh, Zanskar, and Chakrata. Not spiritual tourism — genuine immersion in places where contemplative tradition is alive. Small groups, experienced guidance.',
+      'Authentic spiritual retreats in Rishikesh, Zanskar, and Chakrata. Himalayan silence, contemplative practice, small groups, and experienced guidance.',
     heroImage: '/Images/retreat/services/sound.webp',
     heroImageAlt: 'Immersion in a deep spiritual healing environment using sound bowls',
     intro:
@@ -386,7 +386,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     title: 'Stress Relief Retreats in the Himalayas | Retreats And Treks',
     h1: 'Stress Relief Retreats in the Himalayas',
     metaDescription:
-      'Himalayan stress relief retreats — somatic release, forest immersion, altitude reset. Chakrata, Zanskar, Munsiyari. Small groups, no performance pressure. Let the mountains do what holidays cannot.',
+      'Himalayan stress relief retreats in Chakrata, Zanskar, and Munsiyari. Somatic release, forest immersion, altitude reset, and small groups.',
     heroImage: '/Images/retreat/services/rest.webp',
     heroImageAlt: 'Calm retreat surroundings to lower stress and rest the nervous system',
     intro:
@@ -449,7 +449,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     seoTitle: 'Anxiety Healing Retreats | Retreats And Treks',
     h1: 'Anxiety Healing Retreats in the Himalayas',
     metaDescription:
-      'Himalayan retreats for anxiety healing — guided meditation, breathwork, forest immersion, altitude stillness. Chakrata, Zanskar, Munsiyari. Small groups, experienced guides. A space where anxiety can settle.',
+      'Anxiety healing retreats in Chakrata, Zanskar, and Munsiyari. Guided meditation, breathwork, forest immersion, altitude stillness, and small groups.',
     heroImage: '/Images/whyhimalaya/meditation.webp',
     heroImageAlt: 'Releasing anxiety through guided meditation and slow breathwork in nature',
     intro:
@@ -511,7 +511,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     title: 'Digital Detox Retreats in the Himalayas | Retreats And Treks',
     h1: 'Digital Detox Retreats in the Himalayas',
     metaDescription:
-      'Himalayan digital detox retreats — no phone signal, no Wi-Fi, no screens. Zanskar, Chakrata, Munsiyari. Reclaim your attention in mountain environments where disconnection is not a choice but a geography.',
+      'Digital detox retreats in Zanskar, Chakrata, and Munsiyari. No phone signal, no Wi-Fi, no screens — just Himalayan space to reclaim attention.',
     heroImage: '/Images/whyhimalaya/nature.webp',
     heroImageAlt: 'Immersion in nature far away from cell reception and screens',
     intro:
@@ -577,7 +577,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     title: 'Healing Retreats in the Himalayas | Retreats And Treks',
     h1: 'Healing Retreats in the Himalayas',
     metaDescription:
-      'Himalayan healing retreats — emotional, physical, spiritual. Forest bathing, altitude therapy, somatic release, meditation. Chakrata, Zanskar, Rishikesh, Munsiyari. Small groups, genuine care.',
+      'Himalayan healing retreats in Chakrata, Zanskar, Rishikesh, and Munsiyari. Forest bathing, somatic release, meditation, and genuine care.',
     heroImage: '/Images/retreat/services/sound.webp',
     heroImageAlt: 'Therapeutic and emotional healing occurring in a supportive retreat environment',
     intro:
@@ -647,7 +647,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     seoTitle: 'Creative Healing Retreat | Retreats And Treks',
     h1: 'Creative Healing Retreat — Art & Yoga in the Himalayas',
     metaDescription:
-      'Creative healing retreats combining painting, expressive arts, yoga, and emotional healing in the Himalayas. Mussoorie, Chakrata, Rishikesh, Zanskar, Sankri. Small groups, no experience needed.',
+      'Creative healing retreats with painting, expressive arts, yoga, and emotional healing in the Himalayas. Small groups, no experience needed.',
     heroImage: '/Images/retreat/services/art.webp',
     heroImageAlt: 'People engaging in expressive painting during a mountain art retreat',
     intro:
