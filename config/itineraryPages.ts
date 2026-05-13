@@ -473,7 +473,7 @@ function generateItineraryPages(): ItineraryPage[] {
       title: `${durationLabel} ${elPage.label} Itinerary — ${elPage.locationName} | Retreats And Treks`,
       seoTitle: `${durationLabel} ${elPage.label.replace(/ Retreat$/, '')} — ${elPage.locationName} | Retreats And Treks`,
       h1: `${durationLabel} ${elPage.label} Itinerary in ${elPage.locationName}`,
-      metaDescription: `Day-by-day itinerary for a ${arc.duration}-day ${elPage.label.toLowerCase()} in ${elPage.locationName}. Full schedule, daily themes, what to expect each day. Plan your Himalayan retreat.`,
+      metaDescription: `${arc.duration}-day ${elPage.label.toLowerCase()} itinerary in ${elPage.locationName}: daily schedule, themes, practice rhythm, and what to expect.`,
       intro: `What actually happens during a ${arc.duration}-day ${elPage.label.toLowerCase()} in ${elPage.locationName}? Below is the day-by-day itinerary — not a marketing brochure, but the actual rhythm of the retreat. Times are approximate; the schedule serves the practice, not the other way around.`,
       days,
       faqItems: generateItineraryFAQs(elPage.label, elPage.locationName, arc.duration),

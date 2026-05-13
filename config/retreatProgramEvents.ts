@@ -75,7 +75,7 @@ const EVENTS: RetreatProgramEvent[] = [
     title: 'Zanskar Meditation Retreat — June 2026 | Retreats And Treks',
     h1: 'Zanskar Meditation Retreat — June 2026',
     metaDescription:
-      '7-day meditation retreat in Zanskar, June 2026. Monastery setting at 3,500m. Small group (max 10). ₹45,000 all-inclusive. Limited seats.',
+      '7-day Zanskar meditation retreat in June 2026 with monastery setting, small group, guided practice, ₹45,000 pricing, and limited seats.',
     intro:
       'Seven days of structured meditation practice in the Trans-Himalayan valley of Zanskar. The monastery tradition here stretches back over a thousand years. At 3,500 metres, the reduced oxygen naturally slows the thinking mind. June is the first month of the Zanskar season — passes have just opened, the valley is fresh, and the monsoon has not yet reached this rain-shadow region. This is the most immersive retreat we offer.',
     dateRange: '8 Jun – 14 Jun 2026',
@@ -148,7 +148,7 @@ const EVENTS: RetreatProgramEvent[] = [
     title: 'Chakrata Burnout Retreat | Retreats And Treks',
     h1: 'Chakrata Burnout Recovery Retreat — August 2026',
     metaDescription:
-      '5-day burnout recovery retreat in Chakrata, August 2026. Forest setting at 2,200m. Somatic therapy, rest, nervous system regulation. ₹28,000 all-inclusive.',
+      '5-day Chakrata burnout recovery retreat in August 2026 with forest rest, somatic therapy, nervous system regulation, and ₹28,000 pricing.',
     intro:
       'Five days designed for people who have been running on empty. Chakrata in August is monsoon season — the forest is at its most alive, cloud cover wraps the ridge, and the air smells of wet deodar. It rains, and you rest. The sound of rain on the forest canopy is itself a form of therapy. This retreat does not ask you to do more. It asks you to stop.',
     dateRange: '10 Aug – 14 Aug 2026',
@@ -221,7 +221,7 @@ const EVENTS: RetreatProgramEvent[] = [
     title: 'Chakrata Silent Retreat — October 2026 | Retreats And Treks',
     h1: 'Chakrata Silent Retreat — October 2026',
     metaDescription:
-      '7-day silent retreat in Chakrata, October 2026. Deodar forest at 2,200m. Noble silence, structured practice, small group (max 8). ₹32,000 all-inclusive.',
+      '7-day Chakrata silent retreat in October 2026 with noble silence, structured practice, deodar forest setting, small group, and ₹32,000 pricing.',
     intro:
       'Seven days of noble silence in the deodar forests of Chakrata. October is the finest month here — post-monsoon clarity, cool days, warm light through the trees, and absolute absence of tourist traffic. The forest provides the silence; we provide the structure. No conversation, no devices, no reading. Just you and the quiet that lives beneath everything.',
     dateRange: '5 Oct – 11 Oct 2026',
@@ -293,7 +293,7 @@ const EVENTS: RetreatProgramEvent[] = [
     title: 'Rishikesh Yoga Retreat — March 2026 | Retreats And Treks',
     h1: 'Rishikesh Yoga Retreat — March 2026',
     metaDescription:
-      '5-day yoga retreat in Rishikesh, March 2026. Ganges riverbank location. Daily asana, pranayama, philosophy. Small group (max 12). ₹24,000 all-inclusive.',
+      '5-day Rishikesh yoga retreat in March 2026 with Ganga-side practice, daily asana, pranayama, philosophy, small group, and ₹24,000 pricing.',
     intro:
       'Five days of yoga practice on the banks of the Ganges. March is ideal — pre-heat, post-winter, the river is calm, and the light is warm without being harsh. Rishikesh carries a living lineage of yoga practice that no other location in the world can replicate. This retreat connects you to that lineage through daily practice, philosophical study, and the presence of the river itself.',
     dateRange: '16 Mar – 20 Mar 2026',
@@ -366,7 +366,7 @@ const EVENTS: RetreatProgramEvent[] = [
     title: 'Sankri Stress Relief Retreat | Retreats And Treks',
     h1: 'Sankri Stress Relief Retreat — April 2026',
     metaDescription:
-      '5-day stress relief retreat in Sankri, April 2026. Mountain village at 2,000m. Breathwork, forest bathing, somatic therapy. ₹26,000 all-inclusive.',
+      '5-day Sankri stress relief retreat in April 2026 with breathwork, forest bathing, somatic therapy, mountain village setting, and ₹26,000 pricing.',
     intro:
       'Five days of nervous system regulation in the Himalayan village of Sankri. April is spring in the mountains — apple blossoms, clear skies, and the kind of clean air that feels medicinal. Sankri sits at the edge of the Govind Wildlife Sanctuary, far from any city noise. The remoteness is not a bug — it is the primary therapeutic tool. Your stress patterns require separation from their triggers, and Sankri provides that separation physically.',
     dateRange: '14 Apr – 18 Apr 2026',
@@ -439,7 +439,7 @@ const EVENTS: RetreatProgramEvent[] = [
     title: 'Munsiyari Healing Retreat | Retreats And Treks',
     h1: 'Munsiyari Healing Retreat — September 2026',
     metaDescription:
-      '7-day healing retreat in Munsiyari, September 2026. Alpine meadows facing Panchachuli peaks. Sound healing, breathwork, forest therapy. ₹35,000 all-inclusive.',
+      '7-day Munsiyari healing retreat in September 2026 with Panchachuli views, sound healing, breathwork, forest therapy, and ₹35,000 pricing.',
     intro:
       'Seven days of gentle, supported healing in the alpine meadows of Munsiyari. September is the transition from monsoon to autumn — the air is the clearest it will be all year, the Panchachuli peaks are freshly snow-dusted, and the landscape has that post-rain luminosity that makes everything feel new. This retreat is for people carrying something — grief, transition, exhaustion, or something unnamed. You do not need to know what you need healing from. The process reveals itself.',
     dateRange: '15 Sep – 21 Sep 2026',
@@ -515,7 +515,7 @@ const EVENTS: RetreatProgramEvent[] = [
     title: 'Chakrata Weekend Retreat — May 2026 | Retreats And Treks',
     h1: 'Chakrata Weekend Retreat — May 2026',
     metaDescription:
-      '3-day weekend retreat in Chakrata, May 2026. Forest setting at 2,200m, 3.5 hours from Dehradun. ₹14,000 all-inclusive. Ideal first retreat.',
+      '3-day Chakrata weekend retreat in May 2026 with forest setting, Dehradun access, gentle structure, ₹14,000 pricing, and first-retreat focus.',
     intro:
       'Three days in the Chakrata forest. Enough time to settle, enough structure to create a genuine shift, short enough to fit into a working schedule. May is pre-monsoon — warm days, cool evenings, the forest fully leafed out, and wildflowers in the meadows. This is our most accessible retreat: close to Dehradun, gentle in structure, and designed for people who have never attended a retreat before.',
     dateRange: '22 May – 24 May 2026',
@@ -585,7 +585,7 @@ const EVENTS: RetreatProgramEvent[] = [
     title: 'Zanskar Spiritual Retreat — July 2026 | Retreats And Treks',
     h1: 'Zanskar Spiritual Retreat — July 2026',
     metaDescription:
-      '7-day spiritual retreat in Zanskar, July 2026. Monastery setting, chanting, contemplative practice. Trans-Himalayan immersion at 3,500m. ₹48,000 all-inclusive.',
+      '7-day Zanskar spiritual retreat in July 2026 with monastery setting, chanting, contemplative practice, Trans-Himalayan immersion, and ₹48,000 pricing.',
     intro:
       'Seven days of contemplative practice in the monastic landscape of Zanskar. July is the heart of the Zanskar season — the valley is fully open, monasteries are active with summer pujas, and the long days allow extended practice. This retreat draws on the Buddhist contemplative tradition without requiring you to follow it. The methods — chanting, silence, inquiry, walking — are universal. The monastery setting provides the weight of a lineage that has been practising here for a thousand years.',
     dateRange: '6 Jul – 12 Jul 2026',
@@ -659,7 +659,7 @@ const EVENTS: RetreatProgramEvent[] = [
     title: 'Chakrata Digital Detox Retreat | Retreats And Treks',
     h1: 'Chakrata Digital Detox Retreat — November 2026',
     metaDescription:
-      '5-day digital detox retreat in Chakrata, November 2026. Surrender your devices. Forest at 2,200m. Analog living. ₹22,000 all-inclusive.',
+      '5-day Chakrata digital detox retreat in November 2026 with device surrender, analog living, forest setting, and ₹22,000 pricing.',
     intro:
       'Five days without screens. November in Chakrata: the autumn colour has passed, the forest is quiet, early frost on the mornings, and fire in the evenings. The structure is simple — surrender your devices on arrival, spend five days doing things humans did for thousands of years before screens existed, and then re-enter digital life with boundaries you set before leaving.',
     dateRange: '9 Nov – 13 Nov 2026',
@@ -732,7 +732,7 @@ const EVENTS: RetreatProgramEvent[] = [
     title: 'Creative Healing Retreat — October 2026 | Retreats And Treks',
     h1: 'Creative Healing Retreat — October 2026',
     metaDescription:
-      '7-day creative healing retreat, October 2026. Emotional healing through art & yoga in the Himalayas. ₹35,000 all-inclusive. Max 10 participants. Location TBA.',
+      '7-day creative healing retreat in October 2026 with art, yoga, emotional healing, Himalayan setting, ₹35,000 pricing, and max 10 participants.',
     intro:
       'Seven days of facilitated creative healing practice in October 2026. This retreat combines expressive arts with gentle yoga and nature immersion — creating a healing container where creativity becomes a doorway to emotional truth. This is not an art class. It is protected time and space for creative work and emotional healing, with a facilitator who understands that the process matters more than the product. Location to be announced.',
     dateRange: '5 Oct – 11 Oct 2026',
@@ -809,7 +809,7 @@ const EVENTS: RetreatProgramEvent[] = [
     title: 'Creative Healing Retreat — June 2026 | Retreats And Treks',
     h1: 'Creative Healing Retreat — June 2026',
     metaDescription:
-      '7-day creative healing retreat, June 2026. Emotional healing through art & yoga in the Himalayas. ₹30,000 all-inclusive. Max 8. Location TBA.',
+      '7-day creative healing retreat in June 2026 with art, yoga, emotional healing, Himalayan setting, ₹30,000 pricing, and max 8 participants.',
     intro:
       'Seven days of creative healing practice in June 2026. The retreat combines expressive arts with gentle yoga and forest immersion — creating a container where creativity becomes a doorway to emotional truth. Your studio is nature itself. The landscape becomes both subject and collaborator — its textures, colours, and silences enter the work whether you intend it or not. Location to be announced.',
     dateRange: '15 Jun – 21 Jun 2026',
@@ -882,7 +882,7 @@ const EVENTS: RetreatProgramEvent[] = [
     title: 'Creative Healing Retreat — April 2026 | Retreats And Treks',
     h1: 'Creative Healing Retreat — April 2026',
     metaDescription:
-      '7-day creative healing retreat, April 2026. Emotional healing through art & yoga in the Himalayas. ₹32,000 all-inclusive. Max 10. Location TBA.',
+      '7-day creative healing retreat in April 2026 with art, yoga, emotional healing, Himalayan setting, ₹32,000 pricing, and max 10 participants.',
     intro:
       'Seven days of creative healing practice in April 2026. The retreat weaves together expressive arts, gentle yoga, and nature immersion. The intersection of art and emotional healing happens naturally when you create without judgment in a Himalayan setting. Morning movement, then creation. Location to be announced.',
     dateRange: '6 Apr – 12 Apr 2026',
