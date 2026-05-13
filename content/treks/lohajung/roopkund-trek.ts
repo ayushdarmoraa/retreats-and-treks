@@ -4,7 +4,7 @@ const roopkundTrek: TrekContent = {
   slug: 'roopkund-trek',
   title: 'Roopkund Trek (4,800m) – The Skeleton Lake Expedition',
   description:
-    'Trek to the legendary Roopkund skeleton lake at 4,800m. A challenging 7-day expedition traversing the vast Bedni Bugyal meadows with views of Mount Trishul. Best from May-June & Sept-Oct.',
+    'Roopkund trek from Lohajung to the 4,800m skeleton lake, crossing Bedni Bugyal with Trishul views on a challenging 7-day route.',
 
   locationId: 'lohajung',
   trekType: 'Guided Trek',

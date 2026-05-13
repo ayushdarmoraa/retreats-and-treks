@@ -4,7 +4,7 @@ const kuariPassTrek: TrekContent = {
   slug: 'kuari-pass-trek',
   title: 'Kuari Pass Trek (3,876m) – The Lord Curzon Trail',
   description:
-    'Trek the historic Lord Curzon Trail to Kuari Pass at 3,876m. Experience continuous 180° views of Nanda Devi, Dronagiri & Chaukhamba. A perfect 5-day moderate trek from Joshimath/Rishikesh.',
+    'Kuari Pass trek from Joshimath on the Lord Curzon Trail, with Nanda Devi, Dronagiri, and Chaukhamba views on a 5-day moderate route.',
 
   locationId: 'joshimath',
   trekType: 'Guided Trek',

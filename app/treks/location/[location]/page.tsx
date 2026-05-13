@@ -564,19 +564,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const GARHWAL_HUB_META: Record<string, { title: string; description: string }> = {
     sankri: {
       title: 'Treks from Sankri | Retreats And Treks',
-      description: 'Sankri is the basecamp for Kedarkantha (3,810m, challenging, winter snow trek) and Har Ki Dun (3,566m, moderate, valley trek). Season guide, difficulty & booking.',
+      description: 'Sankri is the basecamp for Kedarkantha and Har Ki Dun. Compare trek difficulty, season, route style, and booking options from this Himalayan village.',
     },
     munsiyari: {
       title: 'Treks from Munsiyari | Retreats And Treks',
-      description: 'Munsiyari is the gateway to Khaliya Top (3,500m, moderate meadow trek) and Milam Glacier (3,450m, challenging expedition). Best season, permits & planning guide.',
+      description: 'Munsiyari is the gateway to Khaliya Top and Milam Glacier treks. Compare seasons, difficulty, permits, views, and planning details.',
     },
     lohajung: {
       title: 'Treks from Lohajung | Retreats And Treks',
-      description: 'Lohajung is the base for 2 Garhwal Himalaya treks: Brahmatal (3,850m, moderate, winter) and Roopkund (4,800m, challenging, summer). How to reach, best season, difficulty & booking guide.',
+      description: 'Lohajung is the base for Brahmatal and Roopkund treks. Compare seasons, difficulty, routes, how to reach, and booking details.',
     },
     joshimath: {
       title: 'Treks from Joshimath | Retreats And Treks',
-      description: 'Joshimath is the base for 2 Garhwal Himalaya treks: Kuari Pass (3,876m, moderate, spring/autumn) and Pangarchulla Peak (4,590m, challenging, spring). Season, difficulty & planning guide.',
+      description: 'Joshimath is the base for Kuari Pass and Pangarchulla Peak treks. Compare seasons, difficulty, altitude, route style, and planning details.',
     },
   };
 

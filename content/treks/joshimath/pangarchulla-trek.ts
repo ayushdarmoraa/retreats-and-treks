@@ -4,7 +4,7 @@ const pangarchullaTrek: TrekContent = {
   slug: 'pangarchulla-trek',
   title: 'Pangarchulla Peak Trek (4,700m) – The Ultimate Spring Summit',
   description:
-    'Summit Pangarchulla Peak at 4,700m in the Indian Himalayas. A challenging 6-day expedition demanding early alpine starts, snow climbing, and intense fitness. Best from March to May.',
+    'Pangarchulla Peak trek from Joshimath, a challenging 6-day spring summit route with snow sections, alpine starts, and big Garhwal views.',
 
   locationId: 'joshimath',
   trekType: 'Guided Trek',

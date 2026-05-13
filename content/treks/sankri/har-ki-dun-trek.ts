@@ -4,7 +4,7 @@ const harKiDunTrek: TrekContent = {
   slug: 'har-ki-dun-trek',
   title: 'Har Ki Dun Trek (3,566m) – The Valley of Gods',
   description:
-    'Trek into the legendary Har Ki Dun valley. Experience ancient Himalayan villages, untouched alpine meadows, and jaw-dropping views of Swargarohini. 7 days from Dehradun.',
+    'Har Ki Dun trek from Sankri through ancient villages, alpine meadows, and Swargarohini views. A 7-day guided Himalayan valley trek.',
 
   locationId: 'sankri',
   trekType: 'Guided Trek',

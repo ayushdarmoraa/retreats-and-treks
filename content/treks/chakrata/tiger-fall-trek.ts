@@ -4,7 +4,7 @@ const tigerFallTrek: TrekContent = {
   slug: 'tiger-fall-trek',
   title: 'Chakrata Tiger Fall Trek',
   description:
-    'A scenic trek to Tiger Fall, a majestic waterfall near Chakrata. Forest trails, waterfall views, swimming opportunity, and nature immersion. 2 nights 3 days guided adventure from Dehradun.',
+    'Tiger Fall trek near Chakrata with forest trails, waterfall views, nature immersion, and a 2-night 3-day guided route from Dehradun.',
 
   locationId: 'chakrata',
   trekType: 'Waterfall Trek',

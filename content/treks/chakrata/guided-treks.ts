@@ -4,7 +4,7 @@ const guidedTreks: TrekContent = {
   slug: 'guided-treks',
   title: 'Chakrata Guided Treks',
   description:
-    'Expert-guided trekking experiences in Chakrata. Scenic trails, experienced local guides, nature interpretation, and safe outdoor adventure. Flexible durations from day treks to multi-day expeditions.',
+    'Guided treks in Chakrata with scenic forest trails, local guides, nature interpretation, and flexible day-to-multi-day outdoor routes.',
 
   locationId: 'chakrata',
   trekType: 'Guided Trek',

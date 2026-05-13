@@ -4,7 +4,7 @@ const brahmatalTrek: TrekContent = {
   slug: 'brahmatal-trek',
   title: 'Brahmatal Trek (3,850m) – Snow Trek from Lohajung',
   description:
-    'Brahmatal Trek: 4-day frozen alpine lake trek from Lohajung to 3,850m in the Garhwal Himalayas. Panoramic Trishul & Nanda Ghunti views, oak forests, snow ridges. Best Dec–Mar.',
+    'Brahmatal trek from Lohajung, a 4-day winter route with frozen lake views, oak forests, snow ridges, and Trishul-Nanda Ghunti panoramas.',
 
   locationId: 'lohajung',
   trekType: 'Weekend Trek',

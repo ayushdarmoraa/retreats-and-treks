@@ -4,7 +4,7 @@ const khaliyaTopTrek: TrekContent = {
   slug: 'khaliya-top-trek',
   title: 'Khaliya Top Trek (3,500m) – The Ultimate Munsiyari Viewpoint',
   description:
-    'A breathtaking 3-4 day summit trek from Munsiyari to the alpine meadow of Khaliya Top. Experience an unbroken 180-degree panorama of the Panchachuli and Nanda Devi massifs.',
+    'Khaliya Top trek from Munsiyari, a 3–4 day meadow route with wide Panchachuli and Nanda Devi views above the Kumaon Himalayas.',
 
   locationId: 'munsiyari',
   trekType: 'Guided Trek',

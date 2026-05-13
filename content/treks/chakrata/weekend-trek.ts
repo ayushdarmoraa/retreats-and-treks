@@ -4,7 +4,7 @@ const weekendTrek: TrekContent = {
   slug: 'weekend-trek',
   title: 'Chakrata Weekend Trek',
   description:
-    'A refreshing 2 nights 3 days weekend trek in Chakrata. Forest trails, mountain views, camping under stars, and guided outdoor experience. Pickup and drop from Dehradun.',
+    'Chakrata weekend trek with forest trails, mountain views, camping, guided outdoor time, and Dehradun pickup and drop over 2 nights and 3 days.',
 
   locationId: 'chakrata',
   trekType: 'Weekend Trek',

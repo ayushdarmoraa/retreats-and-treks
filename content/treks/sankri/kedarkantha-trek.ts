@@ -4,7 +4,7 @@ const kedarkanthaTrek: TrekContent = {
   slug: 'kedarkantha-trek',
   title: 'Kedarkantha Trek',
   description:
-    'A classic winter snow trek to the Kedarkantha summit in Uttarakhand. Experience walking through snow-draped pine forests, panoramic 360-degree Himalayan views, and an exhilarating summit climb. Perfect for beginners and seasoned trekkers alike. 6 days from Dehradun.',
+    'Kedarkantha winter snow trek from Sankri with pine forests, summit views, and a 5-day guided Himalayan route suitable for fit beginners.',
 
   locationId: 'sankri',
   trekType: 'Weekend Trek',

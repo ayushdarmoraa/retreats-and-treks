@@ -4,7 +4,7 @@ const dayaraBugyalTrek: TrekContent = {
   slug: 'dayara-bugyal-trek',
   title: 'Dayara Bugyal Trek (3,750m) – The Great Himalayan Meadow',
   description:
-    'Trek to Dayara Bugyal, one of India’s most expansive and beautiful alpine meadows. A perfect 4-day beginner trek from Barsu offering jaw-dropping views of the Bandarpoonch massif.',
+    'Dayara Bugyal trek from Barsu, a 4-day beginner-friendly meadow route with wide Himalayan views and the Bandarpoonch massif.',
 
   locationId: 'barsu',
   trekType: 'Beginner Trek',

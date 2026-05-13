@@ -4,7 +4,7 @@ const budherCavesTrek: TrekContent = {
   slug: 'budher-caves-trek',
   title: 'Chakrata Budher Caves Trek',
   description:
-    'An adventurous trek to the historic Budher Caves in Chakrata. Explore ancient caves, forest trails, mountain views, and local heritage. 2 nights 3 days guided experience from Dehradun.',
+    'Budher Caves trek in Chakrata with forest trails, ancient caves, mountain views, local heritage, and a 2-night 3-day guided route.',
 
   locationId: 'chakrata',
   trekType: 'Cave Trek',

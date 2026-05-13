@@ -4,7 +4,7 @@ const milamGlacierTrek: TrekContent = {
   slug: 'milam-glacier-trek',
   title: 'Milam Glacier Trek (3,450m) – The Old Indo-Tibet Trade Route',
   description:
-    'An epic 10-day expedition deep into the Kumaon Himalayas. Trek the ancient Johar Valley trade route past abandoned villages and into the massive Milam Glacier beneath the Panchachuli range.',
+    'Milam Glacier trek from Munsiyari through the Johar Valley, abandoned villages, and remote Kumaon terrain on a challenging 10-day route.',
 
   locationId: 'munsiyari',
   trekType: 'Guided Trek',
