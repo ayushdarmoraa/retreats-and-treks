@@ -81,7 +81,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${titleA} vs ${titleB} | Retreats And Treks`,
-    description: `A detailed comparison of ${serviceA.title} and ${serviceB.title} retreats — structure, intensity, duration, ideal participant, and how to choose between them.`,
+    description: `Compare ${titleA} and ${titleB} retreats by structure, intensity, duration, ideal participant, and how to choose the right path.`,
     alternates: { canonical: buildCanonicalUrl(canonicalPath) },
     robots: { index: true, follow: true },
     openGraph: {

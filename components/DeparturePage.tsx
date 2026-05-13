@@ -148,7 +148,7 @@ export function generateDepartureMetadata(urlSlug: string): Metadata {
   if (!trek) return { title: 'Departures Not Found' };
 
   const title = `${trek.trekName} Departures | Retreats And Treks`;
-  const description = `Book your ${trek.trekName} fixed departure. ${trek.duration}, ${trek.difficulty}, ${trek.altitude}. Upcoming batches with dates, prices from ₹${trek.basePrice.toLocaleString('en-IN')}, and live seat availability. Best months: ${trek.bestMonths}.`;
+  const description = `Book ${trek.trekName} departures with dates, prices from ₹${trek.basePrice.toLocaleString('en-IN')}, live seats, difficulty, altitude, and best months.`;
 
   return {
     title,
