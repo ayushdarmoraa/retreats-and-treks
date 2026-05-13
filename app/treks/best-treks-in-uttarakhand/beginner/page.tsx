@@ -20,7 +20,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Best Beginner Treks in Uttarakhand (2025) — Easy & Moderate Routes',
+    title: 'Beginner Treks in Uttarakhand | Retreats And Treks',
     description:
       'The 5 best beginner-friendly treks in Uttarakhand ranked by difficulty. From easy day hikes in Chakrata to moderate multi-day routes in Garhwal — no prior trekking experience needed.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

@@ -20,7 +20,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Most Challenging Treks in Uttarakhand (2025) — Difficult Routes',
+    title: 'Challenging Treks in Uttarakhand | Retreats And Treks',
     description:
       'The 3 most challenging treks in Uttarakhand for experienced trekkers. Roopkund, Pangarchulla, and Milam Glacier — difficulty analysis, fitness requirements, and route comparison.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

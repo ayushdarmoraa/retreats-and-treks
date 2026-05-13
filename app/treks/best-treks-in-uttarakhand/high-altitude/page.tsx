@@ -20,7 +20,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Best High-Altitude Treks in Uttarakhand (2025) — Above 4,000 m',
+    title: 'High-Altitude Treks in Uttarakhand | Retreats And Treks',
     description:
       'The 3 best high-altitude treks in Uttarakhand above 4,000 m. Roopkund (4,800 m), Pangarchulla (4,590 m), and Brahmatal (3,850 m) — altitude profiles, preparation, and route details.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
