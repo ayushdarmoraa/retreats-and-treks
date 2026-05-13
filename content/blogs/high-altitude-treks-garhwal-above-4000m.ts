@@ -3,6 +3,7 @@ import { BlogContent } from '@/types/content';
 const highAltitudeTreksGarhwalAbove4000m: BlogContent = {
   slug: 'high-altitude-treks-garhwal-above-4000m',
   title: 'High Altitude Treks in Garhwal Above 4,000 m: Roopkund & Pangarchulla Guide',
+  seoTitle: 'High Altitude Treks in Garhwal | Retreats And Treks',
   description:
     'Everything you need to know about high-altitude treks above 4,000 m in the Garhwal Himalayas — Roopkund and Pangarchulla. Altitude risks, preparation, permits, and who should attempt them.',
   category: 'Trek Decision',

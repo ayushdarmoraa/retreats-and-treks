@@ -24,8 +24,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const blog = getBlogBySlug(slug);
   if (!blog) return { title: 'Blog Post Not Found', robots: { index: false } };
   const path = `/blog/${slug}`;
+  const seoTitle = blog.seoTitle ?? blog.title;
   return {
-    title: blog.title,
+    title: seoTitle,
     description: blog.description,
     alternates: { canonical: buildCanonicalUrl(path) },
     robots: { index: true, follow: true },

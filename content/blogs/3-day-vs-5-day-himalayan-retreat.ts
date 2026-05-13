@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const threeDayVsFiveDayHimalayanRetreat: BlogContent = {
   slug: '3-day-vs-5-day-himalayan-retreat',
   title: '3-Day vs 5-Day Himalayan Retreat: Which Duration Is Right for You?',
+  seoTitle: '3-Day vs 5-Day Himalayan Retreat | Retreats And Treks',
   description:
     'A practical comparison between short and extended Himalayan retreats, covering depth of experience, scheduling considerations, and who each duration is best suited for.',
   category: 'Retreat Decision',

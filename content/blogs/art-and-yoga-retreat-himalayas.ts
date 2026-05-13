@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const artAndYogaRetreatHimalayas: BlogContent = {
   slug: 'art-and-yoga-retreat-himalayas',
   title: 'Art and Yoga Retreat in the Himalayas: Where Movement Meets Creation',
+  seoTitle: 'Art and Yoga Retreat Himalayas | Retreats And Treks',
   description:
     'Combining morning yoga with facilitated art practice in the Himalayas. How body awareness deepens creative work, and what a combined retreat day looks like.',
   category: 'Retreat Decision',

@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const artRetreatPackingList: BlogContent = {
   slug: 'art-retreat-packing-list',
   title: 'Art Retreat Packing List: What to Bring (and What to Leave Behind)',
+  seoTitle: 'Art Retreat Packing List | Retreats And Treks',
   description:
     'A practical packing guide for a Himalayan art retreat. What materials are provided, what to bring, and what to intentionally leave at home.',
   category: 'Retreat Decision',

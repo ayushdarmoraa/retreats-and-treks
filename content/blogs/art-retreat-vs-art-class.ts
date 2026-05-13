@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const artRetreatVsArtClass: BlogContent = {
   slug: 'art-retreat-vs-art-class',
   title: 'Art Retreat vs Art Class: Which Will Actually Get You Creating Again?',
+  seoTitle: 'Art Retreat vs Art Class | Retreats And Treks',
   description:
     'Comparing structured art classes with immersive art retreats. Who benefits from each, what to expect, and which format produces lasting creative change.',
   category: 'Retreat Decision',

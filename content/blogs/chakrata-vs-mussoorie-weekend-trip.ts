@@ -3,6 +3,7 @@ import { BlogContent } from '@/types/content';
 const chakrataVsMussoorie: BlogContent = {
   slug: 'chakrata-vs-mussoorie-weekend-trip',
   title: 'Chakrata vs Mussoorie: Which Is Better for a Peaceful Weekend Trip?',
+  seoTitle: 'Chakrata vs Mussoorie Weekend | Retreats And Treks',
   description:
     'A detailed comparison of Chakrata vs Mussoorie for a weekend trip, focusing on crowd levels, nature, cost, and overall peace.',
 

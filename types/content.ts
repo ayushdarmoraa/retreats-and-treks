@@ -141,6 +141,7 @@ export type BlogContent = {
 	/** Core SEO */
 	slug: string;
 	title: string;
+        seoTitle?: string;
 	description: string;
 
 	/** Classification */

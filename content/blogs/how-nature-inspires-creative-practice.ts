@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const howNatureInspiresCreativePractice: BlogContent = {
   slug: 'how-nature-inspires-creative-practice',
   title: 'How Nature Inspires Creative Practice: The Science and the Experience',
+  seoTitle: 'How Nature Inspires Creativity | Retreats And Treks',
   description:
     'Nature does not just inspire art — it changes how the brain creates. Research on attention restoration, default mode networks, and why forests unlock creativity.',
   category: 'Lifestyle',

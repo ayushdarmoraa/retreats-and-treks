@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const bestHimalayanLocationsForArtRetreat: BlogContent = {
   slug: 'best-himalayan-locations-for-art-retreat',
   title: 'Best Himalayan Locations for an Art Retreat: 5 Places Compared',
+  seoTitle: 'Best Himalayan Art Retreat Locations | Retreats And Treks',
   description:
     'Comparing Mussoorie, Chakrata, Rishikesh, Zanskar, and Sankri for art retreats. Each location offers different light, landscape, and creative inspiration.',
   category: 'Location Authority',

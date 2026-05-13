@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const sankriVsMunsiyariRetreat: BlogContent = {
   slug: 'sankri-vs-munsiyari-retreat',
   title: 'Sankri vs Munsiyari for a Himalayan Retreat: Which Should You Choose?',
+  seoTitle: 'Sankri vs Munsiyari Retreat | Retreats And Treks',
   description:
     'Comparing Sankri and Munsiyari as retreat destinations. Landscape, travel effort, luxury positioning, group size and who each location suits best.',
   category: 'Retreat Decision',

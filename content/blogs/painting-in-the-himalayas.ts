@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const paintingInTheHimalayas: BlogContent = {
   slug: 'painting-in-the-himalayas',
   title: 'Painting in the Himalayas: Why Artists Keep Coming Back to These Mountains',
+  seoTitle: 'Painting in the Himalayas | Retreats And Treks',
   description:
     'The Himalayas have drawn painters for centuries. Here is what makes the light, landscape, and isolation ideal for creative work — and where to go.',
   category: 'Lifestyle',
