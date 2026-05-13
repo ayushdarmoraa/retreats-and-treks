@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Best Meditation Retreats in India (2026) — Himalayan Silence & Depth',
+    title: 'Best Meditation Retreats in India',
     description:
       'Compare the best meditation retreats in India — from monastery immersion in Zanskar to forest silence in Chakrata and Ganges-side practice in Rishikesh. Ranked by depth, remoteness, and tradition.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

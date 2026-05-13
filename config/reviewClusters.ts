@@ -37,7 +37,7 @@ export const REVIEW_CLUSTERS: readonly ReviewCluster[] = [
   },
   {
     slug: 'meditation-retreats',
-    title: 'Meditation Retreat Reviews & Experiences | Retreats And Treks',
+    title: 'Meditation Retreat Reviews | Retreats And Treks',
     h1: 'Real Meditation Retreat Experiences in India',
     metaDescription:
       'Real participant reviews from meditation retreats across the Himalayas. Honest stories of silence, insight, and transformation.',

@@ -13,7 +13,7 @@ const PATH = '/retreats/retreat-cost-india';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Retreat Costs in India (2026 Report): Prices, Locations & Trends',
+    title: 'Retreat Costs in India | Retreats And Treks',
     description:
       'Explore the average cost of retreats in India including Himalayan retreats, yoga retreats, and wellness retreats. Data on prices, durations, and location trends.',
     alternates: {

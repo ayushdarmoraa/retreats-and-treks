@@ -145,7 +145,7 @@ const EVENTS: RetreatProgramEvent[] = [
     locationId: 'chakrata',
     locationName: 'Chakrata',
     label: 'Burnout Recovery Retreat',
-    title: 'Chakrata Burnout Recovery Retreat — August 2026 | Retreats And Treks',
+    title: 'Chakrata Burnout Retreat | Retreats And Treks',
     h1: 'Chakrata Burnout Recovery Retreat — August 2026',
     metaDescription:
       '5-day burnout recovery retreat in Chakrata, August 2026. Forest setting at 2,200m. Somatic therapy, rest, nervous system regulation. ₹28,000 all-inclusive.',
@@ -363,7 +363,7 @@ const EVENTS: RetreatProgramEvent[] = [
     locationId: 'sankri',
     locationName: 'Sankri',
     label: 'Stress Relief Retreat',
-    title: 'Sankri Stress Relief Retreat — April 2026 | Retreats And Treks',
+    title: 'Sankri Stress Relief Retreat | Retreats And Treks',
     h1: 'Sankri Stress Relief Retreat — April 2026',
     metaDescription:
       '5-day stress relief retreat in Sankri, April 2026. Mountain village at 2,000m. Breathwork, forest bathing, somatic therapy. ₹26,000 all-inclusive.',
@@ -436,7 +436,7 @@ const EVENTS: RetreatProgramEvent[] = [
     locationId: 'munsiyari',
     locationName: 'Munsiyari',
     label: 'Healing Retreat',
-    title: 'Munsiyari Healing Retreat — September 2026 | Retreats And Treks',
+    title: 'Munsiyari Healing Retreat | Retreats And Treks',
     h1: 'Munsiyari Healing Retreat — September 2026',
     metaDescription:
       '7-day healing retreat in Munsiyari, September 2026. Alpine meadows facing Panchachuli peaks. Sound healing, breathwork, forest therapy. ₹35,000 all-inclusive.',
@@ -656,7 +656,7 @@ const EVENTS: RetreatProgramEvent[] = [
     locationId: 'chakrata',
     locationName: 'Chakrata',
     label: 'Digital Detox Retreat',
-    title: 'Chakrata Digital Detox Retreat — November 2026 | Retreats And Treks',
+    title: 'Chakrata Digital Detox Retreat | Retreats And Treks',
     h1: 'Chakrata Digital Detox Retreat — November 2026',
     metaDescription:
       '5-day digital detox retreat in Chakrata, November 2026. Surrender your devices. Forest at 2,200m. Analog living. ₹22,000 all-inclusive.',

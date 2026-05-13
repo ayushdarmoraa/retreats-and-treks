@@ -16,7 +16,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Personal Growth Retreat in the Himalayas | Retreats And Treks',
+    title: 'Personal Growth Retreat | Retreats And Treks',
     description:
       'Personal growth retreat in the Himalayas — meditation, reflection, nature immersion. Not a seminar. An experience designed for genuine inner development. Chakrata, Rishikesh, Zanskar.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

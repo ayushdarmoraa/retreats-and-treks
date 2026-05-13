@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'A Week Without My Phone — Digital Detox Retreat in the Himalayas',
+    title: 'A Week Without My Phone | Retreats And Treks',
     description:
       'What happens when you hand over your phone for 7 days in the Himalayas. A first-person account of a digital detox retreat — withdrawal, recalibration, and what changes when you return.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

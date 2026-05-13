@@ -16,7 +16,7 @@ const PATH = '/retreats/weekend-retreat-near-delhi';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Weekend Retreat Near Delhi: A Mountain Reset in the Himalayas',
+    title: 'Weekend Retreat Near Delhi | Retreats And Treks',
     description:
       'Escape the stress of city life with a peaceful weekend retreat near Delhi. Explore forests, waterfalls, mountain villages, and authentic Himalayan culture in Chakrata.',
     alternates: {

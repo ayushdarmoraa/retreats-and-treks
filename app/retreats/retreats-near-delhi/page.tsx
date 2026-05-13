@@ -18,7 +18,7 @@ const PATH = '/retreats/retreats-near-delhi';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Retreats Near Delhi | Weekend Yoga & Himalayan Wellness Retreats',
+    title: 'Retreats Near Delhi | Retreats And Treks',
     description:
       'Plan a weekend retreat near Delhi in Rishikesh, Chakrata or Sankri. Yoga, meditation, forest walks, small groups, meals and custom Himalayan retreat planning.',
     alternates: {

@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'My 7-Day Meditation Retreat in Zanskar — A First-Person Account',
+    title: '7-Day Meditation Retreat in Zanskar',
     description:
       'A first-person account of a 7-day silent meditation retreat in Zanskar, Ladakh — monastery sitting at 3,500m, frozen gorges, altitude silence, and what happens when you stop running from stillness.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

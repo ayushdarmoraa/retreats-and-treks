@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'What I Learned from a Silent Retreat — 5 Days Without Speaking',
+    title: 'What I Learned from a Silent Retreat',
     description:
       'A first-person account of a 5-day silent meditation retreat in the Himalayas — what silence actually does to your mind, the stages you go through, and what stays with you after.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
