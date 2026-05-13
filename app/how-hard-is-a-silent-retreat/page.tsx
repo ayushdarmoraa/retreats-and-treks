@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'How Hard Is a Silent Retreat? | Retreats And Treks',
     description:
-      'An honest breakdown of what makes silent retreats difficult — boredom, emotional surfacing, physical discomfort, and the urge to leave — and why people keep coming back.',
+      'How hard is a silent retreat? Understand boredom, emotional surfacing, physical discomfort, the urge to leave, and why people return.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

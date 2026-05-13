@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'First Meditation Retreat Tips | Retreats And Treks',
     description:
-      'First meditation retreat tips from experienced retreatants — what to pack, how to handle day one, dealing with discomfort, choosing duration, and the one thing nobody tells you.',
+      'First meditation retreat tips on what to pack, day one, discomfort, choosing duration, preparation, and what experienced retreatants wish they knew.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

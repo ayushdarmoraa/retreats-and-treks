@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Silent Retreat vs Digital Detox | Retreats And Treks',
     description:
-      'The real differences between a silent meditation retreat and a digital detox retreat — what each provides, who benefits most, and how to choose the right format for your situation.',
+      'Silent retreat vs digital detox: compare structure, benefits, who each format serves, and how to choose the right reset for your situation.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

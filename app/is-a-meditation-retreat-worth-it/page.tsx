@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Is a Meditation Retreat Worth It? | Retreats And Treks',
     description:
-      'Is a meditation retreat worth the time and money? An honest look at who benefits, who doesn\'t, what to expect, and how to decide if now is the right time.',
+      'Is a meditation retreat worth it? Learn who benefits, who may not, what to expect, costs, timing, and how to decide if now is right.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Vipassana vs Meditation Retreat | Retreats And Treks',
     description:
-      'The real differences between a Vipassana retreat and a general meditation retreat — structure, silence, technique, difficulty, and who benefits most from each.',
+      'Vipassana vs meditation retreat: compare structure, silence, technique, difficulty, benefits, and who each retreat format serves best.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

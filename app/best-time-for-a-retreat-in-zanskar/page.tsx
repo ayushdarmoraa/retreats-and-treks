@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Best Time for a Zanskar Retreat | Retreats And Treks',
     description:
-      'When to visit Zanskar for a meditation retreat — the best months, weather conditions, road access, and how seasonal changes affect your practice. A month-by-month planning guide.',
+      'Best time for a Zanskar retreat: months, weather, road access, seasonal changes, and how conditions affect meditation practice.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

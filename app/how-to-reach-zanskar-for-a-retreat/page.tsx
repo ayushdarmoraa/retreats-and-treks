@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'How to Reach Zanskar for a Retreat | Retreats And Treks',
     description:
-      'The complete travel guide to reaching Zanskar — flights, roads, acclimatisation, and what the journey itself teaches you. Routes from Delhi, Mumbai, Bangalore, and international origins.',
+      'How to reach Zanskar for a retreat: flights, road routes, acclimatisation, travel logistics, and routes from major Indian cities.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

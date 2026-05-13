@@ -16,7 +16,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Benefits of a Meditation Retreat | Retreats And Treks',
     description:
-      'The real benefits of a meditation retreat — nervous system reset, restored attention, emotional processing, and depth of silence. What changes in 3, 7, and 10 days.',
+      'Benefits of a meditation retreat: nervous system reset, restored attention, emotional processing, silence, and what changes in 3, 7, and 10 days.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

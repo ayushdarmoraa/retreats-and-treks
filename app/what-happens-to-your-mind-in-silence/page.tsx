@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'What Happens to Your Mind in Silence',
     description:
-      'The neuroscience and psychology of extended silence: what happens to your brain during a silent retreat, stage by stage — from restlessness through breakthrough to lasting change.',
+      'What happens to your mind in silence: neuroscience, psychology, retreat stages, restlessness, breakthrough, and lasting change.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

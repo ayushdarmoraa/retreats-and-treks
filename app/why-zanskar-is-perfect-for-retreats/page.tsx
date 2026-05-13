@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Why Zanskar Is Perfect for Retreats | Retreats And Treks',
     description:
-      'What makes Zanskar one of the most compelling retreat destinations in the world — the altitude, the monasteries, the isolation, and the centuries-old contemplative culture that still defines daily life.',
+      'Why Zanskar is ideal for retreats: altitude, monasteries, isolation, silence, and a living contemplative culture shaped by the Himalayas.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {
