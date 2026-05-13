@@ -22,6 +22,7 @@ export interface ExperienceDeepSection {
 export interface ExperiencePage {
   readonly slug: string;
   readonly title: string;
+  readonly seoTitle?: string;
   readonly h1: string;
   readonly metaDescription: string;
   readonly intro: string;
@@ -248,6 +249,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
   {
     slug: 'burnout-recovery-retreats',
     title: 'Burnout Recovery Retreats in the Himalayas | Retreats And Treks',
+    seoTitle: 'Burnout Recovery Retreats | Retreats And Treks',
     h1: 'Burnout Recovery Retreats',
     metaDescription:
       'Himalayan burnout recovery retreats for professionals, founders, and remote workers. Not productivity optimisation — genuine recalibration in Chakrata, Zanskar, Munsiyari, and Sankri.',
@@ -320,6 +322,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
   {
     slug: 'spiritual-retreats',
     title: 'Spiritual Retreats in India — Himalayan Immersion | Retreats And Treks',
+    seoTitle: 'Spiritual Retreats in India | Retreats And Treks',
     h1: 'Spiritual Retreats in the Himalayas',
     metaDescription:
       'Authentic Himalayan spiritual retreats in Rishikesh, Zanskar, and Chakrata. Not spiritual tourism — genuine immersion in places where contemplative tradition is alive. Small groups, experienced guidance.',
@@ -443,6 +446,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
   {
     slug: 'anxiety-healing-retreat',
     title: 'Anxiety Healing Retreats in the Himalayas | Retreats And Treks',
+    seoTitle: 'Anxiety Healing Retreats | Retreats And Treks',
     h1: 'Anxiety Healing Retreats in the Himalayas',
     metaDescription:
       'Himalayan retreats for anxiety healing — guided meditation, breathwork, forest immersion, altitude stillness. Chakrata, Zanskar, Munsiyari. Small groups, experienced guides. A space where anxiety can settle.',
@@ -640,6 +644,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
   {
     slug: 'creative-retreat',
     title: 'Creative Healing Retreat — Art & Yoga in the Himalayas | Retreats And Treks',
+    seoTitle: 'Creative Healing Retreat | Retreats And Treks',
     h1: 'Creative Healing Retreat — Art & Yoga in the Himalayas',
     metaDescription:
       'Creative healing retreats combining painting, expressive arts, yoga, and emotional healing in the Himalayas. Mussoorie, Chakrata, Rishikesh, Zanskar, Sankri. Small groups, no experience needed.',

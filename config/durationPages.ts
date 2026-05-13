@@ -15,6 +15,7 @@ export interface DurationLocationAngle {
 export interface DurationPage {
   readonly slug: string;
   readonly title: string;
+  readonly seoTitle?: string;
   readonly h1: string;
   readonly metaDescription: string;
   readonly intro: string;
@@ -36,6 +37,7 @@ export const DURATION_PAGES: readonly DurationPage[] = [
   {
     slug: '3-day-meditation-retreat',
     title: '3-Day Meditation Retreat in the Himalayas | Retreats And Treks',
+    seoTitle: '3-Day Meditation Retreat | Retreats And Treks',
     h1: '3-Day Meditation Retreat in the Himalayas',
     metaDescription:
       'A 3-day Himalayan meditation retreat — enough time for your nervous system to settle and genuine depth to begin. Chakrata forest, small groups, guided practice. No experience required.',
@@ -83,6 +85,7 @@ export const DURATION_PAGES: readonly DurationPage[] = [
   {
     slug: '7-day-meditation-retreat',
     title: '7-Day Meditation Retreat in the Himalayas | Retreats And Treks',
+    seoTitle: '7-Day Meditation Retreat | Retreats And Treks',
     h1: '7-Day Meditation Retreat in the Himalayas',
     metaDescription:
       'A 7-day Himalayan meditation retreat — deep immersion in forest or mountain silence. Guided practice, noble silence, small groups. Where real transformation begins.',
@@ -184,6 +187,7 @@ export const DURATION_PAGES: readonly DurationPage[] = [
   {
     slug: 'weekend-retreat-himalayas',
     title: 'Weekend Retreat in the Himalayas — Friday to Sunday | Retreats And Treks',
+    seoTitle: 'Weekend Retreat in the Himalayas | Retreats And Treks',
     h1: 'Weekend Retreat in the Himalayas',
     metaDescription:
       'A weekend Himalayan retreat — Friday evening to Sunday afternoon. Forest immersion, meditation, genuine rest in Chakrata. 2.5 hours from Dehradun. No leave from work required.',
@@ -276,6 +280,7 @@ export const DURATION_PAGES: readonly DurationPage[] = [
   {
     slug: '3-day-silent-retreat',
     title: '3-Day Silent Retreat — First Experience of Silence | Retreats And Treks',
+    seoTitle: '3-Day Silent Retreat | Retreats And Treks',
     h1: '3-Day Silent Retreat in the Himalayas',
     metaDescription:
       'A 3-day silent retreat for first-timers — guided noble silence in Himalayan forest. Chakrata, 2.5 hours from Dehradun. No meditation experience required. Discover what silence can do.',

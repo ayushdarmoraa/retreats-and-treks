@@ -9,7 +9,7 @@ export const dynamic = 'force-static';
 
 export function generateMetadata(): Metadata {
   return {
-    title: PAGE.title,
+    title: PAGE.seoTitle ?? PAGE.title,
     description: PAGE.metaDescription,
     alternates: { canonical: buildCanonicalUrl(`/${PAGE.slug}`) },
     openGraph: {
