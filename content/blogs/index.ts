@@ -58,6 +58,7 @@ import dayaraBugyalPackingList from './dayara-bugyal-packing-list';
 const chakrataVsSankri: BlogContent = {
   slug: 'chakrata-vs-sankri',
   title: 'Chakrata vs Sankri: Which Is Better for Your First Himalayan Experience?',
+  seoTitle: 'Chakrata vs Sankri | Retreats And Treks',
   description:
     'Confused between Chakrata and Sankri? This comparison explains differences in vibe, activities, effort level, and who each destination is best suited for.',
   category: 'Location Authority',
@@ -134,6 +135,7 @@ Both Chakrata and Sankri offer authentic, meaningful Himalayan experiences — t
 const kedarkanthaVsHarKiDun: BlogContent = {
   slug: 'kedarkantha-vs-har-ki-dun',
   title: 'Kedarkantha vs Har Ki Dun: Which Trek Is Better for Beginners?',
+  seoTitle: 'Kedarkantha vs Har Ki Dun | Retreats And Treks',
   description:
     'Confused between Kedarkantha and Har Ki Dun? This detailed comparison explains differences in duration, difficulty, experience, and who each trek is best for.',
   category: 'Trek Decision',
@@ -205,6 +207,7 @@ Choose based on what draws you: the satisfaction of reaching a peak, or the peac
 const isWeekendRetreatWorthIt: BlogContent = {
   slug: 'is-weekend-retreat-worth-it',
   title: 'Is a Weekend Retreat Worth It? The Real Case for Stepping Away',
+  seoTitle: 'Is a Weekend Retreat Worth It? | Retreats And Treks',
   description:
     'Wondering if a weekend retreat is worth the cost and time away? We break down the actual benefits and who should prioritize a short-away experience.',
   category: 'Retreat Decision',

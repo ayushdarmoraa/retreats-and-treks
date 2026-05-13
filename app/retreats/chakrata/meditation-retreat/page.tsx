@@ -10,7 +10,7 @@ const PATH = '/retreats/chakrata/meditation-retreat';
 
 export function generateMetadata(): Metadata {
   return {
-    title: retreat.title + ' — 3-Day Forest Meditation | Retreats And Treks',
+    title: 'Chakrata Meditation Retreat | Retreats And Treks',
     description: retreat.description,
     alternates: { canonical: buildCanonicalUrl(PATH) },
   };
