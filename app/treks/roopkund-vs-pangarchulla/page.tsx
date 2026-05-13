@@ -18,7 +18,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Roopkund vs Pangarchulla | Retreats And Treks',
     description:
-      'Roopkund (4,800m, 7 days) vs Pangarchulla (4,590m, 6 days). Difficulty, summit day, season, permits & fitness compared. Which challenging Garhwal Himalaya trek should you attempt first?',
+      'Roopkund vs Pangarchulla trek comparison by difficulty, summit day, season, permits, fitness, altitude, and route style in Garhwal.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

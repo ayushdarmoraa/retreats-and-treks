@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Kedarkantha vs Har Ki Dun | Retreats And Treks',
     description:
-      'Kedarkantha vs Har Ki Dun — a practical comparison of the two most popular treks from Sankri. Summit vs valley, winter vs summer, 4-day vs 6-day. Choose the right trek for your experience level.',
+      'Kedarkantha vs Har Ki Dun trek comparison from Sankri: summit vs valley, winter vs summer, duration, difficulty, and who should choose which route.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

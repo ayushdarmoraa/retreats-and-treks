@@ -91,7 +91,7 @@ export function generateMonthMetadata(urlSlug: string, month: string): Metadata 
   const { trek, trekInfo, monthCapitalised } = data;
   const path = `/treks/${urlSlug}/${data.monthLower}`;
   const title = `${trekInfo.displayName} in ${monthCapitalised} | Retreats And Treks`;
-  const description = `${trekInfo.displayName} in ${monthCapitalised}: trail conditions, temperature, snow level, and what to expect. ${trek.altitude} altitude, ${trek.difficulty} difficulty. Plan your ${monthCapitalised} trek.`;
+  const description = `${trekInfo.displayName} in ${monthCapitalised}: weather, trail conditions, snow level, altitude, difficulty, and planning tips for your trek.`;
 
   return {
     title,

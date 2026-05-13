@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Trek Packages in Uttarakhand | Retreats And Treks',
     description:
-      'Book all-inclusive trek packages in Uttarakhand — Kedarkantha, Har Ki Dun, Tiger Fall and more. Guide, meals, permits and camping included. Packages for beginners, groups and solo trekkers.',
+      'Book Uttarakhand trek packages with guides, meals, permits, camping, and routes for beginners, groups, and solo trekkers across the Himalayas.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },
