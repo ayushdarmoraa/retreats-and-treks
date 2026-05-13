@@ -34,7 +34,7 @@ const FACILITATORS: Facilitator[] = [
     title: 'Meditation & Silence Facilitator',
     image: facilitatorImageMap['arjun-mehta'],
     metaDescription:
-      'Arjun Mehta leads meditation and silent retreat programs across Zanskar, Chakrata, and Munsiyari. 12 years of practice. Trained in Vipassana and Zen traditions.',
+      'Arjun Mehta leads meditation and silent retreats across Zanskar, Chakrata, and Munsiyari, with 12 years of Vipassana and Zen practice.',
     bio:
       'Arjun began his meditation practice in 2014 after leaving a decade-long career in enterprise technology. What started as stress management became a sustained inquiry into attention, silence, and the structure of mind. He trained in Vipassana at Dhamma Bodhi in Bodh Gaya and spent two years at a Zen centre in Kyoto before returning to India to lead retreats in the Himalayas.',
     background: [
@@ -87,7 +87,7 @@ const FACILITATORS: Facilitator[] = [
     title: 'Burnout Recovery & Rest Facilitator',
     image: facilitatorImageMap['nidhi-rawat'],
     metaDescription:
-      'Nidhi Rawat leads burnout recovery and rest retreat programs in Chakrata and Sankri. Clinical psychology background. 8 years facilitating recovery programs.',
+      'Nidhi Rawat leads burnout recovery and rest retreats in Chakrata and Sankri, with clinical psychology training and 8 years of facilitation experience.',
     bio:
       'Nidhi trained as a clinical psychologist before recognising that the most effective recovery work does not happen in a clinic. It happens when you remove someone from the environment that is causing the damage. She designs retreat programs that combine evidence-based recovery protocols with environmental immersion — structured rest, not passive rest.',
     background: [
@@ -141,7 +141,7 @@ const FACILITATORS: Facilitator[] = [
     title: 'Artist & Art Therapist',
     image: facilitatorImageMap['chaitra-ram'],
     metaDescription:
-      'Chaitra Ram leads art and creative healing retreats in Rishikesh and the Himalayas. Artist, art therapist, psychology graduate, and 12-year painting practitioner.',
+      'Chaitra Ram leads art and creative healing retreats in Rishikesh and the Himalayas, blending art therapy, psychology, and 12 years of painting practice.',
     bio:
       'Chaitra Ram is an artist and art therapist from Mysore, Karnataka, now based in Rishikesh, where she has lived for the past seven years. Her work brings together painting, expressive art, psychology-informed reflection, and a grounded understanding of prana healing. She has spent twelve years developing her art and painting practice, and now guides creative spaces where guests can explore expression without judgment.',
     background: [
@@ -170,7 +170,7 @@ const FACILITATORS: Facilitator[] = [
     title: 'Sound Healing & Creative Retreat Facilitator',
     image: facilitatorImageMap['sunaina-bhat'],
     metaDescription:
-      'Sunaina Bhat leads sound healing and creative retreat programs in Chakrata. Trained in Tibetan singing bowls and gong therapy. 10 years of practice.',
+      'Sunaina Bhat leads sound healing and creative retreats in Chakrata, with Tibetan singing bowl, gong therapy, and 10 years of practice.',
     bio:
       'Sunaina discovered sound healing through a chance encounter with a Tibetan singing bowl practitioner in Dharamsala. That single experience redirected a career in graphic design toward something she could not explain but could not ignore. She spent three years training in Nepal and India — singing bowls, gong therapy, and overtone chanting — before beginning to lead retreats in 2016.',
     background: [

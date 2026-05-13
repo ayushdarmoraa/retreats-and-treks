@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!location) return {};
 
   const title = `${location.name} — Retreats & Treks | Retreats And Treks`;
-  const description = `Discover retreats and treks in ${location.name}, ${location.address.region}. ${location.tagline}`;
+  const description = `${location.name} retreats and treks in ${location.address.region}. ${location.tagline}`;
   const canonical = buildCanonicalUrl(`/locations/${slug}`);
 
   return {

@@ -28,7 +28,7 @@ export const REVIEW_CLUSTERS: readonly ReviewCluster[] = [
     title: 'Burnout Recovery Retreat Reviews | Retreats And Treks',
     h1: 'Burnout Recovery Retreat Experiences',
     metaDescription:
-      'Reviews from professionals who attended burnout recovery retreats in Chakrata and Sankri. Real stories of decompression, nervous system reset, and returning to work differently.',
+      'Reviews from burnout recovery retreats in Chakrata and Sankri, with real stories of decompression, nervous system reset, and returning differently.',
     intro:
       'Burnout does not resolve with a weekend off. These are stories from people who took five to seven days away from screens, deadlines, and performance — and came back measurably different.',
     retreatServiceSlugs: ['burnout-recovery', 'rest-and-reset'],
@@ -52,7 +52,7 @@ export const REVIEW_CLUSTERS: readonly ReviewCluster[] = [
     title: 'Anxiety Relief Retreat Reviews | Retreats And Treks',
     h1: 'Anxiety Relief Retreat Experiences',
     metaDescription:
-      'First-hand reviews from participants who attended retreats focused on anxiety relief. Real stories of healing, calm, and new perspective.',
+      'First-hand reviews from anxiety relief retreats, with real stories of healing, calm, support, and new perspective.',
     intro:
       'Anxiety can feel isolating, but you are not alone. These reviews come from people who joined retreats designed to help manage and relieve anxiety. Through meditation, nature immersion, and supportive guidance, participants share how their relationship with anxiety changed—and what tools they took home.',
     retreatServiceSlugs: ['rest-and-reset', 'burnout-recovery'],
@@ -64,7 +64,7 @@ export const REVIEW_CLUSTERS: readonly ReviewCluster[] = [
     title: 'Chakrata Retreat Reviews | Retreats And Treks',
     h1: 'Real Retreat Experiences in Chakrata',
     metaDescription:
-      'Authentic reviews from people who attended retreats in Chakrata. Insights on the location, programs, and personal transformation.',
+      'Authentic reviews from Chakrata retreats, with insights on the location, programs, rest, healing, and personal transformation.',
     intro:
       'Chakrata is more than a destination—it’s a container for deep rest and renewal. These reviews are from participants who experienced the unique energy of Chakrata through meditation, yoga, and healing retreats. Read what makes this Himalayan town a true retreat haven.',
     retreatServiceSlugs: [
