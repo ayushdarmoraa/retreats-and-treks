@@ -21,7 +21,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Best Retreats in Uttarakhand | Retreats And Treks',
     description:
-      'Looking for the best retreat in Uttarakhand? Compare yoga retreats in Rishikesh, luxury escapes in Munsiyari, weekend resets near Delhi and seasonal Himalayan wellness programs — ranked by purpose and budget.',
+      'Compare the best retreats in Uttarakhand by purpose, budget, location, and style — yoga, wellness, weekend resets, luxury escapes, and Himalayan healing.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

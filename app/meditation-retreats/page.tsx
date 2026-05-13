@@ -21,7 +21,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Meditation Retreats in the Himalayas | Retreats And Treks',
     description:
-      'Guided meditation retreats in quiet Himalayan locations — Zanskar, Chakrata, Rishikesh. Small groups (max 12), deep silence, experienced teachers. 3–10 day programs from ₹18,000. Find the right setting for your practice.',
+      'Guided meditation retreats in Zanskar, Chakrata, and Rishikesh. Small groups, deep silence, experienced teachers, and 3–10 day Himalayan programs.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

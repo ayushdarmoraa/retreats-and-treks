@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Winter Himalayan Retreats in India — December to February',
     description:
-      'Winter retreat experiences across the Indian Himalayas. Snow silence in Sankri, forest calm in Chakrata, alpine stillness in Munsiyari, and mild spiritual immersion in Rishikesh. December–February programs.',
+      'Winter Himalayan retreats across Sankri, Chakrata, Munsiyari, and Rishikesh. Snow silence, forest calm, alpine stillness, and December–February programs.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

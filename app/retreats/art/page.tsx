@@ -31,7 +31,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Art Retreats in the Himalayas | Retreats And Treks',
     description:
-      'Art retreats in India combining painting, writing, movement & yoga in the Himalayan mountains. No experience needed. 2–7 day programs in Mussoorie, Chakrata, Rishikesh, Sankri & Zanskar. Small groups, real guidance.',
+      'Art retreats in India with painting, writing, movement, and yoga in the Himalayas. Small groups, real guidance, and no experience needed.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

@@ -20,7 +20,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Silent Retreats in the Himalayas | Retreats And Treks',
     description:
-      'Extended silent retreats in the Indian Himalayas — Chakrata, Zanskar, Munsiyari. No phones, no small talk, no tourist noise. Small groups (max 12), 3–10 day programs. Discover what happens when you stop talking.',
+      'Silent retreats in Chakrata, Zanskar, and Munsiyari. No phones, no small talk, small groups, and 3–10 day Himalayan silence programs.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

@@ -18,7 +18,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Spiritual Awakening Retreat | Retreats And Treks',
     description:
-      'Spiritual awakening retreat in the Indian Himalayas. Sustained meditation, silence, and contemplative practice in environments where awakening has been happening for millennia. Zanskar, Rishikesh, Chakrata.',
+      'Spiritual awakening retreat in the Himalayas with sustained meditation, silence, and contemplative practice in Zanskar, Rishikesh, and Chakrata.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

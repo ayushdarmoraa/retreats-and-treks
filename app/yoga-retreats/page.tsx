@@ -20,7 +20,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Yoga Retreats in the Himalayas | Retreats And Treks',
     description:
-      'Himalayan yoga retreats in Rishikesh, Zanskar, and Sankri. Small-group practice (max 12) with experienced teachers — asana, pranayama, meditation. 3–10 day programs. Movement meets mountain silence.',
+      'Himalayan yoga retreats in Rishikesh, Zanskar, and Sankri. Small-group asana, pranayama, meditation, experienced teachers, and 3–10 day programs.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

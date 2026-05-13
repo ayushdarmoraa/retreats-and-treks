@@ -15,7 +15,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Retreats & Treks in Chakrata | Retreats And Treks',
     description:
-      'Chakrata retreats and treks in the Himalayan deodar forest. Meditation, burnout recovery, yoga, weekend retreats + forest treks. 3.5 hours from Dehradun. Small groups (max 12). ₹14,000–₹32,000 all-inclusive.',
+      'Chakrata retreats and treks in Himalayan deodar forest. Meditation, yoga, burnout recovery, weekend retreats, forest treks, and small groups near Dehradun.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {
