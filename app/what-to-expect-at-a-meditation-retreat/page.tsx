@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'What to Expect at a Meditation Retreat | Retreats And Treks',
     description:
-      'What to expect at a meditation retreat — schedule, sitting, walking, meals, emotions, the discomfort and the depth. A realistic day-by-day guide for first-timers and experienced practitioners.',
+      'What to expect at a meditation retreat: daily schedule, sitting, walking, meals, emotions, discomfort, depth, and realistic guidance for first-timers.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Winter Retreat in the Himalayas | Retreats And Treks',
     description:
-      'Winter retreats in the Himalayas — meditation, healing, and deep rest in Chakrata, Rishikesh, and Mussoorie. Cold air, clear skies, fewer people. The quietest season for the deepest work.',
+      'Winter retreats in the Himalayas with meditation, healing, deep rest, cold air, clear skies, fewer crowds, and quiet settings in Chakrata and Rishikesh.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

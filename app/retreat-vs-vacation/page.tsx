@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Retreat vs Vacation | Retreats And Treks',
     description:
-      'The real difference between a retreat and a vacation — why rest doesn\'t equal recovery, what retreats offer that holidays cannot, and how to know which one you actually need right now.',
+      'Retreat vs vacation: why rest does not always mean recovery, what retreats offer beyond holidays, and how to choose what you need now.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

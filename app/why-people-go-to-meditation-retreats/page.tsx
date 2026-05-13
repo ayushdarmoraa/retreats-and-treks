@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Why People Go to Meditation Retreats — The Real Reasons',
     description:
-      'The actual reasons people attend meditation retreats — from burnout and life transitions to spiritual seeking and curiosity. Psychology, first-person accounts, and what the research says.',
+      'Why people go to meditation retreats: burnout, life transitions, spiritual seeking, curiosity, psychology, first-person accounts, and research.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

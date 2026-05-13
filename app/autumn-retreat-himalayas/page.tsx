@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Autumn Retreat in the Himalayas | Retreats And Treks',
     description:
-      'Autumn Himalayan retreats (September–November) — post-monsoon clarity, golden light, peak mountain views. The season of release. Meditation, silence, healing in Chakrata, Munsiyari, Rishikesh.',
+      'Autumn Himalayan retreats from September to November with post-monsoon clarity, golden light, mountain views, meditation, silence, and healing.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

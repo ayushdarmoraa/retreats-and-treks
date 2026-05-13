@@ -18,7 +18,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Summer Retreat in the Himalayas | Retreats And Treks',
     description:
-      'Summer retreats in the Himalayas — meditation, yoga, and healing in cool mountain environments. Chakrata, Munsiyari, Zanskar. When the plains burn, the mountains hold space.',
+      'Summer retreats in the Himalayas with meditation, yoga, healing, and cool mountain settings in Chakrata, Munsiyari, and Zanskar.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

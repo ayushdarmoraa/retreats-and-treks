@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Meditation Retreats for Beginners | Retreats And Treks',
     description:
-      'Everything a first-timer needs to know about meditation retreats — which type, which duration, what to expect, and how to choose wisely. An honest guide that addresses the fears and practicalities.',
+      'A beginner guide to meditation retreats: types, duration, what to expect, common fears, practical preparation, and how to choose wisely.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

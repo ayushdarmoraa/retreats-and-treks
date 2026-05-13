@@ -16,7 +16,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'How to Choose a Meditation Retreat | Retreats And Treks',
     description:
-      'How to choose the right meditation retreat: environment, duration, group size, teaching style, location. A practical guide to finding a retreat that matches your experience and intention.',
+      'How to choose a meditation retreat by environment, duration, group size, teaching style, location, experience level, and personal intention.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

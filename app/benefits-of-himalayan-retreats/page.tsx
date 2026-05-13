@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Benefits of Himalayan Retreats | Retreats And Treks',
     description:
-      'The real benefits of Himalayan retreats — altitude, forest, silence, remoteness. How the environment heals the nervous system, restores attention, and creates conditions for genuine transformation.',
+      'Explore the benefits of Himalayan retreats — altitude, forest, silence, remoteness, nervous system rest, restored attention, and deeper transformation.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

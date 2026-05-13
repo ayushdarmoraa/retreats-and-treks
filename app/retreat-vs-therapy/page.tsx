@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Retreat vs Therapy | Retreats And Treks',
     description:
-      'When a retreat is the right choice, when therapy is, and when you need both. An honest comparison of meditation retreats and psychotherapy for stress, burnout, and emotional processing.',
+      'Retreat vs therapy: when a meditation retreat helps, when psychotherapy is better, and when both support stress, burnout, and emotional processing.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

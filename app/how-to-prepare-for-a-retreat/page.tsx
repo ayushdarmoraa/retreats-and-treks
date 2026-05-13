@@ -16,7 +16,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'How to Prepare for a Retreat | Retreats And Treks',
     description:
-      'How to prepare for a meditation, silent, or healing retreat — what to pack, how to adjust your schedule, mental preparation, physical readiness, and what to leave behind. Practical guide.',
+      'How to prepare for a meditation, silent, or healing retreat: packing, schedule changes, mental preparation, physical readiness, and what to leave behind.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

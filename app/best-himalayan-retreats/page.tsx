@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Best Himalayan Retreats | Retreats And Treks',
     description:
-      'The best Himalayan retreats compared by purpose — yoga in Rishikesh, silence in Chakrata, meditation in Zanskar, burnout recovery in Munsiyari. Small-group mountain retreats ranked for 2026.',
+      'Compare the best Himalayan retreats by purpose, setting, depth, group size, and accessibility — yoga, silence, meditation, and burnout recovery options.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {
