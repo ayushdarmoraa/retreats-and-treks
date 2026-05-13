@@ -39,8 +39,8 @@ function buildCompareUrl(a: string, b: string): string {
 const COMPARE_TITLE_LABELS: Record<string, string> = {
   'art-and-creative': 'Creative Healing',
   'burnout-recovery': 'Burnout Recovery',
-  'meditation-and-silence': 'Meditation & Silence',
-  'private-and-custom': 'Private & Custom',
+  'meditation-and-silence': 'Meditation',
+  'private-and-custom': 'Custom',
   'rest-and-reset': 'Rest & Reset',
   'sound-healing': 'Sound Healing',
   'trek-and-paint': 'Trek & Paint',
