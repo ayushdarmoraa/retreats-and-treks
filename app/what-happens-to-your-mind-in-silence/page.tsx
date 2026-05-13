@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'What Happens to Your Mind in Silence — The Psychology of Silent Retreats',
+    title: 'What Happens to Your Mind in Silence',
     description:
       'The neuroscience and psychology of extended silence: what happens to your brain during a silent retreat, stage by stage — from restlessness through breakthrough to lasting change.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

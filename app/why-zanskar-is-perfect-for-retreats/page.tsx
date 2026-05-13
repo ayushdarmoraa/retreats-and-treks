@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Why Zanskar Is Perfect for Meditation Retreats | Retreats And Treks',
+    title: 'Why Zanskar Is Perfect for Retreats | Retreats And Treks',
     description:
       'What makes Zanskar one of the most compelling retreat destinations in the world — the altitude, the monasteries, the isolation, and the centuries-old contemplative culture that still defines daily life.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

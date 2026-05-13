@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Silent Retreat vs Digital Detox — Which Do You Need? | Retreats And Treks',
+    title: 'Silent Retreat vs Digital Detox | Retreats And Treks',
     description:
       'The real differences between a silent meditation retreat and a digital detox retreat — what each provides, who benefits most, and how to choose the right format for your situation.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

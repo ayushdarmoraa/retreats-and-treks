@@ -15,7 +15,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Your First Day at a Meditation Retreat — Hour by Hour | Retreats And Treks',
+    title: 'First Day at a Meditation Retreat | Retreats And Treks',
     description:
       'What actually happens on day one of a meditation retreat — from arrival and orientation to your first sit, first meal in silence, and the moment you realise your phone is gone.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

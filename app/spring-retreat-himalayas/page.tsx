@@ -15,7 +15,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Spring Retreat in the Himalayas — Renewal Season | Retreats And Treks',
+    title: 'Spring Retreat in the Himalayas | Retreats And Treks',
     description:
       'Spring Himalayan retreats (March–May) — blooming forests, warming mornings, clear mountain views. The season of renewal. Meditation, yoga, and healing in Chakrata, Rishikesh, Munsiyari.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

@@ -16,7 +16,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Retreat Calendar — Upcoming Himalayan Retreats 2026 | Retreats And Treks',
+    title: 'Retreat Calendar | Retreats And Treks',
     description:
       'Browse all scheduled Himalayan retreat dates for 2026. Filter by location, experience type, or month. See pricing, availability, and seats remaining. Book directly.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

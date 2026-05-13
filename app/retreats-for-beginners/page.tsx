@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Meditation Retreats for Beginners — Where to Start | Retreats And Treks',
+    title: 'Meditation Retreats for Beginners | Retreats And Treks',
     description:
       'Everything a first-timer needs to know about meditation retreats — which type, which duration, what to expect, and how to choose wisely. An honest guide that addresses the fears and practicalities.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

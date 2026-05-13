@@ -15,7 +15,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'What to Expect at a Meditation Retreat — Day by Day | Retreats And Treks',
+    title: 'What to Expect at a Meditation Retreat | Retreats And Treks',
     description:
       'What to expect at a meditation retreat — schedule, sitting, walking, meals, emotions, the discomfort and the depth. A realistic day-by-day guide for first-timers and experienced practitioners.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

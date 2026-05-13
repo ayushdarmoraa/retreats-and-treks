@@ -15,7 +15,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Trek and Paint in the Himalayas — Art on the Trail | Retreats And Treks',
+    title: 'Trek and Paint in the Himalayas | Retreats And Treks',
     description:
       'Trek and paint in the Himalayas. Walk through mountain landscapes by morning, create art from what you saw by afternoon. Plein air painting, nature sketching, and land art on Himalayan trails.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

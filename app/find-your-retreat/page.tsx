@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Find Your Retreat — Guided Retreat Recommendation | Retreats And Treks',
+    title: 'Find Your Retreat | Retreats And Treks',
     description:
       'Answer 5 questions and get a personalised Himalayan retreat recommendation. Based on your energy, goals, duration, and preferences — not marketing. Takes 2 minutes.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

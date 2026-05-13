@@ -17,7 +17,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'How Hard Is a Silent Retreat? What to Actually Expect | Retreats And Treks',
+    title: 'How Hard Is a Silent Retreat? | Retreats And Treks',
     description:
       'An honest breakdown of what makes silent retreats difficult — boredom, emotional surfacing, physical discomfort, and the urge to leave — and why people keep coming back.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

@@ -16,7 +16,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Life Reset Retreat — Start Again from Silence | Retreats And Treks',
+    title: 'Life Reset Retreat | Retreats And Treks',
     description:
       'Life reset retreat in the Indian Himalayas. For when daily life needs a complete recalibration — not optimisation, not adjustment, but a genuine restart from stillness. Chakrata, Zanskar.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

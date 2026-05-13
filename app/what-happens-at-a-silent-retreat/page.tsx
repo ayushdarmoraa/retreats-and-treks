@@ -15,7 +15,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'What Happens at a Silent Retreat? A Complete Guide | Retreats And Treks',
+    title: 'What Happens at a Silent Retreat? | Retreats And Treks',
     description:
       'What actually happens at a silent retreat — day-by-day structure, noble silence rules, what to expect emotionally, meals, walking, the discomfort that turns into depth. An honest guide.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

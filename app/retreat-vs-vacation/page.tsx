@@ -15,7 +15,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Retreat vs Vacation — What Is the Difference? | Retreats And Treks',
+    title: 'Retreat vs Vacation | Retreats And Treks',
     description:
       'The real difference between a retreat and a vacation — why rest doesn\'t equal recovery, what retreats offer that holidays cannot, and how to know which one you actually need right now.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

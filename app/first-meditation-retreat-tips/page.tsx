@@ -15,7 +15,7 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'First Meditation Retreat Tips — What I Wish I\'d Known | Retreats And Treks',
+    title: 'First Meditation Retreat Tips | Retreats And Treks',
     description:
       'First meditation retreat tips from experienced retreatants — what to pack, how to handle day one, dealing with discomfort, choosing duration, and the one thing nobody tells you.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
