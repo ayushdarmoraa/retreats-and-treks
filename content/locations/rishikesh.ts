@@ -7,6 +7,8 @@
 export const rishikeshLocation = {
   id: 'rishikesh',
   name: 'Rishikesh',
+  heroImage: '/Images/location/rishikesh.webp',
+  heroImageAlt: 'Rishikesh riverside retreat setting on the Ganges in Uttarakhand',
 
   // Section 1: The Land Sets the Tone
   landTone: {

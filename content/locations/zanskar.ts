@@ -7,6 +7,8 @@
 export const zanskarLocation = {
   id: 'zanskar',
   name: 'Zanskar',
+  heroImage: '/Images/location/zanskar.webp',
+  heroImageAlt: 'Remote Zanskar valley retreat landscape in Ladakh Himalayas',
 
   // Section 1: The Land Sets the Tone
   landTone: {

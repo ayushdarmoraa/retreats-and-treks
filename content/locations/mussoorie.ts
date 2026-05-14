@@ -7,6 +7,8 @@
 export const mussoorieLocation = {
   id: 'mussoorie',
   name: 'Mussoorie',
+  heroImage: '/Images/location/mussoorie.webp',
+  heroImageAlt: 'Mussoorie mountain retreat setting in the Garhwal foothills',
 
   // Section 1: The Land Sets the Tone
   landTone: {

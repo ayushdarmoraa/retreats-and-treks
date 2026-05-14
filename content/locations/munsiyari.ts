@@ -7,6 +7,8 @@
 export const munsiyariLocation = {
   id: 'munsiyari',
   name: 'Munsiyari',
+  heroImage: '/Images/location/munsiyari.webp',
+  heroImageAlt: 'Munsiyari alpine retreat landscape facing the Panchachuli peaks',
 
   // Section 1: The Land Sets the Tone
   landTone: {
