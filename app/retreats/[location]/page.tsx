@@ -215,6 +215,16 @@ export default async function RetreatsLocationPage({ params }: PageProps) {
                 Chakrata vs Sankri: which is right for you?
               </Link>
             </li>
+            <li>
+              <Link href="/retreats/sankri/weekend-retreat" style={{ color: 'var(--color-primary)' }}>
+                Weekend retreat in Sankri
+              </Link>
+            </li>
+            <li>
+              <Link href="/retreats/sankri/yoga-retreat" style={{ color: 'var(--color-primary)' }}>
+                Yoga retreat in Sankri
+              </Link>
+            </li>
           </ul>
           <p style={{ lineHeight: 1.75 }}>
             For broader regional context, see our guide to{' '}

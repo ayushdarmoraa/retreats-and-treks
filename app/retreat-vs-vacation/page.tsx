@@ -190,6 +190,8 @@ export default function RetreatVsVacationPage() {
             pressure to be productive. In a Himalayan retreat, the mountains do not care about
             your productivity. The forest does not ask for output. This is the medicine. See
             our <Link href="/burnout-recovery-retreats" style={{ color: 'var(--color-primary)' }}>burnout recovery retreats</Link>.
+            {' '}If you are comparing retreat work with clinical support, read our guide to{' '}
+            <Link href="/retreat-vs-therapy" style={{ color: 'var(--color-primary)' }}>retreat vs therapy</Link>.
           </p>
         </section>
 
