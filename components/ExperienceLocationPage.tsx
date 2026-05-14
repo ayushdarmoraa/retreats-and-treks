@@ -25,6 +25,24 @@ export default function ExperienceLocationPage({ page }: Props) {
   ]);
   const faqSchema = generateFAQSchema(page.faqItems as { question: string; answer: string }[]);
 
+  const itineraryArcMap: Record<string, { duration: number; urlPrefix: string }> = {
+    'meditation-retreats': { duration: 7, urlPrefix: 'meditation-retreat' },
+    'silent-retreats': { duration: 7, urlPrefix: 'silent-retreat' },
+    'yoga-retreats': { duration: 5, urlPrefix: 'yoga-retreat' },
+    'burnout-recovery-retreats': { duration: 5, urlPrefix: 'burnout-recovery-retreat' },
+    'spiritual-retreats': { duration: 7, urlPrefix: 'spiritual-retreat' },
+    'stress-relief-retreats': { duration: 5, urlPrefix: 'stress-relief-retreat' },
+    'anxiety-healing-retreat': { duration: 5, urlPrefix: 'anxiety-healing-retreat' },
+    'digital-detox-retreat': { duration: 5, urlPrefix: 'digital-detox-retreat' },
+    'healing-retreat-himalayas': { duration: 7, urlPrefix: 'healing-retreat' },
+    'creative-retreat': { duration: 7, urlPrefix: 'art-retreat' },
+  };
+
+  const itineraryArc = itineraryArcMap[page.parentHubSlug];
+  const itinerarySlug = itineraryArc
+    ? `${itineraryArc.duration}-day-${page.locationId}-${itineraryArc.urlPrefix}-itinerary`
+    : undefined;
+
   const eyebrow = { display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' } as const;
   const eyebrowLine = { width: '24px', height: '1px', background: 'var(--color-primary)', display: 'inline-block' } as const;
   const eyebrowText = {
@@ -236,6 +254,57 @@ export default function ExperienceLocationPage({ page }: Props) {
                   <span style={{ color: '#374151', fontSize: '0.8rem' }}>→</span>
                 </Link>
               ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* ── DAY-BY-DAY ITINERARY ── */}
+      {itinerarySlug && (
+        <div style={{
+          width: '100vw', marginLeft: 'calc(-50vw + 50%)',
+          background: '#ffffff',
+          paddingTop: '4rem', paddingBottom: '4rem',
+          borderBottom: '1px solid #e5e7eb',
+        }}>
+          <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+            <div style={eyebrow}><span style={eyebrowLine} /><span style={eyebrowText}>Day-by-Day Plan</span></div>
+            <div style={{
+              border: '1px solid #e5e7eb',
+              borderRadius: '8px',
+              padding: '1.25rem',
+              background: '#f7f9f7',
+            }}>
+              <h2 style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '1.15rem',
+                fontWeight: 400,
+                color: '#111111',
+                margin: '0 0 0.6rem',
+              }}>
+                See the full {itineraryArc?.duration}-day itinerary
+              </h2>
+              <p style={{
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.88rem',
+                fontWeight: 300,
+                lineHeight: 1.75,
+                color: '#3a3a3a',
+                margin: '0 0 1rem',
+              }}>
+                Review the daily rhythm, arrival flow, practice structure, and departure plan for this {page.label.toLowerCase()} in {page.locationName}.
+              </p>
+              <Link href={`/${itinerarySlug}`} style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                color: 'var(--color-primary)',
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.88rem',
+                fontWeight: 400,
+                textDecoration: 'none',
+              }}>
+                View day-by-day itinerary →
+              </Link>
             </div>
           </div>
         </div>
