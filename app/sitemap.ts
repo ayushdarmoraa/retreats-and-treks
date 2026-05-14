@@ -325,6 +325,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   );
 
+  // ── 2c. Additional public retreat pages ──────────────────────────────────
+  for (const slug of [
+    'art',
+    'luxury-himalayan-retreats',
+    'meditation-retreat-rishikesh',
+    'meditation-retreat-uttarakhand',
+    'uttarakhand-retreats',
+    'yoga-retreat-rishikesh',
+    'yoga-retreat-uttarakhand',
+    'chakrata/meditation-retreat',
+    'chakrata/weekend-retreat-from-dehradun',
+    'chakrata/yoga-retreat',
+    'sankri/meditation-retreat',
+    'sankri/weekend-retreat',
+    'sankri/yoga-retreat',
+  ]) {
+    entries.push({
+      url: buildCanonicalUrl(`/retreats/${slug}`),
+      lastModified: now,
+      priority: 0.85,
+      changeFrequency: 'monthly',
+    });
+  }
+
   // ── 3. Global category hubs ───────────────────────────────────────────────
   entries.push(
     {
@@ -409,6 +433,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: buildCanonicalUrl('/treks/trek-packages-uttarakhand'),
+      lastModified: now,
+      priority: 0.85,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/treks/beginner-treks-uttarakhand'),
+      lastModified: now,
+      priority: 0.85,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/treks/summer-treks-uttarakhand'),
+      lastModified: now,
+      priority: 0.85,
+      changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/treks/winter-treks-uttarakhand'),
       lastModified: now,
       priority: 0.85,
       changeFrequency: 'monthly',
@@ -522,6 +564,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     'pangarchulla-trek': 'pangarchulla',
     'kedarkantha-trek': 'kedarkantha',
     'har-ki-dun-trek': 'har-ki-dun',
+    'dayara-bugyal-trek': 'dayara',
   };
   for (const trek of allTreks) {
     const urlSlug = MONTH_URL_SLUGS[trek.slug];
@@ -575,6 +618,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
     },
     {
+      url: buildCanonicalUrl('/contact'),
+      lastModified: now,
+      priority: 0.5,
+      changeFrequency: 'yearly',
+    },
+    {
+      url: buildCanonicalUrl('/topics'),
+      lastModified: now,
+      priority: 0.7,
+      changeFrequency: 'yearly',
+    },
+    {
       url: buildCanonicalUrl('/blog'),
       lastModified: now,
       priority: 0.6,
@@ -585,6 +640,30 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: now,
       priority: 0.75,
       changeFrequency: 'monthly',
+    },
+    {
+      url: buildCanonicalUrl('/reviews/anxiety-relief'),
+      lastModified: now,
+      priority: 0.7,
+      changeFrequency: 'yearly',
+    },
+    {
+      url: buildCanonicalUrl('/reviews/burnout-recovery'),
+      lastModified: now,
+      priority: 0.7,
+      changeFrequency: 'yearly',
+    },
+    {
+      url: buildCanonicalUrl('/reviews/chakrata'),
+      lastModified: now,
+      priority: 0.7,
+      changeFrequency: 'yearly',
+    },
+    {
+      url: buildCanonicalUrl('/reviews/meditation-retreats'),
+      lastModified: now,
+      priority: 0.7,
+      changeFrequency: 'yearly',
     },
     {
       url: buildCanonicalUrl('/site-map'),
