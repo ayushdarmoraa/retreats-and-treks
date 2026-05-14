@@ -83,6 +83,18 @@ export default function TopicsPage() {
         <p style={{ maxWidth: '44rem', lineHeight: 1.8, color: 'var(--color-muted)', fontSize: '1rem' }}>
           Browse our topic hubs by decision stage, destination, trekking route, or mountain lifestyle perspective.
         </p>
+        <p style={{ maxWidth: '46rem', lineHeight: 1.8, color: 'var(--color-muted)', fontSize: '1rem', marginTop: '1rem' }}>
+          These topic clusters bring related articles together so you can move from broad research to a clearer decision. Use them to compare retreat formats, understand Himalayan locations, evaluate trekking routes, or explore slower mountain living before choosing a retreat or trek.
+        </p>
+      </section>
+
+      <section style={{ marginBottom: 'var(--space-xl)' }}>
+        <h2 style={{ fontSize: '1.35rem', fontWeight: 500, marginBottom: '0.85rem' }}>
+          How to Use These Topic Hubs
+        </h2>
+        <p style={{ maxWidth: '48rem', lineHeight: 1.8, color: 'var(--color-muted)', fontSize: '0.98rem' }}>
+          Start with retreat decision guides if you are comparing formats such as silence, yoga, creative work, burnout recovery, or weekend resets. Use location guides when your main question is where to go. Trek decision guides help compare routes, difficulty, season, and fitness needs. Lifestyle guides cover the slower questions around mountain rhythm, preparation, and intentional travel.
+        </p>
       </section>
 
       <section
