@@ -359,6 +359,15 @@ export default function RetreatProgramsPage() {
         { href: '/compare/meditation-and-silence-vs-yoga-and-movement', label: 'Meditation & Silence vs Yoga & Movement' },
         { href: '/compare/sound-healing-vs-weekend-retreat', label: 'Sound Healing vs Weekend Retreat' },
         { href: '/compare/art-and-creative-vs-burnout-recovery', label: 'Art & Creative vs Burnout Recovery' },
+        { href: '/compare/private-and-custom-vs-sound-healing', label: 'Custom vs Sound Healing' },
+        { href: '/compare/private-and-custom-vs-trek-and-paint', label: 'Custom vs Trek & Paint' },
+        { href: '/compare/private-and-custom-vs-weekend-art-retreat', label: 'Custom vs Weekend Art' },
+        { href: '/compare/private-and-custom-vs-weekend-retreat', label: 'Custom vs Weekend Retreat' },
+        { href: '/compare/sound-healing-vs-trek-and-paint', label: 'Sound Healing vs Trek & Paint' },
+        { href: '/compare/sound-healing-vs-weekend-art-retreat', label: 'Sound Healing vs Weekend Art' },
+        { href: '/compare/trek-and-paint-vs-weekend-art-retreat', label: 'Trek & Paint vs Weekend Art' },
+        { href: '/compare/trek-and-paint-vs-weekend-retreat', label: 'Trek & Paint vs Weekend Retreat' },
+        { href: '/compare/weekend-art-retreat-vs-weekend-retreat', label: 'Weekend Art vs Weekend Retreat' },
       ].map((item, i) => (
         <div key={item.href} className="rpm-cmp-item">
           <Link href={item.href}>
