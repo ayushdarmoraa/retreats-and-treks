@@ -17,7 +17,7 @@ export const restAndResetRetreat = {
   title: 'Rest & Reset',
   oneLineEssence: 'Permission to stop, for people who have been running too long.',
   seoTitle: 'Rest & Reset Retreat | Retreats And Treks',
-  seoDescription: 'A rest retreat in the Indian Himalayas for people who have been running too long. No schedule, no structure — just forest silence, mountain air, and genuine permission to stop. 3–7 days in Chakrata, Uttarakhand.',
+  seoDescription: 'Rest retreat in Chakrata for people who need to stop. Forest silence, mountain air, no schedule, no pressure, and 3–7 day formats.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/hero/alpine-ridge.webp',

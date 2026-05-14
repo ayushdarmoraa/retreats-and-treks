@@ -17,7 +17,7 @@ export const privateAndCustomRetreat = {
   title: 'Private & Custom',
   oneLineEssence: 'A retreat designed entirely around your needs, timeline, and intentions.',
   seoTitle: 'Private & Custom Retreat | Retreats And Treks',
-  seoDescription: 'Design your own retreat in the Indian Himalayas. Solo, couples, families, or teams. Choose your focus: rest, yoga, meditation, creative work, sound healing. Any duration, any season. Chakrata, Rishikesh, or Mussoorie.',
+  seoDescription: 'Design a private Himalayan retreat for solo travel, couples, families, or teams with yoga, meditation, rest, creative work, or sound healing.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/hero/himalayan-sunrise.webp',

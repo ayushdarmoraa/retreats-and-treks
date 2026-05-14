@@ -8,7 +8,7 @@ export const artAndCreativeRetreat = {
   title: 'Creative Healing Retreat',
   oneLineEssence: 'Emotional healing through art & yoga in a container designed for authentic expression.',
   seoTitle: 'Creative Healing Retreat | Retreats And Treks',
-  seoDescription: 'Join a creative healing retreat in the Indian Himalayas. Painting, writing, collage, and yoga in mountain silence. No experience needed. 3–7 days in Mussoorie and Chakrata, Uttarakhand. Small groups.',
+  seoDescription: 'Creative healing retreat with painting, writing, collage, yoga, and mountain silence in Mussoorie and Chakrata. Small groups, no experience needed.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/art-retreat/hero.webp',

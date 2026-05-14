@@ -9,7 +9,7 @@ export const weekendArtRetreat = {
   title: 'Weekend Art Retreat',
   oneLineEssence: 'Two days of uninterrupted creative expression in the mountains — enough to remember why you create.',
   seoTitle: 'Weekend Art Retreat Near Delhi | Retreats And Treks',
-  seoDescription: 'Join a weekend art retreat in the Himalayas. 2–3 days of painting, writing, and creative expression in mountain silence. No experience needed. Friday to Sunday. Close to Delhi and Dehradun.',
+  seoDescription: 'Weekend art retreat near Delhi with painting, writing, creative expression, mountain silence, and a Friday-to-Sunday format.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/blog/can-a-retreat-unblock-creativity.webp',

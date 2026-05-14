@@ -9,7 +9,7 @@ export const trekAndPaintRetreat = {
   title: 'Trek & Paint Retreat',
   oneLineEssence: 'Walk the Himalayas by day, paint what you see by evening — where trail meets canvas.',
   seoTitle: 'Trek & Paint Retreat | Retreats And Treks',
-  seoDescription: 'Combine Himalayan trekking with plein air painting. Walk forest trails by morning, paint mountain landscapes by afternoon. No art or hiking experience needed. 5–7 days in Chakrata, Uttarakhand.',
+  seoDescription: 'Trek and paint in Chakrata with forest walks, plein air painting, mountain landscapes, and 5–7 day creative retreat formats.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/art-retreat/chaitra/outdoor-easel-painting-art-retreat.webp',

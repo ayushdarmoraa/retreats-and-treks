@@ -15,7 +15,7 @@ export const yogaAndMovementRetreat = {
   title: 'Yoga Retreats & Movement',
   oneLineEssence: 'Yoga retreats, teacher training, aerial yoga, and online classes guided by Sakshi.',
   seoTitle: 'Yoga Retreats & TTC in Rishikesh | Retreats And Treks',
-  seoDescription: 'Join yoga retreats, yoga teacher training courses, aerial yoga programs, and online yoga classes with Sakshi. Retreats in Rishikesh and the Himalayas; TTC in Rishikesh, Thailand, and Bali.',
+  seoDescription: 'Yoga retreats, TTCs, aerial yoga, and online classes with Sakshi in Rishikesh, the Himalayas, Thailand, and Bali.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/retreats/yoga/yoga-backbend-cave-rishikesh.webp',

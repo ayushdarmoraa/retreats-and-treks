@@ -18,7 +18,7 @@ export const burnoutRecoveryRetreat = {
   title: 'Burnout Recovery Retreat in the Himalayas',
   oneLineEssence: 'A weekend mountain retreat designed to help you disconnect from constant work pressure and reconnect with nature, slow living, and meaningful rest.',
   seoTitle: 'Burnout Recovery Retreat | Retreats And Treks',
-  seoDescription: 'Recover from burnout with a 3-day weekend retreat in Chakrata, Uttarakhand. Forest walks, waterfalls, local culture, bonfire evenings. Small groups, all meals included. 3 hrs from Dehradun, 7 hrs from Delhi.',
+  seoDescription: 'Recover from burnout with a 3-day Chakrata retreat: forest walks, waterfalls, local culture, bonfire evenings, meals, and small groups.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/hero/valley-forest.webp',

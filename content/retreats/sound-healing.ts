@@ -16,7 +16,7 @@ export const soundHealingRetreat = {
   title: 'Sound Healing',
   oneLineEssence: 'Bathe your nervous system in resonance that restores and recalibrates.',
   seoTitle: 'Sound Healing Retreat | Retreats And Treks',
-  seoDescription: 'Experience a sound healing retreat in the Indian Himalayas. Singing bowls, gong ceremonies, and sound baths in mountain silence. Small groups, all levels. 3–7 days in Rishikesh and Chakrata, Uttarakhand.',
+  seoDescription: 'Sound healing retreat with singing bowls, gong ceremonies, and sound baths in mountain silence. Small groups in Rishikesh and Chakrata.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/services/soundhealing.webp',

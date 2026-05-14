@@ -17,7 +17,7 @@ export const meditationAndSilenceRetreat = {
   title: 'Meditation & Silence',
   oneLineEssence: 'Drop into the depth that silence reveals, with guidance and sanctuary.',
   seoTitle: 'Meditation Retreat | Retreats And Treks',
-  seoDescription: 'Join a meditation retreat in the Indian Himalayas. Guided sitting, walking meditation, and extended silence at 2,200m altitude in Chakrata. Small groups, all levels. 3–7 day silent retreats in Uttarakhand.',
+  seoDescription: 'Meditation retreat in Chakrata with guided sitting, walking meditation, extended silence, small groups, and 3–7 day silent retreat formats.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/experience-hubs/meditation-hero.png',

@@ -18,7 +18,7 @@ export const weekendRetreat = {
   title: 'Weekend Retreat',
   oneLineEssence: 'A compressed reset for those who need mountain time but have limited availability.',
   seoTitle: 'Weekend Retreat Near Delhi | Retreats And Treks',
-  seoDescription: 'Join a weekend retreat in Chakrata — Friday to Sunday in the Himalayan forest. Nature walks, mountain food, bonfire evenings, genuine rest. 3 hrs from Dehradun, 7 hrs from Delhi. Small groups, all inclusive.',
+  seoDescription: 'Weekend retreat in Chakrata with forest walks, mountain food, bonfire evenings, small groups, and a Friday-to-Sunday Himalayan reset.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/himalayanretreats/weekend.webp',
