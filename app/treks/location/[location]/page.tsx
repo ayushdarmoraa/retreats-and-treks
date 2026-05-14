@@ -123,6 +123,60 @@ const LOCATION_GALLERY: Record<string, GalleryImage[]> = {
 type GuideSection = { heading: string; body: React.ReactNode };
 
 const LOCATION_GUIDES: Record<string, GuideSection[]> = {
+  barsu: [
+    {
+      heading: 'Why Barsu Is the Gateway to Dayara Bugyal',
+      body: (
+        <>
+          <p>Barsu is a quiet Garhwali village at roughly 2,200 metres, best known as the starting point for the Dayara Bugyal trek. Unlike larger trekking bases, it has not been reshaped around heavy tourism. The village still feels pastoral: terraced fields, traditional wooden homes, oak and rhododendron forest, and a slower rhythm that prepares you for the meadows above.</p>
+          <p>The main reason trekkers come here is Dayara Bugyal — one of Uttarakhand&apos;s most beautiful high-altitude meadow systems. The trail rises gradually from village paths into forest, then opens toward Barnala Tal and the broad alpine grasslands that make this region special.</p>
+          <p>For first-time Himalayan trekkers, Barsu offers a gentler introduction than harsher expedition bases. You still gain altitude, walk real mountain terrain, and reach sweeping Garhwal views, but the approach feels gradual and welcoming.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'Best Time to Trek from Barsu',
+      body: (
+        <>
+          <p><strong>Spring (March–April):</strong> Forests around Barsu come alive with rhododendron bloom, fresh green fields, and comfortable walking weather. This is one of the most beautiful windows for photographers and first-time trekkers.</p>
+          <p><strong>Summer (May–June):</strong> The Dayara meadows are accessible, days are longer, and the weather is generally comfortable before heavy monsoon conditions. This is a good window for families and beginners who want manageable temperatures.</p>
+          <p><strong>Autumn (September–November):</strong> Clear skies, crisp air, and sharp mountain visibility make this one of the strongest seasons for Dayara Bugyal. The village is dry, trails are stable, and distant Garhwal peaks are easier to see.</p>
+          <p><strong>Winter (December–February):</strong> Barsu and the Dayara route can receive snow. Winter trekking here is beautiful but colder and more demanding, requiring proper layering, footwear, and guided judgment.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'Terrain, Difficulty, and Acclimatisation',
+      body: (
+        <>
+          <p>Barsu sits high enough to begin acclimatisation but not so high that most trekkers feel immediate altitude stress. This makes it a useful base for people preparing to climb gradually toward Dayara Bugyal&apos;s meadows around 3,400 metres.</p>
+          <p>The terrain begins with village paths and terraced fields, then enters oak, pine, and rhododendron forest. The trail becomes more open near Barnala Tal before the landscape widens into the meadows. There are no technical climbing sections, but steady uphill walking, weather changes, and cold evenings still require preparation.</p>
+          <p>Because Barsu has limited commercial infrastructure, trekkers should complete major preparation before arrival. Carry cash, keep warm layers accessible, and expect limited cellular connectivity after leaving Uttarkashi.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'What You Experience Around Barsu',
+      body: (
+        <>
+          <p>The village itself is part of the experience. Traditional wooden architecture, stone paths, terraced farming, and views toward the higher Garhwal landscape create a strong sense of place before the trek even begins.</p>
+          <p>Above the village, Barnala Tal marks the transition between forest and meadow terrain. Dayara Bugyal then opens into broad grassland, changing character by season: snow-covered in winter, flowering in spring, green in summer, and golden-crisp after monsoon.</p>
+          <p>This combination of village culture, forest trail, small lake, and alpine meadow makes Barsu especially useful for trekkers who want scenic variety without committing to a very remote or highly technical route.</p>
+        </>
+      ),
+    },
+    {
+      heading: 'Frequently Asked Questions',
+      body: (
+        <>
+          <p><strong>Is Barsu good for beginners?</strong> Yes. Barsu is one of the better starting points for a first Himalayan meadow trek because the route to Dayara Bugyal is gradual, scenic, and non-technical. Basic walking fitness is still required.</p>
+          <p><strong>Which trek starts from Barsu?</strong> The main trek from Barsu is <Link href="/treks/location/barsu/dayara-bugyal-trek">Dayara Bugyal Trek</Link>, known for high-altitude meadows, forest sections, Barnala Tal, and wide Garhwal views.</p>
+          <p><strong>How remote is Barsu?</strong> Barsu is quieter and less commercial than major trekking hubs. Connectivity is limited, ATMs are not available in the village, and the last reliable services are usually around Uttarkashi or Bhatwari.</p>
+          <p><strong>When is Dayara Bugyal best?</strong> Spring, summer, autumn, and winter all work differently. Choose spring for bloom, summer for comfortable meadow access, autumn for clear views, and winter for snow trekking with proper preparation.</p>
+        </>
+      ),
+    },
+  ],
   chakrata: [
     {
       heading: 'Why Chakrata Is Uttarakhand\u2019s Best-Kept Trekking Secret',
