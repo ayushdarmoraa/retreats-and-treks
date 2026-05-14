@@ -22,7 +22,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Himalayan Retreats in India',
     description:
-      'A complete guide to Himalayan retreats in India — yoga, silent, wellness, and creative retreat experiences across Chakrata, Sankri, Munsiyari, and Rishikesh.',
+      'Guide to Himalayan retreats in India, including yoga, silent, wellness, and creative retreats across Chakrata, Sankri, Munsiyari, and Rishikesh.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

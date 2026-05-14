@@ -20,7 +20,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Retreats Near Delhi | Retreats And Treks',
     description:
-      'Plan a weekend retreat near Delhi in Rishikesh, Chakrata or Sankri. Yoga, meditation, forest walks, small groups, meals and custom Himalayan retreat planning.',
+      'Plan a weekend retreat near Delhi in Rishikesh, Chakrata, or Sankri with yoga, meditation, forest walks, small groups, and meals.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

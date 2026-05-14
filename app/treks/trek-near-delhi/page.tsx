@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Best Treks Near Delhi | Retreats And Treks',
     description:
-      'Find the best treks near Delhi in Chakrata and Sankri. Weekend-friendly Himalayan treks 6–9 hours from the capital with guided itineraries and forest trails.',
+      'Find the best treks near Delhi in Chakrata and Sankri, with weekend-friendly Himalayan trails, guided itineraries, and forest routes.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

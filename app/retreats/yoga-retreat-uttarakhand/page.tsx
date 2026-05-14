@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Yoga Retreats in Uttarakhand | Retreats And Treks',
     description:
-      'Find yoga retreats in Uttarakhand across Rishikesh, Chakrata and Sankri. Structured asana, pranayama and meditation programs in Himalayan mountain settings.',
+      'Find yoga retreats in Uttarakhand across Rishikesh, Chakrata, and Sankri with asana, pranayama, meditation, and Himalayan settings.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

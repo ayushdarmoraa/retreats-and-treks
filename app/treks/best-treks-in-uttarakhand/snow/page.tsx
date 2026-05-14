@@ -22,7 +22,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Best Snow Treks in Uttarakhand | Retreats And Treks',
     description:
-      'The 3 best snow treks in Uttarakhand for winter 2024–25. Brahmatal, Kedarkantha, and Kuari Pass ranked by snow conditions, difficulty, and experience required.',
+      'Best snow treks in Uttarakhand for winter: Brahmatal, Kedarkantha, and Kuari Pass ranked by snow, difficulty, and experience level.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
   };
 }

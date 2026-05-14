@@ -91,7 +91,7 @@ export const TREK_ATTRIBUTE_PAGES: TrekAttributeConfig[] = [
     title: 'Best Spring Treks in Uttarakhand (March–May) — Rhododendron Season',
     seoTitle: 'Best Spring Treks in Uttarakhand',
     description:
-      'Spring treks in Uttarakhand from March to May, with rhododendron blooms, clearing snow, and routes like Kuari Pass, Pangarchulla, Brahmatal, and Khaliya Top.',
+      'Spring treks in Uttarakhand from March to May, with rhododendron blooms, clearing snow, Kuari Pass, Pangarchulla, Brahmatal, and Khaliya Top.',
     intro:
       'Spring in Uttarakhand (March–May) brings rhododendron blooms, retreating snow, and the longest daylight hours before monsoon. The trail conditions are ideal — firm, dry, and warm enough for comfortable camping. This is the widest trekking window of the year.',
     filter: (trek) =>
