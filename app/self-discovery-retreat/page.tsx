@@ -18,7 +18,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Self-Discovery Retreat | Retreats And Treks',
     description:
-      'Self-discovery retreat in the Indian Himalayas. Remove the noise, the roles, the obligations — and see what remains. Small-group immersive retreats in Chakrata, Zanskar, Rishikesh.',
+      'Self-discovery retreat in the Himalayas with small groups, silence, reflection, and immersive settings in Chakrata, Zanskar, and Rishikesh.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {
@@ -96,7 +96,7 @@ export default function SelfDiscoveryRetreatPage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'Self-Discovery Retreat in the Himalayas — Who You Are Without the Noise',
     description:
-      'Self-discovery retreat in the Indian Himalayas. Remove the noise, the roles, the obligations — and see what remains. Small-group immersive retreats in Chakrata, Zanskar, Rishikesh.',
+      'Self-discovery retreat in the Himalayas with small groups, silence, reflection, and immersive settings in Chakrata, Zanskar, and Rishikesh.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
     url: buildCanonicalUrl(PATH),

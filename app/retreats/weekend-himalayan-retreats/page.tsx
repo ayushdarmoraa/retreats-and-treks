@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Weekend Himalayan Retreats | Retreats And Treks',
     description:
-      'Plan a 2–3 day weekend Himalayan retreat near Delhi. Friday–Sunday corporate reset programs in Chakrata and Rishikesh with yoga, meditation and nature immersion.',
+      'Plan a 2–3 day weekend Himalayan retreat near Delhi with yoga, meditation, nature immersion, and Friday-to-Sunday programs in Chakrata and Rishikesh.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

@@ -18,7 +18,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Weekend Retreat Near Delhi | Retreats And Treks',
     description:
-      'Escape the stress of city life with a peaceful weekend retreat near Delhi. Explore forests, waterfalls, mountain villages, and authentic Himalayan culture in Chakrata.',
+      'Weekend retreat near Delhi in Chakrata with forests, waterfalls, mountain villages, Himalayan culture, and a peaceful reset from city stress.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },
@@ -29,7 +29,7 @@ export function generateMetadata(): Metadata {
     openGraph: {
       title: 'Weekend Retreat Near Delhi: A Mountain Reset in the Himalayas',
       description:
-        'Escape the stress of city life with a peaceful weekend retreat near Delhi. Explore forests, waterfalls, mountain villages, and authentic Himalayan culture in Chakrata.',
+        'Weekend retreat near Delhi in Chakrata with forests, waterfalls, mountain villages, Himalayan culture, and a peaceful reset from city stress.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
       images: buildOgImages('Weekend Retreat Near Delhi: A Mountain Reset in the Himalayas'),

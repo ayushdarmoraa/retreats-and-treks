@@ -10,7 +10,7 @@ const CANONICAL = '/topics/lifestyle';
 export const metadata: Metadata = {
   title: 'Lifestyle & Himalayan Living',
   description:
-    'Perspectives on slow living, mountain lifestyle, retreat psychology, travel mindset, and trek culture. How the Himalayas reshape how you live, not just where you visit.',
+    'Perspectives on slow living, mountain lifestyle, retreat psychology, travel mindset, trek culture, and how the Himalayas reshape daily life.',
   alternates: {
     canonical: buildCanonicalUrl(CANONICAL),
   },

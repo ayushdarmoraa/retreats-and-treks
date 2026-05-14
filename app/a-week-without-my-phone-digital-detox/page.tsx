@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'A Week Without My Phone | Retreats And Treks',
     description:
-      'What happens when you hand over your phone for 7 days in the Himalayas. A first-person account of a digital detox retreat — withdrawal, recalibration, and what changes when you return.',
+      'A first-person account of a 7-day Himalayan digital detox retreat: phone withdrawal, recalibration, silence, and what changes afterward.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

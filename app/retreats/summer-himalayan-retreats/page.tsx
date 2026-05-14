@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Summer Himalayan Retreats in India — May & June Escape',
     description:
-      'Escape the Indian summer with Himalayan retreats in Sankri, Munsiyari, Chakrata and Rishikesh. Cool mountain air, yoga, meditation and transformational stays from May to June.',
+      'Escape summer with Himalayan retreats in Sankri, Munsiyari, Chakrata, and Rishikesh, with cool air, yoga, meditation, and May–June stays.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

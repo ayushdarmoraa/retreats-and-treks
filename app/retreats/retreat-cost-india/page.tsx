@@ -15,7 +15,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Retreat Costs in India | Retreats And Treks',
     description:
-      'Explore the average cost of retreats in India including Himalayan retreats, yoga retreats, and wellness retreats. Data on prices, durations, and location trends.',
+      'Explore retreat costs in India, including Himalayan, yoga, and wellness retreats, with data on prices, durations, inclusions, and location trends.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },
@@ -26,7 +26,7 @@ export function generateMetadata(): Metadata {
     openGraph: {
       title: 'Retreat Costs in India (2026 Report): Prices, Locations & Trends',
       description:
-        'Explore the average cost of retreats in India including Himalayan retreats, yoga retreats, and wellness retreats. Data on prices, durations, and location trends.',
+        'Explore retreat costs in India, including Himalayan, yoga, and wellness retreats, with data on prices, durations, inclusions, and location trends.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
       images: buildOgImages('Retreat Costs in India (2026 Report): Prices, Locations & Trends'),

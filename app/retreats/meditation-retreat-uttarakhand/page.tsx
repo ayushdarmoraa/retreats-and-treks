@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Meditation Retreats in Uttarakhand | Retreats And Treks',
     description:
-      'Find meditation retreats in Uttarakhand across Rishikesh, Munsiyari and Sankri. Silent sittings, guided meditation and forest-based practice in Himalayan mountain settings.',
+      'Find meditation retreats in Uttarakhand across Rishikesh, Munsiyari, and Sankri, with guided silence, forest practice, and Himalayan settings.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },

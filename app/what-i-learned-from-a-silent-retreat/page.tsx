@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'What I Learned from a Silent Retreat',
     description:
-      'A first-person account of a 5-day silent meditation retreat in the Himalayas — what silence actually does to your mind, the stages you go through, and what stays with you after.',
+      'A first-person account of a 5-day silent meditation retreat in the Himalayas, including mental stages, silence, insight, and what stays afterward.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

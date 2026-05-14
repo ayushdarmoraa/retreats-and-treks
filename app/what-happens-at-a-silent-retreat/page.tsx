@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'What Happens at a Silent Retreat? | Retreats And Treks',
     description:
-      'What actually happens at a silent retreat — day-by-day structure, noble silence rules, what to expect emotionally, meals, walking, the discomfort that turns into depth. An honest guide.',
+      'What happens at a silent retreat: day-by-day structure, noble silence rules, emotions, meals, walking, discomfort, and depth.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

@@ -28,7 +28,7 @@ export function generateMetadata(): Metadata {
     openGraph: {
       title: 'Yoga Retreats in Rishikesh — Structured Practice on the Ganges',
       description:
-        'Residential yoga retreat programs in Rishikesh. Morning Ganga-side practice, pranayama, meditation and structured multi-day immersion in the Himalayan foothills.',
+        'Residential yoga retreats in Rishikesh with Ganga-side practice, pranayama, meditation, and structured multi-day Himalayan foothill immersion.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
       images: buildOgImages('Yoga Retreats in Rishikesh — Structured Practice on the Ganges'),
@@ -86,7 +86,7 @@ export default function YogaRetreatRishikeshPage() {
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
       <AutoArticleSchema
         title="Yoga Retreats in Rishikesh"
-        description="Find yoga retreats in Rishikesh with structured asana, pranayama and meditation on the Ganges. Multi-day residential programs in India's yoga capital."
+        description="Find yoga retreats in Rishikesh with structured asana, pranayama, meditation, Ganga-side practice, and residential programs."
         path={PATH}
       />
       <script

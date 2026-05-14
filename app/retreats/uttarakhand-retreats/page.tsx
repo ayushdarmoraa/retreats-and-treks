@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Uttarakhand Retreats | Retreats And Treks',
     description:
-      'Explore retreats in Uttarakhand across Munsiyari, Sankri, Chakrata and Rishikesh. Yoga, meditation and mountain wellness programs in India\u2019s Himalayan state.',
+      'Explore retreats in Uttarakhand across Munsiyari, Sankri, Chakrata, and Rishikesh, with yoga, meditation, and Himalayan wellness programs.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },
@@ -86,7 +86,7 @@ export default function UttarakhandRetreatsPage() {
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
       <AutoArticleSchema
         title="Uttarakhand Retreats in the Himalayas"
-        description="Explore retreats in Uttarakhand across Munsiyari, Sankri, Chakrata and Rishikesh. Yoga, meditation and mountain wellness programs in India's Himalayan state."
+        description="Explore retreats in Uttarakhand across Munsiyari, Sankri, Chakrata, and Rishikesh, with yoga, meditation, and Himalayan wellness programs."
         path={PATH}
       />
       <script

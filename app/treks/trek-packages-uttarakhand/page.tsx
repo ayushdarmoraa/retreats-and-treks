@@ -28,7 +28,7 @@ export function generateMetadata(): Metadata {
     openGraph: {
       title: 'Himalayan Trek Packages in Uttarakhand',
       description:
-        'All-inclusive trekking packages across Uttarakhand. Certified guides, meals, permits and accommodation included. Individual and group packages from Sankri and Chakrata.',
+        'All-inclusive Uttarakhand trek packages with certified guides, meals, permits, accommodation, and individual or group routes from Sankri and Chakrata.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
       images: buildOgImages('Himalayan Trek Packages in Uttarakhand'),

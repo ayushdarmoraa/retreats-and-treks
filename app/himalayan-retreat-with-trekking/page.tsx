@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Himalayan Retreat with Trekking | Retreats And Treks',
     description:
-      'Himalayan retreat with trekking — meditation and silence combined with mountain walking. The rare platform that offers both. Chakrata, Sankri, Munsiyari, Zanskar.',
+      'Himalayan retreat with trekking, combining meditation, silence, guided mountain walking, and retreat journeys in Chakrata, Sankri, Munsiyari, and Zanskar.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {
@@ -64,7 +64,7 @@ export default function HimalayanRetreatWithTrekkingPage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'Himalayan Retreat with Trekking — Inner Work Meets Outer Terrain',
     description:
-      'Himalayan retreat with trekking — meditation and silence combined with mountain walking. The rare platform that offers both. Chakrata, Sankri, Munsiyari, Zanskar.',
+      'Himalayan retreat with trekking, combining meditation, silence, guided mountain walking, and retreat journeys in Chakrata, Sankri, Munsiyari, and Zanskar.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
     url: buildCanonicalUrl(PATH),

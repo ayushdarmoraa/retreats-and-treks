@@ -13,7 +13,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Himalayan Retreats & Treks – Designed Around Your Intention',
     description:
-      'Curated retreats and treks across carefully chosen Himalayan locations. Designed around your intention, not fixed schedules. Small groups, request-based journeys.',
+      'Curated Himalayan retreats and treks designed around your intention, with small groups, request-based journeys, and carefully chosen locations.',
     alternates: {
       canonical: buildCanonicalUrl('/'),
     },
