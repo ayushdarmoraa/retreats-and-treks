@@ -12,7 +12,7 @@ export const dynamic = 'force-static';
 
 const PAGE_TITLE = 'Retreat Reviews & Experiences | Retreats And Treks';
 const PAGE_DESCRIPTION =
-  'Real reviews from participants who attended our meditation, yoga, silent, and healing retreats in the Himalayas. Honest experiences from Zanskar, Chakrata, Rishikesh, and more.';
+  'Real reviews from meditation, yoga, silent, and healing retreats in the Himalayas, with experiences from Zanskar, Chakrata, Rishikesh, and more.';
 const CANONICAL = buildCanonicalUrl('/reviews');
 
 export function generateMetadata(): Metadata {

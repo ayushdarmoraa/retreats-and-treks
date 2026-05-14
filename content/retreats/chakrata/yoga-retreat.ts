@@ -4,7 +4,7 @@ const yogaRetreat: RetreatContent = {
   slug: 'yoga-retreat',
   title: 'Chakrata Yoga Retreat',
   description:
-    'A rejuvenating 2 nights 3 days yoga retreat in Chakrata. Daily yoga classes, asana practice, pranayama sessions, and holistic wellness. Pickup and drop from Dehradun.',
+    'A 2 nights 3 days yoga retreat in Chakrata with daily yoga, asana, pranayama, holistic wellness, and Dehradun pickup/drop.',
 
   locationId: 'chakrata',
   retreatType: 'Yoga',

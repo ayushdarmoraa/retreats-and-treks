@@ -4,7 +4,7 @@ const meditationRetreat: RetreatContent = {
   slug: 'meditation-retreat',
   title: 'Chakrata Meditation Retreat',
   description:
-    'A transformative 2 nights 3 days meditation retreat in Chakrata. Guided meditation sessions, mindfulness practice, nature immersion, and peaceful evenings. Pickup and drop from Dehradun.',
+    'A 2 nights 3 days meditation retreat in Chakrata with guided practice, mindfulness, nature immersion, peaceful evenings, and Dehradun pickup/drop.',
 
   locationId: 'chakrata',
   retreatType: 'Meditation',
