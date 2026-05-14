@@ -63,16 +63,18 @@ const FACILITATORS: Facilitator[] = [
     metaDescription:
       'Sakshi leads yoga retreats, yoga teacher training, aerial yoga programs, and online yoga classes. 8 years of yoga teaching experience.',
     bio:
-      'Sakshi has been teaching yoga for 8 years, guiding students through movement, breath, and mindful practice. Her work with Retreats and Treks brings together yoga retreats, teacher training pathways, aerial yoga programs, and online classes for people who want to begin, deepen, or continue their practice.',
+      'Sakshi has been teaching yoga for 8 years, guiding students through movement, breath, and mindful practice. Her work with Retreats and Treks brings together yoga retreats, teacher training pathways, aerial yoga programs, and online classes for people who want to begin, deepen, or continue their practice. Her facilitation is grounded in accessibility: helping students build a steady relationship with posture, breath, attention, and rest rather than treating yoga as performance.',
     background: [
       'Teaching yoga for 8 years',
       'Leads yoga retreats in Rishikesh and Himalayan retreat settings',
       'Guides yoga teacher training courses in Rishikesh, Thailand, and Bali',
       'Offers aerial yoga programs and classes in Rishikesh',
       'Offers online yoga classes for students who want regular guided practice from home',
+      'Supports beginners who are entering yoga for the first time as well as returning students rebuilding consistency',
+      'Integrates asana, pranayama, mindful movement, and rest into retreat-friendly practice formats',
     ],
     approach:
-      'Sakshi teaches yoga as a steady relationship with the body, breath, and attention. Her sessions are accessible, grounding, and adaptive, supporting beginners as well as students who want to deepen their practice through retreats, teacher training, aerial yoga, or continued online classes.',
+      'Sakshi teaches yoga as a steady relationship with the body, breath, and attention. Her sessions are accessible, grounding, and adaptive, supporting beginners as well as students who want to deepen their practice through retreats, teacher training, aerial yoga, or continued online classes. In retreat settings, she keeps the practice spacious and non-competitive, using movement, pranayama, stillness, and rest to help participants reconnect with their bodies without pressure.',
     specialisations: ['Yoga retreats', 'Yoga teacher training', 'Aerial yoga', 'Online yoga classes', 'Pranayama', 'Mindful movement'],
     retreatSlugs: ['yoga-and-movement'],
     locationIds: ['rishikesh', 'chakrata'],
