@@ -4,7 +4,7 @@ const bestSnowTreksGarhwalHimalaya: BlogContent = {
   slug: 'best-snow-treks-garhwal-himalaya',
   title: 'Best Snow Treks in the Garhwal Himalayas: A Complete Guide',
   description:
-    'Discover the best snow treks in the Garhwal Himalayas — from beginner-friendly Brahmatal to challenging Roopkund. Season, difficulty, views, and how to choose.',
+    'Discover the best snow treks in Garhwal, from Brahmatal to Roopkund. Compare season, difficulty, views, and how to choose.',
   category: 'Trek Decision',
   publishedAt: '2026-06-10',
   readingTime: '9 min read',

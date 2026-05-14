@@ -10,7 +10,7 @@ const artAndYogaRetreatHimalayas: BlogContent = {
   title: 'Art and Yoga Retreat in the Himalayas: Where Movement Meets Creation',
   seoTitle: 'Art and Yoga Retreat Himalayas | Retreats And Treks',
   description:
-    'Combining morning yoga with facilitated art practice in the Himalayas. How body awareness deepens creative work, and what a combined retreat day looks like.',
+    'How morning yoga and facilitated art practice work together in the Himalayas, deepening body awareness, creativity, and retreat rhythm.',
   category: 'Retreat Decision',
   publishedAt: '2026-03-11',
   readingTime: '6 min read',

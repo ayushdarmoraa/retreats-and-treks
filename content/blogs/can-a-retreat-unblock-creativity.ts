@@ -9,7 +9,7 @@ const canARetreatUnblockCreativity: BlogContent = {
   slug: 'can-a-retreat-unblock-creativity',
   title: 'Can a Retreat Actually Unblock Your Creativity?',
   description:
-    'Creative blocks rarely respond to willpower. Here is how immersive retreats in nature disrupt the patterns that keep you stuck — and what the research says.',
+    'How immersive retreats in nature can interrupt creative blocks, shift stuck patterns, and support fresh expression through space and practice.',
   category: 'Retreat Decision',
   publishedAt: '2026-03-05',
   readingTime: '7 min read',

@@ -9,7 +9,7 @@ const bestTimeForRetreatInChakrata: BlogContent = {
   slug: 'best-time-for-retreat-in-chakrata',
   title: 'Best Time for a Retreat in Chakrata',
   description:
-    'A seasonal guide to planning a Himalayan retreat in Chakrata, including weather patterns, travel considerations, and experience differences across the year.',
+    'Seasonal guide to planning a retreat in Chakrata, including weather, travel conditions, and how the experience changes through the year.',
   category: 'Location Authority',
   publishedAt: '2026-02-07',
   readingTime: '6 min read',
