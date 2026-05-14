@@ -7,6 +7,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { RetreatProgramEvent } from '@/config/retreatProgramEvents';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { schemaIds } from '@/lib/schemaIds';
 import { generateBreadcrumbSchema, generateFAQSchema, generateReviewSchemas, generateAggregateRatingSchema } from '@/components/seo/Schema';
 import { getReviewsForSlug, getAggregateRating } from '@/content/reviews';
 import { validateFAQSync } from '@/utils/validateFAQSync';
@@ -77,11 +78,7 @@ export default function ProgramEventPage({ event }: Props) {
         : 'https://schema.org/InStock',
       url: buildCanonicalUrl(`/${event.slug}`),
     },
-    organizer: {
-      '@type': 'Organization',
-      name: 'Retreats And Treks',
-      url: buildCanonicalUrl('/'),
-    },
+    organizer: { '@id': schemaIds.organization },
   };
 
   return (

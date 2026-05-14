@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
+import { schemaIds } from '@/lib/schemaIds';
 import { generateBreadcrumbSchema } from '@/components/seo/Schema';
 import Breadcrumb from '@/components/Breadcrumb';
 import TrackedPage from '@/components/TrackedPage';
@@ -72,11 +73,7 @@ export default async function FacilitatorPage(
     name: facilitator.name,
     jobTitle: facilitator.title,
     description: facilitator.bio,
-    worksFor: {
-      '@type': 'Organization',
-      name: 'Retreats And Treks',
-      url: buildCanonicalUrl('/'),
-    },
+    worksFor: { '@id': schemaIds.organization },
     url: buildCanonicalUrl(`/facilitators/${slug}`),
   };
 
