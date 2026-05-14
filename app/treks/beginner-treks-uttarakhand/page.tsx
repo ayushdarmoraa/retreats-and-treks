@@ -21,7 +21,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Best Beginner Treks in Uttarakhand',
     description:
-      'The 5 best beginner-friendly treks in Uttarakhand ranked by difficulty. From easy day hikes in Chakrata to moderate multi-day routes in Garhwal — no prior trekking experience needed.',
+      'Best beginner treks in Uttarakhand ranked by difficulty, from easy Chakrata day hikes to moderate Garhwal routes with no prior trekking experience needed.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
   };
 }

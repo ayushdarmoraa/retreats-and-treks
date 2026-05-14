@@ -65,7 +65,7 @@ export default function BenefitsOfMeditationRetreatPage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'Benefits of a Meditation Retreat — What Actually Changes',
     description:
-      'The real benefits of a meditation retreat — nervous system reset, restored attention, emotional processing, and depth of silence. What changes in 3, 7, and 10 days.',
+      'Benefits of a meditation retreat: nervous system reset, restored attention, emotional processing, silence, and what changes in 3, 7, and 10 days.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
     url: canonicalUrl,

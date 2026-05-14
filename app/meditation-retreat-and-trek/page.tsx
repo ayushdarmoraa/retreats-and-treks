@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Meditation Retreat and Trek | Retreats And Treks',
     description:
-      'Combine meditation retreat and Himalayan trekking with silent practice, guided trails, stillness, movement, and mountain journeys in Chakrata, Sankri, or Zanskar.',
+      'Combine meditation retreat and Himalayan trekking with silent practice, guided trails, stillness, and mountain journeys in Chakrata, Sankri, or Zanskar.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {
@@ -64,7 +64,7 @@ export default function MeditationRetreatAndTrekPage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'Meditation Retreat and Trek — Stillness Meets Movement',
     description:
-      'Combine meditation retreat and Himalayan trekking with silent practice, guided trails, stillness, movement, and mountain journeys in Chakrata, Sankri, or Zanskar.',
+      'Combine meditation retreat and Himalayan trekking with silent practice, guided trails, stillness, and mountain journeys in Chakrata, Sankri, or Zanskar.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
     url: buildCanonicalUrl(PATH),

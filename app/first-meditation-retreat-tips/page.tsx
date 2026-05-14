@@ -66,7 +66,7 @@ export default function FirstMeditationRetreatTipsPage() {
   const articleSchema = generateBlogPostingSchema({
     title: "First Meditation Retreat Tips — What I Wish I'd Known",
     description:
-      'First meditation retreat tips from experienced retreatants — what to pack, how to handle day one, dealing with discomfort, choosing duration, and the one thing nobody tells you.',
+      'First meditation retreat tips on packing, day one, discomfort, choosing duration, preparation, and what experienced retreatants wish they knew.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
     url: canonicalUrl,

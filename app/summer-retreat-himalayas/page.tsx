@@ -64,7 +64,7 @@ export default function SummerRetreatPage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'Summer Retreat in the Himalayas — Escape the Heat, Find Altitude',
     description:
-      'Summer retreats in the Himalayas — meditation, yoga, and healing in cool mountain environments. Chakrata, Munsiyari, Zanskar. When the plains burn, the mountains hold space.',
+      'Summer retreats in the Himalayas with meditation, yoga, healing, and cool mountain settings in Chakrata, Munsiyari, and Zanskar.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
     url: buildCanonicalUrl(PATH),

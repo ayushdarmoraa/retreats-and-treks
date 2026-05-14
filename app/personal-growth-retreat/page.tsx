@@ -18,7 +18,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Personal Growth Retreat | Retreats And Treks',
     description:
-      'Personal growth retreat in the Himalayas with meditation, reflection, nature immersion, inner development, and quiet settings in Chakrata, Rishikesh, or Zanskar.',
+      'Personal growth retreat in the Himalayas with meditation, reflection, nature immersion, inner development, and quiet settings in Chakrata or Zanskar.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {
@@ -96,7 +96,7 @@ export default function PersonalGrowthRetreatPage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'Personal Growth Retreat in the Himalayas',
     description:
-      'Personal growth retreat in the Himalayas with meditation, reflection, nature immersion, inner development, and quiet settings in Chakrata, Rishikesh, or Zanskar.',
+      'Personal growth retreat in the Himalayas with meditation, reflection, nature immersion, inner development, and quiet settings in Chakrata or Zanskar.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
     url: buildCanonicalUrl(PATH),

@@ -21,7 +21,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Winter Treks in Uttarakhand | Retreats And Treks',
     description:
-      'The 5 best beginner-friendly treks in Uttarakhand ranked by difficulty. From easy day hikes in Chakrata to moderate multi-day routes in Garhwal — no prior trekking experience needed.',
+      'Best beginner-friendly winter treks in Uttarakhand, from easy Chakrata hikes to moderate Garhwal routes with no prior trekking experience needed.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
   };
 }
