@@ -4,7 +4,7 @@ const beginnerToAdvancedTrekProgressionGarhwal: BlogContent = {
   slug: 'beginner-to-advanced-trek-progression-garhwal',
   title: 'Beginner to Advanced: The Garhwal Trek Progression Path',
   description:
-    'A structured guide from your first Himalayan trek to summiting a peak — the 4-step Garhwal progression through Brahmatal, Kuari Pass, Roopkund, and Pangarchulla.',
+    'A 4-step Garhwal trek progression from first Himalayan trek to summit routes: Brahmatal, Kuari Pass, Roopkund, and Pangarchulla.',
   category: 'Trek Decision',
   publishedAt: '2026-03-03',
   readingTime: '10 min read',

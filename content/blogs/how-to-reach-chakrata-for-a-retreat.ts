@@ -9,7 +9,7 @@ const howToReachChakrataForARetreat: BlogContent = {
   slug: 'how-to-reach-chakrata-for-a-retreat',
   title: 'How to Reach Chakrata for a Retreat',
   description:
-    'A practical travel guide for reaching Chakrata from Delhi and Dehradun, covering road routes, transport options, seasonal considerations, and arrival planning for retreat participants.',
+    'A practical guide to reaching Chakrata from Delhi and Dehradun, including road routes, transport options, seasons, and retreat arrival planning.',
   category: 'Location Authority',
   publishedAt: '2026-02-06',
   readingTime: '5 min read',

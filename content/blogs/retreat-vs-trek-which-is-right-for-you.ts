@@ -9,7 +9,7 @@ const retreatVsTrekWhichIsRightForYou: BlogContent = {
   slug: 'retreat-vs-trek-which-is-right-for-you',
   title: 'Retreat vs Trek: Which Is Right for You?',
   description:
-    'A clear comparison between Himalayan retreats and trekking experiences, explaining differences in structure, intensity, goals, and who each format is best suited for.',
+    'Retreat vs trek: compare structure, intensity, goals, physical effort, inner work, and who each Himalayan experience suits best.',
   category: 'Retreat Decision',
   publishedAt: '2026-01-31',
   readingTime: '6 min read',

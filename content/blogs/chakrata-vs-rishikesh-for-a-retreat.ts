@@ -9,7 +9,7 @@ const chakrataVsRishikeshForARetreat: BlogContent = {
   slug: 'chakrata-vs-rishikesh-for-a-retreat',
   title: 'Chakrata vs Rishikesh for a Retreat: Which Is Better?',
   description:
-    'A detailed comparison of Chakrata and Rishikesh for hosting or attending a Himalayan retreat, including crowd levels, accessibility, environment, and retreat suitability.',
+    'Chakrata vs Rishikesh for retreats: compare crowds, accessibility, environment, retreat style, and who each Himalayan setting suits best.',
   category: 'Location Authority',
   publishedAt: '2026-02-01',
   readingTime: '6 min read',

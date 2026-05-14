@@ -9,7 +9,7 @@ const isRishikeshGoodForARetreat: BlogContent = {
   slug: 'is-rishikesh-good-for-a-retreat',
   title: 'Is Rishikesh Good for a Retreat?',
   description:
-    'An honest assessment of Rishikesh as a retreat destination — covering its yoga heritage, crowd density, riverfront environment, accessibility, and who benefits most from a retreat here.',
+    'An honest look at Rishikesh as a retreat destination: yoga heritage, crowds, riverfront setting, accessibility, and who benefits most here.',
   category: 'Location Authority',
   publishedAt: '2026-01-20',
   readingTime: '5 min read',

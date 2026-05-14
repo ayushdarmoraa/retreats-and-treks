@@ -9,7 +9,7 @@ const howToReachRishikeshForARetreat: BlogContent = {
   slug: 'how-to-reach-rishikesh-for-a-retreat',
   title: 'How to Reach Rishikesh for a Retreat',
   description:
-    'A practical travel guide for reaching Rishikesh from Delhi, covering road, rail, and air options, travel duration, and arrival planning for retreat participants.',
+    'A practical guide to reaching Rishikesh from Delhi, including road, rail, and air options, travel duration, and retreat arrival planning.',
   category: 'Location Authority',
   publishedAt: '2026-01-21',
   readingTime: '4 min read',

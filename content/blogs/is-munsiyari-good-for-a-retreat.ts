@@ -9,7 +9,7 @@ const isMunsiyariGoodForARetreat: BlogContent = {
   slug: 'is-munsiyari-good-for-a-retreat',
   title: 'Is Munsiyari Good for a Retreat?',
   description:
-    'An honest assessment of Munsiyari as a retreat destination — covering its high-altitude environment, remoteness, alpine character, and who benefits most from a retreat here.',
+    'An honest look at Munsiyari as a retreat destination: high-altitude setting, remoteness, alpine character, and who benefits most here.',
   category: 'Location Authority',
   publishedAt: '2026-01-23',
   readingTime: '5 min read',

@@ -9,7 +9,7 @@ const howToReachMunsiyariForARetreat: BlogContent = {
   slug: 'how-to-reach-munsiyari-for-a-retreat',
   title: 'How to Reach Munsiyari for a Retreat',
   description:
-    'A practical travel guide for reaching Munsiyari from Delhi and Kathgodam, covering road routes, nearest rail access, travel duration, and planning for retreat arrivals.',
+    'A practical guide to reaching Munsiyari from Delhi and Kathgodam, including road routes, rail access, travel duration, and retreat arrival planning.',
   category: 'Location Authority',
   publishedAt: '2026-01-24',
   readingTime: '5 min read',

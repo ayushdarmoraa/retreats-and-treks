@@ -9,7 +9,7 @@ const isChakrataGoodForARetreat: BlogContent = {
   slug: 'is-chakrata-good-for-a-retreat',
   title: 'Is Chakrata Good for a Retreat?',
   description:
-    'An honest assessment of Chakrata as a retreat destination — covering environmental conditions, accessibility, seasonal flexibility, and who it is most suitable for.',
+    'An honest look at Chakrata as a retreat destination: forest setting, accessibility, seasonal flexibility, quiet, and who it suits best.',
   category: 'Location Authority',
   publishedAt: '2026-02-02',
   readingTime: '5 min read',

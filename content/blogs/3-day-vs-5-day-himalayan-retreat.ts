@@ -10,7 +10,7 @@ const threeDayVsFiveDayHimalayanRetreat: BlogContent = {
   title: '3-Day vs 5-Day Himalayan Retreat: Which Duration Is Right for You?',
   seoTitle: '3-Day vs 5-Day Himalayan Retreat | Retreats And Treks',
   description:
-    'A practical comparison between short and extended Himalayan retreats, covering depth of experience, scheduling considerations, and who each duration is best suited for.',
+    '3-day vs 5-day Himalayan retreats: compare depth, schedule, recovery time, commitment level, and who each retreat duration suits best.',
   category: 'Retreat Decision',
   publishedAt: '2026-01-30',
   readingTime: '5 min read',

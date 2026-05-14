@@ -4,7 +4,7 @@ const whyDigitalDetoxWorksInTheHimalayas: BlogContent = {
   slug: 'why-digital-detox-works-in-the-himalayas',
   title: 'Why Digital Detox Actually Works in the Himalayas',
   description:
-    'Most digital detox advice fails because the environment stays the same. Here is why the Himalayas — altitude, silence, and limited connectivity — make unplugging sustainable.',
+    'Why digital detox works in the Himalayas: altitude, silence, limited connectivity, and a changed environment that makes unplugging sustainable.',
   category: 'Lifestyle',
   publishedAt: '2026-02-10',
   readingTime: '6 min read',

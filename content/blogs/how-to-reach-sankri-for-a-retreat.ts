@@ -9,7 +9,7 @@ const howToReachSankriForARetreat: BlogContent = {
   slug: 'how-to-reach-sankri-for-a-retreat',
   title: 'How to Reach Sankri for a Retreat',
   description:
-    'A practical travel guide for reaching Sankri from Delhi and Dehradun, including road routes, transport options, travel duration, and arrival planning for retreat participants.',
+    'A practical guide to reaching Sankri from Delhi and Dehradun, including road routes, transport options, travel duration, and retreat arrival planning.',
   category: 'Location Authority',
   publishedAt: '2026-01-27',
   readingTime: '5 min read',

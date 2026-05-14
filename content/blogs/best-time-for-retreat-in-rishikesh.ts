@@ -9,7 +9,7 @@ const bestTimeForRetreatInRishikesh: BlogContent = {
   slug: 'best-time-for-retreat-in-rishikesh',
   title: 'Best Time for a Retreat in Rishikesh',
   description:
-    'A seasonal guide to planning a retreat in Rishikesh, covering temperature patterns, crowd levels, festival periods, and how each season shapes the retreat experience.',
+    'Best time for a Rishikesh retreat: compare temperatures, crowds, festival periods, riverfront atmosphere, and how each season shapes the experience.',
   category: 'Location Authority',
   publishedAt: '2026-01-22',
   readingTime: '5 min read',

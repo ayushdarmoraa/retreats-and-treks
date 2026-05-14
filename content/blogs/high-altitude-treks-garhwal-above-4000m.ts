@@ -5,7 +5,7 @@ const highAltitudeTreksGarhwalAbove4000m: BlogContent = {
   title: 'High Altitude Treks in Garhwal Above 4,000 m: Roopkund & Pangarchulla Guide',
   seoTitle: 'High Altitude Treks in Garhwal | Retreats And Treks',
   description:
-    'Everything you need to know about high-altitude treks above 4,000 m in the Garhwal Himalayas — Roopkund and Pangarchulla. Altitude risks, preparation, permits, and who should attempt them.',
+    'High-altitude treks above 4,000 m in Garhwal Himalayas — Roopkund and Pangarchulla, altitude risks, preparation, permits, and who should go.',
   category: 'Trek Decision',
   publishedAt: '2026-03-03',
   readingTime: '8 min read',

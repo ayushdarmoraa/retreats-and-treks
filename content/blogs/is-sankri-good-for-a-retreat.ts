@@ -9,7 +9,7 @@ const isSankriGoodForARetreat: BlogContent = {
   slug: 'is-sankri-good-for-a-retreat',
   title: 'Is Sankri Good for a Retreat?',
   description:
-    'An honest assessment of Sankri as a retreat destination — covering its alpine environment, remoteness, seasonal suitability, and who benefits most from a retreat here.',
+    'An honest look at Sankri as a retreat destination: alpine setting, remoteness, seasonal suitability, and who benefits most here.',
   category: 'Location Authority',
   publishedAt: '2026-01-26',
   readingTime: '5 min read',

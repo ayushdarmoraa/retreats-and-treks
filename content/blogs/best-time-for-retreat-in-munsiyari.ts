@@ -9,7 +9,7 @@ const bestTimeForRetreatInMunsiyari: BlogContent = {
   slug: 'best-time-for-retreat-in-munsiyari',
   title: 'Best Time for a Retreat in Munsiyari',
   description:
-    'A seasonal guide to planning a Himalayan retreat in Munsiyari, covering its alpine climate, accessibility windows, and how each season shapes the retreat experience.',
+    'Best time for a Munsiyari retreat: alpine climate, accessibility windows, mountain views, seasonal mood, and how each season shapes the experience.',
   category: 'Location Authority',
   publishedAt: '2026-01-25',
   readingTime: '6 min read',
