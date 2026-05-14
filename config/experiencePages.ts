@@ -50,7 +50,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     title: 'Meditation Retreats in the Himalayas | Retreats And Treks',
     h1: 'Meditation Retreats in the Himalayas',
     metaDescription:
-      'Guided meditation retreats in quiet Himalayan locations — Zanskar, Chakrata, Rishikesh. Small groups, deep silence, experienced teachers. Find the right setting for your practice.',
+      'Guided meditation retreats in Zanskar, Chakrata, and Rishikesh with small groups, deep silence, experienced teachers, and quiet Himalayan settings.',
     heroImage: '/Images/whyhimalaya/meditation.webp',
     heroImageAlt: 'Person meditating quietly in the Himalayas',
     intro:
@@ -133,7 +133,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     title: 'Silent Retreats in the Himalayas | Retreats And Treks',
     h1: 'Silent Retreats in the Himalayas',
     metaDescription:
-      'Extended silent retreats in the Indian Himalayas — Chakrata, Zanskar, Munsiyari. No tourist noise, no phones, no small talk. Just you, the land, and the silence that lives beneath everything.',
+      'Extended silent retreats in Chakrata, Zanskar, and Munsiyari with no phones, no small talk, Himalayan silence, and deep contemplative space.',
     heroImage: '/Images/retreat/services/meditation.webp',
     heroImageAlt: 'Immersion into deep silence in the Himalayan forest',
     intro:
@@ -202,7 +202,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     title: 'Yoga Retreats in the Himalayas | Retreats And Treks',
     h1: 'Yoga Retreats in the Himalayas',
     metaDescription:
-      'Himalayan yoga retreats in Rishikesh, Zanskar, and Sankri. Small-group practice with experienced teachers — asana, pranayama, meditation. Movement meets mountain silence.',
+      'Himalayan yoga retreats in Rishikesh, Zanskar, and Sankri with small groups, asana, pranayama, meditation, and experienced teachers.',
     heroImage: '/Images/retreat/services/yoga_retreat.webp',
     heroImageAlt: 'Group performing morning yoga outdoors in the Himalayas',
     intro:
@@ -252,7 +252,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     seoTitle: 'Burnout Recovery Retreats | Retreats And Treks',
     h1: 'Burnout Recovery Retreats',
     metaDescription:
-      'Himalayan burnout recovery retreats for professionals and founders. Deep rest, nervous system reset, and guided recalibration in Chakrata, Zanskar, Munsiyari, and Sankri.',
+      'Himalayan burnout recovery retreats for professionals and founders with deep rest, nervous system reset, and guided recalibration.',
     heroImage: '/Images/retreat/services/rest.webp',
     heroImageAlt: 'Peaceful retreat environment for deep rest and recovery',
     intro:

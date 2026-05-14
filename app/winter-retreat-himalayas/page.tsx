@@ -64,7 +64,7 @@ export default function WinterRetreatPage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'Winter Retreat in the Himalayas — Snow, Silence, Recalibration',
     description:
-      'Winter retreats in the Himalayas — meditation, healing, and deep rest in Chakrata, Rishikesh, and Mussoorie. Cold air, clear skies, fewer people. The quietest season for the deepest work.',
+      'Winter retreats in the Himalayas with meditation, healing, deep rest, cold air, clear skies, fewer crowds, and quiet settings in Chakrata and Rishikesh.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
     url: buildCanonicalUrl(PATH),

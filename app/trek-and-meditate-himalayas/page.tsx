@@ -64,7 +64,7 @@ export default function TrekAndMeditatePage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'Trek and Meditate in the Himalayas — Walking as Practice',
     description:
-      'Trek and meditate in the Himalayas. Not a trek with meditation added — a practice where walking and sitting are equal partners. Himalayan trails as meditation halls. Chakrata, Sankri, Zanskar.',
+      'Trek and meditate in the Himalayas with walking practice, sitting meditation, silent trails, and guided journeys across Chakrata, Sankri, and Zanskar.',
     publishedAt: '2026-01-01',
     lastUpdated: '2026-05-09',
     url: buildCanonicalUrl(PATH),

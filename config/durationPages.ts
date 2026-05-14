@@ -190,7 +190,7 @@ export const DURATION_PAGES: readonly DurationPage[] = [
     seoTitle: 'Weekend Retreat in the Himalayas | Retreats And Treks',
     h1: 'Weekend Retreat in the Himalayas',
     metaDescription:
-      'A weekend Himalayan retreat — Friday evening to Sunday afternoon. Forest immersion, meditation, genuine rest in Chakrata. 2.5 hours from Dehradun. No leave from work required.',
+      'A weekend Himalayan retreat in Chakrata with forest immersion, meditation, genuine rest, Dehradun access, and Friday-to-Sunday structure.',
     intro:
       'Not everyone can take a week off. But everyone can take a weekend. A Himalayan weekend retreat packs genuine reset into 48 hours — arrive Friday evening, leave Sunday afternoon. The key is location: close enough to reach after work, remote enough that you feel genuinely separated from it. Chakrata is 60 km from Dehradun, through mountain roads that climb into dense deodar forest. By the time you arrive, the city is already a memory. By Sunday, your nervous system has genuinely shifted.',
     durationLabel: 'Friday Eve – Sunday Afternoon',

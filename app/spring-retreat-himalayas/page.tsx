@@ -64,7 +64,7 @@ export default function SpringRetreatPage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'Spring Retreat in the Himalayas — Renewal Season',
     description:
-      'Spring Himalayan retreats (March–May) — blooming forests, warming mornings, clear mountain views. The season of renewal. Meditation, yoga, and healing in Chakrata, Rishikesh, Munsiyari.',
+      'Spring Himalayan retreats from March to May with blooming forests, warmer mornings, mountain views, meditation, yoga, and healing in quiet locations.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
     url: buildCanonicalUrl(PATH),

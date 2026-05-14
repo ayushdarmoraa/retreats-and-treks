@@ -89,7 +89,7 @@ export default function SpiritualAwakeningRetreatPage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'Spiritual Awakening Retreat — Beyond the Self You Know',
     description:
-      'Spiritual awakening retreat in the Indian Himalayas. Sustained meditation, silence, and contemplative practice in environments where awakening has been happening for millennia. Zanskar, Rishikesh, Chakrata.',
+      'Spiritual awakening retreat in the Himalayas with sustained meditation, silence, contemplative practice, and sacred settings in Zanskar, Rishikesh, and Chakrata.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
     url: buildCanonicalUrl(PATH),

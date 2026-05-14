@@ -66,7 +66,7 @@ export default function WhatToExpectMeditationRetreatPage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'What to Expect at a Meditation Retreat — Day by Day',
     description:
-      'What to expect at a meditation retreat — schedule, sitting, walking, meals, emotions, the discomfort and the depth. A realistic day-by-day guide for first-timers and experienced practitioners.',
+      'What to expect at a meditation retreat: daily schedule, sitting, walking, meals, emotions, discomfort, depth, and realistic guidance for first-timers.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
     url: canonicalUrl,

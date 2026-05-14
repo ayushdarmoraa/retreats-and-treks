@@ -69,7 +69,7 @@ export default function TrekAndPaintPage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'Trek and Paint in the Himalayas — Art on the Trail',
     description:
-      'Trek and paint in the Himalayas. Walk through mountain landscapes by morning, create art from what you saw by afternoon. Plein air painting, nature sketching, and land art on Himalayan trails.',
+      'Trek and paint in the Himalayas with morning walks, afternoon art, plein air painting, nature sketching, and creative practice on mountain trails.',
     publishedAt: '2026-01-01',
     lastUpdated: '2026-05-09',
     url: buildCanonicalUrl(PATH),

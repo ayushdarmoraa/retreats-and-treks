@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: '7-Day Meditation Retreat in Zanskar',
     description:
-      'A first-person account of a 7-day silent meditation retreat in Zanskar, Ladakh — monastery sitting at 3,500m, frozen gorges, altitude silence, and what happens when you stop running from stillness.',
+      'A first-person account of a 7-day silent meditation retreat in Zanskar, with monastery sitting, altitude silence, frozen gorges, and stillness.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

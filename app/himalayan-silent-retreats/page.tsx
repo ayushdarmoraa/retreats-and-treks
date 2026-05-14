@@ -17,7 +17,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Himalayan Silent Retreats | Retreats And Treks',
     description:
-      'Silent retreats in the Himalayas — Chakrata forest silence, Zanskar monastery quiet, Munsiyari alpine stillness. Guided noble silence in small groups. Compare locations by depth and accessibility.',
+      'Silent retreats in the Himalayas with guided noble silence, small groups, and locations compared by depth, accessibility, and environment.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

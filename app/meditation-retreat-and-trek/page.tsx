@@ -64,7 +64,7 @@ export default function MeditationRetreatAndTrekPage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'Meditation Retreat and Trek — Stillness Meets Movement',
     description:
-      'Combine a meditation retreat with Himalayan trekking. Stillness and movement in the same journey — 3–5 days of silent practice followed by 3–5 days on the trail. Chakrata, Sankri, Zanskar.',
+      'Combine meditation retreat and Himalayan trekking with silent practice, guided trails, stillness, movement, and mountain journeys in Chakrata, Sankri, or Zanskar.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
     url: buildCanonicalUrl(PATH),

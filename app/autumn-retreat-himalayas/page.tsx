@@ -64,7 +64,7 @@ export default function AutumnRetreatPage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'Autumn Retreat in the Himalayas — The Letting-Go Season',
     description:
-      'Autumn Himalayan retreats (September–November) — post-monsoon clarity, golden light, peak mountain views. The season of release. Meditation, silence, healing in Chakrata, Munsiyari, Rishikesh.',
+      'Autumn Himalayan retreats from September to November with post-monsoon clarity, golden light, mountain views, meditation, silence, and healing.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
     url: buildCanonicalUrl(PATH),

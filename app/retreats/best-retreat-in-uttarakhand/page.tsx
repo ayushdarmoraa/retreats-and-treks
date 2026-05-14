@@ -32,7 +32,7 @@ export function generateMetadata(): Metadata {
     openGraph: {
       title: '10 Best Retreats in Uttarakhand (2026) — Yoga, Luxury & Weekend Picks',
       description:
-        'Looking for the best retreat in Uttarakhand? Compare yoga retreats in Rishikesh, luxury escapes in Munsiyari, weekend resets near Delhi and seasonal Himalayan wellness programs.',
+        'Compare the best retreats in Uttarakhand by purpose, budget, location, season, retreat style, and accessibility.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
       images: buildOgImages('10 Best Retreats in Uttarakhand (2026) — Yoga, Luxury & Weekend Picks'),
@@ -131,7 +131,7 @@ export default function BestRetreatInUttarakhandPage() {
     '@type': 'WebPage',
     name: '10 Best Retreats in Uttarakhand (2026 Guide)',
     description:
-      'Looking for the best retreat in Uttarakhand? Compare yoga retreats in Rishikesh, luxury escapes in Munsiyari, weekend resets near Delhi and seasonal Himalayan wellness programs — ranked by purpose and budget.',
+      'Compare the best retreats in Uttarakhand by purpose, budget, location, season, retreat style, and accessibility across Rishikesh, Munsiyari, and Chakrata.',
     url: canonicalUrl,
     isPartOf: {
       '@type': 'WebSite',

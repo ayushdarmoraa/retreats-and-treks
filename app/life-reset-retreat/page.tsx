@@ -18,7 +18,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Life Reset Retreat | Retreats And Treks',
     description:
-      'Life reset retreat in the Indian Himalayas. For when daily life needs a complete recalibration — not optimisation, not adjustment, but a genuine restart from stillness. Chakrata, Zanskar.',
+      'Life reset retreat in the Himalayas for genuine recalibration through stillness, silence, nature immersion, and deep rest in Chakrata or Zanskar.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {
@@ -82,7 +82,7 @@ export default function LifeResetRetreatPage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'Life Reset Retreat — Start Again from Silence',
     description:
-      'Life reset retreat in the Indian Himalayas. For when daily life needs a complete recalibration — not optimisation, not adjustment, but a genuine restart from stillness. Chakrata, Zanskar.',
+      'Life reset retreat in the Himalayas for genuine recalibration through stillness, silence, nature immersion, and deep rest in Chakrata or Zanskar.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
     url: buildCanonicalUrl(PATH),

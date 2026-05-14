@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Best Meditation Retreats in India',
     description:
-      'Compare the best meditation retreats in India — from monastery immersion in Zanskar to forest silence in Chakrata and Ganges-side practice in Rishikesh. Ranked by depth, remoteness, and tradition.',
+      'Compare the best meditation retreats in India by depth, remoteness, tradition, setting, and practice across Zanskar, Chakrata, and Rishikesh.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

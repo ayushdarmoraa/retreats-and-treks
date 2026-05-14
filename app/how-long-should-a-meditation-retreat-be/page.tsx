@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'How Long Should a Meditation Retreat Be?',
     description:
-      'The right retreat length depends on your experience, goals, and schedule. A clear comparison of 3-day, 5-day, 7-day, and 10-day meditation retreats — what each offers and who each serves.',
+      'Compare 3-day, 5-day, 7-day, and 10-day meditation retreats by depth, schedule, experience level, goals, and who each duration serves.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {

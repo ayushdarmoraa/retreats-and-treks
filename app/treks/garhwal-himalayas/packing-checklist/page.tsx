@@ -69,7 +69,7 @@ export default function PackingChecklistPage() {
   const articleSchema = generateBlogPostingSchema({
     title: 'Garhwal Trek Packing Checklist — Print-Ready Gear List by Difficulty',
     description:
-      'Complete packing checklist for Garhwal Himalaya treks (3,850m–4,800m). Print-ready gear list for Brahmatal, Kuari Pass, Roopkund & Pangarchulla. Organised by category, difficulty tier & season.',
+      'Complete Garhwal trek packing checklist for Brahmatal, Kuari Pass, Roopkund, and Pangarchulla, organised by gear category, season, and difficulty.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
     url: canonicalUrl,
