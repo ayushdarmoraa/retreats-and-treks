@@ -302,7 +302,7 @@ export default function TrekNearDelhiPage() {
               ))}
             </div>
             <p className="tnd-body" style={{ margin:'1.25rem 0 0' }}>
-              Looking for restoration rather than trail time? Our <Link href="/retreats/retreat-near-delhi" className="tnd-link">Himalayan retreats near Delhi</Link> guide covers yoga, meditation, and wellness programmes within the same driving radius.
+              Looking for restoration rather than trail time? Our <Link href="/retreats/retreats-near-delhi" className="tnd-link">Himalayan retreats near Delhi</Link> guide covers yoga, meditation, and wellness programmes within the same driving radius.
             </p>
           </div>
         </section>
