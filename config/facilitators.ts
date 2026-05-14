@@ -36,15 +36,17 @@ const FACILITATORS: Facilitator[] = [
     metaDescription:
       'Arjun Mehta leads meditation and silent retreats across Zanskar, Chakrata, and Munsiyari, with 12 years of Vipassana and Zen practice.',
     bio:
-      'Arjun began his meditation practice in 2014 after leaving a decade-long career in enterprise technology. What started as stress management became a sustained inquiry into attention, silence, and the structure of mind. He trained in Vipassana at Dhamma Bodhi in Bodh Gaya and spent two years at a Zen centre in Kyoto before returning to India to lead retreats in the Himalayas.',
+      'Arjun began his meditation practice in 2014 after leaving a decade-long career in enterprise technology. What started as stress management became a sustained inquiry into attention, silence, and the structure of mind. He trained in Vipassana at Dhamma Bodhi in Bodh Gaya and spent two years at a Zen centre in Kyoto before returning to India to lead retreats in the Himalayas. His work is especially suited to participants who want a clear, grounded meditation container without performance, spiritual pressure, or unnecessary complexity.',
     background: [
       'Former enterprise technology consultant (10 years)',
       'Vipassana training at Dhamma Bodhi, Bodh Gaya',
       'Two years of residential Zen practice in Kyoto, Japan',
       'Leading Himalayan meditation retreats since 2019',
+      'Guides both beginners and experienced practitioners through structured silence, breath awareness, and walking meditation',
+      'Works with retreat groups seeking digital detox, decision clarity, and sustained attention training in mountain settings',
     ],
     approach:
-      'Arjun teaches meditation as attention training rather than spiritual practice. His sessions are structured, direct, and free from esoteric language. He believes the mountains are the best meditation teacher — his role is to remove the obstacles that prevent people from hearing them.',
+      'Arjun teaches meditation as attention training rather than spiritual performance. His sessions are structured, direct, and free from esoteric language. He believes the mountains are the best meditation teacher — his role is to remove the obstacles that prevent people from hearing them. In retreat settings, he uses silence, simple instruction, walking practice, and one-to-one check-ins to help participants build steadiness without forcing any particular belief system.',
     specialisations: ['Meditation retreats', 'Silent retreats', 'Digital detox programs'],
     retreatSlugs: ['meditation-and-silence'],
     locationIds: ['zanskar', 'chakrata', 'munsiyari'],
