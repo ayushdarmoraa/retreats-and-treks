@@ -120,15 +120,17 @@ const FACILITATORS: Facilitator[] = [
     metaDescription:
       'Tenzin Dorje leads retreat programs and guided treks in Zanskar and Munsiyari. Born in Ladakh. 20 years of mountain experience.',
     bio:
-      'Tenzin was born in the Zanskar valley. He grew up walking the same passes that retreat and trek participants now travel. His knowledge of the Trans-Himalayan landscape is not academic — it is lived. He has spent twenty years guiding people through the mountains, first as a trekking guide, then as a retreat facilitator who understood that the landscape itself is the teacher.',
+      'Tenzin was born in the Zanskar valley. He grew up walking the same passes that retreat and trek participants now travel. His knowledge of the Trans-Himalayan landscape is not academic — it is lived. He has spent twenty years guiding people through the mountains, first as a trekking guide, then as a retreat facilitator who understood that the landscape itself is the teacher. His work is strongest for participants who want mountain presence, careful pacing, and a guide who understands both physical terrain and inner retreat space.',
     background: [
       'Born and raised in Zanskar valley, Ladakh',
       'Professional mountain guide since 2006',
       'Trained in wilderness medicine and high-altitude safety',
       'Retreat facilitation training with emphasis on nature immersion',
+      'Guides high-altitude retreat and trek hybrid journeys with attention to safety, pacing, and acclimatisation',
+      'Supports participants through mountain walking, silence, landscape-based reflection, and simple outdoor practice',
     ],
     approach:
-      'Tenzin leads with the landscape. His retreat sessions happen on ridges, beside rivers, and in monastery courtyards. He speaks slowly, moves deliberately, and knows when to be quiet. Participants describe him as someone who makes the mountains accessible without making them smaller.',
+      'Tenzin leads with the landscape. His retreat sessions happen on ridges, beside rivers, and in monastery courtyards. He speaks slowly, moves deliberately, and knows when to be quiet. Participants describe him as someone who makes the mountains accessible without making them smaller. In retreat settings, he balances route awareness, safety, silence, and nature immersion so the mountain experience remains deep without becoming rushed or performative.',
     specialisations: ['Mountain meditation', 'Trek and retreat hybrids', 'High-altitude retreats', 'Nature immersion'],
     retreatSlugs: ['meditation-and-silence'],
     locationIds: ['zanskar', 'munsiyari'],
