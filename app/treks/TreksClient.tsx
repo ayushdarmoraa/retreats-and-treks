@@ -504,7 +504,7 @@ export default function TreksClient() {
   </div>
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Himalayan Treks</span></div>
-    <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(2.4rem, 6vw, 4rem)', fontWeight: 200, letterSpacing: '-0.04em', color: '#ffffff', lineHeight: 1.1, margin: '0 0 1.25rem 0', maxWidth: '52rem', textShadow: '0 2px 32px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.5)' }}>Trekking in the Himalayas</h2>
+    <h1 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(2.4rem, 6vw, 4rem)', fontWeight: 200, letterSpacing: '-0.04em', color: '#ffffff', lineHeight: 1.1, margin: '0 0 1.25rem 0', maxWidth: '52rem', textShadow: '0 2px 32px rgba(0,0,0,0.8), 0 2px 8px rgba(0,0,0,0.5)' }}>Trekking in the Himalayas</h1>
     <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.1rem', fontWeight: 300, lineHeight: 1.85, color: 'rgba(255,255,255,0.85)', margin: 0, maxWidth: '38rem' }}>Not all treks are created equal. We curate only the ones worth your time.</p>
     <div className="trk-hero-btns">
       <a href="#catalogue" className="trk-hero-btn-primary" onClick={(e) => { e.preventDefault(); document.getElementById('catalogue')?.scrollIntoView({ behavior: 'smooth' }); }}>Explore All Treks →</a>
