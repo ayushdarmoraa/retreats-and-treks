@@ -98,7 +98,7 @@ export const LOCATIONS = [
     name: 'Zanskar',
     tagline: 'A high-altitude river valley in Ladakh — raw remoteness, ancient monasteries, and transformative silence.',
     supportsRetreats: true,
-    supportsTreks: true,
+    supportsTreks: false,
     active: true,
     priority: 8,
     geo: { latitude: 33.512, longitude: 76.932 },
