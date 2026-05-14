@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
+import { schemaIds } from '@/lib/schemaIds';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -77,8 +78,8 @@ export default function VipassanaVsMeditationRetreatPage() {
     headline: 'Vipassana vs Meditation Retreat — Which Is Right for You?',
     description: 'A clear comparison of Vipassana and general meditation retreats.',
     url: canonicalUrl,
-    author: { '@type': 'Organization', name: 'Retreats And Treks' },
-    publisher: { '@type': 'Organization', name: 'Retreats And Treks' },
+    author: { '@id': schemaIds.organization },
+    publisher: { '@id': schemaIds.organization },
     datePublished: '2026-03-06',
     dateModified: '2026-03-06',
     mainEntityOfPage: canonicalUrl,

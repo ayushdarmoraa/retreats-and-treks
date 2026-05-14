@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
+import { schemaIds } from '@/lib/schemaIds';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -82,7 +83,7 @@ export default function WhatHappensAtASilentRetreatPage() {
     name: 'What Happens at a Silent Retreat?',
     description: 'A complete guide to what happens at a silent retreat — structure, rules, emotional journey.',
     url: canonicalUrl,
-    isPartOf: { '@type': 'WebSite', name: 'Retreats And Treks' },
+    isPartOf: { '@id': schemaIds.website },
   };
 
   return (

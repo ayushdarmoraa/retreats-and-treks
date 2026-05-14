@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
+import { schemaIds } from '@/lib/schemaIds';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -81,8 +82,8 @@ export default function DigitalDetoxStoryPage() {
     description:
       'A first-person account of a 7-day digital detox retreat in the Himalayas.',
     url: canonicalUrl,
-    author: { '@type': 'Organization', name: 'Retreats And Treks' },
-    publisher: { '@type': 'Organization', name: 'Retreats And Treks' },
+    author: { '@id': schemaIds.organization },
+    publisher: { '@id': schemaIds.organization },
     datePublished: '2025-12-05',
     dateModified: '2026-03-01',
     mainEntityOfPage: canonicalUrl,

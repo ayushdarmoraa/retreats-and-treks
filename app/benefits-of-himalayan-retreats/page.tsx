@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
+import { schemaIds } from '@/lib/schemaIds';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -81,7 +82,7 @@ export default function BenefitsOfHimalayanRetreatsPage() {
     name: 'Benefits of Himalayan Retreats',
     description: 'How altitude, forest, silence, and remoteness create conditions for healing and transformation.',
     url: canonicalUrl,
-    isPartOf: { '@type': 'WebSite', name: 'Retreats And Treks' },
+    isPartOf: { '@id': schemaIds.website },
   };
 
   return (

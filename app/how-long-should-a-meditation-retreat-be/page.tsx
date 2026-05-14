@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
+import { schemaIds } from '@/lib/schemaIds';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -85,8 +86,8 @@ export default function HowLongShouldARetreatBePage() {
     headline: 'How Long Should a Meditation Retreat Be?',
     description: 'Comparing 3, 5, 7, and 10-day meditation retreats.',
     url: canonicalUrl,
-    author: { '@type': 'Organization', name: 'Retreats And Treks' },
-    publisher: { '@type': 'Organization', name: 'Retreats And Treks' },
+    author: { '@id': schemaIds.organization },
+    publisher: { '@id': schemaIds.organization },
     datePublished: '2026-03-06',
     dateModified: '2026-03-06',
     mainEntityOfPage: canonicalUrl,

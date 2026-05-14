@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
+import { schemaIds } from '@/lib/schemaIds';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -96,7 +97,7 @@ export default function HimalayanSilentRetreatsPage() {
     name: 'Himalayan Silent Retreats (2026)',
     description: 'Silent retreats in the Himalayas — compare by depth, accessibility, and environment.',
     url: canonicalUrl,
-    isPartOf: { '@type': 'WebSite', name: 'Retreats And Treks' },
+    isPartOf: { '@id': schemaIds.website },
     about: { '@type': 'Thing', name: 'Silent retreats in the Himalayas' },
   };
 

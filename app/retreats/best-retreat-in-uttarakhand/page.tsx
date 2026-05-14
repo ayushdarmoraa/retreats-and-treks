@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
+import { schemaIds } from '@/lib/schemaIds';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -133,10 +134,7 @@ export default function BestRetreatInUttarakhandPage() {
     description:
       'Compare the best retreats in Uttarakhand by purpose, budget, location, season, retreat style, and accessibility across Rishikesh, Munsiyari, and Chakrata.',
     url: canonicalUrl,
-    isPartOf: {
-      '@type': 'WebSite',
-      name: 'Retreats And Treks',
-    },
+    isPartOf: { '@id': schemaIds.website },
     about: {
       '@type': 'Thing',
       name: 'Himalayan wellness retreats in Uttarakhand',

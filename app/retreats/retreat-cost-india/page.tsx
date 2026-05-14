@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
+import { schemaIds } from '@/lib/schemaIds';
 import { generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import { retreatCostIndia } from '@/content/reports/retreat-cost-india';
@@ -82,10 +83,7 @@ export default function RetreatCostIndiaPage() {
     name: 'Retreat Costs in India (2026)',
     description:
       'Analysis of retreat pricing trends across India including average costs, retreat duration, and location-based pricing.',
-    creator: {
-      '@type': 'Organization',
-      name: 'Retreats & Treks',
-    },
+    creator: { '@id': schemaIds.organization },
     url: canonicalUrl,
     keywords: [
       'retreat cost India',

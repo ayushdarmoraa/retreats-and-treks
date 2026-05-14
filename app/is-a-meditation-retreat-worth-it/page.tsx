@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
+import { schemaIds } from '@/lib/schemaIds';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -78,8 +79,8 @@ export default function IsAMeditationRetreatWorthItPage() {
     description:
       'An honest look at who benefits from meditation retreats, who does not, what retreats actually provide, and whether the investment is worth it.',
     url: canonicalUrl,
-    author: { '@type': 'Organization', name: 'Retreats And Treks' },
-    publisher: { '@type': 'Organization', name: 'Retreats And Treks' },
+    author: { '@id': schemaIds.organization },
+    publisher: { '@id': schemaIds.organization },
     datePublished: '2025-12-15',
     dateModified: '2026-03-06',
     mainEntityOfPage: canonicalUrl,

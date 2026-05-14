@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
+import { schemaIds } from '@/lib/schemaIds';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -81,7 +82,7 @@ export default function RetreatVsVacationPage() {
     name: 'Retreat vs Vacation — What Is the Difference?',
     description: 'Understanding the real difference between a retreat and a vacation.',
     url: canonicalUrl,
-    isPartOf: { '@type': 'WebSite', name: 'Retreats And Treks' },
+    isPartOf: { '@id': schemaIds.website },
   };
 
   return (

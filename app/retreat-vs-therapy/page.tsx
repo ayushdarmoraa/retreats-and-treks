@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
+import { schemaIds } from '@/lib/schemaIds';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -76,8 +77,8 @@ export default function RetreatVsTherapyPage() {
     headline: 'Retreat vs Therapy — Can a Meditation Retreat Replace Therapy?',
     description: 'An honest comparison of retreats and psychotherapy — when each is appropriate and when you need both.',
     url: canonicalUrl,
-    author: { '@type': 'Organization', name: 'Retreats And Treks' },
-    publisher: { '@type': 'Organization', name: 'Retreats And Treks' },
+    author: { '@id': schemaIds.organization },
+    publisher: { '@id': schemaIds.organization },
     datePublished: '2026-03-06',
     dateModified: '2026-03-06',
     mainEntityOfPage: canonicalUrl,
