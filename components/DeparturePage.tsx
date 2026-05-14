@@ -8,6 +8,7 @@ import {
   generateBreadcrumbSchema,
   generateFAQSchema,
 } from '@/components/seo/Schema';
+import { schemaIds } from '@/lib/schemaIds';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import { getDeparturesBySlug } from '@/config/departures';
 import type { Departure, TrekDepartures } from '@/config/departures';
@@ -69,11 +70,7 @@ function generateDepartureEventSchemas(trek: TrekDepartures) {
           addressCountry: 'IN',
         },
       },
-      organizer: {
-        '@type': 'Organization',
-        name: 'Retreats And Treks',
-        url: buildCanonicalUrl('/'),
-      },
+      organizer: { '@id': schemaIds.organization },
       offers: {
         '@type': 'Offer',
         url: buildCanonicalUrl(`/treks/${trek.urlSlug}/departures`),
@@ -98,10 +95,7 @@ function generateProductSchema(trek: TrekDepartures) {
     '@type': 'Product',
     name: `${trek.trekName} — Fixed Departures 2025-26`,
     description: `Book your ${trek.trekName} departure. ${trek.duration}, ${trek.difficulty}, max altitude ${trek.altitude}. Starts from ${trek.pickupPoint}. Best months: ${trek.bestMonths}.`,
-    brand: {
-      '@type': 'Organization',
-      name: 'Retreats And Treks',
-    },
+    brand: { '@id': schemaIds.organization },
     offers: {
       '@type': 'AggregateOffer',
       lowPrice: lowestPrice,
