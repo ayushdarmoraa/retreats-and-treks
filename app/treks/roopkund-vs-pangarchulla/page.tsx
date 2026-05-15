@@ -199,7 +199,7 @@ export default function RoopkundVsPangarchullaPage() {
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
           <div className="rvp-eyebrow"><span className="rvp-eyebrow-line" /><span className="rvp-eyebrow-text">Trek Comparison · Challenging · Garhwal Himalayas</span></div>
           <h1 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.75rem, 3.5vw, 2.4rem)', fontWeight: 200, letterSpacing: '-0.035em', color: '#111111', lineHeight: 1.1, margin: '0 0 1.75rem' }}>
-            Roopkund vs Pangarchulla: Which Challenging Garhwal Trek Is Right for You?
+            Roopkund vs Pangarchulla: Which Trek Is Right?
           </h1>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginBottom: '1.5rem' }}>
             <div className="rvp-pick">

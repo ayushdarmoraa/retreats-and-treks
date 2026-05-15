@@ -112,7 +112,7 @@ export default function DigitalDetoxStoryPage() {
         {/* ── HERO ──────────────────────────────────────────────── */}
         <header style={{ marginBottom: 'var(--space-xl)' }}>
           <h1 style={{ fontSize: '2rem', fontWeight: 400, marginBottom: '0.75rem' }}>
-            A Week Without My Phone: What a Digital Detox Retreat Actually Feels Like
+            A Week Without My Phone: Digital Detox Retreat
           </h1>
           <p style={{ fontSize: '0.9rem', color: 'var(--color-muted)', marginBottom: '1rem' }}>
             A first-person account &middot; 7 days &middot; Chakrata, Uttarakhand &middot; 2,000m

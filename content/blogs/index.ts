@@ -57,7 +57,7 @@ import dayaraBugyalPackingList from './dayara-bugyal-packing-list';
 // Hardcoded blog posts (extracted from static routes)
 const chakrataVsSankri: BlogContent = {
   slug: 'chakrata-vs-sankri',
-  title: 'Chakrata vs Sankri: Which Is Better for Your First Himalayan Experience?',
+  title: 'Chakrata vs Sankri: Which Is Better?',
   seoTitle: 'Chakrata vs Sankri | Retreats And Treks',
   description:
     'Confused between Chakrata and Sankri? This comparison explains differences in vibe, activities, effort level, and who each destination is best suited for.',
