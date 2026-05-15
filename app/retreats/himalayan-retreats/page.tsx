@@ -1437,17 +1437,38 @@ export default function HimalayanRetreatsPage() {
           'private-custom':         '/Images/services/privatecustom.webp',
           'private-and-custom':     '/Images/services/privatecustom.webp',
         };
+
+        const retreatImageDimensions: Record<string, { width: number; height: number }> = {
+          '/Images/services/restreset.webp': { width: 800, height: 480 },
+          '/Images/services/burnoutrec.webp': { width: 800, height: 532 },
+          '/Images/services/yoga.webp': { width: 800, height: 1000 },
+          '/Images/services/yogamov.webp': { width: 800, height: 516 },
+          '/Images/Journeys/meditation.webp': { width: 800, height: 501 },
+          '/Images/services/artcreative.webp': { width: 800, height: 533 },
+          '/Images/services/soundhealing.webp': { width: 800, height: 533 },
+          '/Images/services/weekendretreat.webp': { width: 800, height: 533 },
+          '/Images/services/privatecustom.webp': { width: 800, height: 451 },
+        };
         return (
           <ul className="rj-grid">
             {allRetreats.map((retreat) => (
               <li key={retreat.slug}>
                 <Link href={`/retreats/journeys/${retreat.slug}`} className="rj-card">
                   <div className="rj-card-img-wrap">
-                    <img
-  src={retreatImages[retreat.slug] ?? '/Images/services/restreset.webp'}
-  alt={retreat.title}
-  className="rj-card-img"
-/>
+                    {(() => {
+                      const imageSrc = retreatImages[retreat.slug] ?? '/Images/services/restreset.webp';
+                      const imageSize = retreatImageDimensions[imageSrc] ?? { width: 800, height: 480 };
+
+                      return (
+                        <img
+                          src={imageSrc}
+                          width={imageSize.width}
+                          height={imageSize.height}
+                          alt={retreat.title}
+                          className="rj-card-img"
+                        />
+                      );
+                    })()}
                     <div className="rj-card-img-overlay" />
                     <span className="rj-card-img-tag">Retreat</span>
                   </div>

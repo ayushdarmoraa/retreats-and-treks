@@ -68,17 +68,17 @@ const FAQ_ITEMS = [
 ];
 
 const RETREAT_TYPES = [
-  { title: 'Meditation & Silence', desc: 'Structured seated practice, walking meditation, noble silence. For beginners and experienced practitioners.', link: '/meditation-retreats', img: '/Images/experience-hubs/meditation-hero.webp', duration: '3–7 days', price: 'From ₹14,000' },
-  { title: 'Burnout Recovery', desc: 'Somatic therapy, rest, nervous system regulation. For professionals who have been running on empty.', link: '/burnout-recovery-retreats', img: '/Images/location/chakrata.webp', duration: '5–7 days', price: 'From ₹28,000' },
-  { title: 'Weekend Retreat', desc: 'Short reset in the forest. Ideal for first-timers. Leave Friday, return Sunday renewed.', link: '/retreats/chakrata/weekend-retreat-from-dehradun', img: '/Images/trek/region/chakraweekend.webp', duration: '2–3 days', price: 'From ₹14,000' },
-  { title: 'Yoga & Movement', desc: 'Hatha, pranayama, and embodied practice in a forest setting. Not a fitness boot camp — a return to presence.', link: '/yoga-retreats', img: '/Images/experience-hubs/yoga-hero.webp', duration: '3–7 days', price: 'From ₹18,000' },
+  { title: 'Meditation & Silence', desc: 'Structured seated practice, walking meditation, noble silence. For beginners and experienced practitioners.', link: '/meditation-retreats', img: '/Images/experience-hubs/meditation-hero.webp', width: 1024, height: 1024, duration: '3–7 days', price: 'From ₹14,000' },
+  { title: 'Burnout Recovery', desc: 'Somatic therapy, rest, nervous system regulation. For professionals who have been running on empty.', link: '/burnout-recovery-retreats', img: '/Images/location/chakrata.webp', width: 800, height: 462, duration: '5–7 days', price: 'From ₹28,000' },
+  { title: 'Weekend Retreat', desc: 'Short reset in the forest. Ideal for first-timers. Leave Friday, return Sunday renewed.', link: '/retreats/chakrata/weekend-retreat-from-dehradun', img: '/Images/trek/region/chakraweekend.webp', width: 800, height: 448, duration: '2–3 days', price: 'From ₹14,000' },
+  { title: 'Yoga & Movement', desc: 'Hatha, pranayama, and embodied practice in a forest setting. Not a fitness boot camp — a return to presence.', link: '/yoga-retreats', img: '/Images/experience-hubs/yoga-hero.webp', width: 1024, height: 1024, duration: '3–7 days', price: 'From ₹18,000' },
 ];
 
 const TREK_TYPES = [
-  { title: 'Weekend Trek', desc: 'Forest trails, ridge campsites, 8 km. No experience needed. Dehradun pickup included.', link: '/treks/location/chakrata/weekend-trek', img: '/Images/trek/region/chakraweekend.webp', difficulty: 'Easy', duration: '2–3 days' },
-  { title: 'Tiger Fall Trek', desc: '12 km to one of the highest waterfalls in the region. Best in monsoon when the cascade peaks.', link: '/treks/location/chakrata/tiger-fall-trek', img: '/Images/trek/region/tigerfall.webp', difficulty: 'Moderate', duration: '1 day' },
-  { title: 'Budher Caves Trek', desc: '10 km through oak forest to ancient limestone caves. Trekking meets underground exploration.', link: '/treks/location/chakrata/budher-caves-trek', img: '/Images/trek/region/budher.webp', difficulty: 'Moderate', duration: '1 day' },
-  { title: 'Guided Forest Treks', desc: 'Flexible 1–3 day itineraries with expert naturalists. Bird calls, ecology, viewpoints.', link: '/treks/location/chakrata/guided-treks', img: '/Images/trek/region/chakraguided.webp', difficulty: 'Easy–Moderate', duration: '1–3 days' },
+  { title: 'Weekend Trek', desc: 'Forest trails, ridge campsites, 8 km. No experience needed. Dehradun pickup included.', link: '/treks/location/chakrata/weekend-trek', img: '/Images/trek/region/chakraweekend.webp', width: 800, height: 448, difficulty: 'Easy', duration: '2–3 days' },
+  { title: 'Tiger Fall Trek', desc: '12 km to one of the highest waterfalls in the region. Best in monsoon when the cascade peaks.', link: '/treks/location/chakrata/tiger-fall-trek', img: '/Images/trek/region/tigerfall.webp', width: 600, height: 400, difficulty: 'Moderate', duration: '1 day' },
+  { title: 'Budher Caves Trek', desc: '10 km through oak forest to ancient limestone caves. Trekking meets underground exploration.', link: '/treks/location/chakrata/budher-caves-trek', img: '/Images/trek/region/budher.webp', width: 800, height: 532, difficulty: 'Moderate', duration: '1 day' },
+  { title: 'Guided Forest Treks', desc: 'Flexible 1–3 day itineraries with expert naturalists. Bird calls, ecology, viewpoints.', link: '/treks/location/chakrata/guided-treks', img: '/Images/trek/region/chakraguided.webp', width: 800, height: 448, difficulty: 'Easy–Moderate', duration: '1–3 days' },
 ];
 
 const PLACES = [
@@ -225,7 +225,7 @@ export default function ChakrataHubPage() {
             {RETREAT_TYPES.map((r) => (
               <Link key={r.title} href={r.link} className="ck-exp-card">
                 <div className="ck-exp-card-img">
-                  <img src={r.img} alt={`${r.title} retreat in Chakrata`} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'absolute', inset: 0 }} />
+                  <img src={r.img} width={r.width} height={r.height} alt={`${r.title} retreat in Chakrata`} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'absolute', inset: 0 }} />
                 </div>
                 <div className="ck-exp-card-body">
                   <h4 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', fontWeight: 500, color: '#111', margin: '0 0 0.4rem' }}>{r.title}</h4>
@@ -245,7 +245,7 @@ export default function ChakrataHubPage() {
             {TREK_TYPES.map((t) => (
               <Link key={t.title} href={t.link} className="ck-exp-card">
                 <div className="ck-exp-card-img">
-                  <img src={t.img} alt={`${t.title} in Chakrata`} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'absolute', inset: 0 }} />
+                  <img src={t.img} width={t.width} height={t.height} alt={`${t.title} in Chakrata`} loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'absolute', inset: 0 }} />
                 </div>
                 <div className="ck-exp-card-body">
                   <h4 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', fontWeight: 500, color: '#111', margin: '0 0 0.4rem' }}>{t.title}</h4>

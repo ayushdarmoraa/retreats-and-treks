@@ -1595,6 +1595,8 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
       }}>
         <img
           src={isTrekPaintJourney ? "/Images/art-retreat/chaitra/outdoor-easel-painting-art-retreat.webp" : "/Images/whyhimalaya/nature.webp"}
+          width={isTrekPaintJourney ? 1044 : 800}
+          height={isTrekPaintJourney ? 1600 : 476}
           alt={isTrekPaintJourney ? "Outdoor easel painting during a real Himalayan art retreat" : "Himalayan mountain landscape — natural setting for retreat journeys"}
           loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: isTrekPaintJourney ? 'center 45%' : 'center 40%', display: 'block' }}
@@ -2098,6 +2100,8 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         }}>
           <img
             src={isTrekPaintJourney ? "/Images/art-retreat/chaitra/group-art-retreat-participants-paintings.webp" : "/Images/location/mussoorie.webp"}
+            width={isTrekPaintJourney ? 960 : 800}
+            height={isTrekPaintJourney ? 1280 : 462}
             alt={isTrekPaintJourney ? "Participants holding paintings created during a real art retreat" : "Mountain retreat verandah — quiet creative space in the Himalayas"}
             loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: isTrekPaintJourney ? 'center 42%' : 'center 45%', display: 'block' }}
@@ -2670,6 +2674,8 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
       }}>
         <img
           src={isTrekPaintJourney ? "/Images/art-retreat/chaitra/evening-reflection-art-retreat-group.webp" : "/Images/hero/valley-forest.webp"}
+          width={isTrekPaintJourney ? 960 : 1400}
+          height={isTrekPaintJourney ? 1280 : 788}
           alt={isTrekPaintJourney ? "Evening reflection circle during a real art retreat" : "Evening light across Himalayan valley forest — quiet setting for mountain retreats"}
           loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: isTrekPaintJourney ? 'center 48%' : 'center 35%', display: 'block' }}

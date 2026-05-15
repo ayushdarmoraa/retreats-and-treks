@@ -1534,14 +1534,18 @@ export default function RetreatCostIndiaPage() {
 
             <div className="rci-location-grid">
               {data.locations.map((loc) => {
-                const locationDecor: Record<string, { image?: string; badge: string; href?: string }> = {
+                const locationDecor: Record<string, { image?: string; width?: number; height?: number; badge: string; href?: string }> = {
                   Uttarakhand: {
                     image: '/Images/hero/valley-forest.webp',
+                    width: 1400,
+                    height: 788,
                     badge: 'Best value',
                     href: '/retreats/uttarakhand-retreats',
                   },
                   Rishikesh: {
                     image: '/Images/location/rishikesh.webp',
+                    width: 800,
+                    height: 462,
                     badge: 'Yoga capital',
                     href: '/retreats/yoga-retreat-rishikesh',
                   },
@@ -1557,6 +1561,8 @@ export default function RetreatCostIndiaPage() {
                     {decor.image && (
                       <img
                         src={decor.image}
+                        width={decor.width}
+                        height={decor.height}
                         alt={`${loc.name} retreat destination in India`}
                         className="rci-location-image"
                         loading="lazy"
@@ -1948,6 +1954,8 @@ export default function RetreatCostIndiaPage() {
                   title: 'Burnout Recovery Retreat',
                   href: '/retreats/journeys/burnout-recovery',
                   image: '/Images/services/burnoutrec.webp',
+                  width: 800,
+                  height: 532,
                   badge: 'For exhaustion',
                   copy: 'A 3-day weekend retreat designed for people feeling mentally exhausted from work or city life.',
                   meta: ['3-day format', 'Small group', 'Guided reset'],
@@ -1956,6 +1964,8 @@ export default function RetreatCostIndiaPage() {
                   title: 'Rest & Reset Retreat',
                   href: '/retreats/journeys/rest-and-reset',
                   image: '/Images/services/restreset.webp',
+                  width: 800,
+                  height: 480,
                   badge: 'For quiet recovery',
                   copy: 'A nature-based retreat focused on quiet environments, forest immersion, and mental clarity.',
                   meta: ['Nature based', 'Forest immersion', 'Gentle rhythm'],
@@ -1964,6 +1974,8 @@ export default function RetreatCostIndiaPage() {
                 <Link key={program.title} href={program.href} className="rci-program-card">
                   <img
                     src={program.image}
+                    width={program.width}
+                    height={program.height}
                     alt={`${program.title} in the Himalayas`}
                     className="rci-program-image"
                     loading="lazy"

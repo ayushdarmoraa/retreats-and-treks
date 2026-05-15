@@ -119,6 +119,50 @@ const LOCATION_GALLERY: Record<string, GalleryImage[]> = {
   ],
 };
 
+const IMAGE_DIMENSIONS: Record<string, { width: number; height: number }> = {
+  '/Images/location/chakrata.webp': { width: 800, height: 462 },
+  '/Images/location/sankri.webp': { width: 1200, height: 693 },
+  '/Images/location/munsiyari.webp': { width: 800, height: 462 },
+  '/Images/location/lohajung.webp': { width: 800, height: 600 },
+  '/Images/location/joshimath.webp': { width: 800, height: 450 },
+  '/Images/location/zanskar.webp': { width: 800, height: 462 },
+  '/Images/trek/region/garhwal.webp': { width: 800, height: 450 },
+  '/Images/trek/region/brahmatal-lake.webp': { width: 800, height: 800 },
+  '/Images/trek/region/roopkund_lake.webp': { width: 800, height: 536 },
+  '/Images/trek/region/kuari.webp': { width: 800, height: 600 },
+  '/Images/trek/region/pangarchulla.webp': { width: 800, height: 534 },
+  '/Images/trek/region/kedarkantha-summit.webp': { width: 800, height: 800 },
+  '/Images/trek/region/harkidun-valley.webp': { width: 800, height: 800 },
+  '/Images/trek/region/chakraweekend.webp': { width: 800, height: 448 },
+  '/Images/trek/region/tigerfall.webp': { width: 600, height: 400 },
+  '/Images/trek/region/budher.webp': { width: 800, height: 532 },
+  '/Images/trek/region/chakraguided.webp': { width: 800, height: 448 },
+  '/Images/trek/region/Khaliya.webp': { width: 800, height: 444 },
+  '/Images/trek/region/milamglacier.webp': { width: 800, height: 300 },
+  '/Images/trek/itinerary/kedarkantha/day1.webp': { width: 600, height: 375 },
+  '/Images/trek/itinerary/kedarkantha/day2.webp': { width: 1200, height: 750 },
+  '/Images/trek/itinerary/kedarkantha/day3.webp': { width: 600, height: 375 },
+  '/Images/trek/itinerary/kedarkantha/day4.webp': { width: 1200, height: 750 },
+  '/Images/trek/itinerary/kedarkantha/day5.webp': { width: 600, height: 375 },
+  '/Images/trek/itinerary/har-ki-dun/day1.webp': { width: 1200, height: 750 },
+  '/Images/trek/itinerary/har-ki-dun/day2.webp': { width: 600, height: 375 },
+  '/Images/trek/itinerary/har-ki-dun/day3.webp': { width: 1200, height: 750 },
+  '/Images/trek/itinerary/har-ki-dun/day4.webp': { width: 600, height: 375 },
+  '/Images/trek/itinerary/har-ki-dun/day5.webp': { width: 600, height: 375 },
+  '/Images/trek/itinerary/brahmatal/day1.webp': { width: 800, height: 500 },
+  '/Images/trek/itinerary/brahmatal/day2.webp': { width: 800, height: 500 },
+  '/Images/trek/itinerary/brahmatal/day3.webp': { width: 800, height: 497 },
+  '/Images/trek/itinerary/brahmatal/day4.webp': { width: 800, height: 500 },
+  '/Images/trek/itinerary/roopkund/day2.webp': { width: 800, height: 500 },
+  '/Images/trek/itinerary/roopkund/day4.webp': { width: 800, height: 500 },
+  '/Images/trek/itinerary/kuari-pass/day1.webp': { width: 800, height: 500 },
+  '/Images/trek/itinerary/kuari-pass/day2.webp': { width: 800, height: 500 },
+  '/Images/trek/itinerary/kuari-pass/day3.webp': { width: 800, height: 500 },
+  '/Images/trek/itinerary/pangarchulla/day2.webp': { width: 800, height: 500 },
+  '/Images/trek/itinerary/pangarchulla/day4.webp': { width: 800, height: 500 },
+  '/Images/trek/itinerary/pangarchulla/day5.webp': { width: 800, height: 500 },
+};
+
 // ── Per-location authority content ──────────────────────────
 type GuideSection = { heading: string; body: React.ReactNode };
 
@@ -668,8 +712,11 @@ export default async function TrekHubPage({ params }: PageProps) {
 
   const guideSections = LOCATION_GUIDES[locationId] || [];
 
-  if (LOCATION_HERO_MAP[locationId]) {
-    preload(LOCATION_HERO_MAP[locationId], { as: 'image', fetchPriority: 'high' });
+  const locationHeroImage = LOCATION_HERO_MAP[locationId];
+  const locationHeroSize = locationHeroImage ? IMAGE_DIMENSIONS[locationHeroImage] ?? { width: 800, height: 450 } : null;
+
+  if (locationHeroImage) {
+    preload(locationHeroImage, { as: 'image', fetchPriority: 'high' });
   }
 
   return (
@@ -682,12 +729,14 @@ export default async function TrekHubPage({ params }: PageProps) {
         display: 'flex', alignItems: 'center', justifyContent: 'center',
         minHeight: '70vh', textAlign: 'center' as const,
       }}>
-        {LOCATION_HERO_MAP[locationId] && (
+        {locationHeroImage && (
           <div style={{ position: 'absolute', inset: 0 }}>
             {/* Native img for LCP — bypasses _next/image processor to eliminate render delay */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={LOCATION_HERO_MAP[locationId]}
+              src={locationHeroImage}
+              width={locationHeroSize?.width}
+              height={locationHeroSize?.height}
               alt={LOCATION_HERO_ALT[locationId] || `Trekking destination ${locationData.name}, Uttarakhand`}
               fetchPriority="high"
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}
@@ -824,6 +873,8 @@ export default async function TrekHubPage({ params }: PageProps) {
         {treks.map((trek) => {
           const isModerate = trek.difficulty?.toLowerCase() === 'moderate';
           const cardImg = TREK_CARD_IMAGES[trek.slug];
+          const cardImageSrc = cardImg?.src ?? '/Images/trek/region/garhwal.webp';
+          const cardImageSize = IMAGE_DIMENSIONS[cardImageSrc] ?? { width: 800, height: 450 };
 
           return (
             <Link
@@ -843,7 +894,9 @@ export default async function TrekHubPage({ params }: PageProps) {
                 <div style={{ position: 'relative', width: '100%', height: '200px', overflow: 'hidden' }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src={cardImg?.src ?? '/Images/trek/region/garhwal.webp'}
+                    src={cardImageSrc}
+                    width={cardImageSize.width}
+                    height={cardImageSize.height}
                     alt={cardImg?.alt ?? trek.title}
                     loading="lazy"
                     style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block', position: 'absolute', inset: 0 }}
@@ -929,21 +982,27 @@ export default async function TrekHubPage({ params }: PageProps) {
             padding: '0 2rem', scrollSnapType: 'x mandatory' as const,
             WebkitOverflowScrolling: 'touch' as const,
           }}>
-            {LOCATION_GALLERY[locationId]!.map((img, idx) => (
-              <div key={idx} style={{
-                flex: '0 0 280px', height: '200px', position: 'relative',
-                borderRadius: '10px', overflow: 'hidden',
-                scrollSnapAlign: 'start' as const,
-              }}>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  loading="lazy"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'absolute', inset: 0 }}
-                />
-              </div>
-            ))}
+            {LOCATION_GALLERY[locationId]!.map((img, idx) => {
+              const imageSize = IMAGE_DIMENSIONS[img.src] ?? { width: 800, height: 500 };
+
+              return (
+                <div key={idx} style={{
+                  flex: '0 0 280px', height: '200px', position: 'relative',
+                  borderRadius: '10px', overflow: 'hidden',
+                  scrollSnapAlign: 'start' as const,
+                }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={img.src}
+                    width={imageSize.width}
+                    height={imageSize.height}
+                    alt={img.alt}
+                    loading="lazy"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', position: 'absolute', inset: 0 }}
+                  />
+                </div>
+              );
+            })}
           </div>
         </section>
       )}
@@ -953,6 +1012,7 @@ export default async function TrekHubPage({ params }: PageProps) {
   guideSections.map((section, i) => {
     const isFAQ = section.heading.toLowerCase().includes('frequently asked');
     const sectionImg = LOCATION_SECTION_IMAGES[locationId]?.[i];
+    const sectionImageSize = sectionImg ? IMAGE_DIMENSIONS[sectionImg.src] ?? { width: 800, height: 500 } : null;
     const showMidCTA = i === 3; // Insert mid-page CTA after section 3
 
     return (
@@ -1023,6 +1083,8 @@ export default async function TrekHubPage({ params }: PageProps) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={sectionImg.src}
+              width={sectionImageSize?.width}
+              height={sectionImageSize?.height}
               alt={sectionImg.alt}
               loading="lazy"
               style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block', position: 'absolute', inset: 0 }}

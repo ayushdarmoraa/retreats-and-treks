@@ -1243,6 +1243,8 @@ export default function HowToChooseMeditationRetreatPage() {
                 {
                   href: '/locations/chakrata',
                   image: '/Images/location/chakrata.webp',
+                  width: 800,
+                  height: 462,
                   badge: 'Gentle first experience',
                   title: 'Chakrata',
                   copy: 'Forest quiet, accessibility, and a nurturing Himalayan pace make Chakrata the safest first choice for many beginners.',
@@ -1251,6 +1253,8 @@ export default function HowToChooseMeditationRetreatPage() {
                 {
                   href: '/locations/zanskar',
                   image: '/Images/hero/mountain-snow.webp',
+                  width: 1920,
+                  height: 1080,
                   badge: 'Deep immersion',
                   title: 'Zanskar',
                   copy: 'Radical remoteness and monastery lineage make Zanskar more suitable for serious depth than casual reset.',
@@ -1259,6 +1263,8 @@ export default function HowToChooseMeditationRetreatPage() {
                 {
                   href: '/locations/rishikesh',
                   image: '/Images/location/rishikesh.webp',
+                  width: 800,
+                  height: 462,
                   badge: 'Yogic tradition',
                   title: 'Rishikesh',
                   copy: 'Sacred geography, the Ganges, and living practice traditions make Rishikesh ideal for yoga-linked meditation.',
@@ -1267,6 +1273,8 @@ export default function HowToChooseMeditationRetreatPage() {
                 {
                   href: '/locations/munsiyari',
                   image: '/Images/location/munsiyari.webp',
+                  width: 800,
+                  height: 462,
                   badge: 'Spacious stillness',
                   title: 'Munsiyari',
                   copy: 'Alpine openness and Panchachuli views create awe, distance, and a spacious container for deeper stillness.',
@@ -1274,7 +1282,7 @@ export default function HowToChooseMeditationRetreatPage() {
                 },
               ].map((loc) => (
                 <Link key={loc.title} href={loc.href} className="hcmr-location-card">
-                  <img src={loc.image} alt={`${loc.title} meditation retreat setting`} className="hcmr-location-image" loading="lazy" />
+                  <img src={loc.image} width={loc.width} height={loc.height} alt={`${loc.title} meditation retreat setting`} className="hcmr-location-image" loading="lazy" />
                   <div className="hcmr-location-content">
                     <span className="hcmr-location-badge">{loc.badge}</span>
                     <h3 className="hcmr-location-title">{loc.title}</h3>
