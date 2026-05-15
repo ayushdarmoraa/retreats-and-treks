@@ -183,7 +183,7 @@ export default function ChakrataHubPage() {
       {/* ═══ SECTION 1 — CINEMATIC HERO ═══ */}
       <section className="ck-hero">
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/location/chakrata.webp" alt="Dense deodar forest and mountain ridges of Chakrata — retreat and trekking destination in Uttarakhand" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+          <img src="/Images/location/chakrata.webp" alt="Chakrata deodar forest and mountain ridges" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           <div className="ck-hero-overlay" />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
