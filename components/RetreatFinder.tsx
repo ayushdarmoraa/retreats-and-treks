@@ -365,9 +365,9 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
         <p style={{ fontSize: '0.8rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>
           Find My Retreat
         </p>
-        <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: 'var(--space-md)' }}>
+        <div style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: 'var(--space-md)' }}>
           Based on your answers:
-        </h3>
+        </div>
         {results.length === 0 ? (
           <p style={{ color: 'var(--color-text-secondary)' }}>
             Your answers suggest a{' '}
@@ -449,9 +449,9 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
         <div style={{ width: `${progress}%`, height: '100%', background: 'var(--color-primary, #2d6a4f)', borderRadius: '2px', transition: 'width 0.2s ease' }} />
       </div>
 
-      <h3 style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: 'var(--space-md)', lineHeight: 1.4 }}>
+      <div style={{ fontSize: '1.05rem', fontWeight: 700, marginBottom: 'var(--space-md)', lineHeight: 1.4 }}>
         {currentQuestion.text}
-      </h3>
+      </div>
 
       <div>
         {currentQuestion.options.map((opt) => (

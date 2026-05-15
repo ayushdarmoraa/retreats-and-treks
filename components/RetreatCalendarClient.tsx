@@ -159,9 +159,9 @@ export default function RetreatCalendarClient({ events }: Props) {
                 }}
               >
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', flexWrap: 'wrap', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                  <h3 style={{ fontSize: '1.05rem', fontWeight: 600, margin: 0 }}>
+                  <div style={{ fontSize: '1.05rem', fontWeight: 600, margin: 0 }}>
                     {ev.label} in {ev.locationName}
-                  </h3>
+                  </div>
                   <span style={{ fontSize: '0.8rem', fontWeight: 600, color: sColor }}>
                     {sLabel}
                   </span>
