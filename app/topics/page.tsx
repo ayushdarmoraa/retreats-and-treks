@@ -33,7 +33,7 @@ const TOPICS = [
 ] as const;
 
 export const metadata: Metadata = {
-  title: 'Topics — Retreats And Treks',
+  title: 'Retreat and Trek Topics | Retreats And Treks',
   description:
     'Browse retreat, trek, location, and lifestyle topic clusters from Retreats And Treks.',
   alternates: {

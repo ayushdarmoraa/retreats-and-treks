@@ -10,7 +10,7 @@ export const dynamic = 'force-static';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Site Map — Retreats And Treks',
+    title: 'Complete Site Map | Retreats And Treks',
     description:
       'Complete directory of all treks, retreats, guides, and planning pages on Retreats And Treks. Browse by region, difficulty, season, or duration.',
     alternates: { canonical: buildCanonicalUrl(PATH) },

@@ -13,6 +13,7 @@ export interface Facilitator {
   readonly slug: string;
   readonly name: string;
   readonly title: string;
+  readonly seoTitle?: string;
   readonly image?: SiteImage;
   readonly metaDescription: string;
   readonly bio: string;
@@ -61,6 +62,7 @@ const FACILITATORS: Facilitator[] = [
     slug: 'sakshi',
     name: 'Sakshi',
     title: 'Yoga Retreat & Movement Facilitator',
+    seoTitle: 'Sakshi Yoga Retreat Facilitator | Retreats And Treks',
     image: facilitatorImageMap['sakshi'],
     metaDescription:
       'Sakshi leads yoga retreats, yoga teacher training, aerial yoga programs, and online yoga classes. 8 years of yoga teaching experience.',

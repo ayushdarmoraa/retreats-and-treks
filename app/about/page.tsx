@@ -8,7 +8,7 @@ const PATH = '/about';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'About Retreats And Treks',
+    title: 'About Retreats And Treks in the Himalayas',
     description:
       'Learn how Retreats And Treks designs structured Himalayan retreat experiences across carefully selected mountain locations in North India.',
     alternates: {

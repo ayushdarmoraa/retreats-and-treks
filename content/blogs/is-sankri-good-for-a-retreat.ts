@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const isSankriGoodForARetreat: BlogContent = {
   slug: 'is-sankri-good-for-a-retreat',
   title: 'Is Sankri Good for a Retreat?',
+  seoTitle: 'Is Sankri Good for a Retreat? | Retreats And Treks',
   description:
     'An honest look at Sankri as a retreat destination: alpine setting, remoteness, seasonal suitability, and who benefits most here.',
   category: 'Location Authority',

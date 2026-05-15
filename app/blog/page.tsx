@@ -6,7 +6,7 @@ import { blogImageMap } from '@/lib/images';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Blog | Retreats And Treks',
+    title: 'Himalayan Retreat Blog | Retreats And Treks',
     description:
       'Read our blog to learn about trekking, wellness retreats, and Himalayan travel tips. Make informed decisions about your next adventure.',
     alternates: {

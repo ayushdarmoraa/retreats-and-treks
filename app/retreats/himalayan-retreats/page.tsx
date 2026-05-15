@@ -20,7 +20,7 @@ const PATH = '/retreats/himalayan-retreats';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Himalayan Retreats in India',
+    title: 'Himalayan Retreats in India | Retreats And Treks',
     description:
       'Guide to Himalayan retreats in India, including yoga, silent, wellness, and creative retreats across Chakrata, Sankri, Munsiyari, and Rishikesh.',
     alternates: {

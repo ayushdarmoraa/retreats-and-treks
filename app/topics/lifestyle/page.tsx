@@ -8,7 +8,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 const CANONICAL = '/topics/lifestyle';
 
 export const metadata: Metadata = {
-  title: 'Lifestyle & Himalayan Living',
+  title: 'Lifestyle & Himalayan Living | Retreats And Treks',
   description:
     'Perspectives on slow living, mountain lifestyle, retreat psychology, travel mindset, trek culture, and how the Himalayas reshape daily life.',
   alternates: {
