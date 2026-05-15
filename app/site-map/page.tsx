@@ -122,7 +122,7 @@ export default function SiteMapPage() {
 
         {/* Trek Discovery */}
         <div className="smp-group">
-          <div className="smp-group-header"><span className="smp-group-title">Trek Discovery</span></div>
+          <div className="smp-group-header"><h2 className="smp-group-title">Trek Discovery</h2></div>
           <div className="smp-group-links">
             <Link href="/treks/best-treks-in-uttarakhand" className="smp-group-link">Best Treks in Uttarakhand</Link>
             <Link href="/treks/best-treks-in-uttarakhand/beginner" className="smp-group-link">Beginner Treks</Link>
@@ -135,7 +135,7 @@ export default function SiteMapPage() {
 
         {/* Trek Filters */}
         <div className="smp-group">
-          <div className="smp-group-header"><span className="smp-group-title">Trek Filters</span></div>
+          <div className="smp-group-header"><h2 className="smp-group-title">Trek Filters</h2></div>
           <div className="smp-group-links">
             <Link href="/treks/best-treks-in-uttarakhand/beginner" className="smp-group-link">Beginner Treks in Uttarakhand</Link>
             <Link href="/treks/best-treks-in-uttarakhand/snow" className="smp-group-link">Winter Treks (December–February)</Link>
@@ -154,7 +154,7 @@ export default function SiteMapPage() {
 
         {/* Trek Regions */}
         <div className="smp-group">
-          <div className="smp-group-header"><span className="smp-group-title">Trek Regions</span></div>
+          <div className="smp-group-header"><h2 className="smp-group-title">Trek Regions</h2></div>
           <div className="smp-group-links">
             <Link href="/treks/location/chakrata" className="smp-group-link">Chakrata Treks</Link>
             <Link href="/treks/location/sankri" className="smp-group-link">Sankri Treks</Link>
@@ -166,7 +166,7 @@ export default function SiteMapPage() {
 
         {/* All Treks */}
         <div className="smp-group">
-          <div className="smp-group-header"><span className="smp-group-title">All Treks</span></div>
+          <div className="smp-group-header"><h2 className="smp-group-title">All Treks</h2></div>
           <div className="smp-group-links">
             <Link href="/treks/location/lohajung/brahmatal-trek" className="smp-group-link">Brahmatal Trek</Link>
             <Link href="/treks/location/joshimath/kuari-pass-trek" className="smp-group-link">Kuari Pass Trek</Link>
@@ -185,7 +185,7 @@ export default function SiteMapPage() {
 
         {/* Trek Comparisons */}
         <div className="smp-group">
-          <div className="smp-group-header"><span className="smp-group-title">Trek Comparisons</span></div>
+          <div className="smp-group-header"><h2 className="smp-group-title">Trek Comparisons</h2></div>
           <div className="smp-group-links">
             <Link href="/treks/kedarkantha-vs-har-ki-dun" className="smp-group-link">Kedarkantha vs Har Ki Dun</Link>
             <Link href="/treks/brahmatal-vs-kuari-pass" className="smp-group-link">Brahmatal vs Kuari Pass</Link>
@@ -195,7 +195,7 @@ export default function SiteMapPage() {
 
         {/* Trekking Guides */}
         <div className="smp-group">
-          <div className="smp-group-header"><span className="smp-group-title">Trekking Guides</span></div>
+          <div className="smp-group-header"><h2 className="smp-group-title">Trekking Guides</h2></div>
           <div className="smp-group-links">
             <Link href="/treks/garhwal-himalayas/fitness-guide" className="smp-group-link">Garhwal Trek Fitness Guide</Link>
             <Link href="/treks/garhwal-himalayas/packing-checklist" className="smp-group-link">Trek Packing Checklist</Link>
@@ -205,7 +205,7 @@ export default function SiteMapPage() {
 
         {/* Retreats */}
         <div className="smp-group">
-          <div className="smp-group-header"><span className="smp-group-title">Retreats</span></div>
+          <div className="smp-group-header"><h2 className="smp-group-title">Retreats</h2></div>
           <div className="smp-group-links">
             <Link href="/retreats" className="smp-group-link">All Retreats</Link>
             <Link href="/retreats/himalayan-retreats" className="smp-group-link">Himalayan Retreats</Link>
@@ -219,7 +219,7 @@ export default function SiteMapPage() {
 
         {/* Retreat Journeys */}
         <div className="smp-group">
-          <div className="smp-group-header"><span className="smp-group-title">Retreat Journeys</span></div>
+          <div className="smp-group-header"><h2 className="smp-group-title">Retreat Journeys</h2></div>
           <div className="smp-group-links">
             <Link href="/retreats/journeys/rest-and-reset" className="smp-group-link">Rest &amp; Reset</Link>
             <Link href="/retreats/journeys/burnout-recovery" className="smp-group-link">Burnout Recovery</Link>
@@ -236,7 +236,7 @@ export default function SiteMapPage() {
 
         {/* Retreat Locations */}
         <div className="smp-group">
-          <div className="smp-group-header"><span className="smp-group-title">Retreat Locations</span></div>
+          <div className="smp-group-header"><h2 className="smp-group-title">Retreat Locations</h2></div>
           <div className="smp-group-links">
             <Link href="/retreats/chakrata" className="smp-group-link">Retreats in Chakrata</Link>
             <Link href="/retreats/sankri" className="smp-group-link">Retreats in Sankri</Link>
@@ -248,7 +248,7 @@ export default function SiteMapPage() {
 
         {/* Blog & Company */}
         <div className="smp-group">
-          <div className="smp-group-header"><span className="smp-group-title">Blog &amp; Company</span></div>
+          <div className="smp-group-header"><h2 className="smp-group-title">Blog &amp; Company</h2></div>
           <div className="smp-group-links">
             <Link href="/blog" className="smp-group-link">Blog</Link>
             <Link href="/about" className="smp-group-link">About</Link>
