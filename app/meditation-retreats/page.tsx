@@ -302,7 +302,7 @@ export default function MeditationRetreatsPage() {
       <section className="med-hero">
         <div style={{ position: 'absolute', inset: 0 }}>
           <img
-            src="/Images/experience-hubs/meditation-hero.png"
+            src="/Images/experience-hubs/meditation-hero.webp"
             alt="Meditation retreats in the Himalayas — a person meditating on a mountain ridge at golden hour"
             fetchPriority="high"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}

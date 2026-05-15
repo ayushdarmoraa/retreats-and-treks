@@ -138,7 +138,7 @@ export default function SelfDiscoveryRetreatPage() {
       <section className="pg-hero">
         <div style={{ position: 'absolute', inset: 0 }}>
           <Image
-            src="/Images/experience-hubs/meditation-hero.png"
+            src="/Images/experience-hubs/meditation-hero.webp"
             alt="Self-Discovery Retreat in the Himalayas"
             fill
             priority

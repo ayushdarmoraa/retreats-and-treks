@@ -119,7 +119,7 @@ export default function BenefitsOfMeditationRetreatPage() {
             overflow:hidden;
             background-image:
               linear-gradient(90deg, rgba(5,18,14,0.9) 0%, rgba(5,18,14,0.72) 44%, rgba(5,18,14,0.18) 100%),
-              url('/Images/experience-hubs/meditation-hero.png');
+              url('/Images/experience-hubs/meditation-hero.webp');
             background-size:cover;
             background-position:center;
             color:#fff;

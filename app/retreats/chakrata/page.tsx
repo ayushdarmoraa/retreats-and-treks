@@ -68,10 +68,10 @@ const FAQ_ITEMS = [
 ];
 
 const RETREAT_TYPES = [
-  { title: 'Meditation & Silence', desc: 'Structured seated practice, walking meditation, noble silence. For beginners and experienced practitioners.', link: '/meditation-retreats', img: '/Images/experience-hubs/meditation-hero.png', duration: '3–7 days', price: 'From ₹14,000' },
+  { title: 'Meditation & Silence', desc: 'Structured seated practice, walking meditation, noble silence. For beginners and experienced practitioners.', link: '/meditation-retreats', img: '/Images/experience-hubs/meditation-hero.webp', duration: '3–7 days', price: 'From ₹14,000' },
   { title: 'Burnout Recovery', desc: 'Somatic therapy, rest, nervous system regulation. For professionals who have been running on empty.', link: '/burnout-recovery-retreats', img: '/Images/location/chakrata.webp', duration: '5–7 days', price: 'From ₹28,000' },
   { title: 'Weekend Retreat', desc: 'Short reset in the forest. Ideal for first-timers. Leave Friday, return Sunday renewed.', link: '/retreats/chakrata/weekend-retreat-from-dehradun', img: '/Images/trek/region/chakraweekend.webp', duration: '2–3 days', price: 'From ₹14,000' },
-  { title: 'Yoga & Movement', desc: 'Hatha, pranayama, and embodied practice in a forest setting. Not a fitness boot camp — a return to presence.', link: '/yoga-retreats', img: '/Images/experience-hubs/yoga-hero.png', duration: '3–7 days', price: 'From ₹18,000' },
+  { title: 'Yoga & Movement', desc: 'Hatha, pranayama, and embodied practice in a forest setting. Not a fitness boot camp — a return to presence.', link: '/yoga-retreats', img: '/Images/experience-hubs/yoga-hero.webp', duration: '3–7 days', price: 'From ₹18,000' },
 ];
 
 const TREK_TYPES = [

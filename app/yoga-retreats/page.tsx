@@ -204,7 +204,7 @@ export default function YogaRetreatsPage() {
       {/* ═══ HERO ═══ */}
       <section className="yog-hero">
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/experience-hubs/yoga-hero.png" alt="Yoga retreat in the Himalayas — warrior pose on a mountain deck at sunrise" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+          <img src="/Images/experience-hubs/yoga-hero.webp" alt="Yoga retreat in the Himalayas — warrior pose on a mountain deck at sunrise" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           <div className="yog-hero-overlay" />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>

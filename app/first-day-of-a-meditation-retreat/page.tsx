@@ -130,7 +130,7 @@ export default function FirstDayOfAMeditationRetreatPage() {
             overflow:hidden;
             background-image:
               linear-gradient(90deg, rgba(5,18,14,0.9) 0%, rgba(5,18,14,0.72) 44%, rgba(5,18,14,0.18) 100%),
-              url('/Images/experience-hubs/meditation-hero.png');
+              url('/Images/experience-hubs/meditation-hero.webp');
             background-size:cover;
             background-position:center;
             color:#fff;
@@ -510,7 +510,7 @@ export default function FirstDayOfAMeditationRetreatPage() {
             min-height:360px;
             background:
               linear-gradient(180deg, rgba(16,32,25,0.08), rgba(16,32,25,0.32)),
-              url('/Images/experience-hubs/meditation-hero.png');
+              url('/Images/experience-hubs/meditation-hero.webp');
             background-size:cover;
             background-position:center;
           }

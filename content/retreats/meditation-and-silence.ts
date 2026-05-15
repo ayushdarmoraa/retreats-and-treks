@@ -20,7 +20,7 @@ export const meditationAndSilenceRetreat = {
   seoDescription: 'Meditation retreat in Chakrata with guided sitting, walking meditation, extended silence, small groups, and 3–7 day silent retreat formats.',
 
   /* ── Visual Assets ── */
-  heroImage: '/Images/experience-hubs/meditation-hero.png',
+  heroImage: '/Images/experience-hubs/meditation-hero.webp',
   heroAlt: 'Meditation retreat in the Himalayas — guided silence practice in a mountain forest, Uttarakhand India',
   signatureImage: '/Images/Journeys/Stillness.webp',
   signatureAlt: 'Mountain stillness at dawn during a silent meditation retreat in the Himalayas',
