@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const bestTimeForRetreatInChakrata: BlogContent = {
   slug: 'best-time-for-retreat-in-chakrata',
   title: 'Best Time for a Retreat in Chakrata',
+  seoTitle: 'Best Time for Chakrata Retreats | Retreats And Treks',
   description:
     'Seasonal guide to planning a retreat in Chakrata, including weather, travel conditions, and how the experience changes through the year.',
   category: 'Location Authority',

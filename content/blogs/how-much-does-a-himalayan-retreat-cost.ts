@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const howMuchDoesAHimalayanRetreatCost: BlogContent = {
   slug: 'how-much-does-a-himalayan-retreat-cost',
   title: 'How Much Does a Himalayan Retreat Cost?',
+  seoTitle: 'Himalayan Retreat Cost Guide | Retreats And Treks',
   description:
     'A transparent breakdown of Himalayan retreat pricing, including duration differences, inclusions, accommodation standards, and what affects total cost.',
   category: 'Retreat Decision',

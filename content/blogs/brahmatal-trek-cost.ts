@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const brahmatalTrekCost: BlogContent = {
   slug: 'brahmatal-trek-cost',
   title: 'Brahmatal Trek Cost — Complete Pricing Guide (2026)',
+  seoTitle: 'Brahmatal Trek Cost Guide | Retreats And Treks',
   description:
     'How much does the Brahmatal trek cost? Complete pricing breakdown including inclusions, exclusions, group discounts, and what affects total cost.',
   category: 'Trek Decision',

@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const canARetreatUnblockCreativity: BlogContent = {
   slug: 'can-a-retreat-unblock-creativity',
   title: 'Can a Retreat Actually Unblock Your Creativity?',
+  seoTitle: 'Creative Block Retreat Guide | Retreats And Treks',
   description:
     'How immersive retreats in nature can interrupt creative blocks, shift stuck patterns, and support fresh expression through space and practice.',
   category: 'Retreat Decision',

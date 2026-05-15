@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const howToReachChakrataForARetreat: BlogContent = {
   slug: 'how-to-reach-chakrata-for-a-retreat',
   title: 'How to Reach Chakrata for a Retreat',
+  seoTitle: 'Reach Chakrata for a Retreat | Retreats And Treks',
   description:
     'A practical guide to reaching Chakrata from Delhi and Dehradun, including road routes, transport options, seasons, and retreat arrival planning.',
   category: 'Location Authority',

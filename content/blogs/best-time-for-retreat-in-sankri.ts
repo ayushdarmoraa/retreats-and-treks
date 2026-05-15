@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const bestTimeForRetreatInSankri: BlogContent = {
   slug: 'best-time-for-retreat-in-sankri',
   title: 'Best Time for a Retreat in Sankri',
+  seoTitle: 'Best Time for Sankri Retreats | Retreats And Treks',
   description:
     'A seasonal guide to planning a Himalayan retreat in Sankri, covering weather patterns, accessibility, and how each season shapes the retreat experience.',
   category: 'Location Authority',

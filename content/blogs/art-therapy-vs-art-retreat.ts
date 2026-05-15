@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const artTherapyVsArtRetreat: BlogContent = {
   slug: 'art-therapy-vs-art-retreat',
   title: 'Art Therapy vs Art Retreat: Understanding the Difference',
+  seoTitle: 'Art Therapy vs Art Retreat | Retreats And Treks',
   description:
     'Art therapy is a clinical intervention led by a therapist. An art retreat is facilitated creative immersion. Here is how they differ and which you need.',
   category: 'Retreat Decision',

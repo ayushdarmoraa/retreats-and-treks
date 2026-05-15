@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const chakrataVsRishikeshForARetreat: BlogContent = {
   slug: 'chakrata-vs-rishikesh-for-a-retreat',
   title: 'Chakrata vs Rishikesh for a Retreat: Which Is Better?',
+  seoTitle: 'Chakrata vs Rishikesh Retreats | Retreats And Treks',
   description:
     'Chakrata vs Rishikesh for retreats: compare crowds, accessibility, environment, retreat style, and who each Himalayan setting suits best.',
   category: 'Location Authority',

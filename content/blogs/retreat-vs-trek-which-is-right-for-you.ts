@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const retreatVsTrekWhichIsRightForYou: BlogContent = {
   slug: 'retreat-vs-trek-which-is-right-for-you',
   title: 'Retreat vs Trek: Which Is Right for You?',
+  seoTitle: 'Retreat vs Trek Guide | Retreats And Treks',
   description:
     'Retreat vs trek: compare structure, intensity, goals, physical effort, inner work, and who each Himalayan experience suits best.',
   category: 'Retreat Decision',

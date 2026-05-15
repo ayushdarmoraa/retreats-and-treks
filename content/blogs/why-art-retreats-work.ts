@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const whyArtRetreatsWork: BlogContent = {
   slug: 'why-art-retreats-work',
   title: 'Why Art Retreats Work When Weeknight Art Classes Don\'t',
+  seoTitle: 'Why Art Retreats Work | Retreats And Treks',
   description:
     'Why art retreats create breakthroughs that weekly practice often cannot, through immersion, environment, protected time, and creative focus.',
   category: 'Retreat Decision',

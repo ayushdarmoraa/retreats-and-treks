@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const whatToExpectAtAnArtRetreat: BlogContent = {
   slug: 'what-to-expect-at-an-art-retreat',
   title: 'What to Expect at an Art Retreat: A Day-by-Day Honest Guide',
+  seoTitle: 'Art Retreat Day-by-Day Guide | Retreats And Treks',
   description:
     'Not sure what actually happens at an art retreat? Here is a realistic day-by-day account — the discomfort, the breakthroughs, and what you will take home.',
   category: 'Retreat Decision',

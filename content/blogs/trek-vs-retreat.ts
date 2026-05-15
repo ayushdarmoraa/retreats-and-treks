@@ -3,6 +3,7 @@ import { BlogContent } from '@/types/content';
 const trekVsRetreat: BlogContent = {
   slug: 'trek-vs-retreat',
   title: 'Trek vs Retreat: Which Weekend Escape Is Right for You?',
+  seoTitle: 'Trek vs Retreat Weekend Guide | Retreats And Treks',
   description:
     'A clear comparison between weekend treks and retreats to help you choose the best escape based on energy, comfort, and experience.',
 

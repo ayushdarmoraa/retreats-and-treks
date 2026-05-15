@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const brahmatalTrekPackingList: BlogContent = {
   slug: 'brahmatal-trek-packing-list',
   title: 'Brahmatal Trek Packing List — What to Carry',
+  seoTitle: 'Brahmatal Packing List | Retreats And Treks',
   description:
     'Complete packing list for Brahmatal trek including clothing, gear, and essentials for the 4-day winter snow trek.',
   category: 'Trek Decision',

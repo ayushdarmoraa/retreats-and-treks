@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const brahmatalTrekDifficulty: BlogContent = {
   slug: 'brahmatal-trek-difficulty',
   title: 'Brahmatal Trek Difficulty — Is It Right for You?',
+  seoTitle: 'Brahmatal Difficulty Guide | Retreats And Treks',
   description:
     'How difficult is the Brahmatal trek? Fitness requirements, altitude challenges, and who should attempt this moderate snow trek.',
   category: 'Trek Decision',

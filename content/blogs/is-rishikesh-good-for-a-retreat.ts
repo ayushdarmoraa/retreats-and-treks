@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const isRishikeshGoodForARetreat: BlogContent = {
   slug: 'is-rishikesh-good-for-a-retreat',
   title: 'Is Rishikesh Good for a Retreat?',
+  seoTitle: 'Rishikesh Retreat Suitability | Retreats And Treks',
   description:
     'An honest look at Rishikesh as a retreat destination: yoga heritage, crowds, riverfront setting, accessibility, and who benefits most here.',
   category: 'Location Authority',

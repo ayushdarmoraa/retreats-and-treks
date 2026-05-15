@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const howToReachSankriForARetreat: BlogContent = {
   slug: 'how-to-reach-sankri-for-a-retreat',
   title: 'How to Reach Sankri for a Retreat',
+  seoTitle: 'Reach Sankri for a Retreat | Retreats And Treks',
   description:
     'A practical guide to reaching Sankri from Delhi and Dehradun, including road routes, transport options, travel duration, and retreat arrival planning.',
   category: 'Location Authority',

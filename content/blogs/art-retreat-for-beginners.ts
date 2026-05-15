@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const artRetreatForBeginners: BlogContent = {
   slug: 'art-retreat-for-beginners',
   title: 'Art Retreats for Beginners: You Don\'t Need Talent to Start',
+  seoTitle: 'Beginner Art Retreat Guide | Retreats And Treks',
   description:
     'Worried you are not skilled enough for an art retreat? Most participants are beginners. Here is what to expect when you have no artistic background.',
   category: 'Retreat Decision',

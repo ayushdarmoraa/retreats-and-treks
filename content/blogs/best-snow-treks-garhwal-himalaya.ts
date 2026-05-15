@@ -3,6 +3,7 @@ import { BlogContent } from '@/types/content';
 const bestSnowTreksGarhwalHimalaya: BlogContent = {
   slug: 'best-snow-treks-garhwal-himalaya',
   title: 'Best Snow Treks in the Garhwal Himalayas: A Complete Guide',
+  seoTitle: 'Best Snow Treks in Garhwal | Retreats And Treks',
   description:
     'Discover the best snow treks in Garhwal, from Brahmatal to Roopkund. Compare season, difficulty, views, and how to choose.',
   category: 'Trek Decision',

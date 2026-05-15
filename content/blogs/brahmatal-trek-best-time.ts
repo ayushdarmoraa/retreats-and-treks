@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const brahmatalTrekBestTime: BlogContent = {
   slug: 'brahmatal-trek-best-time',
   title: 'Best Time for Brahmatal Trek — When to Go (2026)',
+  seoTitle: 'Best Time for Brahmatal Trek | Retreats And Treks',
   description:
     'When is the best time to do Brahmatal trek? Winter vs summer comparison, weather conditions, snow coverage, and seasonal advantages.',
   category: 'Trek Decision',

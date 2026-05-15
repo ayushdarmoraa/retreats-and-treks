@@ -3,6 +3,7 @@ import { BlogContent } from '@/types/content';
 const beginnerToAdvancedTrekProgressionGarhwal: BlogContent = {
   slug: 'beginner-to-advanced-trek-progression-garhwal',
   title: 'Beginner to Advanced: The Garhwal Trek Progression Path',
+  seoTitle: 'Garhwal Trek Progression Path | Retreats And Treks',
   description:
     'A 4-step Garhwal trek progression from first Himalayan trek to summit routes: Brahmatal, Kuari Pass, Roopkund, and Pangarchulla.',
   category: 'Trek Decision',

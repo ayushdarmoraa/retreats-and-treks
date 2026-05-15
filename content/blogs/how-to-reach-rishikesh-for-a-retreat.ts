@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const howToReachRishikeshForARetreat: BlogContent = {
   slug: 'how-to-reach-rishikesh-for-a-retreat',
   title: 'How to Reach Rishikesh for a Retreat',
+  seoTitle: 'Reach Rishikesh for a Retreat | Retreats And Treks',
   description:
     'A practical guide to reaching Rishikesh from Delhi, including road, rail, and air options, travel duration, and retreat arrival planning.',
   category: 'Location Authority',

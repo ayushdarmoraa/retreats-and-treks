@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const isChakrataGoodForARetreat: BlogContent = {
   slug: 'is-chakrata-good-for-a-retreat',
   title: 'Is Chakrata Good for a Retreat?',
+  seoTitle: 'Chakrata Retreat Suitability | Retreats And Treks',
   description:
     'An honest look at Chakrata as a retreat destination: forest setting, accessibility, seasonal flexibility, quiet, and who it suits best.',
   category: 'Location Authority',

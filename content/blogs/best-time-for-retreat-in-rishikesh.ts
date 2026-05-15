@@ -8,6 +8,7 @@ import { BlogContent } from '@/types/content';
 const bestTimeForRetreatInRishikesh: BlogContent = {
   slug: 'best-time-for-retreat-in-rishikesh',
   title: 'Best Time for a Retreat in Rishikesh',
+  seoTitle: 'Best Time for Rishikesh Retreats | Retreats And Treks',
   description:
     'Best time for a Rishikesh retreat: compare temperatures, crowds, festival periods, riverfront atmosphere, and how each season shapes the experience.',
   category: 'Location Authority',
