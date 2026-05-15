@@ -123,7 +123,7 @@ export default async function RetreatsLocationPage({ params }: PageProps) {
         const syntheticTrek = {
           heroImage: locationPremiumContent.heroImage,
           heroImageAlt: locationPremiumContent.heroImageAlt,
-          title: locationData.name,
+          title: `${locationData.name} Retreats`,
           heroTagline: locationPremiumContent.landTone?.opening,
           trekType: 'Guided Trek',
         } as unknown as any;
