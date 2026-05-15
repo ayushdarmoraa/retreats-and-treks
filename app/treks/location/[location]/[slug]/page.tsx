@@ -515,7 +515,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
   marginBottom: '0',
 }}>
   <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <h3 style={{
+    <h2 style={{
       fontFamily: 'var(--font-geist-sans), sans-serif',
       fontSize: '1.15rem',
       fontWeight: 500,
@@ -523,7 +523,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
       marginBottom: '0.75rem',
     }}>
       Why {trek.title} is Popular
-    </h3>
+    </h2>
     <p style={{
       fontFamily: 'var(--font-geist-sans), sans-serif',
       fontSize: '0.88rem',

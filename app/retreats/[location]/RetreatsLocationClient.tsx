@@ -82,7 +82,7 @@ export default function RetreatsLocationClient({
       {locationPremiumContent.gallery && locationPremiumContent.gallery.length > 0 && (
         <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', padding: '2rem 0', background: '#ffffff' }}>
           <div style={{ maxWidth: '64rem', margin: '0 auto', padding: '0 1.5rem' }}>
-            <h3 style={{ margin: '0 0 1rem', fontWeight: 600, fontSize: '1.05rem' }}>Photos</h3>
+            <h2 style={{ margin: '0 0 1rem', fontWeight: 600, fontSize: '1.05rem' }}>Photos</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.75rem' }}>
               {locationPremiumContent.gallery.map((img, idx) => (
                 <a key={idx} href={img.src} target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: 8, overflow: 'hidden' }}>
@@ -254,7 +254,7 @@ export default function RetreatsLocationClient({
             <div className="rlcFAQ-eyebrow"><span style={{ width: 24, height: 1, background: 'var(--color-primary)', display: 'inline-block' }} />
               <span style={{ fontFamily: 'var(--font-geist-sans)', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', fontWeight: 500 }}>FAQ</span>
             </div>
-            <h3 className="rlcFAQ-heading">Frequently asked questions about {locationPremiumContent.name}</h3>
+            <h2 className="rlcFAQ-heading">Frequently asked questions about {locationPremiumContent.name}</h2>
 
             <div className="rlcFAQ-list">
               {locationPremiumContent.faq.map((f, idx) => (
