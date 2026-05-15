@@ -183,7 +183,7 @@ export default function ChakrataHubPage() {
       {/* ═══ SECTION 1 — CINEMATIC HERO ═══ */}
       <section className="ck-hero">
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/location/chakrata.webp" alt="Chakrata deodar forest and mountain ridges" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+          <img src="/Images/location/chakrata.webp" width={800} height={462} alt="Chakrata deodar forest and mountain ridges" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           <div className="ck-hero-overlay" />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -472,7 +472,7 @@ export default function ChakrataHubPage() {
       {/* ═══ BOTTOM CTA ═══ */}
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', overflow: 'hidden', minHeight: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/trek/region/chakraweekend.webp" alt="Chakrata forest campsite — weekend retreat and trek destination" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+          <img src="/Images/trek/region/chakraweekend.webp" width={800} height={448} alt="Chakrata forest campsite — weekend retreat and trek destination" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,31,28,0.88)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '44rem', padding: '4rem 2rem' }}>

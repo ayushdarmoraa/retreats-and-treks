@@ -422,7 +422,7 @@ export default function ArtRetreatsPage() {
           VISUAL BREAK 1
       ═══════════════════════════════════════════ */}
       <figure style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', height: '300px', overflow: 'hidden', margin: 0, padding: 0 }}>
-        <img src="/Images/whyhimalaya/nature.webp" alt="Himalayan landscape — the natural setting for creative retreats" loading="lazy"
+        <img src="/Images/whyhimalaya/nature.webp" width={800} height={476} alt="Himalayan landscape — the natural setting for creative retreats" loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }} />
         <figcaption style={{ position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em', fontStyle: 'italic' }}>
@@ -595,7 +595,7 @@ export default function ArtRetreatsPage() {
           VISUAL BREAK 2
       ═══════════════════════════════════════════ */}
       <figure style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', height: '300px', overflow: 'hidden', margin: 0, padding: 0 }}>
-        <img src="/Images/hero/valley-forest.webp" alt="Himalayan valley — art retreat landscape" loading="lazy"
+        <img src="/Images/hero/valley-forest.webp" width={1400} height={788} alt="Himalayan valley — art retreat landscape" loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 35%', display: 'block' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }} />
         <figcaption style={{ position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em', fontStyle: 'italic' }}>
@@ -846,7 +846,7 @@ export default function ArtRetreatsPage() {
         textAlign: 'center',
       }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/location/mussoorie.webp" alt="Mountain retreat setting" loading="lazy"
+          <img src="/Images/location/mussoorie.webp" width={800} height={462} alt="Mountain retreat setting" loading="lazy"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,31,28,0.85)' }} />
         </div>

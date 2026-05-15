@@ -171,7 +171,7 @@ export default function Page() {
       {/* BOTTOM CTA */}
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', overflow: 'hidden', minHeight: '40vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/location/chakrata.webp" alt="Chakrata deodar forest setting for meditation retreat" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+          <img src="/Images/location/chakrata.webp" width={800} height={462} alt="Chakrata deodar forest setting for meditation retreat" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,31,28,0.88)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '44rem', padding: '3rem 2rem' }}>

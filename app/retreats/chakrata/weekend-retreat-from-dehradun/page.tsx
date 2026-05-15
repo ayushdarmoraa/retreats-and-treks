@@ -53,7 +53,7 @@ export default function Page() {
       {/* HERO */}
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '65vh', textAlign: 'center', paddingTop: '68px' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/trek/region/chakraweekend.webp" alt="Weekend retreat campsite in Chakrata forest, Uttarakhand" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+          <img src="/Images/trek/region/chakraweekend.webp" width={800} height={448} alt="Weekend retreat campsite in Chakrata forest, Uttarakhand" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.88) 100%)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '44rem', padding: '0 2rem' }}>
@@ -177,7 +177,7 @@ export default function Page() {
       {/* BOTTOM CTA */}
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', overflow: 'hidden', minHeight: '40vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/location/chakrata.webp" alt="Chakrata forest for weekend retreat" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+          <img src="/Images/location/chakrata.webp" width={800} height={462} alt="Chakrata forest for weekend retreat" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,31,28,0.88)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '44rem', padding: '3rem 2rem' }}>
