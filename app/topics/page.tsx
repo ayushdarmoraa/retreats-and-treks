@@ -93,7 +93,7 @@ export default function TopicsPage() {
           How to Use These Topic Hubs
         </h2>
         <p style={{ maxWidth: '48rem', lineHeight: 1.8, color: 'var(--color-muted)', fontSize: '0.98rem' }}>
-          Start with retreat decision guides if you are comparing formats such as silence, yoga, creative work, burnout recovery, or weekend resets. Use location guides when your main question is where to go. Trek decision guides help compare routes, difficulty, season, and fitness needs. Lifestyle guides cover the slower questions around mountain rhythm, preparation, and intentional travel. Each hub is designed to connect planning articles with practical next steps, so you can move from reading to choosing the right retreat, trek, season, or destination with more confidence.
+          Start with retreat decision guides if you are comparing silence, yoga, creative work, burnout recovery, or weekend resets. Use location guides when your main question is where to go. Trek decision guides compare routes, difficulty, season, and fitness needs. Lifestyle guides cover mountain rhythm, preparation, and slower travel. Each hub connects planning articles with practical next steps, so you can move from reading to choosing the right retreat, trek, season, or destination with more confidence.
         </p>
       </section>
 

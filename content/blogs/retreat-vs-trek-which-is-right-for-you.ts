@@ -25,10 +25,10 @@ const retreatVsTrekWhichIsRightForYou: BlogContent = {
 <p>Retreats typically involve light to moderate physical movement. Sessions may include yoga, forest walks, or gentle mobility work, but physical endurance is not the central focus.</p>
 <p>Trekking experiences require greater stamina. Multi-hour walking segments, elevation changes, and variable weather conditions are standard components of most Himalayan treks.</p>
 <h3>Daily Structure</h3>
-<p>Retreat days follow intentional rhythm. Morning practices, shared meals, reflection blocks, and quiet periods are scheduled to support gradual settling.</p>
+<p>Retreat days follow a clear rhythm. Morning practices, shared meals, reflection time, and quiet periods help you settle gradually.</p>
 <p>Trek itineraries are shaped by terrain and distance. Days are often defined by start times, route segments, rest stops, and destination camps or lodges.</p>
 <h3>Psychological Orientation</h3>
-<p>Retreats emphasize inward attention. The mountain environment acts as containment for reflection and nervous system recalibration.</p>
+<p>Retreats focus on inward attention. The mountain setting gives space for reflection, rest, and nervous system reset.</p>
 <p>Treks emphasize outward engagement. Attention is directed toward navigation, landscape immersion, and physical accomplishment.</p>
 <h3>Who Might Prefer a Retreat?</h3>
 <ul>
@@ -45,10 +45,10 @@ const retreatVsTrekWhichIsRightForYou: BlogContent = {
 <li>Travelers prioritizing route-based exploration</li>
 </ul>
 <h3>Hybrid Experiences</h3>
-<p>Some formats combine retreat structure with light trekking extensions. These hybrid experiences allow participants to integrate embodied movement with reflective programming.</p>
+<p>Some formats combine retreat structure with light trekking. These hybrid experiences let you pair movement with reflection.</p>
 <p>However, even in hybrid formats, one orientation remains primary. Understanding your intention helps determine which element should lead.</p>
 <h3>Making the Decision</h3>
-<p>If your goal is recalibration, structured reflection, and guided stillness, a <a href="/retreats/himalayan-retreats">Himalayan retreat</a> may be more suitable.</p>
+<p>If your goal is rest, reflection, and guided stillness, a <a href="/retreats/himalayan-retreats">Himalayan retreat</a> may be more suitable.</p>
 <p>If your goal is terrain progression, physical challenge, and route-based immersion, explore our available <a href="/treks">Himalayan trekking experiences</a>.</p>
 <p>Both formats offer meaningful engagement with mountain environments — the difference lies in where your attention is directed. Browse specific retreat dates on the <a href="/retreat-calendar">retreat calendar</a>, or try the <a href="/find-your-retreat">retreat finder</a> for a personalised recommendation based on your goals.</p>
   `.trim(),
