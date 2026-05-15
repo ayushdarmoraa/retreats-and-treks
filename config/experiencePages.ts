@@ -644,7 +644,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
   {
     slug: 'creative-retreat',
     title: 'Creative Healing Retreat — Art & Yoga in the Himalayas | Retreats And Treks',
-    seoTitle: 'Creative Healing Retreat | Retreats And Treks',
+    seoTitle: 'Creative Retreat Himalayas | Retreats And Treks',
     h1: 'Creative Healing Retreat — Art & Yoga in the Himalayas',
     metaDescription:
       'Creative healing retreats with painting, expressive arts, yoga, and emotional healing in the Himalayas. Small groups, no experience needed.',

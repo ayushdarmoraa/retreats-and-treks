@@ -135,7 +135,7 @@ Both Chakrata and Sankri offer authentic, meaningful Himalayan experiences — t
 const kedarkanthaVsHarKiDun: BlogContent = {
   slug: 'kedarkantha-vs-har-ki-dun',
   title: 'Kedarkantha vs Har Ki Dun: Which Trek Is Better for Beginners?',
-  seoTitle: 'Kedarkantha vs Har Ki Dun | Retreats And Treks',
+  seoTitle: 'Kedarkantha vs Har Ki Dun for Beginners | Retreats And Treks',
   description:
     'Confused between Kedarkantha and Har Ki Dun? This detailed comparison explains differences in duration, difficulty, experience, and who each trek is best for.',
   category: 'Trek Decision',
