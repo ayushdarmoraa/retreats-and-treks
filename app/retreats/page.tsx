@@ -215,7 +215,7 @@ export default function RetreatsPage() {
       </span>
     </div>
 
-    <h1 style={{
+    <h2 style={{
       fontFamily: 'var(--font-geist-sans), sans-serif',
       fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
       fontWeight: 200,
@@ -226,7 +226,7 @@ export default function RetreatsPage() {
       maxWidth: '44rem',
     }}>
       Guided Himalayan Retreats, Designed With Intention
-    </h1>
+    </h2>
 
     <p style={{
       fontFamily: 'var(--font-geist-sans), sans-serif',

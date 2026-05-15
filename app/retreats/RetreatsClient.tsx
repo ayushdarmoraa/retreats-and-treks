@@ -317,10 +317,10 @@ export default function RetreatsClient({
             <span className="rc-hero-eyebrow-text">Himalayan Retreats</span>
           </div>
 
-          <h2 className="rc-hero-heading">
+          <h1 className="rc-hero-heading">
             Guided Himalayan Retreats,<br />
             <em>Designed With Intention</em>
-          </h2>
+          </h1>
 
           <p className="rc-hero-sub">
             Small-group and private retreats across quiet Himalayan locations — created around rest, clarity, and depth.

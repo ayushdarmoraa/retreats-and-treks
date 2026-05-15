@@ -321,10 +321,10 @@ useEffect(() => {
       <span className="hh-eyebrow-text">Himalayan Retreats &amp; Treks</span>
     </div>
 
-    <h2 className="hh-heading">
+    <h1 className="hh-heading">
       <span className="hh-heading-line"><span>Journeys into</span></span>
       <span className="hh-heading-line"><span>the Himalayas</span></span>
-    </h2>
+    </h1>
 
     <p className="hh-sub1">
       For rest, clarity, and inner reset.

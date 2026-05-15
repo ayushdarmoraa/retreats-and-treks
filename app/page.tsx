@@ -68,7 +68,7 @@ export default function HomePage() {
             <span style={{ width: 24, height: 1, background: 'var(--color-primary)', display: 'inline-block' }} />
           </div>
 
-          <h1 style={{
+          <h2 style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
             fontSize: 'clamp(2rem, 4vw, 3.5rem)',
             fontWeight: 200, letterSpacing: '-0.03em',
@@ -77,7 +77,7 @@ export default function HomePage() {
             textShadow: '0 2px 10px rgba(0,0,0,0.5)'
           }}>
             Himalayan Retreats and Guided <span style={{ color: '#aaa', fontWeight: 200 }}>Treks in India</span>
-          </h1>
+          </h2>
 
           <p style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
