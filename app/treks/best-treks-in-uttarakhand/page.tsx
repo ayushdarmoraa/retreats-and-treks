@@ -780,7 +780,7 @@ export default function BestTreksInUttarakhandPage() {
       For a deeper dive into winter route selection, see our{' '}
       <Link href="/blog/best-snow-treks-garhwal-himalaya" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>guide to Garhwal snow treks</Link>{' '}
       and the full{' '}
-      <Link href="/treks/winter-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>winter treks in Uttarakhand</Link>{' '}
+      <Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>winter treks in Uttarakhand</Link>{' '}
       seasonal page.
     </p>
   </div>
@@ -995,7 +995,7 @@ export default function BestTreksInUttarakhandPage() {
 
     <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginTop: '1.25rem', marginBottom: 0 }}>
       Still deciding? Our{' '}
-      <Link href="/treks/beginner-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>beginner treks guide</Link>{' '}
+      <Link href="/treks/best-treks-in-uttarakhand/beginner" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>beginner treks guide</Link>{' '}
       and{' '}
       <Link href="/treks/summer-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>summer treks page</Link>{' '}
       offer filtered views by difficulty and season.
@@ -1077,9 +1077,9 @@ export default function BestTreksInUttarakhandPage() {
     </div>
 
     <div className="explore-group">
-      <Link href="/treks/winter-treks-uttarakhand" className="explore-link">Winter Treks in Uttarakhand</Link>
+      <Link href="/treks/best-treks-in-uttarakhand/snow" className="explore-link">Winter Treks in Uttarakhand</Link>
       <Link href="/treks/summer-treks-uttarakhand" className="explore-link">Summer Treks in Uttarakhand</Link>
-      <Link href="/treks/beginner-treks-uttarakhand" className="explore-link">Beginner Treks in Uttarakhand</Link>
+      <Link href="/treks/best-treks-in-uttarakhand/beginner" className="explore-link">Beginner Treks in Uttarakhand</Link>
       <Link href="/treks/garhwal-himalayas/fitness-guide" className="explore-link">8-Week Fitness Guide for Garhwal Treks</Link>
       <Link href="/treks/garhwal-himalayas/packing-checklist" className="explore-link">Packing Checklist — Print-Ready Gear List</Link>
     </div>

@@ -232,10 +232,10 @@ export default function TrekAttributePage({
             <h2 className="tap-h2" style={{ marginBottom:'1.75rem' }}>Explore More</h2>
             <div className="tap-nav-group">
               <Link href="/treks/best-treks-in-uttarakhand" className="tap-nav-link">Best Treks in Uttarakhand — Complete Guide</Link>
-              <Link href="/treks/beginner-treks-uttarakhand" className="tap-nav-link">Beginner Treks in Uttarakhand</Link>
+              <Link href="/treks/best-treks-in-uttarakhand/beginner" className="tap-nav-link">Beginner Treks in Uttarakhand</Link>
               <Link href="/treks/best-treks-in-uttarakhand#challenging-treks" className="tap-nav-link">Challenging Treks in Uttarakhand</Link>
               <Link href="/treks/best-treks-in-uttarakhand#snow-treks" className="tap-nav-link">Snow Treks in Uttarakhand</Link>
-              <Link href="/treks/winter-treks-uttarakhand" className="tap-nav-link">Winter Treks (December–February)</Link>
+              <Link href="/treks/best-treks-in-uttarakhand/snow" className="tap-nav-link">Winter Treks (December–February)</Link>
               <Link href="/treks/summer-treks-uttarakhand" className="tap-nav-link">Summer Treks (May–June)</Link>
             </div>
           </div>

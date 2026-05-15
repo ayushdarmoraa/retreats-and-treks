@@ -134,7 +134,7 @@ export default function SummerTreksUttarakhandPage() {
           </p>
           <p className="smt-body" style={{ margin:0 }}>
             Summer trekking is the opposite of{' '}
-            <Link href="/treks/winter-treks-uttarakhand" className="smt-link">winter treks in Uttarakhand</Link>.
+            <Link href="/treks/best-treks-in-uttarakhand/snow" className="smt-link">winter treks in Uttarakhand</Link>.
             No snow gear. No sub-zero camps. No short daylight windows. Instead: long
             warm days, wildflower meadows, flowing streams, and trails that are dry, defined,
             and forgiving. If winter is about drama and challenge, summer is about depth and
@@ -203,7 +203,7 @@ export default function SummerTreksUttarakhandPage() {
               The <Link href="/treks/location/sankri/har-ki-dun-trek" className="smt-link">Har Ki Dun Trek</Link> is the definitive summer trek in Uttarakhand. Five to six days through the ancient Tons Valley — from the <Link href="/treks/location/sankri" className="smt-link">Sankri trek base</Link> through traditional Himalayan villages, across wooden bridges over glacial streams, through dense forest and open meadow, and into the vast Har Ki Dun valley itself — a natural amphitheatre surrounded by 5,000-metre peaks.
             </p>
             <p className="smt-body" style={{ margin:0 }}>
-              In summer, the valley is green and flowering. The river runs clear. The meadows that are snow fields in winter become carpets of wildflowers in May and June. The trail is dry, well-defined, and comfortable to walk. This is Har Ki Dun at its most accessible and its most beautiful. The altitude stays below 3,600 metres throughout, and the gradient is gentle enough for <Link href="/treks/beginner-treks-uttarakhand" className="smt-link">easy Himalayan treks</Link>. No technical sections. No snow gear. Just sustained walking through progressively more spectacular terrain.
+              In summer, the valley is green and flowering. The river runs clear. The meadows that are snow fields in winter become carpets of wildflowers in May and June. The trail is dry, well-defined, and comfortable to walk. This is Har Ki Dun at its most accessible and its most beautiful. The altitude stays below 3,600 metres throughout, and the gradient is gentle enough for <Link href="/treks/best-treks-in-uttarakhand/beginner" className="smt-link">easy Himalayan treks</Link>. No technical sections. No snow gear. Just sustained walking through progressively more spectacular terrain.
             </p>
           </div>
 

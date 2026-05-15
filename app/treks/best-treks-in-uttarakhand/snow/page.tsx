@@ -309,7 +309,7 @@ export default function SnowTreksPage() {
         <Link href={`${PARENT_PATH}/beginner`} className="snow-nav-link">Beginner Treks in Uttarakhand</Link>
         <Link href={`${PARENT_PATH}/high-altitude`} className="snow-nav-link">High-Altitude Treks Above 4,000 m</Link>
         <Link href={`${PARENT_PATH}/challenging`} className="snow-nav-link">Challenging Treks in Uttarakhand</Link>
-        <Link href="/treks/winter-treks-uttarakhand" className="snow-nav-link">Winter Treks in Uttarakhand — Seasonal Guide</Link>
+        <Link href="/treks/best-treks-in-uttarakhand/snow" className="snow-nav-link">Winter Treks in Uttarakhand — Seasonal Guide</Link>
       </div>
     </div>
   </section>

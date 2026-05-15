@@ -232,7 +232,7 @@ export default function TrekPackagesUttarakhandPage() {
             </div>
             <div className="tpu-why-item">
               <strong>Season.</strong>
-              <p className="tpu-body" style={{ margin:0 }}>Peak-season packages — <Link href="/treks/winter-treks-uttarakhand" className="tpu-link">winter treks in Uttarakhand</Link> (December to January) and <Link href="/treks/summer-treks-uttarakhand" className="tpu-link">summer treks in Uttarakhand</Link> (May to June) — carry higher demand and may include premium pricing. Shoulder seasons (October to November, February to March) often offer the best value-to-experience ratio.</p>
+              <p className="tpu-body" style={{ margin:0 }}>Peak-season packages — <Link href="/treks/best-treks-in-uttarakhand/snow" className="tpu-link">winter treks in Uttarakhand</Link> (December to January) and <Link href="/treks/summer-treks-uttarakhand" className="tpu-link">summer treks in Uttarakhand</Link> (May to June) — carry higher demand and may include premium pricing. Shoulder seasons (October to November, February to March) often offer the best value-to-experience ratio.</p>
             </div>
             <div className="tpu-why-item" style={{ marginBottom:0 }}>
               <strong>Transport inclusion.</strong>
@@ -252,7 +252,7 @@ export default function TrekPackagesUttarakhandPage() {
             <div style={{ border:'1px solid #eef0ee', borderRadius:8, overflow:'hidden' }}>
               {[
                 { label:'Solo travellers.', body:'Join a scheduled group departure. You trek with a small group, share meals and camps, and have guided support throughout. No solo navigation, no solo logistics. Many trekkers meet lifelong friends on group departures.' },
-                { label:'First-time trekkers.', body:<>A guided package is the safest and most enjoyable way to start. Everything is handled — you focus on the experience. See our <Link href="/treks/beginner-treks-uttarakhand" className="tpu-link">beginner treks in Uttarakhand</Link> guide for route recommendations.</> },
+                { label:'First-time trekkers.', body:<>A guided package is the safest and most enjoyable way to start. Everything is handled — you focus on the experience. See our <Link href="/treks/best-treks-in-uttarakhand/beginner" className="tpu-link">beginner treks in Uttarakhand</Link> guide for route recommendations.</> },
                 { label:'Corporate groups.', body:'Custom packages for team-building treks — Chakrata for weekends, Kedarkantha for immersive programmes. Dedicated guides, group accommodation, and logistics coordination included. We handle the operational complexity so your team focuses on the experience.' },
                 { label:'Student groups.', body:'Budget-optimised packages for college and university groups. Group rates, shared transport, and structured itineraries that balance challenge with safety. Ideal during vacation windows (May to June, October).' },
               ].map((item, i, arr) => (

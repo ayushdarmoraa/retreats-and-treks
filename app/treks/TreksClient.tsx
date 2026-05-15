@@ -63,7 +63,7 @@ const locationAltMap: Record<string, string> = {
 /* ── Location micro-intros with internal links ── */
 function LocationIntro({ locationId }: { locationId: string }): ReactNode {
   const intros: Record<string, ReactNode> = {
-    chakrata: <>Just 4 hours from Dehradun, Chakrata offers forested trails, waterfalls, and cave treks at gentle altitudes. Ideal for <Link href="/treks/beginner-treks-uttarakhand" style={iLinkStyle}>first-time trekkers</Link> exploring Uttarakhand on a <Link href="/treks/3-day-treks-uttarakhand" style={iLinkStyle}>weekend getaway</Link>.</>,
+    chakrata: <>Just 4 hours from Dehradun, Chakrata offers forested trails, waterfalls, and cave treks at gentle altitudes. Ideal for <Link href="/treks/best-treks-in-uttarakhand/beginner" style={iLinkStyle}>first-time trekkers</Link> exploring Uttarakhand on a <Link href="/treks/3-day-treks-uttarakhand" style={iLinkStyle}>weekend getaway</Link>.</>,
     sankri: <>A remote Himalayan basecamp in the Tons Valley, Sankri is the gateway to <Link href="/treks/location/sankri/kedarkantha-trek" style={iLinkStyle}>Kedarkantha</Link> and <Link href="/treks/location/sankri/har-ki-dun-trek" style={iLinkStyle}>Har Ki Dun</Link> — two of Uttarakhand&apos;s most iconic multi-day treks.</>,
     munsiyari: <>Perched in the Kumaon Himalayas with views of the Panchachuli peaks, Munsiyari offers the <Link href="/treks/location/munsiyari/khaliya-top-trek" style={iLinkStyle}>Khaliya Top meadow trek</Link> and the challenging <Link href="/treks/location/munsiyari/milam-glacier-trek" style={iLinkStyle}>Milam Glacier approach</Link> for experienced trekkers.</>,
     lohajung: <>Located in the Garhwal Himalayas, Lohajung serves as the basecamp for <Link href="/treks/location/lohajung/brahmatal-trek" style={iLinkStyle}>Brahmatal</Link> and <Link href="/treks/location/lohajung/roopkund-trek" style={iLinkStyle}>Roopkund</Link> — known for frozen alpine lakes and high-altitude snow ridges.</>,
@@ -541,9 +541,9 @@ export default function TreksClient() {
 {/* ═══ 1.1: QUICK NAV BAR ═══ */}
 <nav className="trk-quicknav" aria-label="Quick trek navigation">
   <div className="trk-quicknav-inner">
-    <Link href="/treks/beginner-treks-uttarakhand" className="trk-quicknav-btn">Beginner Treks</Link>
+    <Link href="/treks/best-treks-in-uttarakhand/beginner" className="trk-quicknav-btn">Beginner Treks</Link>
     <Link href="/treks/3-day-treks-uttarakhand" className="trk-quicknav-btn">Weekend Treks</Link>
-    <Link href="/treks/winter-treks-uttarakhand" className="trk-quicknav-btn">Snow Treks</Link>
+    <Link href="/treks/best-treks-in-uttarakhand/snow" className="trk-quicknav-btn">Snow Treks</Link>
     <Link href="/treks/best-treks-in-uttarakhand" className="trk-quicknav-btn">Best Treks</Link>
     <a href="#catalogue" className="trk-quicknav-btn" onClick={(e) => { e.preventDefault(); document.getElementById('catalogue')?.scrollIntoView({ behavior: 'smooth' }); }}>All Treks ↓</a>
   </div>
@@ -721,7 +721,7 @@ export default function TreksClient() {
       <div className="trk-collection-links">
         {filterTreks(allTreks.filter((t) => t.difficulty === 'Easy' || (t.difficulty.includes('Easy') && t.difficulty.includes('Moderate')))).slice(0, 6).map((t) => <Link key={t.slug} href={`/treks/location/${t.locationId}/${t.slug}`} className="trk-collection-chip">{t.title} →</Link>)}
       </div>
-      <Link href="/treks/beginner-treks-uttarakhand" className="trk-collection-link">Browse beginner-friendly trek itineraries →</Link>
+      <Link href="/treks/best-treks-in-uttarakhand/beginner" className="trk-collection-link">Browse beginner-friendly trek itineraries →</Link>
     </div>
     <div className="trk-collection">
       <h3 className="trk-collection-h3">Weekend Treks</h3>
@@ -763,7 +763,7 @@ export default function TreksClient() {
     <div className="trk-diffguide-grid">
       <div className="trk-diffguide-block">
         <span className="trk-diffguide-dot" style={{ background: 'var(--color-primary)' }} />
-        <div><p className="trk-diffguide-label">Easy</p><p className="trk-diffguide-text">Short duration, low altitude, well-marked trails. No prior trekking experience needed. Suitable for families and <Link href="/treks/beginner-treks-uttarakhand" style={iLinkStyle}>first-time trekkers</Link>.</p></div>
+        <div><p className="trk-diffguide-label">Easy</p><p className="trk-diffguide-text">Short duration, low altitude, well-marked trails. No prior trekking experience needed. Suitable for families and <Link href="/treks/best-treks-in-uttarakhand/beginner" style={iLinkStyle}>first-time trekkers</Link>.</p></div>
       </div>
       <div className="trk-diffguide-block">
         <span className="trk-diffguide-dot" style={{ background: '#7a6010' }} />
@@ -788,7 +788,7 @@ export default function TreksClient() {
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Find Your Trek</span></div>
     <h2 className="trk-h2">Not Sure Which Trek Is Right for You?</h2>
     <div className="trk-discovery-grid">
-      <div className="trk-disc-card"><h3 className="trk-disc-h3">First-Time Trekkers</h3><p className="trk-disc-p">New to trekking? Start with easy, guided trails that focus on experience, not endurance.</p><Link href="/treks/beginner-treks-uttarakhand" className="trk-disc-link">Browse beginner-friendly treks →</Link></div>
+      <div className="trk-disc-card"><h3 className="trk-disc-h3">First-Time Trekkers</h3><p className="trk-disc-p">New to trekking? Start with easy, guided trails that focus on experience, not endurance.</p><Link href="/treks/best-treks-in-uttarakhand/beginner" className="trk-disc-link">Browse beginner-friendly treks →</Link></div>
       <div className="trk-disc-card"><h3 className="trk-disc-h3">Weekend Explorers</h3><p className="trk-disc-p">Short on time? Choose forest and waterfall treks that fit into a weekend.</p><Link href="/treks/location/chakrata" className="trk-disc-link">View Chakrata Weekend Trek itinerary →</Link></div>
       <div className="trk-disc-card"><h3 className="trk-disc-h3">Adventure Seekers</h3><p className="trk-disc-p">Looking for snow, altitude, and longer days on the trail?</p><Link href="/treks/location/sankri" className="trk-disc-link">Discover Sankri multi-day trek itineraries →</Link></div>
     </div>
@@ -804,7 +804,7 @@ export default function TreksClient() {
     <div className="trk-season-grid">
       <div className="trk-season-block"><h3 className="trk-season-h3">Summer Treks</h3><span className="trk-season-months">March – June</span><p className="trk-season-text">Clear skies and wildflower meadows. Best for high-altitude passes like <Link href="/treks/location/joshimath/kuari-pass-trek" style={iLinkStyle}>Kuari Pass</Link> and valley treks in <Link href="/treks/location/sankri/har-ki-dun-trek" style={iLinkStyle}>Har Ki Dun</Link>. Snow begins melting at lower altitudes, opening longer routes.</p><div className="trk-season-links"><Link href="/treks/location/sankri/har-ki-dun-trek" className="trk-season-link">Har Ki Dun Trek →</Link><Link href="/treks/location/joshimath/kuari-pass-trek" className="trk-season-link">Kuari Pass Trek →</Link><Link href="/treks/spring-treks-uttarakhand" className="trk-season-link">All spring treks →</Link></div></div>
       <div className="trk-season-block"><h3 className="trk-season-h3">Autumn Treks</h3><span className="trk-season-months">September – November</span><p className="trk-season-text">Post-monsoon clarity with the most vivid Himalayan views. Ideal for <Link href="/treks/location/lohajung/brahmatal-trek" style={iLinkStyle}>Brahmatal</Link>, <Link href="/treks/location/munsiyari/khaliya-top-trek" style={iLinkStyle}>Khaliya Top</Link>, and forest treks near Chakrata. Less crowded trails.</p><div className="trk-season-links"><Link href="/treks/location/lohajung/brahmatal-trek" className="trk-season-link">Brahmatal Trek →</Link><Link href="/treks/location/munsiyari/khaliya-top-trek" className="trk-season-link">Khaliya Top Trek →</Link><Link href="/treks/autumn-treks-uttarakhand" className="trk-season-link">All autumn treks →</Link></div></div>
-      <div className="trk-season-block"><h3 className="trk-season-h3">Winter Treks</h3><span className="trk-season-months">December – February</span><p className="trk-season-text">Deep snow trekking at its finest. <Link href="/treks/location/sankri/kedarkantha-trek" style={iLinkStyle}>Kedarkantha</Link> and <Link href="/treks/location/lohajung/brahmatal-trek" style={iLinkStyle}>Brahmatal</Link> are flagship winter treks with stunning snow-covered summit views. Requires proper gear — see our <Link href="/treks/garhwal-himalayas/packing-checklist" style={iLinkStyle}>packing checklist</Link>.</p><div className="trk-season-links"><Link href="/treks/location/sankri/kedarkantha-trek" className="trk-season-link">Kedarkantha Trek →</Link><Link href="/treks/location/lohajung/brahmatal-trek" className="trk-season-link">Brahmatal Trek →</Link><Link href="/treks/winter-treks-uttarakhand" className="trk-season-link">All winter treks →</Link></div></div>
+      <div className="trk-season-block"><h3 className="trk-season-h3">Winter Treks</h3><span className="trk-season-months">December – February</span><p className="trk-season-text">Deep snow trekking at its finest. <Link href="/treks/location/sankri/kedarkantha-trek" style={iLinkStyle}>Kedarkantha</Link> and <Link href="/treks/location/lohajung/brahmatal-trek" style={iLinkStyle}>Brahmatal</Link> are flagship winter treks with stunning snow-covered summit views. Requires proper gear — see our <Link href="/treks/garhwal-himalayas/packing-checklist" style={iLinkStyle}>packing checklist</Link>.</p><div className="trk-season-links"><Link href="/treks/location/sankri/kedarkantha-trek" className="trk-season-link">Kedarkantha Trek →</Link><Link href="/treks/location/lohajung/brahmatal-trek" className="trk-season-link">Brahmatal Trek →</Link><Link href="/treks/best-treks-in-uttarakhand/snow" className="trk-season-link">All winter treks →</Link></div></div>
     </div>
   </div>
 </section>
@@ -894,9 +894,9 @@ export default function TreksClient() {
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Resources</span></div>
     <h2 className="trk-h2">Explore More Trekking Guides</h2>
     <div className="trk-links-grid">
-      <Link href="/treks/beginner-treks-uttarakhand" className="trk-links-item">Beginner Treks in Uttarakhand</Link>
+      <Link href="/treks/best-treks-in-uttarakhand/beginner" className="trk-links-item">Beginner Treks in Uttarakhand</Link>
       <Link href="/treks/best-treks-in-uttarakhand" className="trk-links-item">Best Treks in Uttarakhand</Link>
-      <Link href="/treks/winter-treks-uttarakhand" className="trk-links-item">Winter Treks in Uttarakhand</Link>
+      <Link href="/treks/best-treks-in-uttarakhand/snow" className="trk-links-item">Winter Treks in Uttarakhand</Link>
       <Link href="/treks/trek-near-delhi" className="trk-links-item">Treks Near Delhi</Link>
       <Link href="/treks/garhwal-himalayas/packing-checklist" className="trk-links-item">Trekking Packing Checklist</Link>
       <Link href="/treks/garhwal-himalayas/fitness-guide" className="trk-links-item">Trek Fitness Preparation Guide</Link>

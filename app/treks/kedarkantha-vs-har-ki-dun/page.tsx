@@ -265,7 +265,7 @@ export default function KedarkanthaVsHarKiDunPage() {
           </div>
           <p className="kvh-body">
             Both are accessible to{' '}
-            <Link href="/treks/beginner-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>beginner treks in Uttarakhand</Link>.
+            <Link href="/treks/best-treks-in-uttarakhand/beginner" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>beginner treks in Uttarakhand</Link>.
             The preparation is the same: two to three weeks of daily cardio — walking, jogging, stair climbing. The difference is what kind of challenge you prefer. Short and sharp, or long and steady.
           </p>
         </div>
@@ -283,7 +283,7 @@ export default function KedarkanthaVsHarKiDunPage() {
           </p>
           <div className="kvh-season">
             <div className="kvh-season-label">Kedarkantha · December to March</div>
-            <p>This is a{' '}<Link href="/treks/winter-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>winter treks in Uttarakhand</Link>. The trail is snow-covered, the forest is silent and white, and the summit panorama is sharpest in cold, clear winter air. Kedarkantha in summer (May) is possible but loses the snow immersion that defines the experience. If you are choosing Kedarkantha, choose December to February for the definitive version.</p>
+            <p>This is a{' '}<Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>winter treks in Uttarakhand</Link>. The trail is snow-covered, the forest is silent and white, and the summit panorama is sharpest in cold, clear winter air. Kedarkantha in summer (May) is possible but loses the snow immersion that defines the experience. If you are choosing Kedarkantha, choose December to February for the definitive version.</p>
           </div>
           <div className="kvh-season">
             <div className="kvh-season-label">Har Ki Dun · April–June &amp; September–November</div>

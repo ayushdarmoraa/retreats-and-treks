@@ -438,7 +438,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
     },
     {
-      url: buildCanonicalUrl('/treks/beginner-treks-uttarakhand'),
+      url: buildCanonicalUrl('/treks/best-treks-in-uttarakhand/beginner'),
       lastModified: now,
       priority: 0.85,
       changeFrequency: 'monthly',
@@ -450,7 +450,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
     },
     {
-      url: buildCanonicalUrl('/treks/winter-treks-uttarakhand'),
+      url: buildCanonicalUrl('/treks/best-treks-in-uttarakhand/snow'),
       lastModified: now,
       priority: 0.85,
       changeFrequency: 'monthly',

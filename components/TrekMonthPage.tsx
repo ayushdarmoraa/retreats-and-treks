@@ -391,7 +391,7 @@ export default function TrekMonthPage({
         <div className="tm-nav-group">
           <Link href={trekInfo.locationPath} className="tm-nav-link">{trekInfo.displayName} — Full Guide</Link>
           <Link href="/treks/best-treks-in-uttarakhand" className="tm-nav-link">Best Treks in Uttarakhand</Link>
-          <Link href="/treks/winter-treks-uttarakhand" className="tm-nav-link">Winter Treks in Uttarakhand</Link>
+          <Link href="/treks/best-treks-in-uttarakhand/snow" className="tm-nav-link">Winter Treks in Uttarakhand</Link>
           <Link href="/treks/summer-treks-uttarakhand" className="tm-nav-link">Summer Treks in Uttarakhand</Link>
         </div>
       </div>

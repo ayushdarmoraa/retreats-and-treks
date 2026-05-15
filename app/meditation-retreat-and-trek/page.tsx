@@ -168,7 +168,7 @@ export default function MeditationRetreatAndTrekPage() {
               <h3 style={{ fontSize: '1rem', fontWeight: 600, marginBottom: '0.5rem' }}>Treks</h3>
               <ul style={{ paddingLeft: '1.25rem', lineHeight: 2, fontSize: '0.9rem' }}>
                 <li><Link href="/treks" style={{ color: 'var(--color-primary)' }}>All Treks</Link></li>
-                <li><Link href="/treks/beginner-treks-uttarakhand" style={{ color: 'var(--color-primary)' }}>Beginner Treks</Link></li>
+                <li><Link href="/treks/best-treks-in-uttarakhand/beginner" style={{ color: 'var(--color-primary)' }}>Beginner Treks</Link></li>
                 <li><Link href="/treks/best-treks-in-uttarakhand" style={{ color: 'var(--color-primary)' }}>Best Treks</Link></li>
               </ul>
             </div>

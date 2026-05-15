@@ -532,7 +532,7 @@ export default function GarhwalHimalayasTreksPage() {
           at 3,850 metres. The trail passes through dense oak and rhododendron forest before emerging
           onto snow-covered ridges with views of Trishul and Nanda Ghunti. At moderate difficulty with
           no technical sections, Brahmatal is the ideal entry point to{' '}
-          <Link href="/treks/winter-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>winter trekking in Uttarakhand</Link>{' '}
+          <Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>winter trekking in Uttarakhand</Link>{' '}
           for those ready to go beyond the more crowded Kedarkantha circuit.
         </p>
       </div>
@@ -745,7 +745,7 @@ export default function GarhwalHimalayasTreksPage() {
             is the standout winter route — frozen lakes, snow-covered ridges, and clear mountain visibility.
             Kuari Pass is also feasible in early spring (March) with lingering snow adding alpine character.
             Roopkund and Pangarchulla are inaccessible in deep winter. For more{' '}
-            <Link href="/treks/winter-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>winter trek options across Uttarakhand</Link>, see our seasonal guide.
+            <Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>winter trek options across Uttarakhand</Link>, see our seasonal guide.
           </>
         },
         {
@@ -908,7 +908,7 @@ export default function GarhwalHimalayasTreksPage() {
       <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>the Kuari Pass ridge walk</Link>.
       Both stay below 4,000 metres, have no technical sections, and are well-supported by guided
       operations. If you are entirely new to Himalayan trekking, our{' '}
-      <Link href="/treks/beginner-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>beginner treks guide</Link>{' '}
+      <Link href="/treks/best-treks-in-uttarakhand/beginner" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>beginner treks guide</Link>{' '}
       can help you decide whether to start in Garhwal or closer to Dehradun.
     </p>
 
@@ -1247,9 +1247,9 @@ export default function GarhwalHimalayasTreksPage() {
         { href: '/treks/roopkund-vs-pangarchulla', label: 'Roopkund vs Pangarchulla — Challenging Trek Comparison' },
         { href: '/treks/location/lohajung', label: 'Treks from Lohajung' },
         { href: '/treks/location/joshimath', label: 'Treks from Joshimath' },
-        { href: '/treks/winter-treks-uttarakhand', label: 'Winter Treks in Uttarakhand' },
+        { href: '/treks/best-treks-in-uttarakhand/snow', label: 'Winter Treks in Uttarakhand' },
         { href: '/treks/summer-treks-uttarakhand', label: 'Summer Treks in Uttarakhand' },
-        { href: '/treks/beginner-treks-uttarakhand', label: 'Beginner Treks in Uttarakhand' },
+        { href: '/treks/best-treks-in-uttarakhand/beginner', label: 'Beginner Treks in Uttarakhand' },
         { href: '/treks/location/chakrata', label: 'Weekend Treks from Chakrata' },
         { href: '/treks/best-treks-in-uttarakhand', label: 'Best Treks in Uttarakhand — Master Guide' },
         { href: '/treks/garhwal-himalayas/fitness-guide', label: '8-Week Fitness Guide for Garhwal Treks' },

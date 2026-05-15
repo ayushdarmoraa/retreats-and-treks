@@ -137,8 +137,8 @@ export default function SiteMapPage() {
         <div className="smp-group">
           <div className="smp-group-header"><span className="smp-group-title">Trek Filters</span></div>
           <div className="smp-group-links">
-            <Link href="/treks/beginner-treks-uttarakhand" className="smp-group-link">Beginner Treks in Uttarakhand</Link>
-            <Link href="/treks/winter-treks-uttarakhand" className="smp-group-link">Winter Treks (December–February)</Link>
+            <Link href="/treks/best-treks-in-uttarakhand/beginner" className="smp-group-link">Beginner Treks in Uttarakhand</Link>
+            <Link href="/treks/best-treks-in-uttarakhand/snow" className="smp-group-link">Winter Treks (December–February)</Link>
             <Link href="/treks/summer-treks-uttarakhand" className="smp-group-link">Summer Treks (May–June)</Link>
             <Link href="/treks/spring-treks-uttarakhand" className="smp-group-link">Spring Treks (March–May)</Link>
             <Link href="/treks/autumn-treks-uttarakhand" className="smp-group-link">Autumn Treks (September–November)</Link>

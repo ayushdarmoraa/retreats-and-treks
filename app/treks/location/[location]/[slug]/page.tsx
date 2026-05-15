@@ -1738,7 +1738,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
         ...(INTENT_TRAIL[slug] ? [{ href: INTENT_TRAIL[slug].path, label: INTENT_TRAIL[slug].label }] : []),
         { href: `/treks/location/${locationId}`, label: `All treks from ${location.name}` },
         ...(GARHWAL_LOCATIONS.has(locationId) ? [{ href: '/treks/garhwal-himalayas', label: 'Garhwal Himalayas trekking guide' }] : []),
-        ...(trek.bestSeason.some((m: string) => ['December', 'January', 'February', 'March'].includes(m)) ? [{ href: '/treks/winter-treks-uttarakhand', label: 'Winter treks in Uttarakhand' }] : []),
+        ...(trek.bestSeason.some((m: string) => ['December', 'January', 'February', 'March'].includes(m)) ? [{ href: '/treks/best-treks-in-uttarakhand/snow', label: 'Winter treks in Uttarakhand' }] : []),
         ...(trek.bestSeason.some((m: string) => ['May', 'June', 'April'].includes(m)) ? [{ href: '/treks/summer-treks-uttarakhand', label: 'Summer treks in Uttarakhand' }] : []),
       ].map((item, i, arr) => (
         <Link key={item.href} href={item.href} style={{

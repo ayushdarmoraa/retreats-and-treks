@@ -204,7 +204,7 @@ export default function ThreeDayTreksUttarakhandPage() {
             <div style={{ border:'1px solid #eef0ee', borderRadius:8, overflow:'hidden' }}>
               <div className="tdt-who-item">
                 <span className="tdt-who-dot" />
-                <p className="tdt-body" style={{ margin:0 }}><strong style={{ fontWeight:500, color:'#111' }}>First-time trekkers.</strong> Three days is long enough to test whether Himalayan trekking is for you, short enough that the commitment is low. Tiger Fall or Budher Caves in Chakrata are ideal — accessible trails, no altitude concerns, and a clear destination. If you enjoy it, the natural next step is a <Link href="/treks/beginner-treks-uttarakhand" className="tdt-link">beginner treks in Uttarakhand</Link> like the full four-day Kedarkantha.</p>
+                <p className="tdt-body" style={{ margin:0 }}><strong style={{ fontWeight:500, color:'#111' }}>First-time trekkers.</strong> Three days is long enough to test whether Himalayan trekking is for you, short enough that the commitment is low. Tiger Fall or Budher Caves in Chakrata are ideal — accessible trails, no altitude concerns, and a clear destination. If you enjoy it, the natural next step is a <Link href="/treks/best-treks-in-uttarakhand/beginner" className="tdt-link">beginner treks in Uttarakhand</Link> like the full four-day Kedarkantha.</p>
               </div>
               <div className="tdt-who-item">
                 <span className="tdt-who-dot" />
@@ -237,7 +237,7 @@ export default function ThreeDayTreksUttarakhandPage() {
             </div>
             <div className="tdt-season-card">
               <span className="tdt-season-label">February – April</span>
-              <p className="tdt-body" style={{ margin:0 }}>Spring brings warming temperatures, wildflowers at lower elevations, and well-defined trails. Chakrata treks are excellent in this window. The compressed Kedarkantha still carries snow in February and early March — ideal for those seeking the <Link href="/treks/winter-treks-uttarakhand" className="tdt-link">winter treks in Uttarakhand</Link> experience in a short format.</p>
+              <p className="tdt-body" style={{ margin:0 }}>Spring brings warming temperatures, wildflowers at lower elevations, and well-defined trails. Chakrata treks are excellent in this window. The compressed Kedarkantha still carries snow in February and early March — ideal for those seeking the <Link href="/treks/best-treks-in-uttarakhand/snow" className="tdt-link">winter treks in Uttarakhand</Link> experience in a short format.</p>
             </div>
             <div className="tdt-season-card">
               <span className="tdt-season-label">May – June</span>

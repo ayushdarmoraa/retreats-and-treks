@@ -279,7 +279,7 @@ export default function BrahmatalVsKuariPassPage() {
 
           <div className="bvk-season">
             <div className="bvk-season-label">Brahmatal · December to March</div>
-            <p>This is exclusively a{' '}<Link href="/treks/winter-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>winter trek</Link>. The frozen lake and snow ridges that define the experience only exist in winter. Doing Brahmatal in summer misses the point entirely — the lake is just water, the ridges are just grass.</p>
+            <p>This is exclusively a{' '}<Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>winter trek</Link>. The frozen lake and snow ridges that define the experience only exist in winter. Doing Brahmatal in summer misses the point entirely — the lake is just water, the ridges are just grass.</p>
           </div>
           <div className="bvk-season">
             <div className="bvk-season-label">Kuari Pass · March–May &amp; October–November</div>
@@ -455,9 +455,9 @@ export default function BrahmatalVsKuariPassPage() {
             <Link href="/treks/roopkund-vs-pangarchulla" className="bvk-nav-link">Challenging Garhwal Treks: Roopkund vs Pangarchulla</Link>
             <Link href="/treks/location/lohajung" className="bvk-nav-link">All treks from Lohajung</Link>
             <Link href="/treks/location/joshimath" className="bvk-nav-link">All treks from Joshimath</Link>
-            <Link href="/treks/winter-treks-uttarakhand" className="bvk-nav-link">Winter Treks in Uttarakhand</Link>
+            <Link href="/treks/best-treks-in-uttarakhand/snow" className="bvk-nav-link">Winter Treks in Uttarakhand</Link>
             <Link href="/treks/summer-treks-uttarakhand" className="bvk-nav-link">Summer Treks in Uttarakhand</Link>
-            <Link href="/treks/beginner-treks-uttarakhand" className="bvk-nav-link">Beginner Treks in Uttarakhand</Link>
+            <Link href="/treks/best-treks-in-uttarakhand/beginner" className="bvk-nav-link">Beginner Treks in Uttarakhand</Link>
           </div>
         </div>
       </section>
