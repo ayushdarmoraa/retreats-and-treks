@@ -207,7 +207,7 @@ export default function SilentRetreatsPage() {
       {/* ═══ HERO ═══ */}
       <section className="sil-hero">
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/experience-hubs/silent-hero.png" alt="Silent retreats in the Himalayas — a solitary figure walking through misty Himalayan forest" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+          <img src="/Images/experience-hubs/silent-hero.png" width={1024} height={1024} alt="Silent retreats in the Himalayas — a solitary figure walking through misty Himalayan forest" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           <div className="sil-hero-overlay" />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -298,7 +298,7 @@ export default function SilentRetreatsPage() {
 
       {/* ═══ VISUAL BREAK ═══ */}
       <figure style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', height: '300px', overflow: 'hidden', margin: 0, padding: 0 }}>
-        <img src="/Images/whyhimalaya/psycological.webp" alt="Forest path — the environment for silent retreats" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+        <img src="/Images/whyhimalaya/psycological.webp" width={800} height={533} alt="Forest path — the environment for silent retreats" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }} />
         <figcaption style={{ position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em', fontStyle: 'italic' }}>Silence is not something you achieve — it is something you enter</figcaption>
       </figure>
@@ -535,7 +535,7 @@ export default function SilentRetreatsPage() {
       {/* ═══ BOTTOM CTA ═══ */}
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', overflow: 'hidden', minHeight: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/hero/mountain-snow.webp" alt="Snow-covered Himalayan peaks — silent retreat setting" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+          <img src="/Images/hero/mountain-snow.webp" width={1920} height={1080} alt="Snow-covered Himalayan peaks — silent retreat setting" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,31,28,0.88)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '44rem', padding: '4rem 2rem' }}>

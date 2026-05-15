@@ -988,7 +988,7 @@ export default function HowToPrepareForARetreatPage() {
             <div className="hpr-travel-card">
               <div className="hpr-travel-image-wrap">
                 <img
-                  src="/Images/blog/how-to-reach-chakrata-for-a-retreat.webp"
+                  src="/Images/blog/how-to-reach-chakrata-for-a-retreat.webp" width={800} height={450}
                   alt="Mountain road journey toward a Himalayan retreat"
                   className="hpr-travel-image"
                   loading="lazy"

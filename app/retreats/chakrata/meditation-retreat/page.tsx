@@ -47,7 +47,7 @@ export default function Page() {
       {/* HERO */}
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '65vh', textAlign: 'center', paddingTop: '68px' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/experience-hubs/meditation-hero.webp" alt="Meditation retreat in the forests of Chakrata, Uttarakhand" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 35%', display: 'block' }} />
+          <img src="/Images/experience-hubs/meditation-hero.webp" width={1024} height={1024} alt="Meditation retreat in the forests of Chakrata, Uttarakhand" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 35%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.88) 100%)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '44rem', padding: '0 2rem' }}>

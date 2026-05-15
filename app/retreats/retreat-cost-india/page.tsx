@@ -1790,6 +1790,8 @@ export default function RetreatCostIndiaPage() {
               <div className="rci-mvb-card">
                 <img
                   src="/Images/hero/valley-forest.webp"
+                  width={1400}
+                  height={788}
                   alt="Mountain forest retreat setting in the Himalayas"
                   className="rci-mvb-image"
                   loading="lazy"

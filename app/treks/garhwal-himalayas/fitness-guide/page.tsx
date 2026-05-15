@@ -330,7 +330,7 @@ export default function GarhwalFitnessGuidePage() {
           {/* Hero image for visual context */}
           <div style={{ borderRadius: '10px', overflow: 'hidden', marginBottom: '1.75rem' }}>
             <img
-              src="/Images/trek/region/garhwal.webp"
+              src="/Images/trek/region/garhwal.webp" width={800} height={450}
               alt="Garhwal Himalaya trekking terrain — ridge trail above 4000m"
               loading="lazy"
               style={{ width: '100%', height: '220px', objectFit: 'cover', display: 'block' }}

@@ -862,7 +862,7 @@ export default function HimalayanRetreatsPage() {
 
       {/* Hero image */}
       <img
-        src="/Images/whyhimalaya/top.webp"
+        src="/Images/whyhimalaya/top.webp" width={800} height={533}
         alt="Himalayan valley landscape"
         className="wh-hero-img"
       />
@@ -873,7 +873,7 @@ export default function HimalayanRetreatsPage() {
         <div className="wh-card">
           <div className="wh-card-img-wrap">
             <img
-              src="/Images/whyhimalaya/environment.webp"
+              src="/Images/whyhimalaya/environment.webp" width={800} height={571}
               alt="Himalayan mountains stillness"
               className="wh-card-img"
             />
@@ -906,7 +906,7 @@ export default function HimalayanRetreatsPage() {
         <div className="wh-card">
           <div className="wh-card-img-wrap">
             <img
-              src="/Images/whyhimalaya/psycological.webp"
+              src="/Images/whyhimalaya/psycological.webp" width={800} height={533}
               alt="Himalayan ridge perspective"
               className="wh-card-img"
             />
@@ -939,7 +939,7 @@ export default function HimalayanRetreatsPage() {
         <div className="wh-card">
           <div className="wh-card-img-wrap">
             <img
-              src="/Images/whyhimalaya/cultural.webp"
+              src="/Images/whyhimalaya/cultural.webp" width={800} height={533}
               alt="Himalayan village culture"
               className="wh-card-img"
             />
@@ -970,7 +970,7 @@ export default function HimalayanRetreatsPage() {
         <div className="wh-card">
           <div className="wh-card-img-wrap">
             <img
-              src="/Images/whyhimalaya/nature.webp"
+              src="/Images/whyhimalaya/nature.webp" width={800} height={476}
               alt="Nature forest mountain"
               className="wh-card-img"
             />
@@ -1138,7 +1138,7 @@ export default function HimalayanRetreatsPage() {
         <div className="tr-card">
           <div className="tr-card-img-wrap">
             <img
-              src="/Images/himalayanretreats/yoga.webp"
+              src="/Images/himalayanretreats/yoga.webp" width={800} height={1000}
               alt="Yoga retreat Himalayas"
               className="tr-card-img"
             />
@@ -1170,7 +1170,7 @@ export default function HimalayanRetreatsPage() {
         <div className="tr-card">
           <div className="tr-card-img-wrap">
             <img
-              src="/Images/himalayanretreats/silentretreat.webp"
+              src="/Images/himalayanretreats/silentretreat.webp" width={800} height={600}
               alt="Silent retreat mountains"
               className="tr-card-img"
             />
@@ -1202,7 +1202,7 @@ export default function HimalayanRetreatsPage() {
         <div className="tr-card">
           <div className="tr-card-img-wrap">
             <img
-              src="/Images/himalayanretreats/weekend.webp"
+              src="/Images/himalayanretreats/weekend.webp" width={800} height={800}
               alt="Wellness reset retreat"
               className="tr-card-img"
             />
@@ -1233,7 +1233,7 @@ export default function HimalayanRetreatsPage() {
         <div className="tr-card">
           <div className="tr-card-img-wrap">
             <img
-              src="/Images/himalayanretreats/creative.webp"
+              src="/Images/himalayanretreats/creative.webp" width={800} height={533}
               alt="Creative reflection retreat"
               className="tr-card-img"
             />
@@ -1263,7 +1263,7 @@ export default function HimalayanRetreatsPage() {
         <div className="tr-card">
           <div className="tr-card-img-wrap">
             <img
-              src="/Images/himalayanretreats/retreaktrek.webp"
+              src="/Images/himalayanretreats/retreaktrek.webp" width={800} height={533}
               alt="Retreat trek hybrid Himalayas"
               className="tr-card-img"
             />
@@ -1643,7 +1643,7 @@ export default function HimalayanRetreatsPage() {
         <Link href="/retreats/chakrata" className="loc-sec-card">
           <div className="loc-sec-img-wrap">
             <img
-              src="/Images/location/chakrata.webp"
+              src="/Images/location/chakrata.webp" width={800} height={462}
               alt="Chakrata forested ridge"
               className="loc-sec-img"
             />
@@ -1676,7 +1676,7 @@ export default function HimalayanRetreatsPage() {
         <Link href="/retreats/sankri" className="loc-sec-card">
           <div className="loc-sec-img-wrap">
             <img
-              src="/Images/location/sankri.webp"
+              src="/Images/location/sankri.webp" width={1200} height={693}
               alt="Sankri valley mountain"
               className="loc-sec-img"
             />
@@ -1708,7 +1708,7 @@ export default function HimalayanRetreatsPage() {
         <Link href="/retreats/munsiyari" className="loc-sec-card">
           <div className="loc-sec-img-wrap">
             <img
-              src="/Images/location/munsiyari.webp"
+              src="/Images/location/munsiyari.webp" width={800} height={462}
               alt="Munsiyari alpine frontier"
               className="loc-sec-img"
             />
@@ -1742,7 +1742,7 @@ export default function HimalayanRetreatsPage() {
         <Link href="/retreats/rishikesh" className="loc-sec-card">
           <div className="loc-sec-img-wrap">
             <img
-              src="/Images/location/rishikesh.webp"
+              src="/Images/location/rishikesh.webp" width={800} height={462}
               alt="Rishikesh Ganges spiritual"
               className="loc-sec-img"
             />

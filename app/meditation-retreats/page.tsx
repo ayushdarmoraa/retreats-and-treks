@@ -302,7 +302,7 @@ export default function MeditationRetreatsPage() {
       <section className="med-hero">
         <div style={{ position: 'absolute', inset: 0 }}>
           <img
-            src="/Images/experience-hubs/meditation-hero.webp"
+            src="/Images/experience-hubs/meditation-hero.webp" width={1024} height={1024}
             alt="Meditation retreats in the Himalayas — a person meditating on a mountain ridge at golden hour"
             fetchPriority="high"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}
@@ -659,7 +659,7 @@ export default function MeditationRetreatsPage() {
           VISUAL BREAK 2
       ═══════════════════════════════════════════ */}
       <figure style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', height: '300px', overflow: 'hidden', margin: 0, padding: 0 }}>
-        <img src="/Images/experience-hubs/monastery.png" alt="Ancient Buddhist monastery in a remote Himalayan valley — Zanskar meditation retreat" loading="lazy"
+        <img src="/Images/experience-hubs/monastery.png" width={1024} height={1024} alt="Ancient Buddhist monastery in a remote Himalayan valley — Zanskar meditation retreat" loading="lazy"
           style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 35%', display: 'block' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }} />
         <figcaption style={{ position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em', fontStyle: 'italic' }}>

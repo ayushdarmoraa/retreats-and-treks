@@ -204,7 +204,7 @@ export default function YogaRetreatsPage() {
       {/* ═══ HERO ═══ */}
       <section className="yog-hero">
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/experience-hubs/yoga-hero.webp" alt="Yoga retreat in the Himalayas — warrior pose on a mountain deck at sunrise" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+          <img src="/Images/experience-hubs/yoga-hero.webp" width={1024} height={1024} alt="Yoga retreat in the Himalayas — warrior pose on a mountain deck at sunrise" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           <div className="yog-hero-overlay" />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -292,7 +292,7 @@ export default function YogaRetreatsPage() {
 
       {/* ═══ VISUAL BREAK ═══ */}
       <figure style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', height: '300px', overflow: 'hidden', margin: 0, padding: 0 }}>
-        <img src="/Images/whyhimalaya/environment.webp" alt="Himalayan mountain environment — yoga retreat landscape" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+        <img src="/Images/whyhimalaya/environment.webp" width={800} height={571} alt="Himalayan mountain environment — yoga retreat landscape" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }} />
         <figcaption style={{ position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em', fontStyle: 'italic' }}>Morning practice as light arrives over the Himalayan peaks</figcaption>
       </figure>
@@ -516,7 +516,7 @@ export default function YogaRetreatsPage() {
       {/* ═══ BOTTOM CTA ═══ */}
       <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', overflow: 'hidden', minHeight: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/hero/himalayan-sunrise.webp" alt="Himalayan sunrise — yoga retreat setting" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+          <img src="/Images/hero/himalayan-sunrise.webp" width={1920} height={1080} alt="Himalayan sunrise — yoga retreat setting" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,31,28,0.85)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '44rem', padding: '4rem 2rem' }}>

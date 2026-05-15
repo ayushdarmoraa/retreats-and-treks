@@ -331,7 +331,7 @@ export default function ChakrataHubPage() {
 
       {/* ═══ VISUAL BREAK — Forest Image ═══ */}
       <figure style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', height: '300px', overflow: 'hidden', margin: 0, padding: 0 }}>
-        <img src="/Images/trek/region/budher.webp" alt="Dense deodar forest trail leading to Budher Caves in Chakrata" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+        <img src="/Images/trek/region/budher.webp" width={800} height={532} alt="Dense deodar forest trail leading to Budher Caves in Chakrata" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }} />
         <figcaption style={{ position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em', fontStyle: 'italic' }}>
           Forest trail to Budher Caves — Chakrata&apos;s most distinctive route

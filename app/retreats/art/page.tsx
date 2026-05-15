@@ -279,7 +279,7 @@ export default function ArtRetreatsPage() {
       <section className="art-hero">
         <div style={{ position: 'absolute', inset: 0 }}>
           <img
-            src="/Images/art-retreat/category-hero.webp"
+            src="/Images/art-retreat/category-hero.webp" width={1600} height={1600}
             alt="Art retreats in the Himalayas — painting, yoga, and creative healing in the mountains"
             fetchPriority="high"
             style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }}
