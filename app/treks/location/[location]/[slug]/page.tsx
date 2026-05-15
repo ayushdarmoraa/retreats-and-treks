@@ -559,7 +559,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
         color: '#111111', lineHeight: 1.15,
         marginBottom: '1.5rem',
       }}>
-        Why Choose the {trek.title}
+        Why Choose {trek.title.split('(')[0].trim()}
       </h2>
       {overviewParagraphs.map((para, i) => (
         <p key={i} style={{
