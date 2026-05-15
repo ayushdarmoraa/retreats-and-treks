@@ -96,7 +96,7 @@ export default function AboutPage() {
             maxWidth: '46rem',
             textShadow: '0 1px 5px rgba(0,0,0,0.5)'
           }}>
-            We curate structured, profound physical and mental journeys across carefully selected mountain landscapes in North India.
+            We design clear retreat and trekking journeys across selected mountain landscapes in North India.
           </p>
         </div>
       </section>
@@ -116,13 +116,13 @@ export default function AboutPage() {
           </h2>
           <div style={{ columns: '1', columnGap: '3rem', textAlign: 'left' }}>
             <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.1rem', fontWeight: 300, lineHeight: 1.85, color: '#444', marginBottom: '1.5rem' }}>
-              The Himalayan region of North India offers environmental conditions that meaningfully support inner work. Lower population density, reduced sensory stimulation, cooler climates, and expansive landscapes create a natural containment for structured reflection.
+              The Himalayan region of North India naturally supports inner work. Quieter places, cooler weather, open landscapes, and fewer distractions create space for rest, reflection, and change.
             </p>
             <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.1rem', fontWeight: 300, lineHeight: 1.85, color: '#444', marginBottom: '1.5rem' }}>
-              <strong>Retreats are not simply vacations in quiet places.</strong> They are intentionally designed containers for recalibration. The Himalayas provide the psychological stability required for that container to function effectively.
+              <strong>Retreats are not just vacations in quiet places.</strong> They are carefully designed spaces for reset. The Himalayas give that process steadiness, silence, and room to work.
             </p>
             <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.1rem', fontWeight: 300, lineHeight: 1.85, color: '#444', marginBottom: '0' }}>
-              We focus specifically on mountain-based environments because geography fundamentally influences psychological pace. Open ridgelines, forested trails, and the complete absence of urban chaos naturally force a deceleration of the human nervous system.
+              We focus on mountain settings because place changes pace. Open ridgelines, forest trails, and distance from city noise help the body and mind slow down.
             </p>
           </div>
         </div>
@@ -152,9 +152,9 @@ export default function AboutPage() {
             </h2>
             <div style={{ display: 'grid', gap: '1.5rem' }}>
               {[
-                { title: 'Designing for Rhythm', body: 'Each program is structured around rhythm rather than intensity. Days are intentionally paced to balance guided sessions, quiet integration time, shared meals, and unstructured reflection.' },
-                { title: 'Creating Containment', body: 'Program design prioritizes containment over stimulation. Rather than compressing activities into tight, stressful schedules, our journeys allow a natural transition into slower brain-wave states.' },
-                { title: 'Expert Facilitation', body: 'Our facilitators are selected based on alignment with a retreat-first methodology rather than performance-driven formats. The objective is not productivity, but ultimate recalibration.' }
+                { title: 'Designing for Rhythm', body: 'Each program is built around rhythm, not intensity. Days balance guided sessions, quiet time, shared meals, and space to reflect.' },
+                { title: 'Creating Containment', body: 'Program design values calm over stimulation. Instead of filling every hour, our journeys leave space for the mind to settle.' },
+                { title: 'Expert Facilitation', body: 'Our facilitators are chosen for a retreat-first approach, not performance-driven formats. The aim is not productivity. It is rest, clarity, and reset.' }
               ].map((item, i) => (
                 <div key={i} style={{ borderLeft: '2px solid var(--color-primary)', paddingLeft: '1.5rem' }}>
                   <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.1rem', fontWeight: 500, color: '#fff', margin: '0 0 0.5rem' }}>{item.title}</h3>
@@ -181,7 +181,7 @@ export default function AboutPage() {
               Curating the Wild
             </h2>
             <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1rem', fontWeight: 300, color: '#555', maxWidth: '42rem', margin: '0 auto' }}>
-              Not all mountain destinations are equally suited for deep work. We prioritize locations that offer environmental quiet, manageable accessibility, and stable seasonal conditions.
+              Not every mountain destination supports deep work. We choose places with quiet surroundings, practical access, and reliable seasons.
             </p>
           </div>
 
@@ -219,15 +219,15 @@ export default function AboutPage() {
             Who These Journeys Are Built For
           </h2>
           <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.05rem', fontWeight: 300, lineHeight: 1.7, color: '#444', marginBottom: '3rem' }}>
-            Our retreats are structured for individuals seeking intentional pause. Prior retreat experience is entirely unnecessary. What matters is a willingness to engage with slower pacing and structured reflection.
+            Our retreats are for people who need an intentional pause. You do not need prior retreat experience. What matters is a willingness to slow down and reflect.
           </p>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
             {[
-              { label: 'High-Paced Professionals', body: 'Those under sustained workload pressure seeking structured restoration without consuming all their annual leave.' },
-              { label: 'Founders & Leaders', body: 'Entrepreneurs navigating transition who require genuine separation from rapid decision-making environments.' },
-              { label: 'Creative Thinkers', body: 'Individuals needing uninterrupted thought space. Mountain environments remove the stimuli that block creative recalibration.' },
-              { label: 'First-time Participants', body: 'Our retreat-first design means all programs remain highly accessible to beginners without sacrificing psychological depth.' }
+              { label: 'High-Paced Professionals', body: 'People under steady work pressure who need real rest without using all their annual leave.' },
+              { label: 'Founders & Leaders', body: 'Entrepreneurs in transition who need distance from fast decisions and constant pressure.' },
+              { label: 'Creative Thinkers', body: 'People who need uninterrupted thinking space. Mountain settings remove the noise that blocks creative reset.' },
+              { label: 'First-time Participants', body: 'Our retreat-first design keeps programs accessible for beginners while still offering depth.' }
             ].map((item, i) => (
               <div key={i} style={{ background: '#f7f9f7', padding: '1.75rem', borderRadius: '12px', border: '1px solid #e5e7eb', borderLeft: '3px solid var(--color-primary)' }}>
                 <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.05rem', fontWeight: 600, color: '#111', margin: '0 0 0.5rem' }}>{item.label}</h3>
