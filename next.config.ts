@@ -69,6 +69,7 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 31536000,
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256],
+    qualities: [55, 60, 65, 70, 75],
   },
   // Ensure server-side compression for responses (gzip) — hosting may provide brotli
   compress: true, // This line is already present
