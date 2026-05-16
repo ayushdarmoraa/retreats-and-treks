@@ -45,27 +45,27 @@ const FAQ_ITEMS = [
   {
     question: 'Are Himalayan retreats suitable for beginners?',
     answer:
-      'Yes. Most Himalayan retreats are designed to accommodate participants with no prior retreat experience. Structured schedules, guided sessions, and facilitator support make the format accessible to first-time attendees. While some silent or intensive formats may recommend basic familiarity with meditation or yoga, many retreats explicitly welcome beginners and provide modifications as needed.',
+      'Yes. Most Himalayan retreats are designed for people with no prior retreat experience. Clear schedules, guided sessions, and facilitator support make the format accessible to first-time guests. While some silent or intensive formats may recommend basic familiarity with meditation or yoga, many retreats welcome beginners and provide modifications as needed.',
   },
   {
     question: 'How far are Himalayan retreat locations from Delhi or Dehradun?',
     answer:
-      'Travel time depends on the specific location. Mid-altitude Himalayan destinations such as Chakrata can typically be reached within a manageable road journey from Delhi, often suitable for three- to five-day retreats. More remote valleys such as Sankri require longer travel durations but provide deeper geographical separation. Most retreats provide clear travel guidance in advance.',
+      'Travel time depends on the location. Mid-altitude Himalayan destinations such as Chakrata can usually be reached by road from Delhi, often suitable for three- to five-day retreats. More remote valleys such as Sankri require longer travel but provide deeper distance from routine. Most retreats provide clear travel guidance in advance.',
   },
   {
     question: 'Is prior yoga or meditation experience required?',
     answer:
-      'No. While prior experience can enhance comfort, it is not required for most structured retreats. Sessions are typically guided with variations to support mixed levels. Participants are encouraged to engage at their own pace rather than perform at a fixed standard.',
+      'No. While prior experience can enhance comfort, it is not required for most guided retreats. Sessions are usually guided with options for mixed levels. Participants are encouraged to engage at their own pace rather than perform at a fixed standard.',
   },
   {
     question: 'What is the difference between a Himalayan retreat and a trek?',
     answer:
-      'A Himalayan retreat is a structured, facilitator-led program focused on reflection, rest, and guided practice. A trek emphasizes physical movement and route-based exploration. Some formats combine both elements, but the primary orientation of a retreat remains inward, whereas a trek centers on terrain progression and physical endurance.',
+      'A Himalayan retreat is a guided, facilitator-led program focused on reflection, rest, and guided practice. A trek emphasizes physical movement and route-based exploration. Some formats combine both elements, but the main focus of a retreat remains inward, while a trek centers on terrain, movement, and endurance.',
   },
   {
     question: 'What should I pack for a Himalayan retreat?',
     answer:
-      'Packing depends on season and altitude. Layered clothing suitable for cooler mornings and evenings is recommended year-round. Comfortable walking shoes, personal medications, reusable water bottles, and basic toiletries are essential. Retreat organizers typically provide detailed packing guidance tailored to the specific location and season.',
+      'Packing depends on season and altitude. Layered clothing suitable for cooler mornings and evenings is recommended year-round. Comfortable walking shoes, personal medications, reusable water bottles, and basic toiletries are essential. Retreat organizers usually provide clear packing guidance for the location and season.',
   },
   {
     question: 'What is the best time of year for a Himalayan retreat?',
@@ -75,7 +75,7 @@ const FAQ_ITEMS = [
   {
     question: 'What is the cancellation and refund policy?',
     answer:
-      'Cancellation and refund terms vary by program and are communicated clearly at the time of booking. Most structured retreat programs offer partial refunds for cancellations made within a defined window before the start date. Participants are encouraged to review specific program terms before confirming. We recommend reaching out directly for program-specific cancellation guidance.',
+      'Cancellation and refund terms vary by program and are communicated clearly at the time of booking. Most guided retreat programs offer partial refunds for cancellations made within a defined window before the start date. Participants should review program terms before confirming. We recommend reaching out directly for program cancellation guidance.',
   },
   {
     question: 'Is travel insurance recommended for a Himalayan retreat?',
@@ -90,12 +90,12 @@ const FAQ_ITEMS = [
   {
     question: 'Are dietary restrictions or preferences accommodated?',
     answer:
-      'Most Himalayan retreat programs serve vegetarian meals as the default. Common dietary preferences such as vegan, gluten-free, or allergen-specific requirements can typically be accommodated with advance notice. Participants should communicate dietary needs at the time of registration to ensure appropriate arrangements.',
+      'Most Himalayan retreat programs serve vegetarian meals as the default. Common dietary preferences such as vegan, gluten-free, or allergen-related requirements can usually be accommodated with advance notice. Participants should communicate dietary needs at the time of registration to ensure suitable arrangements.',
   },
   {
     question: 'What if I have a medical condition — can I still attend?',
     answer:
-      'Many retreat participants have pre-existing conditions and attend without difficulty, particularly for rest-focused or gentle-movement formats. Participants with significant cardiovascular, respiratory, or mobility conditions should consult a physician before booking, particularly for higher-altitude locations. Program descriptions outline physical intensity levels to help participants self-assess suitability.',
+      'Many retreat participants have pre-existing conditions and attend without difficulty, particularly for rest-focused or gentle-movement formats. Participants with serious cardiovascular, respiratory, or mobility conditions should consult a physician before booking, particularly for higher-altitude locations. Program descriptions outline physical effort levels to help participants assess fit.',
   },
 ];
 
@@ -117,7 +117,7 @@ export default function HimalayanRetreatsPage() {
   const collectionPageSchema = generateCollectionPageSchema({
     name: 'Himalayan Retreats in India',
     description:
-      'A curated collection of retreat journeys in the Indian Himalayas — yoga, silent, wellness, creative, and custom experiences across carefully chosen mountain locations.',
+      'A selected collection of retreat journeys in the Indian Himalayas — yoga, silent, wellness, creative, and custom experiences across carefully chosen mountain locations.',
     url: canonicalUrl,
   });
 
@@ -267,19 +267,19 @@ export default function HimalayanRetreatsPage() {
       {/* Body paras — content exactly same */}
       <div className="hr-hero-body">
         <p className="hr-hero-p">
-          Himalayan retreats are structured, multi-day immersion experiences held in the mountain
+          Himalayan retreats are guided, multi-day retreat experiences held in the mountain
           regions of North India. They are designed for intentional pause — a shift away from the
-          pace of urban life into an environment that supports mental clarity, physical restoration,
+          pace of urban life into an environment that supports mental clarity, physical rest,
           and reflective space.
         </p>
         <p className="hr-hero-p">
-          Unlike holidays built around entertainment or sightseeing, retreats operate on rhythm
-          rather than spontaneity. Days are gently structured. Practices are guided. Silence is
+          Unlike holidays built around entertainment or sightseeing, retreats follow a rhythm
+          rather than spontaneity. Days are gently planned. Practices are guided. Silence is
           respected. Time in nature is not incidental — it is central to the experience.
         </p>
         <p className="hr-hero-p">
-          In the Indian Himalayas, geography itself becomes part of the retreat container. Forested
-          slopes, wide valleys, cooler air, and lower sensory density create conditions that make
+          In the Indian Himalayas, the landscape itself becomes part of the retreat setting. Forested
+          slopes, wide valleys, cooler air, and less sensory noise create conditions that make
           slowing down natural rather than forced. Participants often report that the most
           noticeable change is not dramatic insight, but a gradual return to steadiness — deeper
           sleep, clearer thinking, reduced internal noise.
@@ -419,7 +419,7 @@ export default function HimalayanRetreatsPage() {
       <ul className="tn-grid">
         <li className="tn-item">
           <Link href="/retreat-programs" className="tn-link">
-            Compare all retreat programs — duration, intensity, format
+            Compare retreat programs — duration, effort, format
             <span className="tn-arrow">→</span>
           </Link>
         </li>
@@ -648,7 +648,7 @@ export default function HimalayanRetreatsPage() {
       {/* Body */}
       <p className="whr-p">
         A Himalayan retreat is a time-bound, facilitator-led program conducted in a Himalayan
-        location that integrates guided practices with immersion in a mountain environment. Most
+        location that brings guided practices into a mountain setting. Most
         retreats last between three and seven days and follow a deliberate daily rhythm rather
         than an open-ended itinerary.
       </p>
@@ -659,9 +659,9 @@ export default function HimalayanRetreatsPage() {
         {[
           'Morning movement practices such as yoga or mobility work',
           'Breathwork or meditation sessions',
-          'Facilitated group reflection or structured discussion',
-          'Quiet periods for integration',
-          'Light nature immersion or gentle mountain walks',
+          'Guided group reflection or discussion',
+          'Quiet periods for reflection',
+          'Light nature time or gentle mountain walks',
         ].map((item) => (
           <li key={item} className="whr-list-item">
             <span className="whr-list-dot" />
@@ -671,16 +671,16 @@ export default function HimalayanRetreatsPage() {
       </ul>
 
       <p className="whr-p">
-        The defining characteristic of a retreat is intentional structure. Participants are not
+        The defining characteristic of a retreat is clear structure. Participants are not
         left to design their own schedule. Meals are shared. Digital engagement is reduced. The
-        emphasis is on internal recalibration rather than external stimulation.
+        emphasis is on inner reset rather than outside stimulation.
       </p>
 
       <p className="whr-p">
         The mountain setting is not symbolic alone — it is functional. Reduced urban noise,
-        expansive landscapes, and natural circadian alignment create conditions where attention
+        expansive landscapes, and natural daily rhythm create conditions where attention
         stabilizes more easily. In that sense, the Himalayas are not simply a backdrop to the
-        retreat; they are part of its operating environment.
+        retreat; they are part of how the retreat works.
       </p>
 
       <div className="whr-divider" />
@@ -715,8 +715,8 @@ export default function HimalayanRetreatsPage() {
           <p className="whr-compare-label">Comparison</p>
           <h3 className="whr-compare-h3">Retreat vs Ashram Stay</h3>
           <p className="whr-compare-p">
-            Ashram stays are typically longer-term, institutionally rooted, and tied to a specific
-            spiritual tradition. Himalayan retreats are shorter, more program-specific, and often
+            Ashram stays are usually longer, rooted in an institution, and tied to a particular
+            spiritual tradition. Himalayan retreats are shorter, more program-led, and often
             non-denominational. They are designed to be accessible to anyone — regardless of
             religious orientation or prior practice.
           </p>
@@ -881,18 +881,18 @@ export default function HimalayanRetreatsPage() {
           </div>
           <div className="wh-card-body">
             <p className="wh-card-label">Environment</p>
-            <h3 className="wh-card-h3">Environmental Conditions That Support Stillness</h3>
+            <h3 className="wh-card-h3">Mountain Conditions That Support Stillness</h3>
             <p className="wh-card-p">
-              The Himalayan regions of North India offer environmental conditions fundamentally
+              The Himalayan regions of North India offer conditions very
               different from urban centers. Lower population density, reduced traffic noise, cooler
-              temperatures, and expansive landscapes collectively reduce sensory overload. This shift
-              is not aesthetic alone — it directly affects how attention functions.
+              temperatures, and wide landscapes reduce sensory overload together. This shift
+              is not just scenic — it directly affects attention.
             </p>
             <p className="wh-card-p">
               In cities, perception is constantly fragmented by movement, sound, light, and digital
               interruption. In mountain settings, these inputs decrease dramatically. Silence is
-              ambient rather than curated. The nervous system is not continually stimulated. As
-              external input reduces, internal awareness becomes easier to sustain.
+              part of the setting rather than something arranged. The body and mind are not continually stimulated. As
+              outside input reduces, inner awareness becomes easier to sustain.
             </p>
             <p className="wh-card-p">
               Even moderate elevation subtly alters breathing patterns and encourages slower pacing.
@@ -914,21 +914,21 @@ export default function HimalayanRetreatsPage() {
           </div>
           <div className="wh-card-body">
             <p className="wh-card-label">Psychology</p>
-            <h3 className="wh-card-h3">Psychological Distance from Routine</h3>
+            <h3 className="wh-card-h3">Mental Distance from Routine</h3>
             <p className="wh-card-p">
-              Retreats depend on separation — not only physical, but psychological. The Himalayas
-              create natural distance from habitual environments. When daily cues are removed — office
+              Retreats depend on separation — not only physical, but mental. The Himalayas
+              create natural distance from usual environments. When daily cues are removed — office
               buildings, traffic patterns, constant connectivity — the mind becomes less reactive and
-              more observational.
+              more able to observe.
             </p>
             <p className="wh-card-p">
               This transition unfolds gradually over the first one to two days. Participants often
               experience initial restlessness followed by noticeable settling. Without constant
-              reinforcement of routine, internal patterns become easier to recognize. Reflection
+              reminders of routine, internal patterns become easier to recognize. Reflection
               becomes less abstract and more embodied.
             </p>
             <p className="wh-card-p">
-              Wide valleys and open ridgelines reinforce perspective. In psychological terms,
+              Wide valleys and open ridgelines build perspective. That
               perspective reduces urgency. Challenges that feel immediate in urban environments often
               feel proportionate in mountain settings.
             </p>
@@ -959,8 +959,8 @@ export default function HimalayanRetreatsPage() {
               supports the retreat container rather than competing with it.
             </p>
             <p className="wh-card-p">
-              This is not romanticization. It is contextual reinforcement. Environment shapes
-              behavior. A retreat conducted in a high-intensity setting must counteract its
+              This is not romanticizing the mountains. It is support from the setting. Environment shapes
+              behavior. A retreat held in a high-pressure setting must work against its
               surroundings. In the Himalayas, the surroundings reinforce intention.
             </p>
           </div>
@@ -978,15 +978,15 @@ export default function HimalayanRetreatsPage() {
           </div>
           <div className="wh-card-body">
             <p className="wh-card-label">Nature</p>
-            <h3 className="wh-card-h3">Nature as a Functional Component, Not Decoration</h3>
+            <h3 className="wh-card-h3">Nature as Part of the Practice</h3>
             <p className="wh-card-p">
-              In Himalayan retreats, nature is integrated into the program rather than treated as
+              In Himalayan retreats, nature is part of the program rather than just
               scenery. Morning sessions may face open landscapes. Walking meditations occur on forest
-              paths. Quiet integration time is spent outdoors.
+              paths. Quiet reflection time is spent outdoors.
             </p>
             <p className="wh-card-p">
-              Natural light exposure regulates circadian rhythm. Forest environments support
-              attentional recovery. Open horizons reduce visual density and mental compression. These
+              Natural light supports daily rhythm. Forest environments support
+              attention recovery. Open horizons reduce visual density and mental compression. These
               effects are subtle but cumulative across several days.
             </p>
             <p className="wh-card-p">
@@ -1151,11 +1151,11 @@ export default function HimalayanRetreatsPage() {
               Yoga retreats in the Himalayas combine daily movement practice with breathwork and
               guided meditation in a mountain setting that supports longer, slower sessions than
               typical urban studio formats. Rather than compressed class schedules, sessions often
-              extend into unhurried practice blocks with space for integration.
+              extend into unhurried practice blocks with space to absorb the work.
             </p>
             <p className="tr-card-p">
               The emphasis varies by facilitator. Some retreats focus on alignment and physical
-              refinement, while others emphasize restorative practice or breath-led movement. In
+              refinement, while others emphasize restful practice or breath-led movement. In
               Himalayan contexts, yoga tends to shift away from performance and toward inward
               awareness, shaped by the surrounding quiet.
             </p>
@@ -1186,7 +1186,7 @@ export default function HimalayanRetreatsPage() {
               traffic and urban noise reduces resistance to quiet formats.
             </p>
             <p className="tr-card-p">
-              These retreats typically include structured meditation sessions, mindful walking,
+              These retreats typically include guided meditation sessions, mindful walking,
               journaling, and limited facilitator guidance. Silence is not imposed as austerity; it
               is used as a tool for observation. Without constant dialogue, internal thought patterns
               become more visible.
@@ -1213,17 +1213,17 @@ export default function HimalayanRetreatsPage() {
             <h3 className="tr-card-h3">Wellness &amp; Reset Retreats</h3>
             <p className="tr-card-p">
               Wellness retreats focus on recovery from overstimulation, burnout, and chronic stress.
-              Programs may include gentle movement, breathwork, nervous system regulation practices,
+              Programs may include gentle movement, breathwork, calming practices,
               sleep optimization, and extended rest periods.
             </p>
             <p className="tr-card-p">
-              Unlike performance-driven programs, reset retreats reduce intensity. Schedules are
-              deliberately spacious. The objective is restoration rather than transformation. In
+              Unlike performance-driven programs, reset retreats reduce pressure. Schedules are
+              deliberately spacious. The aim is recovery rather than transformation. In
               Himalayan settings, cooler air, early nightfall, and lower sensory input support
-              recalibration.
+              reset.
             </p>
             <p className="tr-card-p">
-              These retreats are particularly suited for professionals seeking structured pause
+              These retreats are particularly suited for professionals seeking a guided pause
               without long-term commitments.
             </p>
           </div>
@@ -1244,7 +1244,7 @@ export default function HimalayanRetreatsPage() {
             <h3 className="tr-card-h3">Creative and Reflection Retreats</h3>
             <p className="tr-card-p">
               Creative retreats are designed for writers, founders, artists, and professionals who
-              require uninterrupted thinking time. The program may include structured reflection
+              require uninterrupted thinking time. The program may include guided reflection
               sessions, peer dialogue, or protected solitude.
             </p>
             <p className="tr-card-p">
@@ -1278,11 +1278,11 @@ export default function HimalayanRetreatsPage() {
             </p>
             <p className="tr-card-p">
               Treks may involve ridge walks, forest trails, or short supported routes. The purpose
-              is experiential integration — using landscape engagement to deepen the retreat process.
+              is to use movement through the landscape to deepen the retreat process.
             </p>
             <p className="tr-card-p">
               For participants who benefit from embodied movement, hybrid formats provide balance:
-              structured introspection paired with active exploration.
+              guided reflection paired with active exploration.
             </p>
           </div>
         </div>
@@ -1648,12 +1648,12 @@ export default function HimalayanRetreatsPage() {
 
       <p className="loc-sec-intro">
         Himalayan retreats are shaped not only by facilitation style but by geography. Altitude,
-        forest density, accessibility, and cultural context influence the tone of each
+        forest density, ease of access, and local culture influence the tone of each
         experience. While the Himalayan range spans multiple regions, retreats are best
-        understood through specific locations rather than abstract mountain labels.
+        understood through real locations rather than broad mountain labels.
       </p>
       <p className="loc-sec-intro">
-        Below are the primary mountain regions where our retreats are currently hosted.
+        Below are the main mountain regions where our retreats are currently hosted.
       </p>
 
       <div className="loc-sec-divider" />
@@ -1682,12 +1682,12 @@ export default function HimalayanRetreatsPage() {
             </p>
             <p className="loc-sec-body-p">
               Retreats hosted in Chakrata tend to emphasize restoration and reflective space. The
-              surrounding forests create natural walking routes for integration time, while ridge
+              surrounding forests create natural walking routes for reflection time, while ridge
               views provide openness without exposure to heavy tourism traffic.
             </p>
             <p className="loc-sec-body-p">
-              Its accessibility from Delhi makes it suitable for three- to five-day retreat formats,
-              offering meaningful separation without excessive travel complexity.
+              Its easy access from Delhi makes it suitable for three- to five-day retreats,
+              offering meaningful separation without complex travel.
             </p>
             <span className="loc-sec-cta">Explore Chakrata →</span>
           </div>
@@ -1706,20 +1706,20 @@ export default function HimalayanRetreatsPage() {
           </div>
           <div className="loc-sec-body">
             <p className="loc-sec-body-label">Garhwal Himalayas</p>
-            <h3 className="loc-sec-body-h3">Sankri — Valley-Based Mountain Immersion</h3>
+            <h3 className="loc-sec-body-h3">Sankri — Valley-Based Mountain Retreats</h3>
             <p className="loc-sec-body-p">
               Sankri lies deeper in the Garhwal Himalayas and serves as a gateway to several trekking
               routes. The surrounding valley landscapes are more expansive and alpine in character,
               with pronounced seasonal variation.
             </p>
             <p className="loc-sec-body-p">
-              Retreats hosted in Sankri often integrate longer nature immersion segments, including
+              Retreats hosted in Sankri often include longer nature time, including
               forest walks and light trekking extensions. The environment supports participants who
-              benefit from embodied movement alongside structured reflection.
+              benefit from movement alongside guided reflection.
             </p>
             <p className="loc-sec-body-p">
               Because Sankri is more remote, retreats here tend to attract participants seeking
-              stronger geographical separation from routine environments.
+              stronger distance from routine environments.
             </p>
             <span className="loc-sec-cta">Explore Sankri →</span>
           </div>
@@ -1743,16 +1743,16 @@ export default function HimalayanRetreatsPage() {
               Munsiyari sits at the edge of the Kumaon Himalayas, facing the Panchachuli massif and
               the glacial systems of the Gori Ganga valley. This is high-altitude frontier country —
               less visited, more elemental. The landscape is vast, the light is sharp, and the silence
-              is not curated but geological.
+              comes from the land itself.
             </p>
             <p className="loc-sec-body-p">
               Retreats in Munsiyari suit people drawn to altitude and edge. The environment is raw
               and exposed, which means inner work here tends to be more confrontational than gentle.
-              Alpine meadows, glacier approaches, and Bhotiya village culture create a container that
+              Alpine meadows, glacier approaches, and Bhotiya village culture create a setting that
               is culturally rich and physically demanding in equal measure.
             </p>
             <p className="loc-sec-body-p">
-              For those seeking deep geographical separation and a landscape that does not accommodate
+              For those seeking deep distance from routine and a landscape that does not bend toward
               comfort-seeking, Munsiyari offers what more accessible locations cannot.
             </p>
             <span className="loc-sec-cta">Explore Munsiyari →</span>
@@ -1782,11 +1782,11 @@ export default function HimalayanRetreatsPage() {
             <p className="loc-sec-body-p">
               Retreats in Rishikesh suit people seeking connection to living spiritual lineages.
               Ashram rhythms, evening aarti ceremonies, philosophical study, and teacher-led practices
-              create a container that is communal rather than isolated. The energy is devotional, not
+              create a setting that is communal rather than isolated. The energy is devotional, not
               wilderness.
             </p>
             <p className="loc-sec-body-p">
-              For participants drawn to yoga traditions, philosophical depth, or the specific gravity
+              For participants drawn to yoga traditions, philosophical depth, or the pull
               of a sacred river town, Rishikesh offers an experience distinct from any mountain
               location. It is closer to Delhi, fully accessible, and culturally dense.
             </p>
@@ -1908,7 +1908,7 @@ export default function HimalayanRetreatsPage() {
         <div>
           <p className="wf-p">
             Himalayan retreats are not limited to experienced practitioners or long-term spiritual
-            seekers. They are structured environments designed for individuals who recognize the
+            seekers. They are guided spaces for people who recognize the
             need for deliberate pause.
           </p>
           <p className="wf-p-label">They are particularly suited for:</p>
@@ -1929,17 +1929,17 @@ export default function HimalayanRetreatsPage() {
           <p className="wf-p">
             Retreats in mountain settings are not designed for constant activity. They appeal to
             individuals comfortable with slower pacing and reflective time. While prior experience
-            in yoga or meditation can be helpful, it is not required in most structured formats.
+            in yoga or meditation can be helpful, it is not required in most guided formats.
           </p>
           <p className="wf-p">
             The common factor among participants is not background — it is intention. Those who
             benefit most are willing to disengage temporarily from routine, reduce digital input,
-            and engage with a structured rhythm designed for recalibration.
+            and engage with a guided rhythm designed for reset.
           </p>
           <p className="wf-p" style={{ margin: 0 }}>
             Himalayan retreats are less suitable for individuals seeking entertainment-driven
-            travel or high-intensity adventure experiences. While trekking extensions may be
-            included, the primary orientation remains inward.
+            travel or high-effort adventure experiences. While trekking extensions may be
+            included, the main focus remains inward.
           </p>
         </div>
 
@@ -2065,7 +2065,7 @@ export default function HimalayanRetreatsPage() {
       <h2 className="bt-h2">Best Time for a Himalayan Retreat</h2>
 
       <p className="bt-intro">
-        Seasonality influences both environmental conditions and the psychological tone of a
+        Seasonality shapes both the natural setting and the mental tone of a
         retreat. While Himalayan retreats operate across much of the year, each season creates
         a distinct experience.
       </p>
@@ -2095,7 +2095,7 @@ export default function HimalayanRetreatsPage() {
             <p className="bt-card-p">
               Summer provides relief from the heat of the plains, especially in mid-altitude
               Himalayan regions. Retreats during this time attract participants seeking cooler
-              climates and geographical separation from urban environments.
+              climates and distance from urban environments.
             </p>
             <p className="bt-card-p">
               While some areas may experience monsoon onset toward late July, many retreat locations
@@ -2110,12 +2110,12 @@ export default function HimalayanRetreatsPage() {
             <h3 className="bt-card-h3">Autumn (September–November)</h3>
             <p className="bt-card-p">
               Autumn is characterized by clear skies, stable weather, and high visibility across
-              mountain ranges. This season is often considered optimal for retreats that integrate
+              mountain ranges. This season is often best for retreats that include
               light trekking extensions.
             </p>
             <p className="bt-card-p">
-              The post-monsoon clarity enhances landscape immersion, making it a preferred period
-              for participants who value expansive mountain views alongside structured practice.
+              The post-monsoon clarity deepens time in the landscape, making it a preferred period
+              for participants who value wide mountain views alongside guided practice.
             </p>
           </div>
         </div>
@@ -2300,14 +2300,14 @@ export default function HimalayanRetreatsPage() {
           <div className="hc-card-num">01</div>
           <h3 className="hc-card-h3">Duration and Intensity</h3>
           <p className="hc-card-p">
-            Short retreats of three to four days provide structured pause without requiring
+            Short retreats of three to four days provide a guided pause without requiring
             extended time away from work. Longer formats allow deeper settling and more gradual
-            integration. For a detailed comparison, see{' '}
+            settling. For a clear comparison, see{' '}
             <Link href="/blog/3-day-vs-5-day-himalayan-retreat">how to choose the right retreat length</Link>.
           </p>
           <p className="hc-card-p">
-            Intensity varies as well. Some retreats follow full-day programming with early starts
-            and structured sessions. Others maintain spacious schedules with extended rest periods.
+            Effort level varies as well. Some retreats follow full-day programming with early starts
+            and guided sessions. Others maintain spacious schedules with extended rest periods.
             Reviewing the daily rhythm in advance helps determine alignment.
           </p>
         </div>
@@ -2335,8 +2335,8 @@ export default function HimalayanRetreatsPage() {
             groups may create broader social interaction and shared energy.
           </p>
           <p className="hc-card-p">
-            Facilitation style also differs. Some retreats emphasize structured instruction,
-            while others encourage independent reflection within a guided framework. Reading
+            Facilitation style also differs. Some retreats emphasize guided instruction,
+            while others encourage independent reflection within a clear structure. Reading
             facilitator profiles and program outlines helps clarify expectations.
           </p>
         </div>
@@ -2351,7 +2351,7 @@ export default function HimalayanRetreatsPage() {
             but require additional travel time.
           </p>
           <p className="hc-card-p">
-            Understanding transport duration, terrain, and seasonal accessibility ensures
+            Understanding travel time, terrain, and seasonal access supports
             realistic planning.
           </p>
         </div>
