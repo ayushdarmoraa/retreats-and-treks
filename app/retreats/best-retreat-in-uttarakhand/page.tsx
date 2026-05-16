@@ -33,7 +33,7 @@ export function generateMetadata(): Metadata {
     openGraph: {
       title: '10 Best Retreats in Uttarakhand (2026) — Yoga, Luxury & Weekend Picks',
       description:
-        'Compare the best retreats in Uttarakhand by purpose, budget, location, season, retreat style, and accessibility.',
+        'Compare the best retreats in Uttarakhand by purpose, budget, location, season, retreat style, and access.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
       images: buildOgImages('10 Best Retreats in Uttarakhand (2026) — Yoga, Luxury & Weekend Picks'),
@@ -45,7 +45,7 @@ const FAQ_ITEMS = [
   {
     question: 'Which is the best yoga retreat in Uttarakhand?',
     answer:
-      'Rishikesh is the best location for a yoga retreat in Uttarakhand. It offers the deepest instructor pool, the widest range of yoga styles (Hatha, Vinyasa, Ashtanga, Yin), riverside practice settings along the Ganges, and year-round availability. For a quieter mountain alternative, Sankri and Munsiyari offer yoga programs at higher altitude with smaller groups and forest immersion.',
+      'Rishikesh is the best location for a yoga retreat in Uttarakhand. It offers the deepest instructor pool, the widest range of yoga styles (Hatha, Vinyasa, Ashtanga, Yin), riverside practice settings along the Ganges, and year-round availability. For a quieter mountain alternative, Sankri and Munsiyari offer yoga programs at higher altitude with smaller groups and forest retreat time.',
   },
   {
     question: 'What is the best retreat near Delhi?',
@@ -55,7 +55,7 @@ const FAQ_ITEMS = [
   {
     question: 'Is Munsiyari better than Rishikesh for a retreat?',
     answer:
-      'They serve different needs. Munsiyari is better for seclusion, alpine views, and premium stillness — it sits at 2,200 metres facing the Panchachuli peaks and receives very few visitors. Rishikesh is better for structured yoga training, instructor access, and spiritual heritage. Choose Munsiyari for luxury and solitude. Choose Rishikesh for depth and technique.',
+      'They serve different needs. Munsiyari is better for seclusion, alpine views, and premium stillness — it sits at 2,200 metres facing the Panchachuli peaks and receives very few visitors. Rishikesh is better for guided yoga training, instructor access, and spiritual heritage. Choose Munsiyari for luxury and solitude. Choose Rishikesh for depth and technique.',
   },
   {
     question: 'Which retreat is best in summer?',
@@ -70,7 +70,7 @@ const FAQ_ITEMS = [
   {
     question: 'How many days are ideal for a Himalayan retreat?',
     answer:
-      'Two to three days works for a weekend reset — enough for a few yoga sessions, guided meditation, and mountain stillness. Five to seven days is ideal for a meaningful transformation — deeper practice, accumulated rest, and real detachment from routine. For immersive programs (teacher training, silent retreats), ten days or more is standard. Choose duration based on objective: reset, restore, or transform.',
+      'Two to three days works for a weekend reset — enough for a few yoga sessions, guided meditation, and mountain stillness. Five to seven days is ideal for a meaningful transformation — deeper practice, deep rest, and real detachment from routine. For deeper programs such as teacher training or silent retreats, ten days or more is standard. Choose duration based on objective: reset, restore, or transform.',
   },
 ];
 
@@ -132,7 +132,7 @@ export default function BestRetreatInUttarakhandPage() {
     '@type': 'WebPage',
     name: '10 Best Retreats in Uttarakhand (2026 Guide)',
     description:
-      'Compare the best retreats in Uttarakhand by purpose, budget, location, season, retreat style, and accessibility across Rishikesh, Munsiyari, and Chakrata.',
+      'Compare the best retreats in Uttarakhand by purpose, budget, location, season, retreat style, and access across Rishikesh, Munsiyari, and Chakrata.',
     url: canonicalUrl,
     isPartOf: { '@id': schemaIds.website },
     about: {
@@ -426,7 +426,7 @@ export default function BestRetreatInUttarakhandPage() {
               </h1>
 
               <p className="bru-lead">
-                Uttarakhand is India&rsquo;s most concentrated mountain wellness region — but the best retreat depends entirely on your goal. A yoga immersion in Rishikesh feels different from alpine seclusion in Munsiyari or a short forest reset in Chakrata.
+                Uttarakhand is India&rsquo;s most concentrated mountain wellness region — but the best retreat depends entirely on your goal. A yoga retreat in Rishikesh feels different from alpine seclusion in Munsiyari or a short forest reset in Chakrata.
               </p>
 
               <p className="bru-lead">
@@ -728,7 +728,7 @@ export default function BestRetreatInUttarakhandPage() {
               </div>
 
               <p className="bru-cmp-copy">
-                These categories are not interchangeable. Rishikesh is strongest for structured yoga, Munsiyari for alpine seclusion, Chakrata for short resets, and Sankri for high-altitude summer calm.
+                These categories are not interchangeable. Rishikesh is strongest for guided yoga, Munsiyari for alpine seclusion, Chakrata for short resets, and Sankri for high-altitude summer calm.
               </p>
             </div>
 
@@ -1058,13 +1058,13 @@ export default function BestRetreatInUttarakhandPage() {
                 <p className="bru-winner-subtitle">Why Rishikesh leads for yoga</p>
 
                 <p className="bru-winner-copy">
-                  Rishikesh is the undisputed centre of yoga retreat culture in northern India. The concentration of certified instructors, the range of styles (Hatha, Vinyasa, Ashtanga, Yin, Kundalini), and the Ganges-side practice settings make it the default choice for anyone whose primary retreat goal is yoga. Our <Link href="/retreats/yoga-retreat-rishikesh">yoga retreat in Rishikesh</Link> guide covers structure, scheduling, and instructor profiles in detail.
+                  Rishikesh is the undisputed centre of yoga retreat culture in northern India. The concentration of certified instructors, the range of styles (Hatha, Vinyasa, Ashtanga, Yin, Kundalini), and the Ganges-side practice settings make it the default choice for anyone whose main retreat goal is yoga. Our <Link href="/retreats/yoga-retreat-rishikesh">yoga retreat in Rishikesh</Link> guide covers structure, schedules, and instructor profiles clearly.
                 </p>
 
                 <div className="bru-yoga-proof-grid">
                   <div className="bru-yoga-proof">
                     <strong>Best for</strong>
-                    <span>Structured daily yoga, technique, teachers, and practice rhythm.</span>
+                    <span>Guided daily yoga, technique, teachers, and practice rhythm.</span>
                   </div>
                   <div className="bru-yoga-proof">
                     <strong>Peak feel</strong>
@@ -1077,11 +1077,11 @@ export default function BestRetreatInUttarakhandPage() {
                 </div>
 
                 <p className="bru-winner-copy">
-                  Rishikesh yoga programs run year-round. Winter mornings are cool and focused. Monsoon (July to September) limits some outdoor sessions but deepens the contemplative atmosphere. Spring and autumn are peak seasons — clear weather, moderate temperatures, and the river at its cleanest.
+                  Rishikesh yoga programs run year-round. Winter mornings are cool and focused. Monsoon (July to September) limits some outdoor sessions but deepens the quieter atmosphere. Spring and autumn are peak seasons — clear weather, moderate temperatures, and the river at its cleanest.
                 </p>
 
                 <p className="bru-winner-copy">
-                  For yoga practice combined with mountain altitude and forest immersion rather than river-valley energy, see the broader <Link href="/retreats/yoga-retreat-uttarakhand">yoga retreat in Uttarakhand</Link> overview, which includes Chakrata and Sankri options alongside Rishikesh.
+                  For yoga practice combined with mountain altitude and forest-based retreat time rather than river-valley energy, see the broader <Link href="/retreats/yoga-retreat-uttarakhand">yoga retreat in Uttarakhand</Link> overview, which includes Chakrata and Sankri options alongside Rishikesh.
                 </p>
 
                 <div className="bru-winner-actions">
@@ -1366,7 +1366,7 @@ export default function BestRetreatInUttarakhandPage() {
                   <h3 className="bru-med-choice-title">Guided practice with structure.</h3>
 
                   <p className="bru-med-choice-copy">
-                    <Link href="/retreats/rishikesh">Rishikesh</Link> offers structured programs: guided Vipassana, mindfulness courses, silent retreats with group support, and ashram-based practice rooted in decades of lineage. The <Link href="/retreats/meditation-retreat-rishikesh">meditation retreat in Rishikesh</Link> guide covers these programs in detail.
+                    <Link href="/retreats/rishikesh">Rishikesh</Link> offers guided programs: Vipassana, mindfulness courses, silent retreats with group support, and ashram-based practice rooted in decades of lineage. The <Link href="/retreats/meditation-retreat-rishikesh">meditation retreat in Rishikesh</Link> guide explains these programs clearly.
                   </p>
 
                   <div className="bru-med-list">
@@ -1607,11 +1607,11 @@ export default function BestRetreatInUttarakhandPage() {
                   </h2>
 
                   <p className="bru-lux-copy">
-                    Luxury in the Himalayas is not about marble lobbies — it is about privacy, views, curated programming, and the absence of crowds. Munsiyari leads this category. Its combination of Panchachuli panoramas, limited visitor volume, and premium accommodation creates a retreat experience closer to alpine seclusion than mainstream hospitality.
+                    Luxury in the Himalayas is not about marble lobbies — it is about privacy, views, guided programming, and the absence of crowds. Munsiyari leads this category. Its combination of Panchachuli panoramas, limited visitor volume, and premium accommodation creates a retreat experience closer to alpine seclusion than mainstream hospitality.
                   </p>
 
                   <p className="bru-lux-copy">
-                    The <Link href="/retreats/luxury-himalayan-retreats">luxury Himalayan retreats</Link> guide compares premium options across all locations — Munsiyari for alpine exclusivity, Rishikesh for heritage luxury, and Sankri for off-grid wilderness comfort. If your primary criterion is quality of accommodation and curated experience rather than program intensity, start there.
+                    The <Link href="/retreats/luxury-himalayan-retreats">luxury Himalayan retreats</Link> guide compares premium options across all locations — Munsiyari for alpine exclusivity, Rishikesh for heritage luxury, and Sankri for off-grid wilderness comfort. If your main priority is accommodation quality and guided experience rather than program effort, start there.
                   </p>
 
                   <div className="bru-lux-actions">
@@ -2676,7 +2676,7 @@ export default function BestRetreatInUttarakhandPage() {
               </div>
 
               <p className="bru-htc-copy">
-                Five dimensions determine the right retreat: duration, budget, intensity, landscape, and travel time. Use them together, not separately.
+                Five factors determine the right retreat: duration, budget, effort, landscape, and travel time. Use them together, not separately.
               </p>
             </div>
 
@@ -2685,7 +2685,7 @@ export default function BestRetreatInUttarakhandPage() {
                 {
                   label: 'Duration',
                   num: '01',
-                  content: <><strong>Duration.</strong> Two to three days: Chakrata or Rishikesh weekend format. Five to seven days: Rishikesh deep program, Munsiyari immersion, or Sankri wilderness stay. Ten days or more: teacher training, silent retreat, or extended personal practice.</>,
+                  content: <><strong>Duration.</strong> Two to three days: Chakrata or Rishikesh weekend format. Five to seven days: Rishikesh deep program, Munsiyari deep retreat, or Sankri wilderness stay. Ten days or more: teacher training, silent retreat, or extended personal practice.</>,
                 },
                 {
                   label: 'Budget',
@@ -2693,9 +2693,9 @@ export default function BestRetreatInUttarakhandPage() {
                   content: <><strong>Budget.</strong> Chakrata and Sankri offer the most affordable mountain wellness experiences. Rishikesh spans every price bracket from ashram-basic to heritage-premium. Munsiyari skews toward the higher end due to its exclusivity and limited capacity.</>,
                 },
                 {
-                  label: 'Intensity',
+                  label: 'Effort',
                   num: '03',
-                  content: <><strong>Intensity.</strong> For structured, instructor-led programs with daily schedules: Rishikesh. For self-directed rest with optional guided sessions: Chakrata or Munsiyari. For a blend of nature immersion and light wellness programming: Sankri.</>,
+                  content: <><strong>Effort.</strong> For guided, instructor-led programs with daily schedules: Rishikesh. For self-directed rest with optional guided sessions: Chakrata or Munsiyari. For a blend of nature time and light wellness programming: Sankri.</>,
                 },
                 {
                   label: 'Landscape',
@@ -2723,7 +2723,7 @@ export default function BestRetreatInUttarakhandPage() {
                   <span className="bru-htc-num">06</span>
                 </div>
                 <p>
-                  <strong>See the complete retreat map.</strong> For a structured view of all options by location and program type, see the <Link href="/retreats/uttarakhand-retreats">Uttarakhand retreats</Link> overview and the main <Link href="/retreats/himalayan-retreats">Himalayan retreats in India</Link> directory.
+                  <strong>See the complete retreat map.</strong> For a clear view of all options by location and program type, see the <Link href="/retreats/uttarakhand-retreats">Uttarakhand retreats</Link> overview and the main <Link href="/retreats/himalayan-retreats">Himalayan retreats in India</Link> directory.
                 </p>
               </div>
             </div>
@@ -2733,7 +2733,7 @@ export default function BestRetreatInUttarakhandPage() {
                 <span>Program style matters</span>
               </div>
               <p>
-                Program styles vary significantly across locations. Rishikesh offers the widest spectrum — Hatha yoga for alignment-focused practice, Vinyasa for dynamic flow, pranayama-centred breathwork intensives, and structured Vipassana-style silent immersion programs lasting three to ten days. Munsiyari and Sankri operate on a boutique retreat format: small groups of four to eight, private facilitator models where a single lead practitioner holds the entire program arc, and silent-immersion scheduling that eliminates group social pressure. Chakrata programs lean toward weekend-accessible gentle yoga and guided nature meditation rather than intensive technique training. Understanding the distinction between ashram-style group instruction, boutique private facilitation, and self-directed silent retreats is the single most important factor in choosing well.
+                Program styles vary clearly across locations. Rishikesh offers the widest spectrum — Hatha yoga for alignment-focused practice, Vinyasa for dynamic flow, pranayama-centred breathwork intensives, and guided Vipassana-style silent retreat programs lasting three to ten days. Munsiyari and Sankri operate on a boutique retreat format: small groups of four to eight, private facilitator models where a single lead practitioner holds the entire program arc, and silent-retreat scheduling that eliminates group social pressure. Chakrata programs lean toward weekend-accessible gentle yoga and guided nature meditation rather than intensive technique training. Understanding the distinction between ashram-style group instruction, boutique private facilitation, and self-directed silent retreats is the most important factor in choosing well.
               </p>
             </div>
           </div>
