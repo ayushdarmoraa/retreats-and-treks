@@ -391,7 +391,7 @@ export default function MeditationRetreatsPage() {
               </p>
             </div>
             <div style={{ position: 'relative', borderRadius: '10px', overflow: 'hidden', height: '380px' }}>
-              <Image src="/Images/experience-hubs/meditation-group.png" alt="Small group meditation in a Himalayan forest clearing" width={1200} height={900} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 50vw" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <Image src="/Images/experience-hubs/meditation-group.png" alt="Small group meditation in a Himalayan forest clearing" fill loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
             </div>
           </div>
         </div>
@@ -456,7 +456,7 @@ export default function MeditationRetreatsPage() {
             {RETREAT_TYPES.map((type) => (
               <Link key={type.title} href={type.href} className="med-type-card">
                 <div className="med-type-card-img">
-                  <Image src={type.image} alt={type.title} width={800} height={600} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  <Image src={type.image} alt={type.title} fill loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }} />
                   <span style={{
                     position: 'absolute', top: '1rem', left: '1rem',
@@ -554,7 +554,7 @@ export default function MeditationRetreatsPage() {
           <div className="med-loc-grid">
             {LOCATIONS.map((loc) => (
               <Link key={loc.id} href={`/retreats/${loc.id}`} className="med-loc-card">
-                <Image src={loc.image} alt={`${loc.name} — meditation retreat location`} width={800} height={600} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <Image src={loc.image} alt={`${loc.name} — meditation retreat location`} fill loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 50%, transparent 100%)' }} />
                 <div className="med-loc-card-content">
                   <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', fontWeight: 500, display: 'block', marginBottom: '0.3rem' }}>

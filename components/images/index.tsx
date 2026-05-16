@@ -27,10 +27,9 @@ export function CardImage({ image, height = 250, className }: CardImageProps) {
       <Image
         src={image.src}
         alt={image.alt}
-        width={800}
-        height={600}
+        fill
         quality={90}
-        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+        style={{ objectFit: 'cover' }}
         className={className}
       />
     </div>
@@ -43,11 +42,10 @@ export function HeroImage({ image, height = 400, priority = false, className }: 
       <Image
         src={image.src}
         alt={image.alt}
-        width={1920}
-        height={1080}
+        fill
         quality={90}
         priority={priority}
-        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+        style={{ objectFit: 'cover', objectPosition: 'center' }}
         className={className}
       />
     </div>
@@ -60,10 +58,9 @@ export function SectionImage({ image, height = 300, className }: SectionImagePro
       <Image
         src={image.src}
         alt={image.alt}
-        width={1200}
-        height={675}
+        fill
         quality={85}
-        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+        style={{ objectFit: 'cover' }}
         className={className}
       />
     </div>

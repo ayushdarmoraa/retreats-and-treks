@@ -159,11 +159,10 @@ export default async function LocationHubPage({ params }: PageProps) {
         <Image
           src={premiumContent.heroImage || '/Images/whyhimalaya/nature.webp'}
           alt={premiumContent.heroImageAlt || locationData.name}
-          width={1920}
-          height={1080}
+          fill
           priority
           sizes="100vw"
-          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.7, display: 'block' }}
+          style={{ objectFit: 'cover', opacity: 0.7 }}
         />
         <div style={{
           position: 'absolute', inset: 0,
@@ -295,9 +294,8 @@ export default async function LocationHubPage({ params }: PageProps) {
                     <Image
                       src={img.src}
                       alt={img.alt}
-                      width={800}
-                      height={600}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                      fill
+                      style={{ objectFit: 'cover' }}
                       sizes="(max-width: 640px) 100vw, 320px"
                     />
                   </div>

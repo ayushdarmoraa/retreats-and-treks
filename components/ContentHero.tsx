@@ -143,9 +143,8 @@ export default function ContentHero({ path }: ContentHeroProps) {
       <Image
         src={image.src}
         alt={image.alt}
-        width={1200}
-        height={675}
-        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+        fill
+        style={{ objectFit: 'cover' }}
         priority
       />
       <div

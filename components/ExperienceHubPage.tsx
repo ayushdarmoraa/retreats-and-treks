@@ -96,21 +96,19 @@ export default function ExperienceHubPage({ page, breadcrumbItems }: ExperienceH
           <Image
             src={page.heroImage}
             alt={page.heroImageAlt || page.h1}
-            width={1920}
-            height={1080}
+            fill
             priority
             sizes="100vw"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.65, display: 'block' }}
+            style={{ objectFit: 'cover', opacity: 0.65 }}
           />
         ) : (
           <Image
             src="/Images/services/meditation.webp"
             alt={page.h1}
-            width={1920}
-            height={1080}
+            fill
             priority
             sizes="100vw"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.65, display: 'block' }}
+            style={{ objectFit: 'cover', opacity: 0.65 }}
           />
         )}
         <div style={{
@@ -231,9 +229,8 @@ export default function ExperienceHubPage({ page, breadcrumbItems }: ExperienceH
                     <Image
                       src={section.image}
                       alt={section.imageAlt || section.heading}
-                      width={1200}
-                      height={675}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                      fill
+                      style={{ objectFit: 'cover' }}
                       sizes="(max-width: 640px) 100vw, 56rem"
                     />
                   </div>
@@ -311,9 +308,8 @@ export default function ExperienceHubPage({ page, breadcrumbItems }: ExperienceH
                     <Image
                       src={imgUrl}
                       alt={angle.heading}
-                      width={800}
-                      height={600}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                      fill
+                      style={{ objectFit: 'cover' }}
                       sizes="(max-width: 640px) 100vw, 30rem"
                     />
                   </div>

@@ -55,9 +55,8 @@ export default function HomePage() {
         <Image
           src="/Images/whyhimalaya/nature.webp"
           alt="Deep Himalayan Forest"
-          width={1920}
-          height={1080}
-          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.3, display: 'block' }}
+          fill
+          style={{ objectFit: 'cover', opacity: 0.3 }}
           sizes="100vw"
         />
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '64rem' }}>

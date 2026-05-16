@@ -181,11 +181,10 @@ export default async function BlogPostPage({ params }: PageProps) {
             <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '1.5rem 2rem 0' }}>
               <div style={{ position: 'relative', width: '100%', aspectRatio: '16 / 9', borderRadius: '8px', overflow: 'hidden' }}>
                 <Image
-                  width={1200}
-                  height={675}
+                  fill
                   src={blogImageMap[slug].src}
                   alt={blogImageMap[slug].alt}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  style={{ objectFit: 'cover' }}
                   sizes="(max-width: 640px) 100vw, 52rem"
                   priority
                 />
@@ -212,7 +211,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                     // Inject a beautiful full-bleed image after the first h3 section
                     const renderImage = index === 1 && (
                       <div style={{ position: 'relative', width: '100%', aspectRatio: '16/9', margin: '3rem 0', borderRadius: '12px', overflow: 'hidden', border: '1px solid #e5e7eb' }}>
-                        <Image src={imgData.src} alt={imgData.alt} width={1200} height={675} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} sizes="(max-width: 640px) 100vw, 48rem" />
+                        <Image src={imgData.src} alt={imgData.alt} fill style={{ objectFit: 'cover' }} sizes="(max-width: 640px) 100vw, 48rem" />
                       </div>
                     );
 

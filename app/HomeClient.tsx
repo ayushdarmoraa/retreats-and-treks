@@ -295,8 +295,7 @@ useEffect(() => {
   <Image
     src={images.heroes.heroimage.src}
     alt="Himalayan mountain landscape"
-    width={1920}
-    height={1080}
+    fill
     priority
     fetchPriority="high"
     sizes="100vw"
@@ -304,12 +303,9 @@ useEffect(() => {
     loading="eager"
     decoding="async"
     style={{
-      width: '100%',
-      height: '100%',
       objectFit: 'cover',
       objectPosition: 'center',
       filter: 'brightness(1.2) saturate(1.1)',
-      display: 'block',
     }}
   />
 

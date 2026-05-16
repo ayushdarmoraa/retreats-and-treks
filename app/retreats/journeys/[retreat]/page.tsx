@@ -295,7 +295,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
               <div className="yoga-fac-grid">
                 {facilitator.image && (
                   <div className="yoga-fac-image">
-                    <Image src={facilitator.image.src} alt={facilitator.image.alt} width={800} height={800} loading="lazy" quality={70} sizes="(max-width: 720px) 100vw, 320px" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                    <Image src={facilitator.image.src} alt={facilitator.image.alt} fill loading="lazy" quality={70} sizes="(max-width: 720px) 100vw, 320px" style={{ objectFit: 'cover' }} />
                   </div>
                 )}
                 <div>

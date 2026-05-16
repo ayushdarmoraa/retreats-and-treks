@@ -26,16 +26,12 @@ export default function CardImage({
       <Image
         src={image.src}
         alt={image.alt}
-        width={800}
-        height={600}
+        fill
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         style={{
-  width: '100%',
-  height: '100%',
   objectFit: 'cover',
   objectPosition: 'center',
   transition: 'transform 0.5s ease',
-  display: 'block',
 }}
 className="card-img-inner"
       />

@@ -32,11 +32,10 @@ export default function HeroImage({
       <Image
         src={image.src}
         alt={image.alt}
-        width={1920}
-        height={1080}
+        fill
         sizes="100vw"
         priority={priority}
-        style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+        style={{ objectFit: 'cover', objectPosition: 'center' }}
       />
       {overlay && (
         <div

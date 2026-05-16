@@ -37,11 +37,10 @@ export default function Gallery({
           <Image
             src={img.src}
             alt={img.alt}
-            width={800}
-            height={600}
+            fill
             sizes={`(max-width: 640px) 100vw, (max-width: 1024px) 50vw, ${Math.round(100 / columns)}vw`}
             loading={i < columns ? 'eager' : 'lazy'}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
+            style={{ objectFit: 'cover', objectPosition: 'center' }}
           />
         </div>
       ))}

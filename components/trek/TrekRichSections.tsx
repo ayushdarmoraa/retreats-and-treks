@@ -34,11 +34,10 @@ export function TrekHeroImmersive({
       <Image
         src={trek.heroImage}
         alt={trek.heroImageAlt || `${trek.title} — ${locationName}`}
-        width={1920}
-        height={1080}
+        fill
         priority
         sizes="100vw"
-        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', display: 'block' }}
+        style={{ objectFit: 'contain', objectPosition: 'center' }}
       />
       {/* gradient overlay */}
       <div
@@ -550,11 +549,10 @@ export function TrekExperienceGallery({
               <Image
                 src={img.src}
                 alt={img.alt}
-                width={800}
-                height={1000}
+                fill
                 quality={55}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', display: 'block' }}
+                style={{ objectFit: 'contain', objectPosition: 'center' }}
               />
               {img.caption && (
                 <figcaption
@@ -610,11 +608,10 @@ export function TrekCinematicMoment({
       <Image
         src={moment.image}
         alt={moment.alt}
-        width={1920}
-        height={1080}
+        fill
         quality={55}
         sizes="100vw"
-        style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center', display: 'block' }}
+        style={{ objectFit: 'contain', objectPosition: 'center' }}
       />
       <div
         style={{
