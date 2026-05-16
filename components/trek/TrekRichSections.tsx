@@ -550,8 +550,9 @@ export function TrekExperienceGallery({
                 src={img.src}
                 alt={img.alt}
                 fill
+                quality={60}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-        style={{ objectFit: 'contain', objectPosition: 'center' }}
+                style={{ objectFit: 'contain', objectPosition: 'center' }}
               />
               {img.caption && (
                 <figcaption
@@ -608,6 +609,7 @@ export function TrekCinematicMoment({
         src={moment.image}
         alt={moment.alt}
         fill
+        quality={60}
         sizes="100vw"
         style={{ objectFit: 'contain', objectPosition: 'center' }}
       />

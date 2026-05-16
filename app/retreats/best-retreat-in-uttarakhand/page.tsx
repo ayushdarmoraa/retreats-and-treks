@@ -852,7 +852,7 @@ export default function BestRetreatInUttarakhandPage() {
             padding:2rem;
             background:
               linear-gradient(180deg, rgba(16,32,25,0.24), rgba(16,32,25,0.72)),
-              url('/Images/retreats/yoga/yoga-balance-pose-outdoors.webp');
+              url('/Images/retreats/yoga/yoga-backbend-cave-rishikesh.webp');
             background-size:cover;
             background-position:center;
             color:#fff;
