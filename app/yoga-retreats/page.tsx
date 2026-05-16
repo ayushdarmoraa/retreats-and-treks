@@ -262,7 +262,7 @@ export default function YogaRetreatsPage() {
               <p className="yog-body-text">Our yoga retreats honour this difference. Small groups (maximum 12), experienced teachers who prioritise awareness over alignment, and environments where the land participates in the work.</p>
             </div>
             <div style={{ position: 'relative', borderRadius: '10px', overflow: 'hidden', height: '380px' }}>
-              <Image src="/Images/experience-hubs/yoga-group.png" alt="Small group yoga practice on a mountain platform in the Himalayas" fill loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
+              <Image src="/Images/experience-hubs/yoga-group.png" alt="Small group yoga practice on a mountain platform in the Himalayas" width={1200} height={900} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 50vw" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
           </div>
         </div>
@@ -359,7 +359,7 @@ export default function YogaRetreatsPage() {
           <div className="yog-loc-grid">
             {LOCATIONS.map((loc) => (
               <Link key={loc.id} href={`/retreats/${loc.id}`} className="yog-loc-card">
-                <Image src={loc.image} alt={`${loc.name} — yoga retreat location`} fill loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
+                <Image src={loc.image} alt={`${loc.name} — yoga retreat location`} width={800} height={600} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 50%, transparent 100%)' }} />
                 <div className="yog-loc-card-content">
                   <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', fontWeight: 500, display: 'block', marginBottom: '0.3rem' }}>{loc.altitude} altitude</span>

@@ -267,7 +267,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
       {retreat.heroImage ? (
         <section className={isYogaJourney ? 'rj-hero rj-yoga-hero' : 'rj-hero'}>
           <div className="rj-hero-img">
-            <Image src={retreat.heroImage} alt={retreat.heroAlt || `${retreat.title} retreat in the Himalayas`} fill priority fetchPriority="high" quality={60} sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
+            <Image src={retreat.heroImage} alt={retreat.heroAlt || `${retreat.title} retreat in the Himalayas`} width={1920} height={1080} priority fetchPriority="high" quality={60} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           </div>
           <div className="rj-inner scroll-fade">
             <div className="rj-eyebrow">
@@ -506,11 +506,12 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
                   <Image
                     src="/Images/art-retreat/chaitra/garden-canvas-painting-art-retreat.webp"
                     alt="Chaitra Ram guiding canvas painting during a real art retreat"
-                    fill
+                    width={800}
+                    height={800}
                     loading="lazy"
                     quality={70}
                     sizes="(max-width: 720px) 100vw, 320px"
-                    style={{ objectFit: 'cover', objectPosition: 'center center' }}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center center', display: 'block' }}
                   />
                 </div>
               )}
@@ -868,11 +869,12 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
                     <Image
                       src={img.src}
                       alt={img.alt}
-                      fill
+                      width={900}
+                      height={900}
                       loading="lazy"
                       quality={65}
                       sizes="(max-width: 640px) 100vw, (max-width: 980px) 50vw, 25vw"
-                      style={{ objectFit: 'cover', objectPosition: img.objectPosition || 'center center' }}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: img.objectPosition || 'center center', display: 'block' }}
                     />
                   </div>
                 ))}
@@ -3713,7 +3715,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
       {/* SIGNATURE VISUAL BREAK — if image exists */}
       {retreat.signatureImage && (
         <section className="rj-signature">
-          <Image src={retreat.signatureImage} alt={retreat.signatureAlt || 'Himalayan landscape'} fill loading="lazy" quality={60} sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 30%' }} />
+          <Image src={retreat.signatureImage} alt={retreat.signatureAlt || 'Himalayan landscape'} width={1920} height={1080} loading="lazy" quality={60} sizes="100vw" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%', display: 'block' }} />
           <div className="rj-signature-text">
             <p className="rj-signature-quote">{retreat.signatureQuote || 'The mountains are calling.'}</p>
           </div>

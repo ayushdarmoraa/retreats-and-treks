@@ -48,10 +48,11 @@ export default function AboutPage() {
         <Image
           src="/Images/Journeys/HighTerrain.webp"
           alt="Himalayan mountain peaks"
-          fill
+          width={1920}
+          height={1080}
           priority
           sizes="100vw"
-          style={{ objectFit: 'cover', opacity: 0.6 }}
+          style={{ width: '100%', height: '100%', objectFit: 'cover', opacity: 0.6, display: 'block' }}
         />
         <div style={{
           position: 'absolute', inset: 0,
@@ -135,8 +136,9 @@ export default function AboutPage() {
             <Image
               src="/Images/Journeys/yoga.webp"
               alt="Structured morning yoga and meditation session in a Himalayan retreat setting"
-              fill
-              style={{ objectFit: 'cover' }}
+              width={1200}
+              height={900}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
@@ -194,7 +196,7 @@ export default function AboutPage() {
             ].map((loc) => (
                <div key={loc.name} style={{ background: '#fff', borderRadius: '12px', overflow: 'hidden', border: '1px solid #e5e7eb', transition: 'transform 0.2s', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }} className="hover:-translate-y-1">
                  <div style={{ position: 'relative', width: '100%', height: '180px' }}>
-                   <Image src={loc.img} alt={`${loc.name} — Himalayan retreat location`} fill style={{ objectFit: 'cover' }} sizes="(max-width: 768px) 100vw, 300px" />
+                   <Image src={loc.img} alt={`${loc.name} — Himalayan retreat location`} width={800} height={600} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} sizes="(max-width: 768px) 100vw, 300px" />
                  </div>
                  <div style={{ padding: '1.5rem' }}>
                    <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.15rem', fontWeight: 600, color: '#111', margin: '0 0 0.5rem' }}>{loc.name}</h3>

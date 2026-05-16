@@ -171,12 +171,16 @@ export default function RetreatNearDelhiPage() {
           <Image
             src={images.heroes.valleyForest.src}
             alt={images.heroes.valleyForest.alt}
-            fill
+            width={1920}
+            height={1080}
             priority
             sizes="100vw"
             style={{
+              width: '100%',
+              height: '100%',
               objectFit: 'cover',
               objectPosition: 'center',
+              display: 'block',
             }}
           />
           <div
@@ -368,9 +372,10 @@ export default function RetreatNearDelhiPage() {
                 <Image
                   src={images.locations.chakrata.src}
                   alt={images.locations.chakrata.alt}
-                  fill
+                  width={800}
+                  height={600}
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  style={{ objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
                 <div
                   style={{
@@ -433,9 +438,10 @@ export default function RetreatNearDelhiPage() {
                 <Image
                   src={images.locations.rishikesh.src}
                   alt={images.locations.rishikesh.alt}
-                  fill
+                  width={800}
+                  height={600}
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  style={{ objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
                 <div
                   style={{
@@ -498,9 +504,10 @@ export default function RetreatNearDelhiPage() {
                 <Image
                   src={images.locations.sankri.src}
                   alt={images.locations.sankri.alt}
-                  fill
+                  width={800}
+                  height={600}
                   sizes="(max-width: 768px) 100vw, 33vw"
-                  style={{ objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
                 <div
                   style={{
@@ -678,9 +685,10 @@ export default function RetreatNearDelhiPage() {
                 <Image
                   src={images.locations.chakrata.src}
                   alt={images.locations.chakrata.alt}
-                  fill
+                  width={800}
+                  height={600}
                   sizes="(max-width: 768px) 100vw, 40vw"
-                  style={{ objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
               </div>
               <div style={{ padding: '0.25rem 0.25rem 0.25rem 0' }}>
@@ -726,9 +734,10 @@ export default function RetreatNearDelhiPage() {
                 <Image
                   src={images.locations.rishikesh.src}
                   alt={images.locations.rishikesh.alt}
-                  fill
+                  width={800}
+                  height={600}
                   sizes="(max-width: 768px) 100vw, 40vw"
-                  style={{ objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
               </div>
               <div style={{ padding: '0.25rem 0.25rem 0.25rem 0' }}>
@@ -774,9 +783,10 @@ export default function RetreatNearDelhiPage() {
                 <Image
                   src={images.locations.sankri.src}
                   alt={images.locations.sankri.alt}
-                  fill
+                  width={800}
+                  height={600}
                   sizes="(max-width: 768px) 100vw, 40vw"
-                  style={{ objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                 />
               </div>
               <div style={{ padding: '0.25rem 0.25rem 0.25rem 0' }}>

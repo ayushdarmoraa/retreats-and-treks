@@ -266,7 +266,7 @@ export default function SilentRetreatsPage() {
               <p className="sil-body-text">This is what most people have never experienced. Not the silence of a quiet room, but the silence that lives beneath everything — thick, alive, and profoundly nourishing.</p>
             </div>
             <div style={{ position: 'relative', borderRadius: '10px', overflow: 'hidden', height: '420px' }}>
-              <Image src="/Images/experience-hubs/monastery.png" alt="Remote Himalayan monastery — the setting for deep silent retreats" fill loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
+              <Image src="/Images/experience-hubs/monastery.png" alt="Remote Himalayan monastery — the setting for deep silent retreats" width={1200} height={900} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 50vw" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
             </div>
           </div>
         </div>
@@ -361,7 +361,7 @@ export default function SilentRetreatsPage() {
           <div className="sil-loc-grid">
             {LOCATIONS.map((loc) => (
               <Link key={loc.id} href={`/retreats/${loc.id}`} className="sil-loc-card">
-                <Image src={loc.image} alt={`${loc.name} — silent retreat location`} fill loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
+                <Image src={loc.image} alt={`${loc.name} — silent retreat location`} width={800} height={600} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 50%, transparent 100%)' }} />
                 <div className="sil-loc-card-content">
                   <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', fontWeight: 500, display: 'block', marginBottom: '0.3rem' }}>{loc.altitude} altitude</span>

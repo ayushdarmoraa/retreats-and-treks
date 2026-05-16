@@ -446,9 +446,10 @@ export default function BlogPage() {
             <Link href="/blog/kedarkantha-vs-har-ki-dun" className="bl-card bl-card-featured">
               <div className="bl-card-img-wrap">
                 <Image
-                  fill
+                  width={1200}
+                  height={675}
                   className="bl-card-img"
-                  style={{ objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   src={blogImageMap['kedarkantha-vs-har-ki-dun']?.src ?? '/Images/hero/alpine-ridge.webp'}
                   alt={blogImageMap['kedarkantha-vs-har-ki-dun']?.alt ?? 'Kedarkantha winter snow trek'}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 45vw"
@@ -471,9 +472,10 @@ export default function BlogPage() {
             <Link href="/blog/chakrata-vs-sankri" className="bl-card">
               <div className="bl-card-img-wrap">
                 <Image
-                  fill
+                  width={800}
+                  height={600}
                   className="bl-card-img"
-                  style={{ objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   src={blogImageMap['chakrata-vs-sankri']?.src ?? '/Images/hero/alpine-ridge.webp'}
                   alt={blogImageMap['chakrata-vs-sankri']?.alt ?? 'Chakrata deodar forest'}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -496,9 +498,10 @@ export default function BlogPage() {
             <Link href="/blog/trek-vs-retreat" className="bl-card">
               <div className="bl-card-img-wrap">
                 <Image
-                  fill
+                  width={800}
+                  height={600}
                   className="bl-card-img"
-                  style={{ objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   src={blogImageMap['trek-vs-retreat']?.src ?? '/Images/hero/alpine-ridge.webp'}
                   alt={blogImageMap['trek-vs-retreat']?.alt ?? 'Himalayan meditation retreat'}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -521,9 +524,10 @@ export default function BlogPage() {
             <Link href="/blog/is-weekend-retreat-worth-it" className="bl-card">
               <div className="bl-card-img-wrap">
                 <Image
-                  fill
+                  width={800}
+                  height={600}
                   className="bl-card-img"
-                  style={{ objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   src={blogImageMap['is-weekend-retreat-worth-it']?.src ?? '/Images/hero/alpine-ridge.webp'}
                   alt={blogImageMap['is-weekend-retreat-worth-it']?.alt ?? 'Peaceful Himalayan mountain view'}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -546,9 +550,10 @@ export default function BlogPage() {
             <Link href="/blog/chakrata-vs-mussoorie-weekend-trip" className="bl-card">
               <div className="bl-card-img-wrap">
                 <Image
-                  fill
+                  width={800}
+                  height={600}
                   className="bl-card-img"
-                  style={{ objectFit: 'cover' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   src={blogImageMap['chakrata-vs-mussoorie-weekend-trip']?.src ?? '/Images/hero/alpine-ridge.webp'}
                   alt={blogImageMap['chakrata-vs-mussoorie-weekend-trip']?.alt ?? 'Mussoorie hill station Himalayan town'}
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

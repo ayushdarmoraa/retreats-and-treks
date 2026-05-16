@@ -245,7 +245,7 @@ export default function RetreatProgramsPage() {
       {/* Hero */}
       <div className="rpm-hero">
         <div className="rpm-hero-bg">
-          <Image src="/Images/Journeys/Stillness.webp" alt="Himalayan retreating" fill style={{ objectFit: 'cover' }} />
+          <Image src="/Images/Journeys/Stillness.webp" alt="Himalayan retreating" width={1920} height={1080} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
         </div>
         <div className="rpm-hero-inner">
           <Breadcrumb

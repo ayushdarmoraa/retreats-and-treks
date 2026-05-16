@@ -146,7 +146,7 @@ export default async function FacilitatorPage(
 
             {facilitator.image && (
               <div className="fac-detail-hero-image" style={{ position: 'relative', minHeight: 460, borderRadius: 24, overflow: 'hidden', boxShadow: '0 24px 80px rgba(15,31,28,0.16)', background: '#e8eee9' }}>
-                <Image src={facilitator.image.src} alt={facilitator.image.alt} fill priority sizes="(max-width: 760px) 100vw, 420px" style={{ objectFit: 'cover' }} />
+                <Image src={facilitator.image.src} alt={facilitator.image.alt} width={800} height={1000} priority sizes="(max-width: 760px) 100vw, 420px" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(15,31,28,0.45), transparent 52%)' }} />
                 <div style={{ position: 'absolute', left: '1.25rem', right: '1.25rem', bottom: '1.25rem', display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                   <span className="fac-detail-chip" style={{ background: 'rgba(255,255,255,0.9)' }}>{facilitator.yearsExperience} years</span>
@@ -262,11 +262,12 @@ export default async function FacilitatorPage(
                   <Image
                     src={image.src}
                     alt={image.alt}
-                    fill
+                    width={900}
+                    height={900}
                     loading="lazy"
                     quality={70}
                     sizes="(max-width: 760px) 100vw, 33vw"
-                    style={{ objectFit: 'cover' }}
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                   />
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(15,31,28,0.35), transparent 55%)' }} />
                 </div>

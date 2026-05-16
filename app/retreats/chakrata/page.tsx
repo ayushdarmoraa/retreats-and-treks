@@ -349,7 +349,7 @@ export default function ChakrataHubPage() {
           <div className="ck-place-grid">
             {PLACES.map((p) => (
               <div key={p.name} className="ck-place-card">
-                <Image src={p.img} alt={`${p.name} in Chakrata`} fill loading="lazy" quality={55} sizes="(max-width: 768px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
+                <Image src={p.img} alt={`${p.name} in Chakrata`} width={800} height={600} loading="lazy" quality={55} sizes="(max-width: 768px) 100vw, 33vw" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%)' }} />
                 <div style={{ position: 'relative', zIndex: 2, padding: '1.75rem', width: '100%' }}>
                   <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', fontWeight: 500, display: 'block', marginBottom: '0.3rem' }}>{p.type} · {p.season}</span>

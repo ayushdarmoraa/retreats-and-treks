@@ -739,9 +739,10 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
           <Image
             src="/Images/Journeys/Stillness.webp"
             alt="Stillness and inner reset — Himalayan retreat"
-            fill
+            width={800}
+            height={600}
             sizes="(max-width: 768px) 100vw, 50vw"
-            style={{ objectFit: 'cover' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             quality={85}
           />
           <div className="path-card-overlay" />
@@ -766,9 +767,10 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
          <Image
             src="/Images/Journeys/HighTerrain.webp"
             alt="Movement and high terrain — Himalayan trek"
-            fill
+            width={800}
+            height={600}
             sizes="(max-width: 768px) 100vw, 50vw"
-            style={{ objectFit: 'cover' }}
+            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             quality={85}
           />
           <div className="path-card-overlay" />
@@ -1832,9 +1834,10 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
             <Image
               src={item.image.src}
               alt={item.image.alt}
-              fill
+              width={800}
+              height={600}
               sizes="(max-width: 580px) 100vw, (max-width: 900px) 50vw, 33vw"
-              style={{ objectFit: 'cover', objectPosition: 'center' }}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center', display: 'block' }}
               quality={85}
             />
           </div>
@@ -2396,12 +2399,16 @@ const imgData = locImages[location.id] ?? { src: '/Images/location/chakrata.webp
   <Image
     src={images.heroes.valleyForest.src}
     alt={images.heroes.valleyForest.alt}
-    fill
+    width={1920}
+    height={1080}
     quality={85}
     style={{
+      width: '100%',
+      height: '100%',
       objectFit: 'cover',
       objectPosition: 'center',
       filter: 'brightness(0.6) saturate(1)',
+      display: 'block',
     }}
   />
   <div style={{
