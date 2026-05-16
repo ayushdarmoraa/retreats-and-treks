@@ -306,26 +306,26 @@ export default function LuxuryHimalayanRetreatsPage() {
             <li>
               <strong>Senior professionals and C-suite executives</strong> — carrying built-up
               decision fatigue and requiring a reset environment that matches the quality standard
-              they maintain elsewhere in life
+              they maintain elsewhere in life.
             </li>
             <li>
               <strong>Founders and entrepreneurs</strong> — operating at sustained pressure,
               seeking a contained pause that is clear enough to prevent work-creep but
-              flexible enough to respect their autonomy
+              flexible enough to respect their autonomy.
             </li>
             <li>
               <strong>International travellers</strong> — visiting India for
               high-quality wellness retreat time, expecting accommodation and facilitation standards
-              comparable to premium retreat centres in Southeast Asia or Europe
+              comparable to premium retreat centres in Southeast Asia or Europe.
             </li>
             <li>
               <strong>Couples seeking private retreat</strong> — shared transformation in a
               setting that supports both individual practice and joint experience, without the
-              social dynamics of large groups
+              social dynamics of large groups.
             </li>
             <li>
               <strong>Small private groups</strong> — corporate leadership teams, close friend
-              circles, or family units who want an exclusive booking with tailored programming
+              circles, or family units who want an exclusive booking with tailored programming.
             </li>
           </ul>
           <p style={{ lineHeight: 1.8, margin: 0 }}>
