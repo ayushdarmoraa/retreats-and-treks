@@ -15,8 +15,8 @@ export const images = {
       alt: 'Himalayan snow peaks at sunrise',
     },
     heroimage: {
-      src: '/Images/hero/heroimage.jpg',
-      alt: 'mountain snow',
+      src: '/Images/hero/alpine-ridge.webp',
+      alt: 'Alpine ridge trekking in Himalayas',
     },
     valleyForest: {
       src: '/Images/hero/valley-forest.webp',

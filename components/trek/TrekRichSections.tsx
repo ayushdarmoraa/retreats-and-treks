@@ -465,7 +465,7 @@ export function TrekExperienceGallery({
     { src: "/Images/retreats/yoga/brahmari-pranayam-meditation.webp", alt: "Brahmari pranayam meditation session" },
     { src: "/Images/retreats/yoga/pranayama-closeup-sakshi.webp", alt: "Close-up of Sakshi guiding pranayama" },
     { src: "/Images/retreats/yoga/yoga-assist-inverted-rishikesh.webp", alt: "Yoga assisted inversion pose in Rishikesh" },
-    { src: "/Images/retreats/yoga/yoga-balance-pose-outdoors.webp", alt: "Yoga balance pose outdoors" },
+    { src: "/Images/retreats/yoga/yoga-backbend-cave-rishikesh.webp", alt: "Yoga backbend pose in a natural cave" },
     { src: "/Images/retreats/yoga/yoga-meditation-river-rishikesh.webp", alt: "Yoga meditation by the river in Rishikesh" },
     { src: "/Images/retreats/yoga/yoga-scenic-rishikesh.jpg.webp", alt: "Scenic yoga pose in Rishikesh" },
   ];
@@ -550,7 +550,7 @@ export function TrekExperienceGallery({
                 src={img.src}
                 alt={img.alt}
                 fill
-                quality={60}
+                quality={55}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 style={{ objectFit: 'contain', objectPosition: 'center' }}
               />
@@ -609,7 +609,7 @@ export function TrekCinematicMoment({
         src={moment.image}
         alt={moment.alt}
         fill
-        quality={60}
+        quality={55}
         sizes="100vw"
         style={{ objectFit: 'contain', objectPosition: 'center' }}
       />

@@ -24,8 +24,8 @@ export const yogaAndMovementRetreat = {
   signatureAlt: 'Sunrise yoga practice at a Himalayan retreat — movement and breath in mountain silence',
   signatureQuote: `The body already knows how to heal. The practice is learning to listen.`,
   galleryImages: [
-    { src: '/Images/retreats/yoga/yoga-balance-pose-outdoors.webp', alt: 'Outdoor yoga balance pose — strength and focus in a natural Himalayan setting' },
     { src: '/Images/retreats/yoga/pranayama-closeup-sakshi.webp', alt: 'Sakshi guiding pranayama — breath awareness in a yoga retreat' },
+    { src: '/Images/retreats/yoga/yoga-backbend-cave-rishikesh.webp', alt: 'Yoga backbend pose in a natural cave during a retreat in Rishikesh' },
     { src: '/Images/retreats/yoga/brahmari-pranayam-meditation.webp', alt: 'Brahmari pranayama meditation — deep breath practice at a Himalayan retreat' },
   ],
 
