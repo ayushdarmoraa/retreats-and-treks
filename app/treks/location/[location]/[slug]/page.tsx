@@ -531,7 +531,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
       color: '#111111',
       marginBottom: '0.75rem',
     }}>
-      Why {trek.title} is Popular
+      Why {trek.title.split('–')[0].trim()} is Popular
     </h2>
     <p style={{
       fontFamily: 'var(--font-geist-sans), sans-serif',
