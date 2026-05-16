@@ -21,7 +21,7 @@ export const privateAndCustomRetreat = {
 
   /* ── Visual Assets ── */
   heroImage: '/Images/hero/himalayan-sunrise.webp',
-  heroAlt: 'Private custom retreat in the Himalayas — bespoke mountain experience designed around your intentions in Uttarakhand',
+  heroAlt: 'Private custom retreat in the Himalayas',
   signatureImage: '/Images/blog/retreat-vs-trek-which-is-right-for-you.webp',
   signatureAlt: 'Mountain path at sunrise — choosing your own direction on a private custom retreat in the Himalayas',
   signatureQuote: `Your retreat should fit your life — not the other way around. Tell us what you need. We build it.`,

@@ -21,7 +21,7 @@ export const meditationAndSilenceRetreat = {
 
   /* ── Visual Assets ── */
   heroImage: '/Images/experience-hubs/meditation-hero.webp',
-  heroAlt: 'Meditation retreat in the Himalayas — guided silence practice in a mountain forest, Uttarakhand India',
+  heroAlt: 'Meditation retreat in a Himalayan mountain forest',
   signatureImage: '/Images/Journeys/Stillness.webp',
   signatureAlt: 'Mountain stillness at dawn during a silent meditation retreat in the Himalayas',
   signatureQuote: `Silence is not the absence of sound. It is the presence of everything your noise was hiding.`,

@@ -20,7 +20,7 @@ export const soundHealingRetreat = {
 
   /* ── Visual Assets ── */
   heroImage: '/Images/services/soundhealing.webp',
-  heroAlt: 'Sound healing retreat in the Himalayas — singing bowl ceremony in mountain setting, Uttarakhand India',
+  heroAlt: 'Sound healing retreat with singing bowls in the Himalayas',
   signatureImage: '/Images/Journeys/Stillness.webp',
   signatureAlt: 'Mountain stillness between sound healing sessions — the silence that deepens vibrational healing',
   signatureQuote: `Sound does not heal by adding something. It heals by reminding your body of a frequency it has forgotten.`,
@@ -28,7 +28,7 @@ export const soundHealingRetreat = {
     { src: '/Images/experience-hubs/meditation-group.png', alt: 'Group session during a sound healing retreat — receptive healing through vibration in the Himalayas' },
     { src: '/Images/moments/meditation.webp', alt: 'Deep rest after a sound bath — the stillness that follows vibrational healing at a mountain retreat' },
     { src: '/Images/moments/tea.webp', alt: 'Integration time between sound sessions — mindful tea practice at a Himalayan healing retreat' },
-    { src: '/Images/experience-hubs/monastery.png', alt: 'Mountain retreat setting for sound healing — ancient contemplative space resonant with healing traditions' },
+    { src: '/Images/experience-hubs/monastery.png', alt: 'Mountain retreat setting for sound healing' },
   ],
 
   keyHighlights: ['No Experience Needed', 'Singing Bowls & Gong', '3–7 Days', 'Receptive Healing', 'Mountain Acoustics'],

@@ -22,9 +22,9 @@ export const weekendRetreat = {
 
   /* ── Visual Assets ── */
   heroImage: '/Images/himalayanretreats/weekend.webp',
-  heroAlt: 'Weekend retreat in the Himalayas — mountain landscape at Chakrata for a Friday-to-Sunday reset near Delhi',
+  heroAlt: 'Weekend retreat mountain landscape in Chakrata',
   signatureImage: '/Images/blog/chakrata-vs-mussoorie-weekend-trip.webp',
-  signatureAlt: 'Himalayan mountain view from a weekend retreat — the distance from daily life that three days in the mountains creates',
+  signatureAlt: 'Himalayan mountain view from a weekend retreat',
   signatureQuote: `Three days is not nothing. It is enough to remember who you are when you stop performing who you think you should be.`,
   galleryImages: [
     { src: '/Images/about/chakrata.webp', alt: 'Chakrata landscape — peaceful Himalayan destination for weekend retreats near Delhi' },

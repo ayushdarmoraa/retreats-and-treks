@@ -17,7 +17,7 @@ export const artAndCreativeRetreat = {
   signatureAlt: 'Himalayan ridgeline at dawn — creative retreat landscape in Uttarakhand',
   signatureQuote: `Creativity is not what you produce. It's what you allow to emerge.`,
   galleryImages: [
-    { src: '/Images/art-retreat/chaitra/mountain-art-therapy-session-rishikesh.webp', alt: 'Mountain-view art therapy session in Rishikesh guided by Chaitra Ram during a creative healing retreat' },
+    { src: '/Images/art-retreat/chaitra/mountain-art-therapy-session-rishikesh.webp', alt: 'Mountain-view art therapy session in Rishikesh' },
     { src: '/Images/art-retreat/chaitra/indoor-expressive-art-workshop-retreat.webp', alt: 'Indoor expressive art workshop with painting materials during a Himalayan creative healing retreat' },
     { src: '/Images/art-retreat/chaitra/group-art-retreat-participants-paintings.webp', alt: 'Creative healing retreat participants holding finished paintings after an art therapy session' },
     { src: '/Images/art-retreat/chaitra/riverside-art-retreat-setup-rishikesh.webp', alt: 'Riverside art retreat setup in Rishikesh with canvases, cushions, lamps, and creative materials' },

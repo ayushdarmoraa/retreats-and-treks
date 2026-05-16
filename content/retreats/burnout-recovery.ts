@@ -22,7 +22,7 @@ export const burnoutRecoveryRetreat = {
 
   /* ── Visual Assets ── */
   heroImage: '/Images/hero/valley-forest.webp',
-  heroAlt: 'Burnout recovery retreat in the Himalayas — peaceful forest valley in Chakrata, Uttarakhand for stress relief and mental reset',
+  heroAlt: 'Burnout recovery retreat in a peaceful Chakrata forest valley',
   signatureImage: '/Images/blog/best-time-for-retreat-in-chakrata.webp',
   signatureAlt: 'Morning light through deodar forest in Chakrata — the kind of quiet that heals burnout',
   signatureQuote: `You don't need to be fixed. You need to stop. The mountains will do the rest.`,

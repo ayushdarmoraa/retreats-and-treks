@@ -21,15 +21,15 @@ export const restAndResetRetreat = {
 
   /* ── Visual Assets ── */
   heroImage: '/Images/hero/alpine-ridge.webp',
-  heroAlt: 'Rest and reset retreat in the Himalayas — mountain ridge at dawn for nervous system recovery in Uttarakhand',
+  heroAlt: 'Rest and reset retreat on a Himalayan ridge at dawn',
   signatureImage: '/Images/whyhimalaya/nature.webp',
-  signatureAlt: 'Himalayan forest silence during a rest retreat — the kind of stillness that heals exhausted nervous systems',
+  signatureAlt: 'Himalayan forest silence during a rest retreat',
   signatureQuote: `You are not lazy. You are depleted. And rest is not the opposite of productivity — it is the ground from which everything real grows.`,
   galleryImages: [
     { src: '/Images/moments/walking.webp', alt: 'Quiet forest walk during a rest retreat — slow movement through deodar trees in the Himalayas' },
     { src: '/Images/moments/tea.webp', alt: 'Morning tea on a mountain verandah — unhurried moments during a rest and reset retreat' },
-    { src: '/Images/hero/valley-forest.webp', alt: 'Himalayan valley and forest — the landscape that holds the container for rest and nervous system recovery' },
-    { src: '/Images/blog/is-chakrata-good-for-a-retreat.webp', alt: 'Chakrata forest setting for a rest retreat — ancient deodar trees and mountain silence in Uttarakhand' },
+    { src: '/Images/hero/valley-forest.webp', alt: 'Himalayan valley and forest retreat setting' },
+    { src: '/Images/blog/is-chakrata-good-for-a-retreat.webp', alt: 'Chakrata forest setting for a rest retreat' },
   ],
 
   keyHighlights: ['No Schedule', 'Forest Silence', '3–7 Days', 'Nervous System Reset', 'All Meals Included'],

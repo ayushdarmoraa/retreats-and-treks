@@ -500,7 +500,7 @@ export default function TreksClient() {
 {/* ═══ 1: HERO ═══ */}
 <section className="trk-hero">
   <div className="trk-hero-img-wrap">
-    <Image src="/Images/hero/treks-hero.webp" alt="Golden-hour panoramic view of Himalayan peaks with trekking trail through alpine meadows in Uttarakhand" fill priority fetchPriority="high" quality={60} sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
+    <Image src="/Images/hero/treks-hero.webp" alt="Golden-hour Himalayan peaks with an alpine trekking trail" fill priority fetchPriority="high" quality={60} sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
   </div>
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Himalayan Treks</span></div>

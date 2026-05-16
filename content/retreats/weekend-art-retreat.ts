@@ -18,7 +18,7 @@ export const weekendArtRetreat = {
   signatureAlt: 'Mountain dawn from the retreat — weekend creative escape in Uttarakhand',
   signatureQuote: `You don't need a week to change how you see. Sometimes, two days is everything.`,
   galleryImages: [
-    { src: '/Images/art-retreat/chaitra/group-art-retreat-participants-paintings.webp', alt: 'Weekend art retreat participants holding finished paintings after a creative session with Chaitra Ram' },
+    { src: '/Images/art-retreat/chaitra/group-art-retreat-participants-paintings.webp', alt: 'Weekend art retreat participants holding finished paintings' },
     { src: '/Images/art-retreat/chaitra/indoor-expressive-art-workshop-retreat.webp', alt: 'Indoor expressive art workshop during a weekend art retreat in the Himalayas' },
     { src: '/Images/art-retreat/chaitra/riverside-art-retreat-setup-rishikesh.webp', alt: 'Riverside weekend art retreat setup in Rishikesh with canvases, cushions, and creative materials' },
     { src: '/Images/art-retreat/chaitra/evening-reflection-art-retreat-group.webp', alt: 'Evening reflection group during a weekend art retreat guided by Chaitra Ram' },
