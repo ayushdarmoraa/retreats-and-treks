@@ -2733,7 +2733,13 @@ export default function BestRetreatInUttarakhandPage() {
                 <span>Program style matters</span>
               </div>
               <p>
-                Program styles vary clearly across locations. Rishikesh offers the widest spectrum — Hatha yoga for alignment-focused practice, Vinyasa for dynamic flow, pranayama-centred breathwork intensives, and guided Vipassana-style silent retreat programs lasting three to ten days. Munsiyari and Sankri operate on a boutique retreat format: small groups of four to eight, private facilitator models where a single lead practitioner holds the entire program arc, and silent-retreat scheduling that eliminates group social pressure. Chakrata programs lean toward weekend-accessible gentle yoga and guided nature meditation rather than intensive technique training. Understanding the distinction between ashram-style group instruction, boutique private facilitation, and self-directed silent retreats is the most important factor in choosing well.
+                Program styles vary clearly across locations. Rishikesh offers the widest spectrum: Hatha yoga for alignment, Vinyasa for dynamic flow, pranayama-centred breathwork, and guided Vipassana-style silent retreats lasting three to ten days.
+              </p>
+              <p>
+                Munsiyari and Sankri use a boutique retreat format. Groups are usually small, with a single lead practitioner holding the full program arc. Silent-retreat schedules also reduce group social pressure.
+              </p>
+              <p>
+                Chakrata programs lean toward weekend-accessible gentle yoga and guided nature meditation rather than intensive technique training. Understanding the difference between ashram-style group instruction, boutique private facilitation, and self-directed silent retreats is the most important factor in choosing well.
               </p>
             </div>
           </div>
