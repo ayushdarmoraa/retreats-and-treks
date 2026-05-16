@@ -19,12 +19,12 @@ interface ExperienceHubPageProps {
 
 // ── LOCATION FALLBACK IMAGES for visual cards ──
 const LOCATION_IMAGE_MAP: Record<string, string> = {
-  zanskar: '/Images/locations/zanskar_monastery.webp',
-  chakrata: '/Images/locations/chakrata_forest.webp',
-  rishikesh: '/Images/locations/rishikesh_yoga.webp',
-  munsiyari: '/Images/locations/munsiyari_peaks.webp',
-  mussoorie: '/Images/locations/mussoorie_light.webp',
-  sankri: '/Images/locations/sankri_village.webp',
+  zanskar: '/Images/location/zanskar.webp',
+  chakrata: '/Images/location/chakrata.webp',
+  rishikesh: '/Images/location/rishikesh.webp',
+  munsiyari: '/Images/location/munsiyari.webp',
+  mussoorie: '/Images/location/mussoorie.webp',
+  sankri: '/Images/location/sankri.webp',
   default: '/Images/whyhimalaya/nature.webp'
 };
 
@@ -103,7 +103,7 @@ export default function ExperienceHubPage({ page, breadcrumbItems }: ExperienceH
           />
         ) : (
           <Image
-            src="/Images/whyhimalaya/meditation.webp"
+            src="/Images/services/meditation.webp"
             alt={page.h1}
             fill
             priority

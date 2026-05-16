@@ -41,6 +41,15 @@ const trekItineraryFolderMap: Record<string, string> = {
   'roopkund-trek': 'roopkund',
   'pangarchulla-trek': 'pangarchulla',
 };
+
+const trekItineraryPhotoCounts: Record<string, number> = {
+  'kedarkantha-trek': 5,
+  'brahmatal-trek': 4,
+  'har-ki-dun-trek': 5,
+  'kuari-pass-trek': 5,
+  'roopkund-trek': 7,
+  'pangarchulla-trek': 6,
+};
 // Deterministic trek comparison mapping
 // `path` is the full path (e.g. '/treks/brahmatal-vs-kuari-pass' or '/blog/kedarkantha-vs-har-ki-dun')
 const COMPARISON_BLOGS: Record<string, { path: string; title: string }> = {
@@ -738,7 +747,8 @@ export default async function TrekDetailPage({ params }: PageProps) {
       <div style={{ display: 'flex', flexDirection: 'column' as const }}>
         {trek.itinerary.map((day, i) => {
           const folderName = trekItineraryFolderMap[trek.slug];
-          const dayPhotoSrc = folderName
+          const photoCount = trekItineraryPhotoCounts[trek.slug] ?? 0;
+          const dayPhotoSrc = folderName && i < photoCount
             ? `/Images/trek/itinerary/${folderName}/day${i + 1}.webp`
             : null;
           return (

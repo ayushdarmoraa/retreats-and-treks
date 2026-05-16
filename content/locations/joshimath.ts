@@ -3,7 +3,7 @@ import type { LocationPremiumContent } from '@/content/locations/index';
 export const joshimathLocation: LocationPremiumContent = {
   id: 'joshimath',
   name: 'Joshimath',
-  heroImage: '/Images/locations/joshimath_nanda_devi.webp',
+  heroImage: '/Images/location/joshimath.webp',
   heroImageAlt: 'The soaring peaks of the Nanda Devi sanctuary visible from the ancient town of Joshimath',
   landTone: {
     opening: 'Joshimath is an ancient and vital gateway. Perched precariously at 1,890 metres above the confluence of the Alaknanda and Dhauliganga rivers, it is a town of immense spiritual weight and rugged mountaineering history. It acts as the final major outpost before the Garhwal Himalayas give way to raw, high-altitude alpine zones and the Indo-Tibetan borderlands.'
@@ -70,8 +70,8 @@ export const joshimathLocation: LocationPremiumContent = {
     }
   ],
   gallery: [
-    { src: '/Images/locations/joshimath_town.webp', alt: 'The town of Joshimath perched on the steep Himalayan slopes' },
-    { src: '/Images/locations/nanda_devi_sun.webp', alt: 'The golden first light hitting the peak of Nanda Devi' },
-    { src: '/Images/locations/auli_ropeway.webp', alt: 'The famous Auli ropeway traversing the deep valleys above Joshimath' }
+    { src: '/Images/location/joshimath.webp', alt: 'The town of Joshimath perched on the steep Himalayan slopes' },
+    { src: '/Images/hero/himalayan-sunrise.webp', alt: 'The golden first light hitting the peak of Nanda Devi' },
+    { src: '/Images/hero/mountain-snow.webp', alt: 'The famous Auli ropeway traversing the deep valleys above Joshimath' }
   ]
 };

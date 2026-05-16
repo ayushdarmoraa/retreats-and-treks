@@ -51,7 +51,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     h1: 'Meditation Retreats in the Himalayas',
     metaDescription:
       'Guided meditation retreats in Zanskar, Chakrata, and Rishikesh with small groups, deep silence, experienced teachers, and quiet Himalayan settings.',
-    heroImage: '/Images/whyhimalaya/meditation.webp',
+    heroImage: '/Images/services/meditation.webp',
     heroImageAlt: 'Person meditating quietly in the Himalayas',
     intro:
       'A meditation retreat is not a holiday with meditation added. It is a deliberate container — silence, structure, guidance — where your mind can settle beneath its habitual noise. The Himalayas offer something that retreat centres in cities cannot: altitude that naturally slows thought, forests and valleys that absorb distraction, and a tradition of contemplative practice stretching back millennia. We run meditation retreats across three distinct Himalayan locations, each offering different conditions for practice.',
@@ -95,7 +95,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
       {
         heading: 'What Is a Meditation Retreat?',
         body: 'A meditation retreat is a structured period — typically three to ten days — spent in deliberate silence, daily practice, and guided instruction, away from the routines and responsibilities of ordinary life. Unlike a meditation workshop or class, a retreat creates a continuous container where practice deepens through sustained immersion rather than isolated sessions.\n\nThe core elements are consistent across traditions: multiple daily sittings, periods of walking meditation, teacher guidance or dharma talks, noble silence (no conversation, devices, or reading), simple meals, and early wake-up times. The structure is not arbitrary — it is designed to let the mind settle beneath its habitual activity.\n\nWhat surprises most first-time retreatants is how much happens beneath the surface. The first day is often restless. The second day is often harder. By the third day, something begins to shift — habitual thought patterns weaken, sensory awareness sharpens, and a deeper quality of attention emerges. This is why retreat duration matters. A weekend gives you a taste. Five to seven days allows genuine transformation. Ten days or more is where the most profound shifts occur.',
-        image: '/Images/retreat/services/meditation.webp',
+        image: '/Images/services/meditation.webp',
         imageAlt: 'Deep meditation practice overlooking the valley',
       },
       {
@@ -134,7 +134,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     h1: 'Silent Retreats in the Himalayas',
     metaDescription:
       'Extended silent retreats in Chakrata, Zanskar, and Munsiyari with no phones, no small talk, Himalayan silence, and deep contemplative space.',
-    heroImage: '/Images/retreat/services/meditation.webp',
+    heroImage: '/Images/services/meditation.webp',
     heroImageAlt: 'Immersion into deep silence in the Himalayan forest',
     intro:
       'Silence is not the absence of sound. It is the presence of something deeper — a quality of attention that only emerges when the habitual noise stops. Most people have never experienced genuine silence. Not the uncomfortable quiet of a paused conversation, but the thick, living silence of a Himalayan forest or a sealed mountain valley where the only sound is your own awareness. Our silent retreats create containers for this experience. Not as deprivation, but as nourishment.',
@@ -178,7 +178,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
       {
         heading: 'What Happens During a Silent Retreat',
         body: 'A silent retreat is not simply a meditation retreat with a rule against talking. It is a fundamentally different experience — one where the entire field of communication shifts.\n\nNoble silence means no conversation, no eye contact intended to communicate, no devices, no reading, and no writing (except personal journalling). The external world of language and social performance is suspended.\n\nWhat fills the space is surprising. The first 12–24 hours are often uncomfortable. The mind, accustomed to constant verbal interaction, searches for stimulation and finds none. Restlessness, boredom, and sometimes anxiety arise. This is normal and expected.\n\nBy the second day, something begins to change. Without the need to formulate responses, opinions, or social performances, the mind begins to slow. Sensory perception sharpens — you notice sounds, textures, and internal sensations that were previously drowned by the noise of language.\n\nBy day three or four, many retreatants describe a quality of attention that feels qualitatively different from anything they have experienced. Thoughts still arise, but they have less urgency. Emotions surface and pass without needing to be narrated or resolved. A deeper layer of awareness — quieter, more spacious, less reactive — becomes accessible.\n\nThe retreat ends with a gradual return to speech. This transition is handled carefully — most teachers recommend beginning with simple, functional communication before engaging in complex conversation. The sensitivity developed during silence deserves protection.',
-        image: '/Images/retreat/services/yoga_retreat.webp',
+        image: '/Images/services/yogamov.webp',
         imageAlt: 'Finding stillness without words in the mountains',
       },
       {
@@ -203,7 +203,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     h1: 'Yoga Retreats in the Himalayas',
     metaDescription:
       'Himalayan yoga retreats in Rishikesh, Zanskar, and Sankri with small groups, asana, pranayama, meditation, and experienced teachers.',
-    heroImage: '/Images/retreat/services/yoga_retreat.webp',
+    heroImage: '/Images/services/yogamov.webp',
     heroImageAlt: 'Group performing morning yoga outdoors in the Himalayas',
     intro:
       'A yoga retreat in the Himalayas is not the same as a yoga class in a city studio. The altitude changes your breath. The mountain air changes your nervous system. The absence of urban noise changes what you hear inside your own body. We offer yoga retreats that honour this difference — not yoga tourism, but genuine practice in environments where the land participates in the work. Morning practice as light arrives. Evening practice as the mountains darken. The space between is yours.',
@@ -253,7 +253,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     h1: 'Burnout Recovery Retreats',
     metaDescription:
       'Himalayan burnout recovery retreats for professionals and founders with deep rest, nervous system reset, and guided recalibration.',
-    heroImage: '/Images/retreat/services/rest.webp',
+    heroImage: '/Images/services/restreset.webp',
     heroImageAlt: 'Peaceful retreat environment for deep rest and recovery',
     intro:
       'Burnout is not tiredness. It is the collapse of meaning. You have given everything — to work, to others, to systems that promised reciprocity — and the transaction feels fundamentally broken. Sleep does not fix it. Holidays do not fix it. Another productivity system will not fix it. What fixes burnout is genuine stopping. Not a weekend off. Not a spa. But a real, extended encounter with stillness in a place remote enough that your nervous system has no choice but to release what it has been holding.',
@@ -304,7 +304,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
       {
         heading: 'Signs You Need a Burnout Recovery Retreat',
         body: 'Burnout develops gradually, which is why it is often misidentified as tiredness, laziness, or depression. The clinical signs — described in the WHO\'s ICD-11 classification — include three dimensions:\n\n**Energy depletion or exhaustion.** Not ordinary tiredness. This is the kind of exhaustion that sleep does not fix. You wake tired. Weekends do not restore you. Holidays provide temporary relief that evaporates within hours of returning to work.\n\n**Increased mental distance from your job.** Cynicism, emotional detachment, or feelings of ineffectiveness replace the engagement that once came naturally. You do the work, but the meaning is gone. Tasks that used to energise you now feel hollow.\n\n**Reduced professional efficacy.** The quality of your work declines despite effort. Concentration fragments. Decision-making becomes harder. Creative thinking — once a strength — feels like pushing through mud.\n\nBeyond the clinical dimensions, burnout manifests physically: chronic tension in shoulders and jaw, disrupted sleep, digestive issues, frequent illness, and a persistent sense of being on alert even when nothing demands it.\n\nIf you recognise three or more of these patterns, you have likely passed the point where rest alone will work. A burnout recovery retreat is not about relaxation — it is about creating the conditions for your nervous system to fundamentally recalibrate.',
-        image: '/Images/retreats/chakrata/chakrataretreat4.webp',
+        image: '/Images/location/chakrata.webp',
         imageAlt: 'Resting completely in an isolated Himalayan environment',
       },
       {
@@ -326,7 +326,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     h1: 'Spiritual Retreats in the Himalayas',
     metaDescription:
       'Authentic spiritual retreats in Rishikesh, Zanskar, and Chakrata. Himalayan silence, contemplative practice, small groups, and experienced guidance.',
-    heroImage: '/Images/retreat/services/sound.webp',
+    heroImage: '/Images/services/soundhealing.webp',
     heroImageAlt: 'Immersion in a deep spiritual healing environment using sound bowls',
     intro:
       'A spiritual retreat is not a religious holiday. It is a deliberate encounter with the deeper layers of your own experience — facilitated by environment, silence, practice, and guidance. The Himalayas have been the geography of spiritual practice for thousands of years, not because of marketing, but because something about altitude, silence, and remoteness creates conditions where inner work deepens naturally. We offer spiritual retreats in three distinct Himalayan settings, each carrying a different quality of spiritual energy.',
@@ -370,7 +370,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
       {
         heading: 'What Is a Spiritual Retreat?',
         body: 'A spiritual retreat is a deliberate period of withdrawal from ordinary life — not to escape it, but to see it more clearly. Unlike a religious pilgrimage or a wellness holiday, a spiritual retreat creates conditions for inner inquiry: silence, simplicity, contemplative practice, and the guidance of experienced practitioners.\n\nThe Himalayas have hosted spiritual seekers for millennia — Buddhist monks in Zanskar, yogis in Rishikesh, Sufi contemplatives in Kashmir. This is not historical footnote; it is living tradition. The environments themselves carry an accumulated quality of practice that contemporary retreat centres in cities cannot replicate.\n\nA spiritual retreat may involve meditation, chanting, prayer, contemplation, yoga, walking practice, or simply sitting in silence. The form matters less than the intention: to move beneath the surface of habitual life and encounter something more essential.',
-        image: '/Images/retreat/services/meditation.webp',
+        image: '/Images/services/meditation.webp',
         imageAlt: 'A quiet spiritual moment facing the Himalayan peaks',
       },
       {
@@ -387,7 +387,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     h1: 'Stress Relief Retreats in the Himalayas',
     metaDescription:
       'Himalayan stress relief retreats in Chakrata, Zanskar, and Munsiyari. Somatic release, forest immersion, altitude reset, and small groups.',
-    heroImage: '/Images/retreat/services/rest.webp',
+    heroImage: '/Images/services/restreset.webp',
     heroImageAlt: 'Calm retreat surroundings to lower stress and rest the nervous system',
     intro:
       'Stress is not a mindset problem. It is a physiological state — cortisol locked in tissue, shallow breathing that has become habit, a nervous system running on alertness that no longer serves you. A weekend off does not fix this. A massage does not fix this. What fixes chronic stress is sustained exposure to an environment so different from your daily life that your body has no choice but to recalibrate. The Himalayas provide this at every altitude — in forest, in valley, in high meadow. Our stress relief retreats use the land itself as the primary intervention.',
@@ -432,7 +432,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
       {
         heading: 'Understanding Chronic Stress',
         body: 'Chronic stress is not just feeling pressured. It is a physiological state where the body\'s fight-or-flight system remains activated long after the original threat has passed. Cortisol — the stress hormone — remains elevated. Blood pressure stays high. Sleep becomes shallow. Digestion suffers. The immune system weakens.\n\nWhat makes chronic stress so damaging is that the body adapts to it. You stop noticing the tension in your shoulders, the shallow breathing, the disrupted sleep. The stressed state becomes your baseline — normal feels like emergency, and you no longer remember what calm actually is.\n\nStress relief retreats exist because this pattern cannot be broken from within the environment that created it. Changing your scenery for a weekend helps temporarily, but the pattern re-engages within hours of returning. What\'s needed is sustained exposure to an environment so physiologically different that the nervous system has no choice but to reset.',
-        image: '/Images/retreat/services/rest.webp',
+        image: '/Images/services/restreset.webp',
         imageAlt: 'Resting completely free of the demands of everyday stress',
       },
       {
@@ -450,7 +450,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     h1: 'Anxiety Healing Retreats in the Himalayas',
     metaDescription:
       'Anxiety healing retreats in Chakrata, Zanskar, and Munsiyari. Guided meditation, breathwork, forest immersion, altitude stillness, and small groups.',
-    heroImage: '/Images/whyhimalaya/meditation.webp',
+    heroImage: '/Images/services/meditation.webp',
     heroImageAlt: 'Releasing anxiety through guided meditation and slow breathwork in nature',
     intro:
       'Anxiety is the mind running futures that have not happened. Over and over, relentlessly. No amount of rational understanding stops it — your body believes the emergency is real, even when some part of you knows it is not. Himalayan anxiety healing retreats work not through cognitive intervention but through environmental change. At altitude, breathing slows. In forest silence, the mind runs out of inputs to worry about. In genuine remoteness, the futures your anxiety invents lose connection to reality. The healing is not forced — it happens because the conditions for anxiety are removed.',
@@ -495,7 +495,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
       {
         heading: 'How Mountain Environments Reduce Anxiety',
         body: 'Anxiety is fundamentally a threat-detection system stuck in overdrive. The anxious brain scans for danger constantly, generating worst-case scenarios, interpreting ambiguous signals as threats, and maintaining a state of physiological readiness that was designed for predator evasion, not PowerPoint presentations.\n\nMountain environments interrupt this cycle through multiple mechanisms:\n\n**Reduced sensory threat signals.** In a forest at 2,000m altitude, there are no cars, no crowds, no sudden noises, no social situations requiring performance. The brain\'s threat-detection system receives dramatically fewer inputs to process, and gradually, it downregulates.\n\n**Breathing regulation.** At moderate altitude, breathing naturally deepens and slows. This activates the vagus nerve — the master regulator of the parasympathetic (calming) nervous system. Anxiety and slow, deep breathing are physiologically incompatible.\n\n**Grounding through sensory richness.** Forest environments provide constant, gentle sensory input — the texture of bark, the smell of pine, the sound of water, the feel of earth underfoot. This sensory grounding anchors attention in the present moment, interrupting the future-oriented rumination that drives anxiety.\n\n**Perspective through scale.** Mountain landscapes provide visual vastness — distant peaks, wide valleys, enormous sky. Research in environmental psychology shows that exposure to large natural vistas reduces self-focused rumination and shifts attention toward the larger world. Anxiety thrives on self-focus; mountains dissolve it.',
-        image: '/Images/retreat/services/yoga_retreat.webp',
+        image: '/Images/services/yogamov.webp',
         imageAlt: 'Slowing down breathing in a beautiful Himalayan environment',
       },
       {
@@ -578,7 +578,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     h1: 'Healing Retreats in the Himalayas',
     metaDescription:
       'Himalayan healing retreats in Chakrata, Zanskar, Rishikesh, and Munsiyari. Forest bathing, somatic release, meditation, and genuine care.',
-    heroImage: '/Images/retreat/services/sound.webp',
+    heroImage: '/Images/services/soundhealing.webp',
     heroImageAlt: 'Therapeutic and emotional healing occurring in a supportive retreat environment',
     intro:
       'Healing is not a product you can buy. It is a process that requires the right conditions — safety, time, environment, and permission. The Himalayas have been a geography of healing for millennia because the land itself participates in the work. Clean air heals the lungs. Forest sound heals the nervous system. Altitude heals the cluttered mind. Silence heals the parts of you that have been buried under noise. Our healing retreats do not promise transformation. They provide conditions where healing becomes possible — and then they get out of the way.',
@@ -630,7 +630,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
       {
         heading: 'What Is a Healing Retreat?',
         body: 'A healing retreat is not a hospital, not a spa, and not a wellness programme. It is a deliberate period — three to fourteen days — in a natural environment, with the explicit purpose of creating conditions where healing can happen. The healing may be emotional (grief, loss, trauma), physical (exhaustion, chronic tension, illness recovery), or spiritual (disconnection, meaninglessness, crisis of identity).\n\nWhat distinguishes a healing retreat from a holiday or a therapy programme is the role of environment. In a retreat, the natural landscape is not backdrop — it is active participant. Forest air heals the lungs. Mountain silence heals the nervous system. Altitude heals the overstimulated mind. The sound of water heals in ways that no human practitioner can replicate.\n\nOur retreats do not promise specific outcomes. We do not claim to cure illness or resolve trauma. What we provide are conditions — safety, silence, nature, time, care — where the body and mind can begin the healing they already know how to do when the obstacles are removed.',
-        image: '/Images/retreats/chakrata/chakrataretreat3.webp',
+        image: '/Images/location/chakrata.webp',
         imageAlt: 'Safe, communal healing environment nestled in the mountains',
       },
       {
@@ -648,7 +648,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
     h1: 'Creative Healing Retreat — Art & Yoga in the Himalayas',
     metaDescription:
       'Creative healing retreats with painting, expressive arts, yoga, and emotional healing in the Himalayas. Small groups, no experience needed.',
-    heroImage: '/Images/retreat/services/art.webp',
+    heroImage: '/Images/services/artcreative.webp',
     heroImageAlt: 'People engaging in expressive painting during a mountain art retreat',
     intro:
       'A creative retreat is not an art class transplanted into the mountains. It is a container where creativity becomes a doorway to emotional truth. You do not need to be an artist. You do not need talent or training. What you need is willingness — to pick up a brush, shape clay, move your body, or sit with a blank page and let something emerge that is genuinely yours.\n\nThe Himalayas amplify this process. Mountain light changes how you see colour. Forest silence removes the inner critic. Altitude thins the habitual thinking that blocks creative flow. We run art retreats across five distinct locations, each offering a different quality of creative inspiration — from the gentle forests of Chakrata to the raw geology of Zanskar.',
@@ -706,7 +706,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
       {
         heading: 'What Is an Art Retreat?',
         body: 'An art retreat is a structured period — typically five to fourteen days — spent in deliberate creative practice, away from the productivity demands and self-criticism of daily life. Unlike an art class or workshop, a retreat creates a continuous creative container where your authentic voice can emerge through sustained immersion.\n\nThe core elements are: daily creative sessions (painting, drawing, clay work, collage, or mixed media), facilitated guidance without grading or performance pressure, periods of unstructured creation time, nature immersion, group sharing, and rest. The structure is not about producing polished work — it is about recovering your relationship with creative expression.\n\nWhat surprises most participants is that the art itself is secondary. The real work is emotional. When you pick up a brush with no expectation of being good, what comes out is authentic — and authenticity is therapeutic. Repressed emotions surface through colour and form. The inner critic, denied its usual power, gradually quiets. By day three, most participants report a shift: from performing creativity to actually being creative.',
-        image: '/Images/retreat/services/art.webp',
+        image: '/Images/services/artcreative.webp',
         imageAlt: 'Painting classes set organically into an outdoor mountain setting',
       },
       {

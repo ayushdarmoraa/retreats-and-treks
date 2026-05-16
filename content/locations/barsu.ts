@@ -3,7 +3,7 @@ import type { LocationPremiumContent } from '@/content/locations/index';
 const barsuLocation: LocationPremiumContent = {
   id: 'barsu',
   name: 'Barsu',
-  heroImage: '/Images/locations/barsu_village.webp',
+  heroImage: '/Images/hero/valley-forest.webp',
   heroImageAlt: 'The pastoral village of Barsu resting before the Dayara Bugyal meadows',
   landTone: {
     opening: 'Barsu is not just a basecamp; it is a living pastoral village where the rhythm of the Himalayas is completely undisturbed by commercial tourism. At 2,200 metres, it serves as the final settlement before the ancient Gujjar trails climb through thick oak forests to emerge at the vast alpine meadows of Dayara Bugyal.'
@@ -69,9 +69,9 @@ const barsuLocation: LocationPremiumContent = {
     }
   ],
   gallery: [
-    { src: '/Images/locations/barsu_village_homes.webp', alt: 'Traditional wooden houses in Barsu village' },
-    { src: '/Images/locations/dayara_sunset.webp', alt: 'Sunset over the vast meadows above Barsu' },
-    { src: '/Images/locations/barsu_forest.webp', alt: 'The dense oak forests immediately surrounding the village' }
+    { src: '/Images/location/sankri.webp', alt: 'Traditional wooden houses in Barsu village' },
+    { src: '/Images/hero/himalayan-sunrise.webp', alt: 'Sunset over the vast meadows above Barsu' },
+    { src: '/Images/whyhimalaya/nature.webp', alt: 'The dense oak forests immediately surrounding the village' }
   ]
 };
 
