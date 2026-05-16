@@ -362,22 +362,22 @@ export default function UttarakhandRetreatsPage() {
             <li>
               <strong>Delhi and NCR professionals</strong> — the largest segment, seeking
               accessible mountain reset programs that fit within working schedules and do not
-              require flights
+              require flights.
             </li>
             <li>
               <strong>International wellness travellers</strong> — visiting India for yoga,
               meditation, or spiritual practice and choosing Uttarakhand for its combination
-              of practice lineage and Himalayan environment
+              of practice lineage and Himalayan environment.
             </li>
             <li>
               <strong>Couples and partners</strong> — seeking shared retreat experience in
               settings that balance privacy with facilitated connection, particularly at
-              higher-altitude locations
+              higher-altitude locations.
             </li>
             <li>
               <strong>Small groups and corporate teams</strong> — leadership offsites, friend
               circles, and family groups booking guided programs across any of the four
-              locations
+              locations.
             </li>
           </ul>
           <p style={{ lineHeight: 1.8, margin: 0 }}>
