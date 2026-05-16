@@ -21,7 +21,7 @@ const TOPIC_MAP: Record<string, BlogCategory> = {
 
 const TOPIC_DESCRIPTIONS: Record<BlogCategory, string> = {
   'Location Authority':
-    'Guides covering specific Himalayan retreat destinations — seasonal planning, accessibility, and location comparisons.',
+    'Guides to Himalayan retreat destinations — seasons, access, and location comparisons.',
   'Retreat Decision':
     'Articles to help you decide between retreat formats, durations, and approaches before booking.',
   'Trek Decision':
@@ -228,7 +228,7 @@ export default async function TopicPage({ params }: PageProps) {
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
           <div className="tpc-callout">
             <div style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: '#374151', marginBottom: '0.35rem' }}>Related</div>
-            For a complete overview of structured mountain-based programs, visit our{' '}
+            For a complete overview of guided mountain programs, visit our{' '}
             <Link href="/retreats/himalayan-retreats">Himalayan Retreats guide</Link>.
           </div>
         </div>

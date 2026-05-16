@@ -18,7 +18,7 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Luxury Himalayan Retreats | Retreats And Treks',
     description:
-      'Discover luxury Himalayan retreats in Munsiyari, Sankri and Chakrata. Premium stays, private sessions and curated mountain experiences in Uttarakhand.',
+      'Discover luxury Himalayan retreats in Munsiyari, Sankri and Chakrata. Premium stays, private sessions and private mountain experiences in Uttarakhand.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },
@@ -29,7 +29,7 @@ export function generateMetadata(): Metadata {
     openGraph: {
       title: 'Luxury Himalayan Retreats in India — Premium Mountain Stays',
       description:
-        'Premium Himalayan retreat experiences in Munsiyari, Sankri and Chakrata. Private rooms, curated schedules, small groups and elevated mountain immersion.',
+        'Premium Himalayan retreat experiences in Munsiyari, Sankri and Chakrata. Private rooms, planned schedules, small groups and premium mountain retreat time.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
       images: buildOgImages('Luxury Himalayan Retreats in India — Premium Mountain Stays'),
@@ -41,7 +41,7 @@ const FAQ_ITEMS = [
   {
     question: 'What is included in a luxury Himalayan retreat?',
     answer:
-      'A luxury Himalayan retreat includes private accommodation with scenic views, all meals prepared with locally sourced ingredients, daily yoga and meditation sessions with experienced facilitators, private wellness consultations, guided nature immersions, and transfers from the nearest transport hub. Most premium programs also include one-on-one breathwork or sound healing sessions, curated journaling materials, and personalised scheduling. Group sizes are capped at six to ten participants to ensure individual attention throughout.',
+      'A luxury Himalayan retreat includes private accommodation with scenic views, all meals prepared with locally sourced ingredients, daily yoga and meditation sessions with experienced facilitators, private wellness consultations, guided nature walks, and transfers from the nearest transport hub. Most premium programs also include one-on-one breathwork or sound healing sessions, guided journaling materials, and personalised scheduling. Group sizes are capped at six to ten participants to ensure individual attention throughout.',
   },
   {
     question: 'Are rooms private in a luxury retreat?',
@@ -61,12 +61,12 @@ const FAQ_ITEMS = [
   {
     question: 'How far in advance should I book a luxury Himalayan retreat?',
     answer:
-      'Four to six weeks is recommended for standard dates. For peak-season windows — October, November, April and May — booking six to eight weeks ahead is advisable, as premium-tier programs have limited capacity by design. Long weekends and festival holidays fill fastest. Last-minute availability is occasionally possible outside peak season, but the curated nature of luxury programs means advance booking ensures the best room allocation and scheduling flexibility.',
+      'Four to six weeks is recommended for standard dates. For peak-season windows — October, November, April and May — booking six to eight weeks ahead is advisable, as premium-tier programs have limited capacity by design. Long weekends and festival holidays fill fastest. Last-minute availability is occasionally possible outside peak season, but the planned nature of luxury programs means advance booking ensures the best room allocation and scheduling flexibility.',
   },
   {
     question: 'How is a luxury retreat different from a luxury hotel stay?',
     answer:
-      'A luxury hotel provides comfort and service. A luxury retreat provides transformation within that comfort. The difference is structure — guided yoga, meditation, breathwork, nature immersion, facilitated reflection and digital detox are woven into a designed arc. You are not simply staying somewhere beautiful; you are participating in a curated process of restoration. The accommodation quality is comparable, but the intent is fundamentally different.',
+      'A luxury hotel provides comfort and service. A luxury retreat provides transformation within that comfort. The difference is structure — guided yoga, meditation, breathwork, nature time, guided reflection and digital detox are woven into a designed arc. You are not simply staying somewhere beautiful; you are participating in a guided process of restoration. The accommodation quality is comparable, but the intent is fundamentally different.',
   },
 ];
 
@@ -87,7 +87,7 @@ export default function LuxuryHimalayanRetreatsPage() {
     <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
       <AutoArticleSchema
         title="Luxury Himalayan Retreats in India"
-        description="Discover luxury Himalayan retreats in Munsiyari, Sankri and Chakrata. Premium stays, private sessions and curated mountain experiences in Uttarakhand."
+        description="Discover luxury Himalayan retreats in Munsiyari, Sankri and Chakrata. Premium stays, private sessions and private mountain experiences in Uttarakhand."
         path={PATH}
       />
       <script
@@ -125,7 +125,7 @@ export default function LuxuryHimalayanRetreatsPage() {
           <p style={{ fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '1rem' }}>
             The distinction matters because most retreat marketing uses &ldquo;luxury&rdquo;
             to mean expensive. What experienced travellers actually seek is a different quality
-            of attention — curated schedules, private accommodation, low participant ratios,
+            of attention — planned schedules, private accommodation, low participant ratios,
             personal guidance, and an environment where restoration is the architecture, not an
             afterthought. That is what premium Himalayan retreats deliver.
           </p>
@@ -152,19 +152,19 @@ export default function LuxuryHimalayanRetreatsPage() {
             A premium retreat is defined by constraints — fewer participants, more space, deeper
             individual attention. Standard retreats serve groups of fifteen to twenty-five.
             Luxury formats cap at six to ten. That ratio changes everything: the yoga teacher
-            adjusts your alignment personally, the facilitator holds space for your specific
-            processing, and the schedule flexes around the group&apos;s actual energy rather than
+            adjusts your alignment personally, the facilitator supports your personal
+            process, and the schedule flexes around the group&apos;s actual energy rather than
             a fixed template.
           </p>
           <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Private rooms with scenic positioning.</strong> Not shared dormitories. Not
+            <strong>Private rooms with scenic views.</strong> Not shared dormitories. Not
             rooms facing a corridor. Every accommodation in a luxury Himalayan retreat is
             private, positioned for mountain views, forest canopy, or valley sightlines. The
             room is part of the practice — morning light through the window becomes the first
             grounding of the day.
           </p>
           <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Curated scheduling.</strong> Standard programs follow fixed timetables.
+            <strong>Planned scheduling.</strong> Standard programs follow fixed timetables.
             Premium programs build in choice. Extended morning practice for those who want depth.
             Free time that is genuinely free. Afternoon options — a private{' '}
             <Link href="/retreats/journeys/sound-healing" style={{ color: 'var(--color-primary)' }}>
@@ -199,8 +199,8 @@ export default function LuxuryHimalayanRetreatsPage() {
             Best Destinations for Luxury Himalayan Retreats
           </h2>
           <p style={{ lineHeight: 1.8, marginBottom: 'var(--space-md)' }}>
-            Not every Himalayan location supports a luxury format. Remoteness, environmental
-            quality, accommodation infrastructure, and the ability to limit group size all
+            Not every Himalayan location supports a luxury format. Remoteness, natural
+            quality, accommodation, and small group size all
             determine which destinations qualify.
           </p>
 
@@ -221,7 +221,7 @@ export default function LuxuryHimalayanRetreatsPage() {
             <Link href="/retreats/munsiyari" style={{ color: 'var(--color-primary)' }}>
               Munsiyari
             </Link>{' '}
-            genuinely premium is its inaccessibility. Twelve hours from Delhi by road, it
+            genuinely premium is how remote it is. Twelve hours from Delhi by road, it
             receives a fraction of the visitors that Rishikesh or even Chakrata attract. There
             are no tourist crowds, no commercial strip, no ambient noise. The village operates
             at a pace that mirrors the retreat rhythm rather than competing with it.
@@ -229,7 +229,7 @@ export default function LuxuryHimalayanRetreatsPage() {
           <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
             Retreat accommodation here offers private rooms with direct mountain views, heated
             facilities for shoulder-season stays, and outdoor practice spaces at the meadow
-            edge. Sessions run against a backdrop that makes any curated environment feel
+            edge. Sessions run against a backdrop that makes any designed environment feel
             unnecessary — the landscape is the architecture. For participants seeking the
             highest-quality immersive experience in India, Munsiyari is the obvious choice.
           </p>
@@ -237,7 +237,7 @@ export default function LuxuryHimalayanRetreatsPage() {
             The remoteness also means that group sizes are naturally small. Premium programs
             here rarely exceed six participants, creating an intimacy that larger locations
             cannot manufacture. Facilitators have the space to work with individuals. The
-            silence between sessions is genuine — not enforced, but environmental.
+            silence between sessions is genuine — not enforced, but held by the setting.
           </p>
 
           <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>
@@ -248,7 +248,7 @@ export default function LuxuryHimalayanRetreatsPage() {
           <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
             Sankri sits in the upper Tons Valley near the Govind Wildlife Sanctuary — dense
             pine and oak forests, glacial river sound, and genuine wilderness at the doorstep.
-            The luxury positioning here is different from Munsiyari. Where Munsiyari offers
+            The luxury feel here is different from Munsiyari. Where Munsiyari offers
             alpine grandeur,{' '}
             <Link href="/retreats/sankri" style={{ color: 'var(--color-primary)' }}>
               Sankri
@@ -279,7 +279,7 @@ export default function LuxuryHimalayanRetreatsPage() {
             Chakrata serves the luxury segment differently — as an accessible premium option
             for senior professionals who need quality without the time commitment of a remote
             journey. Six to seven hours from Delhi, it offers cantonment-area calm, deodar
-            forests, and ridge-line positioning at 2,200 metres.
+            forests, and ridge-line setting at 2,200 metres.
           </p>
           <p style={{ lineHeight: 1.8, margin: 0 }}>
             Premium{' '}
@@ -287,7 +287,7 @@ export default function LuxuryHimalayanRetreatsPage() {
               Chakrata retreats
             </Link>{' '}
             suit four-to-five-day formats — arrive Monday, depart Friday, re-enter work with
-            minimal schedule disruption. Private rooms on forest edges, curated wellness
+            minimal schedule disruption. Private rooms on forest edges, guided wellness
             programming, and low-density group sizes make this the executive-retreat choice for
             those who prioritise efficiency alongside restoration.
           </p>
@@ -299,23 +299,23 @@ export default function LuxuryHimalayanRetreatsPage() {
             Who Chooses a Luxury Himalayan Retreat
           </h2>
           <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Premium-tier retreats attract a specific participant profile — people for whom time is
+            Premium-tier retreats attract a clear participant profile — people for whom time is
             the most expensive resource and who will not compromise on environment quality.
           </p>
           <ul style={{ paddingLeft: '1.25rem', lineHeight: 2, marginBottom: '1rem' }}>
             <li>
-              <strong>Senior professionals and C-suite executives</strong> — carrying accumulated
+              <strong>Senior professionals and C-suite executives</strong> — carrying built-up
               decision fatigue and requiring a reset environment that matches the quality standard
               they maintain elsewhere in life
             </li>
             <li>
-              <strong>Founders and entrepreneurs</strong> — operating at sustained intensity,
-              seeking a contained pause that is structured enough to prevent work-creep but
+              <strong>Founders and entrepreneurs</strong> — operating at sustained pressure,
+              seeking a contained pause that is clear enough to prevent work-creep but
               flexible enough to respect their autonomy
             </li>
             <li>
-              <strong>International travellers</strong> — visiting India specifically for
-              high-quality wellness immersion, expecting accommodation and facilitation standards
+              <strong>International travellers</strong> — visiting India for
+              high-quality wellness retreat time, expecting accommodation and facilitation standards
               comparable to premium retreat centres in Southeast Asia or Europe
             </li>
             <li>
@@ -333,7 +333,7 @@ export default function LuxuryHimalayanRetreatsPage() {
             <Link href="/retreats/weekend-himalayan-retreats" style={{ color: 'var(--color-primary)' }}>
               weekend Himalayan retreats
             </Link>{' '}
-            offer structured two-to-three-day formats at all locations — a practical entry point
+            offer guided two-to-three-day formats at all locations — a practical entry point
             before committing to an extended luxury stay.
           </p>
         </section>
@@ -353,7 +353,7 @@ export default function LuxuryHimalayanRetreatsPage() {
           <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
             <strong>Extended stay formats.</strong> Premium programs typically run four to seven
             days. This duration allows a genuine arc — arrival and decompression, deepening
-            practice through mid-stay, integration in the final days. Shorter luxury formats
+            practice through mid-stay, settling in the final days. Shorter luxury formats
             of three nights are available for those with tighter schedules, particularly in
             Chakrata. For guidance on optimal retreat duration, see our comparison of{' '}
             <Link href="/blog/3-day-vs-5-day-himalayan-retreat" style={{ color: 'var(--color-primary)' }}>
@@ -364,12 +364,12 @@ export default function LuxuryHimalayanRetreatsPage() {
             <strong>Scenic accommodation.</strong> Every room is selected for its relationship
             with the landscape — sight, sound, and air quality. In Munsiyari, this means
             Panchachuli views. In Sankri, forest canopy proximity. In Chakrata, ridge-top
-            positioning among deodars. The room is not where you sleep between sessions — it is
+            a setting among deodars. The room is not where you sleep between sessions — it is
             an extension of the retreat container.
           </p>
           <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Custom scheduling.</strong> Premium programs offer structured flexibility.
-            Core sessions — morning yoga, guided meditation, nature immersion — anchor the day.
+            <strong>Flexible scheduling.</strong> Premium programs offer guided flexibility.
+            Core sessions — morning yoga, guided meditation, nature time — anchor the day.
             Between them, participants choose: private{' '}
             <Link href="/retreats/journeys/burnout-recovery" style={{ color: 'var(--color-primary)' }}>
               burnout recovery
@@ -385,7 +385,7 @@ export default function LuxuryHimalayanRetreatsPage() {
             rather than merely tolerated.
           </p>
           <p style={{ lineHeight: 1.8, marginTop: '1rem', margin: 0 }}>
-            <strong>Investment range.</strong> Luxury Himalayan retreats typically range from ₹35,000 for a three-night private-room weekend in Chakrata to ₹1,20,000 or more for a seven-night premium immersion in Munsiyari with dedicated facilitator access. The primary cost variables are duration, accommodation tier (private room with mountain view versus standard private), facilitator-to-participant ratio (1:4 commands a premium over 1:8), and inclusion of private one-on-one sessions such as breathwork, sound healing, or wellness consultations. All luxury-tier programs include private rooms as standard — shared accommodation does not exist at this level. Meals, transfers from the nearest hub, and all guided sessions are included in the quoted price. The only typical add-ons are extended-stay supplements and private session upgrades beyond the standard allocation.
+            <strong>Investment range.</strong> Luxury Himalayan retreats typically range from ₹35,000 for a three-night private-room weekend in Chakrata to ₹1,20,000 or more for a seven-night premium retreat in Munsiyari with dedicated facilitator access. The main cost variables are duration, accommodation tier (private room with mountain view versus standard private), facilitator-to-participant ratio (1:4 commands a premium over 1:8), and inclusion of private one-on-one sessions such as breathwork, sound healing, or wellness consultations. All luxury-tier programs include private rooms as standard — shared accommodation does not exist at this level. Meals, transfers from the nearest hub, and all guided sessions are included in the quoted price. The only typical add-ons are extended-stay supplements and private session upgrades beyond the standard allocation.
           </p>
         </section>
 
@@ -402,7 +402,7 @@ export default function LuxuryHimalayanRetreatsPage() {
           </p>
           <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
             April through June suits participants escaping summer heat — temperatures at altitude
-            remain fifteen to twenty-five degrees cooler than the plains. For detailed seasonal
+            remain fifteen to twenty-five degrees cooler than the plains. For seasonal
             guidance, see our{' '}
             <Link href="/retreats/summer-himalayan-retreats" style={{ color: 'var(--color-primary)' }}>
               summer Himalayan retreats

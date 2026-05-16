@@ -15,7 +15,7 @@ const TOPICS = [
   {
     href: '/topics/location-authority',
     title: 'Location Authority',
-    description: 'Destination-specific guides for Himalayan retreat and trekking regions.',
+    description: 'Destination guides for Himalayan retreat and trekking regions.',
     category: 'Location Authority',
   },
   {
@@ -27,7 +27,7 @@ const TOPICS = [
   {
     href: '/topics/lifestyle',
     title: 'Lifestyle & Himalayan Living',
-    description: 'Perspectives on slow living, mountain lifestyle, retreat psychology, and intentional travel.',
+    description: 'Guides on slow living, mountain lifestyle, retreat mindset, and intentional travel.',
     category: 'Lifestyle',
   },
 ] as const;
@@ -81,10 +81,10 @@ export default function TopicsPage() {
           Explore retreat, trek, and Himalayan living guides
         </h1>
         <p style={{ maxWidth: '44rem', lineHeight: 1.8, color: 'var(--color-muted)', fontSize: '1rem' }}>
-          Browse our topic hubs by decision stage, destination, trekking route, or mountain lifestyle perspective.
+          Browse topic hubs by decision stage, destination, trek route, or mountain lifestyle.
         </p>
         <p style={{ maxWidth: '46rem', lineHeight: 1.8, color: 'var(--color-muted)', fontSize: '1rem', marginTop: '1rem' }}>
-          These topic clusters bring related articles together so you can move from broad research to a clearer decision. Use them to compare retreat formats, understand Himalayan locations, evaluate trekking routes, or explore slower mountain living before choosing a retreat or trek.
+          These topic clusters bring related articles together so you can move from broad research to a clearer choice. Use them to compare retreat formats, understand Himalayan locations, compare treks, or explore slower mountain living before choosing a retreat or trek.
         </p>
       </section>
 
