@@ -28,12 +28,12 @@ const isSankriGoodForARetreat: BlogContent = {
 <p>Sankri works well for retreats that combine movement with reflection. The surrounding terrain supports forest walks, ridge time, and light trekking extensions within the program.</p>
 <p>Pure rest-and-stillness formats are also possible here, but participants should be comfortable with the level of remoteness and the absence of nearby conveniences.</p>
 <h3>Who Sankri Is Most Suitable For</h3>
-<p>Sankri retreats attract participants seeking stronger geographical distance from routine, those comfortable with extended travel, and individuals who benefit from embodied movement alongside reflective practice.</p>
+<p>Sankri retreats attract participants seeking stronger distance from routine, those comfortable with longer travel, and individuals who benefit from movement alongside reflective practice.</p>
 <p>Participants seeking a shorter travel commitment or urban proximity may find Chakrata or Rishikesh more practical. Sankri is most rewarding for those willing to invest in the journey as part of the experience.</p>
 <h3>Comparing Sankri to Other Locations</h3>
-<p>Compared to Chakrata, Sankri offers higher elevation, greater remoteness, and a more alpine landscape. Compared to Rishikesh, it offers significantly lower commercial activity and crowd density. Each location serves a different participant profile.</p>
+<p>Compared to Chakrata, Sankri offers higher elevation, greater remoteness, and a more alpine landscape. Compared to Rishikesh, it offers much lower commercial activity and fewer crowds. Each location serves a different participant profile.</p>
 <p>To explore current programs hosted here, visit the <a href="/retreats/sankri">Sankri retreat hub</a>. For a broader understanding of retreat formats across the region, refer to our guide to <a href="/retreats/himalayan-retreats">Himalayan Retreats in India</a>.</p>
-<p>For specific Sankri experiences, see <a href="/retreats/sankri/meditation-retreat">meditation retreats in Sankri</a> or <a href="/stress-relief-retreats">stress-relief retreats in Sankri</a>. View upcoming retreat dates on the <a href="/retreat-calendar">retreat calendar</a>.</p>
+<p>For Sankri retreat options, see <a href="/retreats/sankri/meditation-retreat">meditation retreats in Sankri</a> or <a href="/stress-relief-retreats">stress-relief retreats in Sankri</a>. View upcoming retreat dates on the <a href="/retreat-calendar">retreat calendar</a>.</p>
   `.trim(),
   targetMoneyPage: '/retreats/sankri',
   relatedRetreats: ['burnout-recovery', 'yoga-and-movement'],
