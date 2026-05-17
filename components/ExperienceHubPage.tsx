@@ -96,19 +96,21 @@ export default function ExperienceHubPage({ page, breadcrumbItems }: ExperienceH
           <Image
             src={page.heroImage}
             alt={page.heroImageAlt || page.h1}
-            fill
+            width={1920}
+            height={1080}
             priority
             sizes="100vw"
-            style={{ objectFit: 'cover', opacity: 0.65 }}
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.65 }}
           />
         ) : (
           <Image
             src="/Images/services/meditation.webp"
             alt={page.h1}
-            fill
+            width={1920}
+            height={1080}
             priority
             sizes="100vw"
-            style={{ objectFit: 'cover', opacity: 0.65 }}
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.65 }}
           />
         )}
         <div style={{
@@ -229,8 +231,9 @@ export default function ExperienceHubPage({ page, breadcrumbItems }: ExperienceH
                     <Image
                       src={section.image}
                       alt={section.imageAlt || section.heading}
-                      fill
-                      style={{ objectFit: 'cover' }}
+                      width={1200}
+                      height={675}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                       sizes="(max-width: 640px) 100vw, 56rem"
                     />
                   </div>
@@ -308,8 +311,9 @@ export default function ExperienceHubPage({ page, breadcrumbItems }: ExperienceH
                     <Image
                       src={imgUrl}
                       alt={angle.heading}
-                      fill
-                      style={{ objectFit: 'cover' }}
+                      width={800}
+                      height={533}
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                       sizes="(max-width: 640px) 100vw, 30rem"
                     />
                   </div>

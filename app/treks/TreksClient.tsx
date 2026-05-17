@@ -500,7 +500,7 @@ export default function TreksClient() {
 {/* ═══ 1: HERO ═══ */}
 <section className="trk-hero">
   <div className="trk-hero-img-wrap">
-    <Image src="/Images/hero/treks-hero.webp" alt="Golden-hour Himalayan peaks with an alpine trekking trail" fill priority fetchPriority="high" quality={60} sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 40%' }} />
+    <Image src="/Images/hero/treks-hero.webp" alt="Golden-hour Himalayan peaks with an alpine trekking trail" width={1920} height={1080} priority fetchPriority="high" quality={60} sizes="100vw" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%' }} />
   </div>
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Himalayan Treks</span></div>
@@ -572,7 +572,7 @@ export default function TreksClient() {
         return (
           <Link key={trek.slug} href={`/treks/location/${trek.locationId}/${trek.slug}`} className="trk-feat-card">
             <span style={{ position: 'absolute', top: '14px', left: '14px', zIndex: 3, fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#ffffff', background: 'var(--color-primary)', padding: '4px 12px', borderRadius: '100px' }}>Most Popular</span>
-            {trekImg && <div className="trk-feat-img"><Image src={trekImg} alt={trekAltMap[trek.slug] || `${trek.title} trek in Uttarakhand`} fill loading="lazy" sizes="(max-width: 540px) 100vw, 360px" style={{ objectFit: 'cover' }} /></div>}
+            {trekImg && <div className="trk-feat-img"><Image src={trekImg} alt={trekAltMap[trek.slug] || `${trek.title} trek in Uttarakhand`} width={800} height={533} loading="lazy" sizes="(max-width: 540px) 100vw, 360px" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></div>}
             <div className="trk-feat-body">
               <div className="trk-feat-meta">
                 <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 400, color: '#888888' }}>{trek.duration}</span>
@@ -592,7 +592,7 @@ export default function TreksClient() {
 
 {/* ═══ 1.55: SIGNATURE VISUAL ═══ */}
 <section className="trk-signature">
-  <Image src="/Images/hero/himalayan-sunrise.webp" alt="Himalayan sunrise over Uttarakhand mountain trails" fill loading="lazy" sizes="100vw" style={{ objectFit: 'cover', objectPosition: 'center 30%' }} />
+  <Image src="/Images/hero/himalayan-sunrise.webp" alt="Himalayan sunrise over Uttarakhand mountain trails" width={1920} height={1080} loading="lazy" sizes="100vw" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }} />
   <div className="trk-signature-text">
     <p className="trk-signature-quote">Trekking in Uttarakhand isn’t about ticking peaks.<br />It’s about experiencing the Himalayas the right way.</p>
     <span className="trk-signature-line" />
@@ -674,7 +674,7 @@ export default function TreksClient() {
             <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">{location.name}</span></div>
             <h2 className="trk-cat-loc-name">{location.name} Treks</h2>
             <LocationIntro locationId={locationId} />
-            {locationImageMap[locationId] && <div className="trk-loc-img-wrap"><Image src={locationImageMap[locationId]} alt={locationAltMap[locationId] || `${location.name} trekking destination, Uttarakhand`} fill loading="lazy" sizes="(max-width: 768px) 100vw, 1152px" style={{ objectFit: 'cover' }} /></div>}
+            {locationImageMap[locationId] && <div className="trk-loc-img-wrap"><Image src={locationImageMap[locationId]} alt={locationAltMap[locationId] || `${location.name} trekking destination, Uttarakhand`} width={1200} height={675} loading="lazy" sizes="(max-width: 768px) 100vw, 1152px" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></div>}
             <p className="trk-cat-loc-tagline">{location.tagline}</p>
             <div className="trk-cat-grid">
               {treks.map((trek: typeof allTreks[number]) => {
@@ -682,7 +682,7 @@ export default function TreksClient() {
                 const img = trekImageMap[trek.slug];
                 return (
                   <div key={trek.slug} className="trk-item-card">
-                    {img && <div className="trk-item-img-wrap"><Image src={img} alt={trekAltMap[trek.slug] || `${trek.title} trek in Uttarakhand`} fill loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px" style={{ objectFit: 'cover' }} /></div>}
+                    {img && <div className="trk-item-img-wrap"><Image src={img} alt={trekAltMap[trek.slug] || `${trek.title} trek in Uttarakhand`} width={800} height={533} loading="lazy" sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 380px" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></div>}
                     <div className="trk-item-body">
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', flexWrap: 'wrap' }}>
                         <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 400, color: '#888888' }}>{trek.duration}</span>
@@ -711,7 +711,7 @@ export default function TreksClient() {
 <section className="trk-curated">
   <div className="trk-section-inner">
     <div className="trk-section-banner">
-      <Image src="/Images/hero/valley-forest.webp" alt="Himalayan valley forest trails for trekking in Uttarakhand" fill loading="lazy" sizes="(max-width: 768px) 100vw, 1152px" style={{ objectFit: 'cover' }} />
+      <Image src="/Images/hero/valley-forest.webp" alt="Himalayan valley forest trails for trekking in Uttarakhand" width={1200} height={675} loading="lazy" sizes="(max-width: 768px) 100vw, 1152px" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
     </div>
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">By Interest</span></div>
     <h2 className="trk-h2" style={{ marginBottom: '3.5rem' }}>Explore Treks by Interest</h2>
@@ -783,7 +783,7 @@ export default function TreksClient() {
 <section className="trk-discovery">
   <div className="trk-section-inner">
     <div className="trk-section-banner">
-      <Image src="/Images/hero/alpine-ridge.webp" alt="Alpine ridge trail for Himalayan trekking in Uttarakhand" fill loading="lazy" sizes="(max-width: 768px) 100vw, 1152px" style={{ objectFit: 'cover' }} />
+      <Image src="/Images/hero/alpine-ridge.webp" alt="Alpine ridge trail for Himalayan trekking in Uttarakhand" width={1200} height={675} loading="lazy" sizes="(max-width: 768px) 100vw, 1152px" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
     </div>
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Find Your Trek</span></div>
     <h2 className="trk-h2">Not Sure Which Trek Is Right for You?</h2>

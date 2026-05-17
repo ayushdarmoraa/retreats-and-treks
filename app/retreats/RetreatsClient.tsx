@@ -170,7 +170,7 @@ export default function RetreatsClient({
             animation: rcKenBurns 18s ease-in-out infinite alternate;
           }
           /* Replace with real image:
-             <Image src="/images/hero/himalayan-mountains.webp" fill style={{objectFit:'cover'}} alt="Himalayas" /> */
+             <Image src="/images/hero/himalayan-mountains.webp" width={1920} height={1080} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit:'cover' }} alt="Himalayas" /> */
 
           .rc-hero-tag {
             position: absolute; bottom: 2.5rem; left: 2rem;
@@ -353,11 +353,12 @@ export default function RetreatsClient({
           <Image
             src="/Images/location/rehero.webp"
             alt="Himalayas"
-            fill
+            width={1200}
+            height={675}
             sizes="50vw"
             quality={70}
             style={{
-              objectFit: 'cover', objectPosition: 'center',
+              width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center',
             }}
           />
           <div style={{
@@ -366,7 +367,7 @@ export default function RetreatsClient({
             animation: 'rcKenBurns 18s ease-in-out infinite alternate',
           }} />
           {/* Production me replace karo:
-              <Image src="/images/hero/himalayan-mountains.webp" fill style={{objectFit:'cover'}} alt="Himalayas" priority />
+              <Image src="/images/hero/himalayan-mountains.webp" width={1920} height={1080} style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit:'cover' }} alt="Himalayas" priority />
           */}
 
           {/* Mountain SVG silhouette */}
