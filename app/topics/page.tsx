@@ -9,25 +9,25 @@ const TOPICS = [
   {
     href: '/topics/retreat-decision',
     title: 'Retreat Decision',
-    description: 'Guides to help you choose retreat formats, durations, locations, and approaches before booking.',
+    description: 'Guides to help you choose retreat types, trip length, places, and style before booking.',
     category: 'Retreat Decision',
   },
   {
     href: '/topics/location-authority',
     title: 'Location Authority',
-    description: 'Destination guides for Himalayan retreat and trekking regions.',
+    description: 'Place guides for Himalayan retreat and trekking regions.',
     category: 'Location Authority',
   },
   {
     href: '/topics/trek-decision',
     title: 'Trek Decision',
-    description: 'Comparisons and planning guides for Himalayan trekking routes, difficulty, season, and fit.',
+    description: 'Simple planning guides for Himalayan trek routes, difficulty, season, and fit.',
     category: 'Trek Decision',
   },
   {
     href: '/topics/lifestyle',
     title: 'Lifestyle & Himalayan Living',
-    description: 'Guides on slow living, mountain lifestyle, retreat mindset, and intentional travel.',
+    description: 'Guides on slow living, mountain life, retreat mindset, and purposeful travel.',
     category: 'Lifestyle',
   },
 ] as const;
@@ -35,7 +35,7 @@ const TOPICS = [
 export const metadata: Metadata = {
   title: 'Retreat and Trek Topics | Retreats And Treks',
   description:
-    'Browse retreat, trek, location, and lifestyle topic clusters from Retreats And Treks.',
+    'Browse retreat, trek, place, and lifestyle topics from Retreats And Treks.',
   alternates: {
     canonical: buildCanonicalUrl('/topics'),
   },
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Topics — Retreats And Treks',
     description:
-      'Browse retreat, trek, location, and lifestyle topic clusters from Retreats And Treks.',
+      'Browse retreat, trek, place, and lifestyle topics from Retreats And Treks.',
     url: buildCanonicalUrl('/topics'),
     type: 'website',
     images: buildOgImages('Topics — Retreats And Treks'),
@@ -81,10 +81,10 @@ export default function TopicsPage() {
           Explore retreat, trek, and Himalayan living guides
         </h1>
         <p style={{ maxWidth: '44rem', lineHeight: 1.8, color: 'var(--color-muted)', fontSize: '1rem' }}>
-          Browse topic hubs by decision stage, destination, trek route, or mountain lifestyle.
+          Browse topic hubs by planning stage, place, trek route, or mountain life.
         </p>
         <p style={{ maxWidth: '46rem', lineHeight: 1.8, color: 'var(--color-muted)', fontSize: '1rem', marginTop: '1rem' }}>
-          These topic clusters bring related articles together so you can move from broad research to a clearer choice. Use them to compare retreat formats, understand Himalayan locations, compare treks, or explore slower mountain living before choosing a retreat or trek.
+          These topic hubs bring related articles together. Use them to compare retreat types, learn about Himalayan places, compare treks, or explore slower mountain life before choosing a retreat or trek.
         </p>
       </section>
 
@@ -93,10 +93,10 @@ export default function TopicsPage() {
           How to Use These Topic Hubs
         </h2>
         <p style={{ maxWidth: '48rem', lineHeight: 1.8, color: 'var(--color-muted)', fontSize: '0.98rem' }}>
-          Start with retreat decision guides if you are comparing silence, yoga, creative work, burnout recovery, or weekend resets. Use location guides when your main question is where to go.
+          Start with retreat decision guides if you are comparing silence, yoga, creative work, burnout recovery, or weekend resets. Use place guides when your main question is where to go.
         </p>
         <p style={{ maxWidth: '48rem', lineHeight: 1.8, color: 'var(--color-muted)', fontSize: '0.98rem', marginTop: '0.85rem' }}>
-          Trek decision guides compare routes, difficulty, season, and fitness needs. Lifestyle guides cover mountain rhythm, preparation, and slower travel. Each hub connects planning articles with practical next steps, so you can choose the right retreat, trek, season, or destination with more confidence.
+          Trek guides compare routes, difficulty, season, and fitness needs. Lifestyle guides cover mountain rhythm, preparation, and slower travel. Each hub connects planning articles with next steps, so you can choose the right retreat, trek, season, or place with more confidence.
         </p>
       </section>
 
