@@ -86,6 +86,9 @@ export default function TopicsPage() {
         <p style={{ maxWidth: '46rem', lineHeight: 1.8, color: 'var(--color-muted)', fontSize: '1rem', marginTop: '1rem' }}>
           These topic hubs bring related articles together. Use them to compare retreat types, learn about Himalayan places, compare treks, or explore slower mountain life before choosing a retreat or trek.
         </p>
+        <p style={{ maxWidth: '46rem', lineHeight: 1.8, color: 'var(--color-muted)', fontSize: '1rem', marginTop: '1rem' }}>
+          Each topic hub groups related guides around one planning need. This helps visitors move from early research to a clear next step without jumping between unrelated pages.
+        </p>
       </section>
 
       <section style={{ marginBottom: 'var(--space-xl)' }}>
