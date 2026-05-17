@@ -30,9 +30,10 @@ export default function SectionImage({
       <Image
         src={image.src}
         alt={image.alt}
-        fill
+        width={1200}
+        height={675}
         sizes="(max-width: 768px) 100vw, 50vw"
-        style={{ objectFit: 'cover' }}
+        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
       />
     </div>
   );

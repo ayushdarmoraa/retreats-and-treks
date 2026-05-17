@@ -140,10 +140,11 @@ export default function SelfDiscoveryRetreatPage() {
           <Image
             src="/Images/experience-hubs/meditation-hero.webp"
             alt="Self-Discovery Retreat in the Himalayas"
-            fill
+            width={1920}
+            height={1080}
             priority
             sizes="100vw"
-            style={{ objectFit: 'cover', objectPosition: 'center 35%' }}
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 35%' }}
           />
           <div className="pg-hero-overlay" />
         </div>
@@ -265,7 +266,7 @@ export default function SelfDiscoveryRetreatPage() {
           <div className="pg-loc-grid">
             {LOCATIONS.map((loc) => (
               <Link key={loc.id} href={`/${loc.id}`} className="pg-loc-card">
-                <Image src={loc.image} alt={loc.name} fill sizes="(max-width: 640px) 100vw, 25vw" style={{ objectFit: 'cover' }} />
+                <Image src={loc.image} alt={loc.name} width={800} height={462} sizes="(max-width: 640px) 100vw, 25vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div className="pg-loc-content">
                   <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--color-primary)', fontWeight: 600, marginBottom: '0.25rem' }}>{loc.tagline}</span>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: 400, margin: '0 0 0.5rem', textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>{loc.name}</h3>
