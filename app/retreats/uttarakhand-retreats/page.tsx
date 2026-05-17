@@ -28,7 +28,7 @@ export function generateMetadata(): Metadata {
     openGraph: {
       title: 'Uttarakhand Retreats in the Himalayas — Mountain Wellness Stays',
       description:
-        'Yoga, meditation and wellness retreats across Uttarakhand. Programs in Munsiyari, Sankri, Chakrata and Rishikesh — from alpine solitude to riverside retreat stays.',
+        'Yoga, meditation and wellness retreats across Uttarakhand. Programs in Munsiyari, Sankri, Chakrata and Rishikesh — from quiet alpine space to riverside retreat stays.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
       images: buildOgImages('Uttarakhand Retreats in the Himalayas — Mountain Wellness Stays'),
@@ -40,17 +40,17 @@ const FAQ_ITEMS = [
   {
     question: 'What is the best location for retreats in Uttarakhand?',
     answer:
-      'It depends on what you are seeking. Munsiyari offers the most remote and premium alpine experience with Panchachuli views. Sankri provides deep forest retreat time in the upper Tons Valley. Chakrata delivers accessible mountain calm six to seven hours from Delhi. Rishikesh is the established centre for yoga and meditation with the shortest travel time from the capital. Each location serves a different retreat goal — solitude, forest quiet, convenience, or spiritual tradition.',
+      'It depends on what you are seeking. Munsiyari offers the most remote alpine experience with Panchachuli views. Sankri provides deep forest retreat time in the upper Tons Valley. Chakrata delivers easy-to-reach mountain calm six to seven hours from Delhi. Rishikesh is the established centre for yoga and meditation with the shortest travel time from the capital. Each location serves a different retreat goal — solitude, forest quiet, convenience, or spiritual tradition.',
   },
   {
     question: 'Is Uttarakhand suitable for retreats year-round?',
     answer:
-      'Yes, with seasonal change by location. Rishikesh and Chakrata operate comfortably year-round. Munsiyari and Sankri are best from late March through November — winter snowfall limits road access at higher altitudes. October and November are the most popular months across all locations. May and June draw people escaping summer heat. December through February is ideal for those seeking winter stillness at accessible elevations like Rishikesh and Chakrata.',
+      'Yes, with season changes by location. Rishikesh and Chakrata operate comfortably year-round. Munsiyari and Sankri are best from late March through November — winter snowfall limits road access at higher mountains. October and November are the most popular months across all locations. May and June draw people escaping summer heat. December through February is ideal for those seeking winter stillness at easy-to-reach elevations like Rishikesh and Chakrata.',
   },
   {
     question: 'Which district is best for a mountain retreat in Uttarakhand?',
     answer:
-      'Uttarkashi district (Sankri) and Pithoragarh district (Munsiyari) offer the highest and deepest mountain settings. Dehradun district covers both Chakrata and Rishikesh — the two most accessible destinations. Garhwal locations tend toward forest and river settings. Kumaon locations lean toward alpine grandeur and panoramic mountain views. The choice of district is really a choice of landscape.',
+      'Uttarkashi district (Sankri) and Pithoragarh district (Munsiyari) offer the highest and deepest mountain settings. Dehradun district covers both Chakrata and Rishikesh — the two easiest destinations. Garhwal locations tend toward forest and river settings. Kumaon locations lean toward alpine grandeur and wide mountain views. The choice of district is really a choice of landscape.',
   },
   {
     question: 'How far are Uttarakhand retreats from Delhi?',
@@ -60,7 +60,7 @@ const FAQ_ITEMS = [
   {
     question: 'Are retreats in Uttarakhand beginner-friendly?',
     answer:
-      'All retreat programs across Uttarakhand are designed for mixed experience levels. Yoga and meditation sessions are guided with modifications for beginners. No prior practice is required. Facilitators adapt to the group — first-time guests receive individual guidance within group sessions. Weekend formats at Chakrata and Rishikesh are especially accessible for those new to guided retreats.',
+      'All retreat programs across Uttarakhand are designed for mixed experience levels. Yoga and meditation sessions are guided with simple changes for beginners. No prior practice is required. Teachers adapt to the group — first-time guests receive personal guidance within group sessions. Weekend formats at Chakrata and Rishikesh are especially accessible for those new to guided retreats.',
   },
   {
     question: 'What types of retreats are available in Uttarakhand?',
@@ -115,14 +115,14 @@ export default function UttarakhandRetreatsPage() {
           </h1>
           <p style={{ fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '1rem' }}>
             Uttarakhand is India&apos;s definitive Himalayan retreat state. Stretching across
-            the Garhwal and Kumaon divisions, it holds every landscape a retreat participant
-            could seek — from the spiritual riverbanks of Rishikesh to the alpine solitude of
+            the Garhwal and Kumaon divisions, it holds every landscape a retreat guest
+            could seek — from the spiritual riverbanks of Rishikesh to the quiet alpine space of
             Munsiyari, from dense oak forests in the Tons Valley to quiet cantonment ridges
             above Dehradun. No other Indian state offers this range of altitude, setting,
             and access in one corridor.
           </p>
           <p style={{ fontSize: '1.05rem', lineHeight: 1.8, margin: 0 }}>
-            Four different retreat destinations work across Uttarakhand, each serving a
+            Four different retreat places work across Uttarakhand, each serving a
             different goal and traveller type. Whether the goal is guided yoga
             practice, silent meditation, burnout recovery, or simply a deliberate pause in
             clean mountain air — the landscape here supports it. And every location sits within
@@ -142,28 +142,28 @@ export default function UttarakhandRetreatsPage() {
             can choose between subtropical river valleys, mid-altitude forest ridges, and genuine
             alpine environments — each producing a very different retreat experience.
             The altitude itself helps: cooler air, reduced pollution, and the
-            physical shift that comes with elevation change.
+            body shift that comes with height change.
           </p>
           <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
             <strong>Range of settings.</strong> Garhwal offers dense deodar and oak forests,
             river-valley acoustics, and the ashram heritage of Rishikesh. Kumaon delivers
-            panoramic Himalayan views, alpine meadows, and the silence that comes from genuine
+            wide Himalayan views, alpine meadows, and the silence that comes from real
             remoteness. Between these zones lie cantonment villages, wildlife sanctuaries, and
             glacial valleys — each adding texture to the retreat landscape.
           </p>
           <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>Access from Delhi.</strong> Every retreat destination in Uttarakhand
+            <strong>Access from Delhi.</strong> Every retreat place in Uttarakhand
             is reachable by road from Delhi within a single day. The closest — Rishikesh — takes
             five hours. The most remote — Munsiyari — takes twelve. This closeness means
             retreat guests do not need to fly, take multiple connections, or burn a full
             travel day in each direction. Friday departures from Delhi are standard practice.
           </p>
           <p style={{ lineHeight: 1.8, margin: 0 }}>
-            <strong>Spiritual tradition.</strong> Uttarakhand has hosted quiet practice
+            <strong>Spiritual roots.</strong> Uttarakhand has hosted quiet practice
             for centuries. Rishikesh is globally recognised as the yoga capital. Valley
             communities across the state maintain meditation traditions, temple cultures, and a
             relationship with the landscape that commercial tourism has not yet displaced. This
-            tradition means teachers here draw on deep-rooted practice, not imported trends.
+            tradition means teachers here draw on deep practice, not imported trends.
           </p>
         </section>
 
@@ -187,7 +187,7 @@ export default function UttarakhandRetreatsPage() {
             Munsiyari sits at 2,200 metres in Pithoragarh district, facing the Panchachuli
             massif — five peaks above 6,000 metres. It is the most remote and visually
             dramatic retreat location in the network. The twelve-hour journey from Delhi
-            filters out casual visitors, leaving a quiet environment built for deep work.
+            filters out casual visitors, leaving a quiet setting built for deep work.
             Alpine meadows, glacier-view practice spaces, and very small groups
             define the character here.
           </p>
@@ -196,8 +196,8 @@ export default function UttarakhandRetreatsPage() {
             <Link href="/retreats/munsiyari" style={{ color: 'var(--color-primary)' }}>
               Munsiyari
             </Link>{' '}
-            suit people with retreat experience, international visitors seeking premium
-            Himalayan retreat depth, and anyone who values solitude as the main retreat
+            suit people with retreat experience, international visitors seeking deeper
+            Himalayan retreat depth, and anyone who values quiet as the main retreat
             ingredient. Best from April through November.
           </p>
 
@@ -218,7 +218,7 @@ export default function UttarakhandRetreatsPage() {
               Sankri retreats
             </Link>{' '}
             suit those drawn to forest time, river-valley living, and the meditative
-            quality of an environment shaped by wilderness rather than cultivation. Extended
+            quality of an setting shaped by wilderness rather than cultivation. Extended
             formats of four to seven days work best here.
           </p>
 
@@ -238,7 +238,7 @@ export default function UttarakhandRetreatsPage() {
             <Link href="/retreats/chakrata" style={{ color: 'var(--color-primary)' }}>
               Chakrata
             </Link>{' '}
-            is the most practical option for professionals seeking accessible mountain retreat
+            is the most practical option for professionals seeking easy-to-reach mountain retreat
             without long travel. Weekend and mid-week formats both work here. Year-round
             easy access makes it the reliable default for first-time Uttarakhand retreat
             guests.
@@ -251,15 +251,15 @@ export default function UttarakhandRetreatsPage() {
           </h3>
           <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
             Rishikesh needs little introduction. India&apos;s yoga capital sits on the Ganges
-            at the foothills, five to six hours from Delhi. The ashram lineage, experienced
+            at the foothills, five to six hours from Delhi. The ashram tradition, experienced
             teacher pool, and riverside practice settings are unmatched in India. For
             guests whose main interest is guided yoga, pranayama, and spiritual
-            practice, Rishikesh remains the natural choice.
+            work, Rishikesh remains the natural choice.
           </p>
           <p style={{ lineHeight: 1.8, margin: 0 }}>
             Retreat formats in Rishikesh range from weekend programs to week-long intensives.
             The lower altitude means year-round operation without weather disruption. The trade-off
-            is higher visitor density compared to mountain locations — which is why serious
+            is more visitors compared to mountain locations — which is why serious
             practitioners sometimes begin in Rishikesh and graduate to Chakrata, Sankri, or
             Munsiyari for deeper retreat time.
           </p>
@@ -281,7 +281,7 @@ export default function UttarakhandRetreatsPage() {
             </li>
             <li>
               <strong>Meditation and silence retreats</strong> — guided and self-directed
-              formats, particularly suited to the solitude of Munsiyari and Sankri
+              formats, especially suited to the quiet of Munsiyari and Sankri
             </li>
             <li>
               <strong>Burnout recovery</strong> — guided{' '}
@@ -317,8 +317,8 @@ export default function UttarakhandRetreatsPage() {
             When to Plan a Retreat in Uttarakhand
           </h2>
           <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            <strong>October–November.</strong> The premium window across all locations. Post-monsoon
-            clarity, mild temperatures, and the sharpest mountain views of the year.
+            <strong>October–November.</strong> The best window across all locations. Clear air
+            after monsoon, mild temperatures, and the sharpest mountain views of the year.
             Munsiyari&apos;s Panchachuli range is at its most dramatic. Sankri&apos;s forests
             turn gold. Chakrata and Rishikesh enjoy crisp, clear days. This is when booking
             fills fastest — four to six weeks advance is advisable.
@@ -354,7 +354,7 @@ export default function UttarakhandRetreatsPage() {
             Who Chooses Uttarakhand for Retreats
           </h2>
           <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Uttarakhand draws retreat guests who want mountain authenticity without
+            Uttarakhand draws retreat guests who want real mountain feel without
             leaving the country — and increasingly, international visitors arriving in India
             for Himalayan wellness.
           </p>
@@ -367,7 +367,7 @@ export default function UttarakhandRetreatsPage() {
             <li>
               <strong>International wellness travellers</strong> — visiting India for yoga,
               meditation, or spiritual practice and choosing Uttarakhand for its combination
-              of practice lineage and Himalayan setting.
+              of practice tradition and Himalayan setting.
             </li>
             <li>
               <strong>Couples and partners</strong> — seeking shared retreat experience in
@@ -381,8 +381,8 @@ export default function UttarakhandRetreatsPage() {
             </li>
           </ul>
           <p style={{ lineHeight: 1.8, margin: 0 }}>
-            Each location serves a different intention. Choosing the right one depends on
-            travel time, landscape preference, and whether you prioritise easy access or
+            Each location serves a different goal. Choosing the right one depends on
+            travel time, landscape choice, and whether you prefer easy access or
             remoteness. For a ranked overview across every category, see our guide to the{' '}
             <Link href="/retreats/best-retreat-in-uttarakhand" style={{ color: 'var(--color-primary)' }}>
               best retreats in Uttarakhand
