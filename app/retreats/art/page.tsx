@@ -502,7 +502,7 @@ export default function ArtRetreatsPage() {
             {RETREATS.map((retreat) => (
               <Link key={retreat.slug} href={retreat.href} className="art-retreat-card">
                 <div className="art-retreat-card-img">
-                  <Image src={retreat.image} alt={retreat.title} fill loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
+                  <Image src={retreat.image} alt={retreat.title} width={800} height={533} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }} />
                   <span style={{
                     position: 'absolute', top: '1rem', left: '1rem',
@@ -620,7 +620,7 @@ export default function ArtRetreatsPage() {
           <div className="art-loc-grid">
             {LOCATIONS.map((loc) => (
               <Link key={loc.id} href={`/retreats/${loc.id}`} className="art-loc-card">
-                <Image src={loc.image} alt={`${loc.name} — art retreat location`} fill loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ objectFit: 'cover' }} />
+                <Image src={loc.image} alt={`${loc.name} — art retreat location`} width={800} height={462} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 50%, transparent 100%)' }} />
                 <div className="art-loc-card-content">
                   <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.1rem', fontWeight: 400, color: '#fff', margin: '0 0 0.4rem', letterSpacing: '-0.01em' }}>
@@ -706,7 +706,7 @@ export default function ArtRetreatsPage() {
             <div className="art-facilitator-grid" style={{ display: 'grid', gridTemplateColumns: 'minmax(220px, 0.8fr) minmax(0, 1.4fr)', gap: '2rem', alignItems: 'center', maxWidth: '54rem', margin: '0 auto' }}>
               {ART_FACILITATOR.image && (
                 <div className="art-facilitator-image" style={{ position: 'relative', width: '100%', aspectRatio: '1 / 1', borderRadius: '12px', overflow: 'hidden', background: '#eef0ee' }}>
-                  <Image src={ART_FACILITATOR.image.src} alt={ART_FACILITATOR.image.alt} fill loading="lazy" quality={70} sizes="(max-width: 720px) 100vw, 320px" style={{ objectFit: 'cover' }} />
+                  <Image src={ART_FACILITATOR.image.src} alt={ART_FACILITATOR.image.alt} width={800} height={800} loading="lazy" quality={70} sizes="(max-width: 720px) 100vw, 320px" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
               )}
               <div>
@@ -814,7 +814,7 @@ export default function ArtRetreatsPage() {
                   background: '#eef0ee',
                 }}
               >
-                <Image src={img.src} alt={img.alt} fill loading="lazy" quality={70} sizes="(max-width: 600px) 100vw, 50vw" style={{ objectFit: 'cover' }} />
+                <Image src={img.src} alt={img.alt} width={1200} height={800} loading="lazy" quality={70} sizes="(max-width: 600px) 100vw, 50vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(15,31,28,0.28), transparent 55%)' }} />
               </div>
             ))}
