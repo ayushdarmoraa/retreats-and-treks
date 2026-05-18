@@ -268,7 +268,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <span style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Related Experiences</span>
               </div>
               <h2 style={{ fontFamily: 'var(--font-geist-sans),sans-serif', fontSize: 'clamp(1.4rem,2.5vw,1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
-                Explore related experiences
+                Experiences Related to {blog.title}
               </h2>
               <div className="blg-related-card">
                 {relatedTreks.slice(0, 2).map((trek) => (

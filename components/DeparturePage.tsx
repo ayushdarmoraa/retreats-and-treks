@@ -247,7 +247,7 @@ export default function DeparturePage({ urlSlug }: { urlSlug: string }) {
 
       {/* ── Departures Table ─────────────────────────────────── */}
       <section>
-        <h2 style={sectionHeadingStyle}>Upcoming Departure Dates</h2>
+        <h2 style={sectionHeadingStyle}>Upcoming {trek.trekName} Departure Dates</h2>
         <p style={{ color: 'var(--color-muted)', marginBottom: 'var(--space-md)', fontSize: '0.95rem' }}>
           Prices are per person, all-inclusive. Group sizes limited to ensure quality. Best months for {trek.shortName}: <strong>{trek.bestMonths}</strong>.
         </p>

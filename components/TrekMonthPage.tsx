@@ -263,7 +263,7 @@ export default function TrekMonthPage({
       <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
         <div className="tm-eyebrow"><span className="tm-eyebrow-line" /><span className="tm-eyebrow-text">{monthCapitalised} at a Glance</span></div>
         <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
-          {monthCapitalised} at a Glance
+          {trekInfo.displayName} in {monthCapitalised} at a Glance
         </h2>
         <div className="tm-table-wrap">
           <table className="tm-table">
@@ -291,7 +291,7 @@ export default function TrekMonthPage({
       <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
         <div className="tm-eyebrow"><span className="tm-eyebrow-line" /><span className="tm-eyebrow-text">About the Trek</span></div>
         <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
-          About the {trekInfo.displayName}
+          About the {trekInfo.displayName} in {monthCapitalised}
         </h2>
         <p className="tm-body" style={{ marginBottom: '1rem' }}>
           {trek.overview.split('\n\n')[0]}
