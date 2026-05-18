@@ -1128,9 +1128,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
                   <p>{offering.body}</p>
                   <div className="rj-yoga-offering-meta">{offering.meta}</div>
                   <a
-                    href={`https://wa.me/919760446101?text=${encodeURIComponent(offering.text)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/contact"
                     className="rj-yoga-offering-cta"
                   >
                     {offering.cta} →
@@ -1551,7 +1549,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
         <div className="rj-mid-cta-inner">
           <h3>Want dates, price, and fit?</h3>
           <p>Talk with us directly — no forms, no commitment. Just a conversation about what you need.</p>
-          <a href={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I'm interested in the ${retreat.title} retreat. Can you tell me more?`)}`} className="rj-mid-cta-btn" target="_blank" rel="noopener noreferrer">Ask About This Retreat →</a>
+          <a href="/contact" className="rj-mid-cta-btn">Ask About This Retreat →</a>
           <p className="rj-mid-cta-micro">Dates · Starting price · Fit guidance</p>
         </div>
       </section>
@@ -4093,10 +4091,8 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
 
               <div className="rj-tp-final-actions">
                 <a
-                  href={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I'm interested in the Trek & Paint Retreat. Can you share dates, starting price, art supplies included, walking difficulty, and whether it is suitable for beginners?`)}`}
+                  href="/contact"
                   className="rj-tp-final-whatsapp"
-                  target="_blank"
-                  rel="noopener noreferrer"
                 >
                   Ask Trek & Paint Dates →
                 </a>

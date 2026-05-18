@@ -749,7 +749,7 @@ export default function ArtRetreatsPage() {
           <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, margin: '0 0 2rem', lineHeight: 1.7 }}>
             Talk with us directly — no forms, no commitment. Just a conversation about what you need.
           </p>
-          <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I\'m interested in your art retreats in the Himalayas. Can you help me choose the right format?')}`} className="art-cta-btn" target="_blank" rel="noopener noreferrer">
+          <a href="/contact" className="art-cta-btn">
             Check Dates & Starting Price →
           </a>
           <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', color: 'rgba(255,255,255,0.3)', marginTop: '1rem' }}>

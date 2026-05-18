@@ -813,7 +813,7 @@ export default function TreksClient() {
 <section className="trk-midcta">
   <div className="trk-midcta-inner">
     <p className="trk-midcta-text">Confused between treks? Talk to an expert and get a personalised recommendation.</p>
-    <a href="https://wa.me/919760446101?text=Hi%2C%20I%20need%20help%20choosing%20the%20right%20trek." className="trk-midcta-btn">Talk to a Local Trek Expert →</a>
+    <a href="/contact" className="trk-midcta-btn">Talk to a Local Trek Expert →</a>
   </div>
 </section>
 
@@ -914,7 +914,7 @@ export default function TreksClient() {
     <p className="trk-plan-desc">Not sure which trek is right for you? Let our team help you plan the perfect Himalayan adventure based on your experience, schedule, and goals.</p>
     <p className="trk-scarcity">Limited group sizes for each trek</p>
     <div className="trk-plan-btns">
-      <a href="https://wa.me/919760446101?text=Hi%2C%20I%27d%20like%20a%20personalised%20trek%20recommendation." className="trk-plan-btn-primary">Talk to a Local Expert Before You Book Your Trek →</a>
+      <a href="/contact" className="trk-plan-btn-primary">Talk to a Local Expert Before You Book Your Trek →</a>
       <Link href="/treks/best-treks-in-uttarakhand" className="trk-plan-btn-secondary">Browse All Treks →</Link>
     </div>
     <p className="trk-microcopy">Free consultation · No spam · Quick response</p>
@@ -926,7 +926,7 @@ export default function TreksClient() {
   <div className="trk-cta-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Get in Touch</span><span className="trk-eyebrow-line" /></div>
     <h2 className="trk-h2">Not sure which trek fits you best?</h2>
-    <a href="https://wa.me/919760446101?text=Hi%2C%20I%27d%20like%20to%20know%20which%20trek%20would%20be%20best%20for%20me." className="trk-cta-btn">Talk to us on WhatsApp →</a>
+    <a href="/contact" className="trk-cta-btn">Talk to us →</a>
   </div>
 </section>
 
