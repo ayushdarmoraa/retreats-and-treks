@@ -303,9 +303,7 @@ export default function DeparturePage({ urlSlug }: { urlSlug: string }) {
                     <td style={{ padding: '12px 16px' }}>
                       {dep.status !== 'sold-out' && (
                         <a
-                          href={`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hi, I want to book the ${trek.trekName} departure: ${dep.dateRange}. Please confirm availability.`)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href="/contact"
                           style={{
                             display: 'inline-block',
                             padding: '8px 20px',
