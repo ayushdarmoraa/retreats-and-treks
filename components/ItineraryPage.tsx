@@ -66,7 +66,7 @@ export default function ItineraryPage({ page }: Props) {
       {/* ── Day-by-Day Cards ────────────────────────────────────── */}
       <section style={{ marginBottom: 'var(--space-xl)' }}>
         <h2 style={{ fontSize: '1.35rem', fontWeight: 600, marginBottom: '1rem' }}>
-          Day-by-Day Schedule
+          {page.durationDays}-Day {page.label} Schedule
         </h2>
         <div style={{ display: 'grid', gap: '1.5rem' }}>
           {page.days.map((day) => (
@@ -142,7 +142,7 @@ export default function ItineraryPage({ page }: Props) {
         return (
           <section style={{ marginBottom: 'var(--space-xl)' }}>
             <h2 style={{ fontSize: '1.35rem', fontWeight: 600, marginBottom: '0.75rem' }}>
-              What Participants Say
+              {page.label} Guest Reviews
             </h2>
             <div style={{ display: 'grid', gap: '1rem' }}>
               {topReviews.map((review) => (
@@ -232,7 +232,7 @@ export default function ItineraryPage({ page }: Props) {
       {page.relatedDurationSlugs.length > 0 && (
         <section style={{ marginBottom: 'var(--space-xl)' }}>
           <h2 style={{ fontSize: '1.35rem', fontWeight: 600, marginBottom: '0.75rem' }}>
-            Other Duration Options
+            Other {page.label} Duration Options
           </h2>
           <ul style={{ paddingLeft: '1.25rem', lineHeight: 2 }}>
             {page.relatedDurationSlugs.map((slug) => (

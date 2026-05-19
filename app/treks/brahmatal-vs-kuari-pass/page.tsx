@@ -215,7 +215,7 @@ export default function BrahmatalVsKuariPassPage() {
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
           <div className="bvk-eyebrow"><span className="bvk-eyebrow-line" /><span className="bvk-eyebrow-text">At a Glance</span></div>
           <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
-            At a Glance
+            Brahmatal vs Kuari Pass at a Glance
           </h2>
           <div className="bvk-table-wrap">
             <table className="bvk-table">

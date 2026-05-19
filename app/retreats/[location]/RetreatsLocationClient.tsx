@@ -82,7 +82,7 @@ export default function RetreatsLocationClient({
       {locationPremiumContent.gallery && locationPremiumContent.gallery.length > 0 && (
         <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', padding: '2rem 0', background: '#ffffff' }}>
           <div style={{ maxWidth: '64rem', margin: '0 auto', padding: '0 1.5rem' }}>
-            <h2 style={{ margin: '0 0 1rem', fontWeight: 600, fontSize: '1.05rem' }}>Photos</h2>
+            <h2 style={{ margin: '0 0 1rem', fontWeight: 600, fontSize: '1.05rem' }}>{locationPremiumContent.name} Photos</h2>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0.75rem' }}>
               {locationPremiumContent.gallery.map((img, idx) => (
                 <a key={idx} href={img.src} target="_blank" rel="noopener noreferrer" style={{ display: 'block', borderRadius: 8, overflow: 'hidden' }}>

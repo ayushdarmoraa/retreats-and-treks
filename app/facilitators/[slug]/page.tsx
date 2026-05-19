@@ -162,7 +162,7 @@ export default async function FacilitatorPage(
         <div className="fac-detail-inner">
           <div style={{ maxWidth: '52rem' }}>
             <p className="fac-detail-eyebrow">About the facilitator</p>
-            <h2 className="fac-detail-h2">The person behind the <span>practice</span></h2>
+            <h2 className="fac-detail-h2">About <span>{facilitator.name}</span></h2>
             <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.05rem', lineHeight: 1.9, color: '#4b5563', fontWeight: 300, margin: 0 }}>
               {facilitator.bio}
             </p>
@@ -173,7 +173,7 @@ export default async function FacilitatorPage(
       <section className="fac-detail-section" style={{ background: '#f7f9f7' }}>
         <div className="fac-detail-inner">
           <p className="fac-detail-eyebrow">Experience & training</p>
-          <h2 className="fac-detail-h2">Background that shapes the <span>retreat</span></h2>
+          <h2 className="fac-detail-h2">{facilitator.name.split(' ')[0]}'s retreat <span>background</span></h2>
           <div className="fac-detail-two-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '2rem' }}>
             {facilitator.background.map((item) => (
               <div key={item} className="fac-detail-card">

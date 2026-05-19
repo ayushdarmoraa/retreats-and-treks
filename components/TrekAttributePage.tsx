@@ -165,7 +165,7 @@ export default function TrekAttributePage({
         <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#f7f9f7', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
           <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
             <div className="tap-eyebrow"><span className="tap-eyebrow-line" /><span className="tap-eyebrow-text">At a Glance</span></div>
-            <h2 className="tap-h2" style={{ marginBottom:'1.75rem' }}>Quick Comparison</h2>
+            <h2 className="tap-h2" style={{ marginBottom:'1.75rem' }}>{config.title.split('—')[0].trim()} Quick Comparison</h2>
             <div className="tap-table-wrap">
               <table className="tap-table">
                 <thead>
@@ -197,7 +197,7 @@ export default function TrekAttributePage({
         <section style={{ width:'100vw', marginLeft:'calc(-50vw + 50%)', background:'#ffffff', paddingTop:'4rem', paddingBottom:'4rem', borderBottom:'1px solid #e5e7eb' }}>
           <div style={{ maxWidth:'52rem', margin:'0 auto', padding:'0 2rem' }}>
             <div className="tap-eyebrow"><span className="tap-eyebrow-line" /><span className="tap-eyebrow-text">Detailed Overview</span></div>
-            <h2 className="tap-h2" style={{ marginBottom:'1.75rem' }}>Detailed Overview</h2>
+            <h2 className="tap-h2" style={{ marginBottom:'1.75rem' }}>{config.title.split('—')[0].trim()} Detailed Overview</h2>
             {matchedTreks.map((trek) => (
               <div key={trek.slug} className="tap-trek-card">
                 <p className="tap-trek-title">
