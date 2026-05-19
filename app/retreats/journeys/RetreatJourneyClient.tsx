@@ -1497,7 +1497,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
           </div>
 
           <h2 className="rj-fn-heading">
-            Who this is <span>for</span>
+            Who {retreat.title} is <span>for</span>
           </h2>
 
           <div className="rj-fn-wrap scroll-fade">
