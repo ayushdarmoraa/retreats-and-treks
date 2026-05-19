@@ -282,7 +282,7 @@ export default function ExperienceLocationPage({ page }: Props) {
                 color: '#111111',
                 margin: '0 0 0.6rem',
               }}>
-                See the full {itineraryArc?.duration}-day itinerary
+                See the full {page.locationName} {itineraryArc?.duration}-day itinerary
               </h2>
               <p style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',

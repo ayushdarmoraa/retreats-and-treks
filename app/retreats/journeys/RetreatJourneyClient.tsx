@@ -1569,7 +1569,7 @@ export default function RetreatJourneyClient({ retreat, locations, suggestedTrek
               <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151', fontWeight: 500}}>You&apos;ll Love This If</span>
             </div>
             <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, margin: '0 0 2rem' }}>
-              This retreat may be <span style={{ color: '#374151' }}>ideal</span> if you want to
+              Ideal fit for <span style={{ color: '#374151' }}>{retreat.title}</span>
             </h2>
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {retreat.idealIf.map((item, i) => (

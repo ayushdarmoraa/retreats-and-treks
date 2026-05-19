@@ -355,7 +355,7 @@ export default function RetreatsLocationClient({
               <span className="rlc2-eyebrow-text">Inner Work</span>
             </div>
             <h2 className="rlc2-title">
-              {locationPremiumContent.bridgingInnerWorkMovement.title}
+              Retreats: {locationPremiumContent.bridgingInnerWorkMovement.title}
             </h2>
           </div>
 
@@ -494,7 +494,7 @@ export default function RetreatsLocationClient({
           </div>
 
           <h2 className="rlc3-heading">
-            {locationPremiumContent.retreatLogic.title}
+            Retreats: {locationPremiumContent.retreatLogic.title}
           </h2>
 
           <div className="rlc3-factors">
