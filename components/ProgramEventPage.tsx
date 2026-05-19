@@ -225,7 +225,7 @@ export default function ProgramEventPage({ event }: Props) {
         return (
           <section style={{ marginBottom: 'var(--space-xl)' }}>
             <h2 style={{ fontSize: '1.35rem', fontWeight: 600, marginBottom: '0.75rem' }}>
-              {facilitators.length === 1 ? `${event.locationName} ${event.label} Facilitator` : `${event.locationName} ${event.label} Facilitators`}
+              {facilitators.length === 1 ? `${event.month} ${event.label} Facilitator` : `${event.month} ${event.label} Facilitators`}
             </h2>
             <div style={{ display: 'grid', gap: '1rem' }}>
               {facilitators.map((f) => (
