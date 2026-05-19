@@ -19,14 +19,14 @@ export const munsiyariLocation = {
 
   // Section 2B: Bridging Inner Work & Movement
   bridgingInnerWorkMovement: {
-    title: 'Why Both High-Altitude Stillness & Alpine Trekking Are Here',
+    title: 'Why High-Altitude Stillness Works in Munsiyari',
     description:
       'Munsiyari offers the rarest combination: world-class high altitude for retreat work + alpine terrain for serious trekking. The same elevation that creates profound clarity also enables multi-day high-altitude journeys. A traditional retreat can transition into a trek, or trekking days can be bookended with silent practice. This is the place where transformational silence and transformational movement converge.',
   },
 
   // Section 3: Why Transformation Happens Here
   retreatLogic: {
-    title: 'Why Transformation Happens Here',
+    title: 'Why Transformation Happens in Munsiyari',
     factors: [
       {
         title: 'Serious Altitude Medicine',

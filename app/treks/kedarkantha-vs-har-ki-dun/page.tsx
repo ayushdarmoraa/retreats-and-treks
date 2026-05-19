@@ -203,7 +203,7 @@ export default function KedarkanthaVsHarKiDunPage() {
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
           <div className="kvh-eyebrow"><span className="kvh-eyebrow-line" /><span className="kvh-eyebrow-text">At a Glance</span></div>
           <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
-            Quick Comparison Overview
+            Kedarkantha vs Har Ki Dun Quick Comparison
           </h2>
           <div className="kvh-table-wrap">
             <table className="kvh-table">

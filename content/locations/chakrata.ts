@@ -17,14 +17,14 @@ export const chakrataLocation = {
 
   // Section 2B: Bridging Inner Work & Movement
   bridgingInnerWorkMovement: {
-    title: 'Why Both Stillness & Movement Thrive Here',
+    title: 'Why Stillness & Movement Thrive in Chakrata',
     description:
       'Chakrata is not only for silent retreat. The forest itself invites movement — walking, gentle hiking, embodied practice. The same forest density that creates stillness for meditation creates beauty for movement. Altitude that calms the thinking mind also grounds the body during yoga or tai chi. You can retreat into silence. Or you can retreat into motion through the land. The place holds both.',
   },
 
   // Section 3: Why Retreats Work Here
   retreatLogic: {
-    title: 'Why Inner Work Succeeds Here',
+    title: 'Why Inner Work Succeeds in Chakrata',
     factors: [
       {
         title: 'Altitude & Nervous System',

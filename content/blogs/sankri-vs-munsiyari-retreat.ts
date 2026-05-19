@@ -18,7 +18,7 @@ const sankriVsMunsiyariRetreat: BlogContent = {
 <p>If you have decided on a Himalayan retreat and narrowed your options to Sankri and Munsiyari, you are choosing between two of the strongest mountain retreat locations in Uttarakhand — and two fundamentally different experiences. Both sit well above the tourist circuit. Both offer genuine solitude. But the landscape, the journey, and the retreat character at each location are distinct enough that choosing the wrong one would mean missing what you actually came for.</p>
 <p>This comparison is specifically for retreat participants. If you are weighing trek options, the considerations are different. This is about which location delivers the stronger container for yoga, meditation, rest, and restoration.</p>
 
-<h2>Quick Comparison Overview</h2>
+<h2>Sankri vs Munsiyari Quick Comparison</h2>
 <table>
 <thead>
 <tr><th>Factor</th><th>Sankri</th><th>Munsiyari</th></tr>

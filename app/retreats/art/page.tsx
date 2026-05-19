@@ -333,7 +333,7 @@ export default function ArtRetreatsPage() {
             <span className="art-eyebrow-line" />
             <span className="art-eyebrow-text">Understanding Art Retreats</span>
           </div>
-          <h2 className="art-section-title">What is an <span>art retreat</span>?</h2>
+          <h2 className="art-section-title">What is a Himalayan <span>art retreat</span>?</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
             <p className="art-body-text">
               An art retreat is a structured period of creative immersion — typically 2 to 7 days — where you step away from daily life to focus entirely on creative expression. Unlike art classes, the goal is not technical mastery. It is reconnection with your own creative voice.
@@ -357,7 +357,7 @@ export default function ArtRetreatsPage() {
             <span className="art-eyebrow-line" />
             <span className="art-eyebrow-text">Why It Works</span>
           </div>
-          <h2 className="art-section-title">Why art retreats <span>heal</span></h2>
+          <h2 className="art-section-title">Why Himalayan art retreats <span>heal</span></h2>
           <p className="art-body-text" style={{ marginBottom: '2.5rem' }}>
             This is not an art class. It is a healing container where creativity is the modality — and the Himalayas are the co-facilitator.
           </p>

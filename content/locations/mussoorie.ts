@@ -19,14 +19,14 @@ export const mussoorieLocation = {
 
   // Section 2B: Bridging Inner Work & Movement
   bridgingInnerWorkMovement: {
-    title: 'Why Both Meditative Retreat & Forest Walks Work Here',
+    title: 'Why Meditation and Forest Walks Work in Mussoorie',
     description:
       'Mussoorie supports contemplation and movement equally. The soft landscape invites walking without demanding strength. The altitude calms without stressing. You can spend mornings in silent practice and afternoons on forest trails, transitioning smoothly between stillness and gentle motion. Many find that this combination works better than stillness alone.',
   },
 
   // Section 3: Why Inner Work Deepens Here
   retreatLogic: {
-    title: 'Why Inner Work Deepens Here',
+    title: 'Why Inner Work Deepens in Mussoorie',
     factors: [
       {
         title: 'Gentle Altitude Reset',

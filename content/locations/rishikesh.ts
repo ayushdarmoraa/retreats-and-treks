@@ -19,14 +19,14 @@ export const rishikeshLocation = {
 
   // Section 2B: Bridging Inner Work & Movement
   bridgingInnerWorkMovement: {
-    title: 'Why Both Spiritual Practice & Physical Movement Are Here',
+    title: 'Why Spiritual Practice Works in Rishikesh',
     description:
       'Rishikesh holds yoga in all its forms — seated meditation and dynamic asana, philosophy and breathing practice, stillness and movement. The spiritual traditions here do not separate inner work from embodied practice. A retreat can lean toward devotional or philosophical depth. Or it can emphasize yoga and movement within the spiritual container. The river facilitates everything.',
   },
 
   // Section 3: Why Deep Practice Happens Here
   retreatLogic: {
-    title: 'Why Deep Practice Happens Here',
+    title: 'Why Deep Practice Happens in Rishikesh',
     factors: [
       {
         title: 'Unbroken Spiritual Tradition',

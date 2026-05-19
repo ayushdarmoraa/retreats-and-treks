@@ -19,14 +19,14 @@ export const zanskarLocation = {
 
   // Section 2B: Bridging Inner Work & Movement
   bridgingInnerWorkMovement: {
-    title: 'Why Both Stillness & Movement Thrive Here',
+    title: 'Why Stillness & Movement Thrive in Zanskar',
     description:
       'Zanskar holds two registers simultaneously. The monasteries — Phugtal, Karsha, Stongde — carry centuries of meditative stillness. The river gorges, high passes, and wind-carved valleys demand physical presence and movement. You can sit in a 900-year-old gompa and feel the accumulated silence. Or you can traverse the Zanskar Gorge in winter, walking on frozen rivers where the body becomes the meditation. The valley holds both.',
   },
 
   // Section 3: Why Retreats Work Here
   retreatLogic: {
-    title: 'Why Inner Work Succeeds Here',
+    title: 'Why Inner Work Succeeds in Zanskar',
     factors: [
       {
         title: 'Altitude & Awareness',

@@ -9,7 +9,7 @@ export const joshimathLocation: LocationPremiumContent = {
     opening: 'Joshimath is an ancient and vital gateway. Perched precariously at 1,890 metres above the confluence of the Alaknanda and Dhauliganga rivers, it is a town of immense spiritual weight and rugged mountaineering history. It acts as the final major outpost before the Garhwal Himalayas give way to raw, high-altitude alpine zones and the Indo-Tibetan borderlands.'
   },
   bridgingInnerWorkMovement: {
-    title: 'The Tension Between Pilgrimage and Expedition',
+    title: 'Joshimath Between Pilgrimage and Expedition',
     description: 'Joshimath is unique because it serves two entirely different types of seekers: the spiritual pilgrims heading to the Badrinath temple, and the hardcore mountaineers preparing for Nanda Devi, Kuari Pass, or Pangarchulla. This duality creates a town where deep spirituality meets serious physical endurance.'
   },
   retreatLogic: {

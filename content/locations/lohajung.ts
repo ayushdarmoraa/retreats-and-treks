@@ -9,7 +9,7 @@ export const lohajungLocation: LocationPremiumContent = {
     opening: 'Lohajung is not a quiet pastoral retreat; it is a bustling, energetic staging ground. Sitting at 2,300 metres, this small mountain settlement is the nexus for three of India’s most famous Himalayan treks. It crackles with the nervous anticipation of arriving trekkers and the exhausted triumph of those returning from the snows of Roopkund or Brahmatal.'
   },
   bridgingInnerWorkMovement: {
-    title: 'The Energy of the Basecamp',
+    title: 'Lohajung Basecamp Energy',
     description: 'The energy in Lohajung is distinct. It is focused and serious. While other locations offer quiet introspection, Lohajung offers the camaraderie of the expedition. Here, every conversation in the small tea houses is about altitude, weather windows, and gear. It is the perfect environment to switch your mindset from city logistics to mountain survival.'
   },
   retreatLogic: {

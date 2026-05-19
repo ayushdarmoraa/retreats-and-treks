@@ -9,7 +9,7 @@ const barsuLocation: LocationPremiumContent = {
     opening: 'Barsu is not just a basecamp; it is a living pastoral village where the rhythm of the Himalayas is completely undisturbed by commercial tourism. At 2,200 metres, it serves as the final settlement before the ancient Gujjar trails climb through thick oak forests to emerge at the vast alpine meadows of Dayara Bugyal.'
   },
   bridgingInnerWorkMovement: {
-    title: 'A Gentle Entry into the Garhwal Himalayas',
+    title: 'Barsu: A Gentle Entry into Garhwal',
     description: 'Unlike the stark, rugged terrain of higher altitude basecamps like Gangotri, Barsu offers a soft, welcoming introduction to Himalayan scale. The village is surrounded by terrace farms and dense pine forests, making it an ideal starting point for those seeking peaceful acclimatization rather than an immediate adrenaline rush.'
   },
   retreatLogic: {
