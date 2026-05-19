@@ -225,7 +225,7 @@ export default function ProgramEventPage({ event }: Props) {
         return (
           <section style={{ marginBottom: 'var(--space-xl)' }}>
             <h2 style={{ fontSize: '1.35rem', fontWeight: 600, marginBottom: '0.75rem' }}>
-              {facilitators.length === 1 ? `${event.label} Facilitator` : `${event.label} Facilitators`}
+              {facilitators.length === 1 ? `${event.locationName} ${event.label} Facilitator` : `${event.locationName} ${event.label} Facilitators`}
             </h2>
             <div style={{ display: 'grid', gap: '1rem' }}>
               {facilitators.map((f) => (
@@ -268,7 +268,7 @@ export default function ProgramEventPage({ event }: Props) {
       {/* ── Quick Itinerary ─────────────────────────────────────── */}
       <section style={{ marginBottom: 'var(--space-xl)' }}>
         <h2 style={{ fontSize: '1.35rem', fontWeight: 600, marginBottom: '0.75rem' }}>
-          {event.label} Schedule Overview
+          {event.month} {event.label} Schedule
         </h2>
         <ul style={{ paddingLeft: '1.25rem', lineHeight: 2 }}>
           {event.quickItinerary.map((item) => (
