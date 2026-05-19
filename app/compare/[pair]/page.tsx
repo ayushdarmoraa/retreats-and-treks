@@ -108,6 +108,8 @@ export default async function ComparisonPage({ params }: PageProps) {
   const canonicalUrl = buildCanonicalUrl(canonicalPath);
   const durationA = RETREAT_DURATION_GROUP[ca] ?? 'flexible';
   const durationB = RETREAT_DURATION_GROUP[cb] ?? 'flexible';
+  const titleA = compareTitleLabel(ca, serviceA.title);
+  const titleB = compareTitleLabel(cb, serviceB.title);
 
   const collectionSchema = generateCollectionPageSchema({
     name: `${serviceA.title} vs ${serviceB.title}`,
@@ -365,7 +367,7 @@ export default async function ComparisonPage({ params }: PageProps) {
             <span className="cmp-eyebrow-line" />
             <span className="cmp-eyebrow-text">At a Glance</span>
           </div>
-          <h2 className="cmp-h2">{serviceA.title} vs {serviceB.title} at a Glance</h2>
+          <h2 className="cmp-h2">{titleA} vs {titleB} at a Glance</h2>
           <div style={{ overflowX: 'auto' }}>
             <table className="cmp-table" aria-label="Retreat comparison overview">
               <thead>
@@ -409,7 +411,7 @@ export default async function ComparisonPage({ params }: PageProps) {
             <span className="cmp-eyebrow-line" />
             <span className="cmp-eyebrow-text">Suitability</span>
           </div>
-          <h2 className="cmp-h2">Who Should Choose {serviceA.title} or {serviceB.title}</h2>
+          <h2 className="cmp-h2">Who Should Choose {titleA} or {titleB}</h2>
           <div style={{ overflowX: 'auto' }}>
             <table className="cmp-table" aria-label="Retreat participant suitability">
               <thead>
