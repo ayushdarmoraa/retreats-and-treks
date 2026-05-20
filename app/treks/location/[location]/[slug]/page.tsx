@@ -648,26 +648,37 @@ export default async function TrekDetailPage({ params }: PageProps) {
       )}
 
       {/* --- INTERNAL LINKING: Best Time to Do This Trek --- */}
-      {trek.monthlyConditions && trek.monthlyConditions.length > 0 && (
-        <div style={{ margin: '2.5rem 0', background: '#f7f9f7', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
-          <h2>Best Time to Do This Trek</h2>
-          <ul>
-            {trek.monthlyConditions.map((m) => {
-              const monthRouteSlug = trek.slug === 'dayara-bugyal-trek'
-                ? 'dayara'
-                : trek.slug.replace('-trek', '');
+      {(() => {
+        const monthRouteSlugs: Record<string, string> = {
+          'brahmatal-trek': 'brahmatal',
+          'kuari-pass-trek': 'kuari-pass',
+          'roopkund-trek': 'roopkund',
+          'pangarchulla-trek': 'pangarchulla',
+          'kedarkantha-trek': 'kedarkantha',
+          'har-ki-dun-trek': 'har-ki-dun',
+          'dayara-bugyal-trek': 'dayara',
+        };
+        const monthRouteSlug = monthRouteSlugs[trek.slug];
 
-              return (
+        if (!monthRouteSlug || !trek.monthlyConditions || trek.monthlyConditions.length === 0) {
+          return null;
+        }
+
+        return (
+          <div style={{ margin: '2.5rem 0', background: '#f7f9f7', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '2rem' }}>
+            <h2>Best Time to Do This Trek</h2>
+            <ul>
+              {trek.monthlyConditions.map((m) => (
                 <li key={m.month}>
                   <Link href={`/treks/${monthRouteSlug}/${m.month.toLowerCase()}`}>
                     {trek.title.split('(')[0].trim()} in {m.month}
                   </Link>
                 </li>
-              );
-            })}
-          </ul>
-        </div>
-      )}
+              ))}
+            </ul>
+          </div>
+        );
+      })()}
 
     </div>
   </section>
