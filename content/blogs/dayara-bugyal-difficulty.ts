@@ -126,9 +126,9 @@ See also: [Complete cost breakdown](/blog/dayara-bugyal-trek-cost) and [what to 
 
 ## Related Guides
 
-- [Dayara Bugyal Trek Cost](blog/dayara-bugyal-trek-cost) – Budget breakdown
-- [Best Time for Dayara Bugyal](blog/dayara-bugyal-best-time) – Seasonal guide
-- [Dayara Bugyal Packing List](blog/dayara-bugyal-packing-list) – What to carry
+- [Dayara Bugyal Trek Cost](/blog/dayara-bugyal-trek-cost) – Budget breakdown
+- [Best Time for Dayara Bugyal](/blog/dayara-bugyal-best-time) – Seasonal guide
+- [Dayara Bugyal Packing List](/blog/dayara-bugyal-packing-list) – What to carry
   `,
   targetMoneyPage: '/treks/location/barsu/dayara-bugyal-trek',
   relatedTreks: ['dayara-bugyal-trek'],

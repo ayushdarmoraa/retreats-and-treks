@@ -165,9 +165,9 @@ View the [cost guide](/blog/dayara-bugyal-trek-cost) and [difficulty assessment]
 
 ## Related Guides
 
-- [Dayara Bugyal Trek Cost](blog/dayara-bugyal-trek-cost) – Budget guide
-- [Best Time for Dayara Bugyal](blog/dayara-bugyal-best-time) – Seasonal guide
-- [Dayara Bugyal Trek Difficulty](blog/dayara-bugyal-difficulty) – Fitness requirements
+- [Dayara Bugyal Trek Cost](/blog/dayara-bugyal-trek-cost) – Budget guide
+- [Best Time for Dayara Bugyal](/blog/dayara-bugyal-best-time) – Seasonal guide
+- [Dayara Bugyal Trek Difficulty](/blog/dayara-bugyal-difficulty) – Fitness requirements
   `,
   targetMoneyPage: '/treks/location/barsu/dayara-bugyal-trek',
   relatedTreks: ['dayara-bugyal-trek'],

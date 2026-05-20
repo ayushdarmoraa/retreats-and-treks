@@ -102,9 +102,9 @@ Ready to experience the meadows? Get current availability and exact pricing.
 
 ## Related Guides
 
-- [Best Time for Dayara Bugyal Trek](blog/dayara-bugyal-best-time) – When to visit
-- [Dayara Bugyal Trek Difficulty](blog/dayara-bugyal-difficulty) – Is it for beginners?
-- [Dayara Bugyal Packing List](blog/dayara-bugyal-packing-list) – Complete equipment guide
+- [Best Time for Dayara Bugyal Trek](/blog/dayara-bugyal-best-time) – When to visit
+- [Dayara Bugyal Trek Difficulty](/blog/dayara-bugyal-difficulty) – Is it for beginners?
+- [Dayara Bugyal Packing List](/blog/dayara-bugyal-packing-list) – Complete equipment guide
   `,
   targetMoneyPage: '/treks/location/barsu/dayara-bugyal-trek',
   relatedTreks: ['dayara-bugyal-trek'],
