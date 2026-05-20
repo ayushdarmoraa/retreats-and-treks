@@ -53,6 +53,12 @@ export function getLocationMetadata(locationId: LocationId, context?: 'treks' | 
     title,
     description,
     openGraph: {
+      title,
+      description,
+      url: buildCanonicalUrl(path),
+      type: 'website',
+      siteName: 'Retreats And Treks',
+      locale: 'en_IN',
       images: buildOgImages(title),
     },
     alternates: {
