@@ -22,6 +22,7 @@ const LOCATION_PATH: Record<string, string> = {
   joshimath: '/treks/location/joshimath',
   lohajung: '/treks/location/lohajung',
   munsiyari: '/treks/location/munsiyari',
+  barsu: '/treks/location/barsu',
 };
 
 function trekPath(trek: TrekContent): string {
