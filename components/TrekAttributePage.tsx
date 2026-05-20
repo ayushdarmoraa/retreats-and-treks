@@ -4,7 +4,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import TrackedPage from '@/components/TrackedPage';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import PrimaryCTA from '@/components/PrimaryCTA';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -45,6 +45,9 @@ export function generateAttributeMetadata(config: TrekAttributeConfig): Metadata
       description: config.description,
       url: buildCanonicalUrl(path),
       type: 'website',
+      siteName: 'Retreats And Treks',
+      locale: 'en_IN',
+      images: buildOgImages(title),
     },
   };
 }

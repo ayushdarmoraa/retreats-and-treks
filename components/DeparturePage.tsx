@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Breadcrumb from '@/components/Breadcrumb';
 import TrackedPage from '@/components/TrackedPage';
 import PrimaryCTA from '@/components/PrimaryCTA';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -155,6 +155,9 @@ export function generateDepartureMetadata(urlSlug: string): Metadata {
       description,
       url: buildCanonicalUrl(`/treks/${urlSlug}/departures`),
       type: 'website',
+      siteName: 'Retreats And Treks',
+      locale: 'en_IN',
+      images: buildOgImages(title),
     },
   };
 }
