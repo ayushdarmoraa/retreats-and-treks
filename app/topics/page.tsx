@@ -35,7 +35,7 @@ const TOPICS = [
 export const metadata: Metadata = {
   title: 'Retreat and Trek Topics | Retreats And Treks',
   description:
-    'Browse retreat, trek, place, and lifestyle topics from Retreats And Treks.',
+    'Browse retreat, trek, location, lifestyle, and planning guides from Retreats And Treks to choose better Himalayan retreats and trekking experiences.',
   alternates: {
     canonical: buildCanonicalUrl('/topics'),
   },
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Topics — Retreats And Treks',
     description:
-      'Browse retreat, trek, place, and lifestyle topics from Retreats And Treks.',
+      'Browse retreat, trek, location, lifestyle, and planning guides from Retreats And Treks to choose better Himalayan retreats and trekking experiences.',
     url: buildCanonicalUrl('/topics'),
     type: 'website',
     images: buildOgImages('Topics — Retreats And Treks'),

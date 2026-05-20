@@ -361,7 +361,7 @@ function generatePages(): ExperienceLocationPage[] {
         locationName,
         title: `${mapping.label} in ${locationName} | Retreats And Treks`,
         h1: `${mapping.label} in ${locationName}`,
-        metaDescription: `${mapping.label} in ${locationName}. Best time: ${supplement.bestSeasons}. Small-group Himalayan retreat.`,
+        metaDescription: `${mapping.label} in ${locationName}. Best time: ${supplement.bestSeasons}. Explore the setting, access, terrain, ideal participants, and small-group Himalayan retreat format.`,
         intro: angle.description,
         locationHeading: angle.heading,
         whoIsThisFor: experience.whoIsThisFor,

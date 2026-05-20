@@ -45,7 +45,7 @@ export function getLocationMetadata(locationId: LocationId, context?: 'treks' | 
   } else {
     // Generic location metadata
     title = `${location.name} | Himalayan Retreats & Treks`;
-    description = location.tagline;
+    description = `${location.name} travel guide for Himalayan retreats and treks. ${location.tagline} Explore routes, stays, access, seasons, and nearby retreat or trekking experiences.`;
     path = `/locations/${locationId}`;
   }
 
