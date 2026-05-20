@@ -6,6 +6,8 @@ const guidedTreks: TrekContent = {
   description:
     'Guided treks in Chakrata with scenic forest trails, local guides, nature interpretation, and flexible day-to-multi-day outdoor routes.',
 
+  heroImage: '/Images/trek/region/chakraguided.webp',
+  heroImageAlt: 'Guided trekking route in Chakrata',
   locationId: 'chakrata',
   trekType: 'Guided Trek',
 

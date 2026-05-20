@@ -6,6 +6,8 @@ const budherCavesTrek: TrekContent = {
   description:
     'Budher Caves trek in Chakrata with forest trails, ancient caves, mountain views, local heritage, and a 2-night 3-day guided route.',
 
+  heroImage: '/Images/trek/region/budher.webp',
+  heroImageAlt: 'Budher Caves trek route near Chakrata',
   locationId: 'chakrata',
   trekType: 'Cave Trek',
 

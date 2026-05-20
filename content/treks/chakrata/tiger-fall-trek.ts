@@ -6,6 +6,8 @@ const tigerFallTrek: TrekContent = {
   description:
     'Tiger Fall trek near Chakrata with forest trails, waterfall views, nature immersion, and a 2-night 3-day guided route from Dehradun.',
 
+  heroImage: '/Images/trek/region/tigerfall.webp',
+  heroImageAlt: 'Tiger Fall trek waterfall route near Chakrata',
   locationId: 'chakrata',
   trekType: 'Waterfall Trek',
 

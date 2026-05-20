@@ -6,6 +6,8 @@ const weekendTrek: TrekContent = {
   description:
     'Chakrata weekend trek with forest trails, mountain views, camping, guided outdoor time, and Dehradun pickup and drop over 2 nights and 3 days.',
 
+  heroImage: '/Images/trek/region/chakraweekend.webp',
+  heroImageAlt: 'Chakrata weekend trek through forest trails and mountain viewpoints',
   locationId: 'chakrata',
   trekType: 'Weekend Trek',
 
