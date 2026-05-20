@@ -51,7 +51,7 @@ Research on nature exposure and cognitive recovery converges on a consistent fin
 
 This is why a [weekend retreat](/blog/is-weekend-retreat-worth-it) works and a Saturday afternoon in the park doesn't. Duration matters. Continuity matters. You need enough time for your default patterns to break down before new patterns can emerge.
 
-A [3-day retreat in Chakrata](/retreats/chakrata/rest-and-reset) or a 5-day programme that includes both stillness and movement hits this threshold naturally. You don't have to track your screen time or set rules. The structure does it for you.
+A [3-day retreat in Chakrata](/retreats/chakrata/weekend-retreat-from-dehradun) or a 5-day programme that includes both stillness and movement hits this threshold naturally. You don't have to track your screen time or set rules. The structure does it for you.
 
 ## Why It Lasts After You Leave
 
@@ -89,7 +89,7 @@ The format matters less than the commitment: go somewhere the infrastructure sup
 
 Your phone will be there when you get back. The Himalayas are offering something it can't.
   `,
-  targetMoneyPage: '/retreats/chakrata/rest-and-reset',
+  targetMoneyPage: '/retreats/chakrata/weekend-retreat-from-dehradun',
 };
 
 export default whyDigitalDetoxWorksInTheHimalayas;

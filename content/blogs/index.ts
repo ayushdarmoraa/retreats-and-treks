@@ -261,7 +261,7 @@ If you're taking a retreat every few months or you're already well-rested, maybe
 
 The right question isn't "Is a weekend retreat worth it?" It's "Right now, am I the kind of person who needs to pause?" If the answer is yes, go. The retreat isn't the luxury — it's the necessity.
   `,
-  targetMoneyPage: '/retreats/chakrata/rest-and-reset',
+  targetMoneyPage: '/retreats/chakrata/weekend-retreat-from-dehradun',
   relatedRetreats: ['rest-and-reset', 'weekend-retreat'],
 };
 
