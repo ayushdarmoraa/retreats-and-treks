@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 
@@ -14,6 +14,15 @@ export function generateMetadata(): Metadata {
     description:
       'Complete directory of all treks, retreats, guides, and planning pages on Retreats And Treks. Browse by region, difficulty, season, or duration.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
+    openGraph: {
+      title: 'Complete Site Map | Retreats And Treks',
+      description: 'Complete directory of all treks, retreats, guides, and planning pages on Retreats And Treks. Browse by region, difficulty, season, or duration.',
+      url: buildCanonicalUrl(PATH),
+      type: 'website',
+      siteName: 'Retreats And Treks',
+      locale: 'en_IN',
+      images: buildOgImages('Complete Site Map | Retreats And Treks'),
+    },
     robots: { index: true, follow: true },
   };
 }

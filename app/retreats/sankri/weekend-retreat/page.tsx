@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 
 export function generateMetadata(): Metadata {
   return {
@@ -13,6 +13,15 @@ export function generateMetadata(): Metadata {
     robots: {
       index: true,
       follow: true,
+    },
+    openGraph: {
+      title: 'Weekend Retreat in Sankri | Custom Himalayan Experience',
+      description: 'Experience a weekend retreat in Sankri basecamp. Available on request for small groups seeking mountain rest and clarity.',
+      url: buildCanonicalUrl('/retreats/sankri/weekend-retreat'),
+      type: 'website',
+      siteName: 'Retreats And Treks',
+      locale: 'en_IN',
+      images: buildOgImages('Weekend Retreat in Sankri | Custom Himalayan Experience'),
     },
   };
 }

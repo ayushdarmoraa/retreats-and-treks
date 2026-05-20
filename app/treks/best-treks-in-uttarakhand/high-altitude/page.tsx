@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -24,6 +24,15 @@ export function generateMetadata(): Metadata {
     description:
       'Best high-altitude treks in Uttarakhand, including Roopkund, Pangarchulla, and Brahmatal, with altitude profiles, preparation, and route details.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
+    openGraph: {
+      title: 'High-Altitude Treks in Uttarakhand | Retreats And Treks',
+      description: 'Best high-altitude treks in Uttarakhand, including Roopkund, Pangarchulla, and Brahmatal, with altitude profiles, preparation, and route details.',
+      url: buildCanonicalUrl(PATH),
+      type: 'website',
+      siteName: 'Retreats And Treks',
+      locale: 'en_IN',
+      images: buildOgImages('High-Altitude Treks in Uttarakhand | Retreats And Treks'),
+    },
   };
 }
 

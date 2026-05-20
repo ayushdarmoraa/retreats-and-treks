@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -24,6 +24,15 @@ export function generateMetadata(): Metadata {
     description:
       'Best beginner treks in Uttarakhand ranked by difficulty, from easy Chakrata day hikes to moderate Garhwal routes with no prior trekking experience needed.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
+    openGraph: {
+      title: 'Beginner Treks in Uttarakhand | Retreats And Treks',
+      description: 'Best beginner treks in Uttarakhand ranked by difficulty, from easy Chakrata day hikes to moderate Garhwal routes with no prior trekking experience needed.',
+      url: buildCanonicalUrl(PATH),
+      type: 'website',
+      siteName: 'Retreats And Treks',
+      locale: 'en_IN',
+      images: buildOgImages('Beginner Treks in Uttarakhand | Retreats And Treks'),
+    },
   };
 }
 

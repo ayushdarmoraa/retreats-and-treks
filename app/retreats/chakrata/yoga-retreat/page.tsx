@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import retreat from '@/content/retreats/chakrata/yoga-retreat';
 import { generateRetreatSchema, generateFAQSchema } from '@/components/seo/Schema';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 
@@ -13,6 +13,15 @@ export function generateMetadata(): Metadata {
     title: 'Chakrata Yoga Retreat | Retreats And Treks',
     description: retreat.description,
     alternates: { canonical: buildCanonicalUrl(PATH) },
+    openGraph: {
+      title: 'Chakrata Yoga Retreat | Retreats And Treks',
+      description: retreat.description,
+      url: buildCanonicalUrl(PATH),
+      type: 'website',
+      siteName: 'Retreats And Treks',
+      locale: 'en_IN',
+      images: buildOgImages('Chakrata Yoga Retreat | Retreats And Treks'),
+    },
   };
 }
 

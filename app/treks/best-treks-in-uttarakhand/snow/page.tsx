@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -24,6 +24,15 @@ export function generateMetadata(): Metadata {
     description:
       'Best snow treks in Uttarakhand for winter: Brahmatal, Kedarkantha, and Kuari Pass ranked by snow, difficulty, and experience level.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
+    openGraph: {
+      title: 'Best Snow Treks in Uttarakhand | Retreats And Treks',
+      description: 'Best snow treks in Uttarakhand for winter: Brahmatal, Kedarkantha, and Kuari Pass ranked by snow, difficulty, and experience level.',
+      url: buildCanonicalUrl(PATH),
+      type: 'website',
+      siteName: 'Retreats And Treks',
+      locale: 'en_IN',
+      images: buildOgImages('Best Snow Treks in Uttarakhand | Retreats And Treks'),
+    },
   };
 }
 

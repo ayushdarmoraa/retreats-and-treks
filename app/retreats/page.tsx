@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { getAllRetreatFormats } from '@/lib/retreats';
 import { getLocationsWithRetreats } from '@/lib/locations';
 import RetreatsClient from './RetreatsClient';
@@ -16,6 +16,15 @@ export function generateMetadata(): Metadata {
     robots: {
       index: true,
       follow: true,
+    },
+    openGraph: {
+      title: 'Guided Himalayan Retreats | Retreats And Treks',
+      description: 'Small-group and private retreats across quiet Himalayan locations — created around rest, clarity, and depth.',
+      url: buildCanonicalUrl('/retreats'),
+      type: 'website',
+      siteName: 'Retreats And Treks',
+      locale: 'en_IN',
+      images: buildOgImages('Guided Himalayan Retreats | Retreats And Treks'),
     },
   };
 }

@@ -1,14 +1,24 @@
 import { Metadata } from 'next';
 import TreksClient from './TreksClient';
 import { getAllTreks } from '@/lib/treks';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 
 export const metadata: Metadata = {
   title: 'Himalayan Treks | Guided Trekking Experiences',
   description:
     'Explore guided treks across the Indian Himalayas — from beginner-friendly valley walks to challenging summit expeditions in Sankri, Chakrata, and beyond.',
   alternates: {
-    canonical: '/treks',
+    canonical: buildCanonicalUrl('/treks'),
+  },
+  openGraph: {
+    title: 'Himalayan Treks | Guided Trekking Experiences',
+    description:
+      'Explore guided treks across the Indian Himalayas — from beginner-friendly valley walks to challenging summit expeditions in Sankri, Chakrata, and beyond.',
+    url: buildCanonicalUrl('/treks'),
+    type: 'website',
+    siteName: 'Retreats And Treks',
+    locale: 'en_IN',
+    images: buildOgImages('Himalayan Treks | Guided Trekking Experiences'),
   },
 };
 

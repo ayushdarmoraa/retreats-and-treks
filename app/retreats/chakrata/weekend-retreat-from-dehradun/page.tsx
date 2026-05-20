@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import retreat from '@/content/retreats/chakrata/weekend-retreat-from-dehradun';
 import { generateRetreatSchema, generateFAQSchema } from '@/components/seo/Schema';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema } from '@/components/seo/Breadcrumbs';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
@@ -14,6 +14,15 @@ export function generateMetadata(): Metadata {
     title: 'Chakrata Weekend Retreat | Retreats And Treks',
     description: retreat.description,
     alternates: { canonical: buildCanonicalUrl(PATH) },
+    openGraph: {
+      title: 'Chakrata Weekend Retreat | Retreats And Treks',
+      description: retreat.description,
+      url: buildCanonicalUrl(PATH),
+      type: 'website',
+      siteName: 'Retreats And Treks',
+      locale: 'en_IN',
+      images: buildOgImages('Chakrata Weekend Retreat | Retreats And Treks'),
+    },
   };
 }
 

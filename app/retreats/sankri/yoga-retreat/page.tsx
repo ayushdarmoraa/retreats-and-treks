@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 
 export function generateMetadata(): Metadata {
   return {
@@ -13,6 +13,15 @@ export function generateMetadata(): Metadata {
     robots: {
       index: true,
       follow: true,
+    },
+    openGraph: {
+      title: 'Yoga Retreat in Sankri | Mountain Practice at Altitude',
+      description: 'Yoga retreat in Sankri basecamp. Available on request for small groups practicing in alpine meadows and mountain air.',
+      url: buildCanonicalUrl('/retreats/sankri/yoga-retreat'),
+      type: 'website',
+      siteName: 'Retreats And Treks',
+      locale: 'en_IN',
+      images: buildOgImages('Yoga Retreat in Sankri | Mountain Practice at Altitude'),
     },
   };
 }

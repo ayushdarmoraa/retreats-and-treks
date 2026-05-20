@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
   generateBreadcrumbSchema,
   generateFAQSchema,
@@ -24,6 +24,15 @@ export function generateMetadata(): Metadata {
     description:
       'Most challenging treks in Uttarakhand for experienced trekkers, including Roopkund, Pangarchulla, and Milam Glacier with difficulty and fitness guidance.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
+    openGraph: {
+      title: 'Challenging Treks in Uttarakhand | Retreats And Treks',
+      description: 'Most challenging treks in Uttarakhand for experienced trekkers, including Roopkund, Pangarchulla, and Milam Glacier with difficulty and fitness guidance.',
+      url: buildCanonicalUrl(PATH),
+      type: 'website',
+      siteName: 'Retreats And Treks',
+      locale: 'en_IN',
+      images: buildOgImages('Challenging Treks in Uttarakhand | Retreats And Treks'),
+    },
   };
 }
 

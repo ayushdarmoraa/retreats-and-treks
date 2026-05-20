@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -34,6 +34,15 @@ export function generateMetadata(): Metadata {
       'Art retreats in India with painting, writing, movement, and yoga in the Himalayas. Small groups, real guidance, and no experience needed.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
+    },
+    openGraph: {
+      title: 'Art Retreats in the Himalayas | Retreats And Treks',
+      description: 'Art retreats in India with painting, writing, movement, and yoga in the Himalayas. Small groups, real guidance, and no experience needed.',
+      url: buildCanonicalUrl(PATH),
+      type: 'website',
+      siteName: 'Retreats And Treks',
+      locale: 'en_IN',
+      images: buildOgImages('Art Retreats in the Himalayas | Retreats And Treks'),
     },
     robots: { index: true, follow: true },
   };

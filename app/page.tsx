@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
-import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { getLocationsWithRetreats } from '@/lib/locations';
 import HomeClient from './HomeClient';
 import PrimaryCTA from '@/components/PrimaryCTA';
@@ -20,6 +20,15 @@ export function generateMetadata(): Metadata {
     robots: {
       index: true,
       follow: true,
+    },
+    openGraph: {
+      title: 'Himalayan Retreats & Treks – Designed Around Your Intention',
+      description: 'Curated Himalayan retreats and treks designed around your intention, with small groups, request-based journeys, and carefully chosen locations.',
+      url: buildCanonicalUrl('/'),
+      type: 'website',
+      siteName: 'Retreats And Treks',
+      locale: 'en_IN',
+      images: buildOgImages('Himalayan Retreats & Treks – Designed Around Your Intention'),
     },
   };
 }
