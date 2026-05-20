@@ -131,7 +131,7 @@ export default function SpiritualAwakeningRetreatPage() {
       <section className="pg-hero">
         <div style={{ position: 'absolute', inset: 0 }}>
           <Image
-            src="/Images/experience-hubs/monastery.png"
+            src="/Images/experience-hubs/monastery.webp"
             alt="Spiritual Awakening Retreat in the Himalayas"
             width={1920}
             height={1080}

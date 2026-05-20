@@ -266,7 +266,7 @@ export default function SilentRetreatsPage() {
               <p className="sil-body-text">This is what most people have never experienced. Not the silence of a quiet room, but the silence that lives beneath everything — thick, alive, and profoundly nourishing.</p>
             </div>
             <div style={{ position: 'relative', borderRadius: '10px', overflow: 'hidden', height: '420px' }}>
-              <Image src="/Images/experience-hubs/monastery.png" alt="Remote Himalayan monastery — the setting for deep silent retreats" width={1200} height={675} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 50vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <Image src="/Images/experience-hubs/monastery.webp" alt="Remote Himalayan monastery — the setting for deep silent retreats" width={1200} height={675} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 50vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
             </div>
           </div>
         </div>
