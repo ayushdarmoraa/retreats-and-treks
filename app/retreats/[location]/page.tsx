@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { getRetreatsByLocation } from '@/lib/retreats';
 import { getLocationById, getAllLocations } from '@/lib/locations';
@@ -43,15 +44,8 @@ export default async function RetreatsLocationPage({ params }: PageProps) {
   const locationPremiumContent = getLocationPremiumContent(locationId);
   const retreats = getRetreatsByLocation(locationId);
 
-  if (!locationData || !locationPremiumContent) {
-    return (
-      <main style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
-        <h1>Location not found</h1>
-        <Link href="/retreats" style={{ color: 'var(--color-primary)' }}>
-          ← Back to all retreats
-        </Link>
-      </main>
-    );
+  if (!locationData || !locationPremiumContent || !locationData.supportsRetreats) {
+    notFound();
   }
 
   // Fetch retreat services for this location

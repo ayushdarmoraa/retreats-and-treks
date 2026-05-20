@@ -1716,11 +1716,14 @@ export default async function TrekDetailPage({ params }: PageProps) {
       Explore more{' '}
       <Link href={`/treks/location/${locationId}`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
         treks around {location.name}
-      </Link>{' '}
-      or discover{' '}
-      <Link href={`/retreats/${locationId}`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
-        wellness retreats in {location.name}
-      </Link>.
+      </Link>
+      {location.supportsRetreats ? (
+        <> or discover{' '}
+          <Link href={`/retreats/${locationId}`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
+            wellness retreats in {location.name}
+          </Link>
+        </>
+      ) : null}.
     </p>
 
   </div>

@@ -1155,8 +1155,11 @@ export default async function TrekHubPage({ params }: PageProps) {
   }}>
     <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
       <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, color: '#555555', lineHeight: 1.85 }}>
-        {locationData.name} is a trekking destination in the Indian Himalayas. Explore the available treks below or discover{' '}
-        <Link href={`/retreats/${locationId}`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>retreats in {locationData.name}</Link>.
+        {locationData.name} is a trekking destination in the Indian Himalayas. Explore the available treks below{locationData.supportsRetreats ? (
+          <> or discover{' '}
+            <Link href={`/retreats/${locationId}`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>retreats in {locationData.name}</Link>
+          </>
+        ) : null}.
       </p>
     </div>
   </section>
@@ -1308,20 +1311,22 @@ export default async function TrekHubPage({ params }: PageProps) {
             >
               Get a Recommendation →
             </a>
-            <Link
-              href={`/retreats/${locationId}`}
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
-                padding: '0.95rem 2.25rem', background: 'transparent',
-                color: 'rgba(255,255,255,0.85)',
-                fontFamily: 'var(--font-geist-sans), sans-serif',
-                fontSize: '0.78rem', fontWeight: 400, letterSpacing: '0.06em',
-                textTransform: 'uppercase' as const, borderRadius: '100px',
-                border: '1.5px solid rgba(255,255,255,0.35)', textDecoration: 'none',
-              }}
-            >
-              View Retreats Instead
-            </Link>
+            {locationData.supportsRetreats && (
+              <Link
+                href={`/retreats/${locationId}`}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
+                  padding: '0.95rem 2.25rem', background: 'transparent',
+                  color: 'rgba(255,255,255,0.85)',
+                  fontFamily: 'var(--font-geist-sans), sans-serif',
+                  fontSize: '0.78rem', fontWeight: 400, letterSpacing: '0.06em',
+                  textTransform: 'uppercase' as const, borderRadius: '100px',
+                  border: '1.5px solid rgba(255,255,255,0.35)', textDecoration: 'none',
+                }}
+              >
+                View Retreats Instead
+              </Link>
+            )}
           </div>
           <p style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
