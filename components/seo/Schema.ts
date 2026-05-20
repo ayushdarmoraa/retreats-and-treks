@@ -29,6 +29,24 @@ export function generateRetreatSchema(retreat: RetreatContent) {
   };
 }
 
+function buildTrekOffer(priceRange?: string) {
+  const fallbackPriceRange = '₹8,000 – ₹15,000';
+  const priceMatches = Array.from((priceRange || fallbackPriceRange).matchAll(/[0-9,]+/g))
+    .map((match) => Number(match[0].replace(/,/g, '')))
+    .filter((price) => Number.isFinite(price) && price > 0);
+
+  const lowPrice = priceMatches[0] ?? 8000;
+  const highPrice = priceMatches[1] ?? lowPrice;
+
+  return {
+    '@type': 'AggregateOffer',
+    priceCurrency: 'INR',
+    lowPrice,
+    highPrice,
+    offerCount: 1,
+  };
+}
+
 export function generateTrekSchema(trek: TrekContent) {
   const heroImageUrl = trek.heroImage ? buildCanonicalUrl(trek.heroImage) : undefined;
   const galleryUrls = trek.experienceGallery?.map((img) => buildCanonicalUrl(img.src)) ?? [];
@@ -44,11 +62,7 @@ export function generateTrekSchema(trek: TrekContent) {
       '@type': 'TouristAttraction',
       name: item,
     })),
-    offers: {
-      '@type': 'Offer',
-      priceRange: trek.priceRange || '₹8,000–₹15,000',
-      priceCurrency: 'INR',
-    },
+    offers: buildTrekOffer(trek.priceRange),
     provider: { '@id': schemaIds.organization },
   };
 }
