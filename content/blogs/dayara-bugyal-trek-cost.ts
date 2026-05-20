@@ -9,8 +9,6 @@ const dayaraBugyalTrekCost: BlogContent = {
   readingTime: '8 min read',
 
   content: `
-# Dayara Bugyal Trek Cost 2024 – Complete Budget Guide
-
 Planning a Dayara Bugyal trek? Here's everything you need to know about costs, pricing, and budgeting for this beautiful beginner trek in Uttarakhand.
 
 ## Dayara Bugyal Trek Package Cost

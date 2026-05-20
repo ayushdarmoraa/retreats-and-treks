@@ -9,8 +9,6 @@ const dayaraBugyalPackingList: BlogContent = {
   readingTime: '9 min read',
 
   content: `
-# Dayara Bugyal Packing List – What to Carry for Meadow Trek
-
 Complete packing guide for your Dayara Bugyal trek. Don't overpack – focus on quality gear for this 4-day beginner-friendly trek.
 
 ## 🧥 Clothing (Layering System)

@@ -9,8 +9,6 @@ const dayaraBugyalDifficulty: BlogContent = {
   readingTime: '6 min read',
 
   content: `
-# Dayara Bugyal Trek Difficulty – Is It Right for You?
-
 Thinking about Dayara Bugyal trek? Here's everything about the difficulty level, fitness requirements, and who this trek is perfect for.
 
 ## Dayara Bugyal Difficulty Level
