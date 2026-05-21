@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import type { LocationPremiumContent } from '@/content/locations';
 import { getAllLocationContent } from '@/content/locations';
+import { getLocationById } from '@/lib/locations';
 import type { RetreatContent } from '@/types/content';
 import type { RetreatService } from '@/content/retreats/services';
 import {
@@ -1626,6 +1627,7 @@ export default function RetreatsLocationClient({
           <div className="rlc105-grid">
             {getAllLocationContent()
               .filter((loc) => loc.id !== locationPremiumContent.id)
+              .filter((loc) => getLocationById(loc.id as any)?.supportsRetreats)
               .map((loc) => (
                 <Link key={loc.id} href={`/retreats/${loc.id}`} className="rlc105-card">
                   <h3 className="rlc105-card-name">{loc.name}</h3>

@@ -48,7 +48,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${category} — Retreats And Treks`,
-    description: `Explore ${category.toLowerCase()} guides from Retreats And Treks, including practical Himalayan retreat and trek planning articles for choosing routes, places, seasons, and experiences.`,
+    description: `Explore ${category.toLowerCase()} guides for Himalayan retreats and treks, with practical advice on routes, places, seasons, and trip planning.`,
     alternates: {
       canonical: buildCanonicalUrl(path),
     },
@@ -58,7 +58,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     },
     openGraph: {
       title: `${category} — Retreats And Treks`,
-      description: `Explore ${category.toLowerCase()} guides from Retreats And Treks, including practical Himalayan retreat and trek planning articles for choosing routes, places, seasons, and experiences.`,
+      description: `Explore ${category.toLowerCase()} guides for Himalayan retreats and treks, with practical advice on routes, places, seasons, and trip planning.`,
       url: buildCanonicalUrl(path),
       type: 'website',
       images: buildOgImages(`${category} — Retreats And Treks`),
