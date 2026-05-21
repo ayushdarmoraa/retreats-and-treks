@@ -3,6 +3,7 @@ import { preload } from 'react-dom';
 import { getTreksByLocation } from '@/lib/treks';
 import { getLocationById, getAllLocations } from '@/lib/locations';
 import { getTrekHubMetadata } from '@/lib/metadata';
+import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import type { LocationId } from '@/config/locations';
 
 /* Server-side Link — renders <a> instead of next/link to eliminate client JS hydration.
@@ -680,11 +681,22 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const override = GARHWAL_HUB_META[locationId];
   if (override) {
+    const canonical = buildCanonicalUrl(`/treks/location/${locationId}`);
+
     return {
       title: override.title,
       description: override.description,
       alternates: {
-        canonical: `https://www.retreatsandtreks.com/treks/location/${locationId}`,
+        canonical,
+      },
+      openGraph: {
+        title: override.title,
+        description: override.description,
+        url: canonical,
+        type: 'website',
+        siteName: 'Retreats And Treks',
+        locale: 'en_IN',
+        images: buildOgImages(override.title),
       },
       robots: { index: true, follow: true },
     };
