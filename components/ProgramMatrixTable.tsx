@@ -23,22 +23,22 @@ export interface MatrixRow {
 function MiniScores({ scores }: { scores: RetreatScores }) {
   const dims = Object.entries(scores) as [keyof RetreatScores, number][];
   const labels: Record<keyof RetreatScores, string> = {
-    intensity: 'Int',
-    reflectionDepth: 'Ref',
-    socialInteraction: 'Soc',
-    physicalDemand: 'Phy',
+    intensity: 'Energy',
+    reflectionDepth: 'Reflection',
+    socialInteraction: 'Social',
+    physicalDemand: 'Physical',
   };
   return (
-          <div style={{ display: 'grid', gap: '5px', minWidth: '90px' }}>
+    <div style={{ display: 'grid', gap: '6px', minWidth: '140px' }}>
       {dims.map(([dim, val]) => (
-        <div key={dim} title={`${dim}: ${val}/10`} style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+        <div key={dim} title={`${labels[dim]}: ${val}/10`} style={{ display: 'flex', alignItems: 'center', gap: '7px' }}>
           <span style={{
-            fontSize: '0.75rem',
-            color: '#aaaaaa',
-            width: '22px',
+            fontSize: '0.72rem',
+            color: '#666666',
+            width: '58px',
             flexShrink: 0,
             fontFamily: 'var(--font-geist-sans), sans-serif',
-            letterSpacing: '0.05em',
+            letterSpacing: '0.02em',
           }}>{labels[dim]}</span>
           <div style={{
             flex: 1, height: '4px',
@@ -76,6 +76,23 @@ type SortDir = 'asc' | 'desc';
 
 const INTENSITY_ORDER = { low: 0, medium: 1, high: 2 };
 const DURATION_ORDER = { '3-day': 0, '5-day': 1, 'flexible': 2 };
+
+function formatMatrixLabel(value: string): string {
+  return value
+    .split('-')
+    .map((part, index) =>
+      index === 0
+        ? part.charAt(0).toUpperCase() + part.slice(1)
+        : part,
+    )
+    .join('-');
+}
+
+function formatDurationLabel(value: string): string {
+  if (value === 'flexible') return 'Flexible / custom';
+  if (value === '3-day' || value === '5-day') return `${value} format`;
+  return formatMatrixLabel(value);
+}
 
 function compareRows(a: MatrixRow, b: MatrixRow, key: SortKey, dir: SortDir): number {
   let cmp = 0;
@@ -132,24 +149,26 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
         /* ── Filter bar ── */
         .pmt-filters {
           display: flex;
-          gap: 1.5rem;
+          gap: 1rem;
           margin-bottom: 2rem;
           flex-wrap: wrap;
-          align-items: center;
+          align-items: flex-end;
           padding: 1.25rem 1.5rem;
           background: #f7f9f7;
           border: 1px solid rgba(15,118,110,0.08);
-          border-radius: 8px;
+          border-radius: 12px;
         }
 
         .pmt-filter-label {
-          font-size: 0.75rem;
-          font-weight: 500;
-          letter-spacing: 0.08em;
+          font-size: 0.68rem;
+          font-weight: 600;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
           color: #555555;
           display: flex;
-          align-items: center;
-          gap: 0.6rem;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 0.45rem;
           white-space: nowrap;
         }
 
@@ -192,12 +211,23 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
         .pmt-count {
           margin-left: auto;
           font-size: 0.75rem;
-          color: #aaaaaa;
-          letter-spacing: 0.05em;
+          color: #374151;
+          letter-spacing: 0.03em;
+          background: #ffffff;
+          border: 1px solid rgba(15,118,110,0.12);
+          border-radius: 999px;
+          padding: 0.45rem 0.8rem;
+          white-space: nowrap;
         }
 
         /* ── Table ── */
-        .pmt-scroll { overflow-x: auto; }
+        .pmt-scroll {
+          overflow-x: auto;
+          background: #ffffff;
+          border: 1px solid rgba(15,118,110,0.10);
+          border-radius: 14px;
+          box-shadow: 0 10px 30px rgba(15,118,110,0.06);
+        }
 
         .pmt-table {
           width: 100%;
@@ -248,15 +278,30 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
 
         /* Program title link */
         .pmt-title-link {
-          font-size: 0.88rem;
-          font-weight: 400;
-          color: #374151;
+          font-size: 0.9rem;
+          font-weight: 500;
+          color: #0f3f3a;
           text-decoration: none;
           letter-spacing: -0.01em;
-          transition: opacity 0.2s;
-          display: block;
+          transition: color 0.2s, transform 0.2s;
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
         }
-        .pmt-title-link:hover { 5; }
+        .pmt-title-link::after {
+          content: '→';
+          font-size: 0.72rem;
+          opacity: 0.55;
+          transition: transform 0.2s, opacity 0.2s;
+        }
+        .pmt-title-link:hover {
+          color: #0f766e;
+          transform: translateX(2px);
+        }
+        .pmt-title-link:hover::after {
+          opacity: 1;
+          transform: translateX(2px);
+        }
 
         /* Pills */
         .pmt-pill {
@@ -296,7 +341,7 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
       {/* Filters */}
       <div className="pmt-filters">
         <label className="pmt-filter-label">
-          Filter by intensity:
+          Intensity
           <select
             className="pmt-select"
             value={filterIntensity}
@@ -314,7 +359,7 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
         </label>
 
         <label className="pmt-filter-label">
-          Filter by duration:
+          Duration
           <select
             className="pmt-select"
             value={filterDuration}
@@ -366,7 +411,7 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
                 Format <SortIndicator active={sortKey === 'format'} dir={sortDir} />
               </th>
               <th className="pmt-th no-sort">Best For</th>
-              <th className="pmt-th no-sort" style={{ minWidth: '110px' }}>Profile</th>
+              <th className="pmt-th no-sort" style={{ minWidth: '150px' }}>Retreat Feel</th>
             </tr>
           </thead>
           <tbody>
@@ -389,7 +434,7 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
                 </td>
                 <td className="pmt-td">
                   <span className="pmt-pill pmt-pill-grey">
-                    {row.duration === 'flexible' ? 'Flexible / custom' : row.duration}
+                    {formatDurationLabel(row.duration)}
                   </span>
                 </td>
                 <td className="pmt-td" style={{ textTransform: 'capitalize' }}>{row.primaryLocation}</td>
@@ -402,7 +447,7 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
                   </span>
                 </td>
                 <td className="pmt-td">
-                  <span className="pmt-pill pmt-pill-grey">{row.format}</span>
+                  <span className="pmt-pill pmt-pill-grey">{formatMatrixLabel(row.format)}</span>
                 </td>
                 <td className="pmt-td">
                   <span className="pmt-bestfor">{row.bestFor}</span>
@@ -417,7 +462,7 @@ export default function ProgramMatrixTable({ rows, fromPath }: { rows: MatrixRow
             ))}
             {sorted.length === 0 && (
               <tr>
-                <td colSpan={6} className="pmt-empty">
+                <td colSpan={7} className="pmt-empty">
                   No programs match the current filters.
                 </td>
               </tr>

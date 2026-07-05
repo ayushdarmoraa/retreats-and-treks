@@ -12,12 +12,6 @@ interface IntentOption {
   description: string;
 }
 
-interface ProcessStep {
-  step: string;
-  title: string;
-  description: string;
-}
-
 interface Location {
   id: LocationId;
   name: string;
@@ -30,7 +24,6 @@ interface Location {
 
 interface RetreatsClientProps {
   intentions: IntentOption[];
-  processSteps: ProcessStep[];
   whyUsPoints: string[];
   retreatFormats: RetreatContent[];
   locations: Location[];
@@ -38,7 +31,6 @@ interface RetreatsClientProps {
 
 export default function RetreatsClient({
   intentions,
-  processSteps,
   whyUsPoints,
   retreatFormats,
   locations,
@@ -405,7 +397,7 @@ export default function RetreatsClient({
         marginBottom: '0',
         marginTop: '0',
         paddingTop: '6rem',
-        paddingBottom: '6rem',
+        paddingBottom: '4rem',
         background: '#f7f9f7',
         width: '100vw',
         marginLeft: 'calc(-50vw + 50%)',
@@ -447,7 +439,7 @@ export default function RetreatsClient({
           }
           .rs-card:hover .rs-img-overlay { opacity: 0.85; }
           .rs-img-tag {
-            position: absolute; top: 1rem; left: 1rem;
+            position: absolute; top: 1.2rem; left: 1.2rem;
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 0.52rem; letter-spacing: 0.24em;
             text-transform: uppercase; color: #ffffff;
@@ -455,7 +447,7 @@ export default function RetreatsClient({
             border-radius: 2px; font-weight: 600;
           }
           .rs-img-title {
-            position: absolute; bottom: 1rem; left: 1.25rem; right: 1.25rem;
+            position: absolute; bottom: 0.8rem; left: 1.25rem; right: 1.25rem;
             font-family: var(--font-geist-sans), sans-serif;
             font-size: 1rem; font-weight: 500; color: #ece4d0;
             line-height: 1.25;  transform: translateY(8px);
@@ -613,142 +605,87 @@ export default function RetreatsClient({
         </div>
       </section>
 
-      {/* SECTION 3: HOW OUR RETREATS WORK */}
       <section style={{
-        marginBottom: '0',
-        marginTop: '0',
-        paddingTop: '6rem',
+        paddingTop: '3rem',
         paddingBottom: '6rem',
         background: '#ffffff',
-        width: '100vw',
-        marginLeft: 'calc(-50vw + 50%)',
-        borderBottom: '1px solid #e5e7eb',
+        borderTop: '1px solid #e5e7eb',
       }}>
         <style>{`
-          /* ── Step card ── */
-          .hw-card {
+          .signature-section {
+            max-width: 78rem;
+            margin: 0 auto;
+            padding: 0 2rem;
+          }
+          .signature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1.25rem;
+          }
+          .signature-card {
+            height: 100%;
+            border-radius: 6px;
             display: flex;
             flex-direction: column;
-            gap: 1rem;
-            padding: 2.25rem 2rem;
-            border-radius: 6px;
-            border: 1px solid #eef0ee;
-            background: #ffffff;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
-            transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), box-shadow 0.35s, border-color 0.3s;
-            position: relative;
-            text-align: center;
-            align-items: center;
           }
-          .hw-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 36px rgba(0,0,0,0.09);
-            border-color: rgba(15,118,110,0.25);
+          .signature-card .rs-img-wrap {
+            flex: 0 0 auto;
           }
-          .hw-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: var(--color-primary);
-            transform: scaleX(0);
-            transform-origin: left;
-            transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
-            border-radius: 6px 6px 0 0;
+          .signature-card .rs-img {
+            height: 190px;
+            transition: transform 0.4s ease;
           }
-          .hw-card:hover::before { transform: scaleX(1); }
-
-          /* Step number circle */
-          .hw-num {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            background: transparent;
-            border: 1.5px solid var(--color-primary);
+          .signature-card .rs-body {
+            padding: 1.35rem 1.4rem 1.55rem;
             display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: var(--font-geist-sans), sans-serif;
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #374151;
-            transition: background 0.3s, color 0.3s;
-            flex-shrink: 0;
+            flex-direction: column;
+            flex: 1;
           }
-          .hw-card:hover .hw-num {
-            background: var(--color-primary);
-            color: #ffffff;
+          .signature-card .rs-card-title {
+            font-size: 1rem;
+            margin: 0 0 0.6rem;
           }
-
-          .hw-title {
-            font-family: var(--font-geist-sans), sans-serif;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: #111111;
-            margin: 0 0 0.4rem;
-            letter-spacing: -0.01em;
-            line-height: 1.3;
-          }
-          .hw-desc {
-            font-family: var(--font-geist-sans), sans-serif;
+          .signature-card .rs-card-desc {
             font-size: 0.87rem;
-            line-height: 1.8;
-            color: #777777;
-            margin: 0;
-            font-weight: 300;
+            margin: 0 0 1.5rem;
           }
-
-          /* ── Grid ── */
-          .hw-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1.5rem;
-            align-items: start;
+          .signature-card .rs-cta {
+            margin-top: auto;
           }
-
-          /* ── Eyebrow ── */
-          .hw-eyebrow {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.9rem;
-            margin-bottom: 1rem;
+          .signature-card:hover .rs-img {
+            transform: scale(1.04);
           }
-          .hw-eyebrow-line {
-            width: 28px; height: 1px;
-            background: var(--color-primary);
-            
+          .signature-card:hover .rs-cta {
+            gap: 0.72rem;
           }
-          .hw-eyebrow-text {
-            font-family: var(--font-geist-sans), sans-serif;
-            font-size: 0.75rem;
-            letter-spacing: 0.32em;
-            text-transform: uppercase;
-            color: #374151;
-            font-weight: 500;
+          @media (max-width: 768px) {
+            .signature-grid {
+              grid-template-columns: 1fr;
+            }
+            .signature-section {
+              padding: 0 1.25rem;
+            }
           }
         `}</style>
 
-        <div style={{ maxWidth: '78rem', marginLeft: 'auto', marginRight: 'auto', paddingLeft: '2rem', paddingRight: '2rem' }}>
-
-          <div className="hw-eyebrow">
-            <span className="hw-eyebrow-line" />
-            <span className="hw-eyebrow-text">The process</span>
-            <span className="hw-eyebrow-line" />
+        <div className="signature-section">
+          <div className="rs-eyebrow">
+            <span className="rs-eyebrow-line" />
+            <span className="rs-eyebrow-text">Our Signature Retreats</span>
+            <span className="rs-eyebrow-line" />
           </div>
 
           <h2 style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
-            fontSize: 'clamp(1.8rem, 2.8vw, 2.5rem)',
+            fontSize: 'clamp(1.6rem, 2.4vw, 2.2rem)',
             fontWeight: 200,
             letterSpacing: '-0.03em',
             color: '#111111',
-            margin: '0 0 3.5rem',
-            lineHeight: 1.1,
+            margin: '0 0 0.95rem',
+            lineHeight: 1.15,
             textAlign: 'center',
           }}>
-            From Intention{' '}
-            <span style={{ color: '#374151', fontWeight: 200 }}>to Arrival</span>
+            Our Signature Retreats
           </h2>
 
           <p style={{
@@ -758,28 +695,73 @@ export default function RetreatsClient({
             fontWeight: 300,
             lineHeight: 1.75,
             color: '#555555',
-            maxWidth: '42rem',
-            margin: '-2rem auto 3.25rem',
+            maxWidth: '44rem',
+            margin: '0 auto 2.4rem',
           }}>
-            A simple, guided planning flow — you share what you need, we shape the retreat around your dates, pace, and intention.
+            If you&apos;re unsure where to begin, these are the retreat experiences most guests choose first.
           </p>
 
-          <div className="hw-grid">
-            {processSteps.map((ps) => (
-              <div key={ps.step} className="hw-card">
-                <div className="hw-num">{ps.step}</div>
-                <div>
-                  <h3 className="hw-title">{ps.title}</h3>
-                  <p className="hw-desc">{ps.description}</p>
-                </div>
+          <div className="signature-grid">
+            <Link href="/retreats/yoga-retreat-uttarakhand" className="signature-card rs-card">
+              <div className="rs-img-wrap">
+                <Image src="/Images/services/yoga.webp" alt="Yoga retreats in the Himalayas" className="rs-img" width={400} height={210} sizes="(max-width: 768px) 100vw, 33vw" quality={70} />
+                <div className="rs-img-overlay" />
+                <span className="rs-img-tag">Yoga</span>
+                <span className="rs-img-title">Yoga Retreats</span>
               </div>
-            ))}
-          </div>
+              <div className="rs-body">
+                <h3 className="rs-card-title">Yoga Retreats</h3>
+                <p className="rs-card-desc">Multi-day Himalayan yoga retreats focused on movement, breath, recovery and mindful living.</p>
+                <div className="rs-cta">Explore Yoga Retreats →</div>
+              </div>
+            </Link>
 
+            <Link href="/retreats/meditation-retreat-uttarakhand" className="signature-card rs-card">
+              <div className="rs-img-wrap">
+                <Image src="/Images/Journeys/meditation.webp" alt="Meditation retreats in the Himalayas" className="rs-img" width={400} height={210} sizes="(max-width: 768px) 100vw, 33vw" quality={70} />
+                <div className="rs-img-overlay" />
+                <span className="rs-img-tag">Meditation</span>
+                <span className="rs-img-title">Meditation Retreats</span>
+              </div>
+              <div className="rs-body">
+                <h3 className="rs-card-title">Meditation Retreats</h3>
+                <p className="rs-card-desc">Guided meditation retreats designed for silence, clarity, emotional balance and deep rest.</p>
+                <div className="rs-cta">Explore Meditation Retreats →</div>
+              </div>
+            </Link>
+
+            <Link href="/retreats/weekend-himalayan-retreats" className="signature-card rs-card">
+              <div className="rs-img-wrap">
+                <Image src="/Images/services/weekendretreat.webp" alt="Weekend retreats in the Himalayas" className="rs-img" width={400} height={210} sizes="(max-width: 768px) 100vw, 33vw" quality={70} />
+                <div className="rs-img-overlay" />
+                <span className="rs-img-tag">Weekend</span>
+                <span className="rs-img-title">Weekend Retreats</span>
+              </div>
+              <div className="rs-body">
+                <h3 className="rs-card-title">Weekend Retreats</h3>
+                <p className="rs-card-desc">Short Himalayan escapes designed for busy professionals needing genuine rest.</p>
+                <div className="rs-cta">Explore Weekend Retreats →</div>
+              </div>
+            </Link>
+
+            <Link href="/creative-retreat" className="signature-card rs-card">
+              <div className="rs-img-wrap">
+                <Image src="/Images/services/artcreative.webp" alt="Creative healing retreats in the Himalayas" className="rs-img" width={400} height={210} sizes="(max-width: 768px) 100vw, 33vw" quality={70} />
+                <div className="rs-img-overlay" />
+                <span className="rs-img-tag">Creative</span>
+                <span className="rs-img-title">Creative Healing Retreat</span>
+              </div>
+              <div className="rs-body">
+                <h3 className="rs-card-title">Creative Healing Retreat</h3>
+                <p className="rs-card-desc">Art, journaling, nature and mindfulness combined into one immersive healing experience.</p>
+                <div className="rs-cta">Explore Creative Retreat →</div>
+              </div>
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* SECTION 4: RETREAT FORMATS */}
+      {/* SECTION 3: RETREAT FORMATS */}
       <section style={{
         marginBottom: '0',
         marginTop: '0',
@@ -992,6 +974,7 @@ export default function RetreatsClient({
 
         </div>
       </section>
+
       {/* SECTION 5: HIMALAYAN LOCATIONS */}
       <section style={{
         marginBottom: '0',

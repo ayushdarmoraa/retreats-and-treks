@@ -73,6 +73,18 @@ export default function RetreatProgramsPage() {
   return (
     <main className="rpm-main">
       <style>{`
+        html,
+        body {
+          overflow-x: clip;
+        }
+
+        @supports not (overflow-x: clip) {
+          html,
+          body {
+            overflow-x: hidden;
+          }
+        }
+
         .rpm-main {
           max-width: 72rem;
           margin: 0 auto;
@@ -372,7 +384,7 @@ export default function RetreatProgramsPage() {
         <div key={item.href} className="rpm-cmp-item">
           <Link href={item.href}>
             <span>
-              <span className="rpm-cmp-num">0{i + 1}</span>
+              <span className="rpm-cmp-num">{String(i + 1).padStart(2, '0')}</span>
               {item.label}
             </span>
             <span className="rpm-cmp-arrow">→</span>

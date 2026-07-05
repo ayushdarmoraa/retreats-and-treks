@@ -56,29 +56,6 @@ const intentOptions = [
   },
 ];
 
-const processSteps = [
-  {
-    step: '1',
-    title: 'You share your intention',
-    description: 'Tell us what you\'re seeking — rest, clarity, healing, or something else.',
-  },
-  {
-    step: '2',
-    title: 'We suggest locations & formats',
-    description: 'Based on your needs, we recommend which locations and retreat styles suit you best.',
-  },
-  {
-    step: '3',
-    title: 'Retreat is designed & confirmed',
-    description: 'We customize dates, length, and focus. Everything is flexible.',
-  },
-  {
-    step: '4',
-    title: 'You arrive — we handle the rest',
-    description: 'From meals to logistics to the experience itself — it\'s designed and guided.',
-  },
-];
-
 const whyUsPoints = [
   'Small-group or private only — never large commercial groups',
   'Quiet, non-commercial locations selected for depth',
@@ -96,7 +73,6 @@ export default function RetreatsPage() {
     <main style={{ maxWidth: '72rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
       <RetreatsClient
         intentions={intentOptions}
-        processSteps={processSteps}
         whyUsPoints={whyUsPoints}
         retreatFormats={retreatFormats}
         locations={locationsWithRetreats}
