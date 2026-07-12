@@ -1,3 +1,4 @@
+// app/retreats/page.tsx
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
@@ -70,180 +71,327 @@ export default function RetreatsPage() {
   const locationsWithRetreats = getLocationsWithRetreats();
 
   return (
-    <main style={{ maxWidth: '72rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
-      <RetreatsClient
-        intentions={intentOptions}
-        whyUsPoints={whyUsPoints}
-        retreatFormats={retreatFormats}
-        locations={locationsWithRetreats}
-      />
+    <>
+      <main style={{ maxWidth: '84rem', margin: '0 auto', padding: '80px 4rem 0' }}>
+        <RetreatsClient
+          intentions={intentOptions}
+          whyUsPoints={whyUsPoints}
+          retreatFormats={retreatFormats}
+          locations={locationsWithRetreats}
+        />
 
-      {/* ── RETREAT GUIDES ── */}
-      <style>{`
-  .retreat-guides {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    background: #f7f9f7;
-    padding: 4rem 0 3.5rem;
-    border-top: 1px solid #e5e7eb;
-  }
-  .retreat-guides-inner {
-    max-width: 64rem;
-    margin: 0 auto;
-    padding: 0 var(--space-md, 1.5rem);
-  }
-  .retreat-guides-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1rem;
-    margin-top: 1.5rem;
-  }
-  .retreat-guide-card {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1.1rem 1.25rem;
-    background: #ffffff;
-    border: 1px solid #eef0ee;
-    border-radius: 8px;
-    text-decoration: none;
-    color: #333;
-    font-family: var(--font-geist-sans), sans-serif;
-    font-size: 0.88rem;
-    font-weight: 300;
-    transition: border-color 0.2s, color 0.2s;
-  }
-  .retreat-guide-card:hover {
-    border-color: #374151;
-    color: #374151;
-  }
-  .retreat-guide-card::after {
-    content: '→';
-    color: #374151;
-    
-    flex-shrink: 0;
-    margin-left: 0.75rem;
-  }
-`}</style>
+        {/* ── RETREAT GUIDES ── */}
+        <section className="retreat-guides">
+          <style>{`
+            .retreat-guides {
+              width: 100vw;
+              margin-left: calc(-50vw + 50%);
+              background: #f7f9f7;
+              padding: 6rem 0;
+              border-top: 1px solid rgba(0, 0, 0, 0.04);
+              border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            }
+            .retreat-guides-inner {
+              max-width: 84rem;
+              margin: 0 auto;
+              padding: 0 4rem;
+            }
+            .retreat-guides-header {
+              text-align: center;
+              margin-bottom: 3.5rem;
+            }
+            .retreat-guides-badge {
+              display: inline-flex;
+              align-items: center;
+              gap: 0.8rem;
+              margin-bottom: 1.2rem;
+            }
+            .retreat-guides-badge-line {
+              width: 36px;
+              height: 1px;
+              background: #0f766e;
+              opacity: 0.3;
+            }
+            .retreat-guides-badge-text {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.7rem;
+              letter-spacing: 0.35em;
+              text-transform: uppercase;
+              color: #6b7280;
+              font-weight: 500;
+            }
+            .retreat-guides-headline {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: clamp(2.5rem, 4vw, 4rem);
+              font-weight: 200;
+              letter-spacing: -0.03em;
+              color: #1a1814;
+              margin: 0 0 0.75rem;
+              line-height: 1.1;
+            }
+            .retreat-guides-headline .accent {
+              color: #0f766e;
+              font-weight: 200;
+            }
+            .retreat-guides-sub {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 1rem;
+              color: #6b7280;
+              font-weight: 300;
+              max-width: 48rem;
+              margin: 0 auto;
+              line-height: 1.8;
+            }
+            .retreat-guides-divider {
+              width: 60px;
+              height: 2px;
+              background: linear-gradient(90deg, #0f766e, rgba(15, 118, 110, 0.03));
+              margin: 1.5rem auto 0;
+              border-radius: 4px;
+              opacity: 0.2;
+            }
+            .retreat-guides-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+              gap: 1rem;
+              margin-top: 2.5rem;
+            }
+            .retreat-guide-card {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              padding: 1rem 1.5rem;
+              background: #ffffff;
+              border: 1px solid rgba(0, 0, 0, 0.04);
+              border-radius: 12px;
+              text-decoration: none;
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.88rem;
+              font-weight: 400;
+              color: #1a1814;
+              transition: all 0.3s ease;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            }
+            .retreat-guide-card:hover {
+              border-color: rgba(15, 118, 110, 0.15);
+              color: #0f766e;
+              transform: translateY(-2px);
+              box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            }
+            .retreat-guide-card::after {
+              content: '→';
+              color: #6b7280;
+              flex-shrink: 0;
+              margin-left: 0.75rem;
+              transition: transform 0.3s ease;
+            }
+            .retreat-guide-card:hover::after {
+              transform: translateX(4px);
+              color: #0f766e;
+            }
 
-      <div className="retreat-guides">
-        <div className="retreat-guides-inner">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-            <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151'}}>
-              Retreat Guides
-            </span>
+            @media (max-width: 900px) {
+              .retreat-guides-inner {
+                padding: 0 2rem;
+              }
+              .retreat-guides-headline {
+                font-size: clamp(2rem, 6vw, 3rem);
+              }
+            }
+            @media (max-width: 640px) {
+              .retreat-guides {
+                padding: 4rem 0;
+              }
+              .retreat-guides-inner {
+                padding: 0 1.5rem;
+              }
+              .retreat-guides-grid {
+                grid-template-columns: 1fr;
+              }
+              .retreat-guides-headline {
+                font-size: clamp(1.8rem, 5vw, 2.5rem);
+              }
+              .retreat-guides-badge-text {
+                font-size: 0.6rem;
+              }
+            }
+          `}</style>
+
+          <div className="retreat-guides-inner">
+            <div className="retreat-guides-header">
+              <div className="retreat-guides-badge">
+                <span className="retreat-guides-badge-line" />
+                <span className="retreat-guides-badge-text">Retreat Guides</span>
+                <span className="retreat-guides-badge-line" />
+              </div>
+              <h2 className="retreat-guides-headline">
+                Explore Our <span className="accent">Retreat Guides</span>
+              </h2>
+              <p className="retreat-guides-sub">
+                In-depth guides to help you plan the right retreat — from weekend escapes near Delhi to longer Himalayan immersions.
+              </p>
+              <div className="retreat-guides-divider" />
+            </div>
+
+            <div className="retreat-guides-grid">
+              <Link href="/retreats/weekend-retreat-near-delhi" className="retreat-guide-card">
+                Weekend Retreat Near Delhi
+              </Link>
+              <Link href="/retreats/retreats-near-delhi" className="retreat-guide-card">
+                Retreats Near Delhi
+              </Link>
+              <Link href="/retreats/weekend-himalayan-retreats" className="retreat-guide-card">
+                Weekend Himalayan Retreats
+              </Link>
+              <Link href="/retreats/best-retreat-in-uttarakhand" className="retreat-guide-card">
+                Best Retreats in Uttarakhand
+              </Link>
+              <Link href="/retreats/retreat-cost-india" className="retreat-guide-card">
+                Retreat Costs in India (2026)
+              </Link>
+            </div>
           </div>
-          <h2 style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
-            fontSize: 'clamp(1.25rem, 2.2vw, 1.65rem)',
-            fontWeight: 200,
-            letterSpacing: '-0.03em',
-            color: '#111',
-            lineHeight: 1.15,
-            margin: '0 0 0.5rem',
-          }}>
-            Explore Our <span style={{ color: '#374151' }}>Retreat Guides</span>
-          </h2>
-          <p style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
-            fontSize: '0.88rem',
-            fontWeight: 300,
-            lineHeight: 1.85,
-            color: '#555',
-            margin: 0,
-            maxWidth: '48rem',
-          }}>
-            In-depth guides to help you plan the right retreat — from weekend escapes near Delhi to longer Himalayan immersions.
-          </p>
-          <div className="retreat-guides-grid">
-            <Link href="/retreats/weekend-retreat-near-delhi" className="retreat-guide-card">
-              Weekend Retreat Near Delhi
-            </Link>
-            <Link href="/retreats/retreats-near-delhi" className="retreat-guide-card">
-              Retreats Near Delhi
-            </Link>
-            <Link href="/retreats/weekend-himalayan-retreats" className="retreat-guide-card">
-              Weekend Himalayan Retreats
-            </Link>
-            <Link href="/retreats/best-retreat-in-uttarakhand" className="retreat-guide-card">
-              Best Retreats in Uttarakhand
-            </Link>
-            <Link href="/retreats/retreat-cost-india" className="retreat-guide-card">
-              Retreat Costs in India (2026)
-            </Link>
+        </section>
+
+        {/* ── SEO CONTENT ── */}
+        <section className="retreats-seo">
+          <style>{`
+            .retreats-seo {
+              width: 100vw;
+              margin-left: calc(-50vw + 50%);
+              background: #ffffff;
+              padding: 6rem 0;
+            }
+            .retreats-seo-inner {
+              max-width: 84rem;
+              margin: 0 auto;
+              padding: 0 4rem;
+            }
+            .retreats-seo-header {
+              text-align: center;
+              margin-bottom: 3rem;
+            }
+            .retreats-seo-badge {
+              display: inline-flex;
+              align-items: center;
+              gap: 0.8rem;
+              margin-bottom: 1.2rem;
+            }
+            .retreats-seo-badge-line {
+              width: 36px;
+              height: 1px;
+              background: #0f766e;
+              opacity: 0.3;
+            }
+            .retreats-seo-badge-text {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.7rem;
+              letter-spacing: 0.35em;
+              text-transform: uppercase;
+              color: #6b7280;
+              font-weight: 500;
+            }
+            .retreats-seo-headline {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: clamp(2.5rem, 4vw, 4rem);
+              font-weight: 200;
+              letter-spacing: -0.03em;
+              color: #1a1814;
+              margin: 0 0 0.5rem;
+              line-height: 1.1;
+            }
+            .retreats-seo-headline .accent {
+              color: #0f766e;
+              font-weight: 200;
+            }
+            .retreats-seo-divider {
+              width: 60px;
+              height: 2px;
+              background: linear-gradient(90deg, #0f766e, rgba(15, 118, 110, 0.03));
+              margin: 1.5rem auto 0;
+              border-radius: 4px;
+              opacity: 0.2;
+            }
+            .retreats-seo-body {
+              max-width: 52rem;
+              margin: 0 auto;
+            }
+            .retreats-seo-text {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 1rem;
+              font-weight: 300;
+              line-height: 2;
+              color: #6b7280;
+              margin: 0 0 1.5rem;
+              text-align: center;
+            }
+            .retreats-seo-text:last-child {
+              margin-bottom: 0;
+            }
+            .retreats-seo-text a {
+              color: #0f766e;
+              text-decoration: none;
+              border-bottom: 1px solid rgba(15, 118, 110, 0.15);
+              transition: border-color 0.3s ease;
+            }
+            .retreats-seo-text a:hover {
+              border-color: #0f766e;
+            }
+
+            @media (max-width: 900px) {
+              .retreats-seo-inner {
+                padding: 0 2rem;
+              }
+              .retreats-seo-headline {
+                font-size: clamp(2rem, 6vw, 3rem);
+              }
+            }
+            @media (max-width: 640px) {
+              .retreats-seo {
+                padding: 4rem 0;
+              }
+              .retreats-seo-inner {
+                padding: 0 1.5rem;
+              }
+              .retreats-seo-headline {
+                font-size: clamp(1.8rem, 5vw, 2.5rem);
+              }
+              .retreats-seo-text {
+                font-size: 0.95rem;
+                text-align: left;
+              }
+              .retreats-seo-badge-text {
+                font-size: 0.6rem;
+              }
+            }
+          `}</style>
+
+          <div className="retreats-seo-inner">
+            <div className="retreats-seo-header">
+              <div className="retreats-seo-badge">
+                <span className="retreats-seo-badge-line" />
+                <span className="retreats-seo-badge-text">Himalayan Retreats</span>
+                <span className="retreats-seo-badge-line" />
+              </div>
+              <h2 className="retreats-seo-headline">
+                Guided Himalayan Retreats, <span className="accent">Designed With Intention</span>
+              </h2>
+              <div className="retreats-seo-divider" />
+            </div>
+
+            <div className="retreats-seo-body">
+              <p className="retreats-seo-text">
+                We design Himalayan retreats in India across carefully selected locations in Uttarakhand, offering wellness retreats and guided retreat programs built around small-group and private formats. From restorative yoga and burnout recovery retreats to silent meditation immersions and weekend resets, each experience is created for depth, clarity, and environmental harmony. Our <Link href="/creative-retreat">Creative Healing Retreat</Link> offers emotional healing through art, yoga, and nature. Our retreats operate in mountain settings such as Chakrata, Sankri, and Rishikesh, with clear travel guidance from nearby hubs like Dehradun. Whether you are seeking a short restorative break or a longer transformational retreat, our programs balance intentional facilitation with practical planning — so you can focus fully on the experience.
+              </p>
+
+              <p className="retreats-seo-text">
+                To compare all programs side by side by duration, intensity, and format, see the{' '}
+                <Link href="/retreat-programs">full program comparison matrix</Link>.
+              </p>
+            </div>
           </div>
-        </div>
-      </div>
-
-     <style>{`
-  .retreats-seo {
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    background: #ffffff;
-    padding: 4rem 0 3rem;
-  }
-  .retreats-seo-inner {
-    max-width: 64rem;
-    margin: 0 auto;
-    padding: 0 var(--space-md, 1.5rem);
-  }
-`}</style>
-
-<div className="retreats-seo">
-  <div className="retreats-seo-inner">
-
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: 24, height: 1, background: 'var(--color-primary)',  flexShrink: 0, display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 500, letterSpacing: '0.28em', textTransform: 'uppercase', color: '#374151'}}>
-        Himalayan Retreats
-      </span>
-    </div>
-
-    <h2 style={{
-      fontFamily: 'var(--font-geist-sans), sans-serif',
-      fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
-      fontWeight: 200,
-      letterSpacing: '-0.03em',
-      color: '#111111',
-      lineHeight: 1.15,
-      margin: '0 0 1.25rem 0',
-      maxWidth: '44rem',
-    }}>
-      Guided Himalayan Retreats, Designed With Intention
-    </h2>
-
-    <p style={{
-      fontFamily: 'var(--font-geist-sans), sans-serif',
-      fontSize: '0.88rem',
-      fontWeight: 300,
-      lineHeight: 1.85,
-      color: '#555555',
-      margin: '0 0 1.25rem 0',
-      maxWidth: '52rem',
-    }}>
-      We design Himalayan retreats in India across carefully selected locations in Uttarakhand, offering wellness retreats and guided retreat programs built around small-group and private formats. From restorative yoga and burnout recovery retreats to silent meditation immersions and weekend resets, each experience is created for depth, clarity, and environmental harmony. Our <Link href="/creative-retreat" style={{ color: '#374151', textDecoration: 'underline' }}>Creative Healing Retreat</Link> offers emotional healing through art, yoga, and nature. Our retreats operate in mountain settings such as Chakrata, Sankri, and Rishikesh, with clear travel guidance from nearby hubs like Dehradun. Whether you are seeking a short restorative break or a longer transformational retreat, our programs balance intentional facilitation with practical planning — so you can focus fully on the experience.
-    </p>
-
-    <p style={{
-      fontFamily: 'var(--font-geist-sans), sans-serif',
-      fontSize: '0.88rem',
-      fontWeight: 300,
-      lineHeight: 1.85,
-      color: '#555555',
-      margin: 0,
-      maxWidth: '52rem',
-    }}>
-      To compare all programs side by side by duration, intensity, and format, see the{' '}
-      <Link href="/retreat-programs" style={{ color: '#374151', textDecoration: 'underline' }}>
-        full program comparison matrix
-      </Link>
-      .
-    </p>
-
-  </div>
-</div>
-      
-    </main>
+        </section>
+      </main>
+    </>
   );
 }
