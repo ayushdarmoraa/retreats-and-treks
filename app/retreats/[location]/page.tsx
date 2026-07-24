@@ -15,7 +15,6 @@ import {
   generateFAQSchema,
   generateItemListSchema,
 } from '@/components/seo/Schema';
-import { TrekHeroImmersive, TrekTrustStrip } from '@/components/trek/TrekRichSections';
 import RetreatsLocationClient from './RetreatsLocationClient';
 import Breadcrumb from '@/components/Breadcrumb';
 
@@ -108,34 +107,6 @@ export default async function RetreatsLocationPage({ params }: PageProps) {
       {faqSchema && (
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       )}
-
-      {/* Use Trek-style immersive hero + trust strip to match trek detail pages */}
-      {locationPremiumContent.heroImage && (() => {
-        const whatsappMessage = encodeURIComponent(`Hi! I'm interested in retreats in ${locationData.name}.`);
-        const whatsappHref = `https://wa.me/919760446101?text=${whatsappMessage}`;
-
-        const syntheticTrek = {
-          heroImage: locationPremiumContent.heroImage,
-          heroImageAlt: locationPremiumContent.heroImageAlt,
-          title: `${locationData.name} Retreats`,
-          heroTagline: locationPremiumContent.landTone?.opening,
-          trekType: 'Guided Trek',
-        } as unknown as any;
-
-        const trustItems = [
-          { label: 'Basecamp', sublabel: locationData.name },
-          { label: 'Retreat Formats', sublabel: `${locationPremiumContent.retreatSlugs.length} types` },
-          { label: 'Nearby Treks', sublabel: `${locationPremiumContent.trekSlugs.length}` },
-          { label: 'Season', sublabel: locationPremiumContent.practicalContext?.bestSeasons || '' },
-        ];
-
-        return (
-          <>
-            <TrekHeroImmersive trek={syntheticTrek} locationName={locationData.name} whatsappHref={whatsappHref} />
-            <TrekTrustStrip items={trustItems} />
-          </>
-        );
-      })()}
 
       <RetreatsLocationClient
         locationPremiumContent={locationPremiumContent}

@@ -5,6 +5,7 @@ interface SectionProps {
   className?: string;
   style?: React.CSSProperties;
   fullBleed?: boolean; // true = section poore viewport width tak fail jaye (container ke bahar bhi)
+  id?: string;
 }
 
 export default function Section({

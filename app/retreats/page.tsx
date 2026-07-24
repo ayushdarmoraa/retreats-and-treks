@@ -80,6 +80,148 @@ export default function RetreatsPage() {
           locations={locationsWithRetreats}
         />
 
+        {/* ── RETREAT BY INTENTION ── */}
+        <section className="retreat-overview">
+          <style>{`
+            .retreat-overview {
+              width: 100vw;
+              margin-left: calc(-50vw + 50%);
+              background: linear-gradient(180deg, #f7f9f7 0%, #ffffff 100%);
+              padding: 5rem 0;
+              border-top: 1px solid rgba(15, 118, 110, 0.08);
+              border-bottom: 1px solid rgba(15, 118, 110, 0.08);
+            }
+            .retreat-overview-inner {
+              max-width: 84rem;
+              margin: 0 auto;
+              padding: 0 4rem;
+            }
+            .retreat-overview-header {
+              display: flex;
+              align-items: end;
+              justify-content: space-between;
+              gap: 1.5rem;
+              margin-bottom: 2rem;
+            }
+            .retreat-overview-eyebrow {
+              display: inline-flex;
+              align-items: center;
+              gap: 0.7rem;
+              margin-bottom: 0.9rem;
+            }
+            .retreat-overview-eyebrow-line {
+              width: 32px;
+              height: 1px;
+              background: #0f766e;
+              opacity: 0.35;
+            }
+            .retreat-overview-eyebrow-text {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.72rem;
+              letter-spacing: 0.32em;
+              text-transform: uppercase;
+              color: #6b7280;
+              font-weight: 600;
+            }
+            .retreat-overview-title {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: clamp(2rem, 3.5vw, 2.8rem);
+              font-weight: 200;
+              letter-spacing: -0.03em;
+              color: #111;
+              margin: 0;
+              line-height: 1.1;
+            }
+            .retreat-overview-title span {
+              color: #0f766e;
+              font-weight: 200;
+            }
+            .retreat-overview-copy {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.95rem;
+              line-height: 1.8;
+              color: #5f6b72;
+              font-weight: 300;
+              margin: 0;
+              max-width: 34rem;
+            }
+            .retreat-overview-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+              gap: 1rem;
+            }
+            .retreat-overview-card {
+              display: block;
+              padding: 1.25rem 1.3rem;
+              background: #fff;
+              border: 1px solid rgba(15, 118, 110, 0.12);
+              border-radius: 16px;
+              text-decoration: none;
+              color: #111;
+              box-shadow: 0 10px 30px rgba(15, 31, 28, 0.05);
+              transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            }
+            .retreat-overview-card:hover {
+              transform: translateY(-4px);
+              border-color: rgba(15, 118, 110, 0.25);
+              box-shadow: 0 16px 38px rgba(15, 31, 28, 0.10);
+            }
+            .retreat-overview-card strong {
+              display: block;
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 1rem;
+              font-weight: 600;
+              margin-bottom: 0.45rem;
+            }
+            .retreat-overview-card span {
+              display: block;
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.9rem;
+              line-height: 1.6;
+              color: #5f6b72;
+              font-weight: 300;
+            }
+            @media (max-width: 900px) {
+              .retreat-overview-inner { padding: 0 2rem; }
+              .retreat-overview-header { flex-direction: column; align-items: start; }
+            }
+            @media (max-width: 640px) {
+              .retreat-overview { padding: 4rem 0; }
+              .retreat-overview-inner { padding: 0 1.5rem; }
+            }
+          `}</style>
+
+          <div className="retreat-overview-inner">
+            <div className="retreat-overview-header">
+              <div>
+                <div className="retreat-overview-eyebrow">
+                  <span className="retreat-overview-eyebrow-line" />
+                  <span className="retreat-overview-eyebrow-text">Retreat by intention</span>
+                </div>
+                <h2 className="retreat-overview-title">
+                  Choose the kind of <span>reset</span> you actually need.
+                </h2>
+              </div>
+              <p className="retreat-overview-copy">
+                Whether you want silence, movement, creativity, or a short reset near Delhi, the experience is shaped by place and pacing.
+              </p>
+            </div>
+
+            <div className="retreat-overview-grid">
+              {[
+                { title: 'Rest & reset', copy: 'Slow down in mountain stillness and let the day open up.', href: '/retreats/weekend-himalayan-retreats' },
+                { title: 'Yoga & breath', copy: 'Choose structure, teachers, and riverside practice in the mountains.', href: '/retreats/yoga-retreat-rishikesh' },
+                { title: 'Art & creativity', copy: 'Move into a more expressive, healing kind of retreat experience.', href: '/retreats/art' },
+              ].map((item) => (
+                <Link key={item.title} href={item.href} className="retreat-overview-card">
+                  <strong>{item.title}</strong>
+                  <span>{item.copy}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── RETREAT GUIDES ── */}
         <section className="retreat-guides">
           <style>{`

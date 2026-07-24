@@ -4,6 +4,7 @@ interface SectionHeadingProps {
   eyebrow: string;
   title: string; // ONLY STRING - no React.ReactNode
   description?: React.ReactNode;
+  accent?: string;
   className?: string;
 }
 
@@ -11,6 +12,7 @@ export default function SectionHeading({
   eyebrow,
   title,
   description,
+  accent,
   className = '',
 }: SectionHeadingProps) {
   // Safety check - agar title missing/undefined/string nahi hai toh crash mat karo

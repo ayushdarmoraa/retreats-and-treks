@@ -820,6 +820,112 @@ export default function BestRetreatInUttarakhandPage() {
           sourcePath={PATH}
         />
 
+        <section className="bru-guide-slices">
+          <style>{`
+            .bru-guide-slices {
+              width: 100vw;
+              margin-left: calc(-50vw + 50%);
+              background: linear-gradient(180deg, #ffffff 0%, #f7f9f7 100%);
+              padding: 4rem 0 0;
+            }
+            .bru-guide-slices-inner {
+              max-width: 76rem;
+              margin: 0 auto;
+              padding: 0 2rem 0;
+            }
+            .bru-guide-slices-head {
+              margin-bottom: 1.4rem;
+            }
+            .bru-guide-slices-eyebrow {
+              display: flex;
+              align-items: center;
+              gap: 0.75rem;
+              margin-bottom: 0.85rem;
+            }
+            .bru-guide-slices-eyebrow-line {
+              width: 32px;
+              height: 1px;
+              background: #0f766e;
+              opacity: 0.35;
+            }
+            .bru-guide-slices-eyebrow-text {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.72rem;
+              letter-spacing: 0.24em;
+              text-transform: uppercase;
+              color: #6b7280;
+              font-weight: 600;
+            }
+            .bru-guide-slices-title {
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: clamp(1.55rem, 2.6vw, 2rem);
+              font-weight: 200;
+              letter-spacing: -0.03em;
+              color: #111;
+              margin: 0;
+            }
+            .bru-guide-slices-title span {
+              color: #0f766e;
+            }
+            .bru-guide-slices-grid {
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+              gap: 1rem;
+            }
+            .bru-guide-slice-card {
+              display: block;
+              padding: 1.2rem 1.15rem;
+              background: #fff;
+              border: 1px solid rgba(15, 118, 110, 0.12);
+              border-radius: 16px;
+              text-decoration: none;
+              box-shadow: 0 10px 30px rgba(15, 31, 28, 0.05);
+            }
+            .bru-guide-slice-title {
+              display: block;
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.98rem;
+              font-weight: 600;
+              color: #111;
+              margin-bottom: 0.45rem;
+            }
+            .bru-guide-slice-copy {
+              display: block;
+              font-family: var(--font-geist-sans), sans-serif;
+              font-size: 0.9rem;
+              line-height: 1.7;
+              color: #5f6b72;
+              font-weight: 300;
+            }
+            @media (max-width: 640px) {
+              .bru-guide-slices-inner { padding: 0 1.25rem; }
+            }
+          `}</style>
+          <div className="bru-guide-slices-inner">
+            <div className="bru-guide-slices-head">
+              <div className="bru-guide-slices-eyebrow">
+                <span className="bru-guide-slices-eyebrow-line" />
+                <span className="bru-guide-slices-eyebrow-text">How to use this guide</span>
+              </div>
+              <h2 className="bru-guide-slices-title">
+                Match the retreat to <span>your intention</span>.
+              </h2>
+            </div>
+            <div className="bru-guide-slices-grid">
+              {[
+                { title: 'Best for yoga depth', copy: 'Rishikesh for daily practice, teacher access, and strong structure.', href: '/retreats/yoga-retreat-rishikesh' },
+                { title: 'Best for silence', copy: 'Munsiyari or Sankri for alpine air, fewer people, and deeper stillness.', href: '/retreats/meditation-retreat-uttarakhand' },
+                { title: 'Best for a short reset', copy: 'Chakrata for a weekend-friendly forest retreat without a long travel window.', href: '/retreats/retreats-near-delhi' },
+              ].map((item) => (
+                <Link key={item.title} href={item.href} className="bru-guide-slice-card">
+                  <span className="bru-guide-slice-title">{item.title}</span>
+                  <span className="bru-guide-slice-copy">{item.copy}</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ── YOGA ──────────────────────────────────────────────────── */}
         <style>{`
           .bru-yoga {

@@ -1,26 +1,26 @@
-// components/retreats/RetreatCTA.tsx
 'use client';
 
 import Link from 'next/link';
+import { Section, Container, Button } from '@/components/ui';
+import { getCTAData } from '@/content/retreats/cta';
 import { logWhatsAppOpen } from '@/lib/analytics';
 
-const RetreatCTA = () => {
-  const whatsappLink = 'https://wa.me/919760446101?text=I%27d%20like%20to%20design%20a%20retreat.';
+export default function RetreatCTA() {
+  const data = getCTAData();
 
   return (
-    <section
+    <Section
+      className="cta-section"
       style={{
-        position: 'relative',
         background: '#ffffff',
-        width: '100vw',
-        marginLeft: 'calc(-50vw + 50%)',
         padding: '7rem 0',
-        overflow: 'hidden',
         borderTop: '1px solid rgba(0, 0, 0, 0.04)',
         borderBottom: '1px solid rgba(0, 0, 0, 0.04)',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
-      {/* Decorative glow */}
+      {/* Decorative glows */}
       <div
         style={{
           position: 'absolute',
@@ -46,15 +46,7 @@ const RetreatCTA = () => {
         }}
       />
 
-      <div
-        style={{
-          maxWidth: '84rem',
-          margin: '0 auto',
-          padding: '0 4rem',
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
+      <Container style={{ position: 'relative', zIndex: 1 }}>
         <div
           style={{
             display: 'grid',
@@ -91,7 +83,7 @@ const RetreatCTA = () => {
                   fontWeight: 500,
                 }}
               >
-                Begin With Intention
+                {data.eyebrow}
               </span>
             </div>
 
@@ -106,7 +98,7 @@ const RetreatCTA = () => {
                 margin: '0 0 0.5rem',
               }}
             >
-              Let's shape
+              {data.headline}
               <span
                 style={{
                   color: '#0f766e',
@@ -115,7 +107,7 @@ const RetreatCTA = () => {
                   position: 'relative',
                 }}
               >
-                your mountain reset.
+                {data.accent}
               </span>
             </h2>
 
@@ -140,15 +132,11 @@ const RetreatCTA = () => {
                 margin: '0 0 2rem',
               }}
             >
-              Tell us what you're carrying, seeking, or ready to release — we'll shape the right location, pace, and retreat format around you.
+              {data.description}
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-              {[
-                'Small groups only — never crowded',
-                'Every journey built in conversation',
-                'No fixed dates, no fixed packages',
-              ].map((text) => (
+              {data.points.map((text) => (
                 <div key={text} style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
                   <span
                     style={{
@@ -196,18 +184,14 @@ const RetreatCTA = () => {
                 marginBottom: '2rem',
               }}
             >
-              {[
-                { num: '8+', label: 'Locations' },
-                { num: '100%', label: 'Custom' },
-                { num: '1:1', label: 'Consult' },
-              ].map((s) => (
+              {data.stats.map((s, i) => (
                 <div
                   key={s.num}
                   style={{
                     textAlign: 'center',
                     padding: '1.2rem 0.5rem',
                     background: '#fafafa',
-                    borderRight: '1px solid rgba(0, 0, 0, 0.04)',
+                    borderRight: i < data.stats.length - 1 ? '1px solid rgba(0, 0, 0, 0.04)' : 'none',
                   }}
                 >
                   <div
@@ -273,7 +257,7 @@ const RetreatCTA = () => {
                   letterSpacing: '0.02em',
                 }}
               >
-                Starting from ₹18,000
+                {data.priceLabel}
               </span>
             </div>
 
@@ -300,58 +284,21 @@ const RetreatCTA = () => {
               </span>
             </p>
 
-            {/* BUTTONS */}
-            <button
+            {/* Buttons - using reusable Button component */}
+            <Button
+              variant="primary"
+              className="w-full mb-3"
               onClick={() => {
                 logWhatsAppOpen('/retreats', undefined, undefined);
-                window.open(whatsappLink, '_blank');
-              }}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '0.6rem',
-                width: '100%',
-                padding: '0.9rem 2rem',
-                background: '#0f766e',
-                color: '#ffffff',
-                fontFamily: 'var(--font-geist-sans), sans-serif',
-                fontSize: '0.65rem',
-                fontWeight: 600,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                border: 'none',
-                borderRadius: '100px',
-                cursor: 'pointer',
-                marginBottom: '0.75rem',
+                window.open(data.whatsappLink, '_blank');
               }}
             >
-              Talk on WhatsApp
-            </button>
+              {data.buttonText}
+            </Button>
 
-            <Link
-              href="/retreats"
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '100%',
-                padding: '0.8rem 2rem',
-                background: 'transparent',
-                color: '#6b7280',
-                fontFamily: 'var(--font-geist-sans), sans-serif',
-                fontSize: '0.6rem',
-                fontWeight: 400,
-                letterSpacing: '0.15em',
-                textTransform: 'uppercase',
-                border: '1px solid rgba(0, 0, 0, 0.06)',
-                borderRadius: '100px',
-                cursor: 'pointer',
-                textDecoration: 'none',
-              }}
-            >
-              Browse Retreats
-            </Link>
+            <Button variant="ghost" href="/retreats" className="w-full">
+              {data.secondaryButtonText}
+            </Button>
 
             <div
               style={{
@@ -363,7 +310,7 @@ const RetreatCTA = () => {
                 flexWrap: 'wrap',
               }}
             >
-              {['Small groups', 'No fixed dates', 'Fully custom'].map((t, i) => (
+              {data.tags.map((t, i) => (
                 <span
                   key={t}
                   style={{
@@ -394,9 +341,59 @@ const RetreatCTA = () => {
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  );
-};
 
-export default RetreatCTA;
+        <style>{`
+          @media (max-width: 900px) {
+            .cta-section .cta-grid {
+              grid-template-columns: 1fr !important;
+              gap: 3rem !important;
+            }
+          }
+          @media (max-width: 640px) {
+            .cta-section .cta-card {
+              padding: 2rem 1.5rem !important;
+            }
+            .cta-section .cta-headline {
+              font-size: clamp(2rem, 8vw, 2.8rem) !important;
+            }
+            .cta-section .cta-desc {
+              font-size: 0.9rem !important;
+            }
+            .cta-section .cta-point-text {
+              font-size: 0.82rem !important;
+            }
+            .cta-section .cta-stat-num {
+              font-size: 1.2rem !important;
+            }
+          }
+          @media (max-width: 480px) {
+            .cta-section .cta-card {
+              padding: 1.5rem 1.2rem !important;
+            }
+            .cta-section .cta-headline {
+              font-size: clamp(1.8rem, 7vw, 2.5rem) !important;
+            }
+            .cta-section .cta-stats {
+              grid-template-columns: repeat(3, 1fr) !important;
+            }
+            .cta-section .cta-stat {
+              padding: 0.8rem 0.3rem !important;
+            }
+            .cta-section .cta-stat-num {
+              font-size: 1rem !important;
+            }
+            .cta-section .cta-price-badge {
+              font-size: 0.6rem !important;
+            }
+            .cta-section .cta-tags {
+              gap: 0.8rem !important;
+            }
+            .cta-section .cta-tag {
+              font-size: 0.45rem !important;
+            }
+          }
+        `}</style>
+      </Container>
+    </Section>
+  );
+}

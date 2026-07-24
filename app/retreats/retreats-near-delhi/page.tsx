@@ -345,8 +345,12 @@ export default function RetreatNearDelhiPage() {
 
         {/* ── QUICK COMPARISON ─────────────────────────────────────── */}
         <section id="destination-comparison" style={{ marginBottom: 'var(--space-xl)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.7rem', marginBottom: '0.9rem' }}>
+            <span style={{ width: '32px', height: '1px', background: 'rgba(15, 118, 110, 0.35)' }} />
+            <span style={{ fontSize: '0.72rem', letterSpacing: '0.24em', textTransform: 'uppercase', color: '#6b7280', fontWeight: 600 }}>Choose your setting</span>
+          </div>
           <h2 style={{ fontSize: 'clamp(1.65rem, 3vw, 2.2rem)', fontWeight: 300, marginBottom: '0.75rem', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
-            Choose Your Retreat Setting
+            Pick the destination that fits your <span style={{ color: '#0f766e' }}>energy</span>.
           </h2>
           <p style={{ lineHeight: 1.8, marginBottom: '1.5rem', color: '#4b5563', maxWidth: '42rem', fontSize: '1rem' }}>
             Each destination creates a different kind of reset. Choose quiet forest stillness, riverside yoga energy, or deep Himalayan remoteness.

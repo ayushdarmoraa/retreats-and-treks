@@ -6,11 +6,12 @@ interface CardProps {
   children: React.ReactNode;
   href?: string;
   className?: string;
+  style?: React.CSSProperties;
   padded?: boolean; // true for cards without image (like trek-card)
   onClick?: () => void;
 }
 
-export default function Card({ children, href, className = '', padded = false, onClick }: CardProps) {
+export default function Card({ children, href, className = '', style, padded = false, onClick }: CardProps) {
   const content = (
     <>
       <style>{`
@@ -80,14 +81,14 @@ export default function Card({ children, href, className = '', padded = false, o
 
   if (href) {
     return (
-      <Link href={href} className={cardClass} onClick={onClick}>
+      <Link href={href} className={cardClass} style={style} onClick={onClick}>
         {content}
       </Link>
     );
   }
 
   return (
-    <div className={cardClass} onClick={onClick}>
+    <div className={cardClass} style={style} onClick={onClick}>
       {content}
     </div>
   );

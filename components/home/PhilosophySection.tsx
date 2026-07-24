@@ -1,274 +1,354 @@
 'use client';
 
-import { SectionHeading, Section, Card, CardDivider, NumberBadge } from '@/components/ui';
+import { Section } from '@/components/ui';
+import SectionHeading from '@/components/ui/SectionHeading';
 import { philosophyCards } from '@/content/home/philosophy';
+import { motion } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
 
 export default function PhilosophySection() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.18,
+        delayChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 24 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.7,
+        ease: [0.4, 0, 0.2, 1]
+      }
+    }
+  };
+
   return (
     <Section
       className="philosophy-section"
       style={{
-        marginBottom: '0',
-        marginTop: '-4rem',
-        background: '#f7f9f7',
+        background: '#F8F6F2',
+        position: 'relative',
+        padding: '0'
       }}
     >
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
-
-        @keyframes fadeUp {
-          from { opacity: 0; transform: translateY(40px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-
         .philosophy-section {
-          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-          background: #f7f9f7;
+          font-family: var(--font-inter, 'Inter', sans-serif);
+          background: #F8F6F2;
           min-height: 100vh;
+          display: flex;
+          align-items: center;
         }
 
-        .philosophy-section::before {
-          content: '';
-          position: absolute;
-          inset: 0;
-          background: 
-            radial-gradient(ellipse at 15% 20%, rgba(15, 118, 110, 0.03) 0%, transparent 50%),
-            radial-gradient(ellipse at 85% 80%, rgba(15, 118, 110, 0.02) 0%, transparent 50%);
-          pointer-events: none;
-          z-index: 0;
-        }
-
-        .philosophy-container {
-          max-width: 84rem;
+        .p-wrap {
+          max-width: 1280px;
           margin: 0 auto;
-          padding: 7rem 5rem 0;
-          position: relative;
-          z-index: 1;
-        }
-
-        /* Header */
-        .philosophy-header {
+          padding: 6rem 4rem;
           display: grid;
-          grid-template-columns: 1fr 1.1fr;
-          gap: 4rem;
-          align-items: flex-end;
-          padding-bottom: 3.5rem;
-          border-bottom: 1px solid rgba(15, 118, 110, 0.06);
-          animation: fadeUp 0.8s ease 0.1s both;
+          grid-template-columns: 1fr 1.2fr;
+          gap: 5rem;
+          width: 100%;
+          align-items: start;
         }
 
-        .philosophy-intro {
-          font-family: 'Inter', sans-serif;
-          font-size: 0.95rem;
-          line-height: 2;
-          color: #6b7280;
-          font-weight: 400;
-          max-width: 420px;
-          align-self: flex-end;
-          padding-bottom: 0.2rem;
-          padding-left: 2rem;
-          border-left: 2px solid rgba(15, 118, 110, 0.08);
-          letter-spacing: 0.01em;
+        .p-left {
+          position: sticky;
+          top: 6rem;
         }
-        .philosophy-intro strong {
+
+        .p-left :global(.mb-12) {
+          margin-bottom: 0;
+        }
+
+        .p-description {
+          font-size: 1rem;
+          line-height: 1.8;
+          color: rgba(26, 24, 20, 0.6);
+          max-width: 400px;
+          margin: 1.2rem auto 2rem;
+        }
+
+        .p-description strong {
           color: #1a1814;
-          font-weight: 500;
+          font-weight: 600;
         }
-        .philosophy-intro em {
+
+        .p-description em {
+          font-family: var(--font-fraunces, 'Fraunces', Georgia, serif);
           font-style: italic;
-          color: #0f766e;
-          font-weight: 500;
+          color: #1a1814;
         }
 
-        /* Cards Grid */
-        .philosophy-cards-wrap {
-          padding: 0 5rem;
-          margin-top: 2rem;
+        .p-stats {
+          display: flex;
+          justify-content: center;
+          gap: 3rem;
+          margin-top: 2.5rem;
+          padding-top: 1.5rem;
+          border-top: 1px solid rgba(26, 24, 20, 0.08);
+        }
+
+        .p-stat {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .p-stat-number {
+          font-family: var(--font-fraunces, 'Fraunces', Georgia, serif);
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: #1a1814;
+          letter-spacing: -0.02em;
+        }
+
+        .p-stat-label {
+          font-size: 0.7rem;
+          color: rgba(26, 24, 20, 0.4);
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          margin-top: 0.2rem;
+        }
+
+        /* ---- Field Notes list (no cards) ---- */
+
+        .p-right {
           position: relative;
-          z-index: 1;
-        }
-        .philosophy-cards {
-          display: grid;
-          grid-template-columns: 1fr 1fr 1fr;
-          gap: 2rem;
-          animation: fadeUp 0.9s ease 0.3s both;
+          padding-top: 0.5rem;
         }
 
-        /* Override Card's default padding for this section's larger card size */
-        .philosophy-card-item {
-          padding: 3.5rem 2.8rem 3rem !important;
+        .p-rail {
+          position: absolute;
+          top: 0.7rem;
+          bottom: 0.7rem;
+          left: 27px;
+          width: 1px;
+          background: linear-gradient(
+            to bottom,
+            rgba(15, 118, 110, 0.35),
+            rgba(26, 24, 20, 0.08) 92%
+          );
+        }
+
+        .p-entry {
+          position: relative;
+          display: grid;
+          grid-template-columns: 56px 1fr;
+          column-gap: 1.5rem;
+          padding: 2.1rem 0;
+          border-bottom: 1px solid rgba(26, 24, 20, 0.07);
           cursor: default;
         }
 
-        .philosophy-card-title {
-          font-family: 'Playfair Display', serif;
-          font-size: 1.5rem;
-          font-weight: 600;
-          letter-spacing: -0.02em;
-          color: #1a1814;
-          margin-bottom: 0.8rem;
-          line-height: 1.25;
+        .p-entry:first-child {
+          padding-top: 0.5rem;
+        }
+
+        .p-entry:last-child {
+          border-bottom: none;
+        }
+
+        .p-entry-number {
           position: relative;
-          z-index: 1;
+          font-family: var(--font-fraunces, 'Fraunces', Georgia, serif);
+          font-style: italic;
+          font-weight: 500;
+          font-size: 1.35rem;
+          color: rgba(15, 118, 110, 0.55);
+          line-height: 1;
           transition: color 0.4s ease;
         }
-        .ui-card:hover .philosophy-card-title {
+
+        .p-entry-dot {
+          position: absolute;
+          top: 0.35rem;
+          left: 54px;
+          width: 7px;
+          height: 7px;
+          border-radius: 50%;
+          background: #F8F6F2;
+          border: 1.5px solid rgba(15, 118, 110, 0.5);
+          transition: all 0.4s ease;
+        }
+
+        .p-entry:hover .p-entry-dot {
+          background: #0f766e;
+          border-color: #0f766e;
+          transform: scale(1.15);
+        }
+
+        .p-entry:hover .p-entry-number {
           color: #0f766e;
         }
 
-        .philosophy-card-body {
-          font-family: 'Inter', sans-serif;
-          font-size: 0.92rem;
-          line-height: 2;
-          color: #6b7280;
-          font-weight: 400;
-          margin: 0;
-          letter-spacing: 0.005em;
-          position: relative;
-          z-index: 1;
-          transition: color 0.4s ease;
-        }
-        .ui-card:hover .philosophy-card-body {
-          color: #4b5563;
+        .p-entry-content {
+          padding-top: 0.1rem;
         }
 
-        .philosophy-bottom {
-          padding: 4.5rem 5rem 4rem;
-          text-align: center;
-          position: relative;
-          z-index: 1;
+        .p-entry-title-row {
+          margin-bottom: 0.6rem;
         }
-        .philosophy-bottom-line {
-          max-width: 60px;
-          margin: 0 auto;
-          height: 1px;
-          background: linear-gradient(90deg, #0f766e, rgba(15, 118, 110, 0.02));
-          border-radius: 4px;
-          opacity: 0.2;
+
+        .p-entry-title {
+          font-family: var(--font-fraunces, 'Fraunces', Georgia, serif);
+          font-size: 1.3rem;
+          font-weight: 600;
+          color: #1a1814;
+          margin: 0;
+          transition: color 0.4s ease;
+        }
+
+        .p-entry:hover .p-entry-title {
+          color: #0f766e;
+        }
+
+        .p-entry-body {
+          font-size: 0.95rem;
+          line-height: 1.8;
+          color: rgba(26, 24, 20, 0.55);
+          margin: 0;
+          max-width: 88%;
+        }
+
+        .p-entry-body strong {
+          color: rgba(26, 24, 20, 0.8);
+          font-weight: 500;
         }
 
         @media (max-width: 1024px) {
-          .philosophy-container {
-            padding: 6rem 3rem 0;
-          }
-          .philosophy-cards-wrap {
-            padding: 0 3rem;
-          }
-          .philosophy-cards {
-            gap: 1.5rem;
-          }
-          .philosophy-card-item {
-            padding: 3rem 2rem 2.5rem !important;
-          }
-        }
-
-        @media (max-width: 900px) {
-          .philosophy-container {
-            padding: 5rem 2rem 0;
-          }
-          .philosophy-header {
+          .p-wrap {
             grid-template-columns: 1fr;
-            gap: 2rem;
-            padding-bottom: 2.5rem;
+            gap: 3rem;
+            padding: 5rem 3rem;
           }
-          .philosophy-intro {
+          .p-left {
+            position: relative;
+            top: 0;
+          }
+          .p-description {
             max-width: 100%;
-            padding-left: 1.2rem;
-            border-left: 2px solid rgba(15, 118, 110, 0.05);
-            font-size: 0.9rem;
-          }
-          .philosophy-cards-wrap {
-            padding: 0 2rem;
-          }
-          .philosophy-cards {
-            grid-template-columns: 1fr 1fr;
-            gap: 1.2rem;
-          }
-          .philosophy-bottom {
-            padding: 3.5rem 2rem 3rem;
           }
         }
 
         @media (max-width: 768px) {
-          .philosophy-container {
-            padding: 4rem 1.5rem 0;
+          .p-wrap {
+            padding: 4rem 1.5rem;
+            gap: 2.5rem;
           }
-          .philosophy-cards-wrap {
-            padding: 0 1.5rem;
+          .p-entry {
+            grid-template-columns: 40px 1fr;
+            column-gap: 1rem;
+            padding: 1.6rem 0;
           }
-          .philosophy-cards {
-            grid-template-columns: 1fr;
-            gap: 1rem;
+          .p-rail {
+            left: 19px;
           }
-          .philosophy-card-item {
-            padding: 2.5rem 1.8rem 2rem !important;
+          .p-entry-dot {
+            left: 38px;
           }
-          .philosophy-card-title {
-            font-size: 1.3rem;
+          .p-entry-title {
+            font-size: 1.1rem;
           }
-          .philosophy-card-body {
+          .p-entry-body {
             font-size: 0.88rem;
+            max-width: 100%;
+          }
+          .p-stats {
+            gap: 2rem;
+          }
+          .p-stat-number {
+            font-size: 1.5rem;
           }
         }
 
         @media (max-width: 480px) {
-          .philosophy-container {
-            padding: 3.5rem 1.2rem 0;
+          .p-wrap {
+            padding: 3rem 1rem;
           }
-          .philosophy-cards-wrap {
-            padding: 0 1.2rem;
+          .p-entry {
+            grid-template-columns: 30px 1fr;
           }
-          .philosophy-card-item {
-            padding: 2rem 1.4rem 1.8rem !important;
+          .p-rail {
+            left: 14px;
           }
-          .philosophy-card-title {
+          .p-entry-dot {
+            left: 28px;
+          }
+          .p-entry-number {
             font-size: 1.1rem;
           }
-          .philosophy-card-body {
-            font-size: 0.85rem;
-            line-height: 1.9;
+          .p-stats {
+            gap: 1.5rem;
           }
-          .philosophy-intro {
-            font-size: 0.85rem;
-            padding-left: 0.8rem;
+          .p-description {
+            font-size: 0.9rem;
           }
         }
       `}</style>
 
-      <div className="philosophy-container">
-        {/* Header */}
-        <div className="philosophy-header">
-          <div>
-            <SectionHeading
-              eyebrow="Our Philosophy"
-              title="How We Work"
-              className="mb-0 text-left"
-            />
-          </div>
-          <p className="philosophy-intro">
+      <div ref={sectionRef} className="p-wrap">
+        {/* Left Column */}
+        <motion.div
+          className="p-left"
+          initial={{ opacity: 0, x: -20 }}
+          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+          transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
+        >
+          <SectionHeading eyebrow="Our Approach" title="How We Work" />
+
+          <p className="p-description">
             Every journey begins with a <em>conversation</em> — not a checkout page.
             We take time to understand what you&apos;re really looking for before <strong>suggesting anything</strong>.
           </p>
-        </div>
-      </div>
+        </motion.div>
 
-      {/* Cards */}
-      <div className="philosophy-cards-wrap">
-        <div className="philosophy-cards">
+        {/* Right Column - Field Notes list */}
+        <motion.div
+          className="p-right"
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
+          <div className="p-rail" />
           {philosophyCards.map((card) => (
-            <Card key={card.id} className="philosophy-card-item">
-              <NumberBadge value={card.id} serif />
-              <h3 className="philosophy-card-title">{card.title}</h3>
-              <p className="philosophy-card-body">{card.body}</p>
-              <CardDivider />
-            </Card>
+            <motion.div key={card.id} className="p-entry" variants={itemVariants}>
+              <span className="p-entry-number">{String(card.id).padStart(2, '0')}</span>
+              <span className="p-entry-dot" />
+              <div className="p-entry-content">
+                <div className="p-entry-title-row">
+                  <h3 className="p-entry-title">{card.title}</h3>
+                </div>
+                <p className="p-entry-body">{card.body}</p>
+              </div>
+            </motion.div>
           ))}
-        </div>
-      </div>
-
-      {/* Bottom */}
-      <div className="philosophy-bottom">
-        <div className="philosophy-bottom-line" />
+        </motion.div>
       </div>
     </Section>
   );

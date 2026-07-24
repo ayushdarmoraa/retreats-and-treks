@@ -7,7 +7,9 @@
 export const chakrataLocation = {
   id: 'chakrata',
   name: 'Chakrata',
-  
+  heroImage: '/Images/location/chakrata.webp',
+  heroImageAlt: 'Deodar forest and mountain ridge near Chakrata',
+
   // Section 1: The Land Sets the Tone
   landTone: {
     opening:

@@ -1,8 +1,8 @@
-// components/retreats/RetreatHero.tsx
 'use client';
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { heroData } from '@/content/retreats/hero';
 
 export default function RetreatHero() {
   return (
@@ -35,7 +35,6 @@ export default function RetreatHero() {
           width: 1px;
           background: linear-gradient(to bottom, transparent, rgba(15,118,110,0.12), transparent);
         }
-
         .rc-hero-eyebrow {
           display: flex; align-items: center;
           gap: 0.8rem; margin-bottom: 1.5rem;
@@ -55,7 +54,6 @@ export default function RetreatHero() {
           color: #6b7280;
           font-weight: 500;
         }
-
         .rc-hero-heading {
           font-family: var(--font-geist-sans), sans-serif;
           font-size: clamp(3.5rem, 5vw, 5rem);
@@ -70,7 +68,6 @@ export default function RetreatHero() {
           color: #0f766e;
           font-weight: 200;
         }
-
         .rc-hero-sub {
           font-family: var(--font-geist-sans), sans-serif;
           font-size: 1rem;
@@ -81,7 +78,6 @@ export default function RetreatHero() {
           margin-bottom: 2rem;
           letter-spacing: 0.01em;
         }
-
         .rc-hero-actions {
           display: flex;
           align-items: center;
@@ -109,7 +105,6 @@ export default function RetreatHero() {
           background: #0d6b64;
           border-color: #0d6b64;
         }
-
         .rc-hero-trust {
           display: flex;
           gap: 2.5rem;
@@ -139,8 +134,6 @@ export default function RetreatHero() {
           color: #9ca3af;
           font-weight: 400;
         }
-
-        /* ── RIGHT ── */
         .rc-hero-right {
           position: relative;
           overflow: hidden;
@@ -162,7 +155,6 @@ export default function RetreatHero() {
           inset: 0;
           background: linear-gradient(160deg, rgba(5,15,8,0.35) 0%, rgba(5,15,8,0.05) 45%, rgba(5,15,8,0.25) 100%);
         }
-
         .rc-hero-tag {
           position: absolute;
           bottom: 2.5rem;
@@ -191,7 +183,6 @@ export default function RetreatHero() {
           font-weight: 400;
           letter-spacing: 0.05em;
         }
-
         .rc-hero-altitude {
           position: absolute;
           top: 3rem;
@@ -218,7 +209,6 @@ export default function RetreatHero() {
           text-transform: uppercase;
           color: rgba(255,255,255,0.3);
         }
-
         .rc-hero-scroll {
           position: absolute;
           bottom: 2rem;
@@ -245,112 +235,51 @@ export default function RetreatHero() {
           writing-mode: vertical-rl;
           transform: rotate(180deg);
         }
-
         @keyframes rcScrollDrop {
           0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
           50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
           100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
         }
-
-        /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
           .rc-hero-left { padding: 4rem 2.5rem; }
           .rc-hero-heading { font-size: clamp(3rem, 4.5vw, 4.2rem); }
         }
-
         @media (max-width: 900px) {
-          .rc-hero-section {
-            grid-template-columns: 1fr;
-            height: auto;
-          }
-          .rc-hero-left {
-            padding: 5rem 2.5rem 3.5rem;
-            order: 2;
-          }
+          .rc-hero-section { grid-template-columns: 1fr; height: auto; }
+          .rc-hero-left { padding: 5rem 2.5rem 3.5rem; order: 2; }
           .rc-hero-left::after { display: none; }
-          .rc-hero-right {
-            order: 1;
-            height: 45vh;
-            min-height: 280px;
-          }
-          .rc-hero-heading {
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
-          }
-          .rc-hero-sub {
-            max-width: 100%;
-          }
+          .rc-hero-right { order: 1; height: 45vh; min-height: 280px; }
+          .rc-hero-heading { font-size: clamp(2.5rem, 6vw, 3.5rem); }
+          .rc-hero-sub { max-width: 100%; }
           .rc-hero-scroll { display: none; }
           .rc-hero-altitude { top: 1.5rem; right: 1.5rem; }
           .rc-hero-altitude-num { font-size: 1.5rem; }
           .rc-hero-tag { bottom: 1.5rem; left: 1.5rem; padding: 0.4rem 1rem; }
           .rc-hero-tag-text { font-size: 0.6rem; }
         }
-
         @media (max-width: 640px) {
-          .rc-hero-left {
-            padding: 4rem 1.5rem 2.5rem;
-          }
-          .rc-hero-heading {
-            font-size: clamp(2rem, 5vw, 2.8rem);
-          }
-          .rc-hero-sub {
-            font-size: 0.9rem;
-          }
-          .rc-hero-actions {
-            flex-direction: column;
-            width: 100%;
-          }
-          .rc-hero-btn {
-            width: 100%;
-            justify-content: center;
-            font-size: 0.6rem;
-            padding: 0.8rem 1.5rem;
-          }
-          .rc-hero-trust {
-            gap: 1.5rem;
-          }
-          .rc-hero-right {
-            height: 35vh;
-            min-height: 200px;
-          }
-          .rc-hero-altitude {
-            top: 1rem;
-            right: 1rem;
-          }
+          .rc-hero-left { padding: 4rem 1.5rem 2.5rem; }
+          .rc-hero-heading { font-size: clamp(2rem, 5vw, 2.8rem); }
+          .rc-hero-sub { font-size: 0.9rem; }
+          .rc-hero-actions { flex-direction: column; width: 100%; }
+          .rc-hero-btn { width: 100%; justify-content: center; font-size: 0.6rem; padding: 0.8rem 1.5rem; }
+          .rc-hero-trust { gap: 1.5rem; }
+          .rc-hero-right { height: 35vh; min-height: 200px; }
+          .rc-hero-altitude { top: 1rem; right: 1rem; }
           .rc-hero-altitude-num { font-size: 1.2rem; }
           .rc-hero-altitude-label { font-size: 0.5rem; }
-          .rc-hero-tag {
-            bottom: 0.8rem;
-            left: 0.8rem;
-            padding: 0.3rem 0.8rem;
-          }
+          .rc-hero-tag { bottom: 0.8rem; left: 0.8rem; padding: 0.3rem 0.8rem; }
           .rc-hero-tag-text { font-size: 0.55rem; }
           .rc-hero-eyebrow-text { font-size: 0.6rem; }
           .rc-hero-eyebrow-line { width: 28px; }
         }
-
         @media (max-width: 480px) {
-          .rc-hero-left {
-            padding: 3.5rem 1.2rem 2rem;
-          }
-          .rc-hero-heading {
-            font-size: clamp(1.8rem, 4vw, 2.4rem);
-          }
-          .rc-hero-sub {
-            font-size: 0.85rem;
-            line-height: 1.7;
-          }
-          .rc-hero-btn {
-            font-size: 0.55rem;
-            padding: 0.7rem 1.2rem;
-          }
-          .rc-hero-trust-num {
-            font-size: 1.2rem;
-          }
-          .rc-hero-right {
-            height: 30vh;
-            min-height: 160px;
-          }
+          .rc-hero-left { padding: 3.5rem 1.2rem 2rem; }
+          .rc-hero-heading { font-size: clamp(1.8rem, 4vw, 2.4rem); }
+          .rc-hero-sub { font-size: 0.85rem; line-height: 1.7; }
+          .rc-hero-btn { font-size: 0.55rem; padding: 0.7rem 1.2rem; }
+          .rc-hero-trust-num { font-size: 1.2rem; }
+          .rc-hero-right { height: 30vh; min-height: 160px; }
           .rc-hero-altitude-num { font-size: 1rem; }
           .rc-hero-tag-text { font-size: 0.5rem; }
         }
@@ -360,17 +289,15 @@ export default function RetreatHero() {
       <div className="rc-hero-left">
         <div className="rc-hero-eyebrow">
           <span className="rc-hero-eyebrow-line" />
-          <span className="rc-hero-eyebrow-text">Himalayan Retreats</span>
+          <span className="rc-hero-eyebrow-text">{heroData.eyebrow}</span>
         </div>
 
         <h1 className="rc-hero-heading">
-          Guided Himalayan Retreats,<br />
-          <em>Designed With Intention</em>
+          {heroData.heading}<br />
+          <em>{heroData.accent}</em>
         </h1>
 
-        <p className="rc-hero-sub">
-          Small-group and private retreats across quiet Himalayan locations — created around rest, clarity, and depth.
-        </p>
+        <p className="rc-hero-sub">{heroData.description}</p>
 
         <div className="rc-hero-actions">
           <Link href="#explore-intentions" className="rc-hero-btn">
@@ -379,18 +306,12 @@ export default function RetreatHero() {
         </div>
 
         <div className="rc-hero-trust">
-          <div className="rc-hero-trust-item">
-            <span className="rc-hero-trust-num">8+</span>
-            <span className="rc-hero-trust-label">Locations</span>
-          </div>
-          <div className="rc-hero-trust-item">
-            <span className="rc-hero-trust-num">100%</span>
-            <span className="rc-hero-trust-label">Custom</span>
-          </div>
-          <div className="rc-hero-trust-item">
-            <span className="rc-hero-trust-num">1:1</span>
-            <span className="rc-hero-trust-label">Consult</span>
-          </div>
+          {heroData.stats.map((stat) => (
+            <div key={stat.num} className="rc-hero-trust-item">
+              <span className="rc-hero-trust-num">{stat.num}</span>
+              <span className="rc-hero-trust-label">{stat.label}</span>
+            </div>
+          ))}
         </div>
       </div>
 
@@ -398,7 +319,7 @@ export default function RetreatHero() {
       <div className="rc-hero-right">
         <div className="rc-hero-img-wrap">
           <Image
-            src="/Images/location/rehero.webp"
+            src={heroData.image}
             alt="Himalayas"
             width={1200}
             height={675}
@@ -411,14 +332,14 @@ export default function RetreatHero() {
 
         <div className="rc-hero-tag">
           <span className="rc-hero-tag-dot" />
-          <span className="rc-hero-tag-text">Chakrata · Sankri · Munsiyari · Rishikesh</span>
+          <span className="rc-hero-tag-text">{heroData.locations}</span>
         </div>
 
         <div className="rc-hero-altitude">
           <div className="rc-hero-altitude-num">
-            3,900<span className="rc-hero-altitude-unit">m</span>
+            {heroData.altitude}<span className="rc-hero-altitude-unit">{heroData.altitudeUnit}</span>
           </div>
-          <div className="rc-hero-altitude-label">avg altitude</div>
+          <div className="rc-hero-altitude-label">{heroData.altitudeLabel}</div>
         </div>
 
         <div className="rc-hero-scroll">
