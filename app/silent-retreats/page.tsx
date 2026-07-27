@@ -10,6 +10,8 @@ import { getUpcomingEvents } from '@/config/retreatProgramEvents';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import ReviewCard from '@/components/reviews/ReviewCard';
+import AutoArticleSchema from '@/components/AutoArticleSchema';
+import { images } from '@/lib/images';
 
 const PAGE = getExperiencePage('silent-retreats')!;
 const PATH = '/silent-retreats';
@@ -72,19 +74,16 @@ const SILENCE_TYPES = [
     title: 'Nature-Based Silence',
     description: 'Integrates silent meditation with walking in natural environments. The landscape becomes part of the practice. Our primary format.',
     bestFor: 'Most participants, first-timers, nature lovers',
-    icon: '🌿',
   },
   {
     title: 'Full Noble Silence',
     description: 'No talking, no eye contact, no devices, no reading. Complete withdrawal from linguistic communication. The deepest format.',
     bestFor: 'Experienced practitioners, deep seekers',
-    icon: '🤫',
   },
   {
     title: 'Partial Silence',
     description: 'Quiet during practice and mornings, limited conversation during meals or sharing circles. A gentler entry point.',
     bestFor: 'First-time retreatants, those wary of complete silence',
-    icon: '🕊️',
   },
 ];
 
@@ -134,422 +133,964 @@ export default function SilentRetreatsPage() {
 
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
 
+  // Split heading for green last word
+  const h1Words = "Silent Retreats in the Himalayas".split(' ');
+  const h1LastWord = h1Words[h1Words.length - 1];
+  const h1Rest = h1Words.slice(0, -1).join(' ');
+
+  // Hero image from registry
+  const heroImage = images.heroes.retreatHero;
+
   return (
-    <TrackedPage page={PATH}>
+    <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
+      <AutoArticleSchema
+        title="Silent Retreats in the Himalayas — Extended Silence & Deep Rest"
+        description="Extended silent retreats where the landscape holds the silence, not just the rules. Small groups, deep rest, experienced guidance."
+        path={PATH}
+      />
+
       <style>{`
-        .sil-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
-        .sil-wide { max-width: 72rem; margin: 0 auto; padding: 0 2rem; }
-        .sil-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-        .sil-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); flex-shrink: 0; }
-        .sil-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase; color: #374151; font-weight: 500; }
-        .sil-section-title { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200; letter-spacing: -0.03em; color: #111111; line-height: 1.15; margin: 0 0 2rem; }
-        .sil-section-title span { color: #374151; }
-        .sil-body-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.92rem; line-height: 1.85; color: #555; font-weight: 300; margin: 0; }
+      ./* ── Location Card Hover Effects ── */
+.med-loc-card-hover:hover {
+  transform: translateY(-8px);
+  border-color: rgba(15,118,110,0.28);
+  box-shadow: 0 24px 56px rgba(15,31,28,0.14);
+}
 
-        .sil-hero { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 82vh; text-align: center; padding-top: 68px; }
-        .sil-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.88) 100%); }
+.med-loc-card-hover:hover .med-loc-card-img {
+  transform: scale(1.08);
+}
 
-        .sil-info-strip { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
-        .sil-info-item { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+/* Mobile responsive */
+@media (max-width: 820px) {
+  .med-shell .med-outer > div:last-of-type {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
 
-        .sil-loc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
-        .sil-loc-card { position: relative; height: 340px; border-radius: 10px; overflow: hidden; text-decoration: none; color: #fff; display: flex; align-items: flex-end; transition: transform 0.3s, box-shadow 0.3s; }
-        .sil-loc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.15); }
-        .sil-loc-card-content { position: relative; z-index: 2; padding: 1.75rem; width: 100%; }
+@media (max-width: 540px) {
+  .med-shell .med-outer > div:last-of-type {
+    grid-template-columns: 1fr !important;
+  }
+}
+        .med-shell { width: 100vw; margin-left: calc(-50vw + 50%); }
+        .med-outer { max-width: 76rem; margin: 0 auto; padding: 0 1.5rem; }
+        .med-inner { max-width: 58rem; margin: 0 auto; padding: 0 1.5rem; }
 
-        .sil-benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
-        .sil-benefit-card { background: #fff; border: 1px solid #eef0ee; border-radius: 8px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03); transition: border-color 0.2s, box-shadow 0.2s; }
-        .sil-benefit-card:hover { border-color: rgba(15,118,110,0.25); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+        .med-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.1rem; }
+        .med-eyebrow-line { width: 30px; height: 1px; background: rgba(15,118,110,0.35); flex-shrink: 0; }
+        .med-eyebrow-text { font-family: var(--font-inter), sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: #6b7280; font-weight: 600; }
 
-        .sil-type-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        @media (max-width: 768px) { .sil-type-grid { grid-template-columns: 1fr; } }
-        .sil-type-card { background: #fff; border: 1px solid rgba(15,118,110,0.1); border-radius: 8px; padding: 2rem 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; transition: border-color 0.25s, transform 0.3s; }
-        .sil-type-card:hover { border-color: rgba(15,118,110,0.3); transform: translateY(-4px); }
+        .med-h2 { font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 500; letter-spacing: -0.03em; color: #2B2A26; line-height: 1.12; margin: 0 0 1.1rem; }
+        .med-h2 span { color: #0f766e; }
+        .med-h3 { font-family: var(--font-fraunces), Georgia, serif; font-size: 1.15rem; font-weight: 600; color: #2B2A26; margin: 0 0 0.7rem; letter-spacing: -0.01em; }
+        .med-body { font-family: var(--font-inter), sans-serif; font-size: 0.98rem; line-height: 1.9; color: #4b5259; font-weight: 400; margin: 0 0 1rem; }
+        .med-body:last-child { margin-bottom: 0; }
+        .med-body strong { color: #2B2A26; font-weight: 600; }
 
-        .sil-cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2.25rem; background: var(--color-primary); color: #fff; text-decoration: none; font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; border-radius: 100px; transition: background 0.2s, transform 0.2s; }
-        .sil-cta-btn:hover { background: #0d9e95; transform: translateY(-2px); }
-        .sil-cta-outline { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.7rem 1.8rem; border: 1px solid rgba(15,118,110,0.3); color: var(--color-primary); text-decoration: none; font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em; border-radius: 100px; transition: all 0.2s; }
-        .sil-cta-outline:hover { border-color: var(--color-primary); background: rgba(15,118,110,0.04); }
+        .med-card {
+          background: #fff;
+          border: 1px solid rgba(15,118,110,0.12);
+          border-radius: 18px;
+          box-shadow: 0 10px 30px rgba(15,31,28,0.05);
+          transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        .med-card::before {
+          content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+          background: #0f766e; transform: scaleX(0); transform-origin: left;
+          transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); z-index: 2;
+        }
+        .med-card:hover { transform: translateY(-6px); border-color: rgba(15,118,110,0.28); box-shadow: 0 22px 48px rgba(15,31,28,0.12); }
+        .med-card:hover::before { transform: scaleX(1); }
 
-        .sil-faq-item { border-bottom: 1px solid #eef0ee; padding: 1.5rem 0; }
-        .sil-faq-item:last-child { border-bottom: none; }
+        .med-cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2.3rem; background: #0f766e; color: white; text-decoration: none; font-family: var(--font-inter), sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; box-shadow: 0 10px 26px rgba(15,118,110,0.25); transition: all 0.3s cubic-bezier(0.22,1,0.36,1); border: 1px solid #0f766e; }
+        .med-cta-btn:hover { background: #0d6b64; transform: translateY(-3px); box-shadow: 0 16px 36px rgba(15,118,110,0.32); }
+        .med-cta-outline { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.85rem 1.8rem; border: 1px solid rgba(15,118,110,0.25); color: #0f766e; text-decoration: none; font-family: var(--font-inter), sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; transition: all 0.3s cubic-bezier(0.22,1,0.36,1); }
+        .med-cta-outline:hover { border-color: #0f766e; background: rgba(15,118,110,0.05); transform: translateY(-2px); }
 
-        @media (max-width: 640px) { .sil-who-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; } }
+        .med-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; }
+        .med-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
+        @media (max-width: 720px) { .med-grid-2 { grid-template-columns: 1fr; } .med-grid-3 { grid-template-columns: 1fr; } }
+        @media (max-width: 640px) { .med-outer, .med-inner { padding-left: 1.25rem; padding-right: 1.25rem; } }
 
-        .sil-prog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .sil-prog-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; display: flex; flex-direction: column; }
-        .sil-prog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); border-color: rgba(15,118,110,0.3); }
-        .sil-prog-status { font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; padding: 3px 8px; border-radius: 3px; white-space: nowrap; }
-        .sil-prog-open { background: #ecfdf5; color: #065f46; }
-        .sil-prog-filling { background: #fef3c7; color: #92400e; }
-        .sil-prog-last { background: #fee2e2; color: #991b1b; }
+        @keyframes med-hero-zoom { from { transform: scale(1.06); } to { transform: scale(1); } }
+        .med-hero-bg { animation: med-hero-zoom 24s ease-out forwards; }
+        @media (prefers-reduced-motion: reduce) { .med-hero-bg { animation: none; } }
 
-        .sil-trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        @media (max-width: 768px) { .sil-trust-grid { grid-template-columns: 1fr; } }
-        .sil-trust-item { text-align: center; padding: 2rem 1.5rem; border: 1px solid #e5e7eb; border-radius: 10px; background: #fff; transition: border-color 0.2s; }
-        .sil-trust-item:hover { border-color: rgba(15,118,110,0.25); }
+        .med-list { padding-left: 0; margin: 0; list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+        .med-list-item { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.9rem; }
+        .med-list-dot { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid rgba(15,118,110,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .med-list-dot-inner { width: 7px; height: 7px; border-radius: 50%; background: #0f766e; }
+        .med-list-text { font-family: var(--font-inter), sans-serif; font-size: 0.95rem; line-height: 1.85; color: #4b5259; font-weight: 400; }
+        .med-list-text strong { color: #2B2A26; font-weight: 600; }
 
-        .sil-funnel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-        @media (max-width: 768px) { .sil-funnel-grid { grid-template-columns: 1fr; } }
-        .sil-funnel-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 1.75rem 1.5rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.6rem; align-items: center; text-align: center; transition: background 0.25s, border-color 0.25s, transform 0.25s; }
-        .sil-funnel-card:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.3); transform: translateY(-3px); }
+        .med-season-tag { display: inline-block; font-family: var(--font-inter), sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0f766e; background: rgba(15,118,110,0.08); padding: 0.32rem 0.7rem; border-radius: 999px; margin-bottom: 0.9rem; }
+
+        .med-nav-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+        @media (max-width: 820px) { .med-nav-grid { grid-template-columns: 1fr; } }
+
+        .med-section-alt { background: #f7f9f7; }
+        .med-section-white { background: #ffffff; }
+
+        .med-breadcrumb-wrap { padding: 1rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
+
+        .med-hero-section {
+          position: relative;
+          overflow: hidden;
+          min-height: 75vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-bottom: 1px solid rgba(15,118,110,0.12);
+        }
+        .med-hero-section .med-hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(120deg, rgba(4,12,10,0.82) 0%, rgba(4,12,10,0.5) 45%, rgba(4,12,10,0.78) 100%);
+        }
+        .med-hero-section .med-hero-content {
+          position: relative;
+          z-index: 2;
+          max-width: 58rem;
+          width: 100%;
+          padding: 5rem 1.5rem 4.5rem;
+          text-align: center;
+        }
+        .med-hero-section .med-hero-content .med-h1 {
+          font-family: var(--font-fraunces), Georgia, serif;
+          font-size: clamp(2.3rem, 4.6vw, 3.4rem);
+          font-weight: 600;
+          letter-spacing: -0.03em;
+          color: #ffffff;
+          margin: 0 0 1.1rem;
+          line-height: 1.08;
+          text-shadow: 0 3px 24px rgba(0,0,0,0.5);
+        }
+        .med-hero-section .med-hero-content .med-h1 span {
+          color: #5eead4;
+        }
+        .med-hero-section .med-hero-content .med-body {
+          max-width: 46rem;
+          margin: 0 auto 1.5rem;
+          font-size: 1.05rem;
+          color: rgba(255,255,255,0.85);
+          text-shadow: 0 2px 14px rgba(0,0,0,0.45);
+        }
+        .med-hero-section .med-hero-content .med-hero-tags {
+          display: flex;
+          justify-content: center;
+          gap: 0.75rem;
+          flex-wrap: wrap;
+          margin-bottom: 2rem;
+        }
+        .med-hero-section .med-hero-content .med-hero-tags span {
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.65rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #ffffff;
+          border: 1px solid rgba(255,255,255,0.3);
+          border-radius: 999px;
+          padding: 0.35rem 0.9rem;
+          background: rgba(15,118,110,0.25);
+        }
+        .med-hero-section .med-hero-content .med-hero-actions {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+
+        .med-section-padding { padding: 4rem 0; }
+        .med-section-padding-sm { padding: 3rem 0; }
+
+        /* ── Page specific styles ── */
+        .med-silent-strip { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+        .med-silent-item { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+
+        .med-silent-type-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+        @media (max-width: 720px) { .med-silent-type-grid { grid-template-columns: 1fr; } }
+        .med-silent-type-card { padding: 2rem 1.75rem; }
+        .med-silent-type-card .med-h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+        .med-silent-type-card .med-body { font-size: 0.85rem; margin-bottom: 0; }
+        .med-silent-type-card .med-best { font-family: var(--font-inter), sans-serif; font-size: 0.7rem; color: #0f766e; font-weight: 500; margin-top: auto; }
+
+        .med-silent-loc-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+        @media (max-width: 820px) { .med-silent-loc-grid { grid-template-columns: 1fr; } }
+        .med-silent-loc-card {
+          position: relative; border-radius: 18px; overflow: hidden;
+          text-decoration: none; color: #fff; display: flex; align-items: flex-end;
+          min-height: 340px; transition: transform 0.35s, box-shadow 0.35s;
+          border: 1px solid rgba(15,118,110,0.12);
+          background: #0a1f1c;
+        }
+        .med-silent-loc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.15); }
+        .med-silent-loc-card .med-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .med-silent-loc-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.1) 100%); z-index: 1; }
+        .med-silent-loc-card .med-content { position: relative; z-index: 2; padding: 1.75rem; width: 100%; }
+        .med-silent-loc-card .med-content .med-alt { font-family: var(--font-inter), sans-serif; font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: #5eead4; font-weight: 600; display: block; margin-bottom: 0.3rem; }
+        .med-silent-loc-card .med-content .med-h3 { color: #fff; font-size: 1.15rem; margin-bottom: 0.3rem; }
+        .med-silent-loc-card .med-content .med-body { color: rgba(255,255,255,0.8); font-size: 0.82rem; margin-bottom: 0.5rem; }
+        .med-silent-loc-card .med-content .med-best { font-family: var(--font-inter), sans-serif; font-size: 0.65rem; letter-spacing: 0.08em; color: rgba(255,255,255,0.5); font-weight: 400; }
+
+        .med-silent-benefit-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+        @media (max-width: 720px) { .med-silent-benefit-grid { grid-template-columns: 1fr; } }
+        .med-silent-benefit-card { padding: 1.5rem; border: 1px solid rgba(15,118,110,0.06); border-radius: 12px; background: #fff; }
+        .med-silent-benefit-card .med-h3 { font-size: 0.88rem; margin-bottom: 0.3rem; }
+        .med-silent-benefit-card .med-body { font-size: 0.82rem; margin-bottom: 0; }
+
+        .med-silent-prog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+        @media (max-width: 720px) { .med-silent-prog-grid { grid-template-columns: 1fr; } }
+        .med-silent-prog-card {
+          background: #fff; border: 1px solid rgba(15,118,110,0.12); border-radius: 18px;
+          overflow: hidden; transition: transform 0.35s, box-shadow 0.35s, border-color 0.3s;
+          display: flex; flex-direction: column; text-decoration: none; color: inherit;
+        }
+        .med-silent-prog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); border-color: rgba(15,118,110,0.3); }
+        .med-silent-prog-card .med-header { padding: 1.5rem 1.5rem 0; display: flex; justify-content: space-between; align-items: flex-start; }
+        .med-silent-prog-card .med-body-wrap { padding: 1rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+
+        .med-silent-trust-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+        @media (max-width: 720px) { .med-silent-trust-grid { grid-template-columns: 1fr; } }
+        .med-silent-trust-item { text-align: center; padding: 2rem 1.5rem; border: 1px solid rgba(15,118,110,0.12); border-radius: 18px; background: #fff; transition: border-color 0.2s; }
+        .med-silent-trust-item:hover { border-color: rgba(15,118,110,0.25); }
+
+        .med-silent-funnel-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+        @media (max-width: 720px) { .med-silent-funnel-grid { grid-template-columns: 1fr; } }
+        .med-silent-funnel-card {
+          background: #0a1f1c; border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 18px; padding: 1.75rem; text-decoration: none;
+          display: flex; flex-direction: column; gap: 0.6rem; align-items: center; text-align: center;
+          transition: background 0.25s, border-color 0.25s, transform 0.25s;
+        }
+        .med-silent-funnel-card:hover { background: rgba(10,31,28,0.8); border-color: rgba(255,255,255,0.25); transform: translateY(-3px); }
+        .med-silent-funnel-card .med-h3 { font-size: 0.92rem; color: #fff; margin-bottom: 0; }
+        .med-silent-funnel-card .med-body { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-bottom: 0; }
+        .med-silent-funnel-card .med-link { font-family: var(--font-inter), sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #5eead4; margin-top: auto; padding-top: 0.5rem; }
+        .med-silent-funnel-card .med-num { font-size: 1.8rem; font-weight: 200; color: #5eead4; margin-bottom: 0.25rem; }
+
+        .med-silent-stories { display: flex; flex-direction: column; gap: 0; border: 1px solid rgba(15,118,110,0.12); border-radius: 12px; overflow: hidden; margin-top: 1.25rem; }
+        .med-silent-story {
+          display: flex; align-items: center; justify-content: space-between;
+          padding: 1rem 1.25rem;
+          border-bottom: 1px solid rgba(15,118,110,0.08);
+          text-decoration: none; background: #fff;
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.88rem; font-weight: 400; color: #2B2A26;
+          transition: background 0.2s;
+        }
+        .med-silent-story:last-child { border-bottom: none; }
+        .med-silent-story:hover { background: #f7f9f7; }
+        .med-silent-story .med-arrow { color: #0f766e; font-size: 0.8rem; }
+
+        .med-silent-related { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+
+        .med-silent-faq-item { border-bottom: 1px solid rgba(15,118,110,0.08); padding: 1.5rem 0; }
+        .med-silent-faq-item:last-child { border-bottom: none; }
+        .med-silent-faq-item .med-h3 { font-size: 0.92rem; margin-bottom: 0.3rem; }
+        .med-silent-faq-item .med-body { font-size: 0.85rem; margin-bottom: 0; }
+
+        /* ── FAQ Accordion ── */
+        .med-faq-accordion {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          margin-top: 1.5rem;
+        }
+        .med-faq-details {
+          background: #fff;
+          border: 1px solid rgba(15,118,110,0.1);
+          border-radius: 12px;
+          overflow: hidden;
+          transition: border-color 0.3s ease;
+        }
+        .med-faq-details:hover { border-color: rgba(15,118,110,0.25); }
+        .med-faq-details[open] { border-color: rgba(15,118,110,0.3); }
+        .med-faq-summary {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1.25rem 1.5rem;
+          cursor: pointer;
+          list-style: none;
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.95rem;
+          font-weight: 500;
+          color: #2B2A26;
+          transition: background 0.2s ease;
+          user-select: none;
+          gap: 1rem;
+        }
+        .med-faq-summary::-webkit-details-marker { display: none; }
+        .med-faq-summary:hover { background: rgba(15,118,110,0.03); }
+        .med-faq-details[open] .med-faq-summary {
+          background: rgba(15,118,110,0.04);
+          border-bottom: 1px solid rgba(15,118,110,0.06);
+        }
+        .med-faq-question { flex: 1; }
+        .med-faq-icon {
+          flex-shrink: 0;
+          width: 24px;
+          height: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #0f766e;
+          transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .med-faq-details[open] .med-faq-icon { transform: rotate(45deg); }
+        .med-faq-icon svg {
+          width: 20px;
+          height: 20px;
+          stroke-width: 2;
+          transition: stroke-width 0.2s ease;
+        }
+        .med-faq-summary:hover .med-faq-icon svg { stroke-width: 2.5; }
+        .med-faq-answer {
+          padding: 0 1.5rem 1.5rem;
+          animation: med-faq-slide 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        @keyframes med-faq-slide {
+          0% { opacity: 0; transform: translateY(-12px) scale(0.98); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .med-faq-answer .med-body { margin: 0; font-size: 0.92rem; color: #4b5259; }
+
+        .med-silent-link-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+        @media (max-width: 820px) { .med-silent-link-grid { grid-template-columns: 1fr; } }
+
+        .med-silent-bottom-cta {
+          position: relative;
+          overflow: hidden;
+          min-height: 50vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+        }
+        .med-silent-bottom-cta .med-overlay {
+          position: absolute;
+          inset: 0;
+          background: rgba(4,12,10,0.88);
+        }
+        .med-silent-bottom-cta .med-content {
+          position: relative;
+          z-index: 2;
+          max-width: 44rem;
+          padding: 4rem 2rem;
+        }
+        .med-silent-bottom-cta .med-content .med-h2 {
+          color: #fff;
+          margin-bottom: 1rem;
+        }
+        .med-silent-bottom-cta .med-content .med-h2 span {
+          color: #5eead4;
+        }
+        .med-silent-bottom-cta .med-content .med-body {
+          color: rgba(255,255,255,0.6);
+          margin-bottom: 2rem;
+        }
+        .med-silent-bottom-cta .med-content .med-trust {
+          display: flex;
+          justify-content: center;
+          gap: 1.5rem;
+          margin-top: 1.5rem;
+          flex-wrap: wrap;
+        }
+        .med-silent-bottom-cta .med-content .med-trust span {
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.68rem;
+          color: rgba(255,255,255,0.35);
+          font-weight: 400;
+          letter-spacing: 0.05em;
+        }
       `}</style>
 
-      {reviewSchemas.length > 0 && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, ...reviewSchemas, ...(aggregateSchema ? [aggregateSchema] : [])]) }} />
-      )}
-      {reviewSchemas.length === 0 && (
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema]) }} />
-      )}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify([
+            breadcrumbSchema,
+            faqSchema,
+            ...reviewSchemas,
+            ...(aggregateSchema ? [aggregateSchema] : []),
+          ]),
+        }}
+      />
 
-      <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Retreats', href: '/retreats' }, { name: 'Silent Retreats' }]} />
-
-      {/* ═══ HERO ═══ */}
-      <section className="sil-hero">
-        <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/experience-hubs/silent-hero.png" width={1024} height={1024} alt="Silent retreats in the Himalayas — a solitary figure walking through misty Himalayan forest" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
-          <div className="sil-hero-overlay" />
+      <div className="med-breadcrumb-wrap">
+        <div className="med-outer">
+          <Breadcrumb
+            items={[
+              { name: 'Home', href: '/' },
+              { name: 'Retreats', href: '/retreats' },
+              { name: 'Silent Retreats' },
+            ]}
+          />
         </div>
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem', justifyContent: 'center' }}>
-            <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.5)', display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>Silence & Stillness</span>
-            <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.5)', display: 'inline-block' }} />
-          </div>
-          <h1 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(2rem, 4.5vw, 3rem)', fontWeight: 200, letterSpacing: '-0.035em', color: '#ffffff', margin: '0 0 1rem', lineHeight: 1.05, textShadow: '0 2px 32px rgba(0,0,0,0.7)' }}>
-            Silent Retreats in the Himalayas
-          </h1>
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1rem', color: 'rgba(255,255,255,0.82)', fontWeight: 300, lineHeight: 1.75, maxWidth: '38rem', margin: '0 0 2rem' }}>
-            Not the uncomfortable quiet of a paused conversation. The thick, living silence of a Himalayan forest where the only sound is your own awareness. Silence as nourishment, not deprivation.
-          </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', justifyContent: 'center', marginBottom: '2rem' }}>
-            {['Noble Silence', 'No Devices', '3–10 Days', 'Max 12 Participants'].map((tag) => (
-              <span key={tag} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.25)', color: 'rgba(255,255,255,0.85)', borderRadius: '4px', padding: '0.4rem 0.85rem' }}>{tag}</span>
-            ))}
-          </div>
-          <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '2.5rem' }}>
-            <Link href="/contact" className="sil-cta-btn" style={{ padding: '1rem 2.5rem', fontSize: '0.82rem' }}>Find Your Silent Retreat →</Link>
-            <a href="#silence-types" className="sil-cta-outline" style={{ borderColor: 'rgba(255,255,255,0.35)', color: 'rgba(255,255,255,0.9)', padding: '0.9rem 2rem', fontSize: '0.78rem' }}>Explore Formats ↓</a>
-          </div>
-        </div>
-      </section>
+      </div>
 
-      {/* ═══ INFO STRIP ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#0a1f1c', padding: '2rem 0' }}>
-        <div className="sil-wide">
-          <div className="sil-info-strip">
-            {[
-              { label: 'Locations', value: '3 Himalayan Settings' },
-              { label: 'Format', value: 'Noble Silence' },
-              { label: 'Duration', value: '3 – 10 Days' },
-              { label: 'Group Size', value: 'Max 12 People' },
-            ].map((item) => (
-              <div key={item.label} className="sil-info-item">
-                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', fontWeight: 500 }}>{item.label}</span>
-                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', color: '#ffffff', fontWeight: 300 }}>{item.value}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <article>
 
-      {/* ═══ WHAT IS A SILENT RETREAT ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
-        <div className="sil-inner">
-          <div className="sil-eyebrow"><span className="sil-eyebrow-line" /><span className="sil-eyebrow-text">Understanding Silent Retreats</span></div>
-          <h2 className="sil-section-title">What happens during <span>a silent retreat</span>?</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem', alignItems: 'center' }} className="sil-who-grid">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-              <p className="sil-body-text">A silent retreat is not simply a meditation retreat with a rule against talking. It is a fundamentally different experience — one where the entire field of communication shifts.</p>
-              <p className="sil-body-text">The first 12–24 hours are often uncomfortable. The mind, accustomed to constant verbal interaction, searches for stimulation and finds none. Restlessness, boredom, and sometimes anxiety arise. This is normal and expected.</p>
-              <p className="sil-body-text">By the second day, something begins to change. Without the need to formulate responses, the mind slows. Sensory perception sharpens. By day three, a deeper layer of awareness — quieter, more spacious, less reactive — becomes accessible.</p>
-              <p className="sil-body-text">This is what most people have never experienced. Not the silence of a quiet room, but the silence that lives beneath everything — thick, alive, and profoundly nourishing.</p>
+        {/* ── HERO ── */}
+        <section className="med-shell med-hero-section">
+          <div style={{ position: 'absolute', inset: 0 }}>
+            <img
+              className="med-hero-bg"
+              src={heroImage.src}
+              alt={heroImage.alt}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+            <div className="med-hero-overlay" />
+          </div>
+          <div className="med-hero-content">
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.3rem' }}>
+              <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
+              <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>Silence & Stillness</span>
+              <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
             </div>
-            <div style={{ position: 'relative', borderRadius: '10px', overflow: 'hidden', height: '420px' }}>
-              <Image src="/Images/experience-hubs/monastery.webp" alt="Remote Himalayan monastery — the setting for deep silent retreats" width={1200} height={675} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 50vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <h1 className="med-h1">
+              {h1Rest} <span>{h1LastWord}</span>
+            </h1>
+            <p className="med-body">
+              Not the uncomfortable quiet of a paused conversation. The thick, living silence of a Himalayan forest where the only sound is your own awareness. Silence as nourishment, not deprivation.
+            </p>
+            <div className="med-hero-tags">
+              <span>Noble Silence</span>
+              <span>No Devices</span>
+              <span>3–10 Days</span>
+              <span>Max 12 Participants</span>
+            </div>
+            <div className="med-hero-actions">
+              <Link href="/contact" className="med-cta-btn">Find Your Silent Retreat →</Link>
+              <a href="#silence-types" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Explore Formats ↓</a>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══ PSYCHOLOGICAL EFFECTS ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
-        <div className="sil-inner">
-          <div className="sil-eyebrow"><span className="sil-eyebrow-line" /><span className="sil-eyebrow-text">The Science of Silence</span></div>
-          <h2 className="sil-section-title">What silence does to <span>your mind and body</span></h2>
-          <p className="sil-body-text" style={{ marginBottom: '2.5rem' }}>Extended silence produces measurable psychological and physiological changes, studied across multiple research traditions.</p>
-          <div className="sil-benefit-grid">
-            {[
-              { title: 'Cortisol Reduction', text: 'Within 48–72 hours, cortisol levels drop measurably. The absence of social performance pressure allows the adrenal system to stand down.' },
-              { title: 'Default Network Quieting', text: 'The brain\'s default mode network — responsible for mind-wandering and rumination — shows reduced activity. The neurological correlate of the thinking mind becoming quiet.' },
-              { title: 'Enhanced Senses', text: 'Removing linguistic processing frees cognitive bandwidth. Colours appear more vivid, sounds more distinct, physical sensations more nuanced.' },
-              { title: 'Emotional Processing', text: 'Without talking about emotions, the psyche processes them somatically rather than narratively. Emotions rise, are felt, and pass — without intellectual loops.' },
-              { title: 'Time Distortion', text: 'Without conversation and schedule-checking, the experience of time changes. Days that feel interminable on day one begin to expand and slow beautifully.' },
-              { title: 'Deep Sleep', text: 'The nervous system recalibration produces significantly deeper sleep. Most retreatants report the best sleep of their lives by day three.' },
-            ].map((item) => (
-              <div key={item.title} className="sil-benefit-card">
-                <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 600, color: '#111', margin: '0 0 0.6rem' }}>{item.title}</h3>
-                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', lineHeight: 1.7, color: '#666', fontWeight: 300, margin: 0 }}>{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ VISUAL BREAK ═══ */}
-      <figure style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', height: '300px', overflow: 'hidden', margin: 0, padding: 0 }}>
-        <img src="/Images/whyhimalaya/psycological.webp" width={800} height={533} alt="Forest path — the environment for silent retreats" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }} />
-        <figcaption style={{ position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em', fontStyle: 'italic' }}>Silence is not something you achieve — it is something you enter</figcaption>
-      </figure>
-
-      {/* ═══ TYPES OF SILENCE ═══ */}
-      <section id="silence-types" style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
-        <div className="sil-wide">
-          <div className="sil-eyebrow" style={{ justifyContent: 'center' }}><span className="sil-eyebrow-line" /><span className="sil-eyebrow-text">Silence Formats</span><span className="sil-eyebrow-line" /></div>
-          <h2 className="sil-section-title" style={{ textAlign: 'center' }}>Types of <span>silent retreats</span></h2>
-          <p className="sil-body-text" style={{ textAlign: 'center', maxWidth: '40rem', margin: '0 auto 3rem' }}>Not all silence is the same. Choose the format that matches your readiness and intention.</p>
-          <div className="sil-type-grid">
-            {SILENCE_TYPES.map((type) => (
-              <div key={type.title} className="sil-type-card">
-                <span style={{ fontSize: '1.5rem' }}>{type.icon}</span>
-                <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1rem', fontWeight: 500, color: '#111', margin: 0 }}>{type.title}</h3>
-                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: '#666', fontWeight: 300, lineHeight: 1.7, margin: 0 }}>{type.description}</p>
-                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', color: 'var(--color-primary)', fontWeight: 500, letterSpacing: '0.03em', marginTop: 'auto' }}>Best for: {type.bestFor}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ WHO THIS IS FOR ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
-        <div className="sil-inner">
-          <div className="sil-eyebrow"><span className="sil-eyebrow-line" /><span className="sil-eyebrow-text">Is This For You</span></div>
-          <h2 className="sil-section-title">Who silent retreats are <span>for</span></h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }} className="sil-who-grid">
-            <div>
-              <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', margin: '0 0 1.25rem' }}>✓ Perfect if you are</h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                {['Someone who has never experienced extended silence and feels drawn to it', 'In an overstimulated career or lifestyle seeking neurological reset', 'A meditation practitioner wanting to deepen through sustained quiet', 'Suspecting that what you need most is permission to stop talking', 'Recovering from burnout, grief, or emotional overwhelm', 'Ready to discover what your mind does when it has nothing to perform'].map((item, i) => (
-                  <li key={i} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', lineHeight: 1.6, color: '#444', fontWeight: 300, display: 'flex', gap: '0.6rem', alignItems: 'flex-start' }}>
-                    <span style={{ width: 16, height: 16, borderRadius: '50%', background: 'var(--color-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '0.15rem', fontSize: '0.5rem', color: '#fff', fontWeight: 700 }}>✓</span>{item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', margin: '0 0 1.25rem' }}>— Not the right fit if you want</h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                {['Social retreat with group activities and conversation', 'Spa-style relaxation with entertainment', 'Short workshop (less than 3 days)', 'Silent meditation without any guidance or structure'].map((item, i) => (
-                  <li key={i} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', lineHeight: 1.6, color: '#777', fontWeight: 300, display: 'flex', gap: '0.6rem', alignItems: 'flex-start' }}>
-                    <span style={{ width: 16, height: 16, borderRadius: '50%', background: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '0.15rem', fontSize: '0.6rem', color: '#999' }}>—</span>{item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ LOCATIONS ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
-        <div className="sil-wide">
-          <div className="sil-eyebrow" style={{ justifyContent: 'center' }}><span className="sil-eyebrow-line" /><span className="sil-eyebrow-text">Where We Hold Silence</span><span className="sil-eyebrow-line" /></div>
-          <h2 className="sil-section-title" style={{ textAlign: 'center' }}>Three Himalayan <span>silence containers</span></h2>
-          <p className="sil-body-text" style={{ textAlign: 'center', maxWidth: '38rem', margin: '0 auto 3rem' }}>Each location holds silence differently. Forest silence. Geological silence. Alpine silence. Choose based on the quality of quiet your nervous system needs.</p>
-          <div className="sil-loc-grid">
-            {LOCATIONS.map((loc) => (
-              <Link key={loc.id} href={`/retreats/${loc.id}`} className="sil-loc-card">
-                <Image src={loc.image} alt={`${loc.name} — silent retreat location`} width={800} height={462} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 50%, transparent 100%)' }} />
-                <div className="sil-loc-card-content">
-                  <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', fontWeight: 500, display: 'block', marginBottom: '0.3rem' }}>{loc.altitude} altitude</span>
-                  <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.15rem', fontWeight: 400, color: '#fff', margin: '0 0 0.5rem' }}>{loc.name} — {loc.tagline}</h3>
-                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)', fontWeight: 300, lineHeight: 1.6, margin: '0 0 0.75rem' }}>{loc.description}</p>
-                  <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', letterSpacing: '0.08em', color: 'rgba(255,255,255,0.5)', fontWeight: 400 }}>Best for: {loc.bestFor}</span>
+        {/* ── INFO STRIP ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '2rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-outer">
+            <div className="med-silent-strip">
+              {[
+                { label: 'Locations', value: '3 Himalayan Settings' },
+                { label: 'Format', value: 'Noble Silence' },
+                { label: 'Duration', value: '3 – 10 Days' },
+                { label: 'Group Size', value: 'Max 12 People' },
+              ].map((item) => (
+                <div key={item.label} className="med-silent-item">
+                  <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#6b7280', fontWeight: 500 }}>{item.label}</span>
+                  <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', color: '#2B2A26', fontWeight: 400 }}>{item.value}</span>
                 </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ GUIDED DECISION FUNNEL ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#0a1f1c', padding: '4.5rem 0' }}>
-        <div className="sil-wide">
-          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)', fontWeight: 200, color: '#ffffff', margin: '0 0 0.6rem' }}>Three ways to enter the silence</h3>
-            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: 'rgba(255,255,255,0.45)', fontWeight: 300, maxWidth: '36rem', margin: '0 auto', lineHeight: 1.7 }}>Choose based on your readiness and intention.</p>
-          </div>
-          <div className="sil-funnel-grid">
-            <Link href="/contact" className="sil-funnel-card">
-              <span style={{ fontSize: '1.6rem' }}>💬</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', fontWeight: 500, color: '#ffffff' }}>Get Matched</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, lineHeight: 1.6 }}>Tell us about your experience and intention — we&apos;ll recommend the right format, location, and duration.</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', marginTop: 'auto', paddingTop: '0.5rem' }}>Talk to a planner →</span>
-            </Link>
-            <Link href="/what-happens-at-a-silent-retreat" className="sil-funnel-card">
-              <span style={{ fontSize: '1.6rem' }}>📚</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', fontWeight: 500, color: '#ffffff' }}>Learn What to Expect</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, lineHeight: 1.6 }}>Read our detailed guide on what actually happens during a silent retreat — hour by hour, day by day.</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', marginTop: 'auto', paddingTop: '0.5rem' }}>Read the guide →</span>
-            </Link>
-            <Link href="/vipassana-vs-meditation-retreat" className="sil-funnel-card">
-              <span style={{ fontSize: '1.6rem' }}>⚖️</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', fontWeight: 500, color: '#ffffff' }}>Vipassana vs Our Format</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, lineHeight: 1.6 }}>Wondering how we compare to Vipassana? Smaller groups, multiple techniques, nature-integrated. See the differences.</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', marginTop: 'auto', paddingTop: '0.5rem' }}>Compare formats →</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ TESTIMONIALS ═══ */}
-      {topReviews.length > 0 && (
-        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
-          <div className="sil-wide">
-            <div className="sil-eyebrow" style={{ justifyContent: 'center' }}><span className="sil-eyebrow-line" /><span className="sil-eyebrow-text">What Participants Say</span><span className="sil-eyebrow-line" /></div>
-            <h2 className="sil-section-title" style={{ textAlign: 'center' }}>Real <span>retreat experiences</span></h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 24rem), 1fr))', gap: '1.25rem', marginBottom: '1.25rem' }}>
-              {topReviews.map((review) => (<ReviewCard key={`${review.participantName}-${review.datePublished}`} review={review} />))}
+              ))}
             </div>
-            <div style={{ textAlign: 'center' }}><Link href="/reviews" style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, color: 'var(--color-primary)' }}>Read more experiences →</Link></div>
           </div>
         </section>
-      )}
 
-      {/* ═══ FEATURED PROGRAMS ═══ */}
-      {upcomingEvents.length > 0 && (
-        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
-          <div className="sil-wide">
-            <div className="sil-eyebrow" style={{ justifyContent: 'center' }}><span className="sil-eyebrow-line" /><span className="sil-eyebrow-text">Scheduled Retreats</span><span className="sil-eyebrow-line" /></div>
-            <h2 className="sil-section-title" style={{ textAlign: 'center' }}>Upcoming <span>silent retreat programs</span></h2>
-            <p className="sil-body-text" style={{ textAlign: 'center', maxWidth: '36rem', margin: '0 auto 3rem' }}>Confirmed departures with fixed dates, pricing, and limited seats.</p>
-            <div className="sil-prog-grid">
-              {upcomingEvents.map((ev) => {
-                const sc = ev.status === 'filling-fast' ? 'sil-prog-filling' : ev.status === 'last-few' ? 'sil-prog-last' : 'sil-prog-open';
-                const sl = ev.status === 'filling-fast' ? 'Filling Fast' : ev.status === 'last-few' ? 'Last Few Seats' : 'Open';
-                return (
-                  <Link key={ev.slug} href={`/${ev.slug}`} className="sil-prog-card" style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <div style={{ padding: '1.5rem 1.5rem 0', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                      <div>
-                        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#999', fontWeight: 500, display: 'block', marginBottom: '0.35rem' }}>{ev.locationName} · {ev.month} {ev.year}</span>
-                        <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.05rem', fontWeight: 500, color: '#111', margin: 0 }}>{ev.label}</h3>
-                      </div>
-                      <span className={`sil-prog-status ${sc}`}>{sl}</span>
-                    </div>
-                    <div style={{ padding: '1rem 1.5rem 1.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                      <div style={{ display: 'flex', gap: '1.5rem', margin: '1rem 0', flexWrap: 'wrap' }}>
-                        <div><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', display: 'block', marginBottom: '0.15rem' }}>Duration</span><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 400, color: '#222' }}>{ev.durationDays} Days</span></div>
-                        <div><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', display: 'block', marginBottom: '0.15rem' }}>Price</span><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 500, color: '#111' }}>₹{ev.price.toLocaleString('en-IN')}</span></div>
-                        <div><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', display: 'block', marginBottom: '0.15rem' }}>Group</span><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 400, color: '#222' }}>Max {ev.groupSize}</span></div>
-                      </div>
-                      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.8rem', color: '#777', fontWeight: 300, lineHeight: 1.7, margin: '0 0 0.75rem' }}>{ev.dateRange} · All-inclusive</p>
-                      <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1rem', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                        {ev.included.slice(0, 4).map((inc, idx) => (<li key={idx} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.72rem', color: '#888', fontWeight: 300, display: 'flex', gap: '0.4rem', alignItems: 'center' }}><span style={{ color: 'var(--color-primary)', fontSize: '0.65rem' }}>✓</span> {inc}</li>))}
-                      </ul>
-                      <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #f0f0f0', paddingTop: '1rem' }}>
-                        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-primary)' }}>View Details →</span>
-                        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.72rem', fontWeight: 500, color: ev.seatsLeft <= 3 ? '#c92a2a' : '#6b7280' }}>{ev.seatsLeft} seats left</span>
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })}
+        {/* ── WHAT IS A SILENT RETREAT ── */}
+        <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Understanding Silent Retreats</span>
             </div>
-            <div style={{ textAlign: 'center', marginTop: '2rem' }}><Link href="/contact" className="sil-cta-btn">Don&apos;t See Your Dates? Request a Custom Retreat →</Link></div>
+            <h2 className="med-h2">What happens during <span>a silent retreat</span>?</h2>
+
+            <div className="med-grid-2" style={{ alignItems: 'center', marginTop: '1.5rem' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <p className="med-body">A silent retreat is not simply a meditation retreat with a rule against talking. It is a fundamentally different experience — one where the entire field of communication shifts.</p>
+                <p className="med-body">The first 12–24 hours are often uncomfortable. The mind, accustomed to constant verbal interaction, searches for stimulation and finds none. Restlessness, boredom, and sometimes anxiety arise. This is normal and expected.</p>
+                <p className="med-body">By the second day, something begins to change. Without the need to formulate responses, the mind slows. Sensory perception sharpens. By day three, a deeper layer of awareness — quieter, more spacious, less reactive — becomes accessible.</p>
+                <p className="med-body">This is what most people have never experienced. Not the silence of a quiet room, but the silence that lives beneath everything — thick, alive, and profoundly nourishing.</p>
+              </div>
+              <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', aspectRatio: '16/9' }}>
+                <img src="/Images/experience-hubs/monastery.webp" alt="Remote Himalayan monastery — the setting for deep silent retreats" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
+            </div>
           </div>
         </section>
-      )}
 
-      {/* ═══ STORIES ═══ */}
-      {PAGE.storyLinks && PAGE.storyLinks.length > 0 && (
-        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
-          <div className="sil-inner">
-            <div className="sil-eyebrow"><span className="sil-eyebrow-line" /><span className="sil-eyebrow-text">Retreat Stories</span></div>
-            <p className="sil-body-text" style={{ marginBottom: '1.25rem' }}>First-person accounts from people who have entered the silence.</p>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0', border: '1px solid #e5e7eb', borderRadius: '8px', overflow: 'hidden' }}>
-              {PAGE.storyLinks.map((story, i, arr) => (
-                <Link key={story.href} href={story.href} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '1rem 1.25rem', borderBottom: i < arr.length - 1 ? '1px solid #e5e7eb' : 'none', textDecoration: 'none', background: '#f7f9f7', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, color: '#333333' }}>
-                  <span>{story.label}</span><span style={{ color: '#374151', fontSize: '0.8rem' }}>→</span>
+        {/* ── PSYCHOLOGICAL EFFECTS ── */}
+        <section className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">The Science of Silence</span>
+            </div>
+            <h2 className="med-h2">What silence does to <span>your mind and body</span></h2>
+            <p className="med-body">Extended silence produces measurable psychological and physiological changes, studied across multiple research traditions.</p>
+
+            <div className="med-silent-benefit-grid" style={{ marginTop: '1.5rem' }}>
+              {[
+                { title: 'Cortisol Reduction', text: 'Within 48–72 hours, cortisol levels drop measurably. The absence of social performance pressure allows the adrenal system to stand down.' },
+                { title: 'Default Network Quieting', text: 'The brain\'s default mode network — responsible for mind-wandering and rumination — shows reduced activity. The neurological correlate of the thinking mind becoming quiet.' },
+                { title: 'Enhanced Senses', text: 'Removing linguistic processing frees cognitive bandwidth. Colours appear more vivid, sounds more distinct, physical sensations more nuanced.' },
+                { title: 'Emotional Processing', text: 'Without talking about emotions, the psyche processes them somatically rather than narratively. Emotions rise, are felt, and pass — without intellectual loops.' },
+                { title: 'Time Distortion', text: 'Without conversation and schedule-checking, the experience of time changes. Days that feel interminable on day one begin to expand and slow beautifully.' },
+                { title: 'Deep Sleep', text: 'The nervous system recalibration produces significantly deeper sleep. Most retreatants report the best sleep of their lives by day three.' },
+              ].map((item) => (
+                <div key={item.title} className="med-silent-benefit-card">
+                  <h3 className="med-h3">{item.title}</h3>
+                  <p className="med-body">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+  
+
+        {/* ── TYPES OF SILENCE ── */}
+        <section id="silence-types" className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-outer">
+            <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Silence Formats</span>
+              <span className="med-eyebrow-line" />
+            </div>
+            <h2 className="med-h2" style={{ textAlign: 'center' }}>Types of <span>silent retreats</span></h2>
+            <p className="med-body" style={{ textAlign: 'center', maxWidth: '40rem', margin: '0 auto 2rem' }}>Not all silence is the same. Choose the format that matches your readiness and intention.</p>
+
+            <div className="med-silent-type-grid">
+              {SILENCE_TYPES.map((type) => (
+                <div key={type.title} className="med-card med-silent-type-card">
+                  <h3 className="med-h3">{type.title}</h3>
+                  <p className="med-body">{type.description}</p>
+                  <span className="med-best">Best for: {type.bestFor}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── WHO THIS IS FOR ── */}
+        <section className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Is This For You</span>
+            </div>
+            <h2 className="med-h2">Who silent retreats are <span>for</span></h2>
+
+            <div className="med-grid-2" style={{ marginTop: '1.5rem' }}>
+              <div>
+                <h3 className="med-h3" style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#0f766e', marginBottom: '1rem' }}>
+                  ✓ Perfect if you are
+                </h3>
+                <ul className="med-list">
+                  {[
+                    'Someone who has never experienced extended silence and feels drawn to it',
+                    'In an overstimulated career or lifestyle seeking neurological reset',
+                    'A meditation practitioner wanting to deepen through sustained quiet',
+                    'Suspecting that what you need most is permission to stop talking',
+                    'Recovering from burnout, grief, or emotional overwhelm',
+                    'Ready to discover what your mind does when it has nothing to perform',
+                  ].map((item) => (
+                    <li key={item} className="med-list-item">
+                      <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
+                      <span className="med-list-text">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="med-h3" style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', marginBottom: '1rem' }}>
+                  — Not the right fit if you want
+                </h3>
+                <ul className="med-list">
+                  {[
+                    'Social retreat with group activities and conversation',
+                    'Spa-style relaxation with entertainment',
+                    'Short workshop (less than 3 days)',
+                    'Silent meditation without any guidance or structure',
+                  ].map((item) => (
+                    <li key={item} className="med-list-item" style={{ opacity: 0.5 }}>
+                      <span className="med-list-dot"><span className="med-list-dot-inner" style={{ background: '#ccc' }} /></span>
+                      <span className="med-list-text">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+                       {/* ── LOCATIONS ── */}
+        <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-outer">
+            <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Where We Hold Silence</span>
+              <span className="med-eyebrow-line" />
+            </div>
+            <h2 className="med-h2" style={{ textAlign: 'center' }}>Three Himalayan <span>silence containers</span></h2>
+            <p className="med-body" style={{ textAlign: 'center', maxWidth: '38rem', margin: '0 auto 2rem' }}>Each location holds silence differently. Forest silence. Geological silence. Alpine silence. Choose based on the quality of quiet your nervous system needs.</p>
+
+            <div style={{ 
+              display: 'grid', 
+              gridTemplateColumns: 'repeat(3, 1fr)', 
+              gap: '1.5rem',
+              marginTop: '1.5rem'
+            }}>
+              {LOCATIONS.map((loc) => (
+                <Link key={loc.id} href={`/retreats/${loc.id}`} style={{ 
+                  display: 'flex', 
+                  flexDirection: 'column', 
+                  textDecoration: 'none', 
+                  color: 'inherit',
+                  background: '#fff',
+                  borderRadius: '18px',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(15,118,110,0.12)',
+                  transition: 'transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease, border-color 0.4s ease',
+                  height: '100%',
+                  position: 'relative'
+                }}
+                className="med-loc-card-hover"
+                >
+                  <div style={{ 
+                    position: 'relative', 
+                    width: '100%', 
+                    aspectRatio: '16/9', 
+                    overflow: 'hidden', 
+                    background: '#f0f2f0',
+                    flexShrink: 0
+                  }}>
+                    <img 
+                      src={loc.image} 
+                      alt={`${loc.name} — silent retreat location`} 
+                      style={{ 
+                        width: '100%', 
+                        height: '100%', 
+                        objectFit: 'cover',
+                        transition: 'transform 0.6s cubic-bezier(0.22,1,0.36,1)'
+                      }}
+                      className="med-loc-card-img"
+                    />
+                  </div>
+                  <div style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.4rem', flex: 1 }}>
+                    <span style={{ 
+                      fontFamily: 'var(--font-inter), sans-serif', 
+                      fontSize: '0.6rem', 
+                      letterSpacing: '0.2em', 
+                      textTransform: 'uppercase', 
+                      color: '#0f766e', 
+                      fontWeight: 700 
+                    }}>
+                      {loc.altitude} altitude
+                    </span>
+                    <h3 className="med-h3" style={{ 
+                      fontSize: '1.05rem', 
+                      marginBottom: '0.2rem', 
+                      color: '#2B2A26',
+                      fontWeight: 600
+                    }}>
+                      {loc.name} — {loc.tagline}
+                    </h3>
+                    <p className="med-body" style={{ 
+                      fontSize: '0.85rem', 
+                      marginBottom: 0, 
+                      color: '#4b5259',
+                      lineHeight: 1.7,
+                      flex: 1
+                    }}>
+                      {loc.description}
+                    </p>
+                    <span style={{ 
+                      fontFamily: 'var(--font-inter), sans-serif', 
+                      fontSize: '0.62rem', 
+                      letterSpacing: '0.08em', 
+                      color: '#6b7280', 
+                      fontWeight: 500,
+                      marginTop: '0.5rem',
+                      paddingTop: '0.5rem',
+                      borderTop: '1px solid rgba(15,118,110,0.06)'
+                    }}>
+                      Best for: {loc.bestFor}
+                    </span>
+                  </div>
                 </Link>
               ))}
             </div>
           </div>
         </section>
-      )}
-
-      {/* ═══ INTERNAL LINKS ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
-        <div className="sil-inner">
-          <div className="sil-eyebrow"><span className="sil-eyebrow-line" /><span className="sil-eyebrow-text">Explore Further</span></div>
-          <h2 className="sil-section-title">Related <span>guides</span></h2>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link href="/what-happens-at-a-silent-retreat" className="sil-cta-outline">What Happens at a Silent Retreat →</Link>
-            <Link href="/how-hard-is-a-silent-retreat" className="sil-cta-outline">How Hard Is a Silent Retreat? →</Link>
-            <Link href="/vipassana-vs-meditation-retreat" className="sil-cta-outline">Vipassana vs Meditation Retreat →</Link>
-            <Link href="/meditation-retreats" className="sil-cta-outline">Meditation Retreats →</Link>
-            <Link href="/himalayan-silent-retreats" className="sil-cta-outline">Himalayan Silent Retreats →</Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ TRUST & DIFFERENTIATION ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
-        <div className="sil-wide">
-          <div className="sil-eyebrow" style={{ justifyContent: 'center' }}><span className="sil-eyebrow-line" /><span className="sil-eyebrow-text">Why Us</span><span className="sil-eyebrow-line" /></div>
-          <h2 className="sil-section-title" style={{ textAlign: 'center' }}>What makes our retreat <span>different</span></h2>
-          <div className="sil-trust-grid">
-            {[
-              { num: '8–12', label: 'Max Group Size', text: 'Smaller than Vipassana (50–100 people). Every retreatant is known to the facilitator. You are held, not herded.' },
-              { num: '3+', label: 'Techniques Offered', text: 'Not locked into a single method. Walking meditation, sitting, body scans, breathwork — find what works for your mind.' },
-              { num: '100%', label: 'Nature-Integrated', text: 'Silence in a hall is different from silence in a Himalayan forest. Our locations make the landscape part of the practice.' },
-            ].map((item) => (
-              <div key={item.label} className="sil-trust-item">
-                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '2rem', fontWeight: 200, color: 'var(--color-primary)', display: 'block', marginBottom: '0.25rem' }}>{item.num}</span>
-                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#999', fontWeight: 600, display: 'block', marginBottom: '0.75rem' }}>{item.label}</span>
-                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', lineHeight: 1.7, color: '#666', fontWeight: 300, margin: 0 }}>{item.text}</p>
+        {/* ── DECISION FUNNEL ── */}
+        <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-outer">
+            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+              <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+                <span className="med-eyebrow-line" />
+                <span className="med-eyebrow-text">Not Sure Where to Start?</span>
+                <span className="med-eyebrow-line" />
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              <h2 className="med-h2" style={{ marginBottom: '0.5rem' }}>Three ways to enter <span>the silence</span></h2>
+              <p className="med-body" style={{ maxWidth: '36rem', margin: '0 auto' }}>
+                Choose based on your readiness and intention.
+              </p>
+            </div>
 
-      {/* ═══ FAQ ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
-        <div className="sil-inner">
-          <div className="sil-eyebrow"><span className="sil-eyebrow-line" /><span className="sil-eyebrow-text">Common Questions</span></div>
-          <h2 className="sil-section-title">Frequently asked <span>questions</span></h2>
-          <div>
-            {FAQ_ITEMS.map((faq, i) => (
-              <div key={i} className="sil-faq-item">
-                <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', fontWeight: 500, color: '#111', margin: '0 0 0.6rem' }}>{faq.question}</h3>
-                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', lineHeight: 1.8, color: '#666', fontWeight: 300, margin: 0 }}>{faq.answer}</p>
+            <div className="med-silent-funnel-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '1rem' }}>
+              <Link href="/contact" className="med-card" style={{ padding: '1.75rem', textDecoration: 'none', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
+                <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '1.8rem', fontWeight: 200, color: '#0f766e', marginBottom: '0.25rem' }}>01</span>
+                <h3 className="med-h3" style={{ fontSize: '0.92rem', marginBottom: 0 }}>Get Matched</h3>
+                <p className="med-body" style={{ fontSize: '0.78rem', marginBottom: 0 }}>Tell us about your experience and intention — we&apos;ll recommend the right format, location, and duration.</p>
+                <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#0f766e', marginTop: 'auto', paddingTop: '0.5rem' }}>Talk to a planner →</span>
+              </Link>
+              <Link href="/what-happens-at-a-silent-retreat" className="med-card" style={{ padding: '1.75rem', textDecoration: 'none', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
+                <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '1.8rem', fontWeight: 200, color: '#0f766e', marginBottom: '0.25rem' }}>02</span>
+                <h3 className="med-h3" style={{ fontSize: '0.92rem', marginBottom: 0 }}>Learn What to Expect</h3>
+                <p className="med-body" style={{ fontSize: '0.78rem', marginBottom: 0 }}>Read our detailed guide on what actually happens during a silent retreat — hour by hour, day by day.</p>
+                <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#0f766e', marginTop: 'auto', paddingTop: '0.5rem' }}>Read the guide →</span>
+              </Link>
+              <Link href="/vipassana-vs-meditation-retreat" className="med-card" style={{ padding: '1.75rem', textDecoration: 'none', textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '0.5rem', alignItems: 'center' }}>
+                <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '1.8rem', fontWeight: 200, color: '#0f766e', marginBottom: '0.25rem' }}>03</span>
+                <h3 className="med-h3" style={{ fontSize: '0.92rem', marginBottom: 0 }}>Vipassana vs Our Format</h3>
+                <p className="med-body" style={{ fontSize: '0.78rem', marginBottom: 0 }}>Wondering how we compare to Vipassana? Smaller groups, multiple techniques, nature-integrated. See the differences.</p>
+                <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#0f766e', marginTop: 'auto', paddingTop: '0.5rem' }}>Compare formats →</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ── TESTIMONIALS ── */}
+        {topReviews.length > 0 && (
+          <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+            <div className="med-outer">
+              <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+                <span className="med-eyebrow-line" />
+                <span className="med-eyebrow-text">What Participants Say</span>
+                <span className="med-eyebrow-line" />
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
+              <h2 className="med-h2" style={{ textAlign: 'center' }}>Real <span>retreat experiences</span></h2>
+              <div className="med-grid-3" style={{ marginTop: '1.5rem' }}>
+                {topReviews.map((review) => (
+                  <ReviewCard key={`${review.participantName}-${review.datePublished}`} review={review} />
+                ))}
+              </div>
+              <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+                <Link href="/reviews" style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', fontWeight: 500, color: '#0f766e', textDecoration: 'none' }}>
+                  Read more experiences →
+                </Link>
+              </div>
+            </div>
+          </section>
+        )}
 
-      {/* ═══ BOTTOM CTA ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', overflow: 'hidden', minHeight: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-        <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/hero/mountain-snow.webp" width={1920} height={1080} alt="Snow-covered Himalayan peaks — silent retreat setting" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
-          <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,31,28,0.88)' }} />
-        </div>
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '44rem', padding: '4rem 2rem' }}>
-          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 200, color: '#ffffff', margin: '0 0 1rem' }}>Enter the Silence</h2>
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', fontWeight: 300, lineHeight: 1.75, margin: '0 0 2rem' }}>Silence is not something you achieve. It is something you enter. The right location makes entering easier. Tell us where you are and we&apos;ll help you find the right container.</p>
-          <Link href="/contact" className="sil-cta-btn" style={{ fontSize: '0.85rem', padding: '1rem 2.5rem' }}>Plan My Silent Retreat →</Link>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
-            {['Noble silence', 'Max 12 people', '3–10 day programs'].map((trust) => (
-              <span key={trust} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', color: 'rgba(255,255,255,0.4)', fontWeight: 400, letterSpacing: '0.05em' }}>{trust}</span>
-            ))}
-          </div>
-        </div>
-      </section>
+        {/* ── UPCOMING PROGRAMS ── */}
+        {upcomingEvents.length > 0 && (
+          <section className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+            <div className="med-outer">
+              <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+                <span className="med-eyebrow-line" />
+                <span className="med-eyebrow-text">Scheduled Retreats</span>
+                <span className="med-eyebrow-line" />
+              </div>
+              <h2 className="med-h2" style={{ textAlign: 'center' }}>Upcoming <span>silent retreat programs</span></h2>
+              <p className="med-body" style={{ textAlign: 'center', maxWidth: '36rem', margin: '0 auto 2rem' }}>Confirmed departures with fixed dates, pricing, and limited seats.</p>
 
+              <div className="med-silent-prog-grid">
+                {upcomingEvents.map((ev) => {
+                  const statusLabel = ev.status === 'filling-fast' ? 'Filling Fast' : ev.status === 'last-few' ? 'Last Few Seats' : 'Open';
+                  return (
+                    <Link key={ev.slug} href={`/${ev.slug}`} className="med-silent-prog-card">
+                      <div className="med-header">
+                        <div>
+                          <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#6b7280', fontWeight: 500, display: 'block', marginBottom: '0.35rem' }}>
+                            {ev.locationName} · {ev.month} {ev.year}
+                          </span>
+                          <h3 className="med-h3" style={{ fontSize: '1.05rem', marginBottom: 0 }}>{ev.label}</h3>
+                        </div>
+                        <span style={{
+                          fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.55rem', letterSpacing: '0.18em', textTransform: 'uppercase',
+                          fontWeight: 700, padding: '3px 8px', borderRadius: '999px', whiteSpace: 'nowrap',
+                          background: ev.status === 'filling-fast' ? '#fef3c7' : ev.status === 'last-few' ? '#fee2e2' : '#ecfdf5',
+                          color: ev.status === 'filling-fast' ? '#92400e' : ev.status === 'last-few' ? '#991b1b' : '#065f46',
+                        }}>{statusLabel}</span>
+                      </div>
+                      <div className="med-body-wrap">
+                        <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
+                          <div>
+                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#6b7280', display: 'block', marginBottom: '0.15rem' }}>Duration</span>
+                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', fontWeight: 400, color: '#2B2A26' }}>{ev.durationDays} Days</span>
+                          </div>
+                          <div>
+                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#6b7280', display: 'block', marginBottom: '0.15rem' }}>Price</span>
+                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', fontWeight: 500, color: '#2B2A26' }}>₹{ev.price.toLocaleString('en-IN')}</span>
+                          </div>
+                          <div>
+                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#6b7280', display: 'block', marginBottom: '0.15rem' }}>Group</span>
+                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', fontWeight: 400, color: '#2B2A26' }}>Max {ev.groupSize}</span>
+                          </div>
+                        </div>
+                        <p className="med-body" style={{ fontSize: '0.8rem', color: '#6b7280', marginBottom: '0.5rem' }}>{ev.dateRange} · All-inclusive</p>
+                        <ul className="med-list" style={{ gap: '0.35rem', marginBottom: '0.75rem' }}>
+                          {ev.included.slice(0, 3).map((inc) => (
+                            <li key={inc} className="med-list-item" style={{ gap: '0.5rem' }}>
+                              <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
+                              <span className="med-list-text" style={{ fontSize: '0.72rem', color: '#6b7280' }}>{inc}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(15,118,110,0.08)', paddingTop: '0.75rem' }}>
+                          <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0f766e' }}>View Details →</span>
+                          <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', fontWeight: 500, color: ev.seatsLeft <= 3 ? '#c92a2a' : '#6b7280' }}>{ev.seatsLeft} seats left</span>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+              <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+                <Link href="/contact" className="med-cta-btn">Don't See Your Dates? Request a Custom Retreat →</Link>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ── STORIES ── */}
+        {PAGE.storyLinks && PAGE.storyLinks.length > 0 && (
+          <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+            <div className="med-inner">
+              <div className="med-eyebrow">
+                <span className="med-eyebrow-line" />
+                <span className="med-eyebrow-text">Retreat Stories</span>
+              </div>
+              <p className="med-body" style={{ marginBottom: '1rem' }}>First-person accounts from people who have entered the silence.</p>
+
+              <div className="med-silent-stories">
+                {PAGE.storyLinks.map((story, i, arr) => (
+                  <Link key={story.href} href={story.href} className="med-silent-story" style={{ borderBottom: i < arr.length - 1 ? '1px solid rgba(15,118,110,0.08)' : 'none' }}>
+                    <span>{story.label}</span>
+                    <span className="med-arrow">→</span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ── RELATED GUIDES ── */}
+        <section className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Explore Further</span>
+            </div>
+            <h2 className="med-h2">Related <span>guides</span></h2>
+
+            <div className="med-silent-related">
+              <Link href="/what-happens-at-a-silent-retreat" className="med-cta-outline">What Happens at a Silent Retreat →</Link>
+              <Link href="/how-hard-is-a-silent-retreat" className="med-cta-outline">How Hard Is a Silent Retreat? →</Link>
+              <Link href="/vipassana-vs-meditation-retreat" className="med-cta-outline">Vipassana vs Meditation Retreat →</Link>
+              <Link href="/meditation-retreats" className="med-cta-outline">Meditation Retreats →</Link>
+              <Link href="/himalayan-silent-retreats" className="med-cta-outline">Himalayan Silent Retreats →</Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ── TRUST BLOCK ── */}
+        <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-outer">
+            <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Why Us</span>
+              <span className="med-eyebrow-line" />
+            </div>
+            <h2 className="med-h2" style={{ textAlign: 'center' }}>What makes our retreat <span>different</span></h2>
+
+            <div className="med-silent-trust-grid">
+              {[
+                { num: '8–12', label: 'Max Group Size', text: 'Smaller than Vipassana (50–100 people). Every retreatant is known to the facilitator. You are held, not herded.' },
+                { num: '3+', label: 'Techniques Offered', text: 'Not locked into a single method. Walking meditation, sitting, body scans, breathwork — find what works for your mind.' },
+                { num: '100%', label: 'Nature-Integrated', text: 'Silence in a hall is different from silence in a Himalayan forest. Our locations make the landscape part of the practice.' },
+              ].map((item) => (
+                <div key={item.label} className="med-silent-trust-item">
+                  <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '2rem', fontWeight: 200, color: '#0f766e', display: 'block', marginBottom: '0.25rem', letterSpacing: '-0.03em' }}>{item.num}</span>
+                  <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#6b7280', fontWeight: 600, display: 'block', marginBottom: '0.5rem' }}>{item.label}</span>
+                  <p className="med-body" style={{ fontSize: '0.82rem', marginBottom: 0 }}>{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── FAQ ── */}
+        <section className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Common Questions</span>
+            </div>
+            <h2 className="med-h2">Frequently asked <span>questions</span></h2>
+
+            <div className="med-faq-accordion">
+              {FAQ_ITEMS.map((faq, i) => (
+                <details key={i} className="med-faq-details">
+                  <summary className="med-faq-summary">
+                    <span className="med-faq-question">{faq.question}</span>
+                    <span className="med-faq-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div className="med-faq-answer">
+                    <p className="med-body">{faq.answer}</p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── BOTTOM CTA ── */}
+        <section className="med-silent-bottom-cta">
+          <div style={{ position: 'absolute', inset: 0 }}>
+            <img src="/Images/hero/mountain-snow.webp" alt="Snow-covered Himalayan peaks — silent retreat setting" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+            <div className="med-overlay" />
+          </div>
+          <div className="med-content">
+            <h2 className="med-h2">Enter the <span>Silence</span></h2>
+            <p className="med-body">Silence is not something you achieve. It is something you enter. The right location makes entering easier. Tell us where you are and we&apos;ll help you find the right container.</p>
+            <Link href="/contact" className="med-cta-btn" style={{ fontSize: '0.85rem', padding: '1rem 2.5rem' }}>
+              Plan My Silent Retreat →
+            </Link>
+            <div className="med-trust">
+              <span>Noble silence</span>
+              <span>Max 12 people</span>
+              <span>3–10 day programs</span>
+            </div>
+          </div>
+        </section>
+
+        {/* ── FOOTER NAV ── */}
+        <nav className="med-shell med-section-white" style={{ padding: '2.5rem 0', borderTop: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-silent-link-grid">
+              <Link href="/silent-retreats" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>← Silent Retreats</span>
+              </Link>
+              <Link href="/meditation-retreats" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Meditation Retreats</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+              <Link href="/himalayan-silent-retreats" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Himalayan Silent Retreats</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+              <Link href="/find-your-retreat" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Find Your Retreat</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+            </div>
+          </div>
+        </nav>
+
+      </article>
     </TrackedPage>
   );
 }

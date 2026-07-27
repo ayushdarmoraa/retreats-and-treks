@@ -8,6 +8,7 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
+import AutoArticleSchema from '@/components/AutoArticleSchema';
 
 const PATH = '/himalayan-silent-retreats';
 
@@ -101,39 +102,228 @@ export default function HimalayanSilentRetreatsPage() {
     about: { '@type': 'Thing', name: 'Silent retreats in the Himalayas' },
   };
 
+  // Split heading for green last word
+  const h1Words = "Himalayan Silent Retreats: Where the Mountains Hold the Quiet".split(' ');
+  const h1LastWord = h1Words[h1Words.length - 1];
+  const h1Rest = h1Words.slice(0, -1).join(' ');
+
   return (
-    <TrackedPage page={PATH} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+    <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
+      <AutoArticleSchema
+        title="Himalayan Silent Retreats (2026) — Deep Silence in Mountain Forests & Valleys"
+        description="Silent retreats in the Himalayas — compare by depth, accessibility, and environment."
+        path={PATH}
+      />
+
+      <style>{`
+        .med-shell { width: 100vw; margin-left: calc(-50vw + 50%); }
+        .med-outer { max-width: 76rem; margin: 0 auto; padding: 0 1.5rem; }
+        .med-inner { max-width: 58rem; margin: 0 auto; padding: 0 1.5rem; }
+
+        .med-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.1rem; }
+        .med-eyebrow-line { width: 30px; height: 1px; background: rgba(15,118,110,0.35); flex-shrink: 0; }
+        .med-eyebrow-text { font-family: var(--font-inter), sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: #6b7280; font-weight: 600; }
+
+        .med-h2 { font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 500; letter-spacing: -0.03em; color: #2B2A26; line-height: 1.12; margin: 0 0 1.1rem; }
+        .med-h2 span { color: #0f766e; }
+        .med-h3 { font-family: var(--font-fraunces), Georgia, serif; font-size: 1.15rem; font-weight: 600; color: #2B2A26; margin: 0 0 0.7rem; letter-spacing: -0.01em; }
+        .med-body { font-family: var(--font-inter), sans-serif; font-size: 0.98rem; line-height: 1.9; color: #4b5259; font-weight: 400; margin: 0 0 1rem; }
+        .med-body:last-child { margin-bottom: 0; }
+        .med-body strong { color: #2B2A26; font-weight: 600; }
+
+        .med-card {
+          background: #fff;
+          border: 1px solid rgba(15,118,110,0.12);
+          border-radius: 18px;
+          box-shadow: 0 10px 30px rgba(15,31,28,0.05);
+          transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        .med-card::before {
+          content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+          background: #0f766e; transform: scaleX(0); transform-origin: left;
+          transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); z-index: 2;
+        }
+        .med-card:hover { transform: translateY(-6px); border-color: rgba(15,118,110,0.28); box-shadow: 0 22px 48px rgba(15,31,28,0.12); }
+        .med-card:hover::before { transform: scaleX(1); }
+
+        .med-cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2.3rem; background: #0f766e; color: white; text-decoration: none; font-family: var(--font-inter), sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; box-shadow: 0 10px 26px rgba(15,118,110,0.25); transition: all 0.3s cubic-bezier(0.22,1,0.36,1); border: 1px solid #0f766e; }
+        .med-cta-btn:hover { background: #0d6b64; transform: translateY(-3px); box-shadow: 0 16px 36px rgba(15,118,110,0.32); }
+        .med-cta-outline { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.85rem 1.8rem; border: 1px solid rgba(15,118,110,0.25); color: #0f766e; text-decoration: none; font-family: var(--font-inter), sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; transition: all 0.3s cubic-bezier(0.22,1,0.36,1); }
+        .med-cta-outline:hover { border-color: #0f766e; background: rgba(15,118,110,0.05); transform: translateY(-2px); }
+
+        .med-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; }
+        @media (max-width: 720px) { .med-grid-2 { grid-template-columns: 1fr; } }
+        @media (max-width: 640px) { .med-outer, .med-inner { padding-left: 1.25rem; padding-right: 1.25rem; } }
+
+        @keyframes med-hero-zoom { from { transform: scale(1.06); } to { transform: scale(1); } }
+        .med-hero-bg { animation: med-hero-zoom 24s ease-out forwards; }
+        @media (prefers-reduced-motion: reduce) { .med-hero-bg { animation: none; } }
+
+        .med-list { padding-left: 0; margin: 0; list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+        .med-list-item { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.9rem; }
+        .med-list-dot { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid rgba(15,118,110,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .med-list-dot-inner { width: 7px; height: 7px; border-radius: 50%; background: #0f766e; }
+        .med-list-text { font-family: var(--font-inter), sans-serif; font-size: 0.95rem; line-height: 1.85; color: #4b5259; font-weight: 400; }
+        .med-list-text strong { color: #2B2A26; font-weight: 600; }
+
+        .med-season-tag { display: inline-block; font-family: var(--font-inter), sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0f766e; background: rgba(15,118,110,0.08); padding: 0.32rem 0.7rem; border-radius: 999px; margin-bottom: 0.9rem; }
+
+        .med-nav-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+        @media (max-width: 820px) { .med-nav-grid { grid-template-columns: 1fr; } }
+
+        .med-section-alt { background: #f7f9f7; }
+        .med-section-white { background: #ffffff; }
+
+        .med-breadcrumb-wrap { padding: 1rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
+
+        .med-hero-section {
+          position: relative;
+          overflow: hidden;
+          min-height: 75vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-bottom: 1px solid rgba(15,118,110,0.12);
+        }
+        .med-hero-section .med-hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(120deg, rgba(4,12,10,0.82) 0%, rgba(4,12,10,0.5) 45%, rgba(4,12,10,0.78) 100%);
+        }
+        .med-hero-section .med-hero-content {
+          position: relative;
+          z-index: 2;
+          max-width: 58rem;
+          width: 100%;
+          padding: 5rem 1.5rem 4.5rem;
+          text-align: center;
+        }
+        .med-hero-section .med-hero-content .med-h1 {
+          font-family: var(--font-fraunces), Georgia, serif;
+          font-size: clamp(2.3rem, 4.6vw, 3.4rem);
+          font-weight: 600;
+          letter-spacing: -0.03em;
+          color: #ffffff;
+          margin: 0 0 1.1rem;
+          line-height: 1.08;
+          text-shadow: 0 3px 24px rgba(0,0,0,0.5);
+        }
+        .med-hero-section .med-hero-content .med-h1 span {
+          color: #5eead4;
+        }
+        .med-hero-section .med-hero-content .med-body {
+          max-width: 46rem;
+          margin: 0 auto 1.5rem;
+          font-size: 1.05rem;
+          color: rgba(255,255,255,0.85);
+          text-shadow: 0 2px 14px rgba(0,0,0,0.45);
+        }
+        .med-hero-section .med-hero-content .med-hero-tags {
+          display: flex;
+          justify-content: center;
+          gap: 0.75rem;
+          flex-wrap: wrap;
+          margin-bottom: 2rem;
+        }
+        .med-hero-section .med-hero-content .med-hero-tags span {
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.65rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #ffffff;
+          border: 1px solid rgba(255,255,255,0.3);
+          borderRadius: 999px;
+          padding: 0.35rem 0.9rem;
+          background: rgba(15,118,110,0.25);
+        }
+        .med-hero-section .med-hero-content .med-hero-actions {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+
+        .med-silent-table-wrap { overflow-x: auto; border-radius: 18px; border: 1px solid rgba(15,118,110,0.12); }
+        .med-silent-table { width: 100%; border-collapse: collapse; font-family: var(--font-inter), sans-serif; font-size: 0.88rem; }
+        .med-silent-table th { text-align: left; padding: 0.85rem 1rem; background: #f7f9f7; border-bottom: 2px solid #0f766e; font-weight: 600; color: #2B2A26; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.08em; }
+        .med-silent-table td { padding: 0.85rem 1rem; border-bottom: 1px solid rgba(15,118,110,0.08); color: #4b5259; }
+        .med-silent-table tr:last-child td { border-bottom: none; }
+        .med-silent-table tr:hover td { background: #f7f9f7; }
+        .med-silent-table .med-highlight { color: #0f766e; font-weight: 600; }
+
+        .med-silent-location { padding: 1.25rem; border: 1px solid rgba(15,118,110,0.12); border-radius: 18px; background: #fff; transition: all 0.3s ease; margin-bottom: 1.25rem; }
+        .med-silent-location:last-child { margin-bottom: 0; }
+        .med-silent-location:hover { transform: translateY(-3px); box-shadow: 0 12px 36px rgba(15,31,28,0.1); border-color: rgba(15,118,110,0.28); }
+        .med-silent-location .med-h3 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+        .med-silent-location .med-h3 a { color: #0f766e; text-decoration: none; }
+        .med-silent-location .med-h3 a:hover { text-decoration: underline; }
+        .med-silent-location .med-body { font-size: 0.92rem; margin-bottom: 0.3rem; }
+        .med-silent-location .med-silent-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
+        .med-silent-location .med-silent-meta .med-tag { display: inline-block; font-family: var(--font-inter), sans-serif; font-size: 0.55rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #0f766e; background: rgba(15,118,110,0.08); padding: 0.2rem 0.6rem; border-radius: 999px; }
+        .med-silent-location .med-silent-links { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; margin-top: 0.5rem; }
+        .med-silent-location .med-silent-links a { color: #0f766e; font-weight: 500; text-decoration: none; font-size: 0.85rem; }
+        .med-silent-location .med-silent-links a:hover { text-decoration: underline; }
+
+        .med-silent-choose { margin-top: 1.5rem; }
+        .med-silent-choose .med-list { margin-top: 0.5rem; }
+
+        .med-silent-footer-nav { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; padding-top: 1.5rem; margin-top: 2rem; border-top: 1px solid rgba(15,118,110,0.08); }
+        .med-silent-footer-nav a { color: #0f766e; font-family: var(--font-inter), sans-serif; font-size: 0.85rem; font-weight: 500; text-decoration: none; }
+        .med-silent-footer-nav a:hover { text-decoration: underline; }
+      `}</style>
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, itemListSchema, webPageSchema]) }}
       />
 
-      <Breadcrumb
-        items={[
-          { name: 'Home', href: '/' },
-          { name: 'Silent Retreats', href: '/silent-retreats' },
-          { name: 'Himalayan Silent Retreats' },
-        ]}
-      />
+      <div className="med-breadcrumb-wrap">
+        <div className="med-outer">
+          <Breadcrumb
+            items={[
+              { name: 'Home', href: '/' },
+              { name: 'Silent Retreats', href: '/silent-retreats' },
+              { name: 'Himalayan Silent Retreats' },
+            ]}
+          />
+        </div>
+      </div>
 
       <article>
-        {/* ── HERO ──────────────────────────────────────────────────── */}
-        <header style={{ marginBottom: 'var(--space-xl)' }}>
-          <h1 style={{ fontSize: '2rem', fontWeight: 400, marginBottom: '0.75rem' }}>
-            Himalayan Silent Retreats: Where the Mountains Hold the Quiet
-          </h1>
-          <p style={{ fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '1rem' }}>
-            Most silent retreats require you to create silence &mdash; to resist the urge
-            to speak, to ignore ambient noise, to impose quiet onto an environment that
-            is not naturally quiet. Himalayan silent retreats are different. The silence is
-            already there. The forests absorb sound. The altitude slows the mind. The remoteness
-            removes every habitual cue. You are not practising silence &mdash; you are entering it.
-          </p>
-          <p style={{ fontSize: '1.05rem', lineHeight: 1.8, margin: 0 }}>
-            This guide compares the best Himalayan locations for silent retreat &mdash; each offering
-            a different quality of silence, from forest enclosure to geological vastness.
-          </p>
-        </header>
+
+        {/* ── HERO ── */}
+        <section className="med-shell med-hero-section">
+          <div style={{ position: 'absolute', inset: 0 }}>
+            <img className="med-hero-bg" src="/Images/hero/himalayan-sunrise.webp" alt="Himalayan silent retreats" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+            <div className="med-hero-overlay" />
+          </div>
+          <div className="med-hero-content">
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.3rem' }}>
+              <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
+              <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>Silent Retreats</span>
+              <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
+            </div>
+            <h1 className="med-h1">
+              {h1Rest} <span>{h1LastWord}</span>
+            </h1>
+            <p className="med-body">
+              Most silent retreats require you to create silence — to resist the urge to speak, to ignore ambient noise, to impose quiet onto an environment that is not naturally quiet. Himalayan silent retreats are different. The silence is already there. The forests absorb sound. The altitude slows the mind. The remoteness removes every habitual cue. You are not practising silence — you are entering it.
+            </p>
+            <div className="med-hero-tags">
+              <span>Forest Silence</span>
+              <span>Geological Silence</span>
+              <span>Alpine Silence</span>
+              <span>3–14 Days</span>
+            </div>
+            <div className="med-hero-actions">
+              <Link href="#plan" className="med-cta-btn">Plan My Silent Retreat</Link>
+              <a href="#locations" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Compare Locations</a>
+            </div>
+          </div>
+        </section>
 
         <PrimaryCTA
           label="Plan My Silent Retreat"
@@ -141,122 +331,118 @@ export default function HimalayanSilentRetreatsPage() {
           vertical="retreat"
           category="himalayan-silent"
           sourcePath={PATH}
+          id="plan"
         />
 
-        {/* ── THREE SILENCES ────────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 600, marginBottom: 'var(--space-md)' }}>
-            Three Types of Himalayan Silence
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '1rem' }}>
-            Not all silence is the same. In the Himalayas, the environment creates distinct
-            qualities of quiet &mdash; each serving different intentions and temperaments.
-          </p>
+        {/* ── THREE SILENCES TABLE ── */}
+        <section className="med-shell med-section-white" style={{ padding: '4rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Three Silences</span>
+            </div>
+            <h2 className="med-h2">Three Types of <span>Himalayan Silence</span></h2>
+            <p className="med-body">Not all silence is the same. In the Himalayas, the environment creates distinct qualities of quiet — each serving different intentions and temperaments.</p>
 
-          <div style={{ overflowX: 'auto' }}>
-            <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.9rem', lineHeight: 1.6 }}>
-              <thead>
-                <tr style={{ borderBottom: '2px solid var(--color-border)' }}>
-                  <th style={{ textAlign: 'left', padding: '0.75rem 0.5rem' }}>Location</th>
-                  <th style={{ textAlign: 'left', padding: '0.75rem 0.5rem' }}>Type of Silence</th>
-                  <th style={{ textAlign: 'left', padding: '0.75rem 0.5rem' }}>Altitude</th>
-                  <th style={{ textAlign: 'left', padding: '0.75rem 0.5rem' }}>Accessibility</th>
-                  <th style={{ textAlign: 'left', padding: '0.75rem 0.5rem' }}>Best For</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.75rem 0.5rem' }}>
-                    <Link href="/locations/chakrata" style={{ color: 'var(--color-primary)' }}>Chakrata</Link>
-                  </td>
-                  <td style={{ padding: '0.75rem 0.5rem' }}>Forest silence</td>
-                  <td style={{ padding: '0.75rem 0.5rem' }}>2,000m</td>
-                  <td style={{ padding: '0.75rem 0.5rem' }}>2.5 hrs from Dehradun</td>
-                  <td style={{ padding: '0.75rem 0.5rem' }}>First-timers, weekends, gentle depth</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.75rem 0.5rem' }}>
-                    <Link href="/locations/zanskar" style={{ color: 'var(--color-primary)' }}>Zanskar</Link>
-                  </td>
-                  <td style={{ padding: '0.75rem 0.5rem' }}>Geological silence</td>
-                  <td style={{ padding: '0.75rem 0.5rem' }}>3,500m</td>
-                  <td style={{ padding: '0.75rem 0.5rem' }}>8–10 hrs from Leh</td>
-                  <td style={{ padding: '0.75rem 0.5rem' }}>Experienced, deep immersion</td>
-                </tr>
-                <tr style={{ borderBottom: '1px solid var(--color-border)' }}>
-                  <td style={{ padding: '0.75rem 0.5rem' }}>
-                    <Link href="/locations/munsiyari" style={{ color: 'var(--color-primary)' }}>Munsiyari</Link>
-                  </td>
-                  <td style={{ padding: '0.75rem 0.5rem' }}>Alpine silence</td>
-                  <td style={{ padding: '0.75rem 0.5rem' }}>2,200m</td>
-                  <td style={{ padding: '0.75rem 0.5rem' }}>9 hrs from Kathgodam</td>
-                  <td style={{ padding: '0.75rem 0.5rem' }}>Spacious stillness, peak views</td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="med-silent-table-wrap" style={{ marginTop: '1.8rem' }}>
+              <table className="med-silent-table">
+                <thead>
+                  <tr>
+                    <th>Location</th>
+                    <th>Type of Silence</th>
+                    <th>Altitude</th>
+                    <th>Accessibility</th>
+                    <th>Best For</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><Link href="/locations/chakrata" style={{ color: '#0f766e', fontWeight: 500, textDecoration: 'none' }}>Chakrata</Link></td>
+                    <td>Forest silence</td>
+                    <td>2,000m</td>
+                    <td>2.5 hrs from Dehradun</td>
+                    <td>First-timers, weekends, gentle depth</td>
+                  </tr>
+                  <tr>
+                    <td><Link href="/locations/zanskar" style={{ color: '#0f766e', fontWeight: 500, textDecoration: 'none' }}>Zanskar</Link></td>
+                    <td>Geological silence</td>
+                    <td>3,500m</td>
+                    <td>8–10 hrs from Leh</td>
+                    <td>Experienced, deep immersion</td>
+                  </tr>
+                  <tr>
+                    <td><Link href="/locations/munsiyari" style={{ color: '#0f766e', fontWeight: 500, textDecoration: 'none' }}>Munsiyari</Link></td>
+                    <td>Alpine silence</td>
+                    <td>2,200m</td>
+                    <td>9 hrs from Kathgodam</td>
+                    <td>Spacious stillness, peak views</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </section>
 
-        {/* ── 1. CHAKRATA — FOREST SILENCE ──────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.35rem', fontWeight: 600, marginBottom: '0.75rem' }}>
-            Chakrata &mdash; Forest Silence
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.75rem' }}>
-            The silence in Chakrata is enclosed. Dense deodar and oak forest creates an acoustic
-            environment where human sound is absorbed by the trees, the earth, the canopy above.
-            There is no traffic noise. No commercial activity. No tourist energy. The town has a
-            few thousand residents and very few visitors. When you walk through the forest, the
-            only sounds are birdsong, wind in the canopy, and your own footsteps.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.75rem' }}>
-            This quality of silence is nurturing rather than confrontational. It wraps around you.
-            For first-time silent retreatants, this is the ideal environment &mdash; silence that
-            supports rather than exposes. The forest is the container, and it holds you gently.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.75rem' }}>
-            <strong>Duration:</strong> 3&ndash;7 days.<br />
-            <strong>Season:</strong> year-round (September&ndash;October for clearest skies).<br />
-            <strong>Access:</strong> 60&nbsp;km from Dehradun (2.5 hours by car). No flight required.<br />
-            <strong>Intensity:</strong> gentle &mdash; ideal first experience.
-          </p>
-          <p>
-            <Link href="/locations/chakrata" style={{ color: 'var(--color-primary)' }}>Explore Chakrata &rarr;</Link>
-            {' '}&nbsp;|&nbsp;{' '}
-            <Link href="/retreats/chakrata" style={{ color: 'var(--color-primary)' }}>Chakrata retreats &rarr;</Link>
-          </p>
-        </section>
+        {/* ── LOCATIONS DETAIL ── */}
+        <section id="locations" className="med-shell med-section-alt" style={{ padding: '4rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Locations</span>
+            </div>
+            <h2 className="med-h2">Three Qualities of <span>Silence</span></h2>
 
-        {/* ── 2. ZANSKAR — GEOLOGICAL SILENCE ──────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.35rem', fontWeight: 600, marginBottom: '0.75rem' }}>
-            Zanskar &mdash; Geological Silence
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.75rem' }}>
-            The silence in Zanskar is not enclosed &mdash; it is vast. A river valley carved
-            through rock that is 500&nbsp;million years old, sealed by peaks on every side,
-            230&nbsp;km from the nearest city. This is silence with geological weight. The
-            monasteries &mdash; Phugtal, Karsha, Stongde &mdash; have held this silence for
-            a thousand years. When you sit in a gompa here, you feel the accumulated quiet of
-            centuries of practice.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.75rem' }}>
-            Zanskar&rsquo;s silence is confrontational in the best sense. With no phone signal,
-            no comfortable distractions, and altitude that strips away mental autopilot, you meet
-            yourself without buffers. This is for people who have experienced gentle silence and
-            need something stronger.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.75rem' }}>
-            <strong>Duration:</strong> 7&ndash;14 days (minimum 7 due to transit).<br />
-            <strong>Season:</strong> June&ndash;September. January&ndash;February (Chadar season).<br />
-            <strong>Access:</strong> fly to Leh, then 230&nbsp;km by road (8&ndash;10 hours).<br />
-            <strong>Intensity:</strong> high &mdash; requires commitment and some meditation experience.
-          </p>
-          <p>
-            <Link href="/locations/zanskar" style={{ color: 'var(--color-primary)' }}>Explore Zanskar &rarr;</Link>
-            {' '}&nbsp;|&nbsp;{' '}
-            <Link href="/retreats/zanskar" style={{ color: 'var(--color-primary)' }}>Zanskar retreats &rarr;</Link>
-          </p>
+            {/* Chakrata */}
+            <div className="med-silent-location">
+              <h3 className="med-h3"><Link href="/locations/chakrata">Chakrata — Forest Silence</Link></h3>
+              <p className="med-body">The silence in Chakrata is enclosed. Dense deodar and oak forest creates an acoustic environment where human sound is absorbed by the trees, the earth, the canopy above. There is no traffic noise. No commercial activity. No tourist energy. When you walk through the forest, the only sounds are birdsong, wind in the canopy, and your own footsteps.</p>
+              <p className="med-body">This quality of silence is nurturing rather than confrontational. It wraps around you. For first-time silent retreatants, this is the ideal environment — silence that supports rather than exposes.</p>
+              <div className="med-silent-meta">
+                <span className="med-tag">3–7 Days</span>
+                <span className="med-tag">Year-round</span>
+                <span className="med-tag">2.5 hrs from Dehradun</span>
+                <span className="med-tag">Gentle</span>
+              </div>
+              <div className="med-silent-links">
+                <Link href="/locations/chakrata">Explore Chakrata →</Link>
+                <Link href="/retreats/chakrata">Chakrata retreats →</Link>
+              </div>
+            </div>
+
+            {/* Zanskar */}
+            <div className="med-silent-location">
+              <h3 className="med-h3"><Link href="/locations/zanskar">Zanskar — Geological Silence</Link></h3>
+              <p className="med-body">The silence in Zanskar is not enclosed — it is vast. A river valley carved through rock that is 500 million years old, sealed by peaks on every side, 230 km from the nearest city. The monasteries — Phugtal, Karsha, Stongde — have held this silence for a thousand years. When you sit in a gompa here, you feel the accumulated quiet of centuries of practice.</p>
+              <p className="med-body">Zanskar's silence is confrontational in the best sense. With no phone signal, no comfortable distractions, and altitude that strips away mental autopilot, you meet yourself without buffers.</p>
+              <div className="med-silent-meta">
+                <span className="med-tag">7–14 Days</span>
+                <span className="med-tag">Jun–Sep</span>
+                <span className="med-tag">8–10 hrs from Leh</span>
+                <span className="med-tag">High</span>
+              </div>
+              <div className="med-silent-links">
+                <Link href="/locations/zanskar">Explore Zanskar →</Link>
+                <Link href="/retreats/zanskar">Zanskar retreats →</Link>
+              </div>
+            </div>
+
+            {/* Munsiyari */}
+            <div className="med-silent-location">
+              <h3 className="med-h3"><Link href="/locations/munsiyari">Munsiyari — Alpine Silence</Link></h3>
+              <p className="med-body">Munsiyari's silence is spacious. High-altitude meadows facing the Panchachuli peaks — five summits above 6,000 metres. The sky is enormous. The views are endless. The silence here is not enclosed or weighted — it is expansive. You sit with open sky above and a vast Himalayan panorama ahead, and the silence enters through the eyes as much as the ears.</p>
+              <p className="med-body">This environment is best for people who find enclosed silence claustrophobic, or whose silent practice benefits from physical spaciousness.</p>
+              <div className="med-silent-meta">
+                <span className="med-tag">5–7 Days</span>
+                <span className="med-tag">Apr–Jun, Sep–Nov</span>
+                <span className="med-tag">9 hrs from Kathgodam</span>
+                <span className="med-tag">Moderate</span>
+              </div>
+              <div className="med-silent-links">
+                <Link href="/locations/munsiyari">Explore Munsiyari →</Link>
+                <Link href="/retreats/munsiyari">Munsiyari retreats →</Link>
+              </div>
+            </div>
+          </div>
         </section>
 
         <PrimaryCTA
@@ -267,56 +453,40 @@ export default function HimalayanSilentRetreatsPage() {
           sourcePath={PATH}
         />
 
-        {/* ── 3. MUNSIYARI — ALPINE SILENCE ─────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.35rem', fontWeight: 600, marginBottom: '0.75rem' }}>
-            Munsiyari &mdash; Alpine Silence
-          </h2>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.75rem' }}>
-            Munsiyari&rsquo;s silence is spacious. High-altitude meadows facing the Panchachuli
-            peaks &mdash; five summits above 6,000&nbsp;metres. The sky is enormous. The views are
-            endless. The silence here is not enclosed or weighted &mdash; it is expansive. You
-            sit with open sky above and a vast Himalayan panorama ahead, and the silence enters
-            through the eyes as much as the ears.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.75rem' }}>
-            This environment is best for people who find enclosed silence claustrophobic, or whose
-            silent practice benefits from physical spaciousness. The combination of altitude, peak
-            views, and very few other humans creates conditions where silence feels natural and
-            liberating rather than imposed.
-          </p>
-          <p style={{ lineHeight: 1.8, marginBottom: '0.75rem' }}>
-            <strong>Duration:</strong> 5&ndash;7 days.<br />
-            <strong>Season:</strong> April&ndash;June, September&ndash;November.<br />
-            <strong>Access:</strong> Kathgodam (nearest railhead), then 9 hours by road.<br />
-            <strong>Intensity:</strong> moderate &mdash; spacious rather than confrontational.
-          </p>
-          <p>
-            <Link href="/locations/munsiyari" style={{ color: 'var(--color-primary)' }}>Explore Munsiyari &rarr;</Link>
-            {' '}&nbsp;|&nbsp;{' '}
-            <Link href="/retreats/munsiyari" style={{ color: 'var(--color-primary)' }}>Munsiyari retreats &rarr;</Link>
-          </p>
-        </section>
+        {/* ── HOW TO CHOOSE ── */}
+        <section className="med-shell med-section-white" style={{ padding: '4rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Decision Guide</span>
+            </div>
+            <h2 className="med-h2">Choosing Your <span>Himalayan Silent Retreat</span></h2>
 
-        {/* ── HOW TO CHOOSE ─────────────────────────────────────────── */}
-        <section style={{ marginBottom: 'var(--space-xl)' }}>
-          <h2 style={{ fontSize: '1.35rem', fontWeight: 600, marginBottom: '0.75rem' }}>
-            Choosing Your Himalayan Silent Retreat
-          </h2>
-          <ul style={{ paddingLeft: '1.25rem', lineHeight: 2 }}>
-            <li><strong>First time with silence?</strong> Start with Chakrata &mdash; 3 days of forest quiet, guided and accessible.</li>
-            <li><strong>Ready for depth?</strong> Zanskar &mdash; 7+ days of monastery silence at 3,500 metres.</li>
-            <li><strong>Need spaciousness?</strong> Munsiyari &mdash; open alpine silence with peak views.</li>
-            <li><strong>Want movement too?</strong> All three locations offer walking as part of the silent retreat pattern.</li>
-          </ul>
-          <p style={{ lineHeight: 1.8, marginTop: '0.75rem' }}>
-            For a broader view of our meditation offerings, see{' '}
-            <Link href="/meditation-retreats" style={{ color: 'var(--color-primary)' }}>meditation retreats</Link>
-            {' '}or{' '}
-            <Link href="/best-meditation-retreats-in-india" style={{ color: 'var(--color-primary)' }}>best meditation retreats in India</Link>.
-            {' '}For all locations in our network, see{' '}
-            <Link href="/locations" style={{ color: 'var(--color-primary)' }}>locations</Link>.
-          </p>
+            <div className="med-silent-choose">
+              <ul className="med-list">
+                <li className="med-list-item">
+                  <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
+                  <span className="med-list-text"><strong>First time with silence?</strong> Start with Chakrata — 3 days of forest quiet, guided and accessible.</span>
+                </li>
+                <li className="med-list-item">
+                  <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
+                  <span className="med-list-text"><strong>Ready for depth?</strong> Zanskar — 7+ days of monastery silence at 3,500 metres.</span>
+                </li>
+                <li className="med-list-item">
+                  <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
+                  <span className="med-list-text"><strong>Need spaciousness?</strong> Munsiyari — open alpine silence with peak views.</span>
+                </li>
+                <li className="med-list-item">
+                  <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
+                  <span className="med-list-text"><strong>Want movement too?</strong> All three locations offer walking as part of the silent retreat pattern.</span>
+                </li>
+              </ul>
+            </div>
+
+            <p className="med-body" style={{ marginTop: '1rem' }}>
+              For a broader view of our meditation offerings, see <Link href="/meditation-retreats" style={{ color: '#0f766e', fontWeight: 500, textDecoration: 'none' }}>meditation retreats</Link> or <Link href="/best-meditation-retreats-in-india" style={{ color: '#0f766e', fontWeight: 500, textDecoration: 'none' }}>best meditation retreats in India</Link>. For all locations in our network, see <Link href="/locations" style={{ color: '#0f766e', fontWeight: 500, textDecoration: 'none' }}>locations</Link>.
+            </p>
+          </div>
         </section>
 
         <PrimaryCTA
@@ -327,16 +497,41 @@ export default function HimalayanSilentRetreatsPage() {
           sourcePath={PATH}
         />
 
-        {/* ── FAQ ───────────────────────────────────────────────────── */}
-        <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
+        {/* ── FAQ ── */}
+        <section className="med-shell med-section-alt" style={{ padding: '4rem 0' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Common Questions</span>
+            </div>
+            <h2 className="med-h2">Frequently Asked <span>Questions</span></h2>
+            <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
+          </div>
+        </section>
 
-        <p style={{ marginTop: 'var(--space-xl)', fontSize: '0.9rem' }}>
-          <Link href="/silent-retreats" style={{ color: 'var(--color-primary)' }}>&larr; Silent Retreats</Link>
-          {' '}&nbsp;|&nbsp;{' '}
-          <Link href="/best-himalayan-retreats" style={{ color: 'var(--color-primary)' }}>Best Himalayan Retreats</Link>
-          {' '}&nbsp;|&nbsp;{' '}
-          <Link href="/locations" style={{ color: 'var(--color-primary)' }}>Locations</Link>
-        </p>
+        {/* ── FOOTER NAV ── */}
+        <nav className="med-shell med-section-white" style={{ padding: '2.5rem 0', borderTop: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-nav-grid">
+              <Link href="/silent-retreats" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>← Silent Retreats</span>
+              </Link>
+              <Link href="/best-himalayan-retreats" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Best Himalayan Retreats</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+              <Link href="/locations" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Locations</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+              <Link href="/find-your-retreat" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Find Your Retreat</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+            </div>
+          </div>
+        </nav>
+
       </article>
     </TrackedPage>
   );

@@ -8,6 +8,9 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
+import RelatedReads from '@/components/RelatedReads';
+import AutoArticleSchema from '@/components/AutoArticleSchema';
+import { images } from '@/lib/images';
 
 const PATH = '/life-reset-retreat';
 
@@ -73,10 +76,11 @@ const LOCATIONS = [
 
 export default function LifeResetRetreatPage() {
   validateFAQSync(FAQ_ITEMS, PATH);
+  const canonicalUrl = buildCanonicalUrl(PATH);
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
-    { name: 'Life Reset Retreat', url: buildCanonicalUrl(PATH) },
+    { name: 'Life Reset Retreat', url: canonicalUrl },
   ]);
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
   const articleSchema = generateBlogPostingSchema({
@@ -85,233 +89,516 @@ export default function LifeResetRetreatPage() {
       'Life reset retreat in the Himalayas for genuine recalibration through stillness, silence, nature immersion, and deep rest in Chakrata or Zanskar.',
     publishedAt: '2026-03-06',
     lastUpdated: '2026-05-09',
-    url: buildCanonicalUrl(PATH),
+    url: canonicalUrl,
   });
 
+  // Split heading for green last word
+  const h1Words = "Life Reset Retreat".split(' ');
+  const h1LastWord = h1Words[h1Words.length - 1];
+  const h1Rest = h1Words.slice(0, -1).join(' ');
+
+  // Hero image from registry
+  const heroImage = images.heroes.retreatHero;
+
   return (
-    <TrackedPage page={PATH}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, articleSchema]) }} />
-      <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Life Reset Retreat' }]} />
+    <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
+      <AutoArticleSchema
+        title="Life Reset Retreat — Start Again from Silence"
+        description="Life reset retreat in the Himalayas for genuine recalibration through stillness, silence, nature immersion, and deep rest in Chakrata or Zanskar."
+        path={PATH}
+      />
 
       <style>{`
-        .pg-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
-        .pg-wide { max-width: 72rem; margin: 0 auto; padding: 0 2rem; }
-        .pg-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem; }
-        .pg-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); }
-        .pg-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase; color: #374151; font-weight: 500; }
-        .pg-section-title { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.75rem, 3vw, 2.2rem); font-weight: 200; letter-spacing: -0.035em; color: #111111; line-height: 1.15; margin: 0 0 1.5rem; }
-        .pg-body-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.95rem; line-height: 1.85; color: #4b5563; font-weight: 300; margin: 0 0 1.5rem; }
-        
-        /* Hero */
-        .pg-hero { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 75vh; padding-top: 60px; }
-        .pg-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 50%, rgba(0,0,0,0.85) 100%); }
+        .med-shell { width: 100vw; margin-left: calc(-50vw + 50%); }
+        .med-outer { max-width: 76rem; margin: 0 auto; padding: 0 1.5rem; }
+        .med-inner { max-width: 58rem; margin: 0 auto; padding: 0 1.5rem; }
 
-        /* Structure Timeline */
-        .pg-timeline { position: relative; padding-left: 2rem; margin: 3rem 0; }
-        .pg-timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 8px; width: 1px; background: rgba(15,118,110,0.2); }
-        .pg-timeline-item { position: relative; margin-bottom: 2.5rem; }
-        .pg-timeline-item::before { content: ''; position: absolute; top: 8px; left: -2rem; width: 16px; height: 16px; background: #fff; border: 2px solid var(--color-primary); border-radius: 50%; transform: translateX(-8px); }
+        .med-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.1rem; }
+        .med-eyebrow-line { width: 30px; height: 1px; background: rgba(15,118,110,0.35); flex-shrink: 0; }
+        .med-eyebrow-text { font-family: var(--font-inter), sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: #6b7280; font-weight: 600; }
 
-        /* Location Grid */
-        .pg-loc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; }
-        .pg-loc-card { position: relative; border-radius: 12px; overflow: hidden; height: 320px; display: flex; align-items: flex-end; text-decoration: none; transition: transform 0.3s; }
-        .pg-loc-card:hover { transform: translateY(-5px); }
-        .pg-loc-card::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.2) 50%, transparent 100%); z-index: 1; }
-        .pg-loc-content { position: relative; z-index: 2; padding: 1.5rem; width: 100%; color: #fff; }
+        .med-h2 { font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 500; letter-spacing: -0.03em; color: #2B2A26; line-height: 1.12; margin: 0 0 1.1rem; }
+        .med-h2 span { color: #0f766e; }
+        .med-h3 { font-family: var(--font-fraunces), Georgia, serif; font-size: 1.15rem; font-weight: 600; color: #2B2A26; margin: 0 0 0.7rem; letter-spacing: -0.01em; }
+        .med-body { font-family: var(--font-inter), sans-serif; font-size: 0.98rem; line-height: 1.9; color: #4b5259; font-weight: 400; margin: 0 0 1rem; }
+        .med-body:last-child { margin-bottom: 0; }
+        .med-body strong { color: #2B2A26; font-weight: 600; }
+
+        .med-card {
+          background: #fff;
+          border: 1px solid rgba(15,118,110,0.12);
+          border-radius: 18px;
+          box-shadow: 0 10px 30px rgba(15,31,28,0.05);
+          transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        .med-card::before {
+          content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+          background: #0f766e; transform: scaleX(0); transform-origin: left;
+          transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); z-index: 2;
+        }
+        .med-card:hover { transform: translateY(-6px); border-color: rgba(15,118,110,0.28); box-shadow: 0 22px 48px rgba(15,31,28,0.12); }
+        .med-card:hover::before { transform: scaleX(1); }
+
+        .med-cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2.3rem; background: #0f766e; color: white; text-decoration: none; font-family: var(--font-inter), sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; box-shadow: 0 10px 26px rgba(15,118,110,0.25); transition: all 0.3s cubic-bezier(0.22,1,0.36,1); border: 1px solid #0f766e; }
+        .med-cta-btn:hover { background: #0d6b64; transform: translateY(-3px); box-shadow: 0 16px 36px rgba(15,118,110,0.32); }
+        .med-cta-outline { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.85rem 1.8rem; border: 1px solid rgba(15,118,110,0.25); color: #0f766e; text-decoration: none; font-family: var(--font-inter), sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; transition: all 0.3s cubic-bezier(0.22,1,0.36,1); }
+        .med-cta-outline:hover { border-color: #0f766e; background: rgba(15,118,110,0.05); transform: translateY(-2px); }
+
+        .med-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; }
+        .med-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
+        @media (max-width: 720px) { .med-grid-2 { grid-template-columns: 1fr; } .med-grid-3 { grid-template-columns: 1fr; } }
+        @media (max-width: 640px) { .med-outer, .med-inner { padding-left: 1.25rem; padding-right: 1.25rem; } }
+
+        @keyframes med-hero-zoom { from { transform: scale(1.06); } to { transform: scale(1); } }
+        .med-hero-bg { animation: med-hero-zoom 24s ease-out forwards; }
+        @media (prefers-reduced-motion: reduce) { .med-hero-bg { animation: none; } }
+
+        .med-list { padding-left: 0; margin: 0; list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+        .med-list-item { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.9rem; }
+        .med-list-dot { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid rgba(15,118,110,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .med-list-dot-inner { width: 7px; height: 7px; border-radius: 50%; background: #0f766e; }
+        .med-list-text { font-family: var(--font-inter), sans-serif; font-size: 0.95rem; line-height: 1.85; color: #4b5259; font-weight: 400; }
+        .med-list-text strong { color: #2B2A26; font-weight: 600; }
+
+        .med-season-tag { display: inline-block; font-family: var(--font-inter), sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0f766e; background: rgba(15,118,110,0.08); padding: 0.32rem 0.7rem; border-radius: 999px; margin-bottom: 0.9rem; }
+
+        .med-nav-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+        @media (max-width: 820px) { .med-nav-grid { grid-template-columns: 1fr; } }
+
+        .med-section-alt { background: #f7f9f7; }
+        .med-section-white { background: #ffffff; }
+        .med-section-dark { background: #111827; color: #fff; }
+
+        .med-breadcrumb-wrap { padding: 1rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
+
+        .med-hero-section {
+          position: relative;
+          overflow: hidden;
+          min-height: 75vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-bottom: 1px solid rgba(15,118,110,0.12);
+        }
+        .med-hero-section .med-hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(120deg, rgba(4,12,10,0.82) 0%, rgba(4,12,10,0.5) 45%, rgba(4,12,10,0.78) 100%);
+        }
+        .med-hero-section .med-hero-content {
+          position: relative;
+          z-index: 2;
+          max-width: 58rem;
+          width: 100%;
+          padding: 5rem 1.5rem 4.5rem;
+          text-align: center;
+        }
+        .med-hero-section .med-hero-content .med-h1 {
+          font-family: var(--font-fraunces), Georgia, serif;
+          font-size: clamp(2.3rem, 4.6vw, 3.4rem);
+          font-weight: 600;
+          letter-spacing: -0.03em;
+          color: #ffffff;
+          margin: 0 0 1.1rem;
+          line-height: 1.08;
+          text-shadow: 0 3px 24px rgba(0,0,0,0.5);
+        }
+        .med-hero-section .med-hero-content .med-h1 span {
+          color: #5eead4;
+        }
+        .med-hero-section .med-hero-content .med-body {
+          max-width: 46rem;
+          margin: 0 auto 1.5rem;
+          font-size: 1.05rem;
+          color: rgba(255,255,255,0.85);
+          text-shadow: 0 2px 14px rgba(0,0,0,0.45);
+        }
+        .med-hero-section .med-hero-content .med-hero-tags {
+          display: flex;
+          justify-content: center;
+          gap: 0.75rem;
+          flex-wrap: wrap;
+          margin-bottom: 2rem;
+        }
+        .med-hero-section .med-hero-content .med-hero-tags span {
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.65rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #ffffff;
+          border: 1px solid rgba(255,255,255,0.3);
+          border-radius: 999px;
+          padding: 0.35rem 0.9rem;
+          background: rgba(15,118,110,0.25);
+        }
+        .med-hero-section .med-hero-content .med-hero-actions {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+
+        .med-section-padding { padding: 4rem 0; }
+        .med-section-padding-sm { padding: 3rem 0; }
+
+        /* ── Life Reset specific styles ── */
+        .med-reset-card { padding: 1.5rem; }
+        .med-reset-card .med-h3 { font-size: 1.05rem; margin-bottom: 0.3rem; }
+        .med-reset-card .med-body { font-size: 0.92rem; margin-bottom: 0; }
+
+        .med-reset-timeline {
+          position: relative;
+          padding-left: 2rem;
+          margin: 2rem 0;
+        }
+        .med-reset-timeline::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 8px;
+          width: 2px;
+          background: rgba(15,118,110,0.2);
+        }
+        .med-reset-timeline-item {
+          position: relative;
+          margin-bottom: 2rem;
+        }
+        .med-reset-timeline-item:last-child { margin-bottom: 0; }
+        .med-reset-timeline-item::before {
+          content: '';
+          position: absolute;
+          top: 8px;
+          left: -2rem;
+          width: 14px;
+          height: 14px;
+          background: #fff;
+          border: 2px solid #0f766e;
+          border-radius: 50%;
+          transform: translateX(-7px);
+        }
+        .med-reset-timeline-item .med-h3 { font-size: 1.05rem; margin-bottom: 0.2rem; }
+        .med-reset-timeline-item .med-body { font-size: 0.92rem; margin-bottom: 0; }
+
+        .med-reset-loc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+        @media (max-width: 720px) { .med-reset-loc-grid { grid-template-columns: 1fr; } }
+
+        .med-reset-loc-card {
+          position: relative;
+          overflow: hidden;
+          border-radius: 18px;
+          min-height: 320px;
+          display: flex;
+          align-items: flex-end;
+          text-decoration: none;
+          border: 1px solid rgba(255,255,255,0.1);
+          transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease;
+        }
+        .med-reset-loc-card:hover { transform: translateY(-6px); box-shadow: 0 22px 48px rgba(0,0,0,0.3); }
+        .med-reset-loc-card .med-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+        .med-reset-loc-card::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
+          z-index: 1;
+        }
+        .med-reset-loc-content {
+          position: relative;
+          z-index: 2;
+          padding: 1.5rem;
+          width: 100%;
+          color: #fff;
+        }
+        .med-reset-loc-content .med-tag {
+          display: inline-block;
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.55rem;
+          font-weight: 600;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          color: #5eead4;
+          background: rgba(15,118,110,0.3);
+          padding: 0.2rem 0.7rem;
+          border-radius: 999px;
+          margin-bottom: 0.5rem;
+        }
+        .med-reset-loc-content .med-h3 { color: #fff; font-size: 1.2rem; margin-bottom: 0.3rem; }
+        .med-reset-loc-content .med-body { color: rgba(255,255,255,0.8); font-size: 0.88rem; margin-bottom: 0; }
+
+        .med-reset-duration-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; }
+        @media (max-width: 720px) { .med-reset-duration-grid { grid-template-columns: 1fr; } }
+
+        .med-reset-cta-wrap {
+          background: #f0fdf4;
+          border: 1px solid #bbf7d0;
+          border-radius: 18px;
+          padding: 2.5rem;
+          text-align: center;
+        }
+        .med-reset-cta-wrap .med-h3 { color: #166534; }
+        .med-reset-cta-wrap .med-body { color: #15803d; }
+
+        .med-section-dark .med-eyebrow-text { color: rgba(255,255,255,0.6); }
+        .med-section-dark .med-eyebrow-line { background: rgba(255,255,255,0.3); }
+        .med-section-dark .med-h2 { color: #fff; }
+        .med-section-dark .med-h2 span { color: #5eead4; }
+        .med-section-dark .med-body { color: rgba(255,255,255,0.7); }
       `}</style>
 
-      {/* ── CINEMATIC HERO ── */}
-      <section className="pg-hero">
-        <div style={{ position: 'absolute', inset: 0 }}>
-          <Image
-            src="/Images/experience-hubs/meditation-group.png"
-            alt="Life Reset Retreats in the Himalayas"
-            width={1920}
-            height={1080}
-            priority
-            sizes="100vw"
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 35%' }}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, articleSchema]) }}
+      />
+
+      <div className="med-breadcrumb-wrap">
+        <div className="med-outer">
+          <Breadcrumb
+            items={[
+              { name: 'Home', href: '/' },
+              { name: 'Life Reset Retreat' },
+            ]}
           />
-          <div className="pg-hero-overlay" />
-        </div>
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '56rem', margin: '0 auto', padding: '0 2rem', textAlign: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', margin: '0 auto 1.25rem', justifyContent: 'center' }}>
-            <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.4)' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.7)', fontWeight: 500 }}>Re-evaluate Everything</span>
-            <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.4)' }} />
-          </div>
-          <h1 style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
-            fontSize: 'clamp(2rem, 5vw, 3.5rem)', fontWeight: 200,
-            letterSpacing: '-0.035em', color: '#ffffff', margin: '0 0 1.25rem',
-            lineHeight: 1.1, textShadow: '0 4px 24px rgba(0,0,0,0.5)',
-          }}>
-            Life Reset Retreat
-          </h1>
-          <p style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
-            fontSize: '1.05rem', color: 'rgba(255,255,255,0.85)',
-            fontWeight: 300, lineHeight: 1.8, maxWidth: '42rem', margin: '0 auto 2.5rem',
-          }}>
-            You have reached a point where optimisation is not enough. You need distance. Genuine, sensory distance from everything familiar to see your life clearly enough to choose which parts to keep.
-          </p>
-          <PrimaryCTA
-            label="Design Your Reset"
-            subtext=""
-            vertical="retreat"
-            category="life-reset"
-            sourcePath={PATH}
-          />
-        </div>
-      </section>
-
-      {/* ── THE PROBLEM (Intro) ── */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '5rem 0' }}>
-        <div className="pg-inner" style={{ textAlign: 'center' }}>
-          <div className="pg-eyebrow" style={{ justifyContent: 'center' }}>
-            <span className="pg-eyebrow-line" style={{ background: '#d1d5db' }} />
-            <span className="pg-eyebrow-text">The Intervention</span>
-            <span className="pg-eyebrow-line" style={{ background: '#d1d5db' }} />
-          </div>
-          <h2 className="pg-section-title">Distance is <strong>Clarity</strong></h2>
-          <p className="pg-body-text" style={{ fontSize: '1.1rem' }}>
-            The system is running as designed — career, relationships, routines — but the design no longer fits. Something fundamental needs to shift, and you <strong>cannot see what it is from inside the pattern</strong>.
-          </p>
-          <p className="pg-body-text" style={{ fontSize: '1.1rem' }}>
-            A life reset retreat creates distance. Not to escape your life, but to perceive it accurately. The Himalayas enforce this organically: there are no signals, routines, or familiar triggers to latch onto.
-          </p>
-        </div>
-      </section>
-
-      {/* ── WHO THIS IS FOR ── */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '5rem 0' }}>
-        <div className="pg-inner">
-          <div className="pg-eyebrow">
-            <span className="pg-eyebrow-line" />
-            <span className="pg-eyebrow-text">Is This For You</span>
-          </div>
-          <h2 className="pg-section-title">Who seeks a <strong>Life Reset</strong></h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', marginTop: '2rem' }}>
-            {[
-              'Professionals in their 30s–50s who have succeeding at something that no longer matters',
-              'People in the aftermath of major change — divorce, loss, career disruption',
-              'Founders and leaders whose identity has fused entirely with their role',
-              'Anyone who wakes at 3 AM with the sense that something needs to change but cannot name what',
-              'People who have tried coaching, therapy, and holidays without finding the reset they need'
-            ].map((item, idx) => (
-              <div key={idx} style={{ background: '#fff', padding: '1.5rem', borderRadius: '10px', display: 'flex', gap: '1rem', alignItems: 'flex-start', border: '1px solid #e5e7eb' }}>
-                <span style={{ color: 'var(--color-primary)', fontSize: '1.25rem', lineHeight: 1 }}>✦</span>
-                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', color: '#374151', lineHeight: 1.6, margin: 0 }}>{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── THE STRUCTURE ── */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '5rem 0' }}>
-        <div className="pg-inner">
-          <div className="pg-eyebrow">
-            <span className="pg-eyebrow-line" />
-            <span className="pg-eyebrow-text">The Process</span>
-          </div>
-          <h2 className="pg-section-title">The stages of a <strong>Reset</strong></h2>
-          <p className="pg-body-text">
-            A reset cannot be forced. It must be allowed. The structure of a Himalayan Life Reset Retreat respects the physiological timeline of down-regulation.
-          </p>
-
-          <div className="pg-timeline">
-            {[
-              { title: 'Days 1–2: Withdrawal', desc: 'The familiar inputs stop. Phone, email, social media, news, conversation, tasks — all of it. The mind protests. Restlessness, anxiety, boredom. This is normal. It is the system de-patterning.' },
-              { title: 'Days 3–5: Settling', desc: 'The mind quiets. The noise that was hiding beneath the busyness becomes audible — unprocessed emotions, suppressed questions, values that got lost in the rush. This phase can be uncomfortable but is where the real work begins.' },
-              { title: 'Days 5–7+: Clarity', desc: 'From the settled place, seeing becomes possible. You can observe your life patterns without being inside them. Insights arrive without force. The reset is not a decision — it is a shift in perspective from which better decisions become obvious.' }
-            ].map((step, idx) => (
-              <div key={idx} className="pg-timeline-item">
-                <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.05rem', fontWeight: 500, color: '#111', margin: '0 0 0.4rem' }}>{step.title}</h3>
-                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', color: '#4b5563', lineHeight: 1.7, margin: 0 }}>{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── WHERE TO GROW (Locations) ── */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#111827', padding: '5rem 0' }}>
-        <div className="pg-wide">
-          <div className="pg-eyebrow" style={{ justifyContent: 'center' }}>
-            <span className="pg-eyebrow-line" style={{ background: 'rgba(255,255,255,0.3)' }} />
-            <span className="pg-eyebrow-text" style={{ color: 'rgba(255,255,255,0.6)' }}>Himalayan Settings</span>
-            <span className="pg-eyebrow-line" style={{ background: 'rgba(255,255,255,0.3)' }} />
-          </div>
-          <h2 className="pg-section-title" style={{ textAlign: 'center', color: '#fff' }}>Environments for <strong>Recalibration</strong></h2>
-          <p className="pg-body-text" style={{ textAlign: 'center', color: 'rgba(255,255,255,0.7)', maxWidth: '36rem', margin: '0 auto 3rem' }}>
-            Radical separation from the familiar requires an environment strong enough to hold what surfaces.
-          </p>
-
-          <div className="pg-loc-grid">
-            {LOCATIONS.map((loc) => (
-              <Link key={loc.id} href={`/${loc.id}`} className="pg-loc-card">
-                <Image src={loc.image} alt={loc.name} width={800} height={462} sizes="(max-width: 640px) 100vw, 50vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                <div className="pg-loc-content">
-                  <span style={{ display: 'block', fontSize: '0.65rem', textTransform: 'uppercase', letterSpacing: '0.15em', color: 'var(--color-primary)', fontWeight: 600, marginBottom: '0.25rem' }}>{loc.tagline}</span>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 400, margin: '0 0 0.5rem', textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>{loc.name}</h3>
-                  <p style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.85)', lineHeight: 1.6, margin: 0 }}>{loc.description}</p>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── DURATIONS & FUNNEL ── */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '5rem 0' }}>
-        <div className="pg-inner">
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <h2 className="pg-section-title">Durations & <strong>Commitment</strong></h2>
-            <p className="pg-body-text" style={{ maxWidth: '38rem', margin: '0 auto' }}>
-              We strongly recommend longer formats for a Life Reset.
-            </p>
-          </div>
-          
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1rem', marginBottom: '3rem' }}>
-            <Link href="/7-day-meditation-retreat" style={{ textDecoration: 'none', background: '#f9fafb', border: '1px solid #e5e7eb', padding: '1.5rem', borderRadius: '8px', textAlign: 'center', transition: 'all 0.2s' }}>
-              <h3 style={{ color: '#111', fontSize: '1.1rem', margin: '0 0 0.5rem', fontWeight: 500 }}>7-Day Retreat</h3>
-              <p style={{ color: '#6b7280', fontSize: '0.85rem', margin: 0, lineHeight: 1.5 }}>The absolute minimum requested time for a genuine physiological and mental reset.</p>
-            </Link>
-            <Link href="/10-day-silent-retreat" style={{ textDecoration: 'none', background: '#f9fafb', border: '1px solid #e5e7eb', padding: '1.5rem', borderRadius: '8px', textAlign: 'center', transition: 'all 0.2s' }}>
-              <h3 style={{ color: '#111', fontSize: '1.1rem', margin: '0 0 0.5rem', fontWeight: 500 }}>10-Day Silent Retreat</h3>
-              <p style={{ color: '#6b7280', fontSize: '0.85rem', margin: 0, lineHeight: 1.5 }}>A deeper recalibration for those seeking radical transformation and extended silence.</p>
-            </Link>
-          </div>
-
-          <div style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', padding: '3rem 2rem', borderRadius: '12px', textAlign: 'center' }}>
-            <h3 style={{ fontSize: '1.5rem', color: '#166534', margin: '0 0 1rem', fontWeight: 400 }}>Ready to step out of the pattern?</h3>
-            <p style={{ color: '#15803d', fontSize: '0.95rem', margin: '0 auto 2rem', maxWidth: '32rem', lineHeight: 1.6 }}>
-              Contact us. Describe your current state and let us recommend the safest and most effective container for your life reset.
-            </p>
-            <PrimaryCTA
-              label="Talk to Us"
-              subtext="No obligations, just an honest conversation."
-              vertical="retreat"
-              category="life-reset"
-              sourcePath={PATH}
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* ── FAQ ── */}
-      <div className="pg-inner" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
-        <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
-
-        <div style={{ marginTop: '4rem', paddingTop: '2rem', borderTop: '1px solid #e5e7eb', display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <Link href="/personal-growth-retreat" style={{ fontSize: '0.85rem', color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Explore Personal Growth Retreats →</Link>
-          <span style={{ color: '#d1d5db' }}>|</span>
-          <Link href="/self-discovery-retreat" style={{ fontSize: '0.85rem', color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Explore Self-Discovery Retreats →</Link>
-          <span style={{ color: '#d1d5db' }}>|</span>
-          <Link href="/burnout-recovery-retreats" style={{ fontSize: '0.85rem', color: 'var(--color-primary)', textDecoration: 'none', fontWeight: 500 }}>Explore Burnout Recovery →</Link>
         </div>
       </div>
+
+      <article>
+
+        {/* ── HERO ── */}
+        <section className="med-shell med-hero-section">
+          <div style={{ position: 'absolute', inset: 0 }}>
+            <img
+              className="med-hero-bg"
+              src={heroImage.src}
+              alt={heroImage.alt}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+            <div className="med-hero-overlay" />
+          </div>
+          <div className="med-hero-content">
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.3rem' }}>
+              <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
+              <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>Re-evaluate Everything</span>
+              <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
+            </div>
+            <h1 className="med-h1">
+              {h1Rest} <span>{h1LastWord}</span>
+            </h1>
+            <p className="med-body">
+              You have reached a point where optimisation is not enough. You need distance. Genuine, sensory distance from everything familiar to see your life clearly enough to choose which parts to keep.
+            </p>
+            <div className="med-hero-tags">
+              <span>Radical Separation</span>
+              <span>Deep Recalibration</span>
+              <span>7–10 Days</span>
+              <span>Himalayan Silence</span>
+            </div>
+            <div className="med-hero-actions">
+              <Link href="#design" className="med-cta-btn">Design Your Reset</Link>
+              <a href="#who-its-for" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Who This Is For</a>
+            </div>
+          </div>
+        </section>
+
+        {/* ── THE PROBLEM (Intro) ── */}
+        <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner" style={{ textAlign: 'center' }}>
+            <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">The Intervention</span>
+              <span className="med-eyebrow-line" />
+            </div>
+            <h2 className="med-h2">Distance is <span>Clarity</span></h2>
+            <p className="med-body" style={{ fontSize: '1.05rem' }}>
+              The system is running as designed — career, relationships, routines — but the design no longer fits. Something fundamental needs to shift, and you <strong>cannot see what it is from inside the pattern</strong>.
+            </p>
+            <p className="med-body" style={{ fontSize: '1.05rem' }}>
+              A life reset retreat creates distance. Not to escape your life, but to perceive it accurately. The Himalayas enforce this organically: there are no signals, routines, or familiar triggers to latch onto.
+            </p>
+          </div>
+        </section>
+
+        {/* ── WHO THIS IS FOR ── */}
+        <section id="who-its-for" className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Is This For You</span>
+            </div>
+            <h2 className="med-h2">Who seeks a <span>Life Reset</span></h2>
+
+            <div className="med-grid-2" style={{ marginTop: '1.8rem' }}>
+              {[
+                'Professionals in their 30s–50s who have succeeded at something that no longer matters',
+                'People in the aftermath of major change — divorce, loss, career disruption',
+                'Founders and leaders whose identity has fused entirely with their role',
+                'Anyone who wakes at 3 AM with the sense that something needs to change but cannot name what',
+                'People who have tried coaching, therapy, and holidays without finding the reset they need'
+              ].map((item, idx) => (
+                <div key={idx} className="med-card med-reset-card">
+                  <div style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                    <span style={{ color: '#0f766e', fontSize: '1.1rem', flexShrink: 0, marginTop: '2px' }}>✦</span>
+                    <p className="med-body" style={{ fontSize: '0.92rem', margin: 0 }}>{item}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <PrimaryCTA
+          id="design"
+          label="Design Your Reset"
+          subtext="Tell us where you are and what you need — we'll recommend the right duration and location."
+          vertical="retreat"
+          category="life-reset"
+          sourcePath={PATH}
+        />
+
+        {/* ── THE STRUCTURE ── */}
+        <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">The Process</span>
+            </div>
+            <h2 className="med-h2">The stages of a <span>Reset</span></h2>
+            <p className="med-body">
+              A reset cannot be forced. It must be allowed. The structure of a Himalayan Life Reset Retreat respects the physiological timeline of down-regulation.
+            </p>
+
+            <div className="med-reset-timeline">
+              {[
+                { title: 'Days 1–2: Withdrawal', desc: 'The familiar inputs stop. Phone, email, social media, news, conversation, tasks — all of it. The mind protests. Restlessness, anxiety, boredom. This is normal. It is the system de-patterning.' },
+                { title: 'Days 3–5: Settling', desc: 'The mind quiets. The noise that was hiding beneath the busyness becomes audible — unprocessed emotions, suppressed questions, values that got lost in the rush. This phase can be uncomfortable but is where the real work begins.' },
+                { title: 'Days 5–7+: Clarity', desc: 'From the settled place, seeing becomes possible. You can observe your life patterns without being inside them. Insights arrive without force. The reset is not a decision — it is a shift in perspective from which better decisions become obvious.' }
+              ].map((step, idx) => (
+                <div key={idx} className="med-reset-timeline-item">
+                  <h3 className="med-h3">{step.title}</h3>
+                  <p className="med-body">{step.desc}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── LOCATIONS ── */}
+        <section className="med-shell med-section-dark med-section-padding" style={{ borderBottom: '1px solid rgba(255,255,255,0.08)' }}>
+          <div className="med-outer">
+            <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Himalayan Settings</span>
+              <span className="med-eyebrow-line" />
+            </div>
+            <h2 className="med-h2" style={{ textAlign: 'center' }}>Environments for <span>Recalibration</span></h2>
+            <p className="med-body" style={{ textAlign: 'center', maxWidth: '36rem', margin: '0 auto 2rem' }}>
+              Radical separation from the familiar requires an environment strong enough to hold what surfaces.
+            </p>
+
+            <div className="med-reset-loc-grid">
+              {LOCATIONS.map((loc) => (
+                <Link key={loc.id} href={`/${loc.id}`} className="med-reset-loc-card">
+                  <img src={loc.image} alt={loc.name} className="med-img" />
+                  <div className="med-reset-loc-content">
+                    <span className="med-tag">{loc.tagline}</span>
+                    <h3 className="med-h3">{loc.name}</h3>
+                    <p className="med-body">{loc.description}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── DURATIONS ── */}
+        <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+              <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+                <span className="med-eyebrow-line" />
+                <span className="med-eyebrow-text">Commitment</span>
+                <span className="med-eyebrow-line" />
+              </div>
+              <h2 className="med-h2">Durations & <span>Commitment</span></h2>
+              <p className="med-body" style={{ maxWidth: '38rem', margin: '0 auto' }}>
+                We strongly recommend longer formats for a Life Reset.
+              </p>
+            </div>
+
+            <div className="med-reset-duration-grid">
+              <Link href="/7-day-meditation-retreat" className="med-card med-reset-card" style={{ textDecoration: 'none' }}>
+                <h3 className="med-h3">7-Day Retreat</h3>
+                <p className="med-body">The absolute minimum requested time for a genuine physiological and mental reset.</p>
+              </Link>
+              <Link href="/10-day-silent-retreat" className="med-card med-reset-card" style={{ textDecoration: 'none' }}>
+                <h3 className="med-h3">10-Day Silent Retreat</h3>
+                <p className="med-body">A deeper recalibration for those seeking radical transformation and extended silence.</p>
+              </Link>
+            </div>
+
+            <div className="med-reset-cta-wrap" style={{ marginTop: '2rem' }}>
+              <h3 className="med-h3" style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>Ready to step out of the pattern?</h3>
+              <p className="med-body" style={{ marginBottom: '1.25rem' }}>
+                Contact us. Describe your current state and let us recommend the safest and most effective container for your life reset.
+              </p>
+              <PrimaryCTA
+                label="Talk to Us"
+                subtext="No obligations, just an honest conversation."
+                vertical="retreat"
+                category="life-reset"
+                sourcePath={PATH}
+              />
+            </div>
+          </div>
+        </section>
+
+        <RelatedReads
+          links={[
+            { label: 'Personal Growth Retreat', href: '/personal-growth-retreat' },
+            { label: 'Self-Discovery Retreat', href: '/self-discovery-retreat' },
+            { label: 'Burnout Recovery Retreats', href: '/burnout-recovery-retreats' },
+          ]}
+        />
+
+        {/* ── FAQ ── */}
+        <section className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Common Questions</span>
+            </div>
+            <h2 className="med-h2">Frequently Asked <span>Questions</span></h2>
+            <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
+          </div>
+        </section>
+
+        {/* ── FOOTER NAV ── */}
+        <nav className="med-shell med-section-white" style={{ padding: '2.5rem 0', borderTop: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-nav-grid">
+              <Link href="/personal-growth-retreat" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>← Personal Growth</span>
+              </Link>
+              <Link href="/self-discovery-retreat" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Self-Discovery</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+              <Link href="/burnout-recovery-retreats" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Burnout Recovery</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+              <Link href="/find-your-retreat" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Find Your Retreat</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+            </div>
+          </div>
+        </nav>
+
+      </article>
     </TrackedPage>
   );
 }

@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { getExperiencePage } from '@/config/experiencePages';
@@ -10,6 +9,8 @@ import { getUpcomingEvents } from '@/config/retreatProgramEvents';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import ReviewCard from '@/components/reviews/ReviewCard';
+import AutoArticleSchema from '@/components/AutoArticleSchema';
+import { images } from '@/lib/images';
 
 const PAGE = getExperiencePage('yoga-retreats')!;
 const PATH = '/yoga-retreats';
@@ -90,6 +91,13 @@ const PRACTICE_ELEMENTS = [
   },
 ];
 
+const BENEFITS = [
+  { title: 'Altitude Deepens Breath', text: 'At elevation, every inhalation is deliberate. Pranayama becomes real — not a technique performed, but a necessity felt. The breath stops being abstract.' },
+  { title: 'Mountain Silence', text: 'Without traffic, notifications, or studio playlists, you hear your body. The sounds of practice — breath, movement, heartbeat — become the soundtrack.' },
+  { title: 'Natural Alignment', text: 'Cold mountain mornings slow you down. The body opens differently at altitude — more slowly, more honestly. There is no rushing a sun salutation at 2,000 metres.' },
+  { title: 'Living Tradition', text: 'In Rishikesh, yoga is not imported fitness — it is the daily practice of a city that has breathed it for centuries. The teachers have lineage, not just certification.' },
+];
+
 const LOCATIONS = [
   {
     name: 'Rishikesh',
@@ -136,60 +144,249 @@ export default function YogaRetreatsPage() {
 
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
 
+  // Split heading for teal last word
+  const h1Words = 'Yoga Retreats in the Himalayas'.split(' ');
+  const h1LastWord = h1Words[h1Words.length - 1];
+  const h1Rest = h1Words.slice(0, -1).join(' ');
+
+  // Hero image from registry
+  const heroImage = images.heroes.retreatHero;
+
   return (
-    <TrackedPage page={PATH}>
+    <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
+      <AutoArticleSchema
+        title="Yoga Retreats in the Himalayas"
+        description="Himalayan yoga retreats in Rishikesh, Zanskar, and Sankri. Small-group asana, pranayama, meditation, experienced teachers, and 3–10 day programs."
+        path={PATH}
+      />
+
       <style>{`
-        .yog-inner { max-width: 52rem; margin: 0 auto; padding: 0 2rem; }
-        .yog-wide { max-width: 72rem; margin: 0 auto; padding: 0 2rem; }
-        .yog-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-        .yog-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); flex-shrink: 0; }
-        .yog-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase; color: #374151; font-weight: 500; }
-        .yog-section-title { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200; letter-spacing: -0.03em; color: #111111; line-height: 1.15; margin: 0 0 2rem; }
-        .yog-section-title span { color: #374151; }
-        .yog-body-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.92rem; line-height: 1.85; color: #555; font-weight: 300; margin: 0; }
+        .med-shell { width: 100vw; margin-left: calc(-50vw + 50%); }
+        .med-outer { max-width: 76rem; margin: 0 auto; padding: 0 1.5rem; }
+        .med-inner { max-width: 58rem; margin: 0 auto; padding: 0 1.5rem; }
 
-        .yog-hero { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 82vh; text-align: center; padding-top: 68px; }
-        .yog-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.85) 100%); }
+        .med-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.1rem; }
+        .med-eyebrow-line { width: 30px; height: 1px; background: rgba(15,118,110,0.35); flex-shrink: 0; }
+        .med-eyebrow-text { font-family: var(--font-inter), sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: #6b7280; font-weight: 600; }
 
-        .yog-info-strip { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
-        .yog-info-item { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+        .med-h2 { font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 500; letter-spacing: -0.03em; color: #2B2A26; line-height: 1.12; margin: 0 0 1.1rem; }
+        .med-h2 span { color: #0f766e; }
+        .med-h3 { font-family: var(--font-fraunces), Georgia, serif; font-size: 1.15rem; font-weight: 600; color: #2B2A26; margin: 0 0 0.7rem; letter-spacing: -0.01em; }
+        .med-body { font-family: var(--font-inter), sans-serif; font-size: 0.98rem; line-height: 1.9; color: #4b5259; font-weight: 400; margin: 0 0 1rem; }
+        .med-body:last-child { margin-bottom: 0; }
+        .med-body strong { color: #2B2A26; font-weight: 600; }
 
-        .yog-loc-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
-        .yog-loc-card { position: relative; height: 340px; border-radius: 10px; overflow: hidden; text-decoration: none; color: #fff; display: flex; align-items: flex-end; transition: transform 0.3s, box-shadow 0.3s; }
-        .yog-loc-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.15); }
-        .yog-loc-card-content { position: relative; z-index: 2; padding: 1.75rem; width: 100%; }
+        .med-card {
+          background: #fff;
+          border: 1px solid rgba(15,118,110,0.12);
+          border-radius: 18px;
+          box-shadow: 0 10px 30px rgba(15,31,28,0.05);
+          transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        .med-card::before {
+          content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+          background: #0f766e; transform: scaleX(0); transform-origin: left;
+          transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); z-index: 2;
+        }
+        .med-card:hover { transform: translateY(-6px); border-color: rgba(15,118,110,0.28); box-shadow: 0 22px 48px rgba(15,31,28,0.12); }
+        .med-card:hover::before { transform: scaleX(1); }
 
-        .yog-benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; }
-        .yog-benefit-card { background: #fff; border: 1px solid #eef0ee; border-radius: 8px; padding: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.03); transition: border-color 0.2s, box-shadow 0.2s; }
-        .yog-benefit-card:hover { border-color: rgba(15,118,110,0.25); box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+        .med-cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2.3rem; background: #0f766e; color: white; text-decoration: none; font-family: var(--font-inter), sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; box-shadow: 0 10px 26px rgba(15,118,110,0.25); transition: all 0.3s cubic-bezier(0.22,1,0.36,1); border: 1px solid #0f766e; }
+        .med-cta-btn:hover { background: #0d6b64; transform: translateY(-3px); box-shadow: 0 16px 36px rgba(15,118,110,0.32); }
+        .med-cta-outline { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.85rem 1.8rem; border: 1px solid rgba(15,118,110,0.25); color: #0f766e; text-decoration: none; font-family: var(--font-inter), sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; transition: all 0.3s cubic-bezier(0.22,1,0.36,1); }
+        .med-cta-outline:hover { border-color: #0f766e; background: rgba(15,118,110,0.05); transform: translateY(-2px); }
 
-        .yog-cta-btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2.25rem; background: var(--color-primary); color: #fff; text-decoration: none; font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; border-radius: 100px; transition: background 0.2s, transform 0.2s; }
-        .yog-cta-btn:hover { background: #0d9e95; transform: translateY(-2px); }
-        .yog-cta-outline { display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.7rem 1.8rem; border: 1px solid rgba(15,118,110,0.3); color: var(--color-primary); text-decoration: none; font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.04em; border-radius: 100px; transition: all 0.2s; }
-        .yog-cta-outline:hover { border-color: var(--color-primary); background: rgba(15,118,110,0.04); }
+        .med-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; }
+        .med-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
+        @media (max-width: 720px) { .med-grid-2 { grid-template-columns: 1fr; } .med-grid-3 { grid-template-columns: 1fr; } }
+        @media (max-width: 640px) { .med-outer, .med-inner { padding-left: 1.25rem; padding-right: 1.25rem; } }
 
-        .yog-faq-item { border-bottom: 1px solid #eef0ee; padding: 1.5rem 0; }
-        .yog-faq-item:last-child { border-bottom: none; }
+        @keyframes med-hero-zoom { from { transform: scale(1.06); } to { transform: scale(1); } }
+        .med-hero-bg { animation: med-hero-zoom 24s ease-out forwards; }
+        @media (prefers-reduced-motion: reduce) { .med-hero-bg { animation: none; } }
 
-        @media (max-width: 640px) { .yog-who-grid { grid-template-columns: 1fr !important; gap: 2.5rem !important; } }
+        .med-list { padding-left: 0; margin: 0; list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+        .med-list-item { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.9rem; }
+        .med-list-dot { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid rgba(15,118,110,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .med-list-dot-inner { width: 7px; height: 7px; border-radius: 50%; background: #0f766e; }
+        .med-list-text { font-family: var(--font-inter), sans-serif; font-size: 0.95rem; line-height: 1.85; color: #4b5259; font-weight: 400; }
+        .med-list-text strong { color: #2B2A26; font-weight: 600; }
 
-        .yog-prog-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-        .yog-prog-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; display: flex; flex-direction: column; }
-        .yog-prog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); border-color: rgba(15,118,110,0.3); }
-        .yog-prog-status { font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; padding: 3px 8px; border-radius: 3px; white-space: nowrap; }
-        .yog-prog-open { background: #ecfdf5; color: #065f46; }
-        .yog-prog-filling { background: #fef3c7; color: #92400e; }
-        .yog-prog-last { background: #fee2e2; color: #991b1b; }
+        .med-nav-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+        @media (max-width: 820px) { .med-nav-grid { grid-template-columns: 1fr; } }
 
-        .yog-trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-        @media (max-width: 768px) { .yog-trust-grid { grid-template-columns: 1fr; } }
-        .yog-trust-item { text-align: center; padding: 2rem 1.5rem; border: 1px solid #e5e7eb; border-radius: 10px; background: #fff; transition: border-color 0.2s; }
-        .yog-trust-item:hover { border-color: rgba(15,118,110,0.25); }
+        .med-section-alt { background: #f7f9f7; }
+        .med-section-white { background: #ffffff; }
 
-        .yog-funnel-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-        @media (max-width: 768px) { .yog-funnel-grid { grid-template-columns: 1fr; } }
-        .yog-funnel-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 1.75rem 1.5rem; text-decoration: none; display: flex; flex-direction: column; gap: 0.6rem; align-items: center; text-align: center; transition: background 0.25s, border-color 0.25s, transform 0.25s; }
-        .yog-funnel-card:hover { background: rgba(255,255,255,0.14); border-color: rgba(255,255,255,0.3); transform: translateY(-3px); }
+        .med-breadcrumb-wrap { padding: 1rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
+
+        .med-hero-section {
+          position: relative;
+          overflow: hidden;
+          min-height: 78vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-bottom: 1px solid rgba(15,118,110,0.12);
+        }
+        .med-hero-section .med-hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(120deg, rgba(4,12,10,0.82) 0%, rgba(4,12,10,0.5) 45%, rgba(4,12,10,0.78) 100%);
+        }
+        .med-hero-section .med-hero-content {
+          position: relative;
+          z-index: 2;
+          max-width: 58rem;
+          width: 100%;
+          padding: 5rem 1.5rem 4.5rem;
+          text-align: center;
+        }
+        .med-hero-section .med-hero-content .med-h1 {
+          font-family: var(--font-fraunces), Georgia, serif;
+          font-size: clamp(2.3rem, 4.6vw, 3.4rem);
+          font-weight: 600;
+          letter-spacing: -0.03em;
+          color: #ffffff;
+          margin: 0 0 1.1rem;
+          line-height: 1.08;
+          text-shadow: 0 3px 24px rgba(0,0,0,0.5);
+        }
+        .med-hero-section .med-hero-content .med-h1 span {
+          color: #5eead4;
+        }
+        .med-hero-section .med-hero-content .med-body {
+          max-width: 46rem;
+          margin: 0 auto 1.5rem;
+          font-size: 1.05rem;
+          color: rgba(255,255,255,0.85);
+          text-shadow: 0 2px 14px rgba(0,0,0,0.45);
+        }
+        .med-hero-section .med-hero-content .med-hero-tags {
+          display: flex;
+          justify-content: center;
+          gap: 0.75rem;
+          flex-wrap: wrap;
+          margin-bottom: 2rem;
+        }
+        .med-hero-section .med-hero-content .med-hero-tags span {
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.65rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #ffffff;
+          border: 1px solid rgba(255,255,255,0.3);
+          border-radius: 999px;
+          padding: 0.35rem 0.9rem;
+          background: rgba(15,118,110,0.25);
+        }
+        .med-hero-section .med-hero-content .med-hero-actions {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+
+        .med-section-padding { padding: 4rem 0; }
+        .med-section-padding-sm { padding: 3rem 0; }
+
+        /* ── FAQ Accordion (shared pattern) ── */
+        .med-faq-accordion { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 1.5rem; }
+        .med-faq-details { background: #fff; border: 1px solid rgba(15,118,110,0.1); border-radius: 12px; overflow: hidden; transition: border-color 0.3s ease; }
+        .med-faq-details:hover { border-color: rgba(15,118,110,0.25); }
+        .med-faq-details[open] { border-color: rgba(15,118,110,0.3); }
+        .med-faq-summary {
+          display: flex; justify-content: space-between; align-items: center;
+          padding: 1.25rem 1.5rem; cursor: pointer; list-style: none;
+          font-family: var(--font-inter), sans-serif; font-size: 0.95rem; font-weight: 500; color: #2B2A26;
+          transition: background 0.2s ease; user-select: none; gap: 1rem;
+        }
+        .med-faq-summary::-webkit-details-marker { display: none; }
+        .med-faq-summary:hover { background: rgba(15,118,110,0.03); }
+        .med-faq-details[open] .med-faq-summary { background: rgba(15,118,110,0.04); border-bottom: 1px solid rgba(15,118,110,0.06); }
+        .med-faq-question { flex: 1; }
+        .med-faq-icon { flex-shrink: 0; width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; color: #0f766e; transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .med-faq-details[open] .med-faq-icon { transform: rotate(45deg); }
+        .med-faq-icon svg { width: 20px; height: 20px; stroke-width: 2; transition: stroke-width 0.2s ease; }
+        .med-faq-summary:hover .med-faq-icon svg { stroke-width: 2.5; }
+        .med-faq-answer { padding: 0 1.5rem 1.5rem; animation: med-faq-slide 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+        @keyframes med-faq-slide { 0% { opacity: 0; transform: translateY(-12px) scale(0.98); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+        .med-faq-answer .med-body { margin: 0; font-size: 0.92rem; color: #4b5259; }
+
+        /* ── Page-specific: yoga ── */
+        .med-yoga-strip { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+        .med-yoga-strip-item { display: flex; flex-direction: column; align-items: center; gap: 0.25rem; }
+
+        .med-yoga-benefit-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+        @media (max-width: 720px) { .med-yoga-benefit-grid { grid-template-columns: 1fr; } }
+        .med-yoga-benefit-card { padding: 1.6rem; }
+        .med-yoga-benefit-card .med-h3 { font-size: 0.98rem; margin-bottom: 0.4rem; }
+        .med-yoga-benefit-card .med-body { font-size: 0.86rem; margin-bottom: 0; }
+
+        .med-yoga-timeline { position: relative; padding-left: 2rem; margin: 2rem 0; }
+        .med-yoga-timeline::before { content: ''; position: absolute; top: 0; bottom: 0; left: 8px; width: 2px; background: rgba(15,118,110,0.2); }
+        .med-yoga-timeline-item { position: relative; margin-bottom: 2rem; }
+        .med-yoga-timeline-item:last-child { margin-bottom: 0; }
+        .med-yoga-timeline-item::before { content: ''; position: absolute; top: 8px; left: -2rem; width: 14px; height: 14px; background: #fff; border: 2px solid #0f766e; border-radius: 50%; transform: translateX(-7px); }
+        .med-yoga-timeline-item .med-time { font-family: var(--font-inter), sans-serif; font-size: 0.7rem; font-weight: 600; color: #0f766e; letter-spacing: 0.05em; display: block; margin-bottom: 0.3rem; }
+        .med-yoga-timeline-item .med-h3 { font-size: 1.02rem; margin-bottom: 0.2rem; }
+        .med-yoga-timeline-item .med-body { font-size: 0.92rem; margin-bottom: 0; }
+
+        .med-yoga-loc-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+        @media (max-width: 820px) { .med-yoga-loc-grid { grid-template-columns: 1fr; } }
+        .med-yoga-loc-card {
+          display: flex; flex-direction: column; text-decoration: none; color: inherit;
+          background: #fff; border-radius: 18px; overflow: hidden; border: 1px solid rgba(15,118,110,0.12);
+          transition: transform 0.4s cubic-bezier(0.22,1,0.36,1), box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .med-yoga-loc-card:hover { transform: translateY(-6px); box-shadow: 0 22px 48px rgba(15,31,28,0.12); border-color: rgba(15,118,110,0.28); }
+        .med-yoga-loc-card .med-img-wrap { position: relative; width: 100%; aspect-ratio: 16/9; overflow: hidden; background: #f0f2f0; flex-shrink: 0; }
+        .med-yoga-loc-card .med-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.22,1,0.36,1); }
+        .med-yoga-loc-card:hover .med-img { transform: scale(1.08); }
+        .med-yoga-loc-card .med-content { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.4rem; flex: 1; }
+        .med-yoga-loc-card .med-alt { font-family: var(--font-inter), sans-serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #0f766e; font-weight: 700; }
+        .med-yoga-loc-card .med-h3 { font-size: 1.05rem; margin-bottom: 0.2rem; }
+        .med-yoga-loc-card .med-body { font-size: 0.85rem; margin-bottom: 0; flex: 1; }
+        .med-yoga-loc-card .med-best { font-family: var(--font-inter), sans-serif; font-size: 0.62rem; letter-spacing: 0.08em; color: #6b7280; font-weight: 500; margin-top: 0.5rem; padding-top: 0.5rem; border-top: 1px solid rgba(15,118,110,0.06); }
+
+        .med-yoga-funnel-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+        @media (max-width: 720px) { .med-yoga-funnel-grid { grid-template-columns: 1fr; } }
+        .med-yoga-funnel-card {
+          padding: 1.75rem; text-decoration: none; text-align: center;
+          display: flex; flex-direction: column; gap: 0.5rem; align-items: center;
+        }
+        .med-yoga-funnel-card .med-num { font-family: var(--font-inter), sans-serif; font-size: 1.8rem; font-weight: 200; color: #0f766e; margin-bottom: 0.25rem; }
+        .med-yoga-funnel-card .med-h3 { font-size: 0.92rem; margin-bottom: 0; }
+        .med-yoga-funnel-card .med-body { font-size: 0.78rem; margin-bottom: 0; }
+        .med-yoga-funnel-card .med-link { font-family: var(--font-inter), sans-serif; font-size: 0.65rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: #0f766e; margin-top: auto; padding-top: 0.5rem; }
+
+        .med-yoga-prog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+        @media (max-width: 720px) { .med-yoga-prog-grid { grid-template-columns: 1fr; } }
+        .med-yoga-prog-card {
+          background: #fff; border: 1px solid rgba(15,118,110,0.12); border-radius: 18px;
+          overflow: hidden; transition: transform 0.35s, box-shadow 0.35s, border-color 0.3s;
+          display: flex; flex-direction: column; text-decoration: none; color: inherit;
+        }
+        .med-yoga-prog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); border-color: rgba(15,118,110,0.3); }
+        .med-yoga-prog-card .med-header { padding: 1.5rem 1.5rem 0; display: flex; justify-content: space-between; align-items: flex-start; }
+        .med-yoga-prog-card .med-body-wrap { padding: 1rem 1.5rem 1.5rem; flex: 1; display: flex; flex-direction: column; }
+
+        .med-yoga-trust-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.5rem; }
+        @media (max-width: 720px) { .med-yoga-trust-grid { grid-template-columns: 1fr; } }
+        .med-yoga-trust-item { text-align: center; padding: 2rem 1.5rem; border: 1px solid rgba(15,118,110,0.12); border-radius: 18px; background: #fff; transition: border-color 0.2s; }
+        .med-yoga-trust-item:hover { border-color: rgba(15,118,110,0.25); }
+
+        .med-yoga-bottom-cta { position: relative; overflow: hidden; min-height: 50vh; display: flex; align-items: center; justify-content: center; text-align: center; }
+        .med-yoga-bottom-cta .med-overlay { position: absolute; inset: 0; background: rgba(4,12,10,0.88); }
+        .med-yoga-bottom-cta .med-content { position: relative; z-index: 2; max-width: 44rem; padding: 4rem 2rem; }
+        .med-yoga-bottom-cta .med-content .med-h2 { color: #fff; margin-bottom: 1rem; }
+        .med-yoga-bottom-cta .med-content .med-h2 span { color: #5eead4; }
+        .med-yoga-bottom-cta .med-content .med-body { color: rgba(255,255,255,0.6); margin-bottom: 2rem; }
+        .med-yoga-bottom-cta .med-content .med-trust { display: flex; justify-content: center; gap: 1.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+        .med-yoga-bottom-cta .med-content .med-trust span { font-family: var(--font-inter), sans-serif; font-size: 0.68rem; color: rgba(255,255,255,0.35); font-weight: 400; letter-spacing: 0.05em; }
       `}</style>
 
       {reviewSchemas.length > 0 && (
@@ -199,338 +396,461 @@ export default function YogaRetreatsPage() {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema]) }} />
       )}
 
-      <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Retreats', href: '/retreats' }, { name: 'Yoga Retreats' }]} />
-
-      {/* ═══ HERO ═══ */}
-      <section className="yog-hero">
-        <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/experience-hubs/yoga-hero.webp" width={1024} height={1024} alt="Yoga retreat in the Himalayas — warrior pose on a mountain deck at sunrise" fetchPriority="high" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
-          <div className="yog-hero-overlay" />
+      <div className="med-breadcrumb-wrap">
+        <div className="med-outer">
+          <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Retreats', href: '/retreats' }, { name: 'Yoga Retreats' }]} />
         </div>
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem', justifyContent: 'center' }}>
-            <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.5)', display: 'inline-block' }} />
-            <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)', fontWeight: 500 }}>Yoga & Movement</span>
-            <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.5)', display: 'inline-block' }} />
-          </div>
-          <h1 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(2rem, 4.5vw, 3rem)', fontWeight: 200, letterSpacing: '-0.035em', color: '#ffffff', margin: '0 0 1rem', lineHeight: 1.05, textShadow: '0 2px 32px rgba(0,0,0,0.7)' }}>
-            Yoga Retreats in the Himalayas
-          </h1>
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1rem', color: 'rgba(255,255,255,0.82)', fontWeight: 300, lineHeight: 1.75, maxWidth: '38rem', margin: '0 0 2rem' }}>
-            Where altitude changes your breath, mountain air changes your nervous system, and practice becomes presence. Not yoga tourism — genuine practice in environments where the land participates.
-          </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', justifyContent: 'center', marginBottom: '2rem' }}>
-            {['All Levels', 'Experienced Teachers', '3–10 Days', 'Max 12 Participants'].map((tag) => (
-              <span key={tag} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 500, letterSpacing: '0.08em', textTransform: 'uppercase', background: 'rgba(255,255,255,0.12)', border: '1px solid rgba(255,255,255,0.25)', color: 'rgba(255,255,255,0.85)', borderRadius: '4px', padding: '0.4rem 0.85rem' }}>{tag}</span>
-            ))}
-          </div>
-          <div style={{ display: 'flex', gap: '1.25rem', flexWrap: 'wrap', justifyContent: 'center', marginBottom: '2.5rem' }}>
-            <Link href="/contact" className="yog-cta-btn" style={{ padding: '1rem 2.5rem', fontSize: '0.82rem' }}>Find Your Yoga Retreat →</Link>
-            <a href="#locations" className="yog-cta-outline" style={{ borderColor: 'rgba(255,255,255,0.35)', color: 'rgba(255,255,255,0.9)', padding: '0.9rem 2rem', fontSize: '0.78rem' }}>Explore Locations ↓</a>
-          </div>
-        </div>
-      </section>
+      </div>
 
-      {/* ═══ INFO STRIP ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#0a1f1c', padding: '2rem 0' }}>
-        <div className="yog-wide">
-          <div className="yog-info-strip">
-            {[
-              { label: 'Locations', value: '3 Mountain Settings' },
-              { label: 'Group Size', value: 'Max 12 People' },
-              { label: 'Practice', value: 'Hatha · Vinyasa · Pranayama' },
-              { label: 'Experience', value: 'Beginners Welcome' },
-            ].map((item) => (
-              <div key={item.label} className="yog-info-item">
-                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)', fontWeight: 500 }}>{item.label}</span>
-                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', color: '#ffffff', fontWeight: 300 }}>{item.value}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <article>
 
-      {/* ═══ WHAT IS A YOGA RETREAT ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
-        <div className="yog-inner">
-          <div className="yog-eyebrow"><span className="yog-eyebrow-line" /><span className="yog-eyebrow-text">Understanding Yoga Retreats</span></div>
-          <h2 className="yog-section-title">What is a <span>yoga retreat</span>?</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2.5rem', alignItems: 'center' }} className="yog-who-grid">
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-              <p className="yog-body-text">A yoga retreat is not a holiday with yoga classes added. It is a deliberate container — morning practice as light arrives, evening practice as the mountains darken, and the space between filled with silence, nature, and your own breath.</p>
-              <p className="yog-body-text">In the Himalayas, yoga carries a different weight. The altitude changes your breath. The mountain air changes your nervous system. The absence of urban noise changes what you hear inside your own body. Practice here is not performance — it is presence.</p>
-              <p className="yog-body-text">Our yoga retreats honour this difference. Small groups (maximum 12), experienced teachers who prioritise awareness over alignment, and environments where the land participates in the work.</p>
+        {/* ── HERO ── */}
+        <section className="med-shell med-hero-section">
+          <div style={{ position: 'absolute', inset: 0 }}>
+            <img
+              className="med-hero-bg"
+              src={heroImage.src}
+              alt={heroImage.alt}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+            <div className="med-hero-overlay" />
+          </div>
+          <div className="med-hero-content">
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.3rem' }}>
+              <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
+              <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>Yoga &amp; Movement</span>
+              <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
             </div>
-            <div style={{ position: 'relative', borderRadius: '10px', overflow: 'hidden', height: '380px' }}>
-              <Image src="/Images/experience-hubs/yoga-group.png" alt="Small group yoga practice on a mountain platform in the Himalayas" width={1200} height={675} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 50vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <h1 className="med-h1">
+              {h1Rest} <span>{h1LastWord}</span>
+            </h1>
+            <p className="med-body">
+              Where altitude changes your breath, mountain air changes your nervous system, and practice becomes presence. Not yoga tourism — genuine practice in environments where the land participates.
+            </p>
+            <div className="med-hero-tags">
+              <span>All Levels</span>
+              <span>Experienced Teachers</span>
+              <span>3–10 Days</span>
+              <span>Max 12 Participants</span>
+            </div>
+            <div className="med-hero-actions">
+              <Link href="/contact" className="med-cta-btn">Find Your Yoga Retreat →</Link>
+              <a href="#locations" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Explore Locations ↓</a>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══ WHY HIMALAYAN YOGA IS DIFFERENT ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
-        <div className="yog-inner">
-          <div className="yog-eyebrow"><span className="yog-eyebrow-line" /><span className="yog-eyebrow-text">Why the Himalayas</span></div>
-          <h2 className="yog-section-title">Why <span>Himalayan yoga</span> is different</h2>
-          <p className="yog-body-text" style={{ marginBottom: '2.5rem' }}>The Himalayas are not a backdrop for yoga — they are a participant. The altitude, the quiet, the temperature, the light — all shape what happens on the mat.</p>
-          <div className="yog-benefit-grid">
-            {[
-              { title: 'Altitude Deepens Breath', text: 'At elevation, every inhalation is deliberate. Pranayama becomes real — not a technique performed, but a necessity felt. The breath stops being abstract.' },
-              { title: 'Mountain Silence', text: 'Without traffic, notifications, or studio playlists, you hear your body. The sounds of practice — breath, movement, heartbeat — become the soundtrack.' },
-              { title: 'Natural Alignment', text: 'Cold mountain mornings slow you down. The body opens differently at altitude — more slowly, more honestly. There is no rushing a sun salutation at 2,000 metres.' },
-              { title: 'Living Tradition', text: 'In Rishikesh, yoga is not imported fitness — it is the daily practice of a city that has breathed it for centuries. The teachers have lineage, not just certification.' },
-            ].map((item) => (
-              <div key={item.title} className="yog-benefit-card">
-                <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 600, color: '#111', margin: '0 0 0.6rem' }}>{item.title}</h3>
-                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', lineHeight: 1.7, color: '#666', fontWeight: 300, margin: 0 }}>{item.text}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ VISUAL BREAK ═══ */}
-      <figure style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', height: '300px', overflow: 'hidden', margin: 0, padding: 0 }}>
-        <img src="/Images/whyhimalaya/environment.webp" width={800} height={571} alt="Himalayan mountain environment — yoga retreat landscape" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 50%)' }} />
-        <figcaption style={{ position: 'absolute', bottom: '1.5rem', left: 0, right: 0, textAlign: 'center', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)', fontWeight: 300, letterSpacing: '0.03em', fontStyle: 'italic' }}>Morning practice as light arrives over the Himalayan peaks</figcaption>
-      </figure>
-
-      {/* ═══ A DAY AT THE RETREAT ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
-        <div className="yog-inner">
-          <div className="yog-eyebrow"><span className="yog-eyebrow-line" /><span className="yog-eyebrow-text">The Experience</span></div>
-          <h2 className="yog-section-title">What a day <span>looks like</span></h2>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-            {PRACTICE_ELEMENTS.map((phase, idx, arr) => (
-              <div key={idx} style={{ display: 'grid', gridTemplateColumns: '6.5rem 2rem 1fr', gap: '0 1rem' }}>
-                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', fontWeight: 500, color: 'var(--color-primary)', textAlign: 'right', paddingTop: '0.15rem' }}>{phase.time}</span>
-                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <span style={{ width: 10, height: 10, borderRadius: '50%', background: '#fff', border: '2px solid var(--color-primary)', marginTop: '0.28rem', zIndex: 1 }} />
-                  {idx < arr.length - 1 && <span style={{ width: 1, flex: 1, background: 'linear-gradient(to bottom, rgba(15,118,110,0.3), rgba(15,118,110,0.05))', marginTop: 4, minHeight: '1.5rem' }} />}
+        {/* ── INFO STRIP ── */}
+        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '2rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-outer">
+            <div className="med-yoga-strip">
+              {[
+                { label: 'Locations', value: '3 Mountain Settings' },
+                { label: 'Group Size', value: 'Max 12 People' },
+                { label: 'Practice', value: 'Hatha · Vinyasa · Pranayama' },
+                { label: 'Experience', value: 'Beginners Welcome' },
+              ].map((item) => (
+                <div key={item.label} className="med-yoga-strip-item">
+                  <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#6b7280', fontWeight: 500 }}>{item.label}</span>
+                  <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', color: '#2B2A26', fontWeight: 400 }}>{item.value}</span>
                 </div>
-                <div style={{ paddingBottom: idx < arr.length - 1 ? '2rem' : 0 }}>
-                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 500, color: '#222', margin: '0 0 0.3rem' }}>{phase.title}</p>
-                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', lineHeight: 1.75, color: '#666', fontWeight: 300, margin: 0 }}>{phase.description}</p>
-                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── WHAT IS A YOGA RETREAT ── */}
+        <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Understanding Yoga Retreats</span>
+            </div>
+            <h2 className="med-h2">What is <span>a yoga retreat</span>?</h2>
+
+            <div className="med-grid-2" style={{ alignItems: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <p className="med-body">A yoga retreat is not a holiday with yoga classes added. It is a deliberate container — morning practice as light arrives, evening practice as the mountains darken, and the space between filled with silence, nature, and your own breath.</p>
+                <p className="med-body">In the Himalayas, yoga carries a different weight. The altitude changes your breath. The mountain air changes your nervous system. The absence of urban noise changes what you hear inside your own body. Practice here is not performance — it is presence.</p>
+                <p className="med-body">Our yoga retreats honour this difference. Small groups (maximum 12), experienced teachers who prioritise awareness over alignment, and environments where the land participates in the work.</p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ WHO THIS IS FOR ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
-        <div className="yog-inner">
-          <div className="yog-eyebrow"><span className="yog-eyebrow-line" /><span className="yog-eyebrow-text">Is This For You</span></div>
-          <h2 className="yog-section-title">Who yoga retreats are <span>for</span></h2>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }} className="yog-who-grid">
-            <div>
-              <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', margin: '0 0 1.25rem' }}>✓ Perfect if you are</h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                {['A yoga practitioner seeking deeper connection with practice', 'Someone wanting to reconnect body and breath in nature', 'Looking for a physically grounded retreat, not purely meditative', 'Curious about yoga as a path to presence, not performance', 'Wanting to combine yoga with trekking in the mountains', 'An experienced yogi seeking teachers with lineage and depth'].map((item, i) => (
-                  <li key={i} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', lineHeight: 1.6, color: '#444', fontWeight: 300, display: 'flex', gap: '0.6rem', alignItems: 'flex-start' }}>
-                    <span style={{ width: 16, height: 16, borderRadius: '50%', background: 'var(--color-primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '0.15rem', fontSize: '0.5rem', color: '#fff', fontWeight: 700 }}>✓</span>{item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', margin: '0 0 1.25rem' }}>— Not the right fit if you want</h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                {['A fitness-focused power yoga boot camp', 'Resort-style yoga with poolside relaxation', 'Teacher training certification', 'Large group classes (50+ participants)'].map((item, i) => (
-                  <li key={i} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', lineHeight: 1.6, color: '#777', fontWeight: 300, display: 'flex', gap: '0.6rem', alignItems: 'flex-start' }}>
-                    <span style={{ width: 16, height: 16, borderRadius: '50%', background: '#eee', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, marginTop: '0.15rem', fontSize: '0.6rem', color: '#999' }}>—</span>{item}
-                  </li>
-                ))}
-              </ul>
+              <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', aspectRatio: '16/9' }}>
+                <img src="/Images/experience-hubs/yoga-group.png" alt="Small group yoga practice on a mountain platform in the Himalayas" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══ LOCATIONS ═══ */}
-      <section id="locations" style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
-        <div className="yog-wide">
-          <div className="yog-eyebrow" style={{ justifyContent: 'center' }}><span className="yog-eyebrow-line" /><span className="yog-eyebrow-text">Where We Practice</span><span className="yog-eyebrow-line" /></div>
-          <h2 className="yog-section-title" style={{ textAlign: 'center' }}>Three Himalayan <span>settings</span> for yoga</h2>
-          <p className="yog-body-text" style={{ textAlign: 'center', maxWidth: '38rem', margin: '0 auto 3rem' }}>Each location shapes practice differently. Choose based on what your body needs: tradition, altitude challenge, or mountain movement.</p>
-          <div className="yog-loc-grid">
-            {LOCATIONS.map((loc) => (
-              <Link key={loc.id} href={`/retreats/${loc.id}`} className="yog-loc-card">
-                <Image src={loc.image} alt={`${loc.name} — yoga retreat location`} width={800} height={462} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.15) 50%, transparent 100%)' }} />
-                <div className="yog-loc-card-content">
-                  <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.55rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.6)', fontWeight: 500, display: 'block', marginBottom: '0.3rem' }}>{loc.altitude} altitude</span>
-                  <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.15rem', fontWeight: 400, color: '#fff', margin: '0 0 0.5rem' }}>{loc.name} — {loc.tagline}</h3>
-                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.7)', fontWeight: 300, lineHeight: 1.6, margin: '0 0 0.75rem' }}>{loc.description}</p>
-                  <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', letterSpacing: '0.08em', color: 'rgba(255,255,255,0.5)', fontWeight: 400 }}>Best for: {loc.bestFor}</span>
+        {/* ── WHY HIMALAYAN YOGA IS DIFFERENT ── */}
+        <section className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Why the Himalayas</span>
+            </div>
+            <h2 className="med-h2">Why <span>Himalayan yoga</span> is different</h2>
+            <p className="med-body">The Himalayas are not a backdrop for yoga — they are a participant. The altitude, the quiet, the temperature, the light — all shape what happens on the mat.</p>
+
+            <div className="med-yoga-benefit-grid" style={{ marginTop: '1.5rem' }}>
+              {BENEFITS.map((item) => (
+                <div key={item.title} className="med-card med-yoga-benefit-card">
+                  <h3 className="med-h3">{item.title}</h3>
+                  <p className="med-body">{item.text}</p>
                 </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── A DAY AT THE RETREAT ── */}
+        <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">The Experience</span>
+            </div>
+            <h2 className="med-h2">What a day <span>looks like</span></h2>
+
+            <div className="med-yoga-timeline">
+              {PRACTICE_ELEMENTS.map((phase, idx) => (
+                <div key={idx} className="med-yoga-timeline-item">
+                  <span className="med-time">{phase.time}</span>
+                  <h3 className="med-h3">{phase.title}</h3>
+                  <p className="med-body">{phase.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── WHO THIS IS FOR ── */}
+        <section className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Is This For You</span>
+            </div>
+            <h2 className="med-h2">Who yoga retreats are <span>for</span></h2>
+
+            <div className="med-grid-2" style={{ marginTop: '1.5rem' }}>
+              <div>
+                <h3 className="med-h3" style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#0f766e', marginBottom: '1rem' }}>
+                  ✓ Perfect if you are
+                </h3>
+                <ul className="med-list">
+                  {[
+                    'A yoga practitioner seeking deeper connection with practice',
+                    'Someone wanting to reconnect body and breath in nature',
+                    'Looking for a physically grounded retreat, not purely meditative',
+                    'Curious about yoga as a path to presence, not performance',
+                    'Wanting to combine yoga with trekking in the mountains',
+                    'An experienced yogi seeking teachers with lineage and depth',
+                  ].map((item) => (
+                    <li key={item} className="med-list-item">
+                      <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
+                      <span className="med-list-text">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="med-h3" style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', marginBottom: '1rem' }}>
+                  — Not the right fit if you want
+                </h3>
+                <ul className="med-list">
+                  {[
+                    'A fitness-focused power yoga boot camp',
+                    'Resort-style yoga with poolside relaxation',
+                    'Teacher training certification',
+                    'Large group classes (50+ participants)',
+                  ].map((item) => (
+                    <li key={item} className="med-list-item" style={{ opacity: 0.5 }}>
+                      <span className="med-list-dot"><span className="med-list-dot-inner" style={{ background: '#ccc' }} /></span>
+                      <span className="med-list-text">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── LOCATIONS ── */}
+        <section id="locations" className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-outer">
+            <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Where We Practice</span>
+              <span className="med-eyebrow-line" />
+            </div>
+            <h2 className="med-h2" style={{ textAlign: 'center' }}>Three Himalayan <span>settings</span> for yoga</h2>
+            <p className="med-body" style={{ textAlign: 'center', maxWidth: '40rem', margin: '0 auto 2rem' }}>Each location shapes practice differently. Choose based on what your body needs: tradition, altitude challenge, or mountain movement.</p>
+
+            <div className="med-yoga-loc-grid">
+              {LOCATIONS.map((loc) => (
+                <Link key={loc.id} href={`/retreats/${loc.id}`} className="med-yoga-loc-card">
+                  <div className="med-img-wrap">
+                    <img src={loc.image} alt={`${loc.name} — yoga retreat location`} className="med-img" />
+                  </div>
+                  <div className="med-content">
+                    <span className="med-alt">{loc.altitude} altitude</span>
+                    <h3 className="med-h3">{loc.name} — {loc.tagline}</h3>
+                    <p className="med-body">{loc.description}</p>
+                    <span className="med-best">Best for: {loc.bestFor}</span>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── GUIDED DECISION FUNNEL ── */}
+        <section className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-outer">
+            <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+              <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+                <span className="med-eyebrow-line" />
+                <span className="med-eyebrow-text">Not Sure Where to Start</span>
+                <span className="med-eyebrow-line" />
+              </div>
+              <h2 className="med-h2" style={{ marginBottom: '0.5rem' }}>Three ways to find <span>your yoga retreat</span></h2>
+              <p className="med-body" style={{ maxWidth: '36rem', margin: '0 auto' }}>Choose the path that feels right for where you are right now.</p>
+            </div>
+
+            <div className="med-yoga-funnel-grid">
+              <Link href="/contact" className="med-card med-yoga-funnel-card">
+                <span className="med-num">01</span>
+                <h3 className="med-h3">Get Matched</h3>
+                <p className="med-body">Tell us about your practice — we&apos;ll recommend the right retreat, location, and teacher. Free, no pressure.</p>
+                <span className="med-link">Talk to a planner →</span>
               </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ GUIDED DECISION FUNNEL ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#0a1f1c', padding: '4.5rem 0' }}>
-        <div className="yog-wide">
-          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)', fontWeight: 200, color: '#ffffff', margin: '0 0 0.6rem' }}>Three ways to find your yoga retreat</h3>
-            <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: 'rgba(255,255,255,0.45)', fontWeight: 300, maxWidth: '36rem', margin: '0 auto', lineHeight: 1.7 }}>Choose the path that feels right for where you are right now.</p>
-          </div>
-          <div className="yog-funnel-grid">
-            <Link href="/contact" className="yog-funnel-card">
-              <span style={{ fontSize: '1.6rem' }}>💬</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', fontWeight: 500, color: '#ffffff' }}>Get Matched</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, lineHeight: 1.6 }}>Tell us about your practice — we&apos;ll recommend the right retreat, location, and teacher. Free, no pressure.</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', marginTop: 'auto', paddingTop: '0.5rem' }}>Talk to a planner →</span>
-            </Link>
-            <Link href="/retreats/yoga-retreat-rishikesh" className="yog-funnel-card">
-              <span style={{ fontSize: '1.6rem' }}>📋</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', fontWeight: 500, color: '#ffffff' }}>Compare Locations</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, lineHeight: 1.6 }}>Rishikesh for tradition, Zanskar for altitude, Sankri for trek-yoga. See what fits your body.</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', marginTop: 'auto', paddingTop: '0.5rem' }}>Explore Rishikesh →</span>
-            </Link>
-            <Link href="/retreats-for-beginners" className="yog-funnel-card">
-              <span style={{ fontSize: '1.6rem' }}>🌱</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', fontWeight: 500, color: '#ffffff' }}>First Yoga Retreat?</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)', fontWeight: 300, lineHeight: 1.6 }}>No experience needed. Our guide covers what to expect, what to bring, and the gentlest entry points.</span>
-              <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'var(--color-primary)', marginTop: 'auto', paddingTop: '0.5rem' }}>Beginner&apos;s guide →</span>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* ═══ TESTIMONIALS ═══ */}
-      {topReviews.length > 0 && (
-        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
-          <div className="yog-wide">
-            <div className="yog-eyebrow" style={{ justifyContent: 'center' }}><span className="yog-eyebrow-line" /><span className="yog-eyebrow-text">What Participants Say</span><span className="yog-eyebrow-line" /></div>
-            <h2 className="yog-section-title" style={{ textAlign: 'center' }}>Real <span>retreat experiences</span></h2>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 24rem), 1fr))', gap: '1.25rem', marginBottom: '1.25rem' }}>
-              {topReviews.map((review) => (<ReviewCard key={`${review.participantName}-${review.datePublished}`} review={review} />))}
+              <Link href="/retreats/yoga-retreat-rishikesh" className="med-card med-yoga-funnel-card">
+                <span className="med-num">02</span>
+                <h3 className="med-h3">Compare Locations</h3>
+                <p className="med-body">Rishikesh for tradition, Zanskar for altitude, Sankri for trek-yoga. See what fits your body.</p>
+                <span className="med-link">Explore Rishikesh →</span>
+              </Link>
+              <Link href="/retreats-for-beginners" className="med-card med-yoga-funnel-card">
+                <span className="med-num">03</span>
+                <h3 className="med-h3">First Yoga Retreat?</h3>
+                <p className="med-body">No experience needed. Our guide covers what to expect, what to bring, and the gentlest entry points.</p>
+                <span className="med-link">Beginner&apos;s guide →</span>
+              </Link>
             </div>
-            <div style={{ textAlign: 'center' }}><Link href="/reviews" style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, color: 'var(--color-primary)' }}>Read more experiences →</Link></div>
           </div>
         </section>
-      )}
 
-      {/* ═══ FEATURED PROGRAMS ═══ */}
-      {upcomingEvents.length > 0 && (
-        <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
-          <div className="yog-wide">
-            <div className="yog-eyebrow" style={{ justifyContent: 'center' }}><span className="yog-eyebrow-line" /><span className="yog-eyebrow-text">Scheduled Retreats</span><span className="yog-eyebrow-line" /></div>
-            <h2 className="yog-section-title" style={{ textAlign: 'center' }}>Upcoming <span>yoga programs</span></h2>
-            <p className="yog-body-text" style={{ textAlign: 'center', maxWidth: '36rem', margin: '0 auto 3rem' }}>Confirmed departures with fixed dates, pricing, and limited seats.</p>
-            <div className="yog-prog-grid">
-              {upcomingEvents.map((ev) => {
-                const sc = ev.status === 'filling-fast' ? 'yog-prog-filling' : ev.status === 'last-few' ? 'yog-prog-last' : 'yog-prog-open';
-                const sl = ev.status === 'filling-fast' ? 'Filling Fast' : ev.status === 'last-few' ? 'Last Few Seats' : 'Open';
-                return (
-                  <Link key={ev.slug} href={`/${ev.slug}`} className="yog-prog-card" style={{ textDecoration: 'none', color: 'inherit' }}>
-                    <div style={{ padding: '1.5rem 1.5rem 0', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                      <div>
-                        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#999', fontWeight: 500, display: 'block', marginBottom: '0.35rem' }}>{ev.locationName} · {ev.month} {ev.year}</span>
-                        <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.05rem', fontWeight: 500, color: '#111', margin: 0 }}>{ev.label}</h3>
-                      </div>
-                      <span className={`yog-prog-status ${sc}`}>{sl}</span>
-                    </div>
-                    <div style={{ padding: '1rem 1.5rem 1.5rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                      <div style={{ display: 'flex', gap: '1.5rem', margin: '1rem 0', flexWrap: 'wrap' }}>
-                        <div><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', display: 'block', marginBottom: '0.15rem' }}>Duration</span><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 400, color: '#222' }}>{ev.durationDays} Days</span></div>
-                        <div><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', display: 'block', marginBottom: '0.15rem' }}>Price</span><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 500, color: '#111' }}>₹{ev.price.toLocaleString('en-IN')}</span></div>
-                        <div><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#999', display: 'block', marginBottom: '0.15rem' }}>Group</span><span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 400, color: '#222' }}>Max {ev.groupSize}</span></div>
-                      </div>
-                      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.8rem', color: '#777', fontWeight: 300, lineHeight: 1.7, margin: '0 0 0.75rem' }}>{ev.dateRange} · All-inclusive</p>
-                      <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1rem', display: 'flex', flexDirection: 'column', gap: '0.35rem' }}>
-                        {ev.included.slice(0, 4).map((inc, idx) => (<li key={idx} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.72rem', color: '#888', fontWeight: 300, display: 'flex', gap: '0.4rem', alignItems: 'center' }}><span style={{ color: 'var(--color-primary)', fontSize: '0.65rem' }}>✓</span> {inc}</li>))}
-                      </ul>
-                      <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid #f0f0f0', paddingTop: '1rem' }}>
-                        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--color-primary)' }}>View Details →</span>
-                        <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.72rem', fontWeight: 500, color: ev.seatsLeft <= 3 ? '#c92a2a' : '#6b7280' }}>{ev.seatsLeft} seats left</span>
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })}
+        {/* ── TESTIMONIALS ── */}
+        {topReviews.length > 0 && (
+          <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+            <div className="med-outer">
+              <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+                <span className="med-eyebrow-line" />
+                <span className="med-eyebrow-text">What Participants Say</span>
+                <span className="med-eyebrow-line" />
+              </div>
+              <h2 className="med-h2" style={{ textAlign: 'center' }}>Real <span>retreat experiences</span></h2>
+              <div className="med-grid-3" style={{ marginTop: '1.5rem' }}>
+                {topReviews.map((review) => (
+                  <ReviewCard key={`${review.participantName}-${review.datePublished}`} review={review} />
+                ))}
+              </div>
+              <div style={{ textAlign: 'center', marginTop: '1.5rem' }}>
+                <Link href="/reviews" style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', fontWeight: 500, color: '#0f766e', textDecoration: 'none' }}>
+                  Read more experiences →
+                </Link>
+              </div>
             </div>
-            <div style={{ textAlign: 'center', marginTop: '2rem' }}><Link href="/contact" className="yog-cta-btn">Don&apos;t See Your Dates? Request a Custom Retreat →</Link></div>
+          </section>
+        )}
+
+        {/* ── FEATURED PROGRAMS ── */}
+        {upcomingEvents.length > 0 && (
+          <section className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+            <div className="med-outer">
+              <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+                <span className="med-eyebrow-line" />
+                <span className="med-eyebrow-text">Scheduled Retreats</span>
+                <span className="med-eyebrow-line" />
+              </div>
+              <h2 className="med-h2" style={{ textAlign: 'center' }}>Upcoming <span>yoga programs</span></h2>
+              <p className="med-body" style={{ textAlign: 'center', maxWidth: '36rem', margin: '0 auto 2rem' }}>Confirmed departures with fixed dates, pricing, and limited seats.</p>
+
+              <div className="med-yoga-prog-grid">
+                {upcomingEvents.map((ev) => {
+                  const statusLabel = ev.status === 'filling-fast' ? 'Filling Fast' : ev.status === 'last-few' ? 'Last Few Seats' : 'Open';
+                  return (
+                    <Link key={ev.slug} href={`/${ev.slug}`} className="med-yoga-prog-card">
+                      <div className="med-header">
+                        <div>
+                          <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#6b7280', fontWeight: 500, display: 'block', marginBottom: '0.35rem' }}>
+                            {ev.locationName} · {ev.month} {ev.year}
+                          </span>
+                          <h3 className="med-h3" style={{ fontSize: '1.05rem', marginBottom: 0 }}>{ev.label}</h3>
+                        </div>
+                        <span style={{
+                          fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.55rem', letterSpacing: '0.18em', textTransform: 'uppercase',
+                          fontWeight: 700, padding: '3px 8px', borderRadius: '999px', whiteSpace: 'nowrap',
+                          background: ev.status === 'filling-fast' ? '#fef3c7' : ev.status === 'last-few' ? '#fee2e2' : '#ecfdf5',
+                          color: ev.status === 'filling-fast' ? '#92400e' : ev.status === 'last-few' ? '#991b1b' : '#065f46',
+                        }}>{statusLabel}</span>
+                      </div>
+                      <div className="med-body-wrap">
+                        <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
+                          <div>
+                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#6b7280', display: 'block', marginBottom: '0.15rem' }}>Duration</span>
+                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', fontWeight: 400, color: '#2B2A26' }}>{ev.durationDays} Days</span>
+                          </div>
+                          <div>
+                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#6b7280', display: 'block', marginBottom: '0.15rem' }}>Price</span>
+                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', fontWeight: 500, color: '#2B2A26' }}>₹{ev.price.toLocaleString('en-IN')}</span>
+                          </div>
+                          <div>
+                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#6b7280', display: 'block', marginBottom: '0.15rem' }}>Group</span>
+                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', fontWeight: 400, color: '#2B2A26' }}>Max {ev.groupSize}</span>
+                          </div>
+                        </div>
+                        <p className="med-body" style={{ fontSize: '0.8rem', color: '#6b7280', marginBottom: '0.5rem' }}>{ev.dateRange} · All-inclusive</p>
+                        <ul className="med-list" style={{ gap: '0.35rem', marginBottom: '0.75rem' }}>
+                          {ev.included.slice(0, 3).map((inc) => (
+                            <li key={inc} className="med-list-item" style={{ gap: '0.5rem' }}>
+                              <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
+                              <span className="med-list-text" style={{ fontSize: '0.72rem', color: '#6b7280' }}>{inc}</span>
+                            </li>
+                          ))}
+                        </ul>
+                        <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(15,118,110,0.08)', paddingTop: '0.75rem' }}>
+                          <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0f766e' }}>View Details →</span>
+                          <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', fontWeight: 500, color: ev.seatsLeft <= 3 ? '#c92a2a' : '#6b7280' }}>{ev.seatsLeft} seats left</span>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+              <div style={{ textAlign: 'center', marginTop: '2rem' }}>
+                <Link href="/contact" className="med-cta-btn">Don&apos;t See Your Dates? Request a Custom Retreat →</Link>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ── RELATED GUIDES ── */}
+        <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Explore Further</span>
+            </div>
+            <h2 className="med-h2">Related <span>guides</span></h2>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <Link href="/retreats/yoga-retreat-rishikesh" className="med-cta-outline">Yoga Retreat in Rishikesh →</Link>
+              <Link href="/retreats/yoga-retreat-uttarakhand" className="med-cta-outline">Yoga Retreats in Uttarakhand →</Link>
+              <Link href="/5-day-yoga-retreat" className="med-cta-outline">5-Day Yoga Retreat →</Link>
+              <Link href="/meditation-retreats" className="med-cta-outline">Meditation Retreats →</Link>
+              <Link href="/retreats-for-beginners" className="med-cta-outline">Retreats for Beginners →</Link>
+            </div>
           </div>
         </section>
-      )}
 
-      {/* ═══ INTERNAL LINKS ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
-        <div className="yog-inner">
-          <div className="yog-eyebrow"><span className="yog-eyebrow-line" /><span className="yog-eyebrow-text">Explore Further</span></div>
-          <h2 className="yog-section-title">Related <span>guides</span></h2>
-          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link href="/retreats/yoga-retreat-rishikesh" className="yog-cta-outline">Yoga Retreat in Rishikesh →</Link>
-            <Link href="/retreats/yoga-retreat-uttarakhand" className="yog-cta-outline">Yoga Retreats in Uttarakhand →</Link>
-            <Link href="/5-day-yoga-retreat" className="yog-cta-outline">5-Day Yoga Retreat →</Link>
-            <Link href="/meditation-retreats" className="yog-cta-outline">Meditation Retreats →</Link>
-            <Link href="/retreats-for-beginners" className="yog-cta-outline">Retreats for Beginners →</Link>
+        {/* ── TRUST & DIFFERENTIATION ── */}
+        <section className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-outer">
+            <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Why Us</span>
+              <span className="med-eyebrow-line" />
+            </div>
+            <h2 className="med-h2" style={{ textAlign: 'center' }}>What makes our retreats <span>different</span></h2>
+
+            <div className="med-yoga-trust-grid">
+              {[
+                { num: '12', label: 'Max Group Size', text: 'Personal attention from experienced teachers. Your alignment gets corrected. Your practice gets seen.' },
+                { num: '0', label: 'Resort Yoga', text: 'No spa menus, no poolside classes, no tourist programming. Real practice in non-commercial Himalayan environments.' },
+                { num: '100%', label: 'Teacher Lineage', text: 'Every teacher has lived practice lineage — not just 200-hour certification. In Rishikesh, the tradition speaks through the teaching.' },
+              ].map((item) => (
+                <div key={item.label} className="med-yoga-trust-item">
+                  <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '2rem', fontWeight: 200, color: '#0f766e', display: 'block', marginBottom: '0.25rem', letterSpacing: '-0.03em' }}>{item.num}</span>
+                  <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#6b7280', fontWeight: 600, display: 'block', marginBottom: '0.75rem' }}>{item.label}</span>
+                  <p className="med-body" style={{ fontSize: '0.82rem', marginBottom: 0 }}>{item.text}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══ TRUST & DIFFERENTIATION ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', padding: '4rem 0' }}>
-        <div className="yog-wide">
-          <div className="yog-eyebrow" style={{ justifyContent: 'center' }}><span className="yog-eyebrow-line" /><span className="yog-eyebrow-text">Why Us</span><span className="yog-eyebrow-line" /></div>
-          <h2 className="yog-section-title" style={{ textAlign: 'center' }}>What makes our retreats <span>different</span></h2>
-          <div className="yog-trust-grid">
-            {[
-              { num: '12', label: 'Max Group Size', text: 'Personal attention from experienced teachers. Your alignment gets corrected. Your practice gets seen.' },
-              { num: '0', label: 'Resort Yoga', text: 'No spa menus, no poolside classes, no tourist programming. Real practice in non-commercial Himalayan environments.' },
-              { num: '100%', label: 'Teacher Lineage', text: 'Every teacher has lived practice lineage — not just 200-hour certification. In Rishikesh, the tradition speaks through the teaching.' },
-            ].map((item) => (
-              <div key={item.label} className="yog-trust-item">
-                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '2rem', fontWeight: 200, color: 'var(--color-primary)', display: 'block', marginBottom: '0.25rem' }}>{item.num}</span>
-                <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#999', fontWeight: 600, display: 'block', marginBottom: '0.75rem' }}>{item.label}</span>
-                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', lineHeight: 1.7, color: '#666', fontWeight: 300, margin: 0 }}>{item.text}</p>
-              </div>
-            ))}
+        {/* ── FAQ ── */}
+        <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Common Questions</span>
+            </div>
+            <h2 className="med-h2">Frequently asked <span>questions</span></h2>
+
+            <div className="med-faq-accordion">
+              {FAQ_ITEMS.map((faq, i) => (
+                <details key={i} className="med-faq-details">
+                  <summary className="med-faq-summary">
+                    <span className="med-faq-question">{faq.question}</span>
+                    <span className="med-faq-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div className="med-faq-answer">
+                    <p className="med-body">{faq.answer}</p>
+                  </div>
+                </details>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ═══ FAQ ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '4rem 0' }}>
-        <div className="yog-inner">
-          <div className="yog-eyebrow"><span className="yog-eyebrow-line" /><span className="yog-eyebrow-text">Common Questions</span></div>
-          <h2 className="yog-section-title">Frequently asked <span>questions</span></h2>
-          <div>
-            {FAQ_ITEMS.map((faq, i) => (
-              <div key={i} className="yog-faq-item">
-                <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.92rem', fontWeight: 500, color: '#111', margin: '0 0 0.6rem' }}>{faq.question}</h3>
-                <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', lineHeight: 1.8, color: '#666', fontWeight: 300, margin: 0 }}>{faq.answer}</p>
-              </div>
-            ))}
+        {/* ── BOTTOM CTA ── */}
+        <section className="med-yoga-bottom-cta">
+          <div style={{ position: 'absolute', inset: 0 }}>
+            <img src="/Images/hero/himalayan-sunrise.webp" alt="Himalayan sunrise — yoga retreat setting" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+            <div className="med-overlay" />
           </div>
-        </div>
-      </section>
-
-      {/* ═══ BOTTOM CTA ═══ */}
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', position: 'relative', overflow: 'hidden', minHeight: '50vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
-        <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/hero/himalayan-sunrise.webp" width={1920} height={1080} alt="Himalayan sunrise — yoga retreat setting" loading="lazy" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
-          <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,31,28,0.85)' }} />
-        </div>
-        <div style={{ position: 'relative', zIndex: 2, maxWidth: '44rem', padding: '4rem 2rem' }}>
-          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 3vw, 2rem)', fontWeight: 200, color: '#ffffff', margin: '0 0 1rem' }}>Begin Your Yoga Retreat</h2>
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', fontWeight: 300, lineHeight: 1.75, margin: '0 0 2rem' }}>The Himalayas are not a backdrop for yoga — they are a participant. Tell us about your practice and we&apos;ll recommend the right setting.</p>
-          <Link href="/contact" className="yog-cta-btn" style={{ fontSize: '0.85rem', padding: '1rem 2.5rem' }}>Plan My Yoga Retreat →</Link>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', marginTop: '1.5rem', flexWrap: 'wrap' }}>
-            {['Small groups (max 12)', 'All levels welcome', '3–10 day programs'].map((trust) => (
-              <span key={trust} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', color: 'rgba(255,255,255,0.4)', fontWeight: 400, letterSpacing: '0.05em' }}>{trust}</span>
-            ))}
+          <div className="med-content">
+            <h2 className="med-h2">Begin Your <span>Yoga Retreat</span></h2>
+            <p className="med-body">The Himalayas are not a backdrop for yoga — they are a participant. Tell us about your practice and we&apos;ll recommend the right setting.</p>
+            <Link href="/contact" className="med-cta-btn">Plan My Yoga Retreat →</Link>
+            <div className="med-trust">
+              <span>Small groups (max 12)</span>
+              <span>All levels welcome</span>
+              <span>3–10 day programs</span>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
+        {/* ── FOOTER NAV ── */}
+        <nav className="med-shell med-section-white" style={{ padding: '2.5rem 0', borderTop: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-nav-grid">
+              <Link href="/retreats" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>← All Retreats</span>
+              </Link>
+              <Link href="/retreats/yoga-retreat-rishikesh" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Yoga in Rishikesh</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+              <Link href="/meditation-retreats" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Meditation Retreats</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+              <Link href="/find-your-retreat" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Find Your Retreat</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+            </div>
+          </div>
+        </nav>
+
+      </article>
     </TrackedPage>
   );
 }

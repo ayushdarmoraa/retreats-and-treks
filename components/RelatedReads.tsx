@@ -7,35 +7,22 @@ interface RelatedReadsProps {
 
 export default function RelatedReads({ links }: RelatedReadsProps) {
   return (
-    <nav
-      style={{
-        borderTop: '1px solid #e5e7eb',
-        paddingTop: 'var(--space-lg)',
-        marginTop: 'var(--space-xl)',
-        marginBottom: 'var(--space-md)',
-      }}
-    >
-      <p
-        style={{
-          fontSize: '0.75rem',
-          fontWeight: 600,
-          textTransform: 'uppercase' as const,
-          letterSpacing: '0.05em',
-          color: '#6b7280',
-          marginBottom: '0.75rem',
-        }}
-      >
-        Related Reads
-      </p>
-      <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+    <div className="med-card" style={{ padding: '1.5rem', marginTop: 'var(--space-xl)', marginBottom: 'var(--space-md)', maxWidth: '58rem', marginLeft: 'auto', marginRight: 'auto' }}>
+      <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+        <span className="med-eyebrow-line" />
+        <span className="med-eyebrow-text">Related Reads</span>
+        <span className="med-eyebrow-line" />
+      </div>
+      <ul className="med-list" style={{ marginTop: '0.5rem' }}>
         {links.map((link) => (
-          <li key={link.href}>
-            <Link href={link.href} style={{ color: 'var(--color-primary)', fontSize: '0.95rem' }}>
+          <li key={link.href} className="med-list-item">
+            <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
+            <Link href={link.href} className="med-list-text" style={{ color: '#0f766e', textDecoration: 'none' }}>
               {link.label}
             </Link>
           </li>
         ))}
       </ul>
-    </nav>
+    </div>
   );
 }

@@ -11,6 +11,7 @@ import { ScoreBar } from '@/components/RetreatScoreBar';
 import Breadcrumb from '@/components/Breadcrumb';
 import OtherComparisonsAdaptive, { type ComparisonSuggestion } from '@/components/OtherComparisonsAdaptive';
 import type { RetreatScores } from '@/config/retreatScores';
+import TrackedPage from '@/components/TrackedPage';
 
 interface PageProps {
   params: Promise<{ pair: string }>;
@@ -123,216 +124,108 @@ export default async function ComparisonPage({ params }: PageProps) {
   ]);
 
   return (
-<main style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 var(--space-md)' }}>      
-  <style>{`
-        .cmp-hero {
-  width: 100vw;
-  margin-left: calc(-50vw + 50%);
-  background: #f7f9f7;
-  padding: 5rem 0 4rem;
-  margin-bottom: 0;
-  position: relative;
-}
-        .cmp-hero::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 2px;
-          background: linear-gradient(90deg, transparent, rgba(15,118,110,0.5) 30%, rgba(15,118,110,0.5) 70%, transparent);
-        }
-        .cmp-hero-inner {
-  max-width: 72rem;
-  margin: 0 auto;
-  padding: 0 var(--space-md);
-  width: 100%;
-}
-        .cmp-eyebrow {
-          display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem;
-        }
-        .cmp-eyebrow-line {
-          width: 24px; height: 1px; background: var(--color-primary);  flex-shrink: 0;
-        }
-        .cmp-eyebrow-text {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.75rem; font-weight: 500; letter-spacing: 0.28em;
-          text-transform: uppercase; color: #374151;
-        }
-        .cmp-h1 {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: clamp(1.6rem, 3.2vw, 2.4rem);
-          font-weight: 200; letter-spacing: -0.03em;
-          color: #111111; line-height: 1.15;
-          margin: 0 0 1rem;
-        }
-        .cmp-h1 em { color: #374151; font-style: normal; font-weight: 200; }
-        .cmp-lead {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.88rem; font-weight: 300;
-          line-height: 1.85; color: #555555; margin: 0; max-width: 48rem;
-        }
+    <TrackedPage page={canonicalPath} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
+      <style>{`
+        .med-shell { width: 100vw; margin-left: calc(-50vw + 50%); }
+        .med-outer { max-width: 76rem; margin: 0 auto; padding: 0 1.5rem; }
+        .med-inner { max-width: 58rem; margin: 0 auto; padding: 0 1.5rem; }
 
-        /* sections */
-        .cmp-section {
-          width: 100vw;
-          margin-left: calc(-50vw + 50%);
-          padding: 5rem 0;
-        }
-        .cmp-section-white { background: #ffffff; }
-        .cmp-section-tint  { background: #f7f9f7; }
-        .cmp-section-inner {
-          max-width: 72rem;
-          margin: 0 auto;
-          padding: 0 var(--space-md);
-        }
-        .cmp-h2 {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: clamp(1.4rem, 2.5vw, 1.85rem);
-          font-weight: 200; letter-spacing: -0.03em;
-          color: #111111; line-height: 1.15;
-          margin: 0 0 2rem;
-        }
-        .cmp-h2 em { color: #374151; font-style: normal; font-weight: 200; }
+        .med-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.1rem; }
+        .med-eyebrow-line { width: 30px; height: 1px; background: rgba(15,118,110,0.35); flex-shrink: 0; }
+        .med-eyebrow-text { font-family: var(--font-inter), sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: #6b7280; font-weight: 600; }
 
-        /* table */
-        .cmp-table {
-          width: 100%; border-collapse: collapse;
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.88rem; line-height: 1.7;
-        }
-        .cmp-table thead tr {
-          border-bottom: 1px solid rgba(15,118,110,0.2);
-        }
-        .cmp-table th {
-          text-align: left; padding: 0.75rem 1rem;
-          font-size: 0.75rem; font-weight: 500;
-          letter-spacing: 0.22em; text-transform: uppercase;
-          color: #374151;
-        }
-        .cmp-table th:first-child {  }
-        .cmp-table tbody tr {
-          border-bottom: 1px solid rgba(15,118,110,0.07);
-          transition: background 0.2s;
-        }
-        .cmp-table tbody tr:hover { background: rgba(15,118,110,0.02); }
-        .cmp-table td {
-          padding: 0.85rem 1rem;
-          vertical-align: top;
-          font-weight: 300; color: #444444;
-        }
-        .cmp-table td:first-child {
-          font-size: 0.75rem; font-weight: 500;
-          letter-spacing: 0.04em; color: #888888;
-          text-transform: uppercase; width: 22%;
-          white-space: nowrap;
-        }
-        .cmp-table ul {
-          margin: 0; padding: 0; list-style: none;
-        }
-        .cmp-table ul li {
-          padding: 0.2rem 0 0.2rem 1rem;
-          position: relative; font-weight: 300;
-          color: #555555;
-        }
-        .cmp-table ul li::before {
-          content: '—';
-          position: absolute; left: 0;
-          color: #374151; 
-          font-size: 0.7rem;
-        }
+        .med-h2 { font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 500; letter-spacing: -0.03em; color: #2B2A26; line-height: 1.12; margin: 0 0 1.1rem; }
+        .med-h2 span { color: #0f766e; }
+        .med-h3 { font-family: var(--font-fraunces), Georgia, serif; font-size: 1.15rem; font-weight: 600; color: #2B2A26; margin: 0 0 0.7rem; letter-spacing: -0.01em; }
+        .med-body { font-family: var(--font-inter), sans-serif; font-size: 0.98rem; line-height: 1.9; color: #4b5259; font-weight: 400; margin: 0 0 1rem; }
+        .med-body:last-child { margin-bottom: 0; }
+        .med-body strong { color: #2B2A26; font-weight: 600; }
 
-        /* rhythm grid */
-        .cmp-rhythm-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1px;
-          background: rgba(15,118,110,0.08);
-          border: 1px solid rgba(15,118,110,0.08);
-        }
-        @media (max-width: 640px) {
-          .cmp-rhythm-grid { grid-template-columns: 1fr; }
-        }
-        .cmp-rhythm-cell {
-          background: #ffffff;
-          padding: 2rem;
-        }
-        .cmp-section-tint .cmp-rhythm-cell { background: #f7f9f7; }
-        .cmp-rhythm-cell h3 {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.78rem; font-weight: 500;
-          letter-spacing: 0.06em; text-transform: uppercase;
-          color: #888888; margin: 0 0 1rem;
-        }
-        .cmp-rhythm-cell p {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.88rem; font-weight: 300;
-          line-height: 1.85; color: #555555;
-          margin: 0; white-space: pre-line;
-        }
-
-        /* how to choose */
-        .cmp-choose-grid {
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 1px;
-          background: rgba(15,118,110,0.08);
-          border: 1px solid rgba(15,118,110,0.08);
-          margin-bottom: 2rem;
-        }
-        @media (max-width: 640px) {
-          .cmp-choose-grid { grid-template-columns: 1fr; }
-        }
-        .cmp-choose-cell {
-          background: #ffffff;
-          padding: 2rem;
+        .med-card {
+          background: #fff;
+          border: 1px solid rgba(15,118,110,0.12);
+          border-radius: 18px;
+          box-shadow: 0 10px 30px rgba(15,31,28,0.05);
+          transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.3s ease;
           position: relative;
           overflow: hidden;
         }
-        .cmp-choose-cell::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 2px;
-          background: var(--color-primary);
-          
+        .med-card::before {
+          content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+          background: #0f766e; transform: scaleX(0); transform-origin: left;
+          transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); z-index: 2;
         }
-        .cmp-choose-cell-label {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.75rem; font-weight: 500;
-          letter-spacing: 0.28em; text-transform: uppercase;
-          color: #374151;
-          display: block; margin-bottom: 0.75rem;
-        }
-        .cmp-choose-cell p {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.88rem; font-weight: 300;
-          line-height: 1.85; color: #555555; margin: 0;
-        }
+        .med-card:hover { transform: translateY(-6px); border-color: rgba(15,118,110,0.28); box-shadow: 0 22px 48px rgba(15,31,28,0.12); }
+        .med-card:hover::before { transform: scaleX(1); }
 
-        /* cta note */
-        .cmp-cta-note {
-          border-left: 3px solid rgba(15,118,110,0.25);
-          padding: 1.25rem 1.5rem;
-          background: rgba(15,118,110,0.02);
-        }
-        .cmp-cta-note p {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.88rem; font-weight: 300;
-          line-height: 1.85; color: #555555; margin: 0;
-        }
+        .med-cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2.3rem; background: #0f766e; color: white; text-decoration: none; font-family: var(--font-inter), sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; box-shadow: 0 10px 26px rgba(15,118,110,0.25); transition: all 0.3s cubic-bezier(0.22,1,0.36,1); border: 1px solid #0f766e; }
+        .med-cta-btn:hover { background: #0d6b64; transform: translateY(-3px); box-shadow: 0 16px 36px rgba(15,118,110,0.32); }
+        .med-cta-outline { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.85rem 1.8rem; border: 1px solid rgba(15,118,110,0.25); color: #0f766e; text-decoration: none; font-family: var(--font-inter), sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; transition: all 0.3s cubic-bezier(0.22,1,0.36,1); }
+        .med-cta-outline:hover { border-color: #0f766e; background: rgba(15,118,110,0.05); transform: translateY(-2px); }
+
+        .med-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; }
+        .med-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
+        @media (max-width: 720px) { .med-grid-2 { grid-template-columns: 1fr; } .med-grid-3 { grid-template-columns: 1fr; } }
+        @media (max-width: 640px) { .med-outer, .med-inner { padding-left: 1.25rem; padding-right: 1.25rem; } }
+
+        .med-nav-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; }
+        @media (max-width: 820px) { .med-nav-grid { grid-template-columns: 1fr; } }
+
+        .med-section-alt { background: #f7f9f7; }
+        .med-section-white { background: #ffffff; }
+
+        .med-compare-hero { padding: 5rem 0 4rem; border-bottom: 1px solid rgba(15,118,110,0.08); position: relative; }
+        .med-compare-hero .med-h1 { font-size: clamp(1.6rem, 3.2vw, 2.4rem); font-weight: 500; letter-spacing: -0.03em; color: #2B2A26; line-height: 1.15; margin: 0 0 1rem; }
+        .med-compare-hero .med-h1 span { color: #0f766e; }
+
+        .med-compare-table { width: 100%; border-collapse: collapse; font-family: var(--font-inter), sans-serif; font-size: 0.88rem; line-height: 1.7; }
+        .med-compare-table thead tr { border-bottom: 2px solid #0f766e; }
+        .med-compare-table th { text-align: left; padding: 0.75rem 1rem; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #6b7280; }
+        .med-compare-table tbody tr { border-bottom: 1px solid rgba(15,118,110,0.06); transition: background 0.2s; }
+        .med-compare-table tbody tr:hover { background: rgba(15,118,110,0.02); }
+        .med-compare-table td { padding: 0.85rem 1rem; vertical-align: top; color: #4b5259; }
+        .med-compare-table td:first-child { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em; color: #6b7280; text-transform: uppercase; width: 20%; white-space: nowrap; }
+        .med-compare-table ul { margin: 0; padding: 0; list-style: none; }
+        .med-compare-table ul li { padding: 0.2rem 0 0.2rem 1rem; position: relative; color: #4b5259; }
+        .med-compare-table ul li::before { content: '—'; position: absolute; left: 0; color: #0f766e; font-size: 0.7rem; }
+
+        .med-rhythm-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid rgba(15,118,110,0.12); border-radius: 18px; overflow: hidden; }
+        @media (max-width: 640px) { .med-rhythm-grid { grid-template-columns: 1fr; } }
+        .med-rhythm-cell { padding: 2rem; background: #fff; }
+        .med-section-alt .med-rhythm-cell { background: #f7f9f7; }
+        .med-rhythm-cell:first-child { border-right: 1px solid rgba(15,118,110,0.06); }
+        @media (max-width: 640px) { .med-rhythm-cell:first-child { border-right: none; border-bottom: 1px solid rgba(15,118,110,0.06); } }
+        .med-rhythm-cell .med-h3 { font-size: 0.85rem; font-weight: 600; color: #2B2A26; margin: 0 0 0.75rem; }
+        .med-rhythm-cell .med-body { font-size: 0.88rem; margin-bottom: 0; white-space: pre-line; }
+
+        .med-choose-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid rgba(15,118,110,0.12); border-radius: 18px; overflow: hidden; margin-bottom: 2rem; }
+        @media (max-width: 640px) { .med-choose-grid { grid-template-columns: 1fr; } }
+        .med-choose-cell { padding: 2rem; background: #fff; position: relative; }
+        .med-choose-cell:first-child { border-right: 1px solid rgba(15,118,110,0.06); }
+        @media (max-width: 640px) { .med-choose-cell:first-child { border-right: none; border-bottom: 1px solid rgba(15,118,110,0.06); } }
+        .med-choose-cell .med-tag { display: inline-block; font-family: var(--font-inter), sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #0f766e; background: rgba(15,118,110,0.08); padding: 0.25rem 0.6rem; border-radius: 999px; margin-bottom: 0.75rem; }
+        .med-choose-cell .med-body { margin-bottom: 0; }
+        .med-choose-cell .med-body a { color: #0f766e; font-weight: 500; text-decoration: none; }
+        .med-choose-cell .med-body a:hover { text-decoration: underline; }
+
+        .med-compare-cta { padding: 1.25rem 1.5rem; border-left: 3px solid #0f766e; border-radius: 18px; background: #f7f9f7; border: 1px solid rgba(15,118,110,0.12); }
+        .med-compare-cta .med-body { font-size: 0.88rem; margin-bottom: 0; }
+        .med-compare-cta .med-body a { color: #0f766e; font-weight: 500; text-decoration: none; }
+        .med-compare-cta .med-body a:hover { text-decoration: underline; }
+
+        .med-compare-score { display: flex; align-items: center; gap: 1rem; }
+        .med-compare-score .med-score-label { font-family: var(--font-inter), sans-serif; font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #6b7280; }
+        .med-compare-score .med-score-bar { flex: 1; height: 6px; border-radius: 999px; background: rgba(15,118,110,0.12); overflow: hidden; position: relative; }
+        .med-compare-score .med-score-bar .med-score-fill { height: 100%; border-radius: 999px; transition: width 0.6s ease; }
+
+        .med-breadcrumb-wrap { padding: 1rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
+
+        /* last word green heading pattern - override */
+        .med-compare-hero .med-h1 span { color: #0f766e; }
       `}</style>
 
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-
-      {/* ── BREADCRUMB ── */}
-      <div style={{
-        width: '100%',
-        background: '#ffffff',
-        borderBottom: '1px solid #e5e7eb',
-        padding: '1rem 0',
-        marginTop: '4rem',
-      }}>
-        <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '0 var(--space-md)' }}>
+      <div className="med-breadcrumb-wrap">
+        <div className="med-outer">
           <Breadcrumb
             items={[
               { name: 'Home', href: '/' },
@@ -343,249 +236,296 @@ export default async function ComparisonPage({ params }: PageProps) {
         </div>
       </div>
 
-      {/* ── HERO ── */}
-      <div className="cmp-hero">
-        <div className="cmp-hero-inner">
-          <div className="cmp-eyebrow">
-            <span className="cmp-eyebrow-line" />
-            <span className="cmp-eyebrow-text">Retreat Comparison</span>
-          </div>
-          <h1 className="cmp-h1">
-            {serviceA.title} <em>vs</em> {serviceB.title}
-          </h1>
-          <p className="cmp-lead">
-            Both are structured Himalayan retreat programs. The difference lies in purpose, pacing, and who
-            each format is best suited for. This comparison outlines the key distinctions to help you choose.
-          </p>
-        </div>
-      </div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
-      {/* ── AT A GLANCE ── */}
-      <section className="cmp-section cmp-section-white">
-        <div className="cmp-section-inner">
-          <div className="cmp-eyebrow">
-            <span className="cmp-eyebrow-line" />
-            <span className="cmp-eyebrow-text">At a Glance</span>
-          </div>
-          <h2 className="cmp-h2">{titleA} vs {titleB} at a Glance</h2>
-          <div style={{ overflowX: 'auto' }}>
-            <table className="cmp-table" aria-label="Retreat comparison overview">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>{serviceA.title}</th>
-                  <th>{serviceB.title}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Format</td>
-                  <td>{serviceA.oneLineEssence}</td>
-                  <td>{serviceB.oneLineEssence}</td>
-                </tr>
-                <tr>
-                  <td>Duration</td>
-                  <td>{durationA === '3-day' ? '3-day program' : durationA === '5-day' ? '5-day program' : 'Flexible (custom)'}</td>
-                  <td>{durationB === '3-day' ? '3-day program' : durationB === '5-day' ? '5-day program' : 'Flexible (custom)'}</td>
-                </tr>
-                <tr>
-                  <td>Primary Location</td>
-                  <td style={{ textTransform: 'capitalize' }}>{serviceA.whereItWorksBest.primary}</td>
-                  <td style={{ textTransform: 'capitalize' }}>{serviceB.whereItWorksBest.primary}</td>
-                </tr>
-                <tr>
-                  <td>Why that location</td>
-                  <td>{serviceA.whereItWorksBest.primaryReason}</td>
-                  <td>{serviceB.whereItWorksBest.primaryReason}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
+      <article>
 
-      {/* ── WHO EACH RETREAT IS FOR ── */}
-      <section className="cmp-section cmp-section-tint">
-        <div className="cmp-section-inner">
-          <div className="cmp-eyebrow">
-            <span className="cmp-eyebrow-line" />
-            <span className="cmp-eyebrow-text">Suitability</span>
-          </div>
-          <h2 className="cmp-h2">Who Should Choose {titleA} or {titleB}</h2>
-          <div style={{ overflowX: 'auto' }}>
-            <table className="cmp-table" aria-label="Retreat participant suitability">
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>{serviceA.title}</th>
-                  <th>{serviceB.title}</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Best suited for</td>
-                  <td>
-                    <ul>
-                      {serviceA.forNotFor.for.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </td>
-                  <td>
-                    <ul>
-                      {serviceB.forNotFor.for.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Not for</td>
-                  <td>
-                    <ul>
-                      {serviceA.forNotFor.notFor.map((item) => (
-                        <li key={item} style={{ color: '#999999' }}>{item}</li>
-                      ))}
-                    </ul>
-                  </td>
-                  <td>
-                    <ul>
-                      {serviceB.forNotFor.notFor.map((item) => (
-                        <li key={item} style={{ color: '#999999' }}>{item}</li>
-                      ))}
-                    </ul>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* ── DAILY RHYTHM ── */}
-      <section className="cmp-section cmp-section-white">
-        <div className="cmp-section-inner">
-          <div className="cmp-eyebrow">
-            <span className="cmp-eyebrow-line" />
-            <span className="cmp-eyebrow-text">Daily Rhythm</span>
-          </div>
-          <h2 className="cmp-h2">Daily Rhythm</h2>
-          <div className="cmp-rhythm-grid">
-            <div className="cmp-rhythm-cell">
-              <h3>{serviceA.title}</h3>
-              <p>{serviceA.howItWorks.rhythm}</p>
+        {/* ── HERO ── */}
+        <section className="med-shell med-section-alt med-compare-hero">
+          <div className="med-outer">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Retreat Comparison</span>
             </div>
-            <div className="cmp-rhythm-cell">
-              <h3>{serviceB.title}</h3>
-              <p>{serviceB.howItWorks.rhythm}</p>
-            </div>
+            <h1 className="med-h1">
+              {serviceA.title} <span>vs</span> {serviceB.title}
+            </h1>
+            <p className="med-body" style={{ maxWidth: '48rem' }}>
+              Both are structured Himalayan retreat programs. The difference lies in purpose, pacing, and who each format is best suited for. This comparison outlines the key distinctions to help you choose.
+            </p>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ── SCORE COMPARISON ── */}
-      {RETREAT_SCORES[ca] && RETREAT_SCORES[cb] && (
-        <section className="cmp-section cmp-section-tint">
-          <div className="cmp-section-inner">
-            <div className="cmp-eyebrow">
-              <span className="cmp-eyebrow-line" />
-              <span className="cmp-eyebrow-text">Program Profile</span>
+        {/* ── AT A GLANCE ── */}
+        <section className="med-shell med-section-white" style={{ padding: '5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-outer">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">At a Glance</span>
             </div>
-            <h2 className="cmp-h2">Program Profile Comparison</h2>
-            <div style={{ overflowX: 'auto' }}>
-              <table className="cmp-table" aria-label="Retreat score comparison">
+            <h2 className="med-h2">{titleA} vs {titleB} <span>at a Glance</span></h2>
+
+            <div style={{ overflowX: 'auto', marginTop: '1.8rem' }}>
+              <table className="med-compare-table">
                 <thead>
                   <tr>
-                    <th>Dimension</th>
+                    <th></th>
                     <th>{serviceA.title}</th>
                     <th>{serviceB.title}</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {(Object.keys(RETREAT_SCORES[ca]!) as (keyof RetreatScores)[]).map((dim) => (
-                    <tr key={dim}>
-                      <td>{SCORE_LABELS[dim]}</td>
-                      <td><div style={{ flex: 1 }}><ScoreBar dimension={dim} value={RETREAT_SCORES[ca]![dim]} /></div></td>
-                      <td><div style={{ flex: 1 }}><ScoreBar dimension={dim} value={RETREAT_SCORES[cb]![dim]} /></div></td>
-                    </tr>
-                  ))}
+                  <tr>
+                    <td>Format</td>
+                    <td>{serviceA.oneLineEssence}</td>
+                    <td>{serviceB.oneLineEssence}</td>
+                  </tr>
+                  <tr>
+                    <td>Duration</td>
+                    <td>{durationA === '3-day' ? '3-day program' : durationA === '5-day' ? '5-day program' : 'Flexible (custom)'}</td>
+                    <td>{durationB === '3-day' ? '3-day program' : durationB === '5-day' ? '5-day program' : 'Flexible (custom)'}</td>
+                  </tr>
+                  <tr>
+                    <td>Primary Location</td>
+                    <td style={{ textTransform: 'capitalize' }}>{serviceA.whereItWorksBest.primary}</td>
+                    <td style={{ textTransform: 'capitalize' }}>{serviceB.whereItWorksBest.primary}</td>
+                  </tr>
+                  <tr>
+                    <td>Why that location</td>
+                    <td>{serviceA.whereItWorksBest.primaryReason}</td>
+                    <td>{serviceB.whereItWorksBest.primaryReason}</td>
+                  </tr>
                 </tbody>
               </table>
             </div>
           </div>
         </section>
-      )}
 
-      {/* ── HOW TO CHOOSE ── */}
-      <section className="cmp-section cmp-section-white">
-        <div className="cmp-section-inner">
-          <div className="cmp-eyebrow">
-            <span className="cmp-eyebrow-line" />
-            <span className="cmp-eyebrow-text">Decision Guide</span>
+        {/* ── WHO EACH RETREAT IS FOR ── */}
+        <section className="med-shell med-section-alt" style={{ padding: '5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-outer">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Suitability</span>
+            </div>
+            <h2 className="med-h2">Who Should Choose {titleA} <span>or</span> {titleB}</h2>
+
+            <div style={{ overflowX: 'auto', marginTop: '1.8rem' }}>
+              <table className="med-compare-table">
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>{serviceA.title}</th>
+                    <th>{serviceB.title}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Best suited for</td>
+                    <td>
+                      <ul>
+                        {serviceA.forNotFor.for.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </td>
+                    <td>
+                      <ul>
+                        {serviceB.forNotFor.for.map((item) => (
+                          <li key={item}>{item}</li>
+                        ))}
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Not for</td>
+                    <td>
+                      <ul>
+                        {serviceA.forNotFor.notFor.map((item) => (
+                          <li key={item} style={{ color: '#9ca3af' }}>{item}</li>
+                        ))}
+                      </ul>
+                    </td>
+                    <td>
+                      <ul>
+                        {serviceB.forNotFor.notFor.map((item) => (
+                          <li key={item} style={{ color: '#9ca3af' }}>{item}</li>
+                        ))}
+                      </ul>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
-          <h2 className="cmp-h2">How to Choose</h2>
-          <div className="cmp-choose-grid">
-            <div className="cmp-choose-cell">
-              <span className="cmp-choose-cell-label">{serviceA.title}</span>
-              <p>
-                If your primary need is {serviceA.oneLineEssence.toLowerCase().replace(/\.$/, '')}, the{' '}
-                <Link href={`/retreats/journeys/${ca}`} style={{ color: '#374151' }}>
-                  {serviceA.title}
-                </Link>{' '}
-                retreat may be more aligned.
+        </section>
+
+        {/* ── DAILY RHYTHM ── */}
+        <section className="med-shell med-section-white" style={{ padding: '5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-outer">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Daily Rhythm</span>
+            </div>
+            <h2 className="med-h2">Daily <span>Rhythm</span></h2>
+
+            <div className="med-rhythm-grid">
+              <div className="med-rhythm-cell">
+                <h3 className="med-h3">{serviceA.title}</h3>
+                <p className="med-body">{serviceA.howItWorks.rhythm}</p>
+              </div>
+              <div className="med-rhythm-cell">
+                <h3 className="med-h3">{serviceB.title}</h3>
+                <p className="med-body">{serviceB.howItWorks.rhythm}</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ── SCORE COMPARISON ── */}
+        {RETREAT_SCORES[ca] && RETREAT_SCORES[cb] && (
+          <section className="med-shell med-section-alt" style={{ padding: '5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+            <div className="med-outer">
+              <div className="med-eyebrow">
+                <span className="med-eyebrow-line" />
+                <span className="med-eyebrow-text">Program Profile</span>
+              </div>
+              <h2 className="med-h2">Program Profile <span>Comparison</span></h2>
+
+              <div style={{ overflowX: 'auto', marginTop: '1.8rem' }}>
+                <table className="med-compare-table">
+                  <thead>
+                    <tr>
+                      <th>Dimension</th>
+                      <th>{serviceA.title}</th>
+                      <th>{serviceB.title}</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {(Object.keys(RETREAT_SCORES[ca]!) as (keyof RetreatScores)[]).map((dim) => (
+                      <tr key={dim}>
+                        <td>{SCORE_LABELS[dim]}</td>
+                        <td>
+                          <div className="med-compare-score">
+                            <span className="med-score-label">{RETREAT_SCORES[ca]![dim]}</span>
+                            <div className="med-score-bar">
+                              <div className="med-score-fill" style={{ width: `${(RETREAT_SCORES[ca]![dim] / 10) * 100}%`, background: '#0f766e' }} />
+                            </div>
+                          </div>
+                        </td>
+                        <td>
+                          <div className="med-compare-score">
+                            <span className="med-score-label">{RETREAT_SCORES[cb]![dim]}</span>
+                            <div className="med-score-bar">
+                              <div className="med-score-fill" style={{ width: `${(RETREAT_SCORES[cb]![dim] / 10) * 100}%`, background: '#0f766e' }} />
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* ── HOW TO CHOOSE ── */}
+        <section className="med-shell med-section-white" style={{ padding: '5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-outer">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Decision Guide</span>
+            </div>
+            <h2 className="med-h2">How to <span>Choose</span></h2>
+
+            <div className="med-choose-grid">
+              <div className="med-choose-cell">
+                <span className="med-tag">{serviceA.title}</span>
+                <p className="med-body">
+                  If your primary need is {serviceA.oneLineEssence.toLowerCase().replace(/\.$/, '')}, the{' '}
+                  <Link href={`/retreats/journeys/${ca}`}>
+                    {serviceA.title}
+                  </Link>{' '}
+                  retreat may be more aligned.
+                </p>
+              </div>
+              <div className="med-choose-cell">
+                <span className="med-tag">{serviceB.title}</span>
+                <p className="med-body">
+                  If your primary need is {serviceB.oneLineEssence.toLowerCase().replace(/\.$/, '')}, explore the{' '}
+                  <Link href={`/retreats/journeys/${cb}`}>
+                    {serviceB.title}
+                  </Link>{' '}
+                  retreat instead.
+                </p>
+              </div>
+            </div>
+
+            <div className="med-compare-cta">
+              <p className="med-body">
+                For a broader overview of all retreat programs and formats, visit our complete guide to{' '}
+                <Link href="/retreats/himalayan-retreats">
+                  Himalayan Retreats in India
+                </Link>
+                .
               </p>
             </div>
-            <div className="cmp-choose-cell">
-              <span className="cmp-choose-cell-label">{serviceB.title}</span>
-              <p>
-                If your primary need is {serviceB.oneLineEssence.toLowerCase().replace(/\.$/, '')}, explore the{' '}
-                <Link href={`/retreats/journeys/${cb}`} style={{ color: '#374151' }}>
-                  {serviceB.title}
-                </Link>{' '}
-                retreat instead.
-              </p>
-            </div>
           </div>
+        </section>
 
-          <div className="cmp-cta-note">
-            <p>
-              For a broader overview of all retreat programs and formats, visit our complete guide to{' '}
-              <Link href="/retreats/himalayan-retreats" style={{ color: '#374151' }}>
-                Himalayan Retreats in India
+        {/* ── OTHER COMPARISONS ── */}
+        {(() => {
+          const services = getAllRetreatServices();
+          const others = services.filter((s) => s.slug !== ca && s.slug !== cb);
+          const suggestions: ComparisonSuggestion[] = others.map((s) => {
+            const [a, b] = canonicalPair(ca, s.slug);
+            const titleA = getRetreatServiceBySlug(a)?.title ?? a;
+            const titleB = getRetreatServiceBySlug(b)?.title ?? b;
+            return {
+              slug: s.slug,
+              title: s.title,
+              pairHref: `/compare/${a}${SEPARATOR}${b}`,
+              pairLabel: `${titleA} vs ${titleB}`,
+              intensity: RETREAT_MATRIX_META[s.slug]?.intensity ?? 'medium',
+              duration: RETREAT_DURATION_GROUP[s.slug] ?? 'flexible',
+            };
+          });
+          const intensityMap = Object.fromEntries(suggestions.map((s) => [s.slug, s.intensity]));
+          const durationMap = Object.fromEntries(suggestions.map((s) => [s.slug, s.duration]));
+          return (
+            <OtherComparisonsAdaptive
+              suggestions={suggestions}
+              intensityMap={intensityMap}
+              durationMap={durationMap}
+            />
+          );
+        })()}
+
+        {/* ── FOOTER NAV ── */}
+        <nav className="med-shell med-section-alt" style={{ padding: '2.5rem 0', borderTop: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-outer">
+            <div className="med-nav-grid">
+              <Link href="/retreats" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>← All Retreats</span>
               </Link>
-              .
-            </p>
+              <Link href="/retreats/himalayan-retreats" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Himalayan Retreats</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+              <Link href="/retreats/best-retreat-in-uttarakhand" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Best Retreats</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+              <Link href="/find-your-retreat" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Find Your Retreat</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* ── OTHER COMPARISONS ── */}
-      {(() => {
-        const services = getAllRetreatServices();
-        const others = services.filter((s) => s.slug !== ca && s.slug !== cb);
-        const suggestions: ComparisonSuggestion[] = others.map((s) => {
-          const [a, b] = canonicalPair(ca, s.slug);
-          const titleA = getRetreatServiceBySlug(a)?.title ?? a;
-          const titleB = getRetreatServiceBySlug(b)?.title ?? b;
-          return {
-            slug: s.slug,
-            title: s.title,
-            pairHref: `/compare/${a}${SEPARATOR}${b}`,
-            pairLabel: `${titleA} vs ${titleB}`,
-            intensity: RETREAT_MATRIX_META[s.slug]?.intensity ?? 'medium',
-            duration: RETREAT_DURATION_GROUP[s.slug] ?? 'flexible',
-          };
-        });
-        const intensityMap = Object.fromEntries(suggestions.map((s) => [s.slug, s.intensity]));
-        const durationMap = Object.fromEntries(suggestions.map((s) => [s.slug, s.duration]));
-        return (
-          <OtherComparisonsAdaptive
-            suggestions={suggestions}
-            intensityMap={intensityMap}
-            durationMap={durationMap}
-          />
-        );
-      })()}
-    </main>
+        </nav>
+      </article>
+    </TrackedPage>
   );
 }
