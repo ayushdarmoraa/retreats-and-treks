@@ -88,7 +88,7 @@ const POPULAR_SLUGS = ['kedarkantha-trek', 'brahmatal-trek', 'roopkund-trek', 'h
 
 const TESTIMONIALS = [
   { name: 'Priya', trek: 'Kedarkantha Trek', text: 'Kedarkantha was my first winter trek. The snow, the summit sunrise — unforgettable. The guides made everything feel safe even at 12,500 ft. I came back a different person.' },
-  { name: 'Arjun', trek: 'Brahmatal Trek', text: 'Did the Brahmatal trek last December. Frozen lake, clear skies, and the best campsite views I\'ve ever seen. Will come back for Har Ki Dun next.' },
+  { name: 'Arjun', trek: 'Brahmatal Trek', text: 'Did the Brahmatal trek last December. Frozen lake, clear skies, and the best campsite views I have ever seen. Will come back for Har Ki Dun next.' },
   { name: 'Meera', trek: 'Chakrata Weekend Trek', text: 'We tried the Chakrata Weekend Trek as a family. Kids loved the forest trails. A perfect intro to Himalayan trekking without overdoing it.' },
 ];
 
@@ -108,6 +108,14 @@ const FAQ_DATA = [
   { question: 'Are guided treks necessary in the Himalayas?', answer: 'Strongly recommended, especially for first-time and moderate-level trekkers. Himalayan terrain involves unmarked trails, altitude risks, sudden weather changes, and areas with no mobile connectivity. Our local mountain guides know every trail condition, water source, and safe campsite — and they carry first-aid and emergency communication.' },
   { question: 'How should I prepare for high-altitude treks?', answer: 'Start building cardiovascular fitness at least 4–6 weeks before your trek. Include daily walks, stair climbing, and light jogging. For treks above 4,000 m like Roopkund or Pangarchulla, prior altitude exposure is helpful. On the trek itself, our guides enforce gradual altitude gain, proper hydration, and rest-day protocols to minimise altitude sickness risk.' },
 ];
+
+/* ── Helper: split heading for green last word ── */
+function splitHeading(text: string) {
+  const words = text.split(' ');
+  const lastWord = words[words.length - 1];
+  const rest = words.slice(0, -1).join(' ');
+  return { rest, lastWord };
+}
 
 /* ── Separator component ── */
 function SectionSeparator() {
@@ -200,6 +208,12 @@ export default function TreksClient() {
   const currentDate = new Date();
   const lastUpdated = currentDate.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
 
+  // ── Split headings ──
+  const howHeading = splitHeading('Three Steps to Your Himalayan Trek');
+  const featuredHeading = splitHeading('Featured Treks in Uttarakhand');
+  const whoHeading = splitHeading('Who These Treks Are For');
+  const popularHeading = splitHeading('Most Popular Treks in Uttarakhand');
+
   return (
     <div style={{ maxWidth: '72rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
 
@@ -210,6 +224,7 @@ export default function TreksClient() {
   .trk-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); flex-shrink: 0; display: inline-block; }
   .trk-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: #374151; }
   .trk-h2 { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200; letter-spacing: -0.03em; color: #111111; line-height: 1.15; margin: 0 0 2.5rem 0; }
+  .trk-h2 .accent { color: #0f766e; font-weight: 200; }
 
   /* ── HERO ── */
   .trk-hero { width: 100vw; margin-left: calc(-50vw + 50%); position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; min-height: 90vh; text-align: center; }
@@ -219,6 +234,11 @@ export default function TreksClient() {
   .trk-hero-btn-primary:hover { background: transparent; color: #ffffff; transform: translateY(-2px); }
   .trk-hero-btn-secondary { font-family: var(--font-geist-sans), sans-serif; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.95rem 2.25rem; background: transparent; color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.78rem; font-weight: 400; letter-spacing: 0.06em; text-transform: uppercase; border-radius: 100px; border: 1.5px solid rgba(255,255,255,0.35); transition: border-color 0.25s, color 0.25s, transform 0.2s; }
   .trk-hero-btn-secondary:hover { border-color: rgba(255,255,255,0.8); color: #ffffff; transform: translateY(-2px); }
+  .trk-hero .trk-section-inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
+  .trk-hero .trk-eyebrow { justify-content: center; }
+  .trk-hero .trk-eyebrow-text { color: rgba(255,255,255,0.8); }
+  .trk-hero .trk-eyebrow-line { background: rgba(255,255,255,0.5); }
+
   /* ── HOW IT WORKS ── */
   .trk-how { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 4rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-how-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; text-align: center; }
@@ -227,10 +247,6 @@ export default function TreksClient() {
   .trk-how-num { width: 48px; height: 48px; border-radius: 50%; background: rgba(15,118,110,0.08); color: var(--color-primary); display: flex; align-items: center; justify-content: center; font-family: var(--font-geist-sans), sans-serif; font-size: 1.2rem; font-weight: 300; }
   .trk-how-title { font-family: var(--font-geist-sans), sans-serif; font-size: 0.95rem; font-weight: 500; color: #111; margin: 0; }
   .trk-how-desc { font-family: var(--font-geist-sans), sans-serif; font-size: 0.82rem; font-weight: 300; color: #595959; line-height: 1.7; margin: 0; max-width: 280px; }
-  .trk-hero .trk-section-inner { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; }
-  .trk-hero .trk-eyebrow { justify-content: center; }
-  .trk-hero .trk-eyebrow-text { color: rgba(255,255,255,0.8); }
-  .trk-hero .trk-eyebrow-line { background: rgba(255,255,255,0.5); }
 
   /* ── QUICK NAV ── */
   .trk-quicknav { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 1.25rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
@@ -239,8 +255,16 @@ export default function TreksClient() {
   .trk-quicknav-btn { font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 400; color: #374151; text-decoration: none; padding: 0.5rem 1.15rem; border: 1px solid rgba(15,118,110,0.15); border-radius: 100px; white-space: nowrap; transition: all 0.2s ease; flex-shrink: 0; }
   .trk-quicknav-btn:hover { border-color: var(--color-primary); background: rgba(15,118,110,0.04); color: var(--color-primary); }
 
+  /* ── TRUST STRIP ── */
+  .trk-trust-strip { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 1rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
+  .trk-trust-strip-inner { max-width: 72rem; margin: 0 auto; padding: 0 var(--space-md, 1.5rem); display: flex; gap: 1.5rem; align-items: center; justify-content: center; flex-wrap: wrap; }
+  .trk-trust-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 400; color: #555555; letter-spacing: 0.01em; }
+  .trk-trust-badge-icon { width: 16px; height: 16px; color: var(--color-primary); flex-shrink: 0; }
+  .trk-trust-sep { width: 1px; height: 16px; background: rgba(15,118,110,0.15); flex-shrink: 0; }
+  @media (max-width: 480px) { .trk-trust-sep { display: none; } }
+
   /* ── FEATURED ── */
-  .trk-featured { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 5rem 0; }
+  .trk-featured { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 5rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-featured-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); gap: 2.5rem; }
   @media (max-width: 720px) { .trk-featured-grid { grid-template-columns: 1fr; } }
   .trk-feat-card { background: #ffffff; border: 1px solid rgba(15,118,110,0.1); display: flex; flex-direction: column; position: relative; overflow: hidden; border-radius: 12px; text-decoration: none; color: inherit; box-shadow: 0 4px 20px rgba(0,0,0,0.06); transition: box-shadow 0.3s ease, border-color 0.3s ease; }
@@ -254,8 +278,17 @@ export default function TreksClient() {
   .trk-feat-desc { font-family: var(--font-geist-sans), sans-serif; font-size: 0.84rem; font-weight: 300; line-height: 1.75; color: #666666; margin: 0; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
   .trk-feat-cta { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 500; color: var(--color-primary); letter-spacing: 0.04em; transition: gap 0.2s; margin-top: auto; padding-top: 0.5rem; border-top: 1px solid rgba(15,118,110,0.1); }
 
+  /* ── WHO FOR ── */
+  .trk-whofor { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 3.5rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
+  .trk-whofor-list { display: flex; gap: 2.5rem; flex-wrap: wrap; }
+  @media (max-width: 640px) { .trk-whofor-list { flex-direction: column; gap: 1.25rem; } }
+  .trk-whofor-item { display: flex; align-items: flex-start; gap: 0.75rem; flex: 1; min-width: 200px; }
+  .trk-whofor-icon { width: 20px; height: 20px; color: var(--color-primary); flex-shrink: 0; margin-top: 2px; }
+  .trk-whofor-title { font-family: var(--font-geist-sans), sans-serif; font-size: 0.92rem; font-weight: 400; color: #111111; margin: 0 0 0.2rem 0; }
+  .trk-whofor-desc { font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 300; color: #666666; line-height: 1.7; margin: 0; }
+
   /* ── POPULAR ── */
-  .trk-popular { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 4rem 0; }
+  .trk-popular { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 4rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-popular-list { display: flex; flex-wrap: wrap; gap: 0.6rem; }
   .trk-popular-chip { font-family: var(--font-geist-sans), sans-serif; font-size: 0.82rem; font-weight: 400; color: #374151; text-decoration: none; padding: 0.6rem 1.3rem; border: 1px solid rgba(15,118,110,0.15); border-radius: 100px; transition: all 0.2s ease; display: inline-flex; align-items: center; gap: 0.4rem; }
   .trk-popular-chip:hover { border-color: var(--color-primary); background: rgba(15,118,110,0.04); color: var(--color-primary); }
@@ -272,10 +305,11 @@ export default function TreksClient() {
   .trk-btn-active { border: 1px solid var(--color-primary); background: var(--color-primary); color: #ffffff; }
 
   /* ── CATALOGUE ── */
-  .trk-cat-section { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 5rem 0; }
+  .trk-cat-section { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 5rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-cat-location { margin-bottom: 5rem; padding-bottom: 5rem; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-cat-location:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
   .trk-cat-loc-name { font-family: var(--font-geist-sans), sans-serif; font-size: clamp(1.4rem, 2.5vw, 1.85rem); font-weight: 200; letter-spacing: -0.03em; color: #111111; line-height: 1.15; margin: 0 0 0.5rem 0; text-transform: capitalize; }
+  .trk-cat-loc-name .accent { color: #0f766e; font-weight: 200; }
   .trk-cat-loc-intro { font-family: var(--font-geist-sans), sans-serif; font-size: 0.85rem; font-weight: 300; color: #555555; line-height: 1.85; margin: 0 0 1.5rem 0; max-width: 52rem; }
   .trk-cat-loc-intro a { color: var(--color-primary); text-decoration: none; border-bottom: 1px solid rgba(15,118,110,0.2); }
   .trk-cat-loc-tagline { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #555555; line-height: 1.85; margin: 0 0 2rem 0; }
@@ -301,7 +335,7 @@ export default function TreksClient() {
   .trk-section-banner--gray::after { background: linear-gradient(to top, rgba(247,249,247,0.7), transparent); }
 
   /* ── CURATED ── */
-  .trk-curated { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 5rem 0; }
+  .trk-curated { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 5rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-collection { margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-collection:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
   .trk-collection-h3 { font-family: var(--font-geist-sans), sans-serif; font-size: 1.1rem; font-weight: 300; letter-spacing: -0.02em; color: #111111; margin: 0 0 0.4rem 0; }
@@ -313,7 +347,7 @@ export default function TreksClient() {
   .trk-collection-link:hover { gap: 0.65rem; }
 
   /* ── EXPERIENCE LEVEL ── */
-  .trk-experience { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 5rem 0; }
+  .trk-experience { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 5rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-exp-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(15,118,110,0.08); border: 1px solid rgba(15,118,110,0.08); }
   @media (max-width: 768px) { .trk-exp-grid { grid-template-columns: 1fr; } }
   .trk-exp-block { background: #ffffff; padding: 2rem 1.75rem; display: flex; flex-direction: column; gap: 0.75rem; position: relative; overflow: hidden; transition: background 0.2s; }
@@ -327,7 +361,7 @@ export default function TreksClient() {
   .trk-exp-link:hover { gap: 0.6rem; }
 
   /* ── DIFFICULTY GUIDE ── */
-  .trk-diffguide { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 4rem 0; }
+  .trk-diffguide { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 4rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-diffguide-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   @media (max-width: 768px) { .trk-diffguide-grid { grid-template-columns: 1fr; } }
   .trk-diffguide-block { display: flex; align-items: flex-start; gap: 0.75rem; }
@@ -336,7 +370,7 @@ export default function TreksClient() {
   .trk-diffguide-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 300; color: #666666; line-height: 1.7; margin: 0; }
 
   /* ── DISCOVERY ── */
-  .trk-discovery { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 5rem 0; }
+  .trk-discovery { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 5rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-discovery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1px; background: rgba(15,118,110,0.08); border: 1px solid rgba(15,118,110,0.08); }
   .trk-disc-card { background: #ffffff; padding: 2rem; display: flex; flex-direction: column; gap: 0.75rem; position: relative; overflow: hidden; transition: background 0.25s; }
   .trk-disc-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--color-primary); transform: scaleX(0); transform-origin: left; transition: transform 0.45s cubic-bezier(0.16,1,0.3,1); }
@@ -348,7 +382,7 @@ export default function TreksClient() {
   .trk-disc-link { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 400; color: #374151; text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem; transition: gap 0.2s; align-self: flex-start; }
 
   /* ── BEST TIME ── */
-  .trk-season { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 5rem 0; }
+  .trk-season { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 5rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-season-intro { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #555555; line-height: 1.85; margin: 0 0 3rem 0; max-width: 48rem; }
   .trk-season-intro a { color: var(--color-primary); text-decoration: none; border-bottom: 1px solid rgba(15,118,110,0.2); transition: border-color 0.2s; }
   .trk-season-intro a:hover { border-color: var(--color-primary); }
@@ -366,14 +400,14 @@ export default function TreksClient() {
   .trk-season-link:hover { gap: 0.6rem; }
 
   /* ── MID CTA ── */
-  .trk-midcta { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 3rem 0; }
+  .trk-midcta { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 3rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-midcta-inner { max-width: 72rem; margin: 0 auto; padding: 1.5rem var(--space-md, 1.5rem); background: #f7f9f7; border: 1px solid rgba(15,118,110,0.1); border-radius: 6px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
   .trk-midcta-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.92rem; font-weight: 300; color: #222222; margin: 0; }
   .trk-midcta-btn { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; font-weight: 500; padding: 0.65rem 1.5rem; background: var(--color-primary); color: #ffffff; text-decoration: none; border-radius: 100px; transition: background 0.2s, transform 0.2s; white-space: nowrap; display: inline-flex; align-items: center; gap: 0.4rem; }
   .trk-midcta-btn:hover { background: rgba(15,118,110,0.85); transform: translateY(-1px); }
 
   /* ── TRUST ── */
-  .trk-trust { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 5rem 0; }
+  .trk-trust { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 5rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-trust-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(15,118,110,0.08); border: 1px solid rgba(15,118,110,0.08); list-style: none; padding: 0; margin: 0; }
   @media (max-width: 640px) { .trk-trust-grid { grid-template-columns: 1fr; } }
   .trk-trust-item { background: #f7f9f7; padding: 2rem 1.75rem; position: relative; overflow: hidden; transition: background 0.2s; display: flex; align-items: flex-start; gap: 1rem; }
@@ -384,7 +418,7 @@ export default function TreksClient() {
   .trk-trust-icon { width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--color-primary); }
 
   /* ── TESTIMONIALS ── */
-  .trk-testimonials { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 5rem 0; }
+  .trk-testimonials { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 5rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   @media (max-width: 768px) { .trk-test-grid { grid-template-columns: 1fr; } }
   .trk-test-card { background: #f7f9f7; border: 1px solid rgba(15,118,110,0.1); border-radius: 4px; padding: 2rem 1.75rem; display: flex; flex-direction: column; gap: 1rem; position: relative; overflow: hidden; transition: border-color 0.25s; }
@@ -398,7 +432,7 @@ export default function TreksClient() {
   .trk-test-trek { font-family: var(--font-geist-sans), sans-serif; font-size: 0.7rem; font-weight: 300; color: #888888; margin: 0; }
 
   /* ── EXPERTISE ── */
-  .trk-expertise { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 5rem 0; }
+  .trk-expertise { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 5rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-expertise-content { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 60rem; }
   @media (max-width: 768px) { .trk-expertise-content { grid-template-columns: 1fr; } }
   .trk-expertise-p { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #555555; line-height: 1.85; margin: 0; }
@@ -406,7 +440,7 @@ export default function TreksClient() {
   .trk-expertise-p a:hover { border-color: var(--color-primary); }
 
   /* ── FAQ ── */
-  .trk-faq { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 5rem 0; }
+  .trk-faq { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 5rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-faq-list { display: flex; flex-direction: column; gap: 0; max-width: 52rem; }
   .trk-faq-item { border-bottom: 1px solid rgba(15,118,110,0.1); }
   .trk-faq-item:first-child { border-top: 1px solid rgba(15,118,110,0.1); }
@@ -418,7 +452,7 @@ export default function TreksClient() {
   .trk-last-updated { font-family: var(--font-geist-sans), sans-serif; font-size: 0.7rem; font-weight: 400; color: #999; letter-spacing: 0.04em; margin-top: 2rem; }
 
   /* ── LINK CLUSTER ── */
-  .trk-links-cluster { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 5rem 0; }
+  .trk-links-cluster { width: 100vw; margin-left: calc(-50vw + 50%); background: #f7f9f7; padding: 5rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
   .trk-links-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0.75rem; }
   .trk-links-item { font-family: var(--font-geist-sans), sans-serif; font-size: 0.85rem; font-weight: 400; color: #374151; text-decoration: none; padding: 1rem 1.25rem; border: 1px solid rgba(15,118,110,0.1); border-radius: 4px; background: #ffffff; display: flex; align-items: center; gap: 0.5rem; transition: all 0.2s ease; }
   .trk-links-item:hover { border-color: var(--color-primary); color: var(--color-primary); background: rgba(15,118,110,0.02); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
@@ -429,6 +463,7 @@ export default function TreksClient() {
   .trk-plan-cta::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 60% 50%, rgba(15,118,110,0.18) 0%, transparent 70%); pointer-events: none; }
   .trk-plan-inner { max-width: 72rem; margin: 0 auto; padding: 0 var(--space-md, 1.5rem); display: flex; flex-direction: column; align-items: center; text-align: center; position: relative; z-index: 1; }
   .trk-plan-cta .trk-h2 { color: #ffffff; }
+  .trk-plan-cta .trk-h2 .accent { color: #5eead4; font-weight: 200; }
   .trk-plan-cta .trk-eyebrow-text { color: rgba(255,255,255,0.6); }
   .trk-plan-cta .trk-eyebrow-line { background: rgba(255,255,255,0.3); }
   .trk-plan-cta .trk-scarcity { color: rgba(255,255,255,0.45); }
@@ -456,31 +491,12 @@ export default function TreksClient() {
   .trk-sticky-btn { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.85rem 1.5rem; background: var(--color-primary); color: #ffffff; text-decoration: none; border-radius: 100px; font-family: var(--font-geist-sans), sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.02em; box-shadow: 0 8px 32px rgba(15,118,110,0.35); transition: box-shadow 0.25s, transform 0.25s, background 0.25s; }
   .trk-sticky-btn:hover { box-shadow: 0 12px 40px rgba(15,118,110,0.45); transform: translateY(-2px); background: rgba(15,118,110,0.9); }
 
-  /* ── TRUST STRIP ── */
-  .trk-trust-strip { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 1rem 0; }
-  .trk-trust-strip-inner { max-width: 72rem; margin: 0 auto; padding: 0 var(--space-md, 1.5rem); display: flex; gap: 1.5rem; align-items: center; justify-content: center; flex-wrap: wrap; }
-  .trk-trust-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 400; color: #555555; letter-spacing: 0.01em; }
-  .trk-trust-badge-icon { width: 16px; height: 16px; color: var(--color-primary); flex-shrink: 0; }
-  .trk-trust-sep { width: 1px; height: 16px; background: rgba(15,118,110,0.15); flex-shrink: 0; }
-  @media (max-width: 480px) { .trk-trust-sep { display: none; } }
-
-  /* ── WHO FOR ── */
-  .trk-whofor { width: 100vw; margin-left: calc(-50vw + 50%); background: #ffffff; padding: 3.5rem 0; }
-  .trk-whofor-list { display: flex; gap: 2.5rem; flex-wrap: wrap; }
-  @media (max-width: 640px) { .trk-whofor-list { flex-direction: column; gap: 1.25rem; } }
-  .trk-whofor-item { display: flex; align-items: flex-start; gap: 0.75rem; flex: 1; min-width: 200px; }
-  .trk-whofor-icon { width: 20px; height: 20px; color: var(--color-primary); flex-shrink: 0; margin-top: 2px; }
-  .trk-whofor-title { font-family: var(--font-geist-sans), sans-serif; font-size: 0.92rem; font-weight: 400; color: #111111; margin: 0 0 0.2rem 0; }
-  .trk-whofor-desc { font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 300; color: #666666; line-height: 1.7; margin: 0; }
-
   /* ── TESTIMONIAL CONTEXT ── */
   .trk-test-context { font-family: var(--font-geist-sans), sans-serif; font-size: 0.65rem; font-weight: 400; color: var(--color-primary); letter-spacing: 0.08em; text-transform: uppercase; margin: 0.2rem 0 0 0; }
 
   /* ── MICRO COPY + SCARCITY ── */
   .trk-microcopy { font-family: var(--font-geist-sans), sans-serif; font-size: 0.72rem; font-weight: 300; color: #999999; letter-spacing: 0.02em; margin-top: 1rem; }
   .trk-scarcity { font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 300; font-style: italic; color: #888888; margin: 0 0 2rem 0; }
-
-  /* ── SIGNATURE VISUAL (removed — overlays baked into images) ── */
 
   /* ── FEATURED TESTIMONIAL ── */
   .trk-test-card--featured { grid-column: 1 / -1; text-align: center; max-width: 48rem; margin: 0 auto 1rem; padding: 3rem 3.5rem; background: #f0fdf4; border: 1.5px solid var(--color-primary); border-radius: 12px; box-shadow: 0 12px 48px rgba(15,118,110,0.12); }
@@ -497,7 +513,7 @@ export default function TreksClient() {
   .trk-fade.trk-in-view { opacity: 1; transform: translateY(0); }
 `}</style>
 
-{/* ═══ 1: HERO ═══ */}
+{/* ═══ HERO ═══ */}
 <section className="trk-hero">
   <div className="trk-hero-img-wrap">
     <Image src="/Images/hero/treks-hero.webp" alt="Golden-hour Himalayan peaks with an alpine trekking trail" width={1920} height={1080} priority fetchPriority="high" quality={60} sizes="100vw" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%' }} />
@@ -513,11 +529,13 @@ export default function TreksClient() {
   </div>
 </section>
 
-{/* ═══ 1.05: HOW IT WORKS ═══ */}
+{/* ═══ HOW IT WORKS ═══ */}
 <section className="trk-how">
   <div className="trk-section-inner">
     <div className="trk-eyebrow" style={{ justifyContent: 'center' }}><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">How It Works</span><span className="trk-eyebrow-line" /></div>
-    <h2 className="trk-h2" style={{ textAlign: 'center', marginBottom: '3rem' }}>Three Steps to Your Himalayan Trek</h2>
+    <h2 className="trk-h2" style={{ textAlign: 'center', marginBottom: '3rem' }}>
+      {howHeading.rest} <span className="accent">{howHeading.lastWord}</span>
+    </h2>
     <div className="trk-how-grid">
       <div className="trk-how-step">
         <span className="trk-how-num">1</span>
@@ -538,7 +556,7 @@ export default function TreksClient() {
   </div>
 </section>
 
-{/* ═══ 1.1: QUICK NAV BAR ═══ */}
+{/* ═══ QUICK NAV ═══ */}
 <nav className="trk-quicknav" aria-label="Quick trek navigation">
   <div className="trk-quicknav-inner">
     <Link href="/treks/best-treks-in-uttarakhand/beginner" className="trk-quicknav-btn">Beginner Treks</Link>
@@ -549,7 +567,7 @@ export default function TreksClient() {
   </div>
 </nav>
 
-{/* ═══ 1.2: TRUST STRIP ═══ */}
+{/* ═══ TRUST STRIP ═══ */}
 <div className="trk-trust-strip">
   <div className="trk-trust-strip-inner">
     <span className="trk-trust-badge"><svg className="trk-trust-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>500+ trekkers hosted</span>
@@ -560,18 +578,20 @@ export default function TreksClient() {
   </div>
 </div>
 
-{/* ═══ 1.5: FEATURED TREKS (fully clickable cards) ═══ */}
+{/* ═══ FEATURED ═══ */}
 <section className="trk-featured">
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Featured</span></div>
-    <h2 className="trk-h2">Featured Treks in Uttarakhand</h2>
+    <h2 className="trk-h2">
+      {featuredHeading.rest} <span className="accent">{featuredHeading.lastWord}</span>
+    </h2>
     <div className="trk-featured-grid">
       {featuredTreks.map((trek) => {
         const diffStyle = difficultyColor(trek.difficulty);
         const trekImg = trekImageMap[trek.slug];
         return (
           <Link key={trek.slug} href={`/treks/location/${trek.locationId}/${trek.slug}`} className="trk-feat-card">
-            <span style={{ position: 'absolute', top: '14px', left: '14px', zIndex: 3, fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#ffffff', background: 'var(--color-primary)', padding: '4px 12px', borderRadius: '100px' }}>Most Popular</span>
+            <span style={{ position: 'absolute', top: '14px', left: '14px', zIndex: 3, fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#ffffff', background: '#0f766e', padding: '4px 12px', borderRadius: '999px' }}>Most Popular</span>
             {trekImg && <div className="trk-feat-img"><Image src={trekImg} alt={trekAltMap[trek.slug] || `${trek.title} trek in Uttarakhand`} width={800} height={533} loading="lazy" sizes="(max-width: 540px) 100vw, 360px" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></div>}
             <div className="trk-feat-body">
               <div className="trk-feat-meta">
@@ -590,20 +610,13 @@ export default function TreksClient() {
   </div>
 </section>
 
-{/* ═══ 1.55: SIGNATURE VISUAL ═══ */}
-<section className="trk-signature">
-  <Image src="/Images/hero/himalayan-sunrise.webp" alt="Himalayan sunrise over Uttarakhand mountain trails" width={1920} height={1080} loading="lazy" sizes="100vw" style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 30%' }} />
-  <div className="trk-signature-text">
-    <p className="trk-signature-quote">Trekking in Uttarakhand isn’t about ticking peaks.<br />It’s about experiencing the Himalayas the right way.</p>
-    <span className="trk-signature-line" />
-  </div>
-</section>
-
-{/* ═══ 1.6: WHO THESE TREKS ARE FOR ═══ */}
+{/* ═══ WHO THESE TREKS ARE FOR ═══ */}
 <section className="trk-whofor">
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Made For You</span></div>
-    <h2 className="trk-h2" style={{ marginBottom: '2rem' }}>Who These Treks Are For</h2>
+    <h2 className="trk-h2" style={{ marginBottom: '2rem' }}>
+      {whoHeading.rest} <span className="accent">{whoHeading.lastWord}</span>
+    </h2>
     <div className="trk-whofor-list">
       <div className="trk-whofor-item">
         <svg className="trk-whofor-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
@@ -621,11 +634,13 @@ export default function TreksClient() {
   </div>
 </section>
 
-{/* ═══ 1.7: MOST POPULAR ═══ */}
+{/* ═══ MOST POPULAR ═══ */}
 <section className="trk-popular">
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Top Searched</span></div>
-    <h2 className="trk-h2" style={{ marginBottom: '1.5rem' }}>Most Popular Treks in Uttarakhand</h2>
+    <h2 className="trk-h2" style={{ marginBottom: '1.5rem' }}>
+      {popularHeading.rest} <span className="accent">{popularHeading.lastWord}</span>
+    </h2>
     <div className="trk-popular-list">
       {popularTreks.map((trek) => <Link key={trek.slug} href={`/treks/location/${trek.locationId}/${trek.slug}`} className="trk-popular-chip">{trek.title}</Link>)}
     </div>
@@ -634,7 +649,12 @@ export default function TreksClient() {
 
 <SectionSeparator />
 
-{/* ═══ 2: FILTER ═══ */}
+{/* ── REST OF THE PAGE (FILTER, CATALOGUE, CURATED, EXPERIENCE, DIFFICULTY, DISCOVERY, SEASON, MIDCTA, TRUST, TESTIMONIALS, EXPERTISE, FAQ, LINK CLUSTER, PLAN CTA, SOFT CTA, STICKY) ── */}
+{/* ... (baaki sab same hai, bas headings mein accent class use karo) ... */}
+
+{/* ═══ REST OF SECTIONS WITH GREEN LAST WORD ═══ */}
+
+{/* ── FILTER ── */}
 <section className="trk-filter">
   <div className="trk-filter-inner">
     <div>
@@ -661,7 +681,7 @@ export default function TreksClient() {
   </div>
 </section>
 
-{/* ═══ 3: CATALOGUE ═══ */}
+{/* ── CATALOGUE ── */}
 {!hasAnyTreks && <div className="trk-empty"><p>No treks match your filters. Try adjusting your selection.</p></div>}
 {hasAnyTreks && (
   <section id="catalogue" className="trk-cat-section">
@@ -669,10 +689,13 @@ export default function TreksClient() {
       {Object.entries(filteredByLocation).map(([locationId, treks]: [string, typeof allTreks]) => {
         const location = locations.find((l: typeof locations[number]) => l.id === locationId);
         if (!location || treks.length === 0) return null;
+        const locHeading = splitHeading(`${location.name} Treks`);
         return (
           <div key={locationId} className="trk-cat-location">
             <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">{location.name}</span></div>
-            <h2 className="trk-cat-loc-name">{location.name} Treks</h2>
+            <h2 className="trk-cat-loc-name">
+              {locHeading.rest} <span className="accent">{locHeading.lastWord}</span>
+            </h2>
             <LocationIntro locationId={locationId} />
             {locationImageMap[locationId] && <div className="trk-loc-img-wrap"><Image src={locationImageMap[locationId]} alt={locationAltMap[locationId] || `${location.name} trekking destination, Uttarakhand`} width={1200} height={675} loading="lazy" sizes="(max-width: 768px) 100vw, 1152px" style={{ width: '100%', height: '100%', objectFit: 'cover' }} /></div>}
             <p className="trk-cat-loc-tagline">{location.tagline}</p>
@@ -707,14 +730,14 @@ export default function TreksClient() {
 
 <SectionSeparator />
 
-{/* ═══ 4: EXPLORE BY INTEREST ═══ */}
+{/* ── EXPLORE BY INTEREST ── */}
 <section className="trk-curated">
   <div className="trk-section-inner">
     <div className="trk-section-banner">
       <Image src="/Images/hero/valley-forest.webp" alt="Himalayan valley forest trails for trekking in Uttarakhand" width={1200} height={675} loading="lazy" sizes="(max-width: 768px) 100vw, 1152px" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
     </div>
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">By Interest</span></div>
-    <h2 className="trk-h2" style={{ marginBottom: '3.5rem' }}>Explore Treks by Interest</h2>
+    <h2 className="trk-h2" style={{ marginBottom: '3.5rem' }}>Explore Treks <span className="accent">by Interest</span></h2>
     <div className="trk-collection">
       <h3 className="trk-collection-h3">Beginner-Friendly Treks</h3>
       <p className="trk-collection-p">Easy-paced treks suitable for first-time trekkers.</p>
@@ -742,11 +765,11 @@ export default function TreksClient() {
   </div>
 </section>
 
-{/* ═══ 4.5: EXPERIENCE LEVEL ═══ */}
+{/* ── EXPERIENCE LEVEL ── */}
 <section className="trk-experience">
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Experience Level</span></div>
-    <h2 className="trk-h2" style={{ marginBottom: '3rem' }}>Choose Treks by Experience Level</h2>
+    <h2 className="trk-h2" style={{ marginBottom: '3rem' }}>Choose Treks <span className="accent">by Experience Level</span></h2>
     <div className="trk-exp-grid">
       <div className="trk-exp-block"><h3 className="trk-exp-h3">Beginner Treks</h3><p className="trk-exp-desc">Gentle trails with no prior experience needed. Guided, safe, and scenic.</p><div className="trk-exp-links"><Link href="/treks/location/chakrata/weekend-trek" className="trk-exp-link">Chakrata Weekend Trek →</Link><Link href="/treks/location/chakrata/budher-caves-trek" className="trk-exp-link">Budher Caves Trek →</Link><Link href="/treks/location/munsiyari/khaliya-top-trek" className="trk-exp-link">Khaliya Top Trek →</Link></div></div>
       <div className="trk-exp-block"><h3 className="trk-exp-h3">Moderate Treks</h3><p className="trk-exp-desc">Multi-day routes with some altitude. Ideal for active hikers ready for more.</p><div className="trk-exp-links"><Link href="/treks/location/sankri/kedarkantha-trek" className="trk-exp-link">Kedarkantha Trek →</Link><Link href="/treks/location/lohajung/brahmatal-trek" className="trk-exp-link">Brahmatal Trek →</Link><Link href="/treks/location/joshimath/kuari-pass-trek" className="trk-exp-link">Kuari Pass Trek →</Link></div></div>
@@ -755,14 +778,14 @@ export default function TreksClient() {
   </div>
 </section>
 
-{/* ═══ 4.6: DIFFICULTY GUIDE ═══ */}
+{/* ── DIFFICULTY GUIDE ── */}
 <section className="trk-diffguide">
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Difficulty Scale</span></div>
-    <h2 className="trk-h2" style={{ marginBottom: '2rem' }}>Trek Difficulty Explained</h2>
+    <h2 className="trk-h2" style={{ marginBottom: '2rem' }}>Trek Difficulty <span className="accent">Explained</span></h2>
     <div className="trk-diffguide-grid">
       <div className="trk-diffguide-block">
-        <span className="trk-diffguide-dot" style={{ background: 'var(--color-primary)' }} />
+        <span className="trk-diffguide-dot" style={{ background: '#0f766e' }} />
         <div><p className="trk-diffguide-label">Easy</p><p className="trk-diffguide-text">Short duration, low altitude, well-marked trails. No prior trekking experience needed. Suitable for families and <Link href="/treks/best-treks-in-uttarakhand/beginner" style={iLinkStyle}>first-time trekkers</Link>.</p></div>
       </div>
       <div className="trk-diffguide-block">
@@ -779,14 +802,14 @@ export default function TreksClient() {
 
 <SectionSeparator />
 
-{/* ═══ 5: FIND YOUR TREK ═══ */}
+{/* ── FIND YOUR TREK ── */}
 <section className="trk-discovery">
   <div className="trk-section-inner">
     <div className="trk-section-banner">
       <Image src="/Images/hero/alpine-ridge.webp" alt="Alpine ridge trail for Himalayan trekking in Uttarakhand" width={1200} height={675} loading="lazy" sizes="(max-width: 768px) 100vw, 1152px" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
     </div>
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Find Your Trek</span></div>
-    <h2 className="trk-h2">Not Sure Which Trek Is Right for You?</h2>
+    <h2 className="trk-h2">Not Sure Which Trek <span className="accent">Is Right for You?</span></h2>
     <div className="trk-discovery-grid">
       <div className="trk-disc-card"><h3 className="trk-disc-h3">First-Time Trekkers</h3><p className="trk-disc-p">New to trekking? Start with easy, guided trails that focus on experience, not endurance.</p><Link href="/treks/best-treks-in-uttarakhand/beginner" className="trk-disc-link">Browse beginner-friendly treks →</Link></div>
       <div className="trk-disc-card"><h3 className="trk-disc-h3">Weekend Explorers</h3><p className="trk-disc-p">Short on time? Choose forest and waterfall treks that fit into a weekend.</p><Link href="/treks/location/chakrata" className="trk-disc-link">View Chakrata Weekend Trek itinerary →</Link></div>
@@ -795,11 +818,11 @@ export default function TreksClient() {
   </div>
 </section>
 
-{/* ═══ 5.5: BEST TIME ═══ */}
+{/* ── BEST TIME ── */}
 <section className="trk-season">
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Seasonal Guide</span></div>
-    <h2 className="trk-h2" style={{ marginBottom: '1rem' }}>Best Time for Trekking in Uttarakhand</h2>
+    <h2 className="trk-h2" style={{ marginBottom: '1rem' }}>Best Time for <span className="accent">Trekking in Uttarakhand</span></h2>
     <p className="trk-season-intro">Uttarakhand offers trekking year-round, with each season transforming the landscape. From spring wildflowers in the <Link href="/treks/location/joshimath">Joshimath region</Link> to deep snow on the <Link href="/treks/location/sankri/kedarkantha-trek">Kedarkantha summit</Link>, timing your trek shapes the entire experience.</p>
     <div className="trk-season-grid">
       <div className="trk-season-block"><h3 className="trk-season-h3">Summer Treks</h3><span className="trk-season-months">March – June</span><p className="trk-season-text">Clear skies and wildflower meadows. Best for high-altitude passes like <Link href="/treks/location/joshimath/kuari-pass-trek" style={iLinkStyle}>Kuari Pass</Link> and valley treks in <Link href="/treks/location/sankri/har-ki-dun-trek" style={iLinkStyle}>Har Ki Dun</Link>. Snow begins melting at lower altitudes, opening longer routes.</p><div className="trk-season-links"><Link href="/treks/location/sankri/har-ki-dun-trek" className="trk-season-link">Har Ki Dun Trek →</Link><Link href="/treks/location/joshimath/kuari-pass-trek" className="trk-season-link">Kuari Pass Trek →</Link><Link href="/treks/spring-treks-uttarakhand" className="trk-season-link">All spring treks →</Link></div></div>
@@ -809,7 +832,7 @@ export default function TreksClient() {
   </div>
 </section>
 
-{/* ═══ 5.7: MID CTA ═══ */}
+{/* ── MID CTA ── */}
 <section className="trk-midcta">
   <div className="trk-midcta-inner">
     <p className="trk-midcta-text">Confused between treks? Talk to an expert and get a personalised recommendation.</p>
@@ -819,12 +842,12 @@ export default function TreksClient() {
 
 <SectionSeparator />
 
-{/* ═══ 6: WHY TREK WITH US ═══ */}
+{/* ── WHY TREK WITH US ── */}
 <section className="trk-trust">
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Our Approach</span></div>
-    <h2 className="trk-h2">Why Trek With Us</h2>
-    <p className="trk-anti-mass">We don’t run crowded batches. Every trek is intentionally small and experience-focused.</p>
+    <h2 className="trk-h2">Why Trek <span className="accent">With Us</span></h2>
+    <p className="trk-anti-mass">We don't run crowded batches. Every trek is intentionally small and experience-focused.</p>
     <ul className="trk-trust-grid">
       <li className="trk-trust-item"><span className="trk-trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span><strong>Beginner-friendly pacing</strong></li>
       <li className="trk-trust-item"><span className="trk-trust-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></span><strong>Small groups</strong></li>
@@ -835,11 +858,11 @@ export default function TreksClient() {
   </div>
 </section>
 
-{/* ═══ 6.3: TESTIMONIALS ═══ */}
+{/* ── TESTIMONIALS ── */}
 <section className="trk-testimonials">
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Trekker Stories</span></div>
-    <h2 className="trk-h2">Real Trek Experiences</h2>
+    <h2 className="trk-h2">Real Trek <span className="accent">Experiences</span></h2>
     <div className="trk-test-grid">
       {TESTIMONIALS.map((t, i) => (
         <div key={i} className={`trk-test-card ${i === 0 ? 'trk-test-card--featured' : ''}`}>
@@ -853,14 +876,14 @@ export default function TreksClient() {
 
 <SectionSeparator />
 
-{/* ═══ 6.5: EXPERTISE ═══ */}
+{/* ── EXPERTISE ── */}
 <section className="trk-expertise">
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">About Us</span></div>
-    <h2 className="trk-h2">Our Trekking Expertise</h2>
+    <h2 className="trk-h2">Our Trekking <span className="accent">Expertise</span></h2>
     <div className="trk-expertise-content">
       <p className="trk-expertise-p">We have been organising guided Himalayan treks across Uttarakhand for years — from weekend forest walks near <Link href="/treks/location/chakrata">Chakrata</Link> to challenging summit expeditions out of <Link href="/treks/location/sankri">Sankri</Link> and <Link href="/treks/location/joshimath">Joshimath</Link>. Our operations are rooted in deep local knowledge, not outsourced logistics.</p>
-      <p className="trk-expertise-p">We’ve walked these trails in every season — from snow-covered Kedarkantha winters to monsoon valleys in Har Ki Dun. Every route recommendation comes from real experience on these mountains, not a brochure.</p>
+      <p className="trk-expertise-p">We've walked these trails in every season — from snow-covered Kedarkantha winters to monsoon valleys in Har Ki Dun. Every route recommendation comes from real experience on these mountains, not a brochure.</p>
       <p className="trk-expertise-p">Every trek route we offer has been personally scouted by our team. We understand trail conditions in each season, from the monsoon-swollen rivers of <Link href="/treks/location/chakrata/tiger-fall-trek">Tiger Fall</Link> to the frozen ridgelines of <Link href="/treks/location/sankri/kedarkantha-trek">Kedarkantha</Link> in January. This is not theoretical — it is lived experience on these mountains.</p>
       <p className="trk-expertise-p">Our focus is exclusively Uttarakhand and the Indian Himalayas. Instead of spreading thin across dozens of destinations, we go deep — covering regions like <Link href="/treks/location/munsiyari">Munsiyari</Link> in Kumaon, <Link href="/treks/location/lohajung">Lohajung</Link> in Garhwal, and the remote valleys of Sankri. This regional specialisation means better guides, better logistics, and better safety. We focus only on Uttarakhand — not mass, multi-state operations.</p>
       <p className="trk-expertise-p">Safety is never an afterthought. Every trek includes trained local guides, proper acclimatisation schedules, first-aid kits, and emergency communication. For high-altitude treks above 4,000 m like <Link href="/treks/location/lohajung/roopkund-trek">Roopkund</Link> and <Link href="/treks/location/joshimath/pangarchulla-trek">Pangarchulla</Link>, we enforce fitness screening and altitude-gain protocols. Read our <Link href="/treks/garhwal-himalayas/fitness-guide">fitness preparation guide</Link> before booking.</p>
@@ -868,11 +891,11 @@ export default function TreksClient() {
   </div>
 </section>
 
-{/* ═══ 6.7: FAQ (8 questions) ═══ */}
+{/* ── FAQ ── */}
 <section className="trk-faq">
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Common Questions</span></div>
-    <h2 className="trk-h2">Trekking FAQs</h2>
+    <h2 className="trk-h2">Trekking <span className="accent">FAQs</span></h2>
     <div className="trk-faq-list">
       {FAQ_DATA.map((faq, index) => (
         <div key={index} className="trk-faq-item">
@@ -888,11 +911,11 @@ export default function TreksClient() {
   </div>
 </section>
 
-{/* ═══ 6.9: LINK CLUSTER ═══ */}
+{/* ── LINK CLUSTER ── */}
 <section className="trk-links-cluster">
   <div className="trk-section-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Resources</span></div>
-    <h2 className="trk-h2">Explore More Trekking Guides</h2>
+    <h2 className="trk-h2">Explore More <span className="accent">Trekking Guides</span></h2>
     <div className="trk-links-grid">
       <Link href="/treks/best-treks-in-uttarakhand/beginner" className="trk-links-item">Beginner Treks in Uttarakhand</Link>
       <Link href="/treks/best-treks-in-uttarakhand" className="trk-links-item">Best Treks in Uttarakhand</Link>
@@ -906,11 +929,11 @@ export default function TreksClient() {
   </div>
 </section>
 
-{/* ═══ 7: GET YOUR TREK RECOMMENDATION ═══ */}
+{/* ── GET YOUR TREK RECOMMENDATION ── */}
 <section className="trk-plan-cta">
   <div className="trk-plan-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Start Planning</span><span className="trk-eyebrow-line" /></div>
-    <h2 className="trk-h2">Talk to a Local Trek Expert</h2>
+    <h2 className="trk-h2">Talk to a <span className="accent">Local Trek Expert</span></h2>
     <p className="trk-plan-desc">Not sure which trek is right for you? Let our team help you plan the perfect Himalayan adventure based on your experience, schedule, and goals.</p>
     <p className="trk-scarcity">Limited group sizes for each trek</p>
     <div className="trk-plan-btns">
@@ -921,18 +944,18 @@ export default function TreksClient() {
   </div>
 </section>
 
-{/* ═══ 8: SOFT CTA ═══ */}
+{/* ── SOFT CTA ── */}
 <section className="trk-cta">
   <div className="trk-cta-inner">
     <div className="trk-eyebrow"><span className="trk-eyebrow-line" /><span className="trk-eyebrow-text">Get in Touch</span><span className="trk-eyebrow-line" /></div>
-    <h2 className="trk-h2">Not sure which trek fits you best?</h2>
+    <h2 className="trk-h2">Not sure which trek <span className="accent">fits you best?</span></h2>
     <a href="/contact" className="trk-cta-btn">Talk to us →</a>
   </div>
 </section>
 
-{/* ═══ STICKY CTA ═══ */}
+{/* ── STICKY CTA ── */}
 <div className={`trk-sticky ${showSticky ? 'trk-sticky--visible' : 'trk-sticky--hidden'}`}>
-  <a href="https://wa.me/919760446101?text=Hi%2C%20I%20need%20a%20trek%20recommendation." className="trk-sticky-btn" aria-label="Talk to a local trek expert via WhatsApp">👉 Talk to a Local Expert</a>
+  <a href="https://wa.me/919760446101?text=Hi%2C%20I%20need%20a%20trek%20recommendation." className="trk-sticky-btn">Talk to a Local Expert</a>
 </div>
 
     </div>

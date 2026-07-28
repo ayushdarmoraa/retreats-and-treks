@@ -45,6 +45,7 @@ export default function Header() {
           height: 76px;
           display: flex;
           align-items: center;
+          max-width: 100vw;
         }
 
         .hn-header-transparent {
@@ -146,6 +147,7 @@ export default function Header() {
           transition: all 0.2s ease;
           display: flex;
           align-items: center;
+          min-height: 44px;
         }
         .hn-mobile-link:hover,
         .hn-mobile-link.active {
@@ -166,6 +168,7 @@ export default function Header() {
           transition: color 0.2s ease;
           display: flex;
           align-items: center;
+          min-height: 40px;
         }
         .hn-mobile-sub:hover {
           color: #0f766e;
@@ -187,6 +190,8 @@ export default function Header() {
           min-height: 44px;
           align-items: center;
           justify-content: center;
+          flex-shrink: 0;
+          -webkit-tap-highlight-color: transparent;
         }
         .hn-hamburger span {
           display: block;
@@ -307,6 +312,18 @@ export default function Header() {
           border-color: #0f766e;
         }
 
+        /* ── MOBILE NAV PANEL (positioning hardened) ── */
+        .hn-mobile-nav {
+          position: fixed;
+          top: 68px;
+          left: 0;
+          right: 0;
+          width: 100%;
+          max-width: 100vw;
+          -webkit-overflow-scrolling: touch;
+          overscroll-behavior: contain;
+        }
+
         /* ── RESPONSIVE ── */
         @media (max-width: 1024px) {
           .hn-desktop-nav {
@@ -374,6 +391,16 @@ export default function Header() {
           .hn-logo-image {
             height: 42px !important;
             max-width: 130px !important;
+          }
+        }
+
+        /* Prevent any accidental horizontal overflow on small screens */
+        @media (max-width: 480px) {
+          html, body {
+            overflow-x: hidden;
+          }
+          .hn-main-nav {
+            padding: 0 0.85rem !important;
           }
         }
       `}</style>
@@ -677,7 +704,7 @@ export default function Header() {
               backdropFilter: 'blur(20px)',
               borderTop: '1px solid rgba(15,118,110,0.08)',
               animation: 'slideDown 0.25s ease both',
-              maxHeight: '85vh',
+              maxHeight: 'calc(100vh - 68px)',
               overflowY: 'auto',
               paddingBottom: '1rem',
             }}

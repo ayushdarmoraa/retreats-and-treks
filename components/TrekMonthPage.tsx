@@ -172,7 +172,7 @@ export default function TrekMonthPage({
   return (
   <TrackedPage
     page={path}
-    style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}
+    style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}
   >
     <script
       type="application/ld+json"
@@ -182,94 +182,173 @@ export default function TrekMonthPage({
     />
 
     <style>{`
-      .tm-body { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555555; margin: 0; }
-      .tm-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1rem; }
-      .tm-eyebrow-line { width: 24px; height: 1px; background: var(--color-primary); display: inline-block; }
-      .tm-eyebrow-text { font-family: var(--font-geist-sans), sans-serif; font-size: 0.75rem; letter-spacing: 0.28em; text-transform: uppercase; color: #374151; font-weight: 500; }
+      .med-shell { width: 100vw; margin-left: calc(-50vw + 50%); }
+      .med-outer { max-width: 76rem; margin: 0 auto; padding: 0 1.5rem; }
+      .med-inner { max-width: 58rem; margin: 0 auto; padding: 0 1.5rem; }
 
-      .tm-table-wrap { overflow-x: auto; border: 1px solid #e5e7eb; border-radius: 10px; background: #ffffff; }
-      .tm-table { width: 100%; border-collapse: collapse; }
-      .tm-table td { font-family: var(--font-geist-sans), sans-serif; font-size: 0.84rem; font-weight: 300; color: #444; padding: 0.75rem 1rem; border-bottom: 1px solid #f0f0f0; }
-      .tm-table td:first-child { font-weight: 500; color: #111; width: 35%; }
-      .tm-table tr:last-child td { border-bottom: none; }
-      .tm-table tbody tr { transition: background 0.15s ease; }
-      .tm-table tbody tr:hover td { background: #f7f9f7; }
+      .med-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.1rem; }
+      .med-eyebrow-line { width: 30px; height: 1px; background: rgba(15,118,110,0.35); flex-shrink: 0; }
+      .med-eyebrow-text { font-family: var(--font-inter), sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: #6b7280; font-weight: 600; }
 
-      .tm-callout { background: #f7f9f7; border: 1px solid #eef0ee; border-left: 3px solid var(--color-primary); border-radius: 10px; padding: 1rem 1.25rem; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin-bottom: 1rem; }
+      .med-h2 { font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 500; letter-spacing: -0.03em; color: #2B2A26; line-height: 1.15; margin: 0 0 1.5rem; }
+      .med-h2 span { color: #0f766e; }
+      .med-body { font-family: var(--font-inter), sans-serif; font-size: 0.95rem; font-weight: 400; line-height: 1.9; color: #4b5259; margin: 0; }
 
-      .tm-faq-item { border-bottom: 1px solid #f0f0f0; padding: 0.85rem 0; }
-      .tm-faq-item summary { cursor: pointer; font-family: var(--font-geist-sans), sans-serif; font-weight: 500; font-size: 0.92rem; line-height: 1.6; color: #111; }
-      .tm-faq-item p { font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; line-height: 1.85; color: #555; margin-top: 0.5rem; }
+      .med-breadcrumb-wrap { padding: 1rem 0 0.5rem; }
 
-      .tm-nav-group { border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; }
-      .tm-nav-link { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 1.1rem; border-bottom: 1px solid #f0f0f0; font-family: var(--font-geist-sans), sans-serif; font-size: 0.88rem; font-weight: 300; color: #333; text-decoration: none; transition: background 0.15s ease, color 0.15s ease; }
-      .tm-nav-link:hover { background: #f7f9f7; color: #374151; }
-      .tm-nav-link::after { content: '→'; color: #374151; }
-      .tm-nav-group .tm-nav-link:last-child { border-bottom: none; }
+      .med-section-alt { background: #f7f9f7; }
+      .med-section-white { background: #ffffff; }
+      .med-section-padding { padding: 4rem 0; }
+
+      /* ── Hero (no photo — data-driven trek page) ── */
+      .med-tm-hero {
+        background: linear-gradient(180deg, #f7f9f7 0%, #ffffff 100%);
+        padding: 4.5rem 0;
+        border-bottom: 1px solid rgba(15,118,110,0.1);
+      }
+      .med-tm-h1 {
+        font-family: var(--font-fraunces), Georgia, serif;
+        font-size: clamp(2rem, 4vw, 2.9rem);
+        font-weight: 600;
+        letter-spacing: -0.03em;
+        color: #2B2A26;
+        line-height: 1.1;
+        margin: 0 0 1.4rem;
+      }
+      .med-tm-badge {
+        display: inline-block;
+        background: rgba(15,118,110,0.08);
+        color: #0f766e;
+        padding: 0.42rem 0.9rem;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        font-family: var(--font-inter), sans-serif;
+        letter-spacing: 0.03em;
+        border: 1px solid rgba(15,118,110,0.16);
+      }
+
+      /* ── Table (card-wrapped) ── */
+      .med-tm-table-card {
+        background: #fff;
+        border: 1px solid rgba(15,118,110,0.12);
+        border-radius: 18px;
+        box-shadow: 0 10px 30px rgba(15,31,28,0.05);
+        overflow: hidden;
+      }
+      .med-tm-table { width: 100%; border-collapse: collapse; }
+      .med-tm-table td {
+        font-family: var(--font-inter), sans-serif;
+        font-size: 0.88rem;
+        font-weight: 400;
+        color: #4b5259;
+        padding: 0.9rem 1.4rem;
+        border-bottom: 1px solid rgba(15,118,110,0.08);
+      }
+      .med-tm-table td:first-child {
+        font-weight: 600;
+        color: #2B2A26;
+        width: 38%;
+        font-family: var(--font-fraunces), Georgia, serif;
+        font-size: 0.9rem;
+      }
+      .med-tm-table tr:last-child td { border-bottom: none; }
+      .med-tm-table tbody tr { transition: background 0.2s ease; }
+      .med-tm-table tbody tr:hover td { background: #f7f9f7; }
+
+      /* ── FAQ accordion (shared pattern) ── */
+      .med-faq-accordion { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 0.5rem; }
+      .med-faq-details { background: #fff; border: 1px solid rgba(15,118,110,0.1); border-radius: 12px; overflow: hidden; transition: border-color 0.3s ease; }
+      .med-faq-details:hover { border-color: rgba(15,118,110,0.25); }
+      .med-faq-details[open] { border-color: rgba(15,118,110,0.3); }
+      .med-faq-summary {
+        display: flex; justify-content: space-between; align-items: center;
+        padding: 1.25rem 1.5rem; cursor: pointer; list-style: none;
+        font-family: var(--font-inter), sans-serif; font-size: 0.95rem; font-weight: 500; color: #2B2A26;
+        transition: background 0.2s ease; user-select: none; gap: 1rem;
+      }
+      .med-faq-summary::-webkit-details-marker { display: none; }
+      .med-faq-summary:hover { background: rgba(15,118,110,0.03); }
+      .med-faq-details[open] .med-faq-summary { background: rgba(15,118,110,0.04); border-bottom: 1px solid rgba(15,118,110,0.06); }
+      .med-faq-answer { padding: 0 1.5rem 1.5rem; animation: med-faq-slide 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+      @keyframes med-faq-slide { 0% { opacity: 0; transform: translateY(-12px) scale(0.98); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
+      .med-faq-answer p { margin: 0; font-family: var(--font-inter), sans-serif; font-size: 0.92rem; line-height: 1.9; color: #4b5259; }
+
+      /* ── Nav list ── */
+      .med-tm-nav-group { border: 1px solid rgba(15,118,110,0.12); border-radius: 18px; overflow: hidden; background: #fff; }
+      .med-tm-nav-link {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0.95rem 1.4rem; border-bottom: 1px solid rgba(15,118,110,0.08);
+        font-family: var(--font-inter), sans-serif; font-size: 0.9rem; font-weight: 500; color: #2B2A26;
+        text-decoration: none; transition: background 0.2s ease, color 0.2s ease;
+      }
+      .med-tm-nav-link:hover { background: #f7f9f7; color: #0f766e; }
+      .med-tm-nav-link::after { content: '→'; color: #0f766e; }
+      .med-tm-nav-group .med-tm-nav-link:last-child { border-bottom: none; }
+
+      .med-tm-month-pill {
+        display: inline-block;
+        padding: 0.5rem 1.1rem;
+        border-radius: 999px;
+        border: 1px solid rgba(15,118,110,0.3);
+        color: #0f766e;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        font-family: var(--font-inter), sans-serif;
+        transition: all 0.3s cubic-bezier(0.22,1,0.36,1);
+      }
+      .med-tm-month-pill:hover {
+        background: #0f766e;
+        color: #fff;
+        transform: translateY(-2px);
+      }
     `}</style>
 
     {/* ── BREADCRUMB ── */}
-    <div style={{ padding: '0 0 0.5rem' }}>
-      <Breadcrumb
-        items={[
-          { name: 'Home', href: '/' },
-          { name: 'Treks', href: '/treks' },
-          { name: trekInfo.displayName, href: trekInfo.locationPath },
-          { name: monthCapitalised },
-        ]}
-      />
+    <div className="med-breadcrumb-wrap">
+      <div className="med-outer">
+        <Breadcrumb
+          items={[
+            { name: 'Home', href: '/' },
+            { name: 'Treks', href: '/treks' },
+            { name: trekInfo.displayName, href: trekInfo.locationPath },
+            { name: monthCapitalised },
+          ]}
+        />
+      </div>
     </div>
 
     {/* ── HERO ── */}
-<section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
-  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <div className="tm-eyebrow">
-      <span className="tm-eyebrow-line" />
-      <span className="tm-eyebrow-text">
-        {trekInfo.displayName} · {trek.difficulty} · {trek.altitude}
-      </span>
-    </div>
-    <h1 style={{
-      fontFamily: 'var(--font-geist-sans), sans-serif',
-      fontSize: 'clamp(1.75rem, 3.5vw, 2.4rem)',
-      fontWeight: 200,
-      letterSpacing: '-0.035em',
-      color: '#111111',
-      lineHeight: 1.1,
-      margin: '0 0 1.5rem',
-    }}>
-      {trekInfo.displayName} in {monthCapitalised}
-    </h1>
-    <p style={{ fontSize: '1.05rem', lineHeight: 1.8, marginBottom: '1.5rem', color: '#555555', fontFamily: 'var(--font-geist-sans), sans-serif', fontWeight: 300 }}>
-      {condition.conditions}
-    </p>
-    {isBestSeason && (
-      <span style={{
-        display: 'inline-block',
-        background: '#ecfdf5',
-        color: '#065f46',
-        padding: '0.35rem 0.85rem',
-        borderRadius: '4px',
-        fontSize: '0.82rem',
-        fontWeight: 600,
-        fontFamily: 'var(--font-geist-sans), sans-serif',
-        letterSpacing: '0.02em',
-      }}>
-        {monthCapitalised} is within the best season for this trek
-      </span>
-    )}
-  </div>
-</section>
+    <section className="med-shell med-tm-hero">
+      <div className="med-inner">
+        <div className="med-eyebrow">
+          <span className="med-eyebrow-line" />
+          <span className="med-eyebrow-text">
+            {trekInfo.displayName} · {trek.difficulty} · {trek.altitude}
+          </span>
+        </div>
+        <h1 className="med-tm-h1">
+          {trekInfo.displayName} in <span style={{ color: '#0f766e' }}>{monthCapitalised}</span>
+        </h1>
+        <p className="med-body" style={{ fontSize: '1.02rem', marginBottom: '1.5rem' }}>
+          {condition.conditions}
+        </p>
+        {isBestSeason && (
+          <span className="med-tm-badge">
+            {monthCapitalised} is within the best season for this trek
+          </span>
+        )}
+      </div>
+    </section>
 
     {/* ── AT A GLANCE TABLE ── */}
-    <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
-      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-        <div className="tm-eyebrow"><span className="tm-eyebrow-line" /><span className="tm-eyebrow-text">{monthCapitalised} at a Glance</span></div>
-        <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
-          {trekInfo.displayName} in {monthCapitalised} at a Glance
-        </h2>
-        <div className="tm-table-wrap">
-          <table className="tm-table">
+    <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+      <div className="med-inner">
+        <div className="med-eyebrow"><span className="med-eyebrow-line" /><span className="med-eyebrow-text">{monthCapitalised} at a Glance</span></div>
+        <h2 className="med-h2">{trekInfo.displayName} in {monthCapitalised} <span>at a Glance</span></h2>
+        <div className="med-tm-table-card">
+          <table className="med-tm-table">
             <tbody>
               {[
                 { label: 'Trek', value: trekInfo.displayName },
@@ -290,18 +369,16 @@ export default function TrekMonthPage({
     </section>
 
     {/* ── TREK OVERVIEW ── */}
-    <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
-      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-        <div className="tm-eyebrow"><span className="tm-eyebrow-line" /><span className="tm-eyebrow-text">About the Trek</span></div>
-        <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
-          About the {trekInfo.displayName} in {monthCapitalised}
-        </h2>
-        <p className="tm-body" style={{ marginBottom: '1rem' }}>
+    <section className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+      <div className="med-inner">
+        <div className="med-eyebrow"><span className="med-eyebrow-line" /><span className="med-eyebrow-text">About the Trek</span></div>
+        <h2 className="med-h2">About the {trekInfo.displayName} in <span>{monthCapitalised}</span></h2>
+        <p className="med-body" style={{ marginBottom: '1rem' }}>
           {trek.overview.split('\n\n')[0]}
         </p>
-        <p className="tm-body">
+        <p className="med-body">
           Read the full{' '}
-          <Link href={trekInfo.locationPath} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
+          <Link href={trekInfo.locationPath} style={{ color: '#0f766e', textDecoration: 'none', fontWeight: 600 }}>
             {trekInfo.displayName} guide →
           </Link>
         </p>
@@ -319,15 +396,13 @@ export default function TrekMonthPage({
 
     {/* ── DEPARTURES ── */}
     {trekInfo.departuresPath && (
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
-        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-          <div className="tm-eyebrow"><span className="tm-eyebrow-line" /><span className="tm-eyebrow-text">{monthCapitalised} Departures</span></div>
-          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.25rem' }}>
-            {monthCapitalised} Departures
-          </h2>
-          <p className="tm-body">
+      <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+        <div className="med-inner">
+          <div className="med-eyebrow"><span className="med-eyebrow-line" /><span className="med-eyebrow-text">{monthCapitalised} Departures</span></div>
+          <h2 className="med-h2">{monthCapitalised} <span>Departures</span></h2>
+          <p className="med-body">
             Check{' '}
-            <Link href={trekInfo.departuresPath} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>
+            <Link href={trekInfo.departuresPath} style={{ color: '#0f766e', textDecoration: 'none', fontWeight: 600 }}>
               upcoming {trekInfo.displayName} departure dates →
             </Link>
           </p>
@@ -336,45 +411,43 @@ export default function TrekMonthPage({
     )}
 
     {/* ── FAQ ── */}
-    <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
-      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-        <div className="tm-eyebrow"><span className="tm-eyebrow-line" /><span className="tm-eyebrow-text">FAQ</span></div>
-        <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
-          Frequently Asked Questions
-        </h2>
-        {faqItems.map((faq, i) => (
-          <details key={i} className="tm-faq-item">
-            <summary>{faq.question}</summary>
-            <p>{faq.answer}</p>
-          </details>
-        ))}
+    <section className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+      <div className="med-inner">
+        <div className="med-eyebrow"><span className="med-eyebrow-line" /><span className="med-eyebrow-text">FAQ</span></div>
+        <h2 className="med-h2">Frequently Asked <span>Questions</span></h2>
+        <div className="med-faq-accordion">
+          {faqItems.map((faq, i) => (
+            <details key={i} className="med-faq-details">
+              <summary className="med-faq-summary">
+                <span style={{ flex: 1 }}>{faq.question}</span>
+                <span style={{ flexShrink: 0, width: 24, height: 24, display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#0f766e' }}>
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19" />
+                    <line x1="5" y1="12" x2="19" y2="12" />
+                  </svg>
+                </span>
+              </summary>
+              <div className="med-faq-answer">
+                <p>{faq.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
       </div>
     </section>
 
     {/* ── OTHER MONTHS ── */}
     {otherMonths.length > 0 && (
-      <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#ffffff', paddingTop: '4rem', paddingBottom: '4rem', borderBottom: '1px solid #e5e7eb' }}>
-        <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-          <div className="tm-eyebrow"><span className="tm-eyebrow-line" /><span className="tm-eyebrow-text">Other Months</span></div>
-          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
-            {trekInfo.displayName} in Other Months
-          </h2>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+      <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+        <div className="med-inner">
+          <div className="med-eyebrow"><span className="med-eyebrow-line" /><span className="med-eyebrow-text">Other Months</span></div>
+          <h2 className="med-h2">{trekInfo.displayName} in <span>Other Months</span></h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem' }}>
             {otherMonths.map((mc) => (
               <Link
                 key={mc.month}
                 href={`/treks/${urlSlug}/${mc.month.toLowerCase()}`}
-                style={{
-                  display: 'inline-block',
-                  padding: '0.4rem 0.85rem',
-                  borderRadius: '6px',
-                  border: '1px solid var(--color-primary)',
-                  color: 'var(--color-primary)',
-                  fontSize: '0.85rem',
-                  fontWeight: 500,
-                  textDecoration: 'none',
-                  fontFamily: 'var(--font-geist-sans), sans-serif',
-                }}
+                className="med-tm-month-pill"
               >
                 {mc.month}
               </Link>
@@ -385,17 +458,15 @@ export default function TrekMonthPage({
     )}
 
     {/* ── EXPLORE MORE ── */}
-    <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', paddingTop: '4rem', paddingBottom: '4rem' }}>
-      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-        <div className="tm-eyebrow"><span className="tm-eyebrow-line" /><span className="tm-eyebrow-text">Explore More</span></div>
-        <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111', lineHeight: 1.15, marginBottom: '1.75rem' }}>
-          Explore More
-        </h2>
-        <div className="tm-nav-group">
-          <Link href={trekInfo.locationPath} className="tm-nav-link">{trekInfo.displayName} — Full Guide</Link>
-          <Link href="/treks/best-treks-in-uttarakhand" className="tm-nav-link">Best Treks in Uttarakhand</Link>
-          <Link href="/treks/best-treks-in-uttarakhand/snow" className="tm-nav-link">Winter Treks in Uttarakhand</Link>
-          <Link href="/treks/summer-treks-uttarakhand" className="tm-nav-link">Summer Treks in Uttarakhand</Link>
+    <section className="med-shell med-section-alt med-section-padding">
+      <div className="med-inner">
+        <div className="med-eyebrow"><span className="med-eyebrow-line" /><span className="med-eyebrow-text">Explore More</span></div>
+        <h2 className="med-h2">Explore <span>More</span></h2>
+        <div className="med-tm-nav-group">
+          <Link href={trekInfo.locationPath} className="med-tm-nav-link">{trekInfo.displayName} — Full Guide</Link>
+          <Link href="/treks/best-treks-in-uttarakhand" className="med-tm-nav-link">Best Treks in Uttarakhand</Link>
+          <Link href="/treks/best-treks-in-uttarakhand/snow" className="med-tm-nav-link">Winter Treks in Uttarakhand</Link>
+          <Link href="/treks/summer-treks-uttarakhand" className="med-tm-nav-link">Summer Treks in Uttarakhand</Link>
         </div>
       </div>
     </section>

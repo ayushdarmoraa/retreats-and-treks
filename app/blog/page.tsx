@@ -28,411 +28,179 @@ export function generateMetadata(): Metadata {
   };
 }
 
+const TOPICS = [
+  { href: '/topics/retreat-decision', label: 'Retreat Decision Guides' },
+  { href: '/topics/location-authority', label: 'Location Guides' },
+  { href: '/topics/trek-decision', label: 'Trek Guides' },
+  { href: '/topics/lifestyle', label: 'Lifestyle' },
+];
+
+const ARTICLES = [
+  {
+    slug: 'kedarkantha-vs-har-ki-dun',
+    tag: 'Trek Guide',
+    title: 'Kedarkantha vs Har Ki Dun Trek: Which Peak Should You Climb?',
+    desc: 'Comparing two popular Himalayan treks from Sankri: Which one matches your ambition, fitness level, and mountain style?',
+    featured: true,
+  },
+  {
+    slug: 'chakrata-vs-sankri',
+    tag: 'Location Guide',
+    title: 'Chakrata vs Sankri: Choose Your Himalayan Destination',
+    desc: "Should you retreat in peaceful Chakrata or trek from the remote base of Sankri? Here's how to choose based on what you want.",
+  },
+  {
+    slug: 'trek-vs-retreat',
+    tag: 'Retreat Decision',
+    title: 'Trek vs Retreat: Which Mountain Experience Is Right For You?',
+    desc: 'Not sure whether to climb a peak or find peace in the mountains? Learn the differences, and which one will transform you.',
+  },
+  {
+    slug: 'is-weekend-retreat-worth-it',
+    tag: 'Lifestyle',
+    title: 'Is a Weekend Retreat Worth It? The Real Answer.',
+    desc: "You have a limited weekend. Learn why a two-day mountain retreat can reset your mind and body more than you'd expect.",
+  },
+  {
+    slug: 'chakrata-vs-mussoorie-weekend-trip',
+    tag: 'Location Guide',
+    title: 'Chakrata vs Mussoorie: Where to Spend Your Weekend Escape',
+    desc: 'Two Himalayan towns, two very different vibes. Find out which one fits your weekend escape better.',
+  },
+];
+
 export default function BlogPage() {
   return (
-    <main style={{ width: '100%', padding: '0' }}>
+    <main style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
       <style>{`
-        /* ── HERO ── */
-        .bl-hero {
-          width: 100vw;
-          margin-left: calc(-50vw + 50%);
-          background: #f7f9f7;
-          padding: 8rem 2rem 4.5rem;
-          border-bottom: 1px solid #e5e7eb;
-        }
-        .bl-hero-inner {
-          max-width: 78rem;
-          margin: 0 auto;
-          text-align: center;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-        .bl-eyebrow {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 0.75rem;
-          margin-bottom: 1.25rem;
-        }
-        .bl-eyebrow-line {
-          width: 24px;
-          height: 1px;
-          background: var(--color-primary);
-          
-          display: inline-block;
-        }
-        .bl-eyebrow-text {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.75rem;
-          letter-spacing: 0.28em;
-          text-transform: uppercase;
-          color: #374151;
-          font-weight: 500;
-        }
-        .bl-hero h1 {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: clamp(2.2rem, 4.5vw, 3.5rem);
-          font-weight: 200;
-          letter-spacing: -0.04em;
-          color: #111111;
-          line-height: 1.05;
-          margin: 0 0 1.25rem;
-          text-align: center;
-        }
-        .bl-hero-desc {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.95rem;
-          font-weight: 300;
-          line-height: 1.85;
-          color: #555555;
-          max-width: 520px;
-          margin: 0;
-          text-align: center;
-        }
+        .med-shell { width: 100vw; margin-left: calc(-50vw + 50%); }
+        .med-outer { max-width: 76rem; margin: 0 auto; padding: 0 1.5rem; }
+        .med-inner { max-width: 58rem; margin: 0 auto; padding: 0 1.5rem; }
 
-        /* ── TOPICS ── */
-        .bl-topics-section {
-          width: 100vw;
-          margin-left: calc(-50vw + 50%);
-          background: #ffffff;
-          padding: 4rem 2rem;
-          border-bottom: 1px solid #e5e7eb;
-        }
-        .bl-topics-inner {
-          max-width: 78rem;
-          margin: 0 auto;
-          text-align: center;
-        }
-        .bl-topics-inner h2 {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: clamp(1.4rem, 2.5vw, 1.85rem);
-          font-weight: 200;
-          letter-spacing: -0.03em;
-          color: #111111;
-          line-height: 1.15;
-          margin: 0 0 2rem;
-          text-align: center;
-        }
-        .bl-topics-grid {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.65rem;
-          justify-content: center;
-        }
-        .bl-topic-pill {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.45rem;
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.75rem;
-          font-weight: 400;
-          color: #333333;
-          background: #f7f9f7;
-          border: 1px solid #e5e7eb;
-          border-radius: 100px;
-          padding: 8px 18px;
-          text-decoration: none;
-          transition: background 0.22s, border-color 0.22s, color 0.22s, transform 0.18s;
-        }
-        .bl-topic-pill:hover {
-          background: rgba(15, 118, 110, 0.06);
-          border-color: rgba(15, 118, 110, 0.35);
-          color: #374151;
-          transform: translateY(-2px);
-        }
-        .bl-topic-dot {
-          width: 5px;
-          height: 5px;
-          border-radius: 50%;
-          background: var(--color-primary);
-          
-          flex-shrink: 0;
-        }
+        .med-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.1rem; }
+        .med-eyebrow-line { width: 30px; height: 1px; background: rgba(15,118,110,0.35); flex-shrink: 0; }
+        .med-eyebrow-text { font-family: var(--font-inter), sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: #6b7280; font-weight: 600; }
 
-        /* ── ARTICLES GRID ── */
-        .bl-articles-section {
-          width: 100vw;
-          margin-left: calc(-50vw + 50%);
-          background: #f7f9f7;
-          padding: 5rem 2rem;
-          border-bottom: 1px solid #e5e7eb;
-        }
-        .bl-articles-inner {
-          max-width: 78rem;
-          margin: 0 auto;
-        }
-        .bl-articles-inner h2 {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: clamp(1.4rem, 2.5vw, 1.85rem);
-          font-weight: 200;
-          letter-spacing: -0.03em;
-          color: #111111;
-          line-height: 1.15;
-          margin: 0 0 2.75rem;
-        }
-        .bl-grid {
-          display: grid;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 1.5rem;
-        }
-        @media (max-width: 1024px) {
-          .bl-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 640px) {
-          .bl-grid { grid-template-columns: 1fr; }
-        }
+        .med-h2 { font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 500; letter-spacing: -0.03em; color: #2B2A26; line-height: 1.12; margin: 0 0 1.1rem; }
+        .med-h2 span { color: #0f766e; }
+        .med-body { font-family: var(--font-inter), sans-serif; font-size: 0.98rem; line-height: 1.9; color: #4b5259; font-weight: 400; margin: 0 0 1rem; }
+        .med-body:last-child { margin-bottom: 0; }
 
-        /* ── CARD ── */
-        .bl-card {
-          display: flex;
-          flex-direction: column;
-          background: #ffffff;
-          border: 1px solid #eef0ee;
-          border-radius: 8px;
-          overflow: hidden;
-          text-decoration: none;
-          transition: transform 0.32s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                      box-shadow 0.32s,
-                      border-color 0.25s;
-          box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.04);
-          position: relative;
-        }
-        .bl-card::before {
-          content: '';
-          position: absolute;
-          top: 0; left: 0; right: 0;
-          height: 2px;
-          background: var(--color-primary);
-          transform: scaleX(0);
-          transform-origin: left;
-          transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-          border-radius: 8px 8px 0 0;
-          z-index: 1;
-        }
-        .bl-card:hover::before { transform: scaleX(1); }
-        .bl-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 12px 40px rgba(0,0,0,0.10);
-          border-color: rgba(15, 118, 110, 0.18);
-        }
-
-        /* Card image */
-        .bl-card-img-wrap {
+        .med-card {
+          background: #fff;
+          border: 1px solid rgba(15,118,110,0.12);
+          border-radius: 18px;
+          box-shadow: 0 10px 30px rgba(15,31,28,0.05);
+          transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.3s ease;
           position: relative;
           overflow: hidden;
-          height: 190px;
         }
-        .bl-card-img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-          transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        .med-card::before {
+          content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+          background: #0f766e; transform: scaleX(0); transform-origin: left;
+          transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); z-index: 2;
         }
-        .bl-card:hover .bl-card-img { transform: scale(1.05); }
-        .bl-card-img-overlay {
-          position: absolute;
-          inset: 0;
-          background: linear-gradient(to top, rgba(2,10,2,0.55) 0%, rgba(2,10,2,0) 60%);
-          transition: opacity 0.32s;
-        }
-        .bl-card:hover .bl-card-img-overlay {5; }
+        .med-card:hover { transform: translateY(-6px); border-color: rgba(15,118,110,0.28); box-shadow: 0 22px 48px rgba(15,31,28,0.12); }
+        .med-card:hover::before { transform: scaleX(1); }
 
-        /* Topic tag over image */
-        .bl-card-tag {
-          position: absolute;
-          top: 0.85rem;
-          left: 0.85rem;
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.52rem;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-          color: #ffffff;
-          background: var(--color-primary);
-          padding: 3px 9px;
-          border-radius: 2px;
-          font-weight: 600;
-          z-index: 1;
-        }
+        .med-cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2.3rem; background: #0f766e; color: white; text-decoration: none; font-family: var(--font-inter), sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; box-shadow: 0 10px 26px rgba(15,118,110,0.25); transition: all 0.3s cubic-bezier(0.22,1,0.36,1); border: 1px solid #0f766e; }
+        .med-cta-btn:hover { background: #0d6b64; transform: translateY(-3px); box-shadow: 0 16px 36px rgba(15,118,110,0.32); }
 
-        /* Card body */
-        .bl-card-body {
-          padding: 1.4rem 1.5rem 1.6rem;
-          display: flex;
-          flex-direction: column;
-          flex: 1;
-        }
-        .bl-card-body h3 {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.92rem;
-          font-weight: 500;
-          color: #111111;
-          letter-spacing: -0.015em;
-          line-height: 1.3;
-          margin: 0 0 0.6rem;
-          transition: color 0.2s;
-        }
-        .bl-card:hover .bl-card-body h3 { color: #374151; }
-        .bl-card-body p {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.84rem;
-          font-weight: 300;
-          line-height: 1.8;
-          color: #777777;
-          margin: 0 0 1.25rem;
-          flex: 1;
-        }
-        .bl-read-link {
-          display: inline-flex;
-          align-items: center;
-          gap: 0.4rem;
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.6rem;
-          font-weight: 700;
-          letter-spacing: 0.2em;
-          text-transform: uppercase;
-          color: #374151;
-          text-decoration: none;
-          transition: gap 0.2s;
-        }
-        .bl-card:hover .bl-read-link { gap: 0.65rem; }
+        @keyframes med-hero-zoom { from { transform: scale(1.06); } to { transform: scale(1); } }
+        .med-hero-bg { animation: med-hero-zoom 24s ease-out forwards; }
+        @media (prefers-reduced-motion: reduce) { .med-hero-bg { animation: none; } }
 
-        /* ── FEATURED CARD (first article, spans 2 cols) ── */
-        .bl-card-featured {
-          grid-column: 1 / -1;
-          flex-direction: row;
-          max-height: 280px;
+        @media (max-width: 640px) { .med-outer, .med-inner { padding-left: 1.25rem; padding-right: 1.25rem; } }
+
+        /* ── TOPIC PILLS ── */
+        .med-topic-pill {
+          display: inline-flex; align-items: center; gap: 0.5rem;
+          font-family: var(--font-inter), sans-serif; font-size: 0.78rem; font-weight: 500;
+          color: #2B2A26; background: #ffffff; border: 1px solid rgba(15,118,110,0.16);
+          border-radius: 999px; padding: 0.6rem 1.3rem; text-decoration: none;
+          transition: all 0.25s ease;
         }
-        .bl-card-featured .bl-card-img-wrap {
-          width: 45%;
-          min-width: 45%;
-          height: auto;
-          max-height: 280px;
+        .med-topic-pill:hover { border-color: #0f766e; background: rgba(15,118,110,0.05); color: #0f766e; transform: translateY(-2px); }
+        .med-topic-dot { width: 6px; height: 6px; border-radius: 50%; background: #0f766e; flex-shrink: 0; }
+
+        /* ── ARTICLE GRID ── */
+        .med-blog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.6rem; }
+        @media (max-width: 1024px) { .med-blog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (max-width: 640px) { .med-blog-grid { grid-template-columns: 1fr; } }
+
+        .med-blog-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+        .med-blog-img-wrap { position: relative; height: 190px; overflow: hidden; border-radius: 18px 18px 0 0; }
+        .med-blog-img { transition: transform 0.7s cubic-bezier(0.22,1,0.36,1) !important; }
+        .med-blog-card:hover .med-blog-img { transform: scale(1.06); }
+        .med-blog-tag {
+          position: absolute; top: 0.9rem; left: 0.9rem; z-index: 2;
+          font-family: var(--font-inter), sans-serif; font-size: 0.58rem; font-weight: 700;
+          letter-spacing: 0.14em; text-transform: uppercase; color: #ffffff;
+          background: rgba(15,118,110,0.92); padding: 0.32rem 0.7rem; border-radius: 999px;
         }
-        .bl-card-featured .bl-card-body {
-          padding: 2rem 2rem;
-          justify-content: center;
-        }
-        .bl-card-featured .bl-card-body h3 {
-          font-size: 1.1rem;
-          margin-bottom: 0.75rem;
-        }
-        @media (max-width: 1024px) {
-          .bl-card-featured {
-            flex-direction: column;
-            max-height: none;
-          }
-          .bl-card-featured .bl-card-img-wrap {
-            width: 100%;
-            min-width: unset;
-            height: 220px;
-            max-height: 220px;
-          }
-        }
-        @media (max-width: 640px) {
-          .bl-card-featured .bl-card-img-wrap { height: 180px; }
-          .bl-card-featured .bl-card-body { padding: 1.25rem; }
+        .med-blog-body { padding: 1.4rem 1.5rem 1.6rem; display: flex; flex-direction: column; flex: 1; }
+        .med-blog-title { font-family: var(--font-fraunces), Georgia, serif; font-size: 1.05rem; font-weight: 600; color: #2B2A26; line-height: 1.32; margin: 0 0 0.6rem; transition: color 0.2s; }
+        .med-blog-card:hover .med-blog-title { color: #0f766e; }
+        .med-blog-desc { font-family: var(--font-inter), sans-serif; font-size: 0.85rem; line-height: 1.75; color: #666666; margin: 0 0 1.1rem; flex: 1; }
+        .med-blog-link { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-inter), sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #0f766e; transition: gap 0.2s; }
+        .med-blog-card:hover .med-blog-link { gap: 0.65rem; }
+
+        .med-blog-featured { grid-column: 1 / -1; flex-direction: row; }
+        .med-blog-featured .med-blog-img-wrap { width: 45%; min-width: 45%; height: auto; border-radius: 18px 0 0 18px; }
+        .med-blog-featured .med-blog-body { padding: 2rem; justify-content: center; }
+        .med-blog-featured .med-blog-title { font-size: 1.3rem; }
+        @media (max-width: 900px) {
+          .med-blog-featured { flex-direction: column; }
+          .med-blog-featured .med-blog-img-wrap { width: 100%; min-width: unset; height: 220px; border-radius: 18px 18px 0 0; }
         }
 
-        /* ── SUBSCRIBE ── */
-        .bl-subscribe-section {
-          width: 100vw;
-          margin-left: calc(-50vw + 50%);
-          background: #ffffff;
-          padding: 5rem 2rem;
-        }
-        .bl-subscribe-inner {
-          max-width: 78rem;
-          margin: 0 auto;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 4rem;
-          align-items: center;
-        }
-        @media (max-width: 768px) {
-          .bl-subscribe-inner {
-            grid-template-columns: 1fr;
-            gap: 2.5rem;
-          }
-        }
-        .bl-subscribe-inner h2 {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: clamp(1.4rem, 2.5vw, 1.85rem);
-          font-weight: 200;
-          letter-spacing: -0.03em;
-          color: #111111;
-          line-height: 1.15;
-          margin: 0 0 1rem;
-        }
-        .bl-subscribe-inner p {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.92rem;
-          font-weight: 300;
-          line-height: 1.85;
-          color: #555555;
-          margin: 0;
-        }
-        .bl-subscribe-card {
-          background: #f7f9f7;
-          border: 1px solid #e5e7eb;
-          border-radius: 8px;
-          padding: 2rem 2rem;
-          border-left: 3px solid var(--color-primary);
-        }
-        .bl-subscribe-card p {
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.78rem;
-          font-weight: 300;
-          color: #777777;
-          line-height: 1.75;
-          margin: 0;
-          font-style: italic;
-        }
-        .bl-subscribe-soon {
-          display: inline-block;
-          margin-top: 1rem;
-          font-family: var(--font-geist-sans), sans-serif;
-          font-size: 0.75rem;
-          letter-spacing: 0.22em;
-          text-transform: uppercase;
-          color: #374151;
-          
-          font-weight: 500;
-        }
+        /* ── SUBSCRIBE GRID ── */
+        .med-subscribe-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        @media (max-width: 768px) { .med-subscribe-grid { grid-template-columns: 1fr; } }
       `}</style>
 
       {/* ── HERO ── */}
-      <section className="bl-hero">
-        <div className="bl-hero-inner">
-          <div className="bl-eyebrow">
-            <span className="bl-eyebrow-line" />
-            <span className="bl-eyebrow-text">Journal · Guides · Stories</span>
+      <section className="med-shell" style={{ position: 'relative', overflow: 'hidden', minHeight: '58vh', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid rgba(15,118,110,0.12)' }}>
+        <div style={{ position: 'absolute', inset: 0 }}>
+          <Image
+            className="med-hero-bg"
+            src="/Images/hero/valley-forest.webp"
+            alt="Himalayan valley forest"
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover', objectPosition: 'center 40%' }}
+          />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(120deg, rgba(4,12,10,0.82) 0%, rgba(4,12,10,0.5) 45%, rgba(4,12,10,0.78) 100%)' }} />
+        </div>
+        <div style={{ position: 'relative', zIndex: 2, maxWidth: '50rem', width: '100%', padding: '5rem 1.5rem 4rem', textAlign: 'center' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.3rem' }}>
+            <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
+            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>Journal &middot; Guides &middot; Stories</span>
+            <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
           </div>
-          <h1>Our Blog</h1>
-          <p className="bl-hero-desc">
-            Explore articles about trekking, wellness retreats, and mountain experiences in the Himalayas.
+          <h1 style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(2.1rem, 4.4vw, 3.2rem)', fontWeight: 600, letterSpacing: '-0.03em', color: '#ffffff', margin: '0 0 1.1rem', lineHeight: 1.1, textShadow: '0 3px 24px rgba(0,0,0,0.5)' }}>
+            Our Blog
+          </h1>
+          <p style={{ maxWidth: '38rem', margin: '0 auto', fontFamily: 'var(--font-inter), sans-serif', fontSize: '1.02rem', fontWeight: 400, lineHeight: 1.8, color: '#ffffff', textShadow: '0 2px 14px rgba(0,0,0,0.45)' }}>
+            Articles about trekking, wellness retreats, and mountain experiences in the Himalayas.
           </p>
         </div>
       </section>
 
       {/* ── BROWSE BY TOPIC ── */}
-      <section className="bl-topics-section">
-        <div className="bl-topics-inner">
-          <div className="bl-eyebrow">
-            <span className="bl-eyebrow-line" />
-            <span className="bl-eyebrow-text">Browse by Topic</span>
+      <section className="med-shell" style={{ background: '#ffffff', padding: '4rem 0' }}>
+        <div className="med-inner" style={{ textAlign: 'center' }}>
+          <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+            <span className="med-eyebrow-line" />
+            <span className="med-eyebrow-text">Browse by Topic</span>
+            <span className="med-eyebrow-line" />
           </div>
-          <h2>Browse by Topic</h2>
-          <div className="bl-topics-grid">
-            {[
-              { href: '/topics/retreat-decision', label: 'Retreat Decision Guides' },
-              { href: '/topics/location-authority', label: 'Location Guides' },
-              { href: '/topics/trek-decision', label: 'Trek Guides' },
-              { href: '/topics/lifestyle', label: 'Lifestyle' },
-            ].map((topic) => (
-              <Link key={topic.href} href={topic.href} className="bl-topic-pill">
-                <span className="bl-topic-dot" />
+          <h2 className="med-h2" style={{ textAlign: 'center' }}>Find What You&apos;re <span>Looking For</span></h2>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem', justifyContent: 'center', marginTop: '1.8rem' }}>
+            {TOPICS.map((topic) => (
+              <Link key={topic.href} href={topic.href} className="med-topic-pill">
+                <span className="med-topic-dot" />
                 {topic.label}
               </Link>
             ))}
@@ -441,166 +209,66 @@ export default function BlogPage() {
       </section>
 
       {/* ── RECENT ARTICLES ── */}
-      <section className="bl-articles-section">
-        <div className="bl-articles-inner">
-          <div className="bl-eyebrow">
-            <span className="bl-eyebrow-line" />
-            <span className="bl-eyebrow-text">Recent Articles</span>
+      <section className="med-shell" style={{ background: '#f7f9f7', padding: '4.5rem 0', borderTop: '1px solid rgba(15,118,110,0.08)' }}>
+        <div className="med-outer">
+          <div className="med-eyebrow">
+            <span className="med-eyebrow-line" />
+            <span className="med-eyebrow-text">Recent Articles</span>
           </div>
-          <h2>Recent Articles</h2>
+          <h2 className="med-h2">Latest from the <span>Journal</span></h2>
 
-          <div className="bl-grid">
-
-            {/* Article 1 — Featured (full width) */}
-            <Link href="/blog/kedarkantha-vs-har-ki-dun" className="bl-card bl-card-featured">
-              <div className="bl-card-img-wrap">
-                <Image
-                  className="bl-card-img"
-                  width={1200}
-                  height={675}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  src={blogImageMap['kedarkantha-vs-har-ki-dun']?.src ?? '/Images/hero/alpine-ridge.webp'}
-                  alt={blogImageMap['kedarkantha-vs-har-ki-dun']?.alt ?? 'Kedarkantha winter snow trek'}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 45vw"
-                />
-                <div className="bl-card-img-overlay" />
-                <span className="bl-card-tag">Trek Guide</span>
-              </div>
-              <div className="bl-card-body">
-                <h3>
-                  Kedarkantha vs Har Ki Dun Trek: Which Peak Should You Climb?
-                </h3>
-                <p>
-                  Comparing two popular Himalayan treks from Sankri: Which one matches your ambition, fitness level, and mountain style?
-                </p>
-                <span className="bl-read-link">Read Article →</span>
-              </div>
-            </Link>
-
-            {/* Article 2 */}
-            <Link href="/blog/chakrata-vs-sankri" className="bl-card">
-              <div className="bl-card-img-wrap">
-                <Image
-                  className="bl-card-img"
-                  width={1200}
-                  height={675}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  src={blogImageMap['chakrata-vs-sankri']?.src ?? '/Images/hero/alpine-ridge.webp'}
-                  alt={blogImageMap['chakrata-vs-sankri']?.alt ?? 'Chakrata deodar forest'}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="bl-card-img-overlay" />
-                <span className="bl-card-tag">Location Guide</span>
-              </div>
-              <div className="bl-card-body">
-                <h3>
-                  Chakrata vs Sankri: Choose Your Himalayan Destination
-                </h3>
-                <p>
-                  Should you retreat in peaceful Chakrata or trek from the remote base of Sankri? Here's how to choose based on what you want.
-                </p>
-                <span className="bl-read-link">Read Article →</span>
-              </div>
-            </Link>
-
-            {/* Article 3 */}
-            <Link href="/blog/trek-vs-retreat" className="bl-card">
-              <div className="bl-card-img-wrap">
-                <Image
-                  className="bl-card-img"
-                  width={1200}
-                  height={675}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  src={blogImageMap['trek-vs-retreat']?.src ?? '/Images/hero/alpine-ridge.webp'}
-                  alt={blogImageMap['trek-vs-retreat']?.alt ?? 'Himalayan meditation retreat'}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="bl-card-img-overlay" />
-                <span className="bl-card-tag">Retreat Decision</span>
-              </div>
-              <div className="bl-card-body">
-                <h3>
-                  Trek vs Retreat: Which Mountain Experience Is Right For You?
-                </h3>
-                <p>
-                  Not sure whether to climb a peak or find peace in the mountains? Learn the differences, and which one will transform you.
-                </p>
-                <span className="bl-read-link">Read Article →</span>
-              </div>
-            </Link>
-
-            {/* Article 4 */}
-            <Link href="/blog/is-weekend-retreat-worth-it" className="bl-card">
-              <div className="bl-card-img-wrap">
-                <Image
-                  className="bl-card-img"
-                  width={1200}
-                  height={675}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  src={blogImageMap['is-weekend-retreat-worth-it']?.src ?? '/Images/hero/alpine-ridge.webp'}
-                  alt={blogImageMap['is-weekend-retreat-worth-it']?.alt ?? 'Peaceful Himalayan mountain view'}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="bl-card-img-overlay" />
-                <span className="bl-card-tag">Lifestyle</span>
-              </div>
-              <div className="bl-card-body">
-                <h3>
-                  Is a Weekend Retreat Worth It? The Real Answer.
-                </h3>
-                <p>
-                  You have a limited weekend. Learn why a two-day mountain retreat can reset your mind and body more than you'd expect.
-                </p>
-                <span className="bl-read-link">Read Article →</span>
-              </div>
-            </Link>
-
-            {/* Article 5 */}
-            <Link href="/blog/chakrata-vs-mussoorie-weekend-trip" className="bl-card">
-              <div className="bl-card-img-wrap">
-                <Image
-                  className="bl-card-img"
-                  width={1200}
-                  height={675}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  src={blogImageMap['chakrata-vs-mussoorie-weekend-trip']?.src ?? '/Images/hero/alpine-ridge.webp'}
-                  alt={blogImageMap['chakrata-vs-mussoorie-weekend-trip']?.alt ?? 'Mussoorie hill station Himalayan town'}
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                <div className="bl-card-img-overlay" />
-                <span className="bl-card-tag">Location Guide</span>
-              </div>
-              <div className="bl-card-body">
-                <h3>
-                  Chakrata vs Mussoorie: Where to Spend Your Weekend Escape
-                </h3>
-                <p>
-                  Two Himalayan towns, two very different vibes. Find out which one fits your weekend escape better.
-                </p>
-                <span className="bl-read-link">Read Article →</span>
-              </div>
-            </Link>
-
+          <div className="med-blog-grid" style={{ marginTop: '2rem' }}>
+            {ARTICLES.map((article) => {
+              const img = blogImageMap[article.slug];
+              return (
+                <Link
+                  key={article.slug}
+                  href={`/blog/${article.slug}`}
+                  className={`med-card med-blog-card ${article.featured ? 'med-blog-featured' : ''}`}
+                >
+                  <div className="med-blog-img-wrap">
+                    <Image
+                      className="med-blog-img"
+                      src={img?.src ?? '/Images/hero/alpine-ridge.webp'}
+                      alt={img?.alt ?? article.title}
+                      fill
+                      sizes={article.featured ? '(max-width: 900px) 100vw, 45vw' : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'}
+                      style={{ objectFit: 'cover' }}
+                    />
+                    <span className="med-blog-tag">{article.tag}</span>
+                  </div>
+                  <div className="med-blog-body">
+                    <h3 className="med-blog-title">{article.title}</h3>
+                    <p className="med-blog-desc">{article.desc}</p>
+                    <span className="med-blog-link">Read Article →</span>
+                  </div>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* ── SUBSCRIBE ── */}
-      <section className="bl-subscribe-section">
-        <div className="bl-subscribe-inner">
+      <section className="med-shell" style={{ background: '#ffffff', padding: '4.5rem 0' }}>
+        <div className="med-outer med-subscribe-grid">
           <div>
-            <div className="bl-eyebrow">
-              <span className="bl-eyebrow-line" />
-              <span className="bl-eyebrow-text">Stay Connected</span>
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Stay Connected</span>
             </div>
-            <h2>Subscribe for Mountain Stories</h2>
-            <p>
+            <h2 className="med-h2">Subscribe for <span>Mountain Stories</span></h2>
+            <p className="med-body" style={{ marginBottom: 0 }}>
               We share insights about mountain wellness, trekking preparation, and Himalayan travel. Get them in your inbox.
             </p>
           </div>
-          <div className="bl-subscribe-card">
-            <p>Email subscription form coming soon.</p>
-            <span className="bl-subscribe-soon">Coming Soon</span>
+          <div className="med-card" style={{ padding: '2rem', borderLeft: '3px solid #0f766e' }}>
+            <p className="med-body" style={{ fontStyle: 'italic', fontSize: '0.88rem', marginBottom: '1rem' }}>
+              Email subscription form coming soon.
+            </p>
+            <span style={{ display: 'inline-block', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#0f766e', fontWeight: 700 }}>
+              Coming Soon
+            </span>
           </div>
         </div>
       </section>
