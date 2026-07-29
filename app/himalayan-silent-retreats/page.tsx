@@ -325,14 +325,15 @@ export default function HimalayanSilentRetreatsPage() {
           </div>
         </section>
 
-        <PrimaryCTA
-          label="Plan My Silent Retreat"
-          subtext="Not sure which silence suits you? Tell us about yourself and we'll recommend."
-          vertical="retreat"
-          category="himalayan-silent"
-          sourcePath={PATH}
-          id="plan"
-        />
+        <div id="plan">
+          <PrimaryCTA
+            label="Plan My Silent Retreat"
+            subtext="Not sure which silence suits you? Tell us about yourself and we'll recommend."
+            vertical="retreat"
+            category="himalayan-silent"
+            sourcePath={PATH}
+          />
+        </div>
 
         {/* ── THREE SILENCES TABLE ── */}
         <section className="med-shell med-section-white" style={{ padding: '4rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>

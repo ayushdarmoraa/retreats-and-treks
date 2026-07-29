@@ -64,6 +64,7 @@ export function generateMetadata(): Metadata {
 export default function HealingRetreatHimalayasPage() {
   validateFAQSync(FAQ_ITEMS, PATH);
 
+  const deepContent = PAGE.deepContent ?? [];
   const { reviewSchemas, aggregateSchema } = getReviewSchemasForPage(PAGE);
 
   const serviceSchema = generateServiceSchema(
@@ -312,7 +313,7 @@ export default function HealingRetreatHimalayasPage() {
       </section>
 
      {/* ── DEEP CONTENT ── */}
-{PAGE.deepContent && PAGE.deepContent.length > 0 && (
+{deepContent.length > 0 && (
   <section id="deep-dive" className="med-shell" style={{ background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
     <div className="med-inner">
       <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
@@ -324,14 +325,14 @@ export default function HealingRetreatHimalayasPage() {
         Understanding <span>Healing</span>
       </h2>
 
-      {PAGE.deepContent.map((section, idx) => {
+      {deepContent.map((section, idx) => {
         const headingText = section.heading;
         const words = headingText.split(' ');
         const lastWord = words[words.length - 1];
         const restWords = words.slice(0, -1).join(' ');
 
         return (
-          <div key={section.heading} className="med-card" style={{ padding: '2.5rem', marginBottom: idx < PAGE.deepContent.length - 1 ? '2.5rem' : 0 }}>
+          <div key={section.heading} className="med-card" style={{ padding: '2.5rem', marginBottom: idx < deepContent.length - 1 ? '2.5rem' : 0 }}>
             <div className="med-section-number">
               {String(idx + 1).padStart(2, '0')}
             </div>
@@ -405,7 +406,7 @@ export default function HealingRetreatHimalayasPage() {
               );
             })}
 
-            {idx < PAGE.deepContent.length - 1 && (
+            {idx < deepContent.length - 1 && (
               <div style={{ marginTop: '2rem', paddingTop: '2rem', borderTop: '1px solid rgba(15,118,110,0.06)' }} />
             )}
           </div>
