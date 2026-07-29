@@ -396,7 +396,7 @@ export default function TrekAndPaintPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Explore Trek + Paint"
           subtext="Tell us about your trekking level and creative interests. We'll match you with the right route and facilitator."
           vertical="retreat"

@@ -526,7 +526,7 @@ export default function ZanskarStoryPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+
           label="Explore the Zanskar Retreat"
           subtext="The same 7-day programme described in this story. Small groups, June–September."
           vertical="retreat"

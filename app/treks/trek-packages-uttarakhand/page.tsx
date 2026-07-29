@@ -501,7 +501,7 @@ export default function TrekPackagesUttarakhandPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Plan My Trek Package"
           subtext="Looking for a guided package? Tell us what you need."
           vertical="trek"

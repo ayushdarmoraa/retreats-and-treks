@@ -406,7 +406,7 @@ export default function WhatToPackPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Plan My Retreat"
           subtext="We'll send you a location-specific packing list when you book."
           vertical="retreat"

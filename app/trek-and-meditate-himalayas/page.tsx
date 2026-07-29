@@ -376,7 +376,7 @@ export default function TrekAndMeditatePage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Explore Trek + Meditate"
           subtext="Tell us about your trekking experience and interest in meditation. We'll design the right route."
           vertical="retreat"

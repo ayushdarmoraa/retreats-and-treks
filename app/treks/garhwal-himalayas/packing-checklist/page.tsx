@@ -1041,7 +1041,7 @@ export default function PackingChecklistPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Plan My Garhwal Trek"
           subtext="Tell us your experience level and preferred dates. We will recommend the right route, provide a gear briefing, and handle permits."
           vertical="trek"

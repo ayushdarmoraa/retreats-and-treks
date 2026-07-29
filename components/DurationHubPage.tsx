@@ -141,7 +141,7 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
       </section>
 
       {/* ── PRIMARY CTA ── */}
-      <section id="plan" className="med-shell" style={{ background: '#ffffff', padding: '3rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+      <section  className="med-shell" style={{ background: '#ffffff', padding: '3rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
         <div className="med-inner">
           <PrimaryCTA
             label={`Plan My ${page.durationLabel.split('/')[0].trim()} Retreat`}

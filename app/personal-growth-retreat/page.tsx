@@ -592,7 +592,6 @@ export default function PersonalGrowthRetreatPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
           label="Explore Personal Growth Packages"
           subtext="Not a seminar. An experience designed for genuine inner development in Himalayan environments."
           vertical="retreat"

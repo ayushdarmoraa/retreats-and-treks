@@ -3,7 +3,7 @@
 import { Section } from '@/components/ui';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { philosophyCards } from '@/content/home/philosophy';
-import { motion } from 'framer-motion';
+import { motion, type Variants } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 
 export default function PhilosophySection() {
@@ -26,7 +26,7 @@ export default function PhilosophySection() {
     return () => observer.disconnect();
   }, []);
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -37,17 +37,17 @@ export default function PhilosophySection() {
     }
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.7,
-        ease: [0.4, 0, 0.2, 1]
-      }
-    }
-  };
+  const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      ease: [0.4, 0, 0.2, 1] as const,
+    },
+  },
+};
 
   return (
     <Section

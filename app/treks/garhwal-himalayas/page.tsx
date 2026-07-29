@@ -888,7 +888,7 @@ export default function GarhwalHimalayasTreksPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Plan My Garhwal Trek"
           subtext="Tell us your dates and experience level. We will match you to the right Garhwal route."
           vertical="trek"

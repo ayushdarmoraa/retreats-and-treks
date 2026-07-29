@@ -387,7 +387,7 @@ export default function WhatToExpectMeditationRetreatPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Experience This Yourself"
           subtext="Curious about the journey? Tell us about yourself and we'll recommend the right fit."
           vertical="retreat"

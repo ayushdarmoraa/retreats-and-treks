@@ -709,7 +709,7 @@ export default function BestTreksInUttarakhandPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Plan My Uttarakhand Trek"
           subtext="Tell us your dates, fitness level and preferred difficulty. We will match you to the right route."
           vertical="trek"

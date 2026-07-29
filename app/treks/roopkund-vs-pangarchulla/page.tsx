@@ -727,7 +727,7 @@ export default function RoopkundVsPangarchullaPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Help Me Choose"
           subtext="Share your experience level and dates. We will recommend the right challenging trek."
           vertical="trek"

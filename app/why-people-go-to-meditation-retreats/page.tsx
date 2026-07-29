@@ -417,7 +417,7 @@ export default function WhyPeopleGoPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Find the Right Retreat for You"
           subtext="Tell us what you're going through — we'll recommend the programme that fits."
           vertical="retreat"

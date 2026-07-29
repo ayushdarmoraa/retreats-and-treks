@@ -741,7 +741,7 @@ export default function BeginnerTreksPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Plan My First Trek"
           subtext="Tell us your dates and fitness level — we will recommend the perfect first route."
           vertical="trek"

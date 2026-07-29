@@ -425,7 +425,7 @@ export default function SilentRetreatStoryPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Explore Silent Retreats"
           subtext="3 to 10-day programmes in Himalayan forest silence. Groups of 12 or fewer."
           vertical="retreat"

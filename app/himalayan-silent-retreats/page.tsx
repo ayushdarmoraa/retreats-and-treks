@@ -325,7 +325,7 @@ export default function HimalayanSilentRetreatsPage() {
           </div>
         </section>
 
-        <div id="plan">
+        <div >
           <PrimaryCTA
             label="Plan My Silent Retreat"
             subtext="Not sure which silence suits you? Tell us about yourself and we'll recommend."

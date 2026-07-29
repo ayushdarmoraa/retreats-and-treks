@@ -485,7 +485,7 @@ export default function SummerTreksUttarakhandPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Plan My Summer Trek"
           subtext="Exploring summer treks? Let us help you find the right fit."
           vertical="trek"

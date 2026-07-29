@@ -728,7 +728,7 @@ export default function HighAltitudeTreksPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Plan a High-Altitude Trek"
           subtext="Share your altitude experience and preferred dates — we will recommend the right route."
           vertical="trek"

@@ -450,7 +450,6 @@ export default function LifeResetRetreatPage() {
         </section>
 
         <PrimaryCTA
-          id="design"
           label="Design Your Reset"
           subtext="Tell us where you are and what you need — we'll recommend the right duration and location."
           vertical="retreat"

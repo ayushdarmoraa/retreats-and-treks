@@ -728,7 +728,7 @@ export default function ChallengingTreksPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Plan a Challenging Trek"
           subtext="Share your trekking history and preferred dates — we will match you with the right route."
           vertical="trek"

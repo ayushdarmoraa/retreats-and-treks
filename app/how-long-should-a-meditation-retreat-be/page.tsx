@@ -408,7 +408,6 @@ export default function HowLongShouldARetreatBePage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
           label="Find the Right Duration for You"
           subtext="Take our short quiz to match your experience and goals with the ideal retreat length."
           vertical="retreat"

@@ -410,7 +410,6 @@ export default function HowHardIsASilentRetreatPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
           label="Try a Shorter Retreat First"
           subtext="Our 3-day silent retreat is designed as a gateway for first-timers."
           vertical="retreat"

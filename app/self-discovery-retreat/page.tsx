@@ -592,7 +592,7 @@ export default function SelfDiscoveryRetreatPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Start the Conversation"
           subtext="No obligation. We'll tell you honestly whether a retreat is the right next step."
           vertical="retreat"

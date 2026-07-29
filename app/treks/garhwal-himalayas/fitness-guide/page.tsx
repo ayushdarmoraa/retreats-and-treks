@@ -800,7 +800,7 @@ export default function GarhwalFitnessGuidePage() {
         </section>
 
         {/* ── 8-WEEK PLAN — MODERATE ── */}
-        <section id="plan" className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+        <section  className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
           <div className="med-inner">
             <div className="med-eyebrow">
               <span className="med-eyebrow-line" />
@@ -900,7 +900,7 @@ export default function GarhwalFitnessGuidePage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Plan My Garhwal Trek"
           subtext="Share your fitness level and preferred dates. We will recommend the right route and preparation timeline."
           vertical="trek"

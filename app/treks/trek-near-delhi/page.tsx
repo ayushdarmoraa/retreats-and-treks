@@ -536,7 +536,7 @@ export default function TrekNearDelhiPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Plan My Weekend Trek"
           subtext="Planning a weekend trek from Delhi? We can help."
           vertical="trek"

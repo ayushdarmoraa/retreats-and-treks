@@ -638,7 +638,7 @@ export default function SpiritualAwakeningRetreatPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Inquire About an Awakening Retreat"
           subtext="Clear, honest guidance on retreat readiness and program fit."
           vertical="retreat"

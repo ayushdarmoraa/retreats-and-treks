@@ -639,7 +639,7 @@ export default function KedarkanthaVsHarKiDunPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Help Me Choose"
           subtext="Not sure which trek fits you? Share your dates and experience — we will recommend the right route."
           vertical="trek"

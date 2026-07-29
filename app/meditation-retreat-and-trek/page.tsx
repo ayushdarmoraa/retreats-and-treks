@@ -327,7 +327,7 @@ export default function MeditationRetreatAndTrekPage() {
         </section>
 
         <PrimaryCTA
-          id="design"
+  
           label="Design My Retreat + Trek"
           subtext="Tell us your fitness level, experience, and how many days you have. We'll create a combined itinerary."
           vertical="retreat"

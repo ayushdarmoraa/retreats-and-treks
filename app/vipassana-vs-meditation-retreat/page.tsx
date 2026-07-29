@@ -405,7 +405,7 @@ export default function VipassanaVsMeditationRetreatPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Help Me Choose"
           subtext="Not sure which format suits you? Tell us about your experience and what you're seeking."
           vertical="retreat"

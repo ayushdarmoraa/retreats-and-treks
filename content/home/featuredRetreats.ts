@@ -9,14 +9,17 @@ export interface RetreatMeta {
 
 export const featuredRetreatsMeta: Record<string, RetreatMeta> = {
   'weekend-retreat': {
+    slug: 'weekend-retreat',
     image: { src: '/Images/Journeys/weekend.webp', alt: 'Weekend Retreat' },
     tag: 'Weekend',
   },
   'yoga-and-movement': {
+    slug: 'yoga-and-movement',
     image: { src: '/Images/Journeys/yoga.webp', alt: 'Yoga Retreat' },
     tag: 'Yoga',
   },
   'meditation-and-silence': {
+    slug: 'meditation-and-silence',
     image: { src: '/Images/Journeys/meditation.webp', alt: 'Meditation Retreat' },
     tag: 'Silence',
   },

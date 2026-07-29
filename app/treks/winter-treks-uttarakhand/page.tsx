@@ -758,7 +758,7 @@ export default function SnowTreksPage() {
         </section>
 
         <PrimaryCTA
-          id="plan"
+          
           label="Book a Winter Trek"
           subtext="Share your preferred dates — we will confirm snow conditions and availability."
           vertical="trek"
