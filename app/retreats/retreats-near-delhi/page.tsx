@@ -155,7 +155,7 @@ export default function RetreatNearDelhiPage() {
 
       <article>
 
-        {/* ── HERO ──────────────────────────────────────────────────── */}
+        {/* ── HERO --──────────────────────────────────────────────────── */}
         <section
           style={{
             width: '100vw',
