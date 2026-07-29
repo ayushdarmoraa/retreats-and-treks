@@ -1,15 +1,17 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
-import {
-  generateBreadcrumbSchema,
-  generateFAQSchema,
-} from '@/components/seo/Schema';
+import { schemaIds } from '@/lib/schemaIds';
+import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
+import FeaturedRetreat from '@/components/FeaturedRetreat';
+import RelatedReads from '@/components/RelatedReads';
+import AutoArticleSchema from '@/components/AutoArticleSchema';
+import { images } from '@/lib/images';
 
 const PATH = '/treks/best-treks-in-uttarakhand';
 
@@ -18,31 +20,21 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title:
-      'Best Treks in Uttarakhand | Retreats And Treks',
+    title: 'Best Treks in Uttarakhand | Retreats And Treks',
     description:
       'Compare the best treks in Uttarakhand by altitude, difficulty, season, duration, and route style — Brahmatal, Kuari Pass, Roopkund, Pangarchulla, and more.',
-    alternates: {
-      canonical: buildCanonicalUrl(PATH),
-    },
-    robots: {
-      index: true,
-      follow: true,
-    },
+    alternates: { canonical: buildCanonicalUrl(PATH) },
+    robots: { index: true, follow: true },
     openGraph: {
       title: '10 Best Treks in Uttarakhand (3,000–4,800m) — Difficulty, Season & Guide',
       description:
         'Compare the best treks in Uttarakhand by altitude, difficulty, season, duration, and route style — Brahmatal, Kuari Pass, Roopkund, Pangarchulla, and more.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
-      images: buildOgImages('10 Best Treks in Uttarakhand (3,000–4,800m) — Difficulty, Season & Guide'),
+      images: buildOgImages('Best Treks in Uttarakhand'),
     },
   };
 }
-
-/* ────────────────────────────────────────────────────────────────────────── */
-/*  FAQ                                                                      */
-/* ────────────────────────────────────────────────────────────────────────── */
 
 const FAQ_ITEMS = [
   {
@@ -87,16 +79,61 @@ const FAQ_ITEMS = [
   },
 ];
 
-/* ────────────────────────────────────────────────────────────────────────── */
-/*  PAGE                                                                     */
-/* ────────────────────────────────────────────────────────────────────────── */
+const ALL_TREKS = [
+  { href: '/treks/location/lohajung/brahmatal-trek', name: 'Brahmatal', alt: '3,850 m', diff: 'Moderate', days: '4', season: 'Dec–Mar', region: 'Garhwal' },
+  { href: '/treks/location/joshimath/kuari-pass-trek', name: 'Kuari Pass', alt: '3,876 m', diff: 'Moderate', days: '5', season: 'Mar–May, Oct–Nov', region: 'Garhwal' },
+  { href: '/treks/location/sankri/kedarkantha-trek', name: 'Kedarkantha', alt: '3,810 m', diff: 'Moderate–Challenging', days: '5', season: 'Dec–Feb', region: 'Sankri' },
+  { href: '/treks/location/sankri/har-ki-dun-trek', name: 'Har Ki Dun', alt: '3,566 m', diff: 'Moderate', days: '5', season: 'May–Jun, Sep–Oct', region: 'Sankri' },
+  { href: '/treks/location/munsiyari/khaliya-top-trek', name: 'Khaliya Top', alt: '3,500 m', diff: 'Moderate', days: '3–4', season: 'May–Jun, Sep–Oct', region: 'Kumaon' },
+  { href: '/treks/location/lohajung/roopkund-trek', name: 'Roopkund', alt: '4,800 m', diff: 'Challenging', days: '7', season: 'May–Jun, Sep–Oct', region: 'Garhwal' },
+  { href: '/treks/location/joshimath/pangarchulla-trek', name: 'Pangarchulla', alt: '4,590 m', diff: 'Challenging', days: '6', season: 'Mar–May', region: 'Garhwal' },
+  { href: '/treks/location/munsiyari/milam-glacier-trek', name: 'Milam Glacier', alt: '3,450 m', diff: 'Challenging', days: '8–10', season: 'May–Jun, Sep–Oct', region: 'Kumaon' },
+  { href: '/treks/location/chakrata/tiger-fall-trek', name: 'Tiger Fall', alt: '~2,200 m', diff: 'Easy', days: '1', season: 'Year-round', region: 'Chakrata' },
+  { href: '/treks/location/chakrata/budher-caves-trek', name: 'Budher Caves', alt: '~2,200 m', diff: 'Easy', days: '1', season: 'Year-round', region: 'Chakrata' },
+];
+
+const REGIONS = [
+  {
+    name: 'Garhwal Himalayas',
+    slug: '/treks/garhwal-himalayas',
+    description:
+      'The high-altitude heart of Uttarakhand — accessed from Lohajung and Joshimath. Brahmatal, Kuari Pass, Roopkund, and Pangarchulla offer altitude ranges from 3,850 to 4,800 metres with Nanda Devi Sanctuary views.',
+    treks: ['Brahmatal', 'Kuari Pass', 'Roopkund', 'Pangarchulla'],
+  },
+  {
+    name: 'Sankri',
+    slug: '/treks/location/sankri',
+    description:
+      'Base for two of Uttarakhand\'s most popular multi-day treks: Kedarkantha (winter summit) and Har Ki Dun (summer valley). Reached from Dehradun in 4–5 hours.',
+    treks: ['Kedarkantha', 'Har Ki Dun'],
+  },
+  {
+    name: 'Chakrata',
+    slug: '/treks/location/chakrata',
+    description:
+      'Gateway for first-time trekkers and weekend travellers from Delhi. Tiger Fall and Budher Caves stay below 2,500 metres — no altitude concerns, no multi-day gear, no prior experience needed.',
+    treks: ['Tiger Fall', 'Budher Caves'],
+  },
+  {
+    name: 'Kumaon (Munsiyari)',
+    slug: '/treks/location/munsiyari',
+    description:
+      'Remote expeditions with fewer crowds — Milam Glacier (8–10 days along the Johar trade route) and Khaliya Top (3–4 days to a Panchachuli panorama). Deeper cultural layers and genuinely wild terrain.',
+    treks: ['Milam Glacier', 'Khaliya Top'],
+  },
+];
+
+const PROGRESSION_STEPS = [
+  { label: 'Day treks (Easy)', content: 'Tiger Fall or Budher Caves in Chakrata — builds trail confidence with zero altitude risk.' },
+  { label: 'First multi-day (Moderate)', content: 'Brahmatal or Kuari Pass — introduces camping, altitude, and multi-day rhythm.' },
+  { label: 'Summit experience (Moderate–Challenging)', content: 'Kedarkantha — adds a genuine summit push and winter snow conditions.' },
+  { label: 'High altitude (Challenging)', content: 'Pangarchulla or Roopkund — sustained exposure above 4,000 m with technical demands.' },
+  { label: 'Expedition (Challenging)', content: 'Milam Glacier — 8–10 days of continuous remote trekking through glacial terrain.' },
+];
 
 export default function BestTreksInUttarakhandPage() {
   validateFAQSync(FAQ_ITEMS, PATH);
-
   const canonicalUrl = buildCanonicalUrl(PATH);
-
-  /* ── structured data ─────────────────────────────────────────────────── */
 
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
@@ -106,986 +143,1135 @@ export default function BestTreksInUttarakhandPage() {
 
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
 
-  const collectionSchema = {
+  const articleSchema = {
     '@context': 'https://schema.org',
-    '@type': 'CollectionPage',
-    name: 'Best Treks in Uttarakhand — Beginner to High-Altitude Guide',
+    '@type': 'Article',
+    headline: '10 Best Treks in Uttarakhand — Beginner to High-Altitude Guide',
     description:
       'A curated guide to the 10 best treks in Uttarakhand across Garhwal, Kumaon, Sankri and Chakrata — ranked by difficulty, altitude and season.',
     url: canonicalUrl,
-    mainEntity: {
-      '@type': 'ItemList',
-      itemListOrder: 'https://schema.org/ItemListOrderDescending',
-      numberOfItems: 10,
-      itemListElement: [
-        {
-          '@type': 'ListItem',
-          position: 1,
-          name: 'Brahmatal Trek (3,850 m)',
-          url: buildCanonicalUrl('/treks/location/lohajung/brahmatal-trek'),
-          description: 'Moderate winter snow trek to a frozen alpine lake. 4 days from Lohajung.',
-        },
-        {
-          '@type': 'ListItem',
-          position: 2,
-          name: 'Kuari Pass Trek (3,876 m)',
-          url: buildCanonicalUrl('/treks/location/joshimath/kuari-pass-trek'),
-          description: 'Panoramic ridge walk on the Lord Curzon Trail. 5 days from Joshimath.',
-        },
-        {
-          '@type': 'ListItem',
-          position: 3,
-          name: 'Kedarkantha Trek (3,810 m)',
-          url: buildCanonicalUrl('/treks/location/sankri/kedarkantha-trek'),
-          description: 'Classic winter summit trek with 360° Himalayan views. 5 days from Sankri.',
-        },
-        {
-          '@type': 'ListItem',
-          position: 4,
-          name: 'Har Ki Dun Trek (3,566 m)',
-          url: buildCanonicalUrl('/treks/location/sankri/har-ki-dun-trek'),
-          description: 'Valley trek through alpine meadows and traditional villages. 5 days from Sankri.',
-        },
-        {
-          '@type': 'ListItem',
-          position: 5,
-          name: 'Khaliya Top Trek (3,500 m)',
-          url: buildCanonicalUrl('/treks/location/munsiyari/khaliya-top-trek'),
-          description: 'Short summit trek with 180° Panchachuli panorama. 3–4 days from Munsiyari.',
-        },
-        {
-          '@type': 'ListItem',
-          position: 6,
-          name: 'Roopkund Trek (4,800 m)',
-          url: buildCanonicalUrl('/treks/location/lohajung/roopkund-trek'),
-          description: 'Challenging expedition to the mystery skeleton lake. 7 days from Lohajung.',
-        },
-        {
-          '@type': 'ListItem',
-          position: 7,
-          name: 'Pangarchulla Peak Trek (4,590 m)',
-          url: buildCanonicalUrl('/treks/location/joshimath/pangarchulla-trek'),
-          description: 'True summit climb with alpine-start snow push. 6 days from Joshimath.',
-        },
-        {
-          '@type': 'ListItem',
-          position: 8,
-          name: 'Milam Glacier Trek (3,450 m)',
-          url: buildCanonicalUrl('/treks/location/munsiyari/milam-glacier-trek'),
-          description: 'Remote glacier expedition along the ancient Johar trade route. 8–10 days from Munsiyari.',
-        },
-        {
-          '@type': 'ListItem',
-          position: 9,
-          name: 'Tiger Fall Trek',
-          url: buildCanonicalUrl('/treks/location/chakrata/tiger-fall-trek'),
-          description: 'Easy day trek through deodar forest to a major Himalayan waterfall.',
-        },
-        {
-          '@type': 'ListItem',
-          position: 10,
-          name: 'Budher Caves Trek',
-          url: buildCanonicalUrl('/treks/location/chakrata/budher-caves-trek'),
-          description: 'Easy forest trek to ancient limestone caves near Chakrata.',
-        },
-      ],
-    },
+    author: { '@id': schemaIds.organization },
+    publisher: { '@id': schemaIds.organization },
+    datePublished: '2026-03-06',
+    dateModified: '2026-03-06',
+    mainEntityOfPage: canonicalUrl,
   };
 
+  // Split heading for green last word
+  const h1Words = "Best Treks in Uttarakhand".split(' ');
+  const h1LastWord = h1Words[h1Words.length - 1];
+  const h1Rest = h1Words.slice(0, -1).join(' ');
+
+  const heroImage = images.heroes.himalayanSunrise;
+
   return (
-    <TrackedPage
-      page={PATH}
-      style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}
-    >
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify([collectionSchema, breadcrumbSchema, faqSchema]),
-        }}
+    <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
+      <AutoArticleSchema
+        title="10 Best Treks in Uttarakhand — Beginner to High-Altitude Guide"
+        description="A curated guide to the 10 best treks in Uttarakhand across Garhwal, Kumaon, Sankri and Chakrata — ranked by difficulty, altitude and season."
+        path={PATH}
       />
 
-      <Breadcrumb
-        items={[
-          { name: 'Home', href: '/' },
-          { name: 'Treks', href: '/treks' },
-          { name: 'Best Treks in Uttarakhand' },
-        ]}
+      <style>{`
+        .med-shell { width: 100vw; margin-left: calc(-50vw + 50%); }
+        .med-outer { max-width: 76rem; margin: 0 auto; padding: 0 1.5rem; }
+        .med-inner { max-width: 58rem; margin: 0 auto; padding: 0 1.5rem; }
+
+        .med-eyebrow { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.1rem; }
+        .med-eyebrow-line { width: 30px; height: 1px; background: rgba(15,118,110,0.35); flex-shrink: 0; }
+        .med-eyebrow-text { font-family: var(--font-inter), sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: #6b7280; font-weight: 600; }
+
+        .med-h2 { font-family: var(--font-fraunces), Georgia, serif; font-size: clamp(1.9rem, 3.4vw, 2.6rem); font-weight: 500; letter-spacing: -0.03em; color: #2B2A26; line-height: 1.12; margin: 0 0 1.1rem; }
+        .med-h2 span { color: #0f766e; }
+        .med-h3 { font-family: var(--font-fraunces), Georgia, serif; font-size: 1.15rem; font-weight: 600; color: #2B2A26; margin: 0 0 0.7rem; letter-spacing: -0.01em; }
+        .med-body { font-family: var(--font-inter), sans-serif; font-size: 0.98rem; line-height: 1.9; color: #4b5259; font-weight: 400; margin: 0 0 1rem; }
+        .med-body:last-child { margin-bottom: 0; }
+        .med-body strong { color: #2B2A26; font-weight: 600; }
+
+        .med-card {
+          background: #fff;
+          border: 1px solid rgba(15,118,110,0.12);
+          border-radius: 18px;
+          box-shadow: 0 10px 30px rgba(15,31,28,0.05);
+          transition: transform 0.35s cubic-bezier(0.22,1,0.36,1), box-shadow 0.35s ease, border-color 0.3s ease;
+          position: relative;
+          overflow: hidden;
+        }
+        .med-card::before {
+          content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+          background: #0f766e; transform: scaleX(0); transform-origin: left;
+          transition: transform 0.5s cubic-bezier(0.16,1,0.3,1); z-index: 2;
+        }
+        .med-card:hover { transform: translateY(-6px); border-color: rgba(15,118,110,0.28); box-shadow: 0 22px 48px rgba(15,31,28,0.12); }
+        .med-card:hover::before { transform: scaleX(1); }
+
+        .med-cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 1rem 2.3rem; background: #0f766e; color: white; text-decoration: none; font-family: var(--font-inter), sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; box-shadow: 0 10px 26px rgba(15,118,110,0.25); transition: all 0.3s cubic-bezier(0.22,1,0.36,1); border: 1px solid #0f766e; }
+        .med-cta-btn:hover { background: #0d6b64; transform: translateY(-3px); box-shadow: 0 16px 36px rgba(15,118,110,0.32); }
+        .med-cta-outline { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.85rem 1.8rem; border: 1px solid rgba(15,118,110,0.25); color: #0f766e; text-decoration: none; font-family: var(--font-inter), sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; transition: all 0.3s cubic-bezier(0.22,1,0.36,1); }
+        .med-cta-outline:hover { border-color: #0f766e; background: rgba(15,118,110,0.05); transform: translateY(-2px); }
+
+        .med-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; }
+        .med-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
+        .med-grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.4rem; }
+        @media (max-width: 720px) { .med-grid-2 { grid-template-columns: 1fr; } .med-grid-3 { grid-template-columns: 1fr; } .med-grid-4 { grid-template-columns: 1fr; } }
+        @media (max-width: 640px) { .med-outer, .med-inner { padding-left: 1.25rem; padding-right: 1.25rem; } }
+
+        @keyframes med-hero-zoom { from { transform: scale(1.06); } to { transform: scale(1); } }
+        .med-hero-bg { animation: med-hero-zoom 24s ease-out forwards; }
+        @media (prefers-reduced-motion: reduce) { .med-hero-bg { animation: none; } }
+
+        .med-list { padding-left: 0; margin: 0; list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+        .med-list-item { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.9rem; }
+        .med-list-dot { width: 30px; height: 30px; border-radius: 50%; border: 1.5px solid rgba(15,118,110,0.3); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+        .med-list-dot-inner { width: 7px; height: 7px; border-radius: 50%; background: #0f766e; }
+        .med-list-text { font-family: var(--font-inter), sans-serif; font-size: 0.95rem; line-height: 1.85; color: #4b5259; font-weight: 400; }
+        .med-list-text strong { color: #2B2A26; font-weight: 600; }
+
+        .med-season-tag { display: inline-block; font-family: var(--font-inter), sans-serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #0f766e; background: rgba(15,118,110,0.08); padding: 0.32rem 0.7rem; border-radius: 999px; margin-bottom: 0.9rem; }
+
+        .med-nav-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.75rem; padding-bottom: 0.5rem; }
+        @media (max-width: 820px) { .med-nav-grid { grid-template-columns: 1fr; } }
+
+        .med-section-alt { background: #f7f9f7; }
+        .med-section-white { background: #ffffff; }
+
+        .med-breadcrumb-wrap { padding: 1rem 0; border-bottom: 1px solid rgba(15,118,110,0.08); }
+
+        .med-hero-section {
+          position: relative;
+          overflow: hidden;
+          min-height: 70vh;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-bottom: 1px solid rgba(15,118,110,0.12);
+        }
+        .med-hero-section .med-hero-overlay {
+          position: absolute;
+          inset: 0;
+          background: linear-gradient(120deg, rgba(4,12,10,0.82) 0%, rgba(4,12,10,0.5) 45%, rgba(4,12,10,0.78) 100%);
+        }
+        .med-hero-section .med-hero-content {
+          position: relative;
+          z-index: 2;
+          max-width: 58rem;
+          width: 100%;
+          padding: 5rem 1.5rem 4.5rem;
+          text-align: center;
+        }
+        .med-hero-section .med-hero-content .med-h1 {
+          font-family: var(--font-fraunces), Georgia, serif;
+          font-size: clamp(2.3rem, 4.6vw, 3.4rem);
+          font-weight: 600;
+          letter-spacing: -0.03em;
+          color: #ffffff;
+          margin: 0 0 1.1rem;
+          line-height: 1.08;
+          text-shadow: 0 3px 24px rgba(0,0,0,0.5);
+        }
+        .med-hero-section .med-hero-content .med-h1 span {
+          color: #5eead4;
+        }
+        .med-hero-section .med-hero-content .med-body {
+          max-width: 46rem;
+          margin: 0 auto 1.5rem;
+          font-size: 1.05rem;
+          color: rgba(255,255,255,0.85);
+          text-shadow: 0 2px 14px rgba(0,0,0,0.45);
+        }
+        .med-hero-section .med-hero-content .med-hero-tags {
+          display: flex;
+          justify-content: center;
+          gap: 0.75rem;
+          flex-wrap: wrap;
+          margin-bottom: 2rem;
+        }
+        .med-hero-section .med-hero-content .med-hero-tags span {
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.65rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #ffffff;
+          border: 1px solid rgba(255,255,255,0.3);
+          border-radius: 999px;
+          padding: 0.35rem 0.9rem;
+          background: rgba(15,118,110,0.25);
+        }
+        .med-hero-section .med-hero-content .med-hero-actions {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          flex-wrap: wrap;
+        }
+
+        .med-section-padding { padding: 4rem 0; }
+        .med-section-padding-sm { padding: 3rem 0; }
+
+        /* ── Table of Contents ── */
+        .med-toc-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          border: 1px solid rgba(15,118,110,0.12);
+          border-radius: 18px;
+          overflow: hidden;
+        }
+        @media (max-width: 820px) { .med-toc-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .med-toc-grid { grid-template-columns: 1fr; } }
+        .med-toc-item {
+          display: flex;
+          flex-direction: column;
+          gap: 0.4rem;
+          padding: 1.25rem 1.5rem;
+          border-right: 1px solid rgba(15,118,110,0.06);
+          border-bottom: 1px solid rgba(15,118,110,0.06);
+          text-decoration: none;
+          background: #fff;
+          transition: background 0.2s, transform 0.2s;
+        }
+        .med-toc-item:hover { background: #f7f9f7; transform: translateY(-2px); }
+        .med-toc-item:nth-child(4n) { border-right: none; }
+        .med-toc-item:nth-child(n+5) { border-bottom: none; }
+        .med-toc-num {
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.6rem; font-weight: 700;
+          letter-spacing: 0.18em;
+          color: #0f766e;
+        }
+        .med-toc-label {
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.85rem; font-weight: 400;
+          color: #2B2A26; line-height: 1.4;
+        }
+
+        /* ── Comparison Table ── */
+        .med-table-wrap {
+          overflow-x: auto;
+          border-radius: 18px;
+          border: 1px solid rgba(15,118,110,0.12);
+          margin-top: 1.5rem;
+        }
+        .med-table {
+          width: 100%;
+          border-collapse: collapse;
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.82rem;
+        }
+        .med-table th {
+          text-align: left;
+          padding: 0.85rem 1rem;
+          background: #f7f9f7;
+          border-bottom: 2px solid #0f766e;
+          font-weight: 600;
+          color: #2B2A26;
+          font-size: 0.72rem;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+        }
+        .med-table td {
+          padding: 0.75rem 1rem;
+          border-bottom: 1px solid rgba(15,118,110,0.08);
+          color: #4b5259;
+        }
+        .med-table tr:last-child td { border-bottom: none; }
+        .med-table tr:hover td { background: #f7f9f7; }
+        .med-table td a { color: #0f766e; font-weight: 500; text-decoration: none; }
+        .med-table td a:hover { text-decoration: underline; }
+
+        .med-badge {
+          display: inline-block;
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.6rem;
+          font-weight: 600;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          padding: 0.15rem 0.6rem;
+          border-radius: 999px;
+        }
+        .med-badge-easy {
+          background: rgba(15,118,110,0.08);
+          color: #0f766e;
+        }
+        .med-badge-moderate {
+          background: rgba(15,118,110,0.08);
+          color: #0f766e;
+        }
+        .med-badge-moderate-challenging {
+          background: rgba(230,81,0,0.08);
+          color: #c45000;
+        }
+        .med-badge-challenging {
+          background: rgba(230,81,0,0.08);
+          color: #e65100;
+        }
+
+        .med-filter-pills {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          margin-top: 1.5rem;
+          margin-bottom: 1.5rem;
+        }
+        .med-filter-pill {
+          display: inline-block;
+          padding: 0.4rem 0.85rem;
+          border-radius: 999px;
+          border: 1px solid rgba(15,118,110,0.3);
+          color: #0f766e;
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.72rem;
+          font-weight: 500;
+          letter-spacing: 0.08em;
+          text-decoration: none;
+          transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+        .med-filter-pill:hover {
+          background: #0f766e;
+          color: #ffffff;
+          border-color: #0f766e;
+        }
+
+        /* ── Region Cards ── */
+        .med-region-card {
+          padding: 1.5rem;
+          border-left: 3px solid #0f766e;
+          transition: all 0.3s ease;
+        }
+        .med-region-card:hover {
+          border-color: #0d6b64;
+          transform: translateX(6px);
+        }
+        .med-region-card .med-h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+        .med-region-card .med-body { font-size: 0.88rem; margin-bottom: 0; }
+        .med-region-card .med-trek-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.3rem;
+          margin-top: 0.5rem;
+        }
+        .med-region-card .med-trek-tags span {
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.65rem;
+          font-weight: 500;
+          color: #0f766e;
+          background: rgba(15,118,110,0.08);
+          padding: 0.15rem 0.6rem;
+          border-radius: 999px;
+        }
+
+        /* ── Progression Timeline ── */
+        .med-progression {
+          position: relative;
+          padding-left: 2rem;
+          margin: 1.5rem 0;
+        }
+        .med-progression::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 8px;
+          width: 2px;
+          background: rgba(15,118,110,0.2);
+        }
+        .med-progression-item {
+          position: relative;
+          margin-bottom: 1.5rem;
+        }
+        .med-progression-item:last-child { margin-bottom: 0; }
+        .med-progression-item::before {
+          content: '';
+          position: absolute;
+          top: 8px;
+          left: -2rem;
+          width: 14px;
+          height: 14px;
+          background: #fff;
+          border: 2px solid #0f766e;
+          border-radius: 50%;
+          transform: translateX(-7px);
+        }
+        .med-progression-item .med-label {
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.7rem;
+          font-weight: 600;
+          letter-spacing: 0.15em;
+          text-transform: uppercase;
+          color: #0f766e;
+        }
+        .med-progression-item .med-h3 { font-size: 1rem; margin-bottom: 0.2rem; }
+        .med-progression-item .med-body { font-size: 0.92rem; margin-bottom: 0; }
+
+        /* ── Decision Cards ── */
+        .med-decision-card {
+          padding: 1.25rem 1.5rem;
+          background: #f7f9f7;
+          border: 1px solid rgba(15,118,110,0.08);
+          border-radius: 12px;
+          margin-bottom: 0.75rem;
+          transition: all 0.3s ease;
+        }
+        .med-decision-card:hover {
+          border-color: rgba(15,118,110,0.2);
+          transform: translateX(4px);
+        }
+        .med-decision-card .med-h3 { font-size: 0.95rem; margin-bottom: 0.2rem; }
+        .med-decision-card .med-body { font-size: 0.88rem; margin-bottom: 0; }
+
+        /* ── FAQ Accordion ── */
+        .med-faq-accordion {
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+          margin-top: 1.5rem;
+        }
+        .med-faq-details {
+          background: #fff;
+          border: 1px solid rgba(15,118,110,0.1);
+          border-radius: 12px;
+          overflow: hidden;
+          transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .med-faq-details:hover { border-color: rgba(15,118,110,0.25); box-shadow: 0 4px 16px rgba(15,118,110,0.04); }
+        .med-faq-details[open] { border-color: rgba(15,118,110,0.3); }
+        .med-faq-summary {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1.25rem 1.5rem;
+          cursor: pointer;
+          list-style: none;
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.95rem;
+          font-weight: 500;
+          color: #2B2A26;
+          transition: background 0.2s ease;
+          user-select: none;
+          gap: 1rem;
+        }
+        .med-faq-summary::-webkit-details-marker { display: none; }
+        .med-faq-summary:hover { background: rgba(15,118,110,0.02); }
+        .med-faq-details[open] .med-faq-summary {
+          background: rgba(15,118,110,0.03);
+          border-bottom: 1px solid rgba(15,118,110,0.06);
+        }
+        .med-faq-question { flex: 1; }
+        .med-faq-icon {
+          flex-shrink: 0;
+          width: 24px;
+          height: 24px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #0f766e;
+          transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .med-faq-details[open] .med-faq-icon { transform: rotate(45deg); }
+        .med-faq-icon svg { width: 20px; height: 20px; stroke-width: 2; transition: stroke-width 0.2s ease; }
+        .med-faq-summary:hover .med-faq-icon svg { stroke-width: 2.5; }
+        .med-faq-answer {
+          padding: 0 1.5rem 1.5rem;
+          animation: med-faq-slide 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        @keyframes med-faq-slide {
+          0% { opacity: 0; transform: translateY(-12px) scale(0.98); }
+          100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+        .med-faq-answer .med-body { margin: 0; font-size: 0.92rem; color: #4b5259; }
+
+        /* ── Explore Links ── */
+        .med-explore-group {
+          border: 1px solid rgba(15,118,110,0.12);
+          border-radius: 18px;
+          overflow: hidden;
+          margin-bottom: 1rem;
+        }
+        .med-explore-link {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 0.85rem 1.25rem;
+          border-bottom: 1px solid rgba(15,118,110,0.06);
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.88rem;
+          font-weight: 400;
+          color: #2B2A26;
+          text-decoration: none;
+          transition: background 0.2s, color 0.2s;
+        }
+        .med-explore-link:last-child { border-bottom: none; }
+        .med-explore-link:hover { background: #f7f9f7; color: #0f766e; }
+        .med-explore-link .med-arrow { color: #0f766e; font-size: 0.8rem; }
+
+        .med-trek-footer {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem 1.5rem;
+          justify-content: center;
+          padding: 2rem 0 4rem;
+          border-top: 1px solid rgba(15,118,110,0.08);
+          margin-top: 2rem;
+        }
+        .med-trek-footer a {
+          color: #0f766e;
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.85rem;
+          font-weight: 500;
+          text-decoration: none;
+          transition: color 0.3s;
+        }
+        .med-trek-footer a:hover { color: #0d6b64; text-decoration: underline; }
+      `}</style>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, articleSchema]) }}
       />
+
+      <div className="med-breadcrumb-wrap">
+        <div className="med-outer">
+          <Breadcrumb
+            items={[
+              { name: 'Home', href: '/' },
+              { name: 'Treks', href: '/treks' },
+              { name: 'Best Treks in Uttarakhand' },
+            ]}
+          />
+        </div>
+      </div>
 
       <article>
 
         {/* ── HERO ── */}
-<section style={{
-  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-  background: '#f7f9f7',
-  paddingTop: '4rem', paddingBottom: '4rem',
-  borderBottom: '1px solid #e5e7eb',
-}}>
-  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-      <span style={{
-        fontFamily: 'var(--font-geist-sans), sans-serif',
-        fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const,
-        color: '#374151', fontWeight: 500
-      }}>Trekking Guide · Uttarakhand</span>
-    </div>
-    <h1 style={{
-      fontFamily: 'var(--font-geist-sans), sans-serif',
-      fontSize: 'clamp(1.75rem, 3.5vw, 2.4rem)',
-      fontWeight: 200, letterSpacing: '-0.035em',
-      color: '#111111', lineHeight: 1.1, margin: '0 0 1.75rem',
-    }}>
-      Best Treks in Uttarakhand: Beginner to High-Altitude Guide
-    </h1>
-    <p style={{
-      fontFamily: 'var(--font-geist-sans), sans-serif',
-      fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85,
-      color: '#555555', margin: '0 0 1rem',
-    }}>
-      Uttarakhand stretches from the foothills north of Delhi to the highest peaks in India — Nanda Devi at 7,816 metres, Kamet, Chaukhamba, and the Panchachuli massif. Across four distinct trekking regions, the state offers a complete spectrum of Himalayan experiences: frozen lake traverses in winter, panoramic ridge walks in spring, remote glacier expeditions in summer, and weekend forest trails accessible year-round.
-    </p>
-    <p style={{
-      fontFamily: 'var(--font-geist-sans), sans-serif',
-      fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85,
-      color: '#555555', margin: 0,
-    }}>
-      This guide covers the 10 best treks across{' '}
-      <Link href="/treks/garhwal-himalayas" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Garhwal</Link>,{' '}
-      Kumaon, Sankri and Chakrata — ranked by difficulty, altitude, season and the kind of mountain experience each delivers. Whether you are planning your first Himalayan trek or your tenth, the right route depends on three variables: when you are going, how many days you have, and what you want from the mountains.
-    </p>
-  </div>
-</section>
+        <section className="med-shell med-hero-section">
+          <div style={{ position: 'absolute', inset: 0 }}>
+            <img
+              className="med-hero-bg"
+              src={heroImage.src}
+              alt={heroImage.alt}
+              style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            />
+            <div className="med-hero-overlay" />
+          </div>
+          <div className="med-hero-content">
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.3rem' }}>
+              <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
+              <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>Trekking Guide · Uttarakhand</span>
+              <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
+            </div>
+            <h1 className="med-h1">
+              {h1Rest} <span>{h1LastWord}</span>
+            </h1>
+            <p className="med-body">
+              Uttarakhand stretches from the foothills north of Delhi to the highest peaks in India — Nanda Devi at 7,816 metres, Kamet, Chaukhamba, and the Panchachuli massif. Across four distinct trekking regions, the state offers a complete spectrum of Himalayan experiences.
+            </p>
+            <div className="med-hero-tags">
+              <span>Brahmatal</span>
+              <span>Kuari Pass</span>
+              <span>Roopkund</span>
+              <span>Kedarkantha</span>
+            </div>
+            <div className="med-hero-actions">
+              <a href="#comparison" className="med-cta-btn">View All Treks</a>
+              <a href="#regions" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Explore Regions</a>
+            </div>
+          </div>
+        </section>
 
-{/* ── TABLE OF CONTENTS ── */}
-<section style={{
-  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-  background: '#ffffff',
-  paddingTop: '2rem', paddingBottom: '8rem',
-  borderBottom: '1px solid #e5e7eb',
-}}>
-  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
+        {/* ── TABLE OF CONTENTS ── */}
+        <section className="med-shell med-section-white med-section-padding-sm" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">In This Guide</span>
+            </div>
 
-    <style>{`
-      .toc-grid {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        border: 1px solid #e5e7eb;
-        border-radius: 8px;
-        overflow: hidden;
-      }
-      .toc-item {
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-        padding: 1.5rem;
-        border-right: 1px solid #e5e7eb;
-        border-bottom: 1px solid #e5e7eb;
-        text-decoration: none;
-        background: #ffffff;
-        transition: background 0.15s;
-      }
-      .toc-item:hover { background: #f7f9f7; }
-      .toc-item:nth-child(4n) { border-right: none; }
-      .toc-item:nth-child(n+5) { border-bottom: none; }
-      .toc-num {
-        font-size: 0.65rem; font-weight: 700;
-        letter-spacing: 0.18em;
-        color: var(--color-primary);
-      }
-      .toc-label {
-        font-family: var(--font-geist-sans), sans-serif;
-        font-size: 0.82rem; font-weight: 400;
-        color: #333333; line-height: 1.4;
-      }
-    `}</style>
+            <nav aria-label="Table of contents" style={{ marginTop: '0.5rem' }}>
+              <div className="med-toc-grid">
+                {[
+                  { href: '#beginner-treks', label: 'Beginner-Friendly Treks' },
+                  { href: '#moderate-treks', label: 'Moderate Multi-Day Treks' },
+                  { href: '#challenging-treks', label: 'Challenging High-Altitude Treks' },
+                  { href: '#snow-treks', label: 'Best Snow Treks' },
+                  { href: '#high-altitude', label: 'High-Altitude Treks Above 4,000 m' },
+                  { href: '#regions', label: 'Trekking Regions in Uttarakhand' },
+                  { href: '#progression', label: 'The Trekking Progression Path' },
+                  { href: '#how-to-choose', label: 'How to Choose the Right Trek' },
+                ].map((item, i) => (
+                  <a key={item.href} href={item.href} className="med-toc-item">
+                    <span className="med-toc-num">{String(i + 1).padStart(2, '0')}</span>
+                    <span className="med-toc-label">{item.label}</span>
+                  </a>
+                ))}
+              </div>
+            </nav>
+          </div>
+        </section>
 
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '2rem', }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)', display: 'inline-block' }} />
-      <span style={{
-        fontFamily: 'var(--font-geist-sans), sans-serif',
-        fontSize: '0.75rem', letterSpacing: '0.28em',
-        textTransform: 'uppercase' as const,
-        color: '#374151', fontWeight: 500,
-      }}>In This Guide</span>
-    </div>
+        <PrimaryCTA
+          id="plan"
+          label="Plan My Uttarakhand Trek"
+          subtext="Tell us your dates, fitness level and preferred difficulty. We will match you to the right route."
+          vertical="trek"
+          category="apex"
+          sourcePath={PATH}
+        />
 
-    <nav aria-label="Table of contents" style={{ marginTop: '8rem' }}>
-      <div className="toc-grid">
-        {[
-          { href: '#beginner-treks', label: 'Beginner-Friendly Treks' },
-          { href: '#moderate-treks', label: 'Moderate Multi-Day Treks' },
-          { href: '#challenging-treks', label: 'Challenging High-Altitude Treks' },
-          { href: '#snow-treks', label: 'Best Snow Treks' },
-          { href: '#high-altitude', label: 'High-Altitude Treks Above 4,000 m' },
-          { href: '#regions', label: 'Trekking Regions in Uttarakhand' },
-          { href: '#progression', label: 'The Trekking Progression Path' },
-          { href: '#how-to-choose', label: 'How to Choose the Right Trek' },
-        ].map((item, i) => (
-          <a key={item.href} href={item.href} className="toc-item">
-            <span className="toc-num">{String(i + 1).padStart(2, '0')}</span>
-            <span className="toc-label">{item.label}</span>
-          </a>
-        ))}
-      </div>
-    </nav>
+        {/* ── COMPARISON TABLE ── */}
+        <section id="comparison" className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Trek Comparison</span>
+            </div>
+            <h2 className="med-h2">All 10 Treks <span>at a Glance</span></h2>
 
-  </div>
-</section>
+            <div className="med-table-wrap">
+              <table className="med-table">
+                <thead>
+                  <tr>
+                    <th>Trek</th>
+                    <th>Altitude</th>
+                    <th>Difficulty</th>
+                    <th>Days</th>
+                    <th>Best Season</th>
+                    <th>Region</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {ALL_TREKS.map((row) => {
+                    const diffClass = row.diff.toLowerCase().startsWith('challenging')
+                      ? 'med-badge-challenging'
+                      : row.diff.toLowerCase().startsWith('easy')
+                      ? 'med-badge-easy'
+                      : row.diff.includes('–')
+                      ? 'med-badge-moderate-challenging'
+                      : 'med-badge-moderate';
+                    return (
+                      <tr key={row.href}>
+                        <td><Link href={row.href}>{row.name}</Link></td>
+                        <td>{row.alt}</td>
+                        <td><span className={`med-badge ${diffClass}`}>{row.diff}</span></td>
+                        <td>{row.days}</td>
+                        <td>{row.season}</td>
+                        <td>{row.region}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
 
-<PrimaryCTA
-  label="Plan My Uttarakhand Trek"
-  subtext="Tell us your dates, fitness level and preferred difficulty. We will match you to the right route."
-  vertical="trek"
-  category="apex"
-  sourcePath={PATH}
-/>
-        {/* ── MASTER COMPARISON TABLE ── */}
-<section style={{
-  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-  background: '#ffffff',
-  paddingTop: '4rem', paddingBottom: '4rem',
-  borderBottom: '1px solid #e5e7eb',
-}}>
-  <style>{`
-    .trek-table thead tr { border-bottom: 2px solid #e5e7eb; }
-    .trek-table th {
-      font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.75rem; font-weight: 600;
-      letter-spacing: 0.2em; text-transform: uppercase;
-      color: #374151;
-      padding: 0.75rem 1rem; text-align: left;
-    }
-    .trek-table td {
-      font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.84rem; font-weight: 300;
-      color: #444444; padding: 0.75rem 1rem;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    .trek-table tbody tr:last-child td { border-bottom: none; }
-    .trek-table tbody tr:hover td { background: #f7f9f7; }
-    .diff-easy {
-      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; border-radius: 100px;
-      padding: 2px 10px; display: inline-block;
-      color: #555; background: #f0f0f0; border: 1px solid #e0e0e0;
-    }
-    .diff-moderate {
-      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; border-radius: 100px;
-      padding: 2px 10px; display: inline-block;
-      color: #374151;
-      background: rgba(15,118,110,0.07);
-      border: 1px solid rgba(15,118,110,0.2);
-    }
-    .diff-challenging {
-      font-size: 0.6rem; font-weight: 600; letter-spacing: 0.12em;
-      text-transform: uppercase; border-radius: 100px;
-      padding: 2px 10px; display: inline-block;
-      color: #e65100;
-      background: rgba(230,81,0,0.07);
-      border: 1px solid rgba(230,81,0,0.2);
-    }
-    .filter-pill {
-      display: inline-block; padding: 0.4rem 0.85rem;
-      border-radius: 100px;
-      border: 1px solid var(--color-primary);
-      color: #374151;
-      font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.72rem; font-weight: 500;
-      letter-spacing: 0.08em;
-      text-decoration: none;
-      transition: background 0.2s, color 0.2s;
-    }
-    .filter-pill:hover { background: var(--color-primary); color: #ffffff; }
-  `}</style>
-  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Trek Comparison</span>
-    </div>
-    <h2 style={{
-      fontFamily: 'var(--font-geist-sans), sans-serif',
-      fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
-      fontWeight: 200, letterSpacing: '-0.03em',
-      color: '#111111', lineHeight: 1.15, marginBottom: '2rem',
-    }}>All 10 Treks at a Glance</h2>
+            <div className="med-filter-pills">
+              <Link href={`${PATH}/beginner`} className="med-filter-pill">Beginner Treks</Link>
+              <Link href={`${PATH}/snow`} className="med-filter-pill">Snow Treks</Link>
+              <Link href={`${PATH}/high-altitude`} className="med-filter-pill">High-Altitude (4,000 m+)</Link>
+              <Link href={`${PATH}/challenging`} className="med-filter-pill">Challenging Treks</Link>
+            </div>
 
-    <div style={{ overflowX: 'auto', border: '1px solid #e5e7eb', borderRadius: '8px', marginBottom: '1.75rem' }}>
-      <table className="trek-table" style={{ width: '100%', borderCollapse: 'collapse' }}>
-        <thead>
-          <tr>
-            <th>Trek</th>
-            <th>Altitude</th>
-            <th>Difficulty</th>
-            <th>Days</th>
-            <th>Best Season</th>
-            <th>Region</th>
-          </tr>
-        </thead>
-        <tbody>
-          {[
-            { href: '/treks/location/lohajung/brahmatal-trek', name: 'Brahmatal', alt: '3,850 m', diff: 'Moderate', days: '4', season: 'Dec–Mar', region: 'Garhwal' },
-            { href: '/treks/location/joshimath/kuari-pass-trek', name: 'Kuari Pass', alt: '3,876 m', diff: 'Moderate', days: '5', season: 'Mar–May, Oct–Nov', region: 'Garhwal' },
-            { href: '/treks/location/sankri/kedarkantha-trek', name: 'Kedarkantha', alt: '3,810 m', diff: 'Moderate–Challenging', days: '5', season: 'Dec–Feb', region: 'Sankri' },
-            { href: '/treks/location/sankri/har-ki-dun-trek', name: 'Har Ki Dun', alt: '3,566 m', diff: 'Moderate', days: '5', season: 'May–Jun, Sep–Oct', region: 'Sankri' },
-            { href: '/treks/location/munsiyari/khaliya-top-trek', name: 'Khaliya Top', alt: '3,500 m', diff: 'Moderate', days: '3–4', season: 'May–Jun, Sep–Oct', region: 'Kumaon' },
-            { href: '/treks/location/lohajung/roopkund-trek', name: 'Roopkund', alt: '4,800 m', diff: 'Challenging', days: '7', season: 'May–Jun, Sep–Oct', region: 'Garhwal' },
-            { href: '/treks/location/joshimath/pangarchulla-trek', name: 'Pangarchulla', alt: '4,590 m', diff: 'Challenging', days: '6', season: 'Mar–May', region: 'Garhwal' },
-            { href: '/treks/location/munsiyari/milam-glacier-trek', name: 'Milam Glacier', alt: '3,450 m', diff: 'Challenging', days: '8–10', season: 'May–Jun, Sep–Oct', region: 'Kumaon' },
-            { href: '/treks/location/chakrata/tiger-fall-trek', name: 'Tiger Fall', alt: '~2,200 m', diff: 'Easy', days: '1', season: 'Year-round', region: 'Chakrata' },
-            { href: '/treks/location/chakrata/budher-caves-trek', name: 'Budher Caves', alt: '~2,200 m', diff: 'Easy', days: '1', season: 'Year-round', region: 'Chakrata' },
-          ].map((row) => {
-            const diffClass = row.diff.toLowerCase().startsWith('challenging') ? 'diff-challenging'
-              : row.diff.toLowerCase().startsWith('easy') ? 'diff-easy'
-              : 'diff-moderate';
-            return (
-              <tr key={row.href}>
-                <td><Link href={row.href} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>{row.name}</Link></td>
-                <td>{row.alt}</td>
-                <td><span className={diffClass}>{row.diff}</span></td>
-                <td>{row.days}</td>
-                <td>{row.season}</td>
-                <td>{row.region}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    </div>
+            <p className="med-body">
+              <strong>Looking for a beginner trek?</strong> Start with{' '}
+              <Link href="/treks/location/lohajung/brahmatal-trek">Brahmatal</Link> or{' '}
+              <Link href="/treks/location/joshimath/kuari-pass-trek">Kuari Pass</Link> — both moderate, no technical skills needed.{' '}
+              <Link href={`${PATH}/beginner`}>See all beginner treks →</Link>
+            </p>
+            <p className="med-body" style={{ marginBottom: 0 }}>
+              <strong>Want a summit challenge?</strong> See{' '}
+              <Link href="/treks/location/joshimath/pangarchulla-trek">Pangarchulla</Link> or{' '}
+              <Link href="/treks/location/lohajung/roopkund-trek">Roopkund</Link> — challenging routes above 4,500 m for experienced trekkers.{' '}
+              <Link href={`${PATH}/challenging`}>Full challenging treks guide →</Link>
+            </p>
+          </div>
+        </section>
 
-    <nav aria-label="Filter treks by category" style={{ display: 'flex', flexWrap: 'wrap' as const, gap: '0.5rem', marginBottom: '1.75rem' }}>
-      {[
-        { href: `${PATH}/beginner`, label: 'Beginner Treks' },
-        { href: `${PATH}/snow`, label: 'Snow Treks' },
-        { href: `${PATH}/high-altitude`, label: 'High-Altitude (4,000 m+)' },
-        { href: `${PATH}/challenging`, label: 'Challenging Treks' },
-      ].map(f => (
-        <Link key={f.href} href={f.href} className="filter-pill">{f.label}</Link>
-      ))}
-    </nav>
+        {/* ── BEGINNER TREKS ── */}
+        <section id="beginner-treks" className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Beginner Treks</span>
+            </div>
+            <h2 className="med-h2">Beginner-Friendly Treks <span>in Uttarakhand</span></h2>
+            <p className="med-body">
+              These routes require no prior Himalayan experience. They stay below 4,000 metres, have no technical sections, and are supported by established guide infrastructure.
+            </p>
 
-    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '0.5rem' }}>
-      <strong style={{ fontWeight: 500, color: '#111111' }}>Looking for a beginner trek?</strong> Start with{' '}
-      <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Brahmatal</Link>{' '}
-      or{' '}
-      <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Kuari Pass</Link>{' '}
-      — both moderate, no technical skills needed. See all{' '}
-      <Link href={`${PATH}/beginner`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>beginner treks →</Link>
-    </p>
-    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
-      <strong style={{ fontWeight: 500, color: '#111111' }}>Want a summit challenge?</strong> See{' '}
-      <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla</Link>{' '}
-      or{' '}
-      <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Roopkund</Link>{' '}
-      — challenging routes above 4,500 m for experienced trekkers. Full{' '}
-      <Link href={`${PATH}/challenging`} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>challenging treks guide →</Link>
-    </p>
-  </div>
-</section>
+            <div className="med-card" style={{ padding: '1.5rem', marginBottom: '1.25rem' }}>
+              <h3 className="med-h3" style={{ fontSize: '1rem' }}><Link href="/treks/location/lohajung/brahmatal-trek">Brahmatal Trek — The Ideal First High-Altitude Trek</Link></h3>
+              <div className="med-trek-meta" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem 0.75rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.75rem', fontWeight: 400, color: '#6b7280', marginBottom: '0.5rem' }}>
+                <span>3,850 m</span>
+                <span><span className="med-badge med-badge-moderate">Moderate</span></span>
+                <span>4 days</span>
+                <span>Dec–Mar</span>
+                <span>Lohajung, Garhwal</span>
+              </div>
+              <p className="med-body">
+                A 22 km route from Lohajung to a frozen alpine lake at 3,850 metres, passing through oak and rhododendron forest before emerging onto snow-covered ridges with views of Trishul and Nanda Ghunti. The 4-day duration keeps fatigue manageable. See{' '}
+                <Link href="/treks/brahmatal/departures">upcoming Brahmatal trek departures</Link>.
+              </p>
+            </div>
 
-       {/* ── SECTION 1: BEGINNER TREKS ── */}
-<section id="beginner-treks" style={{
-  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-  background: '#f7f9f7',
-  paddingTop: '4rem', paddingBottom: '4rem',
-  borderBottom: '1px solid #e5e7eb',
-}}>
-  <style>{`
-    .trek-card {
-      background: #ffffff;
-      border: 1px solid #e5e7eb;
-      border-top: 2px solid var(--color-primary);
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 1.25rem;
-    }
-    .trek-card:last-of-type { margin-bottom: 0; }
-    .trek-meta-pills {
-      display: flex; flex-wrap: wrap; gap: 0.4rem;
-      margin-bottom: 1rem;
-    }
-    .trek-meta-pill {
-      font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.68rem; font-weight: 400;
-      color: #555555; background: #f7f9f7;
-      border: 1px solid #e5e7eb; border-radius: 100px;
-      padding: 3px 10px; display: inline-block;
-    }
-    .trek-card h3 {
-      font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.95rem; font-weight: 500;
-      color: #111111; margin: 0 0 0.85rem;
-      letter-spacing: -0.01em;
-    }
-    .trek-card p {
-      font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.88rem; font-weight: 300;
-      line-height: 1.85; color: #555555; margin: 0;
-    }
-  `}</style>
-  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Beginner Treks</span>
-    </div>
-    <h2 style={{
-      fontFamily: 'var(--font-geist-sans), sans-serif',
-      fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
-      fontWeight: 200, letterSpacing: '-0.03em',
-      color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem',
-    }}>Beginner-Friendly Treks in Uttarakhand</h2>
-    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '2rem' }}>
-      These routes require no prior Himalayan experience. They stay below 4,000 metres, have no technical sections (no ropes, crampons, or glacier crossings), and are supported by established guide infrastructure. The right starting point depends on how many days you have and whether you want a summit experience or a gentler introduction.
-    </p>
+            <div className="med-card" style={{ padding: '1.5rem', marginBottom: '1.25rem' }}>
+              <h3 className="med-h3" style={{ fontSize: '1rem' }}><Link href="/treks/location/joshimath/kuari-pass-trek">Kuari Pass Trek — Best Views for Moderate Effort</Link></h3>
+              <div className="med-trek-meta" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem 0.75rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.75rem', fontWeight: 400, color: '#6b7280', marginBottom: '0.5rem' }}>
+                <span>3,876 m</span>
+                <span><span className="med-badge med-badge-moderate">Moderate</span></span>
+                <span>5 days</span>
+                <span>Mar–May, Oct–Nov</span>
+                <span>Joshimath, Garhwal</span>
+              </div>
+              <p className="med-body">
+                Follows the historic Lord Curzon Trail along a high ridge with near-continuous views of Nanda Devi, Dronagiri, Chaukhamba, and Kamet. The view-to-effort ratio is the highest of any trek in Uttarakhand.{' '}
+                <Link href="/treks/brahmatal-vs-kuari-pass">Compare Brahmatal vs Kuari Pass</Link> for the detailed breakdown.
+              </p>
+            </div>
 
-    <div className="trek-card">
-      <h3>Brahmatal Trek — The Ideal First High-Altitude Trek</h3>
-      <div className="trek-meta-pills">
-        <span className="trek-meta-pill">3,850 m</span>
-        <span className="trek-meta-pill" style={{ color: '#374151', borderColor: 'rgba(15,118,110,0.25)', background: 'rgba(15,118,110,0.05)' }}>Moderate</span>
-        <span className="trek-meta-pill">4 days</span>
-        <span className="trek-meta-pill">Dec–Mar</span>
-        <span className="trek-meta-pill">Lohajung, Garhwal</span>
-      </div>
-      <p>
-        The{' '}
-        <Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Brahmatal Trek</Link>{' '}
-        is a 22 km route from Lohajung to a frozen alpine lake at 3,850 metres, passing through oak and rhododendron forest before emerging onto snow-covered ridges with views of Trishul (7,120 m) and Nanda Ghunti. The altitude gain is gradual, the trail is well-defined, and the 4-day duration keeps fatigue manageable. For anyone seeking their first real Himalayan trek beyond a day walk, Brahmatal delivers genuine high-altitude reward at moderate difficulty. It is the premier{' '}
-        <Link href="/blog/best-snow-treks-garhwal-himalaya" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>snow trek in the Garhwal Himalaya</Link>.
-        {' '}Check{' '}
-        <Link href="/treks/brahmatal/departures" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>upcoming Brahmatal trek departures</Link>{' →'}
-      </p>
-    </div>
+            <div className="med-card" style={{ padding: '1.5rem', marginBottom: '1.25rem' }}>
+              <h3 className="med-h3" style={{ fontSize: '1rem' }}><Link href="/treks/location/munsiyari/khaliya-top-trek">Khaliya Top Trek — Shortest Route to Serious Views</Link></h3>
+              <div className="med-trek-meta" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem 0.75rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.75rem', fontWeight: 400, color: '#6b7280', marginBottom: '0.5rem' }}>
+                <span>3,500 m</span>
+                <span><span className="med-badge med-badge-moderate">Moderate</span></span>
+                <span>3–4 days</span>
+                <span>May–Jun, Sep–Oct</span>
+                <span>Munsiyari, Kumaon</span>
+              </div>
+              <p className="med-body">
+                A broad alpine meadow at 3,500 metres above Munsiyari, offering an unbroken 180-degree panorama of the five Panchachuli summits. At 3–4 days, it is the shortest route to genuine high-altitude Himalayan views.
+              </p>
+            </div>
 
-    <div className="trek-card">
-      <h3>Kuari Pass Trek — Best Views for Moderate Effort</h3>
-      <div className="trek-meta-pills">
-        <span className="trek-meta-pill">3,876 m</span>
-        <span className="trek-meta-pill" style={{ color: '#374151', borderColor: 'rgba(15,118,110,0.25)', background: 'rgba(15,118,110,0.05)' }}>Moderate</span>
-        <span className="trek-meta-pill">5 days</span>
-        <span className="trek-meta-pill">Mar–May, Oct–Nov</span>
-        <span className="trek-meta-pill">Joshimath, Garhwal</span>
-      </div>
-      <p>
-        The{' '}
-        <Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Kuari Pass Trek</Link>{' '}
-        follows the historic Lord Curzon Trail along a high ridge with near-continuous views of Nanda Devi (7,816 m), Dronagiri, Chaukhamba, and Kamet. No technical challenges, no glacier terrain — just sustained ridge walking through oak forest and alpine meadow. The view-to-effort ratio is the highest of any trek in Uttarakhand. Spring brings rhododendron blooms; autumn delivers the sharpest visibility. Choosing between these two?{' '}
-        <Link href="/treks/brahmatal-vs-kuari-pass" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Compare Brahmatal vs Kuari Pass</Link>{' '}
-        for the detailed breakdown. Check{' '}
-        <Link href="/treks/kuari-pass/departures" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>upcoming Kuari Pass trek departures</Link>{' →'}
-      </p>
-    </div>
+            <div className="med-card" style={{ padding: '1.5rem' }}>
+              <h3 className="med-h3" style={{ fontSize: '1rem' }}>Tiger Fall &amp; Budher Caves — Weekend Day Treks</h3>
+              <div className="med-trek-meta" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem 0.75rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.75rem', fontWeight: 400, color: '#6b7280', marginBottom: '0.5rem' }}>
+                <span>~2,200 m</span>
+                <span><span className="med-badge med-badge-easy">Easy</span></span>
+                <span>1 day each</span>
+                <span>Year-round</span>
+                <span>Chakrata</span>
+              </div>
+              <p className="med-body">
+                <Link href="/treks/location/chakrata/tiger-fall-trek">Tiger Fall</Link> (12 km through deodar forest to a major Himalayan waterfall) and{' '}
+                <Link href="/treks/location/chakrata/budher-caves-trek">Budher Caves</Link> (10 km to ancient limestone caves) are the lowest-barrier entry points to Himalayan trekking.
+              </p>
+            </div>
+          </div>
+        </section>
 
-    <div className="trek-card">
-      <h3>Khaliya Top Trek — Shortest Route to Serious Views</h3>
-      <div className="trek-meta-pills">
-        <span className="trek-meta-pill">3,500 m</span>
-        <span className="trek-meta-pill" style={{ color: '#374151', borderColor: 'rgba(15,118,110,0.25)', background: 'rgba(15,118,110,0.05)' }}>Moderate</span>
-        <span className="trek-meta-pill">3–4 days</span>
-        <span className="trek-meta-pill">May–Jun, Sep–Oct</span>
-        <span className="trek-meta-pill">Munsiyari, Kumaon</span>
-      </div>
-      <p>
-        <Link href="/treks/location/munsiyari/khaliya-top-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Khaliya Top</Link>{' '}
-        is a broad alpine meadow at 3,500 metres above Munsiyari, offering an unbroken 180-degree panorama of the five Panchachuli summits, Nanda Devi East, and the Rajrambha range. The trek is pure sustained uphill through rhododendron forest — no technical terrain, no river crossings. At 3–4 days, it is the shortest route to genuine high-altitude Himalayan views in Uttarakhand. Ideal for working professionals on extended weekends, and as acclimatisation before the{' '}
-        <Link href="/treks/location/munsiyari/milam-glacier-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Milam Glacier expedition</Link>.
-      </p>
-    </div>
+        {/* ── MODERATE TREKS ── */}
+        <section id="moderate-treks" className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Moderate Treks</span>
+            </div>
+            <h2 className="med-h2">Moderate Multi-Day <span>Treks</span></h2>
+            <p className="med-body">
+              These routes offer the core Himalayan trekking experience — multiple days on trail, camping at altitude, and the slow rhythm of walking through changing landscapes.
+            </p>
 
-    <div className="trek-card">
-      <h3>Tiger Fall &amp; Budher Caves — Weekend Day Treks</h3>
-      <div className="trek-meta-pills">
-        <span className="trek-meta-pill">~2,200 m</span>
-        <span className="trek-meta-pill" style={{ color: '#555', borderColor: '#e0e0e0', background: '#f0f0f0' }}>Easy</span>
-        <span className="trek-meta-pill">1 day each</span>
-        <span className="trek-meta-pill">Year-round</span>
-        <span className="trek-meta-pill">Chakrata</span>
-      </div>
-      <p>
-        The{' '}
-        <Link href="/treks/location/chakrata/tiger-fall-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Tiger Fall trail</Link>{' '}
-        (12 km through deodar forest to a major Himalayan waterfall) and the{' '}
-        <Link href="/treks/location/chakrata/budher-caves-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Budher Caves trek</Link>{' '}
-        (10 km to ancient limestone caves) are the lowest-barrier entry points to Himalayan trekking. No altitude concerns, no prior experience, no multi-day commitment. Just 2–3 hours from Dehradun. Combine with a{' '}
-        <Link href="/retreats/chakrata" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>wellness retreat in Chakrata</Link>{' '}
-        for a weekend that balances activity with rest.
-      </p>
-    </div>
+            <div className="med-card" style={{ padding: '1.5rem', marginBottom: '1.25rem' }}>
+              <h3 className="med-h3" style={{ fontSize: '1rem' }}><Link href="/treks/location/sankri/kedarkantha-trek">Kedarkantha Trek — The Classic Winter Summit</Link></h3>
+              <div className="med-trek-meta" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem 0.75rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.75rem', fontWeight: 400, color: '#6b7280', marginBottom: '0.5rem' }}>
+                <span>3,810 m</span>
+                <span><span className="med-badge med-badge-moderate-challenging">Moderate–Challenging</span></span>
+                <span>5 days</span>
+                <span>Dec–Feb</span>
+                <span>Sankri</span>
+              </div>
+              <p className="med-body">
+                The most popular guided trek in northern India. A 5-day route from Sankri to a 3,810 m summit with 360-degree views across six Himalayan ranges. The definitive first summit experience in the Indian Himalayas.
+              </p>
+            </div>
 
-  </div>
-</section>
+            <div className="med-card" style={{ padding: '1.5rem' }}>
+              <h3 className="med-h3" style={{ fontSize: '1rem' }}><Link href="/treks/location/sankri/har-ki-dun-trek">Har Ki Dun Trek — The Valley Immersion</Link></h3>
+              <div className="med-trek-meta" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem 0.75rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.75rem', fontWeight: 400, color: '#6b7280', marginBottom: '0.5rem' }}>
+                <span>3,566 m</span>
+                <span><span className="med-badge med-badge-moderate">Moderate</span></span>
+                <span>5 days</span>
+                <span>May–Jun, Sep–Oct</span>
+                <span>Sankri</span>
+              </div>
+              <p className="med-body">
+                The finest valley trek in northern India — 5 days through the Tons Valley with forest, traditional mountain villages, alpine meadows, and a glacial amphitheatre at the head.{' '}
+                <Link href="/treks/kedarkantha-vs-har-ki-dun">Kedarkantha vs Har Ki Dun</Link> comparison.
+              </p>
+            </div>
+          </div>
+        </section>
 
-        {/* ── SECTION 2: MODERATE MULTI-DAY ── */}
-<section id="moderate-treks" style={{
-  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-  background: '#ffffff',
-  paddingTop: '4rem', paddingBottom: '4rem',
-  borderBottom: '1px solid #e5e7eb',
-}}>
-  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Moderate Treks</span>
-    </div>
-    <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>Moderate Multi-Day Treks</h2>
-    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '2rem' }}>
-      These routes offer the core Himalayan trekking experience — multiple days on trail, camping at altitude, and the slow rhythm of walking through changing landscapes. All are accessible to fit beginners willing to prepare, but they demand genuine physical effort and respect for mountain conditions.
-    </p>
+        <PrimaryCTA
+          label="Find My Difficulty Level"
+          subtext="Not sure where to start? Share your fitness and experience — we will recommend the right difficulty."
+          vertical="trek"
+          category="apex"
+          sourcePath={PATH}
+        />
 
-    <div className="trek-card">
-      <h3>Kedarkantha Trek — The Classic Winter Summit</h3>
-      <div className="trek-meta-pills">
-        <span className="trek-meta-pill">3,810 m</span>
-        <span className="trek-meta-pill" style={{ color: '#c45000', borderColor: 'rgba(230,81,0,0.25)', background: 'rgba(230,81,0,0.05)' }}>Moderate–Challenging</span>
-        <span className="trek-meta-pill">5 days</span>
-        <span className="trek-meta-pill">Dec–Feb</span>
-        <span className="trek-meta-pill">Sankri</span>
-      </div>
-      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
-        <Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Kedarkantha</Link>{' '}
-        is the most popular guided trek in northern India — and for good reason. A 5-day route from Sankri to a 3,810 m summit with 360-degree views across six Himalayan ranges. The final summit-day push gains 1,500 feet through deep snow, which lifts it above pure moderate difficulty, but the rest of the route is well-paced and guided throughout. It is the definitive first summit experience in the Indian Himalayas.
-      </p>
-    </div>
+        {/* ── CHALLENGING TREKS ── */}
+        <section id="challenging-treks" className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Challenging Treks</span>
+            </div>
+            <h2 className="med-h2">Challenging High-Altitude <span>Treks</span></h2>
+            <p className="med-body">
+              These routes require prior high-altitude experience (above 4,000 m), 6–8 weeks of structured fitness preparation, and comfort with steep, exposed terrain.
+            </p>
 
-    <div className="trek-card">
-      <h3>Har Ki Dun Trek — The Valley Immersion</h3>
-      <div className="trek-meta-pills">
-        <span className="trek-meta-pill">3,566 m</span>
-        <span className="trek-meta-pill" style={{ color: '#374151', borderColor: 'rgba(15,118,110,0.25)', background: 'rgba(15,118,110,0.05)' }}>Moderate</span>
-        <span className="trek-meta-pill">5 days</span>
-        <span className="trek-meta-pill">May–Jun, Sep–Oct</span>
-        <span className="trek-meta-pill">Sankri</span>
-      </div>
-      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
-        <Link href="/treks/location/sankri/har-ki-dun-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Har Ki Dun</Link>{' '}
-        is the finest valley trek in northern India — 5 days through the Tons Valley with forest, traditional mountain villages, alpine meadows, and a glacial amphitheatre at the head. If Kedarkantha is about one intense summit moment, Har Ki Dun is about sustained immersion in a landscape that changes with every day of walking. Best in summer when the valley is green and wildflowers carpet the higher meadows. Deciding between the two? See{' '}
-        <Link href="/treks/kedarkantha-vs-har-ki-dun" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Kedarkantha vs Har Ki Dun</Link>.
-      </p>
-    </div>
-  </div>
-</section>
+            <div className="med-card" style={{ padding: '1.5rem', marginBottom: '1.25rem', borderTop: '3px solid #e65100' }}>
+              <h3 className="med-h3" style={{ fontSize: '1rem' }}><Link href="/treks/location/lohajung/roopkund-trek">Roopkund Trek — The Mystery Lake Expedition</Link></h3>
+              <div className="med-trek-meta" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem 0.75rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.75rem', fontWeight: 400, color: '#6b7280', marginBottom: '0.5rem' }}>
+                <span>4,800 m</span>
+                <span><span className="med-badge med-badge-challenging">Challenging</span></span>
+                <span>7 days</span>
+                <span>May–Jun, Sep–Oct</span>
+                <span>Lohajung, Garhwal</span>
+              </div>
+              <p className="med-body">
+                India's most iconic high-altitude trek — a 53 km expedition to a glacial lake at 4,800 metres, known for the centuries-old skeletal remains at its shores. The route crosses the vast Bedni Bugyal alpine meadow and navigates moraine fields.
+              </p>
+            </div>
 
-<PrimaryCTA
-  label="Find My Difficulty Level"
-  subtext="Not sure where to start? Share your fitness and experience — we will recommend the right difficulty."
-  vertical="trek"
-  category="apex"
-  sourcePath={PATH}
-/>
+            <div className="med-card" style={{ padding: '1.5rem', marginBottom: '1.25rem', borderTop: '3px solid #e65100' }}>
+              <h3 className="med-h3" style={{ fontSize: '1rem' }}><Link href="/treks/location/joshimath/pangarchulla-trek">Pangarchulla Peak Trek — The Summit Climb</Link></h3>
+              <div className="med-trek-meta" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem 0.75rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.75rem', fontWeight: 400, color: '#6b7280', marginBottom: '0.5rem' }}>
+                <span>4,590 m</span>
+                <span><span className="med-badge med-badge-challenging">Challenging</span></span>
+                <span>6 days</span>
+                <span>Mar–May</span>
+                <span>Joshimath, Garhwal</span>
+              </div>
+              <p className="med-body">
+                One of the few accessible true summit experiences in Uttarakhand — a steep snow-and-scree ascent with an alpine start and 360° views of Nanda Devi, Dronagiri, and the Nanda Devi Sanctuary. Crampons required.{' '}
+                <Link href="/treks/roopkund-vs-pangarchulla">Compare Roopkund vs Pangarchulla</Link>.
+              </p>
+            </div>
 
-{/* ── SECTION 3: CHALLENGING ── */}
-<section id="challenging-treks" style={{
-  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-  background: '#f7f9f7',
-  paddingTop: '4rem', paddingBottom: '4rem',
-  borderBottom: '1px solid #e5e7eb',
-}}>
-  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Challenging Treks</span>
-    </div>
-    <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>Challenging High-Altitude Treks</h2>
-    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '2rem' }}>
-      These routes require prior high-altitude experience (above 4,000 m), 6–8 weeks of structured fitness preparation, and comfort with steep, exposed, and potentially snow-covered terrain. They are not enhanced day hikes — they are serious mountain routes where preparation directly determines safety and enjoyment.
-    </p>
+            <div className="med-card" style={{ padding: '1.5rem', borderTop: '3px solid #e65100' }}>
+              <h3 className="med-h3" style={{ fontSize: '1rem' }}><Link href="/treks/location/munsiyari/milam-glacier-trek">Milam Glacier Trek — The Remote Expedition</Link></h3>
+              <div className="med-trek-meta" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.3rem 0.75rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.75rem', fontWeight: 400, color: '#6b7280', marginBottom: '0.5rem' }}>
+                <span>3,450 m</span>
+                <span><span className="med-badge med-badge-challenging">Challenging</span></span>
+                <span>8–10 days</span>
+                <span>May–Jun, Sep–Oct</span>
+                <span>Munsiyari, Kumaon</span>
+              </div>
+              <p className="med-body">
+                Uttarakhand's great expedition trek — an 8–10 day, 118 km journey along the ancient Johar Valley trade route from Munsiyari to the glacier snout beneath the Panchachuli massif.
+              </p>
+            </div>
+          </div>
+        </section>
 
-    <div className="trek-card" style={{ borderTop: '2px solid #e65100' }}>
-      <h3>Roopkund Trek — The Mystery Lake Expedition</h3>
-      <div className="trek-meta-pills">
-        <span className="trek-meta-pill">4,800 m</span>
-        <span className="trek-meta-pill" style={{ color: '#e65100', borderColor: 'rgba(230,81,0,0.25)', background: 'rgba(230,81,0,0.05)' }}>Challenging</span>
-        <span className="trek-meta-pill">7 days</span>
-        <span className="trek-meta-pill">May–Jun, Sep–Oct</span>
-        <span className="trek-meta-pill">Lohajung, Garhwal</span>
-      </div>
-      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
-        <Link href="/treks/location/lohajung/roopkund-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Roopkund</Link>{' '}
-        is India&apos;s most iconic high-altitude trek — a 53 km expedition from Lohajung to a glacial lake at 4,800 metres, known for the centuries-old skeletal remains at its shores. The route crosses the vast Bedni Bugyal alpine meadow, navigates moraine fields, and demands sustained altitude tolerance. The Bugyal alone — stretching kilometres in every direction with Trishul views — justifies the effort. This is the trek for experienced Himalayan trekkers seeking a genuine expedition in{' '}
-        <Link href="/treks/garhwal-himalayas" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Garhwal&apos;s most dramatic landscape</Link>.
-      </p>
-    </div>
+        {/* ── SNOW TREKS ── */}
+        <section id="snow-treks" className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Snow Treks</span>
+            </div>
+            <h2 className="med-h2">Best Snow Treks <span>in Uttarakhand</span></h2>
+            <p className="med-body">
+              Winter transforms the Uttarakhand Himalaya — frozen lakes, snow-laden forests, and summit ridges under continuous white. The best snow season runs December to March.
+            </p>
 
-    <div className="trek-card" style={{ borderTop: '2px solid #e65100' }}>
-      <h3>Pangarchulla Peak Trek — The Summit Climb</h3>
-      <div className="trek-meta-pills">
-        <span className="trek-meta-pill">4,590 m</span>
-        <span className="trek-meta-pill" style={{ color: '#e65100', borderColor: 'rgba(230,81,0,0.25)', background: 'rgba(230,81,0,0.05)' }}>Challenging</span>
-        <span className="trek-meta-pill">6 days</span>
-        <span className="trek-meta-pill">Mar–May</span>
-        <span className="trek-meta-pill">Joshimath, Garhwal</span>
-      </div>
-      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
-        <Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla</Link>{' '}
-        is one of the few accessible true summit experiences in Uttarakhand. The route follows the Kuari Pass approach before diverging toward a steep snow-and-scree ascent with an alpine start. At the top: a 360° panorama of Nanda Devi, Dronagiri, Chaukhamba, and the entire Nanda Devi Sanctuary. Crampons required. For experienced trekkers who want to stand on a peak, not a pass. Choosing between the two Garhwal challenges?{' '}
-        <Link href="/treks/roopkund-vs-pangarchulla" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Compare Roopkund vs Pangarchulla</Link>.
-      </p>
-    </div>
+            <div className="med-list" style={{ marginTop: '1.5rem' }}>
+              <div className="med-list-item">
+                <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
+                <span className="med-list-text">
+                  <strong><Link href="/treks/location/lohajung/brahmatal-trek">Brahmatal</Link></strong> — the ideal first snow trek with frozen lake, snow ridges, and no technical sections.
+                </span>
+              </div>
+              <div className="med-list-item">
+                <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
+                <span className="med-list-text">
+                  <strong><Link href="/treks/location/sankri/kedarkantha-trek">Kedarkantha</Link></strong> — the quintessential winter summit experience with deep snow and a steep final push.
+                </span>
+              </div>
+              <div className="med-list-item">
+                <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
+                <span className="med-list-text">
+                  <strong><Link href="/treks/location/joshimath/kuari-pass-trek">Kuari Pass (March)</Link></strong> — lingering snow on the upper sections with rhododendron bloom makes this the most photogenic window.
+                </span>
+              </div>
+            </div>
 
-    <div className="trek-card" style={{ borderTop: '2px solid #e65100' }}>
-      <h3>Milam Glacier Trek — The Remote Expedition</h3>
-      <div className="trek-meta-pills">
-        <span className="trek-meta-pill">3,450 m</span>
-        <span className="trek-meta-pill" style={{ color: '#e65100', borderColor: 'rgba(230,81,0,0.25)', background: 'rgba(230,81,0,0.05)' }}>Challenging</span>
-        <span className="trek-meta-pill">8–10 days</span>
-        <span className="trek-meta-pill">May–Jun, Sep–Oct</span>
-        <span className="trek-meta-pill">Munsiyari, Kumaon</span>
-      </div>
-      <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
-        <Link href="/treks/location/munsiyari/milam-glacier-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Milam Glacier</Link>{' '}
-        is Uttarakhand&apos;s great expedition trek — an 8–10 day, 118 km journey along the ancient Johar Valley trade route from Munsiyari to the glacier snout beneath the Panchachuli massif. The route passes through abandoned Bhotiya trading villages (Martoli, Burfu), crosses glacial moraines, and follows the Goriganga River into genuinely wild terrain. The altitude is lower than Roopkund, but the sustained multi-day commitment and remoteness make it equally demanding. For trekkers who want to walk deep into the mountains, not just look at them from a ridgeline.
-      </p>
-    </div>
-  </div>
-</section>
+            <p className="med-body" style={{ marginTop: '1rem' }}>
+              For a deeper dive, see our{' '}
+              <Link href="/treks/best-treks-in-uttarakhand/snow">winter treks in Uttarakhand</Link> seasonal page.
+            </p>
+          </div>
+        </section>
 
-{/* ── SECTION 4: SNOW TREKS ── */}
-<section id="snow-treks" style={{
-  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-  background: '#ffffff',
-  paddingTop: '4rem', paddingBottom: '4rem',
-  borderBottom: '1px solid #e5e7eb',
-}}>
-  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Snow Treks</span>
-    </div>
-    <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>Best Snow Treks in Uttarakhand</h2>
-    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1.75rem' }}>
-      Winter transforms the Uttarakhand Himalaya — frozen lakes, snow-laden forests, and summit ridges under continuous white. The best snow season runs December to March, with peak conditions in January and February.
-    </p>
-    <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0' }}>
-      {[
-        { href: '/treks/location/lohajung/brahmatal-trek', label: 'Brahmatal', text: 'is the ideal first snow trek — frozen lake, snow ridges, and moderate difficulty with no technical sections. The trail through snow-covered rhododendron forest is visually stunning and the 4-day duration keeps cold exposure manageable.' },
-        { href: '/treks/location/sankri/kedarkantha-trek', label: 'Kedarkantha', text: 'is the quintessential winter summit experience — deep snow above 3,200 m, a steep final push, and sunrise from a snow-covered peak. More physically demanding than Brahmatal, with a proper summit-day challenge.' },
-        { href: '/treks/location/joshimath/kuari-pass-trek', label: 'Kuari Pass (March)', text: 'in early spring retains significant snow on the upper sections, adding alpine character to the ridge walk. Not a pure winter trek, but the lingering snow plus rhododendron bloom makes March the most photogenic window.' },
-      ].map((item, i) => (
-        <div key={i} style={{
-          display: 'flex', gap: '1.25rem', alignItems: 'flex-start',
-          padding: '1.25rem 0', borderBottom: '1px solid #f0f0f0',
-        }}>
-          <span style={{
-            flexShrink: 0, width: '10px', height: '10px', borderRadius: '50%',
-            background: 'var(--color-primary)',  marginTop: '0.45rem',
-          }} />
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
-            <Link href={item.href} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>{item.label}</Link>{' '}{item.text}
-          </p>
+        {/* ── HIGH ALTITUDE ── */}
+        <section id="high-altitude" className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">High Altitude</span>
+            </div>
+            <h2 className="med-h2">High-Altitude Treks <span>Above 4,000 m</span></h2>
+            <p className="med-body">
+              Above 4,000 metres, the landscape changes fundamentally — treeline gives way to exposed moraine and glacial terrain, oxygen pressure drops, and weather windows shrink.
+            </p>
+
+            <div className="med-list" style={{ marginTop: '1.5rem' }}>
+              <div className="med-list-item">
+                <span className="med-list-dot"><span className="med-list-dot-inner" style={{ background: '#e65100' }} /></span>
+                <span className="med-list-text">
+                  <strong><Link href="/treks/location/lohajung/roopkund-trek">Roopkund (4,800 m)</Link></strong> — the highest featured trek with sustained exposure above 4,000 m and the iconic mystery lake.
+                </span>
+              </div>
+              <div className="med-list-item">
+                <span className="med-list-dot"><span className="med-list-dot-inner" style={{ background: '#e65100' }} /></span>
+                <span className="med-list-text">
+                  <strong><Link href="/treks/location/joshimath/pangarchulla-trek">Pangarchulla (4,590 m)</Link></strong> — a true peak summit with 360° views and the most technically demanding single day on any featured trek.
+                </span>
+              </div>
+            </div>
+
+            <p className="med-body" style={{ marginTop: '1rem' }}>
+              Preparing for routes above 4,000 m? See our{' '}
+              <Link href="/treks/garhwal-himalayas/fitness-guide">8-week fitness guide for Garhwal treks</Link> and the{' '}
+              <Link href="/treks/best-treks-in-uttarakhand/high-altitude">high-altitude treks guide</Link>.
+            </p>
+          </div>
+        </section>
+
+        <PrimaryCTA
+          label="Plan My Trek"
+          subtext="Ready to start? Tell us your preferred season and experience level."
+          vertical="trek"
+          category="apex"
+          sourcePath={PATH}
+        />
+
+        {/* ── REGIONS ── */}
+        <section id="regions" className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Trekking Regions</span>
+            </div>
+            <h2 className="med-h2">Trekking Regions <span>in Uttarakhand</span></h2>
+            <p className="med-body">
+              Uttarakhand's trekking landscape divides into four distinct regions, each with its own character, altitude profile, and access logistics.
+            </p>
+
+            {REGIONS.map((region) => (
+              <div key={region.slug} className="med-card med-region-card" style={{ marginBottom: '1rem' }}>
+                <h3 className="med-h3"><Link href={region.slug}>{region.name}</Link></h3>
+                <p className="med-body">{region.description}</p>
+                <div className="med-trek-tags">
+                  {region.treks.map((t) => (
+                    <span key={t}>{t}</span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* ── PROGRESSION PATH ── */}
+        <section id="progression" className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Progression Path</span>
+            </div>
+            <h2 className="med-h2">The Trekking <span>Progression Path</span></h2>
+            <p className="med-body">
+              Most successful Himalayan trekkers build experience in stages. The natural progression through Uttarakhand's routes follows altitude and duration:
+            </p>
+
+            <div className="med-progression">
+              {PROGRESSION_STEPS.map((step) => (
+                <div key={step.label} className="med-progression-item">
+                  <span className="med-label">{step.label}</span>
+                  <p className="med-body">{step.content}</p>
+                </div>
+              ))}
+            </div>
+
+            <p className="med-body">
+              For a detailed training framework, see our{' '}
+              <Link href="/blog/beginner-to-advanced-trek-progression-garhwal">beginner-to-advanced trek progression guide</Link> and the{' '}
+              <Link href="/treks/garhwal-himalayas/fitness-guide">8-week fitness preparation plan</Link>.
+            </p>
+          </div>
+        </section>
+
+        {/* ── HOW TO CHOOSE ── */}
+        <section id="how-to-choose" className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Decision Guide</span>
+            </div>
+            <h2 className="med-h2">How to Choose <span>the Right Trek</span></h2>
+            <p className="med-body">Three questions determine the right route:</p>
+
+            <div className="med-decision-card">
+              <h3 className="med-h3">When are you going?</h3>
+              <p className="med-body">December–February: Brahmatal or Kedarkantha (snow treks). March–May: Kuari Pass, Pangarchulla, or Khaliya Top. May–June: Roopkund, Har Ki Dun, or Milam Glacier. September–November: Roopkund, Kuari Pass, or Khaliya Top.</p>
+            </div>
+            <div className="med-decision-card">
+              <h3 className="med-h3">How many days do you have?</h3>
+              <p className="med-body">1 day: Chakrata. 3–4 days: Brahmatal or Khaliya Top. 5 days: Kuari Pass, Kedarkantha, or Har Ki Dun. 6–7 days: Pangarchulla or Roopkund. 8–10 days: Milam Glacier.</p>
+            </div>
+            <div className="med-decision-card" style={{ marginBottom: 0 }}>
+              <h3 className="med-h3">What experience do you have?</h3>
+              <p className="med-body">First trek: Tiger Fall or Brahmatal. Second trek: Kuari Pass or Kedarkantha. Third+: Pangarchulla or Roopkund. Expedition-ready: Milam Glacier.</p>
+            </div>
+          </div>
+        </section>
+
+        <PrimaryCTA
+          label="Talk to a Trek Coordinator"
+          subtext="Share your dates and fitness level. We will recommend the exact route for your experience."
+          vertical="trek"
+          category="apex"
+          sourcePath={PATH}
+        />
+
+        <FeaturedRetreat
+          title="Brahmatal — The Perfect First Himalayan Trek"
+          description="Frozen lake, snow-covered ridges, and Himalayan views. 4 days, moderate difficulty, no technical sections."
+          links={[
+            { label: 'View Trek Details', href: '/treks/location/lohajung/brahmatal-trek' },
+            { label: 'See All Beginner Treks', href: `${PATH}/beginner` },
+            { label: 'Compare Brahmatal vs Kuari Pass', href: '/treks/brahmatal-vs-kuari-pass' },
+          ]}
+        />
+
+        {/* ── FAQ ── */}
+        <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">FAQ</span>
+            </div>
+            <h2 className="med-h2">Frequently asked <span>questions</span></h2>
+
+            <div className="med-faq-accordion">
+              {FAQ_ITEMS.map((faq, i) => (
+                <details key={i} className="med-faq-details">
+                  <summary className="med-faq-summary">
+                    <span className="med-faq-question">{faq.question}</span>
+                    <span className="med-faq-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                      </svg>
+                    </span>
+                  </summary>
+                  <div className="med-faq-answer">
+                    <p className="med-body">{faq.answer}</p>
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <RelatedReads
+          links={[
+            { label: 'Beginner Treks in Uttarakhand', href: `${PATH}/beginner` },
+            { label: 'Snow Treks in Uttarakhand', href: `${PATH}/snow` },
+            { label: 'High-Altitude Treks Above 4,000 m', href: `${PATH}/high-altitude` },
+            { label: 'Challenging Treks in Uttarakhand', href: `${PATH}/challenging` },
+          ]}
+        />
+
+        {/* ── EXPLORE MORE ── */}
+        <section className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Explore More</span>
+            </div>
+            <h2 className="med-h2">Explore by <span>Region &amp; Topic</span></h2>
+
+            <div className="med-explore-group">
+              <Link href={`${PATH}/beginner`} className="med-explore-link">
+                <span>Beginner Treks in Uttarakhand</span>
+                <span className="med-arrow">→</span>
+              </Link>
+              <Link href={`${PATH}/snow`} className="med-explore-link">
+                <span>Snow Treks in Uttarakhand</span>
+                <span className="med-arrow">→</span>
+              </Link>
+              <Link href={`${PATH}/high-altitude`} className="med-explore-link">
+                <span>High-Altitude Treks Above 4,000 m</span>
+                <span className="med-arrow">→</span>
+              </Link>
+              <Link href={`${PATH}/challenging`} className="med-explore-link" style={{ borderBottom: 'none' }}>
+                <span>Challenging Treks in Uttarakhand</span>
+                <span className="med-arrow">→</span>
+              </Link>
+            </div>
+
+            <div className="med-explore-group">
+              <Link href="/treks/garhwal-himalayas" className="med-explore-link">
+                <span>Garhwal Himalayas — Complete Trekking Guide</span>
+                <span className="med-arrow">→</span>
+              </Link>
+              <Link href="/treks/location/sankri" className="med-explore-link">
+                <span>Treks from Sankri</span>
+                <span className="med-arrow">→</span>
+              </Link>
+              <Link href="/treks/location/munsiyari" className="med-explore-link">
+                <span>Treks from Munsiyari</span>
+                <span className="med-arrow">→</span>
+              </Link>
+              <Link href="/treks/location/chakrata" className="med-explore-link" style={{ borderBottom: 'none' }}>
+                <span>Weekend Treks from Chakrata</span>
+                <span className="med-arrow">→</span>
+              </Link>
+            </div>
+
+            <div className="med-explore-group">
+              <Link href="/treks/brahmatal-vs-kuari-pass" className="med-explore-link">
+                <span>Brahmatal vs Kuari Pass — Moderate Trek Comparison</span>
+                <span className="med-arrow">→</span>
+              </Link>
+              <Link href="/treks/roopkund-vs-pangarchulla" className="med-explore-link">
+                <span>Roopkund vs Pangarchulla — Challenging Trek Comparison</span>
+                <span className="med-arrow">→</span>
+              </Link>
+              <Link href="/treks/kedarkantha-vs-har-ki-dun" className="med-explore-link" style={{ borderBottom: 'none' }}>
+                <span>Kedarkantha vs Har Ki Dun — Sankri Trek Comparison</span>
+                <span className="med-arrow">→</span>
+              </Link>
+            </div>
+
+            <div className="med-explore-group" style={{ marginBottom: 0 }}>
+              <Link href="/treks/summer-treks-uttarakhand" className="med-explore-link">
+                <span>Summer Treks in Uttarakhand</span>
+                <span className="med-arrow">→</span>
+              </Link>
+              <Link href="/treks/garhwal-himalayas/fitness-guide" className="med-explore-link">
+                <span>8-Week Fitness Guide for Garhwal Treks</span>
+                <span className="med-arrow">→</span>
+              </Link>
+              <Link href="/treks/garhwal-himalayas/packing-checklist" className="med-explore-link" style={{ borderBottom: 'none' }}>
+                <span>Packing Checklist — Print-Ready Gear List</span>
+                <span className="med-arrow">→</span>
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* ── FOOTER ── */}
+        <div className="med-trek-footer">
+          <Link href="/treks">← All Treks</Link>
+          <Link href="/treks/garhwal-himalayas">Garhwal Himalayas</Link>
+          <Link href="/treks/location/sankri">Sankri Treks</Link>
+          <Link href="/treks/location/munsiyari">Munsiyari Treks</Link>
+          <Link href="/treks/location/chakrata">Chakrata Treks</Link>
         </div>
-      ))}
-    </div>
-    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginTop: '1.5rem', marginBottom: 0 }}>
-      For a deeper dive into winter route selection, see our{' '}
-      <Link href="/blog/best-snow-treks-garhwal-himalaya" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>guide to Garhwal snow treks</Link>{' '}
-      and the full{' '}
-      <Link href="/treks/best-treks-in-uttarakhand/snow" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>winter treks in Uttarakhand</Link>{' '}
-      seasonal page.
-    </p>
-  </div>
-</section>
-
-{/* ── SECTION 5: HIGH ALTITUDE ── */}
-<section id="high-altitude" style={{
-  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-  background: '#f7f9f7',
-  paddingTop: '4rem', paddingBottom: '4rem',
-  borderBottom: '1px solid #e5e7eb',
-}}>
-  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>High Altitude</span>
-    </div>
-    <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>High-Altitude Treks Above 4,000 m</h2>
-    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1.75rem' }}>
-      Above 4,000 metres, the landscape changes fundamentally — treeline gives way to exposed moraine and glacial terrain, oxygen pressure drops to levels that affect decision-making, and weather windows shrink. These treks require prior altitude experience and serious preparation.
-    </p>
-    <div style={{ display: 'flex', flexDirection: 'column' as const, gap: 0 }}>
-      {[
-        { href: '/treks/location/lohajung/roopkund-trek', label: 'Roopkund (4,800 m)', text: 'is the highest featured trek — a full 7-day expedition with sustained exposure above 4,000 m. The Bedni Bugyal meadows, the mystery lake, and the sheer scale of the Garhwal interior make this India\'s most sought-after high-altitude trekking route.' },
-        { href: '/treks/location/joshimath/pangarchulla-trek', label: 'Pangarchulla (4,590 m)', text: 'delivers a true peak summit — not a pass or a lake, but the top of a mountain with 360° views. The alpine-start summit push through snow is the most technically demanding single day on any featured trek.' },
-      ].map((item, i) => (
-        <div key={i} style={{
-          display: 'flex', gap: '1.25rem', alignItems: 'flex-start',
-          padding: '1.25rem 0', borderBottom: '1px solid #e8ece8',
-        }}>
-          <span style={{
-            flexShrink: 0, width: '10px', height: '10px', borderRadius: '50%',
-            background: '#e65100',  marginTop: '0.45rem',
-          }} />
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>
-            <Link href={item.href} style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>{item.label}</Link>{' '}{item.text}
-          </p>
-        </div>
-      ))}
-    </div>
-    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginTop: '1.5rem', marginBottom: 0 }}>
-      Preparing for routes above 4,000 m? Our{' '}
-      <Link href="/treks/garhwal-himalayas/fitness-guide" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>8-week fitness guide for Garhwal treks</Link>{' '}
-      covers the physical preparation framework, and the{' '}
-      <Link href="/blog/high-altitude-treks-garhwal-above-4000m" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>high-altitude trekking guide</Link>{' '}
-      covers AMS management, acclimatisation protocols, and what to expect above the treeline.
-    </p>
-  </div>
-</section>
-
-<PrimaryCTA
-  label="Plan My Trek"
-  subtext="Ready to start? Tell us your preferred season and experience level."
-  vertical="trek"
-  category="apex"
-  sourcePath={PATH}
-/>
-
-{/* ── SECTION 6: REGIONS ── */}
-<section id="regions" style={{
-  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-  background: '#ffffff',
-  paddingTop: '4rem', paddingBottom: '4rem',
-  borderBottom: '1px solid #e5e7eb',
-}}>
-  <style>{`
-    .region-card {
-      border: 1px solid #e5e7eb;
-      border-left: 3px solid var(--color-primary);
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 1rem;
-      background: #ffffff;
-    }
-    .region-card:last-of-type { margin-bottom: 0; }
-    .region-card h3 {
-      font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.92rem; font-weight: 500;
-      margin: 0 0 0.75rem; letter-spacing: -0.01em;
-    }
-    .region-card h3 a { color: #111111; text-decoration: none; }
-    .region-card h3 a:hover { color: #374151; }
-    .region-card p {
-      font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.88rem; font-weight: 300;
-      line-height: 1.85; color: #555555; margin: 0;
-    }
-  `}</style>
-  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Trekking Regions</span>
-    </div>
-    <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>Trekking Regions in Uttarakhand</h2>
-    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '2rem' }}>
-      Uttarakhand&apos;s trekking landscape divides into four distinct regions, each with its own character, altitude profile, and access logistics. Understanding the regions helps you narrow from &ldquo;I want to trek in Uttarakhand&rdquo; to a specific route.
-    </p>
-
-    <div className="region-card">
-      <h3><Link href="/treks/garhwal-himalayas">Garhwal Himalayas — The High-Altitude Heart</Link></h3>
-      <p>The Garhwal interior — accessed from{' '}
-        <Link href="/treks/location/lohajung" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Lohajung</Link>{' '}
-        and{' '}
-        <Link href="/treks/location/joshimath" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Joshimath</Link>{' '}
-        — is where Uttarakhand&apos;s highest and most dramatic treks live. Brahmatal, Kuari Pass, Roopkund, and Pangarchulla offer altitude ranges from 3,850 to 4,800 metres with Nanda Devi Sanctuary views. This is the premier trekking region for those seeking classic Himalayan routes. Our{' '}
-        <Link href="/treks/garhwal-himalayas" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>complete Garhwal trekking guide</Link>{' '}
-        covers all four routes in depth, including seasonal windows and{' '}
-        <Link href="/treks/garhwal-himalayas/packing-checklist" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>packing checklists</Link>.
-      </p>
-    </div>
-
-    <div className="region-card">
-      <h3><Link href="/treks/location/sankri">Sankri — Winter Summit &amp; Valley Base</Link></h3>
-      <p>Sankri in the Govind Wildlife Sanctuary zone is the base for two of Uttarakhand&apos;s most popular multi-day treks: Kedarkantha (winter summit) and Har Ki Dun (summer valley). It sits at the intersection of alpine forest and high meadow, offering distinctly different experiences depending on the season. Reached from Dehradun in 4–5 hours — the fastest access to genuine multi-day trekking.</p>
-    </div>
-
-    <div className="region-card">
-      <h3><Link href="/treks/location/chakrata">Chakrata — Weekend Forest Trails</Link></h3>
-      <p>Chakrata is the gateway for first-time trekkers and weekend travellers from Delhi. The Tiger Fall and Budher Caves trails stay below 2,500 metres in dense deodar forest — no altitude concerns, no multi-day gear, no prior experience needed. Just 2–3 hours from Dehradun. Combine trekking with a{' '}
-        <Link href="/retreats/chakrata" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Chakrata retreat</Link>{' '}
-        for a balanced weekend of movement and rest.
-      </p>
-    </div>
-
-    <div className="region-card">
-      <h3><Link href="/treks/location/munsiyari">Kumaon (Munsiyari) — Remote Expeditions &amp; Panchachuli Views</Link></h3>
-      <p>Munsiyari in the Kumaon Himalaya is the base for routes that trade accessibility for authenticity — the Milam Glacier expedition (8–10 days along the Johar trade route) and the Khaliya Top summit (3–4 days to a Panchachuli panorama). Fewer crowds, deeper cultural layers (Bhotiya heritage, abandoned trading villages), and terrain that feels genuinely wild. The longer travel time from Delhi (12–14 hours) is the price of admission.</p>
-    </div>
-  </div>
-</section>
-
-{/* ── PROGRESSION PATH ── */}
-<section id="progression" style={{
-  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-  background: '#f7f9f7',
-  paddingTop: '4rem', paddingBottom: '4rem',
-  borderBottom: '1px solid #e5e7eb',
-}}>
-  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Progression Path</span>
-    </div>
-    <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>The Trekking Progression Path</h2>
-    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '2rem' }}>
-      Most successful Himalayan trekkers build experience in stages. The natural progression through Uttarakhand&apos;s routes follows altitude and duration:
-    </p>
-
-    {[
-      { num: '01', label: 'Day treks (Easy)', content: <><Link href="/treks/location/chakrata/tiger-fall-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Tiger Fall</Link>{' '}or{' '}<Link href="/treks/location/chakrata/budher-caves-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Budher Caves</Link>{' '}in Chakrata — builds trail confidence with zero altitude risk.</> },
-      { num: '02', label: 'First multi-day (Moderate)', content: <><Link href="/treks/location/lohajung/brahmatal-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Brahmatal</Link>{' '}or{' '}<Link href="/treks/location/joshimath/kuari-pass-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Kuari Pass</Link>{' '}— introduces camping, altitude, and multi-day rhythm.</> },
-      { num: '03', label: 'Summit experience (Moderate–Challenging)', content: <><Link href="/treks/location/sankri/kedarkantha-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Kedarkantha</Link>{' '}— adds a genuine summit push and winter snow conditions.</> },
-      { num: '04', label: 'High altitude (Challenging)', content: <><Link href="/treks/location/joshimath/pangarchulla-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Pangarchulla</Link>{' '}or{' '}<Link href="/treks/location/lohajung/roopkund-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Roopkund</Link>{' '}— sustained exposure above 4,000 m with technical demands.</> },
-      { num: '05', label: 'Expedition (Challenging)', content: <><Link href="/treks/location/munsiyari/milam-glacier-trek" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>Milam Glacier</Link>{' '}— 8–10 days of continuous remote trekking through glacial terrain.</> },
-    ].map((step, i, arr) => (
-      <div key={step.num} style={{ display: 'flex', gap: '1.5rem', position: 'relative' as const }}>
-        {/* spine */}
-        {i < arr.length - 1 && (
-          <div style={{ position: 'absolute' as const, left: '19px', top: '28px', width: '2px', height: 'calc(100% - 4px)', background: 'linear-gradient(to bottom, rgba(15,118,110,0.2), transparent)' }} />
-        )}
-        <div style={{ flexShrink: 0, display: 'flex', flexDirection: 'column' as const, alignItems: 'center', gap: '4px' }}>
-          <div style={{ width: '10px', height: '10px', borderRadius: '50%', background: 'var(--color-primary)', marginTop: '0.35rem', flexShrink: 0 }} />
-        </div>
-        <div style={{ paddingBottom: '1.5rem' }}>
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.2em', textTransform: 'uppercase' as const, color: '#374151',  margin: '0 0 0.25rem' }}>{step.num}</p>
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 500, color: '#111111', margin: '0 0 0.25rem' }}>{step.label}</p>
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>{step.content}</p>
-        </div>
-      </div>
-    ))}
-
-    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginTop: '0.5rem', marginBottom: 0 }}>
-      For a detailed training framework that maps to each level, see our{' '}
-      <Link href="/blog/beginner-to-advanced-trek-progression-garhwal" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>beginner-to-advanced trek progression guide</Link>{' '}
-      and the{' '}
-      <Link href="/treks/garhwal-himalayas/fitness-guide" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>8-week fitness preparation plan</Link>.
-    </p>
-  </div>
-</section>
-
-{/* ── HOW TO CHOOSE ── */}
-<section id="how-to-choose" style={{
-  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-  background: '#ffffff',
-  paddingTop: '4rem', paddingBottom: '4rem',
-  borderBottom: '1px solid #e5e7eb',
-}}>
-  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Decision Guide</span>
-    </div>
-    <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '0.75rem' }}>How to Choose the Right Trek</h2>
-    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginBottom: '1.75rem' }}>
-      Three questions determine the right route:
-    </p>
-
-    {[
-      { q: 'When are you going?', a: 'December–February: Brahmatal or Kedarkantha (snow treks). March–May: Kuari Pass, Pangarchulla, or Khaliya Top. May–June: Roopkund, Har Ki Dun, or Milam Glacier. September–November: Roopkund, Kuari Pass, or Khaliya Top. Season narrows the shortlist immediately.' },
-      { q: 'How many days do you have?', a: '1 day: Chakrata. 3–4 days: Brahmatal or Khaliya Top. 5 days: Kuari Pass, Kedarkantha, or Har Ki Dun. 6–7 days: Pangarchulla or Roopkund. 8–10 days: Milam Glacier. Duration filters by logistics.' },
-      { q: 'What experience do you have?', a: 'First trek: Tiger Fall or Brahmatal. Second trek: Kuari Pass or Kedarkantha. Third+: Pangarchulla or Roopkund. Expedition-ready: Milam Glacier. Experience determines safety and enjoyment at altitude.' },
-    ].map((item, i) => (
-      <div key={i} style={{
-        background: '#f7f9f7', border: '1px solid #e5e7eb',
-        borderRadius: '8px', padding: '1.25rem 1.5rem',
-        marginBottom: '0.75rem',
-      }}>
-        <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 500, color: '#111111', margin: '0 0 0.4rem' }}>{item.q}</p>
-        <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', margin: 0 }}>{item.a}</p>
-      </div>
-    ))}
-
-    <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.85, color: '#555555', marginTop: '1.25rem', marginBottom: 0 }}>
-      Still deciding? Our{' '}
-      <Link href="/treks/best-treks-in-uttarakhand/beginner" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>beginner treks guide</Link>{' '}
-      and{' '}
-      <Link href="/treks/summer-treks-uttarakhand" style={{ color: '#374151', textDecoration: 'none', fontWeight: 500 }}>summer treks page</Link>{' '}
-      offer filtered views by difficulty and season.
-    </p>
-  </div>
-</section>
-
-<PrimaryCTA
-  label="Talk to a Trek Coordinator"
-  subtext="Share your dates and fitness level. We will recommend the exact route for your experience."
-  vertical="trek"
-  category="apex"
-  sourcePath={PATH}
-/>
-
-{/* ── FAQ ── */}
-<section style={{
-  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-  background: '#f7f9f7',
-  paddingTop: '4rem', paddingBottom: '4rem',
-  borderBottom: '1px solid #e5e7eb',
-}}>
-  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>FAQ</span>
-    </div>
-    <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>Frequently Asked Questions</h2>
-    <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
-  </div>
-</section>
-
-{/* ── EXPLORE MORE ── */}
-<section style={{
-  width: '100vw', marginLeft: 'calc(-50vw + 50%)',
-  background: '#ffffff',
-  paddingTop: '4rem', paddingBottom: '4rem',
-}}>
-  <style>{`
-    .explore-link {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0.85rem 1rem;
-      border-bottom: 1px solid #f0f0f0;
-      font-family: var(--font-geist-sans), sans-serif;
-      font-size: 0.88rem; font-weight: 300;
-      color: #333333; text-decoration: none;
-      transition: background 0.15s, color 0.15s;
-    }
-    .explore-link:hover { background: #f7f9f7; color: #374151; }
-    .explore-link::after { content: '→'; color: #374151;  font-size: 0.8rem; }
-    .explore-group { border: 1px solid #e5e7eb; border-radius: 8px; overflow: hidden; margin-bottom: 1rem; }
-    .explore-group .explore-link:last-child { border-bottom: none; }
-  `}</style>
-  <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
-    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-      <span style={{ width: '24px', height: '1px', background: 'var(--color-primary)',  display: 'inline-block' }} />
-      <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.75rem', letterSpacing: '0.28em', textTransform: 'uppercase' as const, color: '#374151', fontWeight: 500}}>Explore More</span>
-    </div>
-    <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)', fontWeight: 200, letterSpacing: '-0.03em', color: '#111111', lineHeight: 1.15, marginBottom: '1.75rem' }}>Explore by Region &amp; Topic</h2>
-
-    <div className="explore-group">
-      <Link href={`${PATH}/beginner`} className="explore-link">Beginner Treks in Uttarakhand</Link>
-      <Link href={`${PATH}/snow`} className="explore-link">Snow Treks in Uttarakhand</Link>
-      <Link href={`${PATH}/high-altitude`} className="explore-link">High-Altitude Treks Above 4,000 m</Link>
-      <Link href={`${PATH}/challenging`} className="explore-link">Challenging Treks in Uttarakhand</Link>
-    </div>
-
-    <div className="explore-group">
-      <Link href="/treks/garhwal-himalayas" className="explore-link">Garhwal Himalayas — Complete Trekking Guide</Link>
-      <Link href="/treks/location/sankri" className="explore-link">Treks from Sankri</Link>
-      <Link href="/treks/location/munsiyari" className="explore-link">Treks from Munsiyari</Link>
-      <Link href="/treks/location/chakrata" className="explore-link">Weekend Treks from Chakrata</Link>
-    </div>
-
-    <div className="explore-group">
-      <Link href="/treks/brahmatal-vs-kuari-pass" className="explore-link">Brahmatal vs Kuari Pass — Moderate Trek Comparison</Link>
-      <Link href="/treks/roopkund-vs-pangarchulla" className="explore-link">Roopkund vs Pangarchulla — Challenging Trek Comparison</Link>
-      <Link href="/treks/kedarkantha-vs-har-ki-dun" className="explore-link">Kedarkantha vs Har Ki Dun — Sankri Trek Comparison</Link>
-    </div>
-
-    <div className="explore-group">
-      <Link href="/treks/best-treks-in-uttarakhand/snow" className="explore-link">Winter Treks in Uttarakhand</Link>
-      <Link href="/treks/summer-treks-uttarakhand" className="explore-link">Summer Treks in Uttarakhand</Link>
-      <Link href="/treks/best-treks-in-uttarakhand/beginner" className="explore-link">Beginner Treks in Uttarakhand</Link>
-      <Link href="/treks/garhwal-himalayas/fitness-guide" className="explore-link">8-Week Fitness Guide for Garhwal Treks</Link>
-      <Link href="/treks/garhwal-himalayas/packing-checklist" className="explore-link">Packing Checklist — Print-Ready Gear List</Link>
-    </div>
-  </div>
-</section>
-
 
       </article>
     </TrackedPage>
