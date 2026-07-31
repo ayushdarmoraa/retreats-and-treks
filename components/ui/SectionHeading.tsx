@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 interface SectionHeadingProps {
   eyebrow: string;
@@ -32,7 +32,7 @@ export default function SectionHeading({
     <div className={`text-center mb-12 ${className}`}>
       <div className="inline-flex items-center gap-3 mb-4">
         <span className="w-9 h-px bg-teal-700/30" />
-        <span className="text-[0.7rem] tracking-[0.35em] uppercase text-gray-500 font-medium">
+        <span className="text-[0.65rem] tracking-[0.35em] uppercase text-gray-500 font-medium">
           {eyebrow}
         </span>
         <span className="w-9 h-px bg-teal-700/30" />
@@ -40,7 +40,7 @@ export default function SectionHeading({
       <h2
         style={{
           fontFamily: "var(--font-geist-sans), sans-serif",
-          fontSize: 'clamp(2.5rem, 4vw, 4rem)',
+          fontSize: 'clamp(1.8rem, 3.2vw, 2.8rem)',
           fontWeight: 200,
           letterSpacing: '-0.03em',
           color: '#1a1814',
@@ -63,7 +63,7 @@ export default function SectionHeading({
         <p
           style={{
             fontFamily: "var(--font-geist-sans), sans-serif",
-            fontSize: '0.95rem',
+            fontSize: 'clamp(0.82rem, 0.95vw, 0.92rem)',
             color: '#6b7280',
             fontWeight: 300,
             marginTop: '0.75rem',

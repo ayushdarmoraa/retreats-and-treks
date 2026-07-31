@@ -26,12 +26,7 @@ export default function RetreatSignature() {
           description="If you're unsure where to begin, these are the retreat experiences most guests choose first."
         />
 
-        <div className="signature-grid" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(4, 1fr)',
-          gap: '2rem',
-          marginTop: '3rem',
-        }}>
+        <div className="signature-grid">
           {retreats.map((retreat) => (
             <Card
               key={retreat.slug}
@@ -39,10 +34,9 @@ export default function RetreatSignature() {
               className="signature-card"
               style={{ height: '100%' }}
             >
-              <div style={{
+              <div className="signature-card-img-wrap" style={{
                 position: 'relative',
                 overflow: 'hidden',
-                height: '200px',
                 background: '#f5f3ef',
                 flexShrink: 0,
               }}>
@@ -52,6 +46,7 @@ export default function RetreatSignature() {
                   width={400}
                   height={210}
                   quality={75}
+                  className="signature-card-img"
                   style={{
                     width: '100%',
                     height: '100%',
@@ -60,7 +55,7 @@ export default function RetreatSignature() {
                     transition: 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                   }}
                 />
-                <div style={{
+                <div className="signature-card-overlay" style={{
                   position: 'absolute',
                   inset: 0,
                   background: 'linear-gradient(to top, rgba(26, 24, 20, 0.5), transparent 60%)',
@@ -68,7 +63,7 @@ export default function RetreatSignature() {
                   transition: 'opacity 0.5s ease',
                 }} />
                 <ImageBadge label={retreat.tag} />
-                <span style={{
+                <span className="signature-card-img-title" style={{
                   position: 'absolute',
                   bottom: '1.2rem',
                   left: '1.2rem',
@@ -85,13 +80,12 @@ export default function RetreatSignature() {
                 </span>
               </div>
 
-              <div style={{
-                padding: '1.5rem 1.5rem 1.8rem',
+              <div className="signature-card-body" style={{
                 display: 'flex',
                 flexDirection: 'column',
                 flex: 1,
               }}>
-                <div style={{
+                <div className="signature-card-line" style={{
                   width: '28px',
                   height: '2px',
                   background: '#0f766e',
@@ -101,9 +95,8 @@ export default function RetreatSignature() {
                   transition: 'all 0.5s ease',
                   flexShrink: 0,
                 }} />
-                <h3 style={{
+                <h3 className="signature-card-title" style={{
                   fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '1rem',
                   fontWeight: 500,
                   color: '#1a1814',
                   margin: '0 0 0.3rem',
@@ -112,9 +105,8 @@ export default function RetreatSignature() {
                 }}>
                   {retreat.title}
                 </h3>
-                <p style={{
+                <p className="signature-card-desc" style={{
                   fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '0.82rem',
                   color: '#6b7280',
                   margin: '0 0 1rem',
                   lineHeight: 1.7,
@@ -123,12 +115,11 @@ export default function RetreatSignature() {
                 }}>
                   {retreat.description}
                 </p>
-                <div style={{
+                <div className="signature-card-cta" style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.4rem',
                   fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '0.6rem',
                   fontWeight: 600,
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
@@ -140,7 +131,7 @@ export default function RetreatSignature() {
                   flexShrink: 0,
                   marginTop: 'auto',
                 }}>
-                  Explore <span style={{
+                  Explore <span className="signature-card-arrow" style={{
                     transition: 'transform 0.3s ease',
                     display: 'inline-block',
                   }}>→</span>
@@ -151,6 +142,30 @@ export default function RetreatSignature() {
         </div>
 
         <style>{`
+          .signature-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+          }
+          .signature-card-img-wrap {
+            height: 200px;
+          }
+          .signature-card-body {
+            padding: 1.5rem 1.5rem 1.8rem;
+          }
+          .signature-card-title {
+            font-size: 1rem;
+          }
+          .signature-card-desc {
+            font-size: 0.82rem;
+          }
+          .signature-card-img-title {
+            font-size: 1rem;
+          }
+          .signature-card-cta {
+            font-size: 0.6rem;
+          }
           .signature-card:hover .signature-card-img {
             transform: scale(1.05);
           }

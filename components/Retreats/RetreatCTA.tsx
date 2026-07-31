@@ -48,6 +48,7 @@ export default function RetreatCTA() {
 
       <Container style={{ position: 'relative', zIndex: 1 }}>
         <div
+          className="cta-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: '1fr 1fr',
@@ -88,6 +89,7 @@ export default function RetreatCTA() {
             </div>
 
             <h2
+              className="cta-headline"
               style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: 'clamp(2.8rem, 4.5vw, 4rem)',
@@ -122,6 +124,7 @@ export default function RetreatCTA() {
             />
 
             <p
+              className="cta-desc"
               style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '0.95rem',
@@ -149,6 +152,7 @@ export default function RetreatCTA() {
                     }}
                   />
                   <span
+                    className="cta-point-text"
                     style={{
                       fontFamily: 'var(--font-geist-sans), sans-serif',
                       fontSize: '0.85rem',
@@ -165,6 +169,7 @@ export default function RetreatCTA() {
 
           {/* RIGHT CARD */}
           <div
+            className="cta-card"
             style={{
               background: '#ffffff',
               border: '1px solid rgba(0, 0, 0, 0.04)',
@@ -175,6 +180,7 @@ export default function RetreatCTA() {
           >
             {/* Stats */}
             <div
+              className="cta-stats"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
@@ -187,6 +193,7 @@ export default function RetreatCTA() {
               {data.stats.map((s, i) => (
                 <div
                   key={s.num}
+                  className="cta-stat"
                   style={{
                     textAlign: 'center',
                     padding: '1.2rem 0.5rem',
@@ -195,6 +202,7 @@ export default function RetreatCTA() {
                   }}
                 >
                   <div
+                    className="cta-stat-num"
                     style={{
                       fontFamily: 'var(--font-geist-sans), sans-serif',
                       fontSize: '1.5rem',
@@ -245,6 +253,7 @@ export default function RetreatCTA() {
                 Start with a conversation
               </h3>
               <span
+                className="cta-price-badge"
                 style={{
                   fontFamily: 'var(--font-geist-sans), sans-serif',
                   fontSize: '0.7rem',
@@ -301,6 +310,7 @@ export default function RetreatCTA() {
             </Button>
 
             <div
+              className="cta-tags"
               style={{
                 marginTop: '1.5rem',
                 display: 'flex',
@@ -313,6 +323,7 @@ export default function RetreatCTA() {
               {data.tags.map((t, i) => (
                 <span
                   key={t}
+                  className="cta-tag"
                   style={{
                     fontFamily: 'var(--font-geist-sans), sans-serif',
                     fontSize: '0.5rem',

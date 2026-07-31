@@ -6,19 +6,20 @@ import { heroData } from '@/content/retreats/hero';
 
 export default function RetreatHero() {
   return (
-    <section className="rc-hero-section" style={{
-      position: 'relative',
-      height: '100vh',
-      display: 'grid',
-      gridTemplateColumns: '1fr 1fr',
-      overflow: 'hidden',
-      marginBottom: '0',
-      marginTop: '-4px',
-      width: '100vw',
-      marginLeft: 'calc(-50vw + 50%)',
-      background: '#ffffff',
-    }}>
+    <section className="rc-hero-section">
       <style>{`
+        .rc-hero-section {
+          position: relative;
+          height: 100vh;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          overflow: hidden;
+          margin-bottom: 0;
+          margin-top: -4px;
+          width: 100vw;
+          margin-left: calc(-50vw + 50%);
+          background: #ffffff;
+        }
         .rc-hero-left {
           display: flex;
           flex-direction: column;
@@ -246,9 +247,9 @@ export default function RetreatHero() {
         }
         @media (max-width: 900px) {
           .rc-hero-section { grid-template-columns: 1fr; height: auto; }
-          .rc-hero-left { padding: 5rem 2.5rem 3.5rem; order: 2; }
+          .rc-hero-left { padding: 5rem 2.5rem 3.5rem; order: 1; }
           .rc-hero-left::after { display: none; }
-          .rc-hero-right { order: 1; height: 45vh; min-height: 280px; }
+          .rc-hero-right { order: 2; height: 45vh; min-height: 280px; }
           .rc-hero-heading { font-size: clamp(2.5rem, 6vw, 3.5rem); }
           .rc-hero-sub { max-width: 100%; }
           .rc-hero-scroll { display: none; }

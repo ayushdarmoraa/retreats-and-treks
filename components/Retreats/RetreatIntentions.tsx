@@ -37,12 +37,7 @@ export default function RetreatIntentions() {
           description="Each pathway is designed around a different need — rest, movement, silence, creativity, sound healing, or a fully private retreat."
         />
 
-        <div className="intentions-grid" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '2rem',
-          marginTop: '3rem',
-        }}>
+        <div className="intentions-grid">
           {itemsToShow.map((intention, index) => {
             // Empty placeholder - invisible card
             if (!intention) {
@@ -67,10 +62,9 @@ export default function RetreatIntentions() {
                 className="intention-card"
                 style={{ height: '100%' }}
               >
-                <div style={{
+                <div className="intention-card-img-wrap" style={{
                   position: 'relative',
                   overflow: 'hidden',
-                  height: '220px',
                   background: '#f5f3ef',
                   flexShrink: 0,
                 }}>
@@ -80,6 +74,7 @@ export default function RetreatIntentions() {
                     width={400}
                     height={210}
                     quality={75}
+                    className="intention-card-img"
                     style={{
                       width: '100%',
                       height: '100%',
@@ -88,7 +83,7 @@ export default function RetreatIntentions() {
                       transition: 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                     }}
                   />
-                  <div style={{
+                  <div className="intention-card-overlay" style={{
                     position: 'absolute',
                     inset: 0,
                     background: 'linear-gradient(to top, rgba(26, 24, 20, 0.5), transparent 60%)',
@@ -96,7 +91,7 @@ export default function RetreatIntentions() {
                     transition: 'opacity 0.5s ease',
                   }} />
                   <ImageBadge label="Retreat" />
-                  <span style={{
+                  <span className="intention-card-img-title" style={{
                     position: 'absolute',
                     bottom: '1.5rem',
                     left: '1.5rem',
@@ -113,13 +108,12 @@ export default function RetreatIntentions() {
                   </span>
                 </div>
 
-                <div style={{
-                  padding: '1.8rem 2rem 2rem',
+                <div className="intention-card-body" style={{
                   display: 'flex',
                   flexDirection: 'column',
                   flex: 1,
                 }}>
-                  <div style={{
+                  <div className="intention-card-line" style={{
                     width: '32px',
                     height: '2px',
                     background: '#0f766e',
@@ -129,9 +123,8 @@ export default function RetreatIntentions() {
                     transition: 'all 0.5s ease',
                     flexShrink: 0,
                   }} />
-                  <h3 style={{
+                  <h3 className="intention-card-title" style={{
                     fontFamily: 'var(--font-geist-sans), sans-serif',
-                    fontSize: '1.1rem',
                     fontWeight: 500,
                     color: '#1a1814',
                     margin: '0 0 0.4rem',
@@ -140,9 +133,8 @@ export default function RetreatIntentions() {
                   }}>
                     {intention.title}
                   </h3>
-                  <p style={{
+                  <p className="intention-card-desc" style={{
                     fontFamily: 'var(--font-geist-sans), sans-serif',
-                    fontSize: '0.88rem',
                     color: '#6b7280',
                     margin: '0 0 1.2rem',
                     lineHeight: 1.8,
@@ -151,12 +143,11 @@ export default function RetreatIntentions() {
                   }}>
                     {intention.description}
                   </p>
-                  <div style={{
+                  <div className="intention-card-cta" style={{
                     display: 'inline-flex',
                     alignItems: 'center',
                     gap: '0.5rem',
                     fontFamily: 'var(--font-geist-sans), sans-serif',
-                    fontSize: '0.7rem',
                     fontWeight: 600,
                     letterSpacing: '0.12em',
                     textTransform: 'uppercase',
@@ -168,7 +159,7 @@ export default function RetreatIntentions() {
                     flexShrink: 0,
                     marginTop: 'auto',
                   }}>
-                    Learn more <span style={{
+                    Learn more <span className="intention-card-arrow" style={{
                       transition: 'transform 0.3s ease',
                       display: 'inline-block',
                     }}>→</span>
@@ -180,6 +171,30 @@ export default function RetreatIntentions() {
         </div>
 
         <style>{`
+          .intentions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+          }
+          .intention-card-img-wrap {
+            height: 220px;
+          }
+          .intention-card-body {
+            padding: 1.8rem 2rem 2rem;
+          }
+          .intention-card-title {
+            font-size: 1.1rem;
+          }
+          .intention-card-desc {
+            font-size: 0.88rem;
+          }
+          .intention-card-img-title {
+            font-size: 1.15rem;
+          }
+          .intention-card-cta {
+            font-size: 0.7rem;
+          }
           .intention-card:hover .intention-card-img {
             transform: scale(1.05);
           }

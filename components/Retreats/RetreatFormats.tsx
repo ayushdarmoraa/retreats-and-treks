@@ -19,7 +19,7 @@ export default function RetreatFormats() {
     >
       <Container>
         {/* HEADER - Direct HTML */}
-        <div className="formats-header" style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
+        <div className="formats-header">
           <div style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -27,9 +27,8 @@ export default function RetreatFormats() {
             marginBottom: '1.5rem',
           }}>
             <span style={{ width: '36px', height: '1px', background: '#0f766e', opacity: 0.3 }} />
-            <span style={{
+            <span className="formats-eyebrow-text" style={{
               fontFamily: 'var(--font-geist-sans), sans-serif',
-              fontSize: '0.7rem',
               letterSpacing: '0.35em',
               textTransform: 'uppercase',
               color: '#6b7280',
@@ -38,38 +37,17 @@ export default function RetreatFormats() {
             <span style={{ width: '36px', height: '1px', background: '#0f766e', opacity: 0.3 }} />
           </div>
           
-          <h2 style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
-            fontSize: 'clamp(2.5rem, 4vw, 4rem)',
-            fontWeight: 200,
-            letterSpacing: '-0.03em',
-            color: '#1a1814',
-            margin: 0,
-            lineHeight: 1.1,
-          }}>
+          <h2 className="formats-heading">
             Choose Your <span style={{ color: '#0f766e', fontWeight: 200 }}>Pace</span>
           </h2>
           
-          <p style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
-            fontSize: '1rem',
-            color: '#6b7280',
-            fontWeight: 300,
-            maxWidth: '44rem',
-            margin: '0.75rem auto 0',
-            lineHeight: 1.8,
-          }}>
+          <p className="formats-desc">
             Short weekend reset, deeper meditation, or movement-led retreat — each format can be adapted around your intention, dates, and availability.
           </p>
         </div>
 
         {/* GRID */}
-        <div className="formats-grid" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '2rem',
-          marginTop: '3rem',
-        }}>
+        <div className="formats-grid">
           {formats.map((format) => (
             <Card
               key={format.slug}
@@ -77,10 +55,9 @@ export default function RetreatFormats() {
               className="format-card"
               style={{ height: '100%' }}
             >
-              <div style={{
+              <div className="format-card-img-wrap" style={{
                 position: 'relative',
                 overflow: 'hidden',
-                height: '220px',
                 background: '#f5f3ef',
                 flexShrink: 0,
               }}>
@@ -90,6 +67,7 @@ export default function RetreatFormats() {
                   width={400}
                   height={210}
                   quality={75}
+                  className="format-card-img"
                   style={{
                     width: '100%',
                     height: '100%',
@@ -98,7 +76,7 @@ export default function RetreatFormats() {
                     transition: 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                   }}
                 />
-                <div style={{
+                <div className="format-card-overlay" style={{
                   position: 'absolute',
                   inset: 0,
                   background: 'linear-gradient(to top, rgba(26, 24, 20, 0.5), transparent 60%)',
@@ -106,13 +84,12 @@ export default function RetreatFormats() {
                   transition: 'opacity 0.5s ease',
                 }} />
                 <ImageBadge label={format.tag} />
-                <span style={{
+                <span className="format-card-img-title" style={{
                   position: 'absolute',
                   bottom: '1.5rem',
                   left: '1.5rem',
                   right: '1.5rem',
                   fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '1.15rem',
                   fontWeight: 500,
                   color: '#ffffff',
                   lineHeight: 1.2,
@@ -123,13 +100,12 @@ export default function RetreatFormats() {
                 </span>
               </div>
 
-              <div style={{
-                padding: '1.8rem 2rem 2rem',
+              <div className="format-card-body" style={{
                 display: 'flex',
                 flexDirection: 'column',
                 flex: 1,
               }}>
-                <div style={{
+                <div className="format-card-line" style={{
                   width: '32px',
                   height: '2px',
                   background: '#0f766e',
@@ -139,9 +115,8 @@ export default function RetreatFormats() {
                   transition: 'all 0.5s ease',
                   flexShrink: 0,
                 }} />
-                <h3 style={{
+                <h3 className="format-card-title" style={{
                   fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '1.1rem',
                   fontWeight: 500,
                   color: '#1a1814',
                   margin: '0 0 0.4rem',
@@ -150,9 +125,8 @@ export default function RetreatFormats() {
                 }}>
                   {format.title}
                 </h3>
-                <p style={{
+                <p className="format-card-desc" style={{
                   fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '0.88rem',
                   color: '#6b7280',
                   margin: 0,
                   lineHeight: 1.8,
@@ -168,6 +142,52 @@ export default function RetreatFormats() {
         </div>
 
         <style>{`
+          .formats-header {
+            text-align: center;
+            margin-bottom: 3.5rem;
+          }
+          .formats-eyebrow-text {
+            font-size: 0.7rem;
+          }
+          .formats-heading {
+            font-family: var(--font-geist-sans), sans-serif;
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-weight: 200;
+            letter-spacing: -0.03em;
+            color: #1a1814;
+            margin: 0;
+            line-height: 1.1;
+          }
+          .formats-desc {
+            font-family: var(--font-geist-sans), sans-serif;
+            font-size: 1rem;
+            color: #6b7280;
+            font-weight: 300;
+            max-width: 44rem;
+            margin: 0.75rem auto 0;
+            line-height: 1.8;
+          }
+          .formats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+          }
+          .format-card-img-wrap {
+            height: 220px;
+          }
+          .format-card-body {
+            padding: 1.8rem 2rem 2rem;
+          }
+          .format-card-title {
+            font-size: 1.1rem;
+          }
+          .format-card-desc {
+            font-size: 0.88rem;
+          }
+          .format-card-img-title {
+            font-size: 1.15rem;
+          }
           .format-card:hover .format-card-img {
             transform: scale(1.05);
           }
@@ -185,6 +205,15 @@ export default function RetreatFormats() {
             .formats-grid {
               grid-template-columns: repeat(2, 1fr);
               gap: 1.5rem;
+            }
+          }
+          @media (max-width: 768px) {
+            .formats-header {
+              margin-bottom: 2.5rem;
+            }
+            .formats-desc {
+              font-size: 0.9rem;
+              padding: 0 1rem;
             }
           }
           @media (max-width: 640px) {
@@ -206,6 +235,9 @@ export default function RetreatFormats() {
             }
           }
           @media (max-width: 480px) {
+            .formats-eyebrow-text {
+              font-size: 0.6rem;
+            }
             .format-card-img-wrap {
               height: 180px;
             }

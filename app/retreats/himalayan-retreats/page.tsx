@@ -617,6 +617,72 @@ export default function HimalayanRetreatsPage() {
             </div>
           </div>
         </div>
+
+        <style>{`
+          /* Mobile overrides only — desktop layout untouched.
+             !important used because base .med-location-row / .med-location-media
+             styles live in a global stylesheet not included here.
+             Plain <style> tag (not styled-jsx) so it works in Server Components. */
+          @media (max-width: 900px) {
+            .med-shell {
+              padding: 3rem 0 !important;
+            }
+            .med-outer {
+              padding-left: 1.5rem !important;
+              padding-right: 1.5rem !important;
+            }
+            .med-location-row {
+              display: flex !important;
+              flex-direction: column !important;
+              grid-template-columns: none !important;
+            }
+            .med-location-row-alt {
+              flex-direction: column !important;
+            }
+            .med-location-media {
+              width: 100% !important;
+              order: 1 !important;
+            }
+            .med-location-body {
+              width: 100% !important;
+              order: 2 !important;
+            }
+            .med-location-media img {
+              width: 100% !important;
+              height: auto !important;
+              display: block !important;
+            }
+          }
+          @media (max-width: 640px) {
+            .med-h2 {
+              font-size: clamp(1.8rem, 7vw, 2.4rem) !important;
+            }
+            .med-body {
+              font-size: 0.9rem !important;
+            }
+            .med-location-body h3 {
+              font-size: 1.1rem !important;
+            }
+            .med-location-body p {
+              font-size: 0.88rem !important;
+              line-height: 1.7 !important;
+            }
+            .med-location-btn {
+              width: 100% !important;
+              justify-content: center !important;
+              text-align: center !important;
+            }
+          }
+          @media (max-width: 480px) {
+            .med-outer {
+              padding-left: 1.2rem !important;
+              padding-right: 1.2rem !important;
+            }
+            .med-season-tag {
+              font-size: 0.6rem !important;
+            }
+          }
+        `}</style>
       </section>
 
       {/* ── WHO THEY ARE FOR ── */}

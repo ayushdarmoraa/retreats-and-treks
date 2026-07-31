@@ -18,6 +18,7 @@ export default function JourneyCTA({ title, invitation }: JourneyCTAProps) {
 
   return (
     <Section
+      className="jcta-section"
       style={{
         background: '#f7f9f7',
         padding: '7rem 0',
@@ -25,23 +26,8 @@ export default function JourneyCTA({ title, invitation }: JourneyCTAProps) {
         borderBottom: '1px solid rgba(15, 118, 110, 0.06)',
       }}
     >
-      <div
-        style={{
-          maxWidth: '84rem',
-          margin: '0 auto',
-          padding: '0 4rem',
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '5rem',
-            alignItems: 'center',
-          }}
-        >
+      <div className="jcta-container">
+        <div className="jcta-grid">
           {/* LEFT */}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div
@@ -74,17 +60,7 @@ export default function JourneyCTA({ title, invitation }: JourneyCTAProps) {
               </span>
             </div>
 
-            <h2
-              style={{
-                fontFamily: 'var(--font-fraunces), Georgia, serif',
-                fontSize: 'clamp(2.8rem, 4.5vw, 4rem)',
-                fontWeight: 500,
-                letterSpacing: '-0.04em',
-                color: '#2B2A26',
-                lineHeight: 1.05,
-                margin: '0 0 0.5rem',
-              }}
-            >
+            <h2 className="jcta-headline">
               The mountains
               <span
                 style={{
@@ -109,17 +85,7 @@ export default function JourneyCTA({ title, invitation }: JourneyCTAProps) {
               }}
             />
 
-            <p
-              style={{
-                fontFamily: 'var(--font-inter), sans-serif',
-                fontSize: '0.95rem',
-                lineHeight: 2,
-                color: '#6b7280',
-                fontWeight: 300,
-                maxWidth: '420px',
-                margin: '0 0 2rem',
-              }}
-            >
+            <p className="jcta-desc">
               {invitation}
             </p>
 
@@ -141,6 +107,7 @@ export default function JourneyCTA({ title, invitation }: JourneyCTAProps) {
                     }}
                   />
                   <span
+                    className="jcta-point-text"
                     style={{
                       fontFamily: 'var(--font-inter), sans-serif',
                       fontSize: '0.85rem',
@@ -156,17 +123,10 @@ export default function JourneyCTA({ title, invitation }: JourneyCTAProps) {
           </div>
 
           {/* RIGHT CARD */}
-          <div
-            style={{
-              background: '#ffffff',
-              border: '1px solid rgba(0, 0, 0, 0.04)',
-              borderRadius: '24px',
-              padding: '3rem 2.8rem',
-              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04), 0 12px 40px rgba(0, 0, 0, 0.03)',
-            }}
-          >
+          <div className="jcta-card">
             {/* Stats */}
             <div
+              className="jcta-stats"
               style={{
                 display: 'grid',
                 gridTemplateColumns: 'repeat(3, 1fr)',
@@ -183,6 +143,7 @@ export default function JourneyCTA({ title, invitation }: JourneyCTAProps) {
               ].map((s) => (
                 <div
                   key={s.num}
+                  className="jcta-stat"
                   style={{
                     textAlign: 'center',
                     padding: '1.2rem 0.5rem',
@@ -191,6 +152,7 @@ export default function JourneyCTA({ title, invitation }: JourneyCTAProps) {
                   }}
                 >
                   <div
+                    className="jcta-stat-num"
                     style={{
                       fontFamily: 'var(--font-inter), sans-serif',
                       fontSize: '1.5rem',
@@ -241,6 +203,7 @@ export default function JourneyCTA({ title, invitation }: JourneyCTAProps) {
                 {content.cardTitle}
               </h3>
               <span
+                className="jcta-price-badge"
                 style={{
                   fontFamily: 'var(--font-inter), sans-serif',
                   fontSize: '0.7rem',
@@ -297,6 +260,7 @@ export default function JourneyCTA({ title, invitation }: JourneyCTAProps) {
             </Button>
 
             <div
+              className="jcta-tags"
               style={{
                 marginTop: '1.5rem',
                 display: 'flex',
@@ -309,6 +273,7 @@ export default function JourneyCTA({ title, invitation }: JourneyCTAProps) {
               {['Small groups', 'No fixed dates', 'Fully custom'].map((t, i) => (
                 <span
                   key={t}
+                  className="jcta-tag"
                   style={{
                     fontFamily: 'var(--font-inter), sans-serif',
                     fontSize: '0.5rem',
@@ -338,6 +303,139 @@ export default function JourneyCTA({ title, invitation }: JourneyCTAProps) {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .jcta-container {
+          max-width: 84rem;
+          margin: 0 auto;
+          padding: 0 4rem;
+          position: relative;
+          z-index: 1;
+        }
+
+        .jcta-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 5rem;
+          align-items: center;
+        }
+
+        .jcta-headline {
+          font-family: var(--font-fraunces), Georgia, serif;
+          font-size: clamp(2.8rem, 4.5vw, 4rem);
+          font-weight: 500;
+          letter-spacing: -0.04em;
+          color: #2B2A26;
+          line-height: 1.05;
+          margin: 0 0 0.5rem;
+        }
+
+        .jcta-desc {
+          font-family: var(--font-inter), sans-serif;
+          font-size: 0.95rem;
+          line-height: 2;
+          color: #6b7280;
+          font-weight: 300;
+          max-width: 420px;
+          margin: 0 0 2rem;
+        }
+
+        .jcta-card {
+          background: #ffffff;
+          border: 1px solid rgba(0, 0, 0, 0.04);
+          border-radius: 24px;
+          padding: 3rem 2.8rem;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 12px 40px rgba(0, 0, 0, 0.03);
+        }
+
+        /* ===== Tablet ===== */
+        @media (max-width: 1024px) {
+          .jcta-container {
+            padding: 0 2.5rem;
+          }
+
+          .jcta-grid {
+            gap: 3rem;
+          }
+
+          .jcta-card {
+            padding: 2.5rem 2rem;
+          }
+        }
+
+        /* ===== Mobile ===== */
+        @media (max-width: 768px) {
+          :global(.jcta-section) {
+            padding: 4rem 0 !important;
+          }
+
+          .jcta-container {
+            padding: 0 1.5rem;
+          }
+
+          .jcta-grid {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+          }
+
+          .jcta-headline {
+            font-size: clamp(2.2rem, 8vw, 2.8rem);
+          }
+
+          .jcta-desc {
+            max-width: 100%;
+            font-size: 0.9rem;
+          }
+
+          .jcta-point-text {
+            font-size: 0.82rem;
+          }
+
+          .jcta-card {
+            padding: 2rem 1.5rem;
+            border-radius: 18px;
+          }
+
+          .jcta-stat-num {
+            font-size: 1.2rem;
+          }
+        }
+
+        /* ===== Small mobile ===== */
+        @media (max-width: 420px) {
+          .jcta-container {
+            padding: 0 1.25rem;
+          }
+
+          .jcta-card {
+            padding: 1.75rem 1.25rem;
+          }
+
+          .jcta-stats {
+            gap: 0;
+          }
+
+          .jcta-stat {
+            padding: 0.8rem 0.3rem;
+          }
+
+          .jcta-stat-num {
+            font-size: 1rem;
+          }
+
+          .jcta-price-badge {
+            font-size: 0.6rem;
+          }
+
+          .jcta-tags {
+            gap: 0.8rem;
+          }
+
+          .jcta-tag {
+            font-size: 0.45rem;
+          }
+        }
+      `}</style>
     </Section>
   );
 }

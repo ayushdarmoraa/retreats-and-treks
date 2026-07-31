@@ -498,13 +498,13 @@ export default function BestRetreatInUttarakhandPage() {
       <section className="med-shell" style={{ background: '#ffffff', padding: '4.5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
         <div className="med-outer">
           <div className="med-card" style={{ padding: '2.5rem' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: '1.05fr 0.95fr', gap: '2rem', alignItems: 'center' }}>
+            <div className="med-luxury-grid" style={{ display: 'grid', gridTemplateColumns: '1.05fr 0.95fr', gap: '2rem', alignItems: 'center' }}>
               <div>
                 <span className="med-season-tag">Best Luxury Retreat · Munsiyari</span>
                 <h2 className="med-h2" style={{ margin: '0.5rem 0 1rem' }}>Luxury is not marble. <span>It is space.</span></h2>
                 <p className="med-body">Luxury in the Himalayas is not about marble lobbies — it is about privacy, views, guided programming, and the absence of crowds. Munsiyari leads this category. Its combination of Panchachuli views, fewer visitors, and premium stays creates a retreat experience closer to a quiet alpine setting than standard hotel luxury.</p>
                 <p className="med-body">The <Link href="/retreats/luxury-himalayan-retreats" style={{ color: '#0f766e', fontWeight: 600 }}>luxury Himalayan retreats</Link> guide compares premium options across all locations — Munsiyari for quiet alpine luxury, Rishikesh for heritage luxury, and Sankri for remote wilderness comfort.</p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1rem' }}>
+                <div className="med-luxury-actions" style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1rem' }}>
                   <Link href="/retreats/luxury-himalayan-retreats" className="med-cta-btn" style={{ padding: '0.7rem 1.2rem', fontSize: '0.7rem' }}>Explore luxury retreats</Link>
                   <Link href="/retreats/munsiyari" className="med-cta-outline" style={{ padding: '0.7rem 1.2rem', fontSize: '0.7rem' }}>View Munsiyari retreats</Link>
                 </div>
@@ -535,6 +535,30 @@ export default function BestRetreatInUttarakhandPage() {
             </div>
           </div>
         </div>
+
+        <style>{`
+          @media (max-width: 900px) {
+            .med-shell { padding: 3rem 0 !important; }
+            .med-outer { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+            .med-luxury-grid {
+              grid-template-columns: 1fr !important;
+              gap: 1.5rem !important;
+            }
+          }
+          @media (max-width: 640px) {
+            .med-h2 { font-size: clamp(1.7rem, 7vw, 2.2rem) !important; }
+            .med-body { font-size: 0.88rem !important; }
+            .med-luxury-actions { flex-direction: column !important; width: 100% !important; }
+            .med-luxury-actions a { width: 100% !important; text-align: center !important; justify-content: center !important; }
+            .med-grid-2 { grid-template-columns: 1fr 1fr !important; }
+          }
+          @media (max-width: 480px) {
+            .med-outer { padding-left: 1.2rem !important; padding-right: 1.2rem !important; }
+            .med-card { padding: 1.5rem !important; }
+            .med-grid-2 { grid-template-columns: 1fr !important; }
+            .med-season-tag { font-size: 0.6rem !important; }
+          }
+        `}</style>
       </section>
 
       {/* ── BEST WEEKEND RETREAT ── */}

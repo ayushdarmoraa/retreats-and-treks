@@ -15,24 +15,10 @@ const FinalCTA = ({ whatsappLink }: FinalCTAProps) => {
         padding: '7rem 0',
         borderTop: '1px solid rgba(15, 118, 110, 0.06)',
       }}
+      className="final-cta-section"
     >
-      <div
-        style={{
-          maxWidth: '84rem',
-          margin: '0 auto',
-          padding: '0 4rem',
-          position: 'relative',
-          zIndex: 1,
-        }}
-      >
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr',
-            gap: '5rem',
-            alignItems: 'center',
-          }}
-        >
+      <div className="final-cta-container">
+        <div className="final-cta-grid">
           {/* LEFT */}
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <div
@@ -65,17 +51,7 @@ const FinalCTA = ({ whatsappLink }: FinalCTAProps) => {
               </span>
             </div>
 
-            <h2
-              style={{
-                fontFamily: 'var(--font-geist-sans), sans-serif',
-                fontSize: 'clamp(2.8rem, 4.5vw, 4rem)',
-                fontWeight: 200,
-                letterSpacing: '-0.04em',
-                color: '#1a1814',
-                lineHeight: 1.05,
-                margin: '0 0 0.5rem',
-              }}
-            >
+            <h2 className="final-cta-heading">
               The mountains
               <span
                 style={{
@@ -100,17 +76,7 @@ const FinalCTA = ({ whatsappLink }: FinalCTAProps) => {
               }}
             />
 
-            <p
-              style={{
-                fontFamily: 'var(--font-geist-sans), sans-serif',
-                fontSize: '0.95rem',
-                lineHeight: 2,
-                color: '#6b7280',
-                fontWeight: 300,
-                maxWidth: '420px',
-                margin: '0 0 2rem',
-              }}
-            >
+            <p className="final-cta-subtext">
               Tell us what you&apos;re seeking. We&apos;ll listen — and together design something real, in the Himalayas.
             </p>
 
@@ -147,15 +113,7 @@ const FinalCTA = ({ whatsappLink }: FinalCTAProps) => {
           </div>
 
           {/* RIGHT CARD */}
-          <div
-            style={{
-              background: '#ffffff',
-              border: '1px solid rgba(0, 0, 0, 0.04)',
-              borderRadius: '24px',
-              padding: '3rem 2.8rem',
-              boxShadow: '0 4px 16px rgba(0, 0, 0, 0.04), 0 12px 40px rgba(0, 0, 0, 0.03)',
-            }}
-          >
+          <div className="final-cta-card">
             {/* Stats */}
             <div
               style={{
@@ -329,6 +287,106 @@ const FinalCTA = ({ whatsappLink }: FinalCTAProps) => {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .final-cta-container {
+          max-width: 84rem;
+          margin: 0 auto;
+          padding: 0 4rem;
+          position: relative;
+          z-index: 1;
+        }
+
+        .final-cta-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 5rem;
+          align-items: center;
+        }
+
+        .final-cta-heading {
+          font-family: var(--font-geist-sans), sans-serif;
+          font-size: clamp(2.8rem, 4.5vw, 4rem);
+          font-weight: 200;
+          letter-spacing: -0.04em;
+          color: #1a1814;
+          line-height: 1.05;
+          margin: 0 0 0.5rem;
+        }
+
+        .final-cta-subtext {
+          font-family: var(--font-geist-sans), sans-serif;
+          font-size: 0.95rem;
+          line-height: 2;
+          color: #6b7280;
+          font-weight: 300;
+          max-width: 420px;
+          margin: 0 0 2rem;
+        }
+
+        .final-cta-card {
+          background: #ffffff;
+          border: 1px solid rgba(0, 0, 0, 0.04);
+          border-radius: 24px;
+          padding: 3rem 2.8rem;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04), 0 12px 40px rgba(0, 0, 0, 0.03);
+        }
+
+        /* ===== Tablet ===== */
+        @media (max-width: 1024px) {
+          .final-cta-container {
+            padding: 0 2.5rem;
+          }
+
+          .final-cta-grid {
+            gap: 3rem;
+          }
+
+          .final-cta-card {
+            padding: 2.5rem 2rem;
+          }
+        }
+
+        /* ===== Mobile ===== */
+        @media (max-width: 768px) {
+          :global(.final-cta-section) {
+            padding: 4rem 0 !important;
+          }
+
+          .final-cta-container {
+            padding: 0 1.5rem;
+          }
+
+          .final-cta-grid {
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+          }
+
+          .final-cta-heading {
+            font-size: clamp(2.2rem, 8vw, 2.8rem);
+          }
+
+          .final-cta-subtext {
+            max-width: 100%;
+          }
+
+          .final-cta-card {
+            padding: 2rem 1.5rem;
+            border-radius: 18px;
+          }
+        }
+
+        /* ===== Small mobile ===== */
+        @media (max-width: 420px) {
+          .final-cta-container {
+            padding: 0 1.25rem;
+          }
+
+          .final-cta-card {
+            padding: 1.75rem 1.25rem;
+          }
+        }
+      `}</style>
     </Section>
   );
 };

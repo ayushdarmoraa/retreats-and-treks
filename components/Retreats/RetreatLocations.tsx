@@ -27,12 +27,7 @@ export default function RetreatLocations() {
         />
 
         {/* GRID */}
-        <div className="locations-grid" style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '2rem',
-          marginTop: '3rem',
-        }}>
+        <div className="locations-grid">
           {locations.map((location) => (
             <Card
               key={location.id}
@@ -40,10 +35,9 @@ export default function RetreatLocations() {
               className="loc-card"
               style={{ height: '100%' }}
             >
-              <div style={{
+              <div className="loc-card-img-wrap" style={{
                 position: 'relative',
                 overflow: 'hidden',
-                height: '200px',
                 background: '#f5f3ef',
                 flexShrink: 0,
               }}>
@@ -53,6 +47,7 @@ export default function RetreatLocations() {
                   width={400}
                   height={210}
                   quality={75}
+                  className="loc-card-img"
                   style={{
                     width: '100%',
                     height: '100%',
@@ -61,7 +56,7 @@ export default function RetreatLocations() {
                     transition: 'transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                   }}
                 />
-                <div style={{
+                <div className="loc-card-overlay" style={{
                   position: 'absolute',
                   inset: 0,
                   background: 'linear-gradient(to top, rgba(26, 24, 20, 0.5), transparent 60%)',
@@ -69,13 +64,12 @@ export default function RetreatLocations() {
                   transition: 'opacity 0.5s ease',
                 }} />
                 <ImageBadge label="Location" />
-                <span style={{
+                <span className="loc-card-img-title" style={{
                   position: 'absolute',
                   bottom: '1.2rem',
                   left: '1.2rem',
                   right: '1.2rem',
                   fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '1.1rem',
                   fontWeight: 500,
                   color: '#ffffff',
                   lineHeight: 1.2,
@@ -86,13 +80,12 @@ export default function RetreatLocations() {
                 </span>
               </div>
 
-              <div style={{
-                padding: '1.5rem 1.8rem 1.8rem',
+              <div className="loc-card-body" style={{
                 display: 'flex',
                 flexDirection: 'column',
                 flex: 1,
               }}>
-                <div style={{
+                <div className="loc-card-line" style={{
                   width: '28px',
                   height: '2px',
                   background: '#0f766e',
@@ -102,9 +95,8 @@ export default function RetreatLocations() {
                   transition: 'all 0.5s ease',
                   flexShrink: 0,
                 }} />
-                <h3 style={{
+                <h3 className="loc-card-title" style={{
                   fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '1rem',
                   fontWeight: 500,
                   color: '#1a1814',
                   margin: '0 0 0.3rem',
@@ -113,9 +105,8 @@ export default function RetreatLocations() {
                 }}>
                   {location.name}
                 </h3>
-                <p style={{
+                <p className="loc-card-desc" style={{
                   fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '0.85rem',
                   color: '#6b7280',
                   margin: '0 0 1rem',
                   lineHeight: 1.7,
@@ -124,12 +115,11 @@ export default function RetreatLocations() {
                 }}>
                   {location.tagline}
                 </p>
-                <div style={{
+                <div className="loc-card-cta" style={{
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.5rem',
                   fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '0.65rem',
                   fontWeight: 600,
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
@@ -141,7 +131,7 @@ export default function RetreatLocations() {
                   flexShrink: 0,
                   marginTop: 'auto',
                 }}>
-                  Explore <span style={{
+                  Explore <span className="loc-card-arrow" style={{
                     transition: 'transform 0.3s ease',
                     display: 'inline-block',
                   }}>→</span>
@@ -152,6 +142,30 @@ export default function RetreatLocations() {
         </div>
 
         <style>{`
+          .locations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+          }
+          .loc-card-img-wrap {
+            height: 200px;
+          }
+          .loc-card-body {
+            padding: 1.5rem 1.8rem 1.8rem;
+          }
+          .loc-card-title {
+            font-size: 1rem;
+          }
+          .loc-card-desc {
+            font-size: 0.85rem;
+          }
+          .loc-card-img-title {
+            font-size: 1.1rem;
+          }
+          .loc-card-cta {
+            font-size: 0.65rem;
+          }
           .loc-card:hover .loc-card-img {
             transform: scale(1.05);
           }
