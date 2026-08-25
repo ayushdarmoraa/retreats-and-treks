@@ -117,6 +117,7 @@ export type TrekContent = {
 	updatedAt?: string;
 
 	/** Visual/conversion upgrade (2026-Q2) — all optional, backward compatible */
+	reviewCount?: number;
 	heroImage?: string;                  // Hero image src (e.g. /Images/trek/hero/brahmatal-hero.webp)
 	heroImageAlt?: string;               // Hero image alt for SEO
 	heroTagline?: string;                // Emotional subheadline under H1

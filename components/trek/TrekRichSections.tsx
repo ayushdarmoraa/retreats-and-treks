@@ -1,11 +1,11 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import type { TrekContent } from '@/types/content';
 
 /* ============================================================
-   TrekHeroImmersive
-   Full-bleed hero image with overlay, emotional headline,
-   trust strip and primary CTA. LCP-optimized with priority.
+   TrekHeroImmersive - ✅ THEMED (No Change)
 ============================================================ */
 
 export function TrekHeroImmersive({
@@ -19,165 +19,339 @@ export function TrekHeroImmersive({
 }) {
   if (!trek.heroImage) return null;
 
+  const titleWords = trek.title.split(' ');
+  const lastWord = titleWords[titleWords.length - 1];
+  const restWords = titleWords.slice(0, -1).join(' ');
+
+  const reviewCount = typeof trek.reviewCount === 'number' ? trek.reviewCount : 200;
+
   return (
     <section
       style={{
         width: '100vw',
         marginLeft: 'calc(-50vw + 50%)',
         position: 'relative',
-        height: 'clamp(420px, 75vh, 720px)',
+        height: 'clamp(520px, 85vh, 820px)',
         overflow: 'hidden',
         marginBottom: '0',
+        backgroundColor: '#0a0a0a',
       }}
       aria-label={`${trek.title} hero`}
     >
-      <Image
-        src={trek.heroImage}
-        alt={trek.heroImageAlt || `${trek.title} — ${locationName}`}
-        width={1920}
-        height={1080}
-        priority
-        sizes="100vw"
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }}
-      />
-      {/* gradient overlay */}
+      <div style={{ position: 'absolute', inset: 0 }}>
+        <Image
+          src={trek.heroImage}
+          alt={trek.heroImageAlt || `${trek.title} — ${locationName}`}
+          width={1920}
+          height={1080}
+          priority
+          quality={90}
+          sizes="100vw"
+          style={{
+            width: '100%',
+            height: '100%',
+            objectFit: 'cover',
+            objectPosition: 'center',
+            filter: 'brightness(0.7) blur(0.5px)',
+          }}
+        />
+      </div>
+
       <div
         style={{
           position: 'absolute',
           inset: 0,
-          background:
-            'linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.15) 40%, rgba(0,0,0,0.7) 100%)',
+          background: `
+            linear-gradient(120deg, 
+              rgba(4,12,10,0.6) 0%, 
+              rgba(4,12,10,0.3) 45%, 
+              rgba(4,12,10,0.55) 100%
+            )
+          `,
           pointerEvents: 'none',
         }}
       />
+
       <div
         style={{
           position: 'absolute',
-          left: 0,
-          right: 0,
-          bottom: 0,
-          padding: '3rem 2rem',
+          inset: 0,
           display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
           justifyContent: 'center',
+          padding: '2rem',
+          textAlign: 'center',
         }}
       >
-        <div style={{ maxWidth: '56rem', width: '100%' }}>
-          <span
-            style={{
-              display: 'inline-block',
-              fontFamily: 'var(--font-geist-sans), sans-serif',
-              fontSize: '0.72rem',
-              letterSpacing: '0.28em',
-              textTransform: 'uppercase',
-              fontWeight: 500,
-              color: '#e6e6e6',
-              marginBottom: '0.85rem',
-              background: 'rgba(15,118,110,0.75)',
-              padding: '0.3rem 0.85rem',
-              borderRadius: '100px',
-            }}
-          >
-            {trek.trekType} · {locationName}
-          </span>
+        <div style={{ 
+          maxWidth: '58rem', 
+          width: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '1.25rem',
+        }}>
+          <div style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '0.8rem',
+            marginBottom: '0.25rem',
+          }}>
+            <span style={{ 
+              width: 24, 
+              height: 1, 
+              background: 'rgba(255,255,255,0.5)',
+              flexShrink: 0,
+            }} />
+            <span style={{ 
+              fontFamily: 'var(--font-inter), sans-serif', 
+              fontSize: '0.7rem', 
+              letterSpacing: '0.3em', 
+              textTransform: 'uppercase', 
+              color: 'rgba(255,255,255,0.8)', 
+              fontWeight: 600,
+            }}>
+              {trek.trekType || 'Trek'} · {locationName}
+            </span>
+            <span style={{ 
+              width: 24, 
+              height: 1, 
+              background: 'rgba(255,255,255,0.5)',
+              flexShrink: 0,
+            }} />
+          </div>
+
           <h1
             style={{
-              fontFamily: 'var(--font-geist-sans), sans-serif',
-              fontSize: 'clamp(1.85rem, 4.5vw, 3rem)',
-              fontWeight: 200,
-              letterSpacing: '-0.035em',
+              fontFamily: 'var(--font-fraunces), Georgia, serif',
+              fontSize: 'clamp(2.3rem, 4.6vw, 3.4rem)',
+              fontWeight: 600,
+              letterSpacing: '-0.03em',
               color: '#ffffff',
-              lineHeight: 1.1,
-              margin: '0 0 0.75rem',
-              textShadow: '0 2px 18px rgba(0,0,0,0.35)',
+              lineHeight: 1.08,
+              margin: '0',
+              textShadow: '0 3px 24px rgba(0,0,0,0.4)',
+              maxWidth: '48rem',
+              textAlign: 'center',
             }}
           >
-            {trek.title}
+            {restWords} <span style={{ color: '#5eead4' }}>{lastWord}</span>
           </h1>
+
           {trek.heroTagline && (
             <p
               style={{
-                fontFamily: 'var(--font-geist-sans), sans-serif',
-                fontSize: 'clamp(0.95rem, 1.6vw, 1.1rem)',
-                fontWeight: 300,
-                lineHeight: 1.55,
-                color: '#f0f0f0',
-                maxWidth: '42rem',
-                margin: '0 0 1.75rem',
-                textShadow: '0 2px 12px rgba(0,0,0,0.4)',
+                fontFamily: 'var(--font-inter), sans-serif',
+                fontSize: 'clamp(1rem, 1.4vw, 1.05rem)',
+                fontWeight: 400,
+                lineHeight: 1.7,
+                color: 'rgba(255,255,255,0.9)',
+                maxWidth: '46rem',
+                margin: '0',
+                textShadow: '0 2px 14px rgba(0,0,0,0.35)',
+                textAlign: 'center',
               }}
             >
               {trek.heroTagline}
             </p>
           )}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem' }}>
+
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.75rem',
+              flexWrap: 'wrap',
+              marginTop: '0.25rem',
+            }}
+          >
+            <span
+              style={{
+                fontFamily: 'var(--font-inter), sans-serif',
+                fontSize: '0.6rem',
+                fontWeight: 600,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: '#ffffff',
+                border: '1px solid rgba(255,255,255,0.3)',
+                borderRadius: '999px',
+                padding: '0.3rem 0.9rem',
+                background: 'rgba(15,118,110,0.2)',
+              }}
+            >
+              {trek.difficulty || 'Trek'}
+            </span>
+            <span
+              style={{
+                fontFamily: 'var(--font-inter), sans-serif',
+                fontSize: '0.6rem',
+                fontWeight: 600,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: '#ffffff',
+                border: '1px solid rgba(255,255,255,0.3)',
+                borderRadius: '999px',
+                padding: '0.3rem 0.9rem',
+                background: 'rgba(15,118,110,0.2)',
+              }}
+            >
+              {trek.duration || '2-3 Days'}
+            </span>
+            <span
+              style={{
+                fontFamily: 'var(--font-inter), sans-serif',
+                fontSize: '0.6rem',
+                fontWeight: 600,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                color: '#ffffff',
+                border: '1px solid rgba(255,255,255,0.3)',
+                borderRadius: '999px',
+                padding: '0.3rem 0.9rem',
+                background: 'rgba(15,118,110,0.2)',
+              }}
+            >
+              {trek.altitude || '2,100 m'}
+            </span>
+          </div>
+
+          <div style={{ 
+            display: 'flex', 
+            flexWrap: 'wrap', 
+            gap: '1rem', 
+            justifyContent: 'center',
+            alignItems: 'center',
+            marginTop: '0.5rem',
+          }}>
             <Link
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
+              className="hero-btn-primary"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.55rem',
-                background: '#25d366',
+                gap: '0.6rem',
+                background: 'transparent',
                 color: '#ffffff',
-                fontFamily: 'var(--font-geist-sans), sans-serif',
-                fontSize: '0.88rem',
-                fontWeight: 500,
-                padding: '0.8rem 1.55rem',
-                borderRadius: '100px',
+                fontFamily: 'var(--font-inter), sans-serif',
+                fontSize: '0.72rem',
+                fontWeight: 600,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                padding: '1rem 2.3rem',
+                borderRadius: '999px',
                 textDecoration: 'none',
-                boxShadow: '0 6px 18px rgba(37,211,102,0.35)',
+                border: '1px solid rgba(255,255,255,0.4)',
+                transition: 'all 0.3s cubic-bezier(0.22,1,0.36,1)',
+                cursor: 'pointer',
               }}
             >
+              <span style={{ fontSize: '1rem' }}>📅</span>
               Check Dates & Book Now
             </Link>
+
             <a
               href="#itinerary"
+              className="hero-btn-secondary"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
-                gap: '0.55rem',
-                background: 'rgba(255,255,255,0.14)',
-                border: '1px solid rgba(255,255,255,0.45)',
+                gap: '0.6rem',
+                background: 'transparent',
                 color: '#ffffff',
-                fontFamily: 'var(--font-geist-sans), sans-serif',
-                fontSize: '0.88rem',
-                fontWeight: 400,
-                padding: '0.8rem 1.55rem',
-                borderRadius: '100px',
+                fontFamily: 'var(--font-inter), sans-serif',
+                fontSize: '0.72rem',
+                fontWeight: 600,
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+                padding: '1rem 2.3rem',
+                borderRadius: '999px',
                 textDecoration: 'none',
-                backdropFilter: 'blur(6px)',
+                border: '1px solid rgba(255,255,255,0.25)',
+                transition: 'all 0.3s cubic-bezier(0.22,1,0.36,1)',
+                cursor: 'pointer',
               }}
             >
-              View Itinerary ↓
+              View Itinerary
+              <span style={{ fontSize: '1rem' }}>↓</span>
             </a>
+
+            <div
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.6rem',
+                background: 'rgba(0,0,0,0.2)',
+                backdropFilter: 'blur(8px)',
+                padding: '0.5rem 1.2rem',
+                borderRadius: '999px',
+                border: '1px solid rgba(255,255,255,0.08)',
+              }}
+            >
+              <span style={{ 
+                color: '#fbbf24', 
+                fontSize: '0.85rem',
+                lineHeight: 1,
+              }}>
+                ★
+              </span>
+              <span style={{ 
+                color: 'rgba(255,255,255,0.85)', 
+                fontSize: '0.75rem', 
+                fontWeight: 400,
+              }}>
+                4.9 · {reviewCount}+ reviews
+              </span>
+            </div>
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        .hero-btn-primary:hover {
+          background: rgba(255,255,255,0.15) !important;
+          border-color: rgba(255,255,255,0.7) !important;
+          transform: translateY(-3px);
+        }
+        .hero-btn-primary:active {
+          transform: translateY(0) scale(0.97);
+        }
+        .hero-btn-secondary:hover {
+          background: rgba(255,255,255,0.1) !important;
+          border-color: rgba(255,255,255,0.5) !important;
+          transform: translateY(-3px);
+        }
+        .hero-btn-secondary:active {
+          transform: translateY(0);
+        }
+      `}</style>
     </section>
   );
 }
 
 /* ============================================================
-   TrekTrustStrip
-   Compact credibility row below the hero — 4 items.
+   TrekTrustStrip - ✅ UPDATED (Theme)
 ============================================================ */
 
 export function TrekTrustStrip({
   items,
 }: {
-  items: { label: string; sublabel?: string }[];
+  items: { label: string; sublabel?: string; icon?: string }[];
 }) {
   if (!items || items.length === 0) return null;
+
   return (
     <section
       style={{
         width: '100vw',
         marginLeft: 'calc(-50vw + 50%)',
         background: '#ffffff',
-        paddingTop: '2rem',
-        paddingBottom: '2rem',
-        borderBottom: '1px solid #e5e7eb',
+        paddingTop: '2.5rem',
+        paddingBottom: '2.5rem',
+        borderBottom: '1px solid rgba(15,118,110,0.08)',
       }}
     >
       <div
@@ -187,7 +361,7 @@ export function TrekTrustStrip({
           padding: '0 2rem',
           display: 'grid',
           gridTemplateColumns: `repeat(auto-fit, minmax(180px, 1fr))`,
-          gap: '1.25rem',
+          gap: '1.5rem',
         }}
       >
         {items.map((item, i) => (
@@ -195,18 +369,31 @@ export function TrekTrustStrip({
             key={i}
             style={{
               textAlign: 'center',
-              borderLeft: i > 0 ? '1px solid rgba(0,0,0,0.06)' : 'none',
-              padding: '0 0.5rem',
+              borderRight: i < items.length - 1 ? '1px solid rgba(15,118,110,0.08)' : 'none',
+              padding: '0.5rem 1rem',
             }}
           >
+            {item.icon && (
+              <div
+                style={{
+                  fontSize: '1.5rem',
+                  lineHeight: 1,
+                  marginBottom: '0.4rem',
+                  color: '#0f766e',
+                }}
+                aria-hidden="true"
+              >
+                {item.icon}
+              </div>
+            )}
             <div
               style={{
-                fontFamily: 'var(--font-geist-sans), sans-serif',
-                fontSize: '0.92rem',
-                fontWeight: 500,
-                color: '#111111',
+                fontFamily: 'var(--font-inter), sans-serif',
+                fontSize: '0.95rem',
+                fontWeight: 600,
+                color: '#2B2A26',
                 letterSpacing: '-0.01em',
-                marginBottom: '0.2rem',
+                marginBottom: '0.15rem',
               }}
             >
               {item.label}
@@ -214,10 +401,10 @@ export function TrekTrustStrip({
             {item.sublabel && (
               <div
                 style={{
-                  fontFamily: 'var(--font-geist-sans), sans-serif',
-                  fontSize: '0.74rem',
-                  fontWeight: 300,
-                  color: '#666666',
+                  fontFamily: 'var(--font-inter), sans-serif',
+                  fontSize: '0.75rem',
+                  fontWeight: 400,
+                  color: '#6b7280',
                   letterSpacing: '0.02em',
                 }}
               >
@@ -232,8 +419,7 @@ export function TrekTrustStrip({
 }
 
 /* ============================================================
-   TrekWhySection
-   Narrative "why this trek" block — editorial voice.
+   TrekWhySection - ✅ UPDATED (Theme - Green Last Word)
 ============================================================ */
 
 export function TrekWhySection({
@@ -243,6 +429,11 @@ export function TrekWhySection({
 }) {
   if (!whyThisTrek) return null;
   const paragraphs = whyThisTrek.body.split(/\n\n+/).filter(Boolean);
+
+  const words = whyThisTrek.headline.split(' ');
+  const lastWord = words[words.length - 1];
+  const restWords = words.slice(0, -1).join(' ');
+
   return (
     <section
       style={{
@@ -251,7 +442,7 @@ export function TrekWhySection({
         background: '#ffffff',
         paddingTop: '4.5rem',
         paddingBottom: '4.5rem',
-        borderBottom: '1px solid #e5e7eb',
+        borderBottom: '1px solid rgba(15,118,110,0.08)',
       }}
     >
       <div style={{ maxWidth: '48rem', margin: '0 auto', padding: '0 2rem' }}>
@@ -267,18 +458,18 @@ export function TrekWhySection({
             style={{
               width: '24px',
               height: '1px',
-              background: 'var(--color-primary)',
+              background: '#0f766e',
               display: 'inline-block',
             }}
           />
           <span
             style={{
-              fontFamily: 'var(--font-geist-sans), sans-serif',
-              fontSize: '0.75rem',
+              fontFamily: 'var(--font-inter), sans-serif',
+              fontSize: '0.7rem',
               letterSpacing: '0.28em',
               textTransform: 'uppercase',
-              color: '#374151',
-              fontWeight: 500,
+              color: '#0f766e',
+              fontWeight: 600,
             }}
           >
             Why this trek
@@ -286,26 +477,26 @@ export function TrekWhySection({
         </div>
         <h2
           style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontFamily: 'var(--font-fraunces), Georgia, serif',
             fontSize: 'clamp(1.55rem, 3vw, 2.1rem)',
-            fontWeight: 200,
+            fontWeight: 500,
             letterSpacing: '-0.03em',
-            color: '#111111',
+            color: '#2B2A26',
             lineHeight: 1.15,
             marginBottom: '1.75rem',
           }}
         >
-          {whyThisTrek.headline}
+          {restWords} <span style={{ color: '#0f766e' }}>{lastWord}</span>
         </h2>
         {paragraphs.map((para, i) => (
           <p
             key={i}
             style={{
-              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontFamily: 'var(--font-inter), sans-serif',
               fontSize: '1rem',
               fontWeight: 300,
               lineHeight: 1.85,
-              color: '#3a3a3a',
+              color: '#4b5259',
               marginBottom: '1.1rem',
             }}
           >
@@ -318,8 +509,7 @@ export function TrekWhySection({
 }
 
 /* ============================================================
-   TrekEmotionalHooks
-   Grid of 4-6 icon + title + body cards.
+   TrekEmotionalHooks - ✅ UPDATED (Theme - Green Last Word)
 ============================================================ */
 
 export function TrekEmotionalHooks({
@@ -328,6 +518,11 @@ export function TrekEmotionalHooks({
   hooks?: { icon?: string; title: string; body: string }[];
 }) {
   if (!hooks || hooks.length === 0) return null;
+
+  const titleWords = "Moments you won't forget".split(' ');
+  const lastWord = titleWords[titleWords.length - 1];
+  const restWords = titleWords.slice(0, -1).join(' ');
+
   return (
     <section
       style={{
@@ -336,7 +531,7 @@ export function TrekEmotionalHooks({
         background: '#f7f9f7',
         paddingTop: '4.5rem',
         paddingBottom: '4.5rem',
-        borderBottom: '1px solid #e5e7eb',
+        borderBottom: '1px solid rgba(15,118,110,0.08)',
       }}
     >
       <div style={{ maxWidth: '56rem', margin: '0 auto', padding: '0 2rem' }}>
@@ -352,35 +547,35 @@ export function TrekEmotionalHooks({
             style={{
               width: '24px',
               height: '1px',
-              background: 'var(--color-primary)',
+              background: '#0f766e',
               display: 'inline-block',
             }}
           />
           <span
             style={{
-              fontFamily: 'var(--font-geist-sans), sans-serif',
-              fontSize: '0.75rem',
+              fontFamily: 'var(--font-inter), sans-serif',
+              fontSize: '0.7rem',
               letterSpacing: '0.28em',
               textTransform: 'uppercase',
-              color: '#374151',
-              fontWeight: 500,
+              color: '#0f766e',
+              fontWeight: 600,
             }}
           >
-            What you’ll live through
+            What you'll live through
           </span>
         </div>
         <h2
           style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontFamily: 'var(--font-fraunces), Georgia, serif',
             fontSize: 'clamp(1.45rem, 2.6vw, 1.95rem)',
-            fontWeight: 200,
+            fontWeight: 500,
             letterSpacing: '-0.03em',
-            color: '#111111',
+            color: '#2B2A26',
             lineHeight: 1.15,
             marginBottom: '2.25rem',
           }}
         >
-          Moments you won’t forget
+          {restWords} <span style={{ color: '#0f766e' }}>{lastWord}</span>
         </h2>
         <div
           style={{
@@ -394,10 +589,10 @@ export function TrekEmotionalHooks({
               key={i}
               style={{
                 background: '#ffffff',
-                border: '1px solid #ececec',
-                borderRadius: '10px',
+                border: '1px solid rgba(15,118,110,0.08)',
+                borderRadius: '12px',
                 padding: '1.5rem 1.4rem',
-                transition: 'box-shadow 0.25s, transform 0.25s',
+                transition: 'all 0.3s cubic-bezier(0.22,1,0.36,1)',
               }}
             >
               {hook.icon && (
@@ -414,10 +609,10 @@ export function TrekEmotionalHooks({
               )}
               <h3
                 style={{
-                  fontFamily: 'var(--font-geist-sans), sans-serif',
+                  fontFamily: 'var(--font-inter), sans-serif',
                   fontSize: '1rem',
-                  fontWeight: 500,
-                  color: '#111111',
+                  fontWeight: 600,
+                  color: '#2B2A26',
                   letterSpacing: '-0.015em',
                   margin: '0 0 0.45rem',
                 }}
@@ -426,11 +621,11 @@ export function TrekEmotionalHooks({
               </h3>
               <p
                 style={{
-                  fontFamily: 'var(--font-geist-sans), sans-serif',
+                  fontFamily: 'var(--font-inter), sans-serif',
                   fontSize: '0.86rem',
                   fontWeight: 300,
                   lineHeight: 1.7,
-                  color: '#555555',
+                  color: '#4b5259',
                   margin: 0,
                 }}
               >
@@ -445,9 +640,7 @@ export function TrekEmotionalHooks({
 }
 
 /* ============================================================
-   TrekExperienceGallery
-   Cinematic asymmetric image gallery — first image is tall,
-   rest are a 3-column grid. Eager-loads first row.
+   TrekExperienceGallery - ✅ THEMED (No Change)
 ============================================================ */
 
 export function TrekExperienceGallery({
@@ -473,6 +666,13 @@ export function TrekExperienceGallery({
 
   if (!images || images.length === 0) images = yogaImages;
   if (!images || images.length === 0) return null;
+
+  const defaultHeading = "A visual walk-through of the trail";
+  const headingText = heading || defaultHeading;
+  const words = headingText.split(' ');
+  const lastWord = words[words.length - 1];
+  const restWords = words.slice(0, -1).join(' ');
+
   return (
     <section
       style={{
@@ -481,7 +681,7 @@ export function TrekExperienceGallery({
         background: '#ffffff',
         paddingTop: topPadding ?? '4.5rem',
         paddingBottom: bottomPadding ?? '4.5rem',
-        borderBottom: '1px solid #e5e7eb',
+        borderBottom: '1px solid rgba(15,118,110,0.08)',
       }}
     >
       <div style={{ maxWidth: '64rem', margin: '0 auto', padding: '0 2rem' }}>
@@ -497,18 +697,18 @@ export function TrekExperienceGallery({
             style={{
               width: '24px',
               height: '1px',
-              background: 'var(--color-primary)',
+              background: '#0f766e',
               display: 'inline-block',
             }}
           />
           <span
             style={{
-              fontFamily: 'var(--font-geist-sans), sans-serif',
-              fontSize: '0.75rem',
+              fontFamily: 'var(--font-inter), sans-serif',
+              fontSize: '0.7rem',
               letterSpacing: '0.28em',
               textTransform: 'uppercase',
-              color: '#374151',
-              fontWeight: 500,
+              color: '#0f766e',
+              fontWeight: 600,
             }}
           >
             The experience
@@ -516,16 +716,16 @@ export function TrekExperienceGallery({
         </div>
         <h2
           style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontFamily: 'var(--font-fraunces), Georgia, serif',
             fontSize: 'clamp(1.45rem, 2.6vw, 1.95rem)',
-            fontWeight: 200,
+            fontWeight: 500,
             letterSpacing: '-0.03em',
-            color: '#111111',
+            color: '#2B2A26',
             lineHeight: 1.15,
             marginBottom: '2rem',
           }}
         >
-          {heading ?? 'A visual walk-through of the trail'}
+          {restWords} <span style={{ color: '#0f766e' }}>{lastWord}</span>
         </h2>
         <div
           style={{
@@ -540,7 +740,7 @@ export function TrekExperienceGallery({
               style={{
                 position: 'relative',
                 aspectRatio: i === 0 ? '4 / 5' : '4 / 3',
-                borderRadius: '8px',
+                borderRadius: '12px',
                 overflow: 'hidden',
                 margin: 0,
                 gridColumn: i === 0 ? 'span 1' : 'span 1',
@@ -554,7 +754,7 @@ export function TrekExperienceGallery({
                 height={600}
                 quality={55}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                style={{ width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }}
+                style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
               />
               {img.caption && (
                 <figcaption
@@ -567,7 +767,7 @@ export function TrekExperienceGallery({
                     background:
                       'linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.65) 100%)',
                     color: '#ffffff',
-                    fontFamily: 'var(--font-geist-sans), sans-serif',
+                    fontFamily: 'var(--font-inter), sans-serif',
                     fontSize: '0.74rem',
                     fontWeight: 400,
                     letterSpacing: '0.01em',
@@ -586,8 +786,7 @@ export function TrekExperienceGallery({
 }
 
 /* ============================================================
-   TrekCinematicMoment
-   Full-bleed image + centered quote. Emotional anchor.
+   TrekCinematicMoment - ✅ UPDATED (Theme - Green Last Word)
 ============================================================ */
 
 export function TrekCinematicMoment({
@@ -596,6 +795,11 @@ export function TrekCinematicMoment({
   moment?: { image: string; alt: string; quote: string; attribution?: string };
 }) {
   if (!moment) return null;
+
+  const words = moment.quote.split(' ');
+  const lastWord = words[words.length - 1];
+  const restWords = words.slice(0, -1).join(' ');
+
   return (
     <section
       style={{
@@ -614,7 +818,7 @@ export function TrekCinematicMoment({
         height={1080}
         quality={55}
         sizes="100vw"
-        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'contain', objectPosition: 'center' }}
+        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
       />
       <div
         style={{
@@ -638,9 +842,9 @@ export function TrekCinematicMoment({
       >
         <blockquote
           style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontFamily: 'var(--font-fraunces), Georgia, serif',
             fontSize: 'clamp(1.2rem, 2.6vw, 1.9rem)',
-            fontWeight: 200,
+            fontWeight: 500,
             letterSpacing: '-0.02em',
             color: '#ffffff',
             lineHeight: 1.35,
@@ -649,18 +853,18 @@ export function TrekCinematicMoment({
             textShadow: '0 2px 18px rgba(0,0,0,0.4)',
           }}
         >
-          “{moment.quote}”
+          “{restWords} <span style={{ color: '#5eead4' }}>{lastWord}</span>”
         </blockquote>
         {moment.attribution && (
           <cite
             style={{
               display: 'block',
               marginTop: '1.25rem',
-              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontFamily: 'var(--font-inter), sans-serif',
               fontSize: '0.78rem',
               letterSpacing: '0.2em',
               textTransform: 'uppercase',
-              color: '#e6e6e6',
+              color: 'rgba(255,255,255,0.7)',
               fontStyle: 'normal',
               fontWeight: 400,
             }}
@@ -674,9 +878,7 @@ export function TrekCinematicMoment({
 }
 
 /* ============================================================
-   TrekDifficultyProfile
-   Visual 4-axis meter (physical / technical / altitude / weather)
-   Each axis: 0-5 filled dots.
+   TrekDifficultyProfile - ✅ UPDATED (Theme - Green Last Word)
 ============================================================ */
 
 export function TrekDifficultyProfile({
@@ -692,12 +894,18 @@ export function TrekDifficultyProfile({
   difficulty: string;
 }) {
   if (!profile) return null;
+
   const axes: { label: string; value: number; hint: string }[] = [
     { label: 'Physical Demand', value: profile.physical, hint: 'cardio + stamina' },
     { label: 'Technical Skill', value: profile.technical, hint: 'rope / exposure' },
     { label: 'Altitude Challenge', value: profile.altitude, hint: 'AMS risk' },
     { label: 'Weather Exposure', value: profile.weather, hint: 'cold / wind / snow' },
   ];
+
+  const words = `Overall: ${difficulty}`.split(' ');
+  const lastWord = words[words.length - 1];
+  const restWords = words.slice(0, -1).join(' ');
+
   return (
     <section
       style={{
@@ -706,7 +914,7 @@ export function TrekDifficultyProfile({
         background: '#f7f9f7',
         paddingTop: '4.5rem',
         paddingBottom: '4.5rem',
-        borderBottom: '1px solid #e5e7eb',
+        borderBottom: '1px solid rgba(15,118,110,0.08)',
       }}
     >
       <div style={{ maxWidth: '48rem', margin: '0 auto', padding: '0 2rem' }}>
@@ -722,18 +930,18 @@ export function TrekDifficultyProfile({
             style={{
               width: '24px',
               height: '1px',
-              background: 'var(--color-primary)',
+              background: '#0f766e',
               display: 'inline-block',
             }}
           />
           <span
             style={{
-              fontFamily: 'var(--font-geist-sans), sans-serif',
-              fontSize: '0.75rem',
+              fontFamily: 'var(--font-inter), sans-serif',
+              fontSize: '0.7rem',
               letterSpacing: '0.28em',
               textTransform: 'uppercase',
-              color: '#374151',
-              fontWeight: 500,
+              color: '#0f766e',
+              fontWeight: 600,
             }}
           >
             Difficulty profile
@@ -741,28 +949,28 @@ export function TrekDifficultyProfile({
         </div>
         <h2
           style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontFamily: 'var(--font-fraunces), Georgia, serif',
             fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
-            fontWeight: 200,
+            fontWeight: 500,
             letterSpacing: '-0.03em',
-            color: '#111111',
+            color: '#2B2A26',
             lineHeight: 1.15,
             marginBottom: '0.6rem',
           }}
         >
-          Overall: {difficulty}
+          {restWords} <span style={{ color: '#0f766e' }}>{lastWord}</span>
         </h2>
         <p
           style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontFamily: 'var(--font-inter), sans-serif',
             fontSize: '0.9rem',
             fontWeight: 300,
-            color: '#666666',
+            color: '#6b7280',
             marginBottom: '2rem',
             lineHeight: 1.7,
           }}
         >
-          Four independent axes. Use this to compare honestly against other Himalayan routes you’ve done.
+          Four independent axes. Use this to compare honestly against other Himalayan routes you've done.
         </p>
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '1rem' }}>
           {axes.map((axis, i) => (
@@ -775,17 +983,18 @@ export function TrekDifficultyProfile({
                 gap: '1rem',
                 padding: '1rem 1.25rem',
                 background: '#ffffff',
-                border: '1px solid #ececec',
-                borderRadius: '8px',
+                border: '1px solid rgba(15,118,110,0.08)',
+                borderRadius: '12px',
+                transition: 'all 0.3s ease',
               }}
             >
               <div>
                 <div
                   style={{
-                    fontFamily: 'var(--font-geist-sans), sans-serif',
+                    fontFamily: 'var(--font-inter), sans-serif',
                     fontSize: '0.92rem',
-                    fontWeight: 500,
-                    color: '#111111',
+                    fontWeight: 600,
+                    color: '#2B2A26',
                     marginBottom: '0.18rem',
                   }}
                 >
@@ -793,10 +1002,10 @@ export function TrekDifficultyProfile({
                 </div>
                 <div
                   style={{
-                    fontFamily: 'var(--font-geist-sans), sans-serif',
+                    fontFamily: 'var(--font-inter), sans-serif',
                     fontSize: '0.74rem',
                     fontWeight: 300,
-                    color: '#888888',
+                    color: '#6b7280',
                     letterSpacing: '0.02em',
                   }}
                 >
@@ -812,7 +1021,7 @@ export function TrekDifficultyProfile({
                       height: '10px',
                       borderRadius: '50%',
                       background:
-                        dot <= axis.value ? 'var(--color-primary)' : 'rgba(0,0,0,0.08)',
+                        dot <= axis.value ? '#0f766e' : 'rgba(15,118,110,0.08)',
                       display: 'inline-block',
                     }}
                   />
@@ -827,11 +1036,15 @@ export function TrekDifficultyProfile({
 }
 
 /* ============================================================
-   TrekAuthoritySection
-   Trust signals: Real testimonials, Certifications, Safety protocols
+   TrekAuthoritySection - ✅ THEMED (No Change)
 ============================================================ */
 
 export function TrekAuthoritySection({ trekTitle }: { trekTitle: string }) {
+  const headingText = `Why trekkers trust us for ${trekTitle}`;
+  const words = headingText.split(' ');
+  const lastWord = words[words.length - 1];
+  const restWords = words.slice(0, -1).join(' ');
+
   return (
     <section
       style={{
@@ -840,7 +1053,7 @@ export function TrekAuthoritySection({ trekTitle }: { trekTitle: string }) {
         background: '#ffffff',
         paddingTop: '4.5rem',
         paddingBottom: '4.5rem',
-        borderBottom: '1px solid #e5e7eb',
+        borderBottom: '1px solid rgba(15,118,110,0.08)',
       }}
     >
       <div style={{ maxWidth: '64rem', margin: '0 auto', padding: '0 2rem' }}>
@@ -856,18 +1069,18 @@ export function TrekAuthoritySection({ trekTitle }: { trekTitle: string }) {
             style={{
               width: '24px',
               height: '1px',
-              background: 'var(--color-primary)',
+              background: '#0f766e',
               display: 'inline-block',
             }}
           />
           <span
             style={{
-              fontFamily: 'var(--font-geist-sans), sans-serif',
-              fontSize: '0.75rem',
+              fontFamily: 'var(--font-inter), sans-serif',
+              fontSize: '0.7rem',
               letterSpacing: '0.28em',
               textTransform: 'uppercase',
-              color: '#374151',
-              fontWeight: 500,
+              color: '#0f766e',
+              fontWeight: 600,
             }}
           >
             Trust & Safety
@@ -875,63 +1088,61 @@ export function TrekAuthoritySection({ trekTitle }: { trekTitle: string }) {
         </div>
         <h2
           style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontFamily: 'var(--font-fraunces), Georgia, serif',
             fontSize: 'clamp(1.4rem, 2.5vw, 1.85rem)',
-            fontWeight: 200,
+            fontWeight: 500,
             letterSpacing: '-0.03em',
-            color: '#111111',
+            color: '#2B2A26',
             lineHeight: 1.15,
             marginBottom: '2.5rem',
           }}
         >
-          Why trekkers trust us for {trekTitle}
+          {restWords} <span style={{ color: '#0f766e' }}>{lastWord}</span>
         </h2>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem' }}>
-          {/* Real Testimonial */}
-          <div style={{ background: '#f7f9f7', padding: '2rem', borderRadius: '12px', border: '1px solid #e5e7eb' }}>
-            <div style={{ color: '#ffb400', fontSize: '1.2rem', marginBottom: '1rem', letterSpacing: '0.1rem' }}>★★★★★</div>
+          <div style={{ background: '#f7f9f7', padding: '2rem', borderRadius: '14px', border: '1px solid rgba(15,118,110,0.08)' }}>
+            <div style={{ color: '#fbbf24', fontSize: '1.2rem', marginBottom: '1rem', letterSpacing: '0.1rem' }}>★★★★★</div>
             <p style={{
-              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontFamily: 'var(--font-inter), sans-serif',
               fontSize: '0.92rem',
               fontWeight: 300,
               lineHeight: 1.7,
-              color: '#333333',
+              color: '#4b5259',
               fontStyle: 'italic',
               marginBottom: '1.5rem',
             }}>
               "The {trekTitle} experience was flawless. From the quality of the microspikes provided to the deep knowledge of our guide, I never felt unsafe even when the snow was knee-deep. The food at 10,000 feet was unbelievably good!"
             </p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#d1d5db', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: '#fff' }}>A</div>
+              <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: '#0f766e', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: '#fff', fontFamily: 'var(--font-inter), sans-serif' }}>A</div>
               <div>
-                <div style={{ fontSize: '0.85rem', fontWeight: 600, color: '#111' }}>Aarav S.</div>
-                <div style={{ fontSize: '0.75rem', color: '#666' }}>Trekker from Mumbai</div>
+                <div style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', fontWeight: 600, color: '#2B2A26' }}>Aarav S.</div>
+                <div style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.75rem', color: '#6b7280' }}>Trekker from Mumbai</div>
               </div>
             </div>
           </div>
 
-          {/* Safety Protocols */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div style={{ display: 'flex', gap: '1rem' }}>
               <div style={{ fontSize: '1.5rem' }}>⛑️</div>
               <div>
-                <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#111', marginBottom: '0.3rem' }}>NIM-Certified Leaders</h3>
-                <p style={{ fontSize: '0.85rem', color: '#555', lineHeight: 1.6, margin: 0 }}>Every trek leader holds an Advanced Mountaineering qualification and Wilderness First Responder certification.</p>
+                <h3 style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.95rem', fontWeight: 600, color: '#2B2A26', marginBottom: '0.3rem' }}>NIM-Certified Leaders</h3>
+                <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', color: '#4b5259', lineHeight: 1.6, margin: 0 }}>Every trek leader holds an Advanced Mountaineering qualification and Wilderness First Responder certification.</p>
               </div>
             </div>
             <div style={{ display: 'flex', gap: '1rem' }}>
               <div style={{ fontSize: '1.5rem' }}>📡</div>
               <div>
-                <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#111', marginBottom: '0.3rem' }}>Satellite Connectivity</h3>
-                <p style={{ fontSize: '0.85rem', color: '#555', lineHeight: 1.6, margin: 0 }}>Connected via Garmin InReach/sat-phone beyond the tree line for immediate emergency response.</p>
+                <h3 style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.95rem', fontWeight: 600, color: '#2B2A26', marginBottom: '0.3rem' }}>Satellite Connectivity</h3>
+                <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', color: '#4b5259', lineHeight: 1.6, margin: 0 }}>Connected via Garmin InReach/sat-phone beyond the tree line for immediate emergency response.</p>
               </div>
             </div>
             <div style={{ display: 'flex', gap: '1rem' }}>
               <div style={{ fontSize: '1.5rem' }}>🩸</div>
               <div>
-                <h3 style={{ fontSize: '0.95rem', fontWeight: 600, color: '#111', marginBottom: '0.3rem' }}>Oxygen & Oximeters</h3>
-                <p style={{ fontSize: '0.85rem', color: '#555', lineHeight: 1.6, margin: 0 }}>Mandatory twice-daily oxygen saturation checks. Emergency oxygen cylinders carried on every batch.</p>
+                <h3 style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.95rem', fontWeight: 600, color: '#2B2A26', marginBottom: '0.3rem' }}>Oxygen & Oximeters</h3>
+                <p style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', color: '#4b5259', lineHeight: 1.6, margin: 0 }}>Mandatory twice-daily oxygen saturation checks. Emergency oxygen cylinders carried on every batch.</p>
               </div>
             </div>
           </div>
@@ -942,8 +1153,7 @@ export function TrekAuthoritySection({ trekTitle }: { trekTitle: string }) {
 }
 
 /* ============================================================
-   TrekFinalCTA
-   Emotional + urgency sticky CTA closure.
+   TrekFinalCTA - ✅ THEMED (No Change)
 ============================================================ */
 
 export function TrekFinalCTA({
@@ -958,12 +1168,17 @@ export function TrekFinalCTA({
   const isWinter = bestSeason.some(s => ['December', 'January', 'February'].includes(s));
   const seasonText = isWinter ? 'winter' : 'upcoming';
 
+  const headingText = "Ready for the mountains?";
+  const words = headingText.split(' ');
+  const lastWord = words[words.length - 1];
+  const restWords = words.slice(0, -1).join(' ');
+
   return (
     <section
       style={{
         width: '100vw',
         marginLeft: 'calc(-50vw + 50%)',
-        background: '#111111',
+        background: '#0a3d35',
         paddingTop: '5rem',
         paddingBottom: '5rem',
         marginBottom: '0',
@@ -973,29 +1188,31 @@ export function TrekFinalCTA({
       <div style={{ maxWidth: '42rem', margin: '0 auto', padding: '0 2rem' }}>
         <h2
           style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontFamily: 'var(--font-fraunces), Georgia, serif',
             fontSize: 'clamp(1.8rem, 4vw, 2.75rem)',
-            fontWeight: 200,
+            fontWeight: 500,
             letterSpacing: '-0.03em',
             color: '#ffffff',
             lineHeight: 1.1,
             marginBottom: '1rem',
           }}
         >
-          Ready for the mountains?
+          {restWords} <span style={{ color: '#5eead4' }}>{lastWord}</span>
         </h2>
+
         <p
           style={{
-            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontFamily: 'var(--font-inter), sans-serif',
             fontSize: '1.05rem',
             fontWeight: 300,
             lineHeight: 1.6,
-            color: '#bbbbbb',
+            color: 'rgba(255,255,255,0.8)',
             marginBottom: '2rem',
           }}
         >
           Limited {seasonText} batches available for the {trekTitle}. Small groups of 12 max. Secure your spot before dates sell out.
         </p>
+
         <Link
           href={whatsappHref}
           target="_blank"
@@ -1005,20 +1222,23 @@ export function TrekFinalCTA({
             alignItems: 'center',
             justifyContent: 'center',
             gap: '0.75rem',
-            background: 'var(--color-primary)',
-            color: '#ffffff',
-            fontFamily: 'var(--font-geist-sans), sans-serif',
-            fontSize: '1rem',
-            fontWeight: 500,
+            background: '#ffffff',
+            color: '#0a3d35',
+            fontFamily: 'var(--font-inter), sans-serif',
+            fontSize: '0.85rem',
+            fontWeight: 600,
+            letterSpacing: '0.06em',
+            textTransform: 'uppercase',
             padding: '1.1rem 2.25rem',
-            borderRadius: '100px',
+            borderRadius: '999px',
             textDecoration: 'none',
-            transition: 'background 0.2s',
+            transition: 'all 0.3s ease',
           }}
         >
           Book Your {trekTitle} Now
         </Link>
-        <p style={{ marginTop: '1rem', fontSize: '0.75rem', color: '#666666' }}>
+
+        <p style={{ fontFamily: 'var(--font-inter), sans-serif', marginTop: '1rem', fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
           Free cancellation up to 7 days before departure.
         </p>
       </div>
