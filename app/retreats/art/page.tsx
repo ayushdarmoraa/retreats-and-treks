@@ -133,6 +133,50 @@ const FAQ_ITEMS = [
   },
 ];
 
+// PHASE 4: Beginner-specific FAQ
+const BEGINNER_FAQ_ITEMS = [
+  {
+    question: 'Do I need to be an artist?',
+    answer:
+      'No. Artists and non-artists alike join these retreats. You do not need to identify as an artist, call yourself creative, or have any background in art. The retreats are about creative expression, not artistic skill.',
+  },
+  {
+    question: 'Do I need previous painting experience?',
+    answer:
+      'Not at all. Many participants have not painted or drawn since school. The retreats introduce accessible techniques and mediums — watercolour, ink, charcoal, collage — designed for beginners. The facilitator meets you exactly where you are.',
+  },
+  {
+    question: 'What materials do I need?',
+    answer:
+      'You don\'t need to bring anything. All basic art materials are provided: watercolours, sketchbooks, pencils, charcoal, clay, ink, brushes, and mixed media supplies. If you have favourite supplies or mediums you prefer, you\'re welcome to bring those, but it\'s not necessary.',
+  },
+  {
+    question: 'What if I don\'t consider myself creative?',
+    answer:
+      'This is exactly who the retreats serve. Creativity is not a talent you are born with or without — it\'s a capacity that lives in every person. Many participants arrive feeling "not creative" and leave with fresh proof that creation is their natural state. The retreat environment awakens this.',
+  },
+  {
+    question: 'Is this an art class?',
+    answer:
+      'No. This is not an art instruction course with learning objectives or technical progression. There are no critiques, grades, or expectations about what you produce. The facilitator offers prompts, demonstrates techniques, and creates space — but the focus is on your process and expression, not on producing "good" art.',
+  },
+  {
+    question: 'Will someone teach me?',
+    answer:
+      'Yes. The retreat includes facilitated creative sessions where the guide introduces themes, techniques, or prompts — and then supports your exploration. You are not left alone to figure things out. The facilitator is present, available, and skilled at meeting people where they are.',
+  },
+  {
+    question: 'Can I attend alone?',
+    answer:
+      'Absolutely. Many guests come solo. The retreats are small, safe, and designed for both solo travellers and people attending with others. You will have time for solitude, but you\'ll also have the container of a group if you want community.',
+  },
+  {
+    question: 'What kind of art activities happen?',
+    answer:
+      'Daily activities include guided creative sessions (painting, drawing, collage, clay work, mixed media), open creation time for your own work, movement and yoga practices, nature walks, group sharing circles (optional), and reflection. Mornings typically include a prompt or theme. Afternoons are free creation time. The rhythm is designed so you can go deep without pressure.',
+  },
+];
+
 export default function ArtRetreatsPage() {
   validateFAQSync(FAQ_ITEMS, PATH);
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
@@ -446,13 +490,35 @@ export default function ArtRetreatsPage() {
         </div>
       </section>
 
-      <section className="art-shell" style={{ background: '#ffffff', padding: '4.5rem 0' }}>
-        <div className="art-outer">
-          <div className="art-eyebrow" style={{ justifyContent: 'center' }}>
-            <span className="art-eyebrow-line" />
-            <span className="art-eyebrow-text">Locations</span>
-            <span className="art-eyebrow-line" />
+      {/* PHASE 4: Art Retreats for Beginners Section */}
+      <section className="art-shell" style={{ background: '#f7f9f7', padding: '4.5rem 0' }}>
+       <div className="art-inner">
+         <div className="art-eyebrow">
+           <span className="art-eyebrow-line" />
+           <span className="art-eyebrow-text">For Beginners</span>
           </div>
+         <h2 className="art-section-title">Art Retreats for <span>Beginners</span></h2>
+         <p className="art-body-text" style={{ marginBottom: '2.5rem' }}>If you've never painted, feel blocked creatively, or don't identify as an artist — this section is for you. These retreats are specifically designed for beginners and people returning to creativity after years away.</p>
+          
+         <div className="art-grid-2" style={{ marginBottom: '3rem' }}>
+           {BEGINNER_FAQ_ITEMS.map((item, idx) => (
+             <div key={idx} className="art-card" style={{ padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+               <h3 style={{ margin: 0, fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', fontWeight: 600, color: '#111' }}>{item.question}</h3>
+               <p className="art-body-text" style={{ margin: 0 }}>{item.answer}</p>
+             </div>
+           ))}
+         </div>
+
+         <div style={{ textAlign: 'center', padding: '2rem', background: '#ffffff', borderRadius: '16px', border: '1px solid rgba(15,118,110,0.12)' }}>
+           <p className="art-body-text" style={{ marginBottom: '1.2rem' }}>Want a deeper dive? Read our complete beginner's guide.</p>
+           <Link href="/blog/art-retreat-for-beginners" className="art-cta-outline">
+             Read the Beginner's Guide
+           </Link>
+         </div>
+       </div>
+      </section>
+
+      <section className="art-shell" style={{ background: '#ffffff', padding: '4.5rem 0' }}>
           <h2 className="art-section-title" style={{ textAlign: 'center' }}>Where we host art <span>retreats</span></h2>
           <p className="art-body-text" style={{ textAlign: 'center', maxWidth: '44rem', margin: '0 auto 2.5rem' }}>Each location brings a different creative energy. Mussoorie for aesthetic beauty. Chakrata for forest silence. Rishikesh for spiritual depth. Sankri for high-altitude wilderness. Zanskar for remote creative solitude.</p>
           <div className="art-grid-3">
