@@ -23,6 +23,7 @@ import Image from 'next/image';
 import { getFacilitatorsByRetreat } from '@/config/facilitators';
 import type { LocationId } from '@/config/locations';
 import { SectionHeading } from '@/components/ui';
+import PrimaryCTA from '@/components/PrimaryCTA';
 interface PageProps {
   params: Promise<{ retreat: string }>;
 }
@@ -236,12 +237,29 @@ export default async function RetreatDetailPage({ params }: PageProps) {
         retreatSlug={retreat}
       />
 
+      {['art-and-creative', 'weekend-art-retreat', 'trek-and-paint'].includes(retreat) && (
+        <PrimaryCTA
+          label="Check Dates / Enquire"
+          subtext={`Tell us what you need for the ${retreatService.title}, and we will help with dates, location, pricing, and availability.`}
+          vertical="retreat"
+          category={retreat}
+          sourcePath={journeyPath}
+          location={primaryLocation?.name}
+        />
+      )}
+
       <RelatedRetreats currentSlug={retreat} />
 
-     {/* ── FACILITATOR SECTION — yoga-and-movement only ── */}
-{retreat === 'yoga-and-movement' && (() => {
-  const facilitator = getFacilitatorsByRetreat('yoga-and-movement')[0];
+    {/* ── FACILITATOR SECTION ── */}
+{['yoga-and-movement', 'art-and-creative', 'trek-and-paint'].includes(retreat) && (() => {
+  const facilitator = getFacilitatorsByRetreat(retreat)[0];
   if (!facilitator) return null;
+  const facilitatorDescription =
+    retreat === 'yoga-and-movement'
+      ? 'Learn about the experienced facilitator who will guide your yoga and movement journey.'
+      : retreat === 'trek-and-paint'
+        ? 'Meet the artist and facilitator who guides the trail, plein-air painting, and creative practice.'
+        : 'Meet the artist and facilitator who guides the creative healing, art, and reflective practice.';
   return (
     <section className="med-shell" style={{ background: '#ffffff', padding: 'clamp(2.5rem, 6vw, 4.5rem) 0', borderTop: '1px solid rgba(15,118,110,0.08)', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
       <style>{`
@@ -428,7 +446,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
         <SectionHeading
           eyebrow="Your Facilitator"
           title="Who guides your practice"
-          description="Learn about the experienced facilitator who will guide your yoga and movement journey."
+          description={facilitatorDescription}
         />
 
         <div className="facilitator-grid">

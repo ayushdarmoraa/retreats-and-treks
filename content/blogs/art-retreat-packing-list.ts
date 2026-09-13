@@ -74,6 +74,7 @@ This list is as important as the packing list:
 ## The Philosophical Pack
 
 Bring willingness. Bring curiosity. Bring the courage to create badly and keep going. Leave perfection, comparison, and the productivity mindset at home. Everything else — the materials, the food, the space — is provided. You just need to show up.
+If you are deciding which format fits your trip, compare the available [Himalayan art retreats](/retreats/art) before you plan what to pack.
 `,
   targetMoneyPage: '/creative-retreat',
   relatedRetreats: ['art-and-creative'],

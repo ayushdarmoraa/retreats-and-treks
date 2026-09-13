@@ -72,6 +72,7 @@ A 12-week art class in a city might cost ₹15,000–25,000. A 7-day art retreat
 If you are a practising artist who wants to refine specific techniques, take the class. If you are someone who used to create, or always wanted to, and cannot seem to start or sustain a practice — the retreat is more likely to shift the pattern. The class teaches you how to paint. The retreat teaches you that you can.
 
 If you are ready for the shift, explore the [Creative Healing Retreat](/creative-retreat) — emotional healing through art and yoga in the Himalayas.
+If an immersive mountain experience is what you are looking for, compare the available [Himalayan art retreats](/retreats/art).
 `,
   targetMoneyPage: '/creative-retreat',
   relatedRetreats: ['art-and-creative'],

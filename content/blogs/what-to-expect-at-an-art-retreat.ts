@@ -93,6 +93,7 @@ Closing circle. Lunch. Departure with everything you made.
 - All materials are provided. Bring your own if you have a preferred medium.
 - The retreat is not art therapy. It is facilitated creative practice. If you need therapeutic support, that is a different offering.
 - The discomfort of days 1–3 is normal and expected. It is the creative block loosening.
+Ready to compare formats and locations? Start with our [Himalayan art retreats](/retreats/art).
 `,
   targetMoneyPage: '/creative-retreat',
   relatedRetreats: ['art-and-creative'],

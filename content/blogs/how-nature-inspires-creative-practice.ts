@@ -68,6 +68,7 @@ Mountains amplify every effect described above. Higher altitude means thinner at
 Artists who work in the Himalayas consistently report a shift in their relationship with creative practice. Not improvement in technique — a shift in approach. Less controlling. More responsive. More willing to be surprised by what emerges.
 
 This shift does not require mountains. But mountains make it harder to avoid.
+Explore the [Himalayan art retreats](/retreats/art) if you want to experience this relationship between nature and creative practice directly.
 `,
   targetMoneyPage: '/creative-retreat',
   relatedRetreats: ['art-and-creative'],

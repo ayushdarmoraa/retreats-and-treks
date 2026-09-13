@@ -69,6 +69,7 @@ Painting outdoors in the Himalayas requires adaptation:
 You can paint in the Himalayas independently. Many do. But an art retreat provides structure, community, facilitation, and — perhaps most importantly — permission. When you book a painting retreat, the week is dedicated. You do not negotiate with work email. You do not feel guilty about painting instead of sightseeing.
 
 The best work comes from the intersection of freedom and structure. A retreat provides both.
+To turn this landscape practice into a supported journey, explore our [Himalayan art retreats](/retreats/art).
 `,
   targetMoneyPage: '/creative-retreat',
   relatedRetreats: ['art-and-creative'],

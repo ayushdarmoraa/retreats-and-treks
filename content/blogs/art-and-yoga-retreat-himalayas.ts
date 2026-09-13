@@ -71,6 +71,7 @@ The yoga-plus-art format works particularly well for:
 - Anyone who likes the idea of a creative retreat but worries about sitting still all day
 
 The yoga is not a separate offering bolted onto the art retreat. It is the warm-up — the way you prepare the instrument (your body and attention) for the creative work that follows. When done well, the entire day becomes one continuous practice.
+If you want to compare creative formats before enquiring, visit our [Himalayan art retreats](/retreats/art).
 `,
   targetMoneyPage: '/creative-retreat',
   relatedRetreats: ['art-and-creative', 'yoga-and-movement'],

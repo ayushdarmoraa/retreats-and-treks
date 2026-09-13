@@ -20,6 +20,15 @@ export default function InquiryForm() {
   const category = searchParams.get('category') || '';
   const source = searchParams.get('source') || '';
   const prefillLocation = searchParams.get('location') || '';
+  const attributionParams = new URLSearchParams();
+  for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']) {
+    const value = searchParams.get(key);
+    if (value) attributionParams.set(key, value);
+  }
+  const attribution = attributionParams.toString();
+  const sourceWithAttribution = attribution
+    ? `${source}?${attribution}`
+    : source;
 
   // Anti-spam: timestamp when form rendered
   const loadedAt = useRef(Date.now());
@@ -68,7 +77,7 @@ export default function InquiryForm() {
           month,
           groupSize,
           budget,
-          source,
+          source: sourceWithAttribution,
           vertical,
           category,
           website, // honeypot

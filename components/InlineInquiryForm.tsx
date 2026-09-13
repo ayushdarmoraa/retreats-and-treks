@@ -10,6 +10,7 @@
  */
 
 import { useState, useRef, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 
 const MONTHS = [
   '', 'January', 'February', 'March', 'April', 'May', 'June',
@@ -33,6 +34,7 @@ export default function InlineInquiryForm({
   sourcePath,
   location: prefillLocation,
 }: InlineInquiryFormProps) {
+  const searchParams = useSearchParams();
   // Anti-spam: timestamp when form rendered
   const loadedAt = useRef(Date.now());
 
@@ -65,6 +67,15 @@ export default function InlineInquiryForm({
     setSubmitting(true);
 
     try {
+      const attribution = new URLSearchParams();
+      for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']) {
+        const value = searchParams.get(key);
+        if (value) attribution.set(key, value);
+      }
+      const sourceWithAttribution = attribution.toString()
+        ? `${sourcePath}?${attribution.toString()}`
+        : sourcePath;
+
       const res = await fetch('/api/inquire', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -76,7 +87,7 @@ export default function InlineInquiryForm({
           month,
           groupSize,
           budget,
-          source: sourcePath,
+          source: sourceWithAttribution,
           vertical,
           category,
           website, // honeypot

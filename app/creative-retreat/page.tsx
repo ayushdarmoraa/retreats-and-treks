@@ -55,6 +55,7 @@ export function generateMetadata(): Metadata {
     title: PAGE.seoTitle ?? PAGE.title,
     description: PAGE.metaDescription,
     alternates: { canonical: buildCanonicalUrl(`/${PAGE.slug}`) },
+    robots: { index: true, follow: true },
     openGraph: {
       title: PAGE.title,
       description: PAGE.metaDescription,

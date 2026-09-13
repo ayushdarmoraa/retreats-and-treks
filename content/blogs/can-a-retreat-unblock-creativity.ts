@@ -63,6 +63,7 @@ It does not require artistic training. Some of the most powerful retreat experie
 The retreat itself is seven days. The effect, if you build on it, can be permanent. What changes is not your skill level — it is your belief about whether you are allowed to create.
 
 Most creative blocks are permission problems, not ability problems. A retreat gives you the evidence that your creative self is alive and capable. What you do with that evidence after the retreat is up to you — but the evidence itself is hard to forget.
+When you are ready to choose a setting for that creative reset, explore the available [Himalayan art retreats](/retreats/art).
 `,
   targetMoneyPage: '/creative-retreat',
   relatedRetreats: ['art-and-creative'],

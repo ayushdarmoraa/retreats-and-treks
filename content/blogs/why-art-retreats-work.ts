@@ -72,6 +72,7 @@ Art retreats work best for people who:
 You do not need experience. You do not need talent. You need seven days, willingness, and a place where creation is the only item on the agenda.
 
 Explore the [Creative Healing Retreat](/creative-retreat) — emotional healing through art, yoga, and nature in the Himalayas.
+Explore the [Himalayan art retreats](/retreats/art) to find a format that matches your intention and available time.
 `,
   targetMoneyPage: '/creative-retreat',
   relatedRetreats: ['art-and-creative'],

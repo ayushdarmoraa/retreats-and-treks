@@ -50,6 +50,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'monthly',
   });
 
+  entries.push({
+    url: buildCanonicalUrl('/retreats/art'),
+    lastModified: now,
+    priority: 0.95,
+    changeFrequency: 'weekly',
+  });
+
   // ── 1b. Experience authority pages (Axis 2 — problem-based) ──────────────
   for (const exp of EXPERIENCE_PAGES) {
     entries.push({
@@ -82,6 +89,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
       url: buildCanonicalUrl(`/${slug}`),
       lastModified: now,
       priority: 0.8,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  // ── Art retreat location landing pages ───────────────────────────────────
+  for (const slug of ['art-retreat-chakrata', 'art-retreat-mussoorie', 'art-retreat-rishikesh']) {
+    entries.push({
+      url: buildCanonicalUrl(`/${slug}`),
+      lastModified: now,
+      priority: 0.9,
       changeFrequency: 'monthly',
     });
   }

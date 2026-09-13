@@ -370,7 +370,7 @@ export default function TrekAndPaintPage() {
               <span>Creative Practice</span>
             </div>
             <div className="med-hero-actions">
-              <a href="#plan" className="med-cta-btn">Explore Trek + Paint</a>
+              <Link href="/retreats/journeys/trek-and-paint" className="med-cta-btn">Explore the Trek &amp; Paint Retreat</Link>
               <a href="#who" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Who This Is For</a>
             </div>
           </div>
@@ -460,7 +460,7 @@ export default function TrekAndPaintPage() {
             </div>
             <div className="med-paint-mode">
               <h3 className="med-h3">Sustained Work</h3>
-              <p className="med-body">Afternoon studio time at camp. Translate the morning's observations into painting, drawing, or mixed media. The facilitator is available.</p>
+              <p className="med-body">Afternoon studio time at camp. Translate the morning&apos;s observations into painting, drawing, or mixed media. The facilitator is available.</p>
             </div>
             <div className="med-paint-mode">
               <h3 className="med-h3">Land Art</h3>

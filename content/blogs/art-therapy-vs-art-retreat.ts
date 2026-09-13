@@ -88,6 +88,7 @@ If you are unsure, consult a mental health professional first. A responsible art
 ## They Can Be Sequential
 
 Many people benefit from art therapy first (to process what needs processing) and an art retreat second (to build a creative practice once the acute distress has resolved). They are not competitors — they are different stages of a possible journey.
+To understand the available formats and decide whether an art retreat is the right next step, explore our [Himalayan art retreats](/retreats/art).
 `,
   targetMoneyPage: '/creative-retreat',
   relatedRetreats: ['art-and-creative'],

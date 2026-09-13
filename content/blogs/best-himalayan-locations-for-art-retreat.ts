@@ -102,6 +102,7 @@ Sankri is a working mountain village — not a tourist town. The creative potent
 | Experienced painter | Zanskar or Sankri |
 
 Every location teaches something different. If you have time for only one retreat, choose based on the creative conditions you need most. If you return — and most people do — let each location develop a different aspect of your practice.
+Compare the current formats and locations on our [Himalayan art retreats hub](/retreats/art).
 `,
   targetMoneyPage: '/creative-retreat',
   relatedRetreats: ['art-and-creative'],

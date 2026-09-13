@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
-import { generateFAQSchema } from '@/components/seo/Schema';
+import { generateBreadcrumbSchema, generateCollectionPageSchema, generateFAQSchema, generateItemListSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
@@ -180,12 +180,38 @@ const BEGINNER_FAQ_ITEMS = [
 export default function ArtRetreatsPage() {
   validateFAQSync(FAQ_ITEMS, PATH);
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
+  const canonicalUrl = buildCanonicalUrl(PATH);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: buildCanonicalUrl('/') },
+    { name: 'Retreats', url: buildCanonicalUrl('/retreats') },
+    { name: 'Art Retreats', url: canonicalUrl },
+  ]);
+  const collectionSchema = generateCollectionPageSchema({
+    name: 'Art Retreats in the Himalayas',
+    description: 'Art retreats in India with painting, writing, movement, and yoga in the Himalayas.',
+    url: canonicalUrl,
+  });
+  const itemListSchema = generateItemListSchema(
+    RETREATS.map((retreat) => ({ name: retreat.title, url: buildCanonicalUrl(retreat.href) })),
+  );
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(collectionSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
 
       <Breadcrumb
@@ -450,7 +476,7 @@ export default function ArtRetreatsPage() {
                       <div style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#d97706' }}>{retreat.nextBatch}</div>
                       <div style={{ fontSize: '0.68rem', color: '#6b7280' }}>Only {retreat.seats} seats total</div>
                     </div>
-                    <span style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0f766e' }}>View Details →</span>
+                    <span style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0f766e' }}>Explore {retreat.title} →</span>
                   </div>
                 </div>
               </Link>
@@ -498,7 +524,7 @@ export default function ArtRetreatsPage() {
            <span className="art-eyebrow-text">For Beginners</span>
           </div>
          <h2 className="art-section-title">Art Retreats for <span>Beginners</span></h2>
-         <p className="art-body-text" style={{ marginBottom: '2.5rem' }}>If you've never painted, feel blocked creatively, or don't identify as an artist — this section is for you. These retreats are specifically designed for beginners and people returning to creativity after years away.</p>
+         <p className="art-body-text" style={{ marginBottom: '2.5rem' }}>If you&apos;ve never painted, feel blocked creatively, or don&apos;t identify as an artist — this section is for you. These retreats are specifically designed for beginners and people returning to creativity after years away.</p>
           
          <div className="art-grid-2" style={{ marginBottom: '3rem' }}>
            {BEGINNER_FAQ_ITEMS.map((item, idx) => (
@@ -510,9 +536,9 @@ export default function ArtRetreatsPage() {
          </div>
 
          <div style={{ textAlign: 'center', padding: '2rem', background: '#ffffff', borderRadius: '16px', border: '1px solid rgba(15,118,110,0.12)' }}>
-           <p className="art-body-text" style={{ marginBottom: '1.2rem' }}>Want a deeper dive? Read our complete beginner's guide.</p>
+           <p className="art-body-text" style={{ marginBottom: '1.2rem' }}>Want a deeper dive? Read our complete beginner&apos;s guide.</p>
            <Link href="/blog/art-retreat-for-beginners" className="art-cta-outline">
-             Read the Beginner's Guide
+             Read the Beginner&apos;s Guide
            </Link>
          </div>
        </div>
@@ -523,7 +549,7 @@ export default function ArtRetreatsPage() {
           <p className="art-body-text" style={{ textAlign: 'center', maxWidth: '44rem', margin: '0 auto 2.5rem' }}>Each location brings a different creative energy. Mussoorie for aesthetic beauty. Chakrata for forest silence. Rishikesh for spiritual depth. Sankri for high-altitude wilderness. Zanskar for remote creative solitude.</p>
           <div className="art-grid-3">
             {LOCATIONS.map((loc) => (
-              <Link key={loc.id} href={`/retreats/${loc.id}`} className="art-loc-card" style={{ position: 'relative', height: '260px', borderRadius: '16px', textDecoration: 'none', color: 'white', display: 'block' }}>
+              <Link key={loc.id} href={loc.id === 'mussoorie' || loc.id === 'chakrata' || loc.id === 'rishikesh' ? `/art-retreat-${loc.id}` : `/retreats/${loc.id}`} className="art-loc-card" style={{ position: 'relative', height: '260px', borderRadius: '16px', textDecoration: 'none', color: 'white', display: 'block' }}>
                 <Image className="art-thumb-img" src={loc.image} alt={`${loc.name} art retreat location`} width={800} height={462} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,31,28,0.75), rgba(10,31,28,0.2) 55%, transparent 100%)' }} />
                 <div style={{ position: 'absolute', inset: 0, zIndex: 1, padding: '1.3rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
@@ -533,7 +559,6 @@ export default function ArtRetreatsPage() {
               </Link>
             ))}
           </div>
-        </div>
       </section>
 
       <section className="art-shell" style={{ background: '#f7f9f7', padding: '4.5rem 0' }}>
@@ -549,6 +574,7 @@ export default function ArtRetreatsPage() {
             {[
               { href: '/blog/best-himalayan-locations-for-art-retreat', title: 'Best Himalayan locations for art retreats', text: 'Compare the creative energy of Mussoorie, Chakrata, Rishikesh, Sankri, and other mountain settings.' },
               { href: '/blog/art-retreat-for-beginners', title: 'Art retreats for beginners', text: 'A gentle guide if you feel curious, blocked, or unsure because you do not consider yourself an artist.' },
+              { href: '/blog/art-retreat-packing-list', title: 'Art retreat packing list', text: 'Know what materials, clothing, and essentials to bring for a Himalayan art retreat.' },
               { href: '/blog/painting-in-the-himalayas', title: 'Painting in the Himalayas', text: 'Understand what plein air painting feels like when the trail, light, and mountain weather become part of the work.' },
               { href: '/creative-retreat', title: 'Creative retreat overview', text: 'A deeper supporting page for emotional healing through art, yoga, expression, and mountain stillness.' },
               { href: '/trek-and-paint-himalayas', title: 'Trek and paint in the Himalayas', text: 'Explore the active version of the art retreat for people who want walking, viewpoints, and visual journaling.' },
@@ -616,7 +642,7 @@ export default function ArtRetreatsPage() {
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '44rem', margin: '0 auto', padding: '0 1.5rem' }}>
           <h3 style={{ margin: '0 0 0.8rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.25rem, 2.4vw, 1.7rem)', fontWeight: 200, color: 'white', textShadow: '0 2px 20px rgba(0,0,0,0.3)' }}>Want help choosing the right art retreat?</h3>
           <p style={{ margin: '0 0 1.8rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.75, color: 'rgba(255,255,255,0.7)' }}>Talk with us directly — no forms, no commitment. Just a conversation about what you need.</p>
-          <a href="/contact" className="art-cta-btn">Check Dates & Starting Price</a>
+          <Link href="/contact" className="art-cta-btn">Check Dates & Starting Price</Link>
           <p style={{ marginTop: '1rem', fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)' }}>Dates · Starting price · Format guidance</p>
         </div>
       </section>
