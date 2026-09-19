@@ -176,6 +176,13 @@ export const rishikeshLocation = {
 
   placesAndLandscapes: [
     {
+      name: 'Beatles Ashram Visual Journaling',
+      type: 'cultural',
+      description:
+        'The existing Beatles Ashram combines forest-reclaimed structures, meditation cells, and murals. Its layered visual environment can be used for quiet observation, sketching, and creative journaling during an art retreat.',
+      season: 'Year-round',
+    },
+    {
       name: 'Triveni Ghat',
       type: 'cultural',
       description:
@@ -220,6 +227,12 @@ export const rishikeshLocation = {
   ],
   softExperiences: [
     {
+      name: 'Ganga Riverbank Art Observation',
+      type: 'exploration',
+      description:
+        'Quiet observation along the existing Ganges riverbank, using changing light, moving water, river stones, and the surrounding landscape as subjects for sketching, painting, or visual journaling.',
+    },
+    {
       name: 'Evening Aarti Witness',
       type: 'cultural',
       description:
@@ -251,3 +264,4 @@ export const rishikeshLocation = {
     },
   ],
 } as const;
+

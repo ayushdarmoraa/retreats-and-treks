@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
@@ -8,11 +8,13 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import ArtFixedDepartures from '@/components/ArtFixedDepartures';
+import PrimaryCTA from '@/components/PrimaryCTA';
 import { images } from '@/lib/images';
 import { getFacilitatorsByRetreat } from '@/config/facilitators';
 import { artAndCreativeRetreat } from '@/content/retreats/art-and-creative';
 import { trekAndPaintRetreat } from '@/content/retreats/trek-and-paint';
 import { weekendArtRetreat } from '@/content/retreats/weekend-art-retreat';
+import { getUpcomingEventsByService } from '@/config/retreatProgramEvents';
 
 export const dynamic = 'force-static';
 
@@ -50,40 +52,16 @@ export function generateMetadata(): Metadata {
   };
 }
 
+const ART_EVENTS = {
+  'art-and-creative': getUpcomingEventsByService('art-and-creative')[0],
+  'trek-and-paint': getUpcomingEventsByService('trek-and-paint')[0],
+  'weekend-art-retreat': getUpcomingEventsByService('weekend-art-retreat')[0],
+} as const;
+
 const RETREATS = [
-  {
-    ...artAndCreativeRetreat,
-    duration: '3–7 Days',
-    format: 'Immersive',
-    image: '/Images/services/artcreative.webp',
-    href: '/retreats/journeys/art-and-creative',
-    price: 'From ₹18,000',
-    outcome: 'Return with authentic creative work — and the memory that creativity is your natural state.',
-    nextBatch: 'Oct 2026',
-    seats: 8,
-  },
-  {
-    ...trekAndPaintRetreat,
-    duration: '5–7 Days',
-    format: 'Active + Creative',
-    image: '/Images/blog/painting-in-the-himalayas.webp',
-    href: '/retreats/journeys/trek-and-paint',
-    price: 'From ₹22,000',
-    outcome: 'Walk into Himalayan landscapes by day, paint what you see by evening.',
-    nextBatch: 'Booking Open',
-    seats: 10,
-  },
-  {
-    ...weekendArtRetreat,
-    duration: '2–3 Days',
-    format: 'Short Escape',
-    image: '/Images/blog/can-a-retreat-unblock-creativity.webp',
-    href: '/retreats/journeys/weekend-art-retreat',
-    price: 'From ₹14,000',
-    outcome: 'Two days is enough to remember why you create. Start here.',
-    nextBatch: 'Flexible Dates',
-    seats: 10,
-  },
+  { ...artAndCreativeRetreat, duration: ART_EVENTS['art-and-creative'] ? ART_EVENTS['art-and-creative'].durationDays + ' Days' : '7 Days', format: 'Immersive', image: '/Images/services/artcreative.webp', href: '/retreats/journeys/art-and-creative', price: ART_EVENTS['art-and-creative'] ? '?' + ART_EVENTS['art-and-creative'].price.toLocaleString('en-IN') : 'Check upcoming dates', outcome: 'Return with authentic creative work � and the memory that creativity is your natural state.', nextBatch: ART_EVENTS['art-and-creative']?.dateRange ?? 'Check upcoming dates', seats: ART_EVENTS['art-and-creative']?.seatsLeft ?? null },
+  { ...trekAndPaintRetreat, duration: ART_EVENTS['trek-and-paint'] ? ART_EVENTS['trek-and-paint'].durationDays + ' Days' : 'Check dates', format: 'Active + Creative', image: '/Images/blog/painting-in-the-himalayas.webp', href: '/retreats/journeys/trek-and-paint', price: ART_EVENTS['trek-and-paint'] ? '?' + ART_EVENTS['trek-and-paint'].price.toLocaleString('en-IN') : 'Check upcoming dates', outcome: 'Walk into Himalayan landscapes by day, paint what you see by evening.', nextBatch: ART_EVENTS['trek-and-paint']?.dateRange ?? 'Check upcoming dates', seats: ART_EVENTS['trek-and-paint']?.seatsLeft ?? null },
+  { ...weekendArtRetreat, duration: ART_EVENTS['weekend-art-retreat'] ? ART_EVENTS['weekend-art-retreat'].durationDays + ' Days' : 'Check dates', format: 'Short Escape', image: '/Images/blog/can-a-retreat-unblock-creativity.webp', href: '/retreats/journeys/weekend-art-retreat', price: ART_EVENTS['weekend-art-retreat'] ? '?' + ART_EVENTS['weekend-art-retreat'].price.toLocaleString('en-IN') : 'Check upcoming dates', outcome: 'Two days is enough to remember why you create. Start here.', nextBatch: ART_EVENTS['weekend-art-retreat']?.dateRange ?? 'Check upcoming dates', seats: ART_EVENTS['weekend-art-retreat']?.seatsLeft ?? null },
 ];
 
 const LOCATIONS = [
@@ -372,7 +350,7 @@ export default function ArtRetreatsPage() {
             Emotional healing through painting, writing, movement and yoga — no experience needed. Small groups. Real guidance. Mountain silence.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
-            {['From ₹14,000', 'Materials Included', 'No Experience Needed', '2–7 Days'].map((tag) => (
+            {['Materials Included', 'No Experience Needed', '2–7 Days'].map((tag) => (
               <span key={tag} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.86)', border: '1px solid rgba(255,255,255,0.25)', borderRadius: '999px', padding: '0.42rem 0.85rem', background: 'rgba(255,255,255,0.08)' }}>{tag}</span>
             ))}
           </div>
@@ -383,6 +361,15 @@ export default function ArtRetreatsPage() {
         </div>
       </section>
 
+      <section style={{ maxWidth: '52rem', margin: '0 auto', padding: '3rem 2rem' }}>
+        <PrimaryCTA
+          label="Check Dates / Enquire"
+          subtext="Tell us what you are looking for and we will help with art retreat dates, location, pricing, format, and availability."
+          vertical="retreat"
+          category="art-and-creative"
+          sourcePath={PATH}
+        />
+      </section>
       <section className="art-shell" style={{ background: '#ffffff', padding: '4.5rem 0' }}>
         <div className="art-inner">
           <div className="art-eyebrow">
@@ -474,7 +461,7 @@ export default function ArtRetreatsPage() {
                   <div style={{ marginTop: '0.6rem', paddingTop: '0.9rem', borderTop: '1px solid rgba(15,118,110,0.08)', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '0.75rem' }}>
                     <div>
                       <div style={{ fontSize: '0.62rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#d97706' }}>{retreat.nextBatch}</div>
-                      <div style={{ fontSize: '0.68rem', color: '#6b7280' }}>Only {retreat.seats} seats total</div>
+                      <div style={{ fontSize: '0.68rem', color: '#6b7280' }}>{retreat.seats !== null ? 'Only ' + retreat.seats + ' seats left' : 'Availability on enquiry'}</div>
                     </div>
                     <span style={{ fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0f766e' }}>Explore {retreat.title} →</span>
                   </div>
@@ -545,21 +532,23 @@ export default function ArtRetreatsPage() {
       </section>
 
       <section className="art-shell" style={{ background: '#ffffff', padding: '4.5rem 0' }}>
-          <h2 className="art-section-title" style={{ textAlign: 'center' }}>Where we host art <span>retreats</span></h2>
-          <p className="art-body-text" style={{ textAlign: 'center', maxWidth: '44rem', margin: '0 auto 2.5rem' }}>Each location brings a different creative energy. Mussoorie for aesthetic beauty. Chakrata for forest silence. Rishikesh for spiritual depth. Sankri for high-altitude wilderness. Zanskar for remote creative solitude.</p>
-          <div className="art-grid-3">
-            {LOCATIONS.map((loc) => (
-              <Link key={loc.id} href={loc.id === 'mussoorie' || loc.id === 'chakrata' || loc.id === 'rishikesh' ? `/art-retreat-${loc.id}` : `/retreats/${loc.id}`} className="art-loc-card" style={{ position: 'relative', height: '260px', borderRadius: '16px', textDecoration: 'none', color: 'white', display: 'block' }}>
-                <Image className="art-thumb-img" src={loc.image} alt={`${loc.name} art retreat location`} width={800} height={462} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,31,28,0.75), rgba(10,31,28,0.2) 55%, transparent 100%)' }} />
-                <div style={{ position: 'absolute', inset: 0, zIndex: 1, padding: '1.3rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
-                  <h3 style={{ margin: '0 0 0.45rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.08rem', fontWeight: 500 }}>{loc.name}</h3>
-                  <p style={{ margin: 0, fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.8)' }}>{loc.context}</p>
-                </div>
-              </Link>
-            ))}
+  <div className="art-outer">
+    <h2 className="art-section-title" style={{ textAlign: 'center' }}>Where we host art <span>retreats</span></h2>
+    <p className="art-body-text" style={{ textAlign: 'center', maxWidth: '44rem', margin: '0 auto 2.5rem' }}>Each location brings a different creative energy. Mussoorie for aesthetic beauty. Chakrata for forest silence. Rishikesh for spiritual depth. Sankri for high-altitude wilderness. Zanskar for remote creative solitude.</p>
+    <div className="art-grid-3">
+      {LOCATIONS.map((loc) => (
+        <Link key={loc.id} href={loc.id === 'mussoorie' || loc.id === 'chakrata' || loc.id === 'rishikesh' ? `/art-retreat-${loc.id}` : `/retreats/${loc.id}`} className="art-loc-card" style={{ position: 'relative', height: '260px', borderRadius: '16px', textDecoration: 'none', color: 'white', display: 'block' }}>
+          <Image className="art-thumb-img" src={loc.image} alt={`${loc.name} art retreat location`} width={800} height={462} loading="lazy" quality={55} sizes="(max-width: 640px) 100vw, 33vw" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,31,28,0.75), rgba(10,31,28,0.2) 55%, transparent 100%)' }} />
+          <div style={{ position: 'absolute', inset: 0, zIndex: 1, padding: '1.3rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+            <h3 style={{ margin: '0 0 0.45rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.08rem', fontWeight: 500 }}>{loc.name}</h3>
+            <p style={{ margin: 0, fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', lineHeight: 1.6, color: 'rgba(255,255,255,0.8)' }}>{loc.context}</p>
           </div>
-      </section>
+        </Link>
+      ))}
+    </div>
+  </div>
+</section>
 
       <section className="art-shell" style={{ background: '#f7f9f7', padding: '4.5rem 0' }}>
         <div className="art-outer">
@@ -715,3 +704,9 @@ export default function ArtRetreatsPage() {
     </TrackedPage>
   );
 }
+
+
+
+
+
+

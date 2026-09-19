@@ -1,4 +1,4 @@
-/**
+﻿/**
  * RETREAT PROGRAM EVENTS — Scheduled retreat batches with dates, pricing, availability
  * ─────────────────────────────────────────────────────────────────────────────────────
  * Each event is a specific dated retreat at a specific location.
@@ -973,4 +973,10 @@ export function getEventsByMonth(month: string): RetreatProgramEvent[] {
 
 export function getEventsByExperience(experienceSlug: string): RetreatProgramEvent[] {
   return EVENTS.filter((e) => e.experienceSlug === experienceSlug);
+}
+
+export function getUpcomingEventsByService(serviceSlug: string): RetreatProgramEvent[] {
+  return getUpcomingEvents().filter(
+    (event) => event.serviceSlug === serviceSlug,
+  );
 }

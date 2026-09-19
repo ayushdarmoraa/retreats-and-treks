@@ -151,6 +151,13 @@ export const chakrataLocation = {
   // Section 5: Places & Landscapes
   placesAndLandscapes: [
     {
+      name: 'Deoban Meadow Art Observation',
+      type: 'meadow',
+      description:
+        'The existing Deoban meadows provide an open landscape of deodar and oak trees, distant peaks, and seasonal wildflowers. For an art retreat, the setting naturally supports quiet landscape observation, sketching, and visual journaling.',
+      season: 'April�October',
+    },
+    {
       name: 'Tiger Fall',
       type: 'waterfall',
       description:
@@ -197,6 +204,12 @@ export const chakrataLocation = {
   // Section 6: Soft Experiences (non-product nature immersion)
   softExperiences: [
     {
+      name: 'Landscape Sketching Walk',
+      type: 'walk',
+      description:
+        'A slow creative walk using the existing ridge paths, forest edges, and meadow viewpoints as places for observation, sketching, and visual journaling. The focus is on noticing light, trees, distance, and seasonal changes rather than covering ground quickly.',
+    },
+    {
       name: 'Forest Bathing (Shinrin-yoku)',
       type: 'walk',
       description:
@@ -228,3 +241,5 @@ export const chakrataLocation = {
     },
   ],
 } as const;
+
+

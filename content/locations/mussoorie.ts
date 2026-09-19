@@ -142,6 +142,48 @@ export const mussoorieLocation = {
   ],
 
   // Placeholder sections (to be populated)
-  placesAndLandscapes: [],
-  softExperiences: [],
+  placesAndLandscapes: [
+    {
+      name: 'Camel�s Back Road',
+      type: 'viewpoint',
+      description:
+        'A quieter ridge-side stretch with open mountain views and changing Himalayan light. It works naturally as an outdoor observation setting for sketching, journaling, and landscape studies.',
+      season: 'Year-round; clearest mountain views generally in spring and autumn',
+    },
+    {
+      name: 'Landour Forest & Ridge',
+      type: 'forest',
+      description:
+        'Deodar-lined paths and ridge viewpoints create a slower visual environment for noticing trees, light, architecture, and changing weather. The setting supports quiet creative observation without requiring a trek.',
+      season: 'Year-round',
+    },
+    {
+      name: 'Mussoorie Mountain Viewpoints',
+      type: 'viewpoint',
+      description:
+        'Open viewpoints around the hill station provide changing perspectives across ridges and valleys. Weather permitting, these spaces can serve as simple outdoor studios for sketching and plein-air creative practice.',
+      season: 'Best visibility in March�May and September�November',
+    },
+  ],
+  softExperiences: [
+    {
+      name: 'Mountain Sketching Walk',
+      type: 'walk',
+      description:
+        'A slow walk with time to stop, observe and sketch mountain forms, trees, buildings, and changing light rather than treating the landscape as a sightseeing checklist.',
+    },
+    {
+      name: 'Deodar Observation',
+      type: 'exploration',
+      description:
+        'Quiet time among deodar trees creates space to notice texture, colour, sound, and natural patterns that can become prompts for drawing, painting, or writing.',
+    },
+    {
+      name: 'Plein-Air Creative Time',
+      type: 'exploration',
+      description:
+        'Weather permitting, creative work can move outdoors into the mountain environment, using the surrounding ridges, forests, and changing light as subjects.',
+    },
+  ],
 } as const;
+

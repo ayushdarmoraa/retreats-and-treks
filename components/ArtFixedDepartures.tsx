@@ -1,7 +1,7 @@
-'use client';
+﻿'use client';
 
 import Link from 'next/link';
-import { getCurrentMonthArtFixedDepartures } from '@/content/retreats/fixedDepartures';
+import { getUpcomingEvents } from '@/config/retreatProgramEvents';
 
 interface ArtFixedDeparturesProps {
   mode?: 'all' | 'single';
@@ -10,16 +10,40 @@ interface ArtFixedDeparturesProps {
 
 const WHATSAPP_NUMBER = '919760446101';
 
-export default function ArtFixedDepartures({ mode = 'all', retreatSlug }: ArtFixedDeparturesProps) {
-  const departures = getCurrentMonthArtFixedDepartures().filter((departure) => {
-    if (mode === 'single') return departure.slug === retreatSlug;
-    return true;
+const ART_RETREAT_SLUGS = [
+  'art-and-creative',
+  'trek-and-paint',
+  'weekend-art-retreat',
+];
+
+export default function ArtFixedDepartures({
+  mode = 'all',
+  retreatSlug,
+}: ArtFixedDeparturesProps) {
+  const departures = getUpcomingEvents().filter((departure) => {
+    const isArtRetreat = ART_RETREAT_SLUGS.includes(departure.serviceSlug);
+
+    if (mode === 'single') {
+      return departure.serviceSlug === retreatSlug;
+    }
+
+    return isArtRetreat;
   });
 
   if (!departures.length) return null;
 
   return (
-    <section style={{ width: '100%', maxWidth: '100%', overflowX: 'clip', background: '#ffffff', padding: '4rem 0', borderTop: '1px solid #eef0ee', borderBottom: '1px solid #eef0ee' }}>
+    <section
+      style={{
+        width: '100%',
+        maxWidth: '100%',
+        overflowX: 'clip',
+        background: '#ffffff',
+        padding: '4rem 0',
+        borderTop: '1px solid #eef0ee',
+        borderBottom: '1px solid #eef0ee',
+      }}
+    >
       <style>{`
         .art-fixed-inner {
           max-width: 72rem;
@@ -121,55 +145,162 @@ export default function ArtFixedDepartures({ mode = 'all', retreatSlug }: ArtFix
       `}</style>
 
       <div className="art-fixed-inner">
-        <div style={{ textAlign: 'center', maxWidth: '44rem', margin: '0 auto' }}>
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.22em', textTransform: 'uppercase', color: '#374151', margin: '0 0 0.8rem' }}>
-            Fixed Dates This Month
+        <div
+          style={{
+            textAlign: 'center',
+            maxWidth: '44rem',
+            margin: '0 auto',
+          }}
+        >
+          <p
+            style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.72rem',
+              fontWeight: 600,
+              letterSpacing: '0.22em',
+              textTransform: 'uppercase',
+              color: '#374151',
+              margin: '0 0 0.8rem',
+            }}
+          >
+            Upcoming Fixed Dates
           </p>
-          <h2 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.55rem, 3vw, 2.25rem)', lineHeight: 1.1, fontWeight: 250, letterSpacing: '-0.04em', color: '#111827', margin: '0 0 1rem' }}>
-            {retreatSlug === 'yoga-and-movement'
-              ? 'Book a fixed-date '
-              : retreatSlug === 'weekend-art-retreat'
-                ? 'Book a fixed-date weekend '
-                : retreatSlug === 'trek-and-paint'
-                  ? 'Book a fixed-date trek-and-paint '
-                  : 'Book a fixed-date '}
-            <span style={{ color: '#374151' }}>{retreatSlug === 'yoga-and-movement' ? 'yoga retreat' : 'art retreat'}</span>
+
+          <h2
+            style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: 'clamp(1.55rem, 3vw, 2.25rem)',
+              lineHeight: 1.1,
+              fontWeight: 250,
+              letterSpacing: '-0.04em',
+              color: '#111827',
+              margin: '0 0 1rem',
+            }}
+          >
+            {mode === 'single'
+              ? 'Book your upcoming '
+              : 'Choose an upcoming '}
+            <span style={{ color: '#374151' }}>
+              {mode === 'single' ? 'retreat date' : 'art retreat'}
+            </span>
           </h2>
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.95rem', lineHeight: 1.8, color: '#5f6865', fontWeight: 300, margin: 0 }}>
-            Choose a scheduled departure and reserve your place. We will confirm availability, stay details, inclusions, and the next booking step on WhatsApp.
+
+          <p
+            style={{
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.95rem',
+              lineHeight: 1.8,
+              color: '#5f6865',
+              fontWeight: 300,
+              margin: 0,
+            }}
+          >
+            Choose a scheduled departure and reserve your place. We will
+            confirm availability, stay details, inclusions, and the next
+            booking step on WhatsApp.
           </p>
         </div>
 
-        <div className={`art-fixed-grid${mode === 'single' ? ' art-fixed-grid-single' : ''}`}>
+        <div
+          className={`art-fixed-grid${
+            mode === 'single' ? ' art-fixed-grid-single' : ''
+          }`}
+        >
           {departures.map((departure) => {
-            const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(departure.whatsappText)}`;
+            const locationLabel =
+              departure.locationName !== 'TBA'
+                ? departure.locationName
+                : departure.locationId.charAt(0).toUpperCase() +
+                  departure.locationId.slice(1);
+
+            const whatsappText =
+              `Hi, I want to book ${departure.label} for ` +
+              `${departure.dateRange} in ${locationLabel}. ` +
+              `Please share availability and booking details.`;
+
+            const whatsappHref =
+              `https://wa.me/${WHATSAPP_NUMBER}?text=` +
+              encodeURIComponent(whatsappText);
 
             return (
-              <article key={departure.slug} className="art-fixed-card">
+              <article
+                key={departure.slug}
+                className="art-fixed-card"
+              >
                 <div>
-                  <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#0f766e', margin: '0 0 0.55rem' }}>
+                  <p
+                    style={{
+                      fontFamily:
+                        'var(--font-geist-sans), sans-serif',
+                      fontSize: '0.68rem',
+                      fontWeight: 700,
+                      letterSpacing: '0.16em',
+                      textTransform: 'uppercase',
+                      color: '#0f766e',
+                      margin: '0 0 0.55rem',
+                    }}
+                  >
                     {departure.label}
                   </p>
-                  <h3 style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.05rem', fontWeight: 650, color: '#111827', margin: '0 0 0.45rem', letterSpacing: '-0.02em' }}>
-                    {departure.title}
+
+                  <h3
+                    style={{
+                      fontFamily:
+                        'var(--font-geist-sans), sans-serif',
+                      fontSize: '1.05rem',
+                      fontWeight: 650,
+                      color: '#111827',
+                      margin: '0 0 0.45rem',
+                      letterSpacing: '-0.02em',
+                    }}
+                  >
+                    {departure.h1}
                   </h3>
-                  <p className="art-fixed-date">{departure.dateText}</p>
+
+                  <p className="art-fixed-date">
+                    {departure.dateRange}
+                  </p>
                 </div>
 
                 <div className="art-fixed-meta">
-                  <span className="art-fixed-chip">{departure.durationText}</span>
-                  <span className="art-fixed-chip">{departure.location}</span>
-                  <span className="art-fixed-chip">{departure.price}</span>
-                  <span className="art-fixed-chip">{departure.seats} seats</span>
+                  <span className="art-fixed-chip">
+                    {departure.durationDays} days
+                  </span>
+
+                  <span className="art-fixed-chip">
+                    {locationLabel}
+                  </span>
+
+                  <span className="art-fixed-chip">
+                    ₹{departure.price.toLocaleString('en-IN')}
+                  </span>
+
+                  <span className="art-fixed-chip">
+                    {departure.seatsLeft} seats left
+                  </span>
                 </div>
 
                 {mode === 'all' && (
-                  <Link href={`/retreats/journeys/${departure.slug}`} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', color: '#4b5563', textDecoration: 'none' }}>
+                  <Link
+                    href={`/retreats/journeys/${departure.slug}`}
+                    style={{
+                      fontFamily:
+                        'var(--font-geist-sans), sans-serif',
+                      fontSize: '0.78rem',
+                      color: '#4b5563',
+                      textDecoration: 'none',
+                    }}
+                  >
                     View retreat details →
                   </Link>
                 )}
 
-                <a href={whatsappHref} className="art-fixed-cta" target="_blank" rel="noopener noreferrer">
+                <a
+                  href={whatsappHref}
+                  className="art-fixed-cta"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   Book This Date →
                 </a>
               </article>

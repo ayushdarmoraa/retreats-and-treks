@@ -22,32 +22,31 @@ const PATH = '/creative-retreat';
 
 const FAQ_ITEMS = [
   {
-    question: 'What happens in a creative healing retreat?',
+    question: 'What is a creative retreat?',
     answer:
-      'You spend seven days creating art, practising yoga, and resting in nature. Mornings include gentle movement and guided reflection. Afternoons are dedicated creative studio time with facilitated watercolour, ink, charcoal, clay, and mixed media sessions. Evenings wind down with journalling or group sharing. There is no fixed curriculum — the facilitator meets you where you are.',
+      'A creative retreat gives you dedicated time and space to make, explore, and reconnect with your creative practice. Depending on the retreat you choose, the experience may include guided art sessions, independent studio time, nature-based creativity, movement, reflection, and time away from everyday routines.',
   },
   {
-    question: 'Do I need art experience to join?',
+    question: 'Do I need art experience to join a creative retreat?',
     answer:
-      'No. Most participants have not created art since school. The emphasis is on process — the experience of creating — not technical skill or finished quality. The facilitator guides you through accessible techniques that require no prior training.',
+      'No. Many of our creative retreat experiences are suitable for beginners and for people returning to creativity after a long break. Some experiences also suit practising artists who want uninterrupted time, new surroundings, and a more intentional creative routine.',
   },
   {
-    question: 'What art activities are included?',
+    question: 'What kinds of creative retreat experiences can I choose from?',
     answer:
-      'Watercolour, ink drawing, charcoal sketching, clay work, collage, mixed media, nature journalling, and land art using found materials. You rotate through mediums across the week. All materials are provided.',
+      'Our creative experiences include guided art and creative healing retreats, shorter weekend art retreats, and Trek & Paint journeys that combine creative practice with time in the mountains. Each experience has a different duration, setting, pace, and focus.',
   },
   {
-    question: 'How does art help emotional healing?',
+    question: 'How do I choose the right creative retreat?',
     answer:
-      'Art bypasses verbal processing and accesses emotions that are difficult to articulate. The act of creating externalises inner states, making them visible and workable. Combined with yoga and nature immersion, creative practice helps release stored tension, process grief or burnout, and rebuild a sense of agency.',
+      'Start with the kind of experience you want. Choose a longer facilitated retreat if you want more time for reflection and creative exploration, a weekend format if you want a shorter break, or Trek & Paint if you want creativity combined with an active mountain journey. Location, dates, duration, and your preferred pace can also help narrow the choice.',
   },
   {
-    question: 'What should I bring to the retreat?',
+    question: 'Are art materials provided?',
     answer:
-      'Comfortable clothing for yoga and outdoor walks, a personal journal if you keep one, and any art supplies you are attached to (though all materials are provided). A detailed packing list is sent after booking. Travel light — the retreat supplies everything you need to create.',
+      'This depends on the specific retreat. Where materials are included, the individual retreat page explains what is provided. If you have preferred personal materials or an established art practice, you can also check the retreat details before booking.',
   },
 ];
-
 export const dynamic = 'force-static';
 
 export function generateMetadata(): Metadata {
@@ -229,13 +228,13 @@ export default function CreativeHealingRetreatPage() {
     {/* Eyebrow */}
     <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.3rem' }}>
       <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
-      <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>Creative Healing Retreat</span>
+      <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>Creative Retreats</span>
       <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
     </div>
 
     {/* Heading with green last word */}
     <h1 style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(2.5rem, 5vw, 4rem)', fontWeight: 600, letterSpacing: '-0.03em', color: '#ffffff', margin: '0 0 1.5rem', lineHeight: 1.08, textShadow: '0 3px 24px rgba(0,0,0,0.5)' }}>
-      Creative Healing Retreat — <span style={{ color: '#5eead4' }}>Art &amp; Yoga</span>
+      Creative Retreats in the Himalayas — <span style={{ color: '#5eead4' }}>Make Space to Create</span>
     </h1>
 
     {/* Description */}
@@ -245,7 +244,7 @@ export default function CreativeHealingRetreatPage() {
 
     {/* Tags */}
     <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
-      {['7 Days', 'Art & Yoga', 'No Experience Needed', 'Small Groups'].map((tag) => (
+      {['Guided Art', 'Weekend Retreats', 'Trek & Paint', 'No Experience Needed'].map((tag) => (
         <span key={tag} style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.65rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#ffffff', border: '1px solid rgba(255,255,255,0.3)', borderRadius: '999px', padding: '0.35rem 0.9rem', background: 'rgba(15,118,110,0.25)' }}>
           {tag}
         </span>
@@ -254,8 +253,8 @@ export default function CreativeHealingRetreatPage() {
 
     {/* CTA Buttons */}
     <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-      <a href="#inquiry" className="med-cta-btn">Join the Retreat</a>
-      <a href="#deep-dive" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Learn More</a>
+      <a href="#retreat-options" className="med-cta-btn">Explore Retreat Options</a>
+      <a href="#deep-dive" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>How It Works</a>
     </div>
   </div>
 </section>
@@ -301,7 +300,7 @@ export default function CreativeHealingRetreatPage() {
 
       {/* ── DEEP CONTENT ── */}
 {deepContent.length > 0 && (
-  <section className="med-shell" style={{ background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+  <section id="retreat-options" className="med-shell" style={{ background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
     <div className="med-inner">
       {deepContent.map((section, idx) => {
         // Extract heading text and split for green last word
@@ -442,7 +441,7 @@ export default function CreativeHealingRetreatPage() {
       </section>
 
       {/* ── RELATED RETREAT JOURNEYS & EVENTS ── */}
-      <section className="med-shell" style={{ background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+      <section id="retreat-options" className="med-shell" style={{ background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
         <div className="med-outer">
           <div className="med-grid-2" style={{ alignItems: 'start' }}>
             {retreatServices.length > 0 && (
@@ -451,7 +450,7 @@ export default function CreativeHealingRetreatPage() {
                   <span className="med-eyebrow-line" />
                   <span className="med-eyebrow-text">Service Offerings</span>
                 </div>
-                <h3 className="med-h3" style={{ fontSize: '1.3rem', marginBottom: '1.5rem' }}>Related Retreats</h3>
+                <h3 className="med-h3" style={{ fontSize: '1.3rem', marginBottom: '1.5rem' }}>Choose Your Creative Retreat</h3>
                 <div className="med-service-list">
                   {retreatServices.map((service, i, arr) => (
                     <Link key={service.slug} href={`/retreats/journeys/${service.slug}`} className="med-service-item">

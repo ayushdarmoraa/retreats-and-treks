@@ -26,7 +26,7 @@ export const meditationAndSilenceRetreat = {
   signatureAlt: 'Mountain stillness at dawn during a silent meditation retreat in the Himalayas',
   signatureQuote: `Silence is not the absence of sound. It is the presence of everything your noise was hiding.`,
   galleryImages: [
-    { src: '/Images/experience-hubs/meditation-group.png', alt: 'Group meditation session during a Himalayan silent retreat — guided practice in mountain setting' },
+    { src: '/Images/experience-hubs/meditation-group.webp', alt: 'Group meditation session during a Himalayan silent retreat — guided practice in mountain setting' },
     { src: '/Images/moments/meditation.webp', alt: 'Solo meditation practice at a mountain retreat — stillness and breath awareness in the Himalayas' },
     { src: '/Images/experience-hubs/monastery.webp', alt: 'Mountain monastery setting for meditation retreat — ancient contemplative space in Uttarakhand' },
     { src: '/Images/moments/tea.webp', alt: 'Mindful tea practice between meditation sessions — silent awareness at a Himalayan retreat' },

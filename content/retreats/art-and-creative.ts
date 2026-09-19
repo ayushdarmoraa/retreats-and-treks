@@ -6,9 +6,9 @@
 export const artAndCreativeRetreat = {
   slug: 'art-and-creative',
   title: 'Creative Healing Retreat',
-  oneLineEssence: 'Emotional healing through art & yoga in a container designed for authentic expression.',
-  seoTitle: 'Creative Healing Retreat | Retreats And Treks',
-  seoDescription: 'Creative healing retreat with painting, writing, collage, yoga, and mountain silence in Mussoorie and Chakrata. Small groups, no experience needed.',
+  oneLineEssence: 'A guided creative healing retreat combining art, reflection, gentle yoga, and Himalayan nature for authentic expression.',
+  seoTitle: 'Creative Healing Retreat in the Himalayas | Retreats And Treks',
+  seoDescription: 'A guided creative healing retreat in the Himalayas with art, reflection, gentle yoga, and time in nature. Small groups and no prior art experience required.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/art-retreat/hero.webp',
@@ -24,10 +24,10 @@ export const artAndCreativeRetreat = {
     { src: '/Images/art-retreat/chaitra/expressive-wall-painting-art-workshop.webp', alt: 'Participant painting a wall mural during an expressive art workshop on a creative healing retreat' },
   ],
 
-  keyHighlights: ['From ₹18,000', '5–7 Days', 'Mussoorie & Chakrata', 'No Experience Needed', 'Materials Included'],
+  keyHighlights: ['From ₹18,000', '5–7 Days', 'Guided Creative Immersion', 'No Experience Needed', 'Materials Included'],
 
   description: `\
-Creative Healing Retreat is for anyone seeking emotional healing through art & yoga — reconnecting with the part of themselves that makes, creates, and imagines. You do not need experience. You do not need talent. You need only curiosity and a willingness to create without judgment.
+Creative Healing Retreat is our longer guided creative immersion for anyone seeking emotional renewal through art, reflection, gentle yoga, and time in nature — reconnecting with the part of themselves that makes, creates, and imagines.
 
 This retreat combines expressive arts with gentle yoga and nature immersion to create a healing container where creativity becomes a doorway to emotional truth. Whether that expression comes through painting, writing, movement, music, or forms you discover in the process — the work is about unfettering what wants to emerge.
 
