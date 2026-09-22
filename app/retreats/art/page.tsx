@@ -15,6 +15,7 @@ import { artAndCreativeRetreat } from '@/content/retreats/art-and-creative';
 import { trekAndPaintRetreat } from '@/content/retreats/trek-and-paint';
 import { weekendArtRetreat } from '@/content/retreats/weekend-art-retreat';
 import { getUpcomingEventsByService } from '@/config/retreatProgramEvents';
+import { getLocationById } from '@/lib/locations';
 
 export const dynamic = 'force-static';
 
@@ -59,9 +60,9 @@ const ART_EVENTS = {
 } as const;
 
 const RETREATS = [
-  { ...artAndCreativeRetreat, duration: ART_EVENTS['art-and-creative'] ? ART_EVENTS['art-and-creative'].durationDays + ' Days' : '7 Days', format: 'Immersive', image: '/Images/services/artcreative.webp', href: '/retreats/journeys/art-and-creative', price: ART_EVENTS['art-and-creative'] ? '?' + ART_EVENTS['art-and-creative'].price.toLocaleString('en-IN') : 'Check upcoming dates', outcome: 'Return with authentic creative work � and the memory that creativity is your natural state.', nextBatch: ART_EVENTS['art-and-creative']?.dateRange ?? 'Check upcoming dates', seats: ART_EVENTS['art-and-creative']?.seatsLeft ?? null },
-  { ...trekAndPaintRetreat, duration: ART_EVENTS['trek-and-paint'] ? ART_EVENTS['trek-and-paint'].durationDays + ' Days' : 'Check dates', format: 'Active + Creative', image: '/Images/blog/painting-in-the-himalayas.webp', href: '/retreats/journeys/trek-and-paint', price: ART_EVENTS['trek-and-paint'] ? '?' + ART_EVENTS['trek-and-paint'].price.toLocaleString('en-IN') : 'Check upcoming dates', outcome: 'Walk into Himalayan landscapes by day, paint what you see by evening.', nextBatch: ART_EVENTS['trek-and-paint']?.dateRange ?? 'Check upcoming dates', seats: ART_EVENTS['trek-and-paint']?.seatsLeft ?? null },
-  { ...weekendArtRetreat, duration: ART_EVENTS['weekend-art-retreat'] ? ART_EVENTS['weekend-art-retreat'].durationDays + ' Days' : 'Check dates', format: 'Short Escape', image: '/Images/blog/can-a-retreat-unblock-creativity.webp', href: '/retreats/journeys/weekend-art-retreat', price: ART_EVENTS['weekend-art-retreat'] ? '?' + ART_EVENTS['weekend-art-retreat'].price.toLocaleString('en-IN') : 'Check upcoming dates', outcome: 'Two days is enough to remember why you create. Start here.', nextBatch: ART_EVENTS['weekend-art-retreat']?.dateRange ?? 'Check upcoming dates', seats: ART_EVENTS['weekend-art-retreat']?.seatsLeft ?? null },
+  { ...artAndCreativeRetreat, bestFor: artAndCreativeRetreat.idealIf?.[0], locationName: getLocationById(artAndCreativeRetreat.whereItWorksBest.primary)?.name, duration: ART_EVENTS['art-and-creative'] ? ART_EVENTS['art-and-creative'].durationDays + ' Days' : '7 Days', format: 'Immersive', image: '/Images/services/artcreative.webp', href: '/retreats/journeys/art-and-creative', price: ART_EVENTS['art-and-creative'] ? '₹' + ART_EVENTS['art-and-creative'].price.toLocaleString('en-IN') : 'Check upcoming dates', outcome: 'Return with authentic creative work — and the memory that creativity is your natural state.', nextBatch: ART_EVENTS['art-and-creative']?.dateRange ?? 'Check upcoming dates', seats: ART_EVENTS['art-and-creative']?.seatsLeft ?? null },
+  { ...trekAndPaintRetreat, bestFor: trekAndPaintRetreat.idealIf?.[0], locationName: getLocationById(trekAndPaintRetreat.whereItWorksBest.primary)?.name, duration: ART_EVENTS['trek-and-paint'] ? ART_EVENTS['trek-and-paint'].durationDays + ' Days' : 'Check dates', format: 'Active + Creative', image: '/Images/blog/painting-in-the-himalayas.webp', href: '/retreats/journeys/trek-and-paint', price: ART_EVENTS['trek-and-paint'] ? '₹' + ART_EVENTS['trek-and-paint'].price.toLocaleString('en-IN') : 'Check upcoming dates', outcome: 'Walk into Himalayan landscapes by day, paint what you see by evening.', nextBatch: ART_EVENTS['trek-and-paint']?.dateRange ?? 'Check upcoming dates', seats: ART_EVENTS['trek-and-paint']?.seatsLeft ?? null },
+  { ...weekendArtRetreat, bestFor: weekendArtRetreat.idealIf?.[0], locationName: getLocationById(weekendArtRetreat.whereItWorksBest.primary)?.name, duration: ART_EVENTS['weekend-art-retreat'] ? ART_EVENTS['weekend-art-retreat'].durationDays + ' Days' : 'Check dates', format: 'Short Escape', image: '/Images/blog/can-a-retreat-unblock-creativity.webp', href: '/retreats/journeys/weekend-art-retreat', price: ART_EVENTS['weekend-art-retreat'] ? '₹' + ART_EVENTS['weekend-art-retreat'].price.toLocaleString('en-IN') : 'Check upcoming dates', outcome: 'Two days is enough to remember why you create. Start here.', nextBatch: ART_EVENTS['weekend-art-retreat']?.dateRange ?? 'Check upcoming dates', seats: ART_EVENTS['weekend-art-retreat']?.seatsLeft ?? null },
 ];
 
 const LOCATIONS = [
@@ -355,8 +356,8 @@ export default function ArtRetreatsPage() {
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in your art retreats in the Himalayas. Can you tell me more?")}`} className="art-cta-btn" target="_blank" rel="noopener noreferrer">Check Dates & Starting Price</a>
-            <a href="#retreats" className="art-cta-outline" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.28)' }}>Compare Art Retreats</a>
+            <a href="#retreats" className="art-cta-btn">Check Upcoming Art Retreats</a>
+            <a href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in your art retreats in the Himalayas. Can you tell me more?")}`} className="art-cta-outline" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.28)' }} target="_blank" rel="noopener noreferrer">Talk to Us on WhatsApp</a>
           </div>
         </div>
       </section>
@@ -453,6 +454,12 @@ export default function ArtRetreatsPage() {
                     <span style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.84rem', fontWeight: 600, color: '#111' }}>{retreat.price}</span>
                   </div>
                   <p className="art-body-text">{retreat.outcome}</p>
+                  {retreat.bestFor && (
+                    <p className="art-body-text" style={{ margin: 0, fontSize: '0.78rem' }}><strong>Best suited for:</strong> {retreat.bestFor}</p>
+                  )}
+                  {retreat.locationName && (
+                    <p className="art-body-text" style={{ margin: 0, fontSize: '0.78rem' }}><strong>Location:</strong> {retreat.locationName}</p>
+                  )}
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.45rem', marginTop: '0.3rem' }}>
                     {retreat.keyHighlights.map((tag) => (
                       <span key={tag} style={{ fontSize: '0.6rem', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#0f766e', background: 'rgba(15,118,110,0.08)', padding: '0.3rem 0.55rem', borderRadius: '999px' }}>{tag}</span>
@@ -624,7 +631,7 @@ export default function ArtRetreatsPage() {
 
      <section className="art-shell" style={{ position: 'relative', overflow: 'hidden', padding: '4rem 0', textAlign: 'center' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img className="art-hero-bg" src="/Images/location/mussoorie.webp" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%', display: 'block' }} />
+          <img className="art-hero-bg" src="/Images/location/mussoorie.webp" alt="Mussoorie mountain retreat setting" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(6,17,15,0.88) 0%, rgba(6,17,15,0.8) 60%, rgba(6,17,15,0.9) 100%)' }} />
         </div>
         <div style={{ position: 'absolute', top: '-120px', left: '50%', transform: 'translateX(-50%)', width: '520px', height: '520px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(15,118,110,0.3) 0%, transparent 70%)', pointerEvents: 'none' }} />

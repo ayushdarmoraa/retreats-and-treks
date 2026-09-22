@@ -21,6 +21,7 @@ import { RETREAT_SCORES } from '@/config/retreatScores';
 import RatingBadge from '@/components/RatingBadge';
 import Image from 'next/image';
 import { getFacilitatorsByRetreat } from '@/config/facilitators';
+import { getUpcomingEventsByService } from '@/config/retreatProgramEvents';
 import type { LocationId } from '@/config/locations';
 import { SectionHeading } from '@/components/ui';
 import PrimaryCTA from '@/components/PrimaryCTA';
@@ -106,11 +107,13 @@ export default async function RetreatDetailPage({ params }: PageProps) {
 
   const canonicalUrl = buildCanonicalUrl(`/retreats/journeys/${retreat}`);
   const primaryLocation = getLocationById(primaryLocationId);
+  const upcomingEvent = getUpcomingEventsByService(retreat)[0];
 
   const serviceSchema = generateServiceSchema(
     { title: retreatService.title, description: retreatService.oneLineEssence },
     canonicalUrl,
     primaryLocation?.name ?? 'Chakrata',
+    upcomingEvent,
   );
 
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -251,7 +254,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
       <RelatedRetreats currentSlug={retreat} />
 
     {/* ── FACILITATOR SECTION ── */}
-{['yoga-and-movement', 'art-and-creative', 'trek-and-paint'].includes(retreat) && (() => {
+{['yoga-and-movement', 'art-and-creative', 'trek-and-paint', 'weekend-art-retreat'].includes(retreat) && (() => {
   const facilitator = getFacilitatorsByRetreat(retreat)[0];
   if (!facilitator) return null;
   const facilitatorDescription =

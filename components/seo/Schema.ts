@@ -3,6 +3,7 @@ import { TrekContent } from '@/types/content';
 import { buildCanonicalUrl } from './Metadata';
 import type { RetreatReview } from '@/content/reviews';
 import { schemaIds } from '@/lib/schemaIds';
+import type { RetreatProgramEvent } from '@/config/retreatProgramEvents';
 
 const BRAND_NAME = 'Retreats And Treks';
 
@@ -194,6 +195,7 @@ export function generateServiceSchema(
   service: { title: string; description: string },
   canonicalUrl: string,
   locationName: string,
+  event?: RetreatProgramEvent,
 ) {
   return {
     '@context': 'https://schema.org',
@@ -206,6 +208,18 @@ export function generateServiceSchema(
       '@type': 'TouristDestination',
       name: locationName,
     },
+    ...(event
+      ? {
+          offers: {
+            '@type': 'Offer',
+            price: event.price,
+            priceCurrency: event.currency,
+            availability: `https://schema.org/${event.status === 'open' ? 'InStock' : 'LimitedAvailability'}`,
+            validFrom: event.startDate,
+            url: buildCanonicalUrl(`/${event.slug}`),
+          },
+        }
+      : {}),
   };
 }
 

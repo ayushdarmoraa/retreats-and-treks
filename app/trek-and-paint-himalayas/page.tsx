@@ -484,20 +484,12 @@ export default function TrekAndPaintPage() {
                 <p className="med-body">Forest trails through deodar canopy. Intimate scale, rich texture, filtered light.</p>
               </div>
               <div className="med-paint-location">
-                <h3 className="med-h3"><Link href="/art-retreat-sankri">Sankri</Link></h3>
-                <p className="med-body">Classic Himalayan valley treks. Open meadows, snow-capped peaks.</p>
-              </div>
-              <div className="med-paint-location">
                 <h3 className="med-h3"><Link href="/art-retreat-mussoorie">Mussoorie</Link></h3>
                 <p className="med-body">Ridge-top walks with panoramic valley views. Colonial architecture.</p>
               </div>
               <div className="med-paint-location">
                 <h3 className="med-h3"><Link href="/art-retreat-rishikesh">Rishikesh</Link></h3>
                 <p className="med-body">Riverside walks and temple trails. Cultural density, river light.</p>
-              </div>
-              <div className="med-paint-location" style={{ gridColumn: '1 / -1' }}>
-                <h3 className="med-h3"><Link href="/art-retreat-zanskar">Zanskar</Link></h3>
-                <p className="med-body">Trans-Himalayan trails between monasteries. Stark mineral palette, extreme light, lunar landscape.</p>
               </div>
             </div>
           </div>

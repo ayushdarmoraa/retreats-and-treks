@@ -24,7 +24,7 @@ export const weekendArtRetreat = {
     { src: '/Images/art-retreat/chaitra/evening-reflection-art-retreat-group.webp', alt: 'Evening reflection group during a weekend art retreat guided by Chaitra Ram' },
   ],
 
-  keyHighlights: ['From ₹14,000', '2–3 Days', 'Near Delhi', 'No Experience Needed', 'Meals, Stay & Supplies'],
+  keyHighlights: ['Pricing on enquiry', '2–3 Days', 'Near Delhi', 'No Experience Needed', 'Meals, Stay & Supplies'],
 
   description: `\
 Weekend Art Retreat is designed for one thing: giving you enough uninterrupted time to create without the noise of daily life.

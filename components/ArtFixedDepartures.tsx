@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import Link from 'next/link';
 import { getUpcomingEvents } from '@/config/retreatProgramEvents';
@@ -7,7 +7,6 @@ interface ArtFixedDeparturesProps {
   mode?: 'all' | 'single';
   retreatSlug?: string;
 }
-
 const WHATSAPP_NUMBER = '919760446101';
 
 const ART_RETREAT_SLUGS = [
@@ -278,11 +277,15 @@ export default function ArtFixedDepartures({
                   <span className="art-fixed-chip">
                     {departure.seatsLeft} seats left
                   </span>
+
+                  <span className="art-fixed-chip">
+                    Max {departure.groupSize} participants
+                  </span>
                 </div>
 
                 {mode === 'all' && (
                   <Link
-                    href={`/retreats/journeys/${departure.slug}`}
+                    href={`/${departure.slug}`}
                     style={{
                       fontFamily:
                         'var(--font-geist-sans), sans-serif',

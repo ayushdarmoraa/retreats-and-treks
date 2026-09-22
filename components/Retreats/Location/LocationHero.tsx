@@ -383,7 +383,7 @@ export default function LocationHero({
             alt={heroImageAlt || name}
             fill
             priority
-            quality={92}
+            quality={75}
             sizes="100vw"
           />
         </div>

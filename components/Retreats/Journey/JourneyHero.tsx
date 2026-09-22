@@ -456,7 +456,7 @@ export default function JourneyHero({
             alt={heroAlt || title}
             fill
             priority
-            quality={92}
+            quality={75}
             sizes="100vw"
           />
         </div>

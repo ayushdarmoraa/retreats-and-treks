@@ -147,6 +147,16 @@ export const chakrataLocation = {
     'chakrata-vs-sankri',
     'chakrata-vs-mussoorie-weekend-trip',
   ],
+  faq: [
+    {
+      question: 'Why is Chakrata a suitable setting for an art retreat?',
+      answer: 'Chakrata’s forest silence and accessible ridge, meadow, and forest landscapes support quiet observation, sketching, and visual journaling without requiring extreme hiking.',
+    },
+    {
+      question: 'How do I reach an art retreat in Chakrata?',
+      answer: 'Chakrata is around 60 km from Dehradun and roughly 2.5 hours by car. It is accessible without extreme hiking or preparation, although roads can be winding.',
+    },
+  ],
 
   // Section 5: Places & Landscapes
   placesAndLandscapes: [
@@ -155,7 +165,7 @@ export const chakrataLocation = {
       type: 'meadow',
       description:
         'The existing Deoban meadows provide an open landscape of deodar and oak trees, distant peaks, and seasonal wildflowers. For an art retreat, the setting naturally supports quiet landscape observation, sketching, and visual journaling.',
-      season: 'April�October',
+      season: 'April–October',
     },
     {
       name: 'Tiger Fall',

@@ -24,7 +24,7 @@ export const artAndCreativeRetreat = {
     { src: '/Images/art-retreat/chaitra/expressive-wall-painting-art-workshop.webp', alt: 'Participant painting a wall mural during an expressive art workshop on a creative healing retreat' },
   ],
 
-  keyHighlights: ['From ₹18,000', '5–7 Days', 'Guided Creative Immersion', 'No Experience Needed', 'Materials Included'],
+  keyHighlights: ['Pricing on enquiry', '5–7 Days', 'Guided Creative Immersion', 'No Experience Needed', 'Materials Included'],
 
   description: `\
 Creative Healing Retreat is our longer guided creative immersion for anyone seeking emotional renewal through art, reflection, gentle yoga, and time in nature — reconnecting with the part of themselves that makes, creates, and imagines.

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { getUpcomingEvents } from '@/config/retreatProgramEvents';
+import { getFacilitatorsByRetreat } from '@/config/facilitators';
 import { getRetreatServiceBySlug } from '@/content/retreats/services';
 import type { LocationPremiumContent } from '@/content/locations';
 import {
@@ -32,6 +33,9 @@ export default function ArtRetreatLocationPage({ content, path }: ArtRetreatLoca
     ? Object.entries(artService.whereItWorksBest.contextByLocation).find(([id]) => id === content.id)?.[1]
     : undefined;
   const artServices = artService ? [artService] : [];
+  const facilitator = getFacilitatorsByRetreat('art-and-creative').find((profile) =>
+    profile.locationIds.includes(content.id),
+  );
   const whatsappLink = `https://wa.me/919760446101?text=${encodeURIComponent(
     `Hi, I'm interested in an art retreat in ${content.name}. Please share upcoming dates, pricing, and availability.`,
   )}`;
@@ -70,6 +74,17 @@ export default function ArtRetreatLocationPage({ content, path }: ArtRetreatLoca
         locationId={content.id}
       />
 
+      {facilitator && (
+        <section style={{ maxWidth: '52rem', margin: '0 auto', padding: '4rem 2rem' }}>
+          <p style={{ margin: '0 0 0.75rem', color: '#0f766e', fontSize: '0.7rem', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
+            Art retreat facilitator
+          </p>
+          <h2 style={{ margin: '0 0 0.5rem' }}>{facilitator.name}</h2>
+          <p style={{ margin: '0 0 1rem', color: '#5f6865' }}>{facilitator.title}</p>
+          <p style={{ margin: 0, lineHeight: 1.8 }}>{facilitator.approach}</p>
+        </section>
+      )}
+
       {events.length > 0 && (
         <section style={{ padding: '4rem 2rem', background: '#f7f9f7' }}>
           <div style={{ maxWidth: '52rem', margin: '0 auto' }}>
@@ -79,7 +94,7 @@ export default function ArtRetreatLocationPage({ content, path }: ArtRetreatLoca
                 <article key={event.slug} style={{ background: '#fff', border: '1px solid rgba(15,118,110,0.12)', borderRadius: '12px', padding: '1.25rem' }}>
                   <h3 style={{ margin: '0 0 0.5rem' }}>{event.label}</h3>
                   <p style={{ margin: '0 0 0.75rem', lineHeight: 1.7 }}>
-                    {event.dateRange} · {event.durationDays} days · ₹{event.price.toLocaleString('en-IN')} · {event.seatsLeft} seats left
+                    {event.dateRange} · {event.durationDays} days · ₹{event.price.toLocaleString('en-IN')} · {event.seatsLeft} seats left · max {event.groupSize} participants
                   </p>
                   <Link href={`/${event.slug}`} style={{ color: '#0f766e', fontWeight: 600 }}>
                     View this departure

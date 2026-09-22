@@ -141,6 +141,16 @@ export const rishikeshLocation = {
   relatedBlogSlugs: [
     'trek-vs-retreat',
   ],
+  faq: [
+    {
+      question: 'What is the creative context of an art retreat in Rishikesh?',
+      answer: 'The Ganges riverbank, ashrams, bridges, and layered spiritual settings provide subjects for sketching, painting, and visual journaling within a living contemplative environment.',
+    },
+    {
+      question: 'Is Rishikesh secluded?',
+      answer: 'No. Rishikesh is a pilgrimage centre and yoga tourism hub, so quiet is relative. Choose Chakrata or another mountain location if you need deeper isolation.',
+    },
+  ],
 
   // Experiences Beyond the Retreat — Rishikesh is not a trekking base
   beyondRetreatExperiences: [

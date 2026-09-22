@@ -140,11 +140,21 @@ export const mussoorieLocation = {
   relatedBlogSlugs: [
     'chakrata-vs-mussoorie-weekend-trip',
   ],
+  faq: [
+    {
+      question: 'Why is Mussoorie a suitable setting for an art retreat?',
+      answer: 'Mussoorie’s mountain vistas, changing light, deodar-lined paths, and ridge viewpoints create an accessible setting for sketching, journaling, and plein-air creative practice.',
+    },
+    {
+      question: 'When is visibility generally clearest for creative work in Mussoorie?',
+      answer: 'The location content identifies March–May and September–November as the clearest periods for mountain visibility.',
+    },
+  ],
 
   // Placeholder sections (to be populated)
   placesAndLandscapes: [
     {
-      name: 'Camel�s Back Road',
+      name: "Camel's Back Road",
       type: 'viewpoint',
       description:
         'A quieter ridge-side stretch with open mountain views and changing Himalayan light. It works naturally as an outdoor observation setting for sketching, journaling, and landscape studies.',
@@ -162,7 +172,7 @@ export const mussoorieLocation = {
       type: 'viewpoint',
       description:
         'Open viewpoints around the hill station provide changing perspectives across ridges and valleys. Weather permitting, these spaces can serve as simple outdoor studios for sketching and plein-air creative practice.',
-      season: 'Best visibility in March�May and September�November',
+      season: 'Best visibility in March–May and September–November',
     },
   ],
   softExperiences: [

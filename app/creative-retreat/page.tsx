@@ -422,7 +422,7 @@ export default function CreativeHealingRetreatPage() {
                     </h3>
                     <p className="med-body" style={{ fontSize: '0.88rem', marginBottom: '0.75rem' }}>{angle.description}</p>
                     <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', borderTop: '1px solid rgba(15,118,110,0.08)', paddingTop: '1rem' }}>
-                      {elPage ? (
+                      {elPage && !['sankri', 'zanskar'].includes(angle.locationId) ? (
                         <Link href={`/${elPage.slug}`} style={{ color: '#0f766e', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none' }}>
                           {PAGE.h1.replace(' in the Himalayas', '')} in {loc?.name ?? angle.locationId} →
                         </Link>
