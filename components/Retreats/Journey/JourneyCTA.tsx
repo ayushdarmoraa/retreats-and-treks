@@ -8,9 +8,10 @@ import { locationCtaContent } from '@/content/retreats/location/cta';
 interface JourneyCTAProps {
   title: string;
   invitation: string;
+  priceLabel: string;
 }
 
-export default function JourneyCTA({ title, invitation }: JourneyCTAProps) {
+export default function JourneyCTA({ title, invitation, priceLabel }: JourneyCTAProps) {
   const content = locationCtaContent;
   const whatsappLink = `https://wa.me/919760446101?text=${encodeURIComponent(
     `Hi, I'm interested in ${title}. ${invitation}`,
@@ -216,7 +217,7 @@ export default function JourneyCTA({ title, invitation }: JourneyCTAProps) {
                   letterSpacing: '0.02em',
                 }}
               >
-                Starting from ₹18,000
+                {priceLabel}
               </span>
             </div>
 

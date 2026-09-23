@@ -84,6 +84,7 @@ interface RetreatJourneyClientProps {
   locations: Location[];
   suggestedTrek?: SuggestedTrek;
   retreatSlug: string;
+  priceLabel: string;
 }
 
 export default function RetreatJourneyClient({
@@ -91,6 +92,7 @@ export default function RetreatJourneyClient({
   locations,
   suggestedTrek,
   retreatSlug,
+  priceLabel,
 }: RetreatJourneyClientProps) {
   const isYogaJourney = retreatSlug === 'yoga-and-movement';
   const isTrekPaintJourney = retreatSlug === 'trek-and-paint';
@@ -228,7 +230,7 @@ export default function RetreatJourneyClient({
       {suggestedTrek && <JourneyRelatedTrek suggestedTrek={suggestedTrek} />}
 
       {/* 16. CTA */}
-      <JourneyCTA title={retreat.title} invitation={retreat.invitation} />
+      <JourneyCTA title={retreat.title} invitation={retreat.invitation} priceLabel={priceLabel} />
     </div>
   );
 }

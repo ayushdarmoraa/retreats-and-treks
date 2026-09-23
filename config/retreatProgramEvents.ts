@@ -727,7 +727,7 @@ const EVENTS: RetreatProgramEvent[] = [
     experienceSlug: 'creative-retreat',
     serviceSlug: 'art-and-creative',
     locationId: 'mussoorie',
-    locationName: 'TBA',
+    locationName: 'Mussoorie',
     label: 'Creative Healing Retreat',
     title: 'Creative Healing Retreat — October 2026 | Retreats And Treks',
     h1: 'Creative Healing Retreat — October 2026',

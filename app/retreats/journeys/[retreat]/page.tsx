@@ -238,6 +238,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
         locations={compatibleLocations}
         suggestedTrek={suggestedTrek}
         retreatSlug={retreat}
+        priceLabel={upcomingEvent ? `₹${upcomingEvent.price.toLocaleString('en-IN')}` : 'Pricing on enquiry'}
       />
 
       {['art-and-creative', 'weekend-art-retreat', 'trek-and-paint'].includes(retreat) && (
