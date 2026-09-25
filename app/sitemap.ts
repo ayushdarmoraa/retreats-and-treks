@@ -12,6 +12,10 @@ import { RETREAT_PROGRAM_EVENTS } from '@/config/retreatProgramEvents';
 import { FACILITATOR_PROFILES } from '@/config/facilitators';
 
 const COMPARE_SEPARATOR = '-vs-';
+const DUPLICATE_YOGA_LOCATION_SLUGS = new Set([
+  'yoga-retreat-rishikesh',
+  'yoga-retreat-sankri',
+]);
 
 function canonicalPair(a: string, b: string): [string, string] {
   return a < b ? [a, b] : [b, a];
@@ -179,6 +183,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ── 1g. Experience × Location intersection pages (30 programmatic) ────────
   for (const elp of EXPERIENCE_LOCATION_PAGES) {
+    if (DUPLICATE_YOGA_LOCATION_SLUGS.has(elp.slug)) continue;
+
     entries.push({
       url: buildCanonicalUrl(`/${elp.slug}`),
       lastModified: now,
@@ -259,7 +265,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
   });
 
   // ── 1n. Program event pages (highest conversion — dated retreats) ─────────
-  for (const ev of RETREAT_PROGRAM_EVENTS) {
+  for (const ev of RETREAT_PROGRAM_EVENTS.filter(
+    (event) => event.startDate >= now.toISOString().split('T')[0] && event.status !== 'sold-out',
+  )) {
     entries.push({
       url: buildCanonicalUrl(`/${ev.slug}`),
       lastModified: now,

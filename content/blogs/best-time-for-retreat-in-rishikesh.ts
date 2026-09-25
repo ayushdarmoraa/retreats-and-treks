@@ -36,7 +36,7 @@ const bestTimeForRetreatInRishikesh: BlogContent = {
 <h3>Choosing Based on Your Goal</h3>
 <p>Autumn and winter provide the strongest combination of comfortable temperatures, manageable crowds, and atmosphere that supports retreat work. Spring is suitable for those seeking mild conditions. Summer and monsoon require flexible expectations.</p>
 <p>For a broader understanding of retreat styles across Himalayan regions, see our guide to <a href="/retreats/himalayan-retreats">Himalayan Retreats in India</a>.</p>
-<p>To explore current programs hosted in this region, visit the <a href="/retreats/rishikesh">Rishikesh retreat hub</a>. For yoga-focused stays, see <a href="/yoga-retreat-rishikesh">yoga retreats in Rishikesh</a> or check available dates on the <a href="/retreat-calendar">retreat calendar</a>.</p>
+<p>To explore current programs hosted in this region, visit the <a href="/retreats/rishikesh">Rishikesh retreat hub</a>. For yoga-focused stays, see <a href="/retreats/yoga-retreat-rishikesh">yoga retreats in Rishikesh</a> or check available dates on the <a href="/retreat-calendar">retreat calendar</a>.</p>
   `.trim(),
   targetMoneyPage: '/retreats/rishikesh',
   relatedRetreats: ['yoga-and-movement', 'meditation-and-silence'],

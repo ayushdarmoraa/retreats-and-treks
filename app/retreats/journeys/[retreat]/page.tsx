@@ -241,9 +241,9 @@ export default async function RetreatDetailPage({ params }: PageProps) {
         priceLabel={upcomingEvent ? `₹${upcomingEvent.price.toLocaleString('en-IN')}` : 'Pricing on enquiry'}
       />
 
-      {['art-and-creative', 'weekend-art-retreat', 'trek-and-paint'].includes(retreat) && (
+      {['yoga-and-movement', 'art-and-creative', 'weekend-art-retreat', 'trek-and-paint'].includes(retreat) && (
         <PrimaryCTA
-          label="Check Dates / Enquire"
+          label={retreat === 'yoga-and-movement' ? 'Plan My Yoga Retreat' : 'Check Dates / Enquire'}
           subtext={`Tell us what you need for the ${retreatService.title}, and we will help with dates, location, pricing, and availability.`}
           vertical="retreat"
           category={retreat}

@@ -10,6 +10,10 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
+import PrimaryCTA from '@/components/PrimaryCTA';
+import ReviewCard from '@/components/reviews/ReviewCard';
+import { getReviewsForSlug } from '@/content/reviews';
+import { getFacilitatorsByRetreat } from '@/config/facilitators';
 
 const PATH = '/retreats/yoga-retreat-rishikesh';
 
@@ -40,7 +44,7 @@ const FAQ_ITEMS = [
   {
     question: 'Is Rishikesh the best place for a yoga retreat in India?',
     answer:
-      'Rishikesh is widely regarded as the best place for a yoga retreat in India. It holds the highest concentration of experienced yoga teachers, established ashram traditions, and structured residential programmes in the country. The Ganges riverside setting and Himalayan foothill environment add a dimension that indoor studios cannot replicate. For practitioners seeking lineage-based instruction with spiritual depth, Rishikesh is the global standard.',
+      'Rishikesh is widely regarded as the best place for a yoga retreat in India because it brings together a living yoga culture, a high concentration of experienced teachers, and a river-and-mountain environment that supports daily practice without distraction. It is not only about tradition — it is about access. Different programmes, teaching styles, and levels of intensity are concentrated here in a way that is hard to replicate in a single city elsewhere in India.',
   },
   {
     question: 'Are yoga retreats in Rishikesh beginner-friendly?',
@@ -65,12 +69,20 @@ const FAQ_ITEMS = [
   {
     question: 'How is a yoga retreat different from yoga teacher training?',
     answer:
-      'A yoga retreat focuses on personal practice, restoration, and immersive experience. It is for anyone seeking a structured pause. Yoga teacher training (YTT) is a professional certification programme — typically 200 or 500 hours — designed to qualify graduates to teach. Retreats are shorter (two to seven days), less academic, and prioritise personal transformation over technical instruction. If you want to deepen your practice, choose a retreat. If you want to teach, pursue YTT.',
+      'A yoga retreat focuses on personal practice, restoration, and immersive experience. It is for anyone seeking a structured pause. Yoga teacher training (YTT) is a professional certification programme — typically 200 or 500 hours — designed to qualify graduates to teach. Retreats are shorter (two to seven days), less academic, and prioritise personal transformation over technical instruction. If you want to deepen your practice, choose a retreat. If you want to teach, pursue YTT. The two can overlap, but they are not the same outcome.',
+  },
+  {
+    question: 'What should a beginner expect in a first yoga retreat?',
+    answer:
+      'Expect a slower pace than a normal class, more personal attention, and a clearer structure for each day. You may notice that the first day feels physically simple but mentally noisy; the second day usually feels easier because the body starts to find its rhythm. Beginners are not expected to be flexible; the teaching focus is on breath awareness, alignment cues, and building consistency rather than demonstrating extreme range of motion.',
   },
 ];
 
 export default function YogaRetreatRishikeshPage() {
   validateFAQSync(FAQ_ITEMS, PATH);
+
+  const facilitator = getFacilitatorsByRetreat('yoga-and-movement')[0];
+  const yogaReviews = getReviewsForSlug('yoga-and-movement');
 
   const canonicalUrl = buildCanonicalUrl(PATH);
 
@@ -188,6 +200,45 @@ export default function YogaRetreatRishikeshPage() {
           </div>
         </div>
       </section>
+
+      <PrimaryCTA
+        label="Plan My Yoga Retreat"
+        subtext="Share your preferred duration and timing. We will confirm the current Rishikesh Yoga options through the existing enquiry flow."
+        vertical="retreat"
+        category="yoga-and-movement"
+        sourcePath={PATH}
+        location="Rishikesh"
+      />
+
+      {facilitator && (
+        <section className="med-shell" style={{ background: '#f7f9f7', padding: '4rem 0' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Your Facilitator</span>
+            </div>
+            <h2 className="med-h2">Practice with <span>{facilitator.name}</span></h2>
+            <p className="med-body"><strong>{facilitator.title}.</strong> {facilitator.bio}</p>
+            <p className="med-body" style={{ marginBottom: 0 }}>{facilitator.approach}</p>
+          </div>
+        </section>
+      )}
+
+      {yogaReviews.length > 0 && (
+        <section className="med-shell" style={{ background: '#ffffff', padding: '4rem 0' }}>
+          <div className="med-outer">
+            <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Yoga Retreat Experiences</span>
+              <span className="med-eyebrow-line" />
+            </div>
+            <h2 className="med-h2" style={{ textAlign: 'center' }}>What participants <span>experienced</span></h2>
+            <div className="med-grid-2" style={{ marginTop: '1.5rem' }}>
+              {yogaReviews.map((review) => <ReviewCard key={`${review.participantName}-${review.datePublished}`} review={review} />)}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── INTRO ── */}
       <section className="med-shell" style={{ background: '#ffffff', padding: '4.5rem 0' }}>
@@ -486,12 +537,12 @@ export default function YogaRetreatRishikeshPage() {
 
           <div className="med-card" style={{ padding: '1.8rem', marginBottom: '1.4rem' }}>
             <span className="med-duration-badge">3D</span>
-            <h3 className="med-h3">3 days (2 nights) — the minimum effective dose</h3>
+            <h3 className="med-h3">Weekend format — the shorter reset</h3>
             <p className="med-body" style={{ marginBottom: 0 }}>Friday arrival,
-              full Saturday immersion, Sunday morning closing. This format delivers genuine
-              reset — measurable reduction in cortisol, improved sleep quality, and restored
-              mental clarity. It works for professionals who cannot take extended leave and
-              want the most value from a weekend window.</p>
+              full Saturday immersion, Sunday morning closing. The existing Weekend route is a
+              shared Himalayan retreat format rather than a dedicated fixed Rishikesh Yoga
+              departure. Ask through the enquiry flow if you want to explore whether a weekend
+              Yoga format can be planned in Rishikesh.</p>
           </div>
 
           <div className="med-card" style={{ padding: '1.8rem', marginBottom: '1.4rem' }}>
@@ -546,6 +597,14 @@ export default function YogaRetreatRishikeshPage() {
               <Link href="/retreats/himalayan-retreats" style={{ color: '#0f766e', fontWeight: 600 }}>
                 Himalayan retreats in India
               </Link>.
+            </p>
+            <p className="med-body" style={{ margin: '1rem 0 0', fontSize: '0.95rem' }}>
+              Compare the existing{' '}
+              <Link href="/5-day-yoga-retreat" style={{ color: '#0f766e', fontWeight: 600 }}>5-day</Link>,{' '}
+              <Link href="/7-day-yoga-retreat" style={{ color: '#0f766e', fontWeight: 600 }}>7-day</Link>, and{' '}
+              <Link href="/10-day-yoga-retreat" style={{ color: '#0f766e', fontWeight: 600 }}>10-day Yoga retreat</Link>{' '}
+              formats, or return to the{' '}
+              <Link href="/yoga-retreats" style={{ color: '#0f766e', fontWeight: 600 }}>main Yoga hub</Link>.
             </p>
           </div>
         </div>

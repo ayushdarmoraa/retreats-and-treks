@@ -21,11 +21,51 @@
 import type { Inquiry } from './inquiries';
 
 export type LeadTier = 'hot' | 'warm' | 'cold' | 'unscored';
+export type YogaClassification =
+  | 'RISHIKESH_DIRECT'
+  | 'RISHIKESH_PLANNING'
+  | 'CUSTOM_LOCATION'
+  | 'GROUP_RETREAT'
+  | 'TTC'
+  | 'UNCERTAIN'
+  | '';
 
 export interface LeadScore {
   score: number;
   tier: LeadTier;
   signals: string[];
+  yogaClassification: YogaClassification;
+}
+
+/** Classify Yoga intent without changing the shared numeric scoring model. */
+export function classifyYogaInquiry(inquiry: Inquiry): YogaClassification {
+  const yogaSource = `${inquiry.category} ${inquiry.source}`.toLowerCase();
+  const isYoga = inquiry.yogaInterest !== '' || yogaSource.includes('yoga');
+  if (!isYoga) return '';
+
+  if (inquiry.yogaInterest === 'Yoga TTC') return 'TTC';
+
+  const groupRetreat = ['3–4', '5–8', '9+'].includes(inquiry.groupSize);
+  if (groupRetreat) return 'GROUP_RETREAT';
+
+  const location = inquiry.location.trim().toLowerCase();
+  if (['sankri', 'chakrata', 'zanskar', 'other'].includes(location)) {
+    return 'CUSTOM_LOCATION';
+  }
+
+  if (inquiry.yogaInterest === 'Not sure') return 'UNCERTAIN';
+
+  const rishikeshRequested = location === 'rishikesh' || yogaSource.includes('rishikesh');
+  if (rishikeshRequested) {
+    const directIntent = inquiry.yogaInterest === 'Yoga Retreat' && (
+      inquiry.bookingReadiness === 'Ready to book' ||
+      inquiry.month !== '' ||
+      inquiry.preferredDate !== ''
+    );
+    return directIntent ? 'RISHIKESH_DIRECT' : 'RISHIKESH_PLANNING';
+  }
+
+  return 'UNCERTAIN';
 }
 
 /**
@@ -130,5 +170,5 @@ export function scoreInquiry(inquiry: Inquiry): LeadScore {
   else if (score >= 40) tier = 'warm';
   else tier = 'cold';
 
-  return { score, tier, signals };
+  return { score, tier, signals, yogaClassification: classifyYogaInquiry(inquiry) };
 }

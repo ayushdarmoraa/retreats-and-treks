@@ -61,6 +61,9 @@ const nextConfig: NextConfig = {
       { source: '/treks/best-trek-in-uttarakhand', destination: '/treks/best-treks-in-uttarakhand', permanent: true },
       // Consolidate singular → plural (prevent keyword cannibalization)
       { source: '/retreats/retreat-near-delhi', destination: '/retreats/retreats-near-delhi', permanent: true },
+      // Consolidate legacy flat Yoga location URLs
+      { source: '/yoga-retreat-rishikesh', destination: '/retreats/yoga-retreat-rishikesh', permanent: true },
+      { source: '/yoga-retreat-sankri', destination: '/retreats/sankri/yoga-retreat', permanent: true },
     ];
   },
   reactStrictMode: true,

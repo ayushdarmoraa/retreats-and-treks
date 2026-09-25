@@ -541,7 +541,7 @@ export default function SummerRetreatPage() {
                 <span className="med-label">Meditation Retreat — Zanskar</span>
                 <span className="med-arrow">→</span>
               </Link>
-              <Link href="/yoga-retreat-rishikesh" className="med-summer-popular-item">
+              <Link href="/retreats/yoga-retreat-rishikesh" className="med-summer-popular-item">
                 <span className="med-label">Yoga Retreat — Rishikesh</span>
                 <span className="med-arrow">→</span>
               </Link>

@@ -22,6 +22,11 @@ export const BudgetEnum = z.enum([
   'Not sure yet',
 ]);
 
+export const YogaInterestEnum = z.enum(['', 'Yoga Retreat', 'Yoga TTC', 'Not sure']);
+export const YogaDurationEnum = z.enum(['', 'Weekend', '5 days', '7 days', '10 days', '28 days-TTC', 'Flexible']);
+export const YogaExperienceEnum = z.enum(['', 'Beginner', 'Some experience', 'Experienced', 'Teacher']);
+export const BookingReadinessEnum = z.enum(['', 'Exploring', 'Planning', 'Ready to book']);
+
 // ── Inquiry submission schema ───────────────────────────────
 
 export const InquirySchema = z.object({
@@ -42,11 +47,16 @@ export const InquirySchema = z.object({
     .max(20, 'Phone too long')
     .optional()
     .default(''),
+  yogaInterest: YogaInterestEnum.optional().default(''),
   interestedIn: InterestEnum.optional().default(''),
   location: z.string().trim().max(200).optional().default(''),
   month: z.string().trim().max(50).optional().default(''),
+  preferredDate: z.string().trim().max(100).optional().default(''),
   groupSize: z.string().trim().max(20).optional().default(''),
   budget: BudgetEnum.optional().default(''),
+  duration: YogaDurationEnum.optional().default(''),
+  yogaExperience: YogaExperienceEnum.optional().default(''),
+  bookingReadiness: BookingReadinessEnum.optional().default(''),
   source: z.string().trim().max(500).optional().default(''),
   vertical: z.string().trim().max(50).optional().default(''),
   category: z.string().trim().max(100).optional().default(''),

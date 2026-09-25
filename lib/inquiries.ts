@@ -17,11 +17,17 @@ export interface Inquiry {
   name: string;
   email: string;
   phone: string;
+  yogaInterest: string;
   interestedIn: 'trek' | 'retreat' | '';
   location: string;
   month: string;
+  preferredDate: string;
   groupSize: string;
   budget: string;
+  duration: string;
+  yogaExperience: string;
+  bookingReadiness: string;
+  yogaClassification: string;
   source: string;
   vertical: string;
   category: string;
@@ -51,8 +57,8 @@ export async function insertInquiry(
   const contactField = inquiry.email || inquiry.phone;
 
   const rows = await sql`
-    INSERT INTO inquiries (name, email, interested_in, location, month, group_size, budget, source_url, vertical, category, lead_score, lead_tier)
-    VALUES (${inquiry.name}, ${contactField}, ${inquiry.interestedIn}, ${inquiry.location}, ${inquiry.month}, ${inquiry.groupSize}, ${inquiry.budget}, ${inquiry.source}, ${inquiry.vertical}, ${inquiry.category || inquiry.trek}, ${leadScore}, ${leadTier})
+    INSERT INTO inquiries (name, email, phone, yoga_interest, yoga_classification, interested_in, location, month, preferred_date, group_size, budget, duration, yoga_experience, booking_readiness, source_url, vertical, category, lead_score, lead_tier)
+    VALUES (${inquiry.name}, ${contactField}, ${inquiry.phone}, ${inquiry.yogaInterest}, ${inquiry.yogaClassification}, ${inquiry.interestedIn}, ${inquiry.location}, ${inquiry.month}, ${inquiry.preferredDate}, ${inquiry.groupSize}, ${inquiry.budget}, ${inquiry.duration}, ${inquiry.yogaExperience}, ${inquiry.bookingReadiness}, ${inquiry.source}, ${inquiry.vertical}, ${inquiry.category || inquiry.trek}, ${leadScore}, ${leadTier})
     RETURNING id
   `;
 

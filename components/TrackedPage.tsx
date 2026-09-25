@@ -15,7 +15,9 @@
  * Renders as a plain <div> with position:relative — zero visual impact.
  */
 
+import { useEffect, useRef } from 'react';
 import ScrollTracker from './ScrollTracker';
+import { track } from '@/utils/telemetry';
 
 interface TrackedPageProps {
   page: string;
@@ -24,6 +26,15 @@ interface TrackedPageProps {
 }
 
 export default function TrackedPage({ page, children, style }: TrackedPageProps) {
+  const pageViewSent = useRef(false);
+
+  useEffect(() => {
+    if (!pageViewSent.current && page.toLowerCase().includes('yoga')) {
+      pageViewSent.current = true;
+      track({ event: 'page_view', from: page, meta: { vertical: 'retreat', category: 'yoga' } });
+    }
+  }, [page]);
+
   return (
     <main style={{ position: 'relative', ...style }}>
       <ScrollTracker page={page} />

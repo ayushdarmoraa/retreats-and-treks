@@ -71,11 +71,12 @@ export async function generateMetadata({
 
   const ev = getRetreatProgramEvent(slug);
   if (ev) {
+    const isPastEvent = ev.endDate < new Date().toISOString().split('T')[0];
     return {
       title: ev.title,
       description: ev.metaDescription,
       alternates: { canonical: buildCanonicalUrl(`/${ev.slug}`) },
-      robots: { index: true, follow: true },
+      robots: isPastEvent ? { index: false, follow: false } : { index: true, follow: true },
       openGraph: {
         title: ev.h1,
         description: ev.metaDescription,

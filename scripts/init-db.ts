@@ -27,11 +27,18 @@ async function main() {
       id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
       name          TEXT NOT NULL,
       email         TEXT NOT NULL,
+      phone         TEXT,
+      yoga_interest TEXT,
+      yoga_classification TEXT,
       interested_in TEXT,
       location      TEXT,
       month         TEXT,
+      preferred_date TEXT,
       group_size    TEXT,
       budget        TEXT,
+      duration      TEXT,
+      yoga_experience TEXT,
+      booking_readiness TEXT,
       source_url    TEXT,
       vertical      TEXT,
       category      TEXT,
@@ -43,6 +50,15 @@ async function main() {
       created_at    TIMESTAMPTZ NOT NULL DEFAULT now()
     )
   `;
+
+  // Yoga qualification fields — nullable for backward compatibility.
+  await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS phone TEXT`;
+  await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS yoga_interest TEXT`;
+  await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS yoga_classification TEXT`;
+  await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS preferred_date TEXT`;
+  await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS duration TEXT`;
+  await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS yoga_experience TEXT`;
+  await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS booking_readiness TEXT`;
 
   // ── CHECK constraints (idempotent — safe to re-run) ───────
   await sql`

@@ -13,6 +13,7 @@
 
 import { useState, Suspense } from 'react';
 import InlineInquiryForm from './InlineInquiryForm';
+import { track } from '@/utils/telemetry';
 
 interface CTAExpandToggleProps {
   label: string;
@@ -36,7 +37,16 @@ export default function CTAExpandToggle({
       {!expanded && (
         <button
           type="button"
-          onClick={() => setExpanded(true)}
+          onClick={() => {
+            if (category.toLowerCase().includes('yoga') || sourcePath.toLowerCase().includes('yoga')) {
+              track({
+                event: 'cta_click',
+                from: sourcePath,
+                meta: { label, vertical, category, location: location || '' },
+              });
+            }
+            setExpanded(true);
+          }}
           style={{
             display: 'inline-block',
             padding: '0.75rem 2rem',

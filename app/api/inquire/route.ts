@@ -120,11 +120,13 @@ export async function POST(request: NextRequest) {
 
     const inquiry: Inquiry = {
       ...result.data,
+      yogaClassification: '',
       timestamp: new Date().toISOString(),
     };
 
     // ── 5. LEAD SCORING ─────────────────────────────────────
-    const { score, tier, signals } = scoreInquiry(inquiry);
+    const { score, tier, signals, yogaClassification } = scoreInquiry(inquiry);
+    inquiry.yogaClassification = yogaClassification;
 
     // ── 6. STORE (with lead intelligence) ──────────────────
     const inquiryId = await insertInquiry(inquiry, score, tier);
@@ -138,7 +140,7 @@ export async function POST(request: NextRequest) {
       category: inquiry.category,
       ipHash,
       userAgent,
-      meta: { lead_score: score, lead_tier: tier, signals },
+      meta: { lead_score: score, lead_tier: tier, signals, yoga_classification: yogaClassification },
     }).catch(() => {});
 
     // ── 8. TIERED EMAIL (non-blocking) ─────────────────────

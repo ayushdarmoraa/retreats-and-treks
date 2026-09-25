@@ -42,6 +42,7 @@ export default function ExperienceLocationPage({ page }: Props) {
   const itinerarySlug = itineraryArc
     ? `${itineraryArc.duration}-day-${page.locationId}-${itineraryArc.urlPrefix}-itinerary`
     : undefined;
+  const isYogaLocation = page.experienceSlug === 'yoga-retreats';
 
   const eyebrow = { display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' } as const;
   const eyebrowLine = { width: '24px', height: '1px', background: 'var(--color-primary)', display: 'inline-block' } as const;
@@ -99,12 +100,20 @@ export default function ExperienceLocationPage({ page }: Props) {
       {/* ── CTA ── */}
       <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '2rem 2rem 0' }}>
         <PrimaryCTA
-          label={`Inquire About This ${page.label}`}
+          label={isYogaLocation ? 'Plan My Yoga Retreat' : `Inquire About This ${page.label}`}
           subtext={`${page.label} in ${page.locationName}. Small groups, experienced guides. Tell us what you're seeking.`}
           vertical="retreat"
           category={`exp-loc-${page.locationId}`}
           sourcePath={`/${page.slug}`}
         />
+        {isYogaLocation && (
+          <p style={{ margin: '0.9rem 0 0', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', fontWeight: 300, color: '#6b7280' }}>
+            Looking for regular Yoga retreat departures?{' '}
+            <Link href="/retreats/yoga-retreat-rishikesh" style={{ color: 'var(--color-primary)', fontWeight: 400 }}>
+              Explore Yoga retreats in Rishikesh →
+            </Link>
+          </p>
+        )}
       </div>
 
       {/* ── ABOUT LOCATION ── */}
@@ -222,7 +231,7 @@ export default function ExperienceLocationPage({ page }: Props) {
       {/* ── CTA 2 ── */}
       <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '2rem 2rem 0' }}>
         <PrimaryCTA
-          label="Plan My Retreat"
+          label={isYogaLocation ? 'Plan My Yoga Retreat' : 'Plan My Retreat'}
           subtext={`Tell us about yourself — we'll design a ${page.label.toLowerCase()} in ${page.locationName} that fits.`}
           vertical="retreat"
           category={`exp-loc-${page.locationId}`}

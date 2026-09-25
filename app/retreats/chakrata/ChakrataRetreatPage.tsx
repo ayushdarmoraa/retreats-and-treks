@@ -20,9 +20,11 @@ interface Props {
   path: string;
   breadcrumbItems: { name: string; href?: string }[];
   waText: string;
+  primaryCtaLabel?: string;
+  showYogaAlternative?: boolean;
 }
 
-export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, waText }: Props) {
+export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, waText, primaryCtaLabel = 'WhatsApp Us', showYogaAlternative = false }: Props) {
   const retreatSchema = generateRetreatSchema(retreat);
   const faqSchema = generateFAQSchema(retreat.faqs);
   const wa = `https://wa.me/919760446101?text=${encodeURIComponent(waText)}`;
@@ -177,9 +179,18 @@ export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, wa
         <div className="med-inner" style={{ maxWidth: '44rem' }}>
           <h3 style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.3rem, 2vw, 1.6rem)', fontWeight: 500, color: '#ffffff', margin: '0 0 0.6rem' }}>Ready to begin?</h3>
           <p className="med-body" style={{ color: 'rgba(255,255,255,0.6)', margin: '0 0 1.5rem', fontSize: '0.9rem' }}>Ask your questions, check availability, or book directly — we reply within hours.</p>
-          <a href={wa} className="med-cta-btn med-cta-white" target="_blank" rel="noopener noreferrer">WhatsApp Us →</a>
+          <a href={wa} className="med-cta-btn med-cta-white" target="_blank" rel="noopener noreferrer">{primaryCtaLabel} →</a>
         </div>
       </section>
+
+      {showYogaAlternative && (
+        <section className="med-shell" style={{ background: '#ffffff', padding: '3rem 0' }}>
+          <div className="med-inner" style={{ textAlign: 'center' }}>
+            <p className="med-body" style={{ marginBottom: '0.8rem' }}>Looking for regular Yoga retreat departures?</p>
+            <Link href="/retreats/yoga-retreat-rishikesh" className="med-cta-outline">Explore Yoga retreats in Rishikesh →</Link>
+          </div>
+        </section>
+      )}
 
       {/* ── INCLUSIONS ── */}
       <section className="med-shell" style={{ background: '#ffffff', padding: '4.5rem 0' }}>

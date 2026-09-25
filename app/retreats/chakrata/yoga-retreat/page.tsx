@@ -33,6 +33,8 @@ export default function Page() {
         metaTitle: 'Chakrata Yoga Retreat | Retreats And Treks',
       }}
       path={PATH}
+      primaryCtaLabel="Plan My Yoga Retreat"
+      showYogaAlternative
       breadcrumbItems={[
         { name: 'Home', href: '/' },
         { name: 'Retreats', href: '/retreats' },

@@ -17,6 +17,13 @@ interface DurationHubPageProps {
 }
 
 export default function DurationHubPage({ page }: DurationHubPageProps) {
+  const isYogaDuration = page.slug.includes('yoga');
+  const yogaLocationRoutes: Record<string, string> = {
+    rishikesh: '/retreats/yoga-retreat-rishikesh',
+    sankri: '/retreats/sankri/yoga-retreat',
+    chakrata: '/retreats/chakrata/yoga-retreat',
+    zanskar: '/yoga-retreat-zanskar',
+  };
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
     { name: page.h1, url: buildCanonicalUrl(`/${page.slug}`) },
@@ -27,7 +34,11 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
       const loc = getLocationById(angle.locationId);
       return {
         name: loc ? `${page.h1} in ${loc.name}` : angle.heading,
-        url: buildCanonicalUrl(`/locations/${angle.locationId}`),
+        url: buildCanonicalUrl(
+          isYogaDuration
+            ? yogaLocationRoutes[angle.locationId] ?? `/locations/${angle.locationId}`
+            : `/locations/${angle.locationId}`,
+        ),
       };
     }),
   );
@@ -211,17 +222,20 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
           <div className="med-grid-2" style={{ marginTop: '1.8rem' }}>
             {page.locationAngles.map((angle) => {
               const loc = getLocationById(angle.locationId);
+              const locationHref = isYogaDuration
+                ? yogaLocationRoutes[angle.locationId] ?? `/locations/${angle.locationId}`
+                : `/locations/${angle.locationId}`;
               return (
                 <div key={angle.locationId} className="med-card" style={{ padding: '1.5rem' }}>
                   <span className="med-season-tag">{loc?.name ?? angle.locationId}</span>
                   <h3 className="med-h3">
-                    <Link href={`/locations/${angle.locationId}`} style={{ color: '#0f766e', textDecoration: 'none' }}>
+                    <Link href={locationHref} style={{ color: '#0f766e', textDecoration: 'none' }}>
                       {angle.heading}
                     </Link>
                   </h3>
                   <p className="med-body" style={{ fontSize: '0.88rem', marginBottom: '0.75rem' }}>{angle.description}</p>
                   <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                    <Link href={`/locations/${angle.locationId}`} className="med-cta-outline" style={{ padding: '0.4rem 1rem', fontSize: '0.65rem' }}>
+                    <Link href={locationHref} className="med-cta-outline" style={{ padding: '0.4rem 1rem', fontSize: '0.65rem' }}>
                       About {loc?.name ?? angle.locationId} →
                     </Link>
                     {loc?.supportsRetreats && (
@@ -283,7 +297,20 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
           <div className="med-nav-grid">
             <Link href="/retreats" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>← All Retreats</span>
+              <span style={{ color: '#0f766e' }}>→</span>
             </Link>
+            {isYogaDuration && (
+              <Link href="/retreats/yoga-retreat-rishikesh" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Rishikesh Yoga Retreat</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+            )}
+            {isYogaDuration && (
+              <Link href="/yoga-retreats" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>All Yoga Retreats</span>
+                <span style={{ color: '#0f766e' }}>→</span>
+              </Link>
+            )}
             <Link href="/retreats/himalayan-retreats" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Himalayan Retreats</span>
               <span style={{ color: '#0f766e' }}>→</span>

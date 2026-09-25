@@ -1,6 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
+import PrimaryCTA from '@/components/PrimaryCTA';
+
+const PATH = '/retreats/sankri/yoga-retreat';
 
 export function generateMetadata(): Metadata {
   return {
@@ -8,7 +11,7 @@ export function generateMetadata(): Metadata {
     description:
       'Yoga retreat in Sankri basecamp. Available on request for small groups practicing in alpine meadows and mountain air.',
     alternates: {
-      canonical: buildCanonicalUrl('/retreats/sankri/yoga-retreat'),
+      canonical: buildCanonicalUrl(PATH),
     },
     robots: {
       index: true,
@@ -17,7 +20,7 @@ export function generateMetadata(): Metadata {
     openGraph: {
       title: 'Yoga Retreat in Sankri | Mountain Practice at Altitude',
       description: 'Yoga retreat in Sankri basecamp. Available on request for small groups practicing in alpine meadows and mountain air.',
-      url: buildCanonicalUrl('/retreats/sankri/yoga-retreat'),
+      url: buildCanonicalUrl(PATH),
       type: 'website',
       siteName: 'Retreats And Treks',
       locale: 'en_IN',
@@ -102,7 +105,7 @@ export default function SankriYogaRetreatPage() {
             Yoga Retreat in Sankri
           </h1>
           <p style={{ maxWidth: '42rem', margin: '0 auto 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '1.05rem', fontWeight: 400, lineHeight: 1.8, color: '#ffffff', textShadow: '0 2px 14px rgba(0,0,0,0.45)' }}>
-            Yoga practice in the high Himalayas for small groups seeking breath, movement, altitude, and mountain presence. Available on request during suitable Sankri travel windows.
+            Yoga practice in the high Himalayas for small groups seeking breath, movement, altitude, and mountain presence. Suitable for people who want a quieter mountain setting and a more grounded practice rhythm than a city studio can offer. Available on request during suitable Sankri travel windows.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
             {['High Altitude', 'Small Groups', 'On Request', 'Alpine Meadows'].map((tag) => (
@@ -116,12 +119,22 @@ export default function SankriYogaRetreatPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Chat on WhatsApp
+              Plan My Yoga Retreat
             </a>
             <a href="#why-sankri" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Why Sankri</a>
           </div>
         </div>
       </section>
+
+      <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '2rem 1.5rem 0' }}>
+        <PrimaryCTA
+          label="Plan My Yoga Retreat"
+          subtext="Share your preferred dates, group size, and practice level so we can assess whether Sankri is the right setting."
+          vertical="retreat"
+          category="yoga-and-movement"
+          sourcePath={PATH}
+        />
+      </div>
 
       {/* ── WHY SANKRI WORKS ── */}
       <section id="why-sankri" className="med-shell" style={{ background: '#ffffff', padding: '4.5rem 0' }}>
@@ -140,7 +153,10 @@ export default function SankriYogaRetreatPage() {
           <p className="med-body" style={{ marginBottom: 0 }}>
             The practice here is not about performance. Sankri supports yoga as embodied
             presence: feeling the breath in cold air, moving gently after long travel, walking
-            through forest transitions, and letting the body become alert without strain.
+            through forest transitions, and letting the body become alert without strain. This
+            works especially well for people who want a quieter, more grounded retreat rhythm
+            and do not need a highly structured tourist setting. Beginners are welcome when the
+            group pace and altitude are appropriate, and teachers adapt the sessions to the group.
           </p>
         </div>
       </section>
@@ -158,13 +174,16 @@ export default function SankriYogaRetreatPage() {
               A Sankri yoga retreat can include morning asana, pranayama, gentle mobility,
               walking meditation, outdoor practice, slow forest walks, and evening restoration.
               The structure is adapted to the group, weather, altitude, and available practice
-              spaces.
+              spaces. For many people, the most valuable part is the slower rhythm — less noise,
+              more breath, and more time to notice what the body is doing.
             </p>
             <p className="med-body" style={{ marginBottom: 0 }}>
               Sessions may be lighter than a conventional yoga retreat because Sankri itself is
               part of the practice. Travel fatigue, elevation, mountain weather, and trail
               access all matter. The aim is to support breath awareness, steadiness, and
-              connection with the landscape.
+              connection with the landscape rather than to create a physically aggressive schedule.
+              If you are not flexible, this is not a barrier; the focus remains on mindful movement,
+              supported variations, and a paced rhythm that respects the mountain environment.
             </p>
           </div>
         </div>
@@ -331,8 +350,15 @@ export default function SankriYogaRetreatPage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Chat on WhatsApp
+            WhatsApp Us
           </a>
+        </div>
+      </section>
+
+      <section className="med-shell" style={{ background: '#ffffff', padding: '3rem 0' }}>
+        <div className="med-inner" style={{ textAlign: 'center' }}>
+          <p className="med-body" style={{ marginBottom: '0.8rem' }}>Looking for regular Yoga retreat departures?</p>
+          <Link href="/retreats/yoga-retreat-rishikesh" className="med-cta-outline">Explore Yoga retreats in Rishikesh →</Link>
         </div>
       </section>
 

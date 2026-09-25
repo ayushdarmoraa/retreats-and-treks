@@ -53,6 +53,7 @@ export default function ProgramEventPage({ event }: Props) {
   const faqSchema = generateFAQSchema(event.faqItems as { question: string; answer: string }[]);
 
   const statusInfo = statusLabels[event.status] ?? statusLabels.open;
+  const isPastEvent = event.endDate < new Date().toISOString().split('T')[0];
 
   // Event schema for Google
   const eventSchema = {
@@ -63,21 +64,25 @@ export default function ProgramEventPage({ event }: Props) {
     startDate: event.startDate,
     endDate: event.endDate,
     eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
-    eventStatus: 'https://schema.org/EventScheduled',
+    eventStatus: isPastEvent
+      ? 'https://schema.org/EventCompleted'
+      : 'https://schema.org/EventScheduled',
     location: {
       '@type': 'Place',
       name: event.locationName,
       address: { '@type': 'PostalAddress', addressCountry: 'IN' },
     },
-    offers: {
-      '@type': 'Offer',
-      price: event.price,
-      priceCurrency: event.currency,
-      availability: event.status === 'sold-out'
-        ? 'https://schema.org/SoldOut'
-        : 'https://schema.org/InStock',
-      url: buildCanonicalUrl(`/${event.slug}`),
-    },
+    ...(isPastEvent ? {} : {
+      offers: {
+        '@type': 'Offer',
+        price: event.price,
+        priceCurrency: event.currency,
+        availability: event.status === 'sold-out'
+          ? 'https://schema.org/SoldOut'
+          : 'https://schema.org/InStock',
+        url: buildCanonicalUrl(`/${event.slug}`),
+      },
+    }),
     organizer: { '@id': schemaIds.organization },
   };
 

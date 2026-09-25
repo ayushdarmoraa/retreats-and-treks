@@ -306,8 +306,8 @@ const EVENTS: RetreatProgramEvent[] = [
     currency: 'INR',
     priceNote: 'Per person, all-inclusive. Meals, accommodation, all yoga sessions, philosophy workshops.',
     groupSize: 12,
-    seatsLeft: 8,
-    status: 'open',
+    seatsLeft: 0,
+    status: 'sold-out',
     included: [
       'Accommodation overlooking the Ganges',
       'Three Sattvic meals daily',

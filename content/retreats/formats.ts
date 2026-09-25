@@ -32,7 +32,7 @@ export const retreatFormatsData: RetreatFormat[] = [
     description: 'A rejuvenating 2–3 day yoga retreat with daily classes, asana practice, pranayama, and holistic wellness in a mountain setting.',
     tag: 'Yoga',
     image: '/Images/Journeys/yoga.webp',
-    href: '/retreats/journeys/yoga-movement',
+    href: '/retreats/journeys/yoga-and-movement',
   },
 ];
 

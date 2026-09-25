@@ -232,7 +232,7 @@ export const DURATION_PAGES: readonly DurationPage[] = [
     metaDescription:
       'A 5-day Himalayan yoga retreat with daily asana, pranayama, meditation, small groups, experienced teachers, and mountain practice.',
     intro:
-      'Five days is the ideal duration for a yoga retreat. One day to arrive and adjust. Three full days of twice-daily practice — morning and evening. One day to integrate and depart. In the Himalayas, every element of practice is amplified: pranayama changes at altitude because each breath is more conscious. Asana on a mountain morning, with clean cold air and sunrise on snow peaks, is not the same practice as in a city studio. Five days allows your body to adapt to the altitude and your practice to adapt to the environment. The result is a shift in how you relate to your body and your breath that persists long after you return home.',
+      'Five days is the ideal duration for a yoga retreat because it is long enough to establish rhythm without becoming overwhelming. One day to arrive and settle. Two to three full days of twice-daily practice — morning movement and evening restoration. A final day to integrate before departure. In the Himalayas, every element of practice is amplified: breath feels sharper at altitude, the body moves more slowly, and the absence of daily noise makes attention easier to hold. Five days gives you enough time for the body to drop into a reliable rhythm, for breathwork to become stable, and for the effects of a retreat to move beyond a short-term mood boost. It is often the sweet spot for first-time retreatants and returning practitioners alike.',
     durationLabel: '5 Days / 4 Nights',
     idealFor: [
       'Yoga practitioners of all levels seeking mountain immersion',
@@ -242,14 +242,14 @@ export const DURATION_PAGES: readonly DurationPage[] = [
     ],
     typicalDay: [
       '6:00 AM — Morning pranayama (30 min)',
-      '6:30 – 8:00 — Asana practice (Hatha/Vinyasa, adapted to altitude)',
-      '8:00 – 9:00 — Breakfast',
-      '9:30 – 11:00 — Teaching session or nature walk',
-      '11:00 – 12:30 — Free time / personal practice',
-      '12:30 – 2:00 — Lunch and rest',
-      '3:00 – 4:30 — Restorative yoga or Yin',
-      '5:00 – 6:00 — Evening meditation',
-      '6:30 — Dinner, evening free',
+      '6:30 – 8:00 — Asana practice (Hatha/Vinyasa, adapted to altitude and beginner level)',
+      '8:00 – 9:00 — Breakfast and quiet transition time',
+      '9:30 – 11:00 — Guided teaching session, journaling, or nature walk',
+      '11:00 – 12:30 — Free time / personal practice / rest',
+      '12:30 – 2:00 — Lunch and unstructured rest',
+      '3:00 – 4:30 — Restorative yoga, mobility, or supported stretching',
+      '5:00 – 6:00 — Evening meditation or breath awareness',
+      '6:30 — Dinner and a quieter evening rhythm',
     ],
     locationAngles: [
       {
@@ -273,7 +273,77 @@ export const DURATION_PAGES: readonly DurationPage[] = [
     ],
     relatedExperienceSlugs: ['yoga-retreats', 'meditation-retreats'],
     closingNarrative:
-      'Five days of yoga in the Himalayas will not make you more flexible. It will make you more present — to your body, your breath, and the mountain environment that has been teaching practitioners for millennia. Reach out with your experience level and preferred dates.',
+      'Five days of yoga in the Himalayas will not make you more flexible in an abstract sense. It will make you more present to your body, your breath, and the effort required to move with awareness rather than autopilot. That is the real value of a retreat: not a dramatic transformation promise, but a clearer relationship with your practice and your nervous system. Reach out with your experience level and preferred dates.',
+  },
+
+  // ── 6. 7-Day Yoga Retreat ─────────────────────────────────────────────────
+  {
+    slug: '7-day-yoga-retreat',
+    title: '7-Day Yoga Retreat in Rishikesh | Retreats And Treks',
+    h1: '7-Day Yoga Retreat in Rishikesh',
+    metaDescription:
+      'A 7-day Yoga retreat in Rishikesh with structured asana, pranayama, meditation, rest, and time to settle into a consistent practice rhythm.',
+    intro:
+      'Seven days gives a Yoga retreat more room than a shorter reset. The first days are for arriving and learning the rhythm; the middle days allow practice, breathwork, and rest to become more consistent; the final days leave space for integration. This is a general product format, not a promise of a fixed departure. Current dates, pricing, and inclusions are confirmed through enquiry or the event registry.',
+    durationLabel: '7 Days / 6 Nights',
+    idealFor: [
+      'Practitioners who want a longer period of structured Yoga practice',
+      'Beginners who prefer more time to settle into a retreat rhythm',
+      'Returning practitioners seeking more continuity than a shorter format',
+      'People who want to combine asana, pranayama, meditation, and rest',
+    ],
+    typicalDay: [
+      'Morning — Asana and pranayama practice',
+      'Midday — Teaching, personal practice, or rest',
+      'Afternoon — Unstructured time for walking, reading, or integration',
+      'Evening — Restorative practice, meditation, or breath awareness',
+    ],
+    locationAngles: [
+      {
+        locationId: 'rishikesh',
+        heading: 'Rishikesh — A Week of Consistent Practice',
+        description:
+          'Rishikesh provides the established Yoga setting for a longer retreat: structured practice, living tradition, and time beside the Ganges to let the experience settle. Ask for current programme details and dates.',
+      },
+    ],
+    relatedExperienceSlugs: ['yoga-retreats', 'meditation-retreats'],
+    closingNarrative:
+      'A seven-day format is a longer practice container, not a guaranteed outcome. Choose it when you have the time to stay with a rhythm for a full week and want to ask more of the retreat environment than a short reset can provide.',
+  },
+
+  // ── 7. 10-Day Yoga Retreat ────────────────────────────────────────────────
+  {
+    slug: '10-day-yoga-retreat',
+    title: '10-Day Yoga Retreat in Rishikesh | Retreats And Treks',
+    h1: '10-Day Yoga Retreat in Rishikesh',
+    metaDescription:
+      'A 10-day Yoga retreat format in Rishikesh for extended practice, pranayama, meditation, rest, and deeper immersion. Enquire for current details.',
+    intro:
+      'Ten days is the extended Yoga retreat format for people who want more time inside a practice rhythm. It allows a slower arrival, a longer middle period of consistent practice, and deliberate integration before departure. This page describes the product format only. It does not represent a fixed departure, price, seat count, or availability.',
+    durationLabel: '10 Days / 9 Nights',
+    idealFor: [
+      'Experienced practitioners seeking an extended retreat container',
+      'People with enough time for a slower, more immersive format',
+      'Returning retreatants who want more continuity than five or seven days',
+      'Those who want to discuss a longer Rishikesh Yoga programme around their goals',
+    ],
+    typicalDay: [
+      'Morning — Asana, pranayama, and quiet transition into the day',
+      'Midday — Teaching, personal practice, or rest',
+      'Afternoon — Nature time, journaling, or unstructured integration',
+      'Evening — Restorative practice, meditation, or reflection',
+    ],
+    locationAngles: [
+      {
+        locationId: 'rishikesh',
+        heading: 'Rishikesh — Extended Yoga Immersion',
+        description:
+          'Rishikesh is the primary setting for discussing an extended Yoga retreat, with access to the existing Yoga service and teacher-training pathway. Enquire for current programme structure rather than assuming a fixed schedule.',
+      },
+    ],
+    relatedExperienceSlugs: ['yoga-retreats', 'meditation-retreats'],
+    closingNarrative:
+      'Ten days is a substantial commitment. The value of this format is the time available for continuity and integration, not a promise of transformation. Share your experience level and preferred timing so the appropriate current option can be assessed.',
   },
 
   // ── 6. 3-Day Silent Retreat ───────────────────────────────────────────────

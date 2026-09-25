@@ -569,7 +569,7 @@ export default function SpringRetreatPage() {
                 <span className="med-label">Meditation Retreat — Chakrata</span>
                 <span className="med-arrow">→</span>
               </Link>
-              <Link href="/yoga-retreat-rishikesh" className="med-spring-popular-item">
+              <Link href="/retreats/yoga-retreat-rishikesh" className="med-spring-popular-item">
              
                 <span className="med-label">Yoga Retreat — Rishikesh</span>
                 <span className="med-arrow">→</span>

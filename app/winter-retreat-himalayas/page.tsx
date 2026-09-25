@@ -481,7 +481,7 @@ export default function WinterRetreatPage() {
                 <p className="med-body">Winter is the natural season for extended noble silence.</p>
                 <span className="med-link">Explore →</span>
               </Link>
-              <Link href="/yoga-retreat-rishikesh" className="med-card med-winter-option-card">
+              <Link href="/retreats/yoga-retreat-rishikesh" className="med-card med-winter-option-card">
                 <h3 className="med-h3">Yoga Retreat — Rishikesh</h3>
                 <p className="med-body">Warm enough for asana, quiet enough for depth.</p>
                 <span className="med-link">Explore →</span>

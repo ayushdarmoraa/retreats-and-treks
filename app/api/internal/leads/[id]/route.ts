@@ -43,7 +43,8 @@ export async function GET(
     // Lead detail
     const leads = await sql`
       SELECT
-        id, name, email, interested_in, location, month, group_size, budget,
+        id, name, email, phone, yoga_interest, yoga_classification, interested_in, location, month, preferred_date, group_size, budget,
+        duration, yoga_experience, booking_readiness,
         source_url, vertical, category, lead_score, lead_tier, status,
         followup_count, last_followup_at, created_at
       FROM inquiries

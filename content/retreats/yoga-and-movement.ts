@@ -36,6 +36,8 @@ Our yoga work is led by Sakshi, who has been teaching yoga for 8 years. This pag
 
 The retreat experience remains grounded in conscious movement, breath, and stillness. Whether you are new to yoga or have been practising for years, the intention is not performance. You move at the pace your body understands, with guided asana, pranayama, meditation, rest, and nature around you.
 
+A yoga retreat is different from a regular class because it changes the pace and context of practice. Instead of a single hour in a studio, you live inside a rhythm of morning practice, breathwork, rest, meals, and outdoor time. That rhythm matters. It gives the body time to adapt, the nervous system time to settle, and the mind time to stop treating yoga as a task to complete.
+
 For students who want to go deeper, our yoga teacher training courses are offered in Rishikesh, Thailand, and Bali. For students drawn to playful strength and supported movement, aerial yoga programs and classes are available in Rishikesh. For those who want regular practice from home, online yoga classes create a simple way to begin or continue.
 
 The thread across all offerings is the same: yoga as a steady relationship with the body, breath, and attention.`,
@@ -129,7 +131,15 @@ Whether you are returning to your breath after years away or deepening a practic
     },
     {
       question: 'Is this retreat physically intense?',
-      answer: 'No. The practice is designed around presence, not performance. Sessions are gentle to moderate — you will never be pushed beyond what your body is ready for. The focus is on breath, alignment, and awareness rather than physical intensity.',
+      answer: 'No. The practice is designed around presence, not performance. Sessions are gentle to moderate — you will never be pushed beyond what your body is ready for. The focus is on breath, alignment, and awareness rather than physical intensity. If you are not flexible, that is not a barrier. Beginners are taught foundations, modifications, and pacing rather than expected to reach advanced range of motion.',
+    },
+    {
+      question: 'Do I need previous yoga experience?',
+      answer: 'No. Most participants begin with a foundation practice. The retreat is built to accommodate mixed levels. Teachers adjust sequences and offer modifications so beginners can participate comfortably without feeling left behind.',
+    },
+    {
+      question: 'What does a yoga retreat actually involve?',
+      answer: 'Usually a rhythm of morning asana, breathwork, guided meditation, rest, simple meals, and an evening restorative practice. The environment matters as much as the movement. Mountain air, reduced noise, and daily routine make practice feel deeper than a normal yoga class.',
     },
     {
       question: 'What style of yoga is practised?',

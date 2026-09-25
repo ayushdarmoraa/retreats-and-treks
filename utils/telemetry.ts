@@ -7,6 +7,8 @@
  */
 
 type EventType =
+  | 'page_view'
+  | 'cta_click'
   | 'topic_to_pillar'
   | 'blog_to_journey'
   | 'comparison_to_journey'

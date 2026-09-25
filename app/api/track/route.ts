@@ -36,6 +36,8 @@ const NAVIGATION_EVENTS = [
 ] as const;
 
 const BEHAVIORAL_EVENTS = [
+  'page_view',
+  'cta_click',
   'scroll_depth',
   'faq_expand',
   'comparison_sort',

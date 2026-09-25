@@ -322,7 +322,7 @@ export default function YogaRetreatUttarakhandPage() {
 
           <div className="med-card" style={{ padding: '2rem', marginBottom: '1.5rem' }}>
             <h3 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: '1.3rem', fontWeight: 600, color: '#0f766e' }}>
-              <Link href="/retreats/rishikesh" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link href="/retreats/yoga-retreat-rishikesh" style={{ color: 'inherit', textDecoration: 'none' }}>
                 Rishikesh — Riverside Yoga Capital
               </Link>
             </h3>
@@ -335,8 +335,8 @@ export default function YogaRetreatUttarakhandPage() {
             </p>
             <p className="med-body">
               What distinguishes{' '}
-              <Link href="/retreats/rishikesh" style={{ color: '#0f766e', fontWeight: 600 }}>
-                Rishikesh retreat programs
+              <Link href="/retreats/yoga-retreat-rishikesh" style={{ color: '#0f766e', fontWeight: 600 }}>
+                Rishikesh Yoga retreats
               </Link>{' '}
               from its reputation as a backpacker stop is the depth of the teaching lineage.
               Retreat programmes here draw from Hatha, Ashtanga, Iyengar, and Kundalini
@@ -354,7 +354,7 @@ export default function YogaRetreatUttarakhandPage() {
 
           <div className="med-card" style={{ padding: '2rem', marginBottom: '1.5rem' }}>
             <h3 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: '1.3rem', fontWeight: 600, color: '#0f766e' }}>
-              <Link href="/retreats/chakrata" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link href="/retreats/chakrata/yoga-retreat" style={{ color: 'inherit', textDecoration: 'none' }}>
                 Chakrata — Quiet Forest Yoga Immersion
               </Link>
             </h3>
@@ -366,7 +366,7 @@ export default function YogaRetreatUttarakhandPage() {
             </p>
             <p className="med-body">
               The{' '}
-              <Link href="/retreats/chakrata" style={{ color: '#0f766e', fontWeight: 600 }}>
+              <Link href="/retreats/chakrata/yoga-retreat" style={{ color: '#0f766e', fontWeight: 600 }}>
                 Chakrata retreat environment
               </Link>{' '}
               is built for participants who want yoga woven into nature immersion rather than
@@ -384,7 +384,7 @@ export default function YogaRetreatUttarakhandPage() {
 
           <div className="med-card" style={{ padding: '2rem' }}>
             <h3 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: '1.3rem', fontWeight: 600, color: '#0f766e' }}>
-              <Link href="/retreats/sankri" style={{ color: 'inherit', textDecoration: 'none' }}>
+              <Link href="/retreats/sankri/yoga-retreat" style={{ color: 'inherit', textDecoration: 'none' }}>
                 Sankri — High-Altitude Yoga and Nature
               </Link>
             </h3>
@@ -396,7 +396,7 @@ export default function YogaRetreatUttarakhandPage() {
             </p>
             <p className="med-body" style={{ marginBottom: 0 }}>
               The eight-to-nine-hour drive from Delhi makes{' '}
-              <Link href="/retreats/sankri" style={{ color: '#0f766e', fontWeight: 600 }}>
+              <Link href="/retreats/sankri/yoga-retreat" style={{ color: '#0f766e', fontWeight: 600 }}>
                 Sankri
               </Link>{' '}
               better suited for extended retreats or long weekends. What you sacrifice in

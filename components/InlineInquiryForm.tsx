@@ -20,6 +20,9 @@ const MONTHS = [
 const GROUP_SIZES = ['', '1', '2', '3–4', '5–8', '9+'];
 
 const BUDGETS = ['', '₹15–30k', '₹30–60k', '₹60k+', 'Not sure yet'];
+const YOGA_DURATIONS = ['', 'Weekend', '5 days', '7 days', '10 days', '28 days-TTC', 'Flexible'];
+const YOGA_EXPERIENCE = ['', 'Beginner', 'Some experience', 'Experienced', 'Teacher'];
+const BOOKING_READINESS = ['', 'Exploring', 'Planning', 'Ready to book'];
 
 interface InlineInquiryFormProps {
   vertical: 'trek' | 'retreat';
@@ -35,16 +38,28 @@ export default function InlineInquiryForm({
   location: prefillLocation,
 }: InlineInquiryFormProps) {
   const searchParams = useSearchParams();
+  const isYogaInquiry = vertical === 'retreat' && (
+    category.toLowerCase().includes('yoga') || sourcePath.toLowerCase().includes('yoga')
+  );
   // Anti-spam: timestamp when form rendered
   const loadedAt = useRef(Date.now());
 
   const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [interestedIn, setInterestedIn] = useState<'trek' | 'retreat' | ''>(vertical || '');
+  const [yogaInterest, setYogaInterest] = useState('Yoga Retreat');
   const [location, setLocation] = useState(prefillLocation || '');
   const [month, setMonth] = useState('');
+  const [preferredDate, setPreferredDate] = useState('');
   const [groupSize, setGroupSize] = useState('');
   const [budget, setBudget] = useState('');
+  const [duration, setDuration] = useState('');
+  const [yogaExperience, setYogaExperience] = useState('');
+  const [bookingReadiness, setBookingReadiness] = useState('');
+  const yogaDurationOptions = yogaInterest === 'Yoga TTC'
+    ? ['', '28 days-TTC', 'Flexible']
+    : YOGA_DURATIONS.filter((value) => value !== '28 days-TTC');
 
   // Honeypot — invisible to humans, bots fill it
   const [website, setWebsite] = useState('');
@@ -81,12 +96,18 @@ export default function InlineInquiryForm({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name,
+          phone,
           email,
           interestedIn,
+          yogaInterest: isYogaInquiry ? yogaInterest : '',
           location,
           month,
+          preferredDate: isYogaInquiry ? preferredDate : '',
           groupSize,
           budget,
+          duration: isYogaInquiry ? duration : '',
+          yogaExperience: isYogaInquiry ? yogaExperience : '',
+          bookingReadiness: isYogaInquiry ? bookingReadiness : '',
           source: sourceWithAttribution,
           vertical,
           category,
@@ -157,7 +178,7 @@ export default function InlineInquiryForm({
         />
       </div>
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+      <div style={{ display: 'grid', gridTemplateColumns: isYogaInquiry ? 'repeat(3, minmax(0, 1fr))' : '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
         <div>
           <label htmlFor="inline-name" style={labelStyle}>Name *</label>
           <input
@@ -171,6 +192,12 @@ export default function InlineInquiryForm({
             style={inputStyle}
           />
         </div>
+        {isYogaInquiry && (
+          <div>
+            <label htmlFor="inline-phone" style={labelStyle}>WhatsApp / Phone</label>
+            <input id="inline-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Your WhatsApp number" style={inputStyle} />
+          </div>
+        )}
         <div>
           <label htmlFor="inline-email" style={labelStyle}>Email *</label>
           <input
@@ -185,6 +212,61 @@ export default function InlineInquiryForm({
         </div>
       </div>
 
+      {isYogaInquiry ? (
+        <>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+            <div>
+              <label htmlFor="inline-yoga-interest" style={labelStyle}>Interest</label>
+              <select id="inline-yoga-interest" value={yogaInterest} onChange={(e) => setYogaInterest(e.target.value)} style={inputStyle}>
+                <option>Yoga Retreat</option>
+                <option>Yoga TTC</option>
+                <option>Not sure</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="inline-yoga-location" style={labelStyle}>Preferred location</label>
+              <select id="inline-yoga-location" value={location} onChange={(e) => setLocation(e.target.value)} style={inputStyle}>
+                <option value="">No preference</option>
+                <option>Rishikesh</option>
+                <option>Sankri</option>
+                <option>Chakrata</option>
+                <option>Zanskar</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          {yogaInterest !== 'Not sure' && (
+            <>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                <div>
+                  <label htmlFor="inline-yoga-duration" style={labelStyle}>Duration</label>
+                  <select id="inline-yoga-duration" value={duration} onChange={(e) => setDuration(e.target.value)} style={inputStyle}>
+                    {yogaDurationOptions.map((value) => <option key={value} value={value}>{value || 'Flexible'}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="inline-yoga-experience" style={labelStyle}>Yoga experience</label>
+                  <select id="inline-yoga-experience" value={yogaExperience} onChange={(e) => setYogaExperience(e.target.value)} style={inputStyle}>
+                    {YOGA_EXPERIENCE.map((value) => <option key={value} value={value}>{value || 'Choose level'}</option>)}
+                  </select>
+                </div>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+                <div>
+                  <label htmlFor="inline-yoga-date" style={labelStyle}>Preferred month/date</label>
+                  <input id="inline-yoga-date" type="text" value={preferredDate} onChange={(e) => setPreferredDate(e.target.value)} placeholder="e.g. October or 12 Oct" style={inputStyle} />
+                </div>
+                <div>
+                  <label htmlFor="inline-yoga-readiness" style={labelStyle}>Booking readiness</label>
+                  <select id="inline-yoga-readiness" value={bookingReadiness} onChange={(e) => setBookingReadiness(e.target.value)} style={inputStyle}>
+                    {BOOKING_READINESS.map((value) => <option key={value} value={value}>{value || 'Choose stage'}</option>)}
+                  </select>
+                </div>
+              </div>
+            </>
+          )}
+        </>
+      ) : (
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
         <div>
           <label htmlFor="inline-interest" style={labelStyle}>Interested in</label>
@@ -216,8 +298,9 @@ export default function InlineInquiryForm({
           </select>
         </div>
       </div>
+      )}
 
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+      {!isYogaInquiry && <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
         <div>
           <label htmlFor="inline-month" style={labelStyle}>Preferred month</label>
           <select
@@ -245,6 +328,7 @@ export default function InlineInquiryForm({
           </select>
         </div>
       </div>
+      }
 
       <div style={{ marginBottom: '0.75rem' }}>
         <label htmlFor="inline-budget" style={labelStyle}>Budget range (optional)</label>

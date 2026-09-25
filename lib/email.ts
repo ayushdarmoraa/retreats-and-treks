@@ -275,11 +275,18 @@ function buildTeamNotificationHtml(
       <table style="margin-top: 0.75rem;">
         <tr><td><strong>Name:</strong></td><td>${inquiry.name}</td></tr>
         <tr><td><strong>Email:</strong></td><td>${inquiry.email}</td></tr>
+        <tr><td><strong>WhatsApp / Phone:</strong></td><td>${inquiry.phone || '—'}</td></tr>
+        <tr><td><strong>Yoga interest:</strong></td><td>${inquiry.yogaInterest || '—'}</td></tr>
+        <tr><td><strong>Yoga classification:</strong></td><td>${inquiry.yogaClassification || '—'}</td></tr>
         <tr><td><strong>Interested in:</strong></td><td>${inquiry.interestedIn || '—'}</td></tr>
         <tr><td><strong>Location:</strong></td><td>${inquiry.location || '—'}</td></tr>
         <tr><td><strong>Month:</strong></td><td>${inquiry.month || '—'}</td></tr>
+        <tr><td><strong>Preferred date:</strong></td><td>${inquiry.preferredDate || '—'}</td></tr>
         <tr><td><strong>Group size:</strong></td><td>${inquiry.groupSize || '—'}</td></tr>
         <tr><td><strong>Budget:</strong></td><td>${inquiry.budget || '—'}</td></tr>
+        <tr><td><strong>Duration:</strong></td><td>${inquiry.duration || '—'}</td></tr>
+        <tr><td><strong>Yoga experience:</strong></td><td>${inquiry.yogaExperience || '—'}</td></tr>
+        <tr><td><strong>Booking readiness:</strong></td><td>${inquiry.bookingReadiness || '—'}</td></tr>
         <tr><td><strong>Source:</strong></td><td>${inquiry.source}</td></tr>
         <tr><td><strong>Vertical:</strong></td><td>${inquiry.vertical}</td></tr>
         <tr><td><strong>Category:</strong></td><td>${inquiry.category}</td></tr>
