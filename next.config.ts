@@ -63,7 +63,10 @@ const nextConfig: NextConfig = {
       { source: '/retreats/retreat-near-delhi', destination: '/retreats/retreats-near-delhi', permanent: true },
       // Consolidate legacy flat Yoga location URLs
       { source: '/yoga-retreat-rishikesh', destination: '/retreats/yoga-retreat-rishikesh', permanent: true },
+      { source: '/rishikesh-yoga-retreat-march-2026', destination: '/retreats/yoga-retreat-rishikesh', permanent: true },
       { source: '/yoga-retreat-sankri', destination: '/retreats/sankri/yoga-retreat', permanent: true },
+      { source: '/yoga-retreat-chakrata', destination: '/retreats/chakrata/yoga-retreat', permanent: true },
+      { source: '/retreats/journeys/yoga-movement', destination: '/retreats/journeys/yoga-and-movement', permanent: true },
     ];
   },
   reactStrictMode: true,

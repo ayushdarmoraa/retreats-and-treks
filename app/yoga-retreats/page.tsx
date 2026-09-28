@@ -5,17 +5,18 @@ import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Sc
 import { getExperiencePage } from '@/config/experiencePages';
 import { getReviewSchemasForPage } from '@/lib/reviewsSchema';
 import { getReviewsForSlug } from '@/content/reviews';
-import { getUpcomingEvents } from '@/config/retreatProgramEvents';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import ReviewCard from '@/components/reviews/ReviewCard';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
 import { images } from '@/lib/images';
+import YogaDepartureCalendar from '@/components/YogaDepartureCalendar';
 
 const PAGE = getExperiencePage('yoga-retreats')!;
 const PATH = '/yoga-retreats';
 
 export const dynamic = 'force-static';
+export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
@@ -44,7 +45,7 @@ const FAQ_ITEMS = [
   {
     question: 'Do I need to be flexible or experienced to join a yoga retreat?',
     answer:
-      'No. Our retreats welcome all levels, from complete beginners to advanced practitioners. Teachers adapt sessions to each participant. The Himalayas strip away the performance pressure of studio yoga — here, practice is about presence, not perfection. Most beginners start with simple foundations, supported variations, and gentler pacing rather than advanced shapes or intensity.',
+      'The Yoga service describes practice for different experience levels, but beginner suitability and session adaptations are not published for a future departure. Share your experience and ask the team to confirm the approach for the programme being considered.',
   },
   {
     question: 'How is a yoga retreat different from a normal yoga class?',
@@ -54,22 +55,22 @@ const FAQ_ITEMS = [
   {
     question: 'What style of yoga is taught at Himalayan retreats?',
     answer:
-      'Primarily Hatha and gentle Vinyasa, with elements of Iyengar alignment and Pranayama (breathwork). In Rishikesh, traditional Ashtanga and Kundalini may be offered. The emphasis is always on breath awareness and embodied presence rather than athletic achievement.',
+      'The Yoga service describes asana, pranayama, meditation, and restorative practice. A specific style, teacher, and session structure are not published for future departures; ask for the details of the programme before booking.',
   },
   {
     question: 'How does altitude affect yoga practice?',
     answer:
-      'At 2,000–3,500 metres, every breath is conscious. Reduced oxygen naturally deepens pranayama practice and slows the tendency toward autopilot. Poses require more presence. The altitude transforms yoga from exercise into genuine practice.',
+      'Altitude varies between Rishikesh and the higher Himalayan locations. It can affect comfort and exertion, so confirm location conditions and suitability for your circumstances before choosing a programme. No altitude-specific schedule or suitability is published for an upcoming Yoga departure.',
   },
   {
     question: 'What is included in the retreat price?',
     answer:
-      'All yoga sessions (typically 2 per day), accommodation, three meals daily, guided meditation, and any planned excursions. Specific inclusions vary by location and duration — detailed breakdowns are provided after inquiry.',
+      'No future Yoga departure currently publishes a confirmed price, meal plan, accommodation, daily schedule, inclusions, or exclusions. Request the written details for a proposed programme before making plans.',
   },
   {
     question: 'Can I combine yoga with trekking?',
     answer:
-      'Yes. Sankri specializes in trek-and-yoga combinations. Walk through Himalayan forests by day, practice asana at camp by evening. The physical exertion of trekking and the stillness of yoga create a powerful cycle of effort and release.',
+      'A scheduled trek-and-Yoga combination is not represented in the Yoga product registry. Ask whether a custom combination can be arranged for your preferred location and dates.',
   },
   {
     question: 'How long should a yoga retreat be?',
@@ -91,31 +92,31 @@ const FAQ_ITEMS = [
 const PRACTICE_ELEMENTS = [
   {
     title: 'Morning Asana',
-    description: 'Wake with the mountains. Practice as light arrives over the peaks. The body opens differently at altitude — more slowly, more honestly.',
-    time: '6:00 – 7:30 AM',
+    description: 'Asana practice is described in the Yoga & Movement service. Confirm session timing and format for the selected departure.',
+    time: 'Timing not published',
   },
   {
     title: 'Pranayama & Breathwork',
-    description: 'At altitude, every breath matters. Pranayama techniques tailored to the mountain environment deepen awareness and calm the nervous system.',
-    time: '7:30 – 8:00 AM',
+    description: 'Pranayama is part of the existing Yoga & Movement description. Confirm whether and how it is included in a current programme.',
+    time: 'Timing not published',
   },
   {
     title: 'Free Time & Nature',
-    description: 'Afternoons are unstructured. Walk in the forest. Read. Rest. Let the practice integrate without forcing it.',
-    time: '2:00 – 4:30 PM',
+    description: 'Unstructured time and nature activities depend on the selected location and departure; ask for the current itinerary.',
+    time: 'Schedule not published',
   },
   {
     title: 'Evening Practice',
-    description: 'Restorative yoga as the mountains darken. Gentle holds, supported poses, and guided relaxation. The day closes with stillness.',
-    time: '5:00 – 6:15 PM',
+    description: 'Restorative practice is described in the existing Yoga service. Confirm the sessions and timings offered on the selected departure.',
+    time: 'Timing not published',
   },
 ];
 
 const BENEFITS = [
-  { title: 'Altitude Deepens Breath', text: 'At elevation, every inhalation is deliberate. Pranayama becomes real — not a technique performed, but a necessity felt. The breath stops being abstract.' },
-  { title: 'Mountain Silence', text: 'Without traffic, notifications, or studio playlists, you hear your body. The sounds of practice — breath, movement, heartbeat — become the soundtrack.' },
-  { title: 'Natural Alignment', text: 'Cold mountain mornings slow you down. The body opens differently at altitude — more slowly, more honestly. There is no rushing a sun salutation at 2,000 metres.' },
-  { title: 'Living Tradition', text: 'In Rishikesh, yoga is not imported fitness — it is the daily practice of a city that has breathed it for centuries. The teachers have lineage, not just certification.' },
+  { title: 'Location Conditions', text: 'Altitude, weather, access, and practice settings differ by location. Confirm conditions and suitability for the dates and programme being considered.' },
+  { title: 'Programme Details', text: 'Practice style, session timing, teaching assignment, and adaptations are confirmed for a published departure or proposed enquiry.' },
+  { title: 'Published Formats', text: 'Weekend, 5-day, 7-day, and 10-day Rishikesh formats are listed as products. A format does not mean a date is scheduled.' },
+  { title: 'Enquiry Path', text: 'When dates or location-specific arrangements are not published, use the enquiry form to request current details.' },
 ];
 
 const LOCATIONS = [
@@ -124,8 +125,8 @@ const LOCATIONS = [
     id: 'rishikesh',
     href: '/retreats/yoga-retreat-rishikesh',
     tagline: 'The Yoga Capital',
-    description: 'Where yoga lives in India. The energy of the Ganges, living ashram traditions, and experienced teachers with lineage. The most established setting for practice.',
-    bestFor: 'Spiritual lineage, teacher access, tradition',
+    description: 'The primary Yoga product location. Dates, venue, teaching assignment, schedule, and availability are shown only when published.',
+    bestFor: 'Compare published Rishikesh product formats',
     altitude: '372m',
     image: '/Images/location/rishikesh.webp',
   },
@@ -133,9 +134,9 @@ const LOCATIONS = [
     name: 'Chakrata',
     id: 'chakrata/yoga-retreat',
     href: '/retreats/chakrata/yoga-retreat',
-    tagline: 'Forest Yoga',
-    description: 'A quieter forest setting for a grounded practice rhythm, with location-specific Yoga retreats arranged around the setting and group.',
-    bestFor: 'Forest quiet, accessible mountain practice',
+    tagline: 'On-request Yoga enquiry',
+    description: 'A demand-led enquiry. No recurring Yoga departure or location-specific schedule is currently published.',
+    bestFor: 'Ask whether a custom programme is feasible',
     altitude: '2,200m',
     image: '/Images/location/chakrata.webp',
   },
@@ -143,9 +144,9 @@ const LOCATIONS = [
     name: 'Zanskar',
     id: 'yoga-retreat-zanskar',
     href: '/yoga-retreat-zanskar',
-    tagline: 'Yoga at Altitude',
-    description: 'At 3,500 metres, every breath is conscious. Every pose demands presence. The altitude strips away autopilot and returns you to your own body.',
-    bestFor: 'Experienced practitioners, altitude challenge',
+    tagline: 'On-request Yoga enquiry',
+    description: 'A demand-led enquiry. Access, dates, altitude suitability, and programme details require confirmation.',
+    bestFor: 'Request current feasibility and suitability details',
     altitude: '3,500m',
     image: '/Images/location/zanskar.webp',
   },
@@ -153,29 +154,25 @@ const LOCATIONS = [
     name: 'Sankri',
     id: 'sankri',
     href: '/retreats/sankri/yoga-retreat',
-    tagline: 'Mountain Yoga & Trekking',
-    description: 'A high-altitude basecamp surrounded by peaks and forests. Yoga integrates with trekking and mountain movement for a complete body-mind experience.',
-    bestFor: 'Movement integration, trek + yoga',
+    tagline: 'On-request Yoga enquiry',
+    description: 'A demand-led enquiry. No fixed Yoga departure or scheduled trek-and-Yoga combination is currently published.',
+    bestFor: 'Ask about a location-specific enquiry',
     altitude: '1,920m',
     image: '/Images/location/sankri.webp',
   },
 ];
 
 const DURATION_OPTIONS = [
-  { label: 'Weekend', detail: 'A shorter reset when time is limited.', href: '/weekend-retreat-himalayas' },
-  { label: '5 days', detail: 'A practical first immersion with time to establish rhythm.', href: '/5-day-yoga-retreat' },
-  { label: '7 days', detail: 'A longer practice container for deeper immersion.', href: '/7-day-yoga-retreat' },
-  { label: '10 days', detail: 'An extended format for a slower, more immersive retreat.', href: '/10-day-yoga-retreat' },
+  { label: 'Weekend', detail: 'A shorter format; current Rishikesh Yoga dates are shown only when published.', href: '/retreats/yoga-retreat-rishikesh?duration=Weekend#yoga-enquiry' },
+  { label: '5 days', detail: 'A Rishikesh product format. Dates and programme details appear only when published.', href: '/5-day-yoga-retreat' },
+  { label: '7 days', detail: 'A Rishikesh product format. Dates and programme details appear only when published.', href: '/7-day-yoga-retreat' },
+  { label: '10 days', detail: 'A Rishikesh product format. Dates and programme details appear only when published.', href: '/10-day-yoga-retreat' },
 ];
 
 export default function YogaRetreatsPage() {
   const { reviewSchemas, aggregateSchema } = getReviewSchemasForPage(PAGE);
   const allReviews = PAGE.retreatServiceSlugs.flatMap((slug) => getReviewsForSlug(slug));
   const topReviews = allReviews.filter((r) => r.ratingValue >= 4).slice(0, 3);
-  const upcomingEvents = getUpcomingEvents()
-    .filter((e) => e.experienceSlug === PAGE.slug && e.locationId === 'rishikesh')
-    .slice(0, 3);
-
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
     { name: 'Retreats', url: buildCanonicalUrl('/retreats') },
@@ -465,16 +462,16 @@ export default function YogaRetreatsPage() {
               {h1Rest} <span>{h1LastWord}</span>
             </h1>
             <p className="med-body">
-              Yoga retreats in Rishikesh and the Himalayas, from weekend practice to longer immersion. Choose a structured retreat, explore Yoga Teacher Training, or enquire about a location-specific format.
+              Explore Rishikesh Yoga product formats, the separate unpublished TTC enquiry path, and demand-led location enquiries. Dates and programme details are shown only when published or confirmed.
             </p>
             <div className="med-hero-tags">
-              <span>All Levels</span>
-              <span>Experienced Teachers</span>
-              <span>Weekend to 10 Days</span>
-              <span>Retreats &amp; TTC</span>
+              <span>Suitability by programme</span>
+              <span>Teacher by departure</span>
+              <span>Weekend, 5, 7, and 10 days</span>
+              <span>Dates only when published</span>
             </div>
             <div className="med-hero-actions">
-              <Link href="/find-your-retreat" className="med-cta-btn">Help Me Choose →</Link>
+              <Link href="/find-your-retreat?type=yoga" className="med-cta-btn">Help Me Choose →</Link>
               <a href="#locations" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Explore Locations ↓</a>
             </div>
           </div>
@@ -485,10 +482,10 @@ export default function YogaRetreatsPage() {
           <div className="med-outer">
             <div className="med-yoga-strip">
               {[
-                { label: 'Locations', value: '3 Mountain Settings' },
-                { label: 'Group Size', value: 'Max 12 People' },
-                { label: 'Practice', value: 'Hatha · Vinyasa · Pranayama' },
-                { label: 'Experience', value: 'Beginners Welcome' },
+                { label: 'Locations', value: 'Rishikesh + enquiry locations' },
+                { label: 'Group Size', value: 'Confirmed per departure' },
+                { label: 'Practice', value: 'Details by departure' },
+                { label: 'Experience', value: 'Suitability by departure' },
               ].map((item) => (
                 <div key={item.label} className="med-yoga-strip-item">
                   <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#6b7280', fontWeight: 500 }}>{item.label}</span>
@@ -510,12 +507,12 @@ export default function YogaRetreatsPage() {
 
             <div className="med-grid-2" style={{ alignItems: 'center' }}>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <p className="med-body">A yoga retreat is not a holiday with yoga classes added. It is a deliberate container — morning practice as light arrives, evening practice as the mountains darken, and the space between filled with silence, nature, and your own breath.</p>
-                <p className="med-body">In the Himalayas, yoga carries a different weight. The altitude changes your breath. The mountain air changes your nervous system. The absence of urban noise changes what you hear inside your own body. Practice here is not performance — it is presence. The body is not pushed to perform; it is invited to settle, move, and observe itself with more clarity.</p>
-                <p className="med-body">For beginners, this can feel immediately more accessible than a studio class because the pace is slower, the sessions are structured with modification in mind, and there is time between practices for digestion, rest, and integration. That rhythm matters more than an intense class ever could.</p>
+                <p className="med-body">A Yoga retreat is a multi-day format for personal practice. The practices, daily rhythm, venue, and inclusions depend on the published departure or the programme proposed through enquiry.</p>
+                <p className="med-body">Location conditions differ. Confirm access, season, altitude considerations, and the practice setting for the selected location and dates.</p>
+                <p className="med-body">Beginner suitability and session adaptations are not universal promises. Share your experience and ask the team to confirm the approach for a specific programme.</p>
               </div>
               <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', aspectRatio: '16/9' }}>
-                <img src="/Images/experience-hubs/yoga-group.png" alt="Small group yoga practice on a mountain platform in the Himalayas" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src="/Images/experience-hubs/yoga-group.png" alt="Group yoga practice on a platform in a Himalayan setting" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
             </div>
           </div>
@@ -529,7 +526,7 @@ export default function YogaRetreatsPage() {
               <span className="med-eyebrow-text">Why the Himalayas</span>
             </div>
             <h2 className="med-h2">Why <span>Himalayan yoga</span> is different</h2>
-            <p className="med-body">The Himalayas are not a backdrop for yoga — they are a participant. The altitude, the quiet, the temperature, the light — all shape what happens on the mat.</p>
+            <p className="med-body">Altitude, weather, access, quiet, and practice settings vary by location and season. Confirm current conditions and suitability for the dates and programme being considered.</p>
 
             <div className="med-yoga-benefit-grid" style={{ marginTop: '1.5rem' }}>
               {BENEFITS.map((item) => (
@@ -575,7 +572,7 @@ export default function YogaRetreatsPage() {
             <div className="med-grid-2" style={{ marginTop: '1.5rem' }}>
               <div>
                 <h3 className="med-h3" style={{ fontSize: '0.75rem', fontWeight: 600, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#0f766e', marginBottom: '1rem' }}>
-                  ✓ Perfect if you are
+                  Consider this enquiry if you are
                 </h3>
                 <ul className="med-list">
                   {[
@@ -583,8 +580,8 @@ export default function YogaRetreatsPage() {
                     'Someone wanting to reconnect body and breath in nature',
                     'Looking for a physically grounded retreat, not purely meditative',
                     'Curious about yoga as a path to presence, not performance',
-                    'Wanting to combine yoga with trekking in the mountains',
-                    'An experienced yogi seeking teachers with lineage and depth',
+                    'Considering a custom Yoga enquiry, including whether another activity can be combined',
+                    'Seeking confirmed teacher and programme details before choosing',
                   ].map((item) => (
                     <li key={item} className="med-list-item">
                       <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
@@ -602,7 +599,6 @@ export default function YogaRetreatsPage() {
                     'A fitness-focused power yoga boot camp',
                     'Resort-style yoga with poolside relaxation',
                     'Teacher training certification',
-                    'Large group classes (50+ participants)',
                   ].map((item) => (
                     <li key={item} className="med-list-item" style={{ opacity: 0.5 }}>
                       <span className="med-list-dot"><span className="med-list-dot-inner" style={{ background: '#ccc' }} /></span>
@@ -623,8 +619,8 @@ export default function YogaRetreatsPage() {
               <span className="med-eyebrow-text">Where We Practice</span>
               <span className="med-eyebrow-line" />
             </div>
-            <h2 className="med-h2" style={{ textAlign: 'center' }}>Three Himalayan <span>settings</span> for yoga</h2>
-            <p className="med-body" style={{ textAlign: 'center', maxWidth: '40rem', margin: '0 auto 2rem' }}>Each location shapes practice differently. Choose based on what your body needs: tradition, altitude challenge, or mountain movement.</p>
+            <h2 className="med-h2" style={{ textAlign: 'center' }}>Yoga settings <span>across the Himalayas</span></h2>
+            <p className="med-body" style={{ textAlign: 'center', maxWidth: '40rem', margin: '0 auto 2rem' }}>Compare the four locations by access, conditions, and the programme details confirmed for your enquiry.</p>
 
             <div className="med-yoga-loc-grid">
               {LOCATIONS.map((loc) => (
@@ -675,8 +671,8 @@ export default function YogaRetreatsPage() {
             </div>
             <h2 className="med-h2">Yoga Teacher <span>Training</span></h2>
             <p className="med-body">A retreat is for your own practice: movement, breath, meditation, rest, and space to reset. Yoga Teacher Training is a separate, more structured learning pathway for people who want to study yoga in greater depth and explore teaching.</p>
-            <p className="med-body">Existing Yoga Teacher Training pathways are associated with Rishikesh, Thailand, and Bali and are guided by Sakshi. Dates, fees, curriculum, and other course details are confirmed by enquiry rather than assumed from a retreat page.</p>
-            <Link href="/retreats/journeys/yoga-and-movement" className="med-cta-outline">Explore Yoga &amp; Movement →</Link>
+            <p className="med-body">Yoga Teacher Training is separate from a personal-practice retreat. Current TTC dates, locations, duration, fees, curriculum, eligibility, accommodation, meals, facilitator, and certification details are not published here.</p>
+            <Link href="/yoga-teacher-training" className="med-cta-outline">Request TTC details →</Link>
           </div>
         </section>
 
@@ -694,7 +690,7 @@ export default function YogaRetreatsPage() {
             </div>
 
             <div className="med-yoga-funnel-grid">
-              <Link href="/find-your-retreat" className="med-card med-yoga-funnel-card">
+              <Link href="/find-your-retreat?type=yoga" className="med-card med-yoga-funnel-card">
                 <span className="med-num">01</span>
                 <h3 className="med-h3">Get Matched</h3>
                 <p className="med-body">Tell us about your practice, preferred duration, and location. The existing retreat finder is the best place to start when you are unsure.</p>
@@ -703,13 +699,13 @@ export default function YogaRetreatsPage() {
               <Link href="/retreats/yoga-retreat-rishikesh" className="med-card med-yoga-funnel-card">
                 <span className="med-num">02</span>
                 <h3 className="med-h3">Compare Locations</h3>
-                <p className="med-body">Rishikesh for tradition, Zanskar for altitude, Sankri for trek-yoga. See what fits your body.</p>
+                <p className="med-body">Compare the Rishikesh product with on-request location enquiries; suitability and programme details require confirmation.</p>
                 <span className="med-link">Explore Rishikesh →</span>
               </Link>
               <Link href="/retreats-for-beginners" className="med-card med-yoga-funnel-card">
                 <span className="med-num">03</span>
                 <h3 className="med-h3">First Yoga Retreat?</h3>
-                <p className="med-body">No experience needed. Our guide covers what to expect, what to bring, and the gentlest entry points.</p>
+                <p className="med-body">Read general guidance, then confirm beginner suitability for the specific programme.</p>
                 <span className="med-link">Beginner&apos;s guide →</span>
               </Link>
             </div>
@@ -740,84 +736,7 @@ export default function YogaRetreatsPage() {
           </section>
         )}
 
-        {/* ── FEATURED PROGRAMS ── */}
-        {(
-          <section className="med-shell med-section-alt med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
-            <div className="med-outer">
-              <div className="med-eyebrow" style={{ justifyContent: 'center' }}>
-                <span className="med-eyebrow-line" />
-                <span className="med-eyebrow-text">Scheduled Retreats</span>
-                <span className="med-eyebrow-line" />
-              </div>
-              <h2 className="med-h2" style={{ textAlign: 'center' }}>Upcoming <span>yoga programs</span></h2>
-              <p className="med-body" style={{ textAlign: 'center', maxWidth: '36rem', margin: '0 auto 2rem' }}>Confirmed departures with fixed dates, pricing, and limited seats.</p>
-
-              {upcomingEvents.length > 0 ? (
-                <div className="med-yoga-prog-grid">
-                  {upcomingEvents.map((ev) => {
-                  const statusLabel = ev.status === 'filling-fast' ? 'Filling Fast' : ev.status === 'last-few' ? 'Last Few Seats' : 'Open';
-                  return (
-                    <Link key={ev.slug} href={`/${ev.slug}`} className="med-yoga-prog-card">
-                      <div className="med-header">
-                        <div>
-                          <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: '#6b7280', fontWeight: 500, display: 'block', marginBottom: '0.35rem' }}>
-                            {ev.locationName} · {ev.month} {ev.year}
-                          </span>
-                          <h3 className="med-h3" style={{ fontSize: '1.05rem', marginBottom: 0 }}>{ev.label}</h3>
-                        </div>
-                        <span style={{
-                          fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.55rem', letterSpacing: '0.18em', textTransform: 'uppercase',
-                          fontWeight: 700, padding: '3px 8px', borderRadius: '999px', whiteSpace: 'nowrap',
-                          background: ev.status === 'filling-fast' ? '#fef3c7' : ev.status === 'last-few' ? '#fee2e2' : '#ecfdf5',
-                          color: ev.status === 'filling-fast' ? '#92400e' : ev.status === 'last-few' ? '#991b1b' : '#065f46',
-                        }}>{statusLabel}</span>
-                      </div>
-                      <div className="med-body-wrap">
-                        <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', marginBottom: '0.75rem' }}>
-                          <div>
-                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#6b7280', display: 'block', marginBottom: '0.15rem' }}>Duration</span>
-                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', fontWeight: 400, color: '#2B2A26' }}>{ev.durationDays} Days</span>
-                          </div>
-                          <div>
-                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#6b7280', display: 'block', marginBottom: '0.15rem' }}>Price</span>
-                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', fontWeight: 500, color: '#2B2A26' }}>₹{ev.price.toLocaleString('en-IN')}</span>
-                          </div>
-                          <div>
-                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#6b7280', display: 'block', marginBottom: '0.15rem' }}>Group</span>
-                            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.85rem', fontWeight: 400, color: '#2B2A26' }}>Max {ev.groupSize}</span>
-                          </div>
-                        </div>
-                        <p className="med-body" style={{ fontSize: '0.8rem', color: '#6b7280', marginBottom: '0.5rem' }}>{ev.dateRange} · All-inclusive</p>
-                        <ul className="med-list" style={{ gap: '0.35rem', marginBottom: '0.75rem' }}>
-                          {ev.included.slice(0, 3).map((inc) => (
-                            <li key={inc} className="med-list-item" style={{ gap: '0.5rem' }}>
-                              <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                              <span className="med-list-text" style={{ fontSize: '0.72rem', color: '#6b7280' }}>{inc}</span>
-                            </li>
-                          ))}
-                        </ul>
-                        <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid rgba(15,118,110,0.08)', paddingTop: '0.75rem' }}>
-                          <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#0f766e' }}>View Details →</span>
-                          <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', fontWeight: 500, color: ev.seatsLeft <= 3 ? '#c92a2a' : '#6b7280' }}>{ev.seatsLeft} seats left</span>
-                        </div>
-                      </div>
-                    </Link>
-                  );
-                  })}
-                </div>
-              ) : (
-                <div className="med-card" style={{ maxWidth: '42rem', margin: '0 auto', padding: '2rem', textAlign: 'center' }}>
-                  <h3 className="med-h3">No upcoming Rishikesh dates are published</h3>
-                  <p className="med-body">We only show fixed departures when they are confirmed in the retreat calendar. Share your preferred dates and duration and we can check the current Yoga options with you.</p>
-                  <Link href="/find-your-retreat" className="med-cta-btn">Check Availability →</Link>
-                </div>
-              )}
-              <div style={{ textAlign: 'center', marginTop: '2rem' }}>
-                <Link href="/find-your-retreat" className="med-cta-btn">Plan My Yoga Retreat →</Link>
-              </div>
-            </div>
-          </section>
-        )}
+        <YogaDepartureCalendar sourcePath={PATH} />
 
         {/* ── RELATED GUIDES ── */}
         <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
@@ -830,9 +749,22 @@ export default function YogaRetreatsPage() {
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
               <Link href="/retreats/yoga-retreat-rishikesh" className="med-cta-outline">Yoga Retreat in Rishikesh →</Link>
               <Link href="/retreats/yoga-retreat-uttarakhand" className="med-cta-outline">Yoga Retreats in Uttarakhand →</Link>
+              <Link href="/retreats/journeys/yoga-and-movement" className="med-cta-outline">Yoga &amp; Movement service →</Link>
+              <Link href="/retreat-calendar" className="med-cta-outline">All retreat dates →</Link>
+              <Link href="/retreat-programs" className="med-cta-outline">Compare retreat programmes →</Link>
+              <Link href="/compare/chakrata-yoga-retreat-vs-rishikesh-yoga-retreat" className="med-cta-outline">Rishikesh vs Chakrata Yoga →</Link>
+              <Link href="/compare/5-day-yoga-retreat-vs-7-day-yoga-retreat" className="med-cta-outline">5-day vs 7-day Yoga →</Link>
+              <Link href="/compare/yoga-retreat-vs-yoga-teacher-training" className="med-cta-outline">Yoga retreat vs TTC →</Link>
               <Link href="/5-day-yoga-retreat" className="med-cta-outline">5-Day Yoga Retreat →</Link>
               <Link href="/meditation-retreats" className="med-cta-outline">Meditation Retreats →</Link>
               <Link href="/retreats-for-beginners" className="med-cta-outline">Retreats for Beginners →</Link>
+              <Link href="/retreats/himalayan-retreats" className="med-cta-outline">Himalayan retreats guide →</Link>
+              <Link href="/retreats/retreats-near-delhi" className="med-cta-outline">Retreats near Delhi →</Link>
+              <Link href="/summer-retreat-himalayas" className="med-cta-outline">Seasonal planning →</Link>
+              <Link href="/blog/how-to-reach-rishikesh-for-a-retreat" className="med-cta-outline">Rishikesh travel guide →</Link>
+              <Link href="/blog/how-to-reach-sankri-for-a-retreat" className="med-cta-outline">Sankri travel guide →</Link>
+              <Link href="/blog/how-to-reach-chakrata-for-a-retreat" className="med-cta-outline">Chakrata travel guide →</Link>
+              <Link href="/how-to-reach-zanskar-for-a-retreat" className="med-cta-outline">Zanskar travel guide →</Link>
             </div>
           </div>
         </section>
@@ -849,8 +781,8 @@ export default function YogaRetreatsPage() {
 
             <div className="med-yoga-trust-grid">
               {[
-                { label: 'Practice-led', text: 'The Yoga offering brings together asana, pranayama, meditation, rest, and time in nature rather than treating practice as a single class.' },
-                { label: 'Sakshi-led', text: 'The repository identifies Sakshi as the Yoga facilitator, with 8 years of teaching experience across retreats, teacher training, aerial Yoga, and online classes.' },
+                { label: 'Practice outline', text: 'The Yoga & Movement service describes possible practice elements. Sessions and daily structure are confirmed for a published departure or proposed enquiry.' },
+                { label: 'Facilitator by departure', text: 'A facilitator is shown only when assigned to a published departure. Ask who would lead a proposed demand-led programme.' },
                 { label: 'Real enquiry', text: 'Dates, pricing, and location-specific details are confirmed through the existing enquiry and event systems instead of being assumed on this hub.' },
               ].map((item) => (
                 <div key={item.label} className="med-yoga-trust-item">
@@ -900,12 +832,12 @@ export default function YogaRetreatsPage() {
           </div>
           <div className="med-content">
             <h2 className="med-h2">Begin Your <span>Yoga Retreat</span></h2>
-            <p className="med-body">The Himalayas are not a backdrop for yoga — they are a participant. Tell us about your practice and we&apos;ll recommend the right setting.</p>
-            <Link href="/contact" className="med-cta-btn">Plan My Yoga Retreat →</Link>
+            <p className="med-body">Tell us about your practice and preferred location. The team can confirm current published options or review a demand-led enquiry.</p>
+            <Link href="/find-your-retreat?type=yoga" className="med-cta-btn">Help Me Choose →</Link>
             <div className="med-trust">
-              <span>Small groups (max 12)</span>
-              <span>All levels welcome</span>
-              <span>3–10 day programs</span>
+              <span>Suitability confirmed by programme</span>
+              <span>Dates and availability by enquiry</span>
+              <span>Weekend, 5-, 7-, and 10-day formats</span>
             </div>
           </div>
         </section>
@@ -925,7 +857,7 @@ export default function YogaRetreatsPage() {
                 <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Meditation Retreats</span>
                 <span style={{ color: '#0f766e' }}>→</span>
               </Link>
-              <Link href="/find-your-retreat" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <Link href="/find-your-retreat?type=yoga" className="med-card" style={{ padding: '0.85rem 1.2rem', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                 <span className="med-body" style={{ margin: 0, fontWeight: 500 }}>Find Your Retreat</span>
                 <span style={{ color: '#0f766e' }}>→</span>
               </Link>

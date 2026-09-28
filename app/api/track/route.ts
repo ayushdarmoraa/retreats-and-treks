@@ -38,6 +38,8 @@ const NAVIGATION_EVENTS = [
 const BEHAVIORAL_EVENTS = [
   'page_view',
   'cta_click',
+  'form_start',
+  'form_submission',
   'scroll_depth',
   'faq_expand',
   'comparison_sort',

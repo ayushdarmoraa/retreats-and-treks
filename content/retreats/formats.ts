@@ -29,10 +29,10 @@ export const retreatFormatsData: RetreatFormat[] = [
   {
     slug: 'yoga-retreat',
     title: 'Yoga Retreat',
-    description: 'A rejuvenating 2–3 day yoga retreat with daily classes, asana practice, pranayama, and holistic wellness in a mountain setting.',
+    description: 'Explore Weekend, 5-day, 7-day, and 10-day Rishikesh Yoga formats. Dates, schedules, and commercial details appear only when published; other locations are enquiry-led.',
     tag: 'Yoga',
     image: '/Images/Journeys/yoga.webp',
-    href: '/retreats/journeys/yoga-and-movement',
+    href: '/yoga-retreats',
   },
 ];
 

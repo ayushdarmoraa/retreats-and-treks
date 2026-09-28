@@ -3,7 +3,11 @@ import { TrekContent } from '@/types/content';
 import { buildCanonicalUrl } from './Metadata';
 import type { RetreatReview } from '@/content/reviews';
 import { schemaIds } from '@/lib/schemaIds';
-import type { RetreatProgramEvent } from '@/config/retreatProgramEvents';
+import {
+  isYogaDepartureBookable,
+  isYogaProductEvent,
+  type RetreatProgramEvent,
+} from '@/config/retreatProgramEvents';
 
 const BRAND_NAME = 'Retreats And Treks';
 
@@ -197,6 +201,11 @@ export function generateServiceSchema(
   locationName: string,
   event?: RetreatProgramEvent,
 ) {
+  const today = new Date().toISOString().slice(0, 10);
+  const shouldIncludeOffer = event && (isYogaProductEvent(event)
+    ? event.startDate >= today && event.endDate >= today && isYogaDepartureBookable(event)
+    : true);
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -208,7 +217,7 @@ export function generateServiceSchema(
       '@type': 'TouristDestination',
       name: locationName,
     },
-    ...(event
+    ...(shouldIncludeOffer && event
       ? {
           offers: {
             '@type': 'Offer',

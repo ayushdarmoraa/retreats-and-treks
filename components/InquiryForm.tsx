@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { buildAttributionQuery } from '@/utils/attribution';
 
 const MONTHS = [
   '', 'January', 'February', 'March', 'April', 'May', 'June',
@@ -20,12 +21,7 @@ export default function InquiryForm() {
   const category = searchParams.get('category') || '';
   const source = searchParams.get('source') || '';
   const prefillLocation = searchParams.get('location') || '';
-  const attributionParams = new URLSearchParams();
-  for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']) {
-    const value = searchParams.get(key);
-    if (value) attributionParams.set(key, value);
-  }
-  const attribution = attributionParams.toString();
+  const attribution = buildAttributionQuery(searchParams);
   const sourceWithAttribution = attribution
     ? `${source}?${attribution}`
     : source;

@@ -14,6 +14,7 @@
 import { useState, Suspense } from 'react';
 import InlineInquiryForm from './InlineInquiryForm';
 import { track } from '@/utils/telemetry';
+import { buildAttributionQuery, captureAttribution } from '@/utils/attribution';
 
 interface CTAExpandToggleProps {
   label: string;
@@ -21,6 +22,9 @@ interface CTAExpandToggleProps {
   category: string;
   sourcePath: string;
   location?: string;
+  yogaInterest?: string;
+  duration?: string;
+  yogaExperience?: string;
 }
 
 export default function CTAExpandToggle({
@@ -29,6 +33,9 @@ export default function CTAExpandToggle({
   category,
   sourcePath,
   location,
+  yogaInterest,
+  duration,
+  yogaExperience,
 }: CTAExpandToggleProps) {
   const [expanded, setExpanded] = useState(false);
 
@@ -38,11 +45,19 @@ export default function CTAExpandToggle({
         <button
           type="button"
           onClick={() => {
+            const searchParams = new URLSearchParams(window.location.search);
+            captureAttribution(searchParams);
+            const sourceUtm = buildAttributionQuery(searchParams);
             if (category.toLowerCase().includes('yoga') || sourcePath.toLowerCase().includes('yoga')) {
               track({
                 event: 'cta_click',
                 from: sourcePath,
-                meta: { label, vertical, category, location: location || '' },
+                meta: { label, vertical, category, location: location || '', duration: duration || '', yoga_interest: yogaInterest || '', yoga_experience: yogaExperience || '', source_utm: sourceUtm },
+              });
+              track({
+                event: 'form_start',
+                from: sourcePath,
+                meta: { vertical, category, location: location || '', duration: duration || '', yoga_interest: yogaInterest || '', yoga_experience: yogaExperience || '', source_utm: sourceUtm },
               });
             }
             setExpanded(true);
@@ -80,6 +95,9 @@ export default function CTAExpandToggle({
                 category={category}
                 sourcePath={sourcePath}
                 location={location}
+                yogaInterest={yogaInterest}
+                duration={duration}
+                yogaExperience={yogaExperience}
               />
             </Suspense>
           )}

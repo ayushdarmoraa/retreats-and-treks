@@ -25,6 +25,7 @@ export async function sendInquiryEmails(
   inquiry: Inquiry,
   tier: LeadTier = 'cold',
   score: number = 0,
+  yogaSalesRoute = '',
 ): Promise<{ sent: boolean; error?: string }> {
   if (!RESEND_API_KEY) {
     console.warn('[Email] RESEND_API_KEY not set — skipping email send.');
@@ -51,8 +52,8 @@ export async function sendInquiryEmails(
       await resend.emails.send({
         from: FROM_EMAIL,
         to: TEAM_EMAIL,
-        subject: `[${tier.toUpperCase()} ${score}] ${inquiry.interestedIn || 'General'} — ${inquiry.name}`,
-        html: buildTeamNotificationHtml(inquiry, tier, score),
+        subject: `[${tier.toUpperCase()} ${score}]${yogaSalesRoute ? ` [${yogaSalesRoute}]` : ''} ${inquiry.interestedIn || 'General'} — ${inquiry.name}`,
+        html: buildTeamNotificationHtml(inquiry, tier, score, yogaSalesRoute),
       });
     }
 
@@ -258,6 +259,7 @@ function buildTeamNotificationHtml(
   inquiry: Inquiry,
   tier: LeadTier,
   score: number,
+  yogaSalesRoute: string,
 ): string {
   const tierColors: Record<LeadTier, string> = {
     hot: '#dc2626',
@@ -278,6 +280,7 @@ function buildTeamNotificationHtml(
         <tr><td><strong>WhatsApp / Phone:</strong></td><td>${inquiry.phone || '—'}</td></tr>
         <tr><td><strong>Yoga interest:</strong></td><td>${inquiry.yogaInterest || '—'}</td></tr>
         <tr><td><strong>Yoga classification:</strong></td><td>${inquiry.yogaClassification || '—'}</td></tr>
+        <tr><td><strong>Suggested sales route:</strong></td><td>${yogaSalesRoute || '—'}</td></tr>
         <tr><td><strong>Interested in:</strong></td><td>${inquiry.interestedIn || '—'}</td></tr>
         <tr><td><strong>Location:</strong></td><td>${inquiry.location || '—'}</td></tr>
         <tr><td><strong>Month:</strong></td><td>${inquiry.month || '—'}</td></tr>

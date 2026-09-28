@@ -1,12 +1,14 @@
 // components/ChakrataRetreatPage.tsx
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { generateRetreatSchema, generateFAQSchema } from '@/components/seo/Schema';
+import { generateRetreatSchema, generateFAQSchema, generateBreadcrumbSchema } from '@/components/seo/Schema';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
 import { RetreatContent } from '@/types/content';
+import PrimaryCTA from '@/components/PrimaryCTA';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 
 type RetreatData = RetreatContent & {
   heroImage: string;
@@ -25,15 +27,22 @@ interface Props {
 }
 
 export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, waText, primaryCtaLabel = 'WhatsApp Us', showYogaAlternative = false }: Props) {
-  const retreatSchema = generateRetreatSchema(retreat);
+  const retreatSchema = showYogaAlternative ? null : generateRetreatSchema(retreat);
   const faqSchema = generateFAQSchema(retreat.faqs);
+  const breadcrumbSchema = showYogaAlternative
+    ? generateBreadcrumbSchema(breadcrumbItems.map((item) => ({
+        name: item.name,
+        url: buildCanonicalUrl(item.href ?? path),
+      })))
+    : null;
   const wa = `https://wa.me/919760446101?text=${encodeURIComponent(waText)}`;
 
   return (
     <TrackedPage page={path} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
       <AutoArticleSchema title={retreat.title} description={retreat.description} path={path} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(retreatSchema) }} />
+      {retreatSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(retreatSchema) }} />}
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      {breadcrumbSchema && <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />}
 
       <style>{`
         .med-shell { width: 100vw; margin-left: calc(-50vw + 50%); }
@@ -112,7 +121,7 @@ export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, wa
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '58rem', width: '100%', padding: '5rem 1.5rem 4.5rem', textAlign: 'center' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.3rem' }}>
             <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
-            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>Chakrata &middot; {retreat.duration}</span>
+            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>Chakrata &middot; {showYogaAlternative ? 'On request' : retreat.duration}</span>
             <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
           </div>
           <h1 style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(2.3rem, 4.6vw, 3.4rem)', fontWeight: 600, letterSpacing: '-0.03em', color: '#ffffff', margin: '0 0 1.1rem', lineHeight: 1.08, textShadow: '0 3px 24px rgba(0,0,0,0.5)' }}>
@@ -127,7 +136,11 @@ export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, wa
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href={wa} className="med-cta-btn med-cta-white" target="_blank" rel="noopener noreferrer">Book This Retreat →</a>
+            {showYogaAlternative ? (
+              <TrackedWhatsAppLink href={wa} sourcePath={path} location="Chakrata" intent="Yoga retreat enquiry" className="med-cta-btn med-cta-white">WhatsApp about Yoga dates →</TrackedWhatsAppLink>
+            ) : (
+              <a href={wa} className="med-cta-btn med-cta-white" target="_blank" rel="noopener noreferrer">Book This Retreat →</a>
+            )}
             <Link href="/retreats/chakrata" className="med-cta-btn med-cta-transparent">All Chakrata Experiences</Link>
           </div>
         </div>
@@ -163,14 +176,20 @@ export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, wa
           </div>
           <h2 className="med-h2">Your <span>itinerary</span></h2>
 
-          <div className="med-card" style={{ padding: '2rem' }}>
+          {showYogaAlternative ? (
+            <div className="med-card" style={{ padding: '2rem' }}>
+              <p className="med-body" style={{ marginBottom: 0 }}>
+                This is a demand-led Yoga location, not a recurring departure. No confirmed dates, duration, daily schedule, accommodation, meals, inclusions, or exclusions are currently published. Ask for the details of a proposed programme before making plans.
+              </p>
+            </div>
+          ) : <div className="med-card" style={{ padding: '2rem' }}>
             {retreat.itinerary.map((day, i, arr) => (
               <div key={i} style={{ display: 'grid', gridTemplateColumns: '2.5rem 1fr', gap: '0 1rem', paddingBottom: i < arr.length - 1 ? '1.2rem' : 0, borderBottom: i < arr.length - 1 ? '1px solid rgba(15,118,110,0.08)' : 'none', paddingTop: i > 0 ? '1.2rem' : 0 }}>
                 <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.6rem', fontWeight: 700, color: '#0f766e', letterSpacing: '0.1em', paddingTop: '0.15rem' }}>{String(i + 1).padStart(2, '0')}</span>
                 <p className="med-body" style={{ fontSize: '0.88rem', marginBottom: 0 }}>{day}</p>
               </div>
             ))}
-          </div>
+          </div>}
         </div>
       </section>
 
@@ -178,8 +197,19 @@ export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, wa
       <section className="med-shell" style={{ background: '#0b241f', padding: '3.5rem 0', textAlign: 'center' }}>
         <div className="med-inner" style={{ maxWidth: '44rem' }}>
           <h3 style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.3rem, 2vw, 1.6rem)', fontWeight: 500, color: '#ffffff', margin: '0 0 0.6rem' }}>Ready to begin?</h3>
-          <p className="med-body" style={{ color: 'rgba(255,255,255,0.6)', margin: '0 0 1.5rem', fontSize: '0.9rem' }}>Ask your questions, check availability, or book directly — we reply within hours.</p>
-          <a href={wa} className="med-cta-btn med-cta-white" target="_blank" rel="noopener noreferrer">{primaryCtaLabel} →</a>
+          <p className="med-body" style={{ color: 'rgba(255,255,255,0.6)', margin: '0 0 1.5rem', fontSize: '0.9rem' }}>{showYogaAlternative ? 'Ask about a proposed Yoga programme; dates and details require confirmation.' : 'Ask your questions, check availability, or book directly — we reply within hours.'}</p>
+          {showYogaAlternative ? (
+            <PrimaryCTA
+              label="Plan My Chakrata Yoga Retreat"
+              subtext="Share your preferred dates, group size, and experience; the team will confirm whether a custom programme can be arranged."
+              vertical="retreat"
+              category="yoga-and-movement"
+              sourcePath={path}
+              location="Chakrata"
+            />
+          ) : (
+            <a href={wa} className="med-cta-btn med-cta-white" target="_blank" rel="noopener noreferrer">{primaryCtaLabel} →</a>
+          )}
         </div>
       </section>
 
@@ -200,7 +230,9 @@ export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, wa
             <span className="med-eyebrow-text">What's Included</span>
           </div>
 
-          <div className="med-grid-2">
+          {showYogaAlternative ? (
+            <p className="med-body">Meals, accommodation, inclusions and exclusions are confirmed only for a proposed programme. They are not currently published for a fixed Chakrata Yoga departure.</p>
+          ) : <div className="med-grid-2">
             <div>
               <h3 className="med-h3" style={{ fontSize: '1rem' }}>Included</h3>
               {retreat.inclusions.map((inc, i) => (
@@ -219,7 +251,7 @@ export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, wa
                 </div>
               ))}
             </div>
-          </div>
+          </div>}
         </div>
       </section>
 
@@ -270,7 +302,11 @@ export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, wa
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '44rem', padding: '4rem 1.5rem' }}>
           <h2 style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontWeight: 500, color: '#F6F2E7', margin: '0 0 0.75rem' }}>Your Retreat Awaits</h2>
           <p className="med-body" style={{ color: 'rgba(255,255,255,0.6)', margin: '0 0 1.5rem', fontSize: '0.9rem' }}>Ask your questions or book directly — we reply within hours.</p>
-          <a href={wa} className="med-cta-btn med-cta-white" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.85rem', padding: '1rem 2.5rem' }}>Book This Retreat →</a>
+          {showYogaAlternative ? (
+            <TrackedWhatsAppLink href={wa} sourcePath={path} location="Chakrata" intent="Yoga retreat enquiry" className="med-cta-btn med-cta-white" style={{ fontSize: '0.85rem', padding: '1rem 2.5rem' }}>WhatsApp Us</TrackedWhatsAppLink>
+          ) : (
+            <a href={wa} className="med-cta-btn med-cta-white" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.85rem', padding: '1rem 2.5rem' }}>Book This Retreat →</a>
+          )}
         </div>
       </section>
 

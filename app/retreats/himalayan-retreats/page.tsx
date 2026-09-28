@@ -506,7 +506,6 @@ export default function HimalayanRetreatsPage() {
                 'rest-reset': '/Images/services/restreset.webp',
                 'burnout-recovery': '/Images/services/burnoutrec.webp',
                 'yoga-and-movement': '/Images/services/yoga.webp',
-                'yoga-movement': '/Images/services/yogamov.webp',
                 'meditation-and-silence': '/Images/Journeys/meditation.webp',
                 'meditation-silence': '/Images/Journeys/meditation.webp',
                 'art-creative': '/Images/services/artcreative.webp',

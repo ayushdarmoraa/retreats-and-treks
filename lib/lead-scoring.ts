@@ -30,11 +30,20 @@ export type YogaClassification =
   | 'UNCERTAIN'
   | '';
 
+export type YogaSalesRoute =
+  | 'RISHIKESH_SALES'
+  | 'CUSTOM_DEMAND_SALES'
+  | 'RISHIKESH_ALTERNATIVE'
+  | 'TTC_SALES'
+  | 'HELP_ME_CHOOSE'
+  | '';
+
 export interface LeadScore {
   score: number;
   tier: LeadTier;
   signals: string[];
   yogaClassification: YogaClassification;
+  yogaSalesRoute: YogaSalesRoute;
 }
 
 /** Classify Yoga intent without changing the shared numeric scoring model. */
@@ -44,28 +53,59 @@ export function classifyYogaInquiry(inquiry: Inquiry): YogaClassification {
   if (!isYoga) return '';
 
   if (inquiry.yogaInterest === 'Yoga TTC') return 'TTC';
+  if (inquiry.yogaInterest === 'Not sure') return 'UNCERTAIN';
+
+  const location = inquiry.location.trim().toLowerCase();
+  if (['sankri', 'chakrata', 'zanskar', 'other', 'uttarakhand', 'munsiyari', 'mussoorie'].includes(location)) {
+    return 'CUSTOM_LOCATION';
+  }
 
   const groupRetreat = ['3–4', '5–8', '9+'].includes(inquiry.groupSize);
   if (groupRetreat) return 'GROUP_RETREAT';
 
-  const location = inquiry.location.trim().toLowerCase();
-  if (['sankri', 'chakrata', 'zanskar', 'other'].includes(location)) {
-    return 'CUSTOM_LOCATION';
-  }
-
-  if (inquiry.yogaInterest === 'Not sure') return 'UNCERTAIN';
-
   const rishikeshRequested = location === 'rishikesh' || yogaSource.includes('rishikesh');
   if (rishikeshRequested) {
-    const directIntent = inquiry.yogaInterest === 'Yoga Retreat' && (
+    const hasContactNumber = Boolean(inquiry.phone.trim());
+    const hasSpecificDate = Boolean(inquiry.month.trim() || inquiry.preferredDate.trim());
+    const hasSpecificDuration = inquiry.duration !== '' && inquiry.duration !== 'Flexible';
+    const hasRelevantExperience = inquiry.yogaExperience !== '';
+    const hasGroupDetails = inquiry.groupSize !== '';
+    const hasBudgetDetails = inquiry.budget !== '' && inquiry.budget !== 'Not sure yet';
+    const directIntent = inquiry.yogaInterest === 'Yoga Retreat' && hasContactNumber && (
       inquiry.bookingReadiness === 'Ready to book' ||
-      inquiry.month !== '' ||
-      inquiry.preferredDate !== ''
+      inquiry.bookingReadiness === 'Planning' ||
+      hasSpecificDate ||
+      hasSpecificDuration ||
+      hasRelevantExperience ||
+      hasGroupDetails ||
+      hasBudgetDetails
     );
     return directIntent ? 'RISHIKESH_DIRECT' : 'RISHIKESH_PLANNING';
   }
 
   return 'UNCERTAIN';
+}
+
+/** Resolve the next sales path without assuming a contact owner exists. */
+export function routeYogaInquiry(inquiry: Inquiry): YogaSalesRoute {
+  const yogaSource = `${inquiry.category} ${inquiry.source}`.toLowerCase();
+  const isYoga = inquiry.yogaInterest !== '' || yogaSource.includes('yoga');
+  if (!isYoga) return '';
+  if (inquiry.yogaInterest === 'Yoga TTC') return 'TTC_SALES';
+  if (inquiry.yogaInterest === 'Not sure') return 'HELP_ME_CHOOSE';
+
+  if (['3–4', '5–8', '9+'].includes(inquiry.groupSize)) {
+    return 'CUSTOM_DEMAND_SALES';
+  }
+
+  const location = inquiry.location.trim().toLowerCase();
+  if (['sankri', 'chakrata', 'zanskar', 'other', 'uttarakhand', 'munsiyari', 'mussoorie'].includes(location)) {
+    return 'CUSTOM_DEMAND_SALES';
+  }
+  if (location === 'rishikesh' || (!location && yogaSource.includes('rishikesh'))) return 'RISHIKESH_SALES';
+  if (!location) return 'HELP_ME_CHOOSE';
+
+  return 'RISHIKESH_ALTERNATIVE';
 }
 
 /**
@@ -164,11 +204,24 @@ export function scoreInquiry(inquiry: Inquiry): LeadScore {
   // Cap at 100
   score = Math.min(score, 100);
 
+  if (inquiry.yogaInterest) signals.push(`yoga_interest:${inquiry.yogaInterest}`);
+  if (inquiry.yogaInterest && inquiry.phone.trim()) signals.push('yoga_contact_number:provided');
+  if (inquiry.duration) signals.push(`duration:${inquiry.duration}`);
+  if (inquiry.preferredDate) signals.push(`preferred_date:${inquiry.preferredDate}`);
+  if (inquiry.yogaExperience) signals.push(`yoga_experience:${inquiry.yogaExperience}`);
+  if (inquiry.bookingReadiness) signals.push(`booking_readiness:${inquiry.bookingReadiness}`);
+
   // Determine tier
   let tier: LeadTier;
   if (score >= 70) tier = 'hot';
   else if (score >= 40) tier = 'warm';
   else tier = 'cold';
 
-  return { score, tier, signals, yogaClassification: classifyYogaInquiry(inquiry) };
+  return {
+    score,
+    tier,
+    signals,
+    yogaClassification: classifyYogaInquiry(inquiry),
+    yogaSalesRoute: routeYogaInquiry(inquiry),
+  };
 }

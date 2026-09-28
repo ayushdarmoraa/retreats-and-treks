@@ -23,11 +23,19 @@ interface Lead {
   id: string;
   name: string;
   email: string;
+  phone: string | null;
+  yoga_interest: string | null;
+  yoga_classification: string | null;
+  yoga_sales_route: string | null;
   interested_in: string | null;
   location: string | null;
   month: string | null;
+  preferred_date: string | null;
   group_size: string | null;
   budget: string | null;
+  duration: string | null;
+  yoga_experience: string | null;
+  booking_readiness: string | null;
   source_url: string | null;
   vertical: string | null;
   category: string | null;
@@ -777,8 +785,18 @@ function LeadRow({
               {/* Lead details */}
               <div className="text-xs space-y-1 min-w-[200px]">
                 <div className="font-semibold text-gray-700 mb-1">Details</div>
+                {lead.yoga_interest && <div><span className="text-gray-500">Yoga interest:</span> {lead.yoga_interest}</div>}
+                {lead.yoga_classification && <div><span className="text-gray-500">Yoga classification:</span> {lead.yoga_classification}</div>}
+                {lead.yoga_sales_route && <div><span className="text-gray-500">Sales route:</span> {lead.yoga_sales_route}</div>}
+                {lead.phone && <div><span className="text-gray-500">Phone / WhatsApp:</span> {lead.phone}</div>}
+                {lead.location && <div><span className="text-gray-500">Location:</span> {lead.location}</div>}
                 {lead.month && <div><span className="text-gray-500">Month:</span> {lead.month}</div>}
+                {lead.preferred_date && <div><span className="text-gray-500">Preferred date:</span> {lead.preferred_date}</div>}
+                {lead.duration && <div><span className="text-gray-500">Duration:</span> {lead.duration}</div>}
+                {lead.yoga_experience && <div><span className="text-gray-500">Yoga experience:</span> {lead.yoga_experience}</div>}
+                {lead.booking_readiness && <div><span className="text-gray-500">Readiness:</span> {lead.booking_readiness}</div>}
                 {lead.group_size && <div><span className="text-gray-500">Group:</span> {lead.group_size}</div>}
+                {lead.budget && <div><span className="text-gray-500">Budget:</span> {lead.budget}</div>}
                 {lead.vertical && <div><span className="text-gray-500">Vertical:</span> {lead.vertical}</div>}
                 {lead.category && <div><span className="text-gray-500">Category:</span> {lead.category}</div>}
                 {lead.source_url && (

@@ -11,6 +11,9 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import Link from 'next/link';
+import { track } from '@/utils/telemetry';
+import { buildAttributionQuery } from '@/utils/attribution';
 
 const MONTHS = [
   '', 'January', 'February', 'March', 'April', 'May', 'June',
@@ -20,7 +23,7 @@ const MONTHS = [
 const GROUP_SIZES = ['', '1', '2', '3–4', '5–8', '9+'];
 
 const BUDGETS = ['', '₹15–30k', '₹30–60k', '₹60k+', 'Not sure yet'];
-const YOGA_DURATIONS = ['', 'Weekend', '5 days', '7 days', '10 days', '28 days-TTC', 'Flexible'];
+const YOGA_DURATIONS = ['', 'Weekend', '5 days', '7 days', '10 days', 'Flexible'];
 const YOGA_EXPERIENCE = ['', 'Beginner', 'Some experience', 'Experienced', 'Teacher'];
 const BOOKING_READINESS = ['', 'Exploring', 'Planning', 'Ready to book'];
 
@@ -29,6 +32,9 @@ interface InlineInquiryFormProps {
   category: string;
   sourcePath: string;
   location?: string;
+  yogaInterest?: string;
+  duration?: string;
+  yogaExperience?: string;
 }
 
 export default function InlineInquiryForm({
@@ -36,6 +42,9 @@ export default function InlineInquiryForm({
   category,
   sourcePath,
   location: prefillLocation,
+  yogaInterest: prefillYogaInterest,
+  duration: prefillDuration,
+  yogaExperience: prefillYogaExperience,
 }: InlineInquiryFormProps) {
   const searchParams = useSearchParams();
   const isYogaInquiry = vertical === 'retreat' && (
@@ -48,24 +57,25 @@ export default function InlineInquiryForm({
   const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [interestedIn, setInterestedIn] = useState<'trek' | 'retreat' | ''>(vertical || '');
-  const [yogaInterest, setYogaInterest] = useState('Yoga Retreat');
+  const [yogaInterest, setYogaInterest] = useState(prefillYogaInterest || 'Yoga Retreat');
   const [location, setLocation] = useState(prefillLocation || '');
   const [month, setMonth] = useState('');
   const [preferredDate, setPreferredDate] = useState('');
   const [groupSize, setGroupSize] = useState('');
   const [budget, setBudget] = useState('');
-  const [duration, setDuration] = useState('');
-  const [yogaExperience, setYogaExperience] = useState('');
+  const [duration, setDuration] = useState(prefillDuration || '');
+  const [yogaExperience, setYogaExperience] = useState(prefillYogaExperience || '');
   const [bookingReadiness, setBookingReadiness] = useState('');
   const yogaDurationOptions = yogaInterest === 'Yoga TTC'
-    ? ['', '28 days-TTC', 'Flexible']
-    : YOGA_DURATIONS.filter((value) => value !== '28 days-TTC');
+    ? ['', 'Flexible']
+    : YOGA_DURATIONS;
 
   // Honeypot — invisible to humans, bots fill it
   const [website, setWebsite] = useState('');
 
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [salesRoute, setSalesRoute] = useState('');
   const [error, setError] = useState('');
 
   const formRef = useRef<HTMLFormElement>(null);
@@ -82,13 +92,9 @@ export default function InlineInquiryForm({
     setSubmitting(true);
 
     try {
-      const attribution = new URLSearchParams();
-      for (const key of ['utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content']) {
-        const value = searchParams.get(key);
-        if (value) attribution.set(key, value);
-      }
-      const sourceWithAttribution = attribution.toString()
-        ? `${sourcePath}?${attribution.toString()}`
+      const attribution = buildAttributionQuery(searchParams);
+      const sourceWithAttribution = attribution
+        ? `${sourcePath}?${attribution}`
         : sourcePath;
 
       const res = await fetch('/api/inquire', {
@@ -116,12 +122,30 @@ export default function InlineInquiryForm({
         }),
       });
 
+      const data = await res.json();
       if (!res.ok) {
-        const data = await res.json();
         setError(data.error || 'Something went wrong. Please try again.');
         return;
       }
 
+      setSalesRoute(data.yogaSalesRoute || '');
+      if (isYogaInquiry) {
+        track({
+          event: 'form_submission',
+          from: sourcePath,
+          meta: {
+            category,
+            yoga_interest: yogaInterest,
+            location,
+            duration,
+            yoga_experience: yogaExperience,
+            booking_readiness: bookingReadiness,
+            yoga_classification: data.yogaClassification || '',
+            sales_route: data.yogaSalesRoute || '',
+            source_url: sourceWithAttribution,
+          },
+        });
+      }
       setSubmitted(true);
     } catch {
       setError('Network error. Please try again.');
@@ -139,6 +163,19 @@ export default function InlineInquiryForm({
         <p style={{ fontSize: '0.9rem', color: 'var(--color-text)', lineHeight: 1.6 }}>
           A mountain planner will reach out within 24 hours.
         </p>
+        {salesRoute === 'HELP_ME_CHOOSE' && (
+          <p style={{ margin: '0.75rem 0 0' }}>
+            <Link href="/find-your-retreat" style={{ color: 'var(--color-primary)' }}>Help me choose a retreat</Link>
+          </p>
+        )}
+        {salesRoute === 'RISHIKESH_ALTERNATIVE' && (
+          <p style={{ margin: '0.75rem 0 0' }}>
+            <Link href="/retreats/yoga-retreat-rishikesh" style={{ color: 'var(--color-primary)' }}>Explore the Rishikesh option</Link>
+          </p>
+        )}
+        {salesRoute === 'TTC_SALES' && (
+          <p style={{ margin: '0.75rem 0 0', color: 'var(--color-text)' }}>Your request is marked for Yoga Teacher Training information.</p>
+        )}
       </div>
     );
   }
@@ -194,8 +231,8 @@ export default function InlineInquiryForm({
         </div>
         {isYogaInquiry && (
           <div>
-            <label htmlFor="inline-phone" style={labelStyle}>WhatsApp / Phone</label>
-            <input id="inline-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Your WhatsApp number" style={inputStyle} />
+            <label htmlFor="inline-phone" style={labelStyle}>WhatsApp / Phone *</label>
+            <input id="inline-phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} required placeholder="Your WhatsApp number" style={inputStyle} />
           </div>
         )}
         <div>
@@ -235,9 +272,8 @@ export default function InlineInquiryForm({
               </select>
             </div>
           </div>
-          {yogaInterest !== 'Not sure' && (
-            <>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+          <>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
                 <div>
                   <label htmlFor="inline-yoga-duration" style={labelStyle}>Duration</label>
                   <select id="inline-yoga-duration" value={duration} onChange={(e) => setDuration(e.target.value)} style={inputStyle}>
@@ -251,10 +287,16 @@ export default function InlineInquiryForm({
                   </select>
                 </div>
               </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 11rem), 1fr))', gap: '0.75rem', marginBottom: '0.75rem' }}>
                 <div>
-                  <label htmlFor="inline-yoga-date" style={labelStyle}>Preferred month/date</label>
-                  <input id="inline-yoga-date" type="text" value={preferredDate} onChange={(e) => setPreferredDate(e.target.value)} placeholder="e.g. October or 12 Oct" style={inputStyle} />
+                  <label htmlFor="inline-yoga-month" style={labelStyle}>Preferred month</label>
+                  <select id="inline-yoga-month" value={month} onChange={(e) => setMonth(e.target.value)} style={inputStyle}>
+                    {MONTHS.map((value) => <option key={value} value={value}>{value || 'Flexible'}</option>)}
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="inline-yoga-date" style={labelStyle}>Preferred date (optional)</label>
+                  <input id="inline-yoga-date" type="text" value={preferredDate} onChange={(e) => setPreferredDate(e.target.value)} placeholder="e.g. 12 October" style={inputStyle} />
                 </div>
                 <div>
                   <label htmlFor="inline-yoga-readiness" style={labelStyle}>Booking readiness</label>
@@ -262,9 +304,26 @@ export default function InlineInquiryForm({
                     {BOOKING_READINESS.map((value) => <option key={value} value={value}>{value || 'Choose stage'}</option>)}
                   </select>
                 </div>
-              </div>
-            </>
-          )}
+            </div>
+          </>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
+            <div>
+              <label htmlFor="inline-yoga-group" style={labelStyle}>Group size</label>
+              <select id="inline-yoga-group" value={groupSize} onChange={(e) => setGroupSize(e.target.value)} style={inputStyle}>
+                {GROUP_SIZES.map((size) => (
+                  <option key={size} value={size}>{size || 'Choose group size'}</option>
+                ))}
+              </select>
+            </div>
+            <div>
+              <label htmlFor="inline-yoga-budget" style={labelStyle}>Budget range</label>
+              <select id="inline-yoga-budget" value={budget} onChange={(e) => setBudget(e.target.value)} style={inputStyle}>
+                {BUDGETS.map((value) => (
+                  <option key={value} value={value}>{value || 'Prefer not to say'}</option>
+                ))}
+              </select>
+            </div>
+          </div>
         </>
       ) : (
       <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem', marginBottom: '0.75rem' }}>
@@ -330,7 +389,7 @@ export default function InlineInquiryForm({
       </div>
       }
 
-      <div style={{ marginBottom: '0.75rem' }}>
+      {!isYogaInquiry && <div style={{ marginBottom: '0.75rem' }}>
         <label htmlFor="inline-budget" style={labelStyle}>Budget range (optional)</label>
         <select
           id="inline-budget"
@@ -342,7 +401,7 @@ export default function InlineInquiryForm({
             <option key={b} value={b}>{b || 'Prefer not to say'}</option>
           ))}
         </select>
-      </div>
+      </div>}
 
       {error && (
         <p style={{ color: '#dc2626', fontSize: '0.85rem', marginBottom: '0.5rem' }}>{error}</p>

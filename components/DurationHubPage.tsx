@@ -7,10 +7,13 @@ import Link from 'next/link';
 import type { DurationPage } from '@/config/durationPages';
 import { getLocationById } from '@/lib/locations';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
-import { generateBreadcrumbSchema, generateItemListSchema } from '@/components/seo/Schema';
+import { generateBreadcrumbSchema, generateFAQSchema, generateItemListSchema } from '@/components/seo/Schema';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
 import TrackedPage from '@/components/TrackedPage';
+import TrackedFAQ from '@/components/TrackedFAQ';
+import YogaDepartureCalendar from '@/components/YogaDepartureCalendar';
+import type { YogaRetreatProductId } from '@/config/retreatProgramEvents';
 
 interface DurationHubPageProps {
   page: DurationPage;
@@ -24,6 +27,12 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
     chakrata: '/retreats/chakrata/yoga-retreat',
     zanskar: '/yoga-retreat-zanskar',
   };
+  const yogaDurationProductIds: Record<string, YogaRetreatProductId> = {
+    '5-day-yoga-retreat': 'yoga-rishikesh-5-day',
+    '7-day-yoga-retreat': 'yoga-rishikesh-7-day',
+    '10-day-yoga-retreat': 'yoga-rishikesh-10-day',
+  };
+  const faqItems = (page.faqItems ?? []).map((item) => ({ question: item.question, answer: item.answer }));
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
     { name: page.h1, url: buildCanonicalUrl(`/${page.slug}`) },
@@ -42,6 +51,7 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
       };
     }),
   );
+  const faqSchema = faqItems.length > 0 ? generateFAQSchema(faqItems) : null;
 
   return (
     <TrackedPage page={`/${page.slug}`} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
@@ -53,6 +63,12 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
 
       <style>{`
         .med-shell { width: 100vw; margin-left: calc(-50vw + 50%); }
@@ -145,21 +161,24 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
             {page.intro}
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', marginTop: '1.5rem' }}>
-            <Link href="#plan" className="med-cta-btn">Plan My {page.durationLabel.split('/')[0].trim()} Retreat</Link>
+            <Link href="#plan" className="med-cta-btn">{isYogaDuration ? 'Ask About This Yoga Format' : `Plan My ${page.durationLabel.split('/')[0].trim()} Retreat`}</Link>
             <Link href="#locations" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Where to Do This</Link>
           </div>
         </div>
       </section>
 
       {/* ── PRIMARY CTA ── */}
-      <section  className="med-shell" style={{ background: '#ffffff', padding: '3rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+      <section id="plan" className="med-shell" style={{ background: '#ffffff', padding: '3rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
         <div className="med-inner">
           <PrimaryCTA
-            label={`Plan My ${page.durationLabel.split('/')[0].trim()} Retreat`}
-            subtext="Tell us your dates and interests — we'll build the right programme."
+            label={isYogaDuration ? 'Ask About This Yoga Format' : `Plan My ${page.durationLabel.split('/')[0].trim()} Retreat`}
+            subtext={isYogaDuration
+              ? 'Request current dates and programme details. This format is not scheduled unless a departure is published.'
+              : "Tell us your dates and interests — we'll build the right programme."}
             vertical="retreat"
             category={`duration-${page.slug}`}
             sourcePath={`/${page.slug}`}
+            location={isYogaDuration ? 'Rishikesh' : undefined}
           />
         </div>
       </section>
@@ -190,7 +209,12 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
             <span className="med-eyebrow-line" />
             <span className="med-eyebrow-text">Daily Schedule</span>
           </div>
-          <h2 className="med-h2">A Typical <span>Day</span></h2>
+          <h2 className="med-h2">{isYogaDuration ? <>Programme <span>Structure</span></> : <>A Typical <span>Day</span></>}</h2>
+          {isYogaDuration && (
+            <p className="med-body">
+              This is a format overview, not a confirmed departure schedule. Exact sessions, timings, accommodation, meals, and inclusions are provided only with a published departure.
+            </p>
+          )}
 
           <div className="med-table-wrap">
             <table className="med-table">
@@ -209,6 +233,14 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
           </div>
         </div>
       </section>
+
+      {isYogaDuration && yogaDurationProductIds[page.slug] && (
+        <YogaDepartureCalendar
+          sourcePath={`/${page.slug}`}
+          showEnquiry={false}
+          productId={yogaDurationProductIds[page.slug]}
+        />
+      )}
 
       {/* ── LOCATION ANGLES ── */}
       <section id="locations" className="med-shell" style={{ background: '#f7f9f7', padding: '4.5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
@@ -275,6 +307,19 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
         </section>
       )}
 
+      {faqItems.length > 0 && (
+        <section className="med-shell med-section-alt" style={{ padding: '4.5rem 0' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Common Questions</span>
+            </div>
+            <h2 className="med-h2">Frequently Asked <span>Questions</span></h2>
+            <TrackedFAQ items={faqItems} page={`/${page.slug}`} />
+          </div>
+        </section>
+      )}
+
       {/* ── CLOSING + CTA ── */}
       <section className="med-shell" style={{ background: '#f7f9f7', padding: '4.5rem 0' }}>
         <div className="med-inner" style={{ textAlign: 'center' }}>
@@ -287,6 +332,7 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
             vertical="retreat"
             category={`duration-${page.slug}`}
             sourcePath={`/${page.slug}`}
+            duration={page.slug === '5-day-yoga-retreat' ? '5 days' : page.slug === '7-day-yoga-retreat' ? '7 days' : page.slug === '10-day-yoga-retreat' ? '10 days' : undefined}
           />
         </div>
       </section>

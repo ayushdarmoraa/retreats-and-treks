@@ -30,6 +30,7 @@ async function main() {
       phone         TEXT,
       yoga_interest TEXT,
       yoga_classification TEXT,
+      yoga_sales_route TEXT,
       interested_in TEXT,
       location      TEXT,
       month         TEXT,
@@ -55,6 +56,7 @@ async function main() {
   await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS phone TEXT`;
   await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS yoga_interest TEXT`;
   await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS yoga_classification TEXT`;
+  await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS yoga_sales_route TEXT`;
   await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS preferred_date TEXT`;
   await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS duration TEXT`;
   await sql`ALTER TABLE inquiries ADD COLUMN IF NOT EXISTS yoga_experience TEXT`;

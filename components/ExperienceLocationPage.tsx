@@ -8,13 +8,24 @@ import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 
 interface Props {
   page: PageConfig;
 }
 
 export default function ExperienceLocationPage({ page }: Props) {
-  validateFAQSync(page.faqItems as { question: string; answer: string }[], `/${page.slug}`);
+  const isYogaLocation = page.experienceSlug === 'yoga-retreats';
+  const yogaFaqItems = [
+    { question: `Are fixed Yoga dates published for ${page.locationName}?`, answer: 'No recurring fixed departure is published on this location page. Dates and availability are shown only when linked to a real event in the retreat registry.' },
+    { question: 'What schedule, stay, meals, and inclusions should I expect?', answer: 'These details are not currently published for a future Yoga departure at this location. Ask for the written itinerary and inclusions for any proposed programme.' },
+    { question: 'How do I check whether the location and season are suitable?', answer: 'Share your experience and preferred dates. Access, seasonal suitability, and programme details must be confirmed for the specific request.' },
+    { question: 'What if this location cannot be arranged?', answer: 'The team can review the request and discuss the Rishikesh Yoga product as an alternative. An alternative is not booked or available until confirmed.' },
+  ];
+  const faqItems = isYogaLocation
+    ? yogaFaqItems
+    : page.faqItems.map((item) => ({ question: item.question, answer: item.answer }));
+  validateFAQSync(faqItems, `/${page.slug}`);
 
   const siblings = getSiblingPages(page.slug);
 
@@ -23,7 +34,7 @@ export default function ExperienceLocationPage({ page }: Props) {
     { name: `${page.label}s`, url: buildCanonicalUrl(`/${page.parentHubSlug}`) },
     { name: `${page.label} in ${page.locationName}`, url: buildCanonicalUrl(`/${page.slug}`) },
   ]);
-  const faqSchema = generateFAQSchema(page.faqItems as { question: string; answer: string }[]);
+  const faqSchema = generateFAQSchema(faqItems);
 
   const itineraryArcMap: Record<string, { duration: number; urlPrefix: string }> = {
     'meditation-retreats': { duration: 7, urlPrefix: 'meditation-retreat' },
@@ -42,8 +53,6 @@ export default function ExperienceLocationPage({ page }: Props) {
   const itinerarySlug = itineraryArc
     ? `${itineraryArc.duration}-day-${page.locationId}-${itineraryArc.urlPrefix}-itinerary`
     : undefined;
-  const isYogaLocation = page.experienceSlug === 'yoga-retreats';
-
   const eyebrow = { display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem' } as const;
   const eyebrowLine = { width: '24px', height: '1px', background: 'var(--color-primary)', display: 'inline-block' } as const;
   const eyebrowText = {
@@ -85,7 +94,7 @@ export default function ExperienceLocationPage({ page }: Props) {
             fontFamily: 'var(--font-geist-sans), sans-serif',
             fontSize: '0.8rem', letterSpacing: '0.1em',
             color: '#6b7280', margin: '0 0 1.25rem',
-          }}>{page.locationHeading}</p>
+          }}>{isYogaLocation ? 'On-request Yoga enquiries' : page.locationHeading}</p>
           <p style={{
             fontFamily: 'var(--font-geist-sans), sans-serif',
             fontSize: '0.95rem', fontWeight: 300,
@@ -93,7 +102,14 @@ export default function ExperienceLocationPage({ page }: Props) {
             margin: 0,
             paddingLeft: '1.5rem',
             borderLeft: '2px solid rgba(15,118,110,0.25)',
-          }}>{page.intro}</p>
+          }}>{isYogaLocation
+            ? `Yoga requests in ${page.locationName} are demand-led. This page is not a scheduled departure; current venue, access, season, and programme details must be confirmed for each enquiry.`
+            : page.intro}</p>
+          {isYogaLocation && (
+            <p role="status" style={{ margin: '1.25rem 0 0', color: '#4b5563', fontSize: '0.9rem', lineHeight: 1.7 }}>
+              This is an on-request Yoga location. No recurring fixed departure is implied; dates, access, season, and programme details are confirmed for each enquiry.
+            </p>
+          )}
         </div>
       </div>
 
@@ -101,11 +117,28 @@ export default function ExperienceLocationPage({ page }: Props) {
       <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '2rem 2rem 0' }}>
         <PrimaryCTA
           label={isYogaLocation ? 'Plan My Yoga Retreat' : `Inquire About This ${page.label}`}
-          subtext={`${page.label} in ${page.locationName}. Small groups, experienced guides. Tell us what you're seeking.`}
+          subtext={isYogaLocation
+            ? `This is an on-request enquiry, not a fixed departure. Share your experience and preferred dates for ${page.locationName}.`
+            : `${page.label} in ${page.locationName}. Small groups, experienced guides. Tell us what you're seeking.`}
           vertical="retreat"
           category={`exp-loc-${page.locationId}`}
           sourcePath={`/${page.slug}`}
+          location={page.locationName}
+          yogaInterest={isYogaLocation ? 'Yoga Retreat' : undefined}
         />
+        {isYogaLocation && (
+          <p style={{ margin: '0.75rem 0 0', textAlign: 'center' }}>
+            <TrackedWhatsAppLink
+              href={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I would like to enquire about a Yoga retreat in ${page.locationName}.`)}`}
+              sourcePath={`/${page.slug}`}
+              location={page.locationName}
+              intent="Yoga retreat enquiry"
+              style={{ color: 'var(--color-primary)', fontWeight: 500 }}
+            >
+              WhatsApp about this location
+            </TrackedWhatsAppLink>
+          </p>
+        )}
         {isYogaLocation && (
           <p style={{ margin: '0.9rem 0 0', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.82rem', fontWeight: 300, color: '#6b7280' }}>
             Looking for regular Yoga retreat departures?{' '}
@@ -128,7 +161,11 @@ export default function ExperienceLocationPage({ page }: Props) {
             <span style={eyebrowLine} />
             <span style={eyebrowText}>About {page.locationName}</span>
           </div>
-          <div style={{
+          {isYogaLocation ? (
+            <p role="status" style={{ margin: 0, fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.75, color: '#3a3a3a' }}>
+              Current Yoga-specific season, access, terrain suitability, and programme details are not published for this location. Confirm them for the dates being considered.
+            </p>
+          ) : <div style={{
             background: '#f7f9f7', border: '1px solid #e5e7eb',
             borderLeft: '3px solid var(--color-primary)',
             borderRadius: '8px', padding: '1.5rem',
@@ -151,7 +188,7 @@ export default function ExperienceLocationPage({ page }: Props) {
                 <strong style={{ fontWeight: 500, color: '#111111' }}>Nearby:</strong> {page.landmarks.join(', ')}
               </p>
             )}
-          </div>
+          </div>}
           <Link href={`/locations/${page.locationId}`} style={{
             display: 'inline-block', marginTop: '1rem',
             fontFamily: 'var(--font-geist-sans), sans-serif',
@@ -172,9 +209,11 @@ export default function ExperienceLocationPage({ page }: Props) {
       }}>
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 22rem), 1fr))', gap: '2.5rem' }}>
           <div>
-            <div style={eyebrow}><span style={eyebrowLine} /><span style={eyebrowText}>Who Is This For</span></div>
+            <div style={eyebrow}><span style={eyebrowLine} /><span style={eyebrowText}>{isYogaLocation ? 'Suitability' : 'Who Is This For'}</span></div>
             <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.6rem' }}>
-              {page.whoIsThisFor.map((item) => (
+              {(isYogaLocation
+                ? ['Share your Yoga experience, preferred dates, group size, and any access or mobility needs.', 'Suitability is confirmed against the proposed programme and travel conditions.']
+                : page.whoIsThisFor).map((item) => (
                 <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.65, color: '#3a3a3a' }}>
                   <span style={{ color: 'var(--color-primary)', flexShrink: 0, marginTop: '2px' }}>✦</span>
                   {item}
@@ -183,9 +222,11 @@ export default function ExperienceLocationPage({ page }: Props) {
             </div>
           </div>
           <div>
-            <div style={eyebrow}><span style={eyebrowLine} /><span style={eyebrowText}>What to Expect</span></div>
+            <div style={eyebrow}><span style={eyebrowLine} /><span style={eyebrowText}>{isYogaLocation ? 'Published Information' : 'What to Expect'}</span></div>
             <div style={{ display: 'flex', flexDirection: 'column' as const, gap: '0.6rem' }}>
-              {page.whatToExpect.map((item) => (
+              {(isYogaLocation
+                ? ['No fixed Yoga dates or departure-specific schedule are currently published.', 'Stay, meals, sessions, inclusions, and exclusions are confirmed by enquiry.']
+                : page.whatToExpect).map((item) => (
                 <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.6rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.88rem', fontWeight: 300, lineHeight: 1.65, color: '#3a3a3a' }}>
                   <span style={{ color: 'var(--color-primary)', flexShrink: 0, marginTop: '2px' }}>✦</span>
                   {item}
@@ -205,7 +246,11 @@ export default function ExperienceLocationPage({ page }: Props) {
       }}>
         <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem' }}>
           <div style={eyebrow}><span style={eyebrowLine} /><span style={eyebrowText}>Sample Day</span></div>
-          <div style={{ border: '1px solid #e5e7eb', borderRadius: '8px', overflow: 'hidden' }}>
+          {isYogaLocation ? (
+            <p role="status" style={{ margin: 0, border: '1px solid #e5e7eb', borderRadius: '8px', padding: '1rem 1.25rem', color: '#59636e', lineHeight: 1.7 }}>
+              A departure-specific schedule is not currently published for this on-request location. Ask the team for the proposed itinerary and timings.
+            </p>
+          ) : <div style={{ border: '1px solid #e5e7eb', borderRadius: '8px', overflow: 'hidden' }}>
             {page.sampleSchedule.map((row, i, arr) => {
               const [time, ...rest] = row.split(' — ');
               const activity = rest.join(' — ');
@@ -221,7 +266,7 @@ export default function ExperienceLocationPage({ page }: Props) {
                 </div>
               );
             })}
-          </div>
+          </div>}
           <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.78rem', fontWeight: 300, color: '#9ca3af', marginTop: '0.75rem' }}>
             Schedules adapt to the season, group energy, and {page.locationName}&rsquo;s natural rhythms.
           </p>
@@ -232,10 +277,14 @@ export default function ExperienceLocationPage({ page }: Props) {
       <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '2rem 2rem 0' }}>
         <PrimaryCTA
           label={isYogaLocation ? 'Plan My Yoga Retreat' : 'Plan My Retreat'}
-          subtext={`Tell us about yourself — we'll design a ${page.label.toLowerCase()} in ${page.locationName} that fits.`}
+          subtext={isYogaLocation
+            ? `Ask whether a custom Yoga programme can be arranged in ${page.locationName}. Dates and details are confirmed individually.`
+            : `Tell us about yourself — we'll design a ${page.label.toLowerCase()} in ${page.locationName} that fits.`}
           vertical="retreat"
           category={`exp-loc-${page.locationId}`}
           sourcePath={`/${page.slug}`}
+          location={page.locationName}
+          yogaInterest={isYogaLocation ? 'Yoga Retreat' : undefined}
         />
       </div>
 
@@ -269,7 +318,7 @@ export default function ExperienceLocationPage({ page }: Props) {
       )}
 
       {/* ── DAY-BY-DAY ITINERARY ── */}
-      {itinerarySlug && (
+      {itinerarySlug && !isYogaLocation && (
         <div style={{
           width: '100vw', marginLeft: 'calc(-50vw + 50%)',
           background: '#ffffff',
@@ -349,7 +398,7 @@ export default function ExperienceLocationPage({ page }: Props) {
       {/* ── FAQ ── */}
       <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '4rem 2rem 0' }}>
         <div style={eyebrow}><span style={eyebrowLine} /><span style={eyebrowText}>FAQ</span></div>
-        <TrackedFAQ items={page.faqItems as { question: string; answer: string }[]} page={`/${page.slug}`} />
+        <TrackedFAQ items={faqItems} page={`/${page.slug}`} />
       </div>
 
       {/* ── FOOTER LINKS ── */}

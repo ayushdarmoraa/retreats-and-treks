@@ -61,6 +61,20 @@ export const InquirySchema = z.object({
   vertical: z.string().trim().max(50).optional().default(''),
   category: z.string().trim().max(100).optional().default(''),
   trek: z.string().trim().max(100).optional().default(''),
+}).superRefine((inquiry, context) => {
+  if (!inquiry.yogaInterest) return;
+
+  if (!inquiry.phone) {
+    context.addIssue({ code: 'custom', path: ['phone'], message: 'Phone is required for Yoga enquiries' });
+  } else {
+    const digits = inquiry.phone.replace(/\D/g, '');
+    if (!/^[+\d\s().-]+$/.test(inquiry.phone) || digits.length < 7 || digits.length > 15) {
+      context.addIssue({ code: 'custom', path: ['phone'], message: 'Enter a valid international phone number' });
+    }
+  }
+  if (!z.string().email().safeParse(inquiry.email).success) {
+    context.addIssue({ code: 'custom', path: ['email'], message: 'A valid email is required for Yoga enquiries' });
+  }
 });
 
 export type InquiryInput = z.infer<typeof InquirySchema>;

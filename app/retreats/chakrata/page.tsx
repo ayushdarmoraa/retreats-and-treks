@@ -68,7 +68,7 @@ const CHAKRATA_RETREAT_SERVICES = [
     oneLineEssence: 'A compressed reset for those who need mountain time but have limited availability.',
   },
   {
-    slug: 'yoga-movement',
+    slug: 'yoga-and-movement',
     title: 'Yoga & Movement',
     oneLineEssence: 'Connect body, breath, and place through conscious movement.',
   },

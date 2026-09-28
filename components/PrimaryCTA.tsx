@@ -19,6 +19,9 @@ interface PrimaryCTAProps {
   category: string;
   sourcePath: string;
   location?: string;
+  yogaInterest?: string;
+  duration?: string;
+  yogaExperience?: string;
 }
 
 export default function PrimaryCTA({
@@ -28,6 +31,9 @@ export default function PrimaryCTA({
   category,
   sourcePath,
   location,
+  yogaInterest,
+  duration,
+  yogaExperience,
 }: PrimaryCTAProps) {
   return (
     <aside style={{
@@ -98,6 +104,9 @@ export default function PrimaryCTA({
           category={category}
           sourcePath={sourcePath}
           location={location}
+          yogaInterest={yogaInterest}
+          duration={duration}
+          yogaExperience={yogaExperience}
         />
 
       </div>

@@ -64,8 +64,11 @@ const FAQ_ITEMS = [
 export default function RetreatCalendarPage() {
   validateFAQSync(FAQ_ITEMS, PATH);
 
+  const today = new Date().toISOString().slice(0, 10);
+  const upcomingCalendarEvents = RETREAT_PROGRAM_EVENTS.filter((event) => event.startDate >= today);
+
   // Serialize events for the client component
-  const calendarEvents: CalendarEvent[] = RETREAT_PROGRAM_EVENTS.map((ev) => ({
+  const calendarEvents: CalendarEvent[] = upcomingCalendarEvents.map((ev) => ({
     slug: ev.slug,
     label: ev.label,
     locationId: ev.locationId,
@@ -87,8 +90,8 @@ export default function RetreatCalendarPage() {
   ]);
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
 
-  const totalSeats = RETREAT_PROGRAM_EVENTS.reduce((s, e) => s + e.seatsLeft, 0);
-  const locationCount = new Set(RETREAT_PROGRAM_EVENTS.map((e) => e.locationId)).size;
+  const totalSeats = upcomingCalendarEvents.reduce((s, e) => s + e.seatsLeft, 0);
+  const locationCount = new Set(upcomingCalendarEvents.map((e) => e.locationId)).size;
 
   // Split heading for green last word
   const h1Words = "Retreat Calendar — 2026".split(' ');
@@ -442,10 +445,10 @@ export default function RetreatCalendarPage() {
               {h1Rest} <span>{h1LastWord}</span>
             </h1>
             <p className="med-body">
-              {RETREAT_PROGRAM_EVENTS.length} scheduled retreats across {locationCount} Himalayan locations. {totalSeats} seats available. Filter by location, experience type, or month to find your dates.
+              {upcomingCalendarEvents.length} upcoming retreats across {locationCount} Himalayan locations. {totalSeats} seats are listed across future events. Filter by location, experience type, or month to find dates.
             </p>
             <div className="med-hero-tags">
-              <span>{RETREAT_PROGRAM_EVENTS.length} Retreats</span>
+                <span>{upcomingCalendarEvents.length} Retreats</span>
               <span>{locationCount} Locations</span>
               <span>{totalSeats} Seats Available</span>
               <span>2026 Schedule</span>
@@ -464,7 +467,7 @@ export default function RetreatCalendarPage() {
           <div className="med-outer">
             <div className="med-calendar-stats">
               <div className="med-calendar-stat">
-                <span className="med-number">{RETREAT_PROGRAM_EVENTS.length}</span>
+                <span className="med-number">{upcomingCalendarEvents.length}</span>
                 <span className="med-label">Scheduled Retreats</span>
               </div>
               <div className="med-calendar-stat">

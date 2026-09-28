@@ -20,6 +20,7 @@ import ProgramEventPage from '@/components/ProgramEventPage';
 
 export const dynamic = 'force-static';
 export const dynamicParams = false;
+export const revalidate = 86400;
 
 export function generateStaticParams() {
   const elSlugs = getAllExperienceLocationSlugs().map((slug) => ({ slug }));

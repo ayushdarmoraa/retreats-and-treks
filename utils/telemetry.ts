@@ -9,6 +9,8 @@
 type EventType =
   | 'page_view'
   | 'cta_click'
+  | 'form_start'
+  | 'form_submission'
   | 'topic_to_pillar'
   | 'blog_to_journey'
   | 'comparison_to_journey'

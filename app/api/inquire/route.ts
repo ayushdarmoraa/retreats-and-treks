@@ -121,12 +121,14 @@ export async function POST(request: NextRequest) {
     const inquiry: Inquiry = {
       ...result.data,
       yogaClassification: '',
+      yogaSalesRoute: '',
       timestamp: new Date().toISOString(),
     };
 
     // ── 5. LEAD SCORING ─────────────────────────────────────
-    const { score, tier, signals, yogaClassification } = scoreInquiry(inquiry);
+    const { score, tier, signals, yogaClassification, yogaSalesRoute } = scoreInquiry(inquiry);
     inquiry.yogaClassification = yogaClassification;
+    inquiry.yogaSalesRoute = yogaSalesRoute;
 
     // ── 6. STORE (with lead intelligence) ──────────────────
     const inquiryId = await insertInquiry(inquiry, score, tier);
@@ -140,11 +142,25 @@ export async function POST(request: NextRequest) {
       category: inquiry.category,
       ipHash,
       userAgent,
-      meta: { lead_score: score, lead_tier: tier, signals, yoga_classification: yogaClassification },
+      meta: {
+        lead_score: score,
+        lead_tier: tier,
+        signals,
+        yoga_interest: inquiry.yogaInterest,
+        location: inquiry.location,
+        duration: inquiry.duration,
+        preferred_date: inquiry.preferredDate,
+        yoga_experience: inquiry.yogaExperience,
+        group_size: inquiry.groupSize,
+        budget: inquiry.budget,
+        booking_readiness: inquiry.bookingReadiness,
+        yoga_classification: yogaClassification,
+        yoga_sales_route: yogaSalesRoute,
+      },
     }).catch(() => {});
 
     // ── 8. TIERED EMAIL (non-blocking) ─────────────────────
-    sendInquiryEmails(inquiry, tier, score)
+    sendInquiryEmails(inquiry, tier, score, yogaSalesRoute)
       .then((emailResult) => {
         const eventType = emailResult.sent ? 'inquiry_email_sent' : 'inquiry_email_failed';
         logConversionEvent({
@@ -164,7 +180,7 @@ export async function POST(request: NextRequest) {
         }).catch(() => {});
       });
 
-    return NextResponse.json({ success: true });
+    return NextResponse.json({ success: true, yogaClassification, yogaSalesRoute });
   } catch (err) {
     console.error('[API:Inquire] Unhandled error:', err instanceof Error ? err.message : err);
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });

@@ -1,53 +1,33 @@
 import { RetreatContent } from '@/types/content';
 
-/**
- * YOGA RETREAT FORMAT
- * A rejuvenating retreat focused on yoga asanas, pranayama, and holistic wellness.
- * Core experience: daily yoga classes, breathwork, philosophy, nature connection.
- * Runs in: Chakrata (primary), future: Sankri on request
- */
+/** Legacy generic format record; current location and schedule details are enquiry-led. */
 const yogaRetreat: RetreatContent = {
   slug: 'yoga-retreat',
   title: 'Yoga Retreat',
   description:
-    'A rejuvenating 2–3 day yoga retreat with daily classes, asana practice, pranayama, and holistic wellness in a mountain setting.',
+    'Demand-led Yoga retreat enquiries. No fixed dates, duration, price, or departure-specific programme details are currently published.',
 
   locationId: 'chakrata', // Primary location
   retreatType: 'Yoga',
 
-  duration: '2 Nights / 3 Days',
-  pickupPoint: 'Dehradun',
+  duration: 'Not published',
+  pickupPoint: 'Confirm by enquiry',
   bestFor: ['yoga enthusiasts', 'flexibility seekers', 'wellness lovers'],
 
   overview:
-    'Reconnect with your body and breath in this immersive yoga retreat. Surrounded by mountain air and forest silence, practice yoga asanas, learn pranayama techniques, and experience holistic wellness in the heart of the Himalayas.',
+    'Yoga requests are handled on demand rather than as a recurring fixed departure. The team must confirm whether a programme can be arranged and provide its dates, schedule, stay, meals, inclusions, exclusions, and access details.',
 
   highlights: [
-    'Sunrise and evening yoga classes for all levels',
-    'Asana practice (beginner to intermediate)',
-    'Pranayama and breathing techniques',
-    'Yoga philosophy and discussion sessions',
-    'Forest nature walks and outdoor practice',
+    'Demand-led enquiry',
+    'No fixed Yoga dates currently published',
+    'Programme details confirmed individually',
   ],
 
-  itinerary: [
-    'Day 1: Pickup from Dehradun, check-in, evening beginner yoga session and dinner',
-    'Day 2: Sunrise yoga, breakfast, intermediate asana class, nature walk, evening pranayama session',
-    'Day 3: Sunrise yoga, breakfast, yoga philosophy session, return to Dehradun',
-  ],
+  itinerary: [],
 
-  inclusions: [
-    'Accommodation',
-    'All meals',
-    'Yoga classes and sessions',
-    'Local transfers',
-  ],
+  inclusions: [],
 
-  exclusions: [
-    'Personal expenses',
-    'Travel insurance',
-    'Extra activities',
-  ],
+  exclusions: [],
 
   images: [
     {
@@ -60,17 +40,17 @@ const yogaRetreat: RetreatContent = {
     {
       question: 'What yoga level is this retreat suitable for?',
       answer:
-        'All levels—beginners through advanced practitioners. Classes are adaptive and personalized.',
+        'Experience requirements depend on the programme proposed. Share your experience and the team will confirm suitability before arranging a retreat.',
     },
     {
       question: 'Do I need to bring a yoga mat?',
       answer:
-        'Yoga mats are provided. Feel free to bring your own if you prefer a familiar mat.',
+        'Equipment and what to bring are not currently published. Confirm these details with the team for the proposed programme.',
     },
     {
       question: 'What if I have injuries or limitations?',
       answer:
-        'All instructors provide modifications. Please inform us of any injuries or limitations at arrival.',
+        'Share relevant limitations in your enquiry. The team must confirm suitability and adaptations for any proposed programme before you commit.',
     },
   ],
 

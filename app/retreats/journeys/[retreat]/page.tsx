@@ -664,34 +664,20 @@ export default async function RetreatDetailPage({ params }: PageProps) {
 
     <div className="also-outer">
       <SectionHeading
-        eyebrow="Also Available In"
-        title="Yoga courses beyond India"
-        description="Sakshi also leads yoga teacher training courses and retreats in Thailand, Bali, and Nepal. Ask for dates and details."
+        eyebrow="Separate Study Path"
+        title="Yoga Teacher Training Course"
+        description="Teacher Training is distinct from a personal-practice retreat. Course locations, dates, duration, fees, curriculum, eligibility, accommodation, meals, facilitator, and certification are not currently published."
       />
 
       <div className="also-grid">
-        {[
-          { location: 'Rishikesh, India', context: "Yoga's birthplace. Retreats, TTC, and aerial yoga programs with Sakshi.", badge: 'Primary', text: 'Hi, I want details about Yoga Retreats and TTC in Rishikesh.' },
-          { location: 'Thailand', context: 'Yoga teacher training in a tropical setting. Immersive multi-week format.', badge: 'TTC', text: 'Hi, I want details about Yoga Teacher Training in Thailand.' },
-          { location: 'Bali, Indonesia', context: 'Yoga teacher training surrounded by rice terraces and temple culture.', badge: 'TTC', text: 'Hi, I want details about Yoga Teacher Training in Bali.' },
-          { location: 'Nepal', context: 'Mountain yoga and teacher training near the Annapurna range.', badge: 'TTC', text: 'Hi, I want details about Yoga Teacher Training in Nepal.' },
-        ].map((loc) => (
-          <div key={loc.location} className="also-card">
-            <div className="also-card-header">
-              <h3 className="also-card-location">{loc.location}</h3>
-              <span className="also-card-badge">{loc.badge}</span>
-            </div>
-            <p className="also-card-context">{loc.context}</p>
-            <a
-              href={`https://wa.me/919760446101?text=${encodeURIComponent(loc.text)}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="also-card-cta"
-            >
-              Ask {loc.location.split(',')[0]} Dates →
-            </a>
+        <div className="also-card">
+          <div className="also-card-header">
+            <h3 className="also-card-location">Current course details</h3>
+            <span className="also-card-badge">Unpublished</span>
           </div>
-        ))}
+          <p className="also-card-context">Use the TTC enquiry path to request verified course information. An enquiry does not reserve a place or confirm that a course is currently running.</p>
+          <Link href="/yoga-teacher-training" className="also-card-cta">Request TTC details →</Link>
+        </div>
       </div>
     </div>
   </section>

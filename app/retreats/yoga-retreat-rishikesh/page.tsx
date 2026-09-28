@@ -14,14 +14,26 @@ import PrimaryCTA from '@/components/PrimaryCTA';
 import ReviewCard from '@/components/reviews/ReviewCard';
 import { getReviewsForSlug } from '@/content/reviews';
 import { getFacilitatorsByRetreat } from '@/config/facilitators';
+import YogaDepartureCalendar from '@/components/YogaDepartureCalendar';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
+import type { YogaRetreatProductId } from '@/config/retreatProgramEvents';
 
 const PATH = '/retreats/yoga-retreat-rishikesh';
+const YOGA_DURATIONS = ['Weekend', '5 days', '7 days', '10 days'] as const;
+const DURATION_PRODUCT_IDS: Record<(typeof YOGA_DURATIONS)[number], YogaRetreatProductId> = {
+  Weekend: 'yoga-rishikesh-weekend',
+  '5 days': 'yoga-rishikesh-5-day',
+  '7 days': 'yoga-rishikesh-7-day',
+  '10 days': 'yoga-rishikesh-10-day',
+};
+
+export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
     title: 'Yoga Retreats in Rishikesh | Retreats And Treks',
     description:
-      'Find yoga retreats in Rishikesh with structured asana, pranayama, meditation, Ganga-side practice, and multi-day residential programs.',
+      'Explore Yoga retreat formats in Rishikesh and enquire about current dates, programme details, pricing, and availability. Departures appear only when published.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },
@@ -30,12 +42,12 @@ export function generateMetadata(): Metadata {
       follow: true,
     },
     openGraph: {
-      title: 'Yoga Retreats in Rishikesh — Structured Practice on the Ganges',
+      title: 'Yoga Retreats in Rishikesh',
       description:
-        'Residential yoga retreats in Rishikesh with Ganga-side practice, pranayama, meditation, and structured multi-day Himalayan foothill immersion.',
+        'Explore Rishikesh Yoga retreat formats and request verified current departure details.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
-      images: buildOgImages('Yoga Retreats in Rishikesh — Structured Practice on the Ganges'),
+      images: buildOgImages('Yoga Retreats in Rishikesh'),
     },
   };
 }
@@ -44,42 +56,50 @@ const FAQ_ITEMS = [
   {
     question: 'Is Rishikesh the best place for a yoga retreat in India?',
     answer:
-      'Rishikesh is widely regarded as the best place for a yoga retreat in India because it brings together a living yoga culture, a high concentration of experienced teachers, and a river-and-mountain environment that supports daily practice without distraction. It is not only about tradition — it is about access. Different programmes, teaching styles, and levels of intensity are concentrated here in a way that is hard to replicate in a single city elsewhere in India.',
+      'Rishikesh is the primary recurring Yoga destination in the current product plan. Whether it suits you depends on your goals and the details of the departure. The exact venue, programme, and access arrangements are confirmed only when a departure is published.',
   },
   {
     question: 'Are yoga retreats in Rishikesh beginner-friendly?',
     answer:
-      'Yes. Most yoga retreats in Rishikesh structure sessions for mixed experience levels. Facilitators offer modifications for every posture. Pranayama and meditation sessions are taught from foundations — no prior experience assumed. Beginners often report faster progress in a retreat than in months of weekly classes because the immersive format allows the body and mind to adapt without interruption between sessions.',
+      'The existing Yoga & Movement service description welcomes different experience levels. Confirm the teaching approach, session adaptations, and facilitator for the specific departure before booking.',
   },
   {
     question: 'What is included in a yoga retreat in Rishikesh?',
     answer:
-      'A standard yoga retreat in Rishikesh includes daily asana sessions (typically two per day), pranayama instruction, guided meditation, vegetarian meals, accommodation, and facilitated group activities such as nature walks or evening satsang. Many programmes also include sound healing, journaling workshops, or Ayurvedic consultations. Yoga mats, props, and practice spaces are provided. You bring comfortable clothing and a willingness to follow the daily structure.',
+      'Inclusions are departure-specific. No upcoming Rishikesh Yoga departure currently publishes confirmed meals, accommodation, sessions, or exclusions. Ask for the written details before making plans.',
   },
   {
     question: 'Are yoga retreats in Rishikesh residential?',
     answer:
-      'Yes. Retreat programmes in Rishikesh are residential — you stay on-site for the full duration. This is essential to the retreat format. Living within the programme container, eating together, practising together, and sleeping on-site creates the sustained immersion that distinguishes a retreat from a series of drop-in classes. Accommodation ranges from simple ashram rooms to comfortable private rooms depending on the programme.',
+      'Residential status and room arrangements are not currently published for a future Rishikesh Yoga departure. Confirm the stay details for the specific programme before booking.',
   },
   {
     question: 'Can international visitors attend yoga retreats in Rishikesh?',
     answer:
-      'Absolutely. Rishikesh draws yoga practitioners from over fifty countries annually. Sessions are conducted in English. International visitors need a valid Indian tourist visa or e-visa. Rishikesh is well-connected — five to six hours from Delhi by road, with Dehradun airport forty-five minutes away offering domestic connections. Many retreats offer airport transfer arrangements for international participants.',
+      'Travel, language, visa, and transfer information should be confirmed for the selected departure. These details are not currently published with a future Rishikesh Yoga date.',
   },
   {
     question: 'How is a yoga retreat different from yoga teacher training?',
     answer:
-      'A yoga retreat focuses on personal practice, restoration, and immersive experience. It is for anyone seeking a structured pause. Yoga teacher training (YTT) is a professional certification programme — typically 200 or 500 hours — designed to qualify graduates to teach. Retreats are shorter (two to seven days), less academic, and prioritise personal transformation over technical instruction. If you want to deepen your practice, choose a retreat. If you want to teach, pursue YTT. The two can overlap, but they are not the same outcome.',
+      'A Yoga retreat is for personal practice; Teacher Training is a separate study pathway. Current TTC duration, fees, curriculum, and certification details are not published. See the dedicated TTC enquiry page for the current information state.',
   },
   {
     question: 'What should a beginner expect in a first yoga retreat?',
     answer:
-      'Expect a slower pace than a normal class, more personal attention, and a clearer structure for each day. You may notice that the first day feels physically simple but mentally noisy; the second day usually feels easier because the body starts to find its rhythm. Beginners are not expected to be flexible; the teaching focus is on breath awareness, alignment cues, and building consistency rather than demonstrating extreme range of motion.',
+      'The pace, session structure, and modifications depend on the published programme and facilitator. Share your experience level and ask the team to confirm suitability before booking.',
   },
 ];
 
-export default function YogaRetreatRishikeshPage() {
+export default async function YogaRetreatRishikeshPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ duration?: string }>;
+}) {
   validateFAQSync(FAQ_ITEMS, PATH);
+
+  const requestedDuration = (await searchParams).duration;
+  const selectedDuration = YOGA_DURATIONS.find((duration) => duration === requestedDuration);
+  const selectedProductId = selectedDuration ? DURATION_PRODUCT_IDS[selectedDuration] : undefined;
 
   const facilitator = getFacilitatorsByRetreat('yoga-and-movement')[0];
   const yogaReviews = getReviewsForSlug('yoga-and-movement');
@@ -98,7 +118,7 @@ export default function YogaRetreatRishikeshPage() {
     <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
       <AutoArticleSchema
         title="Yoga Retreats in Rishikesh"
-        description="Find yoga retreats in Rishikesh with structured asana, pranayama, meditation, Ganga-side practice, and residential programs."
+        description="Explore Rishikesh Yoga retreat formats and request verified dates, programme details, pricing, and availability."
         path={PATH}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -180,35 +200,48 @@ export default function YogaRetreatRishikeshPage() {
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '58rem', width: '100%', padding: '5rem 1.5rem 4.5rem', textAlign: 'center' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.3rem' }}>
             <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
-            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>Structured Practice &middot; Ganges</span>
+            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>Rishikesh Yoga Retreat</span>
             <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
           </div>
           <h1 style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(2.3rem, 4.6vw, 3.4rem)', fontWeight: 600, letterSpacing: '-0.03em', color: '#ffffff', margin: '0 0 1.1rem', lineHeight: 1.08, textShadow: '0 3px 24px rgba(0,0,0,0.5)' }}>
             Yoga Retreats in Rishikesh
           </h1>
           <p style={{ maxWidth: '40rem', margin: '0 auto 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '1.05rem', fontWeight: 400, lineHeight: 1.8, color: '#ffffff', textShadow: '0 2px 14px rgba(0,0,0,0.45)' }}>
-            Structured asana, pranayama, and meditation beside the Ganges — residential yoga programs in the Himalayan foothills.
+            Explore the Rishikesh Yoga retreat format. Exact venue, schedule, stay, meals, and included practices depend on a published departure.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
-            {['Beginner Friendly', 'Residential', 'Ganga-Side Practice', '3–7 Days'].map((tag) => (
+            {['Weekend', '5 days', '7 days', '10 days'].map((tag) => (
               <span key={tag} style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#ffffff', border: '1px solid rgba(255,255,255,0.4)', borderRadius: '999px', padding: '0.45rem 0.9rem', background: 'rgba(15,118,110,0.35)' }}>{tag}</span>
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in a yoga retreat in Rishikesh. Can you tell me more?")}`} className="med-cta-btn" target="_blank" rel="noopener noreferrer">Check Dates &amp; Programs</a>
+            <TrackedWhatsAppLink
+              href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in a yoga retreat in Rishikesh. Can you tell me more?")}`}
+              sourcePath={PATH}
+              location="Rishikesh"
+              intent="Yoga retreat enquiry"
+              className="med-cta-btn"
+            >
+              Check Dates &amp; Programs
+            </TrackedWhatsAppLink>
             <a href="#why-rishikesh" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Why Rishikesh</a>
           </div>
         </div>
       </section>
 
-      <PrimaryCTA
-        label="Plan My Yoga Retreat"
-        subtext="Share your preferred duration and timing. We will confirm the current Rishikesh Yoga options through the existing enquiry flow."
-        vertical="retreat"
-        category="yoga-and-movement"
-        sourcePath={PATH}
-        location="Rishikesh"
-      />
+      <div id="yoga-enquiry">
+        <PrimaryCTA
+          label="Plan My Yoga Retreat"
+          subtext="Share your preferred duration and timing. We will confirm the current Rishikesh Yoga options through the existing enquiry flow."
+          vertical="retreat"
+          category="yoga-and-movement"
+          sourcePath={PATH}
+          location="Rishikesh"
+          duration={selectedDuration}
+        />
+      </div>
+
+      <YogaDepartureCalendar sourcePath={PATH} showEnquiry={false} productId={selectedProductId} />
 
       {facilitator && (
         <section className="med-shell" style={{ background: '#f7f9f7', padding: '4rem 0' }}>
@@ -217,9 +250,9 @@ export default function YogaRetreatRishikeshPage() {
               <span className="med-eyebrow-line" />
               <span className="med-eyebrow-text">Your Facilitator</span>
             </div>
-            <h2 className="med-h2">Practice with <span>{facilitator.name}</span></h2>
+            <h2 className="med-h2">Yoga &amp; Movement service profile: <span>{facilitator.name}</span></h2>
             <p className="med-body"><strong>{facilitator.title}.</strong> {facilitator.bio}</p>
-            <p className="med-body" style={{ marginBottom: 0 }}>{facilitator.approach}</p>
+            <p className="med-body" style={{ marginBottom: 0 }}>{facilitator.approach} Assignment to a specific future Rishikesh departure is confirmed when that departure is published.</p>
           </div>
         </section>
       )}
@@ -247,22 +280,17 @@ export default function YogaRetreatRishikeshPage() {
             <span className="med-eyebrow-line" />
             <span className="med-eyebrow-text">Where Practice Begins</span>
           </div>
-          <h2 className="med-h2">Not a studio. A <span>tradition</span></h2>
+          <h2 className="med-h2">A personal-practice <span>Yoga retreat</span></h2>
           <p className="med-body">
-            Rishikesh is where serious yoga practice begins. Not in a studio with mirrored
-            walls and playlist curation — on the banks of the Ganges, in the foothills of the
-            Himalayas, inside a tradition that has sustained unbroken practice for generations.
-            A yoga retreat here is a residential programme: structured daily asana, pranayama,
-            meditation, and guided integration over multiple days. You arrive carrying whatever
-            the city has loaded onto you. You leave with a body that has remembered how to
-            breathe and a mind that has stopped racing.
+            Rishikesh is the primary recurring Yoga destination in the current product plan.
+            The Yoga &amp; Movement service describes asana, pranayama, meditation, and
+            restorative practice. A retreat venue, residential arrangement, and daily programme
+            are confirmed only with a published departure.
           </p>
           <p className="med-body" style={{ marginBottom: 0 }}>
-            This is not a holiday with yoga attached. It is a programme built around practice,
-            held in the one place on earth most associated with that practice. The river
-            provides the soundtrack. The mountains provide the frame. The teaching lineage
-            provides the structure. Everything else — the noise, the notifications, the
-            decision fatigue — stays outside the gate.
+            Product formats are available to enquire about; a format does not guarantee a
+            scheduled date, a riverfront venue, a particular teacher, or any specific included
+            activity. Check the calendar or ask the team for the confirmed details.
           </p>
         </div>
       </section>
@@ -274,32 +302,19 @@ export default function YogaRetreatRishikeshPage() {
             <span className="med-eyebrow-line" />
             <span className="med-eyebrow-text">Why This Town</span>
           </div>
-          <h2 className="med-h2">Why Rishikesh Is the <span>Yoga Capital</span> of India</h2>
+          <h2 className="med-h2">Yoga retreat <span>in Rishikesh</span></h2>
           <p className="med-body">
-            The title is not honorary. Rishikesh earned it through density of practice,
-            depth of lineage, and a physical environment that no other city in India can
-            match. The Ganges enters the plains here — cold, fast, and clean enough to sit
-            beside at dawn without the cognitive dissonance that other river cities create.
-            The Himalayan foothills rise immediately behind the town, delivering mountain
-            air, forest canopy, and a natural sound barrier against the world beyond.
+            Rishikesh has a well-known association with Yoga. This page routes enquiries to
+            the retreat products, but the exact practice venue and environment are confirmed
+            only for a published departure.
           </p>
           <p className="med-body">
-            The ashram tradition in Rishikesh is unbroken. Teachers here hold lineages in
-            Hatha, Ashtanga, Iyengar, Sivananda, and Kundalini yoga — not as academic
-            knowledge but as living practice transmitted teacher to student across decades.
-            This depth of instruction is what separates a Rishikesh retreat from a wellness
-            resort with a yoga schedule. The teaching carries weight. The corrections are
-            precise. The philosophy is integrated into every session, not bolted on as
-            an afterthought.
+            The retreat service description names Yoga practices, while teacher assignment,
+            lineage, class style, session format and experience adaptations are departure-level
+            details. Ask for these before choosing a specific programme.
           </p>
           <p className="med-body" style={{ marginBottom: 0 }}>
-            International recognition followed naturally. Practitioners from over fifty
-            countries travel to Rishikesh annually. The town holds India&apos;s highest
-            concentration of registered yoga schools, retreat centres, and residential
-            programmes. When the world thinks of yoga in India, it thinks of Rishikesh.
-            That reputation is infrastructure — it means the best teachers, the most refined
-            programmes, and the deepest practice containers are concentrated here. Explore
-            all{' '}
+            For other retreat types and destination information, see{' '}
             <Link href="/retreats/rishikesh" style={{ color: '#0f766e', fontWeight: 600 }}>
               Rishikesh retreat programs
             </Link>{' '}
@@ -317,69 +332,19 @@ export default function YogaRetreatRishikeshPage() {
           </div>
           <h2 className="med-h2">What a Yoga Retreat in Rishikesh <span>Looks Like</span></h2>
           <p className="med-body">
-            A retreat in Rishikesh follows a rhythm built around the river and the mountain
-            day. It is not a menu of activities you choose from — it is a structured
-            container designed to move you through a physical and mental reset over two to
-            seven days.
+            The exact venue, timetable, teaching style, stay, meals, and inclusions depend on
+            the selected departure. This page shows product formats and confirmed dates where
+            available rather than promising one schedule across every retreat.
           </p>
 
           <div className="med-card" style={{ padding: '2rem' }}>
-            <ul className="med-list">
-              <li className="med-list-item">
-                <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Morning Ganga-side practice (6:30–8:00 AM).</strong> The primary asana
-                  session. Ninety minutes of guided practice on a riverside platform as mist
-                  lifts from the water. Hatha or Vinyasa flow depending on the programme.
-                  Modifications for all levels. The sound of the Ganges holds attention without
-                  effort — external noise management is unnecessary when the river is the
-                  background.</span>
-              </li>
-              <li className="med-list-item">
-                <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Pranayama (9:00–9:45 AM).</strong> Structured breathwork following
-                  breakfast. Alternate nostril breathing, kapalabhati, box breathing, and
-                  extended exhale techniques. In Rishikesh&apos;s river-valley air, breath
-                  exercises carry a distinctive freshness that studio environments cannot
-                  replicate.</span>
-              </li>
-              <li className="med-list-item">
-                <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Guided meditation (11:00–11:45 AM).</strong> Seated practice — often
-                  on the riverbank or in a shaded courtyard. Breath-based concentration, body
-                  scanning, or mantra meditation depending on the tradition. This session
-                  integrates the morning&apos;s physical practice into stillness.</span>
-              </li>
-              <li className="med-list-item">
-                <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Afternoon free practice or nature time.</strong> Unstructured hours
-                  for personal practice, journaling, walking along the riverbank, or simply
-                  resting. This space is deliberate — the body needs integration time between
-                  structured sessions.</span>
-              </li>
-              <li className="med-list-item">
-                <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Evening session (5:00–6:30 PM).</strong> Restorative yoga, yin
-                  practice, or{' '}
-                  <Link href="/retreats/journeys/sound-healing" style={{ color: '#0f766e', fontWeight: 600 }}>
-                    sound healing retreats
-                  </Link>
-                  . Slower, softer, and designed to wind the nervous system down. Some programmes
-                  include evening satsang — guided philosophical discussion around a theme from
-                  the day&apos;s practice.</span>
-              </li>
-            </ul>
+            <p className="med-body">
+              The existing Yoga &amp; Movement service describes asana, pranayama, meditation, and restorative practice. A current Rishikesh departure schedule is not published, so session times, styles, meals, stay arrangements, inclusions, and exclusions must be confirmed for the selected programme.
+            </p>
+            <p className="med-body" style={{ marginBottom: 0 }}>
+              No published departure currently supports a booking CTA. Use the enquiry form to request verified programme details; a published date, price, and availability will appear here only when attached to a real departure.
+            </p>
           </div>
-
-          <p className="med-body" style={{ marginTop: '1.6rem' }}>
-            Meals are vegetarian, often sattvic — light, clean, and timed to support practice
-            rather than social dining. Digital detox is standard. Screens go off on arrival.
-            The retreat begins the moment the device goes dark.
-          </p>
-          <p className="med-body" style={{ marginBottom: 0 }}>
-            This is not yoga teacher training. Teacher training programmes (200-hour, 500-hour)
-            are academic and certification-focused. A retreat is experiential and
-            restoration-focused. Both exist in Rishikesh. They serve different purposes.
-          </p>
         </div>
       </section>
 
@@ -392,20 +357,15 @@ export default function YogaRetreatRishikeshPage() {
           </div>
           <h2 className="med-h2">Who Should Choose a <span>Yoga Retreat</span> in Rishikesh</h2>
           <p className="med-body">
-            Rishikesh serves the widest range of participants of any yoga destination in
-            India. The infrastructure supports everything from first-time gentle practice
-            to advanced intensive formats.
+            Share your experience level, access needs, and preferred duration. The team can
+            confirm whether the teaching approach for a published departure suits your needs.
           </p>
 
           <div className="med-card" style={{ padding: '2rem' }}>
             <ul className="med-list">
               <li className="med-list-item">
                 <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Beginners who want proper foundations.</strong> A retreat is the fastest
-                  way to build a practice. Three days of guided instruction with personal
-                  correction establishes alignment, breath awareness, and postural foundations
-                  that self-guided learning takes months to approximate. Rishikesh offers the
-                  widest selection of beginner-welcoming programmes.</span>
+                <span className="med-list-text"><strong>Beginners exploring a structured practice.</strong> Ask about the confirmed teaching approach, modifications, and facilitator for the selected departure.</span>
               </li>
               <li className="med-list-item">
                 <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
@@ -413,11 +373,7 @@ export default function YogaRetreatRishikeshPage() {
                   <Link href="/retreats/journeys/burnout-recovery" style={{ color: '#0f766e', fontWeight: 600 }}>
                     burnout recovery retreats
                   </Link>.</strong>{' '}
-                  Decision fatigue, screen overload, and sleep disruption respond powerfully to
-                  structured yoga immersion. The physical practice releases held tension. The
-                  breathwork resets the autonomic nervous system. The environment completes the
-                  intervention — Rishikesh is five to six hours from Delhi, making it the most
-                  accessible serious reset available to NCR professionals. See all{' '}
+                  No therapeutic or travel-time outcome is promised by this page. Confirm transport, access, and the details of the actual programme. See{' '}
                   <Link href="/retreats/retreats-near-delhi" style={{ color: '#0f766e', fontWeight: 600 }}>
                     retreats near Delhi
                   </Link>{' '}
@@ -425,27 +381,15 @@ export default function YogaRetreatRishikeshPage() {
               </li>
               <li className="med-list-item">
                 <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>International visitors.</strong> If you are travelling to India for
-                  yoga, Rishikesh is the destination. English-language instruction is standard.
-                  The town is well-connected — Dehradun airport is forty-five minutes away with
-                  domestic flights from Delhi, Mumbai, and Bangalore. Visa requirements are
-                  straightforward. The retreats are structured for international comfort without
-                  diluting the depth of practice.</span>
+                <span className="med-list-text"><strong>Visitors planning travel.</strong> Venue, language, transfers, arrival details, and visa requirements should be checked and confirmed for the selected departure.</span>
               </li>
               <li className="med-list-item">
                 <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Couples seeking a shared practice experience.</strong> Practising yoga
-                  together in a residential retreat — meals, sessions, silence, riverbank walks —
-                  creates shared presence that a resort holiday cannot. Rishikesh provides the
-                  structure that turns a trip into a transformative shared experience.</span>
+                <span className="med-list-text"><strong>People enquiring together.</strong> Share group size and dates; capacity and whether a group can be accommodated are confirmed by departure.</span>
               </li>
               <li className="med-list-item">
                 <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Short-term seekers (3–5 days).</strong> Not everyone has a week.
-                  Rishikesh&apos;s proximity to Delhi and its dense concentration of programmes
-                  means you can arrive Friday evening and depart Monday or Tuesday with a
-                  complete retreat experience. The short format works here because the teaching
-                  infrastructure is so refined — every session counts.</span>
+                <span className="med-list-text"><strong>People comparing durations.</strong> The product formats are Weekend, 5 days, 7 days, and 10 days. Check the individual pages for current published dates.</span>
               </li>
             </ul>
           </div>
@@ -461,64 +405,8 @@ export default function YogaRetreatRishikeshPage() {
           </div>
           <h2 className="med-h2">Best Time for a <span>Yoga Retreat</span> in Rishikesh</h2>
           <p className="med-body">
-            Rishikesh operates year-round, but the practice quality shifts with the seasons.
-            Choosing the right window depends on whether you prioritise outdoor practice
-            conditions, quieter atmosphere, or specific weather preferences.
+            Departure-specific season, access, and weather information is not currently published with a future Rishikesh Yoga date. Check the calendar above or ask the team to confirm conditions for the dates being considered.
           </p>
-
-          <div className="med-grid-2" style={{ marginTop: '1.8rem' }}>
-            <div className="med-card med-season-card">
-              <span className="med-season-tag">Strongest Window</span>
-              <h3 className="med-h3">October to November</h3>
-              <p className="med-body" style={{ marginBottom: 0 }}>Post-monsoon
-                clarity, mild temperatures (20–28°C), and excellent river conditions. Morning
-                Ganga-side practice is at its best — crisp air, clear skies, low humidity.
-                This is the strongest recommendation for first-time visitors.</p>
-            </div>
-            <div className="med-card med-season-card">
-              <span className="med-season-tag">Second Peak</span>
-              <h3 className="med-h3">February to April</h3>
-              <p className="med-body" style={{ marginBottom: 0 }}>Winter lifts,
-                wildflowers appear in the foothills, and the town is quieter than autumn.
-                Mornings are cool (12–18°C) and afternoons warm comfortably. Ideal for
-                practitioners who prefer fewer visitors and a more intimate retreat
-                atmosphere.</p>
-            </div>
-            <div className="med-card med-season-card">
-              <span className="med-season-tag">Summer</span>
-              <h3 className="med-h3">May to June</h3>
-              <p className="med-body" style={{ marginBottom: 0 }}>
-                <Link href="/retreats/summer-himalayan-retreats" style={{ color: '#0f766e', fontWeight: 600 }}>
-                  Summer Himalayan retreats
-                </Link>{' '}
-                are warm in Rishikesh — daytime temperatures reach 35–40°C. Early
-                morning and evening sessions remain comfortable, but midday practice moves
-                indoors. Some practitioners prefer the heat for its detoxifying intensity.</p>
-            </div>
-            <div className="med-card med-season-card">
-              <span className="med-season-tag">Monsoon</span>
-              <h3 className="med-h3">July to September</h3>
-              <p className="med-body" style={{ marginBottom: 0 }}>Rain, humidity,
-                and a transformed landscape. The Ganges rises and quickens. Outdoor riverside
-                practice shifts to covered spaces. The atmosphere is uniquely introspective —
-                fewer visitors, lush green foothills, and rain-on-roof meditation that carries
-                its own quality.</p>
-            </div>
-          </div>
-
-          <div className="med-card" style={{ padding: '1.8rem', marginTop: '1.4rem' }}>
-            <span className="med-season-tag">Winter</span>
-            <h3 className="med-h3">December to January</h3>
-            <p className="med-body" style={{ marginBottom: 0 }}>
-              <Link href="/retreats/winter-himalayan-retreats" style={{ color: '#0f766e', fontWeight: 600 }}>
-                Winter Himalayan retreats
-              </Link>{' '}
-              bring cool mornings (8–14°C) and mild afternoons. Rishikesh
-              never freezes. Winter practice has a sharp, clear quality — cold air deepens
-              pranayama and the low-angle winter light creates beautiful morning session
-              conditions.
-            </p>
-          </div>
         </div>
       </section>
 
@@ -535,45 +423,13 @@ export default function YogaRetreatRishikeshPage() {
             reality.
           </p>
 
-          <div className="med-card" style={{ padding: '1.8rem', marginBottom: '1.4rem' }}>
-            <span className="med-duration-badge">3D</span>
-            <h3 className="med-h3">Weekend format — the shorter reset</h3>
-            <p className="med-body" style={{ marginBottom: 0 }}>Friday arrival,
-              full Saturday immersion, Sunday morning closing. The existing Weekend route is a
-              shared Himalayan retreat format rather than a dedicated fixed Rishikesh Yoga
-              departure. Ask through the enquiry flow if you want to explore whether a weekend
-              Yoga format can be planned in Rishikesh.</p>
+          <p className="med-body">The Rishikesh Yoga product registry supports Weekend, 5-day, 7-day, and 10-day formats. The calendar above lists only published departures; duration-specific pages provide format guidance and enquiry paths.</p>
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <Link href="/retreats/yoga-retreat-rishikesh?duration=Weekend#yoga-enquiry" className="med-cta-outline">Weekend</Link>
+            <Link href="/5-day-yoga-retreat" className="med-cta-outline">5 days</Link>
+            <Link href="/7-day-yoga-retreat" className="med-cta-outline">7 days</Link>
+            <Link href="/10-day-yoga-retreat" className="med-cta-outline">10 days</Link>
           </div>
-
-          <div className="med-card" style={{ padding: '1.8rem', marginBottom: '1.4rem' }}>
-            <span className="med-duration-badge">5D</span>
-            <h3 className="med-h3">5 days (4 nights) — the sweet spot</h3>
-            <p className="med-body" style={{ marginBottom: 0 }}>By day
-              three, the body has fully adjusted to the retreat rhythm. Days four and five are
-              where the deeper benefits emerge — sustained concentration, emotional processing,
-              and the kind of insight that only arrives when the mind has been quiet long
-              enough. This format allows the teaching to build progressively rather than
-              compress everything into a single full day.</p>
-          </div>
-
-          <div className="med-card" style={{ padding: '1.8rem' }}>
-            <span className="med-duration-badge">7D</span>
-            <h3 className="med-h3">7 days (6 nights) — the full immersion format</h3>
-            <p className="med-body" style={{ marginBottom: 0 }}>One week in
-              Rishikesh — practising twice daily, eating clean, sleeping in mountain air,
-              disconnected from devices — creates a before-and-after line that shorter formats
-              approach but do not cross. Physical flexibility increases noticeably. Mental
-              patterns that seemed fixed begin to shift. Relationships with stress, sleep, and
-              attention reset at a foundational level.</p>
-          </div>
-
-          <p className="med-body" style={{ marginTop: '1.6rem', marginBottom: 0 }}>
-            Not sure which duration fits your situation? Our comparison of{' '}
-            <Link href="/blog/3-day-vs-5-day-himalayan-retreat" style={{ color: '#0f766e', fontWeight: 600 }}>
-              three-day versus five-day retreat formats
-            </Link>{' '}
-            covers the trade-offs in detail.
-          </p>
         </div>
       </section>
 
@@ -606,6 +462,12 @@ export default function YogaRetreatRishikeshPage() {
               formats, or return to the{' '}
               <Link href="/yoga-retreats" style={{ color: '#0f766e', fontWeight: 600 }}>main Yoga hub</Link>.
             </p>
+            <p className="med-body" style={{ margin: '1rem 0 0', fontSize: '0.95rem' }}>
+              Considering a study pathway? See the separate{' '}
+              <Link href="/yoga-teacher-training" style={{ color: '#0f766e', fontWeight: 600 }}>Yoga Teacher Training enquiry</Link>{' '}
+              and compare{' '}
+              <Link href="/compare/yoga-retreat-vs-yoga-teacher-training" style={{ color: '#0f766e', fontWeight: 600 }}>retreat vs TTC</Link>.
+            </p>
           </div>
         </div>
       </section>
@@ -629,9 +491,17 @@ export default function YogaRetreatRishikeshPage() {
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,31,28,0.86)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '42rem', padding: '4rem 1.5rem' }}>
-          <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.9vw, 2.1rem)', fontWeight: 500, color: '#F6F2E7' }}>Ready to practice beside the Ganges?</h2>
+          <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.9vw, 2.1rem)', fontWeight: 500, color: '#F6F2E7' }}>Ready to explore Rishikesh Yoga options?</h2>
           <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: 'rgba(246,242,231,0.78)' }}>Talk with us about dates, duration, and the right format for your practice.</p>
-          <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I want to plan a yoga retreat in Rishikesh. Can we discuss dates and options?')}`} className="med-cta-btn" target="_blank" rel="noopener noreferrer">Check Dates &amp; Programs</a>
+          <TrackedWhatsAppLink
+            href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I want to plan a yoga retreat in Rishikesh. Can we discuss dates and options?')}`}
+            sourcePath={PATH}
+            location="Rishikesh"
+            intent="Yoga retreat enquiry"
+            className="med-cta-btn"
+          >
+            Check Dates &amp; Programs
+          </TrackedWhatsAppLink>
         </div>
       </section>
 

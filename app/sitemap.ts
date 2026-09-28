@@ -10,12 +10,16 @@ import { EXPERIENCE_LOCATION_PAGES } from '@/config/experienceLocationPages';
 import { ITINERARY_PAGES } from '@/config/itineraryPages';
 import { RETREAT_PROGRAM_EVENTS } from '@/config/retreatProgramEvents';
 import { FACILITATOR_PROFILES } from '@/config/facilitators';
+import { YOGA_TTC_PRODUCT } from '@/config/retreatProgramEvents';
 
 const COMPARE_SEPARATOR = '-vs-';
 const DUPLICATE_YOGA_LOCATION_SLUGS = new Set([
   'yoga-retreat-rishikesh',
   'yoga-retreat-sankri',
+  'yoga-retreat-chakrata',
 ]);
+
+export const revalidate = 86400;
 
 function canonicalPair(a: string, b: string): [string, string] {
   return a < b ? [a, b] : [b, a];
@@ -60,6 +64,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.95,
     changeFrequency: 'weekly',
   });
+
+  for (const slug of [
+    'chakrata-yoga-retreat-vs-rishikesh-yoga-retreat',
+    '5-day-yoga-retreat-vs-7-day-yoga-retreat',
+    'yoga-retreat-vs-yoga-teacher-training',
+  ]) {
+    entries.push({
+      url: buildCanonicalUrl(`/compare/${slug}`),
+      lastModified: now,
+      priority: 0.82,
+      changeFrequency: 'monthly',
+    });
+  }
+
+  if (YOGA_TTC_PRODUCT.publicationState === 'published') {
+    entries.push({
+      url: buildCanonicalUrl('/yoga-teacher-training'),
+      lastModified: now,
+      priority: 0.9,
+      changeFrequency: 'monthly',
+    });
+  }
 
   // ── 1b. Experience authority pages (Axis 2 — problem-based) ──────────────
   for (const exp of EXPERIENCE_PAGES) {
@@ -373,6 +399,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
     });
   }
+
+  entries.push({
+    url: buildCanonicalUrl('/yoga-retreat-zanskar'),
+    lastModified: now,
+    priority: 0.85,
+    changeFrequency: 'monthly',
+  });
 
   // ── 3. Global category hubs ───────────────────────────────────────────────
   entries.push(

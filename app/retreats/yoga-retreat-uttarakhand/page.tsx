@@ -10,6 +10,7 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 
 const PATH = '/retreats/yoga-retreat-uttarakhand';
 
@@ -39,27 +40,27 @@ export function generateMetadata(): Metadata {
 const PLACES = [
   {
     id: 'rishikesh',
+    href: '/retreats/yoga-retreat-rishikesh',
     name: 'Rishikesh',
-    tag: 'Riverside Yoga Capital',
+    tag: 'Primary Yoga destination',
     image: '/Images/location/rishikesh.webp',
-    context:
-      "India's yoga capital on the Ganges — the widest teacher pool, ashram tradition, and the most accessible entry point at five to six hours from Delhi.",
+    context: 'The primary recurring Yoga destination in the current product plan. Dates, venue, programme and availability are displayed only when published.',
   },
   {
     id: 'chakrata',
+    href: '/retreats/chakrata/yoga-retreat',
     name: 'Chakrata',
-    tag: 'Quiet Forest Immersion',
+    tag: 'On-request Yoga enquiry',
     image: '/Images/location/chakrata.webp',
-    context:
-      'Deodar-covered ridges at 2,200 metres with no tourist strip. Yoga woven into nature immersion rather than delivered in a studio setting.',
+    context: 'A demand-led Yoga location. Dates, venue and programme details are confirmed individually; no recurring departure is implied.',
   },
   {
     id: 'sankri',
+    href: '/retreats/sankri/yoga-retreat',
     name: 'Sankri',
-    tag: 'High-Altitude Practice',
+    tag: 'On-request Yoga enquiry',
     image: '/Images/location/sankri.webp',
-    context:
-      'Upper Tons Valley, at the edge of the treeline. Yoga paired with wilderness — best suited to extended retreats and experienced practitioners.',
+    context: 'A demand-led Yoga location. Ask the team to confirm suitability, access, season and programme details for your request.',
   },
 ];
 
@@ -67,32 +68,32 @@ const FAQ_ITEMS = [
   {
     question: 'Is Rishikesh the best place for a yoga retreat in Uttarakhand?',
     answer:
-      'Rishikesh is the most established yoga destination in Uttarakhand and one of the most recognised globally. It offers the widest range of teachers, ashram traditions, and riverside practice settings. However, "best" depends on what you seek. If you want structured lineage-based yoga with spiritual infrastructure, Rishikesh is unmatched. If you want forest silence with yoga woven into nature immersion, Chakrata may serve you better. Both are strong choices — they serve different intentions.',
+      'Rishikesh is the primary recurring Yoga destination in the current product plan. Chakrata and Sankri are presented as on-request locations. Which setting is suitable depends on the actual programme, travel needs and dates confirmed for your enquiry.',
   },
   {
     question: 'Are yoga retreats in Uttarakhand suitable for beginners?',
     answer:
-      'Yes. Most yoga retreats in Uttarakhand welcome beginners and structure sessions to accommodate mixed experience levels. Facilitators adjust postures and offer modifications. Pranayama and meditation sessions require no prior experience. The mountain environment itself supports practice — clean air, natural quiet, and reduced stimulation make it easier to settle into focused attention. Beginners often report faster progress in a retreat setting than in months of studio classes.',
+      'Beginner suitability and session adaptations depend on the proposed programme and facilitator. Share your experience level and ask the team to confirm suitability before committing.',
   },
   {
     question: 'How long should a yoga retreat in Uttarakhand be?',
     answer:
-      'A two-to-three-night retreat delivers a genuine reset and is the most practical format for working professionals. You will experience multiple practice sessions, breathwork instruction, and enough environmental immersion for measurable benefit. For deeper transformation — especially if combining yoga with meditation, journaling, or nature therapy — a five-to-seven-night format allows the body to fully adjust and the practice to deepen beyond surface-level relaxation.',
+      'The product plan supports Weekend, 5-day, 7-day, and 10-day Yoga formats. The right choice depends on your available time and the programme details confirmed for a published departure; current dates and pricing appear in the calendar only when available.',
   },
   {
     question: 'Are yoga retreats in Uttarakhand open year-round?',
     answer:
-      'Rishikesh and Chakrata operate yoga retreat programs throughout the year. Rishikesh remains mild in winter and warm in summer. Chakrata is cool year-round with occasional light snow in January. Sankri operates from April through November, with winter snowfall limiting access. October to November and February to April are the most popular booking windows across all locations.',
+      'No year-round Yoga operating schedule is published. Season, access and availability should be confirmed for the selected destination and dates before travel.',
   },
   {
     question: 'What is typically included in a yoga retreat in Uttarakhand?',
     answer:
-      'A standard yoga retreat includes daily asana sessions (usually morning and late afternoon), pranayama instruction, guided meditation, meals (often vegetarian or sattvic), accommodation, and facilitated group activities such as nature walks or evening reflection circles. Some retreats also include sound healing, journaling workshops, or Ayurvedic consultations. Equipment like yoga mats and props are provided. You bring comfortable clothing and an open mind.',
+      'Inclusions vary by departure. Meals, accommodation, sessions, equipment, transport and exclusions are not currently attached to future Yoga departures in the event registry. Ask for written details before booking.',
   },
   {
     question: 'Do I need to be physically fit for a yoga retreat?',
     answer:
-      'No. Yoga retreats in Uttarakhand are designed to meet participants where they are. Sessions are adapted for different fitness levels — chair modifications, supported postures, and restorative sequences are standard offerings. The emphasis is on mindful movement and breath awareness, not athletic performance. If you can walk comfortably, you can participate fully in a yoga retreat.',
+      'Physical requirements and available adaptations are not published for a future departure. Share any relevant needs and ask the team to confirm the proposed programme before making plans.',
   },
 ];
 
@@ -216,12 +217,20 @@ export default function YogaRetreatUttarakhandPage() {
             gives way to mountain ridges, river valleys, and genuine Himalayan silence.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
-            {['3 Locations', 'Beginner Friendly', '5–9 Hrs from Delhi', 'Year-Round'].map((tag) => (
+            {['Rishikesh primary', 'Chakrata and Sankri on request', 'Dates only when published'].map((tag) => (
               <span key={tag} style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#ffffff', border: '1px solid rgba(255,255,255,0.4)', borderRadius: '999px', padding: '0.45rem 0.9rem', background: 'rgba(15,118,110,0.35)' }}>{tag}</span>
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in a yoga retreat in Uttarakhand. Can you tell me more?")}`} className="med-cta-btn" target="_blank" rel="noopener noreferrer">Check Dates &amp; Programs</a>
+            <TrackedWhatsAppLink
+              href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in a yoga retreat in Uttarakhand. Can you tell me more?")}`}
+              sourcePath={PATH}
+              location="Uttarakhand"
+              intent="Yoga retreat enquiry"
+              className="med-cta-btn"
+            >
+              Check Dates &amp; Programs
+            </TrackedWhatsAppLink>
             <a href="#places" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Compare Locations</a>
           </div>
         </div>
@@ -236,19 +245,15 @@ export default function YogaRetreatUttarakhandPage() {
           </div>
           <h2 className="med-h2">Where practice meets <span>altitude</span></h2>
           <p className="med-body">
-            Uttarakhand is where yoga moved from studio floors to mountain ridges. The state
-            holds India&apos;s deepest concentration of practice lineages, river-valley ashrams,
-            and high-altitude retreat settings — all within the Himalayan foothills. This is
-            not a drop-in class or a resort add-on. A yoga retreat here means structured daily
-            practice in an environment that amplifies every session: clean mountain air,
-            natural silence, and the kind of sensory reduction that makes focused attention
-            effortless.
+            This regional page connects the current Rishikesh Yoga product pathway with
+            demand-led enquiries for other Uttarakhand locations. The location cards below
+            lead to the relevant page; a link does not mean a fixed retreat date or a confirmed
+            programme is available there.
           </p>
           <p className="med-body" style={{ marginBottom: 0 }}>
-            Whether you are beginning a practice or deepening one that has plateaued in urban
-            settings, the Himalayan environment changes the equation. Altitude quiets the
-            nervous system. Forest canopy filters stimulation. River sound holds attention
-            without effort. The yoga is the same — the container is radically different.
+            Asana, pranayama, meditation, and other programme details depend on the selected
+            departure or custom enquiry. Dates, venue, access, season, stay, meals, facilitator,
+            and inclusions are shown only when verified for that request.
           </p>
         </div>
       </section>
@@ -262,30 +267,18 @@ export default function YogaRetreatUttarakhandPage() {
           </div>
           <h2 className="med-h2">Why Uttarakhand Is the Heart of <span>Yoga in the Himalayas</span></h2>
           <p className="med-body">
-            The connection between Uttarakhand and yoga is not marketing — it is history.
-            Sages practiced in these valleys long before the word &ldquo;retreat&rdquo; existed.
-            Rishikesh became the world&apos;s yoga capital not by accident but because the
-            Ganges valley offered precisely the conditions that sustained practice demands:
-            isolation from commerce, clean water, moderate climate, and a lineage of teachers
-            who never left.
+            Rishikesh is the primary recurring Yoga destination in this product plan. Chakrata
+            and Sankri are demand-led locations. This page helps visitors compare those enquiry
+            pathways without implying that all locations have scheduled programmes.
           </p>
           <p className="med-body">
-            Beyond the spiritual lineage, the physical environment is what makes Uttarakhand
-            irreplaceable for yoga. Mountain silence is not merely the absence of noise — it
-            is a positive quality that settles the mind before the first session begins.
-            Practice at altitude, with deodar forests on three sides and Himalayan peaks on
-            the horizon, engages the body differently. Breathing exercises at 1,500 to 2,200
-            metres feel qualitatively different from the same exercises at sea level. The air
-            is thinner, cooler, and carries none of the particulate load that urban lungs
-            have normalised.
+            Location-specific terrain, altitude, access, weather and practice arrangements
+            should be checked for the dates being considered. This page does not substitute
+            regional descriptions for departure-specific suitability information.
           </p>
           <p className="med-body" style={{ marginBottom: 0 }}>
-            River settings add another dimension. The sound of flowing water — not
-            recorded, not simulated, but present in the room where you practise — acts as a
-            natural anchor for meditation. Forest settings provide canopy shade for outdoor
-            sessions and walking meditation paths that no built environment can replicate.
-            This is why serious practitioners return to Uttarakhand. The environment is not
-            decoration — it is infrastructure.
+            Ask for the programme details tied to a published date or proposed custom
+            itinerary. No fixed date, venue or included activity is implied by a location page.
           </p>
         </div>
       </section>
@@ -300,15 +293,14 @@ export default function YogaRetreatUttarakhandPage() {
           </div>
           <h2 className="med-h2" style={{ textAlign: 'center' }}>Best Places for a <span>Yoga Retreat</span> in Uttarakhand</h2>
           <p className="med-body" style={{ textAlign: 'center', maxWidth: '46rem', margin: '0 auto 2.2rem' }}>
-            Uttarakhand offers multiple retreat environments — each with a distinct character
-            that serves different practice intentions. The strongest locations combine
-            accessibility with environmental quality, and all support structured yoga
-            programming.
+            Rishikesh is the primary recurring Yoga product location. Other locations are
+            enquiry-led; whether a programme is feasible depends on the requested dates and
+            details confirmed by the team.
           </p>
 
           <div className="med-grid-3" style={{ marginBottom: '2.2rem' }}>
             {PLACES.map((place) => (
-              <Link key={place.id} href={`/retreats/${place.id}`} className="med-loc-card" style={{ position: 'relative', height: '260px', borderRadius: '18px', textDecoration: 'none', color: 'white', display: 'block' }}>
+              <Link key={place.id} href={place.href} className="med-loc-card" style={{ position: 'relative', height: '260px', borderRadius: '18px', textDecoration: 'none', color: 'white', display: 'block' }}>
                 <img className="med-thumb-img" src={place.image} alt={`${place.name} yoga retreat`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,31,28,0.85), rgba(10,31,28,0.25) 55%, transparent 100%)' }} />
                 <span style={{ position: 'absolute', top: '1rem', left: '1rem', background: 'rgba(15,118,110,0.9)', color: 'white', padding: '0.3rem 0.6rem', borderRadius: '999px', fontSize: '0.56rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{place.tag}</span>
@@ -319,6 +311,10 @@ export default function YogaRetreatUttarakhandPage() {
               </Link>
             ))}
           </div>
+            <p className="med-body" style={{ textAlign: 'center' }}>
+              Zanskar is outside Uttarakhand and has a separate{' '}
+              <Link href="/yoga-retreat-zanskar" style={{ color: '#0f766e', fontWeight: 600 }}>demand-led Yoga enquiry</Link>.
+            </p>
 
           <div className="med-card" style={{ padding: '2rem', marginBottom: '1.5rem' }}>
             <h3 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: '1.3rem', fontWeight: 600, color: '#0f766e' }}>
@@ -327,28 +323,24 @@ export default function YogaRetreatUttarakhandPage() {
               </Link>
             </h3>
             <p className="med-body">
-              Rishikesh is the starting point for most yoga seekers in India, and for good
-              reason. The town holds the highest density of experienced yoga teachers, ashram
-              traditions, and structured training programmes in the country. Practice here
-              happens on the banks of the Ganges — morning sessions with mist on the water,
-              evening meditation as temple bells mark the transition to night.
+              Rishikesh is the primary recurring Yoga destination in the current product plan.
+              The exact retreat venue, departure schedule, teacher assignment, stay, meals, and
+              availability are not published unless attached to a confirmed departure.
             </p>
             <p className="med-body">
               What distinguishes{' '}
               <Link href="/retreats/yoga-retreat-rishikesh" style={{ color: '#0f766e', fontWeight: 600 }}>
                 Rishikesh Yoga retreats
               </Link>{' '}
-              from its reputation as a backpacker stop is the depth of the teaching lineage.
-              Retreat programmes here draw from Hatha, Ashtanga, Iyengar, and Kundalini
-              traditions — often with facilitators who have decades of unbroken practice.
-              Riverside pranayama at dawn, followed by two-hour asana sessions, followed by
-              guided meditation in the afternoon. The structure is rigorous but accessible.
-              Beginners are welcome; the teaching adjusts.
+              from a generic location page is the product path: Weekend, 5-day, 7-day and
+              10-day formats are defined, while dated departures and their verified details
+              appear in the calendar only when published. Ask about the teaching approach and
+              beginner suitability for the selected departure.
             </p>
             <p className="med-body" style={{ marginBottom: 0 }}>
-              Rishikesh is five to six hours from Delhi by road, making it the most accessible
-              yoga retreat destination in the Himalayas. For weekend formats or first-time
-              participants, it is the lowest-friction entry point.
+              Check travel and access details for the specific dates and venue being
+              considered. Current transport arrangements are not published in the departure
+              registry.
             </p>
           </div>
 
@@ -359,26 +351,21 @@ export default function YogaRetreatUttarakhandPage() {
               </Link>
             </h3>
             <p className="med-body">
-              Chakrata offers what Rishikesh cannot: complete quiet. Sitting at 2,200 metres on
-              a deodar-covered ridge in Dehradun district, this former cantonment town has no
-              tourist infrastructure, no ashram strip, and no ambient noise. Yoga practice here
-              happens on forest platforms with views of the greater Himalayan range.
+              Chakrata is an on-request Yoga location. No recurring departure, confirmed venue,
+              schedule or included activity is currently published for this page.
             </p>
             <p className="med-body">
               The{' '}
               <Link href="/retreats/chakrata/yoga-retreat" style={{ color: '#0f766e', fontWeight: 600 }}>
                 Chakrata retreat environment
               </Link>{' '}
-              is built for participants who want yoga woven into nature immersion rather than
-              delivered in a studio setting. Morning asana under deodar canopy. Walking
-              meditation on forest trails. Breathwork sessions where the only competing sound
-              is birdsong. Evening restorative yoga by firelight. The programme rhythm follows
-              the mountain day — sunrise to sunset — rather than a clock.
+              is an enquiry path for people considering a custom Yoga programme. Venue,
+              schedule, season, access, stay, meals, facilitator, and inclusions must be
+              confirmed for the proposed dates.
             </p>
             <p className="med-body" style={{ marginBottom: 0 }}>
-              For practitioners who have hit a plateau in urban settings, Chakrata&apos;s
-              sensory reduction often unlocks progress that more stimulation never could. Six
-              to seven hours from Delhi by road.
+              No fixed Chakrata Yoga dates are published. Use the location page to send an
+              enquiry and request verified travel and programme information.
             </p>
           </div>
 
@@ -389,20 +376,16 @@ export default function YogaRetreatUttarakhandPage() {
               </Link>
             </h3>
             <p className="med-body">
-              Sankri sits in the upper Tons Valley near the Govind Wildlife Sanctuary — deeper
-              into the mountains, at the edge of the treeline. Yoga here is paired with
-              wilderness: pine forest walks, glacial river meditation, and practice sessions
-              in settings where the nearest town is hours away.
+              Sankri is a demand-led Yoga enquiry. No recurring departure or location-specific
+              Yoga itinerary is currently published.
             </p>
             <p className="med-body" style={{ marginBottom: 0 }}>
-              The eight-to-nine-hour drive from Delhi makes{' '}
+              The travel time, access route, season, and programme for{' '}
               <Link href="/retreats/sankri/yoga-retreat" style={{ color: '#0f766e', fontWeight: 600 }}>
                 Sankri
               </Link>{' '}
-              better suited for extended retreats or long weekends. What you sacrifice in
-              accessibility, you gain in depth of immersion. For experienced practitioners
-              seeking a yoga retreat that strips away every layer of distraction, Sankri
-              delivers.
+              must be confirmed for the requested dates. Ask the team to assess whether a
+              custom programme is feasible before making travel plans.
             </p>
           </div>
         </div>
@@ -417,62 +400,16 @@ export default function YogaRetreatUttarakhandPage() {
           </div>
           <h2 className="med-h2">What to Expect in a <span>Yoga Retreat</span> in Uttarakhand</h2>
           <p className="med-body">
-            A yoga retreat in the Himalayas is not a hotel stay with a morning class attached.
-            It is a structured container designed to shift your physical and mental state over
-            two to seven days. Here is what a typical day looks like across our Uttarakhand
-            locations.
+            There is no single daily schedule across all Uttarakhand locations. A programme is
+            described only when confirmed for a departure or custom enquiry. The Yoga service
+            may include asana, pranayama, meditation, and restorative practice; timing and
+            inclusion vary by programme.
           </p>
 
           <div className="med-card" style={{ padding: '2rem' }}>
-            <ul className="med-list">
-              <li className="med-list-item">
-                <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Pre-dawn meditation (6:00–6:30 AM).</strong> Optional seated practice
-                  as the mountain light shifts. No instruction — just held space and silence.</span>
-              </li>
-              <li className="med-list-item">
-                <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Morning asana (7:00–8:30 AM).</strong> The primary practice session.
-                  Ninety minutes of guided posture work — Hatha or Vinyasa flow depending on the
-                  programme. Modifications offered for all levels. In Rishikesh, this often
-                  happens on a riverside platform. In Chakrata, on a forest deck.</span>
-              </li>
-              <li className="med-list-item">
-                <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Pranayama and breathwork (10:00–10:45 AM).</strong> Structured
-                  breathing techniques — alternate nostril breathing, box breathing, kapalabhati.
-                  Mountain air makes these sessions uniquely effective. Participants consistently
-                  note the difference between practising breathwork at altitude versus sea level.</span>
-              </li>
-              <li className="med-list-item">
-                <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Nature immersion (afternoon).</strong> Guided forest walk, waterfall
-                  visit, or riverside sitting. Not fitness hiking — slow, attentive movement
-                  through the landscape. This integrates the morning practice into the body.</span>
-              </li>
-              <li className="med-list-item">
-                <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Evening session (5:00–6:30 PM).</strong> Restorative yoga, yin
-                  practice, or{' '}
-                  <Link href="/retreats/journeys/sound-healing" style={{ color: '#0f766e', fontWeight: 600 }}>
-                    sound healing
-                  </Link>
-                  . Slower, deeper, and designed to prepare the body for sleep.</span>
-              </li>
-              <li className="med-list-item">
-                <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Digital detox.</strong> Screens stay off throughout. This is not a
-                  suggestion — it is structure. Removing the device removes the last source of
-                  urban rhythm. Most participants report that the absence of screens is the single
-                  most impactful element of the retreat.</span>
-              </li>
-            </ul>
+            <p className="med-body">Current dates, daily schedule, teaching style, meal plan, accommodation, device policy, and inclusions are not published for future Yoga departures. Ask for these details for the specific programme before booking.</p>
+            <p className="med-body" style={{ marginBottom: 0 }}>The <Link href="/retreats/yoga-retreat-rishikesh" style={{ color: '#0f766e', fontWeight: 600 }}>Rishikesh Yoga product page</Link> links to real product departures when present. Chakrata and Sankri are on-request; Zanskar information is handled through an enquiry.</p>
           </div>
-
-          <p className="med-body" style={{ marginTop: '1.6rem', marginBottom: 0 }}>
-            Meals are vegetarian, timed to support the practice rhythm, and prepared with
-            local ingredients. The food is part of the programme — not an afterthought.
-          </p>
         </div>
       </section>
 
@@ -485,45 +422,32 @@ export default function YogaRetreatUttarakhandPage() {
           </div>
           <h2 className="med-h2">Who Should Choose a <span>Yoga Retreat</span> in Uttarakhand</h2>
           <p className="med-body">
-            You do not need to be flexible, experienced, or spiritual. You need to be ready
-            for a structured pause.
+            Use the product and location pages to compare formats, then share your experience
+            and requirements. Eligibility and programme suitability are confirmed for the actual
+            departure or on-request proposal.
           </p>
 
           <div className="med-card" style={{ padding: '2rem' }}>
             <ul className="med-list">
               <li className="med-list-item">
                 <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Beginners with no formal practice.</strong> A retreat is arguably the
-                  best place to start. Immersive environments bypass the inconsistency of weekly
-                  classes. Three days of guided practice builds more foundation than three months
-                  of sporadic studio visits.</span>
+                <span className="med-list-text"><strong>People exploring Yoga practice.</strong> Share your experience level and ask how the confirmed programme adapts its sessions before booking.</span>
               </li>
               <li className="med-list-item">
                 <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Corporate professionals carrying chronic stress.</strong> Yoga is one
-                  of the most evidence-based interventions for nervous system regulation. A
-                  Himalayan retreat compounds the benefit — the environment does half the work
-                  before the first session begins.</span>
+                <span className="med-list-text"><strong>People comparing settings.</strong> Rishikesh is the primary product path; Chakrata and Sankri are on-request enquiries.</span>
               </li>
               <li className="med-list-item">
                 <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Couples seeking a shared reset.</strong> Practising together in a
-                  mountain setting creates connection and presence that a resort holiday does not
-                  deliver. Shared physical practice, shared meals, shared silence.</span>
+                <span className="med-list-text"><strong>People planning together.</strong> Share group size and requested dates so the team can confirm whether an appropriate programme can be arranged.</span>
               </li>
               <li className="med-list-item">
                 <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>International visitors.</strong> Uttarakhand is the global destination
-                  for authentic yoga practice. Rishikesh alone draws practitioners from over fifty
-                  countries annually. If you are travelling to India for yoga, this is where you
-                  come.</span>
+                <span className="med-list-text"><strong>Visitors needing travel details.</strong> Venue, transfer, language, visa, and arrival information are not attached to unpublished departures; request confirmed details before travel.</span>
               </li>
               <li className="med-list-item">
                 <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text"><strong>Long-stay participants.</strong> For those with the time and
-                  intention for seven-to-fourteen-day immersion, Uttarakhand offers the
-                  infrastructure and teaching depth to sustain extended practice without
-                  diminishing returns.</span>
+                <span className="med-list-text"><strong>People choosing a duration.</strong> Compare Weekend, 5-day, 7-day and 10-day formats; no schedule or departure is implied by the duration page.</span>
               </li>
             </ul>
           </div>
@@ -539,58 +463,13 @@ export default function YogaRetreatUttarakhandPage() {
           </div>
           <h2 className="med-h2">Best Time for a <span>Yoga Retreat</span> in Uttarakhand</h2>
           <p className="med-body">
-            Uttarakhand supports year-round yoga retreats, but each season changes the
-            character of the experience. Choosing the right window depends on what you want
-            from the environment.
+            No year-round Yoga operating calendar is published across these locations. Seasonal
+            suitability, access, and weather depend on destination and requested dates and
+            must be confirmed before travel.
           </p>
-
-          <div className="med-grid-2" style={{ marginTop: '1.8rem' }}>
-            <div className="med-card med-season-card">
-              <span className="med-season-tag">Peak Window</span>
-              <h3 className="med-h3">October to November &amp; February to April</h3>
-              <p className="med-body" style={{ marginBottom: 0 }}>
-                Clear skies, moderate temperatures, and the best Himalayan visibility. These
-                shoulder seasons offer the strongest combination of outdoor practice conditions
-                and comfortable living. Most retreat programmes run their flagship schedules
-                during these months.
-              </p>
-            </div>
-            <div className="med-card med-season-card">
-              <span className="med-season-tag">Summer</span>
-              <h3 className="med-h3">May to June</h3>
-              <p className="med-body" style={{ marginBottom: 0 }}>
-                <Link href="/retreats/summer-himalayan-retreats" style={{ color: '#0f766e', fontWeight: 600 }}>
-                  Summer Himalayan retreats
-                </Link>{' '}
-                offer heat escape — Chakrata and Sankri remain cool while plains temperatures
-                climb past 40°C.
-              </p>
-            </div>
-            <div className="med-card med-season-card">
-              <span className="med-season-tag">Monsoon</span>
-              <h3 className="med-h3">July to September</h3>
-              <p className="med-body" style={{ marginBottom: 0 }}>
-                Limits outdoor sessions but creates a uniquely introspective atmosphere for
-                indoor practice with rain on the roof.
-              </p>
-            </div>
-            <div className="med-card med-season-card">
-              <span className="med-season-tag">Winter</span>
-              <h3 className="med-h3">December to February</h3>
-              <p className="med-body" style={{ marginBottom: 0 }}>
-                <Link href="/retreats/winter-himalayan-retreats" style={{ color: '#0f766e', fontWeight: 600 }}>
-                  Winter Himalayan retreats
-                </Link>{' '}
-                suit practitioners who want cold-air breathwork and the meditative quality of
-                short mountain days. Rishikesh stays mild. Chakrata offers crisp mornings with
-                occasional frost. Sankri closes for the season.
-              </p>
-            </div>
-          </div>
-
-          <p className="med-body" style={{ marginTop: '1.6rem', marginBottom: 0 }}>
-            Each window serves a different practice intention — there is no wrong time, only
-            different experiences.
+          <p className="med-body" style={{ marginTop: '1rem', marginBottom: 0 }}>
+            Ask the team to verify conditions for the actual dates and location. No season shown
+            here should be treated as confirmation that a Yoga departure is operating.
           </p>
         </div>
       </section>
@@ -612,6 +491,16 @@ export default function YogaRetreatUttarakhandPage() {
                 Uttarakhand retreats
               </Link>.
             </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1rem' }}>
+              <Link href="/yoga-retreats" className="med-cta-outline">Yoga retreats hub</Link>
+              <Link href="/5-day-yoga-retreat" className="med-cta-outline">5-day Yoga</Link>
+              <Link href="/7-day-yoga-retreat" className="med-cta-outline">7-day Yoga</Link>
+              <Link href="/10-day-yoga-retreat" className="med-cta-outline">10-day Yoga</Link>
+              <Link href="/yoga-teacher-training" className="med-cta-outline">Yoga Teacher Training</Link>
+              <Link href="/find-your-retreat?type=yoga" className="med-cta-outline">Help Me Choose</Link>
+              <Link href="/retreat-calendar" className="med-cta-outline">Retreat dates</Link>
+              <Link href="/compare/chakrata-yoga-retreat-vs-rishikesh-yoga-retreat" className="med-cta-outline">Rishikesh vs Chakrata</Link>
+            </div>
           </div>
         </div>
       </section>

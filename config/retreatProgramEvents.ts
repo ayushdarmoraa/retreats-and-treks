@@ -14,6 +14,52 @@ import type { LocationId } from './locations';
 
 // ── Types ────────────────────────────────────────────────────────────────
 
+export const YOGA_RETREAT_PRODUCTS = [
+  { id: 'yoga-rishikesh-weekend', name: 'Weekend Yoga Retreat', locationId: 'rishikesh', durationLabel: 'Weekend', publicationState: 'published' },
+  { id: 'yoga-rishikesh-5-day', name: '5-Day Yoga Retreat', locationId: 'rishikesh', durationLabel: '5 days', publicationState: 'published' },
+  { id: 'yoga-rishikesh-7-day', name: '7-Day Yoga Retreat', locationId: 'rishikesh', durationLabel: '7 days', publicationState: 'published' },
+  { id: 'yoga-rishikesh-10-day', name: '10-Day Yoga Retreat', locationId: 'rishikesh', durationLabel: '10 days', publicationState: 'published' },
+] as const;
+
+export type YogaRetreatProductId = (typeof YOGA_RETREAT_PRODUCTS)[number]['id'];
+
+export interface YogaTtcProduct {
+  readonly id: 'yoga-ttc';
+  readonly name: 'Yoga Teacher Training Course';
+  readonly publicationState: 'unpublished' | 'published';
+  readonly durationDays?: number;
+  readonly locations?: readonly string[];
+  readonly fee?: { amount: number; currency: string };
+  readonly curriculum?: readonly string[];
+  readonly eligibility?: string;
+  readonly accommodation?: string;
+  readonly meals?: string;
+  readonly certification?: { issuer: string; credential: string; hours?: number };
+  readonly facilitator?: string;
+  readonly faqItems?: readonly { question: string; answer: string }[];
+  readonly bookingUrl?: string;
+}
+
+export const YOGA_TTC_PRODUCT: YogaTtcProduct = {
+  id: 'yoga-ttc',
+  name: 'Yoga Teacher Training Course',
+  publicationState: 'unpublished',
+};
+
+export type YogaProductId = YogaRetreatProductId | typeof YOGA_TTC_PRODUCT.id;
+export type EventBookingState = 'enquiry-only' | 'booking-open' | 'waitlist-open' | 'closed';
+
+export type YogaDepartureAvailability =
+  | 'available'
+  | 'limited'
+  | 'sold-out'
+  | 'enquiry-only'
+  | 'no-published-date';
+
+export function getYogaRetreatProduct(productId: YogaRetreatProductId) {
+  return YOGA_RETREAT_PRODUCTS.find((product) => product.id === productId);
+}
+
 export interface RetreatProgramEvent {
   /** URL slug: zanskar-meditation-retreat-june-2026 */
   readonly slug: string;
@@ -21,6 +67,8 @@ export interface RetreatProgramEvent {
   readonly experienceSlug: string;
   /** Retreat service slug from services (e.g. 'meditation-and-silence') */
   readonly serviceSlug: string;
+  /** Stable Yoga product reference. Unset for non-Yoga events. */
+  readonly productId?: YogaProductId;
   /** Location */
   readonly locationId: LocationId;
   readonly locationName: string;
@@ -47,6 +95,9 @@ export interface RetreatProgramEvent {
   readonly groupSize: number;
   readonly seatsLeft: number;
   readonly status: 'open' | 'filling-fast' | 'last-few' | 'sold-out';
+  /** A booking route is only active when bookingState and bookingUrl are both supplied. */
+  readonly bookingState?: EventBookingState;
+  readonly bookingUrl?: string;
   /** What's included */
   readonly included: readonly string[];
   /** What to bring */
@@ -59,6 +110,30 @@ export interface RetreatProgramEvent {
   readonly itinerarySlug: string;
   /** FAQ */
   readonly faqItems: readonly { question: string; answer: string }[];
+}
+
+export function isYogaProductEvent(event: Pick<RetreatProgramEvent, 'productId'>): boolean {
+  return event.productId !== undefined;
+}
+
+export function isYogaDepartureBookable(
+  event: Pick<RetreatProgramEvent, 'status' | 'bookingState' | 'bookingUrl'>,
+): boolean {
+  return event.status !== 'sold-out'
+    && event.bookingState === 'booking-open'
+    && Boolean(event.bookingUrl);
+}
+
+export function getYogaDepartureAvailability(
+  event: Pick<RetreatProgramEvent, 'status' | 'bookingState' | 'bookingUrl'>,
+): YogaDepartureAvailability {
+  if (event.status === 'sold-out') return 'sold-out';
+  if (
+    event.bookingState === 'booking-open' &&
+    (event.status === 'last-few' || event.status === 'filling-fast')
+  ) return 'limited';
+  if (isYogaDepartureBookable(event)) return 'available';
+  return 'enquiry-only';
 }
 
 // ── Event Definitions ────────────────────────────────────────────────────
@@ -278,79 +353,6 @@ const EVENTS: RetreatProgramEvent[] = [
       {
         question: 'Are rooms shared?',
         answer: 'No. Each participant has a private room. During a silent retreat, personal space is essential. Bathrooms may be shared (2 participants per bathroom), but rooms are individual.',
-      },
-    ],
-  },
-
-  // ── Rishikesh Yoga Retreat — March 2026 ────────────────────────────────
-  {
-    slug: 'rishikesh-yoga-retreat-march-2026',
-    experienceSlug: 'yoga-retreats',
-    serviceSlug: 'yoga-and-movement',
-    locationId: 'rishikesh',
-    locationName: 'Rishikesh',
-    label: 'Yoga Retreat',
-    title: 'Rishikesh Yoga Retreat — March 2026 | Retreats And Treks',
-    h1: 'Rishikesh Yoga Retreat — March 2026',
-    metaDescription:
-      '5-day Rishikesh yoga retreat in March 2026 with Ganga-side practice, daily asana, pranayama, philosophy, small group, and ₹24,000 pricing.',
-    intro:
-      'Five days of yoga practice on the banks of the Ganges. March is ideal — pre-heat, post-winter, the river is calm, and the light is warm without being harsh. Rishikesh carries a living lineage of yoga practice that no other location in the world can replicate. This retreat connects you to that lineage through daily practice, philosophical study, and the presence of the river itself.',
-    dateRange: '16 Mar – 20 Mar 2026',
-    startDate: '2026-03-16',
-    endDate: '2026-03-20',
-    durationDays: 5,
-    month: 'March',
-    year: 2026,
-    price: 24000,
-    currency: 'INR',
-    priceNote: 'Per person, all-inclusive. Meals, accommodation, all yoga sessions, philosophy workshops.',
-    groupSize: 12,
-    seatsLeft: 0,
-    status: 'sold-out',
-    included: [
-      'Accommodation overlooking the Ganges',
-      'Three Sattvic meals daily',
-      'Morning asana practice (2 hours)',
-      'Afternoon philosophy/technique workshop',
-      'Evening pranayama and meditation',
-      'One evening Ganga Aarti experience',
-      'Basic Ayurvedic wellness consultation',
-    ],
-    toBring: [
-      'Yoga mat (or we can provide)',
-      'Comfortable practice clothing',
-      'Light layers for morning practice',
-      'Journal and pen',
-      'Personal medication',
-      'Water bottle',
-    ],
-    quickItinerary: [
-      'Day 1: Arrive Rishikesh → Welcome → Gentle opening practice',
-      'Day 2: Morning vinyasa → Philosophy workshop → Evening pranayama',
-      'Day 3: Deepening practice → Alignment focus → Ganga walk',
-      'Day 4: Self-led morning practice → Individual guidance → Aarti',
-      'Day 5: Integration practice → Closing circle → Departure',
-    ],
-    parentExperienceSlug: 'yoga-retreats',
-    parentLocationSlug: 'yoga-retreat-rishikesh',
-    itinerarySlug: '5-day-rishikesh-yoga-retreat-itinerary',
-    faqItems: [
-      {
-        question: 'What level of yoga experience is needed?',
-        answer: 'All levels welcome. The teacher adjusts instruction to the group. If you are a complete beginner, you will receive foundation instruction. If you are experienced, the teacher offers advanced modifications. The group size (max 12) allows personal attention.',
-      },
-      {
-        question: 'Is this a certification course?',
-        answer: 'No. This is a practice retreat, not a teacher training. The focus is on your personal relationship with yoga — deepening your practice, understanding the philosophical context, and developing a sustainable home practice. No certificates are issued.',
-      },
-      {
-        question: 'Where exactly in Rishikesh is the retreat?',
-        answer: 'On the quieter side of the river, away from the market areas. The accommodation overlooks the Ganges with direct river access for morning walks. We deliberately avoid the commercial zones of Rishikesh — the retreat environment needs to be quiet, not touristic.',
-      },
-      {
-        question: 'Can I arrive early or stay longer in Rishikesh?',
-        answer: 'Yes. Rishikesh is easy to explore independently. We can help arrange accommodation before or after the retreat dates. Many participants stay an extra day or two to visit ashrams, walk along the river, or simply absorb the town.',
       },
     ],
   },
@@ -979,4 +981,43 @@ export function getUpcomingEventsByService(serviceSlug: string): RetreatProgramE
   return getUpcomingEvents().filter(
     (event) => event.serviceSlug === serviceSlug,
   );
+}
+
+export function getYogaDepartures(productId?: YogaRetreatProductId): RetreatProgramEvent[] {
+  return EVENTS
+    .filter((event) => event.productId && event.productId !== 'yoga-ttc' && (!productId || event.productId === productId))
+    .sort((a, b) => a.startDate.localeCompare(b.startDate));
+}
+
+export function getUpcomingYogaDepartures(
+  productId?: YogaRetreatProductId,
+  now = new Date(),
+): RetreatProgramEvent[] {
+  const today = now.toISOString().slice(0, 10);
+  return getYogaDepartures(productId).filter((event) => event.startDate >= today);
+}
+
+export function getYogaProductAvailability(
+  productId: YogaRetreatProductId,
+  now = new Date(),
+  throughDate?: string,
+): YogaDepartureAvailability {
+  const departures = getUpcomingYogaDepartures(productId, now)
+    .filter((departure) => !throughDate || departure.startDate <= throughDate);
+  if (departures.length === 0) return 'no-published-date';
+  const states = departures.map(getYogaDepartureAvailability);
+  if (states.every((state) => state === 'sold-out')) return 'sold-out';
+  if (states.some((state) => state === 'limited')) return 'limited';
+  if (states.some((state) => state === 'available')) return 'available';
+  return 'enquiry-only';
+}
+
+export function getUpcomingEventsByProduct(
+  productId: YogaProductId,
+  now = new Date(),
+): RetreatProgramEvent[] {
+  const today = now.toISOString().slice(0, 10);
+  return EVENTS
+    .filter((event) => event.productId === productId && event.startDate >= today)
+    .sort((a, b) => a.startDate.localeCompare(b.startDate));
 }

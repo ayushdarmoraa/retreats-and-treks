@@ -10,6 +10,7 @@ export function generateMetadata(): Metadata {
     title: 'Chakrata Yoga Retreat | Retreats And Treks',
     description: retreat.description,
     alternates: { canonical: buildCanonicalUrl(PATH) },
+    robots: { index: true, follow: true },
     openGraph: {
       title: 'Chakrata Yoga Retreat | Retreats And Treks',
       description: retreat.description,
@@ -29,7 +30,7 @@ export default function Page() {
         ...retreat,
         heroImage: '/Images/experience-hubs/yoga-hero.webp',
         heroAlt: 'Yoga retreat in the deodar forests of Chakrata, Uttarakhand',
-        tags: ['Pickup from Dehradun', retreat.duration, 'All levels welcome', 'Forest setting at 2,200m'],
+        tags: ['On request', 'No fixed dates published', 'Programme confirmed by enquiry'],
         metaTitle: 'Chakrata Yoga Retreat | Retreats And Treks',
       }}
       path={PATH}

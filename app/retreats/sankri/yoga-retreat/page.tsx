@@ -2,14 +2,18 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import PrimaryCTA from '@/components/PrimaryCTA';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
+import TrackedPage from '@/components/TrackedPage';
+import Breadcrumb from '@/components/Breadcrumb';
+import { generateBreadcrumbSchema } from '@/components/seo/Schema';
 
 const PATH = '/retreats/sankri/yoga-retreat';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Yoga Retreat in Sankri | Mountain Practice at Altitude',
+    title: 'Yoga Retreat Enquiry in Sankri | Retreats And Treks',
     description:
-      'Yoga retreat in Sankri basecamp. Available on request for small groups practicing in alpine meadows and mountain air.',
+      'Enquire about a demand-led Yoga retreat in Sankri. No fixed dates or departure-specific programme details are currently published.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },
@@ -18,20 +22,34 @@ export function generateMetadata(): Metadata {
       follow: true,
     },
     openGraph: {
-      title: 'Yoga Retreat in Sankri | Mountain Practice at Altitude',
-      description: 'Yoga retreat in Sankri basecamp. Available on request for small groups practicing in alpine meadows and mountain air.',
+      title: 'Yoga Retreat Enquiry in Sankri | Retreats And Treks',
+      description: 'Enquire about a demand-led Yoga retreat in Sankri. No fixed dates or departure-specific programme details are currently published.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
       siteName: 'Retreats And Treks',
       locale: 'en_IN',
-      images: buildOgImages('Yoga Retreat in Sankri | Mountain Practice at Altitude'),
+      images: buildOgImages('Yoga Retreat Enquiry in Sankri | Retreats And Treks'),
     },
   };
 }
 
 export default function SankriYogaRetreatPage() {
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: 'Home', url: buildCanonicalUrl('/') },
+    { name: 'Retreats', url: buildCanonicalUrl('/retreats') },
+    { name: 'Sankri', url: buildCanonicalUrl('/retreats/sankri') },
+    { name: 'Yoga Retreat', url: buildCanonicalUrl(PATH) },
+  ]);
+
   return (
-    <main style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
+    <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <Breadcrumb items={[
+        { name: 'Home', href: '/' },
+        { name: 'Retreats', href: '/retreats' },
+        { name: 'Sankri', href: '/retreats/sankri' },
+        { name: 'Yoga Retreat' },
+      ]} />
       <style>{`
         .med-shell { width: 100vw; margin-left: calc(-50vw + 50%); }
         .med-outer { max-width: 76rem; margin: 0 auto; padding: 0 1.5rem; }
@@ -98,29 +116,30 @@ export default function SankriYogaRetreatPage() {
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '58rem', width: '100%', padding: '5rem 1.5rem 4.5rem', textAlign: 'center' }}>
           <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.8rem', marginBottom: '1.3rem' }}>
             <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
-            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>High Altitude &middot; Basecamp</span>
+            <span style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.72rem', letterSpacing: '0.3em', textTransform: 'uppercase', color: '#ffffff', fontWeight: 700 }}>Yoga Retreat · On Request</span>
             <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
           </div>
           <h1 style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(2.3rem, 4.6vw, 3.4rem)', fontWeight: 600, letterSpacing: '-0.03em', color: '#ffffff', margin: '0 0 1.1rem', lineHeight: 1.08, textShadow: '0 3px 24px rgba(0,0,0,0.5)' }}>
             Yoga Retreat in Sankri
           </h1>
           <p style={{ maxWidth: '42rem', margin: '0 auto 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '1.05rem', fontWeight: 400, lineHeight: 1.8, color: '#ffffff', textShadow: '0 2px 14px rgba(0,0,0,0.45)' }}>
-            Yoga practice in the high Himalayas for small groups seeking breath, movement, altitude, and mountain presence. Suitable for people who want a quieter mountain setting and a more grounded practice rhythm than a city studio can offer. Available on request during suitable Sankri travel windows.
+            Sankri Yoga retreats are demand-led and arranged by enquiry. No fixed Yoga departure is currently published. Dates, access, seasonal suitability, group arrangements, and the programme must be confirmed for each request.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
-            {['High Altitude', 'Small Groups', 'On Request', 'Alpine Meadows'].map((tag) => (
+            {['On Request', 'No Fixed Departure Published', 'Details Confirmed by Enquiry'].map((tag) => (
               <span key={tag} style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#ffffff', border: '1px solid rgba(255,255,255,0.4)', borderRadius: '999px', padding: '0.45rem 0.9rem', background: 'rgba(15,118,110,0.35)' }}>{tag}</span>
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a
+            <TrackedWhatsAppLink
               href="https://wa.me/919760446101?text=Hi%2C%20I%27m%20interested%20in%20a%20yoga%20retreat%20in%20Sankri."
+              sourcePath={PATH}
+              location="Sankri"
+              intent="Yoga retreat enquiry"
               className="med-cta-btn"
-              target="_blank"
-              rel="noopener noreferrer"
             >
               Plan My Yoga Retreat
-            </a>
+            </TrackedWhatsAppLink>
             <a href="#why-sankri" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Why Sankri</a>
           </div>
         </div>
@@ -133,6 +152,7 @@ export default function SankriYogaRetreatPage() {
           vertical="retreat"
           category="yoga-and-movement"
           sourcePath={PATH}
+          location="Sankri"
         />
       </div>
 
@@ -145,18 +165,10 @@ export default function SankriYogaRetreatPage() {
           </div>
           <h2 className="med-h2">Why Sankri Works for <span>Yoga</span></h2>
           <p className="med-body">
-            Sankri brings yoga into a sharper mountain environment. Unlike a studio, resort, or
-            easy-access river valley, this is a remote Himalayan basecamp where breath,
-            movement, and attention are shaped by altitude and terrain. The mountain setting
-            naturally slows the pace and asks the body to move with care.
+            Sankri Yoga requests are demand-led. The page does not represent a scheduled group departure or a confirmed venue. The proposed location, access, travel conditions, and suitability must be reviewed for the dates and group being considered.
           </p>
           <p className="med-body" style={{ marginBottom: 0 }}>
-            The practice here is not about performance. Sankri supports yoga as embodied
-            presence: feeling the breath in cold air, moving gently after long travel, walking
-            through forest transitions, and letting the body become alert without strain. This
-            works especially well for people who want a quieter, more grounded retreat rhythm
-            and do not need a highly structured tourist setting. Beginners are welcome when the
-            group pace and altitude are appropriate, and teachers adapt the sessions to the group.
+            Share your Yoga experience, mobility or health considerations, group size, and preferred dates. The team can then confirm whether a custom programme is feasible. No altitude, season, facilitator, or daily schedule claim is made for an unpublished departure.
           </p>
         </div>
       </section>
@@ -170,20 +182,8 @@ export default function SankriYogaRetreatPage() {
           </div>
           <h2 className="med-h2">What Practice Can <span>Include</span></h2>
           <div className="med-card" style={{ padding: '2rem' }}>
-            <p className="med-body">
-              A Sankri yoga retreat can include morning asana, pranayama, gentle mobility,
-              walking meditation, outdoor practice, slow forest walks, and evening restoration.
-              The structure is adapted to the group, weather, altitude, and available practice
-              spaces. For many people, the most valuable part is the slower rhythm — less noise,
-              more breath, and more time to notice what the body is doing.
-            </p>
             <p className="med-body" style={{ marginBottom: 0 }}>
-              Sessions may be lighter than a conventional yoga retreat because Sankri itself is
-              part of the practice. Travel fatigue, elevation, mountain weather, and trail
-              access all matter. The aim is to support breath awareness, steadiness, and
-              connection with the landscape rather than to create a physically aggressive schedule.
-              If you are not flexible, this is not a barrier; the focus remains on mindful movement,
-              supported variations, and a paced rhythm that respects the mountain environment.
+              The existing Yoga &amp; Movement service describes asana, pranayama, meditation, and restorative practice. Which sessions, schedule, setting, equipment, stay, and meals can be offered in Sankri is not currently published and must be confirmed for each enquiry.
             </p>
           </div>
         </div>
@@ -198,28 +198,11 @@ export default function SankriYogaRetreatPage() {
           </div>
           <h2 className="med-h2">Best Season and <span>Suitability</span></h2>
 
-          <div className="med-grid-2" style={{ marginTop: '0.5rem', marginBottom: '1.6rem' }}>
-            <div className="med-card med-season-card">
-              <span className="med-season-tag">Second Window</span>
-              <h3 className="med-h3">May to June</h3>
-              <p className="med-body" style={{ marginBottom: 0 }}>
-                Longer days, moderate temperatures, and access to trails before heavy monsoon
-                conditions.
-              </p>
-            </div>
-            <div className="med-card med-season-card">
-              <span className="med-season-tag">Clearest Window</span>
-              <h3 className="med-h3">September to October</h3>
-              <p className="med-body" style={{ marginBottom: 0 }}>
-                Clear skies, cold nights, and the strongest mountain visibility of the year.
-              </p>
-            </div>
-          </div>
-
+          <p className="med-body" style={{ marginBottom: '1rem' }}>
+            No suitable season or access window is currently published for a Sankri Yoga departure. Weather, road access, altitude suitability, and travel logistics must be checked for the requested dates.
+          </p>
           <p className="med-body" style={{ marginBottom: 0 }}>
-            Sankri is best for groups comfortable with long travel, simple conditions, and
-            altitude. If you want a more traditional yoga setting with established teacher
-            infrastructure, compare this page with the broader{' '}
+            If you want to explore the primary recurring Yoga destination instead, see the{' '}
             <Link href="/retreats/journeys/yoga-and-movement" style={{ color: '#0f766e', fontWeight: 600 }}>
               Yoga &amp; Movement
             </Link>{' '}
@@ -241,23 +224,23 @@ export default function SankriYogaRetreatPage() {
             <ul className="med-list">
               <li className="med-list-item">
                 <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text">Small groups wanting yoga in a remote Himalayan basecamp setting</span>
+                <span className="med-list-text">People interested in asking about a custom Yoga programme in Sankri</span>
               </li>
               <li className="med-list-item">
                 <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text">Practitioners interested in breath awareness, gentle movement, and altitude presence</span>
+                <span className="med-list-text">Practitioners willing to share experience and access needs so suitability can be assessed</span>
               </li>
               <li className="med-list-item">
                 <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text">People comfortable with simple stays, long travel, and mountain-road logistics</span>
+                <span className="med-list-text">Groups whose travel, accommodation, and logistics can be confirmed before committing</span>
               </li>
               <li className="med-list-item">
                 <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text">Groups who want to combine yoga with forest walks or light trekking</span>
+                <span className="med-list-text">Groups asking whether Yoga can be combined with other activities, subject to confirmation</span>
               </li>
               <li className="med-list-item">
                 <span className="med-list-dot"><span className="med-list-dot-inner" /></span>
-                <span className="med-list-text">Travellers seeking a quieter alternative to busier yoga destinations</span>
+                <span className="med-list-text">Travellers who can be flexible about dates while a demand-led request is reviewed</span>
               </li>
             </ul>
           </div>
@@ -270,10 +253,7 @@ export default function SankriYogaRetreatPage() {
           <div className="med-card" style={{ padding: '2rem' }}>
             <h2 className="med-h3" style={{ fontSize: '1.3rem', marginBottom: '0.9rem' }}>Available on Request</h2>
             <p className="med-body" style={{ marginBottom: 0 }}>
-              We organise yoga retreats in Sankri based on season, group readiness, teacher
-              availability, weather, and travel feasibility. Share your preferred dates, group
-              size, and practice level, and we will help decide whether Sankri is the right
-              mountain container.
+              Send your preferred dates, group size, and practice level. The team will review whether a Sankri programme can be arranged and confirm venue, access, season, facilitator, schedule, stay, and pricing before you commit.
             </p>
           </div>
         </div>
@@ -342,16 +322,17 @@ export default function SankriYogaRetreatPage() {
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,31,28,0.86)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '42rem', padding: '4rem 1.5rem' }}>
-          <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.9vw, 2.1rem)', fontWeight: 500, color: '#F6F2E7' }}>Ready to practice at altitude?</h2>
+          <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.9vw, 2.1rem)', fontWeight: 500, color: '#F6F2E7' }}>Ask about a Sankri Yoga request</h2>
           <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: 'rgba(246,242,231,0.78)' }}>Share your dates, group size, and practice level — we&apos;ll help you decide if Sankri is the right mountain container.</p>
-          <a
+          <TrackedWhatsAppLink
             href="https://wa.me/919760446101?text=Hi%2C%20I%27m%20interested%20in%20a%20yoga%20retreat%20in%20Sankri."
+            sourcePath={PATH}
+            location="Sankri"
+            intent="Yoga retreat enquiry"
             className="med-cta-btn"
-            target="_blank"
-            rel="noopener noreferrer"
           >
             WhatsApp Us
-          </a>
+          </TrackedWhatsAppLink>
         </div>
       </section>
 
@@ -370,6 +351,6 @@ export default function SankriYogaRetreatPage() {
           </Link>
         </div>
       </nav>
-    </main>
+    </TrackedPage>
   );
 }

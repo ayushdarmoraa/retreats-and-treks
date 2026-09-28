@@ -5,7 +5,12 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import type { RetreatProgramEvent } from '@/config/retreatProgramEvents';
+import {
+  getYogaDepartureAvailability,
+  isYogaDepartureBookable,
+  isYogaProductEvent,
+  type RetreatProgramEvent,
+} from '@/config/retreatProgramEvents';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import { schemaIds } from '@/lib/schemaIds';
 import { generateBreadcrumbSchema, generateFAQSchema, generateReviewSchemas, generateAggregateRatingSchema } from '@/components/seo/Schema';
@@ -52,8 +57,25 @@ export default function ProgramEventPage({ event }: Props) {
   ]);
   const faqSchema = generateFAQSchema(event.faqItems as { question: string; answer: string }[]);
 
-  const statusInfo = statusLabels[event.status] ?? statusLabels.open;
   const isPastEvent = event.endDate < new Date().toISOString().split('T')[0];
+  const isYogaEvent = isYogaProductEvent(event);
+  const yogaAvailability = isYogaEvent ? getYogaDepartureAvailability(event) : undefined;
+  const canShowOffer = !isPastEvent && (!isYogaEvent || isYogaDepartureBookable(event));
+  const canJoinWaitlist = !isPastEvent && (isYogaEvent
+    ? event.bookingState === 'waitlist-open'
+    : (event.status === 'sold-out' || event.status === 'last-few'));
+  const yogaStatusLabels = {
+    available: { text: 'Available', color: '#2d6a4f' },
+    limited: { text: 'Limited availability', color: '#e67700' },
+    'sold-out': { text: 'Sold out', color: '#868e96' },
+    'enquiry-only': { text: 'Enquiry to confirm', color: '#6b7280' },
+    'no-published-date': { text: 'No published date', color: '#6b7280' },
+  } as const;
+  const statusInfo = isPastEvent
+    ? { text: 'Historical — event ended', color: '#6b7280' }
+    : isYogaEvent
+      ? yogaStatusLabels[yogaAvailability ?? 'enquiry-only']
+      : statusLabels[event.status] ?? statusLabels.open;
 
   // Event schema for Google
   const eventSchema = {
@@ -72,7 +94,7 @@ export default function ProgramEventPage({ event }: Props) {
       name: event.locationName,
       address: { '@type': 'PostalAddress', addressCountry: 'IN' },
     },
-    ...(isPastEvent ? {} : {
+    ...(canShowOffer ? {
       offers: {
         '@type': 'Offer',
         price: event.price,
@@ -80,9 +102,9 @@ export default function ProgramEventPage({ event }: Props) {
         availability: event.status === 'sold-out'
           ? 'https://schema.org/SoldOut'
           : 'https://schema.org/InStock',
-        url: buildCanonicalUrl(`/${event.slug}`),
+        url: event.bookingUrl ?? buildCanonicalUrl(`/${event.slug}`),
       },
-    }),
+    } : {}),
     organizer: { '@id': schemaIds.organization },
   };
 
@@ -103,7 +125,7 @@ export default function ProgramEventPage({ event }: Props) {
 
       {/* ── Hero ────────────────────────────────────────────────── */}
       <header style={{ marginBottom: 'var(--space-xl)' }}>
-        {(event.status === 'last-few' || event.status === 'filling-fast') && (
+        {!isPastEvent && (event.status === 'last-few' || event.status === 'filling-fast') && (
           <div
             style={{
               background: event.status === 'last-few' ? '#fff5f5' : '#fff8e1',
@@ -138,7 +160,7 @@ export default function ProgramEventPage({ event }: Props) {
           <span>{event.durationDays} days</span>
           <span>{event.locationName}</span>
           <span style={{ fontWeight: 600, color: statusInfo.color }}>{statusInfo.text}</span>
-          {event.groupSize - event.seatsLeft > 0 && (
+          {!isPastEvent && event.groupSize - event.seatsLeft > 0 && (
             <span style={{ fontWeight: 600, color: '#2d6a4f' }}>
               {event.groupSize - event.seatsLeft} {event.groupSize - event.seatsLeft === 1 ? 'person' : 'people'} registered
             </span>
@@ -151,9 +173,15 @@ export default function ProgramEventPage({ event }: Props) {
         <p style={{ fontSize: '1.05rem', lineHeight: 1.8, margin: 0 }}>
           {event.intro}
         </p>
+        {isPastEvent && (
+          <p role="status" style={{ margin: '1rem 0 0', color: '#6b7280' }}>
+            This retreat has ended. Current dates, pricing, and availability are not published here.
+          </p>
+        )}
       </header>
 
       {/* ── Pricing & Availability ──────────────────────────────── */}
+      {!isPastEvent && !isYogaEvent && (
       <section
         style={{
           border: '2px solid var(--color-primary, #2d6a4f)',
@@ -182,8 +210,10 @@ export default function ProgramEventPage({ event }: Props) {
           </div>
         </div>
       </section>
+      )}
 
       {/* ── Booking Assurance ───────────────────────────────────── */}
+      {!isPastEvent && (
       <section
         style={{
           display: 'grid',
@@ -207,24 +237,36 @@ export default function ProgramEventPage({ event }: Props) {
           Maximum {event.groupSize} participants. Personal attention, not a crowd.
         </div>
       </section>
+      )}
 
-      <MicroCommitment
-        itemKey={event.slug}
-        title={event.h1}
-        sourcePath={`/${event.slug}`}
-        showWaitlist={event.status === 'sold-out' || event.status === 'last-few'}
-      />
+      {!isPastEvent && (
+        <>
+          <MicroCommitment
+            itemKey={event.slug}
+            title={event.h1}
+            sourcePath={`/${event.slug}`}
+            showWaitlist={canJoinWaitlist}
+          />
 
-      <PrimaryCTA
-        label={event.status === 'sold-out' ? 'Join Waitlist' : `Reserve My Seat — ${event.month} ${event.year}`}
-        subtext={`${event.label} in ${event.locationName}. ${event.dateRange}. ${event.durationDays} days.`}
-        vertical="retreat"
-        category="program-event"
-        sourcePath={`/${event.slug}`}
-      />
+          {isYogaEvent && event.bookingState === 'booking-open' && event.bookingUrl ? (
+            <a href={event.bookingUrl} rel="nofollow" style={{ display: 'inline-block', margin: '1rem 0', padding: '0.75rem 1.5rem', background: 'var(--color-primary, #2d6a4f)', color: '#fff', textDecoration: 'none', borderRadius: 'var(--radius-sm, 8px)' }}>
+              Book this departure
+            </a>
+          ) : (
+            <PrimaryCTA
+              label={canJoinWaitlist ? 'Join Waitlist' : isYogaEvent ? 'Enquire About This Departure' : event.status === 'sold-out' ? 'Join Waitlist' : `Reserve My Seat — ${event.month} ${event.year}`}
+              subtext={`${event.label} in ${event.locationName}. ${event.dateRange}. ${event.durationDays} days.`}
+              vertical="retreat"
+              category="program-event"
+              sourcePath={`/${event.slug}`}
+              location={event.locationName}
+            />
+          )}
+        </>
+      )}
 
       {/* ── Your Facilitators ──────────────────────────────────── */}
-      {(() => {
+      {!isYogaEvent && (() => {
         const facilitators = getFacilitatorsByRetreat(event.serviceSlug);
         if (facilitators.length === 0) return null;
         return (
@@ -357,13 +399,17 @@ export default function ProgramEventPage({ event }: Props) {
         </section>
       )}
 
-      <PrimaryCTA
-        label={event.status === 'sold-out' ? 'Join Waitlist' : 'Inquire About This Retreat'}
-        subtext={`${event.seatsLeft} seats remaining. ${event.dateRange}, ${event.locationName}.`}
-        vertical="retreat"
-        category="program-event"
-        sourcePath={`/${event.slug}`}
-      />
+      {!isPastEvent && !(isYogaEvent && event.bookingState === 'booking-open' && event.bookingUrl) && (
+        <PrimaryCTA
+          label={canJoinWaitlist ? 'Join Waitlist' : isYogaEvent ? 'Ask About Another Yoga Date' : event.status === 'sold-out' ? 'Join Waitlist' : 'Inquire About This Retreat'}
+          subtext={isYogaEvent && event.status === 'sold-out'
+            ? `This departure is sold out. Ask about another date in ${event.locationName}.`
+            : `${event.seatsLeft} seats remaining. ${event.dateRange}, ${event.locationName}.`}
+          vertical="retreat"
+          category="program-event"
+          sourcePath={`/${event.slug}`}
+        />
+      )}
 
       <TrackedFAQ items={event.faqItems as { question: string; answer: string }[]} page={`/${event.slug}`} />
 

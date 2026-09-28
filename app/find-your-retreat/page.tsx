@@ -13,8 +13,7 @@ import AutoArticleSchema from '@/components/AutoArticleSchema';
 
 const PATH = '/find-your-retreat';
 
-export const dynamic = 'force-static';
-export const revalidate = 86400;
+export const dynamic = 'force-dynamic';
 
 export function generateMetadata(): Metadata {
   return {
@@ -37,7 +36,7 @@ const FAQ_ITEMS = [
   {
     question: 'How does the retreat finder work?',
     answer:
-      'Five questions about your energy level, goals, preferred duration, social orientation, and relationship with physical movement. Based on your answers, a scoring engine matches you to the top two retreat programs from our registry. No guesswork, no upselling — just an honest match based on what you need right now.',
+      'The general finder asks about your energy, goals, duration, social preference, and movement. When opened from Yoga pages, the Yoga path asks whether you want a retreat or TTC, preferred location, duration, and Yoga experience, then opens the existing enquiry form with those answers.',
   },
   {
     question: 'Is the recommendation binding?',
@@ -56,8 +55,14 @@ const FAQ_ITEMS = [
   },
 ];
 
-export default function FindYourRetreatPage() {
+export default async function FindYourRetreatPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ type?: string }>;
+}) {
   validateFAQSync(FAQ_ITEMS, PATH);
+  const { type } = await searchParams;
+  const yogaMode = type === 'yoga';
 
   const allRetreats = getAllRetreatServices();
   const finderRatings = Object.fromEntries(
@@ -177,7 +182,7 @@ export default function FindYourRetreatPage() {
       {/* ── RETREAT FINDER ── */}
       <section className="med-shell med-section-alt med-finder-section">
         <div className="med-inner">
-          <RetreatFinder fromPath={PATH} ratings={finderRatings} />
+          <RetreatFinder fromPath={PATH} ratings={finderRatings} yogaMode={yogaMode} />
         </div>
       </section>
 

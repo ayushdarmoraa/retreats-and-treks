@@ -6,6 +6,7 @@ import DurationHubPage from '@/components/DurationHubPage';
 const PAGE = getDurationPage('7-day-yoga-retreat')!;
 
 export const dynamic = 'force-static';
+export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {

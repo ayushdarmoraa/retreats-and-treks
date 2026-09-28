@@ -4,48 +4,33 @@ const yogaRetreat: RetreatContent = {
   slug: 'yoga-retreat',
   title: 'Chakrata Yoga Retreat',
   description:
-    'A 2 nights 3 days yoga retreat in Chakrata with daily yoga, asana, pranayama, holistic wellness, and Dehradun pickup/drop.',
+    'Demand-led Yoga retreat enquiries in Chakrata. No fixed dates, duration, price, or departure details are currently published.',
 
   locationId: 'chakrata',
   retreatType: 'Yoga',
 
-  duration: '2 Nights / 3 Days',
-  pickupPoint: 'Dehradun',
+  duration: 'Not published',
+  pickupPoint: 'Confirm by enquiry',
   bestFor: ['yoga enthusiasts', 'flexibility seekers', 'wellness lovers'],
 
   overview:
-    'Reconnect with your body and breath in this immersive Chakrata yoga retreat. Surrounded by mountain air and forest silence, practice yoga asanas, learn pranayama techniques, and experience holistic wellness in the heart of the Himalayas.',
+    'Chakrata Yoga requests are handled on demand rather than as a recurring fixed departure. The team must confirm whether a programme can be arranged and provide its dates, schedule, stay, meals, inclusions, exclusions, and access details.',
 
   highlights: [
-    'Sunrise and evening yoga classes',
-    'Asana practice for all levels',
-    'Pranayama and breathing techniques',
-    'Yoga philosophy discussions',
-    'Forest nature walks',
+    'Demand-led enquiry',
+    'No fixed Yoga dates currently published',
+    'Programme details confirmed individually',
   ],
 
-  itinerary: [
-    'Day 1: Pickup from Dehradun, check-in, evening beginner yoga session',
-    'Day 2: Sunrise yoga, breakfast, intermediate asana class, nature walk, evening pranayama',
-    'Day 3: Sunrise yoga, breakfast, yoga philosophy session, return to Dehradun',
-  ],
+  itinerary: [],
 
-  inclusions: [
-    'Accommodation',
-    'All meals',
-    'Yoga classes and sessions',
-    'Local transfers',
-  ],
+  inclusions: [],
 
-  exclusions: [
-    'Personal expenses',
-    'Travel insurance',
-    'Extra activities',
-  ],
+  exclusions: [],
 
   images: [
     {
-      src: '/images/chakrata-yoga-1.jpg',
+      src: '/Images/experience-hubs/yoga-hero.webp',
       alt: 'Yoga practice in Chakrata mountains',
     },
   ],
@@ -54,12 +39,12 @@ const yogaRetreat: RetreatContent = {
     {
       question: 'What yoga level is this retreat suitable for?',
       answer:
-        'This retreat accommodates all levels—beginners through advanced practitioners. Classes are adaptive.',
+        'Experience requirements depend on the programme proposed. Share your experience and the team will confirm suitability before arranging a retreat.',
     },
     {
       question: 'Do I need to bring a yoga mat?',
       answer:
-        'Yoga mats are provided. Feel free to bring your own if you prefer.',
+        'Equipment and what to bring are not currently published. Confirm these details with the team for the proposed programme.',
     },
   ],
 

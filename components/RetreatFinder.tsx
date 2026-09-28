@@ -14,6 +14,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 import { track } from '@/utils/telemetry';
 import { recordFinderMatch } from '@/utils/sessionPreferences';
 import RatingBadge, { type RatingInfo } from './RatingBadge';
@@ -218,6 +219,52 @@ const QUESTIONS: Question[] = [
   },
 ];
 
+const YOGA_QUESTIONS: Question[] = [
+  {
+    id: 'yogaType',
+    text: 'What are you looking for?',
+    options: [
+      { id: 'retreat', label: 'A Yoga retreat for my own practice', scores: {} },
+      { id: 'ttc', label: 'Yoga Teacher Training', scores: {} },
+      { id: 'unsure', label: 'I am not sure yet', scores: {} },
+    ],
+  },
+  {
+    id: 'yogaLocation',
+    text: 'Which location are you considering?',
+    options: [
+      { id: 'rishikesh', label: 'Rishikesh', scores: {} },
+      { id: 'chakrata', label: 'Chakrata', scores: {} },
+      { id: 'sankri', label: 'Sankri', scores: {} },
+      { id: 'zanskar', label: 'Zanskar', scores: {} },
+      { id: 'other', label: 'Another location', scores: {} },
+      { id: 'unsure', label: 'No preference', scores: {} },
+    ],
+  },
+  {
+    id: 'yogaDuration',
+    text: 'How much time do you have?',
+    options: [
+      { id: 'Weekend', label: 'Weekend', scores: {} },
+      { id: '5 days', label: '5 days', scores: {} },
+      { id: '7 days', label: '7 days', scores: {} },
+      { id: '10 days', label: '10 days', scores: {} },
+      { id: 'Flexible', label: 'Flexible', scores: {} },
+    ],
+  },
+  {
+    id: 'yogaExperience',
+    text: 'How would you describe your Yoga experience?',
+    options: [
+      { id: 'Beginner', label: 'Beginner', scores: {} },
+      { id: 'Some experience', label: 'Some experience', scores: {} },
+      { id: 'Experienced', label: 'Experienced', scores: {} },
+      { id: 'Teacher', label: 'I teach Yoga', scores: {} },
+      { id: 'Unsure', label: 'Not sure', scores: {} },
+    ],
+  },
+];
+
 // ── Retreat display metadata (no registry import needed client-side) ──────────
 
 const RETREAT_LABELS: Record<string, { title: string; essence: string }> = {
@@ -304,19 +351,22 @@ const btnSelectedBase: React.CSSProperties = {
 
 interface RetreatFinderProps {
   fromPath?: string;
+  yogaMode?: boolean;
   /** Pre-fetched server-side ratings map: slug → rating info */
   ratings?: Record<string, RatingInfo>;
 }
 
-export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats', ratings }: RetreatFinderProps) {
+export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats', ratings, yogaMode = false }: RetreatFinderProps) {
+  const isYogaMode = yogaMode || fromPath === '/yoga-retreats';
+  const questions = isYogaMode ? YOGA_QUESTIONS : QUESTIONS;
   const [step, setStep] = useState<Step>(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [results, setResults] = useState<string[]>([]);
 
-  const currentQuestion = typeof step === 'number' ? QUESTIONS[step] : null;
-  const selectedAnswer = typeof step === 'number' ? answers[QUESTIONS[step]?.id] : undefined;
+  const currentQuestion = typeof step === 'number' ? questions[step] : null;
+  const selectedAnswer = typeof step === 'number' ? answers[questions[step]?.id] : undefined;
   const isFirst = step === 0;
-  const isLast = typeof step === 'number' && step === QUESTIONS.length - 1;
+  const isLast = typeof step === 'number' && step === questions.length - 1;
 
   function selectAnswer(qId: string, answerId: string) {
     setAnswers((prev) => ({ ...prev, [qId]: answerId }));
@@ -325,13 +375,22 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
   function handleNext() {
     if (typeof step === 'number') {
       if (isLast) {
-        const top = computeTopRetreats(answers);
+        const top = isYogaMode ? ['yoga-and-movement'] : computeTopRetreats(answers);
         setResults(top);
         setStep('result');
         track({
           event: 'finder_complete',
           from: fromPath,
-          meta: { result: top[0] ?? 'none', second: top[1] ?? 'none' },
+          meta: {
+            result: top[0] ?? 'none',
+            second: top[1] ?? 'none',
+            ...(isYogaMode ? {
+              yoga_interest: answers.yogaType === 'ttc' ? 'Yoga TTC' : answers.yogaType === 'unsure' ? 'Not sure' : 'Yoga Retreat',
+              location: answers.yogaLocation === 'unsure' ? '' : answers.yogaLocation,
+              duration: answers.yogaDuration,
+              yoga_experience: answers.yogaExperience,
+            } : {}),
+          },
         });
         if (top[0]) recordFinderMatch(top[0]);
       } else {
@@ -342,7 +401,7 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
 
   function handleBack() {
     if (typeof step === 'number' && step > 0) setStep(step - 1);
-    if (step === 'result') setStep(QUESTIONS.length - 1);
+    if (step === 'result') setStep(questions.length - 1);
   }
 
   function handleReset() {
@@ -360,6 +419,73 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
   };
 
   if (step === 'result') {
+    if (isYogaMode) {
+      const yogaInterest = answers.yogaType === 'ttc' ? 'Yoga TTC' : answers.yogaType === 'unsure' ? 'Not sure' : 'Yoga Retreat';
+      const yogaLocation = answers.yogaLocation === 'unsure' ? '' : answers.yogaLocation || '';
+      const yogaDuration = answers.yogaDuration || '';
+      const yogaExperience = answers.yogaExperience || '';
+      const destinationHref: Record<string, string> = {
+        rishikesh: '/retreats/yoga-retreat-rishikesh',
+        chakrata: '/retreats/chakrata/yoga-retreat',
+        sankri: '/retreats/sankri/yoga-retreat',
+        zanskar: '/yoga-retreat-zanskar',
+        other: '/retreats/yoga-retreat-uttarakhand',
+      };
+      const durationHref: Record<string, string> = {
+        Weekend: '/retreats/yoga-retreat-rishikesh?duration=Weekend#yoga-enquiry',
+        '5 days': '/5-day-yoga-retreat',
+        '7 days': '/7-day-yoga-retreat',
+        '10 days': '/10-day-yoga-retreat',
+      };
+      const productHref = yogaInterest === 'Yoga TTC'
+        ? '/yoga-teacher-training'
+        : yogaInterest === 'Not sure'
+          ? '/find-your-retreat?type=yoga'
+          : yogaLocation === 'rishikesh'
+            ? durationHref[yogaDuration] || destinationHref.rishikesh
+            : destinationHref[yogaLocation] || (durationHref[yogaDuration] ? durationHref[yogaDuration] : '/retreats/yoga-retreat-uttarakhand');
+
+      return (
+        <div style={containerStyle}>
+          <p style={{ fontSize: '0.8rem', fontWeight: 600, textTransform: 'uppercase', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>
+            Yoga decision
+          </p>
+          <h2 style={{ fontSize: '1.2rem', margin: '0 0 0.75rem' }}>
+            {yogaInterest === 'Yoga TTC' ? 'Yoga Teacher Training enquiry' : yogaInterest === 'Not sure' ? 'Let us help you choose' : 'Your Yoga enquiry starting point'}
+          </h2>
+          <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.65 }}>
+            {yogaLocation ? `Location: ${yogaLocation}. ` : 'Location: to be decided. '}
+            {yogaDuration ? `Duration: ${yogaDuration}. ` : ''}
+            {yogaExperience ? `Experience: ${yogaExperience}.` : ''}
+          </p>
+          <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.65 }}>
+            This recommendation is a route to enquiry, not confirmation of dates, price, availability, or suitability.
+          </p>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1rem' }}>
+            <Link href={productHref} style={{ color: 'var(--color-primary)', fontWeight: 600 }}>
+              Review the relevant page →
+            </Link>
+            <Link href="/retreats/yoga-retreat-rishikesh" style={{ color: 'var(--color-primary)' }}>
+              Rishikesh option
+            </Link>
+          </div>
+          <CTAExpandToggle
+            label={yogaInterest === 'Yoga TTC' ? 'Check TTC Details' : 'Ask About This Yoga Option'}
+            vertical="retreat"
+            category="yoga-finder"
+            sourcePath={fromPath}
+            location={yogaLocation}
+            yogaInterest={yogaInterest}
+            duration={yogaDuration}
+            yogaExperience={yogaExperience}
+          />
+          <button onClick={handleReset} style={{ ...btnBase, width: 'auto', marginTop: '0.75rem', padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
+            Start again
+          </button>
+        </div>
+      );
+    }
+
     return (
       <div style={containerStyle}>
         <p style={{ fontSize: '0.8rem', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>
@@ -431,7 +557,7 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
 
   if (!currentQuestion) return null;
 
-  const progress = typeof step === 'number' ? ((step + 1) / QUESTIONS.length) * 100 : 100;
+  const progress = typeof step === 'number' ? ((step + 1) / questions.length) * 100 : 100;
 
   return (
     <div style={containerStyle}>
@@ -440,7 +566,7 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
           Find My Retreat
         </p>
         <span style={{ fontSize: '0.8rem', color: 'var(--color-text-secondary)' }}>
-          {(step as number) + 1} / {QUESTIONS.length}
+          {(step as number) + 1} / {questions.length}
         </span>
       </div>
 
