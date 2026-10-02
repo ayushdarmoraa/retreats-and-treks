@@ -84,9 +84,11 @@ export default function JourneyHero({
     return { label, x, y, t };
   });
 
-  const titleParts = title.includes('Retreat')
-    ? { lead: title.replace(' Retreat', ''), accent: 'Retreat' }
-    : { lead: title, accent: null as string | null };
+  const titleParts = isYogaJourney
+    ? { lead: 'Yoga & Movement', accent: 'Retreat' }
+    : title.includes('Retreat')
+      ? { lead: title.replace(' Retreat', ''), accent: 'Retreat' }
+      : { lead: title, accent: null as string | null };
 
   return (
     <section

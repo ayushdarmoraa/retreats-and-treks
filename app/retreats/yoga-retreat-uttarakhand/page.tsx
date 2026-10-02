@@ -16,9 +16,9 @@ const PATH = '/retreats/yoga-retreat-uttarakhand';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Yoga Retreats in Uttarakhand | Retreats And Treks',
+    title: 'Yoga Retreats in Uttarakhand | Rishikesh & Himalayan Options',
     description:
-      'Find yoga retreats in Uttarakhand across Rishikesh, Chakrata, and Sankri with asana, pranayama, meditation, and Himalayan settings.',
+      'Compare recurring Rishikesh Yoga retreats with custom, demand-led Yoga enquiries in Chakrata, Sankri, and other Himalayan settings.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },
@@ -27,9 +27,9 @@ export function generateMetadata(): Metadata {
       follow: true,
     },
     openGraph: {
-      title: 'Yoga Retreats in Uttarakhand — Mountain Practice in the Himalayas',
+    title: 'Yoga Retreats in Uttarakhand | Rishikesh & Himalayan Options',
       description:
-        'Immersive yoga retreat programs in Uttarakhand. Rishikesh, Chakrata and Sankri — asana, breathwork and meditation in genuine Himalayan environments.',
+        'Rishikesh has recurring published Yoga retreats; Chakrata, Sankri, and other Himalayan options are custom, demand-led enquiries.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
       images: buildOgImages('Yoga Retreats in Uttarakhand — Mountain Practice in the Himalayas'),
@@ -62,38 +62,46 @@ const PLACES = [
     image: '/Images/location/sankri.webp',
     context: 'A demand-led Yoga location. Ask the team to confirm suitability, access, season and programme details for your request.',
   },
+  {
+    id: 'zanskar',
+    href: '/yoga-retreat-zanskar',
+    name: 'Zanskar',
+    tag: 'Custom Himalayan enquiry',
+    image: '/Images/location/zanskar.webp',
+    context: 'A custom Himalayan Yoga enquiry. Preferred dates, group size, experience, and programme feasibility are discussed through WhatsApp.',
+  },
 ];
 
 const FAQ_ITEMS = [
   {
     question: 'Is Rishikesh the best place for a yoga retreat in Uttarakhand?',
     answer:
-      'Rishikesh is the primary recurring Yoga destination in the current product plan. Chakrata and Sankri are presented as on-request locations. Which setting is suitable depends on the actual programme, travel needs and dates confirmed for your enquiry.',
+      'Rishikesh is the only location with recurring published Yoga inventory. Chakrata, Sankri, and Zanskar are custom or demand-led enquiries rather than recurring fixed departures.',
   },
   {
     question: 'Are yoga retreats in Uttarakhand suitable for beginners?',
     answer:
-      'Beginner suitability and session adaptations depend on the proposed programme and facilitator. Share your experience level and ask the team to confirm suitability before committing.',
+      'Beginners are welcome for the Rishikesh Yoga products, and experienced practitioners may also participate. Custom locations require suitability discussion through enquiry.',
   },
   {
     question: 'How long should a yoga retreat in Uttarakhand be?',
     answer:
-      'The product plan supports Weekend, 5-day, 7-day, and 10-day Yoga formats. The right choice depends on your available time and the programme details confirmed for a published departure; current dates and pricing appear in the calendar only when available.',
+      'Rishikesh has Weekend, 5-day, 7-day, and 10-day Yoga formats with published prices and dates. Custom locations are discussed by demand rather than through a recurring calendar.',
   },
   {
     question: 'Are yoga retreats in Uttarakhand open year-round?',
     answer:
-      'No year-round Yoga operating schedule is published. Season, access and availability should be confirmed for the selected destination and dates before travel.',
+      'Rishikesh is the recurring published option in this regional hub. Custom locations require date, logistics, and programme confirmation through enquiry.',
   },
   {
     question: 'What is typically included in a yoga retreat in Uttarakhand?',
     answer:
-      'Inclusions vary by departure. Meals, accommodation, sessions, equipment, transport and exclusions are not currently attached to future Yoga departures in the event registry. Ask for written details before booking.',
+      'Rishikesh standard pricing represents shared accommodation, vegetarian/Sattvic-style meals, breakfast, lunch, dinner, drinking water, and guided practice. Custom-location details are confirmed for the proposed programme.',
   },
   {
     question: 'Do I need to be physically fit for a yoga retreat?',
     answer:
-      'Physical requirements and available adaptations are not published for a future departure. Share any relevant needs and ask the team to confirm the proposed programme before making plans.',
+      'Beginners are welcome for the Rishikesh products. Share experience and relevant needs through WhatsApp so the team can confirm the proposed custom programme or published departure.',
   },
 ];
 
@@ -114,7 +122,7 @@ export default function YogaRetreatUttarakhandPage() {
     <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
       <AutoArticleSchema
         title="Yoga Retreats in Uttarakhand"
-        description="Find yoga retreats in Uttarakhand across Rishikesh, Chakrata and Sankri. Structured asana, pranayama and meditation programs in Himalayan mountain settings."
+        description="Compare recurring Rishikesh Yoga retreats with custom, demand-led options in Chakrata, Sankri, and Zanskar."
         path={PATH}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -213,11 +221,11 @@ export default function YogaRetreatUttarakhandPage() {
             Yoga Retreats in Uttarakhand
           </h1>
           <p style={{ maxWidth: '42rem', margin: '0 auto 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '1.05rem', fontWeight: 400, lineHeight: 1.8, color: '#ffffff', textShadow: '0 2px 14px rgba(0,0,0,0.45)' }}>
-            Structured practice across Rishikesh, Chakrata, and Sankri — where studio yoga
-            gives way to mountain ridges, river valleys, and genuine Himalayan silence.
+            Rishikesh has recurring published Yoga retreats. Chakrata, Sankri, and Zanskar are
+            custom, demand-led options discussed through enquiry.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
-            {['Rishikesh primary', 'Chakrata and Sankri on request', 'Dates only when published'].map((tag) => (
+            {['Rishikesh recurring inventory', 'Chakrata, Sankri and Zanskar custom', 'WhatsApp enquiry'].map((tag) => (
               <span key={tag} style={{ fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.7rem', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', color: '#ffffff', border: '1px solid rgba(255,255,255,0.4)', borderRadius: '999px', padding: '0.45rem 0.9rem', background: 'rgba(15,118,110,0.35)' }}>{tag}</span>
             ))}
           </div>
@@ -227,6 +235,9 @@ export default function YogaRetreatUttarakhandPage() {
               sourcePath={PATH}
               location="Uttarakhand"
               intent="Yoga retreat enquiry"
+              analyticsEvent="yoga_whatsapp_click"
+              product="Yoga retreats in Uttarakhand"
+              ctaPosition="hero"
               className="med-cta-btn"
             >
               Check Dates &amp; Programs
@@ -526,7 +537,18 @@ export default function YogaRetreatUttarakhandPage() {
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '42rem', padding: '4rem 1.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.9vw, 2.1rem)', fontWeight: 500, color: '#F6F2E7' }}>Ready to find your practice in the mountains?</h2>
           <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: 'rgba(246,242,231,0.78)' }}>Talk with us about dates, location, and the right format for your practice.</p>
-          <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I want to plan a yoga retreat in Uttarakhand. Can we discuss dates and options?')}`} className="med-cta-btn" target="_blank" rel="noopener noreferrer">Check Dates &amp; Programs</a>
+          <TrackedWhatsAppLink
+            href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I want to plan a Yoga retreat in Uttarakhand. Can we discuss Rishikesh dates or custom location options?')}`}
+            sourcePath={PATH}
+            location="Uttarakhand"
+            intent="Yoga retreat options"
+            analyticsEvent="yoga_whatsapp_click"
+            product="Yoga retreats in Uttarakhand"
+            ctaPosition="closing"
+            className="med-cta-btn"
+          >
+            Check Dates &amp; Programs
+          </TrackedWhatsAppLink>
         </div>
       </section>
 

@@ -1,14 +1,13 @@
 import Link from 'next/link';
 import PrimaryCTA from '@/components/PrimaryCTA';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import { schemaIds } from '@/lib/schemaIds';
 import {
   getUpcomingYogaDepartures,
-  getYogaDepartureAvailability,
   isYogaDepartureBookable,
   getYogaProductAvailability,
   YOGA_RETREAT_PRODUCTS,
-  type RetreatProgramEvent,
   type YogaDepartureAvailability,
   type YogaRetreatProductId,
 } from '@/config/retreatProgramEvents';
@@ -23,7 +22,7 @@ const AVAILABILITY_LABELS: Record<YogaDepartureAvailability, string> = {
   available: 'Available',
   limited: 'Limited availability',
   'sold-out': 'Sold out',
-  'enquiry-only': 'Enquiry to confirm',
+  'enquiry-only': 'Open for enquiry',
   'no-published-date': 'No published date',
 };
 
@@ -132,7 +131,6 @@ export default function YogaDepartureCalendar({
           <div style={{ display: 'grid', gap: '0.75rem' }}>
             {departures.map((departure) => {
               const product = YOGA_RETREAT_PRODUCTS.find((item) => item.id === departure.productId);
-              const availability = getYogaDepartureAvailability(departure);
               const canBook = isYogaDepartureBookable(departure);
               const canJoinWaitlist = departure.bookingState === 'waitlist-open';
 
@@ -141,15 +139,32 @@ export default function YogaDepartureCalendar({
                   <div>
                     <h3 style={{ margin: '0 0 0.35rem', fontSize: '1rem' }}>{product?.name ?? departure.label}</h3>
                     <p style={{ margin: 0, color: '#59636e', fontSize: '0.88rem' }}>
-                      {departure.dateRange} · {departure.durationDays} days · {departure.locationName}
+                      {departure.dateRange} · {product?.durationLabel ?? `${departure.durationDays} days`} · {departure.locationName}
                     </p>
                     <p style={{ margin: '0.35rem 0 0', fontSize: '0.88rem', fontWeight: 600 }}>
-                      {AVAILABILITY_LABELS[availability]}
-                      {departure.status !== 'sold-out' && ` · ${departure.seatsLeft} of ${departure.groupSize} seats`}
-                      {departure.status !== 'sold-out' && ` · ${departure.currency} ${departure.price.toLocaleString('en-IN')}`}
+                      Open for enquiry · ₹{departure.price.toLocaleString('en-IN')}
                     </p>
                   </div>
-                  {canBook ? (
+                  {departure.bookingState === 'whatsapp' && departure.bookingUrl ? (
+                    <TrackedWhatsAppLink
+                      href={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I'm interested in the ${product?.name ?? departure.label} from ${departure.startDate} to ${departure.endDate} (${product?.durationLabel ?? `${departure.durationDays} days`}). Please share the details.`)}`}
+                      sourcePath={sourcePath}
+                      location={departure.locationName}
+                      intent="Yoga departure enquiry"
+                      analyticsEvent="yoga_whatsapp_click"
+                      product={product?.name ?? departure.label}
+                      productId={departure.productId}
+                      departureId={departure.slug}
+                      departureDate={departure.startDate}
+                      departureEndDate={departure.endDate}
+                      duration={product?.durationLabel ?? `${departure.durationDays} days`}
+                      ctaPosition="departure-calendar"
+                      trackDepartureSelection
+                      style={{ color: '#0f766e', fontWeight: 600 }}
+                    >
+                      Ask on WhatsApp
+                    </TrackedWhatsAppLink>
+                  ) : canBook ? (
                     <a href={departure.bookingUrl} rel="nofollow" style={{ color: '#0f766e', fontWeight: 600 }}>
                       Book
                     </a>

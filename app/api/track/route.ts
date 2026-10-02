@@ -54,6 +54,12 @@ const BEHAVIORAL_EVENTS = [
   'micro_save',
   'micro_share',
   'micro_download',
+  'yoga_whatsapp_click',
+  'yoga_form_open',
+  'yoga_form_completion',
+  'yoga_finder_start',
+  'yoga_finder_recommendation',
+  'yoga_departure_selection',
 ] as const;
 
 const ALL_EVENTS = [...NAVIGATION_EVENTS, ...BEHAVIORAL_EVENTS] as const;

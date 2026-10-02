@@ -25,6 +25,10 @@ interface CTAExpandToggleProps {
   yogaInterest?: string;
   duration?: string;
   yogaExperience?: string;
+  productId?: string;
+  departureId?: string;
+  planningHorizon?: string;
+  productOption?: string;
 }
 
 export default function CTAExpandToggle({
@@ -36,6 +40,10 @@ export default function CTAExpandToggle({
   yogaInterest,
   duration,
   yogaExperience,
+  productId,
+  departureId,
+  planningHorizon,
+  productOption,
 }: CTAExpandToggleProps) {
   const [expanded, setExpanded] = useState(false);
 
@@ -49,15 +57,30 @@ export default function CTAExpandToggle({
             captureAttribution(searchParams);
             const sourceUtm = buildAttributionQuery(searchParams);
             if (category.toLowerCase().includes('yoga') || sourcePath.toLowerCase().includes('yoga')) {
+              const context = {
+                page: sourcePath,
+                label,
+                vertical,
+                category,
+                location: location || '',
+                duration: duration || '',
+                yoga_interest: yogaInterest || '',
+                yoga_experience: yogaExperience || '',
+                ...(productOption ? { product: productOption } : {}),
+                ...(productId ? { product_id: productId } : {}),
+                ...(departureId ? { departure_id: departureId } : {}),
+                source: sourcePath,
+                source_utm: sourceUtm,
+              };
               track({
                 event: 'cta_click',
                 from: sourcePath,
-                meta: { label, vertical, category, location: location || '', duration: duration || '', yoga_interest: yogaInterest || '', yoga_experience: yogaExperience || '', source_utm: sourceUtm },
+                meta: { ...context, cta_position: 'inline-form-trigger' },
               });
               track({
-                event: 'form_start',
+                event: 'yoga_form_open',
                 from: sourcePath,
-                meta: { vertical, category, location: location || '', duration: duration || '', yoga_interest: yogaInterest || '', yoga_experience: yogaExperience || '', source_utm: sourceUtm },
+                meta: context,
               });
             }
             setExpanded(true);
@@ -98,6 +121,10 @@ export default function CTAExpandToggle({
                 yogaInterest={yogaInterest}
                 duration={duration}
                 yogaExperience={yogaExperience}
+                productId={productId}
+                departureId={departureId}
+                planningHorizon={planningHorizon}
+                productOption={productOption}
               />
             </Suspense>
           )}

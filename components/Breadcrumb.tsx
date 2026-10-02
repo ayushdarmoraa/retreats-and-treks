@@ -14,8 +14,8 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
     <nav
       aria-label="Breadcrumb"
       style={{
-        width: '100vw',
-        marginLeft: 'calc(-50vw + 50%)',
+        width: 'calc(100% + 2 * var(--space-md, 1.5rem))',
+        marginLeft: 'calc(-1 * var(--space-md, 1.5rem))',
         background: '#ffffff',
         borderBottom: '1px solid #e5e7eb',
         position: 'relative',
@@ -30,6 +30,12 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
           display: flex;
           align-items: center;
           gap: 0;
+          flex-wrap: wrap;
+          min-width: 0;
+        }
+        .bc-inner > span {
+          min-width: 0;
+          max-width: 100%;
         }
         .bc-sep {
           margin: 0 0.5rem;
@@ -45,7 +51,8 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
           text-decoration: none;
           letter-spacing: 0.02em;
           transition: color 0.2s;
-          white-space: nowrap;
+          white-space: normal;
+          overflow-wrap: anywhere;
         }
         .bc-link:hover { color: var(--color-primary); }
         .bc-current {
@@ -54,7 +61,8 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
           font-weight: 400;
           color: #444444;
           letter-spacing: 0.02em;
-          white-space: nowrap;
+          white-space: normal;
+          overflow-wrap: anywhere;
         }
       `}</style>
 

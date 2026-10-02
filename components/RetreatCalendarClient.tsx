@@ -21,8 +21,10 @@ export interface CalendarEvent {
   durationDays: number;
   price: number;
   seatsLeft: number;
+  seatsRemaining?: number | null;
   groupSize: number;
   status: string;
+  availability?: string;
 }
 
 interface Props {
@@ -143,7 +145,8 @@ export default function RetreatCalendarClient({ events }: Props) {
         <div style={{ display: 'grid', gap: '1.25rem' }}>
           {filtered.map((ev) => {
             const sColor = statusColors[ev.status] ?? statusColors.open;
-            const sLabel = statusLabels[ev.status] ?? 'Open';
+            const sLabel = ev.availability === 'enquiry' ? 'Open for enquiry' : statusLabels[ev.status] ?? 'Open';
+            const seatsRemaining = ev.seatsRemaining === undefined ? ev.seatsLeft : ev.seatsRemaining;
             return (
               <Link
                 key={ev.slug}
@@ -170,7 +173,11 @@ export default function RetreatCalendarClient({ events }: Props) {
                   <span>{ev.dateRange}</span>
                   <span>{ev.durationDays} days</span>
                   <span>₹{ev.price.toLocaleString('en-IN')}</span>
-                  <span>{ev.seatsLeft}/{ev.groupSize} seats</span>
+                  {seatsRemaining === null ? (
+                    <span>Open for enquiry</span>
+                  ) : (
+                    <span>{seatsRemaining}/{ev.groupSize} seats</span>
+                  )}
                 </div>
               </Link>
             );

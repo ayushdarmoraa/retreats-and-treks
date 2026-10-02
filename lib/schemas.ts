@@ -9,7 +9,7 @@ import { z } from 'zod/v4';
 
 // ── Shared enums ────────────────────────────────────────────
 
-export const LeadTierEnum = z.enum(['hot', 'warm', 'cold', 'unscored']);
+export const LeadTierEnum = z.enum(['Hot', 'Warm', 'Nurture', 'Early', 'hot', 'warm', 'cold', 'unscored']);
 export const LeadStatusEnum = z.enum(['open', 'replied', 'closed', 'booked']);
 export const InterestEnum = z.enum(['trek', 'retreat', '']);
 export const VerticalEnum = z.enum(['retreat', 'trek', '']);
@@ -25,7 +25,7 @@ export const BudgetEnum = z.enum([
 export const YogaInterestEnum = z.enum(['', 'Yoga Retreat', 'Yoga TTC', 'Not sure']);
 export const YogaDurationEnum = z.enum(['', 'Weekend', '5 days', '7 days', '10 days', '28 days-TTC', 'Flexible']);
 export const YogaExperienceEnum = z.enum(['', 'Beginner', 'Some experience', 'Experienced', 'Teacher']);
-export const BookingReadinessEnum = z.enum(['', 'Exploring', 'Planning', 'Ready to book']);
+export const BookingReadinessEnum = z.enum(['', 'Exploring', 'Planning', 'Ready to book', 'Likely', 'Fairly ready', 'Researching']);
 
 // ── Inquiry submission schema ───────────────────────────────
 
@@ -48,6 +48,10 @@ export const InquirySchema = z.object({
     .optional()
     .default(''),
   yogaInterest: YogaInterestEnum.optional().default(''),
+  product: z.string().trim().max(200).optional().default(''),
+  productId: z.string().trim().max(100).optional().default(''),
+  departureId: z.string().trim().max(150).optional().default(''),
+  planningHorizon: z.string().trim().max(50).optional().default(''),
   interestedIn: InterestEnum.optional().default(''),
   location: z.string().trim().max(200).optional().default(''),
   month: z.string().trim().max(50).optional().default(''),

@@ -133,6 +133,9 @@ export default function ExperienceLocationPage({ page }: Props) {
               sourcePath={`/${page.slug}`}
               location={page.locationName}
               intent="Yoga retreat enquiry"
+              analyticsEvent="yoga_whatsapp_click"
+              product="Yoga Retreat"
+              ctaPosition="experience-location"
               style={{ color: 'var(--color-primary)', fontWeight: 500 }}
             >
               WhatsApp about this location

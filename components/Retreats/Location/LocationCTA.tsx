@@ -3,12 +3,14 @@
 import Link from 'next/link';
 import { locationCtaContent } from '@/content/retreats/location/cta';
 import { logWhatsAppOpen } from '@/lib/analytics';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 
 interface LocationCTAProps {
   locationId: string;
   networkContext: string;
   ctaText: string;
   whatsappLink: string;
+  trackingSourcePath?: string;
 }
 
 export default function LocationCTA({
@@ -16,6 +18,7 @@ export default function LocationCTA({
   networkContext,
   ctaText,
   whatsappLink,
+  trackingSourcePath,
 }: LocationCTAProps) {
   const content = locationCtaContent;
 
@@ -226,15 +229,27 @@ export default function LocationCTA({
           <h3 className="cta-card-title">{content.cardTitle}</h3>
           <p className="cta-card-sub">{content.cardSub}</p>
 
-          <Link
-            href={whatsappLink}
-            onClick={() => logWhatsAppOpen(locationId, 'location-hub')}
-            className="cta-btn-primary"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {content.buttonText}
-          </Link>
+          {trackingSourcePath ? (
+            <TrackedWhatsAppLink
+              href={whatsappLink}
+              sourcePath={trackingSourcePath}
+              location={locationId}
+              intent="location-hub"
+              className="cta-btn-primary"
+            >
+              {content.buttonText}
+            </TrackedWhatsAppLink>
+          ) : (
+            <Link
+              href={whatsappLink}
+              onClick={() => logWhatsAppOpen(locationId, 'location-hub')}
+              className="cta-btn-primary"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {content.buttonText}
+            </Link>
+          )}
 
           <Link href="/retreats" className="cta-btn-ghost">
             {content.secondaryButtonText}

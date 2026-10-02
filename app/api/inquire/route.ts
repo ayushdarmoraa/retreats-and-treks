@@ -16,7 +16,7 @@ import { insertInquiry, type Inquiry } from '@/lib/inquiries';
 import { sendInquiryEmails } from '@/lib/email';
 import { logConversionEvent } from '@/lib/conversion-events';
 import { isRateLimited, isGlobalRateLimited, isBotUserAgent, hashIp } from '@/lib/rate-limit';
-import { scoreInquiry } from '@/lib/lead-scoring';
+import { applyVerifiedDepartureContext, scoreInquiry } from '../../../lib/lead-scoring';
 import { InquirySchema } from '@/lib/schemas';
 
 export const runtime = 'nodejs';
@@ -118,17 +118,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const inquiry: Inquiry = {
+    const submittedInquiry: Inquiry = {
       ...result.data,
       yogaClassification: '',
       yogaSalesRoute: '',
+      recommendedProduct: '',
+      recommendedAlternative: '',
       timestamp: new Date().toISOString(),
     };
+    const inquiry = applyVerifiedDepartureContext(submittedInquiry);
 
     // ── 5. LEAD SCORING ─────────────────────────────────────
-    const { score, tier, signals, yogaClassification, yogaSalesRoute } = scoreInquiry(inquiry);
+    const { score, tier, signals, yogaClassification, yogaSalesRoute, recommendedProduct, recommendedAlternative } = scoreInquiry(inquiry);
     inquiry.yogaClassification = yogaClassification;
     inquiry.yogaSalesRoute = yogaSalesRoute;
+    inquiry.recommendedProduct = recommendedProduct;
+    inquiry.recommendedAlternative = recommendedAlternative;
 
     // ── 6. STORE (with lead intelligence) ──────────────────
     const inquiryId = await insertInquiry(inquiry, score, tier);
@@ -147,6 +152,9 @@ export async function POST(request: NextRequest) {
         lead_tier: tier,
         signals,
         yoga_interest: inquiry.yogaInterest,
+        product: inquiry.product,
+        product_id: inquiry.productId,
+        departure_id: inquiry.departureId,
         location: inquiry.location,
         duration: inquiry.duration,
         preferred_date: inquiry.preferredDate,
@@ -154,8 +162,11 @@ export async function POST(request: NextRequest) {
         group_size: inquiry.groupSize,
         budget: inquiry.budget,
         booking_readiness: inquiry.bookingReadiness,
+        planning_horizon: inquiry.planningHorizon,
         yoga_classification: yogaClassification,
         yoga_sales_route: yogaSalesRoute,
+        recommended_product: recommendedProduct,
+        recommended_alternative: recommendedAlternative,
       },
     }).catch(() => {});
 
@@ -180,7 +191,7 @@ export async function POST(request: NextRequest) {
         }).catch(() => {});
       });
 
-    return NextResponse.json({ success: true, yogaClassification, yogaSalesRoute });
+    return NextResponse.json({ success: true, score, tier, yogaClassification, yogaSalesRoute, recommendedProduct, recommendedAlternative });
   } catch (err) {
     console.error('[API:Inquire] Unhandled error:', err instanceof Error ? err.message : err);
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });

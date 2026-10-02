@@ -74,8 +74,10 @@ function buildTieredResponse(
   tier: LeadTier,
 ): { subject: string; html: string } {
   switch (tier) {
+    case 'Hot':
     case 'hot':
       return buildHotResponse(inquiry);
+    case 'Warm':
     case 'warm':
       return buildWarmResponse(inquiry);
     default:
@@ -262,6 +264,10 @@ function buildTeamNotificationHtml(
   yogaSalesRoute: string,
 ): string {
   const tierColors: Record<LeadTier, string> = {
+    Hot: '#dc2626',
+    Warm: '#d97706',
+    Nurture: '#6b7280',
+    Early: '#9ca3af',
     hot: '#dc2626',
     warm: '#d97706',
     cold: '#6b7280',

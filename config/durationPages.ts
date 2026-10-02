@@ -46,11 +46,11 @@ function createYogaDurationFAQs(durationLabel: string, audience: string): readon
     },
     {
       question: `Are ${durationLabel} Rishikesh Yoga dates and prices published?`,
-      answer: 'Only product-linked dates in the departure calendar are published. If no departure is listed, no date or price is currently published; enquire to ask about options.',
+      answer: 'The product price and upcoming dates are shown from the authoritative Rishikesh Yoga registry. Each listed departure is Open for enquiry; use WhatsApp to confirm the date and details.',
     },
     {
       question: 'Where can I find the daily schedule and stay details?',
-      answer: 'A departure-specific schedule, accommodation, meals, inclusions, and exclusions are not published until confirmed for that departure. Ask the team for the current details before making plans.',
+      answer: 'The public format includes shared accommodation, vegetarian/Sattvic-style breakfast, lunch, dinner, drinking water, and guided Yoga practice. The representative daily rhythm can vary by retreat, and exact venue details are confirmed through WhatsApp.',
     },
     {
       question: 'Is this a Yoga Teacher Training course?',
@@ -254,13 +254,14 @@ export const DURATION_PAGES: readonly DurationPage[] = [
   // ── 5. 5-Day Yoga Retreat ─────────────────────────────────────────────────
   {
     slug: '5-day-yoga-retreat',
-    title: '5-Day Yoga Retreat Format in Rishikesh | Retreats And Treks',
+    title: '5 Day Yoga Retreat in Rishikesh | Dates & Price',
+    seoTitle: '5 Day Yoga Retreat in Rishikesh | Dates & Price',
     h1: '5-Day Yoga Retreat in Rishikesh',
     metaDescription:
-      'Explore a 5-day Rishikesh Yoga retreat for a first immersive practice reset. Published dates, programme, price, and availability appear only when confirmed.',
+      '5-day Yoga retreat in Rishikesh with shared accommodation, meals, guided practice, and upcoming dates open for enquiry.',
     intro:
-      'Five days gives a first retreat enough time to move beyond arrival and settle into a practice rhythm, while remaining a manageable commitment for many travellers. This Rishikesh Yoga product is a duration format, not a promise of a scheduled retreat; current dates, price, venue, daily structure, accommodation, meals, facilitator assignment, and availability appear only when attached to a published departure.',
-    durationLabel: '5 days',
+      'Five days is the primary introductory Yoga retreat: long enough to build a consistent practice through foundational Yoga, pranayama, meditation, and deeper relaxation while remaining a manageable commitment.',
+    durationLabel: '5 Days / 4 Nights',
     idealFor: [
       'First-time retreat participants who want more than a weekend reset',
       'People with enough time to establish a consistent movement, breath, and rest rhythm',
@@ -289,13 +290,14 @@ export const DURATION_PAGES: readonly DurationPage[] = [
   // ── 6. 7-Day Yoga Retreat ─────────────────────────────────────────────────
   {
     slug: '7-day-yoga-retreat',
-    title: '7-Day Yoga Retreat in Rishikesh | Retreats And Treks',
+    title: '7 Day Yoga Retreat in Rishikesh | Dates & Price',
+    seoTitle: '7 Day Yoga Retreat in Rishikesh | Dates & Price',
     h1: '7-Day Yoga Retreat in Rishikesh',
     metaDescription:
-      'Explore a 7-day Rishikesh Yoga retreat for a full week of personal practice. Published dates, programme, price, and availability appear only when confirmed.',
+      '7-day Yoga retreat in Rishikesh with shared accommodation, meals, guided practice, and upcoming dates open for enquiry.',
     intro:
-      'Seven days offers a full week for continuity, reflection, and integration across movement, breath, meditation, and rest. This Rishikesh Yoga product is a duration format, not a promise of a scheduled retreat; current dates, price, venue, daily structure, accommodation, meals, facilitator assignment, and availability appear only when attached to a published departure.',
-    durationLabel: '7 days',
+      'Seven days creates more room for deeper practice, consistency, workshops, meditation, and mindful lifestyle practices across a full retreat rhythm.',
+    durationLabel: '7 Days / 6 Nights',
     idealFor: [
       'People who can protect a full week for a steadier practice rhythm',
       'Practitioners who want more continuity than a short introductory retreat allows',
@@ -324,13 +326,14 @@ export const DURATION_PAGES: readonly DurationPage[] = [
   // ── 7. 10-Day Yoga Retreat ────────────────────────────────────────────────
   {
     slug: '10-day-yoga-retreat',
-    title: '10-Day Yoga Retreat in Rishikesh | Retreats And Treks',
+    title: '10 Day Yoga Retreat in Rishikesh | Dates & Price',
+    seoTitle: '10 Day Yoga Retreat in Rishikesh | Dates & Price',
     h1: '10-Day Yoga Retreat in Rishikesh',
     metaDescription:
-      'Explore a 10-day Rishikesh Yoga retreat for extended personal practice and integration. Published dates, programme, price, and availability appear only when confirmed.',
+      '10-day Yoga retreat in Rishikesh with shared accommodation, meals, guided practice, and upcoming dates open for enquiry.',
     intro:
-      'Ten days allows a longer period for continuity, self-directed practice, and careful re-entry planning. It is a substantial commitment, not a promise of a particular result. This Rishikesh Yoga product is a duration format, and current dates, price, venue, daily structure, accommodation, meals, facilitator assignment, and availability appear only when attached to a published departure.',
-    durationLabel: '10 days',
+      'Ten days is an extended Yoga immersion with sustained routine, deeper practice, reflective time, and greater opportunity for exploration without promising a particular outcome.',
+    durationLabel: '10 Days / 9 Nights',
     idealFor: [
       'Practitioners with time for an extended period away from their usual routine',
       'People seeking more space for continuity, self-practice, and integration',

@@ -10,14 +10,28 @@ import { EXPERIENCE_LOCATION_PAGES } from '@/config/experienceLocationPages';
 import { ITINERARY_PAGES } from '@/config/itineraryPages';
 import { RETREAT_PROGRAM_EVENTS } from '@/config/retreatProgramEvents';
 import { FACILITATOR_PROFILES } from '@/config/facilitators';
-import { YOGA_TTC_PRODUCT } from '@/config/retreatProgramEvents';
 
 const COMPARE_SEPARATOR = '-vs-';
 const DUPLICATE_YOGA_LOCATION_SLUGS = new Set([
   'yoga-retreat-rishikesh',
   'yoga-retreat-sankri',
   'yoga-retreat-chakrata',
+  'yoga-retreat-zanskar',
 ]);
+const DUPLICATE_ART_LANDING_SLUGS = new Set([
+  'art-retreat-chakrata',
+  'art-retreat-mussoorie',
+  'art-retreat-rishikesh',
+]);
+const YOGA_COMPARISON_PATHS = [
+  '/compare/chakrata-yoga-retreat-vs-rishikesh-yoga-retreat',
+  '/compare/5-day-yoga-retreat-vs-7-day-yoga-retreat',
+  '/compare/yoga-retreat-vs-yoga-teacher-training',
+  '/compare/5-day-yoga-retreat-vs-10-day-yoga-retreat',
+  '/compare/7-day-yoga-retreat-vs-10-day-yoga-retreat',
+  '/compare/rishikesh-yoga-retreat-vs-sankri-yoga-retreat',
+  '/compare/rishikesh-yoga-retreat-vs-zanskar-yoga-retreat',
+];
 
 export const revalidate = 86400;
 
@@ -65,27 +79,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: 'weekly',
   });
 
-  for (const slug of [
-    'chakrata-yoga-retreat-vs-rishikesh-yoga-retreat',
-    '5-day-yoga-retreat-vs-7-day-yoga-retreat',
-    'yoga-retreat-vs-yoga-teacher-training',
-  ]) {
+  for (const path of YOGA_COMPARISON_PATHS) {
     entries.push({
-      url: buildCanonicalUrl(`/compare/${slug}`),
+      url: buildCanonicalUrl(path),
       lastModified: now,
       priority: 0.82,
       changeFrequency: 'monthly',
     });
   }
 
-  if (YOGA_TTC_PRODUCT.publicationState === 'published') {
-    entries.push({
-      url: buildCanonicalUrl('/yoga-teacher-training'),
-      lastModified: now,
-      priority: 0.9,
-      changeFrequency: 'monthly',
-    });
-  }
+  entries.push({
+    url: buildCanonicalUrl('/yoga-teacher-training'),
+    lastModified: now,
+    priority: 0.9,
+    changeFrequency: 'monthly',
+  });
 
   // ── 1b. Experience authority pages (Axis 2 — problem-based) ──────────────
   for (const exp of EXPERIENCE_PAGES) {
@@ -209,7 +217,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ── 1g. Experience × Location intersection pages (30 programmatic) ────────
   for (const elp of EXPERIENCE_LOCATION_PAGES) {
-    if (DUPLICATE_YOGA_LOCATION_SLUGS.has(elp.slug)) continue;
+    if (DUPLICATE_YOGA_LOCATION_SLUGS.has(elp.slug) || DUPLICATE_ART_LANDING_SLUGS.has(elp.slug)) continue;
 
     entries.push({
       url: buildCanonicalUrl(`/${elp.slug}`),
@@ -378,7 +386,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // ── 2c. Additional public retreat pages ──────────────────────────────────
   for (const slug of [
-    'art',
     'luxury-himalayan-retreats',
     'meditation-retreat-rishikesh',
     'meditation-retreat-uttarakhand',

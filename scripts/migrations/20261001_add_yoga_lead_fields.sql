@@ -1,0 +1,7 @@
+ALTER TABLE inquiries
+  ADD COLUMN IF NOT EXISTS product TEXT DEFAULT '',
+  ADD COLUMN IF NOT EXISTS product_id TEXT DEFAULT '',
+  ADD COLUMN IF NOT EXISTS departure_id TEXT DEFAULT '',
+  ADD COLUMN IF NOT EXISTS planning_horizon TEXT DEFAULT '',
+  ADD COLUMN IF NOT EXISTS recommended_product TEXT DEFAULT '',
+  ADD COLUMN IF NOT EXISTS recommended_alternative TEXT DEFAULT '';

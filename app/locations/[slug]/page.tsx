@@ -392,7 +392,7 @@ export default async function LocationHubPage({ params }: PageProps) {
         {/* ── LAND TONE ── */}
         <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
           <div className="med-inner">
-            <p className="med-land-tone">"{premiumContent.landTone.opening}"</p>
+            <p className="med-land-tone">&ldquo;{premiumContent.landTone.opening}&rdquo;</p>
           </div>
         </section>
 
@@ -703,9 +703,13 @@ export default async function LocationHubPage({ params }: PageProps) {
                         <span className="med-event-title">{ev.label} — {ev.month} {ev.year}</span>
                         <p className="med-event-meta">{ev.dateRange} · {ev.durationDays} days · ₹{ev.price.toLocaleString('en-IN')}</p>
                       </div>
-                      <span className={`med-event-seats ${ev.seatsLeft <= 3 ? 'low' : ''}`}>
-                        {ev.seatsLeft} seats left →
-                      </span>
+                      {ev.seatsRemaining === null ? (
+                        <span className="med-event-seats">Open for enquiry →</span>
+                      ) : (
+                        <span className={`med-event-seats ${(ev.seatsRemaining ?? ev.seatsLeft) <= 3 ? 'low' : ''}`}>
+                          {ev.seatsRemaining ?? ev.seatsLeft} seats left →
+                        </span>
+                      )}
                     </Link>
                   ))}
                 </div>

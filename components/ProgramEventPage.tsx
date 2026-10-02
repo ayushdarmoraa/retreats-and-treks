@@ -36,7 +36,10 @@ const statusLabels: Record<string, { text: string; color: string }> = {
 };
 
 export default function ProgramEventPage({ event }: Props) {
-  validateFAQSync(event.faqItems as { question: string; answer: string }[], `/${event.slug}`);
+  const faqItems = [...(event.faqItems ?? [])];
+  if (faqItems.length > 0) {
+    validateFAQSync(faqItems as { question: string; answer: string }[], `/${event.slug}`);
+  }
 
   // Reviews for the parent service type (e.g. 'meditation-and-silence')
   const reviews = getReviewsForSlug(event.serviceSlug);
@@ -55,7 +58,9 @@ export default function ProgramEventPage({ event }: Props) {
     { name: `in ${event.locationName}`, url: buildCanonicalUrl(`/${event.parentLocationSlug}`) },
     { name: `${event.month} ${event.year}`, url: buildCanonicalUrl(`/${event.slug}`) },
   ]);
-  const faqSchema = generateFAQSchema(event.faqItems as { question: string; answer: string }[]);
+  const faqSchema = faqItems.length > 0
+    ? generateFAQSchema(faqItems as { question: string; answer: string }[])
+    : null;
 
   const isPastEvent = event.endDate < new Date().toISOString().split('T')[0];
   const isYogaEvent = isYogaProductEvent(event);
@@ -74,7 +79,9 @@ export default function ProgramEventPage({ event }: Props) {
   const statusInfo = isPastEvent
     ? { text: 'Historical — event ended', color: '#6b7280' }
     : isYogaEvent
-      ? yogaStatusLabels[yogaAvailability ?? 'enquiry-only']
+      ? yogaAvailability === 'enquiry-only'
+        ? { text: 'Open for enquiry', color: '#6b7280' }
+        : yogaStatusLabels[yogaAvailability ?? 'enquiry-only']
       : statusLabels[event.status] ?? statusLabels.open;
 
   // Event schema for Google
@@ -109,10 +116,10 @@ export default function ProgramEventPage({ event }: Props) {
   };
 
   return (
-    <TrackedPage page={`/${event.slug}`} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)' }}>
+    <TrackedPage page={`/${event.slug}`} style={{ maxWidth: '56rem', margin: '0 auto', padding: 'var(--space-lg) var(--space-md)', overflowX: 'clip' }}>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, eventSchema, ...reviewSchemas, ...(aggregateRatingSchema ? [aggregateRatingSchema] : [])]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, ...(faqSchema ? [faqSchema] : []), eventSchema, ...reviewSchemas, ...(aggregateRatingSchema ? [aggregateRatingSchema] : [])]) }}
       />
       <Breadcrumb
         items={[
@@ -213,7 +220,7 @@ export default function ProgramEventPage({ event }: Props) {
       )}
 
       {/* ── Booking Assurance ───────────────────────────────────── */}
-      {!isPastEvent && (
+      {!isPastEvent && !isYogaEvent && (
       <section
         style={{
           display: 'grid',
@@ -260,6 +267,8 @@ export default function ProgramEventPage({ event }: Props) {
               category="program-event"
               sourcePath={`/${event.slug}`}
               location={event.locationName}
+              productId={isYogaEvent ? event.productId : undefined}
+              departureId={isYogaEvent ? event.slug : undefined}
             />
           )}
         </>
@@ -402,16 +411,19 @@ export default function ProgramEventPage({ event }: Props) {
       {!isPastEvent && !(isYogaEvent && event.bookingState === 'booking-open' && event.bookingUrl) && (
         <PrimaryCTA
           label={canJoinWaitlist ? 'Join Waitlist' : isYogaEvent ? 'Ask About Another Yoga Date' : event.status === 'sold-out' ? 'Join Waitlist' : 'Inquire About This Retreat'}
-          subtext={isYogaEvent && event.status === 'sold-out'
-            ? `This departure is sold out. Ask about another date in ${event.locationName}.`
+          subtext={isYogaEvent
+            ? `Open for enquiry. Ask the team to confirm current availability and details for ${event.dateRange}.`
             : `${event.seatsLeft} seats remaining. ${event.dateRange}, ${event.locationName}.`}
           vertical="retreat"
           category="program-event"
           sourcePath={`/${event.slug}`}
+          location={isYogaEvent ? event.locationName : undefined}
+          productId={isYogaEvent ? event.productId : undefined}
+          departureId={isYogaEvent ? event.slug : undefined}
         />
       )}
 
-      <TrackedFAQ items={event.faqItems as { question: string; answer: string }[]} page={`/${event.slug}`} />
+      {faqItems.length > 0 && <TrackedFAQ items={faqItems} page={`/${event.slug}`} />}
 
       {/* ── Cross-Links ─────────────────────────────────────────── */}
       <p style={{ marginTop: 'var(--space-xl)', fontSize: '0.9rem' }}>

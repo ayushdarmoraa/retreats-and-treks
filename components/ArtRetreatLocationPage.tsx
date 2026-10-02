@@ -154,6 +154,7 @@ export default function ArtRetreatLocationPage({ content, path }: ArtRetreatLoca
         networkContext={content.networkContext}
         ctaText={content.ctaText}
         whatsappLink={whatsappLink}
+        trackingSourcePath={path}
       />
       <p style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem 3rem', textAlign: 'center' }}>
         <Link href="/retreats/art" style={{ color: '#0f766e' }}>

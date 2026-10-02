@@ -25,12 +25,18 @@ interface Lead {
   email: string;
   phone: string | null;
   yoga_interest: string | null;
+  product: string | null;
+  product_id: string | null;
+  departure_id: string | null;
   yoga_classification: string | null;
   yoga_sales_route: string | null;
+  recommended_product: string | null;
+  recommended_alternative: string | null;
   interested_in: string | null;
   location: string | null;
   month: string | null;
   preferred_date: string | null;
+  planning_horizon: string | null;
   group_size: string | null;
   budget: string | null;
   duration: string | null;
@@ -61,6 +67,11 @@ interface Pagination {
   pages: number;
 }
 
+interface LeadFilterOptions {
+  months: string[];
+  products: { value: string; label: string }[];
+}
+
 interface AnalyticsData {
   metrics: {
     totalLeads: number;
@@ -87,11 +98,15 @@ interface AnalyticsData {
 
 // ── CONSTANTS ──────────────────────────────────────────────
 
-const TIERS = ['hot', 'warm', 'cold'] as const;
+const TIERS = ['Hot', 'Warm', 'Nurture', 'Early'] as const;
 const STATUSES = ['open', 'replied', 'closed', 'booked'] as const;
 const VERTICALS = ['retreat', 'trek'] as const;
 
 const TIER_COLORS: Record<string, string> = {
+  Hot: 'bg-red-100 text-red-800 border-red-200',
+  Warm: 'bg-amber-100 text-amber-800 border-amber-200',
+  Nurture: 'bg-sky-100 text-sky-800 border-sky-200',
+  Early: 'bg-gray-100 text-gray-600 border-gray-200',
   hot: 'bg-red-100 text-red-800 border-red-200',
   warm: 'bg-amber-100 text-amber-800 border-amber-200',
   cold: 'bg-gray-100 text-gray-600 border-gray-200',
@@ -110,8 +125,11 @@ const STATUS_COLORS: Record<string, string> = {
 export default function DashboardClient() {
   // Filters
   const [tierFilter, setTierFilter] = useState<string[]>([]);
-  const [statusFilter, setStatusFilter] = useState<string[]>(['open']);
+  const [statusFilter, setStatusFilter] = useState<string[]>([]);
   const [verticalFilter, setVerticalFilter] = useState('');
+  const [yogaTypeFilter, setYogaTypeFilter] = useState('');
+  const [monthFilter, setMonthFilter] = useState('');
+  const [productFilter, setProductFilter] = useState('');
   const [search, setSearch] = useState('');
   const [sort, setSort] = useState<'date' | 'score'>('date');
   const [order, setOrder] = useState<'desc' | 'asc'>('desc');
@@ -119,6 +137,7 @@ export default function DashboardClient() {
 
   // Data
   const [leads, setLeads] = useState<Lead[]>([]);
+  const [filterOptions, setFilterOptions] = useState<LeadFilterOptions>({ months: [], products: [] });
   const [pagination, setPagination] = useState<Pagination | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -146,6 +165,9 @@ export default function DashboardClient() {
     if (tierFilter.length) params.set('tier', tierFilter.join(','));
     if (statusFilter.length) params.set('status', statusFilter.join(','));
     if (verticalFilter) params.set('vertical', verticalFilter);
+    if (yogaTypeFilter) params.set('yogaType', yogaTypeFilter);
+    if (monthFilter) params.set('month', monthFilter);
+    if (productFilter) params.set('product', productFilter);
     if (search) params.set('q', search);
     params.set('sort', sort);
     params.set('order', order);
@@ -157,6 +179,7 @@ export default function DashboardClient() {
       if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
       const data = await res.json();
       setLeads(data.leads || []);
+      setFilterOptions(data.filterOptions || { months: [], products: [] });
       setPagination(data.pagination || null);
     } catch (err) {
       setError(err instanceof Error ? err.message : 'Failed to load leads');
@@ -164,7 +187,7 @@ export default function DashboardClient() {
     } finally {
       setLoading(false);
     }
-  }, [tierFilter, statusFilter, verticalFilter, search, sort, order, page]);
+  }, [tierFilter, statusFilter, verticalFilter, yogaTypeFilter, monthFilter, productFilter, search, sort, order, page]);
 
   useEffect(() => {
     fetchLeads();
@@ -263,9 +286,10 @@ export default function DashboardClient() {
 
   const counts = {
     total: pagination?.total ?? 0,
-    hot: leads.filter((l) => l.lead_tier === 'hot').length,
-    warm: leads.filter((l) => l.lead_tier === 'warm').length,
-    cold: leads.filter((l) => l.lead_tier === 'cold').length,
+    hot: leads.filter((l) => l.lead_tier.toLowerCase() === 'hot').length,
+    warm: leads.filter((l) => l.lead_tier.toLowerCase() === 'warm').length,
+    nurture: leads.filter((l) => l.lead_tier.toLowerCase() === 'nurture').length,
+    early: leads.filter((l) => l.lead_tier.toLowerCase() === 'early').length,
     booked: leads.filter((l) => l.status === 'booked').length,
   };
 
@@ -287,7 +311,7 @@ export default function DashboardClient() {
   // Hot leads needing urgent response (open, >60 min old)
   const urgentHotLeads = leads.filter(
     (l) =>
-      l.lead_tier === 'hot' &&
+      l.lead_tier.toLowerCase() === 'hot' &&
       l.status === 'open' &&
       now - new Date(l.created_at).getTime() > 60 * 60 * 1000,
   );
@@ -488,6 +512,39 @@ export default function DashboardClient() {
             </button>
           ))}
         </div>
+
+        {/* Yoga location type */}
+        <select
+          aria-label="Yoga location type"
+          value={yogaTypeFilter}
+          onChange={(e) => { setYogaTypeFilter(e.target.value); setPage(1); }}
+          className="px-2 py-1.5 border border-gray-300 rounded text-sm bg-white focus:outline-none"
+        >
+          <option value="">All Yoga location types</option>
+          <option value="rishikesh">Rishikesh</option>
+          <option value="custom">Custom</option>
+          <option value="ttc">TTC</option>
+        </select>
+
+        <select
+          aria-label="Preferred month"
+          value={monthFilter}
+          onChange={(e) => { setMonthFilter(e.target.value); setPage(1); }}
+          className="px-2 py-1.5 border border-gray-300 rounded text-sm bg-white focus:outline-none"
+        >
+          <option value="">All months</option>
+          {filterOptions.months.map((month) => <option key={month} value={month}>{month}</option>)}
+        </select>
+
+        <select
+          aria-label="Yoga product"
+          value={productFilter}
+          onChange={(e) => { setProductFilter(e.target.value); setPage(1); }}
+          className="px-2 py-1.5 border border-gray-300 rounded text-sm bg-white focus:outline-none"
+        >
+          <option value="">All Yoga products</option>
+          {filterOptions.products.map((product) => <option key={product.value} value={product.value}>{product.label}</option>)}
+        </select>
 
         {/* Status filters */}
         <div className="flex gap-1 items-center">
@@ -695,7 +752,7 @@ function LeadRow({
 
         {/* Tier */}
         <td className="px-3 py-2">
-          <span className={`px-1.5 py-0.5 rounded text-xs border ${TIER_COLORS[lead.lead_tier] || TIER_COLORS.unscored}`}>
+          <span className={`px-1.5 py-0.5 rounded text-xs border ${TIER_COLORS[lead.lead_tier] || TIER_COLORS[lead.lead_tier.toLowerCase()] || TIER_COLORS.unscored}`}>
             {lead.lead_tier}
           </span>
         </td>
@@ -785,26 +842,27 @@ function LeadRow({
               {/* Lead details */}
               <div className="text-xs space-y-1 min-w-[200px]">
                 <div className="font-semibold text-gray-700 mb-1">Details</div>
-                {lead.yoga_interest && <div><span className="text-gray-500">Yoga interest:</span> {lead.yoga_interest}</div>}
-                {lead.yoga_classification && <div><span className="text-gray-500">Yoga classification:</span> {lead.yoga_classification}</div>}
+                {lead.yoga_interest && <div><span className="text-gray-500">Interest:</span> {lead.yoga_interest}</div>}
+                {lead.product && <div><span className="text-gray-500">Product:</span> {lead.product}{lead.product_id ? ` (${lead.product_id})` : ''}</div>}
+                {lead.departure_id && <div><span className="text-gray-500">Departure:</span> {lead.departure_id}</div>}
+                {lead.yoga_classification && <div><span className="text-gray-500">Classification:</span> {lead.yoga_classification}</div>}
                 {lead.yoga_sales_route && <div><span className="text-gray-500">Sales route:</span> {lead.yoga_sales_route}</div>}
+                {lead.recommended_product && <div><span className="text-gray-500">Recommended product:</span> {lead.recommended_product}</div>}
+                {lead.recommended_alternative && <div><span className="text-gray-500">Suggested alternative:</span> {lead.recommended_alternative}</div>}
+                <div><span className="text-gray-500">Score / tier:</span> {lead.lead_score} / {lead.lead_tier}</div>
                 {lead.phone && <div><span className="text-gray-500">Phone / WhatsApp:</span> {lead.phone}</div>}
-                {lead.location && <div><span className="text-gray-500">Location:</span> {lead.location}</div>}
+                {lead.location && <div><span className="text-gray-500">Requested location:</span> {lead.location}</div>}
                 {lead.month && <div><span className="text-gray-500">Month:</span> {lead.month}</div>}
                 {lead.preferred_date && <div><span className="text-gray-500">Preferred date:</span> {lead.preferred_date}</div>}
                 {lead.duration && <div><span className="text-gray-500">Duration:</span> {lead.duration}</div>}
                 {lead.yoga_experience && <div><span className="text-gray-500">Yoga experience:</span> {lead.yoga_experience}</div>}
                 {lead.booking_readiness && <div><span className="text-gray-500">Readiness:</span> {lead.booking_readiness}</div>}
+                {lead.planning_horizon && <div><span className="text-gray-500">Planning horizon:</span> {lead.planning_horizon}</div>}
                 {lead.group_size && <div><span className="text-gray-500">Group:</span> {lead.group_size}</div>}
                 {lead.budget && <div><span className="text-gray-500">Budget:</span> {lead.budget}</div>}
                 {lead.vertical && <div><span className="text-gray-500">Vertical:</span> {lead.vertical}</div>}
                 {lead.category && <div><span className="text-gray-500">Category:</span> {lead.category}</div>}
-                {lead.source_url && (
-                  <div>
-                    <span className="text-gray-500">Source:</span>{' '}
-                    <span className="font-mono text-[10px]">{lead.source_url}</span>
-                  </div>
-                )}
+                {lead.source_url && <SourceAttribution sourceUrl={lead.source_url} />}
                 {lead.last_followup_at && (
                   <div>
                     <span className="text-gray-500">Last follow-up:</span>{' '}
@@ -868,6 +926,30 @@ function EventBadge({ type }: { type: string }) {
 
 // ── HELPERS ──────────────────────────────────────────────
 
+const UTM_KEYS = new Set([
+  'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content', 'utm_id',
+  'first_utm_source', 'first_utm_medium', 'first_utm_campaign', 'first_utm_term', 'first_utm_content', 'first_utm_id',
+]);
+
+function SourceAttribution({ sourceUrl }: { sourceUrl: string }) {
+  const [source, query = ''] = sourceUrl.split('?');
+  const sourcePath = source.startsWith('http')
+    ? new URL(source).pathname
+    : source;
+  const utmValues = [...new URLSearchParams(query.split('#')[0]).entries()]
+    .filter(([key]) => UTM_KEYS.has(key))
+    .map(([key, value]) => `${key}=${value}`);
+
+  return (
+    <>
+      <div><span className="text-gray-500">Source:</span> <span className="font-mono text-[10px]">{sourcePath}</span></div>
+      {utmValues.length > 0 && (
+        <div><span className="text-gray-500">UTM:</span> <span className="font-mono text-[10px] break-all">{utmValues.join(' · ')}</span></div>
+      )}
+    </>
+  );
+}
+
 function formatAge(dateStr: string): string {
   const ms = Date.now() - new Date(dateStr).getTime();
   const hours = Math.floor(ms / (1000 * 60 * 60));
@@ -897,7 +979,7 @@ function getResponseTimer(
   const hours = Math.floor(minutes / 60);
   const days = Math.floor(hours / 24);
 
-  const isHot = lead.lead_tier === 'hot';
+  const isHot = lead.lead_tier.toLowerCase() === 'hot';
   const urgent = isHot && minutes > 60;
   const warning = isHot && minutes > 30 && minutes <= 60;
 

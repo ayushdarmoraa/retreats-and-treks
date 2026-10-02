@@ -11,6 +11,9 @@ import ReviewCard from '@/components/reviews/ReviewCard';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
 import { images } from '@/lib/images';
 import YogaDepartureCalendar from '@/components/YogaDepartureCalendar';
+import YogaCommercialSections from '@/components/YogaCommercialSections';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
+import TrackLink from '@/components/TrackLink';
 
 const PAGE = getExperiencePage('yoga-retreats')!;
 const PATH = '/yoga-retreats';
@@ -20,13 +23,13 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Yoga Retreats in Rishikesh & the Himalayas | Retreats And Treks',
+    title: 'Yoga Retreats in India & Rishikesh | RetreatsAndTreks',
     description:
       'Yoga retreats in Rishikesh and the Himalayas, from weekend practice to 5-, 7-, and 10-day formats, with Yoga Teacher Training and custom retreat enquiries.',
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {
-      title: 'Yoga Retreats in Rishikesh & the Himalayas',
+      title: 'Yoga Retreats in India & Rishikesh | RetreatsAndTreks',
       description:
         'Yoga retreats in Rishikesh and the Himalayas with asana, pranayama, meditation, Yoga Teacher Training, and custom retreat enquiries.',
       url: buildCanonicalUrl(PATH),
@@ -40,52 +43,52 @@ const FAQ_ITEMS = [
   {
     question: 'What is a yoga retreat?',
     answer:
-      'A yoga retreat is a multi-day period of structured practice rather than a single drop-in class. The day usually combines asana, pranayama, meditation, rest, and time in the surrounding environment. The format is designed for personal practice and restoration, not teacher certification.',
+      'A Yoga retreat is a multi-day personal-practice format combining Hatha Yoga, mindful movement, pranayama, meditation, relaxation, Yoga Nidra, yogic lifestyle practices, and reflective/self-awareness practices. It is separate from Yoga Teacher Training.',
   },
   {
     question: 'Do I need to be flexible or experienced to join a yoga retreat?',
     answer:
-      'The Yoga service describes practice for different experience levels, but beginner suitability and session adaptations are not published for a future departure. Share your experience and ask the team to confirm the approach for the programme being considered.',
+      'Beginners are welcome, and experienced practitioners may also participate. Share your experience through WhatsApp so the team can confirm the approach for the selected Rishikesh departure.',
   },
   {
     question: 'How is a yoga retreat different from a normal yoga class?',
     answer:
-      'A regular class usually lasts an hour and ends when the session ends. A retreat changes the entire environment: you practise in the morning light, eat in a rhythm aligned with the day, rest between sessions, and stay immersed in the setting for several days. That continuity matters. You do not just attend yoga — you live inside a practice rhythm, which makes breathwork, meditation, and recovery much easier to absorb.',
+      'A regular class is a single session. A retreat gives several days for a consistent practice rhythm with Yoga, meals, rest, meditation, and reflection. The exact daily programme can vary by retreat.',
   },
   {
     question: 'What style of yoga is taught at Himalayan retreats?',
     answer:
-      'The Yoga service describes asana, pranayama, meditation, and restorative practice. A specific style, teacher, and session structure are not published for future departures; ask for the details of the programme before booking.',
+      'The Rishikesh programme includes Hatha Yoga, mindful movement, pranayama, meditation, relaxation, Yoga Nidra, yogic lifestyle practices, and reflective/self-awareness practices.',
   },
   {
     question: 'How does altitude affect yoga practice?',
     answer:
-      'Altitude varies between Rishikesh and the higher Himalayan locations. It can affect comfort and exertion, so confirm location conditions and suitability for your circumstances before choosing a programme. No altitude-specific schedule or suitability is published for an upcoming Yoga departure.',
+      'Rishikesh is the recurring published location for these four Yoga products. Sankri, Chakrata, and Zanskar are demand-led locations; ask about the specific conditions and programme before choosing one.',
   },
   {
     question: 'What is included in the retreat price?',
     answer:
-      'No future Yoga departure currently publishes a confirmed price, meal plan, accommodation, daily schedule, inclusions, or exclusions. Request the written details for a proposed programme before making plans.',
+      'Standard pricing represents shared accommodation and includes vegetarian/Sattvic-style breakfast, lunch, dinner, drinking water, and the guided Yoga/practice programme. Private rooms are available on request; pricing and exact venue details are confirmed manually through WhatsApp.',
   },
   {
     question: 'Can I combine yoga with trekking?',
     answer:
-      'A scheduled trek-and-Yoga combination is not represented in the Yoga product registry. Ask whether a custom combination can be arranged for your preferred location and dates.',
+      'The four recurring products are in Rishikesh. Sankri, Chakrata, and Zanskar are custom or demand-led Yoga enquiries rather than recurring fixed departures.',
   },
   {
     question: 'How long should a yoga retreat be?',
     answer:
-      'A weekend format is useful when time is limited. Five days gives a first retreat enough time to establish a rhythm, while seven and ten days allow longer immersion. The right choice depends on your time, experience, and whether you want a reset or a deeper period of practice.',
+      'The Weekend is a short reset, 5 days is the primary introductory format, 7 days offers deeper immersion, and 10 days provides extended immersion. Choose based on your time and desired practice depth.',
   },
   {
     question: 'Are Yoga Teacher Training and a yoga retreat the same?',
     answer:
-      'No. A yoga retreat is primarily for personal practice, restoration, and immersion. Yoga Teacher Training is a more structured learning pathway for people who want to study yoga in greater depth and explore teaching. Ask for current TTC details rather than assuming a retreat includes certification.',
+      'No. A Yoga retreat is for personal practice and immersion. Yoga Teacher Training is a separate study pathway; these retreats do not claim certification.',
   },
   {
     question: 'How do I check dates and pricing?',
     answer:
-      'Current fixed departures are shown only when they exist in the retreat event registry. When no upcoming Rishikesh Yoga departure is available, enquire with your preferred dates, duration, location, and experience level so the team can confirm current options and pricing.',
+      'The calendar and product cards read upcoming Rishikesh departures from the authoritative registry. Each listed date shows its duration, price, Open for enquiry status, and WhatsApp CTA.',
   },
 ];
 
@@ -182,7 +185,7 @@ export default function YogaRetreatsPage() {
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
 
   // Split heading for teal last word
-  const h1Words = 'Yoga Retreats in Rishikesh & the Himalayas'.split(' ');
+  const h1Words = 'Yoga Retreats in Rishikesh'.split(' ');
   const h1LastWord = h1Words[h1Words.length - 1];
   const h1Rest = h1Words.slice(0, -1).join(' ');
 
@@ -192,8 +195,8 @@ export default function YogaRetreatsPage() {
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
       <AutoArticleSchema
-        title="Yoga Retreats in Rishikesh & the Himalayas"
-        description="Yoga retreats in Rishikesh and the Himalayas, from weekend practice to 5-, 7-, and 10-day formats, with Yoga Teacher Training and custom retreat enquiries."
+        title="Yoga Retreats in Rishikesh"
+        description="Yoga retreats in Rishikesh with Weekend, 5-day, 7-day, and 10-day formats, recurring dates, shared accommodation, meals, and guided Yoga practices."
         path={PATH}
       />
 
@@ -462,20 +465,34 @@ export default function YogaRetreatsPage() {
               {h1Rest} <span>{h1LastWord}</span>
             </h1>
             <p className="med-body">
-              Explore Rishikesh Yoga product formats, the separate unpublished TTC enquiry path, and demand-led location enquiries. Dates and programme details are shown only when published or confirmed.
+              Choose a 3-day Weekend, 5-day, 7-day, or 10-day Yoga retreat in Rishikesh with regular upcoming dates, shared accommodation, vegetarian/Sattvic-style meals, and guided Yoga practices.
             </p>
             <div className="med-hero-tags">
-              <span>Suitability by programme</span>
-              <span>Teacher by departure</span>
-              <span>Weekend, 5, 7, and 10 days</span>
-              <span>Dates only when published</span>
+              <span>Rishikesh, Uttarakhand</span>
+              <span>Shared accommodation</span>
+              <span>Meals included</span>
+              <span>Beginners welcome</span>
             </div>
             <div className="med-hero-actions">
-              <Link href="/find-your-retreat?type=yoga" className="med-cta-btn">Help Me Choose →</Link>
-              <a href="#locations" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Explore Locations ↓</a>
+              <TrackedWhatsAppLink
+                href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in Yoga retreats in Rishikesh. Please share the upcoming dates and details.")}`}
+                sourcePath={PATH}
+                location="Rishikesh"
+                intent="Yoga retreat hub enquiry"
+                analyticsEvent="yoga_whatsapp_click"
+                product="Yoga Retreats in Rishikesh"
+                ctaPosition="hero"
+                className="med-cta-btn"
+              >
+                Ask on WhatsApp
+              </TrackedWhatsAppLink>
+              <TrackLink href="#yoga-calendar" event="cta_click" from={PATH} includeAttribution meta={{ category: 'yoga', cta_label: 'View Upcoming Dates', cta_position: 'hero' }} className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>View Upcoming Dates</TrackLink>
+              <TrackLink href="/find-your-retreat?type=yoga" event="cta_click" from={PATH} includeAttribution meta={{ category: 'yoga', cta_label: 'Help Me Choose', cta_position: 'hero' }} className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Help Me Choose</TrackLink>
             </div>
           </div>
         </section>
+
+        <YogaCommercialSections sourcePath={PATH} />
 
         {/* ── INFO STRIP ── */}
         <section style={{ width: '100vw', marginLeft: 'calc(-50vw + 50%)', background: '#f7f9f7', padding: '2rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
@@ -721,7 +738,7 @@ export default function YogaRetreatsPage() {
                 <span className="med-eyebrow-text">What Participants Say</span>
                 <span className="med-eyebrow-line" />
               </div>
-              <h2 className="med-h2" style={{ textAlign: 'center' }}>Real <span>retreat experiences</span></h2>
+              <h2 className="med-h2" style={{ textAlign: 'center' }}>Yoga &amp; Movement <span>experiences</span></h2>
               <div className="med-grid-3" style={{ marginTop: '1.5rem' }}>
                 {topReviews.map((review) => (
                   <ReviewCard key={`${review.participantName}-${review.datePublished}`} review={review} />

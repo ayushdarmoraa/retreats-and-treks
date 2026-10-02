@@ -12,9 +12,13 @@
  * Place on: homepage (prominent), pillar page, /retreat-programs
  */
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import Link from 'next/link';
 import CTAExpandToggle from '@/components/CTAExpandToggle';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
+import { getUpcomingYogaDepartures, getYogaRetreatProduct } from '@/config/retreatProgramEvents';
+import { getYogaRecommendation } from '@/lib/yoga-finder-recommendation';
+import { buildAttributionQuery, captureAttribution } from '@/utils/attribution';
 import { track } from '@/utils/telemetry';
 import { recordFinderMatch } from '@/utils/sessionPreferences';
 import RatingBadge, { type RatingInfo } from './RatingBadge';
@@ -263,6 +267,25 @@ const YOGA_QUESTIONS: Question[] = [
       { id: 'Unsure', label: 'Not sure', scores: {} },
     ],
   },
+  {
+    id: 'preferredMonth',
+    text: 'Do you have a preferred month or date?',
+    options: [
+      { id: 'specific', label: 'Yes, I have a month or date in mind', scores: {} },
+      { id: 'flexible', label: 'I am flexible', scores: {} },
+      { id: 'unsure', label: 'Not sure yet', scores: {} },
+    ],
+  },
+  {
+    id: 'planningHorizon',
+    text: 'How soon are you planning?',
+    options: [
+      { id: '0–30 days', label: 'Within 30 days', scores: {} },
+      { id: '31–90 days', label: '31–90 days', scores: {} },
+      { id: '91–180 days', label: '91–180 days', scores: {} },
+      { id: 'unknown', label: 'No timing information', scores: {} },
+    ],
+  },
 ];
 
 // ── Retreat display metadata (no registry import needed client-side) ──────────
@@ -344,7 +367,7 @@ const btnBase: React.CSSProperties = {
 
 const btnSelectedBase: React.CSSProperties = {
   ...btnBase,
-  borderColor: 'var(--color-primary, #2d6a4f)',
+  border: '1px solid var(--color-primary, #2d6a4f)',
   background: 'var(--color-primary-light, #e8f5e9)',
   fontWeight: 600,
 };
@@ -362,6 +385,7 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
   const [step, setStep] = useState<Step>(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [results, setResults] = useState<string[]>([]);
+  const yogaFinderStarted = useRef(false);
 
   const currentQuestion = typeof step === 'number' ? questions[step] : null;
   const selectedAnswer = typeof step === 'number' ? answers[questions[step]?.id] : undefined;
@@ -369,6 +393,16 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
   const isLast = typeof step === 'number' && step === questions.length - 1;
 
   function selectAnswer(qId: string, answerId: string) {
+    if (isYogaMode && !yogaFinderStarted.current) {
+      yogaFinderStarted.current = true;
+      const searchParams = new URLSearchParams(window.location.search);
+      captureAttribution(searchParams);
+      track({
+        event: 'yoga_finder_start',
+        from: fromPath,
+        meta: { page: fromPath, source: fromPath, source_utm: buildAttributionQuery(searchParams) },
+      });
+    }
     setAnswers((prev) => ({ ...prev, [qId]: answerId }));
   }
 
@@ -378,6 +412,10 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
         const top = isYogaMode ? ['yoga-and-movement'] : computeTopRetreats(answers);
         setResults(top);
         setStep('result');
+        const searchParams = new URLSearchParams(window.location.search);
+        captureAttribution(searchParams);
+        const sourceUtm = buildAttributionQuery(searchParams);
+        const yogaRecommendation = isYogaMode ? getYogaRecommendation(answers) : undefined;
         track({
           event: 'finder_complete',
           from: fromPath,
@@ -389,9 +427,33 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
               location: answers.yogaLocation === 'unsure' ? '' : answers.yogaLocation,
               duration: answers.yogaDuration,
               yoga_experience: answers.yogaExperience,
+              preferred_month: answers.preferredMonth,
+              planning_horizon: answers.planningHorizon,
+              page: fromPath,
+              source: fromPath,
+              source_utm: sourceUtm,
             } : {}),
           },
         });
+        if (yogaRecommendation) {
+          track({
+            event: 'yoga_finder_recommendation',
+            from: fromPath,
+            meta: {
+              page: fromPath,
+              selected_intent: answers.yogaType === 'ttc' ? 'TTC' : answers.yogaType === 'unsure' ? 'Not sure' : 'Yoga Retreat',
+              selected_duration: answers.yogaDuration || '',
+              requested_location: answers.yogaLocation === 'unsure' ? '' : answers.yogaLocation || '',
+              yoga_experience: answers.yogaExperience || '',
+              recommended_product_id: yogaRecommendation.productId || (yogaRecommendation.ttc ? 'yoga-ttc' : ''),
+              recommended_product: yogaRecommendation.ttc ? '28-Day Yoga Teacher Training in Rishikesh' : yogaRecommendation.productId ? getYogaRetreatProduct(yogaRecommendation.productId)?.name ?? '' : '',
+              recommended_alternative: yogaRecommendation.custom ? 'yoga-rishikesh-5-day' : '',
+              custom_location: yogaRecommendation.custom ? yogaRecommendation.requestedLocation : '',
+              source: fromPath,
+              source_utm: sourceUtm,
+            },
+          });
+        }
         if (top[0]) recordFinderMatch(top[0]);
       } else {
         setStep(step + 1);
@@ -408,6 +470,7 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
     setStep(0);
     setAnswers({});
     setResults([]);
+    yogaFinderStarted.current = false;
   }
 
   const containerStyle: React.CSSProperties = {
@@ -420,30 +483,21 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
 
   if (step === 'result') {
     if (isYogaMode) {
+      const recommendation = getYogaRecommendation(answers);
       const yogaInterest = answers.yogaType === 'ttc' ? 'Yoga TTC' : answers.yogaType === 'unsure' ? 'Not sure' : 'Yoga Retreat';
       const yogaLocation = answers.yogaLocation === 'unsure' ? '' : answers.yogaLocation || '';
       const yogaDuration = answers.yogaDuration || '';
       const yogaExperience = answers.yogaExperience || '';
-      const destinationHref: Record<string, string> = {
-        rishikesh: '/retreats/yoga-retreat-rishikesh',
-        chakrata: '/retreats/chakrata/yoga-retreat',
-        sankri: '/retreats/sankri/yoga-retreat',
-        zanskar: '/yoga-retreat-zanskar',
-        other: '/retreats/yoga-retreat-uttarakhand',
-      };
-      const durationHref: Record<string, string> = {
-        Weekend: '/retreats/yoga-retreat-rishikesh?duration=Weekend#yoga-enquiry',
-        '5 days': '/5-day-yoga-retreat',
-        '7 days': '/7-day-yoga-retreat',
-        '10 days': '/10-day-yoga-retreat',
-      };
-      const productHref = yogaInterest === 'Yoga TTC'
-        ? '/yoga-teacher-training'
-        : yogaInterest === 'Not sure'
-          ? '/find-your-retreat?type=yoga'
-          : yogaLocation === 'rishikesh'
-            ? durationHref[yogaDuration] || destinationHref.rishikesh
-            : destinationHref[yogaLocation] || (durationHref[yogaDuration] ? durationHref[yogaDuration] : '/retreats/yoga-retreat-uttarakhand');
+      const product = recommendation.productId ? getYogaRetreatProduct(recommendation.productId) : undefined;
+      const departures = recommendation.productId ? getUpcomingYogaDepartures(recommendation.productId).slice(0, 2) : [];
+      const productHref = recommendation.href;
+      const whatsappMessage = recommendation.ttc
+        ? 'Hi, I\'m interested in the 28-Day Yoga Teacher Training in Rishikesh. Please share the upcoming batch details.'
+        : recommendation.custom
+        ? `Hi, I'm interested in a Yoga Retreat in ${recommendation.requestedLocation}. I'd like to know about custom/upcoming options.`
+        : recommendation.productId
+          ? `Hi, I'm interested in the ${product?.name}. Please share the upcoming dates and details.`
+          : 'Hi, I need help choosing a Yoga retreat option.';
 
       return (
         <div style={containerStyle}>
@@ -454,23 +508,47 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
             {yogaInterest === 'Yoga TTC' ? 'Yoga Teacher Training enquiry' : yogaInterest === 'Not sure' ? 'Let us help you choose' : 'Your Yoga enquiry starting point'}
           </h2>
           <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.65 }}>
-            {yogaLocation ? `Location: ${yogaLocation}. ` : 'Location: to be decided. '}
+            {yogaLocation ? `Requested location: ${yogaLocation}. ` : 'Location: no preference. '}
             {yogaDuration ? `Duration: ${yogaDuration}. ` : ''}
             {yogaExperience ? `Experience: ${yogaExperience}.` : ''}
           </p>
+          <div style={{ margin: '1rem 0', padding: '1rem', borderLeft: '3px solid var(--color-primary, #2d6a4f)', background: 'var(--color-primary-light, #e8f5e9)' }}>
+            <p style={{ margin: '0 0 0.35rem', fontWeight: 700 }}>Recommended option</p>
+            <p style={{ margin: 0, lineHeight: 1.6 }}>{product?.name ?? (yogaInterest === 'Yoga TTC' ? '28-Day Yoga Teacher Training in Rishikesh' : recommendation.custom ? `Custom Yoga enquiry in ${recommendation.requestedLocation}` : 'Help Me Choose / 5-Day Rishikesh Yoga Retreat')}</p>
+            {product && <p style={{ margin: '0.35rem 0 0', fontWeight: 700 }}>₹{product.price.toLocaleString('en-IN')} · {product.durationLabel}</p>}
+            {recommendation.ttc && <p style={{ margin: '0.35rem 0 0', fontWeight: 700 }}>₹49,999 · 28 days</p>}
+            {departures.length > 0 && departures.map((departure) => <p key={departure.slug} style={{ margin: '0.3rem 0 0', fontSize: '0.88rem' }}>{departure.dateRange} · Open for enquiry</p>)}
+            <p style={{ margin: '0.5rem 0 0', lineHeight: 1.6 }}>{recommendation.reason}</p>
+          </div>
           <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.65 }}>
             This recommendation is a route to enquiry, not confirmation of dates, price, availability, or suitability.
           </p>
+          {recommendation.custom && <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.65 }}>Rishikesh alternative: <Link href="/5-day-yoga-retreat" style={{ color: 'var(--color-primary)', fontWeight: 600 }}>5-Day Rishikesh Yoga Retreat</Link> with published price and dates.</p>}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1rem' }}>
             <Link href={productHref} style={{ color: 'var(--color-primary)', fontWeight: 600 }}>
-              Review the relevant page →
+              Review the recommended option →
             </Link>
             <Link href="/retreats/yoga-retreat-rishikesh" style={{ color: 'var(--color-primary)' }}>
               Rishikesh option
             </Link>
           </div>
+          <TrackedWhatsAppLink
+            href={`https://wa.me/919760446101?text=${encodeURIComponent(whatsappMessage)}`}
+            sourcePath={fromPath}
+            location={recommendation.requestedLocation || 'Rishikesh'}
+            intent="Yoga finder recommendation"
+            analyticsEvent="yoga_whatsapp_click"
+            product={product?.name ?? (recommendation.ttc ? '28-Day Yoga Teacher Training in Rishikesh' : recommendation.custom ? `Custom Yoga Retreat in ${recommendation.requestedLocation}` : '')}
+            productId={recommendation.productId ?? (recommendation.ttc ? 'yoga-ttc' : undefined)}
+            duration={product?.durationLabel ?? (recommendation.ttc ? '28 days' : undefined)}
+            recommendedAlternative={recommendation.custom ? 'yoga-rishikesh-5-day' : undefined}
+            ctaPosition="finder-result"
+            style={{ display: 'inline-flex', marginTop: '0.5rem', padding: '0.75rem 1rem', borderRadius: 6, background: 'var(--color-primary, #2d6a4f)', color: '#fff', fontWeight: 700, textDecoration: 'none' }}
+          >
+            Ask on WhatsApp
+          </TrackedWhatsAppLink>
           <CTAExpandToggle
-            label={yogaInterest === 'Yoga TTC' ? 'Check TTC Details' : 'Ask About This Yoga Option'}
+            label="Send structured enquiry"
             vertical="retreat"
             category="yoga-finder"
             sourcePath={fromPath}
@@ -478,6 +556,9 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
             yogaInterest={yogaInterest}
             duration={yogaDuration}
             yogaExperience={yogaExperience}
+            planningHorizon={answers.planningHorizon}
+            productId={recommendation.helpMeChoose ? undefined : recommendation.productId}
+            productOption={recommendation.ttc ? 'ttc' : recommendation.custom ? 'other-location' : recommendation.helpMeChoose ? 'not-sure' : undefined}
           />
           <button onClick={handleReset} style={{ ...btnBase, width: 'auto', marginTop: '0.75rem', padding: '0.5rem 1rem', fontSize: '0.875rem' }}>
             Start again

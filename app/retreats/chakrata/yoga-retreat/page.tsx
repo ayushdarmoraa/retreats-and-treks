@@ -7,7 +7,7 @@ const PATH = '/retreats/chakrata/yoga-retreat';
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Chakrata Yoga Retreat | Retreats And Treks',
+    title: 'Custom Yoga Retreats in Chakrata | Retreats And Treks',
     description: retreat.description,
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
@@ -29,9 +29,9 @@ export default function Page() {
       retreat={{
         ...retreat,
         heroImage: '/Images/experience-hubs/yoga-hero.webp',
-        heroAlt: 'Yoga retreat in the deodar forests of Chakrata, Uttarakhand',
-        tags: ['On request', 'No fixed dates published', 'Programme confirmed by enquiry'],
-        metaTitle: 'Chakrata Yoga Retreat | Retreats And Treks',
+        heroAlt: 'Custom Yoga retreat enquiry in Chakrata',
+        tags: ['Custom/group enquiry', 'No recurring departures', 'Programme confirmed by enquiry'],
+        metaTitle: 'Custom Yoga Retreats in Chakrata | Retreats And Treks',
       }}
       path={PATH}
       primaryCtaLabel="Plan My Yoga Retreat"
@@ -42,7 +42,7 @@ export default function Page() {
         { name: 'Chakrata', href: '/retreats/chakrata' },
         { name: 'Yoga Retreat' },
       ]}
-      waText={`Hi, I'm interested in the ${retreat.title}.`}
+      waText="Hi, I'm interested in a Yoga Retreat in Chakrata. I'd like to know about custom/upcoming options."
     />
   );
 }

@@ -18,6 +18,10 @@ export interface Inquiry {
   email: string;
   phone: string;
   yogaInterest: string;
+  product: string;
+  productId: string;
+  departureId: string;
+  planningHorizon: string;
   interestedIn: 'trek' | 'retreat' | '';
   location: string;
   month: string;
@@ -29,6 +33,8 @@ export interface Inquiry {
   bookingReadiness: string;
   yogaClassification: string;
   yogaSalesRoute: string;
+  recommendedProduct: string;
+  recommendedAlternative: string;
   source: string;
   vertical: string;
   category: string;
@@ -58,8 +64,8 @@ export async function insertInquiry(
   const contactField = inquiry.email || inquiry.phone;
 
   const rows = await sql`
-    INSERT INTO inquiries (name, email, phone, yoga_interest, yoga_classification, yoga_sales_route, interested_in, location, month, preferred_date, group_size, budget, duration, yoga_experience, booking_readiness, source_url, vertical, category, lead_score, lead_tier)
-    VALUES (${inquiry.name}, ${contactField}, ${inquiry.phone}, ${inquiry.yogaInterest}, ${inquiry.yogaClassification}, ${inquiry.yogaSalesRoute}, ${inquiry.interestedIn}, ${inquiry.location}, ${inquiry.month}, ${inquiry.preferredDate}, ${inquiry.groupSize}, ${inquiry.budget}, ${inquiry.duration}, ${inquiry.yogaExperience}, ${inquiry.bookingReadiness}, ${inquiry.source}, ${inquiry.vertical}, ${inquiry.category || inquiry.trek}, ${leadScore}, ${leadTier})
+    INSERT INTO inquiries (name, email, phone, yoga_interest, product, product_id, departure_id, yoga_classification, yoga_sales_route, recommended_product, recommended_alternative, interested_in, location, month, preferred_date, planning_horizon, group_size, budget, duration, yoga_experience, booking_readiness, source_url, vertical, category, lead_score, lead_tier)
+    VALUES (${inquiry.name}, ${contactField}, ${inquiry.phone}, ${inquiry.yogaInterest}, ${inquiry.product}, ${inquiry.productId}, ${inquiry.departureId}, ${inquiry.yogaClassification}, ${inquiry.yogaSalesRoute}, ${inquiry.recommendedProduct}, ${inquiry.recommendedAlternative}, ${inquiry.interestedIn}, ${inquiry.location}, ${inquiry.month}, ${inquiry.preferredDate}, ${inquiry.planningHorizon}, ${inquiry.groupSize}, ${inquiry.budget}, ${inquiry.duration}, ${inquiry.yogaExperience}, ${inquiry.bookingReadiness}, ${inquiry.source}, ${inquiry.vertical}, ${inquiry.category || inquiry.trek}, ${leadScore}, ${leadTier})
     RETURNING id
   `;
 

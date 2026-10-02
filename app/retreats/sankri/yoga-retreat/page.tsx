@@ -5,15 +5,23 @@ import PrimaryCTA from '@/components/PrimaryCTA';
 import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
-import { generateBreadcrumbSchema } from '@/components/seo/Schema';
+import TrackedFAQ from '@/components/TrackedFAQ';
+import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 
 const PATH = '/retreats/sankri/yoga-retreat';
 
+const FAQ_ITEMS = [
+  { question: 'Is Sankri a fixed Yoga retreat?', answer: 'No. Sankri is a custom, demand-led Yoga opportunity and does not have recurring published departures.' },
+  { question: 'Can I request custom dates?', answer: 'Yes. Share preferred dates, group size, and Yoga experience so the team can discuss whether a programme is feasible.' },
+  { question: 'Can groups enquire?', answer: 'Yes. Group Yoga requests can be discussed through WhatsApp; dates, logistics, and programme details are confirmed individually.' },
+  { question: 'Is Rishikesh available on fixed dates?', answer: 'Yes. Rishikesh is the Yoga location with recurring published departures, including Weekend, 5-day, 7-day, and 10-day formats.' },
+];
+
 export function generateMetadata(): Metadata {
   return {
-    title: 'Yoga Retreat Enquiry in Sankri | Retreats And Treks',
+    title: 'Custom Yoga Retreats in Sankri | Retreats And Treks',
     description:
-      'Enquire about a demand-led Yoga retreat in Sankri. No fixed dates or departure-specific programme details are currently published.',
+      'Custom and group Yoga retreat enquiries in Sankri. Dates are arranged according to demand and logistics; no recurring fixed departure is published.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },
@@ -22,8 +30,8 @@ export function generateMetadata(): Metadata {
       follow: true,
     },
     openGraph: {
-      title: 'Yoga Retreat Enquiry in Sankri | Retreats And Treks',
-      description: 'Enquire about a demand-led Yoga retreat in Sankri. No fixed dates or departure-specific programme details are currently published.',
+      title: 'Custom Yoga Retreats in Sankri | Retreats And Treks',
+      description: 'Custom and group Yoga retreat enquiries in Sankri. Dates are arranged according to demand and logistics; no recurring fixed departure is published.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
       siteName: 'Retreats And Treks',
@@ -40,10 +48,12 @@ export default function SankriYogaRetreatPage() {
     { name: 'Sankri', url: buildCanonicalUrl('/retreats/sankri') },
     { name: 'Yoga Retreat', url: buildCanonicalUrl(PATH) },
   ]);
+  const faqSchema = generateFAQSchema(FAQ_ITEMS);
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <Breadcrumb items={[
         { name: 'Home', href: '/' },
         { name: 'Retreats', href: '/retreats' },
@@ -120,7 +130,7 @@ export default function SankriYogaRetreatPage() {
             <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
           </div>
           <h1 style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(2.3rem, 4.6vw, 3.4rem)', fontWeight: 600, letterSpacing: '-0.03em', color: '#ffffff', margin: '0 0 1.1rem', lineHeight: 1.08, textShadow: '0 3px 24px rgba(0,0,0,0.5)' }}>
-            Yoga Retreat in Sankri
+            Custom Yoga Retreats in Sankri
           </h1>
           <p style={{ maxWidth: '42rem', margin: '0 auto 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '1.05rem', fontWeight: 400, lineHeight: 1.8, color: '#ffffff', textShadow: '0 2px 14px rgba(0,0,0,0.45)' }}>
             Sankri Yoga retreats are demand-led and arranged by enquiry. No fixed Yoga departure is currently published. Dates, access, seasonal suitability, group arrangements, and the programme must be confirmed for each request.
@@ -132,22 +142,25 @@ export default function SankriYogaRetreatPage() {
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <TrackedWhatsAppLink
-              href="https://wa.me/919760446101?text=Hi%2C%20I%27m%20interested%20in%20a%20yoga%20retreat%20in%20Sankri."
+              href="https://wa.me/919760446101?text=Hi%2C%20I%27m%20interested%20in%20a%20Yoga%20Retreat%20in%20Sankri.%20I%27d%20like%20to%20know%20about%20custom%2Fupcoming%20options."
               sourcePath={PATH}
               location="Sankri"
               intent="Yoga retreat enquiry"
+              analyticsEvent="yoga_whatsapp_click"
+              product="Custom Yoga Retreat in Sankri"
+              ctaPosition="hero"
               className="med-cta-btn"
             >
-              Plan My Yoga Retreat
+              Ask About a Sankri Yoga Retreat
             </TrackedWhatsAppLink>
-            <a href="#why-sankri" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Why Sankri</a>
+            <Link href="/retreats/yoga-retreat-rishikesh" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>See Rishikesh Yoga Retreats</Link>
           </div>
         </div>
       </section>
 
       <div style={{ maxWidth: '52rem', margin: '0 auto', padding: '2rem 1.5rem 0' }}>
         <PrimaryCTA
-          label="Plan My Yoga Retreat"
+          label="Ask About a Sankri Yoga Retreat"
           subtext="Share your preferred dates, group size, and practice level so we can assess whether Sankri is the right setting."
           vertical="retreat"
           category="yoga-and-movement"
@@ -203,10 +216,10 @@ export default function SankriYogaRetreatPage() {
           </p>
           <p className="med-body" style={{ marginBottom: 0 }}>
             If you want to explore the primary recurring Yoga destination instead, see the{' '}
-            <Link href="/retreats/journeys/yoga-and-movement" style={{ color: '#0f766e', fontWeight: 600 }}>
-              Yoga &amp; Movement
+            <Link href="/retreats/yoga-retreat-rishikesh" style={{ color: '#0f766e', fontWeight: 600 }}>
+              regular Rishikesh Yoga retreats
             </Link>{' '}
-            retreat journey.
+            with published recurring departures.
           </p>
         </div>
       </section>
@@ -325,10 +338,13 @@ export default function SankriYogaRetreatPage() {
           <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.9vw, 2.1rem)', fontWeight: 500, color: '#F6F2E7' }}>Ask about a Sankri Yoga request</h2>
           <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: 'rgba(246,242,231,0.78)' }}>Share your dates, group size, and practice level — we&apos;ll help you decide if Sankri is the right mountain container.</p>
           <TrackedWhatsAppLink
-            href="https://wa.me/919760446101?text=Hi%2C%20I%27m%20interested%20in%20a%20yoga%20retreat%20in%20Sankri."
+            href="https://wa.me/919760446101?text=Hi%2C%20I%27m%20interested%20in%20a%20Yoga%20Retreat%20in%20Sankri.%20I%27d%20like%20to%20know%20about%20custom%2Fupcoming%20options."
             sourcePath={PATH}
             location="Sankri"
             intent="Yoga retreat enquiry"
+            analyticsEvent="yoga_whatsapp_click"
+            product="Custom Yoga Retreat in Sankri"
+            ctaPosition="closing"
             className="med-cta-btn"
           >
             WhatsApp Us
@@ -340,6 +356,14 @@ export default function SankriYogaRetreatPage() {
         <div className="med-inner" style={{ textAlign: 'center' }}>
           <p className="med-body" style={{ marginBottom: '0.8rem' }}>Looking for regular Yoga retreat departures?</p>
           <Link href="/retreats/yoga-retreat-rishikesh" className="med-cta-outline">Explore Yoga retreats in Rishikesh →</Link>
+        </div>
+      </section>
+
+      <section className="med-shell" style={{ background: '#f7f9f7', padding: '4.5rem 0' }}>
+        <div className="med-inner">
+          <div className="med-eyebrow"><span className="med-eyebrow-line" /><span className="med-eyebrow-text">Common questions</span></div>
+          <h2 className="med-h2">Sankri Yoga <span>enquiries</span></h2>
+          <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
         </div>
       </section>
 

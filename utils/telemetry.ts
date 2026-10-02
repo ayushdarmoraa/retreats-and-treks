@@ -29,7 +29,13 @@ type EventType =
   | 'calendar_filter'
   | 'micro_save'
   | 'micro_share'
-  | 'micro_download';
+  | 'micro_download'
+  | 'yoga_whatsapp_click'
+  | 'yoga_form_open'
+  | 'yoga_form_completion'
+  | 'yoga_finder_start'
+  | 'yoga_finder_recommendation'
+  | 'yoga_departure_selection';
 
 interface TrackPayload {
   event: EventType;

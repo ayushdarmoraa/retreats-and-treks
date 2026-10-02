@@ -16,7 +16,8 @@ import { getReviewsForSlug } from '@/content/reviews';
 import { getFacilitatorsByRetreat } from '@/config/facilitators';
 import YogaDepartureCalendar from '@/components/YogaDepartureCalendar';
 import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
-import type { YogaRetreatProductId } from '@/config/retreatProgramEvents';
+import YogaCommercialSections from '@/components/YogaCommercialSections';
+import { getYogaRetreatProduct, type YogaRetreatProductId } from '@/config/retreatProgramEvents';
 
 const PATH = '/retreats/yoga-retreat-rishikesh';
 const YOGA_DURATIONS = ['Weekend', '5 days', '7 days', '10 days'] as const;
@@ -31,9 +32,9 @@ export const revalidate = 86400;
 
 export function generateMetadata(): Metadata {
   return {
-    title: 'Yoga Retreats in Rishikesh | Retreats And Treks',
+    title: 'Yoga Retreat in Rishikesh | 3, 5, 7 & 10 Day Retreats',
     description:
-      'Explore Yoga retreat formats in Rishikesh and enquire about current dates, programme details, pricing, and availability. Departures appear only when published.',
+      'Yoga retreats in Rishikesh: 3, 5, 7, and 10-day formats with exact prices, recurring dates, shared accommodation, meals, and guided practice.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },
@@ -42,7 +43,7 @@ export function generateMetadata(): Metadata {
       follow: true,
     },
     openGraph: {
-      title: 'Yoga Retreats in Rishikesh',
+      title: 'Yoga Retreat in Rishikesh | 3, 5, 7 & 10 Day Retreats',
       description:
         'Explore Rishikesh Yoga retreat formats and request verified current departure details.',
       url: buildCanonicalUrl(PATH),
@@ -56,37 +57,37 @@ const FAQ_ITEMS = [
   {
     question: 'Is Rishikesh the best place for a yoga retreat in India?',
     answer:
-      'Rishikesh is the primary recurring Yoga destination in the current product plan. Whether it suits you depends on your goals and the details of the departure. The exact venue, programme, and access arrangements are confirmed only when a departure is published.',
+      'Rishikesh is the only location with recurring published Yoga inventory in this product family. Whether it suits you depends on your preferred duration and practice goals; the exact venue and accommodation details are confirmed through WhatsApp.',
   },
   {
     question: 'Are yoga retreats in Rishikesh beginner-friendly?',
     answer:
-      'The existing Yoga & Movement service description welcomes different experience levels. Confirm the teaching approach, session adaptations, and facilitator for the specific departure before booking.',
+      'Beginners are welcome, and experienced practitioners may also participate. Share your experience through WhatsApp so the team can confirm the approach for the selected departure.',
   },
   {
     question: 'What is included in a yoga retreat in Rishikesh?',
     answer:
-      'Inclusions are departure-specific. No upcoming Rishikesh Yoga departure currently publishes confirmed meals, accommodation, sessions, or exclusions. Ask for the written details before making plans.',
+      'Standard pricing represents shared accommodation and includes vegetarian/Sattvic-style breakfast, lunch, dinner, drinking water, and a guided Yoga/practice programme. Private rooms are available on request and priced manually through WhatsApp.',
   },
   {
     question: 'Are yoga retreats in Rishikesh residential?',
     answer:
-      'Residential status and room arrangements are not currently published for a future Rishikesh Yoga departure. Confirm the stay details for the specific programme before booking.',
+      'Standard pricing represents shared accommodation. A private room can be requested, but it is not a separate public product and its price is not published. Exact room and venue details are confirmed through WhatsApp.',
   },
   {
     question: 'Can international visitors attend yoga retreats in Rishikesh?',
     answer:
-      'Travel, language, visa, and transfer information should be confirmed for the selected departure. These details are not currently published with a future Rishikesh Yoga date.',
+      'Ask the team to confirm the practical details for your selected departure. This page does not make unsupported claims about travel, visa, language, or transfer arrangements.',
   },
   {
     question: 'How is a yoga retreat different from yoga teacher training?',
     answer:
-      'A Yoga retreat is for personal practice; Teacher Training is a separate study pathway. Current TTC duration, fees, curriculum, and certification details are not published. See the dedicated TTC enquiry page for the current information state.',
+      'A Yoga retreat is for personal practice and immersion. Yoga Teacher Training is a separate study pathway; these retreats do not claim certification. See the dedicated TTC page for that offering.',
   },
   {
     question: 'What should a beginner expect in a first yoga retreat?',
     answer:
-      'The pace, session structure, and modifications depend on the published programme and facilitator. Share your experience level and ask the team to confirm suitability before booking.',
+      'Expect a flexible practice rhythm built around Hatha Yoga, mindful movement, pranayama, meditation, relaxation, meals, rest, and reflection. The exact daily programme can vary by retreat.',
   },
 ];
 
@@ -100,9 +101,15 @@ export default async function YogaRetreatRishikeshPage({
   const requestedDuration = (await searchParams).duration;
   const selectedDuration = YOGA_DURATIONS.find((duration) => duration === requestedDuration);
   const selectedProductId = selectedDuration ? DURATION_PRODUCT_IDS[selectedDuration] : undefined;
+  const selectedProduct = selectedProductId ? getYogaRetreatProduct(selectedProductId) : undefined;
+  const whatsappText = selectedProduct
+    ? `Hi, I'm interested in the ${selectedProduct.name}. Please share the upcoming dates and details.`
+    : "Hi, I'm interested in Yoga retreats in Rishikesh. Please share the upcoming dates and details.";
 
   const facilitator = getFacilitatorsByRetreat('yoga-and-movement')[0];
-  const yogaReviews = getReviewsForSlug('yoga-and-movement');
+  const yogaReviews = getReviewsForSlug('yoga-and-movement').filter((review) =>
+    review.reviewBody.toLowerCase().includes('rishikesh'),
+  );
 
   const canonicalUrl = buildCanonicalUrl(PATH);
 
@@ -117,8 +124,8 @@ export default async function YogaRetreatRishikeshPage({
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
       <AutoArticleSchema
-        title="Yoga Retreats in Rishikesh"
-        description="Explore Rishikesh Yoga retreat formats and request verified dates, programme details, pricing, and availability."
+        title="Yoga Retreats in Rishikesh — 3, 5, 7 & 10 Days"
+        description="Compare four Rishikesh Yoga retreat formats with exact prices, recurring dates, shared accommodation, meals, guided practice, and WhatsApp enquiry."
         path={PATH}
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
@@ -204,10 +211,10 @@ export default async function YogaRetreatRishikeshPage({
             <span style={{ width: 24, height: 1, background: 'rgba(255,255,255,0.6)' }} />
           </div>
           <h1 style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(2.3rem, 4.6vw, 3.4rem)', fontWeight: 600, letterSpacing: '-0.03em', color: '#ffffff', margin: '0 0 1.1rem', lineHeight: 1.08, textShadow: '0 3px 24px rgba(0,0,0,0.5)' }}>
-            Yoga Retreats in Rishikesh
+            Yoga Retreats in Rishikesh — 3, 5, 7 &amp; 10 Days
           </h1>
           <p style={{ maxWidth: '40rem', margin: '0 auto 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '1.05rem', fontWeight: 400, lineHeight: 1.8, color: '#ffffff', textShadow: '0 2px 14px rgba(0,0,0,0.45)' }}>
-            Explore the Rishikesh Yoga retreat format. Exact venue, schedule, stay, meals, and included practices depend on a published departure.
+            Compare 3, 5, 7, and 10-day Rishikesh Yoga retreats with exact prices, recurring upcoming dates, shared accommodation, vegetarian/Sattvic-style meals, and guided practices.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
             {['Weekend', '5 days', '7 days', '10 days'].map((tag) => (
@@ -216,18 +223,25 @@ export default async function YogaRetreatRishikeshPage({
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <TrackedWhatsAppLink
-              href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in a yoga retreat in Rishikesh. Can you tell me more?")}`}
+              href={`https://wa.me/919760446101?text=${encodeURIComponent(whatsappText)}`}
               sourcePath={PATH}
               location="Rishikesh"
               intent="Yoga retreat enquiry"
+              analyticsEvent="yoga_whatsapp_click"
+              product={selectedProduct?.name ?? 'Yoga Retreats in Rishikesh'}
+              productId={selectedProductId}
+              duration={selectedDuration}
+              ctaPosition="hero"
               className="med-cta-btn"
             >
-              Check Dates &amp; Programs
+              Ask About Upcoming Retreats
             </TrackedWhatsAppLink>
             <a href="#why-rishikesh" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Why Rishikesh</a>
           </div>
         </div>
       </section>
+
+      <YogaCommercialSections sourcePath={PATH} />
 
       <div id="yoga-enquiry">
         <PrimaryCTA
@@ -494,10 +508,15 @@ export default async function YogaRetreatRishikeshPage({
           <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.9vw, 2.1rem)', fontWeight: 500, color: '#F6F2E7' }}>Ready to explore Rishikesh Yoga options?</h2>
           <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: 'rgba(246,242,231,0.78)' }}>Talk with us about dates, duration, and the right format for your practice.</p>
           <TrackedWhatsAppLink
-            href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I want to plan a yoga retreat in Rishikesh. Can we discuss dates and options?')}`}
+            href={`https://wa.me/919760446101?text=${encodeURIComponent(whatsappText)}`}
             sourcePath={PATH}
             location="Rishikesh"
             intent="Yoga retreat enquiry"
+            analyticsEvent="yoga_whatsapp_click"
+            product={selectedProduct?.name ?? 'Yoga Retreats in Rishikesh'}
+            productId={selectedProductId}
+            duration={selectedDuration}
+            ctaPosition="closing"
             className="med-cta-btn"
           >
             Check Dates &amp; Programs

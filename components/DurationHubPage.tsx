@@ -13,6 +13,7 @@ import PrimaryCTA from '@/components/PrimaryCTA';
 import TrackedPage from '@/components/TrackedPage';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import YogaDepartureCalendar from '@/components/YogaDepartureCalendar';
+import YogaCommercialSections from '@/components/YogaCommercialSections';
 import type { YogaRetreatProductId } from '@/config/retreatProgramEvents';
 
 interface DurationHubPageProps {
@@ -166,6 +167,13 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
           </div>
         </div>
       </section>
+
+      {isYogaDuration && yogaDurationProductIds[page.slug] && (
+        <YogaCommercialSections
+          sourcePath={`/${page.slug}`}
+          productId={yogaDurationProductIds[page.slug]}
+        />
+      )}
 
       {/* ── PRIMARY CTA ── */}
       <section id="plan" className="med-shell" style={{ background: '#ffffff', padding: '3rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>

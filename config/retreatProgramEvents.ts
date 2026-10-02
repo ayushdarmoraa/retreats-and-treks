@@ -15,17 +15,86 @@ import type { LocationId } from './locations';
 // ── Types ────────────────────────────────────────────────────────────────
 
 export const YOGA_RETREAT_PRODUCTS = [
-  { id: 'yoga-rishikesh-weekend', name: 'Weekend Yoga Retreat', locationId: 'rishikesh', durationLabel: 'Weekend', publicationState: 'published' },
-  { id: 'yoga-rishikesh-5-day', name: '5-Day Yoga Retreat', locationId: 'rishikesh', durationLabel: '5 days', publicationState: 'published' },
-  { id: 'yoga-rishikesh-7-day', name: '7-Day Yoga Retreat', locationId: 'rishikesh', durationLabel: '7 days', publicationState: 'published' },
-  { id: 'yoga-rishikesh-10-day', name: '10-Day Yoga Retreat', locationId: 'rishikesh', durationLabel: '10 days', publicationState: 'published' },
+  {
+    id: 'yoga-rishikesh-weekend',
+    name: 'Weekend Yoga Retreat in Rishikesh',
+    locationId: 'rishikesh',
+    durationDays: 3,
+    durationLabel: '3 Days / 2 Nights',
+    price: 7999,
+    currency: 'INR',
+    capacity: 20,
+    positioning: 'Short Yoga reset for people who cannot take a full week away.',
+    publicationState: 'published',
+  },
+  {
+    id: 'yoga-rishikesh-5-day',
+    name: '5-Day Yoga Retreat in Rishikesh',
+    locationId: 'rishikesh',
+    durationDays: 5,
+    durationLabel: '5 Days / 4 Nights',
+    price: 12999,
+    currency: 'INR',
+    capacity: 20,
+    positioning: 'The primary introductory Yoga retreat.',
+    publicationState: 'published',
+  },
+  {
+    id: 'yoga-rishikesh-7-day',
+    name: '7-Day Yoga Retreat in Rishikesh',
+    locationId: 'rishikesh',
+    durationDays: 7,
+    durationLabel: '7 Days / 6 Nights',
+    price: 17999,
+    currency: 'INR',
+    capacity: 20,
+    positioning: 'Deeper immersion and more time to establish a retreat rhythm.',
+    publicationState: 'published',
+  },
+  {
+    id: 'yoga-rishikesh-10-day',
+    name: '10-Day Yoga Retreat in Rishikesh',
+    locationId: 'rishikesh',
+    durationDays: 10,
+    durationLabel: '10 Days / 9 Nights',
+    price: 24999,
+    currency: 'INR',
+    capacity: 20,
+    positioning: 'Extended Yoga immersion.',
+    publicationState: 'published',
+  },
 ] as const;
 
 export type YogaRetreatProductId = (typeof YOGA_RETREAT_PRODUCTS)[number]['id'];
 
+export const YOGA_RETREAT_CONTENT = {
+  accommodation: {
+    standard: 'Shared accommodation',
+    privateRoom: 'Private room available on request; pricing is handled manually through WhatsApp.',
+  },
+  location: {
+    name: 'Rishikesh',
+    region: 'Uttarakhand',
+    country: 'India',
+    venue: 'Exact venue and accommodation details are confirmed through WhatsApp enquiry.',
+  },
+  meals: ['Vegetarian/Sattvic-style meals', 'Breakfast', 'Lunch', 'Dinner', 'Drinking water'],
+  practiceModel: [
+    'Hatha Yoga',
+    'Mindful movement',
+    'Pranayama',
+    'Meditation',
+    'Relaxation',
+    'Yoga Nidra',
+    'Yogic lifestyle practices',
+    'Reflective/self-awareness practices',
+  ],
+  audience: 'Suitable for beginners; experienced practitioners may also participate.',
+} as const;
+
 export interface YogaTtcProduct {
   readonly id: 'yoga-ttc';
-  readonly name: 'Yoga Teacher Training Course';
+  readonly name: string;
   readonly publicationState: 'unpublished' | 'published';
   readonly durationDays?: number;
   readonly locations?: readonly string[];
@@ -42,12 +111,30 @@ export interface YogaTtcProduct {
 
 export const YOGA_TTC_PRODUCT: YogaTtcProduct = {
   id: 'yoga-ttc',
-  name: 'Yoga Teacher Training Course',
+  name: '28-Day Yoga Teacher Training in Rishikesh',
   publicationState: 'unpublished',
+  durationDays: 28,
+  locations: ['Rishikesh'],
+  fee: { amount: 49999, currency: 'INR' },
+  curriculum: [
+    'Yoga practice',
+    'Yoga philosophy',
+    'Anatomy and fundamentals',
+    'Pranayama',
+    'Meditation',
+    'Teaching methodology',
+    'Sequencing',
+    'Teaching practicum',
+    'Assessment',
+    'Certificate of completion',
+  ],
+  eligibility: 'For people wanting structured Yoga study, deeper theory, teaching methodology, practical teaching experience, and a teacher-training pathway.',
+  accommodation: 'Shared accommodation. Exact venue and operational details are confirmed through enquiry.',
+  meals: 'Standard retreat-style meals.',
 };
 
 export type YogaProductId = YogaRetreatProductId | typeof YOGA_TTC_PRODUCT.id;
-export type EventBookingState = 'enquiry-only' | 'booking-open' | 'waitlist-open' | 'closed';
+export type EventBookingState = 'enquiry-only' | 'booking-open' | 'waitlist-open' | 'closed' | 'whatsapp';
 
 export type YogaDepartureAvailability =
   | 'available'
@@ -94,7 +181,10 @@ export interface RetreatProgramEvent {
   /** Capacity */
   readonly groupSize: number;
   readonly seatsLeft: number;
-  readonly status: 'open' | 'filling-fast' | 'last-few' | 'sold-out';
+  readonly capacity?: number;
+  readonly seatsRemaining?: number | null;
+  readonly availability?: 'available' | 'limited' | 'sold-out' | 'enquiry';
+  readonly status: 'open' | 'filling-fast' | 'last-few' | 'sold-out' | 'published';
   /** A booking route is only active when bookingState and bookingUrl are both supplied. */
   readonly bookingState?: EventBookingState;
   readonly bookingUrl?: string;
@@ -135,6 +225,94 @@ export function getYogaDepartureAvailability(
   if (isYogaDepartureBookable(event)) return 'available';
   return 'enquiry-only';
 }
+
+const YOGA_RISHIKESH_DEPARTURE_INPUTS = [
+  ['yoga-rishikesh-weekend-2026-10-02', 'yoga-rishikesh-weekend', '2026-10-02', '2026-10-04'],
+  ['yoga-rishikesh-5-day-2026-10-12', 'yoga-rishikesh-5-day', '2026-10-12', '2026-10-16'],
+  ['yoga-rishikesh-7-day-2026-10-19', 'yoga-rishikesh-7-day', '2026-10-19', '2026-10-25'],
+  ['yoga-rishikesh-10-day-2026-10-26', 'yoga-rishikesh-10-day', '2026-10-26', '2026-11-04'],
+  ['yoga-rishikesh-weekend-2026-11-06', 'yoga-rishikesh-weekend', '2026-11-06', '2026-11-08'],
+  ['yoga-rishikesh-5-day-2026-11-09', 'yoga-rishikesh-5-day', '2026-11-09', '2026-11-13'],
+  ['yoga-rishikesh-7-day-2026-11-16', 'yoga-rishikesh-7-day', '2026-11-16', '2026-11-22'],
+  ['yoga-rishikesh-10-day-2026-11-23', 'yoga-rishikesh-10-day', '2026-11-23', '2026-12-02'],
+  ['yoga-rishikesh-weekend-2026-12-04', 'yoga-rishikesh-weekend', '2026-12-04', '2026-12-06'],
+  ['yoga-rishikesh-5-day-2026-12-14', 'yoga-rishikesh-5-day', '2026-12-14', '2026-12-18'],
+  ['yoga-rishikesh-7-day-2026-12-21', 'yoga-rishikesh-7-day', '2026-12-21', '2026-12-27'],
+  ['yoga-rishikesh-10-day-2026-12-28', 'yoga-rishikesh-10-day', '2026-12-28', '2027-01-06'],
+  ['yoga-rishikesh-weekend-2027-01-01', 'yoga-rishikesh-weekend', '2027-01-01', '2027-01-03'],
+  ['yoga-rishikesh-5-day-2027-01-11', 'yoga-rishikesh-5-day', '2027-01-11', '2027-01-15'],
+  ['yoga-rishikesh-7-day-2027-01-18', 'yoga-rishikesh-7-day', '2027-01-18', '2027-01-24'],
+  ['yoga-rishikesh-10-day-2027-01-25', 'yoga-rishikesh-10-day', '2027-01-25', '2027-02-03'],
+  ['yoga-rishikesh-weekend-2027-02-05', 'yoga-rishikesh-weekend', '2027-02-05', '2027-02-07'],
+  ['yoga-rishikesh-5-day-2027-02-08', 'yoga-rishikesh-5-day', '2027-02-08', '2027-02-12'],
+  ['yoga-rishikesh-7-day-2027-02-15', 'yoga-rishikesh-7-day', '2027-02-15', '2027-02-21'],
+  ['yoga-rishikesh-10-day-2027-02-22', 'yoga-rishikesh-10-day', '2027-02-22', '2027-03-03'],
+  ['yoga-rishikesh-weekend-2027-03-05', 'yoga-rishikesh-weekend', '2027-03-05', '2027-03-07'],
+  ['yoga-rishikesh-5-day-2027-03-08', 'yoga-rishikesh-5-day', '2027-03-08', '2027-03-12'],
+  ['yoga-rishikesh-7-day-2027-03-15', 'yoga-rishikesh-7-day', '2027-03-15', '2027-03-21'],
+  ['yoga-rishikesh-10-day-2027-03-22', 'yoga-rishikesh-10-day', '2027-03-22', '2027-03-31'],
+] as const;
+
+function formatYogaDateRange(startDate: string, endDate: string): string {
+  const start = new Date(`${startDate}T00:00:00Z`);
+  const end = new Date(`${endDate}T00:00:00Z`);
+  const format = (date: Date) => date.toLocaleDateString('en-IN', {
+    day: 'numeric',
+    month: 'short',
+    timeZone: 'UTC',
+  });
+  return `${format(start)} – ${format(end)} ${end.getUTCFullYear()}`;
+}
+
+function createYogaDeparture(
+  [slug, productId, startDate, endDate]: readonly [string, YogaRetreatProductId, string, string],
+): RetreatProgramEvent {
+  const product = getYogaRetreatProduct(productId);
+  if (!product) throw new Error(`Unknown Yoga product: ${productId}`);
+
+  const start = new Date(`${startDate}T00:00:00Z`);
+  const whatsappMessage = `Hi, I am interested in the ${product.name} from ${startDate} to ${endDate}. Please share availability and booking details.`;
+
+  return {
+    slug,
+    experienceSlug: 'yoga-retreats',
+    serviceSlug: 'yoga-retreats',
+    productId,
+    locationId: 'rishikesh',
+    locationName: YOGA_RETREAT_CONTENT.location.name,
+    label: product.name,
+    title: `${product.name} — ${formatYogaDateRange(startDate, endDate)}`,
+    h1: `${product.name} — ${formatYogaDateRange(startDate, endDate)}`,
+    metaDescription: `${product.positioning} ${YOGA_RETREAT_CONTENT.audience}`,
+    intro: product.positioning,
+    dateRange: formatYogaDateRange(startDate, endDate),
+    startDate,
+    endDate,
+    durationDays: product.durationDays,
+    month: start.toLocaleDateString('en-US', { month: 'long', timeZone: 'UTC' }),
+    year: start.getUTCFullYear(),
+    price: product.price,
+    currency: product.currency,
+    priceNote: 'Standard pricing represents shared accommodation. Private room is available on request; pricing is handled manually through WhatsApp.',
+    groupSize: product.capacity,
+    seatsLeft: product.capacity,
+    capacity: product.capacity,
+    seatsRemaining: null,
+    availability: 'enquiry',
+    status: 'published',
+    bookingState: 'whatsapp',
+    bookingUrl: `https://wa.me/919760446101?text=${encodeURIComponent(whatsappMessage)}`,
+    included: [...YOGA_RETREAT_CONTENT.practiceModel, ...YOGA_RETREAT_CONTENT.meals],
+    toBring: ['Comfortable practice clothing', 'Personal essentials'],
+    quickItinerary: ['Daily Hatha Yoga, mindful movement, pranayama, meditation, relaxation, Yoga Nidra, and reflective practices.'],
+    parentExperienceSlug: 'yoga-retreats',
+    parentLocationSlug: 'retreats/yoga-retreat-rishikesh',
+    itinerarySlug: 'yoga-retreat-rishikesh',
+    faqItems: [],
+  };
+}
+
+const YOGA_RISHIKESH_DEPARTURES = YOGA_RISHIKESH_DEPARTURE_INPUTS.map(createYogaDeparture);
 
 // ── Event Definitions ────────────────────────────────────────────────────
 
@@ -944,6 +1122,7 @@ const EVENTS: RetreatProgramEvent[] = [
       },
     ],
   },
+  ...YOGA_RISHIKESH_DEPARTURES,
 ];
 
 // ── Exports ──────────────────────────────────────────────────────────────

@@ -22,6 +22,10 @@ interface PrimaryCTAProps {
   yogaInterest?: string;
   duration?: string;
   yogaExperience?: string;
+  productId?: string;
+  departureId?: string;
+  planningHorizon?: string;
+  productOption?: string;
 }
 
 export default function PrimaryCTA({
@@ -34,6 +38,10 @@ export default function PrimaryCTA({
   yogaInterest,
   duration,
   yogaExperience,
+  productId,
+  departureId,
+  planningHorizon,
+  productOption,
 }: PrimaryCTAProps) {
   return (
     <aside style={{
@@ -107,6 +115,10 @@ export default function PrimaryCTA({
           yogaInterest={yogaInterest}
           duration={duration}
           yogaExperience={yogaExperience}
+          productId={productId}
+          departureId={departureId}
+          planningHorizon={planningHorizon}
+          productOption={productOption}
         />
 
       </div>

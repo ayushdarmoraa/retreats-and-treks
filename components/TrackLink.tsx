@@ -25,8 +25,10 @@
 
 import Link from 'next/link';
 import type { ComponentPropsWithoutRef } from 'react';
+import { buildAttributionQuery, captureAttribution } from '@/utils/attribution';
 
 type EventType =
+  | 'cta_click'
   | 'topic_to_pillar'
   | 'blog_to_journey'
   | 'comparison_to_journey'
@@ -36,16 +38,26 @@ type EventType =
 interface TrackLinkProps extends ComponentPropsWithoutRef<typeof Link> {
   event: EventType;
   from: string;
+  meta?: Record<string, unknown>;
+  includeAttribution?: boolean;
 }
 
-export default function TrackLink({ event, from, href, onClick, children, ...rest }: TrackLinkProps) {
+export default function TrackLink({ event, from, href, onClick, children, meta, includeAttribution = false, ...rest }: TrackLinkProps) {
   function handleClick(e: React.MouseEvent<HTMLAnchorElement>) {
     // Fire-and-forget — never block navigation
     try {
+      const searchParams = includeAttribution ? new URLSearchParams(window.location.search) : undefined;
+      if (searchParams) captureAttribution(searchParams);
+      const sourceUtm = searchParams ? buildAttributionQuery(searchParams) : '';
       fetch('/api/track', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ event, from, to: href }),
+        body: JSON.stringify({
+          event,
+          from,
+          to: href,
+          meta: { ...meta, ...(includeAttribution ? { source_utm: sourceUtm } : {}) },
+        }),
         keepalive: true,
       }).catch(() => {});
     } catch {

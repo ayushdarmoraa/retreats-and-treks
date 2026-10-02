@@ -80,8 +80,10 @@ export default function RetreatCalendarPage() {
     durationDays: ev.durationDays,
     price: ev.price,
     seatsLeft: ev.seatsLeft,
+    seatsRemaining: ev.seatsRemaining,
     groupSize: ev.groupSize,
     status: ev.status,
+    availability: ev.availability,
   }));
 
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -90,7 +92,10 @@ export default function RetreatCalendarPage() {
   ]);
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
 
-  const totalSeats = upcomingCalendarEvents.reduce((s, e) => s + e.seatsLeft, 0);
+  const totalSeats = upcomingCalendarEvents.reduce(
+    (sum, event) => sum + (event.seatsRemaining === undefined ? event.seatsLeft : event.seatsRemaining ?? 0),
+    0,
+  );
   const locationCount = new Set(upcomingCalendarEvents.map((e) => e.locationId)).size;
 
   // Split heading for green last word

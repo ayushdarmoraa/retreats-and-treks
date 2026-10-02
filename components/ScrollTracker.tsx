@@ -17,6 +17,7 @@
 import { useEffect, useRef } from 'react';
 import { track } from '@/utils/telemetry';
 import { recordDeepView } from '@/utils/sessionPreferences';
+import { buildAttributionQuery, captureAttribution } from '@/utils/attribution';
 
 const MILESTONES = [25, 50, 75, 90] as const;
 type Depth = (typeof MILESTONES)[number];
@@ -27,59 +28,47 @@ interface ScrollTrackerProps {
 
 export default function ScrollTracker({ page }: ScrollTrackerProps) {
   const fired = useRef<Set<Depth>>(new Set());
-  const sentinelRefs = useRef<Map<Depth, HTMLDivElement | null>>(new Map());
 
   useEffect(() => {
-    const observers: IntersectionObserver[] = [];
-
-    for (const depth of MILESTONES) {
-      const el = sentinelRefs.current.get(depth);
-      if (!el) continue;
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          for (const entry of entries) {
-            if (entry.isIntersecting && !fired.current.has(depth)) {
-              fired.current.add(depth);
-              track({ event: 'scroll_depth', from: page, meta: { depth } });
-              // Deep scroll on a journey page = strong interest signal
-              if (depth >= 75 && page.startsWith('/retreats/journeys/')) {
-                const slug = page.replace('/retreats/journeys/', '');
-                recordDeepView(slug);
-              }
-            }
-          }
-        },
-        { threshold: 0.1 },
-      );
-
-      observer.observe(el);
-      observers.push(observer);
-    }
-
+    const isYogaPage = page.toLowerCase().includes('yoga');
+    const onScroll = () => {
+      const documentHeight = Math.max(document.documentElement.scrollHeight, document.body.scrollHeight);
+      if (documentHeight <= 0) return;
+      const progress = ((window.scrollY + window.innerHeight) / documentHeight) * 100;
+      for (const depth of MILESTONES) {
+        if (progress < depth || fired.current.has(depth)) continue;
+        fired.current.add(depth);
+        const searchParams = isYogaPage ? new URLSearchParams(window.location.search) : undefined;
+        if (searchParams) captureAttribution(searchParams);
+        track({
+          event: 'scroll_depth',
+          from: page,
+          meta: {
+            depth,
+            ...(isYogaPage ? {
+              page,
+              vertical: 'retreat',
+              category: 'yoga',
+              source_utm: buildAttributionQuery(searchParams!),
+            } : {}),
+          },
+        });
+        if (depth >= 75 && page.startsWith('/retreats/journeys/')) {
+          const slug = page.replace('/retreats/journeys/', '');
+          recordDeepView(slug);
+        }
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('scroll', onScroll, { passive: true, capture: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    onScroll();
     return () => {
-      for (const obs of observers) obs.disconnect();
+      window.removeEventListener('scroll', onScroll);
+      document.removeEventListener('scroll', onScroll, true);
+      window.removeEventListener('resize', onScroll);
     };
   }, [page]);
 
-  return (
-    <>
-      {MILESTONES.map((depth) => (
-        <div
-          key={depth}
-          ref={(el) => { sentinelRefs.current.set(depth, el); }}
-          style={{
-            position: 'absolute',
-            top: `${depth}%`,
-            left: 0,
-            width: 1,
-            height: 1,
-            pointerEvents: 'none',
-            visibility: 'hidden',
-          }}
-          aria-hidden="true"
-        />
-      ))}
-    </>
-  );
+  return null;
 }

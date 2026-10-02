@@ -1,43 +1,54 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import PrimaryCTA from '@/components/PrimaryCTA';
 import Breadcrumb from '@/components/Breadcrumb';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
-import { getUpcomingEventsByProduct, YOGA_TTC_PRODUCT } from '@/config/retreatProgramEvents';
+import { YOGA_TTC_PRODUCT } from '@/config/retreatProgramEvents';
 import { schemaIds } from '@/lib/schemaIds';
 
 const PATH = '/yoga-teacher-training';
+const WHATSAPP_HREF = `https://wa.me/919760446101?text=${encodeURIComponent('Hi, I\'m interested in the 28-Day Yoga Teacher Training in Rishikesh. Please share the upcoming batch details.')}`;
 
-const FAQ_ITEMS = YOGA_TTC_PRODUCT.faqItems?.length
-  ? [...YOGA_TTC_PRODUCT.faqItems]
-  : [
-      {
-        question: 'Is Yoga Teacher Training the same as a Yoga retreat?',
-        answer: 'No. A Yoga retreat is for personal practice; Teacher Training is a separate study pathway. See the current product fields below for the published information state.',
-      },
-      {
-        question: 'How long is the course and where is it held?',
-        answer: `Duration: ${YOGA_TTC_PRODUCT.durationDays ? `${YOGA_TTC_PRODUCT.durationDays} days` : 'not published'}. Location: ${YOGA_TTC_PRODUCT.locations?.join(', ') || 'not published'}. Ask the team for verified details before making travel plans.`,
-      },
-      {
-        question: 'What are the dates, fees, and curriculum?',
-        answer: `Dates: ${YOGA_TTC_PRODUCT.publicationState === 'published' ? 'see published dates below' : 'not published'}. Fee: ${YOGA_TTC_PRODUCT.fee ? `${YOGA_TTC_PRODUCT.fee.currency} ${YOGA_TTC_PRODUCT.fee.amount.toLocaleString('en-IN')}` : 'not published'}. Curriculum: ${YOGA_TTC_PRODUCT.curriculum?.join('; ') || 'not published'}.`,
-      },
-      {
-        question: 'Does the course include accommodation, meals, or certification?',
-        answer: `Accommodation: ${YOGA_TTC_PRODUCT.accommodation || 'not published'}. Meals: ${YOGA_TTC_PRODUCT.meals || 'not published'}. Certification: ${YOGA_TTC_PRODUCT.certification ? `${YOGA_TTC_PRODUCT.certification.credential} from ${YOGA_TTC_PRODUCT.certification.issuer}` : 'not published'}.`,
-      },
-    ];
+const FAQ_ITEMS = [
+  {
+    question: 'What is the 28-Day Yoga Teacher Training?',
+    answer: 'It is a structured long-form Yoga study and teacher-preparation pathway in Rishikesh, separate from a short-term personal-practice Yoga retreat.',
+  },
+  {
+    question: 'What does the programme cover?',
+    answer: 'The published programme areas include Yoga practice, philosophy, anatomy and fundamentals, pranayama, meditation, teaching methodology, sequencing, practicum, assessment, and a certificate of completion.',
+  },
+  {
+    question: 'Is there a confirmed batch date?',
+    answer: 'No batch date is currently published. Upcoming TTC batches are enquiry-only; ask on WhatsApp for current batch details.',
+  },
+  {
+    question: 'How do I enquire?',
+    answer: 'Use the WhatsApp CTA and ask about the upcoming 28-day batch details. The team can confirm current operational information through enquiry.',
+  },
+  {
+    question: 'How is TTC different from a Yoga retreat?',
+    answer: 'A Yoga retreat is a shorter personal-practice experience. TTC is a structured education and teacher-preparation pathway with theory, methodology, practice teaching, and assessment.',
+  },
+];
 
 export const metadata: Metadata = {
-  title: 'Yoga Teacher Training Course | Retreats And Treks',
-  description: 'Request verified Yoga Teacher Training Course details. Course dates, fees, curriculum, eligibility, location, accommodation, and certification are not currently published.',
+  title: '28 Day Yoga Teacher Training in Rishikesh | RetreatsAndTreks',
+  description: '28-day Yoga Teacher Training in Rishikesh with ₹49,999 fee, structured study, teaching practice, assessment, and upcoming batches available by WhatsApp enquiry.',
   alternates: { canonical: buildCanonicalUrl(PATH) },
-  robots: { index: YOGA_TTC_PRODUCT.publicationState === 'published', follow: true },
+  robots: { index: true, follow: true },
 };
+
+const sectionStyle = (background: string): React.CSSProperties => ({
+  width: '100%',
+  background,
+  padding: '4rem 1.25rem',
+  borderBottom: '1px solid rgba(15,118,110,0.08)',
+  boxSizing: 'border-box',
+});
 
 export default function YogaTeacherTrainingPage() {
   const canonicalUrl = buildCanonicalUrl(PATH);
@@ -47,119 +58,96 @@ export default function YogaTeacherTrainingPage() {
     { name: 'Yoga Teacher Training', url: canonicalUrl },
   ]);
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
-  const detailsPublished = YOGA_TTC_PRODUCT.publicationState === 'published';
-  const departures = detailsPublished ? getUpcomingEventsByProduct(YOGA_TTC_PRODUCT.id) : [];
-  const productSchema = detailsPublished ? {
-    '@context': 'https://schema.org',
-    '@type': 'Product',
-    '@id': `${canonicalUrl}#yoga-ttc`,
-    name: YOGA_TTC_PRODUCT.name,
-    ...(YOGA_TTC_PRODUCT.curriculum?.length ? { description: YOGA_TTC_PRODUCT.curriculum.join('. ') } : {}),
-    brand: { '@id': schemaIds.organization },
-    url: canonicalUrl,
-    ...(departures.some((event) => event.bookingState === 'booking-open' && event.bookingUrl)
-      ? {
-          offers: departures
-            .filter((event) => event.bookingState === 'booking-open' && event.bookingUrl && event.status !== 'sold-out')
-            .map((event) => ({
-              '@type': 'Offer',
-              price: event.price,
-              priceCurrency: event.currency,
-              availability: 'https://schema.org/InStock',
-              url: event.bookingUrl,
-            })),
-        }
-      : {}),
-  } : null;
 
   return (
-    <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, ...(productSchema ? [productSchema] : [])]) }}
-      />
-      <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '1rem 1.5rem' }}>
-        <Breadcrumb items={[
-          { name: 'Home', href: '/' },
-          { name: 'Yoga Retreats', href: '/yoga-retreats' },
-          { name: 'Yoga Teacher Training' },
-        ]} />
+    <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: 0, padding: 0, overflowX: 'hidden' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, {
+        '@context': 'https://schema.org',
+        '@type': 'Product',
+        '@id': `${canonicalUrl}#yoga-ttc`,
+        name: YOGA_TTC_PRODUCT.name,
+        description: YOGA_TTC_PRODUCT.curriculum?.join('. '),
+        brand: { '@id': schemaIds.organization },
+        url: canonicalUrl,
+      }]) }} />
+
+      <div style={{ maxWidth: '72rem', margin: '0 auto', padding: '1rem 1.25rem' }}>
+        <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Yoga Retreats', href: '/yoga-retreats' }, { name: 'Yoga Teacher Training' }]} />
       </div>
 
-      <main style={{ maxWidth: '58rem', margin: '0 auto', padding: '2rem 1.5rem 4rem' }}>
-        <p style={{ margin: '0 0 0.65rem', color: '#6b7280', fontSize: '0.75rem', fontWeight: 600, textTransform: 'uppercase' }}>
-          Separate from personal-practice retreats
-        </p>
-        <h1 style={{ margin: '0 0 1rem', fontSize: 'clamp(2rem, 5vw, 3rem)', lineHeight: 1.1 }}>
-          Yoga Teacher Training Course
-        </h1>
-        <p style={{ maxWidth: '48rem', color: '#4b5563', lineHeight: 1.75 }}>
-          Teacher Training is a distinct study pathway, not a Yoga retreat. We only present course dates, fees, curriculum, eligibility, location, accommodation, meals, facilitator, and certification when those details are confirmed for a published course.
-        </p>
-
-        <section aria-labelledby="ttc-publication" style={{ margin: '2rem 0', borderTop: '1px solid #e5e7eb', borderBottom: '1px solid #e5e7eb', padding: '1.5rem 0' }}>
-          <h2 id="ttc-publication" style={{ margin: '0 0 0.75rem', fontSize: '1.2rem' }}>
-            {detailsPublished ? 'Published course information' : 'Course details are not currently published'}
-          </h2>
-          {!detailsPublished && (
-            <>
-              <p role="status" style={{ margin: '0 0 0.75rem', color: '#4b5563', lineHeight: 1.7 }}>
-                No current course dates, fee, location, duration, curriculum, eligibility, accommodation, meals, facilitator assignment, or certification information is available to display.
-              </p>
-              <p style={{ margin: 0, color: '#4b5563', lineHeight: 1.7 }}>
-                Send an enquiry and the team can provide verified details if a course is currently being offered. An enquiry does not reserve a place.
-              </p>
-            </>
-          )}
-          {detailsPublished && (
-            <div style={{ display: 'grid', gap: '0.65rem', color: '#4b5563', lineHeight: 1.7 }}>
-              {YOGA_TTC_PRODUCT.durationDays && <p style={{ margin: 0 }}><strong>Duration:</strong> {YOGA_TTC_PRODUCT.durationDays} days</p>}
-              {YOGA_TTC_PRODUCT.locations?.length && <p style={{ margin: 0 }}><strong>Location:</strong> {YOGA_TTC_PRODUCT.locations.join(', ')}</p>}
-              {YOGA_TTC_PRODUCT.fee && <p style={{ margin: 0 }}><strong>Fee:</strong> {YOGA_TTC_PRODUCT.fee.currency} {YOGA_TTC_PRODUCT.fee.amount.toLocaleString('en-IN')}</p>}
-              {YOGA_TTC_PRODUCT.eligibility && <p style={{ margin: 0 }}><strong>Eligibility:</strong> {YOGA_TTC_PRODUCT.eligibility}</p>}
-              {YOGA_TTC_PRODUCT.accommodation && <p style={{ margin: 0 }}><strong>Accommodation:</strong> {YOGA_TTC_PRODUCT.accommodation}</p>}
-              {YOGA_TTC_PRODUCT.meals && <p style={{ margin: 0 }}><strong>Meals:</strong> {YOGA_TTC_PRODUCT.meals}</p>}
-              {YOGA_TTC_PRODUCT.facilitator && <p style={{ margin: 0 }}><strong>Facilitator:</strong> {YOGA_TTC_PRODUCT.facilitator}</p>}
-              {YOGA_TTC_PRODUCT.certification && <p style={{ margin: 0 }}><strong>Certification:</strong> {YOGA_TTC_PRODUCT.certification.credential} · {YOGA_TTC_PRODUCT.certification.issuer}</p>}
-              {YOGA_TTC_PRODUCT.curriculum?.length ? (
-                <div><strong>Curriculum:</strong><ul>{YOGA_TTC_PRODUCT.curriculum.map((item) => <li key={item}>{item}</li>)}</ul></div>
-              ) : <p style={{ margin: 0 }}>Curriculum details are not published.</p>}
-              {departures.length > 0 ? departures.map((event) => (
-                <p key={event.slug} style={{ margin: 0 }}>
-                  <Link href={`/${event.slug}`}>{event.dateRange} · {event.durationDays} days · {event.locationName}</Link>
-                  {' '}· {event.status === 'sold-out' ? 'Sold out' : event.status === 'filling-fast' || event.status === 'last-few' ? 'Limited availability' : 'Available'}
-                  {' '}· {event.currency} {event.price.toLocaleString('en-IN')}
-                </p>
-              )) : <p role="status" style={{ margin: 0 }}>No future TTC dates are published.</p>}
-            </div>
-          )}
-        </section>
-
-        <PrimaryCTA
-          label="Check TTC Details"
-          subtext="Request current course information. The form will mark this as a Yoga Teacher Training enquiry."
-          vertical="retreat"
-          category="yoga-ttc"
-          sourcePath={PATH}
-          yogaInterest="Yoga TTC"
-        />
-        {YOGA_TTC_PRODUCT.bookingUrl && detailsPublished && (
-          <p style={{ margin: '0.75rem 0 0', textAlign: 'center' }}>
-            <a href={YOGA_TTC_PRODUCT.bookingUrl} rel="nofollow" style={{ color: '#0f766e', fontWeight: 600 }}>Book the published course</a>
+      <header style={{ ...sectionStyle('#0b241f'), color: '#fff', textAlign: 'center' }}>
+        <div style={{ maxWidth: '54rem', margin: '0 auto' }}>
+          <p style={{ margin: '0 0 0.75rem', color: '#99f6e4', fontSize: '0.72rem', fontWeight: 700, letterSpacing: '0.16em', textTransform: 'uppercase' }}>Separate from Yoga retreats</p>
+          <h1 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(2.1rem, 5vw, 3.5rem)', lineHeight: 1.1 }}>28-Day Yoga Teacher Training in Rishikesh</h1>
+          <p style={{ maxWidth: '44rem', margin: '0 auto 1.5rem', color: 'rgba(255,255,255,0.78)', lineHeight: 1.8 }}>
+            A structured long-form education and teacher-preparation pathway for people wanting deeper Yoga study, theory, teaching methodology, practical teaching experience, and assessment.
           </p>
-        )}
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+            <TrackedWhatsAppLink href={WHATSAPP_HREF} sourcePath={PATH} location="Rishikesh" intent="28-day Yoga TTC enquiry" analyticsEvent="yoga_whatsapp_click" product={YOGA_TTC_PRODUCT.name} productId={YOGA_TTC_PRODUCT.id} duration="28 days" ctaPosition="hero" style={{ display: 'inline-flex', padding: '0.9rem 1.4rem', borderRadius: 999, background: '#fff', color: '#0f766e', fontWeight: 700, textDecoration: 'none' }}>
+              Ask About the 28-Day TTC
+            </TrackedWhatsAppLink>
+            <Link href="/compare/yoga-retreat-vs-yoga-teacher-training" style={{ display: 'inline-flex', alignItems: 'center', padding: '0.9rem 1.4rem', borderRadius: 999, border: '1px solid rgba(255,255,255,0.4)', color: '#fff', fontWeight: 700, textDecoration: 'none' }}>
+              Compare TTC and Retreats
+            </Link>
+          </div>
+        </div>
+      </header>
 
-        <section style={{ marginTop: '2.5rem' }}>
-          <h2 style={{ fontSize: '1.35rem' }}>Common questions</h2>
+      <section style={sectionStyle('#fff')} aria-labelledby="ttc-facts">
+        <div style={{ maxWidth: '72rem', margin: '0 auto' }}>
+          <h2 id="ttc-facts" style={{ margin: '0 0 1.25rem', color: '#2B2A26', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.7rem, 3vw, 2.4rem)' }}>Course facts</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 14rem), 1fr))', gap: '1rem' }}>
+            <div><strong>Duration</strong><p style={{ margin: '0.35rem 0 0', color: '#4b5259' }}>28 days</p></div>
+            <div><strong>Location</strong><p style={{ margin: '0.35rem 0 0', color: '#4b5259' }}>Rishikesh</p></div>
+            <div><strong>Fee</strong><p style={{ margin: '0.35rem 0 0', color: '#0f766e', fontSize: '1.25rem', fontWeight: 700 }}>₹49,999</p></div>
+            <div><strong>Accommodation</strong><p style={{ margin: '0.35rem 0 0', color: '#4b5259' }}>Shared accommodation</p></div>
+          </div>
+          <p style={{ margin: '1.25rem 0 0', color: '#4b5259', lineHeight: 1.8 }}>Meals are standard retreat-style meals. Exact venue and other operational details are confirmed through enquiry.</p>
+          <div style={{ marginTop: '1.25rem', padding: '1rem 1.2rem', borderLeft: '3px solid #0f766e', background: '#f7f9f7', color: '#2B2A26', fontWeight: 600 }}>Upcoming TTC batches — enquire on WhatsApp.</div>
+        </div>
+      </section>
+
+      <section style={sectionStyle('#f7f9f7')} aria-labelledby="ttc-curriculum">
+        <div style={{ maxWidth: '72rem', margin: '0 auto' }}>
+          <h2 id="ttc-curriculum" style={{ margin: '0 0 1.25rem', color: '#2B2A26', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.7rem, 3vw, 2.4rem)' }}>Programme areas</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 15rem), 1fr))', gap: '0.75rem' }}>
+            {YOGA_TTC_PRODUCT.curriculum?.map((item) => <div key={item} style={{ padding: '0.9rem 1rem', background: '#fff', border: '1px solid rgba(15,118,110,0.12)', borderRadius: 8, color: '#2B2A26', fontWeight: 600 }}>{item}</div>)}
+          </div>
+        </div>
+      </section>
+
+      <section style={sectionStyle('#fff')} aria-labelledby="ttc-audience">
+        <div style={{ maxWidth: '72rem', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 20rem), 1fr))', gap: '2rem' }}>
+          <div>
+            <h2 id="ttc-audience" style={{ margin: '0 0 0.75rem', color: '#2B2A26', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.7rem, 3vw, 2.4rem)' }}>Who this pathway is for</h2>
+            <p style={{ margin: 0, color: '#4b5259', lineHeight: 1.8 }}>{YOGA_TTC_PRODUCT.eligibility}</p>
+          </div>
+          <div>
+            <h2 style={{ margin: '0 0 0.75rem', color: '#2B2A26', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.7rem, 3vw, 2.4rem)' }}>TTC versus a retreat</h2>
+            <p style={{ margin: 0, color: '#4b5259', lineHeight: 1.8 }}>A retreat is a short-term personal experience. TTC is structured long-form education with theory, methodology, practice teaching, sequencing, practicum, and assessment.</p>
+          </div>
+        </div>
+      </section>
+
+      <section style={sectionStyle('#f7f9f7')} aria-labelledby="ttc-faq">
+        <div style={{ maxWidth: '58rem', margin: '0 auto' }}>
+          <h2 id="ttc-faq" style={{ margin: '0 0 1.25rem', color: '#2B2A26', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.7rem, 3vw, 2.4rem)' }}>Common questions</h2>
           <TrackedFAQ items={FAQ_ITEMS} page={PATH} />
-        </section>
+        </div>
+      </section>
 
-        <nav aria-label="Related Yoga pages" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '2rem' }}>
-          <Link href="/yoga-retreats">Yoga retreats hub</Link>
-          <Link href="/retreats/yoga-retreat-rishikesh">Rishikesh Yoga retreat</Link>
-          <Link href="/find-your-retreat">Help Me Choose</Link>
-        </nav>
-      </main>
+      <section style={sectionStyle('#fff')}>
+        <div style={{ maxWidth: '58rem', margin: '0 auto', textAlign: 'center' }}>
+          <TrackedWhatsAppLink href={WHATSAPP_HREF} sourcePath={PATH} location="Rishikesh" intent="28-day Yoga TTC enquiry" analyticsEvent="yoga_whatsapp_click" product={YOGA_TTC_PRODUCT.name} productId={YOGA_TTC_PRODUCT.id} duration="28 days" ctaPosition="closing" style={{ display: 'inline-flex', padding: '0.95rem 1.5rem', borderRadius: 999, background: '#0f766e', color: '#fff', fontWeight: 700, textDecoration: 'none' }}>
+            Ask About Upcoming TTC Batches
+          </TrackedWhatsAppLink>
+          <nav aria-label="Related Yoga pages" style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '1rem', marginTop: '1.5rem' }}>
+            <Link href="/yoga-retreats">Yoga retreats hub</Link>
+            <Link href="/retreats/yoga-retreat-rishikesh">Rishikesh Yoga retreats</Link>
+            <Link href="/find-your-retreat?type=yoga">Help Me Choose</Link>
+          </nav>
+        </div>
+      </section>
     </TrackedPage>
   );
 }
