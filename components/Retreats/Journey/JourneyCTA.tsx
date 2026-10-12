@@ -1,21 +1,19 @@
 'use client';
 
-import Link from 'next/link';
-import { logWhatsAppOpen } from '@/lib/analytics';
 import { Section, Button } from '@/components/ui';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 import { locationCtaContent } from '@/content/retreats/location/cta';
 
 interface JourneyCTAProps {
   title: string;
   invitation: string;
   priceLabel: string;
+  retreatSlug: string;
 }
 
-export default function JourneyCTA({ title, invitation, priceLabel }: JourneyCTAProps) {
+export default function JourneyCTA({ title, invitation, priceLabel, retreatSlug }: JourneyCTAProps) {
   const content = locationCtaContent;
-  const whatsappLink = `https://wa.me/919760446101?text=${encodeURIComponent(
-    `Hi, I'm interested in ${title}. ${invitation}`,
-  )}`;
+  const sourcePath = `/retreats/journeys/${retreatSlug}`;
 
   return (
     <Section
@@ -245,16 +243,19 @@ export default function JourneyCTA({ title, invitation, priceLabel }: JourneyCTA
             </p>
 
             {/* Buttons */}
-            <Button
-              variant="primary"
-              className="w-full mb-3"
-              onClick={() => {
-                logWhatsAppOpen('journey-cta', title);
-                window.open(whatsappLink, '_blank');
-              }}
-            >
-              {content.buttonText}
-            </Button>
+            <CTAExpandToggle
+              label={content.buttonText}
+              vertical="retreat"
+              category={retreatSlug}
+              sourcePath={sourcePath}
+              pageType="journey"
+              productId={retreatSlug}
+              productName={title}
+              ctaId={`journey_${retreatSlug}_closing_enquiry`}
+              ctaPosition="closing"
+              buttonClassName="w-full mb-3"
+              buttonStyle={{ display: 'block', width: '100%', marginBottom: '0.75rem' }}
+            />
 
             <Button variant="ghost" href="/retreats" className="w-full">
               {content.secondaryButtonText}

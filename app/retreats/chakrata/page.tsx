@@ -418,6 +418,7 @@ export default function ChakrataHubPage() {
       {/* 1. HERO */}
       <LocationHero
         name={chakrataLocation.name}
+        sourcePath="/retreats/chakrata"
         opening={chakrataLocation.landTone.opening}
         heroImage={chakrataLocation.heroImage}
         heroImageAlt={chakrataLocation.heroImageAlt}
@@ -454,6 +455,7 @@ export default function ChakrataHubPage() {
         locationName={chakrataLocation.name}
         services={CHAKRATA_RETREAT_SERVICES}
         locationId="chakrata"
+        conversionSourcePath="/retreats/chakrata"
       />
 
       {/* 7. BEYOND RETREAT - TREKS */}
@@ -510,7 +512,8 @@ export default function ChakrataHubPage() {
         locationId="chakrata"
         networkContext={chakrataLocation.networkContext}
         ctaText={chakrataLocation.ctaText}
-        whatsappLink={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I'm interested in visiting ${chakrataLocation.name}.`)}`}
+        trackingSourcePath="/retreats/chakrata"
+        locationName={chakrataLocation.name}
       />
     </TrackedPage>
   );

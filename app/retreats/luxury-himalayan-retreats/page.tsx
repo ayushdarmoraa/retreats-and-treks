@@ -11,6 +11,7 @@ import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 
 const PATH = '/retreats/luxury-himalayan-retreats';
 
@@ -182,7 +183,15 @@ export default function LuxuryHimalayanRetreatsPage() {
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in a luxury Himalayan retreat. Can you tell me more?")}`} className="lux-cta-btn" target="_blank" rel="noopener noreferrer">Design My Private Retreat</a>
+            <CTAExpandToggle
+              label="Design My Private Retreat"
+              vertical="retreat"
+              category="luxury"
+              sourcePath={PATH}
+              ctaId="luxury_himalayan_hero_enquiry"
+              ctaPosition="hero"
+              buttonClassName="lux-cta-btn"
+            />
             <a href="#luxury-explained" className="lux-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Learn What Makes It Luxury</a>
           </div>
         </div>

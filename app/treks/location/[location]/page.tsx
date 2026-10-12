@@ -5,6 +5,7 @@ import { getLocationById, getAllLocations } from '@/lib/locations';
 import { getTrekHubMetadata } from '@/lib/metadata';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import type { LocationId } from '@/config/locations';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 
 /* Server-side Link — renders <a> instead of next/link to eliminate client JS hydration.
    This page is an SEO entry point (users arrive from Google), so SPA navigation
@@ -810,8 +811,15 @@ export default async function TrekHubPage({ params }: PageProps) {
             </div>
           )}
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' as const, justifyContent: 'center' }}>
-            <a
-              href={`https://wa.me/919760446101?text=Hi%2C%20I%27m%20interested%20in%20a%20trek%20from%20${encodeURIComponent(locationData.name)}.`}
+            <TrackedWhatsAppLink
+              sourcePath={`/treks/location/${locationId}`}
+              vertical="trek"
+              category="trek-location"
+              location={locationData.name}
+              ctaId={`trek_location_${locationId}_hero_expert`}
+              ctaPosition="hero"
+              ctaLabel="Talk to a Trek Expert →"
+              message={`Hi, I'm interested in a trek from ${locationData.name}.`}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
                 padding: '0.9rem 2rem', background: '#ffffff', color: '#0a3d35',
@@ -822,7 +830,7 @@ export default async function TrekHubPage({ params }: PageProps) {
               }}
             >
               Talk to a Trek Expert →
-            </a>
+            </TrackedWhatsAppLink>
             <Link
               href="/treks"
               style={{
@@ -1132,8 +1140,15 @@ export default async function TrekHubPage({ params }: PageProps) {
               }}>
                 Need help choosing between {locationData.name} treks?
               </p>
-              <a
-                href={`https://wa.me/919760446101?text=Hi%2C%20I%20need%20help%20choosing%20a%20trek%20from%20${encodeURIComponent(locationData.name)}.`}
+              <TrackedWhatsAppLink
+                sourcePath={`/treks/location/${locationId}`}
+                vertical="trek"
+                category="trek-location"
+                location={locationData.name}
+                ctaId={`trek_location_${locationId}_selection_help`}
+                ctaPosition="content"
+                ctaLabel="Get a Free Recommendation →"
+                message={`Hi, I need help choosing a trek from ${locationData.name}.`}
                 style={{
                   display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
                   padding: '0.85rem 2rem', background: '#ffffff', color: '#0a3d35',
@@ -1144,7 +1159,7 @@ export default async function TrekHubPage({ params }: PageProps) {
                 }}
               >
                 Get a Free Recommendation →
-              </a>
+              </TrackedWhatsAppLink>
               <p style={{
                 fontFamily: 'var(--font-geist-sans), sans-serif',
                 fontSize: '0.72rem', fontWeight: 300, color: 'rgba(255,255,255,0.5)',
@@ -1309,8 +1324,15 @@ export default async function TrekHubPage({ params }: PageProps) {
             Not sure which {locationData.name} trek is right for you? Our local team can help you choose the best route based on your fitness, schedule, and previous experience.
           </p>
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' as const, justifyContent: 'center' }}>
-            <a
-              href={`https://wa.me/919760446101?text=Hi%2C%20I%20need%20a%20trek%20recommendation%20for%20${encodeURIComponent(locationData.name)}.`}
+            <TrackedWhatsAppLink
+              sourcePath={`/treks/location/${locationId}`}
+              vertical="trek"
+              category="trek-location"
+              location={locationData.name}
+              ctaId={`trek_location_${locationId}_recommendation`}
+              ctaPosition="closing"
+              ctaLabel="Get a Recommendation →"
+              message={`Hi, I need a trek recommendation for ${locationData.name}.`}
               style={{
                 display: 'inline-flex', alignItems: 'center', gap: '0.5rem',
                 padding: '0.95rem 2.25rem', background: '#ffffff', color: '#0a3d35',
@@ -1322,7 +1344,7 @@ export default async function TrekHubPage({ params }: PageProps) {
               }}
             >
               Get a Recommendation →
-            </a>
+            </TrackedWhatsAppLink>
             {locationData.supportsRetreats && (
               <Link
                 href={`/retreats/${locationId}`}

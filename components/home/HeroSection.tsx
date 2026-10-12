@@ -4,10 +4,26 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { images } from '@/lib/images';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
+import { resolveConversionContext } from '@/lib/conversion-foundation';
 
 interface HeroSectionProps {}
 
 export default function HeroSection({}: HeroSectionProps) {
+  const sourcePath = '/';
+  const ctaId = 'home_hero_whatsapp';
+  const label = 'WhatsApp Now';
+  const whatsappHref = buildWhatsAppUrl({
+    context: resolveConversionContext({
+      pagePath: sourcePath,
+      ctaId,
+      ctaLabel: label,
+      ctaPosition: 'hero',
+    }),
+    message: 'Hi, I want to plan a custom retreat.',
+  });
+
   return (
     <>
       <link
@@ -513,15 +529,17 @@ export default function HeroSection({}: HeroSectionProps) {
                 Plan My Retreat
                 <span className="hero-cta-arrow">→</span>
               </Link>
-              <a
-                href="https://wa.me/919760446101?text=Hi%2C%20I%20want%20to%20plan%20a%20custom%20retreat."
-                target="_blank"
-                rel="noopener noreferrer"
+              <TrackedWhatsAppLink
+                href={whatsappHref}
+                sourcePath={sourcePath}
+                ctaId={ctaId}
+                ctaPosition="hero"
+                ctaLabel={label}
                 className="hero-cta-ghost"
               >
                 <span>WhatsApp Now</span>
                 <span className="hero-cta-ghost-icon">↗</span>
-              </a>
+              </TrackedWhatsAppLink>
             </div>
           </div>
 

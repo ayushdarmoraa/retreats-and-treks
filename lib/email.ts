@@ -21,11 +21,24 @@ const FROM_EMAIL = process.env.RESEND_FROM_EMAIL || 'onboarding@resend.dev';
 const TEAM_EMAIL = process.env.TEAM_NOTIFICATION_EMAIL || '';
 const BASE_URL = 'https://www.retreatsandtreks.com';
 
+function escapeHtml(value: unknown): string {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function safeEmailHeader(value: string): string {
+  return value.replace(/[\r\n]+/g, ' ').trim();
+}
+
 export async function sendInquiryEmails(
   inquiry: Inquiry,
   tier: LeadTier = 'cold',
   score: number = 0,
-  yogaSalesRoute = '',
+  routing = '',
 ): Promise<{ sent: boolean; error?: string }> {
   if (!RESEND_API_KEY) {
     console.warn('[Email] RESEND_API_KEY not set — skipping email send.');
@@ -52,16 +65,15 @@ export async function sendInquiryEmails(
       await resend.emails.send({
         from: FROM_EMAIL,
         to: TEAM_EMAIL,
-        subject: `[${tier.toUpperCase()} ${score}]${yogaSalesRoute ? ` [${yogaSalesRoute}]` : ''} ${inquiry.interestedIn || 'General'} — ${inquiry.name}`,
-        html: buildTeamNotificationHtml(inquiry, tier, score, yogaSalesRoute),
+        subject: safeEmailHeader(`[${tier.toUpperCase()} ${score}]${routing ? ` [${routing}]` : ''} ${inquiry.interestedIn || 'General'} — ${inquiry.name}`),
+        html: buildTeamNotificationHtml(inquiry, tier, score, routing),
       });
     }
 
     return { sent: true };
-  } catch (err) {
-    const message = err instanceof Error ? err.message : 'Unknown email error';
-    console.error('[Email] Send failed:', message);
-    return { sent: false, error: message };
+  } catch {
+    console.error('[Email] Send failed');
+    return { sent: false, error: 'Email delivery failed' };
   }
 }
 
@@ -89,12 +101,12 @@ function buildTieredResponse(
 // Personal tone. Premium positioning. Direct scheduler CTA.
 function buildHotResponse(inquiry: Inquiry): { subject: string; html: string } {
   const isRetreat = inquiry.interestedIn === 'retreat';
-  const greeting = inquiry.name ? `Hi ${inquiry.name},` : 'Hi,';
+  const greeting = inquiry.name ? `Hi ${escapeHtml(inquiry.name)},` : 'Hi,';
   const type = isRetreat ? 'retreat' : 'trek';
 
   const subject = isRetreat
-    ? `${inquiry.name}, your private retreat details`
-    : `${inquiry.name}, your trek planning details`;
+    ? safeEmailHeader(`${inquiry.name}, your private retreat details`)
+    : safeEmailHeader(`${inquiry.name}, your trek planning details`);
 
   const html = `
     <div style="font-family: Georgia, 'Times New Roman', serif; max-width: 560px; margin: 0 auto; color: #1a1a1a; line-height: 1.8;">
@@ -102,20 +114,20 @@ function buildHotResponse(inquiry: Inquiry): { subject: string; html: string } {
 
       <p>Thank you for reaching out. I'm personally handling your ${type} inquiry.</p>
 
-      ${inquiry.location ? `<p>I see you're interested in <strong>${inquiry.location}</strong> — excellent choice. I've spent considerable time there and can share specific recommendations that aren't on the website.</p>` : ''}
+      ${inquiry.location ? `<p>I see you're interested in <strong>${escapeHtml(inquiry.location)}</strong> — excellent choice. I've spent considerable time there and can share specific recommendations that aren't on the website.</p>` : ''}
 
-      ${inquiry.month ? `<p><strong>${inquiry.month}</strong> is ${getMonthInsight(inquiry.month, inquiry.location)} for ${inquiry.location || 'the Himalayas'}.</p>` : ''}
+      ${inquiry.month ? `<p><strong>${escapeHtml(inquiry.month)}</strong> is ${getMonthInsight(inquiry.month, inquiry.location)} for ${escapeHtml(inquiry.location || 'the Himalayas')}.</p>` : ''}
 
-      ${inquiry.groupSize && inquiry.groupSize !== '1' ? `<p>For a group of <strong>${inquiry.groupSize}</strong>, I can tailor the experience — private transport, dedicated guide, and flexible scheduling.</p>` : ''}
+      ${inquiry.groupSize && inquiry.groupSize !== '1' ? `<p>For a group of <strong>${escapeHtml(inquiry.groupSize)}</strong>, I can tailor the experience — private transport, dedicated guide, and flexible scheduling.</p>` : ''}
 
       <p style="margin-top: 1.5rem;">To prepare the best options for you, it would help to know:</p>
       <ol style="padding-left: 1.2rem;">
         ${isRetreat
-          ? `<li>Do you have preferred dates, or are you flexible within ${inquiry.month || 'the coming months'}?</li>
+          ? `<li>Do you have preferred dates, or are you flexible within ${escapeHtml(inquiry.month || 'the coming months')}?</li>
              <li>Any dietary preferences or accessibility needs?</li>
              <li>What matters most — solitude, guided practice, or exploration?</li>`
           : `<li>What's your trekking experience level? (First time is perfectly fine)</li>
-             <li>Do you have preferred dates within ${inquiry.month || 'the coming months'}?</li>
+             <li>Do you have preferred dates within ${escapeHtml(inquiry.month || 'the coming months')}?</li>
              <li>Any fitness or altitude concerns?</li>`
         }
       </ol>
@@ -150,7 +162,7 @@ function buildHotResponse(inquiry: Inquiry): { subject: string; html: string } {
       <!-- SCARCITY CUE — factual, not manufactured -->
       ${inquiry.month ? `
       <p style="margin-top: 1.5rem; padding: 0.75rem 1rem; background: #f8fafc; border-left: 3px solid #94a3b8; border-radius: 4px; font-size: 0.9rem; color: #475569;">
-        <strong>Planning note:</strong> ${getScarcityCue(inquiry.month, isRetreat)}
+        <strong>Planning note:</strong> ${escapeHtml(getScarcityCue(inquiry.month, isRetreat))}
       </p>
       ` : ''}
 
@@ -169,7 +181,7 @@ function buildHotResponse(inquiry: Inquiry): { subject: string; html: string } {
 // Helpful + guiding. Resource pack. Qualification questions embedded.
 function buildWarmResponse(inquiry: Inquiry): { subject: string; html: string } {
   const isRetreat = inquiry.interestedIn === 'retreat';
-  const greeting = inquiry.name ? `Hi ${inquiry.name},` : 'Hi,';
+  const greeting = inquiry.name ? `Hi ${escapeHtml(inquiry.name)},` : 'Hi,';
   const type = isRetreat ? 'retreat' : 'trek';
 
   const subject = isRetreat
@@ -182,9 +194,9 @@ function buildWarmResponse(inquiry: Inquiry): { subject: string; html: string } 
 
       <p>Thank you for your ${type} inquiry. We've received your details and a mountain planner will be in touch within 24 hours.</p>
 
-      ${inquiry.location ? `<p><strong>Location interest:</strong> ${inquiry.location}</p>` : ''}
-      ${inquiry.month ? `<p><strong>Preferred month:</strong> ${inquiry.month}</p>` : ''}
-      ${inquiry.groupSize ? `<p><strong>Group size:</strong> ${inquiry.groupSize}</p>` : ''}
+      ${inquiry.location ? `<p><strong>Location interest:</strong> ${escapeHtml(inquiry.location)}</p>` : ''}
+      ${inquiry.month ? `<p><strong>Preferred month:</strong> ${escapeHtml(inquiry.month)}</p>` : ''}
+      ${inquiry.groupSize ? `<p><strong>Group size:</strong> ${escapeHtml(inquiry.groupSize)}</p>` : ''}
 
       <p style="margin-top: 1.5rem;">While we prepare your options, these resources will help you narrow down what works best:</p>
 
@@ -223,7 +235,7 @@ function buildWarmResponse(inquiry: Inquiry): { subject: string; html: string } 
 // Standard helpful response. Content links. Light CTA.
 function buildColdResponse(inquiry: Inquiry): { subject: string; html: string } {
   const isRetreat = inquiry.interestedIn === 'retreat';
-  const greeting = inquiry.name ? `Hi ${inquiry.name},` : 'Hi,';
+  const greeting = inquiry.name ? `Hi ${escapeHtml(inquiry.name)},` : 'Hi,';
   const type = isRetreat ? 'retreat' : inquiry.interestedIn === 'trek' ? 'trek' : '';
 
   const subject = type
@@ -234,9 +246,9 @@ function buildColdResponse(inquiry: Inquiry): { subject: string; html: string } 
     <div style="font-family: system-ui, sans-serif; max-width: 560px; margin: 0 auto; color: #111;">
       <p>${greeting}</p>
       <p>Thank you for your ${type || ''} inquiry. We have received your request and a mountain planner will be in touch within 24 hours.</p>
-      ${inquiry.location ? `<p><strong>Location interest:</strong> ${inquiry.location}</p>` : ''}
-      ${inquiry.month ? `<p><strong>Preferred month:</strong> ${inquiry.month}</p>` : ''}
-      ${inquiry.groupSize ? `<p><strong>Group size:</strong> ${inquiry.groupSize}</p>` : ''}
+      ${inquiry.location ? `<p><strong>Location interest:</strong> ${escapeHtml(inquiry.location)}</p>` : ''}
+      ${inquiry.month ? `<p><strong>Preferred month:</strong> ${escapeHtml(inquiry.month)}</p>` : ''}
+      ${inquiry.groupSize ? `<p><strong>Group size:</strong> ${escapeHtml(inquiry.groupSize)}</p>` : ''}
       <p>In the meantime, you may find these resources helpful:</p>
       <ul>
         <li><a href="${BASE_URL}/retreats/best-retreat-in-uttarakhand">Best Retreats in Uttarakhand</a></li>
@@ -261,7 +273,7 @@ function buildTeamNotificationHtml(
   inquiry: Inquiry,
   tier: LeadTier,
   score: number,
-  yogaSalesRoute: string,
+  routing: string,
 ): string {
   const tierColors: Record<LeadTier, string> = {
     Hot: '#dc2626',
@@ -270,6 +282,8 @@ function buildTeamNotificationHtml(
     Early: '#9ca3af',
     hot: '#dc2626',
     warm: '#d97706',
+    nurture: '#6b7280',
+    early: '#9ca3af',
     cold: '#6b7280',
     unscored: '#9ca3af',
   };
@@ -278,28 +292,26 @@ function buildTeamNotificationHtml(
     <div style="font-family: monospace; font-size: 0.9rem;">
       <h3 style="margin-bottom: 0.5rem;">New Inquiry Received</h3>
       <div style="display: inline-block; padding: 0.25rem 0.75rem; background: ${tierColors[tier]}; color: white; border-radius: 4px; font-weight: bold; margin-bottom: 1rem;">
-        ${tier.toUpperCase()} — Score ${score}/100
+        ${escapeHtml(tier.toUpperCase())} — Score ${score}/100
       </div>
       <table style="margin-top: 0.75rem;">
-        <tr><td><strong>Name:</strong></td><td>${inquiry.name}</td></tr>
-        <tr><td><strong>Email:</strong></td><td>${inquiry.email}</td></tr>
-        <tr><td><strong>WhatsApp / Phone:</strong></td><td>${inquiry.phone || '—'}</td></tr>
-        <tr><td><strong>Yoga interest:</strong></td><td>${inquiry.yogaInterest || '—'}</td></tr>
-        <tr><td><strong>Yoga classification:</strong></td><td>${inquiry.yogaClassification || '—'}</td></tr>
-        <tr><td><strong>Suggested sales route:</strong></td><td>${yogaSalesRoute || '—'}</td></tr>
-        <tr><td><strong>Interested in:</strong></td><td>${inquiry.interestedIn || '—'}</td></tr>
-        <tr><td><strong>Location:</strong></td><td>${inquiry.location || '—'}</td></tr>
-        <tr><td><strong>Month:</strong></td><td>${inquiry.month || '—'}</td></tr>
-        <tr><td><strong>Preferred date:</strong></td><td>${inquiry.preferredDate || '—'}</td></tr>
-        <tr><td><strong>Group size:</strong></td><td>${inquiry.groupSize || '—'}</td></tr>
-        <tr><td><strong>Budget:</strong></td><td>${inquiry.budget || '—'}</td></tr>
-        <tr><td><strong>Duration:</strong></td><td>${inquiry.duration || '—'}</td></tr>
-        <tr><td><strong>Yoga experience:</strong></td><td>${inquiry.yogaExperience || '—'}</td></tr>
-        <tr><td><strong>Booking readiness:</strong></td><td>${inquiry.bookingReadiness || '—'}</td></tr>
-        <tr><td><strong>Source:</strong></td><td>${inquiry.source}</td></tr>
-        <tr><td><strong>Vertical:</strong></td><td>${inquiry.vertical}</td></tr>
-        <tr><td><strong>Category:</strong></td><td>${inquiry.category}</td></tr>
-        <tr><td><strong>Timestamp:</strong></td><td>${inquiry.timestamp}</td></tr>
+        <tr><td><strong>Lead reference:</strong></td><td>${escapeHtml(inquiry.leadReference || '—')}</td></tr>
+        <tr><td><strong>Name:</strong></td><td>${escapeHtml(inquiry.name)}</td></tr>
+        <tr><td><strong>Email:</strong></td><td>${escapeHtml(inquiry.email || '—')}</td></tr>
+        <tr><td><strong>WhatsApp / Phone:</strong></td><td>${escapeHtml(inquiry.phone || '—')}</td></tr>
+        <tr><td><strong>Interest / Product:</strong></td><td>${escapeHtml(inquiry.product || inquiry.interest || inquiry.interestedIn || '—')}</td></tr>
+        <tr><td><strong>Routing:</strong></td><td>${escapeHtml(routing || 'general')}</td></tr>
+        <tr><td><strong>Location:</strong></td><td>${escapeHtml(inquiry.destination || inquiry.location || '—')}</td></tr>
+        <tr><td><strong>Timing:</strong></td><td>${escapeHtml(inquiry.preferredTiming || inquiry.month || '—')}</td></tr>
+        <tr><td><strong>Group size:</strong></td><td>${escapeHtml(inquiry.groupSize || '—')}</td></tr>
+        <tr><td><strong>Budget:</strong></td><td>${escapeHtml(inquiry.budget || '—')}</td></tr>
+        <tr><td><strong>Duration / experience:</strong></td><td>${escapeHtml(inquiry.duration || '—')} / ${escapeHtml(inquiry.experience || inquiry.yogaExperience || '—')}</td></tr>
+        <tr><td><strong>Score / tier:</strong></td><td>${score}/100 / ${escapeHtml(tier)}</td></tr>
+        <tr><td><strong>Page:</strong></td><td>${escapeHtml(inquiry.source || '—')} (${escapeHtml(inquiry.pageType || 'unknown')})</td></tr>
+        <tr><td><strong>CTA:</strong></td><td>${escapeHtml([inquiry.ctaLabel, inquiry.ctaId, inquiry.ctaPosition, inquiry.ctaVariant].filter(Boolean).join(' / ') || '—')}</td></tr>
+        <tr><td><strong>Vertical / category:</strong></td><td>${escapeHtml(inquiry.vertical || '—')} / ${escapeHtml(inquiry.category || '—')}</td></tr>
+        <tr><td><strong>Request:</strong></td><td>${escapeHtml(inquiry.additionalRequest || '—')}</td></tr>
+        <tr><td><strong>Timestamp:</strong></td><td>${escapeHtml(inquiry.timestamp)}</td></tr>
       </table>
       <p style="margin-top: 1rem; color: #6b7280;">
         ${tier === 'hot' ? '⚡ HIGH PRIORITY — Respond personally within 4 hours.' : ''}
@@ -351,4 +363,3 @@ function getScarcityCue(month: string, isRetreat: boolean): string {
   }
   return `${month} treks have moderate demand. Sharing your preferred dates helps us plan the best experience.`;
 }
-

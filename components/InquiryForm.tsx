@@ -3,6 +3,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { buildAttributionQuery } from '@/utils/attribution';
+import { acquirePendingSubmissionToken } from '@/lib/submission-token';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
+import { resolveConversionContext } from '@/lib/conversion-foundation';
+import { track } from '@/utils/telemetry';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 
 const MONTHS = [
   '', 'January', 'February', 'March', 'April', 'May', 'June',
@@ -12,6 +17,37 @@ const MONTHS = [
 const GROUP_SIZES = ['', '1', '2', '3–4', '5–8', '9+'];
 
 const BUDGETS = ['', '₹15–30k', '₹30–60k', '₹60k+', 'Not sure yet'];
+
+export interface InquiryFieldErrors {
+  name?: string;
+  phone?: string;
+  email?: string;
+}
+
+/**
+ * Client-side validation mirroring the inquiry contract in lib/schemas.ts:
+ * name required, phone required (the channel the team replies on),
+ * email optional but must be well-formed when provided.
+ */
+export function validateInquiryFields(values: {
+  name: string;
+  phone: string;
+  email: string;
+}): InquiryFieldErrors {
+  const errors: InquiryFieldErrors = {};
+  if (values.name.trim().length < 2) {
+    errors.name = 'Please enter your name.';
+  }
+  const digits = values.phone.replace(/\D/g, '');
+  if (!/^[+\d\s().-]+$/.test(values.phone.trim()) || digits.length < 7 || digits.length > 15) {
+    errors.phone = 'Please enter a valid WhatsApp number.';
+  }
+  const trimmedEmail = values.email.trim();
+  if (trimmedEmail && !/^\S+@\S+\.\S+$/.test(trimmedEmail)) {
+    errors.email = 'Please enter a valid email address or leave it blank.';
+  }
+  return errors;
+}
 
 export default function InquiryForm() {
   const searchParams = useSearchParams();
@@ -32,6 +68,7 @@ export default function InquiryForm() {
   // Form state
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [interestedIn, setInterestedIn] = useState<'trek' | 'retreat' | ''>(
     (vertical === 'trek' || vertical === 'retreat') ? vertical : ''
   );
@@ -46,6 +83,11 @@ export default function InquiryForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState('');
+  const [fieldErrors, setFieldErrors] = useState<InquiryFieldErrors>({});
+  const [leadReference, setLeadReference] = useState('');
+
+  // Synchronous in-flight guard: state alone can lag behind a rapid double click.
+  const submitInFlight = useRef(false);
 
   // Sync prefillLocation if params change
   useEffect(() => {
@@ -58,46 +100,104 @@ export default function InquiryForm() {
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (submitInFlight.current || submitting) return;
     setError('');
+
+    const errors = validateInquiryFields({ name, phone, email });
+    setFieldErrors(errors);
+    if (errors.name || errors.phone || errors.email) return;
+
+    submitInFlight.current = true;
     setSubmitting(true);
 
     try {
+      const inquiry = {
+        name,
+        email: email.trim(),
+        phone,
+        interestedIn,
+        location,
+        month,
+        groupSize,
+        budget,
+        source: sourceWithAttribution,
+        vertical,
+        category,
+        website,
+        _t: loadedAt.current,
+      };
+      // The same pending token is reused for retries of this logical inquiry;
+      // it is only cleared once the API confirms success.
+      const pendingToken = await acquirePendingSubmissionToken(
+        `inquiry-page:${source}:${vertical}:${category}`,
+        inquiry,
+      );
       const res = await fetch('/api/inquire', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name,
-          email,
-          interestedIn,
-          location,
-          month,
-          groupSize,
-          budget,
-          source: sourceWithAttribution,
-          vertical,
-          category,
-          website, // honeypot
-          _t: loadedAt.current, // timestamp delta
-        }),
+        body: JSON.stringify({ ...inquiry, submissionToken: pendingToken.token }),
       });
 
-      if (!res.ok) {
-        const data = await res.json();
-        setError(data.error || 'Something went wrong. Please try again.');
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.success !== true) {
+        setError(
+          (typeof data.error === 'string' && data.error) ||
+            'Something went wrong. Your details are still here — please try again.',
+        );
         return;
       }
 
+      pendingToken.clear();
+      const reference = typeof data.leadReference === 'string' ? data.leadReference : '';
+      setLeadReference(reference);
       setSubmitted(true);
+      // Telemetry fires only after the API confirmed persistence; track() is
+      // fire-and-forget and never turns a saved inquiry into a reported failure.
+      track({
+        event: 'form_submission',
+        from: source || '/contact',
+        meta: {
+          page: source || '/contact',
+          vertical,
+          category,
+          location,
+          group_size: groupSize,
+          lead_reference: reference,
+        },
+      });
     } catch {
-      setError('Network error. Please try again.');
+      setError('Network error. Your details are still here — please try again.');
     } finally {
+      submitInFlight.current = false;
       setSubmitting(false);
     }
   }
 
   if (submitted) {
+    const sourcePath = source || '/contact';
+    const whatsappHref = buildWhatsAppUrl({
+      context: resolveConversionContext({
+        pagePath: sourcePath,
+        vertical: vertical || undefined,
+        category: category || undefined,
+        locationName: location || undefined,
+        ctaId: 'inquiry_form_whatsapp',
+        ctaPosition: 'form_success',
+        ctaLabel: 'Continue on WhatsApp',
+        ctaVariant: 'default',
+      }),
+      leadReference: leadReference || undefined,
+      groupSize: groupSize || undefined,
+      timing: month || undefined,
+      message:
+        `Hi, I have submitted an enquiry${location ? ` for ${location}` : ''}` +
+        `${month ? ` (${month})` : ''}. Please share the next steps.`,
+    });
+
     return (
       <div
+        role="status"
+        aria-live="polite"
         style={{
           background: 'linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%)',
           border: '1px solid #bbf7d0',
@@ -110,8 +210,39 @@ export default function InquiryForm() {
           Inquiry received.
         </p>
         <p style={{ fontSize: '0.95rem', color: 'var(--color-text)', lineHeight: 1.6 }}>
-          A mountain planner will be in touch within 24 hours. Check your email for a confirmation.
+          A mountain planner will be in touch within 24 hours.
+          {email.trim() ? ' Check your email for a confirmation.' : ''}
         </p>
+        {leadReference && (
+          <p style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary, #6b7280)', marginBottom: '0.5rem' }}>
+            Reference: {leadReference}
+          </p>
+        )}
+        <TrackedWhatsAppLink
+          href={whatsappHref}
+          sourcePath={sourcePath}
+          location={location || undefined}
+          vertical={vertical || undefined}
+          category={category || undefined}
+          ctaId="inquiry_form_whatsapp"
+          ctaPosition="form_success"
+          ctaLabel="Continue on WhatsApp"
+          ctaVariant="default"
+          leadReference={leadReference || undefined}
+          style={{
+            display: 'inline-block',
+            marginTop: '0.5rem',
+            padding: '0.75rem 1.5rem',
+            backgroundColor: '#25D366',
+            color: '#ffffff',
+            borderRadius: 'var(--radius-sm)',
+            fontSize: '0.95rem',
+            fontWeight: 600,
+            textDecoration: 'none',
+          }}
+        >
+          Continue on WhatsApp
+        </TrackedWhatsAppLink>
       </div>
     );
   }
@@ -161,21 +292,57 @@ export default function InquiryForm() {
           required
           minLength={2}
           placeholder="Your name"
+          autoComplete="name"
+          aria-invalid={fieldErrors.name ? true : undefined}
+          aria-describedby={fieldErrors.name ? 'inq-name-error' : undefined}
           style={inputStyle}
         />
+        {fieldErrors.name && (
+          <p id="inq-name-error" role="alert" style={{ color: '#dc2626', fontSize: '0.85rem', marginTop: '0.25rem' }}>
+            {fieldErrors.name}
+          </p>
+        )}
       </div>
 
       <div style={{ marginBottom: '1rem' }}>
-        <label htmlFor="inq-email" style={labelStyle}>Email *</label>
+        <label htmlFor="inq-phone" style={labelStyle}>WhatsApp / phone *</label>
+        <input
+          id="inq-phone"
+          type="tel"
+          value={phone}
+          onChange={(e) => setPhone(e.target.value)}
+          required
+          placeholder="Your WhatsApp number"
+          autoComplete="tel"
+          aria-invalid={fieldErrors.phone ? true : undefined}
+          aria-describedby={fieldErrors.phone ? 'inq-phone-error' : undefined}
+          style={inputStyle}
+        />
+        {fieldErrors.phone && (
+          <p id="inq-phone-error" role="alert" style={{ color: '#dc2626', fontSize: '0.85rem', marginTop: '0.25rem' }}>
+            {fieldErrors.phone}
+          </p>
+        )}
+      </div>
+
+      <div style={{ marginBottom: '1rem' }}>
+        <label htmlFor="inq-email" style={labelStyle}>Email (optional)</label>
         <input
           id="inq-email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          required
           placeholder="you@example.com"
+          autoComplete="email"
+          aria-invalid={fieldErrors.email ? true : undefined}
+          aria-describedby={fieldErrors.email ? 'inq-email-error' : undefined}
           style={inputStyle}
         />
+        {fieldErrors.email && (
+          <p id="inq-email-error" role="alert" style={{ color: '#dc2626', fontSize: '0.85rem', marginTop: '0.25rem' }}>
+            {fieldErrors.email}
+          </p>
+        )}
       </div>
 
       <div style={{ marginBottom: '1rem' }}>
@@ -253,12 +420,13 @@ export default function InquiryForm() {
       </div>
 
       {error && (
-        <p style={{ color: '#dc2626', fontSize: '0.9rem', marginBottom: '0.75rem' }}>{error}</p>
+        <p role="alert" style={{ color: '#dc2626', fontSize: '0.9rem', marginBottom: '0.75rem' }}>{error}</p>
       )}
 
       <button
         type="submit"
         disabled={submitting}
+        aria-busy={submitting}
         style={{
           display: 'inline-block',
           padding: '0.75rem 2rem',

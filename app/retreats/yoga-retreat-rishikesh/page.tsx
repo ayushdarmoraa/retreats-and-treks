@@ -15,7 +15,7 @@ import ReviewCard from '@/components/reviews/ReviewCard';
 import { getReviewsForSlug } from '@/content/reviews';
 import { getFacilitatorsByRetreat } from '@/config/facilitators';
 import YogaDepartureCalendar from '@/components/YogaDepartureCalendar';
-import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 import YogaCommercialSections from '@/components/YogaCommercialSections';
 import { getYogaRetreatProduct, type YogaRetreatProductId } from '@/config/retreatProgramEvents';
 
@@ -102,9 +102,6 @@ export default async function YogaRetreatRishikeshPage({
   const selectedDuration = YOGA_DURATIONS.find((duration) => duration === requestedDuration);
   const selectedProductId = selectedDuration ? DURATION_PRODUCT_IDS[selectedDuration] : undefined;
   const selectedProduct = selectedProductId ? getYogaRetreatProduct(selectedProductId) : undefined;
-  const whatsappText = selectedProduct
-    ? `Hi, I'm interested in the ${selectedProduct.name}. Please share the upcoming dates and details.`
-    : "Hi, I'm interested in Yoga retreats in Rishikesh. Please share the upcoming dates and details.";
 
   const facilitator = getFacilitatorsByRetreat('yoga-and-movement')[0];
   const yogaReviews = getReviewsForSlug('yoga-and-movement').filter((review) =>
@@ -222,20 +219,21 @@ export default async function YogaRetreatRishikeshPage({
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <TrackedWhatsAppLink
-              href={`https://wa.me/919760446101?text=${encodeURIComponent(whatsappText)}`}
+            <CTAExpandToggle
+              label="Ask About Upcoming Retreats"
+              vertical="retreat"
+              category="yoga-retreats-rishikesh"
               sourcePath={PATH}
+              pageType="yoga_product"
               location="Rishikesh"
-              intent="Yoga retreat enquiry"
-              analyticsEvent="yoga_whatsapp_click"
-              product={selectedProduct?.name ?? 'Yoga Retreats in Rishikesh'}
-              productId={selectedProductId}
+              yogaInterest="Yoga Retreat"
               duration={selectedDuration}
+              productId={selectedProductId}
+              productName={selectedProduct?.name ?? 'Yoga Retreats in Rishikesh'}
               ctaPosition="hero"
-              className="med-cta-btn"
-            >
-              Ask About Upcoming Retreats
-            </TrackedWhatsAppLink>
+              ctaId="yoga_rishikesh_hero_whatsapp"
+              buttonClassName="med-cta-btn"
+            />
             <a href="#why-rishikesh" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Why Rishikesh</a>
           </div>
         </div>
@@ -251,6 +249,7 @@ export default async function YogaRetreatRishikeshPage({
           category="yoga-and-movement"
           sourcePath={PATH}
           location="Rishikesh"
+          productId={selectedProductId}
           duration={selectedDuration}
         />
       </div>
@@ -507,20 +506,21 @@ export default async function YogaRetreatRishikeshPage({
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '42rem', padding: '4rem 1.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.9vw, 2.1rem)', fontWeight: 500, color: '#F6F2E7' }}>Ready to explore Rishikesh Yoga options?</h2>
           <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: 'rgba(246,242,231,0.78)' }}>Talk with us about dates, duration, and the right format for your practice.</p>
-          <TrackedWhatsAppLink
-            href={`https://wa.me/919760446101?text=${encodeURIComponent(whatsappText)}`}
+          <CTAExpandToggle
+            label="Check Dates & Programs"
+            vertical="retreat"
+            category="yoga-retreats-rishikesh"
             sourcePath={PATH}
+            pageType="yoga_product"
             location="Rishikesh"
-            intent="Yoga retreat enquiry"
-            analyticsEvent="yoga_whatsapp_click"
-            product={selectedProduct?.name ?? 'Yoga Retreats in Rishikesh'}
-            productId={selectedProductId}
+            yogaInterest="Yoga Retreat"
             duration={selectedDuration}
+            productId={selectedProductId}
+            productName={selectedProduct?.name ?? 'Yoga Retreats in Rishikesh'}
             ctaPosition="closing"
-            className="med-cta-btn"
-          >
-            Check Dates &amp; Programs
-          </TrackedWhatsAppLink>
+            ctaId="yoga_rishikesh_closing_enquiry"
+            buttonClassName="med-cta-btn"
+          />
         </div>
       </section>
 

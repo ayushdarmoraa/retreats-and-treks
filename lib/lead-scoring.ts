@@ -1,7 +1,8 @@
 import type { Inquiry } from './inquiries';
 import { RETREAT_PROGRAM_EVENTS, YOGA_RETREAT_PRODUCTS, YOGA_TTC_PRODUCT } from '../config/retreatProgramEvents';
+import { getRegisteredTrekDeparture } from '../config/departures';
 
-export type LeadTier = 'Hot' | 'Warm' | 'Nurture' | 'Early' | 'hot' | 'warm' | 'cold' | 'unscored';
+export type LeadTier = 'Hot' | 'Warm' | 'Nurture' | 'Early' | 'hot' | 'warm' | 'nurture' | 'early' | 'cold' | 'unscored';
 export type YogaClassification = 'Weekend' | '5-Day' | '7-Day' | '10-Day' | 'Other location' | 'TTC' | 'Not sure' | '';
 export type YogaSalesRoute = 'RISHIKESH_DIRECT' | 'RISHIKESH_ALTERNATIVE' | 'CUSTOM_DEMAND' | 'TTC_SALES' | 'HELP_ME_CHOOSE' | '';
 
@@ -9,6 +10,7 @@ export interface LeadScore {
   score: number;
   tier: LeadTier;
   signals: string[];
+  routing: string;
   yogaClassification: YogaClassification;
   yogaSalesRoute: YogaSalesRoute;
   recommendedProduct: string;
@@ -72,7 +74,10 @@ function hasSpecificRishikeshProduct(inquiry: Inquiry): boolean {
 }
 
 function hasSpecificDeparture(inquiry: Inquiry): boolean {
-  return Boolean(selectedDeparture(inquiry));
+  return Boolean(selectedDeparture(inquiry)) || Boolean(
+    inquiry.departureId &&
+    getRegisteredTrekDeparture(inquiry.departureId, inquiry.productId || inquiry.trek),
+  );
 }
 
 function isCustomLocation(inquiry: Inquiry): boolean {
@@ -142,10 +147,10 @@ function getRecommendedAlternative(inquiry: Inquiry, route: YogaSalesRoute): str
 }
 
 export function getYogaLeadTier(score: number): LeadTier {
-  if (score >= 75) return 'Hot';
-  if (score >= 50) return 'Warm';
-  if (score >= 25) return 'Nurture';
-  return 'Early';
+  if (score >= 75) return 'hot';
+  if (score >= 50) return 'warm';
+  if (score >= 25) return 'nurture';
+  return 'early';
 }
 
 function addSignal(signals: string[], label: string, points: number) {
@@ -153,120 +158,115 @@ function addSignal(signals: string[], label: string, points: number) {
 }
 
 function timingPoints(inquiry: Inquiry): number {
-  if (['0–30 days', 'Within 30 days', '0-30 days'].includes(inquiry.planningHorizon)) return 20;
-  if (['31–90 days', '31-90 days'].includes(inquiry.planningHorizon)) return 15;
-  if (['91–180 days', '91-180 days'].includes(inquiry.planningHorizon)) return 10;
+  const timing = `${inquiry.preferredTiming ?? ''} ${inquiry.planningHorizon} ${inquiry.month}`.toLowerCase();
+  if (/\b(this month|within 30|0[–-]30 days?)\b/.test(timing)) return 20;
+  if (/\b(next month|31[–-]60 days?)\b/.test(timing)) return 15;
+  if (/\b(2[–-]3 months?|61[–-]90 days?|31[–-]90 days?)\b/.test(timing)) return 10;
+  if (/\b(4[–-]6 months?|91[–-]180 days?)\b/.test(timing)) return 5;
+
+  const monthName = inquiry.month.trim().toLowerCase();
+  const months = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+  const requestedMonth = months.indexOf(monthName);
+  if (requestedMonth >= 0) {
+    const monthsAway = (requestedMonth - new Date().getMonth() + 12) % 12;
+    if (monthsAway === 0) return 20;
+    if (monthsAway === 1) return 15;
+    if (monthsAway <= 3) return 10;
+    if (monthsAway <= 6) return 5;
+  }
   return 0;
 }
 
 function readinessPoints(inquiry: Inquiry): number {
-  if (inquiry.bookingReadiness === 'Ready to book') return 20;
-  if (['Likely', 'Fairly ready'].includes(inquiry.bookingReadiness)) return 15;
-  if (inquiry.bookingReadiness === 'Researching') return 5;
+  const readiness = `${inquiry.bookingReadiness} ${inquiry.experience ?? ''}`.toLowerCase();
+  if (readiness.includes('ready to book')) return 20;
+  if (readiness.includes('planning') || readiness.includes('likely') || readiness.includes('fairly ready')) return 15;
+  if (readiness.includes('exploring') || readiness.includes('researching')) return 5;
   return 0;
 }
 
-function groupPoints(groupSize: string): number {
-  if (groupSize === '1' || groupSize === '2' || groupSize === '1–2') return 3;
-  if (groupSize === '3–4' || groupSize === '3-4' || groupSize === '3–5' || groupSize === '3-5' || groupSize === '5') return 7;
-  if (groupSize === '6+' || groupSize === '9+') return 10;
+function groupCount(groupSize: string): number {
+  const match = groupSize.match(/\d+/g);
+  if (!match) return 0;
+  return Math.max(...match.map(Number));
+}
+
+function opportunityGroupPoints(groupSize: string): number {
+  const range = groupSize.match(/^(\d+)\s*[–-]\s*(\d+)$/);
+  if (range) {
+    const upperBound = Number(range[2]);
+    if (Number(range[1]) >= 10 || upperBound > 10) return 10;
+    if (upperBound >= 6) return 8;
+    if (upperBound >= 3) return 5;
+    return 0;
+  }
+
+  const count = groupCount(groupSize);
+  if (count >= 10) return 10;
+  if (count >= 6) return 8;
+  if (count >= 3) return 5;
   return 0;
 }
 
-function budgetPoints(inquiry: Inquiry): number {
-  if (!inquiry.budget || inquiry.budget === 'Not sure yet') return 0;
-  const selectedId = selectedProductId(inquiry);
-  const product = YOGA_RETREAT_PRODUCTS.find((item) => item.id === selectedId);
-  const price = isTtc(inquiry) ? YOGA_TTC_PRODUCT.fee?.amount : product?.price;
-  if (price === undefined) return 0;
-  if (inquiry.budget === '₹15–30k') return price <= 30000 ? 10 : 0;
-  if (inquiry.budget === '₹30–60k') return price >= 30000 && price <= 60000 ? 10 : 0;
-  if (inquiry.budget === '₹60k+') return price >= 60000 ? 10 : 0;
-  return 0;
+export function routeInquiry(inquiry: Inquiry): string {
+  const requestText = `${inquiry.interest ?? ''} ${inquiry.category} ${inquiry.additionalRequest ?? ''}`.toLowerCase();
+  if (isTtc(inquiry)) return 'ttc';
+  if (/\b(custom|private)\b/.test(requestText)) return 'custom_location';
+  if (groupCount(inquiry.groupSize) >= 3 || /\b(group)\b/.test(requestText)) return 'group';
+  if (inquiry.productId) return 'direct_product';
+  if (inquiry.interestedIn === 'trek' || inquiry.vertical === 'trek') return 'trek';
+  if (inquiry.yogaInterest || inquiry.vertical === 'yoga') return 'yoga';
+  if (inquiry.vertical === 'art' || inquiry.category.toLowerCase().includes('art')) return 'art';
+  if (isCustomLocation(inquiry)) return 'custom_location';
+  return 'general';
 }
 
-function scoreYogaInquiry(inquiry: Inquiry): LeadScore {
-  let score = 0;
+function scoreUniversalInquiry(inquiry: Inquiry): LeadScore {
   const signals: string[] = [];
-  const route = routeYogaIntent(inquiry);
-  const classification = classifyYogaIntent(inquiry);
+  let score = 0;
+  const location = inquiry.destination || inquiry.location;
+  const productPoints = inquiry.productId ? 20 : 0;
+  const departurePoints = hasSpecificDeparture(inquiry) && Boolean(inquiry.departureDate) ? 15 : 0;
+  const locationPoints = location ? 10 : 0;
+  const genericInterest = inquiry.interest || inquiry.interestedIn || inquiry.yogaInterest;
+  const genericInterestPoints = productPoints || departurePoints || locationPoints || !genericInterest ? 0 : 5;
 
-  const intentPoints = hasSpecificRishikeshProduct(inquiry) ? 20 : isTtc(inquiry) ? 20 : isCustomLocation(inquiry) || inquiry.product === 'Other location' ? 15 : inquiry.yogaInterest === 'Not sure' || inquiry.product === 'Not sure' ? 5 : 0;
-  score += intentPoints;
-  addSignal(signals, `intent:${classification || 'Not sure'}`, intentPoints);
-
-  const departurePoints = hasSpecificDeparture(inquiry) ? 15 : 0;
-  score += departurePoints;
-  addSignal(signals, 'specific_departure', departurePoints);
+  score += productPoints + departurePoints + locationPoints + genericInterestPoints;
+  addSignal(signals, 'product', productPoints);
+  addSignal(signals, 'verified_departure', departurePoints);
+  addSignal(signals, 'location', locationPoints);
+  addSignal(signals, 'generic_interest', genericInterestPoints);
 
   const timing = timingPoints(inquiry);
-  score += timing;
-  addSignal(signals, `timing:${inquiry.planningHorizon || 'unknown'}`, timing);
-
   const readiness = readinessPoints(inquiry);
-  score += readiness;
-  addSignal(signals, `readiness:${inquiry.bookingReadiness || 'unknown'}`, readiness);
+  const durationPoints = inquiry.duration ? 5 : 0;
+  const groupSpecificityPoints = inquiry.groupSize ? 5 : 0;
+  const budgetPoints = inquiry.budget ? 5 : 0;
+  const groupOpportunityPoints = opportunityGroupPoints(inquiry.groupSize);
+  const customOpportunityPoints = /\b(custom|private|group)\b/i.test(`${inquiry.interest ?? ''} ${inquiry.category} ${inquiry.additionalRequest ?? ''}`) ? 10 : 0;
 
-  const duration = inquiry.duration && inquiry.duration !== 'Flexible' && inquiry.duration !== '28 days-TTC' ? 10 : 0;
-  score += duration;
-  addSignal(signals, 'specific_duration', duration);
-
-  const experience = inquiry.yogaExperience === 'Beginner' ? 5 : ['Some experience', 'Experienced'].includes(inquiry.yogaExperience) ? 7 : 0;
-  score += experience;
-  addSignal(signals, `experience:${inquiry.yogaExperience || 'unknown'}`, experience);
-
-  const group = groupPoints(inquiry.groupSize);
-  score += group;
-  addSignal(signals, `group_size:${inquiry.groupSize || 'unknown'}`, group);
-
-  const budget = budgetPoints(inquiry);
-  score += budget;
-  addSignal(signals, `budget:${inquiry.budget || 'unknown'}`, budget);
+  score += timing + readiness + durationPoints + groupSpecificityPoints + budgetPoints + groupOpportunityPoints + customOpportunityPoints;
+  addSignal(signals, 'timing', timing);
+  addSignal(signals, 'readiness', readiness);
+  addSignal(signals, 'duration', durationPoints);
+  addSignal(signals, 'group_specificity', groupSpecificityPoints);
+  addSignal(signals, 'budget', budgetPoints);
+  addSignal(signals, 'group_opportunity', groupOpportunityPoints);
+  addSignal(signals, 'custom_opportunity', customOpportunityPoints);
 
   score = Math.min(score, 100);
-  const recommendedProduct = getRecommendedProduct(inquiry, route);
+  const tier = getYogaLeadTier(score);
+  const yogaSalesRoute = routeYogaIntent(inquiry);
   return {
     score,
-    tier: getYogaLeadTier(score),
+    tier,
     signals,
-    yogaClassification: classification,
-    yogaSalesRoute: route,
-    recommendedProduct,
-    recommendedAlternative: getRecommendedAlternative(inquiry, route),
+    routing: routeInquiry(inquiry),
+    yogaClassification: classifyYogaIntent(inquiry),
+    yogaSalesRoute,
+    recommendedProduct: getRecommendedProduct(inquiry, yogaSalesRoute),
+    recommendedAlternative: getRecommendedAlternative(inquiry, yogaSalesRoute),
   };
-}
-
-function scoreLegacyInquiry(inquiry: Inquiry): LeadScore {
-  let score = 0;
-  const signals: string[] = [];
-  const groupMap: Record<string, number> = { '1': 5, '2': 10, '3–4': 18, '5–8': 25, '9+': 30 };
-  const budgetMap: Record<string, number> = { '₹15–30k': 8, '₹30–60k': 15, '₹60k+': 20, 'Not sure yet': 3 };
-  const group = groupMap[inquiry.groupSize] ?? 0;
-  const budget = budgetMap[inquiry.budget] ?? 0;
-  if (group) { score += group; signals.push(`group_size:${inquiry.groupSize}(+${group})`); }
-  if (inquiry.location) { score += 10; signals.push(`location:${inquiry.location}(+10)`); }
-  if (inquiry.month) { score += 15; signals.push(`month:${inquiry.month}(+15)`); }
-  if (inquiry.interestedIn === 'retreat') { score += 10; signals.push('vertical:retreat(+10)'); }
-  else if (inquiry.interestedIn === 'trek') { score += 5; signals.push('vertical:trek(+5)'); }
-  if (budget) { score += budget; signals.push(`budget:${inquiry.budget}(+${budget})`); }
-  const premiumCategories = ['luxury', 'private', 'premium'];
-  const highIntentCategories = ['seasonal', 'near-delhi', 'weekend'];
-  if (premiumCategories.includes(inquiry.category)) { score += 15; signals.push(`category:${inquiry.category}(+15:premium)`); }
-  else if (highIntentCategories.includes(inquiry.category)) { score += 8; signals.push(`category:${inquiry.category}(+8:high_intent)`); }
-  else if (inquiry.category) { score += 3; signals.push(`category:${inquiry.category}(+3)`); }
-  if (inquiry.source.includes('/journeys/')) { score += 12; signals.push('source:journey_page(+12)'); }
-  else if (inquiry.source.includes('/retreats/') || inquiry.source.includes('/treks/')) { score += 7; signals.push('source:pillar_page(+7)'); }
-  else if (inquiry.source.includes('/compare/')) { score += 10; signals.push('source:comparison_page(+10)'); }
-  else if (inquiry.source === '/' || inquiry.source.includes('/blog/')) { score += 2; signals.push('source:top_funnel(+2)'); }
-  score = Math.min(score, 100);
-  if (inquiry.yogaInterest) signals.push(`yoga_interest:${inquiry.yogaInterest}`);
-  if (inquiry.yogaInterest && inquiry.phone.trim()) signals.push('yoga_contact_number:provided');
-  if (inquiry.duration) signals.push(`duration:${inquiry.duration}`);
-  if (inquiry.preferredDate) signals.push(`preferred_date:${inquiry.preferredDate}`);
-  if (inquiry.yogaExperience) signals.push(`yoga_experience:${inquiry.yogaExperience}`);
-  if (inquiry.bookingReadiness) signals.push(`booking_readiness:${inquiry.bookingReadiness}`);
-  const tier: LeadTier = score >= 70 ? 'hot' : score >= 40 ? 'warm' : 'cold';
-  return { score, tier, signals, yogaClassification: '', yogaSalesRoute: '', recommendedProduct: '', recommendedAlternative: '' };
 }
 
 export function classifyYogaInquiry(inquiry: Inquiry): YogaClassification {
@@ -278,5 +278,5 @@ export function routeYogaInquiry(inquiry: Inquiry): YogaSalesRoute {
 }
 
 export function scoreInquiry(inquiry: Inquiry): LeadScore {
-  return isYogaInquiry(inquiry) ? scoreYogaInquiry(inquiry) : scoreLegacyInquiry(inquiry);
+  return scoreUniversalInquiry(inquiry);
 }

@@ -2,7 +2,9 @@ import Link from 'next/link';
 import PrimaryCTA from '@/components/PrimaryCTA';
 import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { resolveConversionContext } from '@/lib/conversion-foundation';
 import { schemaIds } from '@/lib/schemaIds';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import {
   getUpcomingYogaDepartures,
   isYogaDepartureBookable,
@@ -133,13 +135,32 @@ export default function YogaDepartureCalendar({
               const product = YOGA_RETREAT_PRODUCTS.find((item) => item.id === departure.productId);
               const canBook = isYogaDepartureBookable(departure);
               const canJoinWaitlist = departure.bookingState === 'waitlist-open';
+              const departureProductName = product?.name ?? departure.label;
+              const departureDuration = product?.durationLabel ?? `${departure.durationDays} days`;
+              const whatsappHref = buildWhatsAppUrl({
+                context: resolveConversionContext({
+                  pagePath: sourcePath,
+                  vertical: 'yoga',
+                  category: 'yoga-departure-calendar',
+                  ctaId: `yoga_departure_${departure.slug}_whatsapp`,
+                  ctaLabel: 'Ask on WhatsApp',
+                  ctaPosition: 'calendar',
+                  productId: departure.productId,
+                  productName: departureProductName,
+                  locationName: departure.locationName,
+                  duration: departureDuration,
+                  departureId: departure.slug,
+                  departureDate: departure.startDate,
+                }),
+                message: `Hi, I'm interested in the ${departureProductName} from ${departure.startDate} to ${departure.endDate} (${departureDuration}). Please share the details.`,
+              });
 
               return (
                 <article key={departure.slug} style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) auto', gap: '0.75rem', alignItems: 'center', borderTop: '1px solid #e5e7eb', padding: '1rem 0' }}>
                   <div>
-                    <h3 style={{ margin: '0 0 0.35rem', fontSize: '1rem' }}>{product?.name ?? departure.label}</h3>
+                    <h3 style={{ margin: '0 0 0.35rem', fontSize: '1rem' }}>{departureProductName}</h3>
                     <p style={{ margin: 0, color: '#59636e', fontSize: '0.88rem' }}>
-                      {departure.dateRange} · {product?.durationLabel ?? `${departure.durationDays} days`} · {departure.locationName}
+                      {departure.dateRange} · {departureDuration} · {departure.locationName}
                     </p>
                     <p style={{ margin: '0.35rem 0 0', fontSize: '0.88rem', fontWeight: 600 }}>
                       Open for enquiry · ₹{departure.price.toLocaleString('en-IN')}
@@ -147,18 +168,20 @@ export default function YogaDepartureCalendar({
                   </div>
                   {departure.bookingState === 'whatsapp' && departure.bookingUrl ? (
                     <TrackedWhatsAppLink
-                      href={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I'm interested in the ${product?.name ?? departure.label} from ${departure.startDate} to ${departure.endDate} (${product?.durationLabel ?? `${departure.durationDays} days`}). Please share the details.`)}`}
+                      href={whatsappHref}
                       sourcePath={sourcePath}
                       location={departure.locationName}
                       intent="Yoga departure enquiry"
                       analyticsEvent="yoga_whatsapp_click"
-                      product={product?.name ?? departure.label}
+                      product={departureProductName}
                       productId={departure.productId}
                       departureId={departure.slug}
                       departureDate={departure.startDate}
                       departureEndDate={departure.endDate}
-                      duration={product?.durationLabel ?? `${departure.durationDays} days`}
-                      ctaPosition="departure-calendar"
+                      duration={departureDuration}
+                      ctaPosition="calendar"
+                      ctaId={`yoga_departure_${departure.slug}_whatsapp`}
+                      ctaLabel="Ask on WhatsApp"
                       trackDepartureSelection
                       style={{ color: '#0f766e', fontWeight: 600 }}
                     >
@@ -196,6 +219,7 @@ export default function YogaDepartureCalendar({
               category="yoga-retreat-calendar"
               sourcePath={sourcePath}
               location="Rishikesh"
+              productId={products.length === 1 ? products[0].id : undefined}
               duration={products.length === 1 ? products[0].durationLabel : undefined}
             />
           </div>

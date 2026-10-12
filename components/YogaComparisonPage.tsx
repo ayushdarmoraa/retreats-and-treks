@@ -12,6 +12,8 @@ import {
   YOGA_TTC_PRODUCT,
   type YogaRetreatProductId,
 } from '@/config/retreatProgramEvents';
+import { resolveConversionContext } from '@/lib/conversion-foundation';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 export type YogaComparisonKey =
   | 'rishikesh-vs-chakrata'
@@ -66,8 +68,6 @@ const PRODUCT_FOCUS: Record<YogaRetreatProductId, { audience: string; programme:
     programme: 'Extended immersion, deeper practice, reflective time, sustained routine, and exploration.',
   },
 };
-
-const WHATSAPP_NUMBER = '919760446101';
 
 function productSide(productId: YogaRetreatProductId): ComparisonSide {
   const product = getYogaRetreatProduct(productId);
@@ -212,13 +212,32 @@ const COMPARISONS: Record<YogaComparisonKey, Comparison> = {
   },
 };
 
-function whatsappHref(side: ComparisonSide) {
+function comparisonCtaId(side: ComparisonSide) {
+  return `yoga_comparison_${side.title.toLowerCase().replace(/[^a-z0-9]+/g, '_')}_whatsapp`;
+}
+
+function whatsappHref(side: ComparisonSide, comparisonPath: string) {
   const message = side.ttc
     ? 'Hi, I\'m interested in the 28-Day Yoga Teacher Training in Rishikesh. Please share the upcoming batch details.'
     : side.customLocation
       ? `Hi, I'm interested in a Yoga Retreat in ${side.customLocation}. I'd like to know about custom/upcoming options.`
       : `Hi, I'm interested in the ${side.title}. Please share the upcoming dates and details.`;
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+  const product = side.productId ? getYogaRetreatProduct(side.productId) : undefined;
+  return buildWhatsAppUrl({
+    context: resolveConversionContext({
+      pagePath: comparisonPath,
+      vertical: 'yoga',
+      category: 'yoga-comparison',
+      ctaId: comparisonCtaId(side),
+      ctaLabel: 'Ask on WhatsApp',
+      ctaPosition: 'comparison',
+      productId: side.productId ?? (side.ttc ? YOGA_TTC_PRODUCT.id : undefined),
+      productName: side.ttc ? YOGA_TTC_PRODUCT.name : product?.name ?? side.title,
+      locationName: side.location || undefined,
+      duration: product?.durationLabel ?? (side.ttc ? '28 days' : undefined),
+    }),
+    message,
+  });
 }
 
 function SideCard({ side, comparisonPath }: { side: ComparisonSide; comparisonPath: string }) {
@@ -248,7 +267,7 @@ function SideCard({ side, comparisonPath }: { side: ComparisonSide; comparisonPa
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1rem' }}>
         <Link href={side.href} style={{ color: '#0f766e', fontWeight: 700 }}>View option</Link>
         <TrackedWhatsAppLink
-          href={whatsappHref(side)}
+          href={whatsappHref(side, comparisonPath)}
           sourcePath={comparisonPath}
           location={side.location}
           intent={`${side.title} comparison enquiry`}
@@ -256,7 +275,9 @@ function SideCard({ side, comparisonPath }: { side: ComparisonSide; comparisonPa
           product={side.title}
           productId={side.productId ?? (side.ttc ? 'yoga-ttc' : undefined)}
           duration={product?.durationLabel ?? (side.ttc ? '28 days' : undefined)}
-          ctaPosition="comparison-card"
+          ctaPosition="comparison"
+          ctaId={comparisonCtaId(side)}
+          ctaLabel="Ask on WhatsApp"
           style={{ color: '#0f766e', fontWeight: 700 }}
         >Ask on WhatsApp</TrackedWhatsAppLink>
       </div>
@@ -307,7 +328,26 @@ export default function YogaComparisonPage({ comparisonKey }: { comparisonKey: Y
 
         <section style={{ marginTop: '2.5rem', padding: '1.5rem', textAlign: 'center', background: '#0b241f', color: '#fff', borderRadius: 8 }}>
           <p style={{ margin: '0 0 1rem', lineHeight: 1.7 }}>Want help choosing a Yoga format or discussing a custom location?</p>
-          <TrackedWhatsAppLink href="https://wa.me/919760446101?text=Hi%2C%20I%27d%20like%20help%20choosing%20a%20Yoga%20retreat%20option." sourcePath={comparison.path} intent="Yoga comparison enquiry" analyticsEvent="yoga_whatsapp_click" ctaPosition="comparison-footer" style={{ display: 'inline-flex', padding: '0.85rem 1.2rem', borderRadius: 999, background: '#fff', color: '#0f766e', fontWeight: 700, textDecoration: 'none' }}>Ask on WhatsApp</TrackedWhatsAppLink>
+          <TrackedWhatsAppLink
+            href={buildWhatsAppUrl({
+              context: resolveConversionContext({
+                pagePath: comparison.path,
+                vertical: 'yoga',
+                category: 'yoga-comparison',
+                ctaId: 'yoga_comparison_footer_whatsapp',
+                ctaLabel: 'Ask on WhatsApp',
+                ctaPosition: 'comparison',
+              }),
+              message: "Hi, I'd like help choosing a Yoga retreat option.",
+            })}
+            sourcePath={comparison.path}
+            intent="Yoga comparison enquiry"
+            analyticsEvent="yoga_whatsapp_click"
+            ctaPosition="comparison"
+            ctaId="yoga_comparison_footer_whatsapp"
+            ctaLabel="Ask on WhatsApp"
+            style={{ display: 'inline-flex', padding: '0.85rem 1.2rem', borderRadius: 999, background: '#fff', color: '#0f766e', fontWeight: 700, textDecoration: 'none' }}
+          >Ask on WhatsApp</TrackedWhatsAppLink>
         </section>
 
         <nav aria-label="Related Yoga options" style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', marginTop: '2rem' }}>

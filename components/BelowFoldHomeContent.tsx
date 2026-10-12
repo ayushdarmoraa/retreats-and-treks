@@ -27,9 +27,6 @@ interface BelowFoldHomeContentProps {
 }
 
 export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContentProps) {
-  const whatsappMessage = `Hi, I'm interested in learning more about your Himalayan journeys.`;
-  const whatsappLink = `https://wa.me/919760446101?text=${encodeURIComponent(whatsappMessage)}`;
-
   // ── Scroll fade-in observer ──
   useEffect(() => {
     const els = document.querySelectorAll('.scroll-fade, .scroll-fade-stagger');
@@ -60,7 +57,7 @@ export default function BelowFoldHomeContent({ locations }: BelowFoldHomeContent
       <Testimonials />
       <LifeAtRetreat />
       <DayInYourRetreat />
-      <FinalCTA whatsappLink={whatsappLink} />
+      <FinalCTA />
     </>
   );
 }

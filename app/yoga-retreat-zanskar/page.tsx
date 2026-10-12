@@ -7,8 +7,27 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
+import { resolveConversionContext } from '@/lib/conversion-foundation';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 const PATH = '/yoga-retreat-zanskar';
+const ZANSKAR_WHATSAPP_MESSAGE = "Hi, I'm interested in a Yoga Retreat in Zanskar. I'd like to know about custom/upcoming options.";
+
+function getZanskarWhatsAppHref(ctaId: string, ctaPosition: 'hero' | 'content', ctaLabel: string) {
+  return buildWhatsAppUrl({
+    context: resolveConversionContext({
+      pagePath: PATH,
+      vertical: 'yoga',
+      category: 'yoga-retreats-zanskar',
+      ctaId,
+      ctaLabel,
+      ctaPosition,
+      productName: 'Custom Yoga Retreat in Zanskar',
+      locationName: 'Zanskar',
+    }),
+    message: ZANSKAR_WHATSAPP_MESSAGE,
+  });
+}
 
 const FAQ_ITEMS = [
   { question: 'Is there a regular fixed Yoga calendar in Zanskar?', answer: 'No. Zanskar is a custom, demand-led Yoga enquiry and does not have recurring fixed-departure inventory.' },
@@ -115,13 +134,15 @@ export default function YogaRetreatZanskarPage() {
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <TrackedWhatsAppLink
-              href="https://wa.me/919760446101?text=Hi%2C%20I%27m%20interested%20in%20a%20Yoga%20Retreat%20in%20Zanskar.%20I%27d%20like%20to%20know%20about%20custom%2Fupcoming%20options."
+              href={getZanskarWhatsAppHref('yoga_zanskar_hero_whatsapp', 'hero', 'Ask About a Zanskar Yoga Retreat')}
               sourcePath={PATH}
               location="Zanskar"
               intent="Yoga retreat enquiry"
               analyticsEvent="yoga_whatsapp_click"
               product="Custom Yoga Retreat in Zanskar"
               ctaPosition="hero"
+              ctaId="yoga_zanskar_hero_whatsapp"
+              ctaLabel="Ask About a Zanskar Yoga Retreat"
               className="med-cta-btn"
             >
               Ask About a Zanskar Yoga Retreat
@@ -217,13 +238,15 @@ export default function YogaRetreatZanskarPage() {
 
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap', marginTop: '1.5rem' }}>
             <TrackedWhatsAppLink
-              href="https://wa.me/919760446101?text=Hi%2C%20I%27m%20interested%20in%20a%20Yoga%20Retreat%20in%20Zanskar.%20I%27d%20like%20to%20know%20about%20custom%2Fupcoming%20options."
+              href={getZanskarWhatsAppHref('yoga_zanskar_content_whatsapp', 'content', 'Ask About a Zanskar Yoga Retreat')}
               sourcePath={PATH}
               location="Zanskar"
               intent="Yoga enquiry"
               analyticsEvent="yoga_whatsapp_click"
               product="Custom Yoga Retreat in Zanskar"
-              ctaPosition="enquiry-section"
+              ctaPosition="content"
+              ctaId="yoga_zanskar_content_whatsapp"
+              ctaLabel="Ask About a Zanskar Yoga Retreat"
               className="med-cta-btn"
             >
               Ask About a Zanskar Yoga Retreat

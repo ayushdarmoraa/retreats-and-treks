@@ -3,6 +3,7 @@
 import { useState, useMemo, useEffect, type ReactNode } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 import { getAllTreks, getTreksGroupedByLocation } from '@/lib/treks';
 import { getAllLocations } from '@/lib/locations';
 
@@ -524,7 +525,18 @@ export default function TreksClient() {
     <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1.1rem', fontWeight: 300, lineHeight: 1.85, color: 'rgba(255,255,255,0.85)', margin: 0, maxWidth: '38rem' }}>Not all treks are created equal. We curate only the ones worth your time.</p>
     <div className="trk-hero-btns">
       <a href="#catalogue" className="trk-hero-btn-primary" onClick={(e) => { e.preventDefault(); document.getElementById('catalogue')?.scrollIntoView({ behavior: 'smooth' }); }}>Explore All Treks →</a>
-      <a href="https://wa.me/919760446101?text=Hi%2C%20I%20need%20help%20choosing%20the%20right%20trek." className="trk-hero-btn-secondary">Talk to an Expert</a>
+      <TrackedWhatsAppLink
+        sourcePath="/treks"
+        vertical="trek"
+        category="trek-discovery"
+        ctaId="treks_hub_hero_expert"
+        ctaPosition="hero"
+        ctaLabel="Talk to an Expert"
+        message="Hi, I need help choosing the right trek."
+        className="trk-hero-btn-secondary"
+      >
+        Talk to an Expert
+      </TrackedWhatsAppLink>
     </div>
   </div>
 </section>
@@ -955,7 +967,18 @@ export default function TreksClient() {
 
 {/* ── STICKY CTA ── */}
 <div className={`trk-sticky ${showSticky ? 'trk-sticky--visible' : 'trk-sticky--hidden'}`}>
-  <a href="https://wa.me/919760446101?text=Hi%2C%20I%20need%20a%20trek%20recommendation." className="trk-sticky-btn">Talk to a Local Expert</a>
+  <TrackedWhatsAppLink
+    sourcePath="/treks"
+    vertical="trek"
+    category="trek-discovery"
+    ctaId="treks_hub_sticky_recommendation"
+    ctaPosition="sticky"
+    ctaLabel="Talk to a Local Expert"
+    message="Hi, I need a trek recommendation."
+    className="trk-sticky-btn"
+  >
+    Talk to a Local Expert
+  </TrackedWhatsAppLink>
 </div>
 
     </div>

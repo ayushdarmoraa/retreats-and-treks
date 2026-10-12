@@ -108,6 +108,8 @@ export default async function RetreatDetailPage({ params }: PageProps) {
   const canonicalUrl = buildCanonicalUrl(`/retreats/journeys/${retreat}`);
   const primaryLocation = getLocationById(primaryLocationId);
   const upcomingEvent = getUpcomingEventsByService(retreat)[0];
+  const isArtService = ['art-and-creative', 'trek-and-paint', 'weekend-art-retreat'].includes(retreat);
+  const artDeparture = isArtService ? upcomingEvent : undefined;
 
   const serviceSchema = generateServiceSchema(
     { title: retreatService.title, description: retreatService.oneLineEssence },
@@ -248,7 +250,16 @@ export default async function RetreatDetailPage({ params }: PageProps) {
           vertical="retreat"
           category={retreat}
           sourcePath={journeyPath}
-          location={primaryLocation?.name}
+          location={isArtService && artDeparture
+            ? artDeparture.locationName !== 'TBA' ? artDeparture.locationName : undefined
+            : primaryLocation?.name}
+          productId={isArtService ? retreatService.slug : undefined}
+          productName={isArtService ? retreatService.title : undefined}
+          duration={artDeparture ? `${artDeparture.durationDays} days` : undefined}
+          departureId={artDeparture?.slug}
+          departureDate={artDeparture?.dateRange}
+          ctaId={isArtService ? `art_journey_${retreat}_primary_inquiry` : undefined}
+          ctaPosition={isArtService ? 'primary' : undefined}
         />
       )}
 

@@ -10,6 +10,7 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 
 const PATH = '/retreats/retreat-cost-india';
 
@@ -593,7 +594,15 @@ export default function RetreatCostIndiaPage() {
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '42rem', padding: '4rem 1.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.9vw, 2.1rem)', fontWeight: 500, color: '#F6F2E7' }}>Ready to find the right retreat?</h2>
           <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: 'rgba(246,242,231,0.78)' }}>Talk with us about your budget, preferred location, and retreat goals.</p>
-          <a href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in finding the right retreat for my budget. Can you help?")}`} className="med-cta-btn" target="_blank" rel="noopener noreferrer">Get a budget recommendation</a>
+          <CTAExpandToggle
+            label="Get a budget recommendation"
+            vertical="retreat"
+            category="retreat-cost-india"
+            sourcePath={PATH}
+            ctaId="retreat_cost_india_budget_closing"
+            ctaPosition="closing"
+            buttonClassName="med-cta-btn"
+          />
         </div>
       </section>
 

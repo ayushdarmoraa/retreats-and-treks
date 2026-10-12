@@ -129,13 +129,15 @@ export default function ExperienceLocationPage({ page }: Props) {
         {isYogaLocation && (
           <p style={{ margin: '0.75rem 0 0', textAlign: 'center' }}>
             <TrackedWhatsAppLink
-              href={`https://wa.me/919760446101?text=${encodeURIComponent(`Hi, I would like to enquire about a Yoga retreat in ${page.locationName}.`)}`}
               sourcePath={`/${page.slug}`}
               location={page.locationName}
               intent="Yoga retreat enquiry"
               analyticsEvent="yoga_whatsapp_click"
               product="Yoga Retreat"
               ctaPosition="experience-location"
+              ctaId={`experience_location_${page.locationId}_whatsapp`}
+              ctaLabel="WhatsApp about this location"
+              message={`Hi, I would like to enquire about a Yoga retreat in ${page.locationName}.`}
               style={{ color: 'var(--color-primary)', fontWeight: 500 }}
             >
               WhatsApp about this location

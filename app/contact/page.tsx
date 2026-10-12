@@ -7,6 +7,7 @@ import InquiryForm from '@/components/InquiryForm';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 
 export function generateMetadata(): Metadata {
   return {
@@ -176,7 +177,16 @@ export default function ContactPage() {
             Retreats And Treks programs are designed for small groups and individual journeys. Every retreat, every trek, and every experience can be tailored to what you are looking for. There is no standard template — just a genuine conversation about what might serve you best.
           </p>
           <div className="med-hero-actions">
-            <a href="https://wa.me/919760446101" className="med-cta-btn">Message on WhatsApp</a>
+            <TrackedWhatsAppLink
+              sourcePath="/contact"
+              ctaId="contact_hero_whatsapp"
+              ctaPosition="hero"
+              ctaLabel="Message on WhatsApp"
+              message="Hi, I have a quick question about a retreat or trek."
+              className="med-cta-btn"
+            >
+              Message on WhatsApp
+            </TrackedWhatsAppLink>
             <a href="#inquiry" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Send an Inquiry</a>
           </div>
         </div>

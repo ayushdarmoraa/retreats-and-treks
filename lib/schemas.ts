@@ -39,14 +39,15 @@ export const InquirySchema = z.object({
     .string()
     .trim()
     .max(320, 'Email too long')
+    .email('Enter a valid email address')
+    .or(z.literal(''))
     .optional()
     .default(''),
   phone: z
     .string()
     .trim()
-    .max(20, 'Phone too long')
-    .optional()
-    .default(''),
+    .min(1, 'WhatsApp number is required')
+    .max(20, 'Phone too long'),
   yogaInterest: YogaInterestEnum.optional().default(''),
   product: z.string().trim().max(200).optional().default(''),
   productId: z.string().trim().max(100).optional().default(''),
@@ -58,26 +59,50 @@ export const InquirySchema = z.object({
   preferredDate: z.string().trim().max(100).optional().default(''),
   groupSize: z.string().trim().max(20).optional().default(''),
   budget: BudgetEnum.optional().default(''),
-  duration: YogaDurationEnum.optional().default(''),
+  duration: z.string().trim().max(100).optional().default(''),
   yogaExperience: YogaExperienceEnum.optional().default(''),
+  experience: z.string().trim().max(100).optional().default(''),
   bookingReadiness: BookingReadinessEnum.optional().default(''),
   source: z.string().trim().max(500).optional().default(''),
   vertical: z.string().trim().max(50).optional().default(''),
   category: z.string().trim().max(100).optional().default(''),
   trek: z.string().trim().max(100).optional().default(''),
+  age: z.union([
+    z.number().int().min(0).max(120),
+    z.string().trim().regex(/^\d{1,3}$/),
+  ]).optional(),
+  originCity: z.string().trim().max(200).optional(),
+  originCountry: z.string().trim().max(100).optional(),
+  interest: z.string().trim().max(200).optional(),
+  preferredTiming: z.string().trim().max(100).optional(),
+  destination: z.string().trim().max(200).optional(),
+  departure: z.string().trim().max(200).optional(),
+  departureDate: z.string().trim().max(100).optional(),
+  additionalRequest: z.string().trim().max(4000).optional(),
+  message: z.string().trim().max(4000).optional(),
+  enquiry: z.string().trim().max(4000).optional(),
+  locationId: z.string().trim().max(100).optional(),
+  pageTitle: z.string().trim().max(300).optional(),
+  conversionSessionId: z.string().trim().max(200).optional(),
+  firstLandingPage: z.string().trim().max(500).optional(),
+  lastLandingPage: z.string().trim().max(500).optional(),
+  referrer: z.string().trim().max(1000).optional(),
+  firstUtm: z.record(z.string(), z.string()).optional(),
+  lastUtm: z.record(z.string(), z.string()).optional(),
+  firstTouchAt: z.string().datetime({ offset: true }).optional(),
+  lastTouchAt: z.string().datetime({ offset: true }).optional(),
+  ctaId: z.string().trim().max(200).optional(),
+  ctaLabel: z.string().trim().max(200).optional(),
+  ctaPosition: z.string().trim().max(100).optional(),
+  ctaVariant: z.string().trim().max(100).optional(),
+  website: z.string().optional(),
+  submissionToken: z.string().uuid().optional(),
+  _t: z.union([z.number(), z.string()]).optional(),
 }).superRefine((inquiry, context) => {
-  if (!inquiry.yogaInterest) return;
-
-  if (!inquiry.phone) {
-    context.addIssue({ code: 'custom', path: ['phone'], message: 'Phone is required for Yoga enquiries' });
-  } else {
-    const digits = inquiry.phone.replace(/\D/g, '');
-    if (!/^[+\d\s().-]+$/.test(inquiry.phone) || digits.length < 7 || digits.length > 15) {
-      context.addIssue({ code: 'custom', path: ['phone'], message: 'Enter a valid international phone number' });
-    }
-  }
-  if (!z.string().email().safeParse(inquiry.email).success) {
-    context.addIssue({ code: 'custom', path: ['email'], message: 'A valid email is required for Yoga enquiries' });
+  const phone = inquiry.phone ?? '';
+  const digits = phone.replace(/\D/g, '');
+  if (!/^[+\d\s().-]+$/.test(phone) || digits.length < 7 || digits.length > 15) {
+    context.addIssue({ code: 'custom', path: ['phone'], message: 'Enter a valid international phone number' });
   }
 });
 

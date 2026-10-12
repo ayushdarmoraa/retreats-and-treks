@@ -24,6 +24,11 @@ interface PrimaryCTAProps {
   yogaExperience?: string;
   productId?: string;
   departureId?: string;
+  productName?: string;
+  experience?: string;
+  departureDate?: string;
+  ctaId?: string;
+  ctaPosition?: string;
   planningHorizon?: string;
   productOption?: string;
 }
@@ -40,6 +45,11 @@ export default function PrimaryCTA({
   yogaExperience,
   productId,
   departureId,
+  productName,
+  experience,
+  departureDate,
+  ctaId,
+  ctaPosition,
   planningHorizon,
   productOption,
 }: PrimaryCTAProps) {
@@ -117,6 +127,11 @@ export default function PrimaryCTA({
           yogaExperience={yogaExperience}
           productId={productId}
           departureId={departureId}
+          productName={productName}
+          experience={experience}
+          departureDate={departureDate}
+          ctaId={ctaId}
+          ctaPosition={ctaPosition}
           planningHorizon={planningHorizon}
           productOption={productOption}
         />

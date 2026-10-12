@@ -7,7 +7,7 @@
  *   - Preferred Month (dropdown from trek's bestSeason)
  *   - Group Size (1–10+)
  *   - Experience Level (Beginner / Intermediate / Advanced)
- *   - Phone or Email
+ *   - Required WhatsApp / phone; optional email
  *
  * On submit → POST /api/inquire (existing endpoint)
  * Success message: "Our trek coordinator will contact you within 2 hours."
@@ -17,7 +17,10 @@
  */
 
 import { useState, useRef, useEffect, useCallback } from 'react';
+import { readConversionSessionId } from '@/lib/conversion-foundation';
+import { acquirePendingSubmissionToken } from '@/lib/submission-token';
 import { track } from '@/utils/telemetry';
+import TrackedWhatsAppLink from './TrackedWhatsAppLink';
 
 interface AvailabilityModalProps {
   trekTitle: string;
@@ -51,18 +54,23 @@ export default function AvailabilityModal({
   const loadedAt = useRef(Date.now());
   const overlayRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
+  // Synchronous in-flight guard: state alone can lag behind a rapid double click.
+  const submitInFlight = useRef(false);
 
   const [month, setMonth] = useState('');
   const [groupSize, setGroupSize] = useState('');
   const [experience, setExperience] = useState('');
-  const [contact, setContact] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [conversionSessionId] = useState(() => readConversionSessionId());
 
   // Honeypot
   const [website, setWebsite] = useState('');
 
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [leadReference, setLeadReference] = useState('');
   const [error, setError] = useState('');
 
   // Close on Escape
@@ -90,52 +98,97 @@ export default function AvailabilityModal({
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (submitInFlight.current || submitting) return;
     setError('');
+
+    if (name.trim().length < 2) {
+      setError('Please enter your name.');
+      return;
+    }
+    if (!month || !groupSize || !experience) {
+      setError('Please complete all required fields.');
+      return;
+    }
+
+    const trimmedPhone = phone.trim();
+    const phoneDigits = trimmedPhone.replace(/\D/g, '');
+    if (!/^[+\d\s().-]+$/.test(trimmedPhone) || phoneDigits.length < 7 || phoneDigits.length > 15) {
+      setError('Please enter a valid WhatsApp number.');
+      return;
+    }
+    if (email.trim() && !/^\S+@\S+\.\S+$/.test(email.trim())) {
+      setError('Please enter a valid email address or leave it blank.');
+      return;
+    }
+
+    submitInFlight.current = true;
     setSubmitting(true);
 
-    // Determine if contact is email or phone
-    const isEmail = contact.includes('@');
-
     try {
+      const inquiry = {
+        name: name.trim(),
+        email: email.trim(),
+        phone: trimmedPhone,
+        interestedIn: 'trek' as const,
+        product: trekTitle,
+        trek: trekSlug,
+        location: locationId,
+        month,
+        groupSize,
+        experience,
+        budget: '',
+        source: sourcePath,
+        vertical: 'trek',
+        category: trekSlug,
+        productId: trekSlug,
+        conversionSessionId,
+        ctaId: `trek_${trekSlug}_availability_modal_inquiry`,
+        ctaPosition: 'primary',
+        ctaLabel: 'Check Availability',
+        trekTitle,
+        difficulty,
+        website,
+        _t: loadedAt.current,
+      };
+      const pendingToken = await acquirePendingSubmissionToken(
+        `availability-modal:${sourcePath}:${trekSlug}`,
+        inquiry,
+      );
       const res = await fetch('/api/inquire', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name,
-          email: isEmail ? contact : '',
-          phone: !isEmail ? contact : '',
-          interestedIn: 'trek',
-          location: locationId,
-          month,
-          groupSize,
-          experience,
-          budget: '',
-          source: sourcePath,
-          vertical: 'trek',
-          category: `availability-${trekSlug}`,
-          trekTitle,
-          difficulty,
-          website, // honeypot
-          _t: loadedAt.current,
-        }),
+        body: JSON.stringify({ ...inquiry, submissionToken: pendingToken.token }),
       });
 
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok || data.success !== true) {
         setError(data.error || 'Something went wrong. Please try again.');
         return;
       }
 
+      pendingToken.clear();
+      setLeadReference(data.leadReference || '');
       track({
         event: 'availability_form_submit',
         from: sourcePath,
-        meta: { trek: trekSlug, difficulty, month, groupSize, experience },
+        meta: {
+          trek: trekSlug,
+          difficulty,
+          month,
+          groupSize,
+          experience,
+          conversion_session_id: conversionSessionId,
+          cta_id: `trek_${trekSlug}_availability_modal_inquiry`,
+          cta_position: 'primary',
+        },
       });
 
       setSubmitted(true);
     } catch {
       setError('Network error. Please try again.');
     } finally {
+      submitInFlight.current = false;
       setSubmitting(false);
     }
   }
@@ -222,22 +275,63 @@ export default function AvailabilityModal({
               Our trek coordinator will contact you within <strong>2 hours</strong> with
               available dates and group details for the {trekTitle}.
             </p>
-            <button
-              type="button"
-              onClick={onClose}
+            {leadReference && (
+              <p style={{ fontSize: '0.85rem', color: 'var(--color-text-secondary, #6b7280)', marginBottom: '0.75rem' }}>
+                Reference: {leadReference}
+              </p>
+            )}
+            <TrackedWhatsAppLink
+              sourcePath={sourcePath}
+              vertical="trek"
+              category={trekSlug}
+              product={trekTitle}
+              productId={trekSlug}
+              location={locationName}
+              duration="flexible"
+              ctaId={`trek_${trekSlug}_availability_modal_whatsapp`}
+              ctaPosition="form_success"
+              ctaLabel="Continue on WhatsApp"
+              ctaVariant="default"
+              conversionSessionId={conversionSessionId}
+              leadReference={leadReference || undefined}
+              message={`Hi, I’m interested in ${trekTitle} for ${month || 'a suitable month'}. Can you share availability, pricing, and next steps?`}
+              analyticsEvent="whatsapp_click"
               style={{
-                padding: '0.5rem 1.5rem',
-                backgroundColor: 'var(--color-primary)',
-                color: 'white',
-                border: 'none',
-                borderRadius: 'var(--radius-sm)',
-                fontSize: '0.9rem',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                padding: '0.7rem 1.1rem',
+                borderRadius: '999px',
+                background: '#25D366',
+                color: '#fff',
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.78rem',
                 fontWeight: 600,
-                cursor: 'pointer',
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+                textDecoration: 'none',
               }}
             >
-              Close
-            </button>
+              Continue on WhatsApp
+            </TrackedWhatsAppLink>
+            <div style={{ marginTop: '1rem' }}>
+              <button
+                type="button"
+                onClick={onClose}
+                style={{
+                  padding: '0.5rem 1.5rem',
+                  backgroundColor: 'var(--color-primary)',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: 'var(--radius-sm)',
+                  fontSize: '0.9rem',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                }}
+              >
+                Close
+              </button>
+            </div>
           </div>
         ) : (
           /* ── Form ── */
@@ -338,20 +432,33 @@ export default function AvailabilityModal({
               </div>
 
               <div style={{ marginBottom: '0.75rem' }}>
-                <label htmlFor="avail-contact" style={labelStyle}>Phone or Email *</label>
+                <label htmlFor="avail-phone" style={labelStyle}>WhatsApp / phone *</label>
                 <input
-                  id="avail-contact"
-                  type="text"
-                  value={contact}
-                  onChange={(e) => setContact(e.target.value)}
+                  id="avail-phone"
+                  type="tel"
+                  autoComplete="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
                   required
-                  placeholder="WhatsApp number or email"
+                  placeholder="Your WhatsApp number"
+                  style={inputStyle}
+                />
+              </div>
+              <div style={{ marginBottom: '0.75rem' }}>
+                <label htmlFor="avail-email" style={labelStyle}>Email (optional)</label>
+                <input
+                  id="avail-email"
+                  type="email"
+                  autoComplete="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@example.com"
                   style={inputStyle}
                 />
               </div>
 
               {error && (
-                <p style={{ color: '#dc2626', fontSize: '0.85rem', marginBottom: '0.5rem' }}>{error}</p>
+                <p id="availability-error" role="alert" style={{ color: '#dc2626', fontSize: '0.85rem', marginBottom: '0.5rem' }}>{error}</p>
               )}
 
               <button

@@ -7,10 +7,30 @@ import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { YOGA_TTC_PRODUCT } from '@/config/retreatProgramEvents';
+import { resolveConversionContext } from '@/lib/conversion-foundation';
 import { schemaIds } from '@/lib/schemaIds';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 const PATH = '/yoga-teacher-training';
-const WHATSAPP_HREF = `https://wa.me/919760446101?text=${encodeURIComponent('Hi, I\'m interested in the 28-Day Yoga Teacher Training in Rishikesh. Please share the upcoming batch details.')}`;
+const TTC_WHATSAPP_MESSAGE = 'Hi, I\'m interested in the 28-Day Yoga Teacher Training in Rishikesh. Please share the upcoming batch details.';
+
+function getTtcWhatsAppHref(ctaId: string, ctaPosition: 'hero' | 'content', ctaLabel: string) {
+  return buildWhatsAppUrl({
+    context: resolveConversionContext({
+      pagePath: PATH,
+      vertical: 'yoga',
+      category: 'yoga-teacher-training',
+      ctaId,
+      ctaLabel,
+      ctaPosition,
+      productId: YOGA_TTC_PRODUCT.id,
+      productName: YOGA_TTC_PRODUCT.name,
+      locationName: 'Rishikesh',
+      duration: '28 days',
+    }),
+    message: TTC_WHATSAPP_MESSAGE,
+  });
+}
 
 const FAQ_ITEMS = [
   {
@@ -83,7 +103,7 @@ export default function YogaTeacherTrainingPage() {
             A structured long-form education and teacher-preparation pathway for people wanting deeper Yoga study, theory, teaching methodology, practical teaching experience, and assessment.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
-            <TrackedWhatsAppLink href={WHATSAPP_HREF} sourcePath={PATH} location="Rishikesh" intent="28-day Yoga TTC enquiry" analyticsEvent="yoga_whatsapp_click" product={YOGA_TTC_PRODUCT.name} productId={YOGA_TTC_PRODUCT.id} duration="28 days" ctaPosition="hero" style={{ display: 'inline-flex', padding: '0.9rem 1.4rem', borderRadius: 999, background: '#fff', color: '#0f766e', fontWeight: 700, textDecoration: 'none' }}>
+            <TrackedWhatsAppLink href={getTtcWhatsAppHref('yoga_ttc_hero_whatsapp', 'hero', 'Ask About the 28-Day TTC')} sourcePath={PATH} location="Rishikesh" intent="28-day Yoga TTC enquiry" analyticsEvent="yoga_whatsapp_click" product={YOGA_TTC_PRODUCT.name} productId={YOGA_TTC_PRODUCT.id} duration="28 days" ctaPosition="hero" ctaId="yoga_ttc_hero_whatsapp" ctaLabel="Ask About the 28-Day TTC" style={{ display: 'inline-flex', padding: '0.9rem 1.4rem', borderRadius: 999, background: '#fff', color: '#0f766e', fontWeight: 700, textDecoration: 'none' }}>
               Ask About the 28-Day TTC
             </TrackedWhatsAppLink>
             <Link href="/compare/yoga-retreat-vs-yoga-teacher-training" style={{ display: 'inline-flex', alignItems: 'center', padding: '0.9rem 1.4rem', borderRadius: 999, border: '1px solid rgba(255,255,255,0.4)', color: '#fff', fontWeight: 700, textDecoration: 'none' }}>
@@ -138,7 +158,7 @@ export default function YogaTeacherTrainingPage() {
 
       <section style={sectionStyle('#fff')}>
         <div style={{ maxWidth: '58rem', margin: '0 auto', textAlign: 'center' }}>
-          <TrackedWhatsAppLink href={WHATSAPP_HREF} sourcePath={PATH} location="Rishikesh" intent="28-day Yoga TTC enquiry" analyticsEvent="yoga_whatsapp_click" product={YOGA_TTC_PRODUCT.name} productId={YOGA_TTC_PRODUCT.id} duration="28 days" ctaPosition="closing" style={{ display: 'inline-flex', padding: '0.95rem 1.5rem', borderRadius: 999, background: '#0f766e', color: '#fff', fontWeight: 700, textDecoration: 'none' }}>
+          <TrackedWhatsAppLink href={getTtcWhatsAppHref('yoga_ttc_closing_whatsapp', 'content', 'Ask About Upcoming TTC Batches')} sourcePath={PATH} location="Rishikesh" intent="28-day Yoga TTC enquiry" analyticsEvent="yoga_whatsapp_click" product={YOGA_TTC_PRODUCT.name} productId={YOGA_TTC_PRODUCT.id} duration="28 days" ctaPosition="content" ctaId="yoga_ttc_closing_whatsapp" ctaLabel="Ask About Upcoming TTC Batches" style={{ display: 'inline-flex', padding: '0.95rem 1.5rem', borderRadius: 999, background: '#0f766e', color: '#fff', fontWeight: 700, textDecoration: 'none' }}>
             Ask About Upcoming TTC Batches
           </TrackedWhatsAppLink>
           <nav aria-label="Related Yoga pages" style={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '1rem', marginTop: '1.5rem' }}>

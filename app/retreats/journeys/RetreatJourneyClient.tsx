@@ -140,6 +140,8 @@ export default function RetreatJourneyClient({
       >
         <JourneyHero
           title={retreat.title}
+          retreatSlug={retreatSlug}
+          sourcePath={`/retreats/journeys/${retreatSlug}`}
           oneLineEssence={retreat.oneLineEssence}
           keyHighlights={retreat.keyHighlights}
           heroImage={retreat.heroImage}
@@ -180,7 +182,10 @@ export default function RetreatJourneyClient({
       />
 
       {/* 6. MID CTA */}
-      <JourneyMidCTA />
+      <JourneyMidCTA
+        retreatSlug={retreatSlug}
+        title={retreat.title}
+      />
 
       {/* 7. IDEAL IF */}
       {retreat.idealIf && retreat.idealIf.length > 0 && (
@@ -230,7 +235,12 @@ export default function RetreatJourneyClient({
       {suggestedTrek && <JourneyRelatedTrek suggestedTrek={suggestedTrek} />}
 
       {/* 16. CTA */}
-      <JourneyCTA title={retreat.title} invitation={retreat.invitation} priceLabel={priceLabel} />
+      <JourneyCTA
+        title={retreat.title}
+        invitation={retreat.invitation}
+        priceLabel={priceLabel}
+        retreatSlug={retreatSlug}
+      />
     </div>
   );
 }

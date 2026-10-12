@@ -64,6 +64,7 @@ export default function ProgramEventPage({ event }: Props) {
 
   const isPastEvent = event.endDate < new Date().toISOString().split('T')[0];
   const isYogaEvent = isYogaProductEvent(event);
+  const isArtEvent = ['art-and-creative', 'trek-and-paint', 'weekend-art-retreat'].includes(event.serviceSlug);
   const yogaAvailability = isYogaEvent ? getYogaDepartureAvailability(event) : undefined;
   const canShowOffer = !isPastEvent && (!isYogaEvent || isYogaDepartureBookable(event));
   const canJoinWaitlist = !isPastEvent && (isYogaEvent
@@ -264,11 +265,16 @@ export default function ProgramEventPage({ event }: Props) {
               label={canJoinWaitlist ? 'Join Waitlist' : isYogaEvent ? 'Enquire About This Departure' : event.status === 'sold-out' ? 'Join Waitlist' : `Reserve My Seat — ${event.month} ${event.year}`}
               subtext={`${event.label} in ${event.locationName}. ${event.dateRange}. ${event.durationDays} days.`}
               vertical="retreat"
-              category="program-event"
+              category={isArtEvent ? event.serviceSlug : 'program-event'}
               sourcePath={`/${event.slug}`}
-              location={event.locationName}
-              productId={isYogaEvent ? event.productId : undefined}
-              departureId={isYogaEvent ? event.slug : undefined}
+              location={event.locationName !== 'TBA' ? event.locationName : undefined}
+              productId={isYogaEvent ? event.productId : isArtEvent ? event.serviceSlug : undefined}
+              departureId={isYogaEvent || isArtEvent ? event.slug : undefined}
+              productName={isArtEvent ? event.label : undefined}
+              duration={isArtEvent ? `${event.durationDays} days` : undefined}
+              departureDate={isArtEvent ? event.dateRange : undefined}
+              ctaId={isArtEvent ? `art_event_${event.slug}_primary` : undefined}
+              ctaPosition={isArtEvent ? 'primary' : undefined}
             />
           )}
         </>
@@ -415,11 +421,16 @@ export default function ProgramEventPage({ event }: Props) {
             ? `Open for enquiry. Ask the team to confirm current availability and details for ${event.dateRange}.`
             : `${event.seatsLeft} seats remaining. ${event.dateRange}, ${event.locationName}.`}
           vertical="retreat"
-          category="program-event"
+          category={isArtEvent ? event.serviceSlug : 'program-event'}
           sourcePath={`/${event.slug}`}
-          location={isYogaEvent ? event.locationName : undefined}
-          productId={isYogaEvent ? event.productId : undefined}
-          departureId={isYogaEvent ? event.slug : undefined}
+          location={event.locationName !== 'TBA' ? event.locationName : undefined}
+          productId={isYogaEvent ? event.productId : isArtEvent ? event.serviceSlug : undefined}
+          departureId={isYogaEvent || isArtEvent ? event.slug : undefined}
+          productName={isArtEvent ? event.label : undefined}
+          duration={isArtEvent ? `${event.durationDays} days` : undefined}
+          departureDate={isArtEvent ? event.dateRange : undefined}
+          ctaId={isArtEvent ? `art_event_${event.slug}_footer` : undefined}
+          ctaPosition={isArtEvent ? 'content' : undefined}
         />
       )}
 

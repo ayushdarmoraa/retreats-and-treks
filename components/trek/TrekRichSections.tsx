@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import type { TrekContent } from '@/types/content';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 
 /* ============================================================
    TrekHeroImmersive - ✅ THEMED (No Change)
@@ -12,10 +13,12 @@ export function TrekHeroImmersive({
   trek,
   locationName,
   whatsappHref,
+  sourcePath,
 }: {
   trek: TrekContent;
   locationName: string;
   whatsappHref: string;
+  sourcePath: string;
 }) {
   if (!trek.heroImage) return null;
 
@@ -225,10 +228,17 @@ export function TrekHeroImmersive({
             alignItems: 'center',
             marginTop: '0.5rem',
           }}>
-            <Link
+            <TrackedWhatsAppLink
               href={whatsappHref}
-              target="_blank"
-              rel="noopener noreferrer"
+              sourcePath={sourcePath}
+              vertical="trek"
+              category="trek-product"
+              product={trek.title}
+              productId={trek.slug}
+              location={locationName}
+              ctaId={`trek_${trek.slug}_hero_whatsapp`}
+              ctaPosition="hero"
+              ctaLabel="Check Dates & Book Now"
               className="hero-btn-primary"
               style={{
                 display: 'inline-flex',
@@ -251,7 +261,7 @@ export function TrekHeroImmersive({
             >
               <span style={{ fontSize: '1rem' }}>📅</span>
               Check Dates & Book Now
-            </Link>
+            </TrackedWhatsAppLink>
 
             <a
               href="#itinerary"
@@ -1160,10 +1170,16 @@ export function TrekFinalCTA({
   trekTitle,
   whatsappHref,
   bestSeason,
+  sourcePath,
+  trekSlug,
+  locationName,
 }: {
   trekTitle: string;
   whatsappHref: string;
   bestSeason: string[];
+  sourcePath: string;
+  trekSlug: string;
+  locationName: string;
 }) {
   const isWinter = bestSeason.some(s => ['December', 'January', 'February'].includes(s));
   const seasonText = isWinter ? 'winter' : 'upcoming';
@@ -1213,10 +1229,17 @@ export function TrekFinalCTA({
           Limited {seasonText} batches available for the {trekTitle}. Small groups of 12 max. Secure your spot before dates sell out.
         </p>
 
-        <Link
+        <TrackedWhatsAppLink
           href={whatsappHref}
-          target="_blank"
-          rel="noopener noreferrer"
+          sourcePath={sourcePath}
+          vertical="trek"
+          category="trek-product"
+          product={trekTitle}
+          productId={trekSlug}
+          location={locationName}
+          ctaId={`trek_${trekSlug}_closing_whatsapp`}
+          ctaPosition="closing"
+          ctaLabel={`Book Your ${trekTitle} Now`}
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -1236,7 +1259,7 @@ export function TrekFinalCTA({
           }}
         >
           Book Your {trekTitle} Now
-        </Link>
+        </TrackedWhatsAppLink>
 
         <p style={{ fontFamily: 'var(--font-inter), sans-serif', marginTop: '1rem', fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>
           Free cancellation up to 7 days before departure.

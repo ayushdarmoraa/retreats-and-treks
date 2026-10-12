@@ -7,7 +7,7 @@ import { getAllLocationContent } from '@/content/locations';
 import { getLocationById } from '@/lib/locations';
 import type { RetreatContent } from '@/types/content';
 import type { RetreatService } from '@/content/retreats/services';
-import { logLocationEntry, logWhatsAppOpen } from '@/lib/analytics';
+import { logLocationEntry } from '@/lib/analytics';
 
 // Import Location Components
 import {
@@ -47,9 +47,6 @@ export default function RetreatsLocationClient({
     console.log(`[${locationPremiumContent.name}] Treks received:`, treks.length, treks);
     console.log(`[${locationPremiumContent.name}] Retreat services:`, retreatServices.length);
   }, [locationId, treks, locationPremiumContent.name, retreatServices]);
-
-  const whatsappMessage = `Hi, I'm interested in learning more about journeys in ${locationPremiumContent.name}.`;
-  const whatsappLink = `https://wa.me/919760446101?text=${encodeURIComponent(whatsappMessage)}`;
 
   // Get other locations for discover section
   const allLocations = getAllLocationContent()
@@ -123,6 +120,7 @@ export default function RetreatsLocationClient({
       >
         <LocationHero
           name={locationPremiumContent.name}
+          sourcePath={`/retreats/${locationId}`}
           opening={locationPremiumContent.landTone.opening}
           heroImage={locationPremiumContent.heroImage}
           heroImageAlt={locationPremiumContent.heroImageAlt}
@@ -161,6 +159,7 @@ export default function RetreatsLocationClient({
           locationName={locationPremiumContent.name}
           services={retreatServices}
           locationId={locationId}
+          conversionSourcePath={`/retreats/${locationId}`}
         />
       )}
 
@@ -221,7 +220,8 @@ export default function RetreatsLocationClient({
         locationId={locationId}
         networkContext={locationPremiumContent.networkContext}
         ctaText={locationPremiumContent.ctaText}
-        whatsappLink={whatsappLink}
+        trackingSourcePath={`/retreats/${locationId}`}
+        locationName={locationPremiumContent.name}
       />
     </main>
   );

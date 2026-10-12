@@ -29,11 +29,6 @@ const BelowFoldHomeContent = dynamic(
 );
 
 export default function HomeClient({ locations }: HomeClientProps) {
-  const whatsappMessage = `Hi, I'm interested in learning more about your Himalayan journeys.`;
-  const whatsappLink = `https://wa.me/919760446101?text=${encodeURIComponent(whatsappMessage)}`;
-
-
-
 // ── Scroll fade-in observer ──
 useEffect(() => {
   const els = document.querySelectorAll('.scroll-fade, .scroll-fade-stagger');

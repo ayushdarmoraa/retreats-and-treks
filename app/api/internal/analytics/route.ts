@@ -34,9 +34,12 @@ export async function GET() {
     const [metrics] = await sql`
       SELECT
         COUNT(*)::int AS total_leads,
-        COUNT(*) FILTER (WHERE lead_tier = 'hot')::int AS hot_leads,
-        COUNT(*) FILTER (WHERE lead_tier = 'warm')::int AS warm_leads,
-        COUNT(*) FILTER (WHERE lead_tier = 'cold')::int AS cold_leads,
+        COUNT(*) FILTER (WHERE reporting_tier = 'hot')::int AS hot_leads,
+        COUNT(*) FILTER (WHERE reporting_tier = 'warm')::int AS warm_leads,
+        COUNT(*) FILTER (WHERE reporting_tier = 'nurture')::int AS nurture_leads,
+        COUNT(*) FILTER (WHERE reporting_tier = 'early')::int AS early_leads,
+        COUNT(*) FILTER (WHERE reporting_tier = 'cold')::int AS cold_leads,
+        COUNT(*) FILTER (WHERE reporting_tier = 'unscored')::int AS unscored_leads,
         COUNT(*) FILTER (WHERE status = 'booked')::int AS booked,
         COUNT(*) FILTER (WHERE status = 'replied')::int AS replied,
         COUNT(*) FILTER (WHERE status = 'closed')::int AS closed,
@@ -50,9 +53,15 @@ export async function GET() {
           1
         ) AS conversion_rate,
         COUNT(*) FILTER (WHERE vertical = 'retreat')::int AS retreat_leads,
-        COUNT(*) FILTER (WHERE vertical = 'trek')::int AS trek_leads
-      FROM inquiries
-      WHERE created_at >= now() - interval '30 days'
+        COUNT(*) FILTER (WHERE vertical = 'trek')::int AS trek_leads,
+        COUNT(*) FILTER (WHERE vertical = 'yoga')::int AS yoga_leads,
+        COUNT(*) FILTER (WHERE vertical = 'art')::int AS art_leads
+      FROM (
+        SELECT inquiries.*,
+          LOWER(COALESCE(NULLIF(canonical_lead_tier, ''), NULLIF(lead_tier, ''), 'unscored')) AS reporting_tier
+        FROM inquiries
+        WHERE created_at >= now() - interval '30 days'
+      ) AS recent_inquiries
     `;
 
     // ── Hot lead conversion (hot → booked rate) ────────────
@@ -67,9 +76,13 @@ export async function GET() {
           END,
           1
         ) AS hot_conversion_rate
-      FROM inquiries
-      WHERE created_at >= now() - interval '30 days'
-        AND lead_tier = 'hot'
+      FROM (
+        SELECT status,
+          LOWER(COALESCE(NULLIF(canonical_lead_tier, ''), NULLIF(lead_tier, ''), 'unscored')) AS reporting_tier
+        FROM inquiries
+        WHERE created_at >= now() - interval '30 days'
+      ) AS recent_inquiries
+      WHERE reporting_tier = 'hot'
     `;
 
     // ── Daily volume (last 30 days) ────────────────────────
@@ -77,7 +90,7 @@ export async function GET() {
       SELECT
         date_trunc('day', created_at)::date AS day,
         COUNT(*)::int AS count,
-        COUNT(*) FILTER (WHERE lead_tier = 'hot')::int AS hot
+        COUNT(*) FILTER (WHERE LOWER(COALESCE(NULLIF(canonical_lead_tier, ''), NULLIF(lead_tier, ''), 'unscored')) = 'hot')::int AS hot
       FROM inquiries
       WHERE created_at >= now() - interval '30 days'
       GROUP BY date_trunc('day', created_at)
@@ -116,7 +129,10 @@ export async function GET() {
         totalLeads: metrics.total_leads,
         hotLeads: metrics.hot_leads,
         warmLeads: metrics.warm_leads,
+        nurtureLeads: metrics.nurture_leads,
+        earlyLeads: metrics.early_leads,
         coldLeads: metrics.cold_leads,
+        unscoredLeads: metrics.unscored_leads,
         booked: metrics.booked,
         replied: metrics.replied,
         closed: metrics.closed,
@@ -125,6 +141,8 @@ export async function GET() {
         conversionRate: parseFloat(metrics.conversion_rate) || 0,
         retreatLeads: metrics.retreat_leads,
         trekLeads: metrics.trek_leads,
+        yogaLeads: metrics.yoga_leads,
+        artLeads: metrics.art_leads,
       },
       hotConversion: {
         totalHot: hotConversion.total_hot,

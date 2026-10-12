@@ -20,12 +20,9 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
+import { persistConversionEvent, toDurableConversionEvent } from '@/lib/conversion-events';
 
 export const runtime = 'nodejs';
-
-const EVENT_LOG_PATH = path.join(process.cwd(), 'data', 'events.jsonl');
 
 const NAVIGATION_EVENTS = [
   'topic_to_pillar',
@@ -37,6 +34,7 @@ const NAVIGATION_EVENTS = [
 
 const BEHAVIORAL_EVENTS = [
   'page_view',
+  'cta_view',
   'cta_click',
   'form_start',
   'form_submission',
@@ -60,18 +58,15 @@ const BEHAVIORAL_EVENTS = [
   'yoga_finder_start',
   'yoga_finder_recommendation',
   'yoga_departure_selection',
+  'lead_capture_open',
+  'lead_capture_step_view',
+  'lead_capture_step_complete',
+  'lead_capture_abandon',
 ] as const;
 
 const ALL_EVENTS = [...NAVIGATION_EVENTS, ...BEHAVIORAL_EVENTS] as const;
+export const TRACK_EVENT_TYPES = ALL_EVENTS;
 type EventType = (typeof ALL_EVENTS)[number];
-
-interface TrackEvent {
-  event: EventType;
-  from: string;
-  to?: string;
-  meta?: Record<string, unknown>;
-  ts: string;
-}
 
 function isValidPath(value: unknown): value is string {
   return typeof value === 'string' && value.startsWith('/') && value.length <= 200;
@@ -81,47 +76,80 @@ function isValidEvent(value: unknown): value is EventType {
   return typeof value === 'string' && (ALL_EVENTS as readonly string[]).includes(value);
 }
 
-function appendEvent(entry: TrackEvent): void {
+function isValidMeta(value: unknown): value is Record<string, unknown> | undefined {
+  if (value === undefined) return true;
+  if (!value || typeof value !== 'object' || Array.isArray(value)) return false;
   try {
-    const line = JSON.stringify(entry) + '\n';
-    fs.appendFileSync(EVENT_LOG_PATH, line, 'utf-8');
+    return JSON.stringify(value).length <= 6000;
   } catch {
-    // Non-blocking — telemetry must never break user experience
+    return false;
   }
 }
 
-export async function POST(req: NextRequest): Promise<NextResponse> {
-  let body: unknown;
-  try {
-    body = await req.json();
-  } catch {
-    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
-  }
+interface TrackDependencies {
+  persistEvent: typeof persistConversionEvent;
+}
 
-  if (!body || typeof body !== 'object') {
-    return NextResponse.json({ error: 'Invalid body' }, { status: 400 });
-  }
+export function createTrackPostHandler(
+  dependencies: TrackDependencies = {
+    persistEvent: persistConversionEvent,
+  },
+) {
+  return async function POST(req: NextRequest): Promise<NextResponse> {
+    let body: unknown;
+    try {
+      body = await req.json();
+    } catch {
+      return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+    }
 
-  const { event, from, to, meta } = body as Record<string, unknown>;
+    if (!body || typeof body !== 'object') {
+      return NextResponse.json({ error: 'Invalid body' }, { status: 400 });
+    }
 
-  if (!isValidEvent(event) || !isValidPath(from)) {
-    return NextResponse.json({ error: 'Invalid event payload' }, { status: 422 });
-  }
+    const { event, from, to, meta } = body as Record<string, unknown>;
 
-  // Navigation events require a `to` path
-  if ((NAVIGATION_EVENTS as readonly string[]).includes(event as string) && !isValidPath(to)) {
-    return NextResponse.json({ error: 'Navigation events require a valid `to` path' }, { status: 422 });
-  }
+    if (!isValidEvent(event) || !isValidPath(from) || !isValidMeta(meta)) {
+      return NextResponse.json({ error: 'Invalid event payload' }, { status: 422 });
+    }
 
-  const entry: TrackEvent = {
-    event,
-    from,
-    ...(isValidPath(to) ? { to } : {}),
-    ...(meta && typeof meta === 'object' ? { meta: meta as Record<string, unknown> } : {}),
-    ts: new Date().toISOString(),
+    if (to !== undefined && !isValidPath(to)) {
+      return NextResponse.json({ error: 'Invalid destination path' }, { status: 422 });
+    }
+
+    if ((NAVIGATION_EVENTS as readonly string[]).includes(event as string) && !isValidPath(to)) {
+      return NextResponse.json({ error: 'Navigation events require a valid `to` path' }, { status: 422 });
+    }
+
+    const durableEvent = toDurableConversionEvent({ event, from, to: typeof to === 'string' ? to : undefined, meta });
+    if (!durableEvent) {
+      return NextResponse.json({ error: 'unsupported_durable_event', durable: false }, { status: 422 });
+    }
+
+    let persistence: Awaited<ReturnType<typeof dependencies.persistEvent>>;
+    try {
+      persistence = await dependencies.persistEvent(durableEvent);
+    } catch {
+      persistence = 'failed';
+    }
+    if (persistence === 'persisted' || persistence === 'deduplicated') {
+      return NextResponse.json({
+        ok: true,
+        durable: true,
+        ...(persistence === 'deduplicated' ? { deduplicated: true } : {}),
+      });
+    }
+
+    if (persistence === 'unavailable' || persistence === 'failed') {
+      console.error('[API:Track] Durable event persistence unavailable');
+      return NextResponse.json(
+        { error: 'durable_persistence_failed', durable: false },
+        { status: 503 },
+      );
+    }
+
+    return NextResponse.json({ error: 'durable_persistence_failed', durable: false }, { status: 503 });
   };
-
-  appendEvent(entry);
-
-  return NextResponse.json({ ok: true }, { status: 200 });
 }
+
+export const POST = createTrackPostHandler();

@@ -18,6 +18,8 @@ import CTAExpandToggle from '@/components/CTAExpandToggle';
 import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 import { getUpcomingYogaDepartures, getYogaRetreatProduct } from '@/config/retreatProgramEvents';
 import { getYogaRecommendation } from '@/lib/yoga-finder-recommendation';
+import { resolveConversionContext } from '@/lib/conversion-foundation';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 import { buildAttributionQuery, captureAttribution } from '@/utils/attribution';
 import { track } from '@/utils/telemetry';
 import { recordFinderMatch } from '@/utils/sessionPreferences';
@@ -386,6 +388,7 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [results, setResults] = useState<string[]>([]);
   const yogaFinderStarted = useRef(false);
+  const yogaFinderCompletionTracked = useRef(false);
 
   const currentQuestion = typeof step === 'number' ? questions[step] : null;
   const selectedAnswer = typeof step === 'number' ? answers[questions[step]?.id] : undefined;
@@ -416,13 +419,15 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
         captureAttribution(searchParams);
         const sourceUtm = buildAttributionQuery(searchParams);
         const yogaRecommendation = isYogaMode ? getYogaRecommendation(answers) : undefined;
-        track({
-          event: 'finder_complete',
-          from: fromPath,
-          meta: {
-            result: top[0] ?? 'none',
-            second: top[1] ?? 'none',
-            ...(isYogaMode ? {
+        const shouldTrackCompletion = !isYogaMode || !yogaFinderCompletionTracked.current;
+        if (shouldTrackCompletion) {
+          track({
+            event: 'finder_complete',
+            from: fromPath,
+            meta: {
+              result: top[0] ?? 'none',
+              second: top[1] ?? 'none',
+              ...(isYogaMode ? {
               yoga_interest: answers.yogaType === 'ttc' ? 'Yoga TTC' : answers.yogaType === 'unsure' ? 'Not sure' : 'Yoga Retreat',
               location: answers.yogaLocation === 'unsure' ? '' : answers.yogaLocation,
               duration: answers.yogaDuration,
@@ -432,10 +437,11 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
               page: fromPath,
               source: fromPath,
               source_utm: sourceUtm,
-            } : {}),
-          },
-        });
-        if (yogaRecommendation) {
+              } : {}),
+            },
+          });
+        }
+        if (yogaRecommendation && shouldTrackCompletion) {
           track({
             event: 'yoga_finder_recommendation',
             from: fromPath,
@@ -454,7 +460,8 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
             },
           });
         }
-        if (top[0]) recordFinderMatch(top[0]);
+        if (top[0] && shouldTrackCompletion) recordFinderMatch(top[0]);
+        if (isYogaMode) yogaFinderCompletionTracked.current = true;
       } else {
         setStep(step + 1);
       }
@@ -471,6 +478,7 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
     setAnswers({});
     setResults([]);
     yogaFinderStarted.current = false;
+    yogaFinderCompletionTracked.current = false;
   }
 
   const containerStyle: React.CSSProperties = {
@@ -496,8 +504,21 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
         : recommendation.custom
         ? `Hi, I'm interested in a Yoga Retreat in ${recommendation.requestedLocation}. I'd like to know about custom/upcoming options.`
         : recommendation.productId
-          ? `Hi, I'm interested in the ${product?.name}. Please share the upcoming dates and details.`
+          ? `Hi, I'm interested in ${product?.name || 'the recommended Yoga retreat option'}. Please share the upcoming dates and details.`
           : 'Hi, I need help choosing a Yoga retreat option.';
+      const whatsappContext = resolveConversionContext({
+        pagePath: fromPath,
+        vertical: 'retreat',
+        category: 'yoga-finder',
+        ctaId: 'yoga_finder_result_whatsapp',
+        ctaLabel: 'Ask on WhatsApp',
+        ctaPosition: 'finder_result',
+        productId: recommendation.productId ?? (recommendation.ttc ? 'yoga-ttc' : undefined),
+        productName: product?.name ?? (recommendation.ttc ? '28-Day Yoga Teacher Training in Rishikesh' : undefined),
+        locationName: recommendation.requestedLocation || (yogaLocation === 'other' ? undefined : yogaLocation || undefined),
+        duration: product?.durationLabel ?? (recommendation.ttc ? '28 days' : yogaDuration || undefined),
+      });
+      const whatsappHref = buildWhatsAppUrl({ context: whatsappContext, message: whatsappMessage });
 
       return (
         <div style={containerStyle}>
@@ -533,7 +554,7 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
             </Link>
           </div>
           <TrackedWhatsAppLink
-            href={`https://wa.me/919760446101?text=${encodeURIComponent(whatsappMessage)}`}
+            href={whatsappHref}
             sourcePath={fromPath}
             location={recommendation.requestedLocation || 'Rishikesh'}
             intent="Yoga finder recommendation"
@@ -543,6 +564,8 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
             duration={product?.durationLabel ?? (recommendation.ttc ? '28 days' : undefined)}
             recommendedAlternative={recommendation.custom ? 'yoga-rishikesh-5-day' : undefined}
             ctaPosition="finder-result"
+            ctaId="yoga_finder_result_whatsapp"
+            ctaLabel="Ask on WhatsApp"
             style={{ display: 'inline-flex', marginTop: '0.5rem', padding: '0.75rem 1rem', borderRadius: 6, background: 'var(--color-primary, #2d6a4f)', color: '#fff', fontWeight: 700, textDecoration: 'none' }}
           >
             Ask on WhatsApp
@@ -556,6 +579,7 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
             yogaInterest={yogaInterest}
             duration={yogaDuration}
             yogaExperience={yogaExperience}
+            preferredMonth={answers.preferredMonth}
             planningHorizon={answers.planningHorizon}
             productId={recommendation.helpMeChoose ? undefined : recommendation.productId}
             productOption={recommendation.ttc ? 'ttc' : recommendation.custom ? 'other-location' : recommendation.helpMeChoose ? 'not-sure' : undefined}

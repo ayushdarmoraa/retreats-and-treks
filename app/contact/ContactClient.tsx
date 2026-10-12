@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 
 export default function ContactClient() {
   return (
@@ -130,9 +131,17 @@ export default function ContactClient() {
               <span className="med-label">Fastest</span>
               <p className="med-title">WhatsApp</p>
               <p className="med-sub">Best for quick clarity</p>
-              <a href="https://wa.me/919760446101" className="med-cta-btn" style={{ padding: '0.6rem 1.25rem', fontSize: '0.7rem', alignSelf: 'flex-start' }}>
+              <TrackedWhatsAppLink
+                sourcePath="/contact"
+                ctaId="contact_methods_whatsapp"
+                ctaPosition="contact_methods"
+                ctaLabel="Message on WhatsApp"
+                message="Hi, I have a quick question about a retreat or trek."
+                className="med-cta-btn"
+                style={{ padding: '0.6rem 1.25rem', fontSize: '0.7rem', alignSelf: 'flex-start' }}
+              >
                 Message on WhatsApp
-              </a>
+              </TrackedWhatsAppLink>
             </div>
 
             {/* Email */}
@@ -203,9 +212,16 @@ export default function ContactClient() {
           <p className="med-body" style={{ textAlign: 'center' }}>
             Reach out. We'll take it from there. No pressure, no playbook—just a conversation about whether a retreat with us makes sense right now.
           </p>
-          <a href="https://wa.me/919760446101" className="med-cta-btn">
+          <TrackedWhatsAppLink
+            sourcePath="/contact"
+            ctaId="contact_closing_whatsapp"
+            ctaPosition="closing"
+            ctaLabel="Start the conversation"
+            message="Hi, I'd like to talk about planning a retreat or trek."
+            className="med-cta-btn"
+          >
             Start the conversation
-          </a>
+          </TrackedWhatsAppLink>
         </div>
       </section>
 

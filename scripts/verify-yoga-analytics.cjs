@@ -89,7 +89,16 @@ assert.match(componentSources.finder, /event:\s*'finder_complete'/, 'finder comp
 assert.match(componentSources.finder, /event:\s*'yoga_finder_recommendation'/, 'Yoga recommendation is tracked');
 assert.match(componentSources.calendar, /trackDepartureSelection/, 'departure calendar enables departure-selection tracking');
 assert.match(componentSources.calendar, /departureId=\{departure\.slug\}/, 'departure event context uses registry departure id');
-assert.match(componentSources.calendar, /duration=\{product\?\.durationLabel/, 'departure event context includes product duration');
+assert.match(
+  componentSources.calendar,
+  /const departureDuration = product\?\.durationLabel \?\? `\$\{departure\.durationDays\} days`;/,
+  'departure duration uses the product format or published departure duration',
+);
+assert.match(
+  componentSources.calendar,
+  /duration=\{departureDuration\}/,
+  'departure event context includes the resolved duration',
+);
 assert.match(componentSources.trackedWhatsApp, /event: analyticsEvent/, 'WhatsApp emits the configured event');
 assert.match(componentSources.trackedWhatsApp, /event: 'yoga_departure_selection'/, 'selected departure emits its separate selection event');
 
@@ -99,6 +108,7 @@ const originalLoad = Module._load;
 Module._load = function (request, parent, isMain) {
   if (request === '@/utils/telemetry') return { track: (event) => emitted.push(event) };
   if (request === '@/utils/attribution') return attribution;
+  if (request === 'next/navigation') return { usePathname: () => '/yoga-retreats' };
   return originalLoad.call(this, request, parent, isMain);
 };
 

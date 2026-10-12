@@ -11,6 +11,8 @@ import { getTreksByLocation } from '@/lib/treks';
 import { getLocationById, getAllLocations } from '@/lib/locations';
 import type { LocationId } from '@/config/locations';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
+import { DEFAULT_WHATSAPP_NUMBER, buildWhatsAppUrl } from '@/lib/whatsapp';
+import { resolveConversionContext } from '@/lib/conversion-foundation';
 import {
   generateTrekSchema,
   generateBreadcrumbSchema,
@@ -65,7 +67,7 @@ const COMPARISON_BLOGS: Record<string, { path: string; title: string }> = {
 const GARHWAL_LOCATIONS = new Set(['lohajung', 'joshimath']);
 
 // WhatsApp business number (international format, no +)
-const WHATSAPP_NUMBER = '919760446101';
+const WHATSAPP_NUMBER = DEFAULT_WHATSAPP_NUMBER.replace(/\D/g, '');
 
 // Upward context link: varied anchor text pointing to the discovery page
 const DISCOVERY_ANCHORS: Record<string, string> = {
@@ -250,10 +252,38 @@ export default async function TrekDetailPage({ params }: PageProps) {
     : [];
 
   const canonicalUrl = buildCanonicalUrl(`/treks/location/${locationId}/${slug}`);
-  const whatsappMessage = encodeURIComponent(
-    `Hi! I'm interested in the ${trek.title}. Can you share available dates and pricing?`,
-  );
-  const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`;
+  const sourcePath = `/treks/location/${locationId}/${slug}`;
+  const whatsappMessage = `Hi! I'm interested in the ${trek.title}. Can you share available dates and pricing?`;
+  const whatsappHref = buildWhatsAppUrl({
+    destination: WHATSAPP_NUMBER,
+    context: resolveConversionContext({
+      pagePath: sourcePath,
+      vertical: 'trek',
+      category: 'trek-product',
+      productId: trek.slug,
+      productName: trek.title,
+      locationName: location.name,
+      ctaId: `trek_${trek.slug}_hero_whatsapp`,
+      ctaLabel: 'Check Dates & Book Now',
+      ctaPosition: 'hero',
+    }),
+    message: whatsappMessage,
+  });
+  const finalWhatsAppHref = buildWhatsAppUrl({
+    destination: WHATSAPP_NUMBER,
+    context: resolveConversionContext({
+      pagePath: sourcePath,
+      vertical: 'trek',
+      category: 'trek-product',
+      productId: trek.slug,
+      productName: trek.title,
+      locationName: location.name,
+      ctaId: `trek_${trek.slug}_closing_whatsapp`,
+      ctaLabel: `Book Your ${trek.title} Now`,
+      ctaPosition: 'closing',
+    }),
+    message: whatsappMessage,
+  });
   const trekSchema = generateTrekSchema(trek);
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
@@ -307,6 +337,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
             trek={trek}
             locationName={location.name}
             whatsappHref={whatsappHref}
+            sourcePath={sourcePath}
           />
         )}
 
@@ -1278,8 +1309,11 @@ export default async function TrekDetailPage({ params }: PageProps) {
 
             <TrekFinalCTA
               trekTitle={trek.title}
-              whatsappHref={whatsappHref}
+              whatsappHref={finalWhatsAppHref}
               bestSeason={trek.bestSeason}
+              sourcePath={sourcePath}
+              trekSlug={trek.slug}
+              locationName={location.name}
             />
 
             <TrekConversionLayer
@@ -1290,7 +1324,7 @@ export default async function TrekDetailPage({ params }: PageProps) {
               altitude={trek.altitude}
               locationId={locationId}
               locationName={location.name}
-              sourcePath={`/treks/location/${locationId}/${slug}`}
+              sourcePath={sourcePath}
               whatsappNumber={WHATSAPP_NUMBER}
               phoneNumber={WHATSAPP_NUMBER}
             />

@@ -11,6 +11,7 @@ import AutoArticleSchema from '@/components/AutoArticleSchema';
 import { getFacilitator, getAllFacilitatorSlugs } from '@/config/facilitators';
 import { getAllRetreatServices } from '@/content/retreats/services';
 import { images } from '@/lib/images';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 
 export const dynamic = 'force-static';
 export const dynamicParams = false;
@@ -78,8 +79,8 @@ export default async function FacilitatorPage(
     url: buildCanonicalUrl(`/facilitators/${slug}`),
   };
 
-  const whatsappText = encodeURIComponent(`Hi, I want to know more about retreats guided by ${facilitator.name}.`);
-  const whatsappHref = `https://wa.me/919760446101?text=${whatsappText}`;
+  const sourcePath = `/facilitators/${slug}`;
+  const whatsappMessage = `Hi, I want to know more about retreats guided by ${facilitator.name}.`;
 
   // Split heading for green last word
   const h1Words = facilitator.name.split(' ');
@@ -211,9 +212,16 @@ export default async function FacilitatorPage(
                 ))}
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1.5rem' }}>
-                <a href={whatsappHref} className="med-cta-btn" target="_blank" rel="noopener noreferrer">
+                <TrackedWhatsAppLink
+                  sourcePath={sourcePath}
+                  ctaId={`facilitator_${slug}_hero_whatsapp`}
+                  ctaPosition="hero"
+                  ctaLabel="Ask About Retreats"
+                  message={whatsappMessage}
+                  className="med-cta-btn"
+                >
                   Ask About Retreats →
-                </a>
+                </TrackedWhatsAppLink>
                 <Link href="/facilitators" className="med-cta-outline">
                   All Facilitators
                 </Link>
@@ -374,9 +382,16 @@ export default async function FacilitatorPage(
             Tell us what you are looking for. We will help you choose the right retreat format, dates, location, and level of support.
           </p>
           <div className="med-cta-actions">
-            <a href={whatsappHref} className="med-cta-btn" target="_blank" rel="noopener noreferrer">
+            <TrackedWhatsAppLink
+              sourcePath={sourcePath}
+              ctaId={`facilitator_${slug}_closing_whatsapp`}
+              ctaPosition="closing"
+              ctaLabel="Message on WhatsApp"
+              message={whatsappMessage}
+              className="med-cta-btn"
+            >
               Message on WhatsApp →
-            </a>
+            </TrackedWhatsAppLink>
           </div>
         </div>
       </section>

@@ -10,7 +10,7 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
-import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 
 const PATH = '/retreats/yoga-retreat-uttarakhand';
 
@@ -230,18 +230,19 @@ export default function YogaRetreatUttarakhandPage() {
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <TrackedWhatsAppLink
-              href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in a yoga retreat in Uttarakhand. Can you tell me more?")}`}
+            <CTAExpandToggle
+              label="Check Dates & Programs"
+              vertical="retreat"
+              category="yoga-retreats-uttarakhand"
               sourcePath={PATH}
+              pageType="yoga_product"
               location="Uttarakhand"
-              intent="Yoga retreat enquiry"
-              analyticsEvent="yoga_whatsapp_click"
-              product="Yoga retreats in Uttarakhand"
+              yogaInterest="Yoga Retreat"
+              productName="Yoga retreats in Uttarakhand"
               ctaPosition="hero"
-              className="med-cta-btn"
-            >
-              Check Dates &amp; Programs
-            </TrackedWhatsAppLink>
+              ctaId="yoga_uttarakhand_hero_whatsapp"
+              buttonClassName="med-cta-btn"
+            />
             <a href="#places" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Compare Locations</a>
           </div>
         </div>
@@ -537,18 +538,19 @@ export default function YogaRetreatUttarakhandPage() {
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '42rem', padding: '4rem 1.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.9vw, 2.1rem)', fontWeight: 500, color: '#F6F2E7' }}>Ready to find your practice in the mountains?</h2>
           <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: 'rgba(246,242,231,0.78)' }}>Talk with us about dates, location, and the right format for your practice.</p>
-          <TrackedWhatsAppLink
-            href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I want to plan a Yoga retreat in Uttarakhand. Can we discuss Rishikesh dates or custom location options?')}`}
+          <CTAExpandToggle
+            label="Check Dates & Programs"
+            vertical="retreat"
+            category="yoga-retreats-uttarakhand"
             sourcePath={PATH}
+            pageType="yoga_product"
             location="Uttarakhand"
-            intent="Yoga retreat options"
-            analyticsEvent="yoga_whatsapp_click"
-            product="Yoga retreats in Uttarakhand"
+            yogaInterest="Yoga Retreat"
+            productName="Yoga retreats in Uttarakhand"
             ctaPosition="closing"
-            className="med-cta-btn"
-          >
-            Check Dates &amp; Programs
-          </TrackedWhatsAppLink>
+            ctaId="yoga_uttarakhand_closing_whatsapp"
+            buttonClassName="med-cta-btn"
+          />
         </div>
       </section>
 

@@ -11,6 +11,7 @@
  */
 
 import type { LocationId } from './locations';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 // ── Types ────────────────────────────────────────────────────────────────
 
@@ -301,7 +302,23 @@ function createYogaDeparture(
     availability: 'enquiry',
     status: 'published',
     bookingState: 'whatsapp',
-    bookingUrl: `https://wa.me/919760446101?text=${encodeURIComponent(whatsappMessage)}`,
+    bookingUrl: buildWhatsAppUrl({
+      message: whatsappMessage,
+      context: {
+        pagePath: `/${slug}`,
+        vertical: 'yoga',
+        category: 'yoga-retreats-rishikesh',
+        productName: product.name,
+        productId,
+        locationName: YOGA_RETREAT_CONTENT.location.name,
+        duration: product.durationLabel,
+        departureId: slug,
+        departureDate: startDate,
+        ctaId: `yoga_departure_${slug}_whatsapp`,
+        ctaLabel: 'Ask on WhatsApp',
+        ctaPosition: 'calendar',
+      },
+    }),
     included: [...YOGA_RETREAT_CONTENT.practiceModel, ...YOGA_RETREAT_CONTENT.meals],
     toBring: ['Comfortable practice clothing', 'Personal essentials'],
     quickItinerary: ['Daily Hatha Yoga, mindful movement, pranayama, meditation, relaxation, Yoga Nidra, and reflective practices.'],

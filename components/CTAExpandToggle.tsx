@@ -15,18 +15,29 @@ import { useState, Suspense } from 'react';
 import InlineInquiryForm from './InlineInquiryForm';
 import { track } from '@/utils/telemetry';
 import { buildAttributionQuery, captureAttribution } from '@/utils/attribution';
+import { buildAttributionSnapshot, readConversionSessionId, resolveConversionContext } from '@/lib/conversion-foundation';
+import { useTrackedCtaView } from './useTrackedCtaView';
 
 interface CTAExpandToggleProps {
   label: string;
   vertical: 'trek' | 'retreat';
   category: string;
   sourcePath: string;
+  pageType?: string;
   location?: string;
   yogaInterest?: string;
   duration?: string;
   yogaExperience?: string;
+  preferredMonth?: string;
   productId?: string;
   departureId?: string;
+  productName?: string;
+  experience?: string;
+  departureDate?: string;
+  ctaId?: string;
+  ctaPosition?: string;
+  buttonClassName?: string;
+  buttonStyle?: React.CSSProperties;
   planningHorizon?: string;
   productOption?: string;
 }
@@ -36,47 +47,114 @@ export default function CTAExpandToggle({
   vertical,
   category,
   sourcePath,
+  pageType,
   location,
   yogaInterest,
   duration,
   yogaExperience,
+  preferredMonth,
   productId,
   departureId,
+  productName,
+  experience,
+  departureDate,
+  ctaId,
+  ctaPosition,
+  buttonClassName,
+  buttonStyle,
   planningHorizon,
   productOption,
 }: CTAExpandToggleProps) {
   const [expanded, setExpanded] = useState(false);
+  const [conversionSessionId] = useState(() => readConversionSessionId());
+  const isYogaCta = category.toLowerCase().includes('yoga') || sourcePath.toLowerCase().includes('yoga');
+  const isArtCta = category.toLowerCase().includes('art') || sourcePath.toLowerCase().includes('art');
+  const resolvedCtaPosition = ctaPosition || (category === 'yoga-finder' ? 'finder_result' : 'primary');
+  const resolvedContext = resolveConversionContext({
+    pagePath: sourcePath,
+    pageType,
+    vertical,
+    category,
+    locationName: location,
+    duration,
+    productId,
+    productName,
+    departureId,
+    departureDate,
+    conversionSessionId,
+    ctaId,
+    ctaLabel: label,
+    ctaPosition: resolvedCtaPosition,
+  });
+  const resolvedCtaId = resolvedContext.cta.id;
+  const buttonRef = useTrackedCtaView({
+    from: sourcePath,
+    conversionSessionId,
+    pageType: resolvedContext.page.type,
+    vertical: resolvedContext.page.vertical,
+    category: resolvedContext.page.category,
+    ctaId: resolvedCtaId,
+    ctaPosition: resolvedContext.cta.position,
+    ctaLabel: resolvedContext.cta.label,
+    ctaVariant: resolvedContext.cta.variant,
+  });
 
   return (
     <>
       {!expanded && (
         <button
+          ref={buttonRef}
           type="button"
           onClick={() => {
             const searchParams = new URLSearchParams(window.location.search);
             captureAttribution(searchParams);
             const sourceUtm = buildAttributionQuery(searchParams);
-            if (category.toLowerCase().includes('yoga') || sourcePath.toLowerCase().includes('yoga')) {
-              const context = {
-                page: sourcePath,
-                label,
-                vertical,
-                category,
-                location: location || '',
-                duration: duration || '',
-                yoga_interest: yogaInterest || '',
-                yoga_experience: yogaExperience || '',
-                ...(productOption ? { product: productOption } : {}),
-                ...(productId ? { product_id: productId } : {}),
-                ...(departureId ? { departure_id: departureId } : {}),
-                source: sourcePath,
-                source_utm: sourceUtm,
-              };
-              track({
-                event: 'cta_click',
-                from: sourcePath,
-                meta: { ...context, cta_position: 'inline-form-trigger' },
-              });
+            const conversionContext = resolveConversionContext({
+              pagePath: sourcePath,
+              pageType,
+              vertical,
+              category,
+              locationName: location,
+              duration,
+              productId,
+              productName,
+              departureId,
+              departureDate,
+              conversionSessionId,
+              ctaId: resolvedCtaId,
+              ctaLabel: label,
+              ctaPosition: resolvedCtaPosition,
+              attribution: buildAttributionSnapshot(searchParams),
+            });
+            const context = {
+              page: conversionContext.page.path,
+              page_type: conversionContext.page.type,
+              label,
+              vertical: conversionContext.page.vertical || vertical,
+              category: conversionContext.page.category || category,
+              location: conversionContext.location.name || '',
+              duration: conversionContext.duration || '',
+              cta_id: conversionContext.cta.id,
+              cta_label: conversionContext.cta.label,
+              cta_position: conversionContext.cta.position,
+              cta_variant: conversionContext.cta.variant,
+              conversion_session_id: conversionContext.attribution.conversionSessionId,
+              yoga_interest: yogaInterest || '',
+              yoga_experience: yogaExperience || '',
+              ...(productOption ? { product: productOption } : {}),
+              ...(productName ? { product_name: productName } : {}),
+              ...(productId ? { product_id: productId } : {}),
+              ...(departureId ? { departure_id: departureId } : {}),
+              ...(departureDate ? { departure_date: departureDate } : {}),
+              source: sourcePath,
+              source_utm: sourceUtm,
+            };
+            track({
+              event: 'cta_click',
+              from: sourcePath,
+              meta: context,
+            });
+            if (isYogaCta) {
               track({
                 event: 'yoga_form_open',
                 from: sourcePath,
@@ -96,7 +174,9 @@ export default function CTAExpandToggle({
             fontWeight: 600,
             lineHeight: 1.4,
             cursor: 'pointer',
+            ...buttonStyle,
           }}
+          className={buttonClassName}
         >
           {label}
         </button>
@@ -121,10 +201,18 @@ export default function CTAExpandToggle({
                 yogaInterest={yogaInterest}
                 duration={duration}
                 yogaExperience={yogaExperience}
+                preferredMonth={preferredMonth}
                 productId={productId}
                 departureId={departureId}
+                productName={productName}
+                experience={experience}
+                departureDate={departureDate}
+                pageType={isArtCta ? 'art_product' : pageType}
                 planningHorizon={planningHorizon}
                 productOption={productOption}
+                ctaId={resolvedCtaId}
+                ctaPosition={resolvedCtaPosition}
+                ctaLabel={label}
               />
             </Suspense>
           )}

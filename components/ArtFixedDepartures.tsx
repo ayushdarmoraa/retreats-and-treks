@@ -2,13 +2,12 @@
 
 import Link from 'next/link';
 import { getUpcomingEvents } from '@/config/retreatProgramEvents';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 
 interface ArtFixedDeparturesProps {
   mode?: 'all' | 'single';
   retreatSlug?: string;
 }
-const WHATSAPP_NUMBER = '919760446101';
-
 const ART_RETREAT_SLUGS = [
   'art-and-creative',
   'trek-and-paint',
@@ -212,15 +211,6 @@ export default function ArtFixedDepartures({
                 : departure.locationId.charAt(0).toUpperCase() +
                   departure.locationId.slice(1);
 
-            const whatsappText =
-              `Hi, I want to book ${departure.label} for ` +
-              `${departure.dateRange} in ${locationLabel}. ` +
-              `Please share availability and booking details.`;
-
-            const whatsappHref =
-              `https://wa.me/${WHATSAPP_NUMBER}?text=` +
-              encodeURIComponent(whatsappText);
-
             return (
               <article
                 key={departure.slug}
@@ -298,14 +288,35 @@ export default function ArtFixedDepartures({
                   </Link>
                 )}
 
-                <a
-                  href={whatsappHref}
-                  className="art-fixed-cta"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Book This Date →
-                </a>
+                <CTAExpandToggle
+                  label="Book This Date →"
+                  vertical="retreat"
+                  category={departure.serviceSlug}
+                  sourcePath="/retreats/art"
+                  location={departure.locationName !== 'TBA' ? departure.locationName : undefined}
+                  duration={`${departure.durationDays} days`}
+                  productId={departure.serviceSlug}
+                  productName={departure.label}
+                  departureId={departure.slug}
+                  departureDate={departure.dateRange}
+                  ctaId={`art_fixed_departure_${departure.slug}_book`}
+                  ctaPosition="card"
+                  buttonClassName="art-fixed-cta"
+                  buttonStyle={{
+                    display: 'inline-flex',
+                    width: '100%',
+                    justifyContent: 'center',
+                    padding: '0.85rem 1rem',
+                    border: 0,
+                    borderRadius: '999px',
+                    cursor: 'pointer',
+                    fontFamily: 'var(--font-geist-sans), sans-serif',
+                    fontSize: '0.72rem',
+                    fontWeight: 700,
+                    letterSpacing: '0.1em',
+                    textTransform: 'uppercase',
+                  }}
+                />
               </article>
             );
           })}

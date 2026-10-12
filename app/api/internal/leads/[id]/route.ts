@@ -21,58 +21,89 @@ interface RouteContext {
   params: Promise<{ id: string }>;
 }
 
-export async function GET(
-  _request: NextRequest,
-  context: RouteContext,
+type LeadDetailGetDependencies = {
+  getDb: typeof getDb;
+  hasDatabase: () => boolean;
+};
+
+export function createLeadDetailGetHandler(
+  dependencies: LeadDetailGetDependencies = {
+    getDb,
+    hasDatabase: () => Boolean(process.env.DATABASE_URL),
+  },
 ) {
-  if (!process.env.DATABASE_URL) {
-    return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
-  }
-
-  const rawId = (await context.params).id;
-  
-  // Validate UUID format
-  const idResult = z.safeParse(UUIDSchema, rawId);
-  if (!idResult.success) {
-    return NextResponse.json({ error: 'Invalid ID format' }, { status: 400 });
-  }
-  const id = idResult.data;
-  const sql = getDb();
-
-  try {
-    // Lead detail
-    const leads = await sql`
-      SELECT
-        id, name, email, phone, yoga_interest, product, product_id, departure_id, yoga_classification, yoga_sales_route, recommended_product, recommended_alternative, interested_in, location, month, preferred_date, planning_horizon, group_size, budget,
-        duration, yoga_experience, booking_readiness,
-        source_url, vertical, category, lead_score, lead_tier, status,
-        followup_count, last_followup_at, created_at
-      FROM inquiries
-      WHERE id = ${id}
-    `;
-
-    if (leads.length === 0) {
-      return NextResponse.json({ error: 'Not found' }, { status: 404 });
+  return async function GET(
+    _request: NextRequest,
+    context: RouteContext,
+  ) {
+    if (!dependencies.hasDatabase()) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
     }
 
-    // Event log for this lead
-    const events = await sql`
-      SELECT id, event_type, meta, created_at
-      FROM conversion_events
-      WHERE inquiry_id = ${id}
-      ORDER BY created_at DESC
-      LIMIT 100
-    `;
+    const rawId = (await context.params).id;
+    const idResult = z.safeParse(UUIDSchema, rawId);
+    if (!idResult.success) {
+      return NextResponse.json({ error: 'Invalid ID format' }, { status: 400 });
+    }
+    const id = idResult.data;
+    const sql = dependencies.getDb();
 
-    return NextResponse.json({
-      lead: leads[0],
-      events,
-    });
-  } catch (err) {
-    console.error('[Admin:Lead] Query error:', err);
-    return NextResponse.json({ error: 'Internal error' }, { status: 500 });
-  }
+    try {
+      const leads = await sql`
+        SELECT
+          id, lead_reference, name, email, phone, age, origin_city, origin_country,
+          interest, preferred_timing, destination, departure, departure_date,
+          additional_request, yoga_interest, product, product_id, departure_id,
+          yoga_classification, yoga_sales_route, sales_route, recommended_product,
+          recommended_alternative, interested_in, location, month, preferred_date,
+          planning_horizon, group_size, budget, duration, yoga_experience,
+          booking_readiness, source_url, vertical, category, lead_score, lead_tier,
+          canonical_lead_tier, status, conversion_session_id, first_landing_page,
+          last_landing_page, page_title, page_type, cta_id, cta_position, cta_label,
+          cta_variant, referrer, first_utm_source, first_utm_medium,
+          first_utm_campaign, first_utm_term, first_utm_content, first_utm_id,
+          first_touch_at, last_utm_source, last_utm_medium, last_utm_campaign,
+          last_utm_term, last_utm_content, last_utm_id, last_touch_at,
+          followup_count, last_followup_at, created_at
+        FROM inquiries
+        WHERE id = ${id}
+      `;
+
+      if (leads.length === 0) {
+        return NextResponse.json({ error: 'Not found' }, { status: 404 });
+      }
+
+      const lead = leads[0];
+      const events = lead.conversion_session_id
+        ? await sql`
+            SELECT
+              id, event_type, meta, created_at, page_path, page_type, vertical,
+              category, cta_id, cta_position, cta_label, cta_variant, lead_reference
+            FROM conversion_events
+            WHERE inquiry_id = ${id}
+              OR conversion_session_id = ${lead.conversion_session_id}
+            ORDER BY created_at ASC, id ASC
+            LIMIT 200
+          `
+        : await sql`
+            SELECT
+              id, event_type, meta, created_at, page_path, page_type, vertical,
+              category, cta_id, cta_position, cta_label, cta_variant, lead_reference
+            FROM conversion_events
+            WHERE inquiry_id = ${id}
+            ORDER BY created_at ASC, id ASC
+            LIMIT 200
+          `;
+
+      return NextResponse.json({ lead, events });
+    } catch (err) {
+      console.error('[Admin:Lead] Query error:', err);
+      return NextResponse.json({ error: 'Internal error' }, { status: 500 });
+    }
+  };
 }
+
+export const GET = createLeadDetailGetHandler();
 
 export async function PATCH(
   request: NextRequest,

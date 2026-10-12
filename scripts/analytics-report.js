@@ -1,135 +1,82 @@
 /**
- * Conversion Telemetry Report
+ * Read-only conversion telemetry report.
  * Run with: node scripts/analytics-report.js
  *
- * Reads data/events.jsonl and outputs:
- *   1. Total event counts by type
- *   2. Top conversion paths (from → to)
- *   3. Top destination pages
- *   4. Top source pages
- *   5. Recent 10 events
+ * Uses the durable conversion_events table. It intentionally reports only
+ * aggregates and event context, never inquiry or event metadata payloads.
  */
 
-const fs = require('fs');
-const path = require('path');
-
-const EVENT_LOG = path.join(process.cwd(), 'data', 'events.jsonl');
-
-function readEvents() {
-  if (!fs.existsSync(EVENT_LOG)) {
-    console.log('\n  No events log found. No events recorded yet.\n');
-    return [];
+async function run() {
+  if (!process.env.DATABASE_URL) {
+    throw new Error('DATABASE_URL is required to read durable conversion analytics.');
   }
 
-  return fs
-    .readFileSync(EVENT_LOG, 'utf-8')
-    .split('\n')
-    .filter(Boolean)
-    .map((line) => {
-      try {
-        return JSON.parse(line);
-      } catch {
-        return null;
-      }
-    })
-    .filter(Boolean);
+  const { neon } = await import('@neondatabase/serverless');
+  const sql = neon(process.env.DATABASE_URL);
+  const [totals, byType, paths, sources, recent] = await Promise.all([
+    sql`
+      SELECT COUNT(*)::int AS total
+      FROM conversion_events
+      WHERE created_at >= now() - interval '30 days'
+    `,
+    sql`
+      SELECT event_type, COUNT(*)::int AS count
+      FROM conversion_events
+      WHERE created_at >= now() - interval '30 days'
+      GROUP BY event_type
+      ORDER BY count DESC, event_type
+    `,
+    sql`
+      SELECT page_path AS source_path,
+        meta->>'destination_path' AS destination_path,
+        COUNT(*)::int AS count
+      FROM conversion_events
+      WHERE created_at >= now() - interval '30 days'
+        AND meta ? 'destination_path'
+      GROUP BY page_path, meta->>'destination_path'
+      ORDER BY count DESC
+      LIMIT 10
+    `,
+    sql`
+      SELECT page_path, COUNT(*)::int AS count
+      FROM conversion_events
+      WHERE created_at >= now() - interval '30 days'
+        AND page_path IS NOT NULL
+      GROUP BY page_path
+      ORDER BY count DESC
+      LIMIT 8
+    `,
+    sql`
+      SELECT event_type, page_path, meta->>'destination_path' AS destination_path, created_at
+      FROM conversion_events
+      WHERE created_at >= now() - interval '30 days'
+      ORDER BY created_at DESC, id DESC
+      LIMIT 10
+    `,
+  ]);
+
+  console.log('\nCONVERSION TELEMETRY REPORT — LAST 30 DAYS\n');
+  console.log(`  Total durable events: ${totals[0]?.total ?? 0}\n`);
+
+  console.log('  BY EVENT TYPE');
+  for (const row of byType) console.log(`  ${String(row.count).padStart(5)}  ${row.event_type}`);
+
+  console.log('\n  TOP CONVERSION PATHS');
+  for (const row of paths) {
+    console.log(`  ${String(row.count).padStart(5)}  ${row.source_path ?? '/'} → ${row.destination_path}`);
+  }
+
+  console.log('\n  TOP SOURCE PAGES');
+  for (const row of sources) console.log(`  ${String(row.count).padStart(5)}  ${row.page_path}`);
+
+  console.log('\n  RECENT EVENTS');
+  for (const row of recent) {
+    const timestamp = new Date(row.created_at).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
+    console.log(`  [${timestamp}]  ${row.event_type}  ${row.page_path ?? '/'}  → ${row.destination_path ?? ''}`);
+  }
 }
 
-function topN(map, n) {
-  return [...map.entries()].sort((a, b) => b[1] - a[1]).slice(0, n);
-}
-
-function run() {
-  const events = readEvents();
-
-  console.log('\n╔══════════════════════════════════════════════════════════╗');
-  console.log('║        CONVERSION TELEMETRY REPORT                       ║');
-  console.log('╚══════════════════════════════════════════════════════════╝\n');
-  console.log(`  Total events recorded: ${events.length}\n`);
-
-  if (events.length === 0) return;
-
-  console.log('  BY EVENT TYPE\n');
-  const byType = new Map();
-  for (const e of events) byType.set(e.event, (byType.get(e.event) ?? 0) + 1);
-  for (const [type, count] of [...byType.entries()].sort((a, b) => b[1] - a[1])) {
-    console.log(`  ${String(count).padStart(5)}  ${type}`);
-  }
-  console.log();
-
-  const behavioralTypes = ['scroll_depth', 'faq_expand', 'comparison_sort', 'comparison_filter', 'finder_complete'];
-  const behavioralEvents = events.filter((e) => behavioralTypes.includes(e.event));
-
-  if (behavioralEvents.length > 0) {
-    console.log('  BEHAVIORAL EVENTS DETAIL\n');
-
-    const scrollEvents = behavioralEvents.filter((e) => e.event === 'scroll_depth');
-    if (scrollEvents.length > 0) {
-      const depthCounts = new Map();
-      for (const e of scrollEvents) {
-        const d = e.meta?.depth ?? 0;
-        depthCounts.set(d, (depthCounts.get(d) ?? 0) + 1);
-      }
-      console.log('  Scroll depth milestones:');
-      for (const [depth, count] of [...depthCounts.entries()].sort((a, b) => a[0] - b[0])) {
-        console.log(`  ${String(count).padStart(5)}  ${depth}% scroll depth`);
-      }
-      console.log();
-    }
-
-    const faqEvents = behavioralEvents.filter((e) => e.event === 'faq_expand');
-    if (faqEvents.length > 0) {
-      const faqCounts = new Map();
-      for (const e of faqEvents) {
-        const q = String(e.meta?.question ?? 'unknown').slice(0, 60);
-        faqCounts.set(q, (faqCounts.get(q) ?? 0) + 1);
-      }
-      console.log('  Most expanded FAQ questions:');
-      for (const [q, count] of topN(faqCounts, 5)) {
-        console.log(`  ${String(count).padStart(5)}  ${q}`);
-      }
-      console.log();
-    }
-  }
-
-  const navEvents = events.filter((e) => e.to);
-
-  console.log('  TOP CONVERSION PATHS (from → to)\n');
-  const byPath = new Map();
-  for (const e of navEvents) {
-    const key = `${e.from}  →  ${e.to}`;
-    byPath.set(key, (byPath.get(key) ?? 0) + 1);
-  }
-  for (const [pathKey, count] of topN(byPath, 10)) {
-    console.log(`  ${String(count).padStart(5)}  ${pathKey}`);
-  }
-  console.log();
-
-  console.log('  TOP DESTINATION PAGES\n');
-  const byDest = new Map();
-  for (const e of navEvents) {
-    byDest.set(e.to, (byDest.get(e.to) ?? 0) + 1);
-  }
-  for (const [dest, count] of topN(byDest, 8)) {
-    console.log(`  ${String(count).padStart(5)}  ${dest}`);
-  }
-  console.log();
-
-  console.log('  TOP SOURCE PAGES\n');
-  const bySrc = new Map();
-  for (const e of events) bySrc.set(e.from, (bySrc.get(e.from) ?? 0) + 1);
-  for (const [src, count] of topN(bySrc, 8)) {
-    console.log(`  ${String(count).padStart(5)}  ${src}`);
-  }
-  console.log();
-
-  console.log('  RECENT 10 EVENTS\n');
-  const recent = events.slice(-10).reverse();
-  for (const e of recent) {
-    const d = new Date(e.ts).toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' });
-    console.log(`  [${d}]  ${e.event}  ${e.from}  →  ${e.to ?? ''}`);
-  }
-  console.log();
-}
-
-run();
+run().catch(() => {
+  console.error('Unable to read durable conversion analytics.');
+  process.exitCode = 1;
+});

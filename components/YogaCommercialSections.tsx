@@ -6,8 +6,8 @@ import {
   YOGA_RETREAT_PRODUCTS,
   type YogaRetreatProductId,
 } from '@/config/retreatProgramEvents';
-
-const WHATSAPP_NUMBER = '919760446101';
+import { resolveConversionContext } from '@/lib/conversion-foundation';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 const PRODUCT_ROUTES: Record<YogaRetreatProductId, string> = {
   'yoga-rishikesh-weekend': '/retreats/yoga-retreat-rishikesh?duration=Weekend#yoga-enquiry',
@@ -29,9 +29,27 @@ interface YogaCommercialSectionsProps {
   showProductCards?: boolean;
 }
 
-function whatsappHref(productName: string) {
-  const message = `Hi, I'm interested in the ${productName}. Please share the upcoming dates and details.`;
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+function whatsappHref(
+  sourcePath: string,
+  product: (typeof YOGA_RETREAT_PRODUCTS)[number],
+) {
+  const ctaId = `yoga_product_${product.id}_card_whatsapp`;
+  const message = `Hi, I'm interested in the ${product.name}. Please share the upcoming dates and details.`;
+  return buildWhatsAppUrl({
+    context: resolveConversionContext({
+      pagePath: sourcePath,
+      vertical: 'yoga',
+      category: 'yoga-retreats',
+      ctaId,
+      ctaLabel: 'Ask on WhatsApp',
+      ctaPosition: 'card',
+      productId: product.id,
+      productName: product.name,
+      locationName: 'Rishikesh',
+      duration: product.durationLabel,
+    }),
+    message,
+  });
 }
 
 function sectionStyle(background: string): React.CSSProperties {
@@ -109,7 +127,7 @@ export default function YogaCommercialSections({
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.6rem', marginTop: 'auto' }}>
                       <Link href={PRODUCT_ROUTES[product.id]} style={{ color: '#0f766e', fontWeight: 700, fontSize: '0.85rem' }}>View format</Link>
                       <TrackedWhatsAppLink
-                        href={whatsappHref(product.name)}
+                        href={whatsappHref(sourcePath, product)}
                         sourcePath={sourcePath}
                         location="Rishikesh"
                         intent={`${product.name} enquiry`}
@@ -117,7 +135,9 @@ export default function YogaCommercialSections({
                         product={product.name}
                         productId={product.id}
                         duration={product.durationLabel}
-                        ctaPosition="product-card"
+                        ctaPosition="card"
+                        ctaId={`yoga_product_${product.id}_card_whatsapp`}
+                        ctaLabel="Ask on WhatsApp"
                         style={{ color: '#0f766e', fontWeight: 700, fontSize: '0.85rem' }}
                       >
                         Ask on WhatsApp

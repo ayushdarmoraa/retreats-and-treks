@@ -1,152 +1,258 @@
 /**
- * GET /api/internal/leads — Paginated lead table with filters
- *
- * Query params:
- *   tier      — hot | warm | cold (comma-separated for multi)
- *   status    — open | replied | closed | booked
- *   vertical  — retreat | trek
- *   yogaType  — rishikesh | custom | ttc
- *   month     — exact persisted month value
- *   product   — product_id, or product label when no product_id is stored
- *   sort      — score | date (default: date)
- *   order     — asc | desc (default: desc)
- *   page      — 1-based page number
- *   limit     — rows per page (default: 50, max: 200)
- *   q         — search name or email
+ * GET /api/internal/leads — Server-paginated lead table with validated filters.
  */
 
 import { NextRequest, NextResponse } from 'next/server';
+import { z } from 'zod/v4';
 import { getDb } from '@/lib/db';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-const VALID_STATUSES = ['open', 'replied', 'closed', 'booked'];
-const VALID_TIERS = ['Hot', 'Warm', 'Nurture', 'Early', 'hot', 'warm', 'cold', 'unscored'];
-const VALID_SORTS = ['score', 'date'];
-const VALID_YOGA_TYPES = ['rishikesh', 'custom', 'ttc'];
+const VALID_STATUSES = ['open', 'replied', 'closed', 'booked'] as const;
+const VALID_TIERS = ['Hot', 'Warm', 'Nurture', 'Early', 'Cold', 'Unscored', 'hot', 'warm', 'cold', 'nurture', 'early', 'unscored'] as const;
+const VALID_VERTICALS = ['retreat', 'trek', 'yoga', 'art'] as const;
+const VALID_YOGA_TYPES = ['rishikesh', 'custom', 'ttc'] as const;
+const ISO_DATE = z.string().regex(/^\d{4}-\d{2}-\d{2}$/).refine((value) => {
+  const date = new Date(`${value}T00:00:00.000Z`);
+  return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === value;
+}, 'Date must be a real calendar date');
 
-export async function GET(request: NextRequest) {
-  // Auth handled by proxy.ts — no additional check needed here
-
-  if (!process.env.DATABASE_URL) {
-    return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
-  }
-
-  const sql = getDb();
-  const params = request.nextUrl.searchParams;
-
-  // Parse filters
-  const tierFilter = params.get('tier')?.split(',').filter(t => VALID_TIERS.includes(t)) || [];
-  const statusFilter = params.get('status')?.split(',').filter(s => VALID_STATUSES.includes(s)) || [];
-  const verticalFilter = params.get('vertical') || '';
-  const yogaTypeFilter = VALID_YOGA_TYPES.includes(params.get('yogaType') || '') ? params.get('yogaType')! : '';
-  const monthFilter = params.get('month')?.trim() || '';
-  const productFilter = params.get('product')?.trim() || '';
-  const search = params.get('q')?.trim() || '';
-  const sort = VALID_SORTS.includes(params.get('sort') || '') ? params.get('sort')! : 'date';
-  const order = params.get('order') === 'asc' ? 'asc' : 'desc';
-  const page = Math.max(1, parseInt(params.get('page') || '1', 10));
-  const limit = Math.min(200, Math.max(1, parseInt(params.get('limit') || '50', 10)));
-  const offset = (page - 1) * limit;
-
-  const isTtc = sql`(
-    LOWER(COALESCE(yoga_interest, '')) = 'yoga ttc'
-    OR LOWER(COALESCE(product_id, '')) = 'yoga-ttc'
-    OR LOWER(COALESCE(product, '')) LIKE '%teacher training%'
-  )`;
-  const isYogaLead = sql`(
-    COALESCE(yoga_interest, '') <> ''
-    OR LOWER(COALESCE(product_id, '')) LIKE 'yoga-%'
-    OR LOWER(COALESCE(category, '')) LIKE '%yoga%'
-    OR LOWER(COALESCE(source_url, '')) LIKE '%yoga%'
-  )`;
-  const yogaTypeClause = yogaTypeFilter === 'ttc'
-    ? sql`AND ${isTtc}`
-    : yogaTypeFilter === 'rishikesh'
-      ? sql`AND ${isYogaLead} AND LOWER(COALESCE(location, '')) = 'rishikesh' AND NOT ${isTtc}`
-      : yogaTypeFilter === 'custom'
-        ? sql`AND ${isYogaLead} AND NOT ${isTtc} AND (
-            LOWER(COALESCE(product, '')) = 'other location'
-            OR LOWER(COALESCE(category, '')) LIKE '%custom%'
-            OR (LOWER(COALESCE(location, '')) <> '' AND LOWER(COALESCE(location, '')) <> 'rishikesh')
-          )`
-        : sql``;
-  const monthClause = monthFilter ? sql`AND month = ${monthFilter}` : sql``;
-  const productClause = productFilter
-    ? sql`AND (product_id = ${productFilter} OR (COALESCE(product_id, '') = '' AND product = ${productFilter}))`
-    : sql``;
-  try {
-    const yogaFilterOptions = await sql`
-    SELECT DISTINCT NULLIF(BTRIM(month), '') AS month,
-      NULLIF(BTRIM(product_id), '') AS product_id,
-      NULLIF(BTRIM(product), '') AS product
-    FROM inquiries
-    WHERE ${isYogaLead}
-    ORDER BY month, product_id, product
-  `;
-    const filterOptions = {
-      months: [...new Set(yogaFilterOptions.map((row) => row.month).filter(Boolean))],
-      products: [...new Map(yogaFilterOptions
-        .filter((row) => row.product_id || row.product)
-        .map((row) => {
-          const value = row.product_id || row.product;
-          return [value, { value, label: row.product || row.product_id }];
-        })).values()],
-    };
-
-    // Build dynamic query using Neon tagged templates
-    // We use conditional fragments with the tagged template
-    const rows = await sql`
-      SELECT
-        id, name, email, phone, yoga_interest, product, product_id, departure_id, yoga_classification, yoga_sales_route, recommended_product, recommended_alternative, interested_in, location, month, preferred_date, planning_horizon, group_size, budget,
-        duration, yoga_experience, booking_readiness,
-        source_url, vertical, category, lead_score, lead_tier, status,
-        followup_count, last_followup_at, created_at
-      FROM inquiries
-      WHERE 1=1
-        ${tierFilter.length > 0 ? sql`AND lead_tier = ANY(${tierFilter})` : sql``}
-        ${statusFilter.length > 0 ? sql`AND status = ANY(${statusFilter})` : sql``}
-        ${verticalFilter ? sql`AND vertical = ${verticalFilter}` : sql``}
-        ${yogaTypeClause}
-        ${monthClause}
-        ${productClause}
-        ${search ? sql`AND (name ILIKE ${'%' + search + '%'} OR email ILIKE ${'%' + search + '%'})` : sql``}
-      ORDER BY
-        ${sort === 'score' ? sql`lead_score` : sql`created_at`}
-        ${order === 'desc' ? sql`DESC` : sql`ASC`}
-      LIMIT ${limit}
-      OFFSET ${offset}
-    `;
-
-    // Total count for pagination
-    const countResult = await sql`
-      SELECT COUNT(*)::int as total
-      FROM inquiries
-      WHERE 1=1
-        ${tierFilter.length > 0 ? sql`AND lead_tier = ANY(${tierFilter})` : sql``}
-        ${statusFilter.length > 0 ? sql`AND status = ANY(${statusFilter})` : sql``}
-        ${verticalFilter ? sql`AND vertical = ${verticalFilter}` : sql``}
-        ${yogaTypeClause}
-        ${monthClause}
-        ${productClause}
-        ${search ? sql`AND (name ILIKE ${'%' + search + '%'} OR email ILIKE ${'%' + search + '%'})` : sql``}
-    `;
-
-    const total = countResult[0]?.total ?? 0;
-
-    return NextResponse.json({
-      leads: rows,
-      filterOptions,
-      pagination: {
-        page,
-        limit,
-        total,
-        pages: Math.ceil(total / limit),
-      },
+const LeadsQuerySchema = z.object({
+  tier: z.array(z.enum(VALID_TIERS)).transform((tiers) => tiers.map((tier) => tier.toLowerCase())).default([]),
+  status: z.array(z.enum(VALID_STATUSES)).default([]),
+  vertical: z.enum(VALID_VERTICALS).optional(),
+  yogaType: z.enum(VALID_YOGA_TYPES).optional(),
+  from: ISO_DATE.optional(),
+  to: ISO_DATE.optional(),
+  product: z.string().trim().max(200).optional(),
+  location: z.string().trim().max(200).optional(),
+  route: z.string().trim().max(100).optional(),
+  source: z.string().trim().max(200).optional(),
+  cta: z.string().trim().max(200).optional(),
+  pagePath: z.string().trim().max(500).optional(),
+  month: z.string().trim().max(50).optional(),
+  q: z.string().trim().max(200).optional(),
+  sort: z.enum(['score', 'date']).default('date'),
+  order: z.enum(['asc', 'desc']).default('desc'),
+  page: z.coerce.number().int().min(1).max(1_000_000).default(1),
+  limit: z.coerce.number().int().min(1).max(200).default(50),
+}).superRefine((query, context) => {
+  if (query.from && query.to && query.from > query.to) {
+    context.addIssue({
+      code: 'custom',
+      path: ['to'],
+      message: 'End date must be on or after start date',
     });
-  } catch (err) {
-    console.error('[Admin:Leads] Query error:', err);
-    return NextResponse.json({ error: 'Internal error' }, { status: 500 });
   }
+});
+
+type LeadsGetDependencies = {
+  getDb: typeof getDb;
+  hasDatabase: () => boolean;
+};
+
+function readCsvParam(
+  params: URLSearchParams,
+  key: string,
+): string[] | undefined {
+  const value = params.get(key);
+  if (value === null) return undefined;
+  return value.split(',').map((item) => item.trim());
 }
+
+function parseQuery(params: URLSearchParams) {
+  return LeadsQuerySchema.safeParse({
+    tier: readCsvParam(params, 'tier'),
+    status: readCsvParam(params, 'status'),
+    vertical: params.get('vertical') ?? undefined,
+    yogaType: params.get('yogaType') ?? undefined,
+    from: params.get('from') ?? undefined,
+    to: params.get('to') ?? undefined,
+    product: params.get('product') ?? undefined,
+    location: params.get('location') ?? undefined,
+    route: params.get('route') ?? undefined,
+    source: params.get('source') ?? undefined,
+    cta: params.get('cta') ?? undefined,
+    pagePath: params.get('pagePath') ?? undefined,
+    month: params.get('month') ?? undefined,
+    q: params.get('q') ?? undefined,
+    sort: params.get('sort') ?? undefined,
+    order: params.get('order') ?? undefined,
+    page: params.get('page') ?? undefined,
+    limit: params.get('limit') ?? undefined,
+  });
+}
+
+export function createLeadsGetHandler(
+  dependencies: LeadsGetDependencies = {
+    getDb,
+    hasDatabase: () => Boolean(process.env.DATABASE_URL),
+  },
+) {
+  return async function GET(request: NextRequest) {
+    if (!dependencies.hasDatabase()) {
+      return NextResponse.json({ error: 'Database not configured' }, { status: 503 });
+    }
+
+    const parsedQuery = parseQuery(request.nextUrl.searchParams);
+    if (!parsedQuery.success) {
+      return NextResponse.json({ error: 'Invalid lead filters' }, { status: 400 });
+    }
+    const filters = parsedQuery.data;
+    const sql = dependencies.getDb();
+
+    const isTtc = sql`(
+      LOWER(COALESCE(yoga_interest, '')) = 'yoga ttc'
+      OR LOWER(COALESCE(product_id, '')) = 'yoga-ttc'
+      OR LOWER(COALESCE(product, '')) LIKE '%teacher training%'
+    )`;
+    const isYogaLead = sql`(
+      COALESCE(yoga_interest, '') <> ''
+      OR LOWER(COALESCE(product_id, '')) LIKE 'yoga-%'
+      OR LOWER(COALESCE(category, '')) LIKE '%yoga%'
+      OR LOWER(COALESCE(source_url, '')) LIKE '%yoga%'
+    )`;
+    const yogaTypeClause = filters.yogaType === 'ttc'
+      ? sql`AND ${isTtc}`
+      : filters.yogaType === 'rishikesh'
+        ? sql`AND ${isYogaLead} AND LOWER(COALESCE(location, '')) = 'rishikesh' AND NOT ${isTtc}`
+        : filters.yogaType === 'custom'
+          ? sql`AND ${isYogaLead} AND NOT ${isTtc} AND (
+              LOWER(COALESCE(product, '')) = 'other location'
+              OR LOWER(COALESCE(category, '')) LIKE '%custom%'
+              OR (LOWER(COALESCE(location, '')) <> '' AND LOWER(COALESCE(location, '')) <> 'rishikesh')
+            )`
+          : sql``;
+    const tierClause = filters.tier.length > 0
+      ? sql`AND LOWER(COALESCE(NULLIF(canonical_lead_tier, ''), NULLIF(lead_tier, ''), 'unscored')) = ANY(${filters.tier})`
+      : sql``;
+    const statusClause = filters.status.length > 0 ? sql`AND status = ANY(${filters.status})` : sql``;
+    const verticalClause = filters.vertical ? sql`AND vertical = ${filters.vertical}` : sql``;
+    const fromClause = filters.from ? sql`AND created_at >= ${filters.from}::date` : sql``;
+    const toClause = filters.to
+      ? sql`AND created_at < (${filters.to}::date + interval '1 day')`
+      : sql``;
+    const productClause = filters.product
+      ? sql`AND (product_id = ${filters.product} OR (COALESCE(product_id, '') = '' AND product = ${filters.product}))`
+      : sql``;
+    const locationClause = filters.location ? sql`AND location = ${filters.location}` : sql``;
+    const routeClause = filters.route
+      ? sql`AND COALESCE(NULLIF(sales_route, ''), NULLIF(yoga_sales_route, '')) = ${filters.route}`
+      : sql``;
+    const sourceClause = filters.source
+      ? sql`AND COALESCE(NULLIF(last_utm_source, ''), NULLIF(first_utm_source, ''), NULLIF(referrer, ''), NULLIF(source_url, '')) = ${filters.source}`
+      : sql``;
+    const ctaClause = filters.cta ? sql`AND cta_id = ${filters.cta}` : sql``;
+    const pagePathClause = filters.pagePath
+      ? sql`AND COALESCE(NULLIF(last_landing_page, ''), NULLIF(first_landing_page, ''), NULLIF(source_url, '')) = ${filters.pagePath}`
+      : sql``;
+    const monthClause = filters.month ? sql`AND month = ${filters.month}` : sql``;
+    const searchClause = filters.q
+      ? sql`AND (name ILIKE ${`%${filters.q}%`} OR email ILIKE ${`%${filters.q}%`})`
+      : sql``;
+
+    try {
+      const filterOptionRows = await sql`
+        SELECT DISTINCT NULLIF(BTRIM(month), '') AS month,
+          NULLIF(BTRIM(product_id), '') AS product_id,
+          NULLIF(BTRIM(product), '') AS product
+        FROM inquiries
+        ORDER BY month, product_id, product
+        LIMIT 1000
+      `;
+      const filterOptions = {
+        months: [...new Set(filterOptionRows.map((row) => row.month).filter(Boolean))],
+        products: [...new Map(filterOptionRows
+          .filter((row) => row.product_id || row.product)
+          .map((row) => {
+            const value = row.product_id || row.product;
+            return [value, { value, label: row.product || row.product_id }];
+          })).values()],
+      };
+
+      const countResult = await sql`
+        SELECT COUNT(*)::int AS total
+        FROM inquiries
+        WHERE 1=1
+          ${tierClause}
+          ${statusClause}
+          ${verticalClause}
+          ${yogaTypeClause}
+          ${fromClause}
+          ${toClause}
+          ${productClause}
+          ${locationClause}
+          ${routeClause}
+          ${sourceClause}
+          ${ctaClause}
+          ${pagePathClause}
+          ${monthClause}
+          ${searchClause}
+      `;
+      const total = countResult[0]?.total ?? 0;
+      const pages = Math.ceil(total / filters.limit);
+      const page = Math.min(filters.page, pages || 1);
+      const offset = (page - 1) * filters.limit;
+      const primarySort = filters.sort === 'score' ? sql`lead_score` : sql`created_at`;
+      const primaryOrder = filters.order === 'asc' ? sql`ASC` : sql`DESC`;
+      const secondaryOrder = filters.sort === 'score'
+        ? sql`created_at DESC, id ASC`
+        : sql`id ASC`;
+
+      const leads = await sql`
+        SELECT
+          id, lead_reference, name, email, phone, age, origin_city, origin_country,
+          interest, interested_in, vertical, category, destination, location,
+          product, product_id, departure, departure_id, departure_date, preferred_timing,
+          preferred_date, month, planning_horizon, group_size, budget, duration,
+          lead_score,
+          COALESCE(NULLIF(canonical_lead_tier, ''), NULLIF(lead_tier, ''), 'unscored') AS lead_tier,
+          sales_route, yoga_sales_route, status, source_url, referrer,
+          first_landing_page, last_landing_page, page_title, page_type,
+          first_utm_source, first_utm_medium, first_utm_campaign, first_utm_term,
+          first_utm_content, first_utm_id, first_touch_at, last_utm_source,
+          last_utm_medium, last_utm_campaign, last_utm_term, last_utm_content,
+          last_utm_id, last_touch_at, cta_id, cta_position, cta_label, cta_variant,
+          conversion_session_id, followup_count, last_followup_at, created_at,
+          yoga_interest, yoga_classification,
+          recommended_product, recommended_alternative, yoga_experience, booking_readiness
+        FROM inquiries
+        WHERE 1=1
+          ${tierClause}
+          ${statusClause}
+          ${verticalClause}
+          ${yogaTypeClause}
+          ${fromClause}
+          ${toClause}
+          ${productClause}
+          ${locationClause}
+          ${routeClause}
+          ${sourceClause}
+          ${ctaClause}
+          ${pagePathClause}
+          ${monthClause}
+          ${searchClause}
+        ORDER BY ${primarySort} ${primaryOrder}, ${secondaryOrder}
+        LIMIT ${filters.limit}
+        OFFSET ${offset}
+      `;
+
+      return NextResponse.json({
+        leads,
+        filterOptions,
+        pagination: {
+          page,
+          limit: filters.limit,
+          total,
+          pages,
+        },
+      });
+    } catch (err) {
+      console.error('[Admin:Leads] Query error:', err);
+      return NextResponse.json({ error: 'Internal error' }, { status: 500 });
+    }
+  };
+}
+
+export const GET = createLeadsGetHandler();

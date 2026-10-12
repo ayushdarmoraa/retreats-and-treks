@@ -21,14 +21,24 @@ import { useState, useEffect, useCallback } from 'react';
 
 interface Lead {
   id: string;
+  lead_reference: string | null;
   name: string;
   email: string;
   phone: string | null;
+  age: string | null;
+  origin_city: string | null;
+  origin_country: string | null;
+  interest: string | null;
+  destination: string | null;
+  departure: string | null;
+  departure_date: string | null;
+  preferred_timing: string | null;
   yoga_interest: string | null;
   product: string | null;
   product_id: string | null;
   departure_id: string | null;
   yoga_classification: string | null;
+  sales_route: string | null;
   yoga_sales_route: string | null;
   recommended_product: string | null;
   recommended_alternative: string | null;
@@ -43,6 +53,30 @@ interface Lead {
   yoga_experience: string | null;
   booking_readiness: string | null;
   source_url: string | null;
+  referrer: string | null;
+  first_landing_page: string | null;
+  last_landing_page: string | null;
+  page_title: string | null;
+  page_type: string | null;
+  first_utm_source: string | null;
+  first_utm_medium: string | null;
+  first_utm_campaign: string | null;
+  first_utm_term: string | null;
+  first_utm_content: string | null;
+  first_utm_id: string | null;
+  first_touch_at: string | null;
+  last_utm_source: string | null;
+  last_utm_medium: string | null;
+  last_utm_campaign: string | null;
+  last_utm_term: string | null;
+  last_utm_content: string | null;
+  last_utm_id: string | null;
+  last_touch_at: string | null;
+  cta_id: string | null;
+  cta_position: string | null;
+  cta_label: string | null;
+  cta_variant: string | null;
+  conversion_session_id: string | null;
   vertical: string | null;
   category: string | null;
   lead_score: number;
@@ -58,6 +92,15 @@ interface ConversionEvent {
   event_type: string;
   meta: Record<string, unknown> | null;
   created_at: string;
+  page_path: string | null;
+  page_type: string | null;
+  vertical: string | null;
+  category: string | null;
+  cta_id: string | null;
+  cta_position: string | null;
+  cta_label: string | null;
+  cta_variant: string | null;
+  lead_reference: string | null;
 }
 
 interface Pagination {
@@ -86,6 +129,11 @@ interface AnalyticsData {
     conversionRate: number;
     retreatLeads: number;
     trekLeads: number;
+    yogaLeads: number;
+    artLeads: number;
+    nurtureLeads: number;
+    earlyLeads: number;
+    unscoredLeads: number;
   };
   hotConversion: {
     totalHot: number;
@@ -98,15 +146,17 @@ interface AnalyticsData {
 
 // ── CONSTANTS ──────────────────────────────────────────────
 
-const TIERS = ['Hot', 'Warm', 'Nurture', 'Early'] as const;
+const TIERS = ['Hot', 'Warm', 'Nurture', 'Early', 'Cold', 'Unscored'] as const;
 const STATUSES = ['open', 'replied', 'closed', 'booked'] as const;
-const VERTICALS = ['retreat', 'trek'] as const;
+const VERTICALS = ['retreat', 'trek', 'yoga', 'art'] as const;
 
 const TIER_COLORS: Record<string, string> = {
   Hot: 'bg-red-100 text-red-800 border-red-200',
   Warm: 'bg-amber-100 text-amber-800 border-amber-200',
   Nurture: 'bg-sky-100 text-sky-800 border-sky-200',
   Early: 'bg-gray-100 text-gray-600 border-gray-200',
+  Cold: 'bg-gray-100 text-gray-600 border-gray-200',
+  Unscored: 'bg-gray-50 text-gray-400 border-gray-200',
   hot: 'bg-red-100 text-red-800 border-red-200',
   warm: 'bg-amber-100 text-amber-800 border-amber-200',
   cold: 'bg-gray-100 text-gray-600 border-gray-200',
@@ -131,9 +181,17 @@ export default function DashboardClient() {
   const [monthFilter, setMonthFilter] = useState('');
   const [productFilter, setProductFilter] = useState('');
   const [search, setSearch] = useState('');
+  const [fromDate, setFromDate] = useState('');
+  const [toDate, setToDate] = useState('');
+  const [locationFilter, setLocationFilter] = useState('');
+  const [routeFilter, setRouteFilter] = useState('');
+  const [sourceFilter, setSourceFilter] = useState('');
+  const [ctaFilter, setCtaFilter] = useState('');
+  const [pagePathFilter, setPagePathFilter] = useState('');
   const [sort, setSort] = useState<'date' | 'score'>('date');
   const [order, setOrder] = useState<'desc' | 'asc'>('desc');
   const [page, setPage] = useState(1);
+  const [filtersReady, setFiltersReady] = useState(false);
 
   // Data
   const [leads, setLeads] = useState<Lead[]>([]);
@@ -146,6 +204,7 @@ export default function DashboardClient() {
   const [expandedId, setExpandedId] = useState<string | null>(null);
   const [events, setEvents] = useState<ConversionEvent[]>([]);
   const [eventsLoading, setEventsLoading] = useState(false);
+  const [eventsError, setEventsError] = useState('');
 
   // Status update in-flight
   const [updatingId, setUpdatingId] = useState<string | null>(null);
@@ -155,9 +214,70 @@ export default function DashboardClient() {
   const [analyticsLoading, setAnalyticsLoading] = useState(true);
   const [showAnalyticsDetail, setShowAnalyticsDetail] = useState(false);
 
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const allowedTiers = new Set([...TIERS, 'hot', 'warm', 'cold', 'nurture', 'early', 'unscored']);
+    const allowedStatuses = new Set<string>(STATUSES);
+    setTierFilter([...new Set((params.get('tier') || '')
+      .split(',')
+      .filter((value) => allowedTiers.has(value))
+      .map((value) => TIERS.find((tier) => tier.toLowerCase() === value.toLowerCase()) || value))]);
+    setStatusFilter((params.get('status') || '').split(',').filter((value) => allowedStatuses.has(value)));
+    setVerticalFilter(VERTICALS.includes(params.get('vertical') as (typeof VERTICALS)[number])
+      ? params.get('vertical') || ''
+      : '');
+    setYogaTypeFilter(['rishikesh', 'custom', 'ttc'].includes(params.get('yogaType') || '')
+      ? params.get('yogaType') || ''
+      : '');
+    setMonthFilter(params.get('month') || '');
+    setProductFilter(params.get('product') || '');
+    setSearch(params.get('q') || '');
+    setFromDate(params.get('from') || '');
+    setToDate(params.get('to') || '');
+    setLocationFilter(params.get('location') || '');
+    setRouteFilter(params.get('route') || '');
+    setSourceFilter(params.get('source') || '');
+    setCtaFilter(params.get('cta') || '');
+    setPagePathFilter(params.get('pagePath') || '');
+    setSort(params.get('sort') === 'score' ? 'score' : 'date');
+    setOrder(params.get('order') === 'asc' ? 'asc' : 'desc');
+    setPage(Math.max(1, Number(params.get('page')) || 1));
+    setFiltersReady(true);
+  }, []);
+
+  useEffect(() => {
+    if (!filtersReady) return;
+
+    const params = new URLSearchParams();
+    if (tierFilter.length) params.set('tier', tierFilter.join(','));
+    if (statusFilter.length) params.set('status', statusFilter.join(','));
+    if (verticalFilter) params.set('vertical', verticalFilter);
+    if (yogaTypeFilter) params.set('yogaType', yogaTypeFilter);
+    if (fromDate) params.set('from', fromDate);
+    if (toDate) params.set('to', toDate);
+    if (productFilter) params.set('product', productFilter);
+    if (locationFilter) params.set('location', locationFilter);
+    if (routeFilter) params.set('route', routeFilter);
+    if (sourceFilter) params.set('source', sourceFilter);
+    if (ctaFilter) params.set('cta', ctaFilter);
+    if (pagePathFilter) params.set('pagePath', pagePathFilter);
+    if (monthFilter) params.set('month', monthFilter);
+    if (search) params.set('q', search);
+    if (sort !== 'date') params.set('sort', sort);
+    if (order !== 'desc') params.set('order', order);
+    if (page > 1) params.set('page', String(page));
+    const query = params.toString();
+    window.history.replaceState(null, '', `${window.location.pathname}${query ? `?${query}` : ''}`);
+  }, [
+    filtersReady, tierFilter, statusFilter, verticalFilter, yogaTypeFilter, fromDate,
+    toDate, productFilter, locationFilter, routeFilter, sourceFilter, ctaFilter,
+    pagePathFilter, monthFilter, search, sort, order, page,
+  ]);
+
   // ── FETCH LEADS ────────────────────────────────────────
 
   const fetchLeads = useCallback(async () => {
+    if (!filtersReady) return;
     setLoading(true);
     setError('');
 
@@ -168,6 +288,13 @@ export default function DashboardClient() {
     if (yogaTypeFilter) params.set('yogaType', yogaTypeFilter);
     if (monthFilter) params.set('month', monthFilter);
     if (productFilter) params.set('product', productFilter);
+    if (fromDate) params.set('from', fromDate);
+    if (toDate) params.set('to', toDate);
+    if (locationFilter) params.set('location', locationFilter);
+    if (routeFilter) params.set('route', routeFilter);
+    if (sourceFilter) params.set('source', sourceFilter);
+    if (ctaFilter) params.set('cta', ctaFilter);
+    if (pagePathFilter) params.set('pagePath', pagePathFilter);
     if (search) params.set('q', search);
     params.set('sort', sort);
     params.set('order', order);
@@ -187,7 +314,11 @@ export default function DashboardClient() {
     } finally {
       setLoading(false);
     }
-  }, [tierFilter, statusFilter, verticalFilter, yogaTypeFilter, monthFilter, productFilter, search, sort, order, page]);
+  }, [
+    filtersReady, tierFilter, statusFilter, verticalFilter, yogaTypeFilter, monthFilter,
+    productFilter, fromDate, toDate, locationFilter, routeFilter, sourceFilter,
+    ctaFilter, pagePathFilter, search, sort, order, page,
+  ]);
 
   useEffect(() => {
     fetchLeads();
@@ -219,19 +350,22 @@ export default function DashboardClient() {
     if (expandedId === leadId) {
       setExpandedId(null);
       setEvents([]);
+      setEventsError('');
       return;
     }
 
     setExpandedId(leadId);
     setEventsLoading(true);
+    setEventsError('');
 
     try {
       const res = await fetch(`/api/internal/leads/${leadId}`);
-      if (!res.ok) throw new Error('Failed to load');
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
       const data = await res.json();
       setEvents(data.events || []);
     } catch {
       setEvents([]);
+      setEventsError('Failed to load conversion timeline. Refresh and try again.');
     } finally {
       setEventsLoading(false);
     }
@@ -279,6 +413,26 @@ export default function DashboardClient() {
     setStatusFilter((prev) =>
       prev.includes(status) ? prev.filter((s) => s !== status) : [...prev, status]
     );
+    setPage(1);
+  };
+
+  const resetFilters = () => {
+    setTierFilter([]);
+    setStatusFilter([]);
+    setVerticalFilter('');
+    setYogaTypeFilter('');
+    setMonthFilter('');
+    setProductFilter('');
+    setSearch('');
+    setFromDate('');
+    setToDate('');
+    setLocationFilter('');
+    setRouteFilter('');
+    setSourceFilter('');
+    setCtaFilter('');
+    setPagePathFilter('');
+    setSort('date');
+    setOrder('desc');
     setPage(1);
   };
 
@@ -370,7 +524,7 @@ export default function DashboardClient() {
             <MetricCard
               label="Total Leads (30d)"
               value={analytics.metrics.totalLeads}
-              sub={`${analytics.metrics.retreatLeads} retreat · ${analytics.metrics.trekLeads} trek`}
+              sub={`${analytics.metrics.retreatLeads} retreat · ${analytics.metrics.trekLeads} trek · ${analytics.metrics.yogaLeads} yoga · ${analytics.metrics.artLeads} art`}
             />
             <MetricCard
               label="Hot Leads (30d)"
@@ -404,6 +558,21 @@ export default function DashboardClient() {
           {/* Detail section */}
           {showAnalyticsDetail && (
             <div className="border-t border-gray-100 p-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <h4 className="text-xs font-semibold text-gray-600 mb-2">Lead tiers (30d)</h4>
+                <div className="flex flex-wrap gap-3 text-xs">
+                  {[
+                    ['Hot', analytics.metrics.hotLeads],
+                    ['Warm', analytics.metrics.warmLeads],
+                    ['Nurture', analytics.metrics.nurtureLeads],
+                    ['Early', analytics.metrics.earlyLeads],
+                    ['Cold', analytics.metrics.coldLeads],
+                    ['Unscored', analytics.metrics.unscoredLeads],
+                  ].map(([tier, count]) => (
+                    <span key={tier} className="text-gray-600">{tier}: <strong>{count}</strong></span>
+                  ))}
+                </div>
+              </div>
               {/* Top sources */}
               <div>
                 <h4 className="text-xs font-semibold text-gray-600 mb-2">Top Source Pages</h4>
@@ -492,6 +661,7 @@ export default function DashboardClient() {
           placeholder="Search name or email…"
           value={search}
           onChange={(e) => { setSearch(e.target.value); setPage(1); }}
+          aria-label="Search name or email"
           className="px-3 py-1.5 border border-gray-300 rounded text-sm w-56 focus:outline-none focus:border-gray-500"
         />
 
@@ -537,12 +707,12 @@ export default function DashboardClient() {
         </select>
 
         <select
-          aria-label="Yoga product"
+          aria-label="Product"
           value={productFilter}
           onChange={(e) => { setProductFilter(e.target.value); setPage(1); }}
           className="px-2 py-1.5 border border-gray-300 rounded text-sm bg-white focus:outline-none"
         >
-          <option value="">All Yoga products</option>
+          <option value="">All products</option>
           {filterOptions.products.map((product) => <option key={product.value} value={product.value}>{product.label}</option>)}
         </select>
 
@@ -566,6 +736,7 @@ export default function DashboardClient() {
 
         {/* Vertical filter */}
         <select
+          aria-label="Vertical"
           value={verticalFilter}
           onChange={(e) => { setVerticalFilter(e.target.value); setPage(1); }}
           className="px-2 py-1.5 border border-gray-300 rounded text-sm bg-white focus:outline-none"
@@ -575,6 +746,67 @@ export default function DashboardClient() {
             <option key={v} value={v}>{v}</option>
           ))}
         </select>
+
+        <label className="flex items-center gap-1 text-xs text-gray-500">
+          From
+          <input
+            type="date"
+            aria-label="From date"
+            value={fromDate}
+            onChange={(e) => { setFromDate(e.target.value); setPage(1); }}
+            className="px-2 py-1 border border-gray-300 rounded text-sm text-gray-800"
+          />
+        </label>
+        <label className="flex items-center gap-1 text-xs text-gray-500">
+          To
+          <input
+            type="date"
+            aria-label="To date"
+            value={toDate}
+            onChange={(e) => { setToDate(e.target.value); setPage(1); }}
+            className="px-2 py-1 border border-gray-300 rounded text-sm text-gray-800"
+          />
+        </label>
+        <input
+          type="text"
+          aria-label="Location"
+          placeholder="Location"
+          value={locationFilter}
+          onChange={(e) => { setLocationFilter(e.target.value); setPage(1); }}
+          className="px-3 py-1.5 border border-gray-300 rounded text-sm w-36"
+        />
+        <input
+          type="text"
+          aria-label="Sales route"
+          placeholder="Sales route"
+          value={routeFilter}
+          onChange={(e) => { setRouteFilter(e.target.value); setPage(1); }}
+          className="px-3 py-1.5 border border-gray-300 rounded text-sm w-36"
+        />
+        <input
+          type="text"
+          aria-label="Source"
+          placeholder="Source"
+          value={sourceFilter}
+          onChange={(e) => { setSourceFilter(e.target.value); setPage(1); }}
+          className="px-3 py-1.5 border border-gray-300 rounded text-sm w-36"
+        />
+        <input
+          type="text"
+          aria-label="CTA ID"
+          placeholder="CTA ID"
+          value={ctaFilter}
+          onChange={(e) => { setCtaFilter(e.target.value); setPage(1); }}
+          className="px-3 py-1.5 border border-gray-300 rounded text-sm w-36"
+        />
+        <input
+          type="text"
+          aria-label="Landing page"
+          placeholder="Landing page"
+          value={pagePathFilter}
+          onChange={(e) => { setPagePathFilter(e.target.value); setPage(1); }}
+          className="px-3 py-1.5 border border-gray-300 rounded text-sm w-36"
+        />
 
         {/* Sort */}
         <div className="flex gap-1 items-center ml-auto">
@@ -602,6 +834,12 @@ export default function DashboardClient() {
             }`}
           >
             Oldest
+          </button>
+          <button
+            onClick={resetFilters}
+            className="px-2 py-0.5 text-xs rounded border bg-white text-gray-500 border-gray-200 hover:border-gray-400"
+          >
+            Reset filters
           </button>
         </div>
       </div>
@@ -654,6 +892,7 @@ export default function DashboardClient() {
                     isExpanded={expandedId === lead.id}
                     events={expandedId === lead.id ? events : []}
                     eventsLoading={expandedId === lead.id && eventsLoading}
+                    eventsError={expandedId === lead.id ? eventsError : ''}
                     isUpdating={updatingId === lead.id}
                     onToggleEvents={() => toggleEvents(lead.id)}
                     onUpdateStatus={(status) => updateStatus(lead.id, status)}
@@ -726,6 +965,7 @@ function LeadRow({
   isExpanded,
   events,
   eventsLoading,
+  eventsError,
   isUpdating,
   onToggleEvents,
   onUpdateStatus,
@@ -735,6 +975,7 @@ function LeadRow({
   isExpanded: boolean;
   events: ConversionEvent[];
   eventsLoading: boolean;
+  eventsError: string;
   isUpdating: boolean;
   onToggleEvents: () => void;
   onUpdateStatus: (status: string) => void;
@@ -843,17 +1084,25 @@ function LeadRow({
               <div className="text-xs space-y-1 min-w-[200px]">
                 <div className="font-semibold text-gray-700 mb-1">Details</div>
                 {lead.yoga_interest && <div><span className="text-gray-500">Interest:</span> {lead.yoga_interest}</div>}
+                {lead.interest && <div><span className="text-gray-500">Inquiry:</span> {lead.interest}</div>}
                 {lead.product && <div><span className="text-gray-500">Product:</span> {lead.product}{lead.product_id ? ` (${lead.product_id})` : ''}</div>}
+                {lead.destination && <div><span className="text-gray-500">Destination:</span> {lead.destination}</div>}
+                {lead.departure && <div><span className="text-gray-500">Departure:</span> {lead.departure}</div>}
                 {lead.departure_id && <div><span className="text-gray-500">Departure:</span> {lead.departure_id}</div>}
+                {lead.departure_date && <div><span className="text-gray-500">Departure date:</span> {lead.departure_date}</div>}
                 {lead.yoga_classification && <div><span className="text-gray-500">Classification:</span> {lead.yoga_classification}</div>}
-                {lead.yoga_sales_route && <div><span className="text-gray-500">Sales route:</span> {lead.yoga_sales_route}</div>}
+                {(lead.sales_route || lead.yoga_sales_route) && <div><span className="text-gray-500">Sales route:</span> {lead.sales_route || lead.yoga_sales_route}</div>}
                 {lead.recommended_product && <div><span className="text-gray-500">Recommended product:</span> {lead.recommended_product}</div>}
                 {lead.recommended_alternative && <div><span className="text-gray-500">Suggested alternative:</span> {lead.recommended_alternative}</div>}
                 <div><span className="text-gray-500">Score / tier:</span> {lead.lead_score} / {lead.lead_tier}</div>
                 {lead.phone && <div><span className="text-gray-500">Phone / WhatsApp:</span> {lead.phone}</div>}
+                {lead.lead_reference && <div><span className="text-gray-500">Lead reference:</span> {lead.lead_reference}</div>}
                 {lead.location && <div><span className="text-gray-500">Requested location:</span> {lead.location}</div>}
+                {lead.origin_city && <div><span className="text-gray-500">Origin:</span> {lead.origin_city}{lead.origin_country ? `, ${lead.origin_country}` : ''}</div>}
+                {lead.age && <div><span className="text-gray-500">Age:</span> {lead.age}</div>}
                 {lead.month && <div><span className="text-gray-500">Month:</span> {lead.month}</div>}
                 {lead.preferred_date && <div><span className="text-gray-500">Preferred date:</span> {lead.preferred_date}</div>}
+                {lead.preferred_timing && <div><span className="text-gray-500">Preferred timing:</span> {lead.preferred_timing}</div>}
                 {lead.duration && <div><span className="text-gray-500">Duration:</span> {lead.duration}</div>}
                 {lead.yoga_experience && <div><span className="text-gray-500">Yoga experience:</span> {lead.yoga_experience}</div>}
                 {lead.booking_readiness && <div><span className="text-gray-500">Readiness:</span> {lead.booking_readiness}</div>}
@@ -863,6 +1112,28 @@ function LeadRow({
                 {lead.vertical && <div><span className="text-gray-500">Vertical:</span> {lead.vertical}</div>}
                 {lead.category && <div><span className="text-gray-500">Category:</span> {lead.category}</div>}
                 {lead.source_url && <SourceAttribution sourceUrl={lead.source_url} />}
+                {lead.first_landing_page && <div><span className="text-gray-500">First landing:</span> <span className="font-mono text-[10px]">{lead.first_landing_page}</span></div>}
+                {lead.last_landing_page && lead.last_landing_page !== lead.first_landing_page && <div><span className="text-gray-500">Last landing:</span> <span className="font-mono text-[10px]">{lead.last_landing_page}</span></div>}
+                {(lead.cta_id || lead.cta_position || lead.cta_label) && (
+                  <div>
+                    <span className="text-gray-500">CTA:</span>{' '}
+                    {[lead.cta_id, lead.cta_position, lead.cta_label, lead.cta_variant].filter(Boolean).join(' · ')}
+                  </div>
+                )}
+                {(lead.first_utm_source || lead.first_utm_medium || lead.first_utm_campaign || lead.first_utm_term || lead.first_utm_content || lead.first_utm_id || lead.first_touch_at) && (
+                  <div>
+                    <span className="text-gray-500">First touch:</span>{' '}
+                    {[lead.first_utm_source, lead.first_utm_medium, lead.first_utm_campaign, lead.first_utm_term, lead.first_utm_content, lead.first_utm_id].filter(Boolean).join(' / ')}
+                    {lead.first_touch_at && <span className="ml-1 text-gray-500">({new Date(lead.first_touch_at).toLocaleString()})</span>}
+                  </div>
+                )}
+                {(lead.last_utm_source || lead.last_utm_medium || lead.last_utm_campaign || lead.last_utm_term || lead.last_utm_content || lead.last_utm_id || lead.last_touch_at) && (
+                  <div>
+                    <span className="text-gray-500">Last touch:</span>{' '}
+                    {[lead.last_utm_source, lead.last_utm_medium, lead.last_utm_campaign, lead.last_utm_term, lead.last_utm_content, lead.last_utm_id].filter(Boolean).join(' / ')}
+                    {lead.last_touch_at && <span className="ml-1 text-gray-500">({new Date(lead.last_touch_at).toLocaleString()})</span>}
+                  </div>
+                )}
                 {lead.last_followup_at && (
                   <div>
                     <span className="text-gray-500">Last follow-up:</span>{' '}
@@ -876,6 +1147,8 @@ function LeadRow({
                 <div className="font-semibold text-xs text-gray-700 mb-1">Event Log</div>
                 {eventsLoading ? (
                   <div className="text-xs text-gray-400">Loading events…</div>
+                ) : eventsError ? (
+                  <div role="alert" className="text-xs text-red-700">{eventsError}</div>
                 ) : events.length === 0 ? (
                   <div className="text-xs text-gray-400">No events recorded</div>
                 ) : (
@@ -888,6 +1161,11 @@ function LeadRow({
                           })}
                         </span>
                         <EventBadge type={evt.event_type} />
+                        {(evt.page_path || evt.cta_id || evt.cta_position) && (
+                          <span className="text-gray-500 truncate max-w-sm">
+                            {[evt.page_path, evt.cta_id, evt.cta_position, evt.cta_label].filter(Boolean).join(' · ')}
+                          </span>
+                        )}
                         {evt.meta && Object.keys(evt.meta).length > 0 && (
                           <span className="text-gray-400 font-mono text-[10px] truncate max-w-xs">
                             {JSON.stringify(evt.meta)}
@@ -915,6 +1193,13 @@ function EventBadge({ type }: { type: string }) {
     inquiry_email_failed: 'bg-red-100 text-red-700',
     inquiry_spam_blocked: 'bg-orange-100 text-orange-700',
     inquiry_validation_failed: 'bg-yellow-100 text-yellow-700',
+    conversion_cta_view: 'bg-sky-100 text-sky-700',
+    conversion_cta_click: 'bg-indigo-100 text-indigo-700',
+    form_open: 'bg-violet-100 text-violet-700',
+    form_step: 'bg-violet-100 text-violet-700',
+    form_abandoned: 'bg-orange-100 text-orange-700',
+    lead_submitted: 'bg-green-100 text-green-700',
+    whatsapp_handoff: 'bg-emerald-100 text-emerald-700',
   };
 
   return (

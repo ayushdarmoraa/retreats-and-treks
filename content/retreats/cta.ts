@@ -20,7 +20,6 @@ export const ctaData = {
   buttonText: 'Talk on WhatsApp',
   secondaryButtonText: 'Browse Retreats',
   tags: ['Small groups', 'No fixed dates', 'Fully custom'],
-  whatsappLink: 'https://wa.me/919760446101?text=I%27d%20like%20to%20design%20a%20retreat.',
 };
 
 export function getCTAData() {

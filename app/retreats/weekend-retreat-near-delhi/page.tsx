@@ -11,6 +11,7 @@ import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 
 const PATH = '/retreats/weekend-retreat-near-delhi';
 
@@ -193,7 +194,16 @@ export default function WeekendRetreatNearDelhiPage() {
             Forests, waterfalls, mountain villages, and authentic Himalayan culture in Chakrata — a peaceful reset from city stress, just 6–7 hours from Delhi.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in a weekend retreat near Delhi in Chakrata. Can you tell me more?")}`} className="med-cta-btn" target="_blank" rel="noopener noreferrer">Plan My Weekend Retreat</a>
+            <CTAExpandToggle
+              label="Plan My Weekend Retreat"
+              vertical="retreat"
+              category="weekend-retreat"
+              sourcePath={PATH}
+              location="Chakrata"
+              ctaId="weekend_near_delhi_hero_enquiry"
+              ctaPosition="hero"
+              buttonClassName="med-cta-btn"
+            />
             <a href="#chakrata" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Explore Chakrata</a>
           </div>
         </div>
@@ -438,7 +448,16 @@ export default function WeekendRetreatNearDelhiPage() {
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '42rem', padding: '4rem 1.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.9vw, 2.1rem)', fontWeight: 500, color: '#F6F2E7' }}>Ready for a weekend reset in the mountains?</h2>
           <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: 'rgba(246,242,231,0.78)' }}>Talk with us about dates, group size, and the right retreat format for you.</p>
-          <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I want to plan a weekend retreat near Delhi in Chakrata. Can we discuss dates and options?')}`} className="med-cta-btn" target="_blank" rel="noopener noreferrer">Plan My Weekend Retreat</a>
+          <CTAExpandToggle
+            label="Plan My Weekend Retreat"
+            vertical="retreat"
+            category="weekend-retreat"
+            sourcePath={PATH}
+            location="Chakrata"
+            ctaId="weekend_near_delhi_closing_enquiry"
+            ctaPosition="closing"
+            buttonClassName="med-cta-btn"
+          />
         </div>
       </section>
 

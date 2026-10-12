@@ -6,8 +6,8 @@ import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 import { RetreatContent } from '@/types/content';
-import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 
 type RetreatData = RetreatContent & {
   heroImage: string;
@@ -25,7 +25,7 @@ interface Props {
   showYogaAlternative?: boolean;
 }
 
-export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, waText, primaryCtaLabel = 'WhatsApp Us', showYogaAlternative = false }: Props) {
+export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, primaryCtaLabel = 'WhatsApp Us', showYogaAlternative = false }: Props) {
   const retreatSchema = showYogaAlternative ? null : generateRetreatSchema(retreat);
   const faqSchema = generateFAQSchema(retreat.faqs);
   const breadcrumbSchema = showYogaAlternative
@@ -34,7 +34,8 @@ export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, wa
         url: buildCanonicalUrl(item.href ?? path),
       })))
     : null;
-  const wa = `https://wa.me/919760446101?text=${encodeURIComponent(waText)}`;
+  const category = showYogaAlternative ? 'yoga-retreat' : 'chakrata-retreat';
+  const productName = showYogaAlternative ? 'Custom Yoga Retreat in Chakrata' : retreat.title;
 
   return (
     <TrackedPage page={path} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
@@ -135,11 +136,17 @@ export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, wa
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            {showYogaAlternative ? (
-              <TrackedWhatsAppLink href={wa} sourcePath={path} location="Chakrata" intent="Yoga retreat enquiry" analyticsEvent="yoga_whatsapp_click" product="Custom Yoga Retreat in Chakrata" ctaPosition="hero" className="med-cta-btn med-cta-white">Ask About a Chakrata Yoga Retreat →</TrackedWhatsAppLink>
-            ) : (
-              <a href={wa} className="med-cta-btn med-cta-white" target="_blank" rel="noopener noreferrer">Book This Retreat →</a>
-            )}
+            <CTAExpandToggle
+              label={showYogaAlternative ? 'Ask About a Chakrata Yoga Retreat →' : 'Book This Retreat →'}
+              vertical="retreat"
+              category={category}
+              sourcePath={path}
+              location="Chakrata"
+              productName={productName}
+              ctaId={`chakrata_${category}_hero_enquiry`}
+              ctaPosition="hero"
+              buttonClassName="med-cta-btn med-cta-white"
+            />
             {showYogaAlternative ? (
               <Link href="/retreats/yoga-retreat-rishikesh" className="med-cta-btn med-cta-transparent">See Rishikesh Yoga Retreats</Link>
             ) : (
@@ -201,13 +208,17 @@ export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, wa
         <div className="med-inner" style={{ maxWidth: '44rem' }}>
           <h3 style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.3rem, 2vw, 1.6rem)', fontWeight: 500, color: '#ffffff', margin: '0 0 0.6rem' }}>Ready to begin?</h3>
           <p className="med-body" style={{ color: 'rgba(255,255,255,0.6)', margin: '0 0 1.5rem', fontSize: '0.9rem' }}>{showYogaAlternative ? 'Ask about a proposed Yoga programme; dates and details require confirmation.' : 'Ask your questions, check availability, or book directly — we reply within hours.'}</p>
-          {showYogaAlternative ? (
-              <TrackedWhatsAppLink href={wa} sourcePath={path} location="Chakrata" intent="Yoga retreat enquiry" analyticsEvent="yoga_whatsapp_click" product="Custom Yoga Retreat in Chakrata" ctaPosition="mid-page" className="med-cta-btn med-cta-white">
-                Ask About a Chakrata Yoga Retreat →
-              </TrackedWhatsAppLink>
-            ) : (
-              <a href={wa} className="med-cta-btn med-cta-white" target="_blank" rel="noopener noreferrer">{primaryCtaLabel} →</a>
-          )}
+          <CTAExpandToggle
+            label={showYogaAlternative ? 'Ask About a Chakrata Yoga Retreat →' : `${primaryCtaLabel} →`}
+            vertical="retreat"
+            category={category}
+            sourcePath={path}
+            location="Chakrata"
+            productName={productName}
+            ctaId={`chakrata_${category}_content_enquiry`}
+            ctaPosition="content"
+            buttonClassName="med-cta-btn med-cta-white"
+          />
         </div>
       </section>
 
@@ -300,11 +311,18 @@ export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, wa
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '44rem', padding: '4rem 1.5rem' }}>
           <h2 style={{ fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.5vw, 2rem)', fontWeight: 500, color: '#F6F2E7', margin: '0 0 0.75rem' }}>Your Retreat Awaits</h2>
           <p className="med-body" style={{ color: 'rgba(255,255,255,0.6)', margin: '0 0 1.5rem', fontSize: '0.9rem' }}>Ask your questions or book directly — we reply within hours.</p>
-          {showYogaAlternative ? (
-            <TrackedWhatsAppLink href={wa} sourcePath={path} location="Chakrata" intent="Yoga retreat enquiry" analyticsEvent="yoga_whatsapp_click" product="Custom Yoga Retreat in Chakrata" ctaPosition="closing" className="med-cta-btn med-cta-white" style={{ fontSize: '0.85rem', padding: '1rem 2.5rem' }}>WhatsApp Us</TrackedWhatsAppLink>
-          ) : (
-            <a href={wa} className="med-cta-btn med-cta-white" target="_blank" rel="noopener noreferrer" style={{ fontSize: '0.85rem', padding: '1rem 2.5rem' }}>Book This Retreat →</a>
-          )}
+          <CTAExpandToggle
+            label={showYogaAlternative ? 'WhatsApp Us' : 'Book This Retreat →'}
+            vertical="retreat"
+            category={category}
+            sourcePath={path}
+            location="Chakrata"
+            productName={productName}
+            ctaId={`chakrata_${category}_closing_enquiry`}
+            ctaPosition="closing"
+            buttonClassName="med-cta-btn med-cta-white"
+            buttonStyle={{ fontSize: '0.85rem', padding: '1rem 2.5rem' }}
+          />
         </div>
       </section>
 

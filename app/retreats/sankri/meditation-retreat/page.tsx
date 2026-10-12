@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 
 export function generateMetadata(): Metadata {
   return {
@@ -110,14 +111,16 @@ export default function SankriMeditationRetreatPage() {
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a
-              href="https://wa.me/919760446101?text=Hi%2C%20I%27m%20interested%20in%20a%20meditation%20retreat%20in%20Sankri."
-              className="med-cta-btn"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Chat on WhatsApp
-            </a>
+            <CTAExpandToggle
+              label="Chat on WhatsApp"
+              vertical="retreat"
+              category="meditation"
+              sourcePath="/retreats/sankri/meditation-retreat"
+              location="Sankri"
+              ctaId="sankri_meditation_hero_enquiry"
+              ctaPosition="hero"
+              buttonClassName="med-cta-btn"
+            />
             <a href="#why-sankri" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Why Sankri</a>
           </div>
         </div>
@@ -328,14 +331,16 @@ export default function SankriMeditationRetreatPage() {
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '42rem', padding: '4rem 1.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.9vw, 2.1rem)', fontWeight: 500, color: '#F6F2E7' }}>Interested in deep practice at altitude?</h2>
           <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: 'rgba(246,242,231,0.78)' }}>Share your dates, group size, and experience level — we&apos;ll help you decide if Sankri is the right container.</p>
-          <a
-            href="https://wa.me/919760446101?text=Hi%2C%20I%27m%20interested%20in%20a%20meditation%20retreat%20in%20Sankri."
-            className="med-cta-btn"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Chat on WhatsApp
-          </a>
+          <CTAExpandToggle
+            label="Chat on WhatsApp"
+            vertical="retreat"
+            category="meditation"
+            sourcePath="/retreats/sankri/meditation-retreat"
+            location="Sankri"
+            ctaId="sankri_meditation_closing_enquiry"
+            ctaPosition="closing"
+            buttonClassName="med-cta-btn"
+          />
         </div>
       </section>
 

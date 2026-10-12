@@ -18,6 +18,8 @@ import {
   LocationSoftExperiences,
 } from '@/components/Retreats/Location';
 import PrimaryCTA from '@/components/PrimaryCTA';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 interface ArtRetreatLocationPageProps {
   content: LocationPremiumContent;
@@ -36,9 +38,19 @@ export default function ArtRetreatLocationPage({ content, path }: ArtRetreatLoca
   const facilitator = getFacilitatorsByRetreat('art-and-creative').find((profile) =>
     profile.locationIds.includes(content.id),
   );
-  const whatsappLink = `https://wa.me/919760446101?text=${encodeURIComponent(
-    `Hi, I'm interested in an art retreat in ${content.name}. Please share upcoming dates, pricing, and availability.`,
-  )}`;
+  const whatsappLink = buildWhatsAppUrl({
+    context: {
+      pagePath: path,
+      vertical: 'art',
+      category: 'art-and-creative',
+      ctaId: `art_location_${content.id}_location_cta`,
+      ctaPosition: 'content',
+      productId: artService?.slug,
+      productName: artService?.title,
+      locationName: content.name,
+    },
+    message: `Hi, I have saved an enquiry about an art retreat in ${content.name}. Please share upcoming dates and availability.`,
+  });
 
   return (
     <main>
@@ -72,6 +84,7 @@ export default function ArtRetreatLocationPage({ content, path }: ArtRetreatLoca
         locationName={content.name}
         services={artServices}
         locationId={content.id}
+        conversionSourcePath={path}
       />
 
       {facilitator && (
@@ -135,9 +148,18 @@ export default function ArtRetreatLocationPage({ content, path }: ArtRetreatLoca
         <p style={{ margin: '0 0 1rem', lineHeight: 1.8 }}>
           Need information about art activities, accommodation, facilitator details, group size, or dates for {content.name}?
         </p>
-        <Link href={whatsappLink} target="_blank" rel="noopener noreferrer" style={{ color: '#0f766e', fontWeight: 600 }}>
-          Ask About Upcoming Dates
-        </Link>
+        <CTAExpandToggle
+          label="Ask About Upcoming Dates"
+          vertical="retreat"
+          category="art-and-creative"
+          sourcePath={path}
+          location={content.name}
+          productId={artService?.slug}
+          productName={artService?.title}
+          ctaId={`art_location_${content.id}_dates_content`}
+          ctaPosition="content"
+          buttonStyle={{ padding: 0, border: 0, backgroundColor: 'transparent', color: '#0f766e', fontWeight: 600, cursor: 'pointer', textDecoration: 'underline' }}
+        />
       </section>
 
       <PrimaryCTA
@@ -147,6 +169,10 @@ export default function ArtRetreatLocationPage({ content, path }: ArtRetreatLoca
         category="art-and-creative"
         sourcePath={path}
         location={content.name}
+        productId={artService?.slug}
+        productName={artService?.title}
+        ctaId={`art_location_${content.id}_primary_inquiry`}
+        ctaPosition="primary"
       />
 
       <LocationCTA
@@ -155,6 +181,15 @@ export default function ArtRetreatLocationPage({ content, path }: ArtRetreatLoca
         ctaText={content.ctaText}
         whatsappLink={whatsappLink}
         trackingSourcePath={path}
+        conversionInquiry={{
+          sourcePath: path,
+          category: 'art-and-creative',
+          productId: artService?.slug,
+          productName: artService?.title,
+          locationName: content.name,
+          ctaId: `art_location_${content.id}_location_cta`,
+          ctaPosition: 'content',
+        }}
       />
       <p style={{ maxWidth: '52rem', margin: '0 auto', padding: '0 2rem 3rem', textAlign: 'center' }}>
         <Link href="/retreats/art" style={{ color: '#0f766e' }}>

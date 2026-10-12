@@ -2,23 +2,35 @@
 
 import Link from 'next/link';
 import { locationCtaContent } from '@/content/retreats/location/cta';
-import { logWhatsAppOpen } from '@/lib/analytics';
-import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
+
+interface ConversionInquiryProps {
+  sourcePath: string;
+  category: string;
+  productId?: string;
+  productName?: string;
+  locationName?: string;
+  ctaId: string;
+  ctaPosition?: string;
+}
 
 interface LocationCTAProps {
   locationId: string;
   networkContext: string;
   ctaText: string;
-  whatsappLink: string;
+  whatsappLink?: string;
   trackingSourcePath?: string;
+  locationName?: string;
+  conversionInquiry?: ConversionInquiryProps;
 }
 
 export default function LocationCTA({
   locationId,
   networkContext,
   ctaText,
-  whatsappLink,
   trackingSourcePath,
+  locationName,
+  conversionInquiry,
 }: LocationCTAProps) {
   const content = locationCtaContent;
 
@@ -229,27 +241,35 @@ export default function LocationCTA({
           <h3 className="cta-card-title">{content.cardTitle}</h3>
           <p className="cta-card-sub">{content.cardSub}</p>
 
-          {trackingSourcePath ? (
-            <TrackedWhatsAppLink
-              href={whatsappLink}
-              sourcePath={trackingSourcePath}
-              location={locationId}
-              intent="location-hub"
-              className="cta-btn-primary"
-            >
-              {content.buttonText}
-            </TrackedWhatsAppLink>
-          ) : (
-            <Link
-              href={whatsappLink}
-              onClick={() => logWhatsAppOpen(locationId, 'location-hub')}
-              className="cta-btn-primary"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              {content.buttonText}
-            </Link>
-          )}
+          <CTAExpandToggle
+            label={content.buttonText}
+            vertical="retreat"
+            category={conversionInquiry?.category || 'location-hub'}
+            sourcePath={conversionInquiry?.sourcePath || trackingSourcePath || `/retreats/${locationId}`}
+            pageType="retreat_location"
+            location={conversionInquiry?.locationName || locationName || locationId}
+            productId={conversionInquiry?.productId}
+            productName={conversionInquiry?.productName}
+            ctaId={conversionInquiry?.ctaId || `location_${locationId}_closing_enquiry`}
+            ctaPosition={conversionInquiry?.ctaPosition || 'closing'}
+            buttonClassName="cta-btn-primary"
+            buttonStyle={{
+              display: 'flex',
+              width: '100%',
+              padding: '14px 28px',
+              background: '#2B2A26',
+              color: '#ffffff',
+              fontFamily: 'var(--font-inter), sans-serif',
+              fontSize: '0.62rem',
+              fontWeight: 600,
+              letterSpacing: '0.2em',
+              textTransform: 'uppercase',
+              border: 0,
+              borderRadius: 8,
+              cursor: 'pointer',
+              marginBottom: '0.85rem',
+            }}
+          />
 
           <Link href="/retreats" className="cta-btn-ghost">
             {content.secondaryButtonText}

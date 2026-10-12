@@ -10,6 +10,7 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 
 const PATH = '/retreats/meditation-retreat-rishikesh';
 
@@ -183,7 +184,16 @@ export default function MeditationRetreatRishikeshPage() {
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in a meditation retreat in Rishikesh. Can you tell me more?")}`} className="med-cta-btn" target="_blank" rel="noopener noreferrer">Check Dates &amp; Programs</a>
+            <CTAExpandToggle
+              label="Check Dates & Programs"
+              vertical="retreat"
+              category="meditation-retreat"
+              sourcePath={PATH}
+              location="Rishikesh"
+              ctaId="meditation_rishikesh_hero_enquiry"
+              ctaPosition="hero"
+              buttonClassName="med-cta-btn"
+            />
             <a href="#why-rishikesh" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Why Rishikesh</a>
           </div>
         </div>
@@ -583,7 +593,16 @@ export default function MeditationRetreatRishikeshPage() {
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '42rem', padding: '4rem 1.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.9vw, 2.1rem)', fontWeight: 500, color: '#F6F2E7' }}>Ready to sit beside the Ganges?</h2>
           <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: 'rgba(246,242,231,0.78)' }}>Talk with us about dates, duration, and the right level of silence for you.</p>
-          <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I want to plan a meditation retreat in Rishikesh. Can we discuss dates and options?')}`} className="med-cta-btn" target="_blank" rel="noopener noreferrer">Check Dates &amp; Programs</a>
+          <CTAExpandToggle
+            label="Check Dates & Programs"
+            vertical="retreat"
+            category="meditation-retreat"
+            sourcePath={PATH}
+            location="Rishikesh"
+            ctaId="meditation_rishikesh_closing_enquiry"
+            ctaPosition="closing"
+            buttonClassName="med-cta-btn"
+          />
         </div>
       </section>
 

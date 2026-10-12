@@ -1,7 +1,10 @@
 'use client';
 
 import { useState, useRef } from 'react';
+import { readConversionSessionId } from '@/lib/conversion-foundation';
+import { acquirePendingSubmissionToken } from '@/lib/submission-token';
 import { track } from '@/utils/telemetry';
+import TrackedWhatsAppLink from './TrackedWhatsAppLink';
 
 interface TrekMiniLeadFormProps {
   trekTitle: string;
@@ -19,40 +22,92 @@ export default function TrekMiniLeadForm({
   bestSeason,
 }: TrekMiniLeadFormProps) {
   const loadedAt = useRef(Date.now());
+  // Synchronous in-flight guard: state alone can lag behind a rapid double click.
+  const submitInFlight = useRef(false);
   const [name, setName] = useState('');
+  const [conversionSessionId] = useState(() => readConversionSessionId());
   const [phone, setPhone] = useState('');
   const [month, setMonth] = useState('');
   const [groupSize, setGroupSize] = useState('');
   const [website, setWebsite] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [leadReference, setLeadReference] = useState('');
   const [error, setError] = useState('');
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (submitInFlight.current || submitting) return;
     setError('');
+    const trimmedName = name.trim();
+    const trimmedPhone = phone.trim();
+    const phoneDigits = trimmedPhone.replace(/\D/g, '');
+    if (trimmedName.length < 2) {
+      setError('Please enter your name.');
+      return;
+    }
+    if (!/^[+\d\s().-]+$/.test(trimmedPhone) || phoneDigits.length < 7 || phoneDigits.length > 15) {
+      setError('Please enter a valid WhatsApp number.');
+      return;
+    }
+    submitInFlight.current = true;
     setSubmitting(true);
     try {
+      const inquiry = {
+        name: trimmedName,
+        phone: trimmedPhone,
+        product: trekTitle,
+        trek: trekSlug,
+        interestedIn: 'trek' as const,
+        location: locationId,
+        month,
+        groupSize,
+        source: sourcePath,
+        vertical: 'trek',
+        category: trekSlug,
+        productId: trekSlug,
+        conversionSessionId,
+        ctaId: `trek_${trekSlug}_mini_form_inquiry`,
+        ctaPosition: 'primary',
+        ctaLabel: 'Send Inquiry',
+        website,
+        _t: loadedAt.current,
+      };
+      const pendingToken = await acquirePendingSubmissionToken(
+        `trek-mini:${sourcePath}:${trekSlug}`,
+        inquiry,
+      );
       const res = await fetch('/api/inquire', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          name, phone, trek: trekSlug, interestedIn: 'trek',
-          location: locationId, month, groupSize,
-          source: sourcePath, vertical: 'trek', category: trekSlug,
-          website, _t: loadedAt.current,
-        }),
+        body: JSON.stringify({ ...inquiry, submissionToken: pendingToken.token }),
       });
-      if (!res.ok) {
-        const data = await res.json();
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || data.success !== true) {
         setError(data.error || 'Something went wrong.');
         return;
       }
-      track({ event: 'availability_form_submit', from: sourcePath, meta: { trek: trekSlug, source: sourcePath, form: 'mini' } });
+
+      pendingToken.clear();
+      setLeadReference(data.leadReference || '');
+      track({
+        event: 'availability_form_submit',
+        from: sourcePath,
+        meta: {
+          trek: trekSlug,
+          source: sourcePath,
+          form: 'mini',
+          conversion_session_id: conversionSessionId,
+          cta_id: `trek_${trekSlug}_mini_form_inquiry`,
+          cta_position: 'primary',
+        },
+      });
       setSubmitted(true);
     } catch {
       setError('Network error. Please try again.');
     } finally {
+      submitInFlight.current = false;
       setSubmitting(false);
     }
   }
@@ -71,9 +126,47 @@ export default function TrekMiniLeadForm({
         <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontWeight: 500, color: '#374151', marginBottom: '0.35rem', fontSize: '0.95rem' }}>
           Inquiry received!
         </p>
-        <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, color: '#555555', margin: 0 }}>
+        <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', fontWeight: 300, color: '#555555', margin: '0 0 1rem' }}>
           Our trek coordinator will contact you within 2 hours.
         </p>
+        {leadReference && (
+          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.85rem', color: '#555555', margin: '0 0 1rem' }}>
+            Reference: {leadReference}
+          </p>
+        )}
+        <TrackedWhatsAppLink
+          sourcePath={sourcePath}
+          vertical="trek"
+          category={trekSlug}
+          product={trekTitle}
+          productId={trekSlug}
+          duration="flexible"
+          ctaId={`trek_${trekSlug}_mini_form_whatsapp`}
+          ctaPosition="form_success"
+          ctaLabel="Continue on WhatsApp"
+          ctaVariant="default"
+          conversionSessionId={conversionSessionId}
+          leadReference={leadReference || undefined}
+          message={`Hi, I’ve submitted my inquiry for ${trekTitle}. Can you help me with dates, pricing, and next steps?`}
+          analyticsEvent="whatsapp_click"
+          style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '0.7rem 1.1rem',
+            borderRadius: '999px',
+            background: '#25D366',
+            color: '#fff',
+            fontFamily: 'var(--font-geist-sans), sans-serif',
+            fontSize: '0.78rem',
+            fontWeight: 600,
+            letterSpacing: '0.08em',
+            textTransform: 'uppercase',
+            textDecoration: 'none',
+          }}
+        >
+          Continue on WhatsApp
+        </TrackedWhatsAppLink>
       </div>
     );
   }
@@ -125,8 +218,8 @@ export default function TrekMiniLeadForm({
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.65rem', marginBottom: '0.65rem' }}>
-          <input type="text" placeholder="Name" required value={name} onChange={(e) => setName(e.target.value)} style={inputStyle} />
-          <input type="tel" placeholder="Phone / WhatsApp" required value={phone} onChange={(e) => setPhone(e.target.value)} style={inputStyle} />
+          <input type="text" aria-label="Name *" aria-describedby={error ? 'trek-mini-error' : undefined} aria-invalid={error && error.includes('name') ? true : undefined} placeholder="Name" required minLength={2} value={name} onChange={(e) => setName(e.target.value)} style={inputStyle} />
+          <input type="tel" aria-label="Phone / WhatsApp *" aria-describedby={error ? 'trek-mini-error' : undefined} aria-invalid={error && error.includes('WhatsApp') ? true : undefined} placeholder="Phone / WhatsApp" required value={phone} onChange={(e) => setPhone(e.target.value)} style={inputStyle} />
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.65rem', marginBottom: '1.25rem' }}>
@@ -147,7 +240,7 @@ export default function TrekMiniLeadForm({
         </div>
 
         {error && (
-          <p style={{ fontFamily: 'var(--font-geist-sans), sans-serif', color: '#d32f2f', fontSize: '0.8rem', fontWeight: 300, marginBottom: '0.75rem' }}>
+          <p id="trek-mini-error" role="alert" style={{ fontFamily: 'var(--font-geist-sans), sans-serif', color: '#d32f2f', fontSize: '0.8rem', fontWeight: 300, marginBottom: '0.75rem' }}>
             {error}
           </p>
         )}

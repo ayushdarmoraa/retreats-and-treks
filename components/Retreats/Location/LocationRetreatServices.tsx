@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { locationRetreatServicesContent } from '@/content/retreats/location/retreatServices';
-import { logWhatsAppOpen } from '@/lib/analytics';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 
 interface RetreatService {
   slug: string;
@@ -14,14 +14,17 @@ interface LocationRetreatServicesProps {
   locationName: string;
   services: RetreatService[];
   locationId: string;
+  conversionSourcePath?: string;
 }
 
 export default function LocationRetreatServices({
   locationName,
   services,
   locationId,
+  conversionSourcePath,
 }: LocationRetreatServicesProps) {
   const content = locationRetreatServicesContent;
+  const artContext = /\/art(?:-|\/|$)/i.test(conversionSourcePath || '');
 
   if (services.length === 0) return null;
 
@@ -270,10 +273,6 @@ export default function LocationRetreatServices({
         {/* Grid */}
         <div className="services-grid">
           {services.map((service, i) => {
-            const whatsappLink = `https://wa.me/919760446101?text=${encodeURIComponent(
-              `Hi, I'm interested in the ${service.title} in ${locationName}. Can you share dates and pricing?`
-            )}`;
-
             return (
               <div key={service.slug} className="services-card">
                 <div className="services-card-idx">{String(i + 1).padStart(2, '0')}</div>
@@ -287,15 +286,37 @@ export default function LocationRetreatServices({
                   <Link href={`/retreats/journeys/${service.slug}`} className="services-cta">
                     Learn more <span className="services-cta-arrow">→</span>
                   </Link>
-                  <a
-                    href={whatsappLink}
-                    onClick={() => logWhatsAppOpen(locationId, `service-enquire-${service.slug}`)}
-                    className="services-cta-ghost"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Enquire
-                  </a>
+                  <CTAExpandToggle
+                    label="Enquire"
+                    vertical="retreat"
+                    category={service.slug}
+                    sourcePath={conversionSourcePath || `/retreats/${locationId}`}
+                    pageType="retreat_location"
+                    location={locationName}
+                    productId={service.slug}
+                    productName={service.title}
+                    ctaId={
+                      artContext || service.slug.includes('art')
+                        ? `art_location_${locationId}_${service.slug}_service_enquire`
+                        : `location_${locationId}_${service.slug}_service_enquire`
+                    }
+                    ctaPosition="card"
+                    buttonClassName="services-cta-ghost"
+                    buttonStyle={{
+                      display: 'inline-block',
+                      padding: '0.4rem 1rem',
+                      border: '1px solid rgba(15,118,110,0.15)',
+                      borderRadius: 6,
+                      background: 'transparent',
+                      color: '#2B2A26',
+                      cursor: 'pointer',
+                      fontFamily: 'var(--font-inter), sans-serif',
+                      fontSize: '0.6rem',
+                      fontWeight: 500,
+                      letterSpacing: '0.08em',
+                      textTransform: 'uppercase',
+                    }}
+                  />
                 </div>
               </div>
             );

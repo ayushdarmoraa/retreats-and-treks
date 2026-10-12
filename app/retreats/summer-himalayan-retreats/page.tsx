@@ -11,6 +11,7 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 
 const PATH = '/retreats/summer-himalayan-retreats';
 
@@ -218,7 +219,15 @@ export default function SummerHimalayanRetreatsPage() {
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in a summer Himalayan retreat. Can you tell me more?")}`} className="med-cta-btn" target="_blank" rel="noopener noreferrer">Plan My Summer Retreat</a>
+            <CTAExpandToggle
+              label="Plan My Summer Retreat"
+              vertical="retreat"
+              category="summer-retreat"
+              sourcePath={PATH}
+              ctaId="summer_himalayan_hero_enquiry"
+              ctaPosition="hero"
+              buttonClassName="med-cta-btn"
+            />
             <a href="#summer-locations" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>Compare Summer Locations</a>
           </div>
         </div>
@@ -685,7 +694,15 @@ export default function SummerHimalayanRetreatsPage() {
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '42rem', padding: '4rem 1.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.9vw, 2.1rem)', fontWeight: 500, color: '#F6F2E7' }}>Ready for a summer escape?</h2>
           <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: 'rgba(246,242,231,0.78)' }}>Talk with us about dates, location, and the right summer program for you.</p>
-          <a href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in a summer Himalayan retreat. Can we discuss dates and options?")}`} className="med-cta-btn" target="_blank" rel="noopener noreferrer">Plan My Summer Retreat</a>
+          <CTAExpandToggle
+            label="Plan My Summer Retreat"
+            vertical="retreat"
+            category="summer-retreat"
+            sourcePath={PATH}
+            ctaId="summer_himalayan_closing_enquiry"
+            ctaPosition="closing"
+            buttonClassName="med-cta-btn"
+          />
         </div>
       </section>
 

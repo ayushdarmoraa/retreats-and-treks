@@ -17,6 +17,7 @@ import { getDeparturesBySlug } from '@/config/departures';
 import type { Departure, TrekDepartures } from '@/config/departures';
 import { notFound } from 'next/navigation';
 import { images } from '@/lib/images';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 
 // ─── Status badge ───────────────────────────────────────────────────────────
 
@@ -199,12 +200,6 @@ export default function DeparturePage({ urlSlug }: { urlSlug: string }) {
   const h1Rest = h1Words.slice(0, -1).join(' ');
 
   const heroImage = images.heroes.himalayanSunrise;
-
-  // WHATSAPP_NUMBER from trek detail template
-  const WHATSAPP_NUMBER = '919760446101';
-  const whatsappMessage = encodeURIComponent(
-    `Hi, I'm interested in the ${trek.trekName} departure. Can you help me with availability and booking?`
-  );
 
   return (
     <TrackedPage page={`/treks/${urlSlug}/departures`} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
@@ -839,14 +834,21 @@ export default function DeparturePage({ urlSlug }: { urlSlug: string }) {
                 From ₹{trek.basePrice.toLocaleString('en-IN')} per person
               </p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                <a
-                  href={`https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappMessage}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <TrackedWhatsAppLink
+                  sourcePath={`/treks/${urlSlug}/departures`}
+                  vertical="trek"
+                  category="trek-departures"
+                  product={trek.trekName}
+                  productId={trek.slug}
+                  location={trek.pickupPoint}
+                  ctaId={`trek_departures_${urlSlug}_book_whatsapp`}
+                  ctaPosition="reserve_cta"
+                  ctaLabel="Book via WhatsApp"
+                  message={`Hi, I'm interested in the ${trek.trekName} departure. Can you help me with availability and booking?`}
                   className="med-wa-btn"
                 >
                   Book via WhatsApp
-                </a>
+                </TrackedWhatsAppLink>
               </div>
               <p className="med-small">
                 Or use the inquiry form below

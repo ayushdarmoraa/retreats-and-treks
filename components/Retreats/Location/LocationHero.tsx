@@ -3,10 +3,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 import { locationHeroContent } from '@/content/retreats/location/hero';
 
 interface LocationHeroProps {
   name: string;
+  sourcePath?: string;
   opening?: string;
   heroImage?: string;
   heroImageAlt?: string;
@@ -16,6 +18,7 @@ interface LocationHeroProps {
 
 export default function LocationHero({
   name,
+  sourcePath,
   opening,
   heroImage,
   heroImageAlt,
@@ -23,6 +26,9 @@ export default function LocationHero({
   tags = ['Himalayan Retreats', 'Quiet Places', 'Small Groups'],
 }: LocationHeroProps) {
   const content = locationHeroContent;
+  const resolvedSourcePath = sourcePath || (
+    typeof window !== 'undefined' ? window.location.pathname : '/locations'
+  );
 
   const sectionRef = useRef<HTMLElement>(null);
   const [bleed, setBleed] = useState<{ width: string; marginLeft: string }>({
@@ -432,16 +438,35 @@ export default function LocationHero({
 
         {/* CTAs */}
         <div className="lh-ctas">
-          <a
-            href={`https://wa.me/919760446101?text=${encodeURIComponent(
-              `Hi, I'm interested in visiting ${name}. Can you tell me more?`
-            )}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="lh-cta-primary"
-          >
-            Plan Your Visit <span className="arrow">→</span>
-          </a>
+          <CTAExpandToggle
+            label="Plan Your Visit →"
+            vertical="retreat"
+            category="location-hub"
+            sourcePath={resolvedSourcePath}
+            pageType="retreat_location"
+            location={name}
+            ctaId={`location_${resolvedSourcePath.replace(/[^a-z0-9]+/gi, '_')}_hero_enquiry`}
+            ctaPosition="hero"
+            buttonClassName="lh-cta-primary"
+            buttonStyle={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.6rem',
+              padding: '1rem 2.2rem',
+              backgroundColor: 'var(--brand)',
+              color: '#ffffff',
+              fontFamily: 'var(--font-inter), sans-serif',
+              fontSize: '0.7rem',
+              fontWeight: 600,
+              letterSpacing: '0.09em',
+              textTransform: 'uppercase',
+              textDecoration: 'none',
+              borderRadius: '100px',
+              border: '1px solid var(--brand)',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.28)',
+              cursor: 'pointer',
+            }}
+          />
           <Link href="#treks" className="lh-cta-secondary">
             Explore Treks
           </Link>

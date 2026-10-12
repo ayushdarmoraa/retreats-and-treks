@@ -1,12 +1,26 @@
 'use client';
 
-import Link from 'next/link';
 import { Section, Container, Button } from '@/components/ui';
 import { getCTAData } from '@/content/retreats/cta';
-import { logWhatsAppOpen } from '@/lib/analytics';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
+import { resolveConversionContext } from '@/lib/conversion-foundation';
 
 export default function RetreatCTA() {
   const data = getCTAData();
+  const sourcePath = '/retreats';
+  const ctaId = 'retreat_hub_final_whatsapp';
+  const whatsappHref = buildWhatsAppUrl({
+    context: resolveConversionContext({
+      pagePath: sourcePath,
+      vertical: 'retreat',
+      category: 'retreat-hub',
+      ctaId,
+      ctaLabel: data.buttonText,
+      ctaPosition: 'closing',
+    }),
+    message: "I'd like to design a retreat.",
+  });
 
   return (
     <Section
@@ -294,16 +308,18 @@ export default function RetreatCTA() {
             </p>
 
             {/* Buttons - using reusable Button component */}
-            <Button
-              variant="primary"
-              className="w-full mb-3"
-              onClick={() => {
-                logWhatsAppOpen('/retreats', undefined, undefined);
-                window.open(data.whatsappLink, '_blank');
-              }}
+            <TrackedWhatsAppLink
+              href={whatsappHref}
+              sourcePath={sourcePath}
+              vertical="retreat"
+              category="retreat-hub"
+              ctaId={ctaId}
+              ctaPosition="closing"
+              ctaLabel={data.buttonText}
+              className="inline-flex items-center justify-center gap-2 font-sans text-xs font-semibold tracking-[0.15em] uppercase transition-all duration-300 rounded-full px-8 py-3 bg-teal-700 text-white hover:bg-teal-800 hover:shadow-lg hover:shadow-teal-700/25 w-full mb-3"
             >
               {data.buttonText}
-            </Button>
+            </TrackedWhatsAppLink>
 
             <Button variant="ghost" href="/retreats" className="w-full">
               {data.secondaryButtonText}

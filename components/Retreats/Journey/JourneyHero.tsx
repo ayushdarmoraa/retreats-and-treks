@@ -2,10 +2,13 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 import { journeyHeroContent } from '@/content/retreats/Journey/hero';
 
 interface JourneyHeroProps {
   title: string;
+  retreatSlug: string;
+  sourcePath: string;
   oneLineEssence: string;
   keyHighlights?: readonly string[];
   heroImage?: string;
@@ -43,6 +46,8 @@ const TRAIL_D = `M ${TRAIL_P0[0]} ${TRAIL_P0[1]} C ${TRAIL_P1[0]} ${TRAIL_P1[1]}
 
 export default function JourneyHero({
   title,
+  retreatSlug,
+  sourcePath,
   oneLineEssence,
   keyHighlights,
   heroImage,
@@ -502,16 +507,18 @@ export default function JourneyHero({
           )}
 
           <div className="jh-ctas">
-            <a
-              href={`https://wa.me/919760446101?text=${encodeURIComponent(
-                `Hi, I'm interested in the ${title} retreat. Can you tell me more?`
-              )}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="jh-cta-primary"
-            >
-              {content.ctaPrimary}
-            </a>
+            <CTAExpandToggle
+              label={content.ctaPrimary}
+              vertical="retreat"
+              category={retreatSlug}
+              sourcePath={sourcePath}
+              pageType="journey"
+              productId={retreatSlug}
+              productName={title}
+              ctaId={`journey_${retreatSlug}_hero_enquiry`}
+              ctaPosition="hero"
+              buttonClassName="jh-cta-primary"
+            />
             <a href="#about-this-retreat" className="jh-cta-secondary">
               {content.ctaSecondary}
             </a>

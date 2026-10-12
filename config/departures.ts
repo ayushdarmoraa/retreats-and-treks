@@ -245,6 +245,26 @@ export const ALL_DEPARTURES: TrekDepartures[] = [
   pangarchullaDepartures,
 ];
 
+export function getTrekDepartureId(trekSlug: string, startDate: string): string {
+  return `${trekSlug}:${startDate}`;
+}
+
+export function getRegisteredTrekDeparture(
+  departureId: string,
+  productSlug?: string,
+  today = new Date().toISOString().slice(0, 10),
+): { trek: TrekDepartures; departure: Departure; id: string } | undefined {
+  for (const trek of ALL_DEPARTURES) {
+    if (productSlug && productSlug !== trek.slug) continue;
+    const departure = trek.departures.find((item) =>
+      getTrekDepartureId(trek.slug, item.startDate) === departureId &&
+      item.startDate >= today &&
+      item.status !== 'sold-out',
+    );
+    if (departure) return { trek, departure, id: getTrekDepartureId(trek.slug, departure.startDate) };
+  }
+}
+
 export function getDeparturesBySlug(urlSlug: string): TrekDepartures | undefined {
   return ALL_DEPARTURES.find((d) => d.urlSlug === urlSlug);
 }

@@ -1,13 +1,24 @@
 'use client';
 
-import { logWhatsAppOpen } from '@/lib/analytics';
 import { Section, Button } from '@/components/ui';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
+import { resolveConversionContext } from '@/lib/conversion-foundation';
 
-interface FinalCTAProps {
-  whatsappLink: string;
-}
+const FinalCTA = () => {
+  const sourcePath = '/';
+  const ctaId = 'home_final_talk_whatsapp';
+  const label = 'Talk on WhatsApp';
+  const whatsappHref = buildWhatsAppUrl({
+    context: resolveConversionContext({
+      pagePath: sourcePath,
+      ctaId,
+      ctaLabel: label,
+      ctaPosition: 'closing',
+    }),
+    message: "Hi, I'm interested in learning more about your Himalayan journeys.",
+  });
 
-const FinalCTA = ({ whatsappLink }: FinalCTAProps) => {
   return (
     <Section
       style={{
@@ -230,16 +241,16 @@ const FinalCTA = ({ whatsappLink }: FinalCTAProps) => {
             </p>
 
             {/* Buttons — now using shared Button component */}
-            <Button
-              variant="primary"
-              className="w-full mb-3"
-              onClick={() => {
-                logWhatsAppOpen('/', undefined, undefined);
-                window.open(whatsappLink, '_blank');
-              }}
+            <TrackedWhatsAppLink
+              href={whatsappHref}
+              sourcePath={sourcePath}
+              ctaId={ctaId}
+              ctaPosition="closing"
+              ctaLabel={label}
+              className="inline-flex items-center justify-center gap-2 font-sans text-xs font-semibold tracking-[0.15em] uppercase transition-all duration-300 rounded-full px-8 py-3 bg-teal-700 text-white hover:bg-teal-800 hover:shadow-lg hover:shadow-teal-700/25 w-full mb-3"
             >
-              Talk on WhatsApp
-            </Button>
+              {label}
+            </TrackedWhatsAppLink>
 
             <Button variant="ghost" href="/retreats" className="w-full">
               Browse Retreats

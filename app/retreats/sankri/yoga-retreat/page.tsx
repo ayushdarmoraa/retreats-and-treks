@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import PrimaryCTA from '@/components/PrimaryCTA';
-import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import TrackedFAQ from '@/components/TrackedFAQ';
@@ -141,18 +141,19 @@ export default function SankriYogaRetreatPage() {
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <TrackedWhatsAppLink
-              href="https://wa.me/919760446101?text=Hi%2C%20I%27m%20interested%20in%20a%20Yoga%20Retreat%20in%20Sankri.%20I%27d%20like%20to%20know%20about%20custom%2Fupcoming%20options."
+            <CTAExpandToggle
+              label="Ask About a Sankri Yoga Retreat"
+              vertical="retreat"
+              category="yoga-retreats-sankri"
               sourcePath={PATH}
+              pageType="yoga_product"
               location="Sankri"
-              intent="Yoga retreat enquiry"
-              analyticsEvent="yoga_whatsapp_click"
-              product="Custom Yoga Retreat in Sankri"
+              yogaInterest="Yoga Retreat"
+              productName="Custom Yoga Retreat in Sankri"
               ctaPosition="hero"
-              className="med-cta-btn"
-            >
-              Ask About a Sankri Yoga Retreat
-            </TrackedWhatsAppLink>
+              ctaId="yoga_sankri_hero_whatsapp"
+              buttonClassName="med-cta-btn"
+            />
             <Link href="/retreats/yoga-retreat-rishikesh" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>See Rishikesh Yoga Retreats</Link>
           </div>
         </div>
@@ -337,18 +338,19 @@ export default function SankriYogaRetreatPage() {
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '42rem', padding: '4rem 1.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-fraunces), Georgia, serif', fontSize: 'clamp(1.5rem, 2.9vw, 2.1rem)', fontWeight: 500, color: '#F6F2E7' }}>Ask about a Sankri Yoga request</h2>
           <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-inter), sans-serif', fontSize: '0.9rem', lineHeight: 1.85, color: 'rgba(246,242,231,0.78)' }}>Share your dates, group size, and practice level — we&apos;ll help you decide if Sankri is the right mountain container.</p>
-          <TrackedWhatsAppLink
-            href="https://wa.me/919760446101?text=Hi%2C%20I%27m%20interested%20in%20a%20Yoga%20Retreat%20in%20Sankri.%20I%27d%20like%20to%20know%20about%20custom%2Fupcoming%20options."
+          <CTAExpandToggle
+            label="WhatsApp Us"
+            vertical="retreat"
+            category="yoga-retreats-sankri"
             sourcePath={PATH}
+            pageType="yoga_product"
             location="Sankri"
-            intent="Yoga retreat enquiry"
-            analyticsEvent="yoga_whatsapp_click"
-            product="Custom Yoga Retreat in Sankri"
+            yogaInterest="Yoga Retreat"
+            productName="Custom Yoga Retreat in Sankri"
             ctaPosition="closing"
-            className="med-cta-btn"
-          >
-            WhatsApp Us
-          </TrackedWhatsAppLink>
+            ctaId="yoga_sankri_closing_whatsapp"
+            buttonClassName="med-cta-btn"
+          />
         </div>
       </section>
 

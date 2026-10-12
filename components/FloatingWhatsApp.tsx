@@ -11,13 +11,27 @@
  */
 
 import { useState, useEffect } from 'react';
-import { track } from '@/utils/telemetry';
+import { usePathname } from 'next/navigation';
+import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
+import { resolveConversionContext } from '@/lib/conversion-foundation';
 
-const WHATSAPP_NUMBER = '919760446101';
 const DEFAULT_MESSAGE = 'Hi, I\'m interested in learning more about your retreats and treks. Can you help?';
 
 export default function FloatingWhatsApp() {
   const [visible, setVisible] = useState(false);
+  const pathname = usePathname() || '/';
+  const ctaId = 'global_floating_whatsapp';
+  const label = 'Chat with us on WhatsApp';
+  const whatsappHref = buildWhatsAppUrl({
+    context: resolveConversionContext({
+      pagePath: pathname,
+      ctaId,
+      ctaLabel: label,
+      ctaPosition: 'floating',
+    }),
+    message: DEFAULT_MESSAGE,
+  });
 
   useEffect(() => {
     // Defer appearance to avoid layout shift on initial load
@@ -25,29 +39,16 @@ export default function FloatingWhatsApp() {
     return () => clearTimeout(timer);
   }, []);
 
-  function handleClick() {
-    track({
-      event: 'whatsapp_click',
-      from: typeof window !== 'undefined' ? window.location.pathname : '/',
-      meta: { source: 'floating_button' },
-    });
-
-    const message = encodeURIComponent(DEFAULT_MESSAGE);
-    window.open(
-      `https://wa.me/${WHATSAPP_NUMBER}?text=${message}`,
-      '_blank',
-      'noopener,noreferrer'
-    );
-  }
-
   if (!visible) return null;
 
   return (
     <>
-      <button
-        type="button"
-        onClick={handleClick}
-        aria-label="Chat with us on WhatsApp"
+      <TrackedWhatsAppLink
+        href={whatsappHref}
+        sourcePath={pathname}
+        ctaId={ctaId}
+        ctaPosition="floating"
+        ctaLabel={label}
         className="floating-wa-btn"
       >
         {/* WhatsApp SVG icon */}
@@ -63,7 +64,7 @@ export default function FloatingWhatsApp() {
 
         {/* Tooltip label */}
         <span className="floating-wa-label">Talk to Us</span>
-      </button>
+      </TrackedWhatsAppLink>
 
       <style dangerouslySetInnerHTML={{ __html: `
         .floating-wa-btn {
@@ -81,6 +82,7 @@ export default function FloatingWhatsApp() {
           display: flex;
           align-items: center;
           justify-content: center;
+          text-decoration: none;
           transition: transform 200ms ease, box-shadow 200ms ease;
           animation: floatingWaPulse 3s ease-in-out infinite;
         }

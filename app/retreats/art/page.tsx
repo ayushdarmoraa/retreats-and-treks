@@ -9,6 +9,7 @@ import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import ArtFixedDepartures from '@/components/ArtFixedDepartures';
 import PrimaryCTA from '@/components/PrimaryCTA';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 import { images } from '@/lib/images';
 import { getFacilitatorsByRetreat } from '@/config/facilitators';
 import { artAndCreativeRetreat } from '@/content/retreats/art-and-creative';
@@ -357,7 +358,28 @@ export default function ArtRetreatsPage() {
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <a href="#retreats" className="art-cta-btn">Check Upcoming Art Retreats</a>
-            <a href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in your art retreats in the Himalayas. Can you tell me more?")}`} className="art-cta-outline" style={{ color: 'white', borderColor: 'rgba(255,255,255,0.28)' }} target="_blank" rel="noopener noreferrer">Talk to Us on WhatsApp</a>
+            <CTAExpandToggle
+              label="Talk to Us on WhatsApp"
+              vertical="retreat"
+              category="art-and-creative"
+              sourcePath={PATH}
+              productId="art-and-creative"
+              productName={artAndCreativeRetreat.title}
+              ctaId="art_hub_hero_talk_to_us"
+              ctaPosition="hero"
+              buttonClassName="art-cta-outline"
+              buttonStyle={{
+                display: 'inline-flex',
+                padding: '0.82rem 1.8rem',
+                backgroundColor: 'transparent',
+                color: 'white',
+                border: '1px solid rgba(255,255,255,0.28)',
+                fontFamily: 'var(--font-geist-sans), sans-serif',
+                fontSize: '0.72rem',
+                letterSpacing: '0.12em',
+                textTransform: 'uppercase',
+              }}
+            />
           </div>
         </div>
       </section>
@@ -369,6 +391,10 @@ export default function ArtRetreatsPage() {
           vertical="retreat"
           category="art-and-creative"
           sourcePath={PATH}
+          productId="art-and-creative"
+          productName={artAndCreativeRetreat.title}
+          ctaId="art_hub_primary_inquiry"
+          ctaPosition="primary"
         />
       </section>
       <section className="art-shell" style={{ background: '#ffffff', padding: '4.5rem 0' }}>
@@ -638,7 +664,27 @@ export default function ArtRetreatsPage() {
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '44rem', margin: '0 auto', padding: '0 1.5rem' }}>
           <h3 style={{ margin: '0 0 0.8rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.25rem, 2.4vw, 1.7rem)', fontWeight: 200, color: 'white', textShadow: '0 2px 20px rgba(0,0,0,0.3)' }}>Want help choosing the right art retreat?</h3>
           <p style={{ margin: '0 0 1.8rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.75, color: 'rgba(255,255,255,0.7)' }}>Talk with us directly — no forms, no commitment. Just a conversation about what you need.</p>
-          <Link href="/contact" className="art-cta-btn">Check Dates & Starting Price</Link>
+          <CTAExpandToggle
+            label="Check Dates & Starting Price"
+            vertical="retreat"
+            category="art-and-creative"
+            sourcePath={PATH}
+            productId="art-and-creative"
+            productName={artAndCreativeRetreat.title}
+            ctaId="art_hub_dates_price_content"
+            ctaPosition="content"
+            buttonClassName="art-cta-btn"
+            buttonStyle={{
+              display: 'inline-flex',
+              padding: '0.95rem 2.2rem',
+              border: 0,
+              cursor: 'pointer',
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.78rem',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+            }}
+          />
           <p style={{ marginTop: '1rem', fontSize: '0.7rem', letterSpacing: '0.1em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.4)' }}>Dates · Starting price · Format guidance</p>
         </div>
       </section>
@@ -705,14 +751,32 @@ export default function ArtRetreatsPage() {
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '44rem', padding: '4rem 1.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.8vw, 2rem)', fontWeight: 200, color: 'white' }}>Ready to plan your creative retreat?</h2>
           <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.75, color: 'rgba(255,255,255,0.72)' }}>No fixed dates. No rigid schedules. We design each retreat around you — your time, your medium, your intention. The mountains are always ready.</p>
-          <a href={`https://wa.me/919760446101?text=${encodeURIComponent('Hi, I want to book an art retreat in the Himalayas. Can we discuss dates and options?')}`} className="art-cta-btn" target="_blank" rel="noopener noreferrer">Check Art Retreat Dates</a>
+          <CTAExpandToggle
+            label="Check Art Retreat Dates"
+            vertical="retreat"
+            category="art-and-creative"
+            sourcePath={PATH}
+            productId="art-and-creative"
+            productName={artAndCreativeRetreat.title}
+            ctaId="art_hub_footer_check_dates"
+            ctaPosition="footer"
+            buttonClassName="art-cta-btn"
+            buttonStyle={{
+              display: 'inline-flex',
+              padding: '0.95rem 2.2rem',
+              border: 0,
+              cursor: 'pointer',
+              fontFamily: 'var(--font-geist-sans), sans-serif',
+              fontSize: '0.78rem',
+              letterSpacing: '0.12em',
+              textTransform: 'uppercase',
+            }}
+          />
         </div>
       </section>
     </TrackedPage>
   );
 }
-
-
 
 
 

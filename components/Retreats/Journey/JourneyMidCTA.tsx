@@ -1,11 +1,17 @@
 'use client';
 
-import Link from 'next/link';
 import { Section } from '@/components/ui';
+import CTAExpandToggle from '@/components/CTAExpandToggle';
 import { journeyMidCtaContent } from '@/content/retreats/Journey/midCta';
 
-export default function JourneyMidCTA() {
+interface JourneyMidCTAProps {
+  retreatSlug: string;
+  title: string;
+}
+
+export default function JourneyMidCTA({ retreatSlug, title }: JourneyMidCTAProps) {
   const content = journeyMidCtaContent;
+  const sourcePath = `/retreats/journeys/${retreatSlug}`;
 
   return (
     <Section
@@ -36,16 +42,23 @@ export default function JourneyMidCTA() {
         }}>
           {content.description}
         </p>
-        <Link
-          href="/contact"
-          style={{
+        <CTAExpandToggle
+          label={content.button}
+          vertical="retreat"
+          category={retreatSlug}
+          sourcePath={sourcePath}
+          pageType="journey"
+          productId={retreatSlug}
+          productName={title}
+          ctaId={`journey_${retreatSlug}_mid_enquiry`}
+          ctaPosition="content"
+          buttonStyle={{
             display: 'inline-flex',
             alignItems: 'center',
             gap: '0.5rem',
             padding: '0.85rem 2.25rem',
             background: 'var(--color-primary)',
             color: '#fff',
-            textDecoration: 'none',
             fontFamily: 'var(--font-geist-sans), sans-serif',
             fontSize: '0.78rem',
             fontWeight: 500,
@@ -53,9 +66,7 @@ export default function JourneyMidCTA() {
             borderRadius: '100px',
             transition: 'background 0.2s, transform 0.2s',
           }}
-        >
-          {content.button}
-        </Link>
+        />
         <p style={{
           fontFamily: 'var(--font-geist-sans), sans-serif',
           fontSize: '0.7rem',

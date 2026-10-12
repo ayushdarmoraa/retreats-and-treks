@@ -14,6 +14,8 @@ import YogaDepartureCalendar from '@/components/YogaDepartureCalendar';
 import YogaCommercialSections from '@/components/YogaCommercialSections';
 import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 import TrackLink from '@/components/TrackLink';
+import { resolveConversionContext } from '@/lib/conversion-foundation';
+import { buildWhatsAppUrl } from '@/lib/whatsapp';
 
 const PAGE = getExperiencePage('yoga-retreats')!;
 const PATH = '/yoga-retreats';
@@ -173,6 +175,19 @@ const DURATION_OPTIONS = [
 ];
 
 export default function YogaRetreatsPage() {
+  const whatsappHref = buildWhatsAppUrl({
+    context: resolveConversionContext({
+      pagePath: PATH,
+      vertical: 'yoga',
+      category: 'yoga-retreats',
+      ctaId: 'yoga_retreats_hub_hero_whatsapp',
+      ctaLabel: 'Ask on WhatsApp',
+      ctaPosition: 'hero',
+      productName: 'Yoga Retreats in Rishikesh',
+      locationName: 'Rishikesh',
+    }),
+    message: "Hi, I'm interested in Yoga retreats in Rishikesh. Please share the upcoming dates and details.",
+  });
   const { reviewSchemas, aggregateSchema } = getReviewSchemasForPage(PAGE);
   const allReviews = PAGE.retreatServiceSlugs.flatMap((slug) => getReviewsForSlug(slug));
   const topReviews = allReviews.filter((r) => r.ratingValue >= 4).slice(0, 3);
@@ -475,13 +490,15 @@ export default function YogaRetreatsPage() {
             </div>
             <div className="med-hero-actions">
               <TrackedWhatsAppLink
-                href={`https://wa.me/919760446101?text=${encodeURIComponent("Hi, I'm interested in Yoga retreats in Rishikesh. Please share the upcoming dates and details.")}`}
+                href={whatsappHref}
                 sourcePath={PATH}
                 location="Rishikesh"
                 intent="Yoga retreat hub enquiry"
                 analyticsEvent="yoga_whatsapp_click"
                 product="Yoga Retreats in Rishikesh"
                 ctaPosition="hero"
+                ctaId="yoga_retreats_hub_hero_whatsapp"
+                ctaLabel="Ask on WhatsApp"
                 className="med-cta-btn"
               >
                 Ask on WhatsApp
