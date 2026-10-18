@@ -2,10 +2,14 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { buildAttributionQuery } from '@/utils/attribution';
+import { buildAttributionQuery, captureAttribution } from '@/utils/attribution';
 import { acquirePendingSubmissionToken } from '@/lib/submission-token';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
-import { resolveConversionContext } from '@/lib/conversion-foundation';
+import {
+  buildAttributionSnapshot,
+  readConversionSessionId,
+  resolveConversionContext,
+} from '@/lib/conversion-foundation';
 import { track } from '@/utils/telemetry';
 import TrackedWhatsAppLink from '@/components/TrackedWhatsAppLink';
 
@@ -69,6 +73,7 @@ export default function InquiryForm() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
+  const [conversionSessionId] = useState(() => readConversionSessionId());
   const [interestedIn, setInterestedIn] = useState<'trek' | 'retreat' | ''>(
     (vertical === 'trek' || vertical === 'retreat') ? vertical : ''
   );
@@ -88,6 +93,37 @@ export default function InquiryForm() {
 
   // Synchronous in-flight guard: state alone can lag behind a rapid double click.
   const submitInFlight = useRef(false);
+  const captureStarted = useRef(false);
+  const savedRef = useRef(false);
+
+  function startCapture() {
+    if (captureStarted.current) return;
+    captureStarted.current = true;
+    track({
+      event: 'lead_capture_open',
+      from: source || '/contact',
+      meta: {
+        conversion_session_id: conversionSessionId,
+        vertical,
+        category,
+        form: 'contact_inquiry',
+      },
+    });
+  }
+
+  useEffect(() => () => {
+    if (!captureStarted.current || savedRef.current) return;
+    track({
+      event: 'lead_capture_abandon',
+      from: source || '/contact',
+      meta: {
+        conversion_session_id: conversionSessionId,
+        vertical,
+        category,
+        form: 'contact_inquiry',
+      },
+    });
+  }, [category, conversionSessionId, source, vertical]);
 
   // Sync prefillLocation if params change
   useEffect(() => {
@@ -111,6 +147,8 @@ export default function InquiryForm() {
     setSubmitting(true);
 
     try {
+      captureAttribution(searchParams);
+      const attributionSnapshot = buildAttributionSnapshot(searchParams);
       const inquiry = {
         name,
         email: email.trim(),
@@ -123,6 +161,14 @@ export default function InquiryForm() {
         source: sourceWithAttribution,
         vertical,
         category,
+        conversionSessionId,
+        firstLandingPage: attributionSnapshot.firstLandingPage,
+        lastLandingPage: attributionSnapshot.lastLandingPage,
+        referrer: attributionSnapshot.referrer,
+        firstUtm: attributionSnapshot.firstUtm,
+        lastUtm: attributionSnapshot.lastUtm,
+        firstTouchAt: attributionSnapshot.firstTouchAt,
+        lastTouchAt: attributionSnapshot.lastTouchAt,
         website,
         _t: loadedAt.current,
       };
@@ -150,6 +196,7 @@ export default function InquiryForm() {
       pendingToken.clear();
       const reference = typeof data.leadReference === 'string' ? data.leadReference : '';
       setLeadReference(reference);
+      savedRef.current = true;
       setSubmitted(true);
       // Telemetry fires only after the API confirmed persistence; track() is
       // fire-and-forget and never turns a saved inquiry into a reported failure.
@@ -163,6 +210,7 @@ export default function InquiryForm() {
           location,
           group_size: groupSize,
           lead_reference: reference,
+          conversion_session_id: conversionSessionId,
         },
       });
     } catch {
@@ -180,6 +228,7 @@ export default function InquiryForm() {
         pagePath: sourcePath,
         vertical: vertical || undefined,
         category: category || undefined,
+        conversionSessionId,
         locationName: location || undefined,
         ctaId: 'inquiry_form_whatsapp',
         ctaPosition: 'form_success',
@@ -228,6 +277,7 @@ export default function InquiryForm() {
           ctaPosition="form_success"
           ctaLabel="Continue on WhatsApp"
           ctaVariant="default"
+          conversionSessionId={conversionSessionId}
           leadReference={leadReference || undefined}
           style={{
             display: 'inline-block',
@@ -267,7 +317,7 @@ export default function InquiryForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ maxWidth: '480px' }}>
+    <form onSubmit={handleSubmit} onFocusCapture={startCapture} style={{ maxWidth: '480px' }}>
       {/* ── HONEYPOT — invisible to humans ── */}
       <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: '-9999px', height: 0, overflow: 'hidden' }}>
         <label htmlFor="inq-website">Website</label>

@@ -17,8 +17,9 @@
  */
 
 import { useState, useRef, useEffect, useCallback } from 'react';
-import { readConversionSessionId } from '@/lib/conversion-foundation';
+import { buildAttributionSnapshot, readConversionSessionId } from '@/lib/conversion-foundation';
 import { acquirePendingSubmissionToken } from '@/lib/submission-token';
+import { captureAttribution } from '@/utils/attribution';
 import { track } from '@/utils/telemetry';
 import TrackedWhatsAppLink from './TrackedWhatsAppLink';
 
@@ -56,6 +57,8 @@ export default function AvailabilityModal({
   const formRef = useRef<HTMLFormElement>(null);
   // Synchronous in-flight guard: state alone can lag behind a rapid double click.
   const submitInFlight = useRef(false);
+  const captureStarted = useRef(false);
+  const savedRef = useRef(false);
 
   const [month, setMonth] = useState('');
   const [groupSize, setGroupSize] = useState('');
@@ -72,6 +75,35 @@ export default function AvailabilityModal({
   const [submitted, setSubmitted] = useState(false);
   const [leadReference, setLeadReference] = useState('');
   const [error, setError] = useState('');
+
+  function startCapture() {
+    if (captureStarted.current) return;
+    captureStarted.current = true;
+    track({
+      event: 'lead_capture_open',
+      from: sourcePath,
+      meta: {
+        conversion_session_id: conversionSessionId,
+        vertical: 'trek',
+        category: trekSlug,
+        form: 'availability_modal',
+      },
+    });
+  }
+
+  useEffect(() => () => {
+    if (!captureStarted.current || savedRef.current) return;
+    track({
+      event: 'lead_capture_abandon',
+      from: sourcePath,
+      meta: {
+        conversion_session_id: conversionSessionId,
+        vertical: 'trek',
+        category: trekSlug,
+        form: 'availability_modal',
+      },
+    });
+  }, [conversionSessionId, sourcePath, trekSlug]);
 
   // Close on Escape
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -125,6 +157,9 @@ export default function AvailabilityModal({
     setSubmitting(true);
 
     try {
+      const searchParams = new URLSearchParams(window.location.search);
+      captureAttribution(searchParams);
+      const attribution = buildAttributionSnapshot(searchParams);
       const inquiry = {
         name: name.trim(),
         email: email.trim(),
@@ -142,6 +177,13 @@ export default function AvailabilityModal({
         category: trekSlug,
         productId: trekSlug,
         conversionSessionId,
+        firstLandingPage: attribution.firstLandingPage,
+        lastLandingPage: attribution.lastLandingPage,
+        referrer: attribution.referrer,
+        firstUtm: attribution.firstUtm,
+        lastUtm: attribution.lastUtm,
+        firstTouchAt: attribution.firstTouchAt,
+        lastTouchAt: attribution.lastTouchAt,
         ctaId: `trek_${trekSlug}_availability_modal_inquiry`,
         ctaPosition: 'primary',
         ctaLabel: 'Check Availability',
@@ -169,6 +211,7 @@ export default function AvailabilityModal({
 
       pendingToken.clear();
       setLeadReference(data.leadReference || '');
+      savedRef.current = true;
       track({
         event: 'availability_form_submit',
         from: sourcePath,
@@ -343,7 +386,7 @@ export default function AvailabilityModal({
               {difficulty} · {locationName} · Best: {bestSeason.slice(0, 3).join(', ')}
             </p>
 
-            <form ref={formRef} onSubmit={handleSubmit}>
+            <form ref={formRef} onSubmit={handleSubmit} onFocusCapture={startCapture}>
               {/* Honeypot */}
               <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: '-9999px', height: 0, overflow: 'hidden' }}>
                 <label htmlFor="avail-website">Website</label>

@@ -163,6 +163,7 @@ function ProgressiveInlineCapture({
   });
   const activeStep = steps[Math.min(stepIndex, steps.length - 1)];
   const stepNumber = Math.min(stepIndex + 1, steps.length);
+  const activeStepRef = useRef(activeStep);
 
   const context = resolveConversionContext({
     pagePath: sourcePath,
@@ -208,20 +209,41 @@ function ProgressiveInlineCapture({
     };
   }
 
+  const eventMetaRef = useRef(eventMeta);
+  const sourcePathRef = useRef(sourcePath);
+
+  useEffect(() => {
+    eventMetaRef.current = eventMeta;
+    sourcePathRef.current = sourcePath;
+  });
+
   useEffect(() => {
     captureStarted.current = true;
-    track({ event: 'lead_capture_open', from: sourcePath, meta: eventMeta() });
+    track({
+      event: 'lead_capture_open',
+      from: sourcePathRef.current,
+      meta: eventMetaRef.current(),
+    });
     return () => {
       if (captureStarted.current && !savedRef.current) {
-        track({ event: 'lead_capture_abandon', from: sourcePath, meta: eventMeta({ step: activeStep }) });
+        track({
+          event: 'lead_capture_abandon',
+          from: sourcePathRef.current,
+          meta: eventMetaRef.current({ step: activeStepRef.current }),
+        });
       }
     };
   }, []);
 
   useEffect(() => {
     if (activeStep) {
+      activeStepRef.current = activeStep;
       headingRef.current?.focus();
-      track({ event: 'lead_capture_step_view', from: sourcePath, meta: eventMeta({ step: activeStep, step_number: stepNumber }) });
+      track({
+        event: 'lead_capture_step_view',
+        from: sourcePathRef.current,
+        meta: eventMetaRef.current({ step: activeStep, step_number: stepNumber }),
+      });
     }
   }, [activeStep, stepNumber]);
 

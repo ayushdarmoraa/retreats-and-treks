@@ -24,17 +24,19 @@ Object.defineProperty(globalThis, 'navigator', {
 });
 
 async function loadUi() {
-  const [testingLibrary, userEventModule, nextContexts, ctaModule] = await Promise.all([
+  const [testingLibrary, userEventModule, nextContexts, ctaModule, primaryCtaModule] = await Promise.all([
     import('@testing-library/react'),
     import('@testing-library/user-event'),
     import('next/dist/shared/lib/hooks-client-context.shared-runtime'),
     import('@/components/CTAExpandToggle'),
+    import('@/components/PrimaryCTA'),
   ]);
   return {
     ...testingLibrary,
     userEvent: userEventModule.default,
     SearchParamsContext: nextContexts.SearchParamsContext,
     CTAExpandToggle: ctaModule.default,
+    PrimaryCTA: primaryCtaModule.default,
   };
 }
 
@@ -82,6 +84,25 @@ function renderJourneyEnquiry() {
         productName: 'Weekend Retreat in Sankri',
         ctaId: 'sankri_weekend_hero_enquiry',
         ctaPosition: 'hero',
+      }),
+    ),
+  );
+  return {
+    ...result,
+    user: ui.userEvent.setup(),
+  };
+}
+
+function renderHomepageEnquiry() {
+  const result = ui.render(
+    createElement(
+      ui.SearchParamsContext.Provider,
+      { value: new URLSearchParams() },
+      createElement(ui.PrimaryCTA, {
+        label: 'Speak With a Mountain Planner',
+        vertical: 'retreat',
+        category: 'homepage',
+        sourcePath: '/',
       }),
     ),
   );
@@ -200,4 +221,32 @@ test('journey CTA does not expose success or WhatsApp after a persistence failur
     .filter((call) => call.url === '/api/track')
     .map((call) => JSON.parse(String(call.init?.body)) as { event?: string });
   assert.equal(trackEvents.filter((event) => event.event === 'whatsapp_click').length, 0);
+});
+
+test('homepage PrimaryCTA saves homepage context before offering WhatsApp handoff', async (t) => {
+  const originalFetch = globalThis.fetch;
+  releaseTestResources(t, originalFetch);
+  const calls = installFetch(jsonResponse({ success: true, leadReference: 'RT-HOME-TEST' }));
+  const { user } = renderHomepageEnquiry();
+
+  await user.click(ui.screen.getByRole('button', { name: 'Speak With a Mountain Planner' }));
+  await advanceToContact(user);
+  await completeContactDetails(user);
+  await user.click(ui.screen.getByRole('button', { name: 'Save my details' }));
+
+  await ui.waitFor(() => {
+    assert.ok(ui.screen.getByText('Your details are saved.'));
+  });
+
+  const inquiryCall = calls.find((call) => call.url === '/api/inquire');
+  assert.ok(inquiryCall?.init?.body);
+  const payload = JSON.parse(String(inquiryCall.init.body)) as Record<string, unknown>;
+  assert.equal(payload.source, '/');
+  assert.equal(payload.pageType, 'home');
+  assert.equal(payload.category, 'homepage');
+  assert.equal(typeof payload.conversionSessionId, 'string');
+  assert.ok(payload.conversionSessionId);
+
+  const handoff = ui.screen.getByRole('link', { name: 'Continue on WhatsApp' });
+  assert.ok(handoff.getAttribute('href')?.startsWith('https://'));
 });

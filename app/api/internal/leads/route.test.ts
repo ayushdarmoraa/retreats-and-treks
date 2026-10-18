@@ -95,17 +95,17 @@ test('combines supported filters server-side and uses deterministic pagination a
   assert.equal(rowQuery.values.at(-1), 1);
 });
 
-test('normalizes dashboard tier labels before filtering stored lowercase tiers', async () => {
+test('normalizes canonical and historical dashboard tier labels before filtering', async () => {
   const database = makeDatabase();
   const handler = createLeadsGetHandler({
     getDb: () => database.query,
     hasDatabase: () => true,
   });
-  const response = await handler(makeRequest('?tier=Hot,Cold,Unscored'));
+  const response = await handler(makeRequest('?tier=Hot,Warm,Nurture,Early,Cold,Unscored'));
 
   assert.equal(response.status, 200);
   assert.ok(database.calls.some((call) => call.values.some((value) => (
-    Array.isArray(value) && value.join(',') === 'hot,cold,unscored'
+    Array.isArray(value) && value.join(',') === 'hot,warm,nurture,early,cold,unscored'
   ))));
 });
 

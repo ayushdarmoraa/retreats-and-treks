@@ -17,6 +17,9 @@ function setup(overrides: {
     leadReference: string | null;
   }>;
   sendInquiryEmails?: (inquiry: Inquiry, tier: string, score: number, routing: string) => Promise<{ sent: boolean; error?: string }>;
+  isRateLimited?: () => boolean;
+  isGlobalRateLimited?: () => boolean;
+  isBotUserAgent?: () => boolean;
 } = {}) {
   const persisted: Array<{ inquiry: Inquiry; score: number; tier: string }> = [];
   const events: ConversionEvent[] = [];
@@ -61,9 +64,9 @@ function setup(overrides: {
       events.push(event);
     },
     now: overrides.now ?? Date.now,
-    isGlobalRateLimited: () => false,
-    isRateLimited: () => false,
-    isBotUserAgent: () => false,
+    isGlobalRateLimited: overrides.isGlobalRateLimited ?? (() => false),
+    isRateLimited: overrides.isRateLimited ?? (() => false),
+    isBotUserAgent: overrides.isBotUserAgent ?? (() => false),
   });
 
   const post = (body: unknown, ip = '192.0.2.10') => handler(new NextRequest('http://localhost/api/inquire', {
@@ -284,6 +287,8 @@ test('does not treat a client month or stale Trek departure ID as a verified dep
 });
 
 test('resolves Art event context from the published registry and persists stable attribution', async (t) => {
+  t.mock.timers.enable({ apis: ['Date'], now: new Date('2026-10-01T00:00:00Z') });
+  t.after(() => t.mock.timers.reset());
   const today = new Date().toISOString().slice(0, 10);
   const departure = RETREAT_PROGRAM_EVENTS.find((event) =>
     ['art-and-creative', 'trek-and-paint', 'weekend-art-retreat'].includes(event.serviceSlug) &&
@@ -818,5 +823,73 @@ test('returns a distinguishable spam rejection for the existing honeypot', async
   assert.equal(response.status, 403);
   assert.equal(body.success, false);
   assert.equal(body.code, 'spam_rejected');
+  assert.equal(api.persisted.length, 0);
+});
+
+test('rejects submissions from known bot user agents without persisting', async () => {
+  const api = setup({ isBotUserAgent: () => true });
+  const response = await api.post({ name: 'Asha Mehta', phone: '+91 9876543210' });
+  const body = await response.json();
+
+  assert.equal(response.status, 403);
+  assert.equal(body.success, false);
+  assert.equal(body.code, 'spam_rejected');
+  assert.equal(api.persisted.length, 0);
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  const spamEvent = api.events.find((event) => event.eventType === 'inquiry_spam_blocked');
+  assert.equal(spamEvent?.meta?.reason, 'bot_ua');
+});
+
+test('rejects submissions that arrive faster than a human can fill the form', async () => {
+  const api = setup();
+  const loadedAt = Date.now();
+  const tooFast = await api.post({
+    name: 'Asha Mehta',
+    phone: '+91 9876543210',
+    _t: String(loadedAt),
+  });
+  const tooFastBody = await tooFast.json();
+
+  assert.equal(tooFast.status, 403);
+  assert.equal(tooFastBody.success, false);
+  assert.equal(tooFastBody.code, 'spam_rejected');
+  assert.equal(api.persisted.length, 0);
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  const spamEvent = api.events.find((event) => event.eventType === 'inquiry_spam_blocked');
+  assert.equal(spamEvent?.meta?.reason, 'too_fast');
+
+  const patient = await api.post({
+    name: 'Asha Mehta',
+    phone: '+91 9876543210',
+    _t: String(loadedAt - 10_000),
+  });
+  assert.equal(patient.status, 200);
+  assert.equal((await patient.json()).success, true);
+  assert.equal(api.persisted.length, 1);
+});
+
+test('returns a rate-limited response when the per-IP window is exhausted', async () => {
+  const api = setup({ isRateLimited: () => true });
+  const response = await api.post({ name: 'Asha Mehta', phone: '+91 9876543210' });
+  const body = await response.json();
+
+  assert.equal(response.status, 429);
+  assert.equal(body.success, false);
+  assert.equal(body.code, 'rate_limited');
+  assert.equal(api.persisted.length, 0);
+  assert.equal(api.emails.length, 0);
+  await new Promise((resolve) => setTimeout(resolve, 0));
+  const spamEvent = api.events.find((event) => event.eventType === 'inquiry_spam_blocked');
+  assert.equal(spamEvent?.meta?.reason, 'rate_limit');
+});
+
+test('returns a rate-limited response when the shared global cap is reached', async () => {
+  const api = setup({ isGlobalRateLimited: () => true });
+  const response = await api.post({ name: 'Asha Mehta', phone: '+91 9876543210' });
+  const body = await response.json();
+
+  assert.equal(response.status, 429);
+  assert.equal(body.success, false);
+  assert.equal(body.code, 'rate_limited');
   assert.equal(api.persisted.length, 0);
 });

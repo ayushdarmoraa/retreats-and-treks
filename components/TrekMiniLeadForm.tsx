@@ -1,8 +1,9 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { readConversionSessionId } from '@/lib/conversion-foundation';
+import { useEffect, useState, useRef } from 'react';
+import { buildAttributionSnapshot, readConversionSessionId } from '@/lib/conversion-foundation';
 import { acquirePendingSubmissionToken } from '@/lib/submission-token';
+import { captureAttribution } from '@/utils/attribution';
 import { track } from '@/utils/telemetry';
 import TrackedWhatsAppLink from './TrackedWhatsAppLink';
 
@@ -24,6 +25,8 @@ export default function TrekMiniLeadForm({
   const loadedAt = useRef(Date.now());
   // Synchronous in-flight guard: state alone can lag behind a rapid double click.
   const submitInFlight = useRef(false);
+  const captureStarted = useRef(false);
+  const savedRef = useRef(false);
   const [name, setName] = useState('');
   const [conversionSessionId] = useState(() => readConversionSessionId());
   const [phone, setPhone] = useState('');
@@ -34,6 +37,35 @@ export default function TrekMiniLeadForm({
   const [submitted, setSubmitted] = useState(false);
   const [leadReference, setLeadReference] = useState('');
   const [error, setError] = useState('');
+
+  function startCapture() {
+    if (captureStarted.current) return;
+    captureStarted.current = true;
+    track({
+      event: 'lead_capture_open',
+      from: sourcePath,
+      meta: {
+        conversion_session_id: conversionSessionId,
+        vertical: 'trek',
+        category: trekSlug,
+        form: 'trek_mini',
+      },
+    });
+  }
+
+  useEffect(() => () => {
+    if (!captureStarted.current || savedRef.current) return;
+    track({
+      event: 'lead_capture_abandon',
+      from: sourcePath,
+      meta: {
+        conversion_session_id: conversionSessionId,
+        vertical: 'trek',
+        category: trekSlug,
+        form: 'trek_mini',
+      },
+    });
+  }, [conversionSessionId, sourcePath, trekSlug]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -53,6 +85,9 @@ export default function TrekMiniLeadForm({
     submitInFlight.current = true;
     setSubmitting(true);
     try {
+      const searchParams = new URLSearchParams(window.location.search);
+      captureAttribution(searchParams);
+      const attribution = buildAttributionSnapshot(searchParams);
       const inquiry = {
         name: trimmedName,
         phone: trimmedPhone,
@@ -67,6 +102,13 @@ export default function TrekMiniLeadForm({
         category: trekSlug,
         productId: trekSlug,
         conversionSessionId,
+        firstLandingPage: attribution.firstLandingPage,
+        lastLandingPage: attribution.lastLandingPage,
+        referrer: attribution.referrer,
+        firstUtm: attribution.firstUtm,
+        lastUtm: attribution.lastUtm,
+        firstTouchAt: attribution.firstTouchAt,
+        lastTouchAt: attribution.lastTouchAt,
         ctaId: `trek_${trekSlug}_mini_form_inquiry`,
         ctaPosition: 'primary',
         ctaLabel: 'Send Inquiry',
@@ -91,6 +133,7 @@ export default function TrekMiniLeadForm({
 
       pendingToken.clear();
       setLeadReference(data.leadReference || '');
+      savedRef.current = true;
       track({
         event: 'availability_form_submit',
         from: sourcePath,
@@ -211,7 +254,7 @@ export default function TrekMiniLeadForm({
         {trekSlug === 'roopkund-trek' ? 'Plan Your Roopkund Trek → Get Dates & Cost' : trekSlug === 'brahmatal-trek' ? 'Plan Your Brahmatal Trek → Get Dates & Cost' : trekSlug === 'har-ki-dun-trek' ? 'Plan Your Har Ki Dun Trek → Get Dates & Cost' : trekSlug === 'dayara-bugyal-trek' ? 'Plan Your Dayara Bugyal Trek → Get Dates & Cost' : `Interested in ${trekTitle}? Get availability & pricing`}
       </p>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} onFocusCapture={startCapture}>
         {/* Honeypot */}
         <div style={{ position: 'absolute', left: '-9999px' }} aria-hidden="true">
           <input type="text" name="website" tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />

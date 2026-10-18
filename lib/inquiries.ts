@@ -12,6 +12,12 @@ import { normalizeConversionEvent, type ConversionEvent } from './conversion-eve
 
 const IDEMPOTENCY_WINDOW_MS = 10 * 60 * 1000;
 
+interface InsertInquiryDependencies {
+  databaseUrl?: string | null;
+  expectedBranchId?: string | null;
+  getDb?: typeof getDb;
+}
+
 export interface Inquiry {
   name: string;
   email?: string | null;
@@ -232,16 +238,20 @@ export async function insertInquiry(
   leadScore: number = 0,
   leadTier: string = 'unscored',
   requiredEvents: ConversionEvent[] = [],
+  dependencies: InsertInquiryDependencies = {},
 ): Promise<{
   status: 'inserted' | 'duplicate' | 'conflict';
   inquiryId: string;
   leadReference: string | null;
 }> {
-  if (!process.env.DATABASE_URL) {
+  const databaseUrl = dependencies.databaseUrl === undefined
+    ? process.env.DATABASE_URL
+    : dependencies.databaseUrl;
+  if (!databaseUrl) {
     throw new Error('Inquiry database is not configured');
   }
 
-  const sql = getDb();
+  const sql = (dependencies.getDb ?? getDb)();
   const payloadFingerprint = createInquiryPayloadFingerprint(inquiry);
   const normalizedLeadTier = normalizeLegacyLeadTier(leadTier) ?? 'unscored';
   const canonicalLeadTier = deriveCanonicalLeadTier(inquiry.canonicalLeadTier ?? null, leadScore) ?? normalizeCanonicalLeadTier(normalizedLeadTier) ?? null;
@@ -392,7 +402,9 @@ export async function insertInquiry(
     WHERE idempotency_key = ${idempotencyKey}
     LIMIT 1
   `;
-  const expectedBranchId = process.env.NEON_EXPECTED_BRANCH_ID;
+  const expectedBranchId = dependencies.expectedBranchId === undefined
+    ? process.env.NEON_EXPECTED_BRANCH_ID
+    : dependencies.expectedBranchId;
   const branchGuard = expectedBranchId
     ? [sql`
         SELECT 1 / CASE

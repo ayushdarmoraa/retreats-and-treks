@@ -83,6 +83,12 @@ export interface TrackPayloadLike {
 
 export type ConversionEventPersistenceResult = 'persisted' | 'deduplicated' | 'unavailable' | 'failed';
 
+export interface ConversionEventPersistenceDependencies {
+  databaseUrl?: string | null;
+  getDb?: typeof getDb;
+  expectedBranchId?: string | null;
+}
+
 const CTA_VIEW_DEDUPE_WINDOW_MS = 15 * 60 * 1000;
 const CTA_VIEW_DEDUPE_KEYS = new Map<string, number>();
 
@@ -93,35 +99,41 @@ function sanitizeText(value: unknown, maxLength = 500): string | undefined {
   return cleaned.slice(0, maxLength);
 }
 
-function sanitizeMeta(value: Record<string, unknown> | undefined): Record<string, unknown> {
-  if (!value || typeof value !== 'object') return {};
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === 'object' && value !== null && !Array.isArray(value);
+}
 
-  const next: Record<string, unknown> = {};
-  for (const [key, nestedValue] of Object.entries(value)) {
-    if (typeof nestedValue === 'undefined') continue;
-    if (typeof nestedValue === 'string') {
-      const cleaned = sanitizeText(nestedValue, 2000);
-      if (cleaned !== undefined) next[key] = cleaned;
-      continue;
-    }
-    if (typeof nestedValue === 'number' || typeof nestedValue === 'boolean' || nestedValue === null) {
-      next[key] = nestedValue;
-      continue;
-    }
-    if (Array.isArray(nestedValue)) {
-      next[key] = nestedValue.filter((item) => typeof item !== 'undefined').map((item) => {
-        if (typeof item === 'string') return sanitizeText(item, 2000) ?? '';
-        if (typeof item === 'number' || typeof item === 'boolean' || item === null) return item;
-        return String(item);
-      });
-      continue;
-    }
-    if (typeof nestedValue === 'object') {
-      next[key] = JSON.parse(JSON.stringify(nestedValue));
-    }
+function isPiiMetaKey(key: string): boolean {
+  const normalized = key.replace(/([a-z0-9])([A-Z])/g, '$1_$2').toLowerCase();
+  return /(^|_)(email|phone|mobile|telephone|message|enquiry|address)(_|$)/.test(normalized)
+    || /^(name|first_name|last_name|full_name|user_name|customer_name|contact_name|visitor_name|person_name|participant_name|guest_name|age|dob|date_of_birth|birth_date|origin_city|origin_country)$/.test(normalized);
+}
+
+function sanitizeMetaValue(value: unknown): unknown {
+  if (typeof value === 'string') return sanitizeText(value, 2000);
+  if (typeof value === 'number' || typeof value === 'boolean' || value === null) return value;
+  if (Array.isArray(value)) {
+    return value
+      .map(sanitizeMetaValue)
+      .filter((item) => item !== undefined);
   }
+  if (isRecord(value)) {
+    const next: Record<string, unknown> = {};
+    for (const [key, nestedValue] of Object.entries(value)) {
+      if (isPiiMetaKey(key)) continue;
+      const cleaned = sanitizeMetaValue(nestedValue);
+      if (cleaned !== undefined) next[key] = cleaned;
+    }
+    return next;
+  }
+  return undefined;
+}
 
-  return next;
+export function sanitizeConversionEventMeta(
+  value: Record<string, unknown> | undefined,
+): Record<string, unknown> {
+  const sanitized = sanitizeMetaValue(value);
+  return isRecord(sanitized) ? sanitized : {};
 }
 
 function normalizePagePath(value: string | undefined): string | undefined {
@@ -183,14 +195,14 @@ export function normalizeConversionEvent(event: ConversionEvent): ConversionEven
     leadReference: sanitizeText(event.leadReference ?? undefined, 100) || undefined,
     ipHash: sanitizeText(event.ipHash ?? undefined, 128) || undefined,
     userAgent: sanitizeText(event.userAgent ?? undefined, 500) || undefined,
-    meta: sanitizeMeta(event.meta),
+    meta: sanitizeConversionEventMeta(event.meta),
   };
 
   return normalized;
 }
 
 export function toDurableConversionEvent(payload: TrackPayloadLike): ConversionEvent | null {
-  const meta = sanitizeMeta(payload.meta);
+  const meta = sanitizeConversionEventMeta(payload.meta);
   const fromPath = normalizePagePath(payload.from);
   const toPath = normalizePagePath(typeof payload.to === 'string' ? payload.to : undefined);
   const conversionSessionId = sanitizeText(meta.conversion_session_id ?? meta.conversionSessionId ?? undefined, 200) || undefined;
@@ -225,10 +237,15 @@ export function toDurableConversionEvent(payload: TrackPayloadLike): ConversionE
       : null
   );
   if (!candidate) return null;
+  const rawLeadReference = meta.lead_reference ?? meta.leadReference;
+  const leadReference = candidate === 'whatsapp_handoff' && typeof rawLeadReference === 'string'
+    ? sanitizeText(rawLeadReference, 100)
+    : undefined;
 
   const event: ConversionEvent = {
     eventType: candidate,
     conversionSessionId,
+    ...(leadReference && /^RT-\d{6}-\d{4,}$/.test(leadReference) ? { leadReference } : {}),
     sourceUrl: sanitizeText(payload.from, 1000),
     pagePath: fromPath,
     pageType,
@@ -247,7 +264,10 @@ export function toDurableConversionEvent(payload: TrackPayloadLike): ConversionE
   return normalizeConversionEvent(event);
 }
 
-export async function persistConversionEvent(event: ConversionEvent): Promise<ConversionEventPersistenceResult> {
+export async function persistConversionEvent(
+  event: ConversionEvent,
+  dependencies: ConversionEventPersistenceDependencies = {},
+): Promise<ConversionEventPersistenceResult> {
   const normalized = normalizeConversionEvent(event);
   if (!normalized) return 'failed';
 
@@ -256,9 +276,33 @@ export async function persistConversionEvent(event: ConversionEvent): Promise<Co
   }
 
   try {
-    if (!process.env.DATABASE_URL) return 'unavailable';
+    const databaseUrl = dependencies.databaseUrl === undefined
+      ? process.env.DATABASE_URL
+      : dependencies.databaseUrl;
+    if (!databaseUrl) return 'unavailable';
 
-    const sql = getDb();
+    const sql = (dependencies.getDb ?? getDb)();
+    if (normalized.eventType === 'whatsapp_handoff' && normalized.leadReference) {
+      const matchingLeads = await sql`
+        SELECT id, lead_reference
+        FROM inquiries
+        WHERE lead_reference = ${normalized.leadReference}
+        LIMIT 1
+      `;
+      const matchingLead = matchingLeads[0];
+      if (matchingLead?.id && matchingLead.lead_reference === normalized.leadReference) {
+        normalized.inquiryId = String(matchingLead.id);
+        normalized.leadReference = String(matchingLead.lead_reference);
+      } else {
+        normalized.inquiryId = undefined;
+        normalized.leadReference = undefined;
+        if (normalized.meta) {
+          delete normalized.meta.lead_reference;
+          delete normalized.meta.leadReference;
+        }
+      }
+    }
+
     const insertQuery = sql`
       INSERT INTO conversion_events (
         event_type,
@@ -297,7 +341,9 @@ export async function persistConversionEvent(event: ConversionEvent): Promise<Co
         ${JSON.stringify(normalized.meta ?? {})}
       )
     `;
-    const expectedBranchId = process.env.NEON_EXPECTED_BRANCH_ID;
+    const expectedBranchId = dependencies.expectedBranchId === undefined
+      ? process.env.NEON_EXPECTED_BRANCH_ID
+      : dependencies.expectedBranchId;
     if (expectedBranchId) {
       await sql.transaction([
         sql`

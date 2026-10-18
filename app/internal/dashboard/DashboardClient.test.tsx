@@ -239,6 +239,39 @@ test('initializes filters from the URL and synchronizes user filter changes back
   });
 });
 
+test('selects canonical and historical tiers without changing other filters', async () => {
+  dom.reconfigure({
+    url: 'http://localhost/internal/dashboard?vertical=art&status=open',
+  });
+  const requests = mockDashboardFetch();
+  render(<DashboardClient />);
+  await screen.findByText('Asha Mehta');
+
+  const selectedTiers = ['Hot', 'Warm', 'Nurture', 'Early', 'Cold', 'Unscored'];
+  for (const tier of selectedTiers) {
+    fireEvent.click(screen.getByRole('button', { name: tier }));
+  }
+
+  await waitFor(() => {
+    assert.deepEqual(new URLSearchParams(window.location.search).get('tier')?.split(','), selectedTiers);
+  });
+  assert.ok(requests.some(({ url }) => {
+    const params = new URL(url, 'http://localhost').searchParams;
+    return params.get('tier') === selectedTiers.join(',');
+  }));
+
+  fireEvent.click(screen.getByRole('button', { name: 'Warm' }));
+  await waitFor(() => {
+    assert.deepEqual(
+      new URLSearchParams(window.location.search).get('tier')?.split(','),
+      selectedTiers.filter((tier) => tier !== 'Warm'),
+    );
+  });
+  const params = new URLSearchParams(window.location.search);
+  assert.equal(params.get('vertical'), 'art');
+  assert.equal(params.get('status'), 'open');
+});
+
 test('surfaces a failed lead timeline request instead of presenting it as an empty event history', async () => {
   mockDashboardFetch({ detailFailure: true });
   render(<DashboardClient />);

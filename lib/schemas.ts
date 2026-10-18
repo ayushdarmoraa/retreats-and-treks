@@ -9,7 +9,18 @@ import { z } from 'zod/v4';
 
 // ── Shared enums ────────────────────────────────────────────
 
-export const LeadTierEnum = z.enum(['Hot', 'Warm', 'Nurture', 'Early', 'hot', 'warm', 'cold', 'unscored']);
+export const LeadTierEnum = z.enum([
+  'Hot',
+  'Warm',
+  'Nurture',
+  'Early',
+  'hot',
+  'warm',
+  'nurture',
+  'early',
+  'cold',
+  'unscored',
+]);
 export const LeadStatusEnum = z.enum(['open', 'replied', 'closed', 'booked']);
 export const InterestEnum = z.enum(['trek', 'retreat', '']);
 export const VerticalEnum = z.enum(['retreat', 'trek', '']);

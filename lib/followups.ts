@@ -50,16 +50,28 @@ export interface FollowUpResult {
   errors: number;
 }
 
+export interface FollowUpDependencies {
+  databaseUrl?: string | null;
+  getDb?: () => ReturnType<typeof getDb>;
+  sendEmail?: (payload: { to: string; subject: string; html: string }) => Promise<unknown>;
+  logEvent?: typeof logConversionEvent;
+}
+
 /**
  * Process all pending follow-ups. Returns summary.
  */
-export async function processFollowUps(): Promise<FollowUpResult> {
-  if (!process.env.DATABASE_URL) {
+export async function processFollowUps(
+  dependencies: FollowUpDependencies = {},
+): Promise<FollowUpResult> {
+  const databaseUrl = dependencies.databaseUrl === undefined
+    ? process.env.DATABASE_URL
+    : dependencies.databaseUrl;
+  if (!databaseUrl) {
     console.warn('[FollowUp] DATABASE_URL not set — skipping');
     return { processed: 0, sent: 0, skipped: 0, errors: 0 };
   }
 
-  const sql = getDb();
+  const sql = (dependencies.getDb ?? getDb)();
   const result: FollowUpResult = { processed: 0, sent: 0, skipped: 0, errors: 0 };
 
   // ── DAY 3 CANDIDATES ──────────────────────────────────
@@ -71,6 +83,7 @@ export async function processFollowUps(): Promise<FollowUpResult> {
     WHERE followup_count = 0
       AND status = 'open'
       AND lead_tier IN ('hot', 'warm')
+      AND email IS NOT NULL AND email <> ''
       AND created_at <= now() - interval '3 days'
       AND created_at > now() - interval '4 days'
     ORDER BY lead_score DESC
@@ -85,6 +98,7 @@ export async function processFollowUps(): Promise<FollowUpResult> {
     FROM inquiries
     WHERE followup_count < 2
       AND status = 'open'
+      AND email IS NOT NULL AND email <> ''
       AND created_at <= now() - interval '7 days'
       AND created_at > now() - interval '8 days'
     ORDER BY lead_score DESC
@@ -95,7 +109,7 @@ export async function processFollowUps(): Promise<FollowUpResult> {
   for (const lead of day3Candidates) {
     result.processed++;
     try {
-      const sent = await sendFollowUp(lead, 3);
+      const sent = await sendFollowUp(lead, 3, dependencies);
       if (sent) {
         await markFollowUpSent(sql, lead.id);
         result.sent++;
@@ -112,7 +126,7 @@ export async function processFollowUps(): Promise<FollowUpResult> {
   for (const lead of day7Candidates) {
     result.processed++;
     try {
-      const sent = await sendFollowUp(lead, 7);
+      const sent = await sendFollowUp(lead, 7, dependencies);
       if (sent) {
         await markFollowUpSent(sql, lead.id);
         result.sent++;
@@ -145,25 +159,31 @@ async function markFollowUpSent(
 async function sendFollowUp(
   lead: FollowUpCandidate,
   day: 3 | 7,
+  dependencies: FollowUpDependencies,
 ): Promise<boolean> {
-  if (!RESEND_API_KEY) {
-    console.warn('[FollowUp] RESEND_API_KEY not set — skipping');
-    return false;
-  }
-
-  const resend = new Resend(RESEND_API_KEY);
   const { subject, html } = buildFollowUpEmail(lead, day);
+  const logEvent = dependencies.logEvent ?? logConversionEvent;
 
   try {
-    await resend.emails.send({
-      from: FROM_EMAIL,
-      to: lead.email,
-      replyTo: process.env.TEAM_NOTIFICATION_EMAIL || FROM_EMAIL,
-      subject,
-      html,
-    });
+    if (dependencies.sendEmail) {
+      await dependencies.sendEmail({ to: lead.email, subject, html });
+    } else {
+      if (!RESEND_API_KEY) {
+        console.warn('[FollowUp] RESEND_API_KEY not set — skipping');
+        return false;
+      }
 
-    logConversionEvent({
+      const resend = new Resend(RESEND_API_KEY);
+      await resend.emails.send({
+        from: FROM_EMAIL,
+        to: lead.email,
+        replyTo: process.env.TEAM_NOTIFICATION_EMAIL || FROM_EMAIL,
+        subject,
+        html,
+      });
+    }
+
+    logEvent({
       eventType: 'inquiry_email_sent',
       inquiryId: lead.id,
       meta: { followup_day: day, lead_tier: lead.lead_tier, lead_score: lead.lead_score },
@@ -171,7 +191,7 @@ async function sendFollowUp(
 
     return true;
   } catch (err) {
-    logConversionEvent({
+    logEvent({
       eventType: 'inquiry_email_failed',
       inquiryId: lead.id,
       meta: { followup_day: day, error: err instanceof Error ? err.message : String(err) },

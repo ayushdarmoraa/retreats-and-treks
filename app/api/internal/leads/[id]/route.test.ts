@@ -53,7 +53,7 @@ test('validates IDs before database access and returns not-found for missing lea
   assert.equal(missing.status, 404);
 });
 
-test('returns existing lead and linked events chronologically with optional attribution intact', async () => {
+test('returns inquiry- and lead-reference-linked events chronologically with optional attribution intact', async () => {
   const orderedEvents = [
     { id: 'event-1', event_type: 'conversion_cta_view', created_at: '2026-10-09T08:00:00Z' },
     { id: 'event-2', event_type: 'lead_submitted', created_at: '2026-10-09T08:05:00Z' },
@@ -89,10 +89,12 @@ test('returns existing lead and linked events chronologically with optional attr
   ]);
   assert.ok(eventQuery.text.includes('ORDER BY'));
   assert.ok(eventQuery.values.includes(LEAD_ID));
-  assert.ok(eventQuery.values.includes('session-42'));
+  assert.ok(eventQuery.text.includes('lead_reference = ?'));
+  assert.ok(eventQuery.values.includes('RT-261009-0042'));
+  assert.ok(!eventQuery.text.includes('conversion_session_id = ?'));
 });
 
-test('does not query session events when a legacy lead has no session identifier', async () => {
+test('keeps legacy lead timelines scoped to inquiry and lead reference', async () => {
   const database = makeDatabase([{ ...lead, conversion_session_id: null }]);
   const handler = createLeadDetailGetHandler({
     getDb: () => database.query,
@@ -105,5 +107,33 @@ test('does not query session events when a legacy lead has no session identifier
 
   const eventQuery = database.calls.find((call) => call.text.includes('conversion_events'))!;
   assert.ok(eventQuery.values.includes(LEAD_ID));
-  assert.ok(!eventQuery.values.includes(null));
+  assert.ok(eventQuery.values.includes('RT-261009-0042'));
+  assert.ok(!eventQuery.text.includes('conversion_session_id = ?'));
+});
+
+test('strips personal data from stored conversion-event timeline metadata', async () => {
+  const database = makeDatabase([lead], [{
+    id: 'event-pii',
+    meta: {
+      email: 'asha@example.com',
+      phone: '+91 9876543210',
+      fullName: 'Asha Mehta',
+      followup_day: 3,
+      lead_reference: 'RT-261009-0042',
+    },
+  }]);
+  const handler = createLeadDetailGetHandler({
+    getDb: () => database.query,
+    hasDatabase: () => true,
+  });
+
+  const response = await handler(new NextRequest(`http://localhost/api/internal/leads/${LEAD_ID}`), {
+    params: Promise.resolve({ id: LEAD_ID }),
+  });
+  const body = await response.json();
+
+  assert.deepEqual(body.events[0].meta, {
+    followup_day: 3,
+    lead_reference: 'RT-261009-0042',
+  });
 });

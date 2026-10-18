@@ -12,6 +12,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getDb } from '@/lib/db';
 import { StatusUpdateSchema, UUIDSchema } from '@/lib/schemas';
+import { sanitizeConversionEventMeta } from '@/lib/conversion-events';
 import { z } from 'zod/v4';
 
 export const runtime = 'nodejs';
@@ -74,28 +75,22 @@ export function createLeadDetailGetHandler(
       }
 
       const lead = leads[0];
-      const events = lead.conversion_session_id
-        ? await sql`
-            SELECT
-              id, event_type, meta, created_at, page_path, page_type, vertical,
-              category, cta_id, cta_position, cta_label, cta_variant, lead_reference
-            FROM conversion_events
-            WHERE inquiry_id = ${id}
-              OR conversion_session_id = ${lead.conversion_session_id}
-            ORDER BY created_at ASC, id ASC
-            LIMIT 200
-          `
-        : await sql`
-            SELECT
-              id, event_type, meta, created_at, page_path, page_type, vertical,
-              category, cta_id, cta_position, cta_label, cta_variant, lead_reference
-            FROM conversion_events
-            WHERE inquiry_id = ${id}
-            ORDER BY created_at ASC, id ASC
-            LIMIT 200
-          `;
+      const events = await sql`
+        SELECT
+          id, event_type, meta, created_at, page_path, page_type, vertical,
+          category, cta_id, cta_position, cta_label, cta_variant, lead_reference
+        FROM conversion_events
+        WHERE inquiry_id = ${id}
+          OR lead_reference = ${lead.lead_reference}
+        ORDER BY created_at ASC, id ASC
+        LIMIT 200
+      `;
+      const sanitizedEvents = events.map((event) => ({
+        ...event,
+        meta: event.meta === null ? null : sanitizeConversionEventMeta(event.meta),
+      }));
 
-      return NextResponse.json({ lead, events });
+      return NextResponse.json({ lead, events: sanitizedEvents });
     } catch (err) {
       console.error('[Admin:Lead] Query error:', err);
       return NextResponse.json({ error: 'Internal error' }, { status: 500 });
@@ -159,7 +154,9 @@ export async function PATCH(
         from_status: existing[0].status,
         to_status: newStatus,
       },
-    }).catch(() => {});
+    }).catch(() => {
+      console.error('[Admin:Lead] Status-change event persistence failed');
+    });
 
     return NextResponse.json({ ok: true, status: newStatus });
   } catch (err) {

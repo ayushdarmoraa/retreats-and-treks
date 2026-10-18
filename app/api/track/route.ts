@@ -21,6 +21,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { persistConversionEvent, toDurableConversionEvent } from '@/lib/conversion-events';
+import { hashIp, isRateLimited } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
 
@@ -68,6 +69,13 @@ const ALL_EVENTS = [...NAVIGATION_EVENTS, ...BEHAVIORAL_EVENTS] as const;
 export const TRACK_EVENT_TYPES = ALL_EVENTS;
 type EventType = (typeof ALL_EVENTS)[number];
 
+// Telemetry payloads are small: meta is capped at 6000 chars and paths at 200,
+// so a legitimate event stays well under 16 KiB. This limit only rejects
+// abusive/oversized bodies before we parse them.
+export const MAX_TRACK_BODY_BYTES = 16 * 1024;
+export const TRACK_EVENT_RATE_LIMIT = 120;
+const TRACK_EVENT_RATE_WINDOW_MS = 60_000;
+
 function isValidPath(value: unknown): value is string {
   return typeof value === 'string' && value.startsWith('/') && value.length <= 200;
 }
@@ -88,6 +96,49 @@ function isValidMeta(value: unknown): value is Record<string, unknown> | undefin
 
 interface TrackDependencies {
   persistEvent: typeof persistConversionEvent;
+  rateLimit?: typeof isRateLimited;
+}
+
+type BodyReadResult =
+  | { ok: true; text: string }
+  | { ok: false; reason: 'too_large' | 'unreadable' };
+
+/**
+ * Read the request body as text while enforcing MAX_TRACK_BODY_BYTES.
+ *
+ * The Content-Length header (when present) is rejected up front so oversized
+ * uploads are not buffered at all. Bodies without a trustworthy header are
+ * read chunk-by-chunk and aborted as soon as the limit is crossed.
+ */
+async function readBodyWithLimit(req: NextRequest): Promise<BodyReadResult> {
+  const declared = Number(req.headers.get('content-length'));
+  if (Number.isFinite(declared) && declared > MAX_TRACK_BODY_BYTES) {
+    return { ok: false, reason: 'too_large' };
+  }
+
+  if (!req.body) return { ok: true, text: '' };
+
+  const reader = req.body.getReader();
+  const decoder = new TextDecoder();
+  let text = '';
+  let total = 0;
+  try {
+    for (;;) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      total += value.byteLength;
+      if (total > MAX_TRACK_BODY_BYTES) {
+        await reader.cancel().catch(() => {});
+        return { ok: false, reason: 'too_large' };
+      }
+      text += decoder.decode(value, { stream: true });
+    }
+    text += decoder.decode();
+  } catch {
+    await reader.cancel().catch(() => {});
+    return { ok: false, reason: 'unreadable' };
+  }
+  return { ok: true, text };
 }
 
 export function createTrackPostHandler(
@@ -96,9 +147,16 @@ export function createTrackPostHandler(
   },
 ) {
   return async function POST(req: NextRequest): Promise<NextResponse> {
+    const bodyRead = await readBodyWithLimit(req);
+    if (!bodyRead.ok) {
+      return bodyRead.reason === 'too_large'
+        ? NextResponse.json({ error: 'Request body too large' }, { status: 413 })
+        : NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+    }
+
     let body: unknown;
     try {
-      body = await req.json();
+      body = JSON.parse(bodyRead.text);
     } catch {
       return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
     }
@@ -124,6 +182,13 @@ export function createTrackPostHandler(
     const durableEvent = toDurableConversionEvent({ event, from, to: typeof to === 'string' ? to : undefined, meta });
     if (!durableEvent) {
       return NextResponse.json({ error: 'unsupported_durable_event', durable: false }, { status: 422 });
+    }
+
+    const forwardedIp = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim();
+    const clientIp = forwardedIp || req.headers.get('x-real-ip') || 'unknown';
+    const rateLimit = dependencies.rateLimit ?? isRateLimited;
+    if (rateLimit(`track:${hashIp(clientIp)}`, TRACK_EVENT_RATE_LIMIT, TRACK_EVENT_RATE_WINDOW_MS)) {
+      return NextResponse.json({ error: 'rate_limited' }, { status: 429 });
     }
 
     let persistence: Awaited<ReturnType<typeof dependencies.persistEvent>>;
