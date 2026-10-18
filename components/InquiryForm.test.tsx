@@ -24,7 +24,7 @@ Object.defineProperty(globalThis, 'navigator', {
 });
 
 async function loadUi() {
-  const [testingLibrary, userEventModule, nextContexts, inquiryForm, availabilityModal, trekMiniLeadForm, inlineInquiryForm, retreatFinder] = await Promise.all([
+  const [testingLibrary, userEventModule, nextContexts, inquiryForm, availabilityModal, trekMiniLeadForm, inlineInquiryForm, retreatFinder, trackedWhatsAppLink] = await Promise.all([
     import('@testing-library/react'),
     import('@testing-library/user-event'),
     import('next/dist/shared/lib/hooks-client-context.shared-runtime'),
@@ -33,6 +33,7 @@ async function loadUi() {
     import('./TrekMiniLeadForm'),
     import('./InlineInquiryForm'),
     import('./RetreatFinder'),
+    import('./TrackedWhatsAppLink'),
   ]);
   return {
     ...testingLibrary,
@@ -43,6 +44,7 @@ async function loadUi() {
     TrekMiniLeadForm: trekMiniLeadForm.default,
     InlineInquiryForm: inlineInquiryForm.default,
     RetreatFinder: retreatFinder.default,
+    TrackedWhatsAppLink: trackedWhatsAppLink.default,
     validateProgressiveCaptureStep: inlineInquiryForm.validateProgressiveCaptureStep,
   };
 }
@@ -121,6 +123,37 @@ function renderInlineForm(query = '') {
     ),
   );
   return { ...result, user: ui.userEvent.setup() };
+}
+
+function renderTrackedWhatsAppLink() {
+  function TestWhatsAppLink() {
+    return (
+      <ui.TrackedWhatsAppLink
+        sourcePath="/treks/roopkund"
+        vertical="trek"
+        category="roopkund-trek"
+        product="Roopkund Trek"
+        productId="roopkund-trek"
+        location="Sankri"
+        duration="7 days"
+        departureId="roopkund-may"
+        departureDate="2027-05-10"
+        ctaId="roopkund_hero_whatsapp"
+        ctaLabel="Chat on WhatsApp"
+        ctaPosition="hero"
+      >
+        Chat on WhatsApp
+      </ui.TrackedWhatsAppLink>
+    );
+  }
+
+  return ui.render(
+    createElement(
+      ui.SearchParamsContext.Provider,
+      { value: new URLSearchParams(dom.window.location.search) },
+      createElement(TestWhatsAppLink),
+    ),
+  );
 }
 
 function renderYogaFinder() {
@@ -227,6 +260,130 @@ test('generic contact submission includes its browser session and attribution sn
   assert.equal(payload.email, '');
   const submissionEvent = trackEvents(calls).find((event) => event.event === 'form_submission');
   assert.equal(submissionEvent?.meta?.conversion_session_id, expectedSessionId);
+});
+
+test('direct WhatsApp CTA requires consent, saves contextual lead and opens only after explicit handoff', async (t) => {
+  t.after(() => {
+    ui.cleanup();
+    dom.window.history.replaceState({}, '', '/contact');
+    dom.window.sessionStorage.clear();
+  });
+  dom.window.sessionStorage.clear();
+  dom.window.history.replaceState({}, '', '/treks/roopkund?utm_source=partner&utm_campaign=summer');
+  const calls = installFetch({
+    inquire: [jsonResponse({ success: true, leadReference: 'RT-WA-0001' })],
+  });
+  const { readConversionSessionId } = await import('../lib/conversion-foundation');
+  const expectedSessionId = readConversionSessionId();
+  const user = ui.userEvent.setup();
+  renderTrackedWhatsAppLink();
+
+  const cta = ui.screen.getByRole('link', { name: 'Chat on WhatsApp' });
+  assert.equal(cta.getAttribute('target'), '_blank');
+  await user.click(cta);
+  const dialog = ui.screen.getByRole('dialog', { name: 'Before you continue to WhatsApp' });
+  assert.ok(dialog);
+  assert.equal(calls.filter((call) => call.url === '/api/inquire').length, 0);
+  assert.match(
+    ui.screen.getByText(/contact me on WhatsApp/i).textContent ?? '',
+    /contact me on WhatsApp/i,
+  );
+
+  await user.type(ui.screen.getByLabelText('Name *'), 'Asha Mehta');
+  await user.type(ui.screen.getByLabelText('WhatsApp / phone *'), '+91 9876543210');
+  await user.type(ui.screen.getByLabelText('Email (optional)'), 'asha@example.com');
+  await user.type(ui.screen.getByLabelText('Preferred dates or timing (optional)'), 'May 2027');
+  await user.type(ui.screen.getByLabelText('Group size (optional)'), '2');
+  await user.type(ui.screen.getByLabelText('Anything else we should know? (optional)'), 'Interested in a guided trek.');
+
+  await user.click(ui.screen.getByRole('button', { name: 'Save and continue' }));
+  assert.match((await ui.screen.findByRole('alert')).textContent ?? '', /agree/i);
+  assert.equal(calls.filter((call) => call.url === '/api/inquire').length, 0);
+  assert.equal(ui.screen.queryByRole('link', { name: 'Continue to WhatsApp' }), null);
+
+  const phoneInput = ui.screen.getByLabelText('WhatsApp / phone *');
+  await user.clear(phoneInput);
+  await user.type(phoneInput, 'letters1234567');
+  await user.click(ui.screen.getByRole('button', { name: 'Save and continue' }));
+  assert.match((await ui.screen.findByRole('alert')).textContent ?? '', /valid WhatsApp number/);
+  assert.equal(calls.filter((call) => call.url === '/api/inquire').length, 0);
+
+  await user.clear(phoneInput);
+  await user.type(phoneInput, '+91 9876543210');
+  await user.click(ui.screen.getByLabelText(/I agree that Retreats and Treks/));
+  await user.click(ui.screen.getByRole('button', { name: 'Save and continue' }));
+  await ui.waitFor(() => assert.equal(calls.filter((call) => call.url === '/api/inquire').length, 1));
+  assert.ok(await ui.screen.findByText('Enquiry saved'));
+
+  const [payload] = inquirePayloads(calls);
+  assert.equal(payload.name, 'Asha Mehta');
+  assert.equal(payload.phone, '+91 9876543210');
+  assert.equal(payload.email, 'asha@example.com');
+  assert.equal(payload.source, '/treks/roopkund');
+  assert.equal(payload.productId, 'roopkund-trek');
+  assert.equal(payload.departureId, 'roopkund-may');
+  assert.equal(payload.location, 'Sankri');
+  assert.equal(payload.preferredTiming, 'May 2027');
+  assert.equal(payload.groupSize, '2');
+  assert.equal(payload.conversionSessionId, expectedSessionId);
+  assert.equal(payload.firstLandingPage, '/treks/roopkund');
+  assert.equal((payload.firstUtm as Record<string, unknown>).utm_source, 'partner');
+  assert.equal((payload.lastUtm as Record<string, unknown>).utm_campaign, 'summer');
+  assert.match(String(payload.additionalRequest), /Interested in a guided trek/);
+  assert.match(String(payload.additionalRequest), /consent provided/i);
+  assert.equal(trackEvents(calls).filter((event) => event.event === 'whatsapp_click').length, 0);
+
+  const handoff = ui.screen.getByRole('link', { name: 'Continue to WhatsApp' });
+  const handoffUrl = new URL(handoff.getAttribute('href') ?? '');
+  assert.equal(handoffUrl.hostname, 'wa.me');
+  assert.equal(handoffUrl.searchParams.get('text')?.includes('RT-WA-0001'), true);
+  assert.equal(calls.filter((call) => call.url === '/api/inquire').length, 1);
+
+  handoff.addEventListener('click', (event) => event.preventDefault(), { once: true });
+  await user.click(handoff);
+  await ui.waitFor(() => {
+    const handoffEvent = trackEvents(calls).find((event) => event.event === 'whatsapp_click');
+    assert.ok(handoffEvent);
+    assert.equal(handoffEvent.meta?.lead_reference, 'RT-WA-0001');
+    assert.equal(handoffEvent.meta?.conversion_session_id, expectedSessionId);
+  });
+  assert.equal(calls.filter((call) => call.url === '/api/inquire').length, 1);
+});
+
+test('direct WhatsApp CTA keeps capture retryable after persistence failure and never auto-opens', async (t) => {
+  t.after(() => {
+    ui.cleanup();
+    dom.window.history.replaceState({}, '', '/contact');
+    dom.window.sessionStorage.clear();
+  });
+  dom.window.sessionStorage.clear();
+  dom.window.history.replaceState({}, '', '/treks/roopkund');
+  const calls = installFetch({
+    inquire: [
+      jsonResponse({ success: false, code: 'persistence_error', error: 'Unable to save your enquiry.' }, false),
+      jsonResponse({ success: true, leadReference: 'RT-WA-RETRY' }),
+    ],
+  });
+  const user = ui.userEvent.setup();
+  renderTrackedWhatsAppLink();
+  await user.click(ui.screen.getByRole('link', { name: 'Chat on WhatsApp' }));
+  await user.type(ui.screen.getByLabelText('Name *'), 'Asha Mehta');
+  await user.type(ui.screen.getByLabelText('WhatsApp / phone *'), '+91 9876543210');
+  await user.click(ui.screen.getByLabelText(/I agree that Retreats and Treks/));
+
+  await user.click(ui.screen.getByRole('button', { name: 'Save and continue' }));
+  assert.equal((await ui.screen.findByRole('alert')).textContent, 'Unable to save your enquiry.');
+  assert.equal(ui.screen.queryByText('Enquiry saved'), null);
+  assert.equal(ui.screen.queryByRole('link', { name: 'Continue to WhatsApp' }), null);
+  assert.equal(trackEvents(calls).filter((event) => event.event === 'whatsapp_click').length, 0);
+  assert.equal((ui.screen.getByLabelText('Name *') as HTMLInputElement).value, 'Asha Mehta');
+
+  await user.click(ui.screen.getByRole('button', { name: 'Save and continue' }));
+  assert.ok(await ui.screen.findByText('Enquiry saved'));
+  assert.equal(calls.filter((call) => call.url === '/api/inquire').length, 2);
+  const payloads = inquirePayloads(calls);
+  assert.equal(payloads[1].submissionToken, payloads[0].submissionToken);
+  assert.equal(trackEvents(calls).filter((event) => event.event === 'whatsapp_click').length, 0);
 });
 
 test('contact form reports an engaged abandonment with the same conversion session', async (t) => {
@@ -609,7 +766,7 @@ test('availability modal submission includes the browser session and attribution
   await user.selectOptions(ui.screen.getByLabelText('Group size *'), '2');
   await user.selectOptions(ui.screen.getByLabelText('Experience level *'), 'Beginner');
   await user.type(ui.screen.getByLabelText('WhatsApp / phone *'), '+91 9876543210');
-  submitForm();
+  await user.click(ui.screen.getByRole('button', { name: 'Check Availability' }));
   await ui.waitFor(() => assert.ok(calls.some((call) => call.url === '/api/inquire')));
 
   const [payload] = inquirePayloads(calls);

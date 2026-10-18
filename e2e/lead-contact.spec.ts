@@ -130,3 +130,99 @@ test('contact inquiry persists once, keeps its context, and hands off to WhatsAp
     }
   }
 });
+
+test('a direct WhatsApp CTA captures and saves its page-scoped lead before opening WhatsApp', async ({ page, context }) => {
+  await verifyTestBranch();
+  const identity = makeIdentity();
+  let sessionId: string | null = null;
+  const testUserAgent = makeTestUserAgent(identity.campaign);
+
+  try {
+    await page.setExtraHTTPHeaders({ 'User-Agent': testUserAgent });
+    await page.goto(`${trekPath}?utm_source=e2e&utm_campaign=${identity.campaign}`, {
+      waitUntil: 'domcontentloaded',
+      timeout: 120_000,
+    });
+    await expect.poll(() => page.evaluate(
+      () => window.sessionStorage.getItem('conversion_session_id_v1'),
+    )).toBeTruthy();
+    sessionId = await page.evaluate(() => window.sessionStorage.getItem('conversion_session_id_v1'));
+    expect(sessionId).toBeTruthy();
+
+    let inquiryRequestCount = 0;
+    page.on('request', (request) => {
+      if (request.url().endsWith('/api/inquire') && request.method() === 'POST') {
+        inquiryRequestCount += 1;
+      }
+    });
+    const globalWhatsAppCta = page.getByRole('link', { name: 'Talk to Us' });
+    await expect(globalWhatsAppCta).toBeVisible();
+    await globalWhatsAppCta.click();
+    const dialog = page.getByRole('dialog', { name: 'Before you continue to WhatsApp' });
+    await expect(dialog).toBeVisible();
+    expect(context.pages()).toHaveLength(1);
+    await dialog.getByLabel('Name *').fill(identity.name);
+    await dialog.getByLabel('WhatsApp / phone *').fill(identity.phone);
+    await page.waitForTimeout(2_100);
+    await dialog.getByRole('button', { name: 'Save and continue', exact: true }).click();
+    await expect(dialog.getByRole('alert')).toContainText(/agree/i);
+    expect(inquiryRequestCount).toBe(0);
+    expect(context.pages()).toHaveLength(1);
+    await dialog.getByLabel(/I agree that Retreats and Treks/).check();
+
+    const inquiryRequestPromise = page.waitForRequest((request) =>
+      request.url().endsWith('/api/inquire') && request.method() === 'POST');
+    const inquiryResponsePromise = page.waitForResponse((response) =>
+      response.url().endsWith('/api/inquire') && response.request().method() === 'POST');
+    await dialog.getByRole('button', { name: 'Save and continue', exact: true }).click();
+    const inquiryRequest = await inquiryRequestPromise;
+    const inquiryResponse = await inquiryResponsePromise;
+    expect(inquiryResponse.status()).toBe(200);
+    expect(await inquiryResponse.json()).toMatchObject({ success: true });
+    const inquiryPayload = inquiryRequest.postDataJSON() as Record<string, unknown>;
+    expect(inquiryPayload.additionalRequest).toMatch(/consent provided.*WhatsApp/i);
+    const savedDialog = page.getByRole('dialog', { name: 'Enquiry saved' });
+    await expect(savedDialog.getByRole('status').getByText('Enquiry saved')).toBeVisible();
+    expect(context.pages()).toHaveLength(1);
+
+    const lead = await findOwnedLead(identity);
+    expect(lead).not.toBeNull();
+    if (!lead) throw new Error('The WhatsApp CTA did not persist its contact lead.');
+    expect(lead.source_url).toContain(trekPath);
+    expect(lead.product_id).toBe('dayara-bugyal-trek');
+    expect(lead.vertical).toBe('trek');
+    expect(lead.first_utm_source).toBe('e2e');
+    expect(lead.conversion_session_id).toBe(sessionId);
+
+    const whatsappLink = savedDialog.getByRole('link', { name: 'Continue to WhatsApp' });
+    const whatsappUrl = await whatsappLink.getAttribute('href');
+    expect(whatsappUrl).toContain('wa.me');
+    if (!whatsappUrl) throw new Error('The saved lead is missing its WhatsApp URL.');
+    await context.route(`${new URL(whatsappUrl).origin}/**`, (route) => route.abort());
+    const popupPromise = context.waitForEvent('page');
+    await whatsappLink.click();
+    const popup = await popupPromise;
+    await popup.close();
+
+    await expect.poll(async () => {
+      const events = await readOwnedEvents(lead.id, sessionId ?? '');
+      return events.some((event) =>
+        event.event_type === 'whatsapp_handoff' &&
+        event.lead_reference === lead.lead_reference &&
+        event.conversion_session_id === sessionId);
+    }).toBe(true);
+    expect((await findOwnedLead(identity))?.id).toBe(lead.id);
+  } finally {
+    try {
+      if (!page.isClosed()) {
+        await page.goto('about:blank', { waitUntil: 'domcontentloaded', timeout: 10_000 });
+      }
+    } finally {
+      try {
+        await cleanupOwnedLead(identity, sessionId);
+      } finally {
+        await cleanupOwnedSpamEvents(testUserAgent);
+      }
+    }
+  }
+});
