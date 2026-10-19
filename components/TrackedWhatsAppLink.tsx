@@ -347,52 +347,35 @@ export default function TrackedWhatsAppLink({
       </a>
       {captureOpen && (
         <div
+          className="wa-capture-overlay"
           onClick={(event) => {
             if (event.target === event.currentTarget) closeCapture();
-          }}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 10000,
-            display: 'grid',
-            placeItems: 'center',
-            padding: '1rem',
-            background: 'rgba(15, 23, 42, 0.58)',
           }}
         >
           <section
             id="whatsapp-lead-capture"
+            className="wa-capture-dialog"
             role="dialog"
             aria-modal="true"
             aria-labelledby="whatsapp-capture-title"
-            style={{
-              position: 'relative',
-              width: 'min(100%, 28rem)',
-              maxHeight: '90vh',
-              overflowY: 'auto',
-              padding: '1.5rem',
-              borderRadius: 'var(--radius-md, 12px)',
-              background: 'var(--color-bg, #fff)',
-              color: 'var(--color-text, #111827)',
-              boxShadow: '0 12px 40px rgba(0, 0, 0, 0.24)',
-            }}
           >
             <button
               type="button"
+              className="wa-capture-close"
               aria-label="Close WhatsApp enquiry form"
               onClick={closeCapture}
               disabled={captureSubmitting}
-              style={{ position: 'absolute', top: '0.75rem', right: '0.75rem' }}
             >
               Close
             </button>
             {captureSaved ? (
-              <div role="status">
-                <h2 id="whatsapp-capture-title">Enquiry saved</h2>
-                <p>Your details are saved. Continue to WhatsApp to send your message.</p>
-                {savedLeadReference && <p>Reference: {savedLeadReference}</p>}
+              <div className="wa-capture-success" role="status">
+                <h2 className="wa-capture-title" id="whatsapp-capture-title">Enquiry saved</h2>
+                <p className="wa-capture-description">Your details are saved. Continue to WhatsApp to send your message.</p>
+                {savedLeadReference && <p className="wa-capture-reference">Reference: {savedLeadReference}</p>}
                 <a
                   href={canonicalHref}
+                  className="wa-capture-submit"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => {
@@ -404,72 +387,284 @@ export default function TrackedWhatsAppLink({
                 </a>
               </div>
             ) : (
-              <form onSubmit={submitCapture}>
-                <h2 id="whatsapp-capture-title">Before you continue to WhatsApp</h2>
-                <p>Share your contact details so our team can follow up about this enquiry.</p>
-                <label htmlFor="whatsapp-capture-name">Name *</label>
-                <input
-                  id="whatsapp-capture-name"
-                  autoComplete="name"
-                  required
-                  minLength={2}
-                  value={captureName}
-                  onChange={(event) => setCaptureName(event.target.value)}
-                />
-                <label htmlFor="whatsapp-capture-phone">WhatsApp / phone *</label>
-                <input
-                  id="whatsapp-capture-phone"
-                  type="tel"
-                  autoComplete="tel"
-                  required
-                  value={capturePhone}
-                  onChange={(event) => setCapturePhone(event.target.value)}
-                />
-                <label htmlFor="whatsapp-capture-email">Email (optional)</label>
-                <input
-                  id="whatsapp-capture-email"
-                  type="email"
-                  autoComplete="email"
-                  value={captureEmail}
-                  onChange={(event) => setCaptureEmail(event.target.value)}
-                />
-                <label htmlFor="whatsapp-capture-timing">Preferred dates or timing (optional)</label>
-                <input
-                  id="whatsapp-capture-timing"
-                  maxLength={100}
-                  value={captureTiming}
-                  onChange={(event) => setCaptureTiming(event.target.value)}
-                />
-                <label htmlFor="whatsapp-capture-group-size">Group size (optional)</label>
-                <input
-                  id="whatsapp-capture-group-size"
-                  maxLength={20}
-                  value={captureGroupSize}
-                  onChange={(event) => setCaptureGroupSize(event.target.value)}
-                />
-                <label htmlFor="whatsapp-capture-message">Anything else we should know? (optional)</label>
-                <textarea
-                  id="whatsapp-capture-message"
-                  value={captureMessage}
-                  onChange={(event) => setCaptureMessage(event.target.value)}
-                  maxLength={3500}
-                  rows={3}
-                />
-                <label>
+              <form className="wa-capture-form" onSubmit={submitCapture}>
+                <h2 className="wa-capture-title" id="whatsapp-capture-title">Before you continue to WhatsApp</h2>
+                <p className="wa-capture-description">Share your contact details so our team can follow up about this enquiry.</p>
+                <div className="wa-capture-field">
+                  <label htmlFor="whatsapp-capture-name">Name *</label>
+                  <input
+                    id="whatsapp-capture-name"
+                    autoComplete="name"
+                    placeholder="Your name"
+                    required
+                    minLength={2}
+                    value={captureName}
+                    onChange={(event) => setCaptureName(event.target.value)}
+                  />
+                </div>
+                <div className="wa-capture-field">
+                  <label htmlFor="whatsapp-capture-phone">WhatsApp / phone *</label>
+                  <input
+                    id="whatsapp-capture-phone"
+                    type="tel"
+                    autoComplete="tel"
+                    placeholder="Your WhatsApp number"
+                    required
+                    value={capturePhone}
+                    onChange={(event) => setCapturePhone(event.target.value)}
+                  />
+                </div>
+                <div className="wa-capture-field">
+                  <label htmlFor="whatsapp-capture-email">Email (optional)</label>
+                  <input
+                    id="whatsapp-capture-email"
+                    type="email"
+                    autoComplete="email"
+                    placeholder="you@example.com"
+                    value={captureEmail}
+                    onChange={(event) => setCaptureEmail(event.target.value)}
+                  />
+                </div>
+                <div className="wa-capture-row">
+                  <div className="wa-capture-field">
+                    <label htmlFor="whatsapp-capture-timing">Preferred dates or timing (optional)</label>
+                    <input
+                      id="whatsapp-capture-timing"
+                      maxLength={100}
+                      placeholder="e.g. June or October"
+                      value={captureTiming}
+                      onChange={(event) => setCaptureTiming(event.target.value)}
+                    />
+                  </div>
+                  <div className="wa-capture-field">
+                    <label htmlFor="whatsapp-capture-group-size">Group size (optional)</label>
+                    <input
+                      id="whatsapp-capture-group-size"
+                      maxLength={20}
+                      placeholder="e.g. 2"
+                      value={captureGroupSize}
+                      onChange={(event) => setCaptureGroupSize(event.target.value)}
+                    />
+                  </div>
+                </div>
+                <div className="wa-capture-field">
+                  <label htmlFor="whatsapp-capture-message">Anything else we should know? (optional)</label>
+                  <textarea
+                    id="whatsapp-capture-message"
+                    value={captureMessage}
+                    onChange={(event) => setCaptureMessage(event.target.value)}
+                    maxLength={3500}
+                    rows={3}
+                  />
+                </div>
+                <label className="wa-capture-consent">
                   <input
                     type="checkbox"
                     checked={captureConsent}
                     onChange={(event) => setCaptureConsent(event.target.checked)}
                   />
-                  I agree that Retreats and Treks may use these details to respond to this enquiry and contact me on WhatsApp.
+                  <span>I agree that Retreats and Treks may use these details to respond to this enquiry and contact me on WhatsApp.</span>
                 </label>
-                {captureError && <p role="alert">{captureError}</p>}
-                <button type="submit" disabled={captureSubmitting}>
+                {captureError && <p className="wa-capture-error" role="alert">{captureError}</p>}
+                <button className="wa-capture-submit" type="submit" disabled={captureSubmitting}>
                   {captureSubmitting ? 'Saving...' : 'Save and continue'}
                 </button>
               </form>
             )}
           </section>
+          <style>{`
+            .wa-capture-overlay {
+              position: fixed;
+              inset: 0;
+              z-index: 10000;
+              display: grid;
+              place-items: center;
+              padding: 1rem;
+              background: rgba(15, 23, 42, 0.58);
+            }
+
+            .wa-capture-dialog {
+              position: relative;
+              width: min(100%, 35rem);
+              max-height: calc(100dvh - 2rem);
+              overflow-y: auto;
+              padding: 2rem;
+              border: 1px solid #e2e8f0;
+              border-radius: 12px;
+              background: #fff;
+              color: #111827;
+              box-shadow: 0 12px 40px rgba(0, 0, 0, 0.24);
+            }
+
+            .wa-capture-close {
+              position: absolute;
+              top: 0.9rem;
+              right: 1rem;
+              padding: 0.3rem 0;
+              border: 0;
+              background: transparent;
+              color: #4b5563;
+              font: inherit;
+              cursor: pointer;
+            }
+
+            .wa-capture-title {
+              margin: 0 4rem 0.5rem 0;
+              color: #111827;
+              font-size: 1.4rem;
+              font-weight: 600;
+              line-height: 1.3;
+            }
+
+            .wa-capture-description {
+              margin: 0 0 1.4rem;
+              color: #5b6472;
+              font-size: 0.95rem;
+              line-height: 1.5;
+            }
+
+            .wa-capture-form {
+              display: grid;
+              gap: 1rem;
+              margin: 0;
+            }
+
+            .wa-capture-field {
+              display: grid;
+              min-width: 0;
+              gap: 0.4rem;
+            }
+
+            .wa-capture-field label {
+              color: #172033;
+              font-size: 0.82rem;
+              font-weight: 500;
+              line-height: 1.35;
+            }
+
+            .wa-capture-field input,
+            .wa-capture-field textarea {
+              display: block;
+              width: 100%;
+              min-width: 0;
+              box-sizing: border-box;
+              margin: 0;
+              padding: 0.7rem 0.8rem;
+              border: 1px solid #d7dee8;
+              border-radius: 6px;
+              outline: none;
+              background: #fff;
+              color: #172033;
+              font: inherit;
+              font-size: 0.9rem;
+              line-height: 1.4;
+              box-shadow: none;
+            }
+
+            .wa-capture-field input {
+              min-height: 2.65rem;
+            }
+
+            .wa-capture-field textarea {
+              min-height: 5.5rem;
+              resize: vertical;
+            }
+
+            .wa-capture-field input::placeholder {
+              color: #8993a3;
+              opacity: 1;
+            }
+
+            .wa-capture-field input:focus,
+            .wa-capture-field textarea:focus {
+              border-color: #0f766e;
+              box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.12);
+            }
+
+            .wa-capture-row {
+              display: grid;
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+              gap: 0.9rem;
+            }
+
+            .wa-capture-consent {
+              display: flex;
+              align-items: flex-start;
+              gap: 0.6rem;
+              color: #374151;
+              font-size: 0.82rem;
+              line-height: 1.45;
+            }
+
+            .wa-capture-consent input {
+              flex: 0 0 auto;
+              width: 1rem;
+              height: 1rem;
+              margin: 0.12rem 0 0;
+              accent-color: #0f766e;
+            }
+
+            .wa-capture-error {
+              margin: 0;
+              color: #b42318;
+              font-size: 0.85rem;
+              line-height: 1.4;
+            }
+
+            .wa-capture-submit {
+              display: inline-flex;
+              width: 100%;
+              min-height: 2.8rem;
+              align-items: center;
+              justify-content: center;
+              box-sizing: border-box;
+              padding: 0.7rem 1rem;
+              border: 1px solid #0f766e;
+              border-radius: 6px;
+              background: #0f766e;
+              color: #fff;
+              font: inherit;
+              font-size: 0.92rem;
+              font-weight: 600;
+              text-align: center;
+              text-decoration: none;
+              cursor: pointer;
+            }
+
+            .wa-capture-submit:hover:not(:disabled) {
+              border-color: #115e59;
+              background: #115e59;
+            }
+
+            .wa-capture-submit:disabled {
+              cursor: wait;
+              opacity: 0.7;
+            }
+
+            .wa-capture-success {
+              padding-top: 1rem;
+            }
+
+            .wa-capture-reference {
+              margin: 0 0 1rem;
+              color: #5b6472;
+              font-size: 0.88rem;
+            }
+
+            @media (max-width: 520px) {
+              .wa-capture-dialog {
+                padding: 1.5rem 1.1rem;
+              }
+
+              .wa-capture-title {
+                font-size: 1.2rem;
+              }
+
+              .wa-capture-row {
+                grid-template-columns: 1fr;
+              }
+            }
+          `}</style>
         </div>
       )}
     </>
