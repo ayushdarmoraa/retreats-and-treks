@@ -2,6 +2,7 @@
 
 import type { ReactNode, CSSProperties } from 'react';
 import { usePathname } from 'next/navigation';
+import { createPortal } from 'react-dom';
 import { useRef, useState } from 'react';
 import { track } from '@/utils/telemetry';
 import { buildAttributionQuery, captureAttribution } from '@/utils/attribution';
@@ -345,7 +346,7 @@ export default function TrackedWhatsAppLink({
       >
         {children}
       </a>
-      {captureOpen && (
+      {captureOpen && typeof document !== 'undefined' && createPortal(
         <div
           className="wa-capture-overlay"
           onClick={(event) => {
@@ -475,7 +476,7 @@ export default function TrackedWhatsAppLink({
           <style>{`
             .wa-capture-overlay {
               position: fixed;
-              inset: 0;
+              inset: 76px 0 0;
               z-index: 10000;
               display: grid;
               place-items: center;
@@ -486,7 +487,7 @@ export default function TrackedWhatsAppLink({
             .wa-capture-dialog {
               position: relative;
               width: min(100%, 35rem);
-              max-height: calc(100dvh - 2rem);
+              max-height: calc(100dvh - 76px - 2rem);
               overflow-y: auto;
               padding: 2rem;
               border: 1px solid #e2e8f0;
@@ -651,6 +652,16 @@ export default function TrackedWhatsAppLink({
               font-size: 0.88rem;
             }
 
+            @media (max-width: 768px) {
+              .wa-capture-overlay {
+                inset-block-start: 68px;
+              }
+
+              .wa-capture-dialog {
+                max-height: calc(100dvh - 68px - 2rem);
+              }
+            }
+
             @media (max-width: 520px) {
               .wa-capture-dialog {
                 padding: 1.5rem 1.1rem;
@@ -665,7 +676,8 @@ export default function TrackedWhatsAppLink({
               }
             }
           `}</style>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   );
