@@ -9,7 +9,6 @@ import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
-import AutoArticleSchema from '@/components/AutoArticleSchema';
 import PrimaryCTA from '@/components/PrimaryCTA';
 import ReviewCard from '@/components/reviews/ReviewCard';
 import { getReviewsForSlug } from '@/content/reviews';
@@ -120,11 +119,6 @@ export default async function YogaRetreatRishikeshPage({
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
-      <AutoArticleSchema
-        title="Yoga Retreats in Rishikesh — 3, 5, 7 & 10 Days"
-        description="Compare four Rishikesh Yoga retreat formats with exact prices, recurring dates, shared accommodation, meals, guided practice, and WhatsApp enquiry."
-        path={PATH}
-      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
@@ -198,7 +192,7 @@ export default async function YogaRetreatRishikeshPage({
       {/* ── HERO ── */}
       <section className="med-shell" style={{ position: 'relative', overflow: 'hidden', minHeight: '82vh', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid rgba(15,118,110,0.12)' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img className="med-hero-bg" src="/Images/location/rishikesh.webp" alt="Yoga retreat, Rishikesh" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 42%', display: 'block' }} />
+          <img className="med-hero-bg" src="/Images/location/rishikesh.webp" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 42%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(120deg, rgba(4,12,10,0.82) 0%, rgba(4,12,10,0.5) 45%, rgba(4,12,10,0.78) 100%)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '58rem', width: '100%', padding: '5rem 1.5rem 4.5rem', textAlign: 'center' }}>
@@ -352,7 +346,7 @@ export default async function YogaRetreatRishikeshPage({
 
           <div className="med-card" style={{ padding: '2rem' }}>
             <p className="med-body">
-              The existing Yoga &amp; Movement service describes asana, pranayama, meditation, and restorative practice. A current Rishikesh departure schedule is not published, so session times, styles, meals, stay arrangements, inclusions, and exclusions must be confirmed for the selected programme.
+              The existing Yoga &amp; Movement service describes asana, pranayama, meditation, and restorative practice. Published Rishikesh departure dates are shown in the calendar above; the exact daily timetable, session styles, and other departure-specific programme details must be confirmed for the selected programme.
             </p>
             <p className="med-body" style={{ marginBottom: 0 }}>
               No published departure currently supports a booking CTA. Use the enquiry form to request verified programme details; a published date, price, and availability will appear here only when attached to a real departure.
@@ -500,7 +494,7 @@ export default async function YogaRetreatRishikeshPage({
       {/* ── CLOSING CTA ── */}
       <section className="med-shell" style={{ position: 'relative', overflow: 'hidden', minHeight: '48vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/location/rishikesh.webp" alt="Rishikesh yoga retreat setting" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+          <img src="/Images/location/rishikesh.webp" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,31,28,0.86)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '42rem', padding: '4rem 1.5rem' }}>
