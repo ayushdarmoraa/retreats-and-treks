@@ -63,7 +63,7 @@ const FAQ_ITEMS = [
       'The Rishikesh programme includes Hatha Yoga, mindful movement, pranayama, meditation, relaxation, Yoga Nidra, yogic lifestyle practices, and reflective/self-awareness practices.',
   },
   {
-    question: 'How does altitude affect yoga practice?',
+    question: 'Which locations have recurring Yoga retreats?',
     answer:
       'Rishikesh is the recurring published location for these four Yoga products. Sankri, Chakrata, and Zanskar are demand-led locations; ask about the specific conditions and programme before choosing one.',
   },
