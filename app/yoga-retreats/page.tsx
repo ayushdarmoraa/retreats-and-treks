@@ -75,7 +75,7 @@ const FAQ_ITEMS = [
   {
     question: 'Can I combine yoga with trekking?',
     answer:
-      'The four recurring products are in Rishikesh. Sankri, Chakrata, and Zanskar are custom or demand-led Yoga enquiries rather than recurring fixed departures.',
+      'A scheduled Yoga-and-trekking combination is not currently offered. You can ask the team on WhatsApp whether a custom option may be possible for your dates and location; availability and details would need confirmation.',
   },
   {
     question: 'How long should a yoga retreat be?',

@@ -111,15 +111,11 @@ Whether you are returning to your breath after years away or deepening a practic
   faqItems: [
     {
       question: 'Do I need previous yoga experience for this retreat?',
-      answer: 'The Yoga service description is intended for different experience levels. Confirm the teaching approach, adaptations, and suitability for the specific published departure.',
+      answer: 'The Yoga service description is intended for different experience levels, but the teaching approach, adaptations, and suitability for the specific published departure must be confirmed before booking.',
     },
     {
       question: 'Is this retreat physically intense?',
       answer: 'Intensity and adaptations depend on the confirmed programme and facilitator. Share relevant needs and experience with the team before deciding whether a departure is suitable.',
-    },
-    {
-      question: 'Do I need previous yoga experience?',
-      answer: 'The service description welcomes different levels, but a specific departure’s teaching approach must be confirmed before booking.',
     },
     {
       question: 'What does a yoga retreat actually involve?',
