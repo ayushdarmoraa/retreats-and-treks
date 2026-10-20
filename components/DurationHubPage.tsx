@@ -15,7 +15,6 @@ import TrackedPage from '@/components/TrackedPage';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import YogaDepartureCalendar from '@/components/YogaDepartureCalendar';
 import YogaCommercialSections from '@/components/YogaCommercialSections';
-<<<<<<< HEAD
 import { getYogaDurationPrefill } from '@/config/yogaDurationPrefill';
 import { images } from '@/lib/images';
 
