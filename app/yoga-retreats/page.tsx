@@ -546,7 +546,7 @@ export default function YogaRetreatsPage() {
                 <p className="med-body">Beginner suitability and session adaptations are not universal promises. Share your experience and ask the team to confirm the approach for a specific programme.</p>
               </div>
               <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', aspectRatio: '16/9' }}>
-                <img src="/Images/experience-hubs/yoga-group.png" alt="Group yoga practice on a platform in a Himalayan setting" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src="/Images/experience-hubs/yoga-group.webp" alt="Group yoga practice on a platform in a Himalayan setting" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
             </div>
           </div>
