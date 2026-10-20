@@ -121,6 +121,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
     { name: 'Retreats', url: buildCanonicalUrl('/retreats') },
+    ...(isArtService ? [{ name: 'Art Retreats', url: buildCanonicalUrl('/retreats/art') }] : []),
     { name: retreatService.title, url: canonicalUrl },
   ]);
 
@@ -191,7 +192,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
             items={[
               { name: 'Home', href: '/' },
               { name: 'Retreats', href: '/retreats' },
-              ...(retreat === 'art-and-creative' ? [{ name: 'Art Retreats', href: '/retreats/art' }] : []),
+              ...(isArtService ? [{ name: 'Art Retreats', href: '/retreats/art' }] : []),
               { name: retreatService.title },
             ]}
           />

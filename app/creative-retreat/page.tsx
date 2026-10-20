@@ -253,7 +253,7 @@ export default function CreativeHealingRetreatPage() {
 
     {/* CTA Buttons */}
     <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-      <a href="#retreat-options" className="med-cta-btn">Explore Retreat Options</a>
+      <a href="#service-options" className="med-cta-btn">Explore Retreat Options</a>
       <a href="#deep-dive" className="med-cta-outline" style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.45)' }}>How It Works</a>
     </div>
   </div>
@@ -300,7 +300,7 @@ export default function CreativeHealingRetreatPage() {
 
       {/* ── DEEP CONTENT ── */}
 {deepContent.length > 0 && (
-  <section id="retreat-options" className="med-shell" style={{ background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+  <section id="deep-dive" className="med-shell" style={{ background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
     <div className="med-inner">
       {deepContent.map((section, idx) => {
         // Extract heading text and split for green last word
@@ -441,7 +441,7 @@ export default function CreativeHealingRetreatPage() {
       </section>
 
       {/* ── RELATED RETREAT JOURNEYS & EVENTS ── */}
-      <section id="retreat-options" className="med-shell" style={{ background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
+      <section id="service-options" className="med-shell" style={{ background: '#f7f9f7', padding: '5rem 0', borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
         <div className="med-outer">
           <div className="med-grid-2" style={{ alignItems: 'start' }}>
             {retreatServices.length > 0 && (
@@ -583,7 +583,7 @@ export default function CreativeHealingRetreatPage() {
           </div>
           <h2 className="med-h2" style={{ textAlign: 'center' }}>Join the Creative <span>Healing Retreat</span></h2>
           <p className="med-body" style={{ textAlign: 'center' }}>
-            Seven days of art, yoga, and nature in the Himalayas. All materials provided. No experience needed.
+            5–7 days of art, yoga, and nature in the Himalayas. All materials provided. No experience needed.
           </p>
           <PrimaryCTA
             label="Join the Creative Healing Retreat"

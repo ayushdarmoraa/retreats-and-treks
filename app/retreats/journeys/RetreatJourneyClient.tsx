@@ -170,7 +170,7 @@ export default function RetreatJourneyClient({
         <MicroCommitment
           itemKey={retreat.title.toLowerCase().replace(/\s+/g, '-')}
           title={`Save: ${retreat.title}`}
-          sourcePath={`/retreats/journeys/${retreat.title.toLowerCase().replace(/\s+/g, '-')}`}
+          sourcePath={`/retreats/journeys/${retreatSlug}`}
         />
       </div>
 

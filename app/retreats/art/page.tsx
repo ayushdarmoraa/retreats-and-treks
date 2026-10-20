@@ -61,9 +61,9 @@ const ART_EVENTS = {
 } as const;
 
 const RETREATS = [
-  { ...artAndCreativeRetreat, bestFor: artAndCreativeRetreat.idealIf?.[0], locationName: getLocationById(artAndCreativeRetreat.whereItWorksBest.primary)?.name, duration: ART_EVENTS['art-and-creative'] ? ART_EVENTS['art-and-creative'].durationDays + ' Days' : '7 Days', format: 'Immersive', image: '/Images/services/artcreative.webp', href: '/retreats/journeys/art-and-creative', price: ART_EVENTS['art-and-creative'] ? '₹' + ART_EVENTS['art-and-creative'].price.toLocaleString('en-IN') : 'Check upcoming dates', outcome: 'Return with authentic creative work — and the memory that creativity is your natural state.', nextBatch: ART_EVENTS['art-and-creative']?.dateRange ?? 'Check upcoming dates', seats: ART_EVENTS['art-and-creative']?.seatsLeft ?? null },
-  { ...trekAndPaintRetreat, bestFor: trekAndPaintRetreat.idealIf?.[0], locationName: getLocationById(trekAndPaintRetreat.whereItWorksBest.primary)?.name, duration: ART_EVENTS['trek-and-paint'] ? ART_EVENTS['trek-and-paint'].durationDays + ' Days' : 'Check dates', format: 'Active + Creative', image: '/Images/blog/painting-in-the-himalayas.webp', href: '/retreats/journeys/trek-and-paint', price: ART_EVENTS['trek-and-paint'] ? '₹' + ART_EVENTS['trek-and-paint'].price.toLocaleString('en-IN') : 'Check upcoming dates', outcome: 'Walk into Himalayan landscapes by day, paint what you see by evening.', nextBatch: ART_EVENTS['trek-and-paint']?.dateRange ?? 'Check upcoming dates', seats: ART_EVENTS['trek-and-paint']?.seatsLeft ?? null },
-  { ...weekendArtRetreat, bestFor: weekendArtRetreat.idealIf?.[0], locationName: getLocationById(weekendArtRetreat.whereItWorksBest.primary)?.name, duration: ART_EVENTS['weekend-art-retreat'] ? ART_EVENTS['weekend-art-retreat'].durationDays + ' Days' : 'Check dates', format: 'Short Escape', image: '/Images/blog/can-a-retreat-unblock-creativity.webp', href: '/retreats/journeys/weekend-art-retreat', price: ART_EVENTS['weekend-art-retreat'] ? '₹' + ART_EVENTS['weekend-art-retreat'].price.toLocaleString('en-IN') : 'Check upcoming dates', outcome: 'Two days is enough to remember why you create. Start here.', nextBatch: ART_EVENTS['weekend-art-retreat']?.dateRange ?? 'Check upcoming dates', seats: ART_EVENTS['weekend-art-retreat']?.seatsLeft ?? null },
+  { ...artAndCreativeRetreat, bestFor: artAndCreativeRetreat.idealIf?.[0], locationName: getLocationById(artAndCreativeRetreat.whereItWorksBest.primary)?.name, duration: ART_EVENTS['art-and-creative'] ? ART_EVENTS['art-and-creative'].durationDays + ' Days' : '5–7 Days', format: 'Immersive', image: '/Images/services/artcreative.webp', href: '/retreats/journeys/art-and-creative', price: ART_EVENTS['art-and-creative'] ? '₹' + ART_EVENTS['art-and-creative'].price.toLocaleString('en-IN') : 'Pricing on enquiry', outcome: 'Return with authentic creative work — and the memory that creativity is your natural state.', nextBatch: ART_EVENTS['art-and-creative']?.dateRange ?? 'Dates on enquiry', seats: ART_EVENTS['art-and-creative']?.seatsLeft ?? null },
+  { ...trekAndPaintRetreat, bestFor: trekAndPaintRetreat.idealIf?.[0], locationName: getLocationById(trekAndPaintRetreat.whereItWorksBest.primary)?.name, duration: ART_EVENTS['trek-and-paint'] ? ART_EVENTS['trek-and-paint'].durationDays + ' Days' : '5–7 Days', format: 'Active + Creative', image: '/Images/blog/painting-in-the-himalayas.webp', href: '/retreats/journeys/trek-and-paint', price: ART_EVENTS['trek-and-paint'] ? '₹' + ART_EVENTS['trek-and-paint'].price.toLocaleString('en-IN') : 'Pricing on enquiry', outcome: 'Walk into Himalayan landscapes by day, paint what you see by evening.', nextBatch: ART_EVENTS['trek-and-paint']?.dateRange ?? 'Dates on enquiry', seats: ART_EVENTS['trek-and-paint']?.seatsLeft ?? null },
+  { ...weekendArtRetreat, bestFor: weekendArtRetreat.idealIf?.[0], locationName: getLocationById(weekendArtRetreat.whereItWorksBest.primary)?.name, duration: ART_EVENTS['weekend-art-retreat'] ? ART_EVENTS['weekend-art-retreat'].durationDays + ' Days' : '2–3 Days', format: 'Short Escape', image: '/Images/blog/can-a-retreat-unblock-creativity.webp', href: '/retreats/journeys/weekend-art-retreat', price: ART_EVENTS['weekend-art-retreat'] ? '₹' + ART_EVENTS['weekend-art-retreat'].price.toLocaleString('en-IN') : 'Pricing on enquiry', outcome: 'Two days is enough to remember why you create. Start here.', nextBatch: ART_EVENTS['weekend-art-retreat']?.dateRange ?? 'Dates on enquiry', seats: ART_EVENTS['weekend-art-retreat']?.seatsLeft ?? null },
 ];
 
 const LOCATIONS = [
@@ -357,7 +357,7 @@ export default function ArtRetreatsPage() {
             ))}
           </div>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href="#retreats" className="art-cta-btn">Check Upcoming Art Retreats</a>
+            <a href="#retreats" className="art-cta-btn">Explore Art Retreat Options</a>
             <CTAExpandToggle
               label="Talk to Us on WhatsApp"
               vertical="retreat"
@@ -777,7 +777,6 @@ export default function ArtRetreatsPage() {
     </TrackedPage>
   );
 }
-
 
 
 
