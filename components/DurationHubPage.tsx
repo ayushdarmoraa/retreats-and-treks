@@ -14,7 +14,7 @@ import TrackedPage from '@/components/TrackedPage';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import YogaDepartureCalendar from '@/components/YogaDepartureCalendar';
 import YogaCommercialSections from '@/components/YogaCommercialSections';
-import type { YogaRetreatProductId } from '@/config/retreatProgramEvents';
+import { getYogaRetreatProduct, type YogaRetreatProductId } from '@/config/retreatProgramEvents';
 
 interface DurationHubPageProps {
   page: DurationPage;
@@ -33,6 +33,13 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
     '7-day-yoga-retreat': 'yoga-rishikesh-7-day',
     '10-day-yoga-retreat': 'yoga-rishikesh-10-day',
   };
+  const yogaDurationProductId = yogaDurationProductIds[page.slug];
+  const yogaDurationProduct = yogaDurationProductId
+    ? getYogaRetreatProduct(yogaDurationProductId)
+    : undefined;
+  const yogaDuration = yogaDurationProduct
+    ? `${yogaDurationProduct.durationDays} days`
+    : undefined;
   const faqItems = (page.faqItems ?? []).map((item) => ({ question: item.question, answer: item.answer }));
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
@@ -187,6 +194,8 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
             category={`duration-${page.slug}`}
             sourcePath={`/${page.slug}`}
             location={isYogaDuration ? 'Rishikesh' : undefined}
+            duration={yogaDuration}
+            productId={yogaDurationProductId}
           />
         </div>
       </section>
@@ -341,6 +350,7 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
             category={`duration-${page.slug}`}
             sourcePath={`/${page.slug}`}
             duration={page.slug === '5-day-yoga-retreat' ? '5 days' : page.slug === '7-day-yoga-retreat' ? '7 days' : page.slug === '10-day-yoga-retreat' ? '10 days' : undefined}
+            productId={yogaDurationProductId}
           />
         </div>
       </section>
