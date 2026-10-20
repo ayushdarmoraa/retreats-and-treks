@@ -349,7 +349,7 @@ export default async function YogaRetreatRishikeshPage({
               The existing Yoga &amp; Movement service describes asana, pranayama, meditation, and restorative practice. Published Rishikesh departure dates are shown in the calendar above; the exact daily timetable, session styles, and other departure-specific programme details must be confirmed for the selected programme.
             </p>
             <p className="med-body" style={{ marginBottom: 0 }}>
-              No published departure currently supports a booking CTA. Use the enquiry form to request verified programme details; a published date, price, and availability will appear here only when attached to a real departure.
+              The departures shown above are open for enquiry rather than direct booking. Use the form or WhatsApp to confirm the date, price, and availability for your selected departure.
             </p>
           </div>
         </div>

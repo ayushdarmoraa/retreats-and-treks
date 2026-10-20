@@ -14,7 +14,7 @@ import TrackedPage from '@/components/TrackedPage';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import YogaDepartureCalendar from '@/components/YogaDepartureCalendar';
 import YogaCommercialSections from '@/components/YogaCommercialSections';
-import { getYogaRetreatProduct, type YogaRetreatProductId } from '@/config/retreatProgramEvents';
+import { getYogaDurationPrefill } from '@/config/yogaDurationPrefill';
 
 interface DurationHubPageProps {
   page: DurationPage;
@@ -28,18 +28,7 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
     chakrata: '/retreats/chakrata/yoga-retreat',
     zanskar: '/yoga-retreat-zanskar',
   };
-  const yogaDurationProductIds: Record<string, YogaRetreatProductId> = {
-    '5-day-yoga-retreat': 'yoga-rishikesh-5-day',
-    '7-day-yoga-retreat': 'yoga-rishikesh-7-day',
-    '10-day-yoga-retreat': 'yoga-rishikesh-10-day',
-  };
-  const yogaDurationProductId = yogaDurationProductIds[page.slug];
-  const yogaDurationProduct = yogaDurationProductId
-    ? getYogaRetreatProduct(yogaDurationProductId)
-    : undefined;
-  const yogaDuration = yogaDurationProduct
-    ? `${yogaDurationProduct.durationDays} days`
-    : undefined;
+  const { productId: yogaDurationProductId, duration: yogaDuration } = getYogaDurationPrefill(page.slug);
   const faqItems = (page.faqItems ?? []).map((item) => ({ question: item.question, answer: item.answer }));
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
@@ -175,10 +164,10 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
         </div>
       </section>
 
-      {isYogaDuration && yogaDurationProductIds[page.slug] && (
+      {isYogaDuration && yogaDurationProductId && (
         <YogaCommercialSections
           sourcePath={`/${page.slug}`}
-          productId={yogaDurationProductIds[page.slug]}
+          productId={yogaDurationProductId}
         />
       )}
 
@@ -251,11 +240,11 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
         </div>
       </section>
 
-      {isYogaDuration && yogaDurationProductIds[page.slug] && (
+      {yogaDurationProductId && (
         <YogaDepartureCalendar
           sourcePath={`/${page.slug}`}
           showEnquiry={false}
-          productId={yogaDurationProductIds[page.slug]}
+          productId={yogaDurationProductId}
         />
       )}
 
@@ -349,7 +338,7 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
             vertical="retreat"
             category={`duration-${page.slug}`}
             sourcePath={`/${page.slug}`}
-            duration={page.slug === '5-day-yoga-retreat' ? '5 days' : page.slug === '7-day-yoga-retreat' ? '7 days' : page.slug === '10-day-yoga-retreat' ? '10 days' : undefined}
+            duration={yogaDuration}
             productId={yogaDurationProductId}
           />
         </div>
