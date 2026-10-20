@@ -19,8 +19,18 @@ test('Yoga duration routes prefill the matching registry product and duration', 
 });
 
 test('non-Yoga duration routes receive no Yoga product context', () => {
-  assert.deepEqual(getYogaDurationPrefill('7-day-meditation-retreat'), {
-    productId: undefined,
-    duration: undefined,
-  });
+  for (const slug of [
+    '3-day-meditation-retreat',
+    '7-day-meditation-retreat',
+    '10-day-silent-retreat',
+    'weekend-retreat-himalayas',
+    '3-day-silent-retreat',
+    '7-day-healing-retreat',
+  ]) {
+    assert.deepEqual(
+      getYogaDurationPrefill(slug),
+      { productId: undefined, duration: undefined },
+      `${slug} must not inherit Yoga product context`,
+    );
+  }
 });

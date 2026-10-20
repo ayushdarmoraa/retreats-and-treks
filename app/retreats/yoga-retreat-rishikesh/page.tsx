@@ -9,6 +9,7 @@ import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
+import AutoArticleSchema from '@/components/AutoArticleSchema';
 import PrimaryCTA from '@/components/PrimaryCTA';
 import ReviewCard from '@/components/reviews/ReviewCard';
 import { getReviewsForSlug } from '@/content/reviews';
@@ -119,6 +120,11 @@ export default async function YogaRetreatRishikeshPage({
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
+      <AutoArticleSchema
+        title="Yoga Retreats in Rishikesh — 3, 5, 7 & 10 Days"
+        description="Compare four Rishikesh Yoga retreat formats with exact prices, recurring dates, shared accommodation, meals, guided practice, and WhatsApp enquiry."
+        path={PATH}
+      />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
