@@ -10,6 +10,8 @@
  *   - yoga and pranayama retreat
  */
 
+import { images } from '@/lib/images';
+
 export const yogaAndMovementRetreat = {
   slug: 'yoga-and-movement',
   title: 'Yoga Retreats & Movement',
@@ -27,6 +29,14 @@ export const yogaAndMovementRetreat = {
     { src: '/Images/retreats/yoga/pranayama-closeup-sakshi.webp', alt: 'Sakshi guiding pranayama — breath awareness in a yoga retreat' },
     { src: '/Images/retreats/yoga/yoga-backbend-cave-rishikesh.webp', alt: 'Yoga backbend pose in a natural cave during a retreat in Rishikesh' },
     { src: '/Images/retreats/yoga/brahmari-pranayam-meditation.webp', alt: 'Brahmari pranayama meditation — deep breath practice at a Himalayan retreat' },
+    {
+      src: images.yogaRetreat.outdoorGuidedSession.src,
+      alt: images.yogaRetreat.outdoorGuidedSession.alt,
+    },
+    {
+      src: images.yogaRetreat.hubMeditation.src,
+      alt: images.yogaRetreat.hubMeditation.alt,
+    },
   ],
 
   keyHighlights: ['Yoga Retreats', 'Weekend to 10-day formats', 'Rishikesh primary destination', 'Other locations on request'],

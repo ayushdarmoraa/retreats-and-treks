@@ -327,6 +327,25 @@ export const images = {
       alt: 'Group of friends having chai on a sunlit mountain terrace',
     },
   },
+  // ── Yoga Retreats ──
+  yogaRetreat: {
+    hubMeditation: {
+      src: '/Images/retreats/yoga/yoga-hub-cave-meditation.webp',
+      alt: 'Retreat participants seated together in meditation inside a cave',
+    },
+    rishikeshAssistedPractice: {
+      src: '/Images/retreats/yoga/yoga-rishikesh-assisted-practice.webp',
+      alt: 'A yoga facilitator supports a participant during a seated practice',
+    },
+    durationGroupMeditation: {
+      src: '/Images/retreats/yoga/yoga-duration-group-meditation.webp',
+      alt: 'Retreat participants sitting together in meditation inside a cave',
+    },
+    outdoorGuidedSession: {
+      src: '/Images/retreats/yoga/yoga-movement-outdoor-session.webp',
+      alt: 'Retreat participants gathered for an outdoor group session beside a mountain stream',
+    },
+  },
   // ── Chaitra Art Retreats ──
   chaitraArtRetreat: {
     riversideSetup: {

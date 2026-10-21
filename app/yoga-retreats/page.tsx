@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
@@ -545,8 +546,25 @@ export default function YogaRetreatsPage() {
                 <p className="med-body">Location conditions differ. Confirm access, season, altitude considerations, and the practice setting for the selected location and dates.</p>
                 <p className="med-body">Beginner suitability and session adaptations are not universal promises. Share your experience and ask the team to confirm the approach for a specific programme.</p>
               </div>
-              <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', aspectRatio: '16/9' }}>
-                <img src="/Images/experience-hubs/yoga-group.webp" alt="Group yoga practice on a platform in a Himalayan setting" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', aspectRatio: '16/9' }}>
+                  <img src="/Images/experience-hubs/yoga-group.webp" alt="Group yoga practice on a platform in a Himalayan setting" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '0.75rem' }}>
+                  {[images.yogaRetreat.hubMeditation, images.yogaRetreat.rishikeshAssistedPractice].map((image) => (
+                    <div key={image.src} style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', aspectRatio: '4/3' }}>
+                      <Image
+                        src={image.src}
+                        alt={image.alt}
+                        width={800}
+                        height={600}
+                        quality={75}
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
