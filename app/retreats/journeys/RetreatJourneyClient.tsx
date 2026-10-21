@@ -150,7 +150,11 @@ export default function RetreatJourneyClient({
         />
       </div>
 
-      <ArtFixedDepartures mode="single" retreatSlug={retreatSlug} />
+      <ArtFixedDepartures
+        mode="single"
+        retreatSlug={retreatSlug}
+        sourcePath={`/retreats/journeys/${retreatSlug}`}
+      />
 
       {/* 2. ABOUT */}
       <JourneyAbout

@@ -7,6 +7,7 @@ import CTAExpandToggle from '@/components/CTAExpandToggle';
 interface ArtFixedDeparturesProps {
   mode?: 'all' | 'single';
   retreatSlug?: string;
+  sourcePath?: string;
 }
 const ART_RETREAT_SLUGS = [
   'art-and-creative',
@@ -17,6 +18,7 @@ const ART_RETREAT_SLUGS = [
 export default function ArtFixedDepartures({
   mode = 'all',
   retreatSlug,
+  sourcePath = '/retreats/art',
 }: ArtFixedDeparturesProps) {
   const departures = getUpcomingEvents().filter((departure) => {
     const isArtRetreat = ART_RETREAT_SLUGS.includes(departure.serviceSlug);
@@ -292,7 +294,7 @@ export default function ArtFixedDepartures({
                   label="Book This Date →"
                   vertical="retreat"
                   category={departure.serviceSlug}
-                  sourcePath="/retreats/art"
+                  sourcePath={sourcePath}
                   location={departure.locationName !== 'TBA' ? departure.locationName : undefined}
                   duration={`${departure.durationDays} days`}
                   productId={departure.serviceSlug}

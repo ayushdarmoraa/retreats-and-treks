@@ -750,7 +750,7 @@ export default function ArtRetreatsPage() {
         </div>
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '44rem', padding: '4rem 1.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.8vw, 2rem)', fontWeight: 200, color: 'white' }}>Ready to plan your creative retreat?</h2>
-          <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.75, color: 'rgba(255,255,255,0.72)' }}>No fixed dates. No rigid schedules. We design each retreat around you — your time, your medium, your intention. The mountains are always ready.</p>
+          <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.75, color: 'rgba(255,255,255,0.72)' }}>Ask us about current dates. No rigid schedules. We design each retreat around you — your time, your medium, your intention. The mountains are always ready.</p>
           <CTAExpandToggle
             label="Check Art Retreat Dates"
             vertical="retreat"
