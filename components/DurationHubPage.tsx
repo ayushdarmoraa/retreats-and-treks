@@ -4,6 +4,7 @@
  */
 
 import Link from 'next/link';
+import Image from 'next/image';
 import type { DurationPage } from '@/config/durationPages';
 import { getLocationById } from '@/lib/locations';
 import { buildCanonicalUrl } from '@/components/seo/Metadata';
@@ -15,6 +16,7 @@ import TrackedFAQ from '@/components/TrackedFAQ';
 import YogaDepartureCalendar from '@/components/YogaDepartureCalendar';
 import YogaCommercialSections from '@/components/YogaCommercialSections';
 import { getYogaDurationPrefill } from '@/config/yogaDurationPrefill';
+import { images } from '@/lib/images';
 
 interface DurationHubPageProps {
   page: DurationPage;
@@ -169,6 +171,28 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
           sourcePath={`/${page.slug}`}
           productId={yogaDurationProductId}
         />
+      )}
+
+      {isYogaDuration && (
+        <section className="med-shell" style={{ background: '#f7f9f7', padding: '3rem 0' }}>
+          <div className="med-inner">
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '0.75rem' }}>
+              {[images.yogaRetreat.durationGroupMeditation, images.yogaRetreat.rishikeshAssistedPractice].map((image) => (
+                <figure key={image.src} style={{ margin: 0, borderRadius: '18px', overflow: 'hidden', aspectRatio: '4/3' }}>
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    width={800}
+                    height={600}
+                    quality={75}
+                    sizes="(max-width: 768px) 50vw, 29rem"
+                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                  />
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
       )}
 
       {/* ── PRIMARY CTA ── */}
