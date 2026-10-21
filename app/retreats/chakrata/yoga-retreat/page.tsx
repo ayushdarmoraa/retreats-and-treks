@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import ChakrataRetreatPage from '../ChakrataRetreatPage';
 import retreat from '@/content/retreats/chakrata/yoga-retreat';
+import { images } from '@/lib/images';
 
 const PATH = '/retreats/chakrata/yoga-retreat';
 
@@ -28,14 +29,24 @@ export default function Page() {
     <ChakrataRetreatPage
       retreat={{
         ...retreat,
-        heroImage: '/Images/experience-hubs/yoga-hero.webp',
-        heroAlt: 'Custom Yoga retreat enquiry in Chakrata',
+        heroImage: '/Images/location/chakrata.webp',
+        heroAlt: 'Chakrata mountain village and surrounding hills',
         tags: ['Custom/group enquiry', 'No recurring departures', 'Programme confirmed by enquiry'],
         metaTitle: 'Custom Yoga Retreats in Chakrata | Retreats And Treks',
       }}
       path={PATH}
       primaryCtaLabel="Plan My Yoga Retreat"
       showYogaAlternative
+      practiceImages={[
+        {
+          ...images.yogaRetreat.outdoorGuidedSession,
+          caption: 'Illustrative Yoga practice photo only; it does not show a confirmed Chakrata session. Dates and programme details are confirmed by enquiry.',
+        },
+        {
+          ...images.yogaRetreat.rishikeshAssistedPractice,
+          caption: 'Rishikesh practice example for illustration; it does not show a confirmed Chakrata session. Dates and programme details are confirmed by enquiry.',
+        },
+      ]}
       breadcrumbItems={[
         { name: 'Home', href: '/' },
         { name: 'Retreats', href: '/retreats' },

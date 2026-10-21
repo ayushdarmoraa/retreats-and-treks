@@ -9,6 +9,7 @@ import Breadcrumb from '@/components/Breadcrumb';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
 import { resolveConversionContext } from '@/lib/conversion-foundation';
 import { buildWhatsAppUrl } from '@/lib/whatsapp';
+import { images } from '@/lib/images';
 
 const PATH = '/yoga-retreat-zanskar';
 const ZANSKAR_WHATSAPP_MESSAGE = "Hi, I'm interested in a Yoga Retreat in Zanskar. I'd like to know about custom/upcoming options.";
@@ -112,7 +113,7 @@ export default function YogaRetreatZanskarPage() {
 
       <section className="med-shell" style={{ position: 'relative', overflow: 'hidden', minHeight: '78vh', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid rgba(15,118,110,0.12)' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img className="med-hero-bg" src="/Images/location/zanskar.webp" alt="Yoga retreat in Zanskar" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 42%', display: 'block' }} />
+          <img className="med-hero-bg" src="/Images/location/zanskar.webp" alt="Mountain valley landscape in Zanskar" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 42%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(120deg, rgba(4,12,10,0.82) 0%, rgba(4,12,10,0.5) 45%, rgba(4,12,10,0.78) 100%)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '58rem', width: '100%', padding: '5rem 1.5rem 4.5rem', textAlign: 'center' }}>
@@ -192,6 +193,16 @@ export default function YogaRetreatZanskarPage() {
             <p className="med-body" style={{ marginBottom: 0 }}>
               The existing Yoga &amp; Movement service covers asana, pranayama, meditation, and restorative practice. For a Zanskar enquiry, the final session structure and programme details are not published until a date, group, and suitable route are confirmed. The team can discuss whether a custom arrangement is appropriate for your experience level and timing.
             </p>
+          </div>
+          <div className="med-grid-2" style={{ marginTop: '1.5rem' }}>
+            {[images.yogaRetreat.hubMeditation, images.yogaRetreat.outdoorGuidedSession].map((image) => (
+              <figure key={image.src} className="med-card" style={{ margin: 0 }}>
+                <img src={image.src} alt={image.alt} style={{ width: '100%', aspectRatio: '4 / 3', objectFit: 'cover', display: 'block' }} />
+                <figcaption className="med-body" style={{ padding: '1rem 1.2rem', fontSize: '0.85rem', margin: 0 }}>
+                  Illustrative Yoga practice photo only; it does not show a confirmed Zanskar session. Dates and programme details are confirmed by enquiry.
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>

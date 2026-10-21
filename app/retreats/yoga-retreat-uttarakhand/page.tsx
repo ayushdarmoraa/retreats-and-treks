@@ -11,6 +11,7 @@ import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import AutoArticleSchema from '@/components/AutoArticleSchema';
 import CTAExpandToggle from '@/components/CTAExpandToggle';
+import { images } from '@/lib/images';
 
 const PATH = '/retreats/yoga-retreat-uttarakhand';
 
@@ -208,7 +209,7 @@ export default function YogaRetreatUttarakhandPage() {
       {/* ── HERO ── */}
       <section className="med-shell" style={{ position: 'relative', overflow: 'hidden', minHeight: '82vh', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid rgba(15,118,110,0.12)' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img className="med-hero-bg" src="/Images/himalayanretreats/yoga.webp" alt="Yoga retreats in Uttarakhand" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 42%', display: 'block' }} />
+          <img className="med-hero-bg" src="/Images/himalayanretreats/yoga.webp" alt="Group Yoga practice beside a river in a Himalayan setting" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 42%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(120deg, rgba(4,12,10,0.82) 0%, rgba(4,12,10,0.5) 45%, rgba(4,12,10,0.78) 100%)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '58rem', width: '100%', padding: '5rem 1.5rem 4.5rem', textAlign: 'center' }}>
@@ -270,6 +271,31 @@ export default function YogaRetreatUttarakhandPage() {
         </div>
       </section>
 
+      <section className="med-shell" style={{ background: '#f7f9f7', padding: '4.5rem 0', borderTop: '1px solid rgba(15,118,110,0.08)' }}>
+        <div className="med-inner">
+          <div className="med-eyebrow">
+            <span className="med-eyebrow-line" />
+            <span className="med-eyebrow-text">Practice imagery</span>
+          </div>
+          <h2 className="med-h2">A glimpse of <span>Yoga practice</span></h2>
+          <p className="med-body">
+            These photographs illustrate possible practice formats. They do not confirm a
+            session or scheduled retreat in Chakrata, Sankri, or Zanskar; custom-location
+            dates and programme details remain subject to enquiry.
+          </p>
+          <div className="med-grid-2">
+            {[images.yogaRetreat.rishikeshAssistedPractice, images.yogaRetreat.durationGroupMeditation].map((image) => (
+              <figure key={image.src} className="med-card" style={{ margin: 0 }}>
+                <img src={image.src} alt={image.alt} style={{ width: '100%', aspectRatio: '4 / 3', objectFit: 'cover', display: 'block' }} />
+                <figcaption className="med-body" style={{ padding: '1rem 1.2rem', fontSize: '0.85rem', margin: 0 }}>
+                  Illustrative Yoga practice photo; not evidence of a confirmed custom-location session.
+                </figcaption>
+              </figure>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── WHY UTTARAKHAND ── */}
       <section className="med-shell" style={{ background: '#f7f9f7', padding: '4.5rem 0', borderTop: '1px solid rgba(15,118,110,0.08)' }}>
         <div className="med-inner">
@@ -313,7 +339,7 @@ export default function YogaRetreatUttarakhandPage() {
           <div className="med-grid-3" style={{ marginBottom: '2.2rem' }}>
             {PLACES.map((place) => (
               <Link key={place.id} href={place.href} className="med-loc-card" style={{ position: 'relative', height: '260px', borderRadius: '18px', textDecoration: 'none', color: 'white', display: 'block' }}>
-                <img className="med-thumb-img" src={place.image} alt={`${place.name} yoga retreat`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img className="med-thumb-img" src={place.image} alt={`${place.name} landscape`} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(10,31,28,0.85), rgba(10,31,28,0.25) 55%, transparent 100%)' }} />
                 <span style={{ position: 'absolute', top: '1rem', left: '1rem', background: 'rgba(15,118,110,0.9)', color: 'white', padding: '0.3rem 0.6rem', borderRadius: '999px', fontSize: '0.56rem', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase' }}>{place.tag}</span>
                 <div style={{ position: 'absolute', inset: 0, zIndex: 1, padding: '1.2rem', display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
@@ -532,7 +558,7 @@ export default function YogaRetreatUttarakhandPage() {
       {/* ── CLOSING CTA ── */}
       <section className="med-shell" style={{ position: 'relative', overflow: 'hidden', minHeight: '48vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/location/chakrata.webp" alt="Yoga retreat setting in Uttarakhand" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+          <img src="/Images/location/chakrata.webp" alt="Chakrata mountain village and surrounding hills" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,31,28,0.86)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '42rem', padding: '4rem 1.5rem' }}>
