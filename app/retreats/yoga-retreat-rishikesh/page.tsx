@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
 import {
@@ -18,6 +19,7 @@ import YogaDepartureCalendar from '@/components/YogaDepartureCalendar';
 import CTAExpandToggle from '@/components/CTAExpandToggle';
 import YogaCommercialSections from '@/components/YogaCommercialSections';
 import { getYogaRetreatProduct, type YogaRetreatProductId } from '@/config/retreatProgramEvents';
+import { images } from '@/lib/images';
 
 const PATH = '/retreats/yoga-retreat-rishikesh';
 const YOGA_DURATIONS = ['Weekend', '5 days', '7 days', '10 days'] as const;
@@ -333,6 +335,21 @@ export default async function YogaRetreatRishikeshPage({
             </Link>{' '}
             to see the full range of formats available.
           </p>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: '0.75rem', marginTop: '2rem' }}>
+            {[images.yogaRetreat.rishikeshAssistedPractice, images.yogaRetreat.hubMeditation].map((image) => (
+              <figure key={image.src} style={{ margin: 0, borderRadius: '18px', overflow: 'hidden', aspectRatio: '4/3' }}>
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  width={800}
+                  height={600}
+                  quality={75}
+                  sizes="(max-width: 768px) 50vw, 29rem"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                />
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
