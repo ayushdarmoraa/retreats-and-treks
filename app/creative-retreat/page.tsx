@@ -586,7 +586,7 @@ export default function CreativeHealingRetreatPage() {
             5–7 days of art, yoga, and nature in the Himalayas. All materials provided. No experience needed.
           </p>
           <PrimaryCTA
-            label="Join the Creative Healing Retreat"
+            label="Explore Creative Retreat Options"
             vertical="retreat"
             category="art-retreat"
             sourcePath="/creative-retreat"

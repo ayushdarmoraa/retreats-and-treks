@@ -98,7 +98,15 @@ export default async function RetreatDetailPage({ params }: PageProps) {
     ...retreatService.whereItWorksBest.alsoWorks,
   ];
   const compatibleLocations = allLocationsWithRetreats.filter((loc) =>
-    compatibleLocationIds.includes(loc.id),
+    compatibleLocationIds.includes(loc.id) &&
+    (
+      (
+        retreat !== 'art-and-creative' &&
+        retreat !== 'weekend-art-retreat' &&
+        retreat !== 'trek-and-paint'
+      ) ||
+      loc.id !== retreatService.whereItWorksBest.primary
+    ),
   );
 
   const primaryLocationId = retreatService.whereItWorksBest.primary as LocationId;
@@ -239,6 +247,7 @@ export default async function RetreatDetailPage({ params }: PageProps) {
       <RetreatJourneyClient
         retreat={retreatService}
         locations={compatibleLocations}
+        primaryLocationName={primaryLocation?.name ?? primaryLocationId}
         suggestedTrek={suggestedTrek}
         retreatSlug={retreat}
         priceLabel={upcomingEvent ? `₹${upcomingEvent.price.toLocaleString('en-IN')}` : 'Pricing on enquiry'}

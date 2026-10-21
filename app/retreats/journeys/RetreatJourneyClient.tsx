@@ -82,6 +82,7 @@ interface SuggestedTrek {
 interface RetreatJourneyClientProps {
   retreat: RetreatService;
   locations: Location[];
+  primaryLocationName: string;
   suggestedTrek?: SuggestedTrek;
   retreatSlug: string;
   priceLabel: string;
@@ -90,6 +91,7 @@ interface RetreatJourneyClientProps {
 export default function RetreatJourneyClient({
   retreat,
   locations,
+  primaryLocationName,
   suggestedTrek,
   retreatSlug,
   priceLabel,
@@ -219,7 +221,11 @@ export default function RetreatJourneyClient({
 
       {/* 12. LOCATIONS */}
       <JourneyLocations
-        primary={retreat.whereItWorksBest.primary}
+        primary={
+          retreatSlug === 'weekend-art-retreat' || retreatSlug === 'trek-and-paint'
+            ? primaryLocationName
+            : retreat.whereItWorksBest.primary
+        }
         primaryReason={retreat.whereItWorksBest.primaryReason}
         locations={locations}
         contextByLocation={retreat.whereItWorksBest.contextByLocation}

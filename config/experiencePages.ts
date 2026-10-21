@@ -667,7 +667,7 @@ export const EXPERIENCE_PAGES: readonly ExperiencePage[] = [
       'Evening sharing circles (optional) for gentle witnessing',
       'Small groups (maximum 10) ensuring personal attention and safety',
     ],
-    retreatServiceSlugs: ['art-and-creative'],
+    retreatServiceSlugs: ['art-and-creative', 'weekend-art-retreat', 'trek-and-paint'],
     locationAngles: [
       {
         locationId: 'mussoorie',

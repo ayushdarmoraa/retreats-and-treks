@@ -149,7 +149,7 @@ Emotional healing through art & yoga begins when you give yourself permission to
     },
     {
       question: 'Where is this retreat held?',
-      answer: 'Primarily in Mussoorie and Chakrata — both in Uttarakhand, India. Mussoorie offers aesthetic mountain beauty and colonial-era atmosphere. Chakrata offers forest silence and deeper nature immersion. Both are within 3 hours of Dehradun. Also available in Rishikesh.',
+      answer: 'Primarily in Mussoorie and Chakrata — both in Uttarakhand, India. Mussoorie offers aesthetic mountain beauty and colonial-era atmosphere. Chakrata offers forest silence and deeper nature immersion. Mussoorie is around 1.5–2 hours from Dehradun, while Chakrata is around 3–4 hours depending on road conditions. Also available in Rishikesh.',
     },
     {
       question: 'How long is the retreat?',

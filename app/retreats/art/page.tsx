@@ -359,7 +359,7 @@ export default function ArtRetreatsPage() {
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <a href="#retreats" className="art-cta-btn">Explore Art Retreat Options</a>
             <CTAExpandToggle
-              label="Talk to Us on WhatsApp"
+              label="Enquire About Art Retreats"
               vertical="retreat"
               category="art-and-creative"
               sourcePath={PATH}
