@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "test:e2e": "playwright test --config=e2e/playwright.config.ts",
-    "test": "tsx --test utils/telemetry.test.ts utils/attribution.test.ts proxy.test.ts lib/whatsapp.test.ts lib/submission-token.test.ts lib/schemas.test.ts lib/rate-limit.test.ts lib/lead-scoring.test.ts lib/inquiries.test.ts lib/conversion-foundation.test.ts lib/conversion-events.test.ts app/api/track/route.test.ts app/api/inquire/route.test.ts app/api/internal/leads/route.test.ts app/api/internal/leads/[id]/route.test.ts components/ArtFixedDepartures.test.tsx app/internal/dashboard/DashboardClient.test.tsx components/InquiryForm.test.tsx components/Retreats/Phase9Conversion.test.tsx",
+    "test": "tsx --test utils/telemetry.test.ts utils/attribution.test.ts proxy.test.ts lib/whatsapp.test.ts lib/submission-token.test.ts lib/schemas.test.ts lib/rate-limit.test.ts lib/lead-scoring.test.ts lib/inquiries.test.ts lib/conversion-foundation.test.ts lib/conversion-events.test.ts app/api/track/route.test.ts app/api/inquire/route.test.ts app/api/internal/leads/route.test.ts app/api/internal/leads/[id]/route.test.ts components/ArtFixedDepartures.test.tsx app/internal/dashboard/DashboardClient.test.tsx components/InquiryForm.test.tsx components/Retreats/Phase9Conversion.test.tsx config/yogaDurationPrefill.test.ts components/DurationHubPage.test.tsx",
     "audit:governance": "node scripts/content-governance.js",
     "audit:links": "node scripts/link-audit.js",
     "audit:schema": "node scripts/schema-validate.js",

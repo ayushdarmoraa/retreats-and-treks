@@ -14,7 +14,7 @@ import TrackedPage from '@/components/TrackedPage';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import YogaDepartureCalendar from '@/components/YogaDepartureCalendar';
 import YogaCommercialSections from '@/components/YogaCommercialSections';
-import type { YogaRetreatProductId } from '@/config/retreatProgramEvents';
+import { getYogaDurationPrefill } from '@/config/yogaDurationPrefill';
 
 interface DurationHubPageProps {
   page: DurationPage;
@@ -28,11 +28,7 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
     chakrata: '/retreats/chakrata/yoga-retreat',
     zanskar: '/yoga-retreat-zanskar',
   };
-  const yogaDurationProductIds: Record<string, YogaRetreatProductId> = {
-    '5-day-yoga-retreat': 'yoga-rishikesh-5-day',
-    '7-day-yoga-retreat': 'yoga-rishikesh-7-day',
-    '10-day-yoga-retreat': 'yoga-rishikesh-10-day',
-  };
+  const { productId: yogaDurationProductId, duration: yogaDuration } = getYogaDurationPrefill(page.slug);
   const faqItems = (page.faqItems ?? []).map((item) => ({ question: item.question, answer: item.answer }));
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
@@ -146,7 +142,7 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
       {/* ── HERO ── */}
       <section className="med-shell" style={{ position: 'relative', overflow: 'hidden', minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid rgba(15,118,110,0.12)' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img className="med-hero-bg" src="/Images/hero/himalayan-sunrise.webp" alt={page.h1} style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 42%', display: 'block' }} />
+          <img className="med-hero-bg" src="/Images/hero/himalayan-sunrise.webp" alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 42%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(120deg, rgba(4,12,10,0.82) 0%, rgba(4,12,10,0.5) 45%, rgba(4,12,10,0.78) 100%)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '58rem', width: '100%', padding: '5rem 1.5rem 4.5rem', textAlign: 'center' }}>
@@ -168,10 +164,10 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
         </div>
       </section>
 
-      {isYogaDuration && yogaDurationProductIds[page.slug] && (
+      {isYogaDuration && yogaDurationProductId && (
         <YogaCommercialSections
           sourcePath={`/${page.slug}`}
-          productId={yogaDurationProductIds[page.slug]}
+          productId={yogaDurationProductId}
         />
       )}
 
@@ -187,6 +183,8 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
             category={`duration-${page.slug}`}
             sourcePath={`/${page.slug}`}
             location={isYogaDuration ? 'Rishikesh' : undefined}
+            duration={yogaDuration}
+            productId={yogaDurationProductId}
           />
         </div>
       </section>
@@ -242,11 +240,11 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
         </div>
       </section>
 
-      {isYogaDuration && yogaDurationProductIds[page.slug] && (
+      {yogaDurationProductId && (
         <YogaDepartureCalendar
           sourcePath={`/${page.slug}`}
           showEnquiry={false}
-          productId={yogaDurationProductIds[page.slug]}
+          productId={yogaDurationProductId}
         />
       )}
 
@@ -340,7 +338,8 @@ export default function DurationHubPage({ page }: DurationHubPageProps) {
             vertical="retreat"
             category={`duration-${page.slug}`}
             sourcePath={`/${page.slug}`}
-            duration={page.slug === '5-day-yoga-retreat' ? '5 days' : page.slug === '7-day-yoga-retreat' ? '7 days' : page.slug === '10-day-yoga-retreat' ? '10 days' : undefined}
+            duration={yogaDuration}
+            productId={yogaDurationProductId}
           />
         </div>
       </section>
