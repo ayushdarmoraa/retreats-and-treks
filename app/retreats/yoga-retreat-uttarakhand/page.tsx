@@ -329,10 +329,11 @@ export default function YogaRetreatUttarakhandPage() {
             <span className="med-eyebrow-text">Choose Your Setting</span>
             <span className="med-eyebrow-line" />
           </div>
-          <h2 className="med-h2" style={{ textAlign: 'center' }}>Best Places for a <span>Yoga Retreat</span> in Uttarakhand</h2>
+          <h2 className="med-h2" style={{ textAlign: 'center' }}>Yoga Retreat Options in <span>Uttarakhand and Ladakh</span></h2>
           <p className="med-body" style={{ textAlign: 'center', maxWidth: '46rem', margin: '0 auto 2.2rem' }}>
-            Rishikesh is the primary recurring Yoga product location. Other locations are
-            enquiry-led; whether a programme is feasible depends on the requested dates and
+            Rishikesh is the primary recurring Yoga product location. Chakrata and Sankri are
+            on-request options in Uttarakhand; Zanskar is in Ladakh and is a separate,
+            demand-led enquiry. Programme feasibility depends on the requested dates and
             details confirmed by the team.
           </p>
 
@@ -350,8 +351,8 @@ export default function YogaRetreatUttarakhandPage() {
             ))}
           </div>
             <p className="med-body" style={{ textAlign: 'center' }}>
-              Zanskar is outside Uttarakhand and has a separate{' '}
-              <Link href="/yoga-retreat-zanskar" style={{ color: '#0f766e', fontWeight: 600 }}>demand-led Yoga enquiry</Link>.
+              For a demand-led Yoga option outside Uttarakhand, see the separate{' '}
+              <Link href="/yoga-retreat-zanskar" style={{ color: '#0f766e', fontWeight: 600 }}>Zanskar enquiry</Link>.
             </p>
 
           <div className="med-card" style={{ padding: '2rem', marginBottom: '1.5rem' }}>
