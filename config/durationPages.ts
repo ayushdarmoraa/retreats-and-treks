@@ -278,7 +278,7 @@ export const DURATION_PAGES: readonly DurationPage[] = [
         locationId: 'rishikesh',
         heading: 'Rishikesh — 5-Day Yoga Product',
         description:
-          'Rishikesh is the primary location for the five-day Yoga product. Venue, schedule, teaching assignment, stay, meals, and current availability are not published unless attached to a confirmed departure.',
+          'The general format lists shared accommodation and meals; the exact venue, accommodation and meal arrangements for a specific departure, along with its schedule, teaching assignment, and current availability, require confirmation.',
       },
     ],
     relatedExperienceSlugs: ['yoga-retreats', 'meditation-retreats'],
@@ -314,7 +314,7 @@ export const DURATION_PAGES: readonly DurationPage[] = [
         locationId: 'rishikesh',
         heading: 'Rishikesh — 7-Day Yoga Product Format',
         description:
-          'Rishikesh is the primary location for the seven-day Yoga product. Venue, schedule, teaching assignment, stay, meals, and current availability are not published unless attached to a confirmed departure.',
+          'The general format lists shared accommodation and meals; the exact venue, accommodation and meal arrangements for a specific departure, along with its schedule, teaching assignment, and current availability, require confirmation.',
       },
     ],
     relatedExperienceSlugs: ['yoga-retreats', 'meditation-retreats'],
@@ -350,7 +350,7 @@ export const DURATION_PAGES: readonly DurationPage[] = [
         locationId: 'rishikesh',
         heading: 'Rishikesh — 10-Day Yoga Product Format',
         description:
-          'Rishikesh is the primary location for the ten-day Yoga product. Venue, schedule, teaching assignment, stay, meals, and current availability are not published unless attached to a confirmed departure.',
+          'The general format lists shared accommodation and meals; the exact venue, accommodation and meal arrangements for a specific departure, along with its schedule, teaching assignment, and current availability, require confirmation.',
       },
     ],
     relatedExperienceSlugs: ['yoga-retreats', 'meditation-retreats'],

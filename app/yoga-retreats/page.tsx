@@ -63,7 +63,7 @@ const FAQ_ITEMS = [
       'The Rishikesh programme includes Hatha Yoga, mindful movement, pranayama, meditation, relaxation, Yoga Nidra, yogic lifestyle practices, and reflective/self-awareness practices.',
   },
   {
-    question: 'How does altitude affect yoga practice?',
+    question: 'Which locations have recurring Yoga retreats?',
     answer:
       'Rishikesh is the recurring published location for these four Yoga products. Sankri, Chakrata, and Zanskar are demand-led locations; ask about the specific conditions and programme before choosing one.',
   },
@@ -75,7 +75,7 @@ const FAQ_ITEMS = [
   {
     question: 'Can I combine yoga with trekking?',
     answer:
-      'The four recurring products are in Rishikesh. Sankri, Chakrata, and Zanskar are custom or demand-led Yoga enquiries rather than recurring fixed departures.',
+      'A scheduled Yoga-and-trekking combination is not currently offered. You can ask the team on WhatsApp whether a custom option may be possible for your dates and location; availability and details would need confirmation.',
   },
   {
     question: 'How long should a yoga retreat be?',
@@ -546,7 +546,7 @@ export default function YogaRetreatsPage() {
                 <p className="med-body">Beginner suitability and session adaptations are not universal promises. Share your experience and ask the team to confirm the approach for a specific programme.</p>
               </div>
               <div style={{ position: 'relative', borderRadius: '12px', overflow: 'hidden', aspectRatio: '16/9' }}>
-                <img src="/Images/experience-hubs/yoga-group.png" alt="Group yoga practice on a platform in a Himalayan setting" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                <img src="/Images/experience-hubs/yoga-group.webp" alt="Group yoga practice on a platform in a Himalayan setting" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               </div>
             </div>
           </div>
