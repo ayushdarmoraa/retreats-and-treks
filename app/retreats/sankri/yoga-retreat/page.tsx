@@ -7,6 +7,7 @@ import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import { generateBreadcrumbSchema, generateFAQSchema } from '@/components/seo/Schema';
+import { images } from '@/lib/images';
 
 const PATH = '/retreats/sankri/yoga-retreat';
 
@@ -120,7 +121,7 @@ export default function SankriYogaRetreatPage() {
       {/* ── HERO ── */}
       <section className="med-shell" style={{ position: 'relative', overflow: 'hidden', minHeight: '78vh', display: 'flex', alignItems: 'center', justifyContent: 'center', borderBottom: '1px solid rgba(15,118,110,0.12)' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img className="med-hero-bg" src="/Images/location/sankri.webp" alt="Yoga retreat, Sankri" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 42%', display: 'block' }} />
+          <img className="med-hero-bg" src="/Images/location/sankri.webp" alt="Sankri village in a green Himalayan valley" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 42%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(120deg, rgba(4,12,10,0.82) 0%, rgba(4,12,10,0.5) 45%, rgba(4,12,10,0.78) 100%)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 2, maxWidth: '58rem', width: '100%', padding: '5rem 1.5rem 4.5rem', textAlign: 'center' }}>
@@ -199,6 +200,16 @@ export default function SankriYogaRetreatPage() {
             <p className="med-body" style={{ marginBottom: 0 }}>
               The existing Yoga &amp; Movement service describes asana, pranayama, meditation, and restorative practice. Which sessions, schedule, setting, equipment, stay, and meals can be offered in Sankri is not currently published and must be confirmed for each enquiry.
             </p>
+          </div>
+          <div className="med-grid-2" style={{ marginTop: '1.5rem' }}>
+            {[images.yogaRetreat.durationGroupMeditation, images.yogaRetreat.outdoorGuidedSession].map((image) => (
+              <figure key={image.src} className="med-card" style={{ margin: 0 }}>
+                <img src={image.src} alt={image.alt} style={{ width: '100%', aspectRatio: '4 / 3', objectFit: 'cover', display: 'block' }} />
+                <figcaption className="med-body" style={{ padding: '1rem 1.2rem', fontSize: '0.85rem', margin: 0 }}>
+                  Illustrative Yoga practice photo only; it does not show a confirmed Sankri session. Dates and programme details are confirmed by enquiry.
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </div>
       </section>
@@ -332,7 +343,7 @@ export default function SankriYogaRetreatPage() {
       {/* ── CLOSING CTA ── */}
       <section className="med-shell" style={{ position: 'relative', overflow: 'hidden', minHeight: '44vh', display: 'flex', alignItems: 'center', justifyContent: 'center', textAlign: 'center' }}>
         <div style={{ position: 'absolute', inset: 0 }}>
-          <img src="/Images/location/sankri.webp" alt="Sankri yoga retreat setting" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+          <img src="/Images/location/sankri.webp" alt="Sankri village landscape in a Himalayan valley" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
           <div style={{ position: 'absolute', inset: 0, background: 'rgba(10,31,28,0.86)' }} />
         </div>
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '42rem', padding: '4rem 1.5rem' }}>

@@ -678,7 +678,7 @@ export default function YogaRetreatsPage() {
               {LOCATIONS.map((loc) => (
                 <Link key={loc.id} href={loc.href} className="med-yoga-loc-card">
                   <div className="med-img-wrap">
-                    <img src={loc.image} alt={`${loc.name} — yoga retreat location`} className="med-img" />
+                    <img src={loc.image} alt={`${loc.name} landscape`} className="med-img" />
                   </div>
                   <div className="med-content">
                     <span className="med-alt">{loc.altitude} altitude</span>
@@ -879,7 +879,7 @@ export default function YogaRetreatsPage() {
         {/* ── BOTTOM CTA ── */}
         <section className="med-yoga-bottom-cta">
           <div style={{ position: 'absolute', inset: 0 }}>
-            <img src="/Images/hero/himalayan-sunrise.webp" alt="Himalayan sunrise — yoga retreat setting" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
+            <img src="/Images/hero/himalayan-sunrise.webp" alt="Sunrise over Himalayan mountain ridges" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 40%', display: 'block' }} />
             <div className="med-overlay" />
           </div>
           <div className="med-content">

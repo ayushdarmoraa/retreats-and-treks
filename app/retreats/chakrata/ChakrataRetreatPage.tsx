@@ -16,6 +16,12 @@ type RetreatData = RetreatContent & {
   metaTitle?: string;
 };
 
+type PracticeImage = {
+  src: string;
+  alt: string;
+  caption: string;
+};
+
 interface Props {
   retreat: RetreatData;
   path: string;
@@ -23,9 +29,10 @@ interface Props {
   waText: string;
   primaryCtaLabel?: string;
   showYogaAlternative?: boolean;
+  practiceImages?: PracticeImage[];
 }
 
-export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, primaryCtaLabel = 'WhatsApp Us', showYogaAlternative = false }: Props) {
+export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, primaryCtaLabel = 'WhatsApp Us', showYogaAlternative = false, practiceImages }: Props) {
   const retreatSchema = showYogaAlternative ? null : generateRetreatSchema(retreat);
   const faqSchema = generateFAQSchema(retreat.faqs);
   const breadcrumbSchema = showYogaAlternative
@@ -176,6 +183,27 @@ export default function ChakrataRetreatPage({ retreat, path, breadcrumbItems, pr
           </div>
         </div>
       </section>
+
+      {showYogaAlternative && practiceImages && practiceImages.length > 0 && (
+        <section className="med-shell" style={{ background: '#f7f9f7', padding: '4.5rem 0', borderTop: '1px solid rgba(15,118,110,0.08)' }}>
+          <div className="med-inner">
+            <div className="med-eyebrow">
+              <span className="med-eyebrow-line" />
+              <span className="med-eyebrow-text">Practice imagery</span>
+            </div>
+            <h2 className="med-h2">A glimpse of <span>Yoga practice</span></h2>
+            <p className="med-body">These images are illustrative only and do not confirm a Yoga session or retreat in Chakrata.</p>
+            <div className="med-grid-2">
+              {practiceImages.map((image) => (
+                <figure key={image.src} className="med-card" style={{ margin: 0 }}>
+                  <img src={image.src} alt={image.alt} style={{ width: '100%', aspectRatio: '4 / 3', objectFit: 'cover', display: 'block' }} />
+                  <figcaption className="med-body" style={{ padding: '1rem 1.2rem', fontSize: '0.85rem', margin: 0 }}>{image.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── ITINERARY ── */}
       <section className="med-shell" style={{ background: '#f7f9f7', padding: '4.5rem 0', borderTop: '1px solid rgba(15,118,110,0.08)' }}>
