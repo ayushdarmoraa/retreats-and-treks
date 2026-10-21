@@ -529,7 +529,8 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
             {yogaInterest === 'Yoga TTC' ? 'Yoga Teacher Training enquiry' : yogaInterest === 'Not sure' ? 'Let us help you choose' : 'Your Yoga enquiry starting point'}
           </h2>
           <p style={{ color: 'var(--color-text-secondary)', lineHeight: 1.65 }}>
-            {yogaLocation ? `Requested location: ${yogaLocation}. ` : 'Location: no preference. '}
+            {yogaLocation ? `${recommendation.ttc ? 'Location preference' : 'Requested location'}: ${yogaLocation}. ` : 'Location: no preference. '}
+            {recommendation.ttc ? 'Yoga Teacher Training is in Rishikesh. ' : ''}
             {yogaDuration ? `Duration: ${yogaDuration}. ` : ''}
             {yogaExperience ? `Experience: ${yogaExperience}.` : ''}
           </p>
@@ -575,12 +576,12 @@ export default function RetreatFinder({ fromPath = '/retreats/himalayan-retreats
             vertical="retreat"
             category="yoga-finder"
             sourcePath={fromPath}
-            location={yogaLocation}
             yogaInterest={yogaInterest}
             duration={yogaDuration}
             yogaExperience={yogaExperience}
             preferredMonth={answers.preferredMonth}
             planningHorizon={answers.planningHorizon}
+            location={recommendation.ttc ? recommendation.requestedLocation : yogaLocation}
             productId={recommendation.helpMeChoose ? undefined : recommendation.productId}
             productOption={recommendation.ttc ? 'ttc' : recommendation.custom ? 'other-location' : recommendation.helpMeChoose ? 'not-sure' : undefined}
           />

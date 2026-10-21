@@ -16,7 +16,7 @@ export function getYogaRecommendation(answers: Record<string, string>): YogaReco
   const experience = answers.yogaExperience || '';
 
   if (answers.yogaType === 'ttc') {
-    return { requestedLocation: location, reason: 'You selected structured Yoga study and teacher preparation.', custom: false, ttc: true, href: '/yoga-teacher-training' };
+    return { requestedLocation: 'rishikesh', reason: 'You selected structured Yoga study and teacher preparation; the Teacher Training option is in Rishikesh.', custom: false, ttc: true, href: '/yoga-teacher-training' };
   }
   if (location && location !== 'rishikesh') {
     const customHref: Record<string, string> = {
