@@ -181,8 +181,9 @@ test('a direct WhatsApp CTA captures and saves its page-scoped lead before openi
     expect(await inquiryResponse.json()).toMatchObject({ success: true });
     const inquiryPayload = inquiryRequest.postDataJSON() as Record<string, unknown>;
     expect(inquiryPayload.additionalRequest).toMatch(/consent provided.*WhatsApp/i);
-    const savedDialog = page.getByRole('dialog', { name: 'Enquiry saved' });
-    await expect(savedDialog.getByRole('status').getByText('Enquiry saved')).toBeVisible();
+    const savedDialog = page.getByRole('dialog', { name: 'Continue to WhatsApp' });
+    await expect(savedDialog.getByRole('status')).toBeVisible();
+    await expect(savedDialog.getByText(/enquiry saved|details are saved|reference:/i)).toHaveCount(0);
     expect(context.pages()).toHaveLength(1);
 
     const lead = await findOwnedLead(identity);

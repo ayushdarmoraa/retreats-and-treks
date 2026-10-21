@@ -358,7 +358,8 @@ export default function TrackedWhatsAppLink({
             className="wa-capture-dialog"
             role="dialog"
             aria-modal="true"
-            aria-labelledby="whatsapp-capture-title"
+            aria-labelledby={captureSaved ? undefined : 'whatsapp-capture-title'}
+            aria-label={captureSaved ? 'Continue to WhatsApp' : undefined}
           >
             <button
               type="button"
@@ -371,9 +372,6 @@ export default function TrackedWhatsAppLink({
             </button>
             {captureSaved ? (
               <div className="wa-capture-success" role="status">
-                <h2 className="wa-capture-title" id="whatsapp-capture-title">Enquiry saved</h2>
-                <p className="wa-capture-description">Your details are saved. Continue to WhatsApp to send your message.</p>
-                {savedLeadReference && <p className="wa-capture-reference">Reference: {savedLeadReference}</p>}
                 <a
                   href={canonicalHref}
                   className="wa-capture-submit"

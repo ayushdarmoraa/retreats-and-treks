@@ -313,7 +313,12 @@ test('direct WhatsApp CTA requires consent, saves contextual lead and opens only
   await user.click(ui.screen.getByLabelText(/I agree that Retreats and Treks/));
   await user.click(ui.screen.getByRole('button', { name: 'Save and continue' }));
   await ui.waitFor(() => assert.equal(calls.filter((call) => call.url === '/api/inquire').length, 1));
-  assert.ok(await ui.screen.findByText('Enquiry saved'));
+  const successDialog = await ui.screen.findByRole('dialog', { name: 'Continue to WhatsApp' });
+  assert.equal(
+    ui.within(successDialog).queryByText(/enquiry saved|details are saved|reference:/i),
+    null,
+  );
+  assert.ok(ui.within(successDialog).getByRole('link', { name: 'Continue to WhatsApp' }));
 
   const [payload] = inquirePayloads(calls);
   assert.equal(payload.name, 'Asha Mehta');
@@ -379,7 +384,12 @@ test('direct WhatsApp CTA keeps capture retryable after persistence failure and 
   assert.equal((ui.screen.getByLabelText('Name *') as HTMLInputElement).value, 'Asha Mehta');
 
   await user.click(ui.screen.getByRole('button', { name: 'Save and continue' }));
-  assert.ok(await ui.screen.findByText('Enquiry saved'));
+  const successDialog = await ui.screen.findByRole('dialog', { name: 'Continue to WhatsApp' });
+  assert.ok(ui.within(successDialog).getByRole('link', { name: 'Continue to WhatsApp' }));
+  assert.equal(
+    ui.within(successDialog).queryByText(/enquiry saved|details are saved|reference:/i),
+    null,
+  );
   assert.equal(calls.filter((call) => call.url === '/api/inquire').length, 2);
   const payloads = inquirePayloads(calls);
   assert.equal(payloads[1].submissionToken, payloads[0].submissionToken);
