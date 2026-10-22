@@ -8,7 +8,7 @@ import { EXPERIENCE_PAGES } from '@/config/experiencePages';
 import { DURATION_PAGES } from '@/config/durationPages';
 import { EXPERIENCE_LOCATION_PAGES } from '@/config/experienceLocationPages';
 import { ITINERARY_PAGES } from '@/config/itineraryPages';
-import { RETREAT_PROGRAM_EVENTS } from '@/config/retreatProgramEvents';
+import { RETREAT_PROGRAM_EVENTS, YOGA_TTC_PRODUCT } from '@/config/retreatProgramEvents';
 import { FACILITATOR_PROFILES } from '@/config/facilitators';
 
 const COMPARE_SEPARATOR = '-vs-';
@@ -88,12 +88,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   }
 
-  entries.push({
-    url: buildCanonicalUrl('/yoga-teacher-training'),
-    lastModified: now,
-    priority: 0.9,
-    changeFrequency: 'monthly',
-  });
+  if (YOGA_TTC_PRODUCT.publicationState === 'published') {
+    entries.push({
+      url: buildCanonicalUrl('/yoga-teacher-training'),
+      lastModified: now,
+      priority: 0.9,
+      changeFrequency: 'monthly',
+    });
+  }
 
   // ── 1b. Experience authority pages (Axis 2 — problem-based) ──────────────
   for (const exp of EXPERIENCE_PAGES) {

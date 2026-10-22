@@ -111,18 +111,21 @@ function customSide(location: 'Chakrata' | 'Sankri' | 'Zanskar'): ComparisonSide
   };
 }
 
+const ttcIsPublished = YOGA_TTC_PRODUCT.publicationState === 'published';
 const ttcSide: ComparisonSide = {
-  title: YOGA_TTC_PRODUCT.name,
-  summary: 'A separate structured long-form education and teacher-preparation pathway, not another retreat duration.',
+  title: ttcIsPublished ? YOGA_TTC_PRODUCT.name : 'Yoga Teacher Training',
+  summary: ttcIsPublished
+    ? 'A separate structured long-form education and teacher-preparation pathway, not another retreat duration.'
+    : 'This programme is not currently published; programme information is unavailable.',
   ttc: true,
   href: '/yoga-teacher-training',
-  location: 'Rishikesh',
-  availability: 'Upcoming batches are enquiry-only; no batch date is published.',
-  audience: 'People wanting structured Yoga study, theory, teaching methodology, practical teaching experience, and a teacher-training pathway.',
-  programme: 'Yoga practice, philosophy, anatomy/fundamentals, pranayama, meditation, methodology, sequencing, practicum, assessment, and certificate of completion.',
-  accommodation: 'Shared accommodation; exact venue and operational details are confirmed through enquiry.',
-  meals: 'Standard retreat-style meals.',
-  booking: 'Ask on WhatsApp for upcoming batch details.',
+  location: ttcIsPublished ? 'Rishikesh' : 'Not currently published',
+  availability: ttcIsPublished ? 'Upcoming batches are enquiry-only; no batch date is published.' : 'Not currently published.',
+  audience: ttcIsPublished ? 'People wanting structured Yoga study, theory, teaching methodology, practical teaching experience, and a teacher-training pathway.' : 'Not currently published.',
+  programme: ttcIsPublished ? 'Yoga practice, philosophy, anatomy/fundamentals, pranayama, meditation, methodology, sequencing, practicum, assessment, and certificate of completion.' : 'Not currently published.',
+  accommodation: ttcIsPublished ? 'Shared accommodation; exact venue and operational details are confirmed through enquiry.' : 'Not currently published.',
+  meals: ttcIsPublished ? 'Standard retreat-style meals.' : 'Not currently published.',
+  booking: ttcIsPublished ? 'Ask on WhatsApp for upcoming batch details.' : 'Not currently published.',
 };
 
 const COMPARISONS: Record<YogaComparisonKey, Comparison> = {
@@ -153,13 +156,27 @@ const COMPARISONS: Record<YogaComparisonKey, Comparison> = {
   'retreat-vs-ttc': {
     path: '/compare/yoga-retreat-vs-yoga-teacher-training',
     title: 'Yoga Retreat vs Yoga Teacher Training',
-    description: 'Understand the difference between short-term personal practice and the separate 28-day TTC pathway.',
+    description: ttcIsPublished
+      ? 'Understand the difference between short-term personal practice and the separate 28-day TTC pathway.'
+      : 'Compare a published Yoga retreat with the Yoga Teacher Training programme, which is not currently published.',
     first: productSide('yoga-rishikesh-5-day'),
     second: ttcSide,
-    decision: 'Choose a Yoga retreat for a short-term personal-practice experience. Choose TTC when you want structured long-form education and teacher preparation. The TTC is not a retreat duration.',
+    decision: ttcIsPublished
+      ? 'Choose a Yoga retreat for a short-term personal-practice experience. Choose TTC when you want structured long-form education and teacher preparation. The TTC is not a retreat duration.'
+      : 'The Yoga retreat is currently published. The Yoga Teacher Training programme is not currently published; its details are unavailable.',
     faqs: [
-      { question: 'Does a Yoga retreat provide teacher certification?', answer: 'No. Yoga retreats are personal-practice experiences. TTC is a separate study and teacher-preparation pathway.' },
-      { question: 'What are the TTC duration and fee?', answer: 'The TTC is 28 days in Rishikesh with a ₹49,999 fee. Batch dates are enquiry-only.' },
+      {
+        question: 'Does a Yoga retreat provide teacher certification?',
+        answer: ttcIsPublished
+          ? 'No. Yoga retreats are personal-practice experiences. TTC is a separate study and teacher-preparation pathway.'
+          : 'No teacher-certification programme is currently published on this site.',
+      },
+      {
+        question: ttcIsPublished ? 'What are the TTC duration and fee?' : 'Is Yoga Teacher Training currently published?',
+        answer: ttcIsPublished
+          ? 'The TTC is 28 days in Rishikesh with a ₹49,999 fee. Batch dates are enquiry-only.'
+          : 'No. Programme details, fees, and dates are not currently published.',
+      },
     ],
   },
   'five-vs-ten-days': {
@@ -247,7 +264,7 @@ function SideCard({ side, comparisonPath }: { side: ComparisonSide; comparisonPa
     <article style={{ border: '1px solid rgba(15,118,110,0.14)', borderRadius: 10, padding: '1.25rem', background: '#fff' }}>
       <h2 style={{ margin: '0 0 0.5rem', color: '#2B2A26', fontSize: '1.25rem' }}>{side.title}</h2>
       {product && <p style={{ margin: '0 0 0.7rem', color: '#0f766e', fontWeight: 700 }}>{product.durationLabel} · ₹{product.price.toLocaleString('en-IN')}</p>}
-      {side.ttc && <p style={{ margin: '0 0 0.7rem', color: '#0f766e', fontWeight: 700 }}>28 days · ₹{YOGA_TTC_PRODUCT.fee?.amount.toLocaleString('en-IN')}</p>}
+      {side.ttc && ttcIsPublished && <p style={{ margin: '0 0 0.7rem', color: '#0f766e', fontWeight: 700 }}>28 days · ₹{YOGA_TTC_PRODUCT.fee?.amount.toLocaleString('en-IN')}</p>}
       <p style={{ margin: '0 0 1rem', color: '#4b5259', lineHeight: 1.7 }}>{side.summary}</p>
       <dl style={{ display: 'grid', gridTemplateColumns: 'minmax(7rem, 0.7fr) 1fr', gap: '0.55rem 0.75rem', margin: 0, color: '#4b5259', fontSize: '0.88rem', lineHeight: 1.55 }}>
         <dt style={{ fontWeight: 700, color: '#2B2A26' }}>Location</dt><dd style={{ margin: 0 }}>{side.location}</dd>
@@ -266,7 +283,9 @@ function SideCard({ side, comparisonPath }: { side: ComparisonSide; comparisonPa
       )}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginTop: '1rem' }}>
         <Link href={side.href} style={{ color: '#0f766e', fontWeight: 700 }}>View option</Link>
-        <TrackedWhatsAppLink
+        {side.ttc && !ttcIsPublished
+          ? <span role="status" style={{ color: '#4b5259', fontWeight: 600 }}>Not currently published</span>
+          : <TrackedWhatsAppLink
           href={whatsappHref(side, comparisonPath)}
           sourcePath={comparisonPath}
           location={side.location}
@@ -279,7 +298,7 @@ function SideCard({ side, comparisonPath }: { side: ComparisonSide; comparisonPa
           ctaId={comparisonCtaId(side)}
           ctaLabel="Ask on WhatsApp"
           style={{ color: '#0f766e', fontWeight: 700 }}
-        >Ask on WhatsApp</TrackedWhatsAppLink>
+          >Ask on WhatsApp</TrackedWhatsAppLink>}
       </div>
     </article>
   );

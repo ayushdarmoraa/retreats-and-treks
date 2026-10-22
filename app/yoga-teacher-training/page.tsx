@@ -56,10 +56,14 @@ const FAQ_ITEMS = [
 ];
 
 export const metadata: Metadata = {
-  title: '28 Day Yoga Teacher Training in Rishikesh | RetreatsAndTreks',
-  description: '28-day Yoga Teacher Training in Rishikesh with ₹49,999 fee, structured study, teaching practice, assessment, and upcoming batches available by WhatsApp enquiry.',
+  title: YOGA_TTC_PRODUCT.publicationState === 'published'
+    ? '28 Day Yoga Teacher Training in Rishikesh | RetreatsAndTreks'
+    : 'Yoga Teacher Training | RetreatsAndTreks',
+  description: YOGA_TTC_PRODUCT.publicationState === 'published'
+    ? '28-day Yoga Teacher Training in Rishikesh with ₹49,999 fee, structured study, teaching practice, assessment, and upcoming batches available by WhatsApp enquiry.'
+    : 'Yoga Teacher Training programme information is not currently published.',
   alternates: { canonical: buildCanonicalUrl(PATH) },
-  robots: { index: true, follow: true },
+  robots: { index: YOGA_TTC_PRODUCT.publicationState === 'published', follow: true },
 };
 
 const sectionStyle = (background: string): React.CSSProperties => ({
@@ -72,6 +76,19 @@ const sectionStyle = (background: string): React.CSSProperties => ({
 
 export default function YogaTeacherTrainingPage() {
   const canonicalUrl = buildCanonicalUrl(PATH);
+  if (YOGA_TTC_PRODUCT.publicationState !== 'published') {
+    return (
+      <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: 0, padding: 0, overflowX: 'hidden' }}>
+        <div style={{ maxWidth: '58rem', margin: '0 auto', padding: '2rem 1.25rem 4rem' }}>
+          <Breadcrumb items={[{ name: 'Home', href: '/' }, { name: 'Yoga Retreats', href: '/yoga-retreats' }, { name: 'Yoga Teacher Training' }]} />
+          <h1 style={{ margin: '2rem 0 1rem', color: '#2B2A26', fontFamily: 'var(--font-fraunces), Georgia, serif' }}>Yoga Teacher Training</h1>
+          <p style={{ color: '#4b5259', lineHeight: 1.8 }}>This programme is not currently published. Programme details, fees, dates, availability, and other arrangements are not being advertised.</p>
+          <Link href="/yoga-retreats">Explore currently published Yoga retreats</Link>
+        </div>
+      </TrackedPage>
+    );
+  }
+
   const breadcrumbSchema = generateBreadcrumbSchema([
     { name: 'Home', url: buildCanonicalUrl('/') },
     { name: 'Yoga Retreats', url: buildCanonicalUrl('/yoga-retreats') },
