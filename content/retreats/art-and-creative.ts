@@ -6,9 +6,9 @@
 export const artAndCreativeRetreat = {
   slug: 'art-and-creative',
   title: 'Creative Healing Retreat',
-  oneLineEssence: 'A guided creative healing retreat combining art, reflection, gentle yoga, and Himalayan nature for authentic expression.',
+  oneLineEssence: 'A guided creative retreat combining art, reflection, gentle yoga, and time in Himalayan nature.',
   seoTitle: 'Creative Healing Retreat in the Himalayas | Retreats And Treks',
-  seoDescription: 'A guided creative healing retreat in the Himalayas with art, reflection, gentle yoga, and time in nature. Small groups and no prior art experience required.',
+  seoDescription: 'A guided creative retreat in the Himalayas with art, reflection, gentle yoga, and time in nature. No prior art experience is required.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/art-retreat/hero.webp',
@@ -24,30 +24,30 @@ export const artAndCreativeRetreat = {
     { src: '/Images/art-retreat/chaitra/expressive-wall-painting-art-workshop.webp', alt: 'Participant painting a wall mural during an expressive art workshop on a creative healing retreat' },
   ],
 
-  keyHighlights: ['Pricing on enquiry', '5–7 Days', 'Guided Creative Immersion', 'No Experience Needed', 'Materials Included'],
+  keyHighlights: ['Pricing on enquiry', '5–7 Days', 'Guided Creative Immersion', 'No Experience Needed', 'Confirm material inclusions'],
 
   description: `\
-Creative Healing Retreat is our longer guided creative immersion for anyone seeking emotional renewal through art, reflection, gentle yoga, and time in nature — reconnecting with the part of themselves that makes, creates, and imagines.
+Creative Healing Retreat is our longer guided creative immersion for people interested in exploring art, reflection, gentle yoga, and time in nature.
 
-This retreat combines expressive arts with gentle yoga and nature immersion to create a healing container where creativity becomes a doorway to emotional truth. Whether that expression comes through painting, writing, movement, music, or forms you discover in the process — the work is about unfettering what wants to emerge.
+The retreat combines creative activities with gentle yoga and time in nature. Participants can explore expression through formats such as painting, writing, movement, or music, subject to the confirmed programme.
 
 Days are structured to create flow. Mornings offer yoga and creative instruction or prompt-based exploration. Afternoons are free creation time. Evenings bring gentle sharing and reflection.
 
-By the end, you will have created work that is authentically yours. More importantly, you will have remembered that creativity is your natural state — and experienced the emotional healing that authentic expression makes possible.`,
+Participants have time to make work and reflect on their creative process. Individual experiences and outcomes vary; the retreat does not promise a therapeutic result.`,
 
   idealIf: [
     'You feel creatively blocked and want to reconnect with spontaneous expression',
     'You are drawn to art but have never given yourself permission to create freely',
-    'You want emotional healing through creative practice rather than talk-based therapy',
+    'You are interested in creative practice for reflection, rather than clinical art therapy',
     'You need a retreat that combines stillness (yoga) with active self-expression (art)',
     'You want to immerse yourself in Himalayan nature as part of your creative process',
   ],
 
   whatMakesItUnique: {
-    intro: 'This is not an art class. It is a healing container where creativity is the modality — and the Himalayas are the co-facilitator.',
+    intro: 'This is not an art class. It is a guided creative retreat centered on art, reflection, gentle yoga, and time in nature.',
     points: [
-      { title: 'Creativity as Healing', description: 'Expression replaces analysis. You don\'t talk through your feelings — you paint, write, sculpt, and move them. The art is the therapy.' },
-      { title: 'No Performance Pressure', description: 'There are no critiques, no grades, no audience. Your work exists for you alone. This removes the single biggest barrier to authentic creation.' },
+      { title: 'Creative Exploration', description: 'Guided prompts and different creative formats offer ways to explore expression without grades or critique. This is a creative retreat, not clinical art therapy.' },
+      { title: 'No Performance Pressure', description: 'There are no grades or critiques. Sharing is optional, and participants can keep their work private.' },
       { title: 'Multi-Medium Freedom', description: 'Painting, writing, collage, movement, music — you choose. You can switch mediums daily. The work is about your voice, not technical skill in any one form.' },
       { title: 'Nature as Collaborator', description: 'The Himalayan landscape is not backdrop — it is active participant. Morning light, mountain silence, and forest sounds enter your creative process directly.' },
     ],
@@ -57,12 +57,12 @@ By the end, you will have created work that is authentically yours. More importa
     { title: 'Morning Creative Sessions', description: 'Each morning begins with a prompt, technique, or theme offered by the facilitator. You explore through your chosen medium — drawing, painting, writing, collage, or whatever calls you. Guidance is available. Judgment is not.' },
     { title: 'Mountain Sketching & Plein Air', description: 'Weather permitting, we take art materials outdoors. Sketch the ridgeline. Paint the valley light. Write to the sound of wind through deodar trees. The mountain becomes your subject and your teacher.' },
     { title: 'Evening Sharing Circles', description: 'Evenings are gentle. If you wish to show your work and receive presence for it, there is that invitation. If you prefer to keep it private, that is equally honored. Sharing is witnessed — never critiqued.' },
-    { title: 'Solo Creation Time', description: 'Afternoons are yours. The facilitator is available if guidance is needed, but the space is designed for uninterrupted creation. This is where the deeper work happens — in the quiet between structure.' },
+    { title: 'Solo Creation Time', description: 'Afternoons are yours. The facilitator is available if guidance is needed, with time set aside for independent creative practice.' },
   ],
 
   placesWeExplore: [
     { name: 'Ridge Viewpoints', description: 'Open sky, mountain panoramas, and the kind of light that makes you want to paint. These are our outdoor studio spaces.' },
-    { name: 'Forest Trails', description: 'Quiet walks through deodar and oak forests. Many participants find that creative ideas arrive naturally during these unstructured walks.' },
+    { name: 'Forest Trails', description: 'Quiet walks through deodar and oak forests offer an option for time outdoors between creative sessions.' },
     { name: 'The Retreat Verandah', description: 'Where most of the creative work happens. Open air, mountain views, and a long wooden table covered in art supplies. This is your creative home base.' },
   ],
 
@@ -90,7 +90,7 @@ Afternoon is open creation time. This is your space. The facilitator is availabl
 
 Evenings are gentle. Dinner, then optional sharing. If you wish to show your work and receive presence for it, there is that invitation. If you prefer to keep it private, that is equally honored.
 
-Over the days, patterns emerge. What you needed to express becomes clear. The work deepens naturally.`,
+The schedule leaves time for creative practice and optional reflection. How participants use that time and what they take from it will vary.`,
   },
 
   whereItWorksBest: {
@@ -112,14 +112,14 @@ Art & Creative welcomes all mediums. If you have a practice, bring it. If you wi
 Solo retreat offers undistracted creation. Group retreats create a field of creative support and gentle witnessing. Pair retreats deepen shared creative exploration.`,
 
   invitation: `\
-Emotional healing through art & yoga begins when you give yourself permission to create without judgment. We create the conditions — you do the emergence. Come heal through creativity with us.`,
+Explore creative practice, reflection, and gentle yoga in a Himalayan setting. Contact us to discuss the format and confirmed programme.`,
 
   foodAndAccommodation: 'Comfortable mountain stay with simple, nutritious vegetarian meals. Creative sessions are supported with tea, quiet work time, and shared retreat spaces designed for painting, writing, reflection, and rest.',
 
   travel: {
     fromDelhi: 'Drive to Mussoorie or Chakrata via Dehradun. Most guests travel overnight or leave early morning; shared transport guidance can be arranged based on the final retreat location.',
-    fromDehradun: 'Mussoorie is around 1.5–2 hours from Dehradun, while Chakrata is around 3–4 hours depending on road conditions. Pickup guidance can be shared after dates and location are finalized.',
-    note: 'All basic art materials are included. You may also bring your own sketchbook, journal, brushes, or preferred medium if you already have one.',
+    fromDehradun: 'Travel time depends on the final location and current road conditions. Contact the team for route and pickup guidance for your dates.',
+    note: 'Contact the team to confirm which art materials are included and whether you may bring preferred materials.',
   },
 
   faqItems: [
@@ -129,31 +129,31 @@ Emotional healing through art & yoga begins when you give yourself permission to
     },
     {
       question: 'What art mediums are available?',
-      answer: 'Watercolour, acrylic, pencils, ink, pastels, collage materials, and writing supplies are all provided. You can work in one medium throughout or switch daily. The facilitator guides technique in whatever medium you choose. If you have a preferred medium, bring your own materials and we will accommodate.',
+      answer: 'Available mediums, materials, and guidance depend on the confirmed programme. Contact the team to ask what is included and whether you may bring preferred materials.',
     },
     {
       question: 'Is this art therapy?',
-      answer: 'Not in the clinical sense — we are not licensed therapists and this is not a substitute for mental health treatment. However, the retreat uses creativity as a healing modality: the act of authentic expression, in a non-judgmental container, consistently produces emotional release, clarity, and a sense of renewal. Many participants describe it as profoundly therapeutic.',
+      answer: 'No. This is a guided creative retreat, not clinical art therapy or mental health treatment. Activities include creative practice, reflection, gentle yoga, and time in nature; individual experiences vary.',
     },
     {
       question: 'How does yoga fit into a creative retreat?',
-      answer: 'Yoga opens the body and quiets the mind — both essential for creative flow. Morning yoga sessions (gentle, all-levels) create physical and mental space for the creative work that follows. The combination is deliberate: movement loosens what words and paintbrushes can then express.',
+      answer: 'Gentle yoga is included in the retreat format alongside creative practice, reflection, and time in nature. Ask about the confirmed schedule for your chosen dates.',
     },
     {
       question: 'What if I create something and hate it?',
-      answer: 'That is part of the process. Judgment of your own work is often the loudest voice that blocks creative expression. The retreat is designed to soften that voice — through facilitation, through the mountain environment, and through the experience of creating alongside others who are also being brave. Most participants surprise themselves by the end.',
+      answer: 'Sharing is optional, so you can keep your work private. Ask the facilitator about the session format if you have concerns before attending.',
     },
     {
       question: 'Can I attend alone?',
-      answer: 'Absolutely. Many participants come solo — often because they need space away from roles and relationships to reconnect with their creative self. The small group format creates natural, gentle community without social pressure.',
+      answer: 'Yes. Contact us to confirm the group format and current arrangements for your chosen dates.',
     },
     {
       question: 'Where is this retreat held?',
-      answer: 'Primarily in Mussoorie and Chakrata — both in Uttarakhand, India. Mussoorie offers aesthetic mountain beauty and colonial-era atmosphere. Chakrata offers forest silence and deeper nature immersion. Mussoorie is around 1.5–2 hours from Dehradun, while Chakrata is around 3–4 hours depending on road conditions. Also available in Rishikesh.',
+      answer: 'Primarily in Mussoorie and Chakrata — both in Uttarakhand, India. The setting and travel arrangements depend on the confirmed programme; contact the team for current location and route details. Also available in Rishikesh.',
     },
     {
       question: 'How long is the retreat?',
-      answer: 'The standard Creative Healing Retreat is 5–7 days, which allows time for deep creative immersion. If that feels like too much commitment, our Weekend Art Retreat (2–3 days) is a perfect entry point. Many participants do the weekend first and then return for the longer format.',
+      answer: 'The standard Creative Healing Retreat is 5–7 days. The Weekend Art Retreat is a shorter 2–3 day option. Contact us to confirm which formats are available for your dates.',
     },
     {
       question: 'Do I keep the art I create?',
@@ -161,7 +161,7 @@ Emotional healing through art & yoga begins when you give yourself permission to
     },
     {
       question: 'What is the sharing circle like?',
-      answer: 'Evening sharing is entirely optional. If you choose to share your work, it is witnessed — not critiqued. The group offers presence and appreciation, never technical feedback. Many participants find this the most emotionally powerful part of the retreat: being seen in their vulnerability. If you prefer to keep your work private, that is equally honoured.',
+      answer: 'Evening sharing is optional. If you choose to share your work, the format is described as non-critical; you can also keep your work private. Individual experiences vary.',
     },
   ],
 } as const;

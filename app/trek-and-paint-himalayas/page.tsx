@@ -36,22 +36,22 @@ const FAQ_ITEMS = [
   {
     question: 'How do you carry art supplies on a trek?',
     answer:
-      'We keep it simple. A pocket watercolour set, a hardback sketchbook, a few pencils, and a water brush fit in a hip bag or jacket pocket. Porters carry heavier supplies to camp. At each campsite, we set up a shared outdoor studio with additional materials. The constraint of a limited travel kit is actually beneficial — it forces simplicity and directness in the work.',
+      'Materials and transport arrangements depend on the confirmed route. Ask the organizer which supplies are included and how they should be carried for your itinerary.',
   },
   {
     question: 'Do I need to be fit for this?',
     answer:
-      'Moderate fitness is sufficient. The treks are selected for steady gradients and scenic camping spots rather than technical difficulty. Daily walking is 4–6 hours at a comfortable pace with frequent stops for sketching and observation. If you can walk for 5 hours with a daypack, you are ready. We carry the art supplies.',
+      'Fitness requirements depend on the route, terrain, walking distance, and altitude. Ask the organizer for the confirmed itinerary and specific requirements before booking.',
   },
   {
     question: 'Is this a trekking trip or an art retreat?',
     answer:
-      'Both. Mornings are spent walking through Himalayan landscape. Afternoons at camp are dedicated creation time — painting, sketching, or working with natural materials gathered on the trail. The walking and the art feed each other. What you see on the trail becomes the subject of the afternoon work. The exhaustion from trekking quiets the inner critic.',
+      'It combines walking with outdoor creative practice. The route, schedule, and available activities depend on the confirmed programme; ask the organizer for current details.',
   },
   {
     question: 'What if I cannot draw?',
     answer:
-      'The trail does not care whether you can draw. Nature sketching, land art, and texture rubbings require no drawing skill. Watercolour washes of mountain light are about colour and water, not line work. The facilitator meets you where you are. Some of the most striking work on these trips comes from people who have never held a paintbrush.',
+      'Nature sketching, land art, and texture rubbings are options that do not depend on formal drawing experience. Watercolour washes focus on colour and water rather than line work. The facilitator can adapt guidance to your experience.',
   },
   {
     question: 'What mediums can I use on the trail?',
@@ -456,7 +456,7 @@ export default function TrekAndPaintPage() {
 
             <div className="med-paint-mode">
               <h3 className="med-h3">Quick Capture</h3>
-              <p className="med-body">60-second sketches at trail stops. The view will not wait. Speed kills the inner critic.</p>
+              <p className="med-body">Short sketches at trail stops offer one way to record changing views and details observed along the route.</p>
             </div>
             <div className="med-paint-mode">
               <h3 className="med-h3">Sustained Work</h3>
@@ -495,19 +495,19 @@ export default function TrekAndPaintPage() {
           </div>
         </section>
 
-        {/* ── WHY TREKKING IMPROVES ART ── */}
+        {/* ── WALKING AND CREATIVE PRACTICE ── */}
         <section className="med-shell med-section-white med-section-padding" style={{ borderBottom: '1px solid rgba(15,118,110,0.08)' }}>
           <div className="med-inner">
             <div className="med-eyebrow">
               <span className="med-eyebrow-line" />
               <span className="med-eyebrow-text">Perspective</span>
             </div>
-            <h2 className="med-h2">Why Trekking <span>Improves the Art</span></h2>
+            <h2 className="med-h2">Walking and <span>Creative Practice</span></h2>
             <p className="med-body">
-              Physical exhaustion from walking is the best inner-critic suppressor available. After five hours on a mountain trail, the part of your brain that judges your work is too tired to interfere. What remains is directness — the impulse to capture what you saw before the light changes or the memory fades.
+              This format combines walking with outdoor art-making. Participants can use details observed along the route as subjects for creative sessions; individual approaches and outcomes vary.
             </p>
             <p className="med-body">
-              Artists who paint from photographs work with frozen moments. Artists who paint after walking through a landscape work with embodied memory — the temperature, the sound, the physical effort, the smell of pine or river stone. This embodied quality enters the work. The paintings are not more technically accomplished, but they are more alive.
+              A route may offer changing views, textures, and other details to observe. Each participant chooses what, if anything, to include in their work.
             </p>
           </div>
         </section>

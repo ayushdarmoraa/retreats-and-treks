@@ -24,16 +24,16 @@ export const trekAndPaintRetreat = {
     { src: '/Images/art-retreat/art-supplies.webp', alt: 'Art supplies provided for painting and creative retreat sessions' },
   ],
 
-  keyHighlights: ['Pricing on enquiry', '5–7 Days', 'Chakrata Trails', 'Moderate Walking', 'Art Supplies Included'],
+  keyHighlights: ['Pricing on enquiry', '5–7 Days', 'Route Confirmed Before Booking', 'Walking & Outdoor Art', 'Art Supplies — Confirm Details'],
 
   description: `\
-Trek & Paint is for people who want to move through landscapes — not just look at them. Each day combines a Himalayan trek with outdoor painting sessions at the most striking viewpoints along the trail.
+Trek & Paint is for people interested in combining walks in Himalayan landscapes with outdoor painting. The format pairs time on trails with opportunities to observe and make work from the surrounding landscape.
 
-This is not a painting class with a hike attached. The walking IS the creative preparation. Hours of rhythmic movement through forests, ridgelines, and valleys quiet the mind and open perception. By the time you stop to paint, you are seeing differently.
+This is not a painting class with a hike attached. Walking and outdoor art-making are both part of the retreat format; the confirmed route and schedule depend on the specific programme.
 
-Mornings are for walking. We follow trails through deodar forests, along ridgelines, past waterfalls. Afternoons, we stop at carefully chosen viewpoints and paint. Watercolors, pencils, ink — whatever feels right. No experience needed. The mountain is patient.
+The confirmed itinerary determines where and how far participants walk and which outdoor art-making settings are included. Contact the team for current route, terrain, schedule, and supply details.
 
-By the end, you'll have a visual journal of landscapes you walked through — and the quiet confidence that comes from having made something real in beautiful places.`,
+Participants can record observations and artwork from the landscapes they visit. The work created and each participant's experience will vary.`,
 
   idealIf: [
     'You love being outdoors and want to add a creative layer to your trekking',
@@ -46,18 +46,18 @@ By the end, you'll have a visual journal of landscapes you walked through — an
   whatMakesItUnique: {
     intro: 'Most art retreats are stationary. This one moves. You walk into the landscape, then paint from inside it.',
     points: [
-      { title: 'Movement as Preparation', description: 'Hours of walking through forests and ridgelines quiet your mind. By the time you paint, you\'re seeing with fresh eyes — not thinking about technique.' },
-      { title: 'Real Landscapes, Not Photos', description: 'You paint what\'s in front of you — shifting light, moving clouds, the actual mountain. This is fundamentally different from working from photos in a studio.' },
-      { title: 'Visual Journaling', description: 'Each day produces pages in your visual journal — sketches, watercolors, notes. You leave with a physical record of every trail and viewpoint.' },
-      { title: 'Accessible to Everyone', description: 'No art experience required. No trekking experience required beyond basic fitness. The trails are moderate and the painting is guided.' },
+      { title: 'Walking and Observation', description: 'Time outdoors can provide subjects for creative practice. The route and walking schedule depend on the confirmed itinerary.' },
+      { title: 'Outdoor Observation', description: 'The confirmed itinerary determines whether outdoor art-making is included and which settings are available.' },
+      { title: 'Creative Practice', description: 'Ask whether the current programme includes a visual journal or other materials to record observations.' },
+      { title: 'Experience and Guidance', description: 'Ask the organizer about experience requirements and what creative guidance is included in the current programme.' },
     ],
   },
 
   experiences: [
-    { title: 'Morning Trek', description: 'Each day begins with a 3–5 hour trek through Himalayan forest, ridgeline, or valley trails. The pace is intentionally moderate — fast enough to cover ground, slow enough to notice.' },
-    { title: 'Trailside Painting Sessions', description: 'At selected viewpoints along the trail, we stop to paint. The facilitator offers technique guidance — composition, color mixing, light capture — while you work from the live landscape.' },
-    { title: 'Evening Art Review', description: 'After dinner, we review the day\'s work together. Not critique — appreciation. Seeing what others noticed in the same landscape teaches you to see differently.' },
-    { title: 'Solo Sketching Time', description: 'Rest days include unstructured time for solo sketching anywhere on the property or nearby trails. Some of the best work happens in these quiet hours.' },
+    { title: 'Walking', description: 'Walking routes, terrain, distance, and daily schedule are confirmed for each programme before booking.' },
+    { title: 'Outdoor Art Sessions', description: 'The itinerary may include opportunities to make art outdoors. Confirm the locations, materials, and facilitator guidance for the current programme.' },
+    { title: 'Group Reflection', description: 'Ask whether group reflection or sharing is part of the current itinerary.' },
+    { title: 'Independent Creative Time', description: 'Ask whether the current itinerary includes time for independent sketching or other creative practice.' },
   ],
 
   placesWeExplore: [
@@ -71,61 +71,52 @@ By the end, you'll have a visual journal of landscapes you walked through — an
       'Trekkers who want to add a creative dimension to their walks',
       'Artists who want to paint outdoors in stunning locations',
       'Beginners who want to try painting in a non-judgmental setting',
-      'Anyone who finds creativity through physical movement',
+      'People interested in combining outdoor activity and creative practice, subject to the confirmed itinerary',
     ],
     notFor: [
       'Those seeking intensive technical art training',
       'People who prefer sedentary retreat formats',
-      'Anyone looking for challenging high-altitude treks (our trails are moderate)',
+      'Anyone seeking a fixed route or difficulty level without confirming the current itinerary',
     ],
   },
 
   howItWorks: {
     rhythm: `\
-Mornings begin at sunrise with tea and a light breakfast. We pack art supplies and water, and hit the trail by 7:30 AM.
-
-The trek lasts 3–5 hours depending on the day, with frequent stops to observe and quick-sketch interesting subjects.
-
-After lunch at a viewpoint or camp, the afternoon is dedicated painting time. The facilitator guides composition and technique while you work from the live landscape.
-
-Evenings are relaxed. Dinner, then optional sharing of the day's work. The group sees the same trail through different eyes — and that's part of the learning.
-
-Rest days are built in for solo exploration and sustained painting sessions.`,
+The schedule, walking route, terrain, and time for art-making depend on the confirmed programme. Ask the organizer for the current itinerary, fitness requirements, and what materials or guidance are included before booking.`,
   },
 
   whereItWorksBest: {
     primary: 'chakrata' as const,
-    primaryReason: 'Dense forests, varied terrain, and stunning ridge viewpoints make Chakrata ideal for combining walking with painting.',
+    primaryReason: 'Chakrata is listed as the primary setting for this format. Confirm the current route, terrain, and access details before booking.',
     alsoWorks: ['mussoorie', 'sankri'],
     contextByLocation: {
-      chakrata: 'Forest trails with dramatic viewpoints — the variety of terrain keeps both the walking and the painting engaging.',
-      mussoorie: 'Accessible trails with panoramic views. The colonial hill station aesthetic adds an interesting architectural subject.',
-      sankri: 'Higher altitude trails with snow-capped peaks. For painters who want dramatic Himalayan subjects.',
-      rishikesh: 'River valley walks with the Ganges as a central subject. More spiritual landscape, less mountain panorama.',
-      munsiyari: 'Remote alpine beauty with Panchachuli peaks. For experienced trekkers who want extreme landscape subjects.',
+      chakrata: 'Ask about the current route, terrain, and access arrangements for Chakrata.',
+      mussoorie: 'Ask whether the current programme includes Mussoorie and confirm route and access details.',
+      sankri: 'Ask whether the current programme includes Sankri and confirm route and access details.',
+      rishikesh: 'Ask whether the current programme includes Rishikesh and confirm route and access details.',
+      munsiyari: 'Ask whether the current programme includes Munsiyari and confirm route and access details.',
     },
   },
 
   adaptability: `\
-Trek & Paint adapts to your fitness and art level. Trails can be shortened. Painting sessions can be extended. Rest days can be added.
-
-Solo retreat offers total immersion in your own creative rhythm. Group retreats create a traveling art studio — you paint alongside others and learn from how they see. Pair retreats are particularly compelling for couples or friends who trek together.`,
+Ask the organizer whether the current route and schedule can be adapted to your fitness and art experience. Confirm any rest-day options before booking.
+Confirm whether solo, group, or pair bookings and any schedule adaptations are available for your dates.`,
 
   invitation: `\
 Walk the Himalayas. See them differently. Paint what you find. Trek & Paint is for anyone who believes that the best art comes from being fully present in a landscape — not just passing through it.`,
 
-  foodAndAccommodation: 'Simple, nutritious meals prepared with local ingredients. Accommodation ranges from guesthouses to tented camps depending on the trail. Emphasis on comfort without luxury — the landscape is the luxury.',
+  foodAndAccommodation: 'Accommodation and meal arrangements depend on the confirmed itinerary. Contact the organizer for current details.',
 
   travel: {
-    fromDelhi: 'Drive to Dehradun (5–6 hours) or fly to Dehradun airport. We arrange pickup from there.',
-    fromDehradun: 'Drive to the trailhead (2–4 hours depending on location). We handle all logistics.',
-    note: 'All art supplies (watercolors, paper, pencils, ink) are provided. Bring your own if you prefer.',
+    fromDelhi: 'Travel time and route depend on the confirmed destination. Contact the team for current directions and transfer information.',
+    fromDehradun: 'The route and travel time depend on the confirmed trailhead. Ask the organizer about pickup and transport arrangements.',
+    note: 'Confirm which art supplies are included for the current programme; you may ask whether personal materials can be brought.',
   },
 
   faqItems: [
     {
       question: 'Do I need trekking experience?',
-      answer: 'No. The trails are moderate — 3–5 hours of walking at a gentle pace through forests and ridgelines. If you can walk for a few hours on a trail, you are ready. This is not mountaineering; it is walking through beautiful landscapes with deliberate stops for art.',
+      answer: 'Walking distance, terrain, and difficulty vary by itinerary. Ask the organizer for the confirmed route and fitness requirements before booking.',
     },
     {
       question: 'Do I need painting experience?',
@@ -133,19 +124,19 @@ Walk the Himalayas. See them differently. Paint what you find. Trek & Paint is f
     },
     {
       question: 'What art supplies are provided?',
-      answer: 'All supplies: watercolours, pencils, ink, sketchbooks, and paper. Everything is selected for portability on the trail. If you have preferred materials, bring them — we can accommodate. The emphasis is on capturing the experience, not producing gallery-ready work.',
+      answer: 'Materials depend on the confirmed programme. Ask which supplies are included and whether you may bring preferred personal materials.',
     },
     {
       question: 'How much do we trek vs paint each day?',
-      answer: 'Roughly half and half. Mornings are typically 3–5 hours of trekking. Afternoons are dedicated painting time at viewpoints discovered along the trail. Rest days are built in for sustained painting sessions or solo exploration.',
+      answer: 'The balance of walking and art-making depends on the confirmed itinerary. Contact the organizer for the current daily schedule and any rest-day arrangements.',
     },
     {
       question: 'What fitness level is required?',
-      answer: 'Moderate fitness: ability to walk 3–5 hours on uneven terrain at a comfortable pace with a daypack. We carry art supplies in shared packs. The trails involve gradual elevation gain — not steep climbs. If you walk regularly, you are likely ready.',
+      answer: 'Fitness requirements depend on the route, terrain, and altitude. Ask the organizer for the current itinerary and its specific requirements before booking.',
     },
     {
       question: 'Where does this retreat take place?',
-      answer: 'Primarily in Chakrata — dense forests, dramatic viewpoints, and varied terrain perfect for both walking and painting. Also available in Mussoorie (more accessible) and Sankri (higher altitude, snow-capped peak subjects). All locations are in Uttarakhand, India.',
+      answer: 'Chakrata is listed as the primary setting. Ask the organizer whether other locations are available and confirm the route, terrain, access, and current conditions for your dates.',
     },
     {
       question: 'Do I keep the art I create?',
@@ -153,15 +144,15 @@ Walk the Himalayas. See them differently. Paint what you find. Trek & Paint is f
     },
     {
       question: 'What is the accommodation like?',
-      answer: 'Comfortable guesthouses or tented camps depending on the trail. Warm bedding, hot meals, and mountain views. The accommodation ranges from simple to basic — the landscape is the luxury. All meals are included.',
+      answer: 'Accommodation and meal arrangements depend on the confirmed route and programme. Contact the organizer for current details before booking.',
     },
     {
       question: 'Can I join as a solo traveller?',
-      answer: 'Absolutely. Many participants come solo. The group format (max 10) creates natural connection through shared experience — walking the same trail, painting the same view, sharing work over dinner. It is one of the most bonding retreat formats we offer.',
+      answer: 'Contact the organizer to confirm whether solo bookings are available and what group arrangements apply to your dates.',
     },
     {
       question: 'What is the best season for Trek & Paint?',
-      answer: 'Autumn (October–November) offers the clearest skies and best mountain visibility — ideal for painting distant peaks. Spring (March–May) brings wildflowers and soft light. Both seasons provide comfortable trekking temperatures. Monsoon is avoided due to trail conditions.',
+      answer: 'Suitable dates depend on the confirmed route and current access and weather conditions. Contact the organizer for season-specific guidance before booking.',
     },
   ],
 } as const;

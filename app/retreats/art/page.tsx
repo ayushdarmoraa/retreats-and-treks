@@ -37,13 +37,13 @@ export function generateMetadata(): Metadata {
   return {
     title: 'Art Retreats in the Himalayas | Retreats And Treks',
     description:
-      'Art retreats in India with painting, writing, movement, and yoga in the Himalayas. Small groups, real guidance, and no experience needed.',
+      'Explore art retreat formats in the Himalayas. Confirm current locations, dates, programme details, and inclusions with the retreat team.',
     alternates: {
       canonical: buildCanonicalUrl(PATH),
     },
     openGraph: {
       title: 'Art Retreats in the Himalayas | Retreats And Treks',
-      description: 'Art retreats in India with painting, writing, movement, and yoga in the Himalayas. Small groups, real guidance, and no experience needed.',
+      description: 'Explore art retreat formats in the Himalayas. Confirm current locations, dates, programme details, and inclusions with the retreat team.',
       url: buildCanonicalUrl(PATH),
       type: 'website',
       siteName: 'Retreats And Treks',
@@ -54,6 +54,8 @@ export function generateMetadata(): Metadata {
   };
 }
 
+
+
 const ART_EVENTS = {
   'art-and-creative': getUpcomingEventsByService('art-and-creative')[0],
   'trek-and-paint': getUpcomingEventsByService('trek-and-paint')[0],
@@ -61,55 +63,49 @@ const ART_EVENTS = {
 } as const;
 
 const RETREATS = [
-  { ...artAndCreativeRetreat, bestFor: artAndCreativeRetreat.idealIf?.[0], locationName: getLocationById(artAndCreativeRetreat.whereItWorksBest.primary)?.name, duration: ART_EVENTS['art-and-creative'] ? ART_EVENTS['art-and-creative'].durationDays + ' Days' : '5–7 Days', format: 'Immersive', image: '/Images/services/artcreative.webp', href: '/retreats/journeys/art-and-creative', price: ART_EVENTS['art-and-creative'] ? '₹' + ART_EVENTS['art-and-creative'].price.toLocaleString('en-IN') : 'Pricing on enquiry', outcome: 'Return with authentic creative work — and the memory that creativity is your natural state.', nextBatch: ART_EVENTS['art-and-creative']?.dateRange ?? 'Dates on enquiry', seats: ART_EVENTS['art-and-creative']?.seatsLeft ?? null },
+  { ...artAndCreativeRetreat, bestFor: artAndCreativeRetreat.idealIf?.[0], locationName: getLocationById(artAndCreativeRetreat.whereItWorksBest.primary)?.name, duration: ART_EVENTS['art-and-creative'] ? ART_EVENTS['art-and-creative'].durationDays + ' Days' : '5–7 Days', format: 'Immersive', image: '/Images/services/artcreative.webp', href: '/retreats/journeys/art-and-creative', price: ART_EVENTS['art-and-creative'] ? '₹' + ART_EVENTS['art-and-creative'].price.toLocaleString('en-IN') : 'Pricing on enquiry', outcome: 'Guided art, reflection, gentle yoga, and time in nature.', nextBatch: ART_EVENTS['art-and-creative']?.dateRange ?? 'Dates on enquiry', seats: ART_EVENTS['art-and-creative']?.seatsLeft ?? null },
   { ...trekAndPaintRetreat, bestFor: trekAndPaintRetreat.idealIf?.[0], locationName: getLocationById(trekAndPaintRetreat.whereItWorksBest.primary)?.name, duration: ART_EVENTS['trek-and-paint'] ? ART_EVENTS['trek-and-paint'].durationDays + ' Days' : '5–7 Days', format: 'Active + Creative', image: '/Images/blog/painting-in-the-himalayas.webp', href: '/retreats/journeys/trek-and-paint', price: ART_EVENTS['trek-and-paint'] ? '₹' + ART_EVENTS['trek-and-paint'].price.toLocaleString('en-IN') : 'Pricing on enquiry', outcome: 'Walk into Himalayan landscapes by day, paint what you see by evening.', nextBatch: ART_EVENTS['trek-and-paint']?.dateRange ?? 'Dates on enquiry', seats: ART_EVENTS['trek-and-paint']?.seatsLeft ?? null },
-  { ...weekendArtRetreat, bestFor: weekendArtRetreat.idealIf?.[0], locationName: getLocationById(weekendArtRetreat.whereItWorksBest.primary)?.name, duration: ART_EVENTS['weekend-art-retreat'] ? ART_EVENTS['weekend-art-retreat'].durationDays + ' Days' : '2–3 Days', format: 'Short Escape', image: '/Images/blog/can-a-retreat-unblock-creativity.webp', href: '/retreats/journeys/weekend-art-retreat', price: ART_EVENTS['weekend-art-retreat'] ? '₹' + ART_EVENTS['weekend-art-retreat'].price.toLocaleString('en-IN') : 'Pricing on enquiry', outcome: 'Two days is enough to remember why you create. Start here.', nextBatch: ART_EVENTS['weekend-art-retreat']?.dateRange ?? 'Dates on enquiry', seats: ART_EVENTS['weekend-art-retreat']?.seatsLeft ?? null },
+  { ...weekendArtRetreat, bestFor: weekendArtRetreat.idealIf?.[0], locationName: getLocationById(weekendArtRetreat.whereItWorksBest.primary)?.name, duration: ART_EVENTS['weekend-art-retreat'] ? ART_EVENTS['weekend-art-retreat'].durationDays + ' Days' : '2–3 Days', format: 'Short Escape', image: '/Images/blog/can-a-retreat-unblock-creativity.webp', href: '/retreats/journeys/weekend-art-retreat', price: ART_EVENTS['weekend-art-retreat'] ? '₹' + ART_EVENTS['weekend-art-retreat'].price.toLocaleString('en-IN') : 'Pricing on enquiry', outcome: 'A short format with guided and independent creative practice.', nextBatch: ART_EVENTS['weekend-art-retreat']?.dateRange ?? 'Dates on enquiry', seats: ART_EVENTS['weekend-art-retreat']?.seatsLeft ?? null },
 ];
 
 const LOCATIONS = [
-  { name: 'Mussoorie', id: 'mussoorie', context: 'Mountain vistas awaken aesthetic sense. The beauty around you invites creative response.', image: '/Images/location/mussoorie.webp' },
-  { name: 'Chakrata', id: 'chakrata', context: 'Forest silence creates space for internal creativity to emerge without distraction.', image: '/Images/location/chakrata.webp' },
-  { name: 'Rishikesh', id: 'rishikesh', context: 'Spiritual ground supports the vulnerability that authentic creation requires.', image: '/Images/location/rishikesh.webp' },
-  { name: 'Sankri', id: 'sankri', context: 'High-altitude wilderness supports visual journaling, silence, and creative intensity.', image: '/Images/location/sankri.webp' },
-  { name: 'Zanskar', id: 'zanskar', context: 'Remote Ladakh landscapes create a rare container for solitude, sketching, and deep attention.', image: '/Images/location/zanskar.webp' },
-];
-
-const ART_TESTIMONIALS = [
-  { name: 'Aditi', retreat: 'Art & Creative Healing', text: 'I booked this retreat heavily burnt out. I hadn\'t painted in ten years. By day three, I was crying over a canvas, and I felt infinitely lighter. It\'s not an art class, it\'s an unburdening.' },
-  { name: 'Rohan', retreat: 'Trek & Paint', text: 'Painting a Himalayan sunrise live, sitting on a ridge, changes how you see the world. The facilitators held space so beautifully. Zero pressure, pure creation.' },
-  { name: 'Meera', retreat: 'Weekend Art Escape', text: 'I didn\'t know I needed the silence. The combination of early yoga, pine forests, and watercolors cracked something open for me. I went back to the city with a fresh mind.' },
+  { name: 'Mussoorie', id: 'mussoorie', context: 'Ask about current programme details and location arrangements for Mussoorie.', image: '/Images/location/mussoorie.webp' },
+  { name: 'Chakrata', id: 'chakrata', context: 'Ask about current programme details and access arrangements for Chakrata.', image: '/Images/location/chakrata.webp' },
+  { name: 'Rishikesh', id: 'rishikesh', context: 'Ask about current programme details and location arrangements for Rishikesh.', image: '/Images/location/rishikesh.webp' },
+  { name: 'Sankri', id: 'sankri', context: 'Ask whether a current art retreat programme is available in Sankri and confirm its details.', image: '/Images/location/sankri.webp' },
+  { name: 'Zanskar', id: 'zanskar', context: 'Ask whether a current art retreat programme is available in Zanskar and confirm its details.', image: '/Images/location/zanskar.webp' },
 ];
 
 const FAQ_ITEMS = [
   {
     question: 'Do I need art experience to join an art retreat?',
     answer:
-      'No. The art retreats are designed for beginners as well as experienced artists. The focus is expression, emotional clarity, and creative reconnection, not technical performance or producing perfect work.',
+      'No. The art retreats are designed for beginners as well as experienced artists. They include guided creative activities and time for individual practice, rather than a focus on technical performance or producing perfect work.',
   },
   {
     question: 'What is included in an art retreat?',
     answer:
-      'Most art retreats include accommodation, vegetarian meals, guided creative sessions, open creation time, basic art materials, and support from the retreat team. Travel to the retreat location is usually planned separately, with guidance shared after dates and location are finalized.',
+      'Inclusions vary by programme and departure. Contact the retreat team to confirm accommodation, meals, creative activities, materials, support, and travel arrangements for your dates.',
   },
   {
     question: 'Which art retreat should I choose?',
     answer:
-      'Choose Creative Healing if you want emotional expression through art and yoga, Trek & Paint if you want walking and outdoor painting, and Weekend Art Retreat if you want a short Friday-to-Sunday creative reset near Delhi.',
+      'Choose the longer Creative Retreat for guided art, reflection, gentle yoga, and time in nature; Trek & Paint combines walking with outdoor painting; the Weekend Art Retreat is a shorter creative format.',
   },
   {
     question: 'Where are the art retreats held?',
     answer:
-      'Art retreats are hosted across Himalayan locations such as Mussoorie, Chakrata, Rishikesh, Sankri, and Zanskar. Each location has a different creative energy, from forest silence and mountain views to high-altitude wilderness and remote solitude.',
+      'Locations shown include Mussoorie, Chakrata, Rishikesh, Sankri, and Zanskar. Current availability depends on the programme; contact the team to confirm the location for your dates.',
   },
   {
     question: 'Can I come alone?',
     answer:
-      'Yes. Many guests come alone. The retreats are small, guided, and designed to feel safe for solo travellers, beginners, and people who want quiet creative space without social pressure.',
+      'Contact us to confirm the group size and arrangements for solo guests for your chosen dates.',
   },
   {
     question: 'How long should I come for?',
     answer:
-      'A weekend retreat works well if you want a short creative reset. A 5–7 day Creative Healing or Trek & Paint retreat gives more time for deeper immersion, slower work, and stronger creative continuity.',
+      'The Weekend Art Retreat is listed as 2–3 days, while the Creative Retreat and Trek & Paint are listed as 5–7 days. Confirm the duration of the available programme before booking.',
   },
 ];
 
@@ -148,12 +144,12 @@ const BEGINNER_FAQ_ITEMS = [
   {
     question: 'Can I attend alone?',
     answer:
-      'Absolutely. Many guests come solo. The retreats are small, safe, and designed for both solo travellers and people attending with others. You will have time for solitude, but you\'ll also have the container of a group if you want community.',
+      'Contact us to confirm the group size and arrangements for solo guests for your chosen dates.',
   },
   {
     question: 'What kind of art activities happen?',
     answer:
-      'Daily activities include guided creative sessions (painting, drawing, collage, clay work, mixed media), open creation time for your own work, movement and yoga practices, nature walks, group sharing circles (optional), and reflection. Mornings typically include a prompt or theme. Afternoons are free creation time. The rhythm is designed so you can go deep without pressure.',
+      'Activities may include guided creative sessions, open creation time, movement and yoga practices, nature walks, optional sharing circles, and reflection. The confirmed schedule varies by programme.',
   },
 ];
 
@@ -349,7 +345,7 @@ export default function ArtRetreatsPage() {
             Art retreats in the Himalayas
           </h1>
           <p style={{ maxWidth: '42rem', margin: '0 auto 2rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '1rem', fontWeight: 300, lineHeight: 1.85, color: 'rgba(255,255,255,0.84)' }}>
-            Emotional healing through painting, writing, movement and yoga — no experience needed. Small groups. Real guidance. Mountain silence.
+            Explore painting, writing, movement and yoga in a Himalayan setting. No prior art experience is needed.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
             {['Materials Included', 'No Experience Needed', '2–7 Days'].map((tag) => (
@@ -406,8 +402,8 @@ export default function ArtRetreatsPage() {
           <h2 className="art-section-title">What is a Himalayan <span>art retreat</span>?</h2>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <p className="art-body-text">An art retreat is a structured period of creative immersion — typically 2 to 7 days — where you step away from daily life to focus entirely on creative expression. Unlike art classes, the goal is not technical mastery. It is reconnection with your own creative voice.</p>
-            <p className="art-body-text">In the Himalayas, art retreats take on a different character. Mountain silence, forest light, and the sheer scale of the landscape become active participants in your creative process. Many participants discover that their most authentic work emerges not from instruction, but from the combination of creative space, nature, and stillness.</p>
-            <p className="art-body-text">Our art retreats use multiple mediums — painting, writing, collage, movement, and music — as doorways to emotional truth and creative reconnection. No experience is needed. No talent is required. Only curiosity and a willingness to create without judgment.</p>
+            <p className="art-body-text">Art retreats take place in Himalayan settings, where the surroundings can provide subjects or prompts for creative work. The programme and individual experience vary by location and dates.</p>
+            <p className="art-body-text">Depending on the confirmed programme, activities may include painting, writing, collage, movement, and music. No prior art experience is required.</p>
           </div>
         </div>
       </section>
@@ -416,10 +412,10 @@ export default function ArtRetreatsPage() {
         <div className="art-inner">
           <div className="art-eyebrow">
             <span className="art-eyebrow-line" />
-            <span className="art-eyebrow-text">Why It Works</span>
+            <span className="art-eyebrow-text">Format Overview</span>
           </div>
-          <h2 className="art-section-title">Why Himalayan art retreats <span>heal</span></h2>
-          <p className="art-body-text" style={{ marginBottom: '2.5rem' }}>This is not an art class. It is a healing container where creativity is the modality — and the Himalayas are the co-facilitator.</p>
+          <h2 className="art-section-title">Creative practice in a Himalayan setting</h2>
+          <p className="art-body-text" style={{ marginBottom: '2.5rem' }}>These retreats combine creative activities with time in nature. They are creative retreats, not clinical art therapy.</p>
           <div className="art-feature-grid">
             {artAndCreativeRetreat.whatMakesItUnique!.points.map((point, index) => (
               <div key={index} className="art-feature-card">
@@ -598,7 +594,7 @@ export default function ArtRetreatsPage() {
               { href: '/blog/art-retreat-for-beginners', title: 'Art retreats for beginners', text: 'A gentle guide if you feel curious, blocked, or unsure because you do not consider yourself an artist.' },
               { href: '/blog/art-retreat-packing-list', title: 'Art retreat packing list', text: 'Know what materials, clothing, and essentials to bring for a Himalayan art retreat.' },
               { href: '/blog/painting-in-the-himalayas', title: 'Painting in the Himalayas', text: 'Understand what plein air painting feels like when the trail, light, and mountain weather become part of the work.' },
-              { href: '/creative-retreat', title: 'Creative retreat overview', text: 'A deeper supporting page for emotional healing through art, yoga, expression, and mountain stillness.' },
+              { href: '/creative-retreat', title: 'Creative retreat overview', text: 'A supporting page about creative practice through art, yoga, reflection, and time in nature.' },
               { href: '/trek-and-paint-himalayas', title: 'Trek and paint in the Himalayas', text: 'Explore the active version of the art retreat for people who want walking, viewpoints, and visual journaling.' },
             ].map((item) => (
               <Link key={item.href} href={item.href} className="art-card" style={{ padding: '1.35rem', textDecoration: 'none', color: 'inherit' }}>
@@ -663,9 +659,9 @@ export default function ArtRetreatsPage() {
         <div style={{ position: 'absolute', top: '-120px', left: '50%', transform: 'translateX(-50%)', width: '520px', height: '520px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(15,118,110,0.3) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '44rem', margin: '0 auto', padding: '0 1.5rem' }}>
           <h3 style={{ margin: '0 0 0.8rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.25rem, 2.4vw, 1.7rem)', fontWeight: 200, color: 'white', textShadow: '0 2px 20px rgba(0,0,0,0.3)' }}>Want help choosing the right art retreat?</h3>
-          <p style={{ margin: '0 0 1.8rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.75, color: 'rgba(255,255,255,0.7)' }}>Talk with us directly — no forms, no commitment. Just a conversation about what you need.</p>
+          <p style={{ margin: '0 0 1.8rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.75, color: 'rgba(255,255,255,0.7)' }}>Use the enquiry option to ask about current dates, starting price, and which format may suit your plans.</p>
           <CTAExpandToggle
-            label="Check Dates & Starting Price"
+            label="Ask About Dates & Starting Price"
             vertical="retreat"
             category="art-and-creative"
             sourcePath={PATH}
@@ -689,31 +685,6 @@ export default function ArtRetreatsPage() {
         </div>
       </section>
 
-      <section className="art-shell" style={{ background: '#f7f9f7', padding: '4.5rem 0' }}>
-        <div className="art-outer">
-          <div className="art-eyebrow" style={{ justifyContent: 'center' }}>
-            <span className="art-eyebrow-line" />
-            <span className="art-eyebrow-text">Guest Stories</span>
-            <span className="art-eyebrow-line" />
-          </div>
-          <h2 className="art-section-title" style={{ textAlign: 'center' }}>Real <span>retreat experiences</span></h2>
-          <div className="art-grid-3" style={{ marginTop: '2rem' }}>
-            {ART_TESTIMONIALS.map((testimonial, index) => (
-              <div key={index} className="art-card" style={{ padding: '1.5rem' }}>
-                <p style={{ margin: '0 0 1.1rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.8, color: '#555', fontStyle: 'italic' }}>&ldquo;{testimonial.text}&rdquo;</p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <span style={{ width: 38, height: 38, borderRadius: '50%', background: '#0f766e', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', fontWeight: 600 }}>{testimonial.name[0]}</span>
-                  <div>
-                    <div style={{ fontSize: '0.9rem', fontWeight: 600, color: '#111' }}>{testimonial.name}</div>
-                    <div style={{ fontSize: '0.72rem', color: '#6b7280' }}>{testimonial.retreat}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="art-shell" style={{ background: '#ffffff', padding: '4.5rem 0' }}>
         <div className="art-inner">
           <div className="art-eyebrow">
@@ -721,7 +692,7 @@ export default function ArtRetreatsPage() {
             <span className="art-eyebrow-text">Moments</span>
           </div>
           <h2 className="art-section-title">From Chaitra’s <span>art retreats</span></h2>
-          <p className="art-body-text" style={{ marginBottom: '2rem' }}>Real creative spaces, art therapy sessions, reflection circles, and finished participant artwork from retreats guided by Chaitra Ram.</p>
+          <p className="art-body-text" style={{ marginBottom: '2rem' }}>Creative spaces, reflection activities, and artwork from art retreats guided by Chaitra Ram.</p>
           <div style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '1rem' }}>
             {CHAITRA_ART_GALLERY.map((image, index) => (
               <div key={image.src} style={{ position: 'relative', minHeight: index === 0 ? '420px' : '205px', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 18px 48px rgba(15,31,28,0.08)', background: '#eef0ee' }}>
@@ -750,9 +721,9 @@ export default function ArtRetreatsPage() {
         </div>
         <div style={{ position: 'relative', zIndex: 1, maxWidth: '44rem', padding: '4rem 1.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: 'clamp(1.4rem, 2.8vw, 2rem)', fontWeight: 200, color: 'white' }}>Ready to plan your creative retreat?</h2>
-          <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.75, color: 'rgba(255,255,255,0.72)' }}>Ask us about current dates. No rigid schedules. We design each retreat around you — your time, your medium, your intention. The mountains are always ready.</p>
+          <p style={{ margin: '0 0 2rem', fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.9rem', lineHeight: 1.75, color: 'rgba(255,255,255,0.72)' }}>Ask us about current dates and available retreat formats. We can confirm which options suit your preferred timing, medium, and location.</p>
           <CTAExpandToggle
-            label="Check Art Retreat Dates"
+            label="Ask About Art Retreat Dates"
             vertical="retreat"
             category="art-and-creative"
             sourcePath={PATH}
@@ -777,6 +748,3 @@ export default function ArtRetreatsPage() {
     </TrackedPage>
   );
 }
-
-
-

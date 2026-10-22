@@ -7,16 +7,16 @@
 export const weekendArtRetreat = {
   slug: 'weekend-art-retreat',
   title: 'Weekend Art Retreat',
-  oneLineEssence: 'Two days of uninterrupted creative expression in the mountains — enough to remember why you create.',
+  oneLineEssence: 'A short-format art retreat in the mountains with guided and independent creative practice.',
   seoTitle: 'Weekend Art Retreat Near Delhi | Retreats And Treks',
-  seoDescription: 'Weekend art retreat near Delhi with painting, writing, creative expression, mountain silence, and a Friday-to-Sunday format.',
+  seoDescription: 'A short-format art retreat with guided and independent creative practice. Confirm current locations, schedule, and inclusions with the retreat team.',
 
   /* ── Visual Assets ── */
   heroImage: '/Images/blog/can-a-retreat-unblock-creativity.webp',
   heroAlt: 'Weekend art retreat in the mountains — short creative escape for unblocking and expression',
   signatureImage: '/Images/location/chakrata.webp',
   signatureAlt: 'Mountain dawn from the retreat — weekend creative escape in Uttarakhand',
-  signatureQuote: `You don't need a week to change how you see. Sometimes, two days is everything.`,
+  signatureQuote: `A weekend format for guided and independent creative practice.`,
   galleryImages: [
     { src: '/Images/art-retreat/chaitra/group-art-retreat-participants-paintings.webp', alt: 'Weekend art retreat participants holding finished paintings' },
     { src: '/Images/art-retreat/chaitra/indoor-expressive-art-workshop-retreat.webp', alt: 'Indoor expressive art workshop during a weekend art retreat in the Himalayas' },
@@ -24,47 +24,41 @@ export const weekendArtRetreat = {
     { src: '/Images/art-retreat/chaitra/evening-reflection-art-retreat-group.webp', alt: 'Evening reflection group during a weekend art retreat guided by Chaitra Ram' },
   ],
 
-  keyHighlights: ['Pricing on enquiry', '2–3 Days', 'Near Delhi', 'No Experience Needed', 'Meals, Stay & Supplies'],
+  keyHighlights: ['Pricing on enquiry', 'Short format', 'Location on enquiry', 'No Experience Needed', 'Confirm current inclusions'],
 
   description: `\
-Weekend Art Retreat is designed for one thing: giving you enough uninterrupted time to create without the noise of daily life.
+Weekend Art Retreat is a short-format option for guided and independent creative practice.
 
-Two to three days. No emails. No deadlines. Just you, art supplies, mountain air, and the permission to make things without judgment.
-
-This is the retreat for people who say "I don't have time for a full retreat" or "I'm not sure if a creative retreat is for me." It is a low-commitment entry point — and often, it's all people need to realize that creativity is not something they lost. It was always there, waiting for silence.
-
-Mornings: guided creative sessions. Afternoons: open creation time. Evenings: gentle sharing if you wish. The structure is light. The space is deep.
-
-You arrive on Friday. You leave on Sunday. You take home work that surprises you.`,
+The schedule, activities, setting, and materials depend on the confirmed programme. Contact the team for the current itinerary and inclusions before making travel plans.`,
 
   idealIf: [
     'You want a creative retreat but can\'t commit to a full week',
     'You\'re curious about art retreats and want to try before going deeper',
     'You need a quick creative reset from work and routine',
     'You\'re close to Delhi/NCR and want a mountain creative escape for the weekend',
-    'You want to gift yourself or someone a short transformative experience',
+    'You want to gift yourself or someone a short creative experience',
   ],
 
   whatMakesItUnique: {
-    intro: 'Short format. No filler. Every hour is designed to move you from thinking to creating.',
+    intro: 'A short format with time set aside for guided creative sessions and independent practice.',
     points: [
-      { title: 'Concentrated Impact', description: 'A weekend is enough to break creative blocks. Research shows that even 48 hours of dedicated creative time produces significant shifts in how people relate to their own expression.' },
-      { title: 'Zero Commitment Barrier', description: 'Two days off work. One bag. No elaborate planning. This is designed to be the easiest "yes" you\'ve ever said to yourself.' },
-      { title: 'Complete Framework', description: 'Despite the short format, you get the full retreat experience: guided sessions, open creation time, sharing, and nature immersion. Nothing is cut — it\'s concentrated.' },
-      { title: 'Gateway Experience', description: 'Many participants do the weekend first, then return for the full Creative Healing Retreat or Trek & Paint. It\'s a perfect first step.' },
+      { title: 'Dedicated Creative Time', description: 'The weekend format sets aside time for guided creative sessions and independent practice. You can explore a prompt or medium without committing to a longer retreat.' },
+      { title: 'Short Format', description: 'Ask the team about the duration and schedule of the available programme.' },
+      { title: 'Programme Details', description: 'Confirm which guided activities, independent practice, optional sharing, and outdoor time are part of your dates.' },
+      { title: 'Other Formats', description: 'The weekend option sits alongside longer Creative Healing Retreat and Trek & Paint formats.' },
     ],
   },
 
   experiences: [
-    { title: 'Friday Evening: Arrival & Opening', description: 'Arrive by evening. Simple dinner. A gentle opening session where you set an intention for your weekend. Art supplies are laid out. The creative space is yours.' },
-    { title: 'Saturday: Full Creative Day', description: 'Morning guided session with the facilitator — prompt, technique, exploration. Afternoon is open creation. You paint, write, collage, sketch — whatever calls you. Evening sharing circle.' },
-    { title: 'Sunday: Integration & Departure', description: 'Morning session focused on reflection — what emerged, what surprised you. A final piece of work. Then a gentle closing before departure by afternoon.' },
+    { title: 'Guided Creative Practice', description: 'Ask which guided activities and facilitator support are included in the current programme.' },
+    { title: 'Independent Practice', description: 'Confirm whether the schedule includes time for independent creative work.' },
+    { title: 'Reflection & Departure', description: 'Ask the team about optional sharing, closing activities, and arrival and departure times for your dates.' },
   ],
 
   placesWeExplore: [
-    { name: 'The Creative Studio', description: 'An open-air verandah with mountain views. Long tables, natural light, and all supplies you need. Your creative home for the weekend.' },
-    { name: 'Garden & Grounds', description: 'Quiet corners for solo sketching. Flower beds, ancient trees, and birdsong. Many participants find their favorite spot and return to it.' },
-    { name: 'Nearby Viewpoints', description: 'A short walk from the retreat, viewpoints offer panoramic landscapes for outdoor painting sessions if weather allows.' },
+    { name: 'Creative Workspace', description: 'Ask which creative workspaces and materials are available at the confirmed location.' },
+    { name: 'Outdoor Areas', description: 'Confirm whether outdoor areas are accessible and included in the current programme.' },
+    { name: 'Nearby Locations', description: 'Ask whether the itinerary includes nearby locations for outdoor creative activities.' },
   ],
 
   forNotFor: {
@@ -72,57 +66,45 @@ You arrive on Friday. You leave on Sunday. You take home work that surprises you
       'People who want a creative retreat but have limited time',
       'Complete beginners curious about creative expression',
       'Working professionals needing a quick creative reset',
-      'Anyone from Delhi/NCR wanting a weekend mountain escape with purpose',
+      'People considering a short creative retreat; confirm location and travel arrangements before booking',
     ],
     notFor: [
       'Those seeking deep, extended creative immersion (consider Creative Healing Retreat)',
       'People wanting advanced art instruction or masterclass formats',
-      'Anyone who needs more than 2–3 days to decompress (consider 7-day retreats)',
+      'People seeking extended creative immersion (ask about longer retreat formats)',
     ],
   },
 
   howItWorks: {
     rhythm: `\
-Friday evening: Arrive, settle in, dinner, opening session. Set your weekend intention. Choose your medium.
-
-Saturday morning: Guided creative session (2–3 hours). The facilitator introduces a theme, prompt, or technique. You explore through your chosen medium.
-
-Saturday afternoon: Open creation time. The space is yours. Facilitator available for guidance. Tea and snacks throughout.
-
-Saturday evening: Dinner, then optional sharing circle. Show what you made. Or just listen. Both are honored.
-
-Sunday morning: Final session. Reflection, integration, one last piece. Gentle closing.
-
-Sunday afternoon: Departure. You take everything you created with you.`,
+Schedule, activities, facilitator support, meals, materials, and arrival and departure times depend on the confirmed programme. Contact the team for the current itinerary and inclusions before booking.`,
   },
 
   whereItWorksBest: {
     primary: 'chakrata' as const,
-    primaryReason: 'Close enough to Delhi for a weekend trip, yet remote enough to feel completely disconnected. The forest silence is immediate.',
+    primaryReason: 'Chakrata is one of the listed settings for this shorter creative format. Confirm current location and travel arrangements before booking.',
     alsoWorks: ['mussoorie', 'rishikesh'],
     contextByLocation: {
-      chakrata: 'Just 6 hours from Delhi. Dense forests create instant immersion. Perfect for weekend creative escapes.',
-      mussoorie: 'Accessible hill station with artistic heritage. The views inspire quick creative work.',
-      rishikesh: 'The spiritual atmosphere accelerates creative opening. River-side painting is particularly compelling.',
-      sankri: 'Remote but stunning. Weekend format works if combined with a travel day on either side.',
-      munsiyari: 'Alpine beauty, but travel time makes weekend format challenging. Better for extended retreats.',
+      chakrata: 'A forest setting for guided and independent creative practice; confirm current access and travel arrangements for your dates.',
+      mussoorie: 'Ask whether the current programme includes Mussoorie and confirm travel arrangements.',
+      rishikesh: 'Ask whether the current programme includes Rishikesh and confirm travel arrangements.',
+      sankri: 'Ask whether the current programme includes Sankri and confirm travel feasibility for your dates.',
+      munsiyari: 'Ask whether the current programme includes Munsiyari and confirm travel feasibility for your dates.',
     },
   },
 
   adaptability: `\
-The Weekend Art Retreat can be extended to 3 days if you want an extra day of creation time. It can also be combined with a day of trekking (Trek & Paint format) if you want to add movement.
-
-Solo weekend retreats offer complete solitude and uninterrupted creation. Pair retreats work beautifully for couples or friends. Small groups (4–6 people) create the most dynamic creative energy in the shortest time.`,
+Duration, activities, and solo, pair, or group arrangements depend on the available programme. Contact the team to confirm options for your dates.`,
 
   invitation: `\
 You don't need a week off. You don't need to be an artist. You just need a weekend and the willingness to show up with curiosity. We handle the rest.`,
 
-  foodAndAccommodation: 'Comfortable rooms with mountain views. Simple, nutritious vegetarian meals. Tea and snacks available throughout the day. The emphasis is on warmth and ease — so you can focus entirely on creating.',
+  foodAndAccommodation: 'Accommodation, meals, and other inclusions depend on the confirmed programme. Contact the team for current details.',
 
   travel: {
-    fromDelhi: '5–6 hours by road to Chakrata, or 2 hours to Mussoorie. We can arrange shared transport.',
-    fromDehradun: '2–3 hours depending on location. Pickup can be arranged from Dehradun railway station or airport.',
-    note: 'All art supplies are provided. Arrive by Friday 5 PM, depart Sunday 3 PM.',
+    fromDelhi: 'Travel time depends on the confirmed location, route, and road conditions. Contact the team for current travel guidance.',
+    fromDehradun: 'Travel time and pickup arrangements depend on the confirmed location. Contact the team for current details.',
+    note: 'Ask which art supplies are included and confirm arrival and departure arrangements for your dates.',
   },
 
   faqItems: [
@@ -132,31 +114,31 @@ You don't need a week off. You don't need to be an artist. You just need a weeke
     },
     {
       question: 'Can I really get anything from just a weekend?',
-      answer: 'Yes. Two days of dedicated, uninterrupted creative time — without emails, deadlines, or household tasks — produces surprising breakthroughs. Research shows that even 48 hours of immersive creative practice significantly shifts how people relate to their own expression. Many participants leave with work that surprises them.',
+      answer: 'The weekend format provides time for guided and independent creative practice. What each person takes from the experience varies; a particular breakthrough or outcome is not promised.',
     },
     {
       question: 'What mediums can I work in?',
-      answer: 'Painting (watercolour, acrylic), drawing (pencils, charcoal, ink), collage, and writing. All supplies are provided. The facilitator guides technique across mediums. You can work in one medium all weekend or try several — the choice is entirely yours.',
+      answer: 'Available mediums, materials, and guidance depend on the confirmed programme. Contact the team to ask what is included and whether you can bring preferred materials.',
     },
     {
       question: 'Is this a good first retreat experience?',
-      answer: 'It is designed to be exactly that. The weekend format is a low-commitment entry point — two days off work, one bag, no elaborate planning. Many participants do this retreat first and then return for the full Creative Healing Retreat (5–7 days) or Trek & Paint. Think of it as a taster that often becomes a turning point.',
+      answer: 'The Weekend Art Retreat is a shorter format alongside the longer Creative Retreat and Trek & Paint options. Contact us to confirm dates, duration, and what is included in the current programme.',
     },
     {
       question: 'How do I get there from Delhi?',
-      answer: 'Chakrata is about 6 hours from Delhi by road. Mussoorie is about 5.5 hours. We recommend leaving Delhi by noon on Friday to arrive by evening. We provide detailed directions and can help coordinate shared transport between participants.',
+      answer: 'Travel time depends on the confirmed location, route, and road conditions. Contact the team for current directions and any shared transport arrangements.',
     },
     {
       question: 'Do I need to take leave from work?',
-      answer: 'No — the retreat runs Friday evening to Sunday afternoon. You travel after work on Friday and return Sunday evening. No leave days required. This is the primary design advantage of the weekend format.',
+      answer: 'Arrival and departure times depend on the confirmed dates and location. Ask the team for the current schedule before making travel plans.',
     },
     {
       question: 'What is included?',
-      answer: 'All meals, accommodation, art supplies, guided creative sessions, open creation time, and sharing circles. Travel to the retreat is not included, but we provide detailed guidance. You arrive with nothing but yourself and leave with work you created.',
+      answer: 'Inclusions vary by programme. Contact the team to confirm meals, accommodation, materials, creative activities, and travel guidance for your dates.',
     },
     {
       question: 'Can I come with a friend or partner?',
-      answer: 'Yes — pair retreats work beautifully for this format. Creating alongside someone you trust often deepens both the relationship and the creative work. We can arrange joint or separate rooms.',
+      answer: 'Yes. Ask us about attending with a friend or partner and whether joint or separate rooms are available for your dates.',
     },
     {
       question: 'What happens in the sharing circle?',
@@ -164,7 +146,7 @@ You don't need a week off. You don't need to be an artist. You just need a weeke
     },
     {
       question: 'What if I want to extend to a longer retreat?',
-      answer: 'The weekend format naturally leads into our longer offerings. Many participants return for the 5–7 day Creative Healing Retreat or the Trek & Paint Retreat. We can help you plan your next step based on what emerges during the weekend.',
+      answer: 'The weekend and longer retreat formats are separate options. Contact us to ask about the current Creative Retreat or Trek & Paint programme if you are considering a longer stay.',
     },
   ],
 } as const;

@@ -69,7 +69,7 @@ export default function CreativeHealingRetreatPage() {
   validateFAQSync(FAQ_ITEMS, PATH);
 
   const serviceSchema = generateServiceSchema(
-    { title: 'Creative Healing Retreat', description: 'Emotional healing through art, yoga, and nature.' },
+    { title: 'Creative Healing Retreat', description: 'Guided creative practice with art, yoga, and time in nature.' },
     buildCanonicalUrl(PATH),
     'Himalayas',
   );
@@ -94,7 +94,7 @@ export default function CreativeHealingRetreatPage() {
     <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
       <AutoArticleSchema
         title="Creative Healing Retreat"
-        description="Emotional healing through art, yoga, and nature in the Himalayas."
+        description="Guided creative practice with art, yoga, and time in nature in the Himalayas."
         path={PATH}
       />
 
@@ -581,12 +581,12 @@ export default function CreativeHealingRetreatPage() {
             <span className="med-eyebrow-text">Ready to Begin</span>
             <span className="med-eyebrow-line" />
           </div>
-          <h2 className="med-h2" style={{ textAlign: 'center' }}>Join the Creative <span>Healing Retreat</span></h2>
+          <h2 className="med-h2" style={{ textAlign: 'center' }}>Explore the Creative <span>Healing Retreat</span></h2>
           <p className="med-body" style={{ textAlign: 'center' }}>
-            5–7 days of art, yoga, and nature in the Himalayas. All materials provided. No experience needed.
+            The 5–7 day format combines art, yoga, and time in nature. Confirm which art materials are included for your chosen dates; no prior art experience is needed.
           </p>
           <PrimaryCTA
-            label="Explore Creative Retreat Options"
+            label="Ask About Creative Retreat Options"
             vertical="retreat"
             category="art-retreat"
             sourcePath="/creative-retreat"

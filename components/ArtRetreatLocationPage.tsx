@@ -59,7 +59,7 @@ export default function ArtRetreatLocationPage({ content, path }: ArtRetreatLoca
         opening={content.landTone.opening}
         heroImage={content.heroImage}
         heroImageAlt={content.heroImageAlt}
-        stats={['Art & creative practice', content.name, 'Small groups', 'Dates on enquiry']}
+        stats={['Art & creative practice', content.name, 'Programme details on enquiry', 'Dates on enquiry']}
         tags={['Art Retreats', content.name, 'Beginner Friendly']}
       />
 
