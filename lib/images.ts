@@ -335,7 +335,7 @@ export const images = {
     },
     rishikeshAssistedPractice: {
       src: '/Images/retreats/yoga/yoga-rishikesh-assisted-practice.webp',
-      alt: 'A yoga facilitator supports a participant during a seated practice',
+      alt: 'A facilitator applies a tilak to seated participants during a retreat gathering',
     },
     durationGroupMeditation: {
       src: '/Images/retreats/yoga/yoga-duration-group-meditation.webp',

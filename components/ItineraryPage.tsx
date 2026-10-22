@@ -21,6 +21,7 @@ interface Props {
 }
 
 export default function ItineraryPage({ page }: Props) {
+  const isYogaContentOverview = page.contentPresentation !== undefined;
   validateFAQSync(page.faqItems as { question: string; answer: string }[], `/${page.slug}`);
 
   const breadcrumbSchema = generateBreadcrumbSchema([
@@ -63,13 +64,31 @@ export default function ItineraryPage({ page }: Props) {
         </p>
       </header>
 
-      {/* ── Day-by-Day Cards ────────────────────────────────────── */}
+      {/* ── Itinerary or Yoga content overview ──────────────────── */}
       <section style={{ marginBottom: 'var(--space-xl)' }}>
         <h2 style={{ fontSize: '1.35rem', fontWeight: 600, marginBottom: '1rem' }}>
-          {page.durationDays}-Day {page.label} Schedule
+          {page.contentPresentation === 'yoga-booking-checklist'
+            ? '5 Things to Confirm Before Booking'
+            : page.contentPresentation === 'yoga-practice-overview'
+              ? `${page.durationDays}-Day Yoga Retreat Practice Overview`
+              : `${page.durationDays}-Day ${page.label} Schedule`}
         </h2>
-        <div style={{ display: 'grid', gap: '1.5rem' }}>
-          {page.days.map((day) => (
+        {isYogaContentOverview ? (
+          <ol style={{ display: 'grid', gap: '1rem', paddingLeft: '1.5rem', margin: 0 }}>
+            {page.days.map((day) => (
+              <li key={day.day}>
+                <h3 style={{ fontSize: '1.05rem', fontWeight: 600, margin: '0 0 0.4rem' }}>
+                  {day.theme}
+                </h3>
+                <p style={{ lineHeight: 1.75, margin: 0, fontSize: '0.95rem' }}>
+                  {day.description}
+                </p>
+              </li>
+            ))}
+          </ol>
+        ) : (
+          <div style={{ display: 'grid', gap: '1.5rem' }}>
+            {page.days.map((day) => (
             <div
               key={day.day}
               style={{
@@ -102,8 +121,9 @@ export default function ItineraryPage({ page }: Props) {
                 </tbody>
               </table>
             </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </section>
 
       <MicroCommitment
@@ -115,7 +135,14 @@ export default function ItineraryPage({ page }: Props) {
 
       <PrimaryCTA
         label={`Book This ${page.durationDays}-Day Retreat`}
-        subtext={`${page.label} in ${page.locationName}. ${page.durationDays} days, day-by-day structure as outlined above.`}
+        subtext={
+          page.contentPresentation === 'yoga-practice-overview'
+            ? `${page.label} in ${page.locationName}. Review the practice overview above and confirm the programme for your selected departure.`
+            : page.contentPresentation === 'yoga-booking-checklist'
+              ? `${page.label} in ${page.locationName}. Confirm availability, the custom programme, and written itinerary before travel.`
+              : `${page.label} in ${page.locationName}. ${page.durationDays} days, day-by-day structure as outlined above.`
+        }
+        fullBleed={!isYogaContentOverview}
         vertical="retreat"
         category="itinerary"
         sourcePath={`/${page.slug}`}
@@ -222,7 +249,14 @@ export default function ItineraryPage({ page }: Props) {
 
       <PrimaryCTA
         label={`Reserve My ${page.durationDays}-Day Retreat`}
-        subtext="Read through the schedule above? Secure your place now."
+        subtext={
+          page.contentPresentation === 'yoga-practice-overview'
+            ? 'Review the practice overview above and confirm the programme for your selected departure before booking.'
+            : page.contentPresentation === 'yoga-booking-checklist'
+              ? `Confirm availability, the custom programme, and written itinerary for your ${page.locationName} Yoga retreat before travel.`
+              : 'Read through the schedule above? Secure your place now.'
+        }
+        fullBleed={!isYogaContentOverview}
         vertical="retreat"
         category="itinerary-bottom"
         sourcePath={`/${page.slug}`}

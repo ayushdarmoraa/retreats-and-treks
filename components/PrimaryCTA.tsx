@@ -18,6 +18,7 @@ interface PrimaryCTAProps {
   vertical: 'trek' | 'retreat';
   category: string;
   sourcePath: string;
+  fullBleed?: boolean;
   location?: string;
   yogaInterest?: string;
   duration?: string;
@@ -39,6 +40,7 @@ export default function PrimaryCTA({
   vertical,
   category,
   sourcePath,
+  fullBleed = true,
   location,
   yogaInterest,
   duration,
@@ -55,13 +57,15 @@ export default function PrimaryCTA({
 }: PrimaryCTAProps) {
   return (
     <aside style={{
-      width: '100vw',
-      marginLeft: 'calc(-50vw + 50%)',
+      width: fullBleed ? '100vw' : 'calc(100% + var(--space-md) + var(--space-md))',
+      marginLeft: fullBleed ? 'calc(-50vw + 50%)' : 'calc(0px - var(--space-md))',
       background: '#ffffff',
       borderTop: '1px solid #e5e7eb',
       borderBottom: '1px solid #e5e7eb',
       padding: '3.5rem 2rem',
-      margin: 'var(--space-xl) calc(-50vw + 50%)',
+      margin: fullBleed
+        ? 'var(--space-xl) calc(-50vw + 50%)'
+        : 'var(--space-xl) calc(0px - var(--space-md))',
       textAlign: 'center',
       position: 'relative',
       overflow: 'hidden',

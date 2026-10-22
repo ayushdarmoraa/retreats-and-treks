@@ -32,6 +32,7 @@ export interface ItineraryPage {
   readonly h1: string;
   readonly metaDescription: string;
   readonly intro: string;
+  readonly contentPresentation?: 'yoga-practice-overview' | 'yoga-booking-checklist';
   readonly days: readonly ItineraryDay[];
   readonly faqItems: readonly FAQItem[];
   readonly parentHubSlug: string;
@@ -405,6 +406,29 @@ const ARCS: Record<string, ExperienceArc> = {
   },
 };
 
+const YOGA_CUSTOM_PLANNING_CHECKPOINTS = [
+  {
+    theme: 'Confirm dates and feasibility',
+    description: '{location} Yoga retreats are on-request options, not fixed departures. Confirm whether the dates and proposed programme are available before planning travel.',
+  },
+  {
+    theme: 'Check access and seasonal conditions',
+    description: 'Access and seasonal conditions are not published for a fixed Yoga departure in {location}. Confirm them for the dates you are considering.',
+  },
+  {
+    theme: 'Discuss Yoga experience and suitability',
+    description: 'Share your Yoga experience and any relevant access or mobility needs so suitability can be considered for a proposed {location} programme.',
+  },
+  {
+    theme: 'Confirm venue and inclusions',
+    description: 'Venue, accommodation, meals, and inclusions are not published for {location} on-request Yoga options. Confirm each detail for any proposed programme.',
+  },
+  {
+    theme: 'Get the written itinerary and travel details',
+    description: 'Before travel, request the confirmed written itinerary for {location}, including the agreed programme and arrival and departure details.',
+  },
+] as const;
+
 // ── FAQ Generator ────────────────────────────────────────────────────────
 
 function generateItineraryFAQs(
@@ -412,6 +436,38 @@ function generateItineraryFAQs(
   locationName: string,
   duration: number,
 ): FAQItem[] {
+  if (label === 'Yoga Retreat') {
+    const isRishikesh = locationName === 'Rishikesh';
+    return [
+      {
+        question: `Is this a confirmed ${duration}-day Yoga schedule in ${locationName}?`,
+        answer: isRishikesh
+          ? 'No. This page summarizes supported Rishikesh practice areas; it is not a date-specific timetable. Check the schedule, venue, and teaching assignment for the departure you are considering.'
+          : `No. ${locationName} is an on-request option, not a fixed departure. Availability, schedule, venue, and inclusions must be confirmed before travel.`,
+      },
+      {
+        question: isRishikesh
+          ? 'Which Yoga practices are listed for the Rishikesh programme?'
+          : `Which Yoga practices are confirmed for ${locationName}?`,
+        answer: isRishikesh
+          ? 'Published Rishikesh product information lists Hatha Yoga, mindful movement, pranayama, meditation, relaxation, Yoga Nidra, yogic lifestyle, and reflective/self-awareness practices. The confirmed departure determines which sessions are included and their sequence.'
+          : `${locationName} Yoga retreats are on-request options, and a location-specific list of practices is not published. Confirm the proposed practices, schedule, and venue before travel.`,
+      },
+      {
+        question: 'What should I confirm before travelling?',
+        answer: isRishikesh
+          ? 'Confirm availability and dates, the schedule, venue, and teaching assignment for your chosen departure.'
+          : `For a ${locationName} request, confirm availability and dates, access and seasonal conditions, suitability, venue, accommodation, meals and inclusions, and the written itinerary with arrival and departure details.`,
+      },
+      {
+        question: 'Do I need prior Yoga experience?',
+        answer: isRishikesh
+          ? 'Beginners are suitable for the Rishikesh products, and experienced practitioners may also participate. Share your experience and relevant needs when checking a departure.'
+          : `Experience requirements for a custom ${locationName} request are not published. Your background and any access or mobility needs help determine suitability for a proposed programme.`,
+      },
+    ];
+  }
+
   const lLabel = label.toLowerCase();
   return [
     {
@@ -441,26 +497,60 @@ function generateItineraryPages(): ItineraryPage[] {
   for (const elPage of EXPERIENCE_LOCATION_PAGES) {
     const arc = ARCS[elPage.experienceSlug];
     if (!arc) continue;
+    const isYogaItinerary = elPage.experienceSlug === 'yoga-retreats';
+    const isPublishedYogaLocation = elPage.locationName === 'Rishikesh';
 
     const days: ItineraryDay[] = [];
     for (let i = 0; i < arc.duration; i++) {
       const isFirst = i === 0;
       const isLast = i === arc.duration - 1;
+      const customYogaCheckpoint = isYogaItinerary && !isPublishedYogaLocation
+        ? YOGA_CUSTOM_PLANNING_CHECKPOINTS[i]
+        : undefined;
+      const yogaDescription = !isYogaItinerary
+        ? undefined
+        : customYogaCheckpoint
+          ? customYogaCheckpoint.description
+          : [
+              'Arrival arrangements and any first-day practice depend on the selected departure. Confirm the venue, arrival details, and programme with the team.',
+              'Hatha Yoga and mindful movement are among the practices listed for the Rishikesh Yoga products. This overview does not assign a session or timing to this day.',
+              'Pranayama and meditation are listed in the Rishikesh practice model. Confirm whether and when they are included in your chosen departure.',
+              'Relaxation, Yoga Nidra, yogic lifestyle, and reflective/self-awareness practices are listed in the Rishikesh practice model. Confirm the actual day-by-day sequence.',
+              'Confirm any closing practice, check-out arrangements, and departure timing for your selected dates.',
+            ][i];
 
       days.push({
         day: i + 1,
-        theme: arc.themes[i],
-        description: arc.descriptions[i].replace(/\{location\}/g, elPage.locationName),
-        schedule: isFirst
-          ? arc.arrivalSchedule
-          : isLast
-            ? arc.departureSchedule
-            : elPage.sampleSchedule,
+        theme: customYogaCheckpoint?.theme ?? (isYogaItinerary
+          ? [
+              'Arrival details to confirm',
+              'Hatha Yoga and mindful movement',
+              'Pranayama and meditation',
+              'Relaxation and reflective practices',
+              'Closing and departure details to confirm',
+            ][i]
+          : arc.themes[i]),
+        description: customYogaCheckpoint
+          ? customYogaCheckpoint.description.replace(/\{location\}/g, elPage.locationName)
+          : yogaDescription ?? arc.descriptions[i].replace(/\{location\}/g, elPage.locationName),
+        schedule: isYogaItinerary
+          ? []
+          : isFirst
+            ? arc.arrivalSchedule
+            : isLast
+              ? arc.departureSchedule
+              : elPage.sampleSchedule,
       });
     }
 
     const slug = `${arc.duration}-day-${elPage.locationId}-${arc.urlPrefix}-itinerary`;
     const durationLabel = `${arc.duration}-Day`;
+    const yogaTitle = isPublishedYogaLocation
+      ? `${durationLabel} Yoga Retreat Practice Overview`
+      : `${durationLabel} Yoga Retreat Booking Checklist`;
+    const yogaMetaDescription = isPublishedYogaLocation
+      ? `Explore published Yoga practice areas for a ${arc.duration}-day retreat in ${elPage.locationName}. This is an overview, not a date-specific schedule; confirm the programme for your selected departure.`
+      : `Planning an on-request Yoga retreat in ${elPage.locationName}? Use this checklist to confirm availability, access, suitability, venue, inclusions, and the written itinerary before travel.`;
 
     pages.push({
       slug,
@@ -470,11 +560,26 @@ function generateItineraryPages(): ItineraryPage[] {
       locationId: elPage.locationId,
       label: elPage.label,
       locationName: elPage.locationName,
-      title: `${durationLabel} ${elPage.label} Itinerary — ${elPage.locationName} | Retreats And Treks`,
-      seoTitle: `${durationLabel} ${elPage.label.replace(/ Retreat$/, '')} — ${elPage.locationName} | Retreats And Treks`,
-      h1: `${durationLabel} ${elPage.label} Itinerary in ${elPage.locationName}`,
-      metaDescription: `${arc.duration}-day ${elPage.label.toLowerCase()} itinerary in ${elPage.locationName}: daily schedule, themes, practice rhythm, and what to expect.`,
-      intro: `What actually happens during a ${arc.duration}-day ${elPage.label.toLowerCase()} in ${elPage.locationName}? Below is the day-by-day itinerary — not a marketing brochure, but the actual rhythm of the retreat. Times are approximate; the schedule serves the practice, not the other way around.`,
+      title: isYogaItinerary
+        ? `${yogaTitle} — ${elPage.locationName} | Retreats And Treks`
+        : `${durationLabel} ${elPage.label} Itinerary — ${elPage.locationName} | Retreats And Treks`,
+      seoTitle: isYogaItinerary
+        ? `${yogaTitle} — ${elPage.locationName} | Retreats And Treks`
+        : `${durationLabel} ${elPage.label.replace(/ Retreat$/, '')} — ${elPage.locationName} | Retreats And Treks`,
+      h1: isYogaItinerary
+        ? `${yogaTitle} in ${elPage.locationName}`
+        : `${durationLabel} ${elPage.label} Itinerary in ${elPage.locationName}`,
+      metaDescription: isYogaItinerary
+        ? yogaMetaDescription
+        : `${arc.duration}-day ${elPage.label.toLowerCase()} itinerary in ${elPage.locationName}: daily schedule, themes, practice rhythm, and what to expect.`,
+      intro: isYogaItinerary
+        ? isPublishedYogaLocation
+          ? `This ${arc.duration}-day Yoga retreat page is a practice overview, not a confirmed daily timetable. Rishikesh product information lists the practice areas below; confirm the sessions, schedule, venue, and teaching assignment for your chosen departure.`
+          : `${elPage.locationName} Yoga retreats are on-request options, not fixed departures. The five sections below are booking checks, not retreat activities. Confirm availability, schedule, venue, inclusions, access, and seasonal conditions before travel.`
+        : `What actually happens during a ${arc.duration}-day ${elPage.label.toLowerCase()} in ${elPage.locationName}? Below is the day-by-day itinerary — not a marketing brochure, but the actual rhythm of the retreat. Times are approximate; the schedule serves the practice, not the other way around.`,
+      ...(isYogaItinerary
+        ? { contentPresentation: isPublishedYogaLocation ? 'yoga-practice-overview' as const : 'yoga-booking-checklist' as const }
+        : {}),
       days,
       faqItems: generateItineraryFAQs(elPage.label, elPage.locationName, arc.duration),
       parentHubSlug: elPage.parentHubSlug,
