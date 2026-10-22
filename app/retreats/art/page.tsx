@@ -1,4 +1,4 @@
-﻿import { Metadata } from 'next';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
@@ -248,7 +248,7 @@ export default function ArtRetreatsPage() {
           transform: scale(1.06);
         }
 
-        .art-cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.95rem 2.2rem; background: #0f766e; color: white; text-decoration: none; font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; box-shadow: 0 10px 26px rgba(15,118,110,0.22); transition: all 0.3s cubic-bezier(0.22,1,0.36,1); }
+        .art-cta-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; padding: 0.95rem 2.2rem; background: #0f766e; color: white; text-decoration: none; font-family: var(--font-geist-sans), sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 12px; box-shadow: 0 10px 26px rgba(15,118,110,0.22); transition: all 0.3s cubic-bezier(0.22,1,0.36,1); }
         .art-cta-btn:hover { background: #0d6b64; transform: translateY(-3px); box-shadow: 0 16px 36px rgba(15,118,110,0.3); }
         .art-cta-outline { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; padding: 0.82rem 1.8rem; border: 1px solid rgba(15,118,110,0.25); color: #0f766e; text-decoration: none; font-family: var(--font-geist-sans), sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; border-radius: 999px; transition: all 0.3s cubic-bezier(0.22,1,0.36,1); }
         .art-cta-outline:hover { border-color: #0f766e; background: rgba(15,118,110,0.05); transform: translateY(-2px); }
@@ -352,8 +352,20 @@ export default function ArtRetreatsPage() {
               <span key={tag} style={{ fontFamily: 'var(--font-geist-sans), sans-serif', fontSize: '0.68rem', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.86)', border: '1px solid rgba(255,255,255,0.25)', borderRadius: '999px', padding: '0.42rem 0.85rem', background: 'rgba(255,255,255,0.08)' }}>{tag}</span>
             ))}
           </div>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <a href="#retreats" className="art-cta-btn">Explore Art Retreat Options</a>
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1.25rem', flexWrap: 'wrap' }}>
+            <a
+              href="#retreats"
+              className="art-cta-btn"
+              style={{
+                alignSelf: 'center',
+                height: 'fit-content',
+                maxHeight: '3.25rem',
+                borderRadius: '12px',
+                whiteSpace: 'nowrap',
+              }}
+            >
+              Explore Art Retreat Options
+            </a>
             <CTAExpandToggle
               label="Enquire About Art Retreats"
               vertical="retreat"

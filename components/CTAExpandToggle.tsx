@@ -192,29 +192,45 @@ export default function CTAExpandToggle({
       >
         <div style={{ overflow: 'hidden' }}>
           {expanded && (
-            <Suspense fallback={<p style={{ color: 'var(--color-muted)', fontSize: '0.9rem', padding: '1rem 0' }}>Loading form…</p>}>
-              <InlineInquiryForm
-                vertical={vertical}
-                category={category}
-                sourcePath={sourcePath}
-                location={location}
-                yogaInterest={yogaInterest}
-                duration={duration}
-                yogaExperience={yogaExperience}
-                preferredMonth={preferredMonth}
-                productId={productId}
-                departureId={departureId}
-                productName={productName}
-                experience={experience}
-                departureDate={departureDate}
-                pageType={isArtCta ? 'art_product' : pageType}
-                planningHorizon={planningHorizon}
-                productOption={productOption}
-                ctaId={resolvedCtaId}
-                ctaPosition={resolvedCtaPosition}
-                ctaLabel={label}
-              />
-            </Suspense>
+            <div
+              style={{
+                marginTop: '0.5rem',
+                background: 'rgba(255, 255, 255, 0.96)',
+                backdropFilter: 'blur(16px)',
+                WebkitBackdropFilter: 'blur(16px)',
+                borderRadius: '16px',
+                border: '1px solid rgba(15, 118, 110, 0.15)',
+                boxShadow: '0 12px 36px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.05)',
+                padding: '1.25rem 1.35rem 1.15rem',
+                maxWidth: '26rem',
+                width: '100%',
+                boxSizing: 'border-box' as const,
+              }}
+            >
+              <Suspense fallback={<p style={{ color: 'var(--color-muted)', fontSize: '0.9rem', padding: '1rem 0' }}>Loading form…</p>}>
+                <InlineInquiryForm
+                  vertical={vertical}
+                  category={category}
+                  sourcePath={sourcePath}
+                  location={location}
+                  yogaInterest={yogaInterest}
+                  duration={duration}
+                  yogaExperience={yogaExperience}
+                  preferredMonth={preferredMonth}
+                  productId={productId}
+                  departureId={departureId}
+                  productName={productName}
+                  experience={experience}
+                  departureDate={departureDate}
+                  pageType={isArtCta ? 'art_product' : pageType}
+                  planningHorizon={planningHorizon}
+                  productOption={productOption}
+                  ctaId={resolvedCtaId}
+                  ctaPosition={resolvedCtaPosition}
+                  ctaLabel={label}
+                />
+              </Suspense>
+            </div>
           )}
         </div>
       </div>

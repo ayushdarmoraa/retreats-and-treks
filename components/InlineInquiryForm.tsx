@@ -403,21 +403,29 @@ function ProgressiveInlineCapture({
 
   const fieldStyle: React.CSSProperties = {
     width: '100%',
-    padding: '0.75rem 0.7rem',
-    border: '1px solid var(--color-border)',
-    borderRadius: 'var(--radius-sm)',
-    fontSize: '0.95rem',
-    lineHeight: 1.5,
-    backgroundColor: 'white',
-    color: 'var(--color-text)',
+    padding: '0.45rem 0.75rem',
+    border: '1px solid #d1d5db',
+    borderRadius: '8px',
+    fontSize: '0.88rem',
+    lineHeight: 1.4,
+    backgroundColor: '#ffffff',
+    color: '#1f2937',
     boxSizing: 'border-box',
+    height: '2.4rem',
+    fontFamily: 'var(--font-geist-sans), sans-serif',
+    transition: 'border-color 0.2s ease, box-shadow 0.2s ease',
+    outline: 'none',
+    appearance: 'none' as const,
+    WebkitAppearance: 'none' as const,
   };
   const labelStyle: React.CSSProperties = {
     display: 'block',
-    fontSize: '0.85rem',
+    fontSize: '0.76rem',
     fontWeight: 600,
-    marginBottom: '0.25rem',
-    color: 'var(--color-text)',
+    marginBottom: '0.2rem',
+    color: '#374151',
+    letterSpacing: '0.01em',
+    fontFamily: 'var(--font-geist-sans), sans-serif',
   };
   const stepLabels: Record<ProgressiveCaptureStep, string> = {
     interest: 'What are you interested in?',
@@ -428,15 +436,35 @@ function ProgressiveInlineCapture({
   };
 
   return (
-    <form ref={formRef} onSubmit={submitInquiry} style={{ textAlign: 'left', marginTop: '1rem' }}>
+    <form ref={formRef} onSubmit={submitInquiry} style={{ textAlign: 'left', marginTop: '0' }}>
       <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: '-9999px', height: 0, overflow: 'hidden' }}>
         <label htmlFor="inline-website">Website</label>
         <input id="inline-website" name="website" value={website} onChange={(event) => setWebsite(event.target.value)} tabIndex={-1} autoComplete="off" />
       </div>
-      <p aria-label={`Step ${stepNumber} of ${steps.length}`} style={{ fontSize: '0.78rem', color: 'var(--color-text-secondary)', marginBottom: '0.5rem' }}>
+
+      {/* Step progress bar */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '0.35rem', marginBottom: '0.75rem' }}>
+        {steps.map((_, i) => (
+          <div
+            key={i}
+            style={{
+              flex: 1,
+              height: '3px',
+              borderRadius: '2px',
+              background: i < stepNumber ? '#0f766e' : '#e5e7eb',
+              transition: 'background 0.3s ease',
+            }}
+          />
+        ))}
+        <span style={{ fontSize: '0.68rem', fontWeight: 600, color: '#6b7280', marginLeft: '0.35rem', whiteSpace: 'nowrap', fontFamily: 'var(--font-geist-sans), sans-serif' }}>
+          {stepNumber}/{steps.length}
+        </span>
+      </div>
+
+      <p aria-label={`Step ${stepNumber} of ${steps.length}`} style={{ fontSize: '0.68rem', fontWeight: 600, color: '#0f766e', marginBottom: '0.2rem', letterSpacing: '0.12em', textTransform: 'uppercase', fontFamily: 'var(--font-geist-sans), sans-serif' }}>
         Step {stepNumber} of {steps.length}
       </p>
-      <h3 ref={headingRef} tabIndex={-1} style={{ fontSize: '1.05rem', margin: '0 0 1rem', outlineOffset: '3px' }}>{stepLabels[activeStep]}</h3>
+      <h3 ref={headingRef} tabIndex={-1} style={{ fontSize: '0.98rem', fontWeight: 600, margin: '0 0 0.75rem', outlineOffset: '3px', color: '#111827', fontFamily: 'var(--font-geist-sans), sans-serif', letterSpacing: '-0.01em' }}>{stepLabels[activeStep]}</h3>
 
       {activeStep === 'interest' && (
         <div>
@@ -489,7 +517,7 @@ function ProgressiveInlineCapture({
         </div>
       )}
       {activeStep === 'contact' && (
-        <div style={{ display: 'grid', gap: '0.75rem' }}>
+        <div style={{ display: 'grid', gap: '0.45rem' }}>
           <div>
             <label htmlFor="inline-name" style={labelStyle}>Name *</label>
             <input id="inline-name" type="text" autoComplete="name" value={name} onChange={(event) => setName(event.target.value)} required minLength={2} style={fieldStyle} />
@@ -498,30 +526,32 @@ function ProgressiveInlineCapture({
             <label htmlFor="inline-phone" style={labelStyle}>WhatsApp / phone *</label>
             <input id="inline-phone" type="tel" autoComplete="tel" value={phone} onChange={(event) => setPhone(event.target.value)} required style={fieldStyle} />
           </div>
-          <div>
-            <label htmlFor="inline-email" style={labelStyle}>Email (optional)</label>
-            <input id="inline-email" type="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} style={fieldStyle} />
-          </div>
-          <div>
-            <label htmlFor="inline-age" style={labelStyle}>Age (optional)</label>
-            <input id="inline-age" type="number" min="0" max="120" value={age} onChange={(event) => setAge(event.target.value)} style={fieldStyle} />
+          <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '0.5rem' }}>
+            <div>
+              <label htmlFor="inline-email" style={labelStyle}>Email (optional)</label>
+              <input id="inline-email" type="email" autoComplete="email" value={email} onChange={(event) => setEmail(event.target.value)} style={fieldStyle} />
+            </div>
+            <div>
+              <label htmlFor="inline-age" style={labelStyle}>Age (optional)</label>
+              <input id="inline-age" type="number" min="0" max="120" value={age} onChange={(event) => setAge(event.target.value)} style={fieldStyle} />
+            </div>
           </div>
         </div>
       )}
 
-      {error && <p id="inline-capture-error" role="alert" style={{ color: '#b91c1c', fontSize: '0.85rem', margin: '0.8rem 0 0' }}>{error}</p>}
-      <div style={{ display: 'flex', gap: '0.75rem', marginTop: '1rem' }}>
+      {error && <p id="inline-capture-error" role="alert" style={{ color: '#b91c1c', fontSize: '0.8rem', margin: '0.5rem 0 0', fontFamily: 'var(--font-geist-sans), sans-serif' }}>{error}</p>}
+      <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.85rem' }}>
         {stepIndex > 0 && (
-          <button type="button" onClick={() => { setError(''); setStepIndex((current) => Math.max(0, current - 1)); }} style={{ ...fieldStyle, width: 'auto', cursor: 'pointer' }}>
+          <button type="button" onClick={() => { setError(''); setStepIndex((current) => Math.max(0, current - 1)); }} style={{ padding: '0.45rem 1rem', height: '2.4rem', border: '1px solid #d1d5db', borderRadius: '8px', fontSize: '0.84rem', fontWeight: 500, color: '#374151', background: '#ffffff', cursor: 'pointer', fontFamily: 'var(--font-geist-sans), sans-serif', transition: 'border-color 0.2s ease', boxSizing: 'border-box' as const }}>
             Back
           </button>
         )}
         {activeStep === 'contact' ? (
-          <button type="submit" disabled={submitting} aria-describedby={error ? 'inline-capture-error' : undefined} style={{ ...fieldStyle, flex: 1, cursor: submitting ? 'wait' : 'pointer', background: submitting ? '#9ca3af' : 'var(--color-primary)', color: '#fff', fontWeight: 700 }}>
+          <button type="submit" disabled={submitting} aria-describedby={error ? 'inline-capture-error' : undefined} style={{ flex: 1, height: '2.4rem', padding: '0.45rem 1.25rem', cursor: submitting ? 'wait' : 'pointer', background: submitting ? '#9ca3af' : '#0f766e', color: '#fff', fontWeight: 600, fontSize: '0.86rem', border: 'none', borderRadius: '8px', fontFamily: 'var(--font-geist-sans), sans-serif', transition: 'background 0.2s ease', letterSpacing: '0.01em', boxSizing: 'border-box' as const }}>
             {submitting ? 'Saving…' : 'Save my details'}
           </button>
         ) : (
-          <button type="submit" aria-describedby={error ? 'inline-capture-error' : undefined} style={{ ...fieldStyle, flex: 1, cursor: 'pointer', background: 'var(--color-primary)', color: '#fff', fontWeight: 700 }}>
+          <button type="submit" aria-describedby={error ? 'inline-capture-error' : undefined} style={{ flex: 1, height: '2.4rem', padding: '0.45rem 1.25rem', cursor: 'pointer', background: '#0f766e', color: '#fff', fontWeight: 600, fontSize: '0.86rem', border: 'none', borderRadius: '8px', fontFamily: 'var(--font-geist-sans), sans-serif', transition: 'background 0.2s ease, transform 0.15s ease', letterSpacing: '0.01em', boxSizing: 'border-box' as const }}>
             Continue
           </button>
         )}

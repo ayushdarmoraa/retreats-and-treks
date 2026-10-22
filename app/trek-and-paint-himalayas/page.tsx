@@ -1,16 +1,17 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { buildCanonicalUrl, buildOgImages } from '@/components/seo/Metadata';
-import { generateBreadcrumbSchema, generateFAQSchema, generateBlogPostingSchema } from '@/components/seo/Schema';
+import { generateBreadcrumbSchema, generateFAQSchema, generateServiceSchema } from '@/components/seo/Schema';
 import { validateFAQSync } from '@/utils/validateFAQSync';
 import TrackedFAQ from '@/components/TrackedFAQ';
 import TrackedPage from '@/components/TrackedPage';
 import Breadcrumb from '@/components/Breadcrumb';
 import PrimaryCTA from '@/components/PrimaryCTA';
-import AutoArticleSchema from '@/components/AutoArticleSchema';
 import { images } from '@/lib/images';
 
 const PATH = '/trek-and-paint-himalayas';
+const PAGE_DESCRIPTION =
+  'Explore Trek & Paint in the Himalayas: a creative journey combining time on mountain trails with art inspired by the landscape. Route, pace, itinerary, and materials vary by departure.';
 
 export const dynamic = 'force-static';
 export const revalidate = 86400;
@@ -18,15 +19,14 @@ export const revalidate = 86400;
 export function generateMetadata(): Metadata {
   return {
     title: 'Trek and Paint in the Himalayas | Retreats And Treks',
-    description:
-      'Trek and paint in the Himalayas with morning walks, afternoon art, plein air painting, nature sketching, and creative practice on mountain trails.',
+    description: PAGE_DESCRIPTION,
     alternates: { canonical: buildCanonicalUrl(PATH) },
     robots: { index: true, follow: true },
     openGraph: {
       title: 'Trek and Paint in the Himalayas',
-      description: 'Walk through mountain landscapes by morning, create art from what you saw by afternoon.',
+      description: PAGE_DESCRIPTION,
       url: buildCanonicalUrl(PATH),
-      type: 'article',
+      type: 'website',
       images: buildOgImages('Trek and Paint in the Himalayas'),
     },
   };
@@ -56,7 +56,7 @@ const FAQ_ITEMS = [
   {
     question: 'What mediums can I use on the trail?',
     answer:
-      'Watercolour, ink, pencil, and charcoal travel well. At camp, we add clay (where available), collage materials, and natural found materials. Land art — arrangements of stone, leaf, branch, and water — requires no carried supplies at all. The mountain provides the materials.',
+      'Watercolour, ink, pencil, and charcoal travel well. At camp, we add clay (where available), collage materials, and natural found materials. Land art — arrangements of stone, leaf, branch, and water — requires no carried supplies at all. The mountain provides the materials. Confirm suitable materials and what is provided for your selected departure before booking, and follow local guidance about natural materials.',
   },
 ];
 
@@ -69,14 +69,11 @@ export default function TrekAndPaintPage() {
     { name: 'Trek and Paint in the Himalayas', url: canonicalUrl },
   ]);
   const faqSchema = generateFAQSchema(FAQ_ITEMS);
-  const articleSchema = generateBlogPostingSchema({
-    title: 'Trek and Paint in the Himalayas — Art on the Trail',
-    description:
-      'Trek and paint in the Himalayas with morning walks, afternoon art, plein air painting, nature sketching, and creative practice on mountain trails.',
-    publishedAt: '2026-01-01',
-    lastUpdated: '2026-05-09',
-    url: canonicalUrl,
-  });
+  const serviceSchema = generateServiceSchema(
+    { title: 'Trek and Paint in the Himalayas', description: PAGE_DESCRIPTION },
+    canonicalUrl,
+    'Himalayas',
+  );
 
   // Split heading for green last word
   const h1Words = "Trek and Paint in the Himalayas".split(' ');
@@ -88,12 +85,6 @@ export default function TrekAndPaintPage() {
 
   return (
     <TrackedPage page={PATH} style={{ maxWidth: '100%', margin: '0 auto', padding: 0, overflowX: 'hidden' }}>
-      <AutoArticleSchema
-        title="Trek and Paint in the Himalayas — Art on the Trail"
-        description="Trek and paint in the Himalayas with morning walks, afternoon art, plein air painting, nature sketching, and creative practice on mountain trails."
-        path={PATH}
-      />
-
       <style>{`
         .med-shell { width: 100vw; margin-left: calc(-50vw + 50%); }
         .med-outer { max-width: 76rem; margin: 0 auto; padding: 0 1.5rem; }
@@ -324,7 +315,7 @@ export default function TrekAndPaintPage() {
 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, articleSchema]) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify([breadcrumbSchema, faqSchema, serviceSchema]) }}
       />
 
       <div className="med-breadcrumb-wrap">
@@ -361,7 +352,7 @@ export default function TrekAndPaintPage() {
               {h1Rest} <span>{h1LastWord}</span>
             </h1>
             <p className="med-body">
-              Walk through a landscape in the morning. Paint it in the afternoon. This is the oldest relationship between art and place — moving through terrain with attention, then translating what you saw into colour, line, and form. The Himalayas provide subject matter that humbles and inspires in equal measure: mountain light that changes hourly, forest textures that reward close observation, valleys that demand you work larger than you normally would. This is not a trek with a painting workshop added. It is a single practice where walking and creating are inseparable.
+              Walk through a landscape in the morning. Paint it in the afternoon. This is the oldest relationship between art and place — moving through terrain with attention, then translating what you saw into colour, line, and form. The Himalayas provide subject matter that humbles and inspires in equal measure: mountain light that changes hourly, forest textures that reward close observation, valleys that demand you work larger than you normally would. This is not a trek with a painting workshop added. It is a single practice where walking and creating are inseparable. Route, pace, itinerary, and art materials vary by departure, so ask for those details before booking.
             </p>
             <div className="med-hero-tags">
               <span>Morning Walks</span>
@@ -420,7 +411,7 @@ export default function TrekAndPaintPage() {
                     '6:00 AM — Wake. Tea with a view.',
                     '6:30 AM — Morning stretch or yoga (15 min)',
                     '7:00 AM — Breakfast at camp',
-                    '7:45 AM — Trail departs. Sketchbook in pocket.',
+                    '7:30 AM — Trail departs. Sketchbook in pocket.',
                     '9:30 AM — First observation stop. Quick sketches.',
                     '10:00 AM — Continue walking. Notice colour, light, texture.',
                     '12:00 PM — Arrive at next camp. Lunch.',
@@ -441,6 +432,9 @@ export default function TrekAndPaintPage() {
                 </tbody>
               </table>
             </div>
+            <p className="med-body" style={{ marginTop: '1rem' }}>
+              The schedule and activities may vary by departure; confirm the itinerary before booking.
+            </p>
           </div>
         </section>
 
@@ -453,6 +447,7 @@ export default function TrekAndPaintPage() {
             </div>
             <h2 className="med-h2">The <span>Art on the Trail</span></h2>
             <p className="med-body">Mountain art divides naturally into three modes, and a trek touches all of them:</p>
+            <p className="med-body">The specific activities and materials depend on the selected departure; confirm them before booking.</p>
 
             <div className="med-paint-mode">
               <h3 className="med-h3">Quick Capture</h3>

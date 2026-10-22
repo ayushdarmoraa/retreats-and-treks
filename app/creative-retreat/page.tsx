@@ -17,8 +17,15 @@ import { getReviewsForSlug } from '@/content/reviews';
 import { getUpcomingEvents } from '@/config/retreatProgramEvents';
 import ReviewCard from '@/components/reviews/ReviewCard';
 
-const PAGE = getExperiencePage('creative-retreat')!;
+const EXPERIENCE_PAGE = getExperiencePage('creative-retreat')!;
 const PATH = '/creative-retreat';
+const PAGE = {
+  ...EXPERIENCE_PAGE,
+  title: 'Creative Retreat in the Himalayas | Retreats And Treks',
+  seoTitle: 'Creative Retreat in the Himalayas | Retreats And Treks',
+  metaDescription:
+    'Explore guided art retreats, weekend creative formats, and Trek & Paint journeys in Himalayan settings. Compare each experience to find a creative pace and setting that suits you.',
+};
 
 const FAQ_ITEMS = [
   {
@@ -44,7 +51,7 @@ const FAQ_ITEMS = [
   {
     question: 'Are art materials provided?',
     answer:
-      'This depends on the specific retreat. Where materials are included, the individual retreat page explains what is provided. If you have preferred personal materials or an established art practice, you can also check the retreat details before booking.',
+      'The standard Creative Healing Retreat includes basic art materials. Personal or specialist supplies may depend on the retreat format, so check the individual retreat details before booking. If you have preferred materials or an established art practice, ask whether you should bring your own.',
   },
 ];
 export const dynamic = 'force-static';
@@ -69,7 +76,11 @@ export default function CreativeHealingRetreatPage() {
   validateFAQSync(FAQ_ITEMS, PATH);
 
   const serviceSchema = generateServiceSchema(
-    { title: 'Creative Healing Retreat', description: 'Guided creative practice with art, yoga, and time in nature.' },
+    {
+      title: 'Creative Retreat in the Himalayas',
+      description:
+        'Explore guided art retreats, weekend creative formats, and Trek & Paint journeys across Himalayan settings.',
+    },
     buildCanonicalUrl(PATH),
     'Himalayas',
   );
