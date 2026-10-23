@@ -47,6 +47,7 @@ test('WhatsApp capture message includes submitted details and keeps the existing
     message: 'Hi, I want to plan a retreat.',
     name: 'Asha Mehta',
     phone: '+91 9876543210',
+    email: 'asha@example.com',
     retreatContext: 'Roopkund Trek - Sankri - 7 days - 2027-05-10',
     timing: 'May 2027',
     groupSize: '2',
@@ -59,6 +60,7 @@ test('WhatsApp capture message includes submitted details and keeps the existing
   assert.match(text, /^Hi, I want to plan a retreat\./);
   assert.match(text, /Name: Asha Mehta/);
   assert.match(text, /Phone: \+91 9876543210/);
+  assert.match(text, /Email: asha@example\.com/);
   assert.match(text, /Retreat: Roopkund Trek - Sankri - 7 days - 2027-05-10/);
   assert.match(text, /Preferred dates: May 2027/);
   assert.match(text, /Group size: 2/);
@@ -82,5 +84,17 @@ test('WhatsApp capture message omits empty optional details', () => {
   const text = url.searchParams.get('text') || '';
 
   assert.match(text, /Retreat: \/retreats\/chakrata/);
-  assert.doesNotMatch(text, /Preferred dates:|Group size:|Additional notes:/);
+  assert.doesNotMatch(text, /Email:|Preferred dates:|Group size:|Additional notes:/);
+});
+
+test('WhatsApp capture message omits a root-path retreat and lead reference when email is available', () => {
+  const url = new URL(buildWhatsAppUrl({
+    message: 'Hi, I want to plan a retreat.',
+    email: 'asha@example.com',
+    retreatContext: '/',
+  }));
+  const text = url.searchParams.get('text') || '';
+
+  assert.match(text, /Email: asha@example\.com/);
+  assert.doesNotMatch(text, /Retreat: \/|Lead reference:/);
 });

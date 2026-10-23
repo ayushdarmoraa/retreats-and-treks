@@ -16,6 +16,7 @@ export interface BuildWhatsAppUrlOptions {
   timing?: string;
   name?: string;
   phone?: string;
+  email?: string;
   retreatContext?: string;
   additionalNotes?: string;
 }
@@ -33,9 +34,10 @@ function buildCustomerMessage({
   timing,
   name,
   phone,
+  email,
   retreatContext,
   additionalNotes,
-}: Pick<BuildWhatsAppUrlOptions, 'context' | 'message' | 'leadReference' | 'groupSize' | 'timing' | 'name' | 'phone' | 'retreatContext' | 'additionalNotes'>): string {
+}: Pick<BuildWhatsAppUrlOptions, 'context' | 'message' | 'leadReference' | 'groupSize' | 'timing' | 'name' | 'phone' | 'email' | 'retreatContext' | 'additionalNotes'>): string {
   const resolvedContext = context
     ? ('page' in context && 'cta' in context && 'attribution' in context
         ? context
@@ -68,14 +70,15 @@ function buildCustomerMessage({
   const submittedDetails = [
     name?.trim() ? `Name: ${name.trim()}` : '',
     phone?.trim() ? `Phone: ${phone.trim()}` : '',
-    retreatContext?.trim() ? `Retreat: ${retreatContext.trim()}` : '',
+    email?.trim() ? `Email: ${email.trim()}` : '',
+    retreatContext?.trim() && retreatContext.trim() !== '/' ? `Retreat: ${retreatContext.trim()}` : '',
     timing?.trim() ? `Preferred dates: ${timing.trim()}` : '',
     groupSize?.trim() ? `Group size: ${groupSize.trim()}` : '',
     additionalNotes?.trim() ? `Additional notes: ${additionalNotes.trim()}` : '',
     leadReference?.trim() ? `Lead reference: ${leadReference.trim()}` : '',
   ].filter(Boolean);
 
-  if ([name, phone, retreatContext, additionalNotes].some((value) => value?.trim())) {
+  if ([name, phone, email, retreatContext, additionalNotes].some((value) => value?.trim())) {
     return [intro, ...submittedDetails].join('\n').slice(0, 5000);
   }
 
