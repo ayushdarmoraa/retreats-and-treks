@@ -349,11 +349,12 @@ test('direct WhatsApp CTA requires consent, saves contextual lead and opens only
   const handoffMessage = handoffUrl.searchParams.get('text') || '';
   assert.match(handoffMessage, /Name: Asha Mehta/);
   assert.match(handoffMessage, /Phone: \+91 9876543210/);
+  assert.match(handoffMessage, /Email: asha@example\.com/);
   assert.match(handoffMessage, /Retreat: Roopkund Trek - Sankri - 7 days - 2027-05-10/);
   assert.match(handoffMessage, /Preferred dates: May 2027/);
   assert.match(handoffMessage, /Group size: 2/);
   assert.match(handoffMessage, /Additional notes: Interested in a guided trek\./);
-  assert.match(handoffMessage, /Lead reference: RT-WA-0001/);
+  assert.doesNotMatch(handoffMessage, /Lead reference:|RT-WA-0001/);
   assert.equal(calls.filter((call) => call.url === '/api/inquire').length, 1);
 
   handoff.addEventListener('click', (event) => event.preventDefault(), { once: true });

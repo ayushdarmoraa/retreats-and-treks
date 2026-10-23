@@ -116,16 +116,17 @@ export default function TrackedWhatsAppLink({
   const canonicalHref = buildCanonicalWhatsAppUrl(href, {
     message,
     context,
-    leadReference: savedLeadReference || leadReference,
+    leadReference: captureSaved ? undefined : savedLeadReference || leadReference,
     ...(captureSaved ? {
       name: captureName,
       phone: capturePhone,
+      email: captureEmail,
       retreatContext: [
         context.product.name,
         context.location.name,
         context.duration,
         context.departure.date,
-      ].filter(Boolean).join(' - ') || resolvedSourcePath,
+      ].filter(Boolean).join(' - '),
       timing: captureTiming,
       groupSize: captureGroupSize,
       additionalNotes: captureMessage,
