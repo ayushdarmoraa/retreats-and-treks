@@ -314,6 +314,11 @@ test('direct WhatsApp CTA requires consent, saves contextual lead and opens only
   await user.click(ui.screen.getByRole('button', { name: 'Save and continue' }));
   await ui.waitFor(() => assert.equal(calls.filter((call) => call.url === '/api/inquire').length, 1));
   const successDialog = await ui.screen.findByRole('dialog', { name: 'Continue to WhatsApp' });
+  assert.ok(ui.within(successDialog).getByRole('heading', { name: 'Thank you!' }));
+  assert.ok(ui.within(successDialog).getByText('Thank you for your interest in Retreats & Treks.'));
+  assert.ok(ui.within(successDialog).getByText(
+    'Your Himalayan journey could start here. Continue on WhatsApp to discuss your retreat preferences with our team.',
+  ));
   assert.equal(
     ui.within(successDialog).queryByText(/enquiry saved|details are saved|reference:/i),
     null,
