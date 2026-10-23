@@ -314,6 +314,11 @@ test('direct WhatsApp CTA requires consent, saves contextual lead and opens only
   await user.click(ui.screen.getByRole('button', { name: 'Save and continue' }));
   await ui.waitFor(() => assert.equal(calls.filter((call) => call.url === '/api/inquire').length, 1));
   const successDialog = await ui.screen.findByRole('dialog', { name: 'Continue to WhatsApp' });
+  assert.ok(ui.within(successDialog).getByRole('heading', { name: 'Thank you!' }));
+  assert.ok(ui.within(successDialog).getByText('Thank you for your interest in Retreats & Treks.'));
+  assert.ok(ui.within(successDialog).getByText(
+    'Your Himalayan journey could start here. Continue on WhatsApp to discuss your retreat preferences with our team.',
+  ));
   assert.equal(
     ui.within(successDialog).queryByText(/enquiry saved|details are saved|reference:/i),
     null,
@@ -341,7 +346,14 @@ test('direct WhatsApp CTA requires consent, saves contextual lead and opens only
   const handoff = ui.screen.getByRole('link', { name: 'Continue to WhatsApp' });
   const handoffUrl = new URL(handoff.getAttribute('href') ?? '');
   assert.equal(handoffUrl.hostname, 'wa.me');
-  assert.equal(handoffUrl.searchParams.get('text')?.includes('RT-WA-0001'), true);
+  const handoffMessage = handoffUrl.searchParams.get('text') || '';
+  assert.match(handoffMessage, /Name: Asha Mehta/);
+  assert.match(handoffMessage, /Phone: \+91 9876543210/);
+  assert.match(handoffMessage, /Retreat: Roopkund Trek - Sankri - 7 days - 2027-05-10/);
+  assert.match(handoffMessage, /Preferred dates: May 2027/);
+  assert.match(handoffMessage, /Group size: 2/);
+  assert.match(handoffMessage, /Additional notes: Interested in a guided trek\./);
+  assert.match(handoffMessage, /Lead reference: RT-WA-0001/);
   assert.equal(calls.filter((call) => call.url === '/api/inquire').length, 1);
 
   handoff.addEventListener('click', (event) => event.preventDefault(), { once: true });

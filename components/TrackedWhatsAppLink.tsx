@@ -117,6 +117,19 @@ export default function TrackedWhatsAppLink({
     message,
     context,
     leadReference: savedLeadReference || leadReference,
+    ...(captureSaved ? {
+      name: captureName,
+      phone: capturePhone,
+      retreatContext: [
+        context.product.name,
+        context.location.name,
+        context.duration,
+        context.departure.date,
+      ].filter(Boolean).join(' - ') || resolvedSourcePath,
+      timing: captureTiming,
+      groupSize: captureGroupSize,
+      additionalNotes: captureMessage,
+    } : {}),
   });
   const ctaViewRef = useTrackedCtaView({
     from: resolvedSourcePath,
@@ -372,6 +385,21 @@ export default function TrackedWhatsAppLink({
             </button>
             {captureSaved ? (
               <div className="wa-capture-success" role="status">
+                <div className="wa-capture-success-heading">
+                  <span className="wa-capture-success-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <circle cx="12" cy="12" r="9" />
+                      <path d="m8 12 2.5 2.5L16 9" />
+                    </svg>
+                  </span>
+                  <div>
+                    <h2 className="wa-capture-success-title">Thank you!</h2>
+                    <p className="wa-capture-success-subtitle">Thank you for your interest in Retreats &amp; Treks.</p>
+                  </div>
+                </div>
+                <p className="wa-capture-success-message">
+                  Your Himalayan journey could start here. Continue on WhatsApp to discuss your retreat preferences with our team.
+                </p>
                 <a
                   href={canonicalHref}
                   className="wa-capture-submit"
@@ -641,7 +669,63 @@ export default function TrackedWhatsAppLink({
             }
 
             .wa-capture-success {
-              padding-top: 1rem;
+              padding-top: 0.5rem;
+            }
+
+            .wa-capture-success-heading {
+              display: flex;
+              align-items: center;
+              gap: 0.9rem;
+              margin-bottom: 1.1rem;
+            }
+
+            .wa-capture-success-icon {
+              display: grid;
+              width: 3.5rem;
+              height: 3.5rem;
+              flex: 0 0 auto;
+              place-items: center;
+              border-radius: 50%;
+              background: #dcf5eb;
+              color: #0f766e;
+            }
+
+            .wa-capture-success-icon svg {
+              width: 1.8rem;
+              height: 1.8rem;
+              fill: none;
+              stroke: currentColor;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              stroke-width: 1.8;
+            }
+
+            .wa-capture-success-title {
+              margin: 0 0 0.25rem;
+              color: #123f3b;
+              font-size: 1.35rem;
+              font-weight: 700;
+              line-height: 1.25;
+            }
+
+            .wa-capture-success-subtitle {
+              margin: 0;
+              color: #5b6d6a;
+              font-size: 0.95rem;
+              line-height: 1.45;
+            }
+
+            .wa-capture-success-message {
+              margin: 0 0 1rem;
+              color: #3f4b5f;
+              font-size: 1.05rem;
+              line-height: 1.55;
+            }
+
+            .wa-capture-success .wa-capture-submit {
+              min-height: 3.5rem;
+              border-radius: 12px;
+              font-size: 1rem;
             }
 
             .wa-capture-reference {
