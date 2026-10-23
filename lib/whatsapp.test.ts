@@ -41,3 +41,46 @@ test('canonical link builder preserves a legacy message only for the configured 
   assert.match(rejected.searchParams.get('text') || '', /general retreat details/);
   assert.doesNotMatch(rejected.searchParams.get('text') || '', /untrusted-destination-message/);
 });
+
+test('WhatsApp capture message includes submitted details and keeps the existing destination', () => {
+  const url = new URL(buildWhatsAppUrl({
+    message: 'Hi, I want to plan a retreat.',
+    name: 'Asha Mehta',
+    phone: '+91 9876543210',
+    retreatContext: 'Roopkund Trek - Sankri - 7 days - 2027-05-10',
+    timing: 'May 2027',
+    groupSize: '2',
+    additionalNotes: 'Interested in a guided trek & yoga retreat.',
+    leadReference: 'RT-261023-0002',
+  }));
+  const text = url.searchParams.get('text') || '';
+
+  assert.equal(url.pathname, `/${DEFAULT_WHATSAPP_NUMBER.replace(/\D/g, '')}`);
+  assert.match(text, /^Hi, I want to plan a retreat\./);
+  assert.match(text, /Name: Asha Mehta/);
+  assert.match(text, /Phone: \+91 9876543210/);
+  assert.match(text, /Retreat: Roopkund Trek - Sankri - 7 days - 2027-05-10/);
+  assert.match(text, /Preferred dates: May 2027/);
+  assert.match(text, /Group size: 2/);
+  assert.match(text, /Additional notes: Interested in a guided trek & yoga retreat\./);
+  assert.match(text, /Lead reference: RT-261023-0002/);
+  assert.match(url.search, /%20/);
+  assert.match(url.search, /%26/);
+});
+
+test('WhatsApp capture message omits empty optional details', () => {
+  const url = new URL(buildWhatsAppUrl({
+    message: 'Hi, I want to plan a retreat.',
+    name: 'Asha Mehta',
+    phone: '+91 9876543210',
+    retreatContext: '/retreats/chakrata',
+    timing: ' ',
+    groupSize: '',
+    additionalNotes: '',
+    leadReference: 'RT-261023-0002',
+  }));
+  const text = url.searchParams.get('text') || '';
+
+  assert.match(text, /Retreat: \/retreats\/chakrata/);
+  assert.doesNotMatch(text, /Preferred dates:|Group size:|Additional notes:/);
+});

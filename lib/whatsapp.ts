@@ -14,6 +14,10 @@ export interface BuildWhatsAppUrlOptions {
   includeLeadReference?: boolean;
   groupSize?: string;
   timing?: string;
+  name?: string;
+  phone?: string;
+  retreatContext?: string;
+  additionalNotes?: string;
 }
 
 function normalizePhoneNumber(value?: string): string {
@@ -27,7 +31,11 @@ function buildCustomerMessage({
   leadReference,
   groupSize,
   timing,
-}: Pick<BuildWhatsAppUrlOptions, 'context' | 'message' | 'leadReference' | 'groupSize' | 'timing'>): string {
+  name,
+  phone,
+  retreatContext,
+  additionalNotes,
+}: Pick<BuildWhatsAppUrlOptions, 'context' | 'message' | 'leadReference' | 'groupSize' | 'timing' | 'name' | 'phone' | 'retreatContext' | 'additionalNotes'>): string {
   const resolvedContext = context
     ? ('page' in context && 'cta' in context && 'attribution' in context
         ? context
@@ -57,6 +65,20 @@ function buildCustomerMessage({
   }
 
   const fullText = [intro, ...contextualParts, ...Array.from(extras)].join(' | ');
+  const submittedDetails = [
+    name?.trim() ? `Name: ${name.trim()}` : '',
+    phone?.trim() ? `Phone: ${phone.trim()}` : '',
+    retreatContext?.trim() ? `Retreat: ${retreatContext.trim()}` : '',
+    timing?.trim() ? `Preferred dates: ${timing.trim()}` : '',
+    groupSize?.trim() ? `Group size: ${groupSize.trim()}` : '',
+    additionalNotes?.trim() ? `Additional notes: ${additionalNotes.trim()}` : '',
+    leadReference?.trim() ? `Lead reference: ${leadReference.trim()}` : '',
+  ].filter(Boolean);
+
+  if ([name, phone, retreatContext, additionalNotes].some((value) => value?.trim())) {
+    return [intro, ...submittedDetails].join('\n').slice(0, 5000);
+  }
+
   return fullText.slice(0, 1000);
 }
 

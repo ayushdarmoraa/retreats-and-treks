@@ -117,6 +117,19 @@ export default function TrackedWhatsAppLink({
     message,
     context,
     leadReference: savedLeadReference || leadReference,
+    ...(captureSaved ? {
+      name: captureName,
+      phone: capturePhone,
+      retreatContext: [
+        context.product.name,
+        context.location.name,
+        context.duration,
+        context.departure.date,
+      ].filter(Boolean).join(' - ') || resolvedSourcePath,
+      timing: captureTiming,
+      groupSize: captureGroupSize,
+      additionalNotes: captureMessage,
+    } : {}),
   });
   const ctaViewRef = useTrackedCtaView({
     from: resolvedSourcePath,
